@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Pom.bankguru_09_AnhTa" parallel="false">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+<!-- 		<listener class-name="reportConfig.ExtentReportListener" /> -->
+		<listener class-name="reportConfig.ReportNGListener" />
+		<listener class-name="reportConfig.RetryListener" />
+	</listeners>
+	<parameter name="appActivities" value="com.vnpay.hdbank.activity.SplashActivity" />
+	<parameter name="appPackage" value="com.vnpay.hdbank" />
+	<parameter name="appName" value="HDBank.apk" />
+
+
+
+
+	<test name="Run test case on Android">
+		<parameter name="deviceType" value="real" />
+		<parameter name="deviceName" value="Galaxy Note+" />
+		<parameter name="deviceUDID" value="RF8M91GM7DE" />
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
+		<classes>
+				<class name="vnpay.hdbank.login.Login_Validation" />
+	
+		</classes>
+	</test>
+
+
+</suite> 
+
+
