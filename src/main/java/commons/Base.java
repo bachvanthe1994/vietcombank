@@ -65,15 +65,7 @@ public class Base {
 		 System.out.print(e.getMessage());
 		 }
 		 }
-	 public AndroidDriver<AndroidElement> openSMSapp() throws MalformedURLException {
-			DesiredCapabilities cap2 = new DesiredCapabilities();
-			cap2.setCapability(MobileCapabilityType.DEVICE_NAME, "Android");
-			cap2.setCapability("appPackage", "com.samsung.android.messaging");
-			cap2.setCapability("appActivity","com.android.mms.ui.ConversationComposer");
-			driver2 = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap2);
-			driver2.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
-			return driver2;
-	 }
+
 	 public void closeSMSApp(){
 		 driver2.quit();
 		}

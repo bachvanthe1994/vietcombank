@@ -7,9 +7,9 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<listener class-name="reportConfig.RetryListener" />
 	</listeners>
-	<parameter name="appActivities" value="com.vnpay.hdbank.activity.SplashActivity" />
-	<parameter name="appPackage" value="com.vnpay.hdbank" />
-	<parameter name="appName" value="HDBank.apk" />
+	<parameter name="appActivities" value="com.vnpay.VCB.activities.login.ActivateInputPhoneNumberActivity" />
+	<parameter name="appPackage" value="com.vnpay.VCB" />
+	<parameter name="appName" value="VCB.apk" />
 
 
 
@@ -20,7 +20,7 @@
 		<parameter name="deviceUDID" value="RF8M91GM7DE" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
-				<class name="vnpay.hdbank.login.Login_Validation" />
+				<class name="vnpay.vietcombank.login.Template" />
 	
 		</classes>
 	</test>
