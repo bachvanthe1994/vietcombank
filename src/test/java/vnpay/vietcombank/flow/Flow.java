@@ -12,6 +12,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
+import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
 
 public class Flow extends Base {
@@ -44,10 +45,12 @@ public class Flow extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.CHANGE_PASSWORD_INSTRUCTION));
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PASSWORD, "Nhập mật khẩu mặc định");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập mật khẩu mới");
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu mới");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
 	}
 	
 

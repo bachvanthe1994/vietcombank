@@ -12,6 +12,8 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
+import vietcombank_test_data.HomePage_Data;
+import vietcombank_test_data.LogIn_Data;
 
 public class Login_Validation extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -27,17 +29,35 @@ public class Login_Validation extends Base {
 		driver= openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 
 		login = PageFactoryManager.getLoginPageObject(driver);
-		
+		log.info("Before class: Click Allow Button");
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		
 
 	}
 
 	@Test
-	public void TC_01_KiemTraChonDiemDenKhiChuaChonDiemDi(){
-		System.out.println("Start");
+	public void TC_01_KiemTraMacDinhTextBoxNhapMatKhau(){
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.WELCOME_MESSAGE));
+		
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.UI.PHONE_NUMBER));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.ONLINE_REGISTER));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.REGISTER));
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PHONE, LogIn_Data.UI.PHONE_NUMBER);
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.INPUT_PASSWORD_MESSAGE));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.UI.PASSWORD_LABEL));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.FORGOT_PASSWORD));
+		
+	
 		
 	}
-	
+
+	@Test
+	public void TC_01_KiemTraKyTuNhap(){
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.INVALID_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
+		verifyFailure(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.Login_Account.INVALID_PASSWORD));
+		
+	}
 
 	
 
