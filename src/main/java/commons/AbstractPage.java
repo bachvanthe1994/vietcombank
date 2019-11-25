@@ -554,23 +554,6 @@ public class AbstractPage {
 
 	}
 
-	public void clickToDynamicBackIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
-	}
-
-	public void clickToDynamicCallIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CALL_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CALL_ICON, dynamicTextValue);
-
-	}
-
-	public void clickToDynamicButtonLinkOrIconOrLink(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-
-	}
-
 	public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		ScrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
@@ -578,47 +561,11 @@ public class AbstractPage {
 
 	}
 
-	public void clickToDynamicDeleteIcon(AndroidDriver<AndroidElement> driver, String... dynamicTextAndIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DELETE_ICON, dynamicTextAndIndexValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DELETE_ICON, dynamicTextAndIndexValue);
-
-	}
-
-	public void clickToDynamicCheckBox(AndroidDriver<AndroidElement> driver, String... dynamicTextAndIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECKBOX, dynamicTextAndIndexValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CHECKBOX, dynamicTextAndIndexValue);
-
-	}
-
-	public void clickToDynamicRadioButton(AndroidDriver<AndroidElement> driver, String... dynamicTextAndIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_RADIO_BUTTON, dynamicTextAndIndexValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_RADIO_BUTTON, dynamicTextAndIndexValue);
-
-	}
-
-	public void clickToDynamicIncreaseOrDecreaseIcon(AndroidDriver<AndroidElement> driver, String... dynamicTextAndIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, dynamicTextAndIndexValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, dynamicTextAndIndexValue);
-
-	}
-
-	public void clickToDynamicDate(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
-
-	}
 
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
-
-	}
-
-	public void inputToDynamicLoginInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LOGIN_INPUT_BOX, dynamicIndexValue);
-		clearText(driver, DynamicPageUIs.DYNAMIC_LOGIN_INPUT_BOX, dynamicIndexValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LOGIN_INPUT_BOX, inputValue, dynamicIndexValue);
 
 	}
 
@@ -641,58 +588,10 @@ public class AbstractPage {
 
 	}
 
-	public boolean isDynamicRadioChecked(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_RADIO_BUTTON, dynamicTextValue);
-		return isControlSelected(driver, DynamicPageUIs.DYNAMIC_RADIO_BUTTON, dynamicTextValue);
-
-	}
-
-	public boolean isDynamicRadioEnabled(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_RADIO_BUTTON, dynamicTextValue);
-		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_RADIO_BUTTON, dynamicTextValue);
-
-	}
-
-	public boolean isDeparturePointDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.LIST_OF_ITEMS, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.LIST_OF_ITEMS, dynamicTextValue);
-
-	}
-
-	public boolean isDynamicCheckBoxChecked(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		ScrollToText(driver, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECKBOX, dynamicTextValue);
-		return isControlSelected(driver, DynamicPageUIs.DYNAMIC_CHECKBOX, dynamicTextValue);
-
-	}
 
 	public boolean isDynamicTextInInputBoxDisPlayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
 
-	public String getDynamicDefaultNumberOfPeopleOrPlaceholder(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEFAULT_PERSON_PLACEHOLDER, dynamicTextValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DEFAULT_PERSON_PLACEHOLDER, dynamicTextValue);
-	}
-
-	public String getDynamicTextInPopUp(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-	}
-
-	public String getDynamicDepartureOrArriverCode(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEPARTURE_OR_ARRIVE_CODE, dynamicTextValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DEPARTURE_OR_ARRIVE_CODE, dynamicTextValue);
-	}
-
-	public int countNumberOfDeparturePointsDisplayed(AndroidDriver<AndroidElement> driver) {
-		waitForElementVisible(driver, DynamicPageUIs.ALL_DYNAMIC_DROP_DOWN_VALUE);
-		return countElementNumber(driver, DynamicPageUIs.ALL_DYNAMIC_DROP_DOWN_VALUE);
-	}
-
-	public String getPhoneNumberInCallApp(AndroidDriver<AndroidElement> driver) {
-		waitForElementVisible(driver, DynamicPageUIs.CALL_NUMBER);
-		return getTextElement(driver, DynamicPageUIs.CALL_NUMBER);
-	}
 }
