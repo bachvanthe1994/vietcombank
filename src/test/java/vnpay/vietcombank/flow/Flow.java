@@ -44,7 +44,7 @@ public class Flow extends Base {
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PHONE, "Số điện thoại");
 		login.clickToDynamicButton(driver, "Tiếp tục");
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.CHANGE_PASSWORD_INSTRUCTION));
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PASSWORD, "Nhập mật khẩu mặc định");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.WRONG_PASSWORD, "Nhập mật khẩu mặc định");
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập mật khẩu mới");
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu mới");
 		login.clickToDynamicButton(driver, "Tiếp tục");

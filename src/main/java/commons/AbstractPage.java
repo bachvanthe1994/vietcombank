@@ -558,6 +558,11 @@ public class AbstractPage {
 		ScrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		
+	}
+	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
 	}
 
@@ -593,5 +598,10 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
-
+	
+	public String getTextDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+	}
+  
 }

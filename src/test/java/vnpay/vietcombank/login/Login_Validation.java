@@ -53,13 +53,37 @@ public class Login_Validation extends Base {
 	}
 
 	@Test
-	public void TC_01_KiemTraKyTuNhap(){
+	public void TC_02_KiemTraKhiNhapKyTuTrong(){
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NULL, LogIn_Data.UI.PASSWORD_LABEL);
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.EMPTY_MESSAGE));
+		login.clickToDynamicButton(driver, "Đóng");
+	}
+	@Test
+	public void TC_03_KiemTraLoaiKyTuNhap(){
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.INVALID_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-		verifyFailure(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.Login_Account.INVALID_PASSWORD));
+		verifyTrue(login.getTextDynamicTextInInputBox(driver,LogIn_Data.UI.PASSWORD_LABEL).equals(LogIn_Data.UI.PASSWORD_LABEL));
 		
 	}
 
-	
+	@Test
+	public void TC_04_KiemTraSoLuongKyTuToiDa(){
+		login.clickToDynamicButionLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20, LogIn_Data.UI.PASSWORD_LABEL);
+		verifyTrue(!login.getTextDynamicTextInInputBox(driver,LogIn_Data.UI.PASSWORD_LABEL).equals(LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20));
+		
+	}
+	@Test
+	public void TC_05_NhapSaiMatKhau(){
+		login.clickToDynamicButionLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.WRONG_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.WRONG_PASSWORD_MESSAGE));
+		login.clickToDynamicButton(driver, "Đóng");
+		
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
