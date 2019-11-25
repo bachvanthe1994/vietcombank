@@ -44,11 +44,9 @@ public class Flow extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.CHANGE_PASSWORD_INSTRUCTION));
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PASSWORD, "Nhập mật khẩu mặc định");
-		
-		login.sendKeyToElement(driver, "//android.widget.EditText[@text='Nhập mật khẩu mới']", "Abc@12345");
-//		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "");
-//		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu mới");
-//		login.clickToDynamicButton(driver, "Tiếp tục");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu mới");
+		login.clickToDynamicButton(driver, "Tiếp tục");
 		
 	}
 	
