@@ -1,4 +1,4 @@
-package vnpay.vietcombank.login;
+package vnpay.vietcombank.flow;
 
 import java.io.IOException;
 
@@ -12,8 +12,9 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
+import vietcombank_test_data.LogIn_Data;
 
-public class Template extends Base {
+public class Flow extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 
@@ -25,16 +26,29 @@ public class Template extends Base {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver= openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
+		
 		login = PageFactoryManager.getLoginPageObject(driver);
+		
+		log.info("Before class: Click Allow Button");
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		
+		
 		
 		
 
 	}
 
 	@Test
-	public void TC_01_KiemTraChonDiemDenKhiChuaChonDiemDi(){
-		System.out.println("Start");
+	public void TC_01_ChangePassWord() throws InterruptedException{
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PHONE, "Số điện thoại");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.CHANGE_PASSWORD_INSTRUCTION));
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PASSWORD, "Nhập mật khẩu mặc định");
+		
+		login.sendKeyToElement(driver, "//android.widget.EditText[@text='Nhập mật khẩu mới']", "Abc@12345");
+//		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "");
+//		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu mới");
+//		login.clickToDynamicButton(driver, "Tiếp tục");
 		
 	}
 	

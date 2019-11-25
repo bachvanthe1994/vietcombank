@@ -1,4 +1,4 @@
-package vnpay.vietcombank.flow;
+package vnpay.vietcombank.login;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 
-public class Template extends Base {
+public class Login_Validation extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 
