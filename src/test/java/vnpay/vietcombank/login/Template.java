@@ -11,8 +11,6 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.DomesticAirTicketPageObject;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 
 public class Template extends Base {

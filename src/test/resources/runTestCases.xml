@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Pom.bankguru_09_AnhTa" parallel="false">
+<suite name="HDBank" parallel="false"  >
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
@@ -7,23 +7,23 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<listener class-name="reportConfig.RetryListener" />
 	</listeners>
-	<parameter name="appActivities" value="com.vnpay.VCB.activities.login.ActivateInputPhoneNumberActivity" />
-	<parameter name="appPackage" value="com.vnpay.VCB" />
+	<parameter name="appActivities" value="com.vnpay.VCB.activities.SplashActivity" />
+	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="VCB.apk" />
 
 
 
-
-	<test name="Run test case on Android">
+	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="real" />
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="RF8M91GM7DE" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
 				<class name="vnpay.vietcombank.login.Template" />
-	
+		
 		</classes>
 	</test>
+
 
 
 </suite> 
