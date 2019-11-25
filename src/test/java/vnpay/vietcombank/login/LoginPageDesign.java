@@ -13,7 +13,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 
-public class Template extends Base {
+public class LoginPageDesign extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 
@@ -33,8 +33,9 @@ public class Template extends Base {
 	}
 
 	@Test
-	public void TC_01_KiemTraChonDiemDenKhiChuaChonDiemDi(){
+	public void TC_01_KiemTraManHinhDangNhap(){
 		System.out.println("Start");
+		
 		login.inputPhoneNumber("0904797863");
 	}
 	

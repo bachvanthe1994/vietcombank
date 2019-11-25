@@ -15,8 +15,8 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="real" />
-		<parameter name="deviceName" value="Galaxy Note+" />
-		<parameter name="deviceUDID" value="RF8M91GM7DE" />
+		<parameter name="deviceName" value="ASUS_X008D" />
+		<parameter name="deviceUDID" value="G7AXGY01P009X72" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
 				<class name="vnpay.vietcombank.login.Template" />
