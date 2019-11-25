@@ -19,7 +19,7 @@
 		<parameter name="deviceUDID" value="G7AXGY01P009X72" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
-				<class name="vnpay.vietcombank.login.Template" />
+				<class name="vnpay.vietcombank.login.LoginPageDesign" />
 		
 		</classes>
 	</test>

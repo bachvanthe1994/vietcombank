@@ -36,7 +36,10 @@ public class LoginPageDesign extends Base {
 	public void TC_01_KiemTraManHinhDangNhap(){
 		System.out.println("Start");
 		
-		login.inputPhoneNumber("0904797863");
+		log.info("TC_01_1_Text Chao mung quy khach den voi ung dung VCB-Mobile B@nking cua Vietcombank");
+		login.verifyIconChangeLanguage();
+		 
+		
 	}
 	
 
