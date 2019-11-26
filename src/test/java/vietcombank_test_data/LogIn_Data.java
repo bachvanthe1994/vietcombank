@@ -5,6 +5,7 @@ public class LogIn_Data {
 		public static final String LOCKED_PHONE = "0973441417";
 		public static final String LOCKED_PASS = "0904797863";
 		public static final String PHONE = "0904797863";
+		public static final String PHONE_InV ="09047978631";
 		public static final String WRONG_PASSWORD = "18a9713e";
 		public static final String NEW_PASSWORD = "Abc12345";
 		public static final String OTP = "123456";
