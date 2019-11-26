@@ -16,5 +16,6 @@ public class ChangePassword_Data {
 		public static final String DEFAULT_PASSWORD_TEXT_VIEW = "Nhập mật khẩu mặc định";
 		public static final String NEW_PASSWORD_TEXT_VIEW = "Nhập mật khẩu mới";
 		public static final String CONFIRM_PASSWORD_TEXT_VIEW = "Nhập lại mật khẩu mới";
+		public static final String FORGOT_PASSWORD = "Quên mật khẩu?";
 	}
 }

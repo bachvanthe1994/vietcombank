@@ -47,11 +47,22 @@ public class ChangePassword_Validation extends Base {
 		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
 		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.NEW_PASSWORD_TEXT_VIEW));
 		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.CONFIRM_PASSWORD_TEXT_VIEW));
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.UI.CONTINUE_BUTTON));
+		verifyTrue(login.isDynamicButtonDisplayed(driver, LogIn_Data.UI.CONTINUE_BUTTON));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, ChangePassword_Data.UI.FORGOT_PASSWORD));
 		
 		
 	}
 	
+	@Test
+	public void TC_02_KiemTraTextboxMatKhauMacDinh(){
+		System.out.println("Start");
+		
+		log.info("TC_02_1_Text Kiem tra Mac dinh trong, hien thi Nhap mat khau mac dinh");
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
+		
+		log.info("TC_02_2_Text Kiem tra Mac dinh trong, hien thi Nhap mat khau mac dinh");
+		
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
