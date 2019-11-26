@@ -12,6 +12,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
+import vietcombank_test_data.ChangePassword_Data;
 import vietcombank_test_data.LogIn_Data;
 
 public class ChangePassword_Validation extends Base {
@@ -31,22 +32,22 @@ public class ChangePassword_Validation extends Base {
 		
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		
-
+		login.inputPhoneNumber(ChangePassword_Data.Password.PHONE);
+		
+		login.clickToDynamicButton(driver, LogIn_Data.UI.CONTINUE_BUTTON);
 	}
 
 	@Test
 	public void TC_01_KiemTraManHinhDoiMatKhau(){
 		System.out.println("Start");
 		
-		log.info("TC_01_1_Text Chao mung quy khach den voi ung dung VCB-Mobile B@nking cua Vietcombank");
-//		login.verifyIconChangeLanguage();
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.WELCOME_MESSAGE));
-		log.info("TC_01_2_Textbox Số điện thoại");
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.UI.PHONE_NUMBER));
-		verifyTrue(login.isDynamicButtonDisplayed(driver, LogIn_Data.UI.CONTINUE_BUTTON));
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.ONLINE_REGISTER));
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.REGISTER));
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.FIND_ATM));
+		log.info("TC_01_1_Text Kiem tra hien thi man hinh doi mat khau");
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, ChangePassword_Data.UI.RETURN_BUTTON));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, ChangePassword_Data.UI.CHANGE_PASSWORD_NOFICATION));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.NEW_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.CONFIRM_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, LogIn_Data.UI.CONTINUE_BUTTON));
 		
 		
 	}
