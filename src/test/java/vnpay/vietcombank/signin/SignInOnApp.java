@@ -49,7 +49,7 @@ public class SignInOnApp extends Base {
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Số điện thoại"));
 		
 		log.info("TC_01_2_button Tiep tuc");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Tiếp tục"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Tiếp tụcyyyyyyyyyyyyyyyyyyyyy"));
 
 	}
 
