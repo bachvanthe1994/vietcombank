@@ -22,10 +22,20 @@ public class LogInPageObject extends AbstractPage{
 		sendKeyToElement(driver, LoginPageUIs.PHONE_NUMBER_TEXT_FIELD, inputValue);
 	}
 	
+	public void clearPhoneNumber() {
+		clearText(driver, LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
+	}
+	
 	public void verifyIconChangeLanguage() {
 		waitForElementVisible(driver, LoginPageUIs.TEXT_LANGUAGE);
-//		Assert.assertTrue(isControlDisplayed(driver, LoginPageUIs.ICON_CHANGE_LANGUAGE));
+		Assert.assertTrue(isControlDisplayed(driver, LoginPageUIs.ICON_CHANGE_LANGUAGE));
 		String actualTextChangeLanguage = driver.findElement(By.xpath(LoginPageUIs.TEXT_LANGUAGE)).getText();
 		Assert.assertEquals(actualTextChangeLanguage, "Vietnamese");
+	}
+	
+	public void verifyPhoneNumberTextBox(String inputValue) {
+		String actualTextChangeLanguage = driver.findElement(By.xpath(LoginPageUIs.PHONE_NUMBER_TEXT_FIELD)).getText();
+		int countNumberCharacterOfInputValue = actualTextChangeLanguage.length();
+		Assert.assertEquals(countNumberCharacterOfInputValue, 10);
 	}
 }
