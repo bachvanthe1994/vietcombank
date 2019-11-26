@@ -11,6 +11,10 @@ public class ChangePassword_Data {
 	}
 	
 	public class UI {
-		public static final String PHONE_NUMBER = "Số điện thoại";
+		public static final String RETURN_BUTTON = "Quay lại";
+		public static final String CHANGE_PASSWORD_NOFICATION = "Quý khách vui lòng đổi mật khẩu mặc định được cung cấp khi đăng ký sử dụng dịch vụ";
+		public static final String DEFAULT_PASSWORD_TEXT_VIEW = "Nhập mật khẩu mặc định";
+		public static final String NEW_PASSWORD_TEXT_VIEW = "Nhập mật khẩu mới";
+		public static final String CONFIRM_PASSWORD_TEXT_VIEW = "Nhập lại mật khẩu mới";
 	}
 }
