@@ -60,13 +60,16 @@ public class ChangePassword_Validation extends Base {
 		log.info("TC_02_1_Text Kiem tra Mac dinh trong, hien thi Nhap mat khau mac dinh");
 		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
 		
-		log.info("TC_02_2_Text Kiem tra Mac dinh trong, hien thi Nhap mat khau mac dinh");
-		
+		log.info("TC_02_2_Text Kiem tra cho phep nhap ky tu 0-9, a-z");
+		login.inputPassword("0123456789", ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW);
+		login.verifyDefaultPasswordTextboxAllowInputValue("0123456789");
+		login.inputPassword("abc", "0123456789", ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW);
+		login.verifyDefaultPasswordTextboxAllowInputValue("abc");
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
