@@ -31,6 +31,13 @@ public class LogIn_Data {
 		public static final String REGISTER = "Đăng ký VCB-Mobile B@nking";
 		public static final String ONLINE_REGISTER = "Đăng ký trực tuyến";
 		public static final String FORGOT_PASSWORD = "Quên mật khẩu?";
+		public static final String CONTINUE_BUTTON = "Tiếp tục";
+		public static final String FIND_ATM = "Tìm kiếm ATM/chi nhánh gần đây";
+		public static final String CLOSE_BUTTON = "Đóng";
+		public static final String CANCEL_BUTTON = "Hủy";
+		public static final String AGREE_BUTTON = "Đồng ý";
+		public static final String REGISTER_NOW_BUTTON = "Đăng ký ngay";
+		public static final String CONTINUE_USE_SERVICE_BUTTON = "Tiếp tục sử dụng dịch vụ";
 
 	}
 }
