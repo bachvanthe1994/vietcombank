@@ -6,6 +6,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT="//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_INPUT_BOX="//android.widget.EditText[@text='%s']";
 	public static final String DYNAMIC_OTP_INPUT="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout/android.widget.TextView";
+	public static final String DYNAMIC_INPUT_IN_LOGIN="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
 
 	
 }
