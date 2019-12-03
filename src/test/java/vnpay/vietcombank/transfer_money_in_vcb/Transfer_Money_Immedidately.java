@@ -16,7 +16,7 @@ import pageObjects.LogInPageObject;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
 
-public class Flow extends Base {
+public class Transfer_Money_Immedidately extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -35,14 +35,6 @@ public class Flow extends Base {
 		log.info("Before class: Click Allow Button");
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		
-		
-		
-		
-
-	}
-
-	@Test
-	public void TC_01_ChangePassWord() throws InterruptedException{
 		log.info("TC_06_Step_0");
 		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
 		
@@ -67,6 +59,14 @@ public class Flow extends Base {
 		
 		log.info("TC_06_Step_0");
 		login.clickToDynamicButton(driver, "Hủy");
+		
+		
+		
+
+	}
+
+	@Test
+	public void TC_01_ChangePassWord() throws InterruptedException{
 	}
 	
 
