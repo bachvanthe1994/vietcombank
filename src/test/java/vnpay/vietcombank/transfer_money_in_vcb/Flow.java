@@ -1,4 +1,4 @@
-package vnpay.vietcombank.flow;
+package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
 
