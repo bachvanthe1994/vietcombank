@@ -3,7 +3,7 @@ package vietcombank_test_data;
 public class LogIn_Data {
 	public class Login_Account {
 		public static final String LOCKED_PHONE = "0973441417";
-		public static final String LOCKED_PASS = "0904797863";
+		public static final String LOCKED_PASS = "1e9978d3";
 		public static final String PHONE = "0904797863";
 		public static final String PHONE_InV ="09047978631";
 		public static final String WRONG_PASSWORD = "18a9713e";
@@ -22,6 +22,7 @@ public class LogIn_Data {
 		public static final String OTP_INSTRUCTION = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại";
 		public static final String EMPTY_MESSAGE = "Mật khẩu không được bỏ trống. Quý khách vui lòng kiểm tra lại";
 		public static final String WRONG_PASSWORD_MESSAGE = "Mật khẩu đăng nhập không chính xác. Quý khách lưu ý, chức năng kích hoạt dịch vụ trên thiết bị khác sẽ bị tạm khóa 24h nếu Quý khách nhập sai mật khẩu từ 5 lần trở lên";
+		public static final String LOCKED_ACCOUNT_MESSAGE = "Số điện thoại sử dụng dịch vụ VCB-Mobile B@nking đã bị khóa. Quý khách vui lòng yêu cầu mở lại dịch vụ tại Quầy giao dịch của Vietcombank. ";
 		public static final String PHONE_NUMBER_NOT_EMPTY = "Số điện thoại không được bỏ trống. Quý khách vui lòng kiểm tra lại";
 		public static final String PHONE_NUMBER_INVALID = "Số điện thoại không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String PHONE_NUMBER_VALID = "Tài khoản đã được kích hoạt trên thiết bị khác. Quý khách có đồng ý tiếp tục cài đặt ứng dụng Mobile B@nking trên thiết bị hiện tại không?";
