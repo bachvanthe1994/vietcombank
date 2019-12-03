@@ -29,4 +29,5 @@ public class PageFactoryManager {
 	public static DomesticAirTicketPageObject getDomesticAirTicketPageObject(AndroidDriver<AndroidElement> driver) {
 		return new DomesticAirTicketPageObject(driver);
 	}
+	
 }
