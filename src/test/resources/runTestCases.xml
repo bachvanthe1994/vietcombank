@@ -11,7 +11,7 @@
 	<parameter name="appActivities"
 		value="com.VCB.activities.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
-	<parameter name="appName" value="VCB.apk" />
+	<parameter name="appName" value="vcbtnewdesign.apk" />
 
 
 
