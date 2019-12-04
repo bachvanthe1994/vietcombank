@@ -24,7 +24,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	
 	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
 	TransferOutSideVCB_Info info1 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test", "SMS OTP");
-	TransferOutSideVCB_Info info2 = new TransferOutSideVCB_Info("0011370000646", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
+	TransferOutSideVCB_Info info2 = new TransferOutSideVCB_Info("0011370000646", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	
@@ -216,10 +216,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		
 		log.info("TC_03_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản nguồn"), info2.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản đích / VND"), info2.destinationAccount);
+		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản đích / USD"), info2.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tên người hưởng"), info2.name);
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Ngân hàng hưởng"), info2.destinationBank);
-		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền (VND)").replace(",", ""), info2.money + " VND");
+		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền (USD)").replace(",", ""), info2.money + " USD");
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền phí"), "1,100 VND");
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Nội dung"), info2.note);
 		

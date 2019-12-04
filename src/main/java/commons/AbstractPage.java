@@ -24,6 +24,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
 
 public class AbstractPage {
@@ -578,6 +579,17 @@ public class AbstractPage {
 	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		
+	}
+	public void clickToDynamicCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		
+	}
+	
+	public void clickToDynamicIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 
 	}
 
