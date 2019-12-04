@@ -578,11 +578,6 @@ public class AbstractPage {
 
 	}
 	
-	public void clickToDynamicClosedImage(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSED_IMAGE, dynamicIndex);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSED_IMAGE, dynamicIndex);
-
-	}
 
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);

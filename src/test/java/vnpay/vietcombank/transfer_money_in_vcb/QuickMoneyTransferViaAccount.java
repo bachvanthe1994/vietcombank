@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -12,13 +13,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.TransferMoney;
 import pageObjects.TransferMoneyObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoney_Data;
-import vietcombank_test_data.TransferMoney_Data.TransferQuick;
 
 public class QuickMoneyTransferViaAccount extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -64,7 +62,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		login.clickToDynamicButton(driver, "Hủy");
 		
 		log.info("Before class");
-		login.clickToDynamicClosedImage(driver, "1");
+		login.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
 Thread.sleep(3000);
 	}
 
