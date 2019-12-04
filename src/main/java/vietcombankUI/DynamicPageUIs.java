@@ -9,6 +9,6 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_INPUT_IN_LOGIN="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
 	public static final String DYNAMIC_INPUT_TEXT_POPUP="//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_CLOSE_POPUP = "//android.widget.RelativeLayout//preceding-sibling::android.widget.ImageView";
-	
+	public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
 }
 
