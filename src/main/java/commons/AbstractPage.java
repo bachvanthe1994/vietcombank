@@ -186,7 +186,7 @@ public class AbstractPage {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		MobileElement element1 = driver.findElement(By.xpath(locator));
 		element1.clear();
-		driver.getKeyboard().sendKeys(value);;
+		driver.getKeyboard().sendKeys(value);
 	}
 
 	public String getAttributeValue(AndroidDriver<AndroidElement> driver, String locator, String attribute) {

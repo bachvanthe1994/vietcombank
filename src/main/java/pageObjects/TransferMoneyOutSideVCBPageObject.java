@@ -18,4 +18,7 @@ public class TransferMoneyOutSideVCBPageObject extends AbstractPage{
 		clickToElement(driver, TransferMoneyOutSideVCBPageUIs.SOURCE_ACCOUNT);
 	}
 	
+	public long canculateAvailableBalances(long surPlus, long money, long transactionFree) {
+		return surPlus - money - transactionFree;
+	}
 }
