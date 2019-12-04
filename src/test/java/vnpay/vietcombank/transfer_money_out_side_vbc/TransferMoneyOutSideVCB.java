@@ -53,7 +53,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		
 		login.clickToDynamicButton(driver, "Hủy");
 		
-		login.clickToClosePopup(driver);
+		login.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
 	}
 
 	@Test

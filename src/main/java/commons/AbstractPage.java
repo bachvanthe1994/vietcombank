@@ -570,12 +570,6 @@ public class AbstractPage {
 		
 	}
 	
-	public void clickToClosePopup(AndroidDriver<AndroidElement> driver) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_POPUP);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSE_POPUP);
-		
-	}
-	
 	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
