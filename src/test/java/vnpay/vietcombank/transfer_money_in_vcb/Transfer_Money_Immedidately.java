@@ -21,7 +21,6 @@ public class Transfer_Money_Immedidately extends Base {
 	private LogInPageObject login;
 	private HomePageObject homePage;
 
-
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities,
@@ -58,15 +57,19 @@ public class Transfer_Money_Immedidately extends Base {
 		verifyTrue(homePage.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
 		
 		log.info("TC_06_Step_0");
-		login.clickToDynamicButton(driver, "Hủy");
-		
+		homePage.clickToDynamicButton(driver, "Hủy");
+		 homePage.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
+		 homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 		
 		
 
 	}
 
 	@Test
-	public void TC_01_ChangePassWord() throws InterruptedException{
+	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
+		
+		
+		
 	}
 	
 

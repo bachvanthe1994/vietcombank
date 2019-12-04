@@ -2,7 +2,7 @@ package commons;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.AccountPageObject;
+import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -22,11 +22,9 @@ public class PageFactoryManager {
 		return new RegisterPageObject(driver);
 	}
 
-	public static AccountPageObject getAccountPageObject(AndroidDriver<AndroidElement> driver) {
-		return new AccountPageObject(driver);
+	public static TransferMoneyInVcbPageObject getTransferMoneyInVcbPageObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferMoneyInVcbPageObject(driver);
 	}
 
-	public static DomesticAirTicketPageObject getDomesticAirTicketPageObject(AndroidDriver<AndroidElement> driver) {
-		return new DomesticAirTicketPageObject(driver);
-	}
+
 }
