@@ -67,7 +67,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
 		
 		log.info("TC_01_3_Nhap tai khoan thu huong");
@@ -127,7 +127,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
 		
 		log.info("TC_02_3_Nhap tai khoan thu huong");
@@ -187,7 +187,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
 		
 		log.info("TC_03_3_Nhap tai khoan thu huong");

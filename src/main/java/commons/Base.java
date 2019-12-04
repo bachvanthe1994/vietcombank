@@ -327,5 +327,10 @@ public String getArriveYear() {
  }
 	return 	nextDay;
  }
- 
+ public int convertMoneytoInt(String money) {
+	  money = money.replaceAll(" VND", "");
+	  money = money.replaceAll(",", "");
+	  int m = Integer.parseInt(money);
+	  return m;
+ }
 }

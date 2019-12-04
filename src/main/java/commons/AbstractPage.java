@@ -26,6 +26,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
 public class AbstractPage {
 	int longTime = 30;
@@ -195,7 +196,7 @@ public class AbstractPage {
 	}
 
 	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
-		waitForElementVisible(driver, locator, dynamicValue);
+	
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
@@ -571,8 +572,14 @@ public class AbstractPage {
 	}
 	
 	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		ScrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		
+	}
+	public void clickToDynamicDropdown(AndroidDriver<AndroidElement> driver, String...dynamicTextValueAndIndex) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN, dynamicTextValueAndIndex);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN, dynamicTextValueAndIndex);
 		
 	}
 	public void clickToDynamicCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -582,10 +589,16 @@ public class AbstractPage {
 	}
 	
 	public void clickToDynamicIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		ScrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 
 	}
+	public void clickToSourceAccount(AndroidDriver<AndroidElement> driver) {
+		waitForElementVisible(driver, DynamicPageUIs.SOURCE_ACCOUNT);
+		clickToElement(driver, DynamicPageUIs.SOURCE_ACCOUNT);
+	}
+	
 
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -637,10 +650,24 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
+	public String getDynamicTransferTime(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+	}
 	
 	public String getTextDynamicPopup(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		
+	}
+	public String getTextInDynamicConfirmPage(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+		
+	}
+	public String getTextInDynamicTransaction(AndroidDriver<AndroidElement> driver, String...dynamicTextValueIndex1Index2) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION, dynamicTextValueIndex1Index2);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION, dynamicTextValueIndex1Index2);
 		
 	}
 	

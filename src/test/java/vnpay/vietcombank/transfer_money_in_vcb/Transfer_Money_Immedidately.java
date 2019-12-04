@@ -16,6 +16,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Immedidately extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -61,6 +62,7 @@ public class Transfer_Money_Immedidately extends Base {
 		log.info("TC_06_Step_0");
 		homePage.clickToDynamicButton(driver, "Hủy");
 		 homePage.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
+		 
 		 homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver)	;
 
@@ -70,7 +72,32 @@ public class Transfer_Money_Immedidately extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
-
+		transferInVCB.clickToSourceAccount(driver);
+		
+		transferInVCB.clickToDynamicButionLinkOrLinkText(driver,TransferMoneyInVCB_Data.InputData.SOURCE );
+		String balance = transferInVCB.getTextInDynamicConfirmPage(driver, "Số dư khả dụng");
+		int balanceAmount = convertMoneytoInt(balance);
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.RECEIVE_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
+		
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.NOTE, "Nội dung");
+		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Hình thức chuyển tiền"),TransferMoneyInVCB_Data.InputData.OPTION_TRANSFER[1]);
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Tài khoản nguồn"),TransferMoneyInVCB_Data.InputData.SOURCE);
+		verifyTrue(transferInVCB.getTextInDynamicConfirmPage(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputData.RECEIVE_ACCOUNT));
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Số tiền (VND)"),TransferMoneyInVCB_Data.InputData.MONEY);
+		String transferFee = transferInVCB.getTextInDynamicConfirmPage(driver, "Hình thức chuyển tiền");
+		int newTransferFee = convertMoneytoInt(transferFee);
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Nội dung"),TransferMoneyInVCB_Data.InputData.NOTE);
+		transferInVCB.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập mật khẩu");
+		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
+		String transferTime = transferInVCB.getDynamicTransferTime(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE,"1");
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Tên người thụ hưởng"),TransferMoneyInVCB_Data.InputData.RECEIVE_NAME);
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Tài khoản đích"),TransferMoneyInVCB_Data.InputData.RECEIVE_ACCOUNT);
+		
+		verifyEquals(transferInVCB.getTextInDynamicConfirmPage(driver, "Nội dung"),TransferMoneyInVCB_Data.InputData.NOTE);
+		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		
 		
 	}
 	
