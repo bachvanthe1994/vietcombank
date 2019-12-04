@@ -23,6 +23,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
 
 public class AbstractPage {
@@ -566,7 +567,12 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
 	}
+	
+	public void clickToDynamicClosedImage(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSED_IMAGE, dynamicIndex);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSED_IMAGE, dynamicIndex);
 
+	}
 
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
