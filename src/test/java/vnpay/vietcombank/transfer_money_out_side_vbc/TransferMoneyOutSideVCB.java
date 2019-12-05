@@ -63,11 +63,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
 		
 		log.info("TC_01_3_Nhap tai khoan thu huong");
@@ -104,7 +104,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Nội dung"), info.note);
 		
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.authenticationMethod);
 		
@@ -123,11 +123,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_02_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
 		
 		log.info("TC_02_3_Nhap tai khoan thu huong");
@@ -164,7 +164,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Nội dung"), info1.note);
 		
 		log.info("TC_02_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.authenticationMethod);
 		
@@ -183,11 +183,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_03_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
 		
 		log.info("TC_03_3_Nhap tai khoan thu huong");
@@ -224,7 +224,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Nội dung"), info2.note);
 		
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.authenticationMethod);
 		

@@ -13,9 +13,6 @@ public class TransferMoneyOutSideVCBPageObject extends AbstractPage{
 	
 	private AndroidDriver<AndroidElement> driver;
 	
-	public void clickToSourceAccount() {
-		waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.SOURCE_ACCOUNT);
-		clickToElement(driver, TransferMoneyOutSideVCBPageUIs.SOURCE_ACCOUNT);
-	}
+	
 	
 }

@@ -5,19 +5,14 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -327,5 +322,10 @@ public String getArriveYear() {
  }
 	return 	nextDay;
  }
- 
+ public  long convertMoneyToLong(String money) {
+	  money = money.replaceAll(" VND", "");
+	  money = money.replaceAll(",", "");
+	  long m = Long.parseLong(money);
+	  return m;
+}
 }
