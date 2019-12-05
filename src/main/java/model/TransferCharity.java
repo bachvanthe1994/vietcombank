@@ -7,13 +7,15 @@ public class TransferCharity {
 	public String name;
 	public String address;
 	public String status;
+	public String authenticationMethod;
 	
-	public TransferCharity(String sourceAccount, String organization, String money, String name, String address, String status) {
+	public TransferCharity(String sourceAccount, String organization, String money, String name, String address, String status, String authenticationMethod) {
 		this.sourceAccount = sourceAccount;
 		this.organization = organization;
 		this.money = money;
 		this.name = name;
 		this.address = address;
 		this.status = status;
+		this.authenticationMethod = authenticationMethod;
 	}
 }

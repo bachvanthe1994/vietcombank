@@ -9,4 +9,8 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 		driver = mappingDriver;
 	}
 	private AndroidDriver<AndroidElement> driver;
+	
+	public long canculateAvailableBalances(long surPlus, long money) {
+		return surPlus - money;
+	}
 }

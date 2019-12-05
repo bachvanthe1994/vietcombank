@@ -10,7 +10,7 @@ public class TransferMoney_Data {
 		public static final String BANK = "Ngân hàng DAB";
 		public static final String MONEY = "100000";
 		public static final String NOTE = "Test";
-		
+		public static final String SUCCESS_TRANSFER_MONEY = "Chuyển khoản thành công";
 	}
 	
 }
