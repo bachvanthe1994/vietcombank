@@ -657,4 +657,8 @@ public class AbstractPage {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 	}
   
+	public void clickToSourceAccount(AndroidDriver<AndroidElement> driver) {
+		waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.SOURCE_ACCOUNT);
+		clickToElement(driver, TransferMoneyOutSideVCBPageUIs.SOURCE_ACCOUNT);
+	}
 }
