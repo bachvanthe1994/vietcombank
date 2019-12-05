@@ -69,12 +69,12 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.ScrollToText(driver, info.sourceAccount);
+		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.scrollToText(driver, info.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -115,7 +115,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info.money), transactionFree);
 		
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.authenticationMethod);
 		
@@ -136,12 +136,12 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_02_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.ScrollToText(driver, info1.sourceAccount);
+		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.scrollToText(driver, info1.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -182,7 +182,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info.money), transactionFree);
 		
 		log.info("TC_02_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.authenticationMethod);
 		
@@ -203,12 +203,12 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 
 		log.info("TC_03_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.ScrollToText(driver, info2.sourceAccount);
+		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.scrollToText(driver, info2.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -253,7 +253,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info2.money), transactionFree);
 		
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.authenticationMethod);
 		
@@ -274,12 +274,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_04_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_04_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.ScrollToText(driver, info3.sourceAccount);
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info3.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -325,7 +323,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info3.money), transactionFree);
 		
 		log.info("TC_04_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info3.authenticationMethod);
 		
@@ -346,12 +343,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_05_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_05_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.ScrollToText(driver, info4.sourceAccount);
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info4.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -392,7 +387,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info4.money), transactionFree);
 		
 		log.info("TC_05_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info4.authenticationMethod);
 		
@@ -413,12 +407,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		System.out.println("Start");
 			
 		log.info("TC_06_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_06_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.ScrollToText(driver, info5.sourceAccount);
+		transferMoneyOutSide.clickToSourceAccount(driver);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info5.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -459,7 +451,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info5.money), transactionFree);
 		
 		log.info("TC_06_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info5.authenticationMethod);
 		
