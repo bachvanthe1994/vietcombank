@@ -87,7 +87,7 @@ public class Transfer_Money_Immedidately extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputData.COST[0]));
 		String transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
 		long newTransferFee = convertMoneyToLong(transferFee);
-		System.out.println("Transfer fee =  "+newTransferFee);
+
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Nội dung"), TransferMoneyInVCB_Data.InputData.NOTE);
 		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.PAYMENT_OPTIONS[0]);
 		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.PAYMENT_OPTIONS[1]);
@@ -97,9 +97,6 @@ public class Transfer_Money_Immedidately extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
 		String transferTime = transferInVCB.getDynamicTransferTime(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE, "4");
 		String[] dateTime = transferTime.split(" ");
-		System.out.println( "Date0 ="+dateTime[0]);
-		System.out.println( "Date1 ="+dateTime[1]);
-		System.out.println( "Date2 ="+dateTime[2]);
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputData.RECEIVE_NAME);
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích"), TransferMoneyInVCB_Data.InputData.ACCOUNT2);
 
@@ -122,7 +119,7 @@ public class Transfer_Money_Immedidately extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tìm kiếm");
 		
 		verifyTrue(transferInVCB.getTextInDynamicTransaction(driver, "0","com.VCB:id/tvDate").contains(dateTime[0]));
-		verifyTrue(transferInVCB.getTextInDynamicTransaction(driver, "0","com.VCB:id/tvDate").split(" ")[0].equals(dateTime[2]));
+		verifyTrue(transferInVCB.getTextInDynamicTransaction(driver, "0","com.VCB:id/tvDate").split(" ")[0].equals(dateTime[3]));
 		System.out.println( "Date2 ="+transferInVCB.getTextInDynamicTransaction(driver, "0","com.VCB:id/tvDate").split(" ")[0]);
 		verifyTrue(transferInVCB.getTextInDynamicTransaction(driver, "0","com.VCB:id/tvContent").equals(TransferMoneyInVCB_Data.InputData.NOTE));
 		verifyEquals(transferInVCB.getTextInDynamicTransaction(driver, "1","com.VCB:id/tvMoney"),("- "+TransferMoneyInVCB_Data.InputData.CONVERT_MONEY+" VND"));
