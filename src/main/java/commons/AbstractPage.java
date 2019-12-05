@@ -26,6 +26,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
 public class AbstractPage {
 	int longTime = 30;
@@ -605,6 +606,12 @@ public class AbstractPage {
 		clearText(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		setValueToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
+	}
+	
+	public void inputToPasswordConfirm(AndroidDriver<AndroidElement> driver, String inputValue) {
+		clearText(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
+		waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
+		setValueToElement(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT, inputValue);
 	}
 	
 	public boolean isDynamicButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
