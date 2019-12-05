@@ -1,4 +1,4 @@
-package vnpay.vietcombank.TransferMoney;
+package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
 
@@ -11,14 +11,17 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
 
-public class QuickMoneyTransferViaAccount extends Base {
+public class Transfer_Money_Immedidately extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
-
+	private HomePageObject homePage;
+	private TransferMoneyInVcbPageObject transferInVCB;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -31,23 +34,44 @@ public class QuickMoneyTransferViaAccount extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		
 		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");	
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		
+		log.info("TC_06_Step_0");
+		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
+		
+		log.info("TC_06_Step_0");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_05_Step_0");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
+		
+		log.info("TC_06_Step_0");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_06_Step_0");
+		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		
+		log.info("TC_06_Step_0");
+		login.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_06_Step_0");
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		verifyTrue(homePage.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
+		
+		log.info("TC_06_Step_0");
+		homePage.clickToDynamicButton(driver, "Hủy");
+		 homePage.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
+		 homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver)	;
+
+		
 
 	}
 
 	@Test
-	public void TC_01_ChangePassWord() throws InterruptedException{
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PHONE, "Số điện thoại");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-/*		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.Message.CHANGE_PASSWORD_INSTRUCTION));
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.WRONG_PASSWORD, "Nhập mật khẩu mặc định");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập mật khẩu mới");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Nhập lại mật khẩu mới");*/
+	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
+
 		
-		login.clickToDynamicButton(driver, "Tiếp tục");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
 	}
 	
 
