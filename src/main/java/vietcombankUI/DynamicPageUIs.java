@@ -12,5 +12,6 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_CONFIRM_SECOND_LINE_INFO = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_CLOSE_ICON="//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON="//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout";
+	public static final String DYNAMIC_LABEL_AMOUNT="//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
 }
 

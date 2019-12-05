@@ -8,6 +8,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
+import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 
 public class PageFactoryManager {
@@ -26,6 +27,10 @@ public class PageFactoryManager {
 
 	public static TransferMoneyInVcbPageObject getTransferMoneyInVcbPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyInVcbPageObject(driver);
+	}
+	
+	public static TransferMoneyObject getTransferMoneyObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferMoneyObject(driver);
 	}
 
 	public static DomesticAirTicketPageObject getDomesticAirTicketPageObject(AndroidDriver<AndroidElement> driver) {
