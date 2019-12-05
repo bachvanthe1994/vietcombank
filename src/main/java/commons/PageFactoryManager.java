@@ -7,6 +7,7 @@ import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.TransferIdentiryPageObject;
 
 public class PageFactoryManager {
 
@@ -28,5 +29,9 @@ public class PageFactoryManager {
 
 	public static DomesticAirTicketPageObject getDomesticAirTicketPageObject(AndroidDriver<AndroidElement> driver) {
 		return new DomesticAirTicketPageObject(driver);
+	}
+	
+	public static TransferIdentiryPageObject getTransferPageObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferIdentiryPageObject(driver);
 	}
 }

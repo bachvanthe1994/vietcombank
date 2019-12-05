@@ -553,6 +553,12 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 
 	}
+	
+	public void clickToDynamicClosetButton(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE, dynamicIDValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSE, dynamicIDValue);
+
+	}
 
 	public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		ScrollToText(driver, dynamicTextValue);
@@ -561,7 +567,7 @@ public class AbstractPage {
 		
 	}
 	
-	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
