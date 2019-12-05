@@ -3,6 +3,7 @@ package commons;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.TransferMoneyInVcbPageObject;
+import pageObjects.TransferMoneyObject;
 import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -24,6 +25,10 @@ public class PageFactoryManager {
 
 	public static TransferMoneyInVcbPageObject getTransferMoneyInVcbPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyInVcbPageObject(driver);
+	}
+	
+	public static TransferMoneyObject getTransferMoneyObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferMoneyObject(driver);
 	}
 
 
