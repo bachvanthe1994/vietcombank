@@ -69,7 +69,7 @@ Thread.sleep(3000);
 	@Test
 	public void TC_01_ChuyenTienCoPhiGiaoDichChonNguoiChuyen() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
-		transferMoney.ScrollToText(driver, "Chuyển tiền trong VCB");
+		transferMoney.scrollToText(driver, "Chuyển tiền trong VCB");
 		transferMoney.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 		
 		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
