@@ -84,9 +84,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	//@Test
 	public void TC_01_ChuyenTienCoPhiGiaoDichChonNguoiChuyen() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
-
-		transferMoney.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-
 		transferMoney.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
 		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
@@ -161,7 +158,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	@Test
 	public void TC_04_ChuyenTienNhanhQuaTaiKhoanChonUSD() {
 		log.info("TC_04_Step_Click Chuyen tien nhanh");
-		transferMoney.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferMoney.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
 		log.info("TC_04_Step_Select Chuyen tien nhanh qua the");
