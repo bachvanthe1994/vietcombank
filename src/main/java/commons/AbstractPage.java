@@ -689,6 +689,7 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		
 	}
+
 	public String getDynamicTextInTextView(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
@@ -699,4 +700,12 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
 		
 	}
+	
+	public String getDynamicAmountLabel(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		
+	}
+	
+	
 }
