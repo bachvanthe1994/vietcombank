@@ -6,6 +6,7 @@ import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
