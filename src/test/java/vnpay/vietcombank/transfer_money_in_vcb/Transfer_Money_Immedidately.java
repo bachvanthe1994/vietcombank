@@ -77,11 +77,13 @@ public class Transfer_Money_Immedidately extends Base {
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
+
 		long beforeBalanceAmountOfAccount2 = convertMoneyToLong(beforeBalanceOfAccount2,"VND");
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long beforeBalanceAmountOfAccount1 = convertMoneyToLong(beforeBalanceOfAccount1,"VND");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
@@ -98,9 +100,11 @@ public class Transfer_Money_Immedidately extends Base {
 		long newTransferFee = convertMoneyToLong(transferFee,"VND");
 
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Nội dung"), TransferMoneyInVCB_Data.InputData.NOTE);
+
 		log.info("TC_06_Step_0: Chon Phuong thuc nhap");
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver,"SMS OTP");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver,"SMS OTP");
+
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 		transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -112,14 +116,18 @@ public class Transfer_Money_Immedidately extends Base {
 
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Nội dung"), TransferMoneyInVCB_Data.InputData.NOTE);
 		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long afterBalanceAmountOfAccount1 = convertMoneyToLong(afterBalanceOfAccount1,"VND");
 		long transferMoney = convertMoneyToLong(TransferMoneyInVCB_Data.InputData.MONEY,"VND");
 		verifyEquals(beforeBalanceAmountOfAccount1 - transferMoney - newTransferFee, afterBalanceAmountOfAccount1);
+
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long afterBalanceAmountOfAccount2 = convertMoneyToLong(afterBalanceOfAccount2,"VND");
 		verifyEquals(beforeBalanceAmountOfAccount2 + transferMoney, afterBalanceAmountOfAccount2);
@@ -133,11 +141,13 @@ public class Transfer_Money_Immedidately extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButionLinkOrLinkText(driver, "Báo cáo giao dịch");
-		transReport.clickToDynamicButionLinkOrLinkText(driver, "Tất cả các loại giao dịch");
-		transReport.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
+
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
-		transReport.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
@@ -158,8 +168,10 @@ public class Transfer_Money_Immedidately extends Base {
 		verifyTrue(transReport.getDynamicTextInTextView(driver, "Nội dung giao dịch").contains(TransferMoneyInVCB_Data.InputData.NOTE));
 
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
+
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
-		transReport.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
@@ -190,17 +202,17 @@ public class Transfer_Money_Immedidately extends Base {
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long beforeBalanceAmountOfAccount2 = convertMoneyToLong(beforeBalanceOfAccount2,"VND");
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long beforeBalanceAmountOfAccount1 = convertMoneyToLong(beforeBalanceOfAccount1,"VND");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1, "Nhập/chọn tài khoản nhận VND");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.MONEY, "Số tiền");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, "Người nhận trả");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.NOTE, "Nội dung");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"), TransferMoneyInVCB_Data.InputData.OPTION_TRANSFER[0]);
@@ -215,7 +227,7 @@ public class Transfer_Money_Immedidately extends Base {
 
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Nội dung"), TransferMoneyInVCB_Data.InputData.NOTE);
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver,"SMS OTP");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver,"SMS OTP");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 		transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -228,13 +240,13 @@ public class Transfer_Money_Immedidately extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Nội dung"), TransferMoneyInVCB_Data.InputData.NOTE);
 		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long afterBalanceAmountOfAccount1 = convertMoneyToLong(afterBalanceOfAccount1,"VND");
 		long transferMoney = convertMoneyToLong(TransferMoneyInVCB_Data.InputData.MONEY,"VND");
 		verifyEquals(beforeBalanceAmountOfAccount1 - transferMoney, afterBalanceAmountOfAccount1);
 		transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
-		transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
 		long afterBalanceAmountOfAccount2 = convertMoneyToLong(afterBalanceOfAccount2,"VND");
 		verifyEquals(beforeBalanceAmountOfAccount2 + transferMoney-newTransferFee , afterBalanceAmountOfAccount2);
@@ -247,11 +259,11 @@ public void TC_04_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraV
 	homePage = PageFactoryManager.getHomePageObject(driver);
 	homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButionLinkOrLinkText(driver, "Báo cáo giao dịch");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, "Tất cả các loại giao dịch");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 	verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
@@ -273,7 +285,7 @@ public void TC_04_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraV
 
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 	verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
@@ -310,7 +322,7 @@ public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP()
 	transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
 	
 	log.info("TC05_Step :");
 	String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
@@ -320,7 +332,7 @@ public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP()
 	transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 	
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.USD_ACCOUNT);
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.USD_ACCOUNT);
 	
 	log.info("TC05_Step :");
 	String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
@@ -340,10 +352,10 @@ public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP()
 	float usdRate = convertMoneyToFloat(exchangeRateUSD[1], "VND");
 	
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
 	
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver, "Người chuyển trả");
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 	
 	log.info("TC05_Step :");
 	transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputData.NOTE, "Nội dung");
@@ -382,7 +394,7 @@ public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP()
 	transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 	
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver,"SMS OTP");
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver,"SMS OTP");
 	
 	log.info("TC05_Step :");
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -419,7 +431,7 @@ public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP()
 	transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 	
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.USD_ACCOUNT);
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.USD_ACCOUNT);
 	
 	log.info("TC05_Step :");
 	String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
@@ -437,7 +449,7 @@ public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP()
 	transferInVCB.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 	
 	log.info("TC05_Step :");
-	transferInVCB.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
 	
 	log.info("TC05_Step :");
 	String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
@@ -462,19 +474,19 @@ public void TC_06_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTr
 	
 	log.info("TC06_Step : Click Bao Cao Dao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButionLinkOrLinkText(driver, "Báo cáo giao dịch");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
 	
 	log.info("TC06_Step : Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, "Tất cả các loại giao dịch");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 	
 	log.info("TC06_Step :Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
 	
 	log.info("TC06_Step : Click Chon Tai Khoan");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 	
 	log.info("TC06_Step : Chon 1 tai Khoan");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
 	
 	log.info("TC06_Step : CLick Tim Kiem");
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -538,7 +550,7 @@ public void TC_06_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTr
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 	
 	log.info("TC06_Step : Click chon tai khoan nhan");
-	transReport.clickToDynamicButionLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
 	
 	log.info("TC06_Step : Click Tim Kiem");
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");

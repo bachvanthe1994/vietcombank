@@ -1,4 +1,5 @@
 
+
 package commons;
 
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
@@ -570,8 +571,11 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		
 	}
-	
-	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+    public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver,String dymanicText) {
+        waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
+        clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
+    }
+	public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -605,11 +609,7 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 
 	}
-	public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver,String dymanicText) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
-	}
-	
+
 
 	public void clickToDynamicInput(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);

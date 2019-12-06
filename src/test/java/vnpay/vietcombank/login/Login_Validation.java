@@ -100,7 +100,7 @@ public class Login_Validation extends Base {
 	public void TC_04_KiemTraSoLuongKyTuToiDa(){
 		
 		log.info("TC_04_Step_01: Click Quay Lai");
-		login.clickToDynamicButionLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
 		log.info("TC_04_Step_02: Click Tiep Tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
@@ -116,7 +116,7 @@ public class Login_Validation extends Base {
 	public void TC_05_NhapSaiMatKhau(){
 		
 		log.info("TC_05_Step_01: Click Quay lai");
-		login.clickToDynamicButionLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
 		log.info("TC_05_Step_02: Click Tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
@@ -138,7 +138,7 @@ public class Login_Validation extends Base {
 	public void TC_06_KiemTraTaiKhoanBiKhoa(){
 		
 		log.info("TC_06_Step_01: Click quay lai");
-		login.clickToDynamicButionLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
 		log.info("TC_06_Step_02: Dien so dien thoai dung");
 		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.LOCKED_PHONE, "Tiếp tục");
@@ -174,13 +174,7 @@ public class Login_Validation extends Base {
 		
 		log.info("TC_07_Step_06: Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
-		log.info("TC_07_Step_07: Kiem tra Home page hien thi");
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		verifyTrue(homePage.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
-		
-		log.info("TC_07_Step_08. Click button Huy");
-		login.clickToDynamicButton(driver, "Hủy");
+		//URD update remove 2 popups 'phuong thuc xac thuc OTP' va 'Kich hoat tinh nang moi'
 		
 	}
 	
