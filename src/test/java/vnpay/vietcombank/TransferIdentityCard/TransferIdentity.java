@@ -71,7 +71,7 @@ public class TransferIdentity extends Base {
 		
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
 
-		homePage.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 		
 		String text = homePage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.PAGE_TRANSFER).trim();
 		verifyTrue(text.equals(Transfer_Data.textCheckElement.PAGE_TRANSFER));
@@ -87,25 +87,25 @@ public class TransferIdentity extends Base {
 		trasferPage.inputBeneficiary("Hoangkm");
 		
 		log.info("TC_01: chon giay to tuy than");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Giấy tờ tùy thân");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Chứng minh nhân dân");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
 		
 		log.info("TC_01: so CMT");
 		trasferPage.inputIdentityNumber("123456789");
 		
 		log.info("TC_01: ngay cap");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Ngày cấp");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
 		trasferPage.clickToDynamicButton(driver, "OK");
 		
 		trasferPage.scrollToText(driver, "Thông tin giao dịch");
 		
 		log.info("TC_01: noi cap");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Nơi cấp");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Thành phố Hà Nội ");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thành phố Hà Nội ");
 		
 		log.info("TC_01: chon so tien");
 		trasferPage.inputMoney("10000");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Thông tin giao dịch");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 		
 		log.info("TC_01: noi dung");
 		trasferPage.inputContent("abc123");
@@ -124,26 +124,26 @@ public class TransferIdentity extends Base {
 		trasferPage.inputBeneficiary("Hoangkm");
 		
 		log.info("TC_01: chon giay to tuy than");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Giấy tờ tùy thân");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Chứng minh nhân dân");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
 		
 		log.info("TC_01: so CMT");
 		trasferPage.inputIdentityNumber("123456789");
 		
 		log.info("TC_01: ngay cap");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Ngày cấp");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
 		trasferPage.clickToDynamicButton(driver, "OK");
 		
 		trasferPage.scrollToText(driver, "Thông tin giao dịch");
 		
 		log.info("TC_01: noi cap");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Nơi cấp");
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Thành phố Hà Nội ");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thành phố Hà Nội ");
 		
 		log.info("TC_01: chon so tien");
 		trasferPage.inputMoney("1000");
 		
-		trasferPage.clickToDynamicButionLinkOrLinkText(driver, "Thông tin giao dịch");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 		
 		log.info("TC_01: noi dung");
 		trasferPage.inputContent("abc123");
