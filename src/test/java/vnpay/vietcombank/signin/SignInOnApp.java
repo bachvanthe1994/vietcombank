@@ -75,22 +75,22 @@ public class SignInOnApp extends Base {
 	@Test
 	public void TC_03_NhapThongTinIB() {
 		log.info("TC_03_1_Click dang ky vcb-mobile banking");
-		login.clickToDynamicButionLinkOrLinkText(driver, "Đăng ký VCB-Mobile B@nking");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký VCB-Mobile B@nking");
 		
 		log.info("TC_03_2_Click VCB - IB");
-		login.clickToDynamicButionLinkOrLinkText(driver, "VCB-iB@nking");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "VCB-iB@nking");
 		
 		log.info("TC_03_3_Check button quay lai");
-		login.clickToDynamicButionLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
 		log.info("TC_03_4_verify text check man hinh sau khi nhan quay lai");
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Tìm kiếm ATM/chi nhánh gần đây"));
 		
 		log.info("TC_03_5_Click dang ky vcb-mobile banking");
-		login.clickToDynamicButionLinkOrLinkText(driver, "Đăng ký VCB-Mobile B@nking");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký VCB-Mobile B@nking");
 		
 		log.info("TC_03_6_Click VCB - IB");
-		login.clickToDynamicButionLinkOrLinkText(driver, "VCB-iB@nking");
+		login.clickToDynamicButtonLinkOrLinkText(driver, "VCB-iB@nking");
 		
 		log.info("TC_01_1_Quý khách vui lòng nhập tên đăng nhập và mật khẩu VCB-iB@nking");
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver,

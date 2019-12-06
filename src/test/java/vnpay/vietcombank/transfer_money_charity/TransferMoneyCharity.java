@@ -63,17 +63,17 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau(){
 		log.info("TC_01_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		surplus = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
 		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Đóng");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 		
 		log.info("TC_01_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info.money, "Số tiền ủng hộ");
@@ -100,11 +100,11 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Hoàn cảnh người ủng hộ"), info.status);
 		
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		
 		long fee = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Mật khẩu đăng nhập").replaceAll("\\D+",""));
 		
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info.authenticationMethod);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 		
 		log.info("TC_01_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -125,7 +125,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		actualAvailableBalance = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 
 		availableBalance = surplus - Long.parseLong(info.money) - fee;
@@ -135,17 +135,17 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_02_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau(){
 		log.info("TC_02_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
 		log.info("TC_02_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		surplus = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
 		log.info("TC_02_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Đóng");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info1.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.organization);
 		
 		log.info("TC_02_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info1.money, "Số tiền ủng hộ");
@@ -177,11 +177,11 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Hoàn cảnh người ủng hộ"), info1.status);
 		
 		log.info("TC_02_10_Chon phuong thuc xac thuc");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		
 		long fee = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Mật khẩu đăng nhập").replaceAll("\\D+",""))/100;
 		
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info1.authenticationMethod);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 		
 		log.info("TC_02_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -202,7 +202,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_02_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		actualAvailableBalance = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 
 		availableBalance = surplus - Long.parseLong(info1.money) - fee;
@@ -212,17 +212,17 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_03_ChuyenTienTuThienBangVNDThanhToanSMSOTP(){
 		log.info("TC_03_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
 		log.info("TC_03_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		surplus = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
 		log.info("TC_03_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Đóng");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info2.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.organization);
 		
 		log.info("TC_03_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info2.money, "Số tiền ủng hộ");
@@ -249,11 +249,11 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Hoàn cảnh người ủng hộ"), info2.status);
 		
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		
 		long fee = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Mật khẩu đăng nhập").replaceAll("\\D+",""));
 		
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info2.authenticationMethod);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 		
 		log.info("TC_03_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -273,7 +273,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_03_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		actualAvailableBalance = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 
 		availableBalance = surplus - Long.parseLong(info2.money) - fee;
@@ -283,17 +283,17 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_04_ChuyenTienTuThienBangNgoaiTeThanhToanOTP(){
 		log.info("TC_04_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
 		log.info("TC_04_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info3.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		surplus = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
 		log.info("TC_04_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Đóng");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info3.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.organization);
 		
 		log.info("TC_04_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info3.money, "Số tiền ủng hộ");
@@ -325,11 +325,11 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Hoàn cảnh người ủng hộ"), info3.status);
 		
 		log.info("TC_04_10_Chon phuong thuc xac thuc");
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		
 		long fee = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Mật khẩu đăng nhập").replaceAll("\\D+",""))/100;
 		
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info3.authenticationMethod);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 		
 		log.info("TC_04_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -350,7 +350,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_04_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToSourceAccount(driver);
-		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info3.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		actualAvailableBalance = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 
 		availableBalance = surplus - Long.parseLong(info3.money) - fee;

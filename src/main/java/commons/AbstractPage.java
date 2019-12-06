@@ -570,7 +570,7 @@ public class AbstractPage {
 		
 	}
 	
-	public void clickToDynamicButionLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);

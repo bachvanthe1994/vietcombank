@@ -51,9 +51,9 @@ public class CheckPopup extends Base {
 	
 	@Test
 	public void TC_03_ChonTiepTucSuDungDichVu(){
-		login.clickToDynamicButionLinkOrLinkText(driver, SignIn_Data.Message_popup.MESSAGE_CANCEL);
+		login.clickToDynamicButtonLinkOrLinkText(driver, SignIn_Data.Message_popup.MESSAGE_CANCEL);
 		login.clickToDynamicButton(driver, SignIn_Data.Message_popup.MESSAGE_NEXT);
-		login.clickToDynamicButionLinkOrLinkText(driver, SignIn_Data.Message_popup.MESSAGE_USED);
+		login.clickToDynamicButtonLinkOrLinkText(driver, SignIn_Data.Message_popup.MESSAGE_USED);
 		String messageIb = login.getTextDynamicPopup(driver, SignIn_Data.Message_popup.MESSAGE_OTP);
 		verifyTrue(messageIb.equals(SignIn_Data.Message_popup.MESSAGE_OTP));
 	}

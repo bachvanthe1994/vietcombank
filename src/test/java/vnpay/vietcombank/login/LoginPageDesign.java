@@ -125,7 +125,7 @@ public class LoginPageDesign extends Base {
 		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, LogIn_Data.UI.CONTINUE_USE_SERVICE_BUTTON));
 		
 		log.info("TC_03_5_3 Nhan nut Tiep tuc su dung dich vu");
-		login.clickToDynamicButionLinkOrLinkText(driver, LogIn_Data.UI.CONTINUE_USE_SERVICE_BUTTON);
+		login.clickToDynamicButtonLinkOrLinkText(driver, LogIn_Data.UI.CONTINUE_USE_SERVICE_BUTTON);
 		
 		
 	}
