@@ -328,10 +328,17 @@ public String getArriveYear() {
  }
 	return 	nextDay;
  }
- public  long convertMoneyToLong(String money) {
-	  money = money.replaceAll(" VND", "");
+ public  long convertMoneyToLong(String money,String currency) {
+	 money = money.replaceAll(" "+currency, "");
+	 money = money.replaceAll(",", "");
+	 long m = Long.parseLong(money);
+	 return m;
+ }
+ public  float convertMoneyToFloat(String money,String currency) {
+	  money = money.replaceAll(" "+currency, "");
 	  money = money.replaceAll(",", "");
-	  long m = Long.parseLong(money);
+	  float m = Float.parseFloat(money);
 	  return m;
 }
+ 
 }

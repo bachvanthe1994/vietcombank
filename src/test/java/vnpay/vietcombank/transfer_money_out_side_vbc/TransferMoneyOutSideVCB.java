@@ -73,7 +73,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyOutSide.scrollToText(driver, info.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
@@ -141,7 +141,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyOutSide.scrollToText(driver, info1.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
@@ -210,7 +210,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyOutSide.scrollToText(driver, info2.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
@@ -281,7 +281,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_04_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info3.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -350,7 +350,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_05_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info4.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -414,7 +414,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_06_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToSourceAccount(driver);
+		transferMoneyOutSide.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info5.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		

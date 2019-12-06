@@ -65,7 +65,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyCharity.clickToSourceAccount(driver);
+		transferMoneyCharity.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
 		surplus = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 		
@@ -120,7 +120,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
 		log.info("TC_01_12_Kiem tra so du kha dung luc sau");
-		transferMoneyCharity.clickToSourceAccount(driver);
+		transferMoneyCharity.clickToDynamicDropDown(driver,"Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
 		actualAvailableBalance = Long.parseLong(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+",""));
 //		long test = Long.parseLong(info.money);

@@ -605,9 +605,9 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 
 	}
-	public void clickToSourceAccount(AndroidDriver<AndroidElement> driver) {
-		waitForElementVisible(driver, DynamicPageUIs.SOURCE_ACCOUNT);
-		clickToElement(driver, DynamicPageUIs.SOURCE_ACCOUNT);
+	public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver,String dymanicText) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
 	}
 	
 
