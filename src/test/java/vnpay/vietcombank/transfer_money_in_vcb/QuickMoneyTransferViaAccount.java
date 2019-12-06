@@ -70,13 +70,13 @@ Thread.sleep(3000);
 	public void TC_01_ChuyenTienCoPhiGiaoDichChonNguoiChuyen() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.ScrollToText(driver, "Chuyển tiền trong VCB");
-		transferMoney.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 		
 		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
-		transferMoney.clickToDynamicButionLinkOrLinkText(driver,TransferMoney_Data.TransferQuick.OPTION_TRANSFER[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,TransferMoney_Data.TransferQuick.OPTION_TRANSFER[1]);
 		
 		log.info("TC_01_Step_Select tai khoan nguon");
-		transferMoney.clickToDynamicButionLinkOrLinkText(driver,TransferMoney_Data.TransferQuick.ACCOUNT_FORM);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,TransferMoney_Data.TransferQuick.ACCOUNT_FORM);
 		
 	}
 

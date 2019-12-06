@@ -64,11 +64,11 @@ public class TransferMoneyOutSideVCB extends Base {
 			
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
 		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
 		log.info("TC_01_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -77,16 +77,16 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người hưởng");
 		
 		log.info("TC_01_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, "Tìm kiếm");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.destinationBank);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 		
 		log.info("TC_01_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.money, "Số tiền");
 		
 		log.info("TC_01_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 		
 		log.info("TC_01_7_Nhap noi dung chuyen tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.note, "Nội dung");
@@ -105,8 +105,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.authenticationMethod);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 		
 		log.info("TC_01_11_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -124,11 +124,11 @@ public class TransferMoneyOutSideVCB extends Base {
 			
 		log.info("TC_02_1_Click Chuyen tien toi ngan hang khac");
 		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_02_2_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.sourceAccount);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
 		log.info("TC_02_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -137,16 +137,16 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.name, "Tên người hưởng");
 		
 		log.info("TC_02_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.destinationBank, "Tìm kiếm");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.destinationBank);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 		
 		log.info("TC_02_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.money, "Số tiền");
 		
 		log.info("TC_02_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Người nhận trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 		
 		log.info("TC_02_8_Nhap noi dung chuyen tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.note, "Nội dung");
@@ -165,8 +165,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		
 		log.info("TC_02_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info1.authenticationMethod);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 		
 		log.info("TC_02_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -184,11 +184,11 @@ public class TransferMoneyOutSideVCB extends Base {
 			
 		log.info("TC_03_1_Click Chuyen tien toi ngan hang khac");
 		transferMoneyOutSide.ScrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 		
 		log.info("TC_03_2_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToSourceAccount();
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.sourceAccount);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
 		log.info("TC_03_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -197,16 +197,16 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.name, "Tên người hưởng");
 		
 		log.info("TC_03_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.destinationBank, "Tìm kiếm");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info.destinationBank);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 		
 		log.info("TC_03_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.money, "Số tiền");
 		
 		log.info("TC_03_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Người nhận trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 		
 		log.info("TC_03_8_Nhap noi dung chuyen tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.note, "Nội dung");
@@ -225,8 +225,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.ScrollToText(driver, "Chọn phương thức xác thực");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferMoneyOutSide.clickToDynamicButionLinkOrLinkText(driver, info2.authenticationMethod);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 		
 		log.info("TC_03_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");

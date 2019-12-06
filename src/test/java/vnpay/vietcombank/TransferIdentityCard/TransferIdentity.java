@@ -67,7 +67,7 @@ public class TransferIdentity extends Base {
 		log.info("TC_06_Step_0");
 		login.clickToDynamicButton(driver, "Hủy");
 
-		homePage.clickToDynamicClosetButton(driver, "com.VCB:id/close");
+		homePage.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
 		
 		homePage.ScrollToText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -77,43 +77,47 @@ public class TransferIdentity extends Base {
 		verifyTrue(text.equals(Transfer_Data.textCheckElement.PAGE_TRANSFER));
 	}
 
-//	@Test
-//	public void TC_01_ChuyenTienNoiTe(){
-//		log.info("TC_01: nhap ten nguoi thu huong");
-//		trasferPage.inputBeneficiary("Hoangkm");
-//		
-//		log.info("TC_01: chon giay to tuy than");
-//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
-//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
-//		
-//		log.info("TC_01: so CMT");
-//		trasferPage.inputIdentityNumber("123456789");
-//		
-//		log.info("TC_01: ngay cap");
-//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
-//		trasferPage.clickToDynamicButton(driver, "OK");
-//		
-//		trasferPage.ScrollToText(driver, "Thông tin giao dịch");
-//		
-//		log.info("TC_01: noi cap");
-//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
-//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thành phố Hà Nội ");
-//		
-//		log.info("TC_01: chon so tien");
-//		trasferPage.inputMoney("10000");
-//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
-//		
-//		log.info("TC_01: noi dung");
-//		trasferPage.inputContent("abc123");
-//		
-//		log.info("TC_01: noi dung");
-//		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
-//	}
+	@Test
+	public void TC_01_ChuyenTienNoiTe(){
+		log.info("TC_01: chon tai khoan");
+		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
+		trasferPage.clickToDynamicAcceptText(driver, "0012000375703");
+		
+		log.info("TC_01: nhap ten nguoi thu huong");
+		trasferPage.inputBeneficiary("Hoangkm");
+		
+		log.info("TC_01: chon giay to tuy than");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
+		
+		log.info("TC_01: so CMT");
+		trasferPage.inputIdentityNumber("123456789");
+		
+		log.info("TC_01: ngay cap");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
+		trasferPage.clickToDynamicButton(driver, "OK");
+		
+		trasferPage.ScrollToText(driver, "Thông tin giao dịch");
+		
+		log.info("TC_01: noi cap");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thành phố Hà Nội ");
+		
+		log.info("TC_01: chon so tien");
+		trasferPage.inputMoney("10000");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
+		
+		log.info("TC_01: noi dung");
+		trasferPage.inputContent("abc123");
+		
+		log.info("TC_01: noi dung");
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+	}
 	
 	@Test
 	public void TC_02_ChuyenTienNgoaiTe(){
 		log.info("TC_01: chon tai khoan ngoai te");
-		trasferPage.clickToDynamicAccept(driver, "com.VCB:id/tvContent");
+		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
 		trasferPage.clickToDynamicAcceptText(driver, "0012370377247");
 		
 		log.info("TC_01: nhap ten nguoi thu huong");

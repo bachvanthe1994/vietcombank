@@ -38,15 +38,15 @@ public class TransferIdentiryPageObject extends AbstractPage{
 		sendKeyToElement(driver, TransferIdentityPageUIs.CONTENT, inputValue);
 	}
 	
-	public void clickToDynamicAccept(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_TEXTVIEW, dynamicIDValue);
-		clickToElement(driver, TransferIdentityPageUIs.CLICK_TEXTVIEW, dynamicIDValue);
-
-	}
-	
 	public void clickToDynamicAcceptText(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
 		waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicIDValue);
 		clickToElement(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicIDValue);
+
+	}
+	
+	public void clickToDynamicAccount(AndroidDriver<AndroidElement> driver, String dynamicAccount) {
+		waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_ACCOUNT, dynamicAccount);
+		clickToElement(driver, TransferIdentityPageUIs.CLICK_ACCOUNT, dynamicAccount);
 
 	}
 }
