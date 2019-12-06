@@ -20,6 +20,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TRANSACTION_INFO = "//android.widget.LinearLayout[@index ='0']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BOTTOM_MENU = "//android.widget.ImageView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BACK_ICON = "//android.widget.TextView[@text = '%s']//ancestor::android.widget.FrameLayout//android.widget.ImageView";
+
 }
 
 
