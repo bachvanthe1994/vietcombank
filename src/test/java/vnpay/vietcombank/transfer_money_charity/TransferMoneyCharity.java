@@ -55,9 +55,9 @@ public class TransferMoneyCharity extends Base {
 		
 		login.clickToDynamicButton(driver, "Tiếp tục");
 		
-		login.clickToDynamicButton(driver, "Hủy");
-		
-		login.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
+//		login.clickToDynamicButton(driver, "Hủy");
+//		
+//		login.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
@@ -73,7 +73,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 		
 		log.info("TC_01_4_Nhap so tien ung ho");
@@ -145,7 +145,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_02_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.organization);
 		
 		log.info("TC_02_4_Nhap so tien ung ho");
@@ -221,7 +221,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_03_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.organization);
 		
 		log.info("TC_03_4_Nhap so tien ung ho");
@@ -292,7 +292,7 @@ public class TransferMoneyCharity extends Base {
 		
 		log.info("TC_04_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.organization);
 		
 		log.info("TC_04_4_Nhap so tien ung ho");
