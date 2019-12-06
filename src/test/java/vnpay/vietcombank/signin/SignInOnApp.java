@@ -66,7 +66,7 @@ public class SignInOnApp extends Base {
 	//@Test
 	public void TC_02_NhapToiDaSoDienThoai() {
 		log.info("TC_02_1_Nhap so dien thoai 11 ky tu");
-		login.inputToDynamicInputBox(driver,Login_Account.PHONE_InV, "Số điện thoại");
+		login.inputToDynamicInputBox(driver,Login_Account.PHONE_INVALID, "Số điện thoại");
 		log.info("TC_02_2_Verify so dien thoai, chi cho phep nhap 10 so");	
 		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, Login_Account.PHONE));
 		
