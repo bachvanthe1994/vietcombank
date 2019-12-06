@@ -6,11 +6,16 @@ import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.RegisterPageObject;
+
 import pageObjects.TransactionReportPageObject;
+
+import pageObjects.TransferIdentiryPageObject;
+
 import pageObjects.TransferMoneyCharityPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
+
 
 public class PageFactoryManager {
 
@@ -36,6 +41,11 @@ public class PageFactoryManager {
 
 	public static DomesticAirTicketPageObject getDomesticAirTicketPageObject(AndroidDriver<AndroidElement> driver) {
 		return new DomesticAirTicketPageObject(driver);
+	}
+	
+
+	public static TransferIdentiryPageObject getTransferPageObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferIdentiryPageObject(driver);
 	}
 	
 	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AndroidDriver<AndroidElement> driver) {

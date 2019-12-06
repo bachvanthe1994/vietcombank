@@ -1,4 +1,4 @@
-package vnpay.vietcombank.changepassword;
+package vnpay.vietcombank.ChangePassword;
 
 import java.io.IOException;
 
