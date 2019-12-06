@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_money_charity;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -167,11 +168,10 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản đích").contains(info1.organization));
 		
 		String destinationAccount = transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản đích").split("/")[0].trim();
-		String actualMoney = transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền ủng hộ").split(" ")[0];
-		String actualMoneySplit = (long)Double.parseDouble(actualMoney) + " EUR";
-		String expectedMoney = info1.money + " EUR";
+		String actualMoney = transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền ủng hộ");
+		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info1.money))) + " EUR";
 		
-		verifyEquals(actualMoneySplit, expectedMoney);
+		verifyEquals(actualMoney, expectedMoney);
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tên người ủng hộ"), info1.name);
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Địa chỉ người ủng hộ"), info1.address);
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Hoàn cảnh người ủng hộ"), info1.status);
@@ -315,11 +315,10 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản đích").contains(info3.organization));
 		
 		String destinationAccount = transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tài khoản đích").split("/")[0].trim();
-		String actualMoney = transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền ủng hộ").split(" ")[0];
-		String actualMoneySplit = (long)Double.parseDouble(actualMoney) + " EUR";
-		String expectedMoney = info3.money + " EUR";
+		String actualMoney = transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số tiền ủng hộ");
+		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info1.money))) + " EUR";
 		
-		verifyEquals(actualMoneySplit, expectedMoney);
+		verifyEquals(actualMoney, expectedMoney);
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Tên người ủng hộ"), info3.name);
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Địa chỉ người ủng hộ"), info3.address);
 		verifyEquals(transferMoneyCharity.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Hoàn cảnh người ủng hộ"), info3.status);
