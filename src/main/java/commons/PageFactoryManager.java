@@ -2,13 +2,13 @@ package commons;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.TransferMoneyInVcbPageObject;
-import pageObjects.TransferMoneyObject;
 import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.RegisterPageObject;
-import pageObjects.TransferIdentiryPageObject;
+import pageObjects.TransferMoneyCharityPageObject;
+import pageObjects.TransferMoneyInVcbPageObject;
+import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 
 
@@ -45,5 +45,9 @@ public class PageFactoryManager {
 	
 	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyOutSideVCBPageObject(driver);
+	}
+	
+	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferMoneyCharityPageObject(driver);
 	}
 }
