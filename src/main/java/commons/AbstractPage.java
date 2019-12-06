@@ -1,3 +1,4 @@
+
 package commons;
 
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
@@ -615,6 +616,10 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 
 	}
+    public void clickToDynamicTransaction(AndroidDriver<AndroidElement> driver, String...dynamicIndex1Index2 ) {
+        waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
+        clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
+    }
 	
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -691,6 +696,7 @@ public class AbstractPage {
 	}
 
 	public String getDynamicTextInTextView(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+        scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		
@@ -706,6 +712,7 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
 		
 	}
-	
-	
 }
+	
+
+

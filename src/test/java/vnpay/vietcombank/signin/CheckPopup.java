@@ -37,7 +37,7 @@ public class CheckPopup extends Base {
 	@Test
 	public void TC_01_KiemTraPopUp(){
 		login.inputToDynamicInputBox(driver, "0973217428", "Số điện thoại");
-		login.clickToDynamicButton(driver, SignIn_Data.Message_popup.MESSAGE_NEXT);
+		login.clickToDynamicButton(driver, SignIn_Data.Message_popup.BUTTON_NEXT);
 		String text = login.getTextDynamicPopup(driver, SignIn_Data.Message_popup.MESSAGE_POPUP);
 		verifyTrue(text.equals(SignIn_Data.Message_popup.MESSAGE_POPUP));
 	}
@@ -51,8 +51,8 @@ public class CheckPopup extends Base {
 	
 	@Test
 	public void TC_03_ChonTiepTucSuDungDichVu(){
-		login.clickToDynamicButtonLinkOrLinkText(driver, SignIn_Data.Message_popup.MESSAGE_CANCEL);
-		login.clickToDynamicButton(driver, SignIn_Data.Message_popup.MESSAGE_NEXT);
+		login.clickToDynamicButtonLinkOrLinkText(driver, SignIn_Data.Message_popup.BUTTON_CANCEL);
+		login.clickToDynamicButton(driver, SignIn_Data.Message_popup.BUTTON_NEXT);
 		login.clickToDynamicButtonLinkOrLinkText(driver, SignIn_Data.Message_popup.MESSAGE_USED);
 		String messageIb = login.getTextDynamicPopup(driver, SignIn_Data.Message_popup.MESSAGE_OTP);
 		verifyTrue(messageIb.equals(SignIn_Data.Message_popup.MESSAGE_OTP));

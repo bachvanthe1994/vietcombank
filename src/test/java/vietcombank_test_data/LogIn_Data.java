@@ -2,12 +2,13 @@ package vietcombank_test_data;
 
 public class LogIn_Data {
 	public class Login_Account {
-		public static final String LOCKED_PHONE = "0973441417";
+		public static final String LOCKED_PHONE = "0335059863";
 		public static final String LOCKED_PASS = "1e9978d3";
-		public static final String PHONE = "0399764702";
-		public static final String PHONE_InV ="09047978631";
+		public static final String PHONE = "0904797863";
+		public static final String PHONE_INVALID ="09047978631";
 		public static final String WRONG_PASSWORD = "18a9713e";
-		public static final String NEW_PASSWORD = "aaaa1111";
+
+		public static final String NEW_PASSWORD = "Abc12345";
 		public static final String OTP = "123456";
 		public static final String INVALID_PASSWORD = "123456a  @ABC";
 		public static final String NULL = "";
