@@ -12,9 +12,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String RECEIVER_NAME = "NGO TRI NAM";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
-		public static final String CONVERTED_AMOUNT_OF_EUR_OR_USD_TRANSFER = "2.00";
 		public static final String MONEY = "20000";
-		public static final String CONVERT_MONEY = "20,000";
 		public static final String NOTE = "Test";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "3,300";
 		public static final String PAYMENT_BY_OTP_FEE = "5,500";
