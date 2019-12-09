@@ -1619,7 +1619,7 @@ public void TC_12_KiemTraChiTietGiaoDichChuyenTienNgayDenTaiKhoanKhacChuSoHuuCoP
 	transferInVCB.navigateBack(driver);
 }
 
-@Test
+//@Test
 public void TC_13_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKhau() {
 	
 	log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -1695,7 +1695,7 @@ public void TC_13_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKh
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 	
 	log.info("TC_01_Step_23: Nhap OTP");
-	transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+	transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 	
 	log.info("TC_01_Step_24: Click tiep tuc");
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1750,7 +1750,7 @@ public void TC_13_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKh
 	verifyEquals(beforeBalanceAmountOfAccount2 + transferMoney, afterBalanceAmountOfAccount2);
 
 }
-@Test
+//@Test
 public void TC_14_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKhau() {
 	log.info("TC_02_Step_01 : Click  nut Back");
 	transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1963,11 +1963,11 @@ public void TC_15_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangMatKhau
 	log.info("TC_03_Step_22: Chon Phuong thuc xac thuc ");
 	transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 	
-	log.info("TC_03_Step_23: Chon SMS OTP");
+	log.info("TC_03_Step_23: Chon Mat khau dang nhap");
 	transferInVCB.clickToDynamicButtonLinkOrLinkText(driver,"Mật khẩu đăng nhập");
 	
 	log.info("TC_03_Step_18: Kiem tra so tien phi hien thi");
-	verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputData.USD_PAYMENT_BY_PASSWORD_FEE+" VND"));
+	verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputData.PAYMENT_BY_PASSWORD_FEE+" VND"));
 	
 	log.info("TC_03_Step_20:  Lay so tien phi giao dich");
 	transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
@@ -1976,8 +1976,8 @@ public void TC_15_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangMatKhau
 	log.info("TC_03_Step_24: Click Tiep tuc");
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 	
-	log.info("TC_03_Step_25: Nhap OTP");
-	transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+	log.info("TC_03_Step_25: Nhap Mat Khau");
+	transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 	
 	log.info("TC_03_Step_26: Click tiep tuc");
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -2177,7 +2177,7 @@ public void TC_16_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraV
 	log.info("TC_04_Step_47: Click quay lai");
 	transferInVCB.navigateBack(driver);
 }
-//@Test
+@Test
 public void TC_17_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangMatKhau() {
 	
 	log.info("TC05_Step 01: Click Chuyen tien trong VCB");
@@ -2262,7 +2262,7 @@ public void TC_17_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangMatKh
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 	
 	log.info("TC05_Step : Dien OTP");
-	transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+	transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 	
 	log.info("TC05_Step : Click tiep tuc");
 	transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -2319,7 +2319,7 @@ public void TC_17_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangMatKh
 	verifyEquals(beforeBalanceAmountOfAccount2 + transferMoney*rate , afterBalanceAmountOfAccount2);
 
 }
-//@Test
+@Test
 public void TC_18_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangMatKhau() throws InterruptedException {
 	
 	log.info("TC06_Step 01 : Click  nut Back");
@@ -2457,7 +2457,7 @@ public void TC_18_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTr
 	verifyEquals(transReport.getDynamicTextInTextView(driver, "Phí giao dịch"), TransferMoneyInVCB_Data.InputData.COST[0]);
 	
 	log.info("TC06_Step :Kiem tra so tien phi hien thi");
-	verifyEquals(transReport.getDynamicTextInTextView(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputData.PAYMENT_BY_OTP_FEE + " VND");
+	verifyEquals(transReport.getDynamicTextInTextView(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputData.PAYMENT_BY_PASSWORD_FEE + " VND");
 	
 	log.info("TC06_Step :Kiem tra noi dung giao dich hien thi");
 	verifyTrue(transReport.getDynamicTextInTextView(driver, "Nội dung giao dịch").contains(TransferMoneyInVCB_Data.InputData.NOTE));
