@@ -622,6 +622,7 @@ public class AbstractPage {
     }
 	
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+		scrollToText(driver, dynamicTextValue);
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
@@ -701,6 +702,14 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		
 	}
+	
+	public String getDynamicTextInTextViewLine2(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+        scrollToText(driver, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
+		
+	}
+	
 	public String getTextInDynamicTransaction(AndroidDriver<AndroidElement> driver, String...dynamicIndex1Index2) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
