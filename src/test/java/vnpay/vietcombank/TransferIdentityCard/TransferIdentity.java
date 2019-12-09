@@ -71,7 +71,7 @@ public class TransferIdentity extends Base {
 		
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
 
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+		homePage.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 		
 		String text = homePage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.PAGE_TRANSFER).trim();
 		verifyTrue(text.equals(Transfer_Data.textCheckElement.PAGE_TRANSFER));
@@ -79,9 +79,14 @@ public class TransferIdentity extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienNoiTe(){
+		// Man hinh dien thong tin chuyen tien		
 		log.info("TC_01: chon tai khoan");
 		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
-		trasferPage.clickToDynamicAcceptText(driver, "0012000375703");
+		trasferPage.clickToDynamicAcceptText(driver, "0011000000526");
+		
+		// lay so tien truoc khi chuyen		
+		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		Long overbalanceBeforeInt = convertMoneyToLong(overbalanceBefore);
 		
 		log.info("TC_01: nhap ten nguoi thu huong");
 		trasferPage.inputBeneficiary("Hoangkm");
@@ -112,9 +117,37 @@ public class TransferIdentity extends Base {
 		
 		log.info("TC_01: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+		
+		//Man hinh xac nhan thong tin
+		String text = homePage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.PAGE_CONFIRM).trim();
+		verifyTrue(text.equals(Transfer_Data.textCheckElement.PAGE_CONFIRM));
+		
+		trasferPage.scrollToText(driver, "Chọn phương thức xác thực");
+		log.info("TC_01: chon phuong thuc xac thuc");
+		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
+		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
+		
+		// lay ra so tien chuyen di va phi truyen		
+		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền");
+		Long moneyTransferInt = convertMoneyToLong(overbalanceBefore);
+		
+		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		Long amountInt = convertMoneyToLong(overbalanceBefore);
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_01: xac thuc giao dich");
+		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, Transfer_Data.textCheckElement.CONFIRM_PASSWORD);
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_01: xac thuc thuc hien giao dich moi");
+		String newDealConfirm = trasferPage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
+		verifyTrue(newDealConfirm.equals(Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS));
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+		
+		
 	}
 	
-	@Test
+	//@Test
 	public void TC_02_ChuyenTienNgoaiTe(){
 		log.info("TC_01: chon tai khoan ngoai te");
 		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
