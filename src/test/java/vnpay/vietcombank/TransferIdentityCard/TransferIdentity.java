@@ -16,12 +16,15 @@ import pageObjects.TransferIdentiryPageObject;
 import pageObjects.LogInPageObject;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data;
+import pageObjects.TransactionReportPageObject;
 
 public class TransferIdentity extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferIdentiryPageObject trasferPage;
+	private TransactionReportPageObject transReport;
 
 
 	String userName = "Hoangkm";
@@ -36,6 +39,8 @@ public class TransferIdentity extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 
 		login = PageFactoryManager.getLoginPageObject(driver);
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		trasferPage = PageFactoryManager.getTransferPageObject(driver);
 
 		log.info("Before class: Click Allow Button");
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
@@ -60,33 +65,27 @@ public class TransferIdentity extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_06_Step_0");
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		trasferPage = PageFactoryManager.getTransferPageObject(driver);
-		verifyTrue(homePage.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
-
-		log.info("TC_06_Step_0");
-		login.clickToDynamicButton(driver, "Hủy");
-
-		homePage.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
+		login.clickToDynamicButton(driver, "TỪ CHỐI");
 		
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
 
-		homePage.clickToDynamicButionLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 		
 		String text = homePage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.PAGE_TRANSFER).trim();
 		verifyTrue(text.equals(Transfer_Data.textCheckElement.PAGE_TRANSFER));
 	}
 
 	@Test
-	public void TC_01_ChuyenTienNoiTe(){
+	public void TC_01_ChuyenTienQuaCMTNguoiChuyenTraPhiVNDXacNhanMatKhau(){
 		// Man hinh dien thong tin chuyen tien		
 		log.info("TC_01: chon tai khoan");
 		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
+		trasferPage.scrollToText(driver, "0011000000526");
 		trasferPage.clickToDynamicAcceptText(driver, "0011000000526");
 		
 		// lay so tien truoc khi chuyen		
 		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
-		Long overbalanceBeforeInt = convertMoneyToLong(overbalanceBefore);
+		Long overbalanceBeforeInt = convertMoneyToLong(overbalanceBefore, "VND");
 		
 		log.info("TC_01: nhap ten nguoi thu huong");
 		trasferPage.inputBeneficiary("Hoangkm");
@@ -129,26 +128,171 @@ public class TransferIdentity extends Base {
 		
 		// lay ra so tien chuyen di va phi truyen		
 		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền");
-		Long moneyTransferInt = convertMoneyToLong(overbalanceBefore);
+		Long moneyTransferInt = convertMoneyToLong(overbalanceBefore, "VND");
 		
 		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
-		Long amountInt = convertMoneyToLong(overbalanceBefore);
+		Long amountInt = convertMoneyToLong(overbalanceBefore,"VND");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_01: xac thuc giao dich");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, Transfer_Data.textCheckElement.CONFIRM_PASSWORD);
+		trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_01: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 		verifyTrue(newDealConfirm.equals(Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS));
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+			
+	}
+	
+//	@Test
+	public void TC_02_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
+		log.info("TC_02_Step_:");
+		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 		
+		log.info("TC_02_Step_:");
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 		
+		log.info("TC_02_Step_:");
+		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicButton(driver, "Tìm kiếm");
+	
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyInVCB_Data.InputData.NOTE));
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyInVCB_Data.InputData.MONEY) + " VND"));
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"), TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản ghi có"), TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Số tiền giao dịch").contains( addCommasToLong(TransferMoneyInVCB_Data.InputData.MONEY) + " VND"));
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputData.RECEIVER_NAME);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Phí giao dịch"), TransferMoneyInVCB_Data.InputData.COST[0]);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputData.PAYMENT_BY_OTP_FEE + " VND");
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Loại giao dịch"), TransferMoneyInVCB_Data.InputData.TRANSFER_TYPE);
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Nội dung giao dịch").contains(TransferMoneyInVCB_Data.InputData.NOTE));
+
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicButton(driver, "Tìm kiếm");
+
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyInVCB_Data.InputData.NOTE));
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"), ("+ " + addCommasToLong(TransferMoneyInVCB_Data.InputData.MONEY) + " VND"));
+		
+		log.info("TC_02_Step_:");
+		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"), TransferMoneyInVCB_Data.InputData.ACCOUNT1);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản ghi có"), TransferMoneyInVCB_Data.InputData.ACCOUNT2);
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyInVCB_Data.InputData.MONEY) + " VND"));
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputData.RECEIVER_NAME);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Phí giao dịch"), TransferMoneyInVCB_Data.InputData.COST[0]);
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputData.PAYMENT_BY_OTP_FEE + " VND");
+		
+		log.info("TC_02_Step_:");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Loại giao dịch"), TransferMoneyInVCB_Data.InputData.TRANSFER_TYPE);
+		
+		log.info("TC_02_Step_:");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Nội dung giao dịch").contains(TransferMoneyInVCB_Data.InputData.NOTE));
+
+		log.info("TC_02_Step_:");
+		transferInVCB.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
+		
+		log.info("TC_02_Step_:");
+		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
+		
+		log.info("TC_02_Step_:");
+		transferInVCB.navigateBack(driver);
 	}
 	
 	//@Test
-	public void TC_02_ChuyenTienNgoaiTe(){
+	public void TC_03_ChuyenTienNgoaiTe(){
 		log.info("TC_01: chon tai khoan ngoai te");
 		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
 		trasferPage.clickToDynamicAcceptText(driver, "0012370377247");
