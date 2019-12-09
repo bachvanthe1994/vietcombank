@@ -174,13 +174,7 @@ public class Login_Validation extends Base {
 		
 		log.info("TC_07_Step_06: Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
-		log.info("TC_07_Step_07: Kiem tra Home page hien thi");
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		verifyTrue(homePage.isDynamicMessageAndLabelTextDisplayed(driver, HomePage_Data.Message.HOME_MESSAGE));
-		
-		log.info("TC_07_Step_08. Click button Huy");
-		login.clickToDynamicButton(driver, "Hủy");
+		//URD update remove 2 popups 'phuong thuc xac thuc OTP' va 'Kich hoat tinh nang moi'
 		
 	}
 	

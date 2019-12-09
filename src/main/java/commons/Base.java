@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -35,85 +36,86 @@ public class Base {
 	private AndroidDriver<AndroidElement> driver2;
 
 	private String workingDir = System.getProperty("user.dir");
-	public  AppiumDriverLocalService service;
+	public AppiumDriverLocalService service;
 
 	protected Base() {
 		log = Logger.getLogger(getClass());
-	
-	}
-	 public AndroidDriver<AndroidElement> getDriver() {
-		 return driver;
-				 
-	 }
-	 @BeforeSuite
-	  public void deleteAllFile() {
-		 System.out.println("-----------START DELETE ALL FILE -------");
-		 deleteAllFileInFolder();
-		 System.out.println("-----------END DELETE ALL FILE -------");
-	 }
-	
-	 public void deleteAllFileInFolder() {
-		 try {
-		 String pathFolderDownload = workingDir +"//ReportNGScreenShots";
-		 File file = new File(pathFolderDownload);	
-		 File[] listOfFiles = file.listFiles();
-		 for (int i = 0; i < listOfFiles.length; i++) {
-		 if (listOfFiles[i].isFile()) {
-		 new File(listOfFiles[i].toString()).delete();
-		 }
-		 }
-		 } catch (Exception e) {
-		 System.out.print(e.getMessage());
-		 }
-		 }
 
-	 public void closeSMSApp(){
-		 driver2.quit();
+	}
+
+	public AndroidDriver<AndroidElement> getDriver() {
+		return driver;
+
+	}
+
+	@BeforeSuite
+	public void deleteAllFile() {
+		System.out.println("-----------START DELETE ALL FILE -------");
+		deleteAllFileInFolder();
+		System.out.println("-----------END DELETE ALL FILE -------");
+	}
+
+	public void deleteAllFileInFolder() {
+		try {
+			String pathFolderDownload = workingDir + "//ReportNGScreenShots";
+			File file = new File(pathFolderDownload);
+			File[] listOfFiles = file.listFiles();
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					new File(listOfFiles[i].toString()).delete();
+				}
+			}
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
 		}
-	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName,String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
+	}
+
+	public void closeSMSApp() {
+		driver2.quit();
+	}
+
+	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url,
+			String appActivities, String appPackage, String appName) throws MalformedURLException {
 		File file = new File("src/test/resources");
 		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
-		
+
 		if (deviceType.equalsIgnoreCase("virtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("appPackage", appPackage);
-			cap.setCapability("appActivity",appActivities);
+			cap.setCapability("appActivity", appActivities);
 		} else if (deviceType.equalsIgnoreCase("real")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("uid", udid);
 			cap.setCapability("appPackage", appPackage);
-			cap.setCapability("appActivity",appActivities);
-			cap.setCapability("appWaitPackage","com.google.android.packageinstaller");
-			cap.setCapability("appWaitActivity","com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
-			
+			cap.setCapability("appActivity", appActivities);
+			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+
 		} else if (deviceType.equalsIgnoreCase("browserStack")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("uid", udid);
 			cap.setCapability("appPackage", appPackage);
-			cap.setCapability("appActivity",appActivities);
-			
-			
+			cap.setCapability("appActivity", appActivities);
+
 		}
-	
-				
-		
+
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
-		 driver = new AndroidDriver<>(new URL(url), cap);
-		
+		driver = new AndroidDriver<>(new URL(url), cap);
+
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 
 		return driver;
 
 	}
-	public void closeApp(){
+
+	public void closeApp() {
 		driver.quit();
 	}
 
-	
-	public  AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser)
+	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser)
 			throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual ")) {
@@ -130,25 +132,20 @@ public class Base {
 
 	}
 
-
-
 	public AppiumDriverLocalService startServer() throws IOException, InterruptedException {
 		boolean trueStatus = checkIfServerIsRunnning(4723);
 		if (!trueStatus) {
 			service = AppiumDriverLocalService.buildDefaultService();
 			service.start();
-		}
-		else{
-			Runtime.getRuntime().exec("taskkill /F /IM node.exe"); 
+		} else {
+			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
 			Thread.sleep(2000);
 			service = AppiumDriverLocalService.buildDefaultService();
 			service.start();
 		}
 		return service;
 	}
-	
-	
-	
+
 	public static boolean checkIfServerIsRunnning(int port) {
 
 		boolean isServerRunning = false;
@@ -165,8 +162,6 @@ public class Base {
 		return isServerRunning;
 	}
 
-	
-	
 	public static int randomNumber() {
 
 		Random random = new Random();
@@ -250,88 +245,111 @@ public class Base {
 	protected boolean verifyEquals(Object actual, Object expected) {
 		return checkEquals(actual, expected);
 	}
-	
-	
-	public String  getCurrentDay() {
+
+	public String getCurrentDay() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int day = nowUTC.getDayOfMonth();
-		if (day<10) {
-			String day1 = "0"+ day;
-	 return day1;
+		if (day < 10) {
+			String day1 = "0" + day;
+			return day1;
+		} else {
+			return day + "";
 		}
-		else {
-		return day+"";
-		}
-		
+
 	}
-	public String  getCurrenMonth() {
+
+	public String getCurrenMonth() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int month = nowUTC.getMonthOfYear();
-		if (month<10) {
-			String month1 = "0"+ month;
+		if (month < 10) {
+			String month1 = "0" + month;
 			return month1;
-		}
-		else {
-			return month+"";
+		} else {
+			return month + "";
 		}
 	}
-	public String  getCurrenMonthWithout0() {
+
+	public String getCurrenMonthWithout0() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int month = nowUTC.getMonthOfYear();
-	
-		return month+"";
-		}
+
+		return month + "";
+	}
 
 	public String getCurrentYear() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		return nowUTC.getYear() + "";
-		
+
 	}
-	
+
 	public String getTheLastDayOfCurrentMonth() {
 		String[] partsOfToday = getTheLastDateOfMonth().toString().split("-");
-		String lastDayOfThisMonth = Integer.parseInt(partsOfToday[2])+"";
+		String lastDayOfThisMonth = Integer.parseInt(partsOfToday[2]) + "";
 		return lastDayOfThisMonth;
 	}
-	public  LocalDate getTheLastDateOfMonth() {
-		String date = getCurrentDay()+"/"+getCurrenMonth()+"/"+getCurrentYear();
+
+	public LocalDate getTheLastDateOfMonth() {
+		String date = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 		LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("d/M/yyyy"));
 		return convertedDate.withDayOfMonth(convertedDate.getMonth().length(convertedDate.isLeapYear()));
 
 	}
- public String getArriveMonth() {
-	 String currentDay = getCurrentDay();
-	 String arriveMonth = getCurrenMonthWithout0();
-		if(currentDay == getTheLastDayOfCurrentMonth()& getCurrenMonth()!="12") {
-			arriveMonth = Integer.parseInt(getCurrenMonth())+1+"";
-		}else if(currentDay == getTheLastDayOfCurrentMonth()& getCurrenMonth()=="12") {
-			arriveMonth ="1";
+
+	public String getArriveMonth() {
+		String currentDay = getCurrentDay();
+		String arriveMonth = getCurrenMonthWithout0();
+		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
+			arriveMonth = Integer.parseInt(getCurrenMonth()) + 1 + "";
+		} else if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
+			arriveMonth = "1";
 		}
-		
-	 return arriveMonth;
-			 
- }
- 
-public String getArriveYear() {
-	 String currentDay = getCurrentDay();
-	 String arriveYear = getCurrentYear();
-	 if(currentDay == getTheLastDayOfCurrentMonth()& getCurrenMonth()=="12") {
+
+		return arriveMonth;
+
+	}
+
+	public String getArriveYear() {
+		String currentDay = getCurrentDay();
+		String arriveYear = getCurrentYear();
+		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
 			arriveYear = Integer.parseInt(getCurrentYear()) + 1 + "";
-	 }	
-	 return arriveYear;
-}
- public String getNextDay(){
-	 String nextDay = Integer.parseInt(getCurrentDay()) + 1 + "";
-	 String currentDay = getCurrentDay();
-		if(currentDay == getTheLastDayOfCurrentMonth()& getCurrenMonth()!="12") {
+		}
+		return arriveYear;
+	}
+
+	public String getNextDay() {
+		String nextDay = Integer.parseInt(getCurrentDay()) + 1 + "";
+		String currentDay = getCurrentDay();
+		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
 			nextDay = "1";
- }
-	return 	nextDay;
- }
- public  long convertMoneyToLong(String money) {
-	  money = money.replaceAll(" VND", "");
-	  money = money.replaceAll(",", "");
-	  long m = Long.parseLong(money);
-	  return m;
-}
+		}
+		return nextDay;
+	}
+
+	public long convertMoneyToLong(String money, String currency) {
+		money = money.replaceAll(" " + currency, "");
+		money = money.replaceAll(",", "");
+		long m = Long.parseLong(money);
+		return m;
+	}
+
+	public double convertMoneyToDouble(String money, String currency) {
+		money = money.replaceAll(" " + currency, "");
+		money = money.replaceAll(",", "");
+		double amount = Double.parseDouble(money);
+		return amount;
+	}
+
+	public String addCommasToDouble(String number) {
+		double amount = Double.parseDouble(number);
+		String m = String.format("%,.2f", amount);
+		return m;
+	}
+
+	public static String addCommasToLong(String number) {
+		long amount = Long.parseLong(number);
+		String m = String.format("%,d", amount);
+		return m;
+	}
+
 }

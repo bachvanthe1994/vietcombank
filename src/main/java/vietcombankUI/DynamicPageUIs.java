@@ -15,7 +15,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_ICON="//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout";
 
 	public static final String DYNAMIC_LABEL_AMOUNT="//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
-	public static final String SOURCE_ACCOUNT = "//android.widget.TextView[@text = 'Tài khoản nguồn']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
+	public static final String DYNAMIC_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
 	public static final String DYNAMIC_TRANSFER_TIME = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView[@index='%s']";
 	public static final String DYNAMIC_TRANSACTION_INFO = "//android.widget.LinearLayout[@index ='0']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BOTTOM_MENU = "//android.widget.ImageView[@resource-id=\"%s\"]";
