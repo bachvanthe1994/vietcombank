@@ -641,6 +641,12 @@ public class AbstractPage {
 		setValueToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 	}
 	
+	public void inputToDynamicPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		setValueToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+	}
+	
 	public void inputToPasswordConfirm(AndroidDriver<AndroidElement> driver, String inputValue) {
 		clearText(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
 		waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
