@@ -7,7 +7,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID="//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_INPUT_BOX="//android.widget.EditText[@text='%s']";
 	public static final String DYNAMIC_OTP_INPUT="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout/android.widget.TextView";
-	public static final String DYNAMIC_PASSWORD_INPUT="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout/android.widget.EditText";
+	public static final String DYNAMIC_PASSWORD_INPUT="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
 	public static final String DYNAMIC_INPUT_IN_LOGIN="//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
 	public static final String DYNAMIC_INPUT_TEXT_POPUP="//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
