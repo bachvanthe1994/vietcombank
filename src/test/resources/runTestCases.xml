@@ -23,6 +23,7 @@
 			value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report" />
 		</classes>
 	</test>
 
