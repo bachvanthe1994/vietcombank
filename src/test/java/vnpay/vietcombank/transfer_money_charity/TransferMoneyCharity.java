@@ -96,7 +96,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_01_9_Verify Confirm info screen");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info.sourceAccount);
 		verifyTrue(transferMoneyCharity.getDynamicTextInTextView(driver, "Tài khoản đích").contains(info.organization));
-		String destinationAccount = transferMoneyCharity.getTextElement(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTextView(driver, "Tài khoản đích").split("/")[0].trim();
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextView(driver, "Số tiền ủng hộ").replace(",", ""), info.money + " VND");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextView(driver, "Tên người ủng hộ"), info.name);
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextView(driver, "Địa chỉ người ủng hộ"), info.address);
