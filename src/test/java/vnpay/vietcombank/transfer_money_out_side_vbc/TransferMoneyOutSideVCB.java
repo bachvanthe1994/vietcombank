@@ -25,17 +25,17 @@ public class TransferMoneyOutSideVCB extends Base {
 			"NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
 	TransferOutSideVCB_Info info1 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test", "SMS OTP");
-	TransferOutSideVCB_Info info2 = new TransferOutSideVCB_Info("0011370000646", "01825909301", "Do Minh Duc",
+	TransferOutSideVCB_Info info2 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
-	TransferOutSideVCB_Info info3 = new TransferOutSideVCB_Info("0011370000646", "01825909301", "Do Minh Duc",
+	TransferOutSideVCB_Info info3 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "50", "Phí giao dịch người nhận trả", "test", "SMS OTP");
 	TransferOutSideVCB_Info info4 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "Mật khẩu đăng nhập");
 	TransferOutSideVCB_Info info5 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test", "Mật khẩu đăng nhập");
-	TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info("0011370000646", "01825909301", "Do Minh Duc",
+	TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test", "Mật khẩu đăng nhập");
-	TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info("0011370000646", "01825909301", "Do Minh Duc",
+	TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc",
 			"NHTMCP Tien Phong", "50", "Phí giao dịch người nhận trả", "test", "Mật khẩu đăng nhập");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
