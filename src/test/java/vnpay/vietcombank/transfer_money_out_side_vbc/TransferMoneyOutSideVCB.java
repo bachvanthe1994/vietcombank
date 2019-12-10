@@ -282,7 +282,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				.getDynamicTextInTextView(driver, info2.authenticationMethod).replaceAll("\\D+", "")) / 100;
 		
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), transferFee + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
 		
 		log.info("TC_03_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -359,7 +359,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				.getDynamicTextInTextView(driver, info3.authenticationMethod).replaceAll("\\D+", "")) / 100;
 		
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), transferFee + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
 
 		log.info("TC_04_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -578,7 +578,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				.getDynamicTextInTextView(driver, info6.authenticationMethod).replaceAll("\\D+", "")) / 100;
 		
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), transferFee + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
 
 		log.info("TC_07_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -654,7 +654,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				.getDynamicTextInTextView(driver, info7.authenticationMethod).replaceAll("\\D+", "")) / 100;
 		
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), transferFee + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
 
 		log.info("TC_08_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");

@@ -5,7 +5,7 @@ public class test {
 	public static void main(String[] args) {
 		String money = "4,317,842,003 VND";
 		 long m = convertMoneytoInt(money);
-		String a = String.format("%.2f", Double.parseDouble("0.4")) + " EURO";
+		String a = String.format("%.2f", Double.parseDouble("0")) + " EURO";
 		System.out.println(m);
 		System.out.println(a);
 
