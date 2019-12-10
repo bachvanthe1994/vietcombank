@@ -117,7 +117,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				info.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info.destinationBank);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (VND)"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền"),
 				String.format("%,d", Long.parseLong(info.money)) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info.note);
 
@@ -192,7 +192,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				info1.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info1.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info1.destinationBank);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (VND)"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền"),
 				String.format("%,d", Long.parseLong(info1.money)) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info1.note);
 
@@ -267,10 +267,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info2.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info2.destinationBank);
 
-		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền (EUR)");
+		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 
-		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info.money) * 27006) + " VND");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (EUR)"),
+		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info2.money) * 27006) + " VND");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
 				String.format("%.2f", Double.parseDouble(info2.money)) + " EURO");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info2.note);
 		
@@ -345,10 +345,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info3.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info3.destinationBank);
 
-		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền (EUR)");
+		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 
-		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info.money) * 27006) + " VND");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (EUR)"),
+		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info3.money) * 27006) + " VND");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
 				String.format("%.2f", Double.parseDouble(info2.money)) + " EURO");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info3.note);
 
@@ -419,7 +419,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				info4.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info4.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info4.destinationBank);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (VND)"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền"),
 				String.format("%,d", Long.parseLong(info4.money)) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info4.note);
 
@@ -492,7 +492,7 @@ public class TransferMoneyOutSideVCB extends Base {
 				info5.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info5.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info5.destinationBank);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (VND)"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền"),
 				String.format("%,d", Long.parseLong(info5.money)) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info5.note);
 
@@ -564,10 +564,10 @@ public class TransferMoneyOutSideVCB extends Base {
 				info6.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info6.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info6.destinationBank);
-		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền (EUR)");
+		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 
-		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info.money) * 27006) + " VND");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (EUR)"),
+		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info6.money) * 27006) + " VND");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
 				String.format("%.2f", Double.parseDouble(info6.money)) + " EURO");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info6.note);
 
@@ -640,10 +640,10 @@ public class TransferMoneyOutSideVCB extends Base {
 				info7.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info7.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info7.destinationBank);
-		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền (EUR)");
+		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 
-		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info.money) * 27006) + " VND");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền (EUR)"),
+		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info7.money) * 27006) + " VND");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
 				String.format("%.2f", Double.parseDouble(info7.money)) + " EURO");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info7.note);
 
