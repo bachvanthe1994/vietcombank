@@ -704,7 +704,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên Quỹ/Tổ chức từ thiện"), info3.organization);
 
 		log.info("TC_04_36: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số tiền phí"), String.format("%,d", 2100) + " VND");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số tiền phí"), String.format("%,d", 0) + " VND");
 
 		log.info("TC_04_37: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTextView(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
