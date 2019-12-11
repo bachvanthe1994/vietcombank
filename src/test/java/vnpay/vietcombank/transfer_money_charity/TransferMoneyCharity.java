@@ -353,7 +353,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_02_26: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
-				("- " + addCommasToLong(info1.money) + " VND"));
+				("- " + addCommasToDouble(info1.money) + " EUR"));
 
 		log.info("TC_02_27: Click vao giao dich");
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
@@ -671,7 +671,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_04_26: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
-				("- " + addCommasToLong(info3.money) + " VND"));
+				("- " + addCommasToDouble(info3.money) + " EUR"));
 
 		log.info("TC_04_27: Click vao giao dich");
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
