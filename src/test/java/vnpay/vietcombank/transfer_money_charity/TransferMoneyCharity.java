@@ -620,6 +620,8 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextView(driver, "Tài khoản đích"), destinationAccount);
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextView(driver, "Nội dung"), info3.status);
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		transferTime = transferMoneyCharity.getDynamicTransferTime(driver, "Chuyển khoản thành công", "4");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTextView(driver, "Mã giao dịch");
 
 		log.info("TC_04_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
