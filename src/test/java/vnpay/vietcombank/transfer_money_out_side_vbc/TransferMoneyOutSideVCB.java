@@ -271,7 +271,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info2.money) * 27006) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
-				String.format("%.2f", Double.parseDouble(info2.money)) + " EURO");
+				String.format("%.2f", Double.parseDouble(info2.money)) + " EUR");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info2.note);
 		
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
@@ -349,7 +349,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info3.money) * 27006) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
-				String.format("%.2f", Double.parseDouble(info2.money)) + " EURO");
+				String.format("%.2f", Double.parseDouble(info2.money)) + " EUR");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info3.note);
 
 		log.info("TC_04_11_Chon phuong thuc xac thuc");
@@ -568,7 +568,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info6.money) * 27006) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
-				String.format("%.2f", Double.parseDouble(info6.money)) + " EURO");
+				String.format("%.2f", Double.parseDouble(info6.money)) + " EUR");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info6.note);
 
 		log.info("TC_07_11_Chon phuong thuc xac thuc");
@@ -644,7 +644,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		verifyEquals(actualMoney, 	String.format("%,d", Long.parseLong(info7.money) * 27006) + " VND");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Số tiền(EUR)"),
-				String.format("%.2f", Double.parseDouble(info7.money)) + " EURO");
+				String.format("%.2f", Double.parseDouble(info7.money)) + " EUR");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Nội dung"), info7.note);
 
 		log.info("TC_08_11_Chon phuong thuc xac thuc");
