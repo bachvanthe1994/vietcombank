@@ -12,6 +12,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import model.TransferOutSideVCB_Info;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import vietcombank_test_data.LogIn_Data;
@@ -19,6 +20,7 @@ import vietcombank_test_data.LogIn_Data;
 public class TransferMoneyOutSideVCB extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private TransferMoneyOutSideVCBPageObject transferMoneyOutSide;
 
 	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc",
@@ -72,13 +74,11 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
+		
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -147,13 +147,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_02_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_02_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_02_2_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -221,13 +216,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_03_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_03_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_03_2_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -299,12 +289,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_04_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_04_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_04_2_Chon tai khoan nguon");
 
@@ -374,12 +360,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_05_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraXacThucBangMatKhau() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_05_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_05_2_Chon tai khoan nguon");
 
@@ -447,12 +429,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_06_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraXacThucBangMatKhau() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_06_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_06_2_Chon tai khoan nguon");
 
@@ -519,12 +497,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_07_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraNgoaiTeXacThucBangMatKhau() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_07_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_07_2_Chon tai khoan nguon");
 
@@ -595,12 +569,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	@Test
 	public void TC_08_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraNgoaiTeXacThucBangMatKhau() {
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
-		System.out.println("Start");
-
 		log.info("TC_08_1_Click Chuyen tien toi ngan hang khac");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_08_2_Chon tai khoan nguon");
 
