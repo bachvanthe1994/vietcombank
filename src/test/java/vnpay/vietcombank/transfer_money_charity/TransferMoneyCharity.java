@@ -380,7 +380,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_02_34: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTextView(driver, "Số tiền quy đổi")
-				.contains(String.format("%,d", Long.parseLong(info1.money) * 27006) + " EUR"));
+				.contains(String.format("%,d", Long.parseLong(info1.money) * 27006) + " VND"));
 
 		log.info("TC_02_35: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên Quỹ/Tổ chức từ thiện"), info1.organization);
@@ -698,7 +698,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_04_34: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTextView(driver, "Số tiền quy đổi")
-				.contains(String.format("%,d", Long.parseLong(info3.money) * 27006) + " EUR"));
+				.contains(String.format("%,d", Long.parseLong(info3.money) * 27006) + " VND"));
 
 		log.info("TC_04_35: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên Quỹ/Tổ chức từ thiện"), info3.organization);
