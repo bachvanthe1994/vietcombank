@@ -25,7 +25,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
 	protected final Logger log;
-	private AndroidDriver<AndroidElement> driver;
+	protected AndroidDriver<AndroidElement> driver;
 	private AndroidDriver<AndroidElement> driver2;
 
 	private String workingDir = System.getProperty("user.dir");

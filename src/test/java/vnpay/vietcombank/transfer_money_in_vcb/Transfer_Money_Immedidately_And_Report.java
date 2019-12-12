@@ -9,8 +9,6 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
@@ -19,7 +17,6 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Immedidately_And_Report extends Base {
-	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
@@ -35,7 +32,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class_Step_00: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 
@@ -60,14 +57,11 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		log.info("Before class_Step_07: Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("Before class_Step_08: Click Huy");
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicButton(driver, "Hủy");
-
-		log.info("Before class_Step_09: Click icon Dong");
-		homePage.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
+		log.info("Before class_Step_01: Click Allow Button");
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
 
 	}
@@ -118,10 +112,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_01_Step_14: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2));
+		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2 + "/ " + TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
 
 		log.info("TC_01_Step_15: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_01_Step_17: Kiem tra phuong thuc tra phi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -139,8 +133,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_OTP_FEE + " VND"));
 
 		log.info("TC_01_Step_18: Lay so tien phi");
-		transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
-		long newTransferFee = convertMoneyToLong(transferFee, "VND");
+		long newTransferFee = convertMoneyToLong(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_OTP_FEE, "VND");
 
 		log.info("TC_01_Step_22: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -399,10 +392,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
 
 		log.info("TC_03_Step_16: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
 
 		log.info("TC_03_Step_17: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_03_Step_19: Kiem tra nguoi nhan tra");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -420,8 +413,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_OTP_FEE + " VND"));
 
 		log.info("TC_03_Step_20:  Lay so tien phi giao dich");
-		transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
-		long newTransferFee = convertMoneyToLong(transferFee, "VND");
+		long newTransferFee = convertMoneyToLong(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_OTP_FEE, "VND");
 
 		log.info("TC_03_Step_24: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -626,7 +618,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_04_Step_47: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -686,10 +678,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
 
 		log.info("TC05_Step 17: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
 
 		log.info("TC05_Step 18: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (USD)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + "USD"));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền(USD)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + "USD"));
 
 		log.info("TC05_Step 19: Kiem tra Nguoi chuyen tra hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -707,8 +699,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.USD_PAYMENT_BY_OTP_FEE + " USD"));
 
 		log.info("TC05_Step 24: Lay tien phi chuyen ");
-		transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
-		double newTransferFee = convertMoneyToDouble(transferFee, "USD");
+		double newTransferFee = convertMoneyToDouble(TransferMoneyInVCB_Data.InputDataInVCB.USD_PAYMENT_BY_OTP_FEE, "USD");
 
 		log.info("TC05_Step 25: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -924,7 +915,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC06_Step 49: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -984,10 +975,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
 
 		log.info("TC_07_Step 17: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
 
 		log.info("TC_07_Step 18: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (EUR)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + "EUR"));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền(EUR)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + "EUR"));
 
 		log.info("TC_07_Step 19: Kiem tra Nguoi nhan tra hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -1222,7 +1213,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_08_Step 49: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1261,10 +1252,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_09_Step_11: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
 
 		log.info("TC_09_Step_12: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_09_Step_14: Kiem tra phuong thuc thanh toan bang OTP");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -1414,7 +1405,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_10_Step_37: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1459,10 +1450,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_11_Step_11: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
 
 		log.info("TC_11_Step_12: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_11_Step_14: Kiem tra phuong thuc thanh toan bang OTP");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -1608,7 +1599,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_12_Step_37: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1657,10 +1648,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_13_Step_14: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2));
 
 		log.info("TC_13_Step_15: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_13_Step_17: Kiem tra phuong thuc thanh toan bang OTP");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -1678,8 +1669,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_PASSWORD_FEE + " VND"));
 
 		log.info("TC_13_Step_18: Lay so tien phi");
-		transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
-		long newTransferFee = convertMoneyToLong(transferFee, "VND");
+		long newTransferFee = convertMoneyToLong(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_PASSWORD_FEE, "VND");
 
 		log.info("TC_13_Step_22: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1883,7 +1873,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_14_Step_37: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1938,10 +1928,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
 
 		log.info("TC_15_Step_16: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
 
 		log.info("TC_15_Step_17: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_15_Step_19: Kiem tra nguoi nhan tra");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -1959,8 +1949,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_PASSWORD_FEE + " VND"));
 
 		log.info("TC_15_Step_20:  Lay so tien phi giao dich");
-		transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
-		long newTransferFee = convertMoneyToLong(transferFee, "VND");
+		long newTransferFee = convertMoneyToLong(TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_BY_PASSWORD_FEE, "VND");
 
 		log.info("TC_15_Step_24: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -2165,7 +2154,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_16_Step_47: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -2225,10 +2214,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
 
 		log.info("TC_17_Step 17: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
 
 		log.info("TC_17_Step 18: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (USD)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + "USD"));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền(USD)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " USD"));
 
 		log.info("TC_17_Step 18: Kiem tra Nguoi chuyen tra hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -2243,16 +2232,15 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_17_Step 23: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.USD_PAYMENT_BY_OTP_FEE + " USD"));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí").contains(TransferMoneyInVCB_Data.InputDataInVCB.USD_PAYMENT_BY_PASSWORD_FEE + " USD"));
 
 		log.info("TC_17_Step 24: Lay tien phi chuyen ");
-		transferFee = transferInVCB.getDynamicTextInTextView(driver, "Số tiền phí");
-		double newTransferFee = convertMoneyToDouble(transferFee, "USD");
+		double newTransferFee = convertMoneyToDouble(TransferMoneyInVCB_Data.InputDataInVCB.USD_PAYMENT_BY_PASSWORD_FEE, "USD");
 
 		log.info("TC_17_Step 25: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_17_Step 26: Dien OTP");
+		log.info("TC_17_Step 26: Dien Mat khau");
 		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_17_Step 27: Click tiep tuc");
@@ -2463,7 +2451,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_18_Step 49: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -2523,9 +2511,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
 
 		log.info("TC_19_Step 17: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1));
+
 		log.info("TC_19_Step 18: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (EUR)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR"));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền(EUR)").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR"));
 
 		log.info("TC_19_Step 19: Kiem tra Nguoi nhan tra hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -2760,7 +2749,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_20_Step 49: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -2799,10 +2788,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_21_Step_11: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
 
 		log.info("TC_21_Step_12: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_21_Step_14: Kiem tra phuong thuc thanh toan bang OTP");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -2951,8 +2940,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		log.info("TC_22_Step_36: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
-		log.info("TC_22_Step_37: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -2997,10 +2985,10 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_23_Step_11: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích / VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
 
 		log.info("TC_23_Step_12: Kiem tra so tien chuyen hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền (VND)").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
+		verifyTrue(transferInVCB.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.MONEY)));
 
 		log.info("TC_23_Step_14: Kiem tra phuong thuc thanh toan bang OTP");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -3146,7 +3134,7 @@ public class Transfer_Money_Immedidately_And_Report extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_24_Step_37: Click quay lai");
-		transferInVCB.navigateBack(driver);
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)
