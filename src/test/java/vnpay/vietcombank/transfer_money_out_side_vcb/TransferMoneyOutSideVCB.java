@@ -64,6 +64,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		login.clickToDynamicButton(driver, "Tiếp tục");
+		
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 	}
 
 	private long surplus, availableBalance;
@@ -109,7 +111,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_01_9_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info.destinationBank);
@@ -177,7 +179,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_02_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info1.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info1.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info1.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info1.destinationBank);
@@ -244,7 +246,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_03_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info2.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info2.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info2.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info2.destinationBank);
@@ -316,7 +318,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_04_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info3.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info3.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info3.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info3.destinationBank);
@@ -386,7 +388,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_05_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info4.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info4.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info4.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info4.destinationBank);
@@ -454,7 +456,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_06_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info5.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info5.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info5.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info5.destinationBank);
@@ -521,7 +523,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_07_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info6.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info6.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info6.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info6.destinationBank);
@@ -591,7 +593,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_08_10_Verify Confirm info screen");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info7.sourceAccount);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích / VND"),
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tài khoản đích/ VND"),
 				info7.destinationAccount);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Tên người hưởng"), info7.name);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTextView(driver, "Ngân hàng hưởng"), info7.destinationBank);
