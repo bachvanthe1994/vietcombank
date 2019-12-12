@@ -28,7 +28,7 @@ public class Template extends Base {
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 		
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
 	}
 

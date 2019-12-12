@@ -36,16 +36,16 @@ public class CheckPopup extends Base {
 
 	@Test
 	public void TC_01_KiemTraPopUp(){
-		login.inputToDynamicInputBox(driver, "0973217428", "Số điện thoại");
-		login.clickToDynamicButton(driver, SignIn_Data.Message_popup.BUTTON_NEXT);
-		String text = login.getTextDynamicPopup(driver, SignIn_Data.Message_popup.MESSAGE_POPUP);
+		login.inputToDynamicInputBox("0973217428", "Số điện thoại");
+		login.clickToDynamicButton(SignIn_Data.Message_popup.BUTTON_NEXT);
+		String text = login.getTextDynamicPopup(SignIn_Data.Message_popup.MESSAGE_POPUP);
 		verifyTrue(text.equals(SignIn_Data.Message_popup.MESSAGE_POPUP));
 	}
 	
 	@Test
 	public void TC_02_ChonDangKiNgay(){
-		login.clickToDynamicButton(driver, "Đăng ký ngay");
-		String messageIb = login.getTextDynamicPopup(driver, "VCB-iB@nking");
+		login.clickToDynamicButton("Đăng ký ngay");
+		String messageIb = login.getTextDynamicPopup("VCB-iB@nking");
 		verifyTrue(messageIb.equals(SignIn_Data.Message_popup.MESSAGE_SIGNIN_IB));
 	}
 	

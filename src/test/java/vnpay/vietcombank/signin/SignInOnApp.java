@@ -36,7 +36,7 @@ public class SignInOnApp extends Base {
 	login = PageFactoryManager.getLoginPageObject(driver);
 
 	log.info("Before class: Click Allow Button");
-	login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+	login.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
 
 	}
@@ -44,57 +44,55 @@ public class SignInOnApp extends Base {
 	//@Test
 	public void TC_01_ManHinhDangNhap() {
 		log.info("TC_01_1_Text Chao mung quy khach den voi ung dung VCB-Mobile B@nking cua Vietcombank");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver,
-				"Chào mừng Quý khách đến với ứng dụng" + "\n" + "VCB-Mobile B@nking của Vietcombank"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed("Chào mừng Quý khách đến với ứng dụng" + "\n" + "VCB-Mobile B@nking của Vietcombank"));
 	
 		log.info("TC_01_2_So dien thoai");
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, "Số điện thoại"));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed("Số điện thoại"));
 
 		log.info("TC_01_3_button Tiep tuc");
-		verifyTrue(login.isDynamicVerifyTextOnButton(driver, "Tiếp tục"));
+		verifyTrue(login.isDynamicVerifyTextOnButton("Tiếp tục"));
 
 		log.info("TC_01_4_verify Dang ky vcb-MB");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Đăng ký VCB-Mobile B@nking"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed("Đăng ký VCB-Mobile B@nking"));
 
 		log.info("TC_01_5_verify Dang ky truc tuyen");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Đăng ký trực tuyến"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed("Đăng ký trực tuyến"));
 
 		log.info("TC_01_6_verify Tìm kiếm ATM/chi nhánh gần đây");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Tìm kiếm ATM/chi nhánh gần đây"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed("Tìm kiếm ATM/chi nhánh gần đây"));
 	}
 	
 	//@Test
 	public void TC_02_NhapToiDaSoDienThoai() {
 		log.info("TC_02_1_Nhap so dien thoai 11 ky tu");
-		login.inputToDynamicInputBox(driver,Login_Account.PHONE_INVALID, "Số điện thoại");
+		login.inputToDynamicInputBox(Login_Account.PHONE_INVALID,"Số điện thoại");
 		log.info("TC_02_2_Verify so dien thoai, chi cho phep nhap 10 so");	
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, Login_Account.PHONE));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(Login_Account.PHONE));
 		
 	}
 	
 	@Test
 	public void TC_03_NhapThongTinIB() {
 		log.info("TC_03_1_Click dang ky vcb-mobile banking");
-		login.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký VCB-Mobile B@nking");
+		login.clickToDynamicButtonLinkOrLinkText("Đăng ký VCB-Mobile B@nking");
 		
 		log.info("TC_03_2_Click VCB - IB");
-		login.clickToDynamicButtonLinkOrLinkText(driver, "VCB-iB@nking");
+		login.clickToDynamicButtonLinkOrLinkText("VCB-iB@nking");
 		
 		log.info("TC_03_3_Check button quay lai");
-		login.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
+		login.clickToDynamicButtonLinkOrLinkText("Quay lại");
 		
 		log.info("TC_03_4_verify text check man hinh sau khi nhan quay lai");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, "Tìm kiếm ATM/chi nhánh gần đây"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed("Tìm kiếm ATM/chi nhánh gần đây"));
 		
 		log.info("TC_03_5_Click dang ky vcb-mobile banking");
-		login.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký VCB-Mobile B@nking");
+		login.clickToDynamicButtonLinkOrLinkText("Đăng ký VCB-Mobile B@nking");
 		
 		log.info("TC_03_6_Click VCB - IB");
-		login.clickToDynamicButtonLinkOrLinkText(driver, "VCB-iB@nking");
+		login.clickToDynamicButtonLinkOrLinkText("VCB-iB@nking");
 		
 		log.info("TC_01_1_Quý khách vui lòng nhập tên đăng nhập và mật khẩu VCB-iB@nking");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver,
-				"Quý khách vui lòng nhập tên đăng" + "\n" + "nhập và mật khẩu VCB-iB@nking"));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed("Quý khách vui lòng nhập tên đăng" + "\n" + "nhập và mật khẩu VCB-iB@nking"));
 	}
 
 

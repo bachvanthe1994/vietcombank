@@ -3,50 +3,49 @@ package pageObjects;
 import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferIdentityPageUIs;
 
 public class TransferIdentiryPageObject extends AbstractPage{
 
-	public TransferIdentiryPageObject(AndroidDriver<AndroidElement> mappingDriver) {
-		driver = mappingDriver;
+	public TransferIdentiryPageObject(AndroidDriver<AndroidElement> driver) {
+		super(driver);
 	}
 	
 	private AndroidDriver<AndroidElement> driver;
 	
 	public void inputBeneficiary(String inputValue) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.BENEFICIARY_FIELD);
-		clearText(driver, TransferIdentityPageUIs.BENEFICIARY_FIELD);
-		sendKeyToElement(driver, TransferIdentityPageUIs.BENEFICIARY_FIELD, inputValue);
+		waitForElementVisible(TransferIdentityPageUIs.BENEFICIARY_FIELD);
+		clearText(TransferIdentityPageUIs.BENEFICIARY_FIELD);
+		sendKeyToElement(TransferIdentityPageUIs.BENEFICIARY_FIELD, inputValue);
 	}
 	
 	public void inputIdentityNumber(String inputValue) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.INDENTITY_NUBER);
-		clearText(driver, TransferIdentityPageUIs.INDENTITY_NUBER);
-		sendKeyToElement(driver, TransferIdentityPageUIs.INDENTITY_NUBER, inputValue);
+		waitForElementVisible(TransferIdentityPageUIs.INDENTITY_NUBER);
+		clearText(TransferIdentityPageUIs.INDENTITY_NUBER);
+		sendKeyToElement(TransferIdentityPageUIs.INDENTITY_NUBER, inputValue);
 	}
 	
 	public void inputMoney(String inputValue) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.NUMBER);
-		clearText(driver, TransferIdentityPageUIs.NUMBER);
-		sendKeyToElement(driver, TransferIdentityPageUIs.NUMBER, inputValue);
+		waitForElementVisible(TransferIdentityPageUIs.NUMBER);
+		clearText(TransferIdentityPageUIs.NUMBER);
+		sendKeyToElement(TransferIdentityPageUIs.NUMBER, inputValue);
 	}
 	
 	public void inputContent(String inputValue) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.CONTENT);
-		clearText(driver, TransferIdentityPageUIs.CONTENT);
-		sendKeyToElement(driver, TransferIdentityPageUIs.CONTENT, inputValue);
+		waitForElementVisible(TransferIdentityPageUIs.CONTENT);
+		clearText(TransferIdentityPageUIs.CONTENT);
+		sendKeyToElement(TransferIdentityPageUIs.CONTENT, inputValue);
 	}
 	
 	public void clickToDynamicAcceptText(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicIDValue);
-		clickToElement(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicIDValue);
+		waitForElementVisible(TransferIdentityPageUIs.CLICK_TEXT, dynamicIDValue);
+		clickToElement(TransferIdentityPageUIs.CLICK_TEXT, dynamicIDValue);
 
 	}
 	
 	public void clickToDynamicAccount(AndroidDriver<AndroidElement> driver, String dynamicAccount) {
-		waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_ACCOUNT, dynamicAccount);
-		clickToElement(driver, TransferIdentityPageUIs.CLICK_ACCOUNT, dynamicAccount);
+		waitForElementVisible(TransferIdentityPageUIs.CLICK_ACCOUNT, dynamicAccount);
+		clickToElement(TransferIdentityPageUIs.CLICK_ACCOUNT, dynamicAccount);
 
 	}
 }

@@ -1,7 +1,6 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -13,24 +12,23 @@ import vietcombankUI.LoginPageUIs;
 
 public class LogInPageObject extends AbstractPage{
 
-	public LogInPageObject(AndroidDriver<AndroidElement> mappingDriver) {
-		driver = mappingDriver;
+	public LogInPageObject(AndroidDriver<AndroidElement> driver) {
+		super(driver);
 	}
-	private AndroidDriver<AndroidElement> driver;
-	
+
 	public void inputPhoneNumber(String inputValue) {
-		waitForElementVisible(driver, LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
-		clearText(driver, LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
-		sendKeyToElement(driver, LoginPageUIs.PHONE_NUMBER_TEXT_FIELD, inputValue);
+		waitForElementVisible(LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
+		clearText(LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
+		sendKeyToElement(LoginPageUIs.PHONE_NUMBER_TEXT_FIELD, inputValue);
 	}
 	
 	public void clearPhoneNumber() {
-		clearText(driver, LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
+		clearText(LoginPageUIs.PHONE_NUMBER_TEXT_FIELD);
 	}
 	
 	public void verifyIconChangeLanguage() {
-		waitForElementVisible(driver, LoginPageUIs.TEXT_LANGUAGE);
-		Assert.assertTrue(isControlDisplayed(driver, LoginPageUIs.ICON_CHANGE_LANGUAGE));
+		waitForElementVisible(LoginPageUIs.TEXT_LANGUAGE);
+		Assert.assertTrue(isControlDisplayed(LoginPageUIs.ICON_CHANGE_LANGUAGE));
 		String actualTextChangeLanguage = driver.findElement(By.xpath(LoginPageUIs.TEXT_LANGUAGE)).getText();
 		Assert.assertEquals(actualTextChangeLanguage, "Vietnamese");
 	}
@@ -42,9 +40,9 @@ public class LogInPageObject extends AbstractPage{
 	}
 	
 	public void inputPassword(String inputValue, String placeHolder, String defaultvalue) {
-		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, placeHolder);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, defaultvalue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, defaultvalue);
+		clearText(DynamicPageUIs.DYNAMIC_INPUT_BOX, placeHolder);
+		waitForElementVisible(DynamicPageUIs.DYNAMIC_INPUT_BOX, defaultvalue);
+		sendKeyToElement(DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, defaultvalue);
 	}
 	
 	public void verifyDefaultPasswordTextboxAllowInputValue(String inputValue) {

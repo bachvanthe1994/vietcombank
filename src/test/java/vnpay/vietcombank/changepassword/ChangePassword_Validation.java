@@ -30,11 +30,11 @@ public class ChangePassword_Validation extends Base {
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 		
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 		
 		login.inputPhoneNumber(ChangePassword_Data.Password.PHONE);
 		
-		login.clickToDynamicButton(driver, LogIn_Data.UI.CONTINUE_BUTTON);
+		login.clickToDynamicButton(LogIn_Data.UI.CONTINUE_BUTTON);
 	}
 
 	@Test
@@ -42,13 +42,13 @@ public class ChangePassword_Validation extends Base {
 		System.out.println("Start");
 		
 		log.info("TC_01_1_Text Kiem tra hien thi man hinh doi mat khau");
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, ChangePassword_Data.UI.RETURN_BUTTON));
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, ChangePassword_Data.UI.CHANGE_PASSWORD_NOFICATION));
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.NEW_PASSWORD_TEXT_VIEW));
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.CONFIRM_PASSWORD_TEXT_VIEW));
-		verifyTrue(login.isDynamicButtonDisplayed(driver, LogIn_Data.UI.CONTINUE_BUTTON));
-		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(driver, ChangePassword_Data.UI.FORGOT_PASSWORD));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(ChangePassword_Data.UI.RETURN_BUTTON));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(ChangePassword_Data.UI.CHANGE_PASSWORD_NOFICATION));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(ChangePassword_Data.UI.NEW_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(ChangePassword_Data.UI.CONFIRM_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicButtonDisplayed(LogIn_Data.UI.CONTINUE_BUTTON));
+		verifyTrue(login.isDynamicMessageAndLabelTextDisplayed(ChangePassword_Data.UI.FORGOT_PASSWORD));
 		
 		
 	}
@@ -58,7 +58,7 @@ public class ChangePassword_Validation extends Base {
 		System.out.println("Start");
 		
 		log.info("TC_02_1_Text Kiem tra Mac dinh trong, hien thi Nhap mat khau mac dinh");
-		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(driver, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
+		verifyTrue(login.isDynamicTextInInputBoxDisPlayed(ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW));
 		
 		log.info("TC_02_2_Text Kiem tra cho phep nhap ky tu 0-9, a-z");
 		login.inputPassword("0123456789", ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW, ChangePassword_Data.UI.DEFAULT_PASSWORD_TEXT_VIEW);
