@@ -1,5 +1,4 @@
 
-
 package commons;
 
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
@@ -183,7 +182,7 @@ public class AbstractPage {
 		element.clear();
 		element.sendKeys(value);
 	}
-	
+
 	public void setValueToElement(AndroidDriver<AndroidElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		MobileElement element1 = driver.findElement(By.xpath(locator));
@@ -197,7 +196,7 @@ public class AbstractPage {
 	}
 
 	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
-	
+
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
@@ -569,66 +568,72 @@ public class AbstractPage {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		
+
 	}
-    public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver,String dymanicText) {
-        waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
-        clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL,dymanicText);
-    }
+
+	public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver, String dymanicText) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+	}
+
 	public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		
+
 	}
+
 	public void clickToDynamicDropdownAndDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
-		
+
 	}
+
 	public void clickToDynamicBottomMenu(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		
+
 	}
+
 	public void clickToDynamicCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
-		
+
 	}
-	
+
 	public void clickToDynamicBackIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		
+
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
-		
+
 	}
+
 	public void clickToDynamicIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		
+
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 
 	}
-
 
 	public void clickToDynamicInput(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 
 	}
-    public void clickToDynamicTransaction(AndroidDriver<AndroidElement> driver, String...dynamicIndex1Index2 ) {
-        waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
-        clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
-    }
-	
+
+	public void clickToDynamicTransaction(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
+	}
+
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
-		
+
 	}
-	
+
 	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
@@ -641,19 +646,19 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		setValueToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 	}
-	
+
 	public void inputToDynamicPopupPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
 	}
-	
+
 	public void inputToPasswordConfirm(AndroidDriver<AndroidElement> driver, String inputValue) {
 		clearText(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
 		waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
 		setValueToElement(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT, inputValue);
 	}
-	
+
 	public boolean isDynamicButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
@@ -674,60 +679,62 @@ public class AbstractPage {
 
 	}
 
-
 	public boolean isDynamicTextInInputBoxDisPlayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
-	
+
 	public boolean isDynamicVerifyTextOnButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 	}
+
 	public String getTextDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
-	
-	
-	public String getDynamicTransferTime(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+
+	public String getDynamicTransferTimeAndMoney(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
 	}
-	
+
 	public String getTextDynamicPopup(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		
+
 	}
 
 	public String getDynamicTextInTextView(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-        scrollToText(driver, dynamicTextValue);
+		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
-		
+
 	}
-	
+
 	public String getDynamicTextInTextViewLine2(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-        scrollToText(driver, dynamicTextValue);
+		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
-		
+
 	}
-	
-	public String getTextInDynamicTransaction(AndroidDriver<AndroidElement> driver, String...dynamicIndex1Index2) {
+
+	public String getTextInDynamicTransaction(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO, dynamicIndex1Index2);
-		
+
 	}
-	
+
 	public String getDynamicAmountLabel(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
-		
+
+	}
+
+	public String getTextInDynamicDropdownOrDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
+
 	}
 }
-	
-
-
