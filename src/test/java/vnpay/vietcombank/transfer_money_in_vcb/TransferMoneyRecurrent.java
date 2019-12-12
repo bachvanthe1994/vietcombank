@@ -60,9 +60,7 @@ public class TransferMoneyRecurrent extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 	}
-
-	private long surplus, availableBalance, actualAvailableBalance;
-
+	
 	@Test
 	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
@@ -76,9 +74,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_01_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		surplus = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
 		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_01_4_Chon tan suat");
@@ -115,8 +110,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		long fee = Long.parseLong(
-				transferRecurrent.getDynamicTextInTextView(driver, info.authenticationMethod).replaceAll("\\D+", ""));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 
 		log.info("TC_01_11_Click Tiep tuc");
@@ -133,19 +126,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích"), info.destinationAccount);
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Nội dung"), info.note);
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
-
-		log.info("TC_01_13_Click Thuc hien giao dich moi");
-		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-
-		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		actualAvailableBalance = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-		System.out.print(actualAvailableBalance);
-
-		availableBalance = surplus - Long.parseLong(info.money) - fee;
-		System.out.print(availableBalance);
 	}
 
 	@Test
@@ -161,9 +141,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_02_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		surplus = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
 		transferRecurrent.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_02_4_Chon tan suat");
@@ -190,7 +167,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info1.sourceAccount);
 		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
 				.contains(info1.destinationAccount));
-//		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(info.money)));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Số lần giao dịch"), "2");
@@ -235,9 +211,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_03_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
-		surplus = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
 		transferRecurrent.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_03_4_Chon tan suat");
@@ -264,7 +237,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info2.sourceAccount);
 		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
 				.contains(info2.destinationAccount));
-//		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(info2.money)));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Số lần giao dịch"), "2");
@@ -309,9 +281,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_04_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
-		surplus = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
 		transferRecurrent.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_04_4_Chon tan suat");
@@ -338,7 +307,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info3.sourceAccount);
 		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
 				.contains(info3.destinationAccount));
-//		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(info.money)));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Số lần giao dịch"), "2");
@@ -370,7 +338,7 @@ public class TransferMoneyRecurrent extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_05_ChuyenTien_VND_DinhKy_1Nam_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhauDangNhap() {
 		log.info("TC_05_1_Click Chuyen tien trong ngan hang");
 		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -383,9 +351,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_05_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
-		surplus = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
 		transferRecurrent.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_05_4_Chon tan suat");
@@ -412,7 +377,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info4.sourceAccount);
 		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
 				.contains(info4.destinationAccount));
-//		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(info.money)));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info4.frequencyNumber + " " + info4.frequencyCategory + "/ lần");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Số lần giao dịch"), "2");
@@ -444,7 +408,7 @@ public class TransferMoneyRecurrent extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_ChuyenTien_NgoaiTe_DinhKy_2Nam_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhauDangNhap() {
 		log.info("TC_06_1_Click Chuyen tien trong ngan hang");
 		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -457,9 +421,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_06_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
-		surplus = Long
-				.parseLong(transferRecurrent.getDynamicTextInTextView(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
 		transferRecurrent.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_06_4_Chon tan suat");
@@ -486,7 +447,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info5.sourceAccount);
 		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
 				.contains(info5.destinationAccount));
-//		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(info.money)));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info5.frequencyNumber + " " + info5.frequencyCategory + "/ lần");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Số lần giao dịch"), "2");

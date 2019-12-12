@@ -64,10 +64,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		login.clickToDynamicButton(driver, "Tiếp tục");
-
-//		login.clickToDynamicButton(driver, "Hủy");
-//		
-//		login.clickToDynamicCloseIcon(driver, "Kích hoạt tính năng mới");
 	}
 
 	private long surplus, availableBalance;
@@ -139,8 +135,6 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
-
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info.money),
 				transferFee);
 	}
@@ -208,8 +202,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
-
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info.money), 0);
 	}
@@ -280,8 +272,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
-
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info2.money),
 				transferFee);
@@ -354,7 +344,6 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info3.money), 0);
 	}
 
@@ -422,7 +411,6 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info4.money),
 				transferFee);
 	}
@@ -491,7 +479,6 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info5.money), 0);
 	}
 
@@ -560,8 +547,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
-
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info6.money),
 				transferFee);
@@ -632,8 +617,6 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
-
-//		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển khoản thành công"));
 
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info7.money), 0);
 	}
