@@ -3,7 +3,7 @@ package vnpay.vietcombank.transfer_money_charity;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -50,8 +50,6 @@ public class TransferMoneyCharity extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 
 		login = PageFactoryManager.getLoginPageObject(driver);
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
@@ -74,6 +72,9 @@ public class TransferMoneyCharity extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau() {
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
+		
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
@@ -163,7 +164,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_16: Click vao More Icon");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_17: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -330,12 +331,12 @@ public class TransferMoneyCharity extends Base {
 	}
 
 	@Test
-	public void TC_02_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanMatKhau_BaoCao() {
+	public void TC_02_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau_BaoCao() {
 		log.info("TC_02_15 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_02_16: Click vao More Icon");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_17: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -501,12 +502,12 @@ public class TransferMoneyCharity extends Base {
 	}
 
 	@Test
-	public void TC_03_BaoCaoChuyenTienTuThienBangVNDThanhToanSMSOTP_BaoCao() {
+	public void TC_03_ChuyenTienTuThienBangVNDThanhToanSMSOTP_BaoCao() {
 		log.info("TC_03_15 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_03_16: Click vao More Icon");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_03_17: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -672,12 +673,12 @@ public class TransferMoneyCharity extends Base {
 	}
 	
 	@Test
-	public void TC_04_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanOTP_BaoCao() {
+	public void TC_04_ChuyenTienTuThienBangNgoaiTeThanhToanOTP_BaoCao() {
 		log.info("TC_04_15 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_04_16: Click vao More Icon");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_17: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -762,7 +763,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
-	@AfterMethod(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
 		service.stop();
