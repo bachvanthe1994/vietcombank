@@ -59,6 +59,7 @@ public class TransferMoneyRecurrent extends Base {
 
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 	}
 	
 	@Test
@@ -98,7 +99,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"),
 				"Chuyển tiền định kỳ");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info.sourceAccount);
-		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
+		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích/ VND")
 				.contains(info.destinationAccount));
 		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Số tiền").contains(addCommasToLong(info.money)));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
@@ -165,7 +166,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"),
 				"Chuyển tiền định kỳ");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info1.sourceAccount);
-		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
+		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích/ VND")
 				.contains(info1.destinationAccount));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
@@ -235,7 +236,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"),
 				"Chuyển tiền định kỳ");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info2.sourceAccount);
-		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
+		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích/ VND")
 				.contains(info2.destinationAccount));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
@@ -305,7 +306,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"),
 				"Chuyển tiền định kỳ");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info3.sourceAccount);
-		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
+		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích/ VND")
 				.contains(info3.destinationAccount));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
@@ -375,7 +376,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"),
 				"Chuyển tiền định kỳ");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info4.sourceAccount);
-		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
+		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích/ VND")
 				.contains(info4.destinationAccount));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info4.frequencyNumber + " " + info4.frequencyCategory + "/ lần");
@@ -445,7 +446,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Hình thức chuyển tiền"),
 				"Chuyển tiền định kỳ");
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản nguồn"), info5.sourceAccount);
-		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích / VND")
+		verifyTrue(transferRecurrent.getDynamicTextInTextView(driver, "Tài khoản đích/ VND")
 				.contains(info5.destinationAccount));
 		verifyEquals(transferRecurrent.getDynamicTextInTextView(driver, "Tần suất"),
 				info5.frequencyNumber + " " + info5.frequencyCategory + "/ lần");

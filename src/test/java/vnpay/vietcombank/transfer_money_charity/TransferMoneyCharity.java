@@ -57,6 +57,8 @@ public class TransferMoneyCharity extends Base {
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		login.clickToDynamicButton(driver, "Tiếp tục");
+		
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
