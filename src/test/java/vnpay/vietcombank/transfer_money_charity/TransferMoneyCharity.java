@@ -75,7 +75,6 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau() {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
@@ -159,10 +158,9 @@ public class TransferMoneyCharity extends Base {
 	}
 	
 	@Test
-	public void TC_01_BaoCaoChuyenTienTuThienBangVNDThanhToanMatKhau() {
+	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau_BaoCao() {
 		log.info("TC_01_15 : Click  nut Back");
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_16: Click vao More Icon");
 		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
@@ -249,7 +247,6 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_02_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
 		log.info("TC_02_1_Click Chuyen tien tu thien");
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_02_2_Chon tai khoan nguon");
@@ -333,10 +330,9 @@ public class TransferMoneyCharity extends Base {
 	}
 
 	@Test
-	public void TC_02_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
+	public void TC_02_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanMatKhau_BaoCao() {
 		log.info("TC_02_15 : Click  nut Back");
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_02_16: Click vao More Icon");
 		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
@@ -427,7 +423,6 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_03_ChuyenTienTuThienBangVNDThanhToanSMSOTP() {
 		log.info("TC_03_1_Click Chuyen tien tu thien");
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_03_2_Chon tai khoan nguon");
@@ -506,7 +501,7 @@ public class TransferMoneyCharity extends Base {
 	}
 
 	@Test
-	public void TC_03_BaoCaoChuyenTienTuThienBangVNDThanhToanSMSOTP() {
+	public void TC_03_BaoCaoChuyenTienTuThienBangVNDThanhToanSMSOTP_BaoCao() {
 		log.info("TC_03_15 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
@@ -595,7 +590,6 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_04_ChuyenTienTuThienBangNgoaiTeThanhToanOTP() {
 		log.info("TC_04_1_Click Chuyen tien tu thien");
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_04_2_Chon tai khoan nguon");
@@ -678,7 +672,7 @@ public class TransferMoneyCharity extends Base {
 	}
 	
 	@Test
-	public void TC_04_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanOTP() {
+	public void TC_04_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanOTP_BaoCao() {
 		log.info("TC_04_15 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
