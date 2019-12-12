@@ -1,4 +1,4 @@
-package vnpay.vietcombank.transfer_money_out_side_vbc;
+package vnpay.vietcombank.transfer_money_out_side_vcb;
 
 import java.io.IOException;
 
