@@ -70,12 +70,10 @@ public class Transfer_Money_Immedidately extends Base {
 		
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
-
 	}
 
 	@Test
-	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
-		
+	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {		
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 		
@@ -192,7 +190,6 @@ public class Transfer_Money_Immedidately extends Base {
 		
 		log.info("TC_01_Step_:");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputData.ACCOUNT2);
-
 		
 		log.info("TC_01_Step_:");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTextView(driver, "Số dư khả dụng");
@@ -1206,7 +1203,6 @@ public void TC_08_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraE
 	verifyTrue(transReport.getDynamicTextInTextView(driver, "Số tiền giao dịch").contains(addCommasToDouble(TransferMoneyInVCB_Data.InputData.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR"));
 	
 	log.info("TC06_Step : Kiem tra so tien quy doi hien thi ");
-
 	verifyTrue(transReport.getDynamicTextInTextView(driver, "Số tiền quy đổi").contains(addCommasToLong(changedMoney) + " VND"));
 	
 	log.info("TC06_Step : Kiem tra ten nguoi huong hien thi");
