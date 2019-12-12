@@ -13,6 +13,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import model.TransferCharity;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
@@ -23,6 +24,7 @@ import vietcombank_test_data.TransferMoney_Data;
 public class TransferMoneyCharity extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 	private TransactionReportPageObject transReport;
 	private String transferTime;
@@ -48,6 +50,7 @@ public class TransferMoneyCharity extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 
 		login = PageFactoryManager.getLoginPageObject(driver);
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
@@ -72,7 +75,8 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau() {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
 
@@ -157,7 +161,8 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_01_BaoCaoChuyenTienTuThienBangVNDThanhToanMatKhau() {
 		log.info("TC_01_15 : Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
+		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_16: Click vao More Icon");
 		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
@@ -244,7 +249,8 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_02_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
 		log.info("TC_02_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_02_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -329,7 +335,8 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_02_BaoCaoChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
 		log.info("TC_02_15 : Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
+		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_02_16: Click vao More Icon");
 		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
@@ -420,7 +427,8 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_03_ChuyenTienTuThienBangVNDThanhToanSMSOTP() {
 		log.info("TC_03_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_03_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -587,7 +595,8 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_04_ChuyenTienTuThienBangNgoaiTeThanhToanOTP() {
 		log.info("TC_04_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
+		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_04_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
