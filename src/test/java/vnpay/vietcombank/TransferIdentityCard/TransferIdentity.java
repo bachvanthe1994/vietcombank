@@ -79,7 +79,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_VND);
 
 		log.info("TC_01: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		Long overbalanceBeforeInt = convertMoneyToLong(overbalanceBefore, Transfer_Data.textDataInputForm.CURRENCY_VND);
 
 		log.info("TC_01: nhap ten nguoi thu huong");
@@ -126,12 +126,12 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_01: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền");
 		Long moneyTransferInt = convertMoneyToLong(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_VND);
 		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
 
 		log.info("tc_01: lay phi");
-		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		Long amountInt = convertMoneyToLong(amount, Transfer_Data.textDataInputForm.CURRENCY_VND);
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -173,7 +173,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_01: so tien kha dung con lai trong tai khoan");
-		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceAfter = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		Long overbalanceAfterInt = convertMoneyToLong(overbalanceAfter, Transfer_Data.textDataInputForm.CURRENCY_VND);
 
 		log.info("TC_01: kiem tra so tien kha dung sau khi chuyen");
@@ -230,39 +230,39 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch")
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_02: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_02: so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02: tai khoan the ghi no");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"),
 				Transfer_Data.textDataInputForm.ACCOUNT_VND);
 
 		log.info("TC_02_Step_: ten nguoi thu huong");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"),
 				Transfer_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_02: giay to tuy than");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
 
 		log.info("TC_02_Step_: so CMT");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số"),
 				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
 
-		System.out.println(transReport.getDynamicTextInTextView(driver, "Ngày cấp"));
+		System.out.println(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp"));
 		System.out.println(transferTime.split(" ")[0]);
 		log.info("TC_02: ngay cap");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_02: noi cap");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_02: noi cap");
 		trasferPage.navigateBack(driver);
@@ -284,7 +284,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_EUR);
 
 		log.info("TC_03: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceBeforeInt = convertMoneyToDouble(overbalanceBefore,
 				Transfer_Data.textDataInputForm.CURRENCY_EURO);
 
@@ -332,12 +332,12 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_03: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền(EUR)");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền(EUR)");
 		double moneyTransferInt = convertMoneyToDouble(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_EURO);
 		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
 
 		log.info("TC_03: lay phi");
-		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		double amountInt = convertMoneyToDouble(amount, Transfer_Data.textDataInputForm.CURRENCY_EURO);
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -379,7 +379,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_03: so tien kha dung con lai trong tai khoan");
-		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceAfter = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceAfterInt = convertMoneyToDouble(overbalanceAfter,
 				Transfer_Data.textDataInputForm.CURRENCY_EURO);
 
@@ -437,37 +437,37 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch")
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_04: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_04: so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_04: tai khoan the ghi no");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"),
 				Transfer_Data.textDataInputForm.ACCOUNT_EUR);
 
 		log.info("TC_04: ten nguoi thu huong");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"),
 				Transfer_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_04: giay to tuy than");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
 
 		log.info("TC_04: so CMT");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số"),
 				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
 
 		log.info("TC_04: ngay cap");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_04: noi cap");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_04: noi cap");
 		trasferPage.navigateBack(driver);
@@ -489,7 +489,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_USD);
 
 		log.info("TC_05: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceBeforeInt = convertMoneyToDouble(overbalanceBefore,
 				Transfer_Data.textDataInputForm.CURRENCY_USD);
 
@@ -541,12 +541,12 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_05: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền(USD)");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền(USD)");
 		double moneyTransferInt = convertMoneyToDouble(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_USD);
 		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
 
 		log.info("TC_05: lay phi");
-		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		double amountInt = convertMoneyToDouble(amount, Transfer_Data.textDataInputForm.CURRENCY_USD);
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -588,7 +588,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_05: so tien kha dung con lai trong tai khoan");
-		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceAfter = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceAfterInt = convertMoneyToDouble(overbalanceAfter,
 				Transfer_Data.textDataInputForm.CURRENCY_USD);
 
@@ -646,40 +646,40 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch")
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_06: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_06: so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_06: tai khoan the ghi no");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"),
 				Transfer_Data.textDataInputForm.ACCOUNT_USD);
 
 		log.info("TC_06: ten nguoi thu huong");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"),
 				Transfer_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_06: giay to tuy than");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
 
 		log.info("TC_06: so CMT");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số"),
 				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
 
-		System.out.println(transReport.getDynamicTextInTextView(driver, "Ngày cấp"));
+		System.out.println(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp"));
 		System.out.println(transferTime.split(" ")[0]);
 
 		log.info("TC_06: ngay cap");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_06: noi cap");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_06: noi cap");
 		trasferPage.navigateBack(driver);
@@ -701,7 +701,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_VND);
 
 		log.info("TC_07: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		Long overbalanceBeforeInt = convertMoneyToLong(overbalanceBefore, Transfer_Data.textDataInputForm.CURRENCY_VND);
 
 		log.info("TC_07: nhap ten nguoi thu huong");
@@ -749,12 +749,12 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, "SMS OTP");
 
 		log.info("TC_07: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền");
 		Long moneyTransferInt = convertMoneyToLong(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_VND);
 		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
 
 		log.info("TC_07: lay phi");
-		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		Long amountInt = convertMoneyToLong(amount, Transfer_Data.textDataInputForm.CURRENCY_VND);
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -796,7 +796,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_01: so tien kha dung con lai trong tai khoan");
-		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceAfter = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		Long overbalanceAfterInt = convertMoneyToLong(overbalanceAfter, Transfer_Data.textDataInputForm.CURRENCY_VND);
 
 		log.info("TC_07: kiem tra so tien kha dung sau khi chuyen");
@@ -854,37 +854,37 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_08: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_08: so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_08: tai khoan the ghi no");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"),
 				Transfer_Data.textDataInputForm.ACCOUNT_VND);
 
 		log.info("TC_08: ten nguoi thu huong");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"),
 				Transfer_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_08: giay to tuy than");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
 
 		log.info("TC_08: so CMT");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số"),
 				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
 
 		log.info("TC_08: ngay cap");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_08: noi cap");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_08: noi cap");
 		trasferPage.navigateBack(driver);
@@ -906,7 +906,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_USD);
 
 		log.info("TC_09: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceBeforeInt = convertMoneyToDouble(overbalanceBefore,
 				Transfer_Data.textDataInputForm.CURRENCY_USD);
 
@@ -954,12 +954,12 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, "SMS OTP");
 
 		log.info("TC_09: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền(USD)");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền(USD)");
 		double moneyTransferInt = convertMoneyToDouble(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_USD);
 		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
 
 		log.info("TC_09: lay phi");
-		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		double amountInt = convertMoneyToDouble(amount, Transfer_Data.textDataInputForm.CURRENCY_USD);
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1001,7 +1001,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_09: so tien kha dung con lai trong tai khoan");
-		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceAfter = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceAfterInt = convertMoneyToDouble(overbalanceAfter,
 				Transfer_Data.textDataInputForm.CURRENCY_USD);
 
@@ -1059,37 +1059,37 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_10: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch")
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_10: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_10: so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_10: tai khoan the ghi no");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"),
 				Transfer_Data.textDataInputForm.ACCOUNT_USD);
 
 		log.info("TC_10: ten nguoi thu huong");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"),
 				Transfer_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_10: giay to tuy than");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
 
 		log.info("TC_10: so CMT");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số"),
 				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
 
 		log.info("TC_10: ngay cap");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_09: noi cap");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_09: nguoi tra phi giao dich");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
@@ -1115,7 +1115,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_EUR);
 
 		log.info("TC_11: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceBeforeInt = convertMoneyToDouble(overbalanceBefore,
 				Transfer_Data.textDataInputForm.CURRENCY_EURO);
 
@@ -1163,12 +1163,12 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicAcceptText(driver, "SMS OTP");
 
 		log.info("TC_11: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền(EUR)");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền(EUR)");
 		double moneyTransferInt = convertMoneyToDouble(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_EURO);
 		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
 
 		log.info("TC_11: lay phi");
-		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		double amountInt = convertMoneyToDouble(amount, Transfer_Data.textDataInputForm.CURRENCY_EURO);
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1210,7 +1210,7 @@ public class TransferIdentity extends Base {
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_11: so tien kha dung con lai trong tai khoan");
-		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		String overbalanceAfter = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double overbalanceAfterInt = convertMoneyToDouble(overbalanceAfter,
 				Transfer_Data.textDataInputForm.CURRENCY_USD);
 
@@ -1268,40 +1268,40 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_09: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch")
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_09: kiem tra thoi gian giao dich trong man hinh chi tiet");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_09: so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_09: tai khoan the ghi no");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"),
 				Transfer_Data.textDataInputForm.ACCOUNT_EUR);
 
 		log.info("TC_09: ten nguoi thu huong");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"),
 				Transfer_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_09: giay to tuy than");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
 
 		log.info("TC_09: so CMT");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số"),
 				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
 
-		System.out.println(transReport.getDynamicTextInTextView(driver, "Ngày cấp"));
+		System.out.println(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp"));
 		System.out.println(transferTime.split(" ")[0]);
 
 		log.info("TC_09: ngay cap");
-		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Ngày cấp").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_09: noi cap");
-		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_09: nguoi tra phi giao dich");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");

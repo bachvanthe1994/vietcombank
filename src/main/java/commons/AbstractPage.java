@@ -706,7 +706,7 @@ public class AbstractPage {
 
 	}
 
-	public String getDynamicTextInTextView(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextInTransactionDetail(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
