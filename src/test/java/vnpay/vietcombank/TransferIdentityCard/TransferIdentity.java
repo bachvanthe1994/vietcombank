@@ -210,19 +210,19 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_02: chon ngay thuc hien giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_02: kiem tra ngay giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_02: kiem tra noi dung giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
 
 		log.info("TC_02: kiem tra so tien chuyen di");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToLong(Transfer_Data.textDataInputForm.MONEY_TRANSFER_VND) + " "
 						+ Transfer_Data.textDataInputForm.CURRENCY_VND));
 
@@ -417,19 +417,19 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_04: chon ngay thuc hien giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_04: kiem tra ngay giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_04: kiem tra noi dung giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
 
 		log.info("TC_04: kiem tra so tien chuyen di");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToDouble(Transfer_Data.textDataInputForm.MONEY_TRANSFER_EUR) + " "
 						+ Transfer_Data.textDataInputForm.CURRENCY_EURO));
 
@@ -626,19 +626,19 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_06: chon ngay thuc hien giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_06: kiem tra ngay giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_06: kiem tra noi dung giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
 
 		log.info("TC_06: kiem tra so tien chuyen di");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToDouble(Transfer_Data.textDataInputForm.MONEY_TRANSFER_EUR) + " "
 						+ Transfer_Data.textDataInputForm.CURRENCY_USD));
 
@@ -834,19 +834,19 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_08: chon ngay thuc hien giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_08: kiem tra ngay giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_08: kiem tra noi dung giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
 
 		log.info("TC_08: kiem tra so tien chuyen di");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToLong(Transfer_Data.textDataInputForm.MONEY_TRANSFER_VND) + " "
 						+ Transfer_Data.textDataInputForm.CURRENCY_VND));
 
@@ -1039,19 +1039,19 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_10: chon ngay thuc hien giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_10: kiem tra ngay giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_10: kiem tra noi dung giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
 
 		log.info("TC_10: kiem tra so tien chuyen di");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToDouble(Transfer_Data.textDataInputForm.MONEY_TRANSFER_USD) + " "
 						+ Transfer_Data.textDataInputForm.CURRENCY_USD));
 
@@ -1248,19 +1248,19 @@ public class TransferIdentity extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_09: chon ngay thuc hien giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate")
 				.contains(transferTime.split(" ")[0]));
 
 		log.info("TC_09: kiem tra ngay giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
 				.equals(transferTime.split(" ")[3]));
 
 		log.info("TC_09: kiem tra noi dung giao dich");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
 
 		log.info("TC_09: kiem tra so tien chuyen di");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToDouble(Transfer_Data.textDataInputForm.MONEY_TRANSFER_EUR) + " "
 						+ Transfer_Data.textDataInputForm.CURRENCY_EURO));
 

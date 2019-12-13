@@ -229,11 +229,11 @@ public class QuickMoneyTransferViaAccount extends Base {
 		 * "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 		 */
 		log.info("TC_Step_:");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(TransferMoney_Data.TransferQuick.NOTE));
 
 		log.info("TC_Step_:");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToLong(TransferMoney_Data.TransferQuick.MONEY) + " VND"));
 
 		log.info("TC_Step_:");
@@ -440,11 +440,11 @@ public class QuickMoneyTransferViaAccount extends Base {
 		 * "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 		 */
 		log.info("TC_Step_:");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(TransferMoney_Data.TransferQuick.NOTE));
 
 		log.info("TC_Step_:");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToLong(TransferMoney_Data.TransferQuick.MONEY) + " USD"));
 
 		log.info("TC_Step_:");
@@ -640,11 +640,11 @@ public class QuickMoneyTransferViaAccount extends Base {
 		 * "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 		 */
 		log.info("TC_Step_:");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(TransferMoney_Data.TransferQuick.NOTE));
 
 		log.info("TC_Step_:");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToLong(TransferMoney_Data.TransferQuick.MONEY) + " VND"));
 
 		log.info("TC_Step_:");
@@ -845,11 +845,11 @@ public class QuickMoneyTransferViaAccount extends Base {
 		 * "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 		 */
 		log.info("TC_Step_:");
-		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
 				.equals(TransferMoney_Data.TransferQuick.NOTE));
 
 		log.info("TC_Step_:");
-		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
 				("- " + addCommasToLong(TransferMoney_Data.TransferQuick.MONEY) + " VND"));
 
 		log.info("TC_Step_:");
