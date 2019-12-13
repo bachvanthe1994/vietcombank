@@ -53,18 +53,15 @@ public class AbstractPage {
 	public void LongPressToElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);
-		touch.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(2))).release()
-				.perform();
+		touch.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(2))).release().perform();
 
 	}
 
-	public void SwipingFromOneElementToOtherElement(AndroidDriver<AndroidElement> driver, String locator1,
-			String locator2) {
+	public void SwipingFromOneElementToOtherElement(AndroidDriver<AndroidElement> driver, String locator1, String locator2) {
 		WebElement element1 = driver.findElement(By.xpath(locator1));
 		WebElement element2 = driver.findElement(By.xpath(locator2));
 		TouchAction touch = new TouchAction(driver);
-		touch.longPress(longPressOptions().withElement(element(element1)).withDuration(ofSeconds(2)))
-				.moveTo(element(element2)).release().perform();
+		touch.longPress(longPressOptions().withElement(element(element1)).withDuration(ofSeconds(2))).moveTo(element(element2)).release().perform();
 
 	}
 
@@ -72,8 +69,7 @@ public class AbstractPage {
 		WebElement element1 = driver.findElement(By.xpath(locator1));
 		WebElement element2 = driver.findElement(By.xpath(locator2));
 		TouchAction touch = new TouchAction(driver);
-		touch.longPress(longPressOptions().withElement(element(element1))).moveTo(element(element2)).release()
-				.perform();
+		touch.longPress(longPressOptions().withElement(element(element1))).moveTo(element(element2)).release().perform();
 	}
 
 	public void BackKeyCode(AndroidDriver<AndroidElement> driver) {
@@ -113,9 +109,7 @@ public class AbstractPage {
 
 	public void scrollToText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		try {
-			driver.findElementByAndroidUIAutomator(
-					"new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView("
-							+ "new UiSelector().textContains(\"" + dynamicTextValue + "\"));");
+			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + dynamicTextValue + "\"));");
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
@@ -182,16 +176,14 @@ public class AbstractPage {
 		element.sendKeys(value);
 	}
 
-	public void sendKeyToElement(AndroidDriver<AndroidElement> driver, String locator, String value,
-			String... dynamicValue) {
+	public void sendKeyToElement(AndroidDriver<AndroidElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.clear();
 		element.sendKeys(value);
 	}
 
-	public void setValueToElement(AndroidDriver<AndroidElement> driver, String locator, String value,
-			String... dynamicValue) {
+	public void setValueToElement(AndroidDriver<AndroidElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		MobileElement element1 = driver.findElement(By.xpath(locator));
 		element1.clear();
@@ -311,8 +303,7 @@ public class AbstractPage {
 
 	}
 
-	public void uploadMultipleFilesInQueue(AndroidDriver<AndroidElement> driver, String locator, String fileName01,
-			String fileName02, String fileName03) {
+	public void uploadMultipleFilesInQueue(AndroidDriver<AndroidElement> driver, String locator, String fileName01, String fileName02, String fileName03) {
 		String rootFolder = System.getProperty("user.dir");
 		String filePath01 = rootFolder + "\\Upload_file\\" + fileName01;
 		String filePath02 = rootFolder + "\\Upload_file\\" + fileName02;
@@ -330,8 +321,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void uploadMultipleFilesAtOnce(AndroidDriver<AndroidElement> driver, String locator, String fileName01,
-			String fileName02, String fileName03) {
+	public void uploadMultipleFilesAtOnce(AndroidDriver<AndroidElement> driver, String locator, String fileName01, String fileName02, String fileName03) {
 		WebElement addFileButton = driver.findElement(By.xpath(locator));
 		String rootFolder = System.getProperty("user.dir");
 		String filePath01 = rootFolder + "\\Upload_file\\" + fileName01;
@@ -342,8 +332,7 @@ public class AbstractPage {
 		addFileButton.sendKeys(filePath);
 	}
 
-	public void uploadByAutoIT(AndroidDriver<AndroidElement> driver, String uploadButtonlocator, String fileName01,
-			String fileName02, String fileName03) throws Exception {
+	public void uploadByAutoIT(AndroidDriver<AndroidElement> driver, String uploadButtonlocator, String fileName01, String fileName02, String fileName03) throws Exception {
 		String rootFolder = System.getProperty("user.dir");
 		String filePath01 = rootFolder + "\\Upload_file\\" + fileName01;
 		String filePath02 = rootFolder + "\\Upload_file\\" + fileName02;
@@ -433,8 +422,7 @@ public class AbstractPage {
 		}
 	}
 
-	public String getAttributeValue(AndroidDriver<AndroidElement> driver, String locator, String attribute,
-			String... dynamicValue) {
+	public String getAttributeValue(AndroidDriver<AndroidElement> driver, String locator, String attribute, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getAttribute(attribute);
@@ -483,8 +471,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void removeAttributeInDOM(AndroidDriver<AndroidElement> driver, String locator, String attribute,
-			String... value) {
+	public void removeAttributeInDOM(AndroidDriver<AndroidElement> driver, String locator, String attribute, String... value) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		locator = String.format(locator, (Object[]) value);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -647,23 +634,20 @@ public class AbstractPage {
 
 	}
 
-	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue,
-			String dynamicTextValue) {
+	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, inputValue, dynamicTextValue);
 
 	}
 
-	public void inputToDynamicOtpOrPIN(AndroidDriver<AndroidElement> driver, String inputValue,
-			String dynamicTextValue) {
+	public void inputToDynamicOtpOrPIN(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		setValueToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 	}
 
-	public void inputToDynamicPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue,
-			String dynamicTextValue) {
+	public void inputToDynamicPopupPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
@@ -682,16 +666,14 @@ public class AbstractPage {
 
 	}
 
-	public boolean isDynamicMessageAndLabelTextDisplayed(AndroidDriver<AndroidElement> driver,
-			String dynamicTextValue) {
+	public boolean isDynamicMessageAndLabelTextDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
 	}
 
-	public boolean isDynamicMessageAndLabelTextUndisplayed(AndroidDriver<AndroidElement> driver,
-			String dynamicTextValue) {
+	public boolean isDynamicMessageAndLabelTextUndisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		return isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
@@ -712,7 +694,6 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
-
 
 	public String getDynamicTransferTimeAndMoney(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
