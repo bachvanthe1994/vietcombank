@@ -37,6 +37,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String PASSWORD_FEE = "1,000";
 		public static final String OTP_FEE = "0";
 		public static final String TRANSFER_AMOUNT = "5000";
+		public static final String WAITING_STATUS = "Chờ xử lý";
+		public static final String CANCEL_STATUS = "Đã hủy";
 
 	}
 }

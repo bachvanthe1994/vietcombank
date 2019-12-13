@@ -352,4 +352,61 @@ public class Base {
 		return m;
 	}
 
+	public String getFromDate() {
+		int toDate = Integer.parseInt(getCurrentDay());
+
+		String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+		String[] partsOfToday = getTheLastDayOfMonth(today).toString().split("-");
+		int lastDayOfThisMonth = Integer.parseInt(partsOfToday[2]);
+		int lastMonth = Integer.parseInt(getCurrenMonth()) - 1;
+		String lastMonth1 = lastMonth + "";
+		String lastMonthDate;
+		if ((lastMonth - 1) > 0) {
+			lastMonthDate = getCurrentDay() + "/" + lastMonth1 + "/" + getCurrentYear();
+		} else {
+			lastMonthDate = getCurrentDay() + "/" + "12" + "/" + getCurrentYear();
+		}
+		String[] partsOfPreviousDate = getTheLastDayOfMonth(lastMonthDate).toString().split("-");
+		int lastDayOfPreviousMonth = Integer.parseInt(partsOfPreviousDate[2]);
+		int fromDay = 0;
+		if (lastDayOfThisMonth >= lastDayOfPreviousMonth) {
+			if (toDate <= 30) {
+				fromDay = toDate;
+
+			} else {
+				fromDay = toDate - 1;
+			}
+		} else {
+			fromDay = toDate + 1;
+		}
+		String lastMonth2;
+		if (lastDayOfPreviousMonth < 10) {
+			lastMonth2 = "0" + lastMonth;
+		} else {
+			lastMonth2 = lastMonth + "";
+		}
+		String lastDay;
+		if (fromDay < 10) {
+			lastDay = "0" + fromDay;
+		} else {
+			lastDay = fromDay + "";
+		}
+		int currentMonth = Integer.parseInt(getCurrenMonth());
+		int curentYear = Integer.parseInt(getCurrentYear());
+		String year;
+		if (currentMonth == 1) {
+			year = (Integer.parseInt(getCurrentYear()) - 1) + "";
+		} else {
+			year = curentYear + "";
+		}
+		return lastDay + "/" + lastMonth2 + "/" + year;
+
+	}
+
+	public LocalDate getTheLastDayOfMonth(String date) {
+		LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("d/M/yyyy"));
+		return convertedDate.withDayOfMonth(convertedDate.getMonth().length(convertedDate.isLeapYear()));
+
+	}
+
 }

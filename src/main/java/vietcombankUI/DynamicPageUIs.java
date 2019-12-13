@@ -19,8 +19,9 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_LABEL_AMOUNT = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
 	public static final String DYNAMIC_TRANSFER_TIME = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView[@index='%s']";
-	public static final String DYNAMIC_TRANSACTION_INFO = "//android.widget.LinearLayout[@index ='0']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_TRANSACTION_INFO_IN_REPORT = "//android.widget.LinearLayout[@index ='0']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BOTTOM_MENU = "//android.widget.ImageView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BACK_ICON = "//android.widget.TextView[@text = '%s']//ancestor::android.widget.FrameLayout//android.widget.ImageView";
+	public static final String DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS = "//android.widget.ListView[@resource-id =\"com.VCB:id/nlvHisDetailAcc\"]//aandroid.widget.LinearLayout[@index='0']//aandroid.widget.LinearLayout[@index='%s']//android.widget.TextView[resource-id=\"%s\"]";
 
 }
