@@ -40,15 +40,17 @@ public class PageFactoryManager {
 		return new DomesticAirTicketPageObject(driver);
 	}
 
-	public static TransferIdentiryPageObject getTransferPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferIdentiryPageObject getTransferIdentiryPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferIdentiryPageObject(driver);
 	}
 
-	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(
+			AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyOutSideVCBPageObject(driver);
 	}
 
-	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(
+			AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyCharityPageObject(driver);
 	}
 
