@@ -248,9 +248,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_03_13_Click Thuc hien giao dich moi");
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_03_13_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-
 	}
 
 	@Test
@@ -354,9 +351,7 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_05_13_Click Thuc hien giao dich moi");
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-
-		log.info("TC_05_13_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		
 	}
 
 	@Test
@@ -460,9 +455,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_07_13_Click Thuc hien giao dich moi");
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_07_13_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-		
 	}
 
 	@Test
