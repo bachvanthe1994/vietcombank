@@ -65,7 +65,7 @@ public class TransferIdentity extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_03_ChuyenTienQuaCMTNguoiChuyenNhanPhiEURXacNhanMatKhau() {
 		log.info("TC_03: chon chuyển tiền nhận bằng CMT");
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
@@ -183,7 +183,7 @@ public class TransferIdentity extends Base {
 		verifyEquals(overbalanceAfterInt, overbalanceAfterCacuLator);
 	}
 
-//	@Test
+	@Test
 	public void TC_04_KiemTraChiTietGiaoDichChuyenTienQuaCMTNguoiChuyenTraPhiEURXacNhanMatKhauTrongBaoCaoGiaoDich() {
 		log.info("TC_04: quay lại home page");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
@@ -270,7 +270,7 @@ public class TransferIdentity extends Base {
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 	}
 
-//	@Test
+	@Test
 	public void TC_05_ChuyenTienQuaCMTNguoiNhanTraPhiUSDXacNhanMatKhau() {
 		log.info("TC_05: chon chuyển tiền nhận bằng CMT");
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
@@ -392,7 +392,7 @@ public class TransferIdentity extends Base {
 		verifyEquals(overbalanceAfterInt, overbalanceAfterCacuLator);
 	}
 
-//	@Test
+	@Test
 	public void TC_06_KiemTraChiTietGiaoDichChuyenTienQuaCMTNguoiChuyenTraPhiUSDXacNhanMatKhauTrongBaoCaoGiaoDich() {
 		log.info("TC_06: quay lại home page");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
@@ -482,7 +482,7 @@ public class TransferIdentity extends Base {
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 	}
 
-//	@Test
+	@Test
 	public void TC_07_ChuyenTienQuaCMTNguoiChuyenTraPhiVNDRXacNhanOTP() {
 		log.info("TC_07: chon chuyển tiền nhận bằng CMT");
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
@@ -600,7 +600,7 @@ public class TransferIdentity extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_08_KiemTraChiTietGiaoDichChuyenTienQuaCMTNguoiChuyenTraPhiVNDRXacNhanOTPTrongBaoCaoGiaoDich() {
 		log.info("TC_08: quay lại home page");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
@@ -805,7 +805,7 @@ public class TransferIdentity extends Base {
 		verifyEquals(overbalanceAfterInt, overbalanceAfterCacuLator);
 	}
 
-//	@Test
+	@Test
 	public void TC_10_KiemTraChiTietGiaoDichChuyenTienQuaCMTNguoiChuyenTraPhiUSDXacNhanOTPTrongBaoCaoGiaoDich() {
 		log.info("TC_10: quay lại home page");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
@@ -896,7 +896,7 @@ public class TransferIdentity extends Base {
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
 	}
 
-//	@Test
+	@Test
 	public void TC_11_ChuyenTienQuaCMTNguoiChuyenTraPhiEURXacNhanOTP() {
 		log.info("TC_11: chon chuyển tiền nhận bằng CMT");
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
@@ -1014,7 +1014,7 @@ public class TransferIdentity extends Base {
 		verifyEquals(overbalanceAfterInt, overbalanceAfterCacuLator);
 	}
 
-//	@Test
+	@Test
 	public void TC_12_KiemTraChiTietGiaoDichChuyenTienQuaCMTNguoiChuyenTraPhiEURXacNhanOTPTrongBaoCaoGiaoDich() {
 		log.info("TC_09: quay lại home page");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
@@ -1110,7 +1110,7 @@ public class TransferIdentity extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

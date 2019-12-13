@@ -2,7 +2,7 @@ package vietcombank_test_data;
 
 public class TransferMoneyInVCB_Data {
 
-	public static class InputData {
+	public static class InputDataInVCB {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngay", "Chuyển tiền ngay", "Chuyển tiền ngày tương lai" };
 		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
 		public static final String ACCOUNT1 = "0011000000847";
@@ -28,7 +28,15 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class Output {
+		public static final String SUCESSFULL_CREATED_ORDER = "LẬP LỆNH THÀNH CÔNG";
 		public static final String TRANSFER_SUCESS_MESSAGE = "CHUYỂN KHOẢN THÀNH CÔNG";
 		public static final String CONFIRMATION_MESSAGE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
+	}
+
+	public static class InputDataInFuture {
+		public static final String PASSWORD_FEE = "1,000";
+		public static final String OTP_FEE = "0";
+		public static final String TRANSFER_AMOUNT = "5000";
+
 	}
 }

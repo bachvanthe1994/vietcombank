@@ -12,6 +12,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
+import pageObjects.TransferMoneyStatusPageObject;
 
 public class PageFactoryManager {
 
@@ -55,5 +56,9 @@ public class PageFactoryManager {
 
 	public static TransactionReportPageObject getTransactionReportPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransactionReportPageObject(driver);
+	}
+
+	public static TransferMoneyStatusPageObject getTransferMoneyStatusPageObject(AndroidDriver<AndroidElement> driver) {
+		return new TransferMoneyStatusPageObject(driver);
 	}
 }

@@ -25,7 +25,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
 	protected final Logger log;
-	private AndroidDriver<AndroidElement> driver;
+	protected AndroidDriver<AndroidElement> driver;
 	private AndroidDriver<AndroidElement> driver2;
 
 	private String workingDir = System.getProperty("user.dir");
@@ -67,8 +67,7 @@ public class Base {
 		driver2.quit();
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url,
-			String appActivities, String appPackage, String appName) throws MalformedURLException {
+	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
 		File file = new File("src/test/resources");
 		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
@@ -108,8 +107,7 @@ public class Base {
 		driver.quit();
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser)
-			throws MalformedURLException {
+	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual ")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
@@ -117,8 +115,7 @@ public class Base {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 		}
 		cap.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
-		System.setProperty("webdriver.chrome.driver",
-				"E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
 		AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		return driver;
@@ -288,35 +285,45 @@ public class Base {
 
 	}
 
-	public String getArriveMonth() {
-		String currentDay = getCurrentDay();
-		String arriveMonth = getCurrenMonthWithout0();
-		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
-			arriveMonth = Integer.parseInt(getCurrenMonth()) + 1 + "";
-		} else if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
-			arriveMonth = "1";
-		}
-
-		return arriveMonth;
-
-	}
-
-	public String getArriveYear() {
+	public String getYear() {
 		String currentDay = getCurrentDay();
 		String arriveYear = getCurrentYear();
 		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
 			arriveYear = Integer.parseInt(getCurrentYear()) + 1 + "";
+		} else {
+			arriveYear = getCurrentYear();
 		}
 		return arriveYear;
 	}
 
+	public String getMonth() {
+		String month;
+		String currentDay = getCurrentDay();
+		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12" & Integer.parseInt(getCurrenMonth()) > 10) {
+			month = Integer.parseInt(getCurrenMonth()) + 1 + "";
+		} else if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
+			month = "01";
+
+		} else {
+			month = getCurrenMonth();
+		}
+		return month;
+	}
+
 	public String getNextDay() {
-		String nextDay = Integer.parseInt(getCurrentDay()) + 1 + "";
+		String nextDay;
 		String currentDay = getCurrentDay();
 		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
-			nextDay = "1";
+			nextDay = "01";
+		} else if (Integer.parseInt(currentDay) + 1 < 10) {
+			nextDay = Integer.parseInt(currentDay) + 1 + "";
+			nextDay = "0" + nextDay;
+
+		} else {
+			nextDay = Integer.parseInt(currentDay) + 1 + "";
 		}
 		return nextDay;
+
 	}
 
 	public long convertMoneyToLong(String money, String currency) {

@@ -28,14 +28,53 @@
 			
 			
 			
-<category name = "vnpay.hdbank.air_ticket">
+<category name = "vnpay.vietcombank.transfer_money_in_vcb">
 <priority value ="all"/>
 <appender-ref ref="console"/>
 <appender-ref ref="logfile"/>
 <appender-ref ref="testng"/>
 </category>
 
-<category name = "vnpay.hdbank.login">
+<category name = "vnpay.vietcombank.changepassword">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+
+<category name = "vnpay.vietcombank.login">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+
+<category name = "vnpay.vietcombank.signin">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+
+<category name = "vnpay.vietcombank.transfer_money_charity">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_out_side_vcb">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+
+<category name = "vnpay.vietcombank.TransferIdentityCard">
 <priority value ="all"/>
 <appender-ref ref="console"/>
 <appender-ref ref="logfile"/>
