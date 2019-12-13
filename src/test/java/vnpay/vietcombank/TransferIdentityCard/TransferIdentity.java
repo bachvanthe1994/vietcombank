@@ -66,6 +66,211 @@ public class TransferIdentity extends Base {
 	}
 
 	@Test
+	public void TC_01_ChuyenTienQuaCMTNguoiChuyenTraPhiVNDXacNhanMatKhau() {
+		log.info("TC_01: chon chuyển tiền nhận bằng CMT");
+		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+		String text = homePage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.PAGE_TRANSFER).trim();
+		verifyTrue(text.equals(Transfer_Data.textCheckElement.PAGE_TRANSFER));
+
+		log.info("TC_01: chon tai khoan");
+		trasferPage.clickToDynamicAccount(driver, "Tài khoản nguồn");
+		trasferPage.scrollToText(driver, Transfer_Data.textDataInputForm.ACCOUNT_VND);
+		trasferPage.clickToDynamicAcceptText(driver, Transfer_Data.textDataInputForm.ACCOUNT_VND);
+
+		log.info("TC_01: lay so tien truoc khi chuyen khoan");
+		String overbalanceBefore = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		Long overbalanceBeforeInt = convertMoneyToLong(overbalanceBefore, Transfer_Data.textDataInputForm.CURRENCY_VND);
+
+		log.info("TC_01: nhap ten nguoi thu huong");
+		trasferPage.inputBeneficiary(Transfer_Data.textDataInputForm.USER_NAME);
+
+		log.info("TC_01: chon giay to tuy than");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
+
+		log.info("TC_01: so CMT");
+		trasferPage.inputIdentityNumber(Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
+
+		log.info("TC_01: ngay cap");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
+		trasferPage.clickToDynamicButton(driver, "OK");
+
+		trasferPage.scrollToText(driver, "Thông tin giao dịch");
+
+		log.info("TC_01: noi cap");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Transfer_Data.textDataInputForm.ISSUED);
+
+		log.info("TC_01: nguoi tra phi giao dich");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
+
+		log.info("TC_01: nhap so tien chuyen di");
+		trasferPage.inputMoney(Transfer_Data.textDataInputForm.MONEY_TRANSFER_VND);
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
+
+		log.info("TC_01: noi dung");
+		trasferPage.inputContent(Transfer_Data.textDataInputForm.CONTEN_TRANSFER);
+
+		log.info("TC_01: noi dung");
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_01: xac nhan thong tin");
+		String confirm = trasferPage.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.PAGE_CONFIRM).trim();
+		verifyTrue(confirm.equals(Transfer_Data.textCheckElement.PAGE_CONFIRM));
+
+		trasferPage.scrollToText(driver, "Chọn phương thức xác thực");
+		log.info("TC_01: chon phuong thuc xac thuc");
+		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
+		trasferPage.clickToDynamicAcceptText(driver, "Mật khẩu đăng nhập");
+
+		log.info("TC_01: lay ra so tien chuyen di");
+		String moneyTransfer = trasferPage.getDynamicTextInTextView(driver, "Số tiền");
+		Long moneyTransferInt = convertMoneyToLong(moneyTransfer, Transfer_Data.textDataInputForm.CURRENCY_VND);
+		String transferContent = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
+
+		log.info("tc_01: lay phi");
+		String amount = trasferPage.getDynamicTextInTextView(driver, "Số tiền phí");
+		Long amountInt = convertMoneyToLong(amount, Transfer_Data.textDataInputForm.CURRENCY_VND);
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_01: xac thuc giao dich");
+		trasferPage.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_01: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
+		String transferMoney = trasferPage.getDynamicAmountLabel(driver,
+				Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+		verifyTrue(moneyTransfer.equals(transferMoney));
+
+		log.info("TC_01: lay ra thoi gian chuyen di o man hinh xac thuc thanh cong");
+		transferTime = trasferPage.getDynamicTransferTime(driver,
+				Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
+
+		log.info("TC_01: ten nguoi thu huong");
+		String beneficiaryName = trasferPage.getDynamicAmountLabel(driver,
+				Transfer_Data.textCheckElement.BENEFICIARY_NAME);
+		verifyTrue(Transfer_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
+
+		log.info("TC_01: tai khoan giao dich");
+		String destinationAccount = trasferPage.getDynamicAmountLabel(driver,
+				Transfer_Data.textCheckElement.DESTINATION_ACCOUNT);
+		verifyTrue(Transfer_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
+
+		log.info("TC_01: ma giao dich");
+		transactionNumber = trasferPage.getDynamicAmountLabel(driver,
+				Transfer_Data.textCheckElement.TRANSECTION_NUMBER);
+
+		log.info("TC_01: noi dung giao dich");
+		String conten = trasferPage.getDynamicAmountLabel(driver, Transfer_Data.textCheckElement.CONNTENT);
+		verifyTrue(transferContent.equals(conten));
+
+		log.info("TC_01: xac thuc thuc hien giao dich moi");
+		String newDealConfirm = trasferPage
+				.getTextDynamicPopup(driver, Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
+		verifyTrue(newDealConfirm.equals(Transfer_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS));
+		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+
+		log.info("TC_01: so tien kha dung con lai trong tai khoan");
+		String overbalanceAfter = trasferPage.getDynamicTextInTextView(driver, "Số dư khả dụng");
+		Long overbalanceAfterInt = convertMoneyToLong(overbalanceAfter, Transfer_Data.textDataInputForm.CURRENCY_VND);
+
+		log.info("TC_01: kiem tra so tien kha dung sau khi chuyen");
+		long overbalanceAfterCacuLator = overbalanceBeforeInt - moneyTransferInt - amountInt;
+		verifyEquals(overbalanceAfterInt, overbalanceAfterCacuLator);
+	}
+
+	@Test
+	public void TC_02_KiemTraChiTietGiaoDichChuyenTienQuaCMTNguoiChuyenTraPhiVNDXacNhanMatKhauTrongBaoCaoGiaoDich() {
+		log.info("TC_02_Step_: quay lại home page");
+		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
+		log.info("TC_02:Tìm tới menu page");
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_02:chon bao cao giao dich");
+		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+
+		log.info("TC_02:click texbox tat ca cac loai giao dich");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
+
+		log.info("TC_02:chon chuyen tien cho nguoi nhan tai quay");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+
+		log.info("TC_02:chon ngay thuc hien giao dich");
+		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+
+		log.info("TC_02:chon tai khoan");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Transfer_Data.textDataInputForm.ACCOUNT_VND);
+
+		log.info("TC_02:Thuc hien tim kiem");
+		transReport.clickToDynamicButton(driver, "Tìm kiếm");
+
+		log.info("TC_02: chon ngay thuc hien giao dich");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate")
+				.contains(transferTime.split(" ")[0]));
+
+		log.info("TC_02: kiem tra ngay giao dich");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvDate").split(" ")[0]
+				.equals(transferTime.split(" ")[3]));
+
+		log.info("TC_02: kiem tra noi dung giao dich");
+		verifyTrue(transReport.getTextInDynamicTransaction(driver, "0", "com.VCB:id/tvContent")
+				.equals(Transfer_Data.textDataInputForm.CONTEN_TRANSFER));
+
+		log.info("TC_02: kiem tra so tien chuyen di");
+		verifyEquals(transReport.getTextInDynamicTransaction(driver, "1", "com.VCB:id/tvMoney"),
+				("- " + addCommasToLong(Transfer_Data.textDataInputForm.MONEY_TRANSFER_VND) + " "
+						+ Transfer_Data.textDataInputForm.CURRENCY_VND));
+
+		log.info("TC_02: click chon giao dich");
+		transReport.clickToDynamicTransaction(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_02: kiem tra thoi gian giao dich trong man hinh chi tiet");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch")
+				.contains(transferTime.split(" ")[0]));
+
+		log.info("TC_02: kiem tra thoi gian giao dich trong man hinh chi tiet");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Thời gian giao dịch").split(" ")[0]
+				.equals(transferTime.split(" ")[3]));
+
+		log.info("TC_02: so lenh giao dich");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số lệnh giao dịch"), transactionNumber);
+
+		log.info("TC_02: tai khoan the ghi no");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tài khoản/thẻ trích nợ"),
+				Transfer_Data.textDataInputForm.ACCOUNT_VND);
+
+		log.info("TC_02_Step_: ten nguoi thu huong");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Tên người thụ hưởng"),
+				Transfer_Data.textDataInputForm.USER_NAME);
+
+		log.info("TC_02: giay to tuy than");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Giấy tờ tùy thân"), "Chứng minh nhân dân");
+
+		log.info("TC_02_Step_: so CMT");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Số"),
+				Transfer_Data.textDataInputForm.IDENTITY_NUMBER);
+
+		System.out.println(transReport.getDynamicTextInTextView(driver, "Ngày cấp"));
+		System.out.println(transferTime.split(" ")[0]);
+		log.info("TC_02: ngay cap");
+		verifyTrue(transReport.getDynamicTextInTextView(driver, "Ngày cấp").split(" ")[0]
+				.equals(transferTime.split(" ")[3]));
+
+		log.info("TC_02: noi cap");
+		verifyEquals(transReport.getDynamicTextInTextView(driver, "Nơi cấp"), Transfer_Data.textDataInputForm.ISSUED);
+
+		log.info("TC_02: noi cap");
+		trasferPage.navigateBack(driver);
+		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+	}
+
+	@Test
 	public void TC_03_ChuyenTienQuaCMTNguoiChuyenNhanPhiEURXacNhanMatKhau() {
 		log.info("TC_03: chon chuyển tiền nhận bằng CMT");
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
