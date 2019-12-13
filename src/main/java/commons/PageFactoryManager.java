@@ -58,14 +58,13 @@ public class PageFactoryManager {
 	public static TransactionReportPageObject getTransactionReportPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransactionReportPageObject(driver);
 	}
-<<<<<<< HEAD
 
 	public static TransferMoneyStatusPageObject getTransferMoneyStatusPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyStatusPageObject(driver);
-=======
+	}
 	
 	public static  LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
 		return new LuckyGiftPageObject(driver);
->>>>>>> HiepPT/03_12
+
 	}
 }
