@@ -18,6 +18,7 @@ public class TransferMoney_Data {
 		public static final String NOTE = "Test";
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS";
 		public static final String SUCCESS_TRANSFER_MONEY = "Chuyển khoản thành công";
+		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "Lập lệnh thành công";
 
 		public static final String COST_AMOUNT = "0";
 		public static final String COST_AMOUNT_USD = "000";
