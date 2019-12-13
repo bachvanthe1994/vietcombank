@@ -154,7 +154,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_02_2: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicIcon(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 		
 		log.info("TC_02_3: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -248,9 +248,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_03_13_Click Thuc hien giao dich moi");
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_03_13_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-
 	}
 
 	@Test
@@ -261,7 +258,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_04_2: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicIcon(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 		
 		log.info("TC_04_3: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -354,9 +351,7 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_05_13_Click Thuc hien giao dich moi");
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-
-		log.info("TC_05_13_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		
 	}
 
 	@Test
@@ -367,7 +362,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_06_2: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicIcon(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 		
 		log.info("TC_06_3: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -460,9 +455,6 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_07_13_Click Thuc hien giao dich moi");
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_07_13_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-		
 	}
 
 	@Test
@@ -473,7 +465,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_06_2: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicIcon(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 		
 		log.info("TC_06_3: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
