@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -241,7 +240,7 @@ public class Base {
 		return checkEquals(actual, expected);
 	}
 
-	public String getCurrentDay() {
+	public static String getCurrentDay() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int day = nowUTC.getDayOfMonth();
 		if (day < 10) {
@@ -253,7 +252,7 @@ public class Base {
 
 	}
 
-	public String getCurrenMonth() {
+	public static String getCurrenMonth() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int month = nowUTC.getMonthOfYear();
 		if (month < 10) {
@@ -264,70 +263,9 @@ public class Base {
 		}
 	}
 
-	public String getCurrenMonthWithout0() {
-		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
-		int month = nowUTC.getMonthOfYear();
-
-		return month + "";
-	}
-
-	public String getCurrentYear() {
+	public static String getCurrentYear() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		return nowUTC.getYear() + "";
-
-	}
-
-	public String getTheLastDayOfCurrentMonth() {
-		String[] partsOfToday = getTheLastDateOfMonth().toString().split("-");
-		String lastDayOfThisMonth = Integer.parseInt(partsOfToday[2]) + "";
-		return lastDayOfThisMonth;
-	}
-
-	public LocalDate getTheLastDateOfMonth() {
-		String date = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
-		LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("d/M/yyyy"));
-		return convertedDate.withDayOfMonth(convertedDate.getMonth().length(convertedDate.isLeapYear()));
-
-	}
-
-	public String getYear() {
-		String currentDay = getCurrentDay();
-		String arriveYear = getCurrentYear();
-		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
-			arriveYear = Integer.parseInt(getCurrentYear()) + 1 + "";
-		} else {
-			arriveYear = getCurrentYear();
-		}
-		return arriveYear;
-	}
-
-	public String getMonth() {
-		String month;
-		String currentDay = getCurrentDay();
-		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12" & Integer.parseInt(getCurrenMonth()) > 10) {
-			month = Integer.parseInt(getCurrenMonth()) + 1 + "";
-		} else if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
-			month = "01";
-
-		} else {
-			month = getCurrenMonth();
-		}
-		return month;
-	}
-
-	public String getNextDay() {
-		String nextDay;
-		String currentDay = getCurrentDay();
-		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
-			nextDay = "01";
-		} else if (Integer.parseInt(currentDay) + 1 < 10) {
-			nextDay = Integer.parseInt(currentDay) + 1 + "";
-			nextDay = "0" + nextDay;
-
-		} else {
-			nextDay = Integer.parseInt(currentDay) + 1 + "";
-		}
-		return nextDay;
 
 	}
 
@@ -357,60 +295,55 @@ public class Base {
 		return m;
 	}
 
-	public String getFromDate() {
-		int toDate = Integer.parseInt(getCurrentDay());
+	public String getForwardDate(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate thirtyDay = now.plusDays(days);
 
-		String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
-		String[] partsOfToday = getTheLastDayOfMonth(today).toString().split("-");
-		int lastDayOfThisMonth = Integer.parseInt(partsOfToday[2]);
-		int lastMonth = Integer.parseInt(getCurrenMonth()) - 1;
-		String lastMonth1 = lastMonth + "";
-		String lastMonthDate;
-		if ((lastMonth - 1) > 0) {
-			lastMonthDate = getCurrentDay() + "/" + lastMonth1 + "/" + getCurrentYear();
-		} else {
-			lastMonthDate = getCurrentDay() + "/" + "12" + "/" + getCurrentYear();
-		}
-		String[] partsOfPreviousDate = getTheLastDayOfMonth(lastMonthDate).toString().split("-");
-		int lastDayOfPreviousMonth = Integer.parseInt(partsOfPreviousDate[2]);
-		int fromDay = 0;
-		if (lastDayOfThisMonth >= lastDayOfPreviousMonth) {
-			if (toDate <= 30) {
-				fromDay = toDate;
+		int year = thirtyDay.getYear();
 
-			} else {
-				fromDay = toDate - 1;
-			}
+		int month = thirtyDay.getMonthValue();
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
 		} else {
-			fromDay = toDate + 1;
+			month1 = month + "";
 		}
-		String lastMonth2;
-		if (lastDayOfPreviousMonth < 10) {
-			lastMonth2 = "0" + lastMonth;
+		int day = thirtyDay.getDayOfMonth();
+		String day1;
+
+		if (day < 10) {
+			day1 = "0" + day;
 		} else {
-			lastMonth2 = lastMonth + "";
+			day1 = day + "";
 		}
-		String lastDay;
-		if (fromDay < 10) {
-			lastDay = "0" + fromDay;
-		} else {
-			lastDay = fromDay + "";
-		}
-		int currentMonth = Integer.parseInt(getCurrenMonth());
-		int curentYear = Integer.parseInt(getCurrentYear());
-		String year;
-		if (currentMonth == 1) {
-			year = (Integer.parseInt(getCurrentYear()) - 1) + "";
-		} else {
-			year = curentYear + "";
-		}
-		return lastDay + "/" + lastMonth2 + "/" + year;
+		System.out.println(day1 + "/" + month1 + "/" + year);
+		return day1 + "/" + month1 + "/" + year;
 
 	}
 
-	public LocalDate getTheLastDayOfMonth(String date) {
-		LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("d/M/yyyy"));
-		return convertedDate.withDayOfMonth(convertedDate.getMonth().length(convertedDate.isLeapYear()));
+	public String getBackwardDate(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate thirtyDay = now.minusDays(days);
+
+		int year = thirtyDay.getYear();
+
+		int month = thirtyDay.getMonthValue();
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+		int day = thirtyDay.getDayOfMonth();
+		String day1;
+
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+		System.out.println(day1 + "/" + month1 + "/" + year);
+		return day1 + "/" + month1 + "/" + year;
 
 	}
 

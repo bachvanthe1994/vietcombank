@@ -31,7 +31,7 @@ public class Transfer_Money_In_Future_And_Report extends Base {
 	double rate;
 	String[] exchangeRateUSD;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
-	String tommorrowDate = getNextDay() + "/" + getMonth() + "/" + getYear();
+	String tommorrowDate = getForwardDate(1);
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -228,7 +228,7 @@ public class Transfer_Money_In_Future_And_Report extends Base {
 		transStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
 
 		log.info("TC_02_Step_12: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getFromDate());
+		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_02_Step_12: Kiem tra todate hien thi");
 		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
@@ -432,7 +432,7 @@ public class Transfer_Money_In_Future_And_Report extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_02_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -449,7 +449,7 @@ public class Transfer_Money_In_Future_And_Report extends Base {
 		transStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
 
 		log.info("TC_02_Step_12: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getFromDate());
+		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_02_Step_12: Kiem tra todate hien thi");
 		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
