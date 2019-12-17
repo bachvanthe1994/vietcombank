@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.LuckyGiftPageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
@@ -60,5 +61,10 @@ public class PageFactoryManager {
 
 	public static TransferMoneyStatusPageObject getTransferMoneyStatusPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyStatusPageObject(driver);
+	}
+	
+	public static  LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
+		return new LuckyGiftPageObject(driver);
+
 	}
 }
