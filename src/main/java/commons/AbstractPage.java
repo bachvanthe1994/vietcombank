@@ -572,7 +572,6 @@ public class AbstractPage {
 	}
 
 	public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver, String dymanicText) {
-		scrollToText(driver, dymanicText);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
 	}
