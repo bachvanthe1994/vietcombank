@@ -718,7 +718,7 @@ public class AbstractPage {
 
     }
 
-    public String getDynamicTextInTextViewLine2(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+    public String getDynamicTextInTextViewLine(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 	scrollToText(driver, dynamicTextValue);
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
 	return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
