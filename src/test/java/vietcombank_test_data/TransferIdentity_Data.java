@@ -10,6 +10,7 @@ public class TransferIdentity_Data {
 	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
 	public static final String CONNTENT = "Nội dung";
 	public static final String TRANSECTION_NUMBER = "Mã giao dịch";
+	public static final String AMOUNT = "1100";
     }
 
     public class textDataInputForm {
