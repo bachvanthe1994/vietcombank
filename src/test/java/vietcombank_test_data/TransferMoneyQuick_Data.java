@@ -26,7 +26,7 @@ public class TransferMoneyQuick_Data {
 		
 		public static final String CARD_FORM = "0011000000863";
 		public static final String CARD_TO = "0129837294";
-		
+		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT="Lập lệnh thành công";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "3,300";
 		public static final String PAYMENT_BY_OTP_FEE = "5,500";
 		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.12";
@@ -36,5 +36,7 @@ public class TransferMoneyQuick_Data {
 		public static final String TRANSFER_TYPE = "Chuyển tiền nhanh qua số tài khoản";
 
 	}
+	
+	
 	
 }
