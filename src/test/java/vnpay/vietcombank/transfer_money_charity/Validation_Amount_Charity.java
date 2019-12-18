@@ -1,7 +1,9 @@
 package vnpay.vietcombank.transfer_money_charity;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -68,7 +70,7 @@ public class Validation_Amount_Charity extends Base {
 		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
 	
-	@Test
+//	@Test
 	public void TC_02_KiemTraNhapSoTienBang0() {
 //		log.info("TC_02_1_Nhap so 0 vao o So tien ung ho");
 //		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "000", "Thông tin giao dịch", "1");
@@ -78,7 +80,7 @@ public class Validation_Amount_Charity extends Base {
 //		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KiemTraLoaiKyTuNhapSoTien() {
 		String actualAmountMoney;
 		log.info("TC_03_1_Chon tai khoan nguon VND");
@@ -113,7 +115,7 @@ public class Validation_Amount_Charity extends Base {
 		verifyEquals(actualAmountMoney, "5.5");
 	}
 	
-	@Test
+//	@Test
 	public void TC_04_KiemTraKiemTraGioiHanNhapSoTien() {
 		String actualAmountMoney;
 		log.info("TC_04_1_Chon tai khoan nguon VND");
@@ -131,13 +133,13 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
 		log.info("TC_04_4_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "11111111111.11", "Thông tin giao dịch", "1");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "111111111.11", "Thông tin giao dịch", "1");
 	
 		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney.replaceAll("\\D+","").length(), 13);
+		verifyEquals(actualAmountMoney.replaceAll("\\D+","").length(), 11);
 	}
 	
-	@Test
+//	@Test
 	public void TC_05_KiemTraDinhDangSoTienNhap() {
 		String actualAmountMoney;
 		log.info("TC_05_1_Chon tai khoan nguon VND");
@@ -149,6 +151,47 @@ public class Validation_Amount_Charity extends Base {
 		
 		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyTrue(actualAmountMoney.contains(","));
+	}
+	
+	@Test
+	public void TC_06_KiemTraGoiYSoTienVND() {
+		List<String> listActualAmountMoney = new ArrayList<String>();
+		List<String> listExpectAmountMoney = new ArrayList<String>();
+		log.info("TC_06_1_Chon tai khoan nguon VND");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		
+		log.info("TC_06_2_Nhap so tien");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5000", "Thông tin giao dịch", "1");
+		
+		listActualAmountMoney = transferMoneyCharity.getListMoneyIntoSuggestionBox(driver);
+		
+		listExpectAmountMoney.add("50,000 VND");
+		listExpectAmountMoney.add("500,000 VND");
+		listExpectAmountMoney.add("5,000,000 VND");
+		
+		log.info("TC_06_2_Kiem tra so tien goi y");
+		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
+	}
+	
+	@Test
+	public void TC_07_KiemTraGoiYSoTienNgoaiTe() {
+		List<String> listActualAmountMoney = new ArrayList<String>();
+		List<String> listExpectAmountMoney = new ArrayList<String>();
+		log.info("TC_07_1_Chon tai khoan nguon Ngoai te");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		
+		log.info("TC_07_2_Nhap so tien");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "10", "Thông tin giao dịch", "1");
+		
+		listActualAmountMoney = transferMoneyCharity.getListMoneyIntoSuggestionBox(driver);
+		
+		listExpectAmountMoney.add("100 EUR ~ 2,700,600 VND");
+		listExpectAmountMoney.add("1,000 EUR ~ 27,006,000 VND");
+		
+		log.info("TC_07_2_Kiem tra so tien goi y");
+		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
 	}
 	
 	@AfterClass(alwaysRun = true)
