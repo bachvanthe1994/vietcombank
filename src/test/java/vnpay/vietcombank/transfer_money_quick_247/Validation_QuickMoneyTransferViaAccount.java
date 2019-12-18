@@ -16,7 +16,6 @@ import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
-import vietcombank_test_data.TransferMoney_Data;
 
 public class Validation_QuickMoneyTransferViaAccount extends Base {
 	AndroidDriver<AndroidElement> driver;

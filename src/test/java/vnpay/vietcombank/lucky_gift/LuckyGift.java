@@ -15,7 +15,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.LuckyGift_Data;
-import vietcombank_test_data.TransferMoney_Data;
+
 
 public class LuckyGift extends Base {
 	AndroidDriver<AndroidElement> driver;
