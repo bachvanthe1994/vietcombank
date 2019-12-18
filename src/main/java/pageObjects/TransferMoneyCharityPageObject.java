@@ -13,4 +13,5 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 	public long canculateAvailableBalances(long surPlus, long money) {
 		return surPlus - money;
 	}
+	
 }
