@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
@@ -167,9 +168,9 @@ public class Base {
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-
-			softAssertion.assertTrue(condition);
-			softAssertion.assertAll();
+			Assert.assertTrue(condition);
+//			softAssertion.assertTrue(condition);
+//			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -190,8 +191,9 @@ public class Base {
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			softAssertion.assertFalse(condition);
-			softAssertion.assertAll();
+			Assert.assertFalse(condition);
+//			softAssertion.assertFalse(condition);
+//			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -225,8 +227,9 @@ public class Base {
 			} else {
 				log.info("===FAILED===");
 			}
-			softAssertion.assertEquals(actual, expected, "Value is not matching!");
-			softAssertion.assertAll();
+			Assert.assertEquals(actual, expected, "Value is not matching!");
+//			softAssertion.assertEquals(actual, expected, "Value is not matching!");
+//			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
