@@ -19,7 +19,7 @@ import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.TransferMoney_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class TransferMoneyCharity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -138,7 +138,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_01_12_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_01_12_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_01_12_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info.organization);
@@ -319,7 +319,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_12_Kiem tra man hinh Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_03_12_1_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info1.organization);
@@ -498,7 +498,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_05_12_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_05_12_1_Kiem tra chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_05_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
@@ -676,7 +676,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_07_12_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_07_12_1_Kiem tra chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_07_12_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info3.organization);

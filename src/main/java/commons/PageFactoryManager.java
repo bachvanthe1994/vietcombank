@@ -2,7 +2,6 @@ package commons;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.DomesticAirTicketPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -37,21 +36,15 @@ public class PageFactoryManager {
 		return new TransferMoneyObject(driver);
 	}
 
-	public static DomesticAirTicketPageObject getDomesticAirTicketPageObject(AndroidDriver<AndroidElement> driver) {
-		return new DomesticAirTicketPageObject(driver);
-	}
-
 	public static TransferIdentiryPageObject getTransferIdentiryPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferIdentiryPageObject(driver);
 	}
 
-	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(
-			AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyOutSideVCBPageObject(driver);
 	}
 
-	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(
-			AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyCharityPageObject(driver);
 	}
 
@@ -62,8 +55,8 @@ public class PageFactoryManager {
 	public static TransferMoneyStatusPageObject getTransferMoneyStatusPageObject(AndroidDriver<AndroidElement> driver) {
 		return new TransferMoneyStatusPageObject(driver);
 	}
-	
-	public static  LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
+
+	public static LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
 		return new LuckyGiftPageObject(driver);
 
 	}

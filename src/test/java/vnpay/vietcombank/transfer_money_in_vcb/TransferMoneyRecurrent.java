@@ -17,7 +17,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.TransferMoney_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class TransferMoneyRecurrent extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -130,7 +130,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_12_Kiem tra man hinh Lap lenh thanh cong");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
 		log.info("TC_01_12_1_Kiem tra ten nguoi huong thu");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
@@ -231,7 +231,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_12_Kiem tra man hinh Lap lenh thanh cong");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
 		log.info("TC_03_12_1_Kiem tra ten nguoi huong thu");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
@@ -335,7 +335,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_12_Kiem tra man hinh Lap lenh thanh cong");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
 		log.info("TC_05_12_1_Kiem tra ten nguoi huong thu");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
@@ -438,7 +438,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_12_Kiem tra man hinh Lap lenh thanh cong");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoney_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
 		log.info("TC_07_12_1_Kiem tra ten nguoi huong thu");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
