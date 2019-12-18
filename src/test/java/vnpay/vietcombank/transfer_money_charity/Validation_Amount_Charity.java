@@ -3,7 +3,7 @@ package vnpay.vietcombank.transfer_money_charity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openqa.selenium.By;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -27,9 +27,7 @@ public class Validation_Amount_Charity extends Base {
 
 	TransferCharity info = new TransferCharity("0010000000322", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	TransferCharity info1 = new TransferCharity("0011140000647", "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info2 = new TransferCharity("0010000000322", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-	TransferCharity info3 = new TransferCharity("0011140000647", "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-
+	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
 	@BeforeClass
@@ -80,7 +78,7 @@ public class Validation_Amount_Charity extends Base {
 //		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
 
-//	@Test
+	@Test
 	public void TC_03_KiemTraLoaiKyTuNhapSoTien() {
 		String actualAmountMoney;
 		log.info("TC_03_1_Chon tai khoan nguon VND");
@@ -115,7 +113,7 @@ public class Validation_Amount_Charity extends Base {
 		verifyEquals(actualAmountMoney, "5.5");
 	}
 	
-//	@Test
+	@Test
 	public void TC_04_KiemTraKiemTraGioiHanNhapSoTien() {
 		String actualAmountMoney;
 		log.info("TC_04_1_Chon tai khoan nguon VND");
@@ -139,7 +137,7 @@ public class Validation_Amount_Charity extends Base {
 		verifyEquals(actualAmountMoney.replaceAll("\\D+","").length(), 11);
 	}
 	
-//	@Test
+	@Test
 	public void TC_05_KiemTraDinhDangSoTienNhap() {
 		String actualAmountMoney;
 		log.info("TC_05_1_Chon tai khoan nguon VND");
@@ -192,6 +190,65 @@ public class Validation_Amount_Charity extends Base {
 		
 		log.info("TC_07_2_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
+	}
+	
+	@Test
+	public void TC_08_KiemTraHienThiGoiYNhanh() {
+		String actualAmountMoney;
+		List<String> listActualAmountMoney = new ArrayList<String>();
+		List<String> listExpectAmountMoney = new ArrayList<String>();
+		
+		log.info("TC_08_1_Chon tai khoan nguon");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		
+		log.info("TC_08_2_Nhap so tien");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5000", "Thông tin giao dịch", "1");
+		
+		log.info("TC_08_3_Focus ra ngoai o nhap So tien");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
+		
+		log.info("TC_08_4_Kiem tra so tien trong o nhap So tien");
+		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		verifyEquals(actualAmountMoney, "5,000");
+		
+		log.info("TC_08_5_Focus lai vao o nhap So tien");
+		transferMoneyCharity.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		transferMoneyCharity.navigateBack(driver);
+		listActualAmountMoney = transferMoneyCharity.getListMoneyIntoSuggestionBox(driver);
+		listExpectAmountMoney.add("50,000 VND");
+		listExpectAmountMoney.add("500,000 VND");
+		listExpectAmountMoney.add("5,000,000 VND");
+		
+		log.info("TC_08_6_Kiem tra so tien goi y");
+		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
+		
+		log.info("TC_08_7_Chon 1 gia tri trong danh sach goi y");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "50,000 VND");
+		
+		log.info("TC_08_8_Kiem tra so tien trong o nhap So tien");
+		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		verifyEquals(actualAmountMoney, "50,000");
+	}
+	
+	@Test
+	public void TC_09_KiemTraLoaiTien() {
+		String actualCurrency = "";
+		log.info("TC_09_1_Chon tai khoan nguon Ngoai te");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		
+		log.info("TC_09_2_Kiem tra loai tien");
+		actualCurrency = transferMoneyCharity.getTextCurrencyCharity();
+		verifyEquals(actualCurrency, "EUR");
+		
+		log.info("TC_09_3_Chon tai khoan nguon VND");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		
+		log.info("TC_09_4_Kiem tra loai tien");
+		actualCurrency = transferMoneyCharity.getTextCurrencyCharity();
+		verifyEquals(actualCurrency, "VND");
 	}
 	
 	@AfterClass(alwaysRun = true)

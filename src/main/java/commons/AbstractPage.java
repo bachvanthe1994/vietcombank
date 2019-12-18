@@ -27,7 +27,7 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.TransferMoneyCharity;
+import vietcombankUI.TransferMoneyCharityPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
 public class AbstractPage {
@@ -597,6 +597,13 @@ public class AbstractPage {
 
 	}
 
+	public void clickToDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		scrollToText(driver, dynamicTextValue[0]);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+
+	}
+	
 	public void clickToDynamicDropdownAndDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
@@ -729,8 +736,7 @@ public class AbstractPage {
 	}
 
 	public List<String> getListMoneyIntoSuggestionBox(AndroidDriver<AndroidElement> driver){
-//		waitForElementVisible(driver, TransferMoneyCharity.LIST_MONEY_SUGGESTION);
-		return getTextListElements(driver, TransferMoneyCharity.LIST_MONEY_SUGGESTION, TransferMoneyCharity.LIST_MONEY_SUGGESTION_ID);
+		return getTextListElements(driver, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION_ID);
 	} 
 	
 	public String getDynamicTransferTimeAndMoney(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
