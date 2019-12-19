@@ -24,7 +24,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
-	SoftAssert softAssertion = new SoftAssert();
+	SoftAssert softAssertion;
 	protected final Logger log;
 	protected AndroidDriver<AndroidElement> driver;
 	private AndroidDriver<AndroidElement> driver2;
@@ -162,15 +162,15 @@ public class Base {
 	}
 
 	protected boolean checkPassed(boolean condition) {
+		softAssertion = new SoftAssert();
 		boolean pass = true;
 		try {
 			if (condition == true)
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			Assert.assertTrue(condition);
-//			softAssertion.assertTrue(condition);
-//			softAssertion.assertAll();
+			softAssertion.assertTrue(condition);
+			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -185,15 +185,15 @@ public class Base {
 	}
 
 	protected boolean checkFailed(boolean condition) {
+		softAssertion = new SoftAssert();
 		boolean pass = true;
 		try {
 			if (condition == false)
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			Assert.assertFalse(condition);
-//			softAssertion.assertFalse(condition);
-//			softAssertion.assertAll();
+			softAssertion.assertFalse(condition);
+			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -208,6 +208,7 @@ public class Base {
 	}
 
 	protected boolean checkEquals(Object actual, Object expected) {
+		softAssertion = new SoftAssert();
 		boolean pass = true;
 		boolean status;
 		try {
@@ -227,9 +228,9 @@ public class Base {
 			} else {
 				log.info("===FAILED===");
 			}
-			Assert.assertEquals(actual, expected, "Value is not matching!");
-//			softAssertion.assertEquals(actual, expected, "Value is not matching!");
-//			softAssertion.assertAll();
+			
+			softAssertion.assertEquals(actual, expected, "Value is not matching!");
+			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
