@@ -61,6 +61,9 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 		log.info("Before class");
 		login.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("Before class");
+		login.clickToDynamicButton(driver, "CHO PHÉP");
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
