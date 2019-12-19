@@ -18,7 +18,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.LogIn_Data;
 
-public class Validation_Name_Charity extends Base {
+public class Validation_Address_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -26,9 +26,7 @@ public class Validation_Name_Charity extends Base {
 
 	TransferCharity info = new TransferCharity("0010000000322", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	TransferCharity info1 = new TransferCharity("0011140000647", "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info2 = new TransferCharity("0010000000322", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-	TransferCharity info3 = new TransferCharity("0011140000647", "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-
+	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
 	@BeforeClass
@@ -64,43 +62,45 @@ public class Validation_Name_Charity extends Base {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		log.info("TC_01_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyEquals(actualName, "Tên người ủng hộ");
+		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
+		log.info("TC_01_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
+		verifyEquals(actualName, "Địa chỉ người ủng hộ");
 	}
 	
 	@Test
-	public void TC_02_NhapTenNguoiUngHo() {
+	public void TC_02_NhapDiaChiNguoiUngHo() {
 		log.info("TC_02_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.name, "Thông tin giao dịch", "2");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.address, "Thông tin giao dịch", "3");
 		
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		log.info("TC_02_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyEquals(actualName, info.name);
+		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
+		log.info("TC_02_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
+		verifyEquals(actualName, info.address);
 	}
 	
-//	@Test
+	@Test
 	public void TC_03_KiemTraLoaiKyTuNhap() {
 		log.info("TC_03_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "Test!@#$:", "Thông tin giao dịch", "2");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "Test!@#$:", "Thông tin giao dịch", "3");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
+		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
-		log.info("TC_03_2_Kiem tra gia tri trong o Ten nguoi ung ho");
+		log.info("TC_03_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
 		verifyFailure(condition);
+		
 	}
 	
 	@Test
 	public void TC_04_KiemTraGioiHanKyTuNhap() {
 		log.info("TC_04_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "Thông tin giao dịch", "2");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "Thông tin giao dịch", "3");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
+		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
 		int actualNameLength = actualName.length();
 		log.info("TC_04_2_Kiem tra gioi han ky tu nhap");
 		verifyEquals(actualNameLength, 45);
+		
 	}
 	
 	@AfterClass(alwaysRun = true)

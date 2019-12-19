@@ -23,7 +23,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
-	SoftAssert softAssertion = new SoftAssert();
+	SoftAssert softAssertion;
 	protected final Logger log;
 	protected AndroidDriver<AndroidElement> driver;
 	private AndroidDriver<AndroidElement> driver2;
@@ -161,6 +161,7 @@ public class Base {
 	}
 
 	protected boolean checkPassed(boolean condition) {
+		softAssertion = new SoftAssert();
 		boolean pass = true;
 		try {
 			if (condition == true)
@@ -184,6 +185,7 @@ public class Base {
 	}
 
 	protected boolean checkFailed(boolean condition) {
+		softAssertion = new SoftAssert();
 		boolean pass = true;
 		try {
 			if (condition == false)
@@ -206,6 +208,7 @@ public class Base {
 	}
 
 	protected boolean checkEquals(Object actual, Object expected) {
+		softAssertion = new SoftAssert();
 		boolean pass = true;
 		boolean status;
 		try {
