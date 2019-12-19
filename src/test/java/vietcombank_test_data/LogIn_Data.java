@@ -18,8 +18,7 @@ public class LogIn_Data {
 	}
 
 	public class Message {
-		public static final String WELCOME_MESSAGE = "Chào mừng Quý khách đến với ứng dụng" + "\n"
-				+ "VCB-Mobile B@nking của Vietcombank";
+		public static final String WELCOME_MESSAGE = "Chào mừng Quý khách đến với ứng dụng" + "\n" + "VCB-Mobile B@nking của Vietcombank";
 		public static final String CHANGE_PASSWORD_INSTRUCTION = "Quý khách vui lòng đổi mật khẩu mặc định được cung cấp khi đăng ký sử dụng dịch vụ";
 		public static final String INPUT_PASSWORD_MESSAGE = "Quý khách vui lòng nhập mật khẩu đăng nhập để kích hoạt lại dịch vụ.";
 		public static final String OTP_INSTRUCTION = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại";
