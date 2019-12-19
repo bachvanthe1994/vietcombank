@@ -169,9 +169,8 @@ public class Base {
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			Assert.assertTrue(condition);
-//			softAssertion.assertTrue(condition);
-//			softAssertion.assertAll();
+			softAssertion.assertTrue(condition);
+			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -193,9 +192,8 @@ public class Base {
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			Assert.assertFalse(condition);
-//			softAssertion.assertFalse(condition);
-//			softAssertion.assertAll();
+			softAssertion.assertFalse(condition);
+			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -230,9 +228,9 @@ public class Base {
 			} else {
 				log.info("===FAILED===");
 			}
-			Assert.assertEquals(actual, expected, "Value is not matching!");
-//			softAssertion.assertEquals(actual, expected, "Value is not matching!");
-//			softAssertion.assertAll();
+			
+			softAssertion.assertEquals(actual, expected, "Value is not matching!");
+			softAssertion.assertAll();
 		} catch (Throwable e) {
 			;
 			pass = false;
