@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -14,13 +13,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -32,7 +25,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
 	protected final Logger log;
-	private AndroidDriver<AndroidElement> driver;
+	protected AndroidDriver<AndroidElement> driver;
 	private AndroidDriver<AndroidElement> driver2;
 
 	private String workingDir = System.getProperty("user.dir");
@@ -74,8 +67,7 @@ public class Base {
 		driver2.quit();
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url,
-			String appActivities, String appPackage, String appName) throws MalformedURLException {
+	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
 		File file = new File("src/test/resources");
 		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
@@ -115,8 +107,7 @@ public class Base {
 		driver.quit();
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser)
-			throws MalformedURLException {
+	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual ")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
@@ -124,8 +115,7 @@ public class Base {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 		}
 		cap.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
-		System.setProperty("webdriver.chrome.driver",
-				"E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
 		AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		return driver;
@@ -295,35 +285,45 @@ public class Base {
 
 	}
 
-	public String getArriveMonth() {
-		String currentDay = getCurrentDay();
-		String arriveMonth = getCurrenMonthWithout0();
-		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
-			arriveMonth = Integer.parseInt(getCurrenMonth()) + 1 + "";
-		} else if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
-			arriveMonth = "1";
-		}
-
-		return arriveMonth;
-
-	}
-
-	public String getArriveYear() {
+	public String getYear() {
 		String currentDay = getCurrentDay();
 		String arriveYear = getCurrentYear();
 		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
 			arriveYear = Integer.parseInt(getCurrentYear()) + 1 + "";
+		} else {
+			arriveYear = getCurrentYear();
 		}
 		return arriveYear;
 	}
 
+	public String getMonth() {
+		String month;
+		String currentDay = getCurrentDay();
+		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12" & Integer.parseInt(getCurrenMonth()) > 10) {
+			month = Integer.parseInt(getCurrenMonth()) + 1 + "";
+		} else if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() == "12") {
+			month = "01";
+
+		} else {
+			month = getCurrenMonth();
+		}
+		return month;
+	}
+
 	public String getNextDay() {
-		String nextDay = Integer.parseInt(getCurrentDay()) + 1 + "";
+		String nextDay;
 		String currentDay = getCurrentDay();
 		if (currentDay == getTheLastDayOfCurrentMonth() & getCurrenMonth() != "12") {
-			nextDay = "1";
+			nextDay = "01";
+		} else if (Integer.parseInt(currentDay) + 1 < 10) {
+			nextDay = Integer.parseInt(currentDay) + 1 + "";
+			nextDay = "0" + nextDay;
+
+		} else {
+			nextDay = Integer.parseInt(currentDay) + 1 + "";
 		}
 		return nextDay;
+
 	}
 
 	public long convertMoneyToLong(String money, String currency) {
@@ -350,6 +350,63 @@ public class Base {
 		long amount = Long.parseLong(number);
 		String m = String.format("%,d", amount);
 		return m;
+	}
+
+	public String getFromDate() {
+		int toDate = Integer.parseInt(getCurrentDay());
+
+		String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+		String[] partsOfToday = getTheLastDayOfMonth(today).toString().split("-");
+		int lastDayOfThisMonth = Integer.parseInt(partsOfToday[2]);
+		int lastMonth = Integer.parseInt(getCurrenMonth()) - 1;
+		String lastMonth1 = lastMonth + "";
+		String lastMonthDate;
+		if ((lastMonth - 1) > 0) {
+			lastMonthDate = getCurrentDay() + "/" + lastMonth1 + "/" + getCurrentYear();
+		} else {
+			lastMonthDate = getCurrentDay() + "/" + "12" + "/" + getCurrentYear();
+		}
+		String[] partsOfPreviousDate = getTheLastDayOfMonth(lastMonthDate).toString().split("-");
+		int lastDayOfPreviousMonth = Integer.parseInt(partsOfPreviousDate[2]);
+		int fromDay = 0;
+		if (lastDayOfThisMonth >= lastDayOfPreviousMonth) {
+			if (toDate <= 30) {
+				fromDay = toDate;
+
+			} else {
+				fromDay = toDate - 1;
+			}
+		} else {
+			fromDay = toDate + 1;
+		}
+		String lastMonth2;
+		if (lastDayOfPreviousMonth < 10) {
+			lastMonth2 = "0" + lastMonth;
+		} else {
+			lastMonth2 = lastMonth + "";
+		}
+		String lastDay;
+		if (fromDay < 10) {
+			lastDay = "0" + fromDay;
+		} else {
+			lastDay = fromDay + "";
+		}
+		int currentMonth = Integer.parseInt(getCurrenMonth());
+		int curentYear = Integer.parseInt(getCurrentYear());
+		String year;
+		if (currentMonth == 1) {
+			year = (Integer.parseInt(getCurrentYear()) - 1) + "";
+		} else {
+			year = curentYear + "";
+		}
+		return lastDay + "/" + lastMonth2 + "/" + year;
+
+	}
+
+	public LocalDate getTheLastDayOfMonth(String date) {
+		LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("d/M/yyyy"));
+		return convertedDate.withDayOfMonth(convertedDate.getMonth().length(convertedDate.isLeapYear()));
+
 	}
 
 }

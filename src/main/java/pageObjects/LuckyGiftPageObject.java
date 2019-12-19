@@ -4,9 +4,9 @@ import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
-public class TransactionReportPageObject extends AbstractPage {
+public class LuckyGiftPageObject extends AbstractPage {
 
-	public TransactionReportPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public LuckyGiftPageObject(AndroidDriver<AndroidElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
