@@ -30,6 +30,9 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyCharityPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 public class AbstractPage {
 	int longTime = 30;
 	int shortTime = 5;
@@ -476,6 +479,13 @@ public class AbstractPage {
 		}
 	}
 
+	public String removeUnicode(AndroidDriver<AndroidElement> driver, String locator) {
+		  
+		  String temp = Normalizer.normalize(locator, Normalizer.Form.NFD);
+		  Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		  return pattern.matcher(temp).replaceAll("");
+		 }
+	
 	public void sleep(AndroidDriver<AndroidElement> driver, long milisecond) {
 		try {
 			Thread.sleep(milisecond);
