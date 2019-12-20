@@ -61,7 +61,7 @@ public class Validation_Status_Charity extends Base {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
-		transferMoneyCharity.scrollToText(driver, "Hoàn cảnh người người ủng hộ");
+		transferMoneyCharity.scrollToText(driver, "Hoàn cảnh người ủng hộ");
 
 		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
 		log.info("TC_01_2_Kiem tra gia tri trong o Hoan canh nguoi ung ho");
