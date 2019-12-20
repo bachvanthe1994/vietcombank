@@ -4,10 +4,12 @@ public class LogIn_Data {
 	public class Login_Account {
 		public static final String LOCKED_PHONE = "0335059863";
 		public static final String LOCKED_PASS = "1e9978d3";
-		public static final String PHONE = "0335059863";
-		public static final String PHONE_INVALID = "0335059863";
+
+		public static final String PHONE = "0399764702";
+		public static final String PHONE_INVALID = "09047978631";
+		
 		public static final String WRONG_PASSWORD = "18a9713e";
-		public static final String NEW_PASSWORD = "Abc12345";
+		public static final String NEW_PASSWORD = "aaaa1111";
 		public static final String OTP = "123456";
 		public static final String INVALID_PASSWORD = "123456a  @ABC";
 		public static final String NULL = "";
@@ -16,8 +18,7 @@ public class LogIn_Data {
 	}
 
 	public class Message {
-		public static final String WELCOME_MESSAGE = "Chào mừng Quý khách đến với ứng dụng" + "\n"
-				+ "VCB-Mobile B@nking của Vietcombank";
+		public static final String WELCOME_MESSAGE = "Chào mừng Quý khách đến với ứng dụng" + "\n" + "VCB-Mobile B@nking của Vietcombank";
 		public static final String CHANGE_PASSWORD_INSTRUCTION = "Quý khách vui lòng đổi mật khẩu mặc định được cung cấp khi đăng ký sử dụng dịch vụ";
 		public static final String INPUT_PASSWORD_MESSAGE = "Quý khách vui lòng nhập mật khẩu đăng nhập để kích hoạt lại dịch vụ.";
 		public static final String OTP_INSTRUCTION = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại";
