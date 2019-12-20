@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
@@ -24,43 +23,39 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
-	SoftAssert softAssertion;
-	protected final Logger log;
-	protected AndroidDriver<AndroidElement> driver;
-	private AndroidDriver<AndroidElement> driver2;
+    SoftAssert softAssertion;
+    protected final Logger log;
+    protected AndroidDriver<AndroidElement> driver;
+    private AndroidDriver<AndroidElement> driver2;
 
-	private String workingDir = System.getProperty("user.dir");
-	public AppiumDriverLocalService service;
+    private String workingDir = System.getProperty("user.dir");
+    public AppiumDriverLocalService service;
 
-	protected Base() {
-		log = Logger.getLogger(getClass());
+    protected Base() {
+	log = Logger.getLogger(getClass());
 
-	}
+    }
 
-	public AndroidDriver<AndroidElement> getDriver() {
-		return driver;
+    public AndroidDriver<AndroidElement> getDriver() {
+	return driver;
 
-	}
+    }
 
-	@BeforeSuite
-	public void deleteAllFile() {
-		System.out.println("-----------START DELETE ALL FILE -------");
-		deleteAllFileInFolder();
-		System.out.println("-----------END DELETE ALL FILE -------");
-	}
+    @BeforeSuite
+    public void deleteAllFile() {
+	System.out.println("-----------START DELETE ALL FILE -------");
+	deleteAllFileInFolder();
+	System.out.println("-----------END DELETE ALL FILE -------");
+    }
 
-	public void deleteAllFileInFolder() {
-		try {
-			String pathFolderDownload = workingDir + "//ReportNGScreenShots";
-			File file = new File(pathFolderDownload);
-			File[] listOfFiles = file.listFiles();
-			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].isFile()) {
-					new File(listOfFiles[i].toString()).delete();
-				}
-			}
-		} catch (Exception e) {
-			System.out.print(e.getMessage());
+    public void deleteAllFileInFolder() {
+	try {
+	    String pathFolderDownload = workingDir + "//ReportNGScreenShots";
+	    File file = new File(pathFolderDownload);
+	    File[] listOfFiles = file.listFiles();
+	    for (int i = 0; i < listOfFiles.length; i++) {
+		if (listOfFiles[i].isFile()) {
+		    new File(listOfFiles[i].toString()).delete();
 		}
 	    }
 	} catch (Exception e) {
@@ -167,13 +162,13 @@ public class Base {
     }
 
     protected boolean checkPassed(boolean condition) {
+	softAssertion = new SoftAssert();
 	boolean pass = true;
 	try {
 	    if (condition == true)
 		log.info("===PASSED===");
 	    else
 		log.info("===FAILED===");
-
 	    softAssertion.assertTrue(condition);
 	    softAssertion.assertAll();
 	} catch (Throwable e) {
@@ -190,6 +185,7 @@ public class Base {
     }
 
     protected boolean checkFailed(boolean condition) {
+	softAssertion = new SoftAssert();
 	boolean pass = true;
 	try {
 	    if (condition == false)
@@ -204,25 +200,42 @@ public class Base {
 	    VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 	    Reporter.getCurrentTestResult().setThrowable(e);
 	}
+	return pass;
+    }
 
-	protected boolean checkPassed(boolean condition) {
-		softAssertion = new SoftAssert();
-		boolean pass = true;
-		try {
-			if (condition == true)
-				log.info("===PASSED===");
-			else
-				log.info("===FAILED===");
-			softAssertion.assertTrue(condition);
-			softAssertion.assertAll();
-		} catch (Throwable e) {
-			;
-			pass = false;
-			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-			Reporter.getCurrentTestResult().setThrowable(e);
-		}
-		return pass;
+    protected boolean verifyFailure(boolean condition) {
+	return checkFailed(condition);
+    }
 
+    protected boolean checkEquals(Object actual, Object expected) {
+	softAssertion = new SoftAssert();
+	boolean pass = true;
+	boolean status;
+	try {
+	    if (actual instanceof String && expected instanceof String) {
+		actual = actual.toString().trim();
+		log.info("Actual = " + actual);
+		expected = expected.toString().trim();
+		log.info("Expected = " + expected);
+		status = (actual.equals(expected));
+	    } else {
+		status = (actual == expected);
+	    }
+
+	    log.info("Compare value = " + status);
+	    if (status) {
+		log.info("===PASSED===");
+	    } else {
+		log.info("===FAILED===");
+	    }
+
+	    softAssertion.assertEquals(actual, expected, "Value is not matching!");
+	    softAssertion.assertAll();
+	} catch (Throwable e) {
+	    ;
+	    pass = false;
+	    VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+	    Reporter.getCurrentTestResult().setThrowable(e);
 	}
 	return pass;
     }
@@ -241,26 +254,7 @@ public class Base {
 	    return day + "";
 	}
 
-
-	protected boolean checkFailed(boolean condition) {
-		softAssertion = new SoftAssert();
-		boolean pass = true;
-		try {
-			if (condition == false)
-				log.info("===PASSED===");
-			else
-				log.info("===FAILED===");
-			softAssertion.assertFalse(condition);
-			softAssertion.assertAll();
-		} catch (Throwable e) {
-			;
-			pass = false;
-			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-			Reporter.getCurrentTestResult().setThrowable(e);
-		}
-		return pass;
-	}
-
+    }
 
     public static String getCurrenMonth() {
 	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
@@ -271,54 +265,52 @@ public class Base {
 	} else {
 	    return month + "";
 	}
+    }
 
-	protected boolean checkEquals(Object actual, Object expected) {
-		softAssertion = new SoftAssert();
-		boolean pass = true;
-		boolean status;
-		try {
-			if (actual instanceof String && expected instanceof String) {
-				actual = actual.toString().trim();
-				log.info("Actual = " + actual);
-				expected = expected.toString().trim();
-				log.info("Expected = " + expected);
-				status = (actual.equals(expected));
-			} else {
-				status = (actual == expected);
-			}
+    public static String getCurrentYear() {
+	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
+	return nowUTC.getYear() + "";
 
-			log.info("Compare value = " + status);
-			if (status) {
-				log.info("===PASSED===");
-			} else {
-				log.info("===FAILED===");
-			}
-			
-			softAssertion.assertEquals(actual, expected, "Value is not matching!");
-			softAssertion.assertAll();
-		} catch (Throwable e) {
-			;
-			pass = false;
-			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-			Reporter.getCurrentTestResult().setThrowable(e);
-		}
-		return pass;
-	}
+    }
 
-	protected boolean verifyEquals(Object actual, Object expected) {
-		return checkEquals(actual, expected);
-	}
+    public long convertMoneyToLong(String money, String currency) {
+	money = money.replaceAll(" " + currency, "");
+	money = money.replaceAll(",", "");
+	long m = Long.parseLong(money);
+	return m;
+    }
 
-	public static String getCurrentDay() {
-		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
-		int day = nowUTC.getDayOfMonth();
-		if (day < 10) {
-			String day1 = "0" + day;
-			return day1;
-		} else {
-			return day + "";
-		}
+    public double convertMoneyToDouble(String money, String currency) {
+	money = money.replaceAll(" " + currency, "");
+	money = money.replaceAll(",", "");
+	double amount = Double.parseDouble(money);
+	return amount;
+    }
 
+    public String addCommasToDouble(String number) {
+	double amount = Double.parseDouble(number);
+	String m = String.format("%,.2f", amount);
+	return m;
+    }
+
+    public static String addCommasToLong(String number) {
+	long amount = Long.parseLong(number);
+	String m = String.format("%,d", amount);
+	return m;
+    }
+
+    public String getForwardDate(long days) {
+	LocalDate now = LocalDate.now();
+	LocalDate thirtyDay = now.plusDays(days);
+
+	int year = thirtyDay.getYear();
+
+	int month = thirtyDay.getMonthValue();
+	String month1;
+	if (month < 10) {
+	    month1 = "0" + month;
+	} else {
+	    month1 = month + "";
 	}
 	int day = thirtyDay.getDayOfMonth();
 	String day1;
