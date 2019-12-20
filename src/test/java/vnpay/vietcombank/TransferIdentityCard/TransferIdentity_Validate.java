@@ -80,7 +80,7 @@ public class TransferIdentity_Validate extends Base {
 	verifyEquals(beneficiary, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 
 	log.info("TC_02_STEP_2: nhap ten nguoi thu huong");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người hưởng");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người hưởng");
 
 	log.info("TC_02_STEP_3: lay ten nguoi thu huong vua nhap");
 	String beneficiaryInput = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME);
@@ -88,15 +88,17 @@ public class TransferIdentity_Validate extends Base {
 	log.info("TC_02_STEP_4: kiem tra hien thi ten vua nhap");
 	verifyEquals(beneficiaryInput, TransferIdentity_Data.textDataInputForm.USER_NAME);
 
-	log.info("TC_02_STEP_5: nhap ten nguoi thu huong gom ki tu so");
-	trasferPage.inputToDynamicInputBox(driver, "hoangkm123", "Tên người hưởng");
-//
-//	log.info("TC_02_STEP_6: lay ten nguoi thu huong vua nhap");
-//	String beneficiaryInputNumber = trasferPage.getTextDynamicTextInInputBox(driver, "hoangkm123");
-//
-//	log.info("TC_02_STEP_4: kiem tra hien thi ten vua nhap");
-//	verifyEquals(beneficiaryInputNumber, "hoangkm123");
+	trasferPage.navigateBack(driver);
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 
+	log.info("TC_02_STEP_5: nhap ten nguoi thu huong gom ki tu so");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, "hoangkm123", "Hoangkm");
+
+	log.info("TC_02_STEP_6: lay ten nguoi thu huong vua nhap");
+	String beneficiaryInputNumber = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
+
+	log.info("TC_02_STEP_7: kiem tra hien thi ten vua nhap");
+	verifyEquals(beneficiaryInputNumber, "hoangkm123");
     }
 
     @AfterClass(alwaysRun = true)

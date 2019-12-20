@@ -3,6 +3,7 @@ package pageObjects;
 import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferIdentityPageUIs;
 
 public class TransferIdentiryPageObject extends AbstractPage {
@@ -55,12 +56,28 @@ public class TransferIdentiryPageObject extends AbstractPage {
 	sendKeyToElement(driver, TransferIdentityPageUIs.ISSUED_BY, inputValue);
     }
 
-    public String getDynamicAmountLabelConvertToLong(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+    public String getDynamicAmountLabelConvertVNDToLong(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 	String moneyString = getDynamicAmountLabel(driver, dynamicTextValue);
 	moneyString = moneyString.replaceAll("Phí: ", "");
 	moneyString = moneyString.replaceAll(",", "");
 	moneyString = moneyString.replaceAll("VND/giao dịch", "");
 	return moneyString;
+
+    }
+
+    public String getDynamicAmountLabelConverEURToLong(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	String moneyString = getDynamicAmountLabel(driver, dynamicTextValue);
+	moneyString = moneyString.replaceAll("Phí: ", "");
+	moneyString = moneyString.replaceAll(",", "");
+	moneyString = moneyString.replaceAll("EUR/giao dịch", "");
+	return moneyString;
+
+    }
+
+    public void inputToDynamicInputBoxUsedValidate(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	scrollToText(driver, dynamicTextValue);
+	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
 
     }
 }
