@@ -46,8 +46,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String PASSWORD_FEE = "1,000";
 		public static final String TRANSFER_AMOUNT = "20000";
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "1";
-		public static final String USD_SMS_OTP_FEE = "0.03";
-		public static final String EUR_SMS_OTP_FEE = "0.04";
+		public static final String USD_PASSWORD_FEE = "0.03";
+		public static final String EUR_PASSWORD_FEE = "0.04";
 
 	}
 }

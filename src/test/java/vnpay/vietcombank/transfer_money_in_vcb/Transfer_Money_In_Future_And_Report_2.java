@@ -72,7 +72,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_01_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKhau() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -91,6 +91,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_01_Step_05: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_01_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -101,6 +102,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_01_Step_08: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_01_Step_09: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -190,6 +192,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_01_Step_38: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_01_Step_39: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -203,6 +206,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_01_Step_42: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_01_Step_43: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -212,7 +216,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(beforeBalanceAmountOfAccount2, afterBalanceAmountOfAccount2);
 	}
 
-//	@Test
+	@Test
 	public void TC_02_KiemTraTrạngThaiLenhChuyenTienCuaGiaoDichTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucOTP() {
 		log.info("TC_02_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -283,7 +287,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 	}
 
-//	@Test
+	@Test
 	public void TC_03_HuyLenhGiaoDichTuongLaiXacThucBangMatKhau() {
 
 		log.info("TC_03_Step_01: Click Huy Lenh");
@@ -318,7 +322,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangMatKhau() {
 
 		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
@@ -337,6 +341,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_04_Step_05: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_04_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -347,6 +352,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_04_Step_09: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_04_Step_09: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -442,6 +448,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_04_Step_39: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_04_Step_40: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -455,6 +462,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_04_Step_43: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_04_Step_44: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -465,7 +473,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_05_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangMatKhau() {
 		log.info("TC_05_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -537,7 +545,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_06_Step_01: Click Huy Lenh");
@@ -591,6 +599,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_07_Step_05: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_07_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -601,6 +610,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_07_Step_08: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_07_Step_09: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -650,7 +660,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_07_Step_24: Kiem tra so tien phi hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (TransferMoneyInVCB_Data.InputDataInFutureForPassword.USD_SMS_OTP_FEE + " USD"));
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (TransferMoneyInVCB_Data.InputDataInFutureForPassword.USD_PASSWORD_FEE + " USD"));
 
 		log.info("TC_07_Step_25: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -691,6 +701,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_07_Step_38: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_07_Step_39: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -704,6 +715,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_07_Step_42: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_07_Step_43: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -821,7 +833,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangMatKhau() {
 
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
@@ -840,6 +852,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_10_Step_05: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_10_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -850,6 +863,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_10_Step_08: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_10_Step_09: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -862,7 +876,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));
 
 		log.info("TC_10_Step_12: Nhap so tien chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER, "Số tiền");
 
 		log.info("TC_10_Step_13: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
@@ -886,7 +900,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2));
 
 		log.info("TC_10_Step_20: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền"), (TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR");
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToDouble(TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR");
 
 		log.info("TC_10_Step_21: Kiem tra Ngay hieu luc hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Ngày hiệu lực"), tommorrowDate);
@@ -905,13 +919,13 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_10_Step_26: Kiem tra so tien phi hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (TransferMoneyInVCB_Data.InputDataInFutureForOTP.EUR_SMS_OTP_FEE + " EUR"));
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (TransferMoneyInVCB_Data.InputDataInFutureForPassword.EUR_PASSWORD_FEE + " EUR"));
 
 		log.info("TC_10_Step_27: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_10_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -920,7 +934,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER));
 
 		log.info("TC_10_Step_31: Kiem tra so tien chuyen");
-		verifyEquals(transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "3"), (TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR");
+		verifyEquals(transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "3"), addCommasToDouble(TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR");
 
 		log.info("TC_10_Step_32: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
@@ -946,6 +960,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_10_Step_40: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_10_Step_41: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -959,6 +974,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_10_Step_44: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_10_Step_45: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -969,7 +985,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_11_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangMatKhau() {
 		log.info("TC_11_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1010,7 +1026,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_11_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
+		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
 
 		log.info("TC_11_Step 14: click vao giao dich");
 		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
@@ -1025,7 +1041,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
 
 		log.info("TC_11_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
+		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
 
 		log.info("TC_11_Step 19: Kiem tra ngay hieu luc");
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Ngày hiệu lực"), tommorrowDate);
@@ -1041,7 +1057,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_12_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_12_Step_01: Click Huy Lenh");
@@ -1076,7 +1092,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_13_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKhau() {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -1094,6 +1110,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_05: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_13_Step_06: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1103,7 +1120,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_13_Step_08: Nhap so tien chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_13_Step_09: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
@@ -1121,7 +1138,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
 
 		log.info("TC_13_Step_14: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền"), (addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT)) + " VND");
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền"), (addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT)) + " VND");
 
 		log.info("TC_13_Step_15: Kiem tra phuong thuc thanh toan phi bang OTP");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -1136,13 +1153,13 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_13_Step_19: Kiem tra so tien phi hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER + " VND");
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (TransferMoneyInVCB_Data.InputDataInFutureForPassword.PASSWORD_FEE) + " VND");
 
 		log.info("TC_13_Step_20: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_13_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_13_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1173,6 +1190,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_31: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_13_Step_32: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1183,7 +1201,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_14_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraEURVaXacThucBangMatKhau() {
 		log.info("TC_14_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1224,7 +1242,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_14_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_14_Step 14: click vao giao dich");
 		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
@@ -1239,7 +1257,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_NAME);
 
 		log.info("TC_14_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_14_Step 19: Kiem tra ngay hieu luc");
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Ngày hiệu lực"), tommorrowDate);
@@ -1255,7 +1273,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_15_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_15_Step_01: Click Huy Lenh");
@@ -1290,7 +1308,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_16_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangMatKhau() {
 		log.info("TC_16_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -1308,6 +1326,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_16_Step_05: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_16_Step_06: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1317,7 +1336,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_16_Step_08: Nhap so tien chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_16_Step_09: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
@@ -1341,9 +1360,9 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_ACCOUNT));
 
 		log.info("TC_16_Step_14: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền"), (addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT)) + " VND");
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền"), (addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT)) + " VND");
 
-		log.info("TC_16_Step_15: Kiem tra nguoi thanh toan phi chuyen bang OTP");
+		log.info("TC_16_Step_15: Kiem tra nguoi nhan thanh toan phi chuyen bang Mat Khau");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
 
 		log.info("TC_16_Step_16: Kiem tra noi dung hien thi");
@@ -1356,13 +1375,13 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_16_Step_19: Kiem tra so tien phi hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER + " VND");
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputDataInFutureForPassword.PASSWORD_FEE + " VND");
 
 		log.info("TC_16_Step_20: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_16_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_16_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1393,6 +1412,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_16_Step_31: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_16_Step_32: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1403,7 +1423,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_17_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangMatKhau() {
 		log.info("TC_17_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1444,7 +1464,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_17_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_17_Step 14: click vao giao dich");
 		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
@@ -1459,7 +1479,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_NAME);
 
 		log.info("TC_17_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_17_Step 19: Kiem tra ngay hieu luc");
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, "Ngày hiệu lực"), tommorrowDate);
@@ -1475,7 +1495,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_18_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_18_Step_01: Click Huy Lenh");
