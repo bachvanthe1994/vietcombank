@@ -17,7 +17,9 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
+import vietcombank_test_data.TransferMoneyStatus_Data;
 
 public class TransferMoneyRecurrent extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -25,14 +27,14 @@ public class TransferMoneyRecurrent extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private TransferMoneyStatusPageObject transferStatus;
 	private HomePageObject homePage;
+	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+	private String transferTime;
+	private String transactionNumber;
 	
 	TransferInVCBRecurrent info = new TransferInVCBRecurrent("0010000000322", "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
 	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent("0011140000647", "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
 	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent("0010000000322", "0010000000318", "1", "Tháng", "", "", "500000", "Người chuyển trả", "test", "Mật khẩu đăng nhập");
 	TransferInVCBRecurrent info3 = new TransferInVCBRecurrent("0011140000647", "0010000000318", "2", "Tháng", "", "", "10", "Người nhận trả", "test", "Mật khẩu đăng nhập");
-	TransferInVCBRecurrent info4 = new TransferInVCBRecurrent("0010000000322", "0010000000318", "1", "Năm", "", "", "500000", "Người chuyển trả", "test", "Mật khẩu đăng nhập");
-	TransferInVCBRecurrent info5 = new TransferInVCBRecurrent("0011140000647", "0010000000318", "2", "Năm", "", "", "10", "Người nhận trả", "test", "Mật khẩu đăng nhập");
-
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
@@ -131,9 +133,12 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_01_12_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		
+		transferTime = transferRecurrent.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT, "4");
+		transactionNumber = transferRecurrent.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_12_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
 
 		log.info("TC_01_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.destinationAccount);
@@ -148,6 +153,9 @@ public class TransferMoneyRecurrent extends Base {
 	
 	@Test
 	public void TC_02_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
+		String startDate = getForwardDate(1);
+		String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));
+		
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 		
 		log.info("TC_02_1: Click  nut Back");
@@ -160,7 +168,61 @@ public class TransferMoneyRecurrent extends Base {
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		
-		log.info("TC_02_4: Click  nut Back");
+		log.info("TC_02_04: Kiem tra from date hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+
+		log.info("TC_02_05: Kiem tra todate hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+
+		log.info("TC_02_06: Kiem tra Note hien thi");
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+
+		log.info("TC_02_07: Click Tim Kiem");
+		transferStatus.clickToDynamicButton(driver, "Tìm kiếm");
+		
+		log.info("TC_02_08: Kiem tra ngay tao giao dich hien thi");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_02_9: Kiem tra thoi gian tao dao dich");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_02_10: Kiem tra nguoi nhan");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_02_11: Kiem tra trang thai giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+
+		log.info("TC_02_12: Kiem tra so tien giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(info.money) + " VND");
+
+		log.info("TC_02_13: click vao giao dich");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_02_14: Kiem tra ngay giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_02_15: Kiem tra thoi gian tao giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_02_16: Kiem tra ten nguoi huong hien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_02_17: Kiem tra so tien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info.money) + " VND");
+
+		log.info("TC_02_18: Kiem tra tan suat");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info.frequencyNumber + " " + info.frequencyCategory + "/ lần");
+		
+		log.info("TC_02_19: Kiem ngay bat dau");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
+
+		log.info("TC_02_20: Kiem ngay ket thuc");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_02_21: Click  nut Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
+		
+		log.info("TC_02_22: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
 
@@ -232,9 +294,12 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_03_12_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		
+		transferTime = transferRecurrent.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT, "4");
+		transactionNumber = transferRecurrent.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_03_12_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
 
 		log.info("TC_03_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info1.destinationAccount);
@@ -252,7 +317,8 @@ public class TransferMoneyRecurrent extends Base {
 
 	@Test
 	public void TC_04_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
-		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		String startDate = getForwardDate(1);
+		String endDate = getForwardDate(1 + Integer.parseInt(info1.frequencyNumber));
 		
 		log.info("TC_04_1: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -264,7 +330,61 @@ public class TransferMoneyRecurrent extends Base {
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		
-		log.info("TC_04_4: Click  nut Back");
+		log.info("TC_04_04: Kiem tra from date hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+
+		log.info("TC_04_05: Kiem tra todate hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+
+		log.info("TC_04_06: Kiem tra Note hien thi");
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+
+		log.info("TC_04_07: Click Tim Kiem");
+		transferStatus.clickToDynamicButton(driver, "Tìm kiếm");
+		
+		log.info("TC_04_08: Kiem tra ngay tao giao dich hien thi");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_04_9: Kiem tra thoi gian tao dao dich");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_04_10: Kiem tra nguoi nhan");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_04_11: Kiem tra trang thai giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+
+		log.info("TC_04_12: Kiem tra so tien giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), info1.money + " EUR");
+
+		log.info("TC_04_13: click vao giao dich");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_04_14: Kiem tra ngay giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_04_15: Kiem tra thoi gian tao giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_04_16: Kiem tra ten nguoi huong hien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_04_17: Kiem tra so tien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), info1.money + " EUR");
+
+		log.info("TC_04_18: Kiem tra tan suat");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
+		
+		log.info("TC_04_19: Kiem ngay bat dau");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
+
+		log.info("TC_04_20: Kiem ngay ket thuc");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_04_21: Click  nut Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
+		
+		log.info("TC_04_22: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
 	
@@ -337,8 +457,11 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_05_12_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
+		transferTime = transferRecurrent.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT, "4");
+		transactionNumber = transferRecurrent.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
+		
 		log.info("TC_05_12_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
 
 		log.info("TC_05_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info2.destinationAccount);
@@ -356,6 +479,9 @@ public class TransferMoneyRecurrent extends Base {
 
 	@Test
 	public void TC_06_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Thang_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhau() {
+		String startDate = getForwardDate(1);
+		String endDate = getForwardMonthAndForwardDay(Integer.parseInt(1 + info2.frequencyNumber), 1);
+		
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 		
 		log.info("TC_06_1: Click  nut Back");
@@ -368,7 +494,61 @@ public class TransferMoneyRecurrent extends Base {
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		
-		log.info("TC_06_4: Click  nut Back");
+		log.info("TC_06_04: Kiem tra from date hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+
+		log.info("TC_06_05: Kiem tra todate hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+
+		log.info("TC_06_06: Kiem tra Note hien thi");
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+
+		log.info("TC_06_07: Click Tim Kiem");
+		transferStatus.clickToDynamicButton(driver, "Tìm kiếm");
+		
+		log.info("TC_06_08: Kiem tra ngay tao giao dich hien thi");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_06_9: Kiem tra thoi gian tao dao dich");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_06_10: Kiem tra nguoi nhan");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_06_11: Kiem tra trang thai giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+
+		log.info("TC_06_12: Kiem tra so tien giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(info2.money) + " VND");
+
+		log.info("TC_06_13: click vao giao dich");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_06_14: Kiem tra ngay giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_06_15: Kiem tra thoi gian tao giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_06_16: Kiem tra ten nguoi huong hien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_06_17: Kiem tra so tien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info2.money) + " VND");
+
+		log.info("TC_06_18: Kiem tra tan suat");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
+		
+		log.info("TC_06_19: Kiem ngay bat dau");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
+
+		log.info("TC_06_20: Kiem ngay ket thuc");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_06_21: Click  nut Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
+		
+		log.info("TC_06_22: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
 	
@@ -440,8 +620,11 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_07_12_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
+		transferTime = transferRecurrent.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT, "4");
+		transactionNumber = transferRecurrent.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
+		
 		log.info("TC_07_12_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), "NGO TRI NAM");
 
 		log.info("TC_07_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info3.destinationAccount);
@@ -459,19 +642,74 @@ public class TransferMoneyRecurrent extends Base {
 
 	@Test
 	public void TC_08_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
-		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		String startDate = getForwardDate(1);
+		String endDate = getForwardMonthAndForwardDay(1 + Integer.parseInt(info2.frequencyNumber), 1);
 		
-		log.info("TC_06_1: Click  nut Back");
+		log.info("TC_08_1: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
-		log.info("TC_06_2: Click Trang thai lenh chuyen tien");
+		log.info("TC_08_2: Click Trang thai lenh chuyen tien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 		
-		log.info("TC_06_3: Chon loai giao dich");
+		log.info("TC_08_3: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 		
-		log.info("TC_06_4: Click  nut Back");
+		log.info("TC_08_04: Kiem tra from date hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+
+		log.info("TC_08_05: Kiem tra todate hien thi");
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+
+		log.info("TC_08_06: Kiem tra Note hien thi");
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+
+		log.info("TC_08_07: Click Tim Kiem");
+		transferStatus.clickToDynamicButton(driver, "Tìm kiếm");
+		
+		log.info("TC_08_08: Kiem tra ngay tao giao dich hien thi");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_08_9: Kiem tra thoi gian tao dao dich");
+		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_08_10: Kiem tra nguoi nhan");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_08_11: Kiem tra trang thai giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+
+		log.info("TC_08_12: Kiem tra so tien giao dich");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), info1.money + " EUR");
+
+		log.info("TC_08_13: click vao giao dich");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_08_14: Kiem tra ngay giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
+
+		log.info("TC_08_15: Kiem tra thoi gian tao giao dich hien thi");
+		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").split(" ")[0].equals(transferTime.split(" ")[3]));
+
+		log.info("TC_08_16: Kiem tra ten nguoi huong hien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME);
+
+		log.info("TC_08_17: Kiem tra so tien thi");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), info3.money + " EUR");
+
+		log.info("TC_08_18: Kiem tra tan suat");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
+		
+		log.info("TC_08_19: Kiem ngay bat dau");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
+
+		log.info("TC_08_20: Kiem ngay ket thuc");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_08_21: Click  nut Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
+		
+		log.info("TC_08_24: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
 	

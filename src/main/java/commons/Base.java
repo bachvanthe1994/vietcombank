@@ -329,7 +329,7 @@ public class Base {
 		return day1 + "/" + month1 + "/" + year;
 
 	}
-
+	
 	public String getBackwardDate(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate thirtyDay = now.minusDays(days);
@@ -353,6 +353,40 @@ public class Base {
 		}
 		System.out.println(day1 + "/" + month1 + "/" + year);
 		return day1 + "/" + month1 + "/" + year;
+
+	}
+	
+	public String getForwardMonthAndForwardDay(long months, long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate dayLocal = now.plusDays(days);
+		LocalDate monthLocal = now.plusDays(months);
+
+		int year = dayLocal.getYear();
+		int month = monthLocal.getMonthValue();
+		int day = dayLocal.getDayOfMonth();
+		
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+		
+		String day1;
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+		
+		String year1;
+		if (month == 1) {
+			year1 = year + 1 + "";
+		} else {
+			year1 = year + "";
+		}
+
+		return day1 + "/" + month1 + "/" + year1;
 
 	}
 
