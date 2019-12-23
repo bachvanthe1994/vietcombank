@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
@@ -129,7 +128,13 @@ public class Base {
 			service = AppiumDriverLocalService.buildDefaultService();
 			service.start();
 		} else {
-			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+			String osName = System.getProperty("os.name").toLowerCase();
+			if (osName.toLowerCase().contains("window")) {
+				Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+			} else if (osName.contains("mac")) {
+				Runtime.getRuntime().exec("/usr/bin/killall -KILL node");
+
+			}
 			Thread.sleep(2000);
 			service = AppiumDriverLocalService.buildDefaultService();
 			service.start();
@@ -228,7 +233,7 @@ public class Base {
 			} else {
 				log.info("===FAILED===");
 			}
-			
+
 			softAssertion.assertEquals(actual, expected, "Value is not matching!");
 			softAssertion.assertAll();
 		} catch (Throwable e) {
