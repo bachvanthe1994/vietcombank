@@ -480,7 +480,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_06_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Thang_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhau() {
 		String startDate = getForwardDate(1);
-		String endDate = getForwardMonthAndForwardDay(Integer.parseInt(1 + info2.frequencyNumber), 1);
+		String endDate = getForwardMonthAndForwardDay(Long.parseLong(info2.frequencyNumber), 1);
 		
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 		
@@ -643,7 +643,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_08_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
 		String startDate = getForwardDate(1);
-		String endDate = getForwardMonthAndForwardDay(1 + Integer.parseInt(info3.frequencyNumber), 1);
+		String endDate = getForwardMonthAndForwardDay(Long.parseLong(info3.frequencyNumber), 1);
 		
 		log.info("TC_08_1: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
