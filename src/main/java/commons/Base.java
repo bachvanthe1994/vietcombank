@@ -363,6 +363,7 @@ public class Base {
 
 		int year = dayLocal.getYear();
 		int month = monthLocal.getMonthValue();
+		int monthNow = now.getMonthValue();
 		int day = dayLocal.getDayOfMonth();
 		
 		String month1;
@@ -380,7 +381,7 @@ public class Base {
 		}
 		
 		String year1;
-		if (month == 1) {
+		if (month < monthNow) {
 			year1 = year + 1 + "";
 		} else {
 			year1 = year + "";
