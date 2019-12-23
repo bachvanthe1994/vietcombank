@@ -359,7 +359,7 @@ public class Base {
 	public String getForwardMonthAndForwardDay(long months, long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate dayLocal = now.plusDays(days);
-		LocalDate monthLocal = now.plusDays(months);
+		LocalDate monthLocal = now.plusMonths(months);
 
 		int year = dayLocal.getYear();
 		int month = monthLocal.getMonthValue();
