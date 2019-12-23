@@ -643,7 +643,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_08_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
 		String startDate = getForwardDate(1);
-		String endDate = getForwardMonthAndForwardDay(1 + Integer.parseInt(info2.frequencyNumber), 1);
+		String endDate = getForwardMonthAndForwardDay(1 + Integer.parseInt(info3.frequencyNumber), 1);
 		
 		log.info("TC_08_1: Click  nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -680,7 +680,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_08_12: Kiem tra so tien giao dich");
-		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), info1.money + " EUR");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), info3.money + " EUR");
 
 		log.info("TC_08_13: click vao giao dich");
 		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
