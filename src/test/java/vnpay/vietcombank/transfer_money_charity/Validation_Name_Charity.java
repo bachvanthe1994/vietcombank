@@ -17,6 +17,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyCharity_Data;
 
 public class Validation_Name_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -83,19 +84,19 @@ public class Validation_Name_Charity extends Base {
 //	@Test
 	public void TC_03_KiemTraLoaiKyTuNhap() {
 		log.info("TC_03_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "Test!@#$:", "Thông tin giao dịch", "2");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_HAS_SPECIAL_CHARACTERS, "Thông tin giao dịch", "2");
 		
 		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_03_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyFailure(condition);
+		verifyTrue(condition);
 	}
 	
 	@Test
 	public void TC_04_KiemTraGioiHanKyTuNhap() {
 		log.info("TC_04_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "Thông tin giao dịch", "2");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_OVER_50_CHARACTERS, "Thông tin giao dịch", "2");
 		
 		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
 		int actualNameLength = actualName.length();

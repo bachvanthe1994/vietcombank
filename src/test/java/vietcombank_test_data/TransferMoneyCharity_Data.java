@@ -12,5 +12,7 @@ public class TransferMoneyCharity_Data {
 	public static final String MONEY_INPUT_NOT_ENOUGH_PER_A_TRANSACTION_MESSAGE = "";
 	public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 	public static final List<String> LIST_ORGANIZATION_CHARITY = Arrays.asList("Tấm lòng nhân ái", "Dự án nhà chống lũ", "Lũ lụt Miền Trung", "Test order", "Core mới _ Quỹ nhân ái");
+	public static final String STRING_OVER_50_CHARACTERS = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSSSSSSSSSSSSSSSSSSS";
+	public static final String STRING_HAS_SPECIAL_CHARACTERS = "Test!@#$:";
 	
 }
