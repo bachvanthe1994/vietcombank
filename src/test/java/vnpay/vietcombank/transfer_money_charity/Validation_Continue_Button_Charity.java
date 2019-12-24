@@ -194,10 +194,10 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
-	@Test
+//	@Test
 	public void TC_08_KiemTraSoTienGiaoDichNhoHonHanMucToiThieu1LanGiaoDich() {
 		log.info("TC_08_1_Nhap so tien");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "1000", "Thông tin giao dịch", "1");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.MONEY_NOT_ENOUGH_FOR_TRANSACTION, "Thông tin giao dịch", "1");
 		
 		log.info("TC_08_2_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -215,7 +215,7 @@ public class Validation_Continue_Button_Charity extends Base {
 	@Test
 	public void TC_09_KiemTraSoTienGiaoDichVuotQuaHanMucToiThieu1LanGiaoDich() {
 		log.info("TC_09_1_Nhap so tien");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "50000001", "Thông tin giao dịch", "1");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.MONEY_OVER_TRANSACTION_PER_DAY, "Thông tin giao dịch", "1");
 		
 		log.info("TC_09_2_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");

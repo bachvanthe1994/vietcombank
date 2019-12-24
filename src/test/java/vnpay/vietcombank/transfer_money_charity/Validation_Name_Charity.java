@@ -81,7 +81,7 @@ public class Validation_Name_Charity extends Base {
 		verifyEquals(actualName, info.name);
 	}
 	
-//	@Test
+	@Test
 	public void TC_03_KiemTraLoaiKyTuNhap() {
 		log.info("TC_03_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_HAS_SPECIAL_CHARACTERS, "Thông tin giao dịch", "2");

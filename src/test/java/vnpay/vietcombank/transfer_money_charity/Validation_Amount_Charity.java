@@ -70,12 +70,12 @@ public class Validation_Amount_Charity extends Base {
 	
 //	@Test
 	public void TC_02_KiemTraNhapSoTienBang0() {
-//		log.info("TC_02_1_Nhap so 0 vao o So tien ung ho");
-//		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "000", "Thông tin giao dịch", "1");
-//
-//		String actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-//		log.info("TC_02_2_Kiem tra gia tri trong o So tien ung ho");
-//		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
+		log.info("TC_02_1_Nhap so 0 vao o So tien ung ho");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "000", "Thông tin giao dịch", "1");
+
+		String actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		log.info("TC_02_2_Kiem tra gia tri trong o So tien ung ho");
+		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
 
 	@Test

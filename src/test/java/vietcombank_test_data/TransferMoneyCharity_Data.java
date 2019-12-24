@@ -14,5 +14,7 @@ public class TransferMoneyCharity_Data {
 	public static final List<String> LIST_ORGANIZATION_CHARITY = Arrays.asList("Tấm lòng nhân ái", "Dự án nhà chống lũ", "Lũ lụt Miền Trung", "Test order", "Core mới _ Quỹ nhân ái");
 	public static final String STRING_OVER_50_CHARACTERS = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSSSSSSSSSSSSSSSSSSS";
 	public static final String STRING_HAS_SPECIAL_CHARACTERS = "Test!@#$:";
+	public static final String MONEY_OVER_TRANSACTION_PER_DAY = "100000001";
+	public static final String MONEY_NOT_ENOUGH_FOR_TRANSACTION = "1";
 	
 }
