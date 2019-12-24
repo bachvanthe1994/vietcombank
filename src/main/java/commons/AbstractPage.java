@@ -6,10 +6,12 @@ import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
@@ -29,9 +31,6 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyCharityPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
-
-import java.text.Normalizer;
-import java.util.regex.Pattern;
 
 public class AbstractPage {
 	int longTime = 30;
@@ -109,6 +108,7 @@ public class AbstractPage {
 
 	public void SwitchToContext(AndroidDriver<AndroidElement> driver, String webViewName) {
 		Set<String> contexts = driver.getContextHandles();
+		System.out.println(contexts);
 		driver.context(webViewName);
 	}
 
@@ -211,13 +211,12 @@ public class AbstractPage {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<MobileElement> listElements = driver.findElement(By.id(dynamicValue[0])).findElements(By.xpath(locator));
 		List<String> listTextView = new ArrayList<String>();
-		for (MobileElement element : listElements) 
-		{ 
+		for (MobileElement element : listElements) {
 			listTextView.add(element.getText());
 		}
 		return listTextView;
 	}
-	
+
 	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
@@ -415,7 +414,7 @@ public class AbstractPage {
 
 		}
 	}
-	
+
 	public void waitForElementClickable(AndroidDriver<AndroidElement> driver, String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
@@ -480,12 +479,12 @@ public class AbstractPage {
 	}
 
 	public String removeUnicode(AndroidDriver<AndroidElement> driver, String locator) {
-		  
-		  String temp = Normalizer.normalize(locator, Normalizer.Form.NFD);
-		  Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-		  return pattern.matcher(temp).replaceAll("");
-		 }
-	
+
+		String temp = Normalizer.normalize(locator, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
+	}
+
 	public void sleep(AndroidDriver<AndroidElement> driver, long milisecond) {
 		try {
 			Thread.sleep(milisecond);
@@ -613,7 +612,7 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 
 	}
-	
+
 	public void clickToDynamicDropdownAndDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID, dynamicID);
@@ -677,7 +676,7 @@ public class AbstractPage {
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, inputValue, dynamicTextValue);
 
 	}
-	
+
 	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
@@ -738,17 +737,17 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
-	
+
 	public String getTextDynamicTextInInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 	}
 
-	public List<String> getListMoneyIntoSuggestionBox(AndroidDriver<AndroidElement> driver){
+	public List<String> getListMoneyIntoSuggestionBox(AndroidDriver<AndroidElement> driver) {
 		return getTextListElements(driver, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION_ID);
-	} 
-	
+	}
+
 	public String getDynamicTransferTimeAndMoney(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
@@ -791,7 +790,7 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
 
 	}
-	
+
 	public String getDynamicAmountCostLabel(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_COST, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_COST, dynamicTextValue);
@@ -809,7 +808,7 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
 	}
-	
+
 	public boolean isKeyBoardDisplayed(AndroidDriver<AndroidElement> driver) {
 		return driver.isKeyboardShown();
 	}
