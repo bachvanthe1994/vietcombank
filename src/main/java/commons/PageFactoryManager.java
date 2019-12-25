@@ -6,6 +6,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
@@ -58,6 +59,9 @@ public class PageFactoryManager {
 
 	public static LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
 		return new LuckyGiftPageObject(driver);
+	}
+		public static SetupContactPageObject getSetupContactPageObject(AndroidDriver<AndroidElement> driver) {
+			return new SetupContactPageObject(driver);
 
 	}
 }
