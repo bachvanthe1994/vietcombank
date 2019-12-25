@@ -2,8 +2,10 @@ package vnpay.vietcombank.transfer_money_charity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -68,10 +70,11 @@ public class Validation_Amount_Charity extends Base {
 		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
 	
-//	@Test
+	@Test
 	public void TC_02_KiemTraNhapSoTienBang0() {
 		log.info("TC_02_1_Nhap so 0 vao o So tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "000", "Thông tin giao dịch", "1");
+		List<Keys> listKey = Arrays.asList(Keys.NUMPAD0, Keys.NUMPAD0, Keys.NUMPAD0, Keys.NUMPAD0);
+		transferMoneyCharity.pressKeyCodeIntoDynamicInputBoxByHeader(driver, listKey, "Thông tin giao dịch", "1");
 
 		String actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_02_2_Kiem tra gia tri trong o So tien ung ho");
@@ -94,22 +97,15 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_03_2_2_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "123");
 		
-//		log.info("TC_03_2_3_Nhap dau cham");
-//		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, ".", "Thông tin giao dịch", "1");
-//
-//		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-//		log.info("TC_03_2_4_Kiem tra gia tri trong o So tien ung ho");
-//		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
-		
-		log.info("TC_03_4_Chon tai khoan nguon Ngoai te");
+		log.info("TC_03_3_Chon tai khoan nguon Ngoai te");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
-		log.info("TC_03_5_Nhap ki tu so, dau cham");
+		log.info("TC_03_4_Nhap ki tu so, dau cham");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5.5", "Thông tin giao dịch", "1");
 		
 		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		log.info("TC_03_5_1_Kiem tra gia tri trong o So tien ung ho");
+		log.info("TC_03_4_1_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "5.5");
 	}
 	
