@@ -305,7 +305,7 @@ public class AbstractPage {
 		driver.switchTo().frame(frame);
 	}
 
-	public void backToDefault(AndroidDriver<AndroidElement> driver, String locator) {
+	public void backToDefault(AndroidDriver<AndroidElement> driver) {
 		driver.switchTo().defaultContent();
 	}
 
@@ -812,11 +812,11 @@ public class AbstractPage {
 	public boolean isKeyBoardDisplayed(AndroidDriver<AndroidElement> driver) {
 		return driver.isKeyboardShown();
 	}
-	
+
 	public String getMoneyByAccount(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 	}
-	
+
 }
