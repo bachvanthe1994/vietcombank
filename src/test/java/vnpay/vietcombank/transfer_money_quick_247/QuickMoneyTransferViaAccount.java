@@ -60,10 +60,9 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 	log.info("Before class");
 	login.clickToDynamicButton(driver, "Tiếp tục");
-	
+
 	log.info("Before class");
 	login.clickToDynamicButton(driver, "CHO PHÉP");
-
 
 	transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
     }
@@ -76,7 +75,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_Click Chuyen tien nhanh");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-
 	log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
@@ -85,7 +83,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
-
 	log.info("TC_01_Step_Get so du kha dung");
 	amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
 
@@ -93,8 +90,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 	amountStart = Long.parseLong(amountStartString);
 
 	log.info("TC_01_Step_Nhap so tai khoan chuyen");
-	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO,
-			"Nhập/chọn tài khoản nhận VND");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
 
 	log.info("TC_01_Step_Select ngan hang");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
@@ -110,7 +106,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_Nhap noi dung");
 	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
 
-
 	log.info("TC_01_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -120,29 +115,24 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_Verify so tien chuyen");
 	verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
 
-
 	log.info("TC_01_Step_doi kieu du lieu string -> long");
 	amountTranfer = Long.parseLong(amountTranferString);
 
 	log.info("TC_01_Step_Lay gia tri so tien phí chuyen");
 	costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
-
 	log.info("TC_01_Step_Verify so tien phi");
 	verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
-
 
 	log.info("TC_01_Step_doi kieu du lieu string -> long");
 	costTranfer = Long.parseLong(costTranferString);
 
 	log.info("TC_01_Step_Get ma giao dich");
-	transactionNumber = transferMoney.getDynamicTextInTextViewLine(driver, "Mã giao dịch");
-
+	transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 	log.info("TC_01_Step_Chon phuong thuc xac thuc");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
-
 
 	log.info("TC_01_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -154,23 +144,22 @@ public class QuickMoneyTransferViaAccount extends Base {
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_01_Verify message thanh cong");
-	verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS),"CHUYỂN KHOẢN THÀNH CÔNG");
+	verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
 
 	log.info("TC_01_Verify message thanh cong");
-	transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver,TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
+	transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
 
 	log.info("TC_01_Step_: Get ma giao dich");
-	transactionNumber = transferMoney.getDynamicTextInTextViewLine(driver, "Mã giao dịch");
-
+	transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 	log.info("TC_01_Step_:Ten nguoi thu huong");
-	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"),TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 	log.info("TC_01_Step_: Tai khoan dich");
-	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"),TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
 	log.info("TC_01_Step_: Noi dung");
-	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"),TransferMoneyQuick_Data.TransferQuick.NOTE);
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 	log.info("TC_01_Step_: Thuc hien giao dich moi");
 	transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -178,13 +167,11 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_:Tai khoan nguon");
 	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-
 	log.info("TC_01_Step_: Tai khoan chuyen");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
-
 	log.info("TC_01_Step_:Check so du kha dung sau khi chuyen tien");
-	String amountAfterString = transferMoney.getDynamicTextInTextViewLine(driver, "Số dư khả dụng");
+	String amountAfterString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số dư khả dụng");
 	long amountAfter = Long.parseLong(amountAfterString);
 
 	log.info("TC_01_Step_:Check so du kha dung sau khi chuyen tien");
@@ -224,47 +211,43 @@ public class QuickMoneyTransferViaAccount extends Base {
 	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 
 	log.info("TC_Step_: Check ghi chu");
-	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
-			.equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
+	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 	log.info("TC_Step_: Check so tien chuyen");
-	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
-			("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
-
+	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
 
 	log.info("TC_Step_: Chon ngay thang");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_Step_: Check ngay tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
 
 	log.info("TC_Step_: check gio tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
 
 	log.info("TC_Step_: Check so lenh giao dich");
-	verifyEquals(transReport.getDynamicTextInTextViewLine(driver, "Số lệnh giao dịch"), transactionNumber);
-
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Số lệnh giao dịch"), transactionNumber);
 
 	log.info("TC_Step_: Check tao khoan ghi no");
-	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"),TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
 	log.info("TC_Step_: Check tai khoan ghi co");
-	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"),TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
 	log.info("TC_Step_: Check so tien giao dich");
 	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
 
 	log.info("TC_Step_: Check so nguoi huong");
-	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"),TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 	log.info("TC_Step_: Check ngan hang huong");
-	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"),TransferMoneyQuick_Data.TransferQuick.BANK);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"), TransferMoneyQuick_Data.TransferQuick.BANK);
 
 	log.info("TC_Step_: Check phi giao dich");
-	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"),TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
 	log.info("TC_Step_: Check loai giao dich");
-	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"),TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"), TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
 
 	log.info("TC_Step_: Check noi dung giao dich");
 	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
@@ -287,21 +270,18 @@ public class QuickMoneyTransferViaAccount extends Base {
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
-
 	log.info("TC_04_Step_Select tai khoan nguon");
 	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_USD_FORM);
 
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_USD_FORM);
 
 	log.info("TC_04_Step_Get so du kha dung");
 	amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
 
 	amountStart = Long.parseLong(amountStartString);
 
-
 	log.info("TC_04_Step_Nhap so tai khoan chuyen");
-	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO,
-			"Nhập/chọn tài khoản nhận VND");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
 
 	log.info("TC_04_Step_Select ngan hang");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
@@ -316,7 +296,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 	log.info("TC_04_Step_Nhap noi dung");
 	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
-
 
 	log.info("TC_04_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -336,7 +315,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
 
-
 	log.info("TC_05_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -346,24 +324,23 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_05_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-
 	log.info("TC_01_Verify message thanh cong");
-	verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS),"CHUYỂN KHOẢN THÀNH CÔNG");
+	verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
 
 	log.info("TC_01_Step_:");
-	transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver,TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
+	transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
 
 	log.info("TC_01_Step_: Check ma giao dich");
-	transactionNumber = transferMoney.getDynamicTextInTextViewLine(driver, "Mã giao dịch");
+	transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 	log.info("TC_01_Step_:Check ten nguoi thu huong");
-	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"),TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 	log.info("TC_01_Step_: Ccheck tai khoan dich");
-	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"),TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
 	log.info("TC_01_Step_: Check noi dung");
-	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"),TransferMoneyQuick_Data.TransferQuick.NOTE);
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 	log.info("TC_01_Step_: Click giao dich moi");
 	transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -374,9 +351,8 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_: Chon tai khoan chuyen den");
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
-
 	log.info("TC_01_Step_: Check so du");
-	String amountAfterString = transferMoney.getDynamicTextInTextViewLine(driver, "Số dư khả dụng");
+	String amountAfterString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số dư khả dụng");
 	long amountAfter = Long.parseLong(amountAfterString);
 
 	log.info("TC_01_Step_: Verify tai khoan sau khi chuyen");
@@ -403,7 +379,6 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_Step_: Chon time");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 
-
 	log.info("TC_Step_: Chon so tai khoan tra cuu");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
@@ -416,62 +391,47 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_Step_: Check gio chuyen");
 	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 
-	log.info("TC_Step_: Check so tien chuyen");
-	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoney_Data.TransferQuick.MONEY) + ".00 USD"));
-
 	log.info("TC_Step_: Check ghi chu");
-	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
-			.equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
+	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 	log.info("TC_Step_: Check so tien chuyen");
-	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
-			("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 USD"));
-
+	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 USD"));
 
 	log.info("TC_Step_: Chon ngay thang");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_Step_: Check ngay tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
 
 	log.info("TC_Step_: check gio tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
 
 	log.info("TC_Step_: Check so lenh giao dich");
-	verifyEquals(transReport.getDynamicTextInTextViewLine(driver, "Số lệnh giao dịch"), transactionNumber);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Số lệnh giao dịch"), transactionNumber);
 
-		log.info("TC_Step_: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
+	log.info("TC_Step_: Check tao khoan ghi no");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
-		log.info("TC_Step_: Check tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	log.info("TC_Step_: Check tai khoan ghi co");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
-		log.info("TC_Step_: Check so tien giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch")
-				.contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 USD"));
+	log.info("TC_Step_: Check so tien giao dich");
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 USD"));
 
-		log.info("TC_Step_: Check so nguoi huong");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	log.info("TC_Step_: Check so nguoi huong");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_Step_: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.BANK);
+	log.info("TC_Step_: Check ngan hang huong");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"), TransferMoneyQuick_Data.TransferQuick.BANK);
 
-		log.info("TC_Step_: Check phi giao dich");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"),
-				TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+	log.info("TC_Step_: Check phi giao dich");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_Step_: Check loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"),
-				TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
+	log.info("TC_Step_: Check loai giao dich");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"), TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
 
-		log.info("TC_Step_: Check noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch")
-				.contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
-
+	log.info("TC_Step_: Check noi dung giao dich");
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 	log.info("TC_Step_: Chick chi tiet giao dich");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -487,58 +447,53 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+	log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
-		log.info("TC_01_Step_Select tai khoan nguon");
-		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		;
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
-
+	log.info("TC_01_Step_Select tai khoan nguon");
+	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+	;
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
 	log.info("TC_01_Step_Get so du kha dung");
 	amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
 
 	amountStart = Long.parseLong(amountStartString);
 
+	log.info("TC_01_Step_Nhap so tai khoan chuyen");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO,
-				"Nhập/chọn tài khoản nhận VND");
+	log.info("TC_01_Step_Select ngan hang");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
 
-		log.info("TC_01_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
+	log.info("TC_01_Step_Nhap so tien chuyen");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
 
-		log.info("TC_01_Step_Nhap so tien chuyen");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
+	log.info("TC_01_Step_Chon phi giao dich");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_01_Step_Chon phi giao dich");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
-
-		log.info("TC_01_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
-
+	log.info("TC_01_Step_Nhap noi dung");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
 
 	log.info("TC_01_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_02_Step_Verify so tien chuyen");
-		amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replaceAll("\\D+", "");
-		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
-		amountTranfer = Integer.parseInt(amountTranferString);
+	log.info("TC_02_Step_Verify so tien chuyen");
+	amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replaceAll("\\D+", "");
+	verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
+	amountTranfer = Integer.parseInt(amountTranferString);
 
-		log.info("TC_02_Step_Verify phi chuyen tien");
-		costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
-		costTranfer = Long.parseLong(costTranferString);
+	log.info("TC_02_Step_Verify phi chuyen tien");
+	costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
+	verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
+	costTranfer = Long.parseLong(costTranferString);
 
-		log.info("TC_02_Step_Chon phuong thuc xac thuc");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-
+	log.info("TC_02_Step_Chon phuong thuc xac thuc");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 
 	log.info("TC_02_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -549,32 +504,23 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_02_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
+	log.info("TC_02_Verify message thanh cong");
+	verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
 
-		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS),
-				"CHUYỂN KHOẢN THÀNH CÔNG");
-
-		log.info("TC_01_Step_:Verify message thanh cong ");
-		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver,
-				TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
-
+	log.info("TC_01_Step_:Verify message thanh cong ");
+	transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
 
 	log.info("TC_01_Step_:Lay ma giao dich");
-	transactionNumber = transferMoney.getDynamicTextInTextViewLine(driver, "Mã giao dịch");
+	transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
+	log.info("TC_01_Step_: Check ten nguoi thu huong");
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_01_Step_: Check ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	log.info("TC_01_Step_: So sanh tai khoan chuyen di");
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
-		log.info("TC_01_Step_: So sanh tai khoan chuyen di");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
-
-		log.info("TC_01_Step_: Check noi dung");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"),
-				TransferMoneyQuick_Data.TransferQuick.NOTE);
-
+	log.info("TC_01_Step_: Check noi dung");
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 	log.info("TC_01_Step_: Chon thuc hien giao dich");
 	transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -582,20 +528,17 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_: Chon tai khoan chuyen");
 	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_01_Step_: Chon tai khoan chuyen");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
-
+	log.info("TC_01_Step_: Chon tai khoan chuyen");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
 	log.info("TC_01_Step_: Lay so du kha dung");
-	String afterBalanceOfAccount1 = transferMoney.getDynamicTextInTextViewLine(driver, "Số dư khả dụng");
+	String afterBalanceOfAccount1 = transferMoney.getDynamicTextInTextViewLine2(driver, "Số dư khả dụng");
 	long afterBalanceAmountOfAccount1 = Long.parseLong(afterBalanceOfAccount1);
 
-
-		log.info("TC_01_Step_: So sanh so du con lai");
-		long transferMoney1 = Long.parseLong(TransferMoneyQuick_Data.TransferQuick.MONEY);
-		verifyEquals(amountStart - transferMoney1 - costTranfer, afterBalanceAmountOfAccount1);
-	}
-
+	log.info("TC_01_Step_: So sanh so du con lai");
+	long transferMoney1 = Long.parseLong(TransferMoneyQuick_Data.TransferQuick.MONEY);
+	verifyEquals(amountStart - transferMoney1 - costTranfer, afterBalanceAmountOfAccount1);
+    }
 
     public void TC_06_BaoCaoGiaoDichChuyenTienNhanh() {
 	homePage = PageFactoryManager.getHomePageObject(driver);
@@ -616,10 +559,8 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_Step_: Chon time");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 
-
-		log.info("TC_Step_: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
-
+	log.info("TC_Step_: Chon so tai khoan tra cuu");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
 	log.info("TC_Step_: Tim kiem");
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -630,61 +571,47 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_Step_: Check gio chuyen");
 	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 
+	log.info("TC_Step_: Check ghi chu");
+	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
-		log.info("TC_Step_: Check ghi chu");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
-				.equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
-
-		log.info("TC_Step_: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
-				("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
-
+	log.info("TC_Step_: Check so tien chuyen");
+	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
 
 	log.info("TC_Step_: Chon ngay thang");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_Step_: Check ngay tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
 
 	log.info("TC_Step_: check gio tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
 
 	log.info("TC_Step_: Check so lenh giao dich");
-	verifyEquals(transReport.getDynamicTextInTextViewLine(driver, "Số lệnh giao dịch"), transactionNumber);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Số lệnh giao dịch"), transactionNumber);
 
+	log.info("TC_Step_: Check tao khoan ghi no");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
-		log.info("TC_Step_: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
+	log.info("TC_Step_: Check tai khoan ghi co");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
-		log.info("TC_Step_: Check tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	log.info("TC_Step_: Check so tien giao dich");
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
 
-		log.info("TC_Step_: Check so tien giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch")
-				.contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
+	log.info("TC_Step_: Check so nguoi huong");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_Step_: Check so nguoi huong");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	log.info("TC_Step_: Check ngan hang huong");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"), TransferMoneyQuick_Data.TransferQuick.BANK);
 
-		log.info("TC_Step_: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.BANK);
+	log.info("TC_Step_: Check phi giao dich");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_Step_: Check phi giao dich");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"),
-				TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+	log.info("TC_Step_: Check loai giao dich");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"), TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
 
-		log.info("TC_Step_: Check loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"),
-				TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
-
-		log.info("TC_Step_: Check noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch")
-				.contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
-
+	log.info("TC_Step_: Check noi dung giao dich");
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 	log.info("TC_Step_: Chick chi tiet giao dich");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -701,68 +628,58 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-
-		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
-
+	log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
 	log.info("TC_01_Step_Select tai khoan nguon");
 
 	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_EUR_FORM);
-
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_EUR_FORM);
 
 	log.info("TC_01_Step_Get so du kha dung");
 	amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
 
 	amountStart = Long.parseLong(amountStartString);
 
+	log.info("TC_01_Step_Nhap so tai khoan chuyen");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO,
-				"Nhập/chọn tài khoản nhận VND");
+	log.info("TC_01_Step_Select ngan hang");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
 
-		log.info("TC_01_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
+	log.info("TC_01_Step_Nhap so tien chuyen");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_EUR, "Số tiền");
 
-		log.info("TC_01_Step_Nhap so tien chuyen");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_EUR, "Số tiền");
+	log.info("TC_01_Step_Chon phi giao dich");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_01_Step_Chon phi giao dich");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
-
-		log.info("TC_01_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
-
+	log.info("TC_01_Step_Nhap noi dung");
+	transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
 
 	log.info("TC_01_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_02_Step_Verify so tien chuyen");
 
+	amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replaceAll("\\D+", "");
+	verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
+	amountTranfer = Integer.parseInt(amountTranferString);
 
-		amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replaceAll("\\D+", "");
-		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
-		amountTranfer = Integer.parseInt(amountTranferString);
-
-		log.info("TC_02_Step_Verify phi chuyen tien");
-		costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
-		costTranfer = Integer.parseInt(costTranferString);
-
+	log.info("TC_02_Step_Verify phi chuyen tien");
+	costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
+	verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
+	costTranfer = Integer.parseInt(costTranferString);
 
 	log.info("TC_02_Step_Get ma giao dich");
-	transactionNumber = transferMoney.getDynamicTextInTextViewLine(driver, "Mã giao dịch");
+	transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
-
-		log.info("TC_02_Step_Chon phuong thuc xac thuc");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-
+	log.info("TC_02_Step_Chon phuong thuc xac thuc");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 
 	log.info("TC_02_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -773,27 +690,20 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_02_Step_Tiep tuc");
 	transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-
-		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS),
-				"CHUYỂN KHOẢN THÀNH CÔNG");
-
+	log.info("TC_02_Verify message thanh cong");
+	verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
 
 	log.info("TC_01_Step_: Lay ma giao dich");
-	transactionNumber = transferMoney.getDynamicTextInTextViewLine(driver, "Mã giao dịch");
+	transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
-		log.info("TC_01_Step_: So sanh ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	log.info("TC_01_Step_: So sanh ten nguoi thu huong");
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_01_Step_: Tai khoan dich");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	log.info("TC_01_Step_: Tai khoan dich");
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
-		log.info("TC_01_Step_: So sanh noi dung");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"),
-				TransferMoneyQuick_Data.TransferQuick.NOTE);
-
+	log.info("TC_01_Step_: So sanh noi dung");
+	verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 	log.info("TC_01_Step_: Click giao dich moi");
 	transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -801,9 +711,8 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_01_Step_: Click tai khoan nguon");
 	transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_01_Step_: Click tai khoan chuyen den");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
-
+	log.info("TC_01_Step_: Click tai khoan chuyen den");
+	transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
 	log.info("TC_01_Step_Get so du kha dung");
 	String amountAfterString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
@@ -833,10 +742,8 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_Step_: Chon time");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 
-
-		log.info("TC_Step_: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
-
+	log.info("TC_Step_: Chon so tai khoan tra cuu");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
 	log.info("TC_Step_: Tim kiem");
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -847,60 +754,47 @@ public class QuickMoneyTransferViaAccount extends Base {
 	log.info("TC_Step_: Check gio chuyen");
 	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 
+	log.info("TC_Step_: Check ghi chu");
+	verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
-		log.info("TC_Step_: Check ghi chu");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent")
-				.equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
-
-		log.info("TC_Step_: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"),
-				("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 EUR"));
-
+	log.info("TC_Step_: Check so tien chuyen");
+	verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 EUR"));
 
 	log.info("TC_Step_: Chon ngay thang");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_Step_: Check ngay tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
 
 	log.info("TC_Step_: check gio tim kiem");
-	verifyTrue(transReport.getDynamicTextInTextViewLine(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Thời gian giao dịch").split(" ")[0].equals(transferTime.split(" ")[3]));
 
 	log.info("TC_Step_: Check so lenh giao dich");
-	verifyEquals(transReport.getDynamicTextInTextViewLine(driver, "Số lệnh giao dịch"), transactionNumber);
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Số lệnh giao dịch"), transactionNumber);
 
+	log.info("TC_Step_: Check tao khoan ghi no");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
 
-		log.info("TC_Step_: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FORM);
+	log.info("TC_Step_: Check tai khoan ghi co");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
 
-		log.info("TC_Step_: Check tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"),
-				TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO);
+	log.info("TC_Step_: Check so tien giao dich");
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 EUR"));
 
-		log.info("TC_Step_: Check so tien giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch")
-				.contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 EUR"));
+	log.info("TC_Step_: Check so nguoi huong");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_Step_: Check so nguoi huong");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+	log.info("TC_Step_: Check ngan hang huong");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"), TransferMoneyQuick_Data.TransferQuick.BANK);
 
-		log.info("TC_Step_: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Ngân hàng hưởng"),
-				TransferMoneyQuick_Data.TransferQuick.BANK);
+	log.info("TC_Step_: Check phi giao dich");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_Step_: Check phi giao dich");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Phí giao dịch"),
-				TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+	log.info("TC_Step_: Check loai giao dich");
+	verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"), TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
 
-		log.info("TC_Step_: Check loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Loại giao dịch"),
-				TransferMoneyQuick_Data.TransferQuick.TRANSFER_TYPE);
-
-		log.info("TC_Step_: Check noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch")
-				.contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
+	log.info("TC_Step_: Check noi dung giao dich");
+	verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 	log.info("TC_Step_: Chick chi tiet giao dich");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
