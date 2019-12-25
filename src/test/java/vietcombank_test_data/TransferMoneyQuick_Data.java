@@ -4,7 +4,7 @@ public class TransferMoneyQuick_Data {
 	
 	public static class TransferQuick {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền nhanh qua số tài khoản","Chuyển tiền nhanh qua số thẻ"};
-		public static final String ACCOUNT_FORM = "0011370000886";
+		public static final String ACCOUNT_FORM = "0011000000779";
 		public static final String ACCOUNT_TO = "0129837294";
 		public static final String ACCOUNT_USD_FORM = "0011370000886";
 		public static final String ACCOUNT_EUR_FORM = "0011140000553";
