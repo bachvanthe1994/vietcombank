@@ -22,7 +22,7 @@ public class TransferIdentity_Data {
 	public static final String ACCOUNT_VND = "0011000000779";
 	public static final String ACCOUNT_USD = "0011370000646";
 	public static final String ACCOUNT_EUR = "0011140000647";
-	public static final String MONEY_TRANSFER_VND = "10000";
+	public static final String MONEY_TRANSFER_VND = "100000";
 	public static final String MONEY_TRANSFER_USD = "100";
 	public static final String MONEY_TRANSFER_EUR = "100";
 	public static final String CONTEN_TRANSFER = "ABC123";

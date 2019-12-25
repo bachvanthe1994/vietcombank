@@ -68,7 +68,7 @@ public class TransferIdentity_Validate extends Base {
 
     }
 
-    @Test
+//    @Test
     public void TC_01_TaiKhoanNguon() {
 
     }
@@ -88,9 +88,6 @@ public class TransferIdentity_Validate extends Base {
 	log.info("TC_02_STEP_4: kiem tra hien thi ten vua nhap");
 	verifyEquals(beneficiaryInput, TransferIdentity_Data.textDataInputForm.USER_NAME);
 
-	trasferPage.navigateBack(driver);
-	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
-
 	log.info("TC_02_STEP_5: nhap ten nguoi thu huong gom ki tu so");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, "hoangkm123", "Hoangkm");
 
@@ -99,12 +96,135 @@ public class TransferIdentity_Validate extends Base {
 
 	log.info("TC_02_STEP_7: kiem tra hien thi ten vua nhap");
 	verifyEquals(beneficiaryInputNumber, "hoangkm123");
+
+	log.info("TC_02_STEP_8: nhap ten nguoi thu huong bang ki tu dac biet");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, "!@#$%^&*()", "hoangkm123");
+
+	log.info("TC_02_STEP_9: lay ten nguoi thu huong bang ki tu dac biet");
+	String beneficiaryInputSpecial = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
+
+	log.info("TC_02_STEP_10: kiem tra hien thi ten nguoi thu huong bang ki tu dac biet");
+	verifyEquals(beneficiaryInputSpecial, "Tên người hưởng");
+    }
+
+    @Test
+    public void TC_03_GiayToTuyThan() {
+	log.info("TC_03_STEP_1: kiem tra hien thị mac dinh");
+	String beneficiary = trasferPage.getTextDynamicPopup(driver, "Giấy tờ tùy thân");
+	verifyEquals(beneficiary, "Giấy tờ tùy thân");
+
+	log.info("TC_03_STEP_2:click chon giay to tuy than");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
+
+	log.info("TC_03_STEP_3:click chon CMT");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
+
+	log.info("TC_03_STEP_4:kiem tra hien thi khi click chon CMT");
+	String identify = trasferPage.getTextDynamicPopup(driver, "Chứng minh nhân dân");
+	verifyEquals(identify, "Chứng minh nhân dân");
+
+	log.info("TC_03_STEP_5:click chon chung minh nhan dan");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
+
+	log.info("TC_03_STEP_6:click chon ho chieu");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Hộ chiếu");
+
+	log.info("TC_03_STEP_7:kiem tra hien thi khi click chon ho chieu");
+	String passport = trasferPage.getTextDynamicPopup(driver, "Hộ chiếu");
+	verifyEquals(passport, "Hộ chiếu");
+
+	log.info("TC_03_STEP_8:click chon ho chieu");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Hộ chiếu");
+
+	log.info("TC_03_STEP_9:click chon ho chieu");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "CMT Quân đội");
+
+	log.info("TC_03_STEP_10:kiem tra hien thi khi click chon ho chieu");
+	String identityArmy = trasferPage.getTextDynamicPopup(driver, "CMT Quân đội");
+	verifyEquals(identityArmy, "CMT Quân đội");
+
+	log.info("TC_03_STEP_11:click CMT quan doi");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "CMT Quân đội");
+
+	log.info("TC_03_STEP_12:click chon the can cuoc cong dan");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thẻ căn cước công dân");
+
+	log.info("TC_03_STEP_13:kiem tra hien thi khi click chon the can cuoc cong dan");
+	String identityCard = trasferPage.getTextDynamicPopup(driver, "Thẻ căn cước công dân");
+	verifyEquals(identityCard, "Thẻ căn cước công dân");
+
+	log.info("TC_03_STEP_15:click chon the can cuoc cong dan");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thẻ căn cước công dân");
+
+	log.info("TC_03_STEP_15:kiem tra vi tri thu nhat hien thi trong danh sach giay to ");
+	verifyEquals(trasferPage.getTextInDynamicIdentifition(driver, "0", "com.VCB:id/tvContent"), "Chứng minh nhân dân");
+
+	log.info("TC_03_STEP_15:kiem tra vi tri thu nhat hien thi trong danh sach giay to ");
+	verifyEquals(trasferPage.getTextInDynamicIdentifition(driver, "1", "com.VCB:id/tvContent"), "Hộ chiếu");
+
+	log.info("TC_03_STEP_15:kiem tra vi tri thu nhat hien thi trong danh sach giay to ");
+	verifyEquals(trasferPage.getTextInDynamicIdentifition(driver, "2", "com.VCB:id/tvContent"), "CMT Quân đội");
+
+	log.info("TC_03_STEP_15:kiem tra vi tri thu nhat hien thi trong danh sach giay to ");
+	verifyEquals(trasferPage.getTextInDynamicIdentifition(driver, "3", "com.VCB:id/tvContent"), "Thẻ căn cước công dân");
+    }
+
+    @Test
+    public void TC_04_So() {
+	log.info("TC_02_STEP_1: kiem tra hien thị mac dinh");
+	String number = trasferPage.getTextDynamicTextInInputBox(driver, "Số");
+	verifyEquals(number, "Số");
+
+	log.info("TC_02_STEP_2: nhap so");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER, "Số");
+
+	log.info("TC_02_STEP_3: lay so vua nhap");
+	String numberInput = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER);
+
+	log.info("TC_02_STEP_4: kiem tra hien thi so vua nhap");
+	verifyEquals(numberInput, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER);
+
+	log.info("TC_02_STEP_2: nhap lon hon maxlength truong so");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, "123456789012345678901", TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER);
+
+	log.info("TC_02_STEP_6: kiem tra nhap = maxlength = 20 ki tu so");
+	String numberInputMaxlength = trasferPage.getTextDynamicTextInInputBox(driver, "12345678901234567890");
+	verifyEquals(numberInputMaxlength, "12345678901234567890");
+
+	log.info("TC_02_STEP_5: nhap ten nguoi thu huong");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người hưởng");
+
+	log.info("TC_02_STEP_5: chon giay to tuy than: chung minh thu");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
+
+	log.info("TC_02_STEP_6: kiem tra nhap nho hon 9 ki tu");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, "12345678", "Số");
+
+	log.info("TC_02_STEP_6: click tiếp tục");
+	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+	log.info("TC_02_STEP_6: kiem tra thong bao trong popup");
+	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+//	log.info("TC_02_STEP_7: Kiem tra nhap lon hon maxlength: 21 ki tu so");
+//	trasferPage.inputToDynamicInputBoxUsedValidate(driver, "223456789012345678901", "12345678901234567890");
+//
+//	log.info("TC_02_STEP_8: kiem tra hien thi khi nhap lon hon maxlength");
+//	String numberIdentityInputMaxlength = trasferPage.getTextDynamicTextInInputBox(driver, "22345678901234567890");
+//	verifyEquals(numberIdentityInputMaxlength, "22345678901234567890");
+//
+//	log.info("TC_02_STEP_9: lay ten nguoi thu huong bang ki tu dac biet");
+//	String beneficiaryInputSpecial = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
+//
+//	log.info("TC_02_STEP_10: kiem tra hien thi ten nguoi thu huong bang ki tu dac biet");
+//	verifyEquals(beneficiaryInputSpecial, "Tên người hưởng");
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//	closeApp();
-//	service.stop();
+	closeApp();
+	service.stop();
     }
 
 }
