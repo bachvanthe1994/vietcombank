@@ -17,7 +17,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_EUR = "40";
 		public static final String NOTE = "Test";
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS";
-		public static final String SUCCESS_TRANSFER_MONEY = "Chuyển khoản thành công";
+		public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 
 		public static final String COST_AMOUNT = "0";
 		public static final String COST_AMOUNT_USD = "000";
@@ -26,7 +26,7 @@ public class TransferMoneyQuick_Data {
 
 		public static final String CARD_FORM = "0011000000863";
 		public static final String CARD_TO = "0129837294";
-		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "Lập lệnh thành công";
+		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "LẬP LỆNH THÀNH CÔNG";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "3,300";
 		public static final String PAYMENT_BY_OTP_FEE = "5,500";
 		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.12";
