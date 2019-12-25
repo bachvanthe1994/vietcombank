@@ -262,7 +262,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info2.destinationBank);
 
 	log.info("TC_03_10_5_Kiem tra so tien quy doi");
-	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine(driver, "Số tiền(EUR)");
+	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 	String expectMoney = String.format("%,d", Long.parseLong(info2.money) * 27006) + " VND";
 	verifyEquals(actualMoney, expectMoney);
 
@@ -341,7 +341,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info3.destinationBank);
 
 	log.info("TC_04_10_5_Kiem tra so tien quy doi");
-	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine(driver, "Số tiền(EUR)");
+	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 	String expectMoney = String.format("%,d", Long.parseLong(info3.money) * 27006) + " VND";
 	verifyEquals(actualMoney, expectMoney);
 
@@ -565,7 +565,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info6.destinationBank);
 
 	log.info("TC_07_10_5_Kiem tra so tien quy doi");
-	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine(driver, "Số tiền(EUR)");
+	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 	String expectMoney = String.format("%,d", Long.parseLong(info6.money) * 27006) + " VND";
 	verifyEquals(actualMoney, expectMoney);
 
@@ -643,7 +643,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info7.destinationBank);
 
 	log.info("TC_08_10_5_Kiem tra so tien quy doi");
-	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine(driver, "Số tiền(EUR)");
+	String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
 	String expectMoney = String.format("%,d", Long.parseLong(info7.money) * 27006) + " VND";
 	verifyEquals(actualMoney, expectMoney);
 
