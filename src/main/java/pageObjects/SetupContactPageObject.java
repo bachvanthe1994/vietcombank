@@ -18,7 +18,7 @@ public class SetupContactPageObject extends AbstractPage {
 
 	private AndroidDriver<AndroidElement> driver;
 
-	public void deleteContact() {
+	public void deleteContactReceiver() {
 		List<AndroidElement> listContact = new ArrayList<AndroidElement>();
 		listContact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT));
 		int countList = listContact.size();
@@ -40,33 +40,30 @@ public class SetupContactPageObject extends AbstractPage {
 		}
 	}
 
-
-	public void addContact(String name, String account) {
+	public void addContactReceiver(String type,String nameBank, String name, String account) {
 
 		AndroidElement add = driver.findElement(By.xpath(SetupContactPageUIs.ADD));
 		add.click();
 
-		AndroidElement type = driver.findElement(By.xpath(SetupContactPageUIs.TYPE_TRANFER));
-		type.click();
+		AndroidElement type1 = driver.findElement(By.xpath(SetupContactPageUIs.TYPE_TRANFER));
+		type1.click();
 
-		List<AndroidElement> listTransfer = driver.findElements(By.xpath(SetupContactPageUIs.TYPE_TRANFER_LIST));
-		listTransfer.get(3).click();
-		
-		List<AndroidElement> listBank = driver.findElements(By.xpath(SetupContactPageUIs.BANK_TRANFER_LIST));
-		listBank.get(3).click();
-		
+		clickToDynamicButtonLinkOrLinkText(driver, type);
+
+		clickToDynamicButtonLinkOrLinkText(driver, nameBank);
+
+
 		AndroidElement name1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_NAME));
 		name1.sendKeys(name);
-		
+
 		AndroidElement account1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_ACCOUNT));
 		account1.sendKeys(account);
-		
+
 		AndroidElement finish = driver.findElement(By.xpath(SetupContactPageUIs.BUTTON_FINISH));
 		finish.click();
-		
+
 		AndroidElement close = driver.findElement(By.xpath(SetupContactPageUIs.BUTTON_CLOSE));
 		close.click();
-}
-		 
 	}
 
+}
