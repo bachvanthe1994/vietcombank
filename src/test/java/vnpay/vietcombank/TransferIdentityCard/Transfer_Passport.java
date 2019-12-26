@@ -204,6 +204,9 @@ public class Transfer_Passport extends Base {
 	long overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_01_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
     }
 
     @Test
@@ -349,6 +352,9 @@ public class Transfer_Passport extends Base {
 	log.info("TC_02_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_02_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 
     }
 
@@ -498,6 +504,9 @@ public class Transfer_Passport extends Base {
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_03_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
     }
 
     @Test
@@ -643,6 +652,9 @@ public class Transfer_Passport extends Base {
 	log.info("TC_04_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_04_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 
     }
 
@@ -790,6 +802,9 @@ public class Transfer_Passport extends Base {
 	log.info("TC_05_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_05_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test

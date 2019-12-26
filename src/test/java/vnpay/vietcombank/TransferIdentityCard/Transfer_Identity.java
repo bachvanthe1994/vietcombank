@@ -205,6 +205,8 @@ public class Transfer_Identity extends Base {
 	long overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_01_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -352,6 +354,9 @@ public class Transfer_Identity extends Base {
 	log.info("TC_03_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_03_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -499,6 +504,9 @@ public class Transfer_Identity extends Base {
 	log.info("TC_05_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_05_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -645,6 +653,9 @@ public class Transfer_Identity extends Base {
 	log.info("TC_07_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_07_Step_39 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 
     }
 
@@ -793,6 +804,9 @@ public class Transfer_Identity extends Base {
 	log.info("TC_09_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_09_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -940,6 +954,9 @@ public class Transfer_Identity extends Base {
 	log.info("TC_11_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
+
+	log.info("TC_11_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @AfterClass(alwaysRun = true)

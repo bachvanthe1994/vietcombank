@@ -205,9 +205,12 @@ public class Transfer_Citizen_Identification extends Base {
 	long overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_01_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
     }
 
-//    @Test
+    @Test
     public void TC_02_ChuyenTienQuaCCCDNguoiNhanTraPhiUSDXacNhanMatKhau() {
 	log.info("TC_02_Step_1: chon chuyển tiền nhận bằng CMT");
 	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -353,6 +356,8 @@ public class Transfer_Citizen_Identification extends Base {
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_02_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -501,6 +506,8 @@ public class Transfer_Citizen_Identification extends Base {
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_03_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -647,6 +654,8 @@ public class Transfer_Citizen_Identification extends Base {
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
 
+	log.info("TC_04_Step_38 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @Test
@@ -793,7 +802,8 @@ public class Transfer_Citizen_Identification extends Base {
 	log.info("TC_05_Step_37: kiem tra so tien kha dung sau khi chuyen");
 	double overbalanceAfterCacuLator = overbalanceBeforeLong - moneyTransferLong - amountLong;
 	verifyEquals(overbalanceAfterLong, overbalanceAfterCacuLator);
-	log.info("TC_02_Step_01 : Click  nut Back");
+
+	log.info("TC_05_Step_38 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
