@@ -1,7 +1,6 @@
 package vnpay.vietcombank.transfer_money_charity;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,18 +16,14 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.TransferMoneyCharity_Data;
 
-public class Validation_Name_Charity extends Base {
+public class Validation_SourceAccount_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
 	TransferCharity info = new TransferCharity("0010000000322", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info1 = new TransferCharity("0011140000647", "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info2 = new TransferCharity("0010000000322", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-	TransferCharity info3 = new TransferCharity("0011140000647", "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
@@ -58,50 +53,36 @@ public class Validation_Name_Charity extends Base {
 	}
 
 	@Test
-	public void TC_01_KiemTraHienThiMacDinh() {
+	public void TC_01_KiemTraTruyVanSoDuCuaTaiKhoanMacDinhLaVND() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
-		log.info("TC_01_1_Click Chuyen tien tu thien");
+		log.info("TC_01_01_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
-
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		log.info("TC_01_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyEquals(actualName, "Tên người ủng hộ");
+		
+		log.info("TC_01_02_Kiem tra hien thi so du mac dinh la VND");
+		String availableBalance =  transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+		verifyTrue(availableBalance.contains("VND"));
+		
 	}
 	
 	@Test
-	public void TC_02_NhapTenNguoiUngHo() {
-		log.info("TC_02_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.name, "Thông tin giao dịch", "2");
+	public void TC_04_KiemTraHienThiThongTinTaiKhoanNguon() {
+		log.info("TC_04_01_Mo danh sach tai khoan nguon");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		
+		log.info("TC_04_02_Lay thong tin tai khoan nguon");
+		String expectAvailableBalance = transferMoneyCharity.getMoneyByAccount(driver, info.sourceAccount);
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		log.info("TC_02_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyEquals(actualName, info.name);
-	}
-	
-	@Test
-	public void TC_03_KiemTraLoaiKyTuNhap() {
-		log.info("TC_03_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_HAS_SPECIAL_CHARACTERS, "Thông tin giao dịch", "2");
+		log.info("TC_04_03_Chon tai khoan nguon");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
-		boolean condition = regex.matcher(actualName).find();
-		log.info("TC_03_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyTrue(condition);
-	}
-	
-	@Test
-	public void TC_04_KiemTraGioiHanKyTuNhap() {
-		log.info("TC_04_1_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_OVER_50_CHARACTERS, "Thông tin giao dịch", "2");
+		log.info("TC_04_04_Kiem tra hien thi label So du kha dung");
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Số dư khả dụng"));
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		int actualNameLength = actualName.length();
-		log.info("TC_04_2_Kiem tra gioi han ky tu nhap");
-		verifyEquals(actualNameLength, 45);
+		log.info("TC_04_05_Kiem tra so tien hien thi dung voi tai khoan nguon duoc chon");
+		String availableBalance =  transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+		verifyEquals(availableBalance, expectAvailableBalance);
 	}
 	
 	@AfterClass(alwaysRun = true)
