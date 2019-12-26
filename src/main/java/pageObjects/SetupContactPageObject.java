@@ -25,16 +25,12 @@ public class SetupContactPageObject extends AbstractPage {
 		while (countList > 0) {
 
 			AndroidElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
-
-			contact.click();
-			AndroidElement delete = driver.findElement(By.xpath(SetupContactPageUIs.DELETE));
-			delete.click();
-
-			AndroidElement accept = driver.findElement(By.xpath(SetupContactPageUIs.ACCEPT));
-			accept.click();
-
-			AndroidElement close = driver.findElement(By.xpath(SetupContactPageUIs.CLOSE));
-			close.click();
+			contact.click();			
+			clickToDynamicText(driver, "Xóa");
+			
+			clickToDynamicButton(driver, "Đồng ý");
+			
+			clickToDynamicButton(driver, "Đóng");
 			countList--;
 
 		}
@@ -42,16 +38,13 @@ public class SetupContactPageObject extends AbstractPage {
 
 	public void addContactReceiver(String type,String nameBank, String name, String account) {
 
-		AndroidElement add = driver.findElement(By.xpath(SetupContactPageUIs.ADD));
-		add.click();
+		clickToDynamicText(driver, "Thêm mới");
 
-		AndroidElement type1 = driver.findElement(By.xpath(SetupContactPageUIs.TYPE_TRANFER));
-		type1.click();
+		clickToDynamicText(driver, "Chuyển tiền trong Vietcombank");
 
 		clickToDynamicButtonLinkOrLinkText(driver, type);
 
 		clickToDynamicButtonLinkOrLinkText(driver, nameBank);
-
 
 		AndroidElement name1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_NAME));
 		name1.sendKeys(name);
@@ -59,11 +52,20 @@ public class SetupContactPageObject extends AbstractPage {
 		AndroidElement account1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_ACCOUNT));
 		account1.sendKeys(account);
 
-		AndroidElement finish = driver.findElement(By.xpath(SetupContactPageUIs.BUTTON_FINISH));
-		finish.click();
+		clickToDynamicButton(driver, "Hoàn thành");
 
-		AndroidElement close = driver.findElement(By.xpath(SetupContactPageUIs.BUTTON_CLOSE));
-		close.click();
+		clickToDynamicButton(driver, "Đóng");
 	}
 
+
+
+public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, SetupContactPageUIs.CLICK_BUTTON, dynamicTextValue);
+	clickToElement(driver, SetupContactPageUIs.CLICK_BUTTON, dynamicTextValue);
+}
+
+public void clickToDynamicText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
+	clickToElement(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
+}
 }
