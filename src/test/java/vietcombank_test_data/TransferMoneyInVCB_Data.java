@@ -24,6 +24,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.11";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.18";
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
+		public static final String USD_EXCHANGE_RATE = "1 USD ~ 30,000 VND";
+		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 27,006 VND";
 
 	}
 
@@ -31,6 +33,9 @@ public class TransferMoneyInVCB_Data {
 		public static final String SUCESSFULL_CREATED_ORDER = "LẬP LỆNH THÀNH CÔNG";
 		public static final String TRANSFER_SUCESS_MESSAGE = "CHUYỂN KHOẢN THÀNH CÔNG";
 		public static final String CONFIRMATION_MESSAGE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
+		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
+		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER = "Tài khoản nhận không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
+		public static final String TRANSACTION_LIMIT_TEXT = "Tài khoản nhận không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
 	}
 
 	public static class InputDataInFutureForOTP {
@@ -51,4 +56,12 @@ public class TransferMoneyInVCB_Data {
 
 	}
 
+	public static class InvalidInputData {
+		public static final String INVALID_ACCOUNT_15_CHARACTERS = "445555555555555";
+		public static final String INVALID_ACCOUNT_LESS_THAN_10_CHARACTERS = "001100000";
+		public static final String INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS = "00110000000";
+		public static final String TEXT_AND_SPECIAL_CHARACTERS = "Abc!@#$%%";
+		public static final String INVALID_MONEY = "12345678901";
+		public static final String INVALID_DECIMAL_MONEY = "1234567890.1234";
+	}
 }
