@@ -14,6 +14,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
+import pageObjects.TransferMoneyCharityPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
@@ -30,7 +31,9 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 	private TransferMoneyObject transferMoney;
 	private String transactionNumber;
 	private String amountStartString;
-	private String accountDefault;
+	private String defaultAccount;
+	private String actualDefaultAccount;
+
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -103,7 +106,7 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 	@Test
 	public void TC_01_ValidationChuyenNhanhQuaTaiKhoan() throws InterruptedException {
 		log.info("TC_01_Lay gia tri tai khoan mac dinh account");
-		accountDefault = transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
 
 		log.info("TC_01_Step_Scoll den man hinh chuyen tien nhanh");
 		transferMoney.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -133,22 +136,25 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		log.info("TC_01_Step_verify label thong tin nguoi chuyen");
 		transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.INFO_FORM_LABEL);
 	}
+	
+	@Test
+	public void TC_02_KiemTraHienThiTaiKhoanMacDinh() {
+		log.info("TC_03_01_Kiem tra hien thi tai khoan mac dinh");
+		actualDefaultAccount =  transferMoney.getTextDynamicDefaultSourceAccount(driver, "Tài khoản nguồn");
+		verifyEquals(actualDefaultAccount, defaultAccount);
+	}
 
 	@Test
-	public void TC_02_ValidationTaiKhoanNguon() throws InterruptedException {
-
-		log.info("TC_01_Step_verify tai khoan nguon mac dinh la tai khoan thanh toan");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, accountDefault));
-
+	public void TC_03_ValidationTaiKhoanNguon() throws InterruptedException {
 		log.info("TC_02_Step_Click combobox tai khoan nguon");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, accountDefault);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, actualDefaultAccount);
 
 		log.info("TC_02_Step_Cho phep chon tai khoan thanh toan khac tai khoan mac dinh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_02_Step_Chon lai ve man hinh tai khoan mac dinh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, accountDefault);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, actualDefaultAccount);
 
 		log.info("TC_02_Step_Lay so du kha dung");
 		amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
@@ -271,8 +277,8 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 
 		log.info("TC_04_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, accountDefault);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, accountDefault);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, defaultAccount);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, defaultAccount);
 
 		log.info("TC_04_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");

@@ -7,7 +7,7 @@ public class LuckyGift_Data {
 		public static final String [] BANK_OPTION =  { "Người nhận tại VCB","Người nhận khác VCB"};
 		public static final String [] WISHES_OPTION =  { "Gửi lời chúc Ngày phụ nữ hạnh phúc tới người đã đánh cắp trái tim tôi!","Con làm nó để dành tặng cho người phụ nữ tuyệt vời nhất trong cuộc đời con. Con yêu mẹ!","Dù có nhìn từ góc độ nào, khi tôi nhìn bạn, bạn luôn là một thiên thần. Và ngày phụ nữ là một ngày tuyệt vời để nói rằng: tôi vô cùng may mắn có được bạn trong cuộc đời mình"
 				,"Chúc bạn một ngày giống như bạn vậy... vô cùng đặc biệt!"};
-		public static final String MONEY = "100000";
+		public static final String MONEY = "300000";
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập","SMS OTP"};
 		public static final String MOBI_ACCEPT = "0976878903";
 		public static final String NAME_ACCEPT = "NGO TRI NAM";
