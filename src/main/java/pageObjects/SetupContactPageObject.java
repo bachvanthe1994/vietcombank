@@ -28,13 +28,10 @@ public class SetupContactPageObject extends AbstractPage {
 			AndroidElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
 			contact.click();
 			
-			clickToDynamicButton(driver, "Xóa");
+			clickToDynamicText(driver, "Xóa");
 
-			AndroidElement accept = driver.findElement(By.xpath(SetupContactPageUIs.ACCEPT));
-			accept.click();
-
-			AndroidElement close = driver.findElement(By.xpath(SetupContactPageUIs.CLOSE));
-			close.click();
+			clickToDynamicButton(driver, "Đồng ý");
+			clickToDynamicButton(driver, "Đóng");
 			countList--;
 
 		}
@@ -42,9 +39,9 @@ public class SetupContactPageObject extends AbstractPage {
 
 	public void addContactReceiver(String type,String nameBank, String name, String account) {
 
-		clickToDynamicButton(driver, "Thêm mới");
+		clickToDynamicText(driver, "Thêm mới");
 
-		clickToDynamicButton(driver, "Chuyển tiền trong Vietcombank");
+		clickToDynamicText(driver, "Chuyển tiền trong Vietcombank");
 
 		clickToDynamicButtonLinkOrLinkText(driver, type);
 
@@ -67,12 +64,12 @@ public class SetupContactPageObject extends AbstractPage {
 
 
 public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	waitForElementVisible(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
-	clickToElement(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
+	waitForElementVisible(driver, SetupContactPageUIs.CLICK_BUTTON, dynamicTextValue);
+	clickToElement(driver, SetupContactPageUIs.CLICK_BUTTON, dynamicTextValue);
 }
 
 public void clickToDynamicText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicTextValue);
-	clickToElement(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicTextValue);
+	waitForElementVisible(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
+	clickToElement(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
 }
 }
