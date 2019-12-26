@@ -257,19 +257,19 @@ public class TransferIdentity_Validate extends Base {
 	String contentInput = trasferPage.getTextDynamicTextInInputBox(driver, "chuyen tien cho nguoi nhan");
 	verifyEquals(contentInput, "chuyen tien cho nguoi nhan");
 
-	log.info("TC_06_STEP_4: nhap ki tu dac biet");
-	trasferPage.inputToDynamicInputBox(driver, "@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ", "chuyen tien cho nguoi nhan");
-
-	log.info("TC_06_STEP_5: kiem tra ki tu dac biet vua nhap");
-	String contentEspeciallyInput = trasferPage.getTextDynamicTextInInputBox(driver, "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
-	verifyEquals(contentEspeciallyInput, "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
-
-//	log.info("TC_06_STEP_4: nhap ki tu co dau");
-//	trasferPage.inputToDynamicInputBox(driver, "gửi tiền cho nhười nhận", "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
+//	log.info("TC_06_STEP_4: nhap ki tu dac biet");
+//	trasferPage.inputToDynamicInputBox(driver, "@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ", "chuyen tien cho nguoi nhan");
 //
 //	log.info("TC_06_STEP_5: kiem tra ki tu dac biet vua nhap");
 //	String contentEspeciallyInput = trasferPage.getTextDynamicTextInInputBox(driver, "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
 //	verifyEquals(contentEspeciallyInput, "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
+//
+//	log.info("TC_06_STEP_4: nhap ki tu co dau");
+//	trasferPage.inputToDynamicInputBox(driver, "gửi tiền", "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
+//
+//	log.info("TC_06_STEP_5: kiem tra ki tu dac biet vua nhap");
+//	String contentVNInput = trasferPage.getTextDynamicTextInInputBox(driver, "guwi tieen");
+//	verifyEquals(contentVNInput, "guwi tieen");
 
     }
 
