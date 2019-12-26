@@ -121,6 +121,14 @@ public class AbstractPage {
 		}
 	}
 
+	public void scrollToElementByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		try {
+			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().resourceId(\"" + dynamicID + "\"));");
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
+	
 	public void clickToElementByJava(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
@@ -755,6 +763,12 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 	}
 
+	public String getTextDynamicDefaultDestinationAccount(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		scrollToText(driver, dynamicTextValue[0]);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEFAULT_DESTINATION_ACCOUNT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DEFAULT_DESTINATION_ACCOUNT, dynamicTextValue);
+	}
+	
 	public List<String> getListMoneyIntoSuggestionBox(AndroidDriver<AndroidElement> driver) {
 		return getTextListElements(driver, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION_ID);
 	}
@@ -774,6 +788,13 @@ public class AbstractPage {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+
+	}
+	
+	public String getDynamicTextDetailByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		scrollToElementByID(driver, dynamicID);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 
 	}
 

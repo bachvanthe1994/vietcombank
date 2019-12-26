@@ -52,11 +52,14 @@ public class Validation_SourceAccount_Charity extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 	}
 
+	String defaultAccount;
 	@Test
 	public void TC_01_KiemTraTruyVanSoDuCuaTaiKhoanMacDinhLaVND() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
+		defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
+		
 		log.info("TC_01_01_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 		
@@ -64,6 +67,13 @@ public class Validation_SourceAccount_Charity extends Base {
 		String availableBalance =  transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		verifyTrue(availableBalance.contains("VND"));
 		
+	}
+	
+	@Test
+	public void TC_03_KiemTraHienThiTaiKhoanMacDinh() {
+		log.info("TC_03_01_Kiem tra hien thi tai khoan mac dinh");
+		String actualDefaultAccount =  transferMoneyCharity.getTextDynamicDefaultDestinationAccount(driver, "Tài khoản nguồn");
+		verifyEquals(actualDefaultAccount, defaultAccount);
 	}
 	
 	@Test
