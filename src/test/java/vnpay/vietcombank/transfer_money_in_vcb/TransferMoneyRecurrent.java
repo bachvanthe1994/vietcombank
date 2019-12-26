@@ -551,7 +551,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_07_11_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -763,7 +763,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_10_11_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
