@@ -110,9 +110,8 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_01_9_2_Kiem tra tai khoan nguon");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
-		String expectMoney = addCommasToLong(info.money) + " VND";
 		log.info("TC_01_9_3_Kiem tra so tien ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ"), expectMoney);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ").replace(",", ""), info.money + " VND");
 
 		log.info("TC_01_9_4_Kiem tra ten nguoi ung ho");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info.name);
@@ -471,9 +470,8 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_05_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
-		String expectMoney = addCommasToLong(info2.money) + " VND";
 		log.info("TC_05_9_4_Kiem tra so tien ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ"), expectMoney);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ").replace(",", ""), info2.money + " VND");
 
 		log.info("TC_05_9_5_Kiem tra ten nguoi ung ho");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info2.name);

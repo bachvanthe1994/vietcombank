@@ -1,13 +1,9 @@
 package pageObjects;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.By;
-
 import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyCharityPageUIs;
 
 public class TransferMoneyCharityPageObject extends AbstractPage {
@@ -18,25 +14,10 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 	
 	public long canculateAvailableBalances(long surPlus, long money) {
 		return surPlus - money;
-		
 	}
 	
 	public String getTextCurrencyCharity() {
 		waitForElementVisible(driver, TransferMoneyCharityPageUIs.TEXT_VIEW_CURRENCY_CHARITY);
 		return getTextElement(driver, TransferMoneyCharityPageUIs.TEXT_VIEW_CURRENCY_CHARITY);
-		
-	}
-	
-	public List<String> getListOrganizationCharity(){
-		waitForElementVisible(driver, TransferMoneyCharityPageUIs.TEXT_VIEW_LIST_ORGANIZATION);
-		List<AndroidElement> listElement = driver.findElements(By.xpath(TransferMoneyCharityPageUIs.TEXT_VIEW_LIST_ORGANIZATION));
-		List<String> listOrganizationCharity = new ArrayList<String>();
-		
-		for (AndroidElement element:listElement) {
-			listOrganizationCharity.add(element.getText());
-		}
-		
-		return listOrganizationCharity;
-		
 	}
 }
