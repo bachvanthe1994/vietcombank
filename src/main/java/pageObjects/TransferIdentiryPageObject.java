@@ -4,7 +4,7 @@ import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.TransferIdentityCardUI;
+import vietcombankUI.TransferIdentityPageUIs;
 
 public class TransferIdentiryPageObject extends AbstractPage {
 
@@ -31,8 +31,8 @@ public class TransferIdentiryPageObject extends AbstractPage {
     }
 
     public String getTextInDynamicIdentifition(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
-	waitForElementVisible(driver, TransferIdentityCardUI.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
-	return getTextElement(driver, TransferIdentityCardUI.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
+	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
 
     }
 
