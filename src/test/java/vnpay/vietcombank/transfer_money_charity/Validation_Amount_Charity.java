@@ -199,32 +199,32 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
 		log.info("TC_08_2_Nhap so tien");
-		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5000", "Thông tin giao dịch", "1");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "50000", "Thông tin giao dịch", "1");
 		
 		log.info("TC_08_3_Focus ra ngoai o nhap So tien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 		
 		log.info("TC_08_4_Kiem tra so tien trong o nhap So tien");
 		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney, "5,000");
+		verifyEquals(actualAmountMoney, "50,000");
 		
 		log.info("TC_08_5_Focus lai vao o nhap So tien");
 		transferMoneyCharity.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		transferMoneyCharity.navigateBack(driver);
 		listActualAmountMoney = transferMoneyCharity.getListMoneyIntoSuggestionBox(driver);
-		listExpectAmountMoney.add("50,000 VND");
 		listExpectAmountMoney.add("500,000 VND");
 		listExpectAmountMoney.add("5,000,000 VND");
+		listExpectAmountMoney.add("50,000,000 VND");
 		
 		log.info("TC_08_6_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
 		
 		log.info("TC_08_7_Chon 1 gia tri trong danh sach goi y");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "50,000 VND");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "500,000 VND");
 		
 		log.info("TC_08_8_Kiem tra so tien trong o nhap So tien");
 		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney, "50,000");
+		verifyEquals(actualAmountMoney, "500,000");
 	}
 	
 	@Test
