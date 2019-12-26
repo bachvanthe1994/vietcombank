@@ -69,7 +69,7 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-	//@Test
+@Test
 	public void TC_00_TaoDanhBaThuHuong() throws InterruptedException {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -103,7 +103,7 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+/*	@Test
 	public void TC_01_ValidationChuyenNhanhQuaTaiKhoan() throws InterruptedException {
 		log.info("TC_01_Lay gia tri tai khoan mac dinh account");
 		accountDefault =transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]) ;
@@ -306,10 +306,8 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
 
 		log.info("TC_04_Step_Chon phi giao dich la nguoi chuyen tra");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,
-				TransferMoneyQuick_Data.TransferQuick.COST[0]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,
-				TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,TransferMoneyQuick_Data.TransferQuick.COST[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
 		log.info("TC_04_Step_Nhap noi dung");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
@@ -333,5 +331,5 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		log.info("verify tim kiem");
 		transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Tìm kiếm");
 
-	}
+	}*/
 }

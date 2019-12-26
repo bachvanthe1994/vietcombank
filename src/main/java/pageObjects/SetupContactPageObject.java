@@ -9,6 +9,7 @@ import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.SetupContactPageUIs;
+import vietcombankUI.TransferIdentityPageUIs;
 
 public class SetupContactPageObject extends AbstractPage {
 
@@ -25,10 +26,9 @@ public class SetupContactPageObject extends AbstractPage {
 		while (countList > 0) {
 
 			AndroidElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
-
 			contact.click();
-			AndroidElement delete = driver.findElement(By.xpath(SetupContactPageUIs.DELETE));
-			delete.click();
+			
+			clickToDynamicButton(driver, "Xóa");
 
 			AndroidElement accept = driver.findElement(By.xpath(SetupContactPageUIs.ACCEPT));
 			accept.click();
@@ -42,11 +42,9 @@ public class SetupContactPageObject extends AbstractPage {
 
 	public void addContactReceiver(String type,String nameBank, String name, String account) {
 
-		AndroidElement add = driver.findElement(By.xpath(SetupContactPageUIs.ADD));
-		add.click();
+		clickToDynamicButton(driver, "Thêm mới");
 
-		AndroidElement type1 = driver.findElement(By.xpath(SetupContactPageUIs.TYPE_TRANFER));
-		type1.click();
+		clickToDynamicButton(driver, "Chuyển tiền trong Vietcombank");
 
 		clickToDynamicButtonLinkOrLinkText(driver, type);
 
@@ -66,4 +64,15 @@ public class SetupContactPageObject extends AbstractPage {
 		close.click();
 	}
 
+
+
+public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
+	clickToElement(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
+}
+
+public void clickToDynamicText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicTextValue);
+	clickToElement(driver, TransferIdentityPageUIs.CLICK_TEXT, dynamicTextValue);
+}
 }
