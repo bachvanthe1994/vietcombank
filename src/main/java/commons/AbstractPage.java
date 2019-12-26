@@ -742,7 +742,7 @@ public class AbstractPage {
     }
 
     public void clickToDynamicBackIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-
+	scrollToText(driver, dynamicTextValue);
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 	clickToElement(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 

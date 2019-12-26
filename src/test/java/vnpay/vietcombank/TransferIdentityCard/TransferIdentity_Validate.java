@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
@@ -63,18 +62,46 @@ public class TransferIdentity_Validate extends Base {
 	log.info("TC_06_Step_0");
 	login.clickToDynamicButton(driver, "TỪ CHỐI");
 
-	log.info("TC_01: chon chuyển tiền nhận bằng CMT");
-	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
-
-    }
-
-//    @Test
-    public void TC_01_TaiKhoanNguon() {
-
     }
 
 //    @Test
     public void TC_02_TenNguoiThuHuong() {
+	log.info("TC_02_STEP_0: chon chuyển tiền nhận bằng CMT");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+	log.info("TC_02_STEP_1: kiem tra hien thị mac dinh");
+	String beneficiary = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
+	verifyEquals(beneficiary, "Tên người hưởng");
+
+	log.info("TC_02_Step_3 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+    }
+
+//    @Test
+    public void TC_03_NhapTenNguoiThuHuong() {
+	log.info("TC_02_STEP_0: chon chuyển tiền nhận bằng CMT");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+	log.info("TC_02_STEP_1: nhap ten nguoi thu huong");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người hưởng");
+
+	log.info("TC_02_STEP_2: lay ten nguoi thu huong vua nhap");
+	String beneficiaryInput = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME);
+
+	log.info("TC_02_STEP_3: kiem tra hien thi ten vua nhap");
+	verifyEquals(beneficiaryInput, TransferIdentity_Data.textDataInputForm.USER_NAME);
+
+	log.info("TC_02_Step_4 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+    }
+
+//  @Test
+    public void TC_04_KiemTraLoaiKiTuNhap() {
+
+    }
+
+//    @Test
+    public void TC_021_TenNguoiThuHuong() {
 	log.info("TC_02_STEP_1: kiem tra hien thị mac dinh");
 	String beneficiary = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
 	verifyEquals(beneficiary, "Tên người hưởng");
@@ -243,7 +270,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
     }
 
-    @Test
+//    @Test
     public void TC_09_Noidung() {
 	log.info("TC_06_STEP_1: kiem tra hien thị mac dinh");
 	trasferPage.scrollToText(driver, "Nội dung");
@@ -257,9 +284,9 @@ public class TransferIdentity_Validate extends Base {
 	String contentInput = trasferPage.getTextDynamicTextInInputBox(driver, "chuyen tien cho nguoi nhan");
 	verifyEquals(contentInput, "chuyen tien cho nguoi nhan");
 
-//	log.info("TC_06_STEP_4: nhap ki tu dac biet");
-//	trasferPage.inputToDynamicInputBox(driver, "@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ", "chuyen tien cho nguoi nhan");
-//
+	log.info("TC_06_STEP_4: nhap ki tu dac biet");
+	trasferPage.inputToDynamicInputBox(driver, "abc", "chuyen tien cho nguoi nhan");
+
 //	log.info("TC_06_STEP_5: kiem tra ki tu dac biet vua nhap");
 //	String contentEspeciallyInput = trasferPage.getTextDynamicTextInInputBox(driver, "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
 //	verifyEquals(contentEspeciallyInput, "@ _ - \\\\ . , & * # ! $ + : ; ? / | % ( ) = ");
@@ -271,6 +298,54 @@ public class TransferIdentity_Validate extends Base {
 //	String contentVNInput = trasferPage.getTextDynamicTextInInputBox(driver, "guwi tieen");
 //	verifyEquals(contentVNInput, "guwi tieen");
 
+    }
+
+//    @Test
+    public void TC_10_NhapNoiDung() {
+	log.info("TC_10_STEP_0: chon chuyển tiền nhận bằng CMT");
+	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+	log.info("TC_10_STEP_1: nhap noi dung");
+	trasferPage.inputToDynamicInputBox(driver, "chuyen tien cho nguoi nhan", "Nội dung");
+
+	log.info("TC_10_STEP_2: lay ra noi dung vua nhap");
+	String contentInput = trasferPage.getTextDynamicTextInInputBox(driver, "chuyen tien cho nguoi nhan");
+
+	log.info("TC_10_STEP_3: kiem tra noi dung vua nhap");
+	verifyEquals(contentInput, "chuyen tien cho nguoi nhan");
+
+	log.info("TC_10_Step_4 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+    }
+
+//    @Test
+    public void TC_11_kiemTraLoaiKiTuNhap() {
+	log.info("TC_11_STEP_0: chon chuyển tiền nhận bằng CMT");
+	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+	log.info("TC_10_STEP_1: nhap ki tu dac biet");
+	trasferPage.inputToDynamicInputBox(driver, " @ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ", "Nội dung");
+
+	log.info("TC_10_STEP_2: lay ra noi dung vua nhap");
+	String contentInput = trasferPage.getTextDynamicTextInInputBox(driver, " @ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ");
+
+	log.info("TC_10_STEP_3: kiem tra noi dung vua nhap");
+	verifyEquals(contentInput, " @ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ");
+
+	log.info("TC_10_STEP_4: nhap ki tu co dau");
+	trasferPage.inputToDynamicInputBox(driver, "chuyển tiền", " @ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = ");
+
+//	log.info("TC_10_STEP_5: lay ra noi dung vua nhap");
+//	String contentInputVN = trasferPage.getTextDynamicTextInInputBox(driver, "chuyeen tieenf");
+//
+//	log.info("TC_10_STEP_6: kiem tra noi dung vua nhap");
+//	verifyEquals(contentInput, "chuyeen tieenf");
+    }
+
+//  @Test
+    public void TC_12_KiemTraGioHanNhap() {
+	log.info("TC_11_STEP_0: chon chuyển tiền nhận bằng CMT");
+	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
     }
 
     @AfterClass(alwaysRun = true)
