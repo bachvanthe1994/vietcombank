@@ -7,7 +7,7 @@ public class LogIn_Data {
 
 		public static final String PHONE = "0399764702";
 		public static final String PHONE_INVALID = "09047978631";
-
+		
 		public static final String WRONG_PASSWORD = "18a9713e";
 		public static final String NEW_PASSWORD = "aaaa1111";
 		public static final String OTP = "123456";
