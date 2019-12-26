@@ -305,7 +305,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
