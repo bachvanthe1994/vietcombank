@@ -18,7 +18,7 @@ import pageObjects.TransferIdentiryPageObject;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferIdentity_Data;
 
-public class Transfer_Citizen_Identification extends Base {
+public class Transfer_Citizen_And_Military_Identification extends Base {
     AndroidDriver<AndroidElement> driver;
     private LogInPageObject login;
     private HomePageObject homePage;
