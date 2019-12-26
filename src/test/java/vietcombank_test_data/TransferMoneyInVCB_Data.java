@@ -50,4 +50,5 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_PASSWORD_FEE = "0.04";
 
 	}
+
 }
