@@ -17,6 +17,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String MONEY = "20000";
 		public static final String NOTE = "Test";
 		public static final String TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER = "2,200";
+		public static final String TRANSFER_PASSWORD_FEE_TO_OTHER_ACCOUNT_OWNER = "2,200";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "3,300";
 		public static final String PAYMENT_BY_OTP_FEE = "5,500";
 		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.12";
@@ -63,5 +64,6 @@ public class TransferMoneyInVCB_Data {
 		public static final String TEXT_AND_SPECIAL_CHARACTERS = "Abc!@#$%%";
 		public static final String INVALID_MONEY = "12345678901";
 		public static final String INVALID_DECIMAL_MONEY = "1234567890.1234";
+
 	}
 }

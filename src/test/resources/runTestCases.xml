@@ -22,7 +22,15 @@
 		<parameter name="hubURL"
 			value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Address_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_DestinationAccount_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Name_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_SourceAccount_Charity" />
 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Status_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> 
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
 		</classes>
 	</test>
 
