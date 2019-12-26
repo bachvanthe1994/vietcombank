@@ -9,7 +9,6 @@ import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.SetupContactPageUIs;
-import vietcombankUI.TransferIdentityPageUIs;
 
 public class SetupContactPageObject extends AbstractPage {
 
@@ -26,11 +25,11 @@ public class SetupContactPageObject extends AbstractPage {
 		while (countList > 0) {
 
 			AndroidElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
-			contact.click();
-			
+			contact.click();			
 			clickToDynamicText(driver, "Xóa");
-
+			
 			clickToDynamicButton(driver, "Đồng ý");
+			
 			clickToDynamicButton(driver, "Đóng");
 			countList--;
 
@@ -47,18 +46,15 @@ public class SetupContactPageObject extends AbstractPage {
 
 		clickToDynamicButtonLinkOrLinkText(driver, nameBank);
 
-
 		AndroidElement name1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_NAME));
 		name1.sendKeys(name);
 
 		AndroidElement account1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_ACCOUNT));
 		account1.sendKeys(account);
 
-		AndroidElement finish = driver.findElement(By.xpath(SetupContactPageUIs.BUTTON_FINISH));
-		finish.click();
+		clickToDynamicButton(driver, "Hoàn thành");
 
-		AndroidElement close = driver.findElement(By.xpath(SetupContactPageUIs.BUTTON_CLOSE));
-		close.click();
+		clickToDynamicButton(driver, "Đóng");
 	}
 
 
