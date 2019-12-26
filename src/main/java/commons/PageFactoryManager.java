@@ -60,8 +60,10 @@ public class PageFactoryManager {
 	public static LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
 		return new LuckyGiftPageObject(driver);
 	}
-		public static SetupContactPageObject getSetupContactPageObject(AndroidDriver<AndroidElement> driver) {
-			return new SetupContactPageObject(driver);
+
+	public static SetupContactPageObject getSetupContactPageObject(AndroidDriver<AndroidElement> driver) {
+		return new SetupContactPageObject(driver);
 
 	}
+
 }
