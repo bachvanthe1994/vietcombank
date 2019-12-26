@@ -763,10 +763,10 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 	}
 
-	public String getTextDynamicDefaultDestinationAccount(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getTextDynamicDefaultSourceAccount(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEFAULT_DESTINATION_ACCOUNT, dynamicTextValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DEFAULT_DESTINATION_ACCOUNT, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEFAULT_SOURCE_ACCOUNT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DEFAULT_SOURCE_ACCOUNT, dynamicTextValue);
 	}
 	
 	public List<String> getListMoneyIntoSuggestionBox(AndroidDriver<AndroidElement> driver) {

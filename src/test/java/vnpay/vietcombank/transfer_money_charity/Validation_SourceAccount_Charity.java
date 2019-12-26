@@ -72,7 +72,7 @@ public class Validation_SourceAccount_Charity extends Base {
 	@Test
 	public void TC_03_KiemTraHienThiTaiKhoanMacDinh() {
 		log.info("TC_03_01_Kiem tra hien thi tai khoan mac dinh");
-		String actualDefaultAccount =  transferMoneyCharity.getTextDynamicDefaultDestinationAccount(driver, "Tài khoản nguồn");
+		String actualDefaultAccount =  transferMoneyCharity.getTextDynamicDefaultSourceAccount(driver, "Tài khoản nguồn");
 		verifyEquals(actualDefaultAccount, defaultAccount);
 	}
 	
