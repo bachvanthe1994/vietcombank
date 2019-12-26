@@ -27,7 +27,7 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_DestinationAccount_Charity" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Name_Charity" /> -->
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Status_Charity" /> -->
 		</classes>
 	</test>
