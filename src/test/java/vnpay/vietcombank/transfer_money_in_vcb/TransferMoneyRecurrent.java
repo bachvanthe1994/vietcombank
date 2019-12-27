@@ -61,10 +61,9 @@ public class TransferMoneyRecurrent extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
 		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -151,7 +150,7 @@ public class TransferMoneyRecurrent extends Base {
 		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 	}
 
-//	@Test
+	@Test
 	public void TC_02_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));
@@ -224,7 +223,7 @@ public class TransferMoneyRecurrent extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_03_HuyGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));
@@ -278,7 +277,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
 
-//	@Test
+	@Test
 	public void TC_04_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		log.info("TC_04_1_Click Chuyen tien trong ngan hang");
 		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -366,7 +365,7 @@ public class TransferMoneyRecurrent extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_05_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info1.frequencyNumber));
@@ -437,7 +436,7 @@ public class TransferMoneyRecurrent extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_HuyGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info1.frequencyNumber));
@@ -552,9 +551,8 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_07_11_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
-		transferRecurrent.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
