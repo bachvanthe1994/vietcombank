@@ -94,7 +94,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
@@ -285,7 +285,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 		log.info("TC_04_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK[0]);
 
 		log.info("TC_04_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Số tiền");
@@ -466,7 +466,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
@@ -648,7 +648,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_EUR, "Số tiền");
