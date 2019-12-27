@@ -61,6 +61,7 @@ public class TransferMoneyRecurrent extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 	}
 
 //	@Test
