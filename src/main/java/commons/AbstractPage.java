@@ -217,16 +217,6 @@ public class AbstractPage {
 		return element.getText();
 	}
 
-	public List<String> getTextListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> listElements = driver.findElement(By.id(dynamicValue[0])).findElements(By.xpath(locator));
-		List<String> listTextView = new ArrayList<String>();
-		for (MobileElement element : listElements) {
-			listTextView.add(element.getText());
-		}
-		return listTextView;
-	}
-
 	public List<String> getTextInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
@@ -777,11 +767,6 @@ public class AbstractPage {
 		scrollToText(driver, dynamicTextValue[0]);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DEFAULT_SOURCE_ACCOUNT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DEFAULT_SOURCE_ACCOUNT, dynamicTextValue);
-	}
-
-	public List<String> getListMoneyIntoSuggestionBox(AndroidDriver<AndroidElement> driver) {
-
-		return getTextListElements(driver, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION, TransferMoneyCharityPageUIs.LIST_MONEY_SUGGESTION_ID);
 	}
 
 	public String getDynamicTransferTimeAndMoney(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
