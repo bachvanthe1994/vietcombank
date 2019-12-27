@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -62,7 +63,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_01_KiemTraComboboxHinhThucChuyenTien() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -92,7 +93,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_02_KiemTraMaxTaiKhoanDich() {
 		log.info("TC_02_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -111,7 +112,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KiemTraTaiKhoanDichNho10KyTu() {
 		log.info("TC_03_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -139,7 +140,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraTaiKhoanDichNhoHon13KyTuLonHon10KyTu() {
 		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -166,7 +167,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_05_KiemTraKhiNhapKyTuDacBietVaoTaiKhoanDich() {
 		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -182,7 +183,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_06_KiemTraLinkHanMuc() {
 		log.info("TC_06_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -203,7 +204,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_07_KiemTraTiGiaQuyDoi() {
 		log.info("TC_07_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -238,7 +239,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_08_KiemTraMaxlengthSoTien() {
 		log.info("TC_08_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -257,7 +258,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_09_KiemTraMaxlengthSoTien() {
 		log.info("TC_09_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -282,7 +283,7 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_10_KiemTraNhapSoTienVoiKyTuDacBiet() {
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -302,10 +303,25 @@ public class Transfer_Money_Immedidately_Validation1 extends Base {
 
 	}
 
+	@Test
+	public void TC_11_KiemTraHienThiGoiYNhanhVoiTaiKhoanVND() {
+		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+
+		log.info("TC_10_Step_02: Nhap so tien");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.MONEY, "Số tiền");
+
+		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+
+		System.out.print(suggestedMoney);
+
+	}
+
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-		closeApp();
+//		closeApp();
 		service.stop();
 	}
 
