@@ -183,7 +183,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_Step_: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -364,7 +364,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_Step_: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -544,7 +544,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_Step_: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -727,7 +727,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_Step_: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);

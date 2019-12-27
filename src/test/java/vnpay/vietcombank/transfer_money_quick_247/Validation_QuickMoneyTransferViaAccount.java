@@ -73,7 +73,7 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00Step_: Click menu header");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_00Step_: Click cai dat");
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
@@ -95,10 +95,10 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], SetupContact_Data.UI.BANK, SetupContact_Data.UI.NAME_CARD2, SetupContact_Data.UI.ACCOUNT2);
 
 		log.info("TC_00_Step_: back lai man hinh danh ba");
-		setupContact.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		setupContact.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_00_Step_: back lai man hinh home");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
 	}
 
 /*	@Test

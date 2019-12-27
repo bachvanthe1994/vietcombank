@@ -177,7 +177,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_02_2: Click vao More Icon");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_3: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -249,7 +249,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_02_26: Click  nut Home");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		transferMoneyCharity.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -354,7 +354,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_04_2: Click vao More Icon");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_3: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -429,7 +429,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_04_29: Click  nut Home");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		transferMoneyCharity.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -534,7 +534,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_06_2: Click vao More Icon");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_3: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -606,7 +606,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_06_26: Click  nut Home");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		transferMoneyCharity.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -712,7 +712,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_08_2: Click vao More Icon");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_3: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -787,7 +787,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_08_27: Click  nut Home");
-		transferMoneyCharity.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		transferMoneyCharity.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

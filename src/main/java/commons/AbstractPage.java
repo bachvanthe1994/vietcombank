@@ -155,6 +155,13 @@ public class AbstractPage {
 		}
 	}
 
+	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, String locator, int elementIndex, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		element.get(elementIndex).click();
+
+	}
+
 	public void clearText(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -471,16 +478,14 @@ public class AbstractPage {
 	}
 
 	public boolean isControlDisplayed(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
-		try {
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			locator = String.format(locator, (Object[]) dynamicValue);
-			WebElement element = driver.findElement(By.xpath(locator));
-			boolean status = element.isDisplayed();
-			System.out.println("element" + status);
-			return status;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
+			return true;
+		} else {
 			return false;
+
 		}
 	}
 
@@ -530,7 +535,11 @@ public class AbstractPage {
 	public void waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public String getOTPText(AndroidDriver<AndroidElement> driver, String bankName, String allMesssage) {
@@ -639,9 +648,9 @@ public class AbstractPage {
 
 	}
 
-	public void clickToDynamicBottomMenu(AndroidDriver<AndroidElement> driver, String dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+	public void clickToDynamicBottomMenuOrCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 
 	}
 
@@ -681,6 +690,12 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 	}
 
+	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+
+	}
+
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -704,6 +719,12 @@ public class AbstractPage {
 		for (Keys key : dynamicKey) {
 			driver.getKeyboard().sendKeys(key);
 		}
+	}
+
+	public void inputToDynamicPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
 	}
 
 	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
@@ -754,6 +775,16 @@ public class AbstractPage {
 	public boolean isDynamicTextInInputBoxDisPlayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+	}
+
+	public boolean isDynamicSuggestedMoneyUndisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		return isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	}
+
+	public boolean isDynamicSuggestedMoneyDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 	}
 
 	public boolean isDynamicVerifyTextOnButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -850,12 +881,6 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 
-	}
-
-	public void inputToDynamicPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
-		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
 	}
 
 	public boolean isKeyBoardDisplayed(AndroidDriver<AndroidElement> driver) {
