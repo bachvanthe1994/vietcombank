@@ -210,7 +210,6 @@ public class Validation_Amount_Charity extends Base {
 		
 		log.info("TC_08_5_Focus lai vao o nhap So tien");
 		transferMoneyCharity.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		transferMoneyCharity.navigateBack(driver);
 		listActualAmountMoney = transferMoneyCharity.getListMoneyIntoSuggestionBox(driver);
 		listExpectAmountMoney.add("500,000 VND");
 		listExpectAmountMoney.add("5,000,000 VND");
