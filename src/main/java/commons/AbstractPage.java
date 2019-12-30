@@ -30,7 +30,6 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.TransferMoneyCharityPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
 public class AbstractPage {
@@ -788,7 +787,7 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
 
-	public String getTextDynamicTextInInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getDynamicTextInInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
