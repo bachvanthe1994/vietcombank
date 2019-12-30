@@ -41,5 +41,6 @@ public class TransferIdentity_Data {
 	public static final String CONFIRM_IDENTITY = "Số CMND không hợp lệ. Quý khách vui lòng kiểm tra lại";
 	public static final String CONTENT = "Nội dung";
 	public static final String CONTENT_UNIKEY = "chuyen tien cho nguoi nhan";
+	public static final String MONEY_0 = "0100000";
     }
 }
