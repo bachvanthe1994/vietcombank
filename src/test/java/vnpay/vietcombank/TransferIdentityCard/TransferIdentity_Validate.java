@@ -42,30 +42,30 @@ public class TransferIdentity_Validate extends Base {
 	log.info("Before class: Click Allow Button");
 	login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
-	log.info("TC_06_Step_0");
+	log.info("TC_00_Step_1: chon tiep tuc");
 	login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
 
-	log.info("TC_06_Step_0");
+	log.info("TC_00_Step_2: chon tiep tuc");
 	login.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_05_Step_0");
+	log.info("TC_00_Step_3: chon tiep tuc");
 	login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
 
-	log.info("TC_06_Step_0");
+	log.info("TC_00_Step_4: chon tiep tuc");
 	login.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_06_Step_0");
+	log.info("TC_00_Step_5: chon tiep tuc");
 	login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
-	log.info("TC_06_Step_0");
+	log.info("TC_00_Step_6: chon tiep tuc");
 	login.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_06_Step_0");
+	log.info("TC_00_Step_7: chon tu choi");
 	login.clickToDynamicButton(driver, "TỪ CHỐI");
 
     }
 
-    @Test
+//    @Test
     public void TC_01_TenNguoiThuHuong() {
 	log.info("TC_01_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -78,7 +78,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-    @Test
+//    @Test
     public void TC_02_NhapTenNguoiThuHuong() {
 	log.info("TC_02_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -111,7 +111,7 @@ public class TransferIdentity_Validate extends Base {
 	verifyEquals(beneficiaryInputNumber, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
 	log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, "Tên người hưởng");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
 	log.info("TC_03_STEP_5: lay ten nguoi thu huong vua nhap");
 	String specialCharacters = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
@@ -120,7 +120,7 @@ public class TransferIdentity_Validate extends Base {
 	verifyEquals(specialCharacters, "Tên người hưởng");
 
 	log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS);
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Tên người hưởng");
 
 	log.info("TC_03_STEP_8: lay ten nguoi thu huong vua nhap");
 	String CharactersVN = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
@@ -358,8 +358,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 	log.info("TC_11_STEP_1: kiem tra hien thị mac dinh");
-	String noicap = trasferPage.getTextDynamicTextInInputBox(driver, "Nơi cấp");
-	verifyEquals(noicap, "Nơi cấp");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Nơi cấp");
 
 	log.info("TC_12_Step_4 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
