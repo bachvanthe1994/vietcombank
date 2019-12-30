@@ -10,12 +10,10 @@ public class TransferIdentity_Data {
 	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
 	public static final String CONNTENT = "Nội dung";
 	public static final String TRANSECTION_NUMBER = "Mã giao dịch";
-	public static final String AMOUNT = "1100";
+	public static final String AMOUNT = "11000";
     }
 
     public class textDataInputForm {
-	public static final String PASSWORD_CONFIRM = "Hoangkm";
-	public static final String OTP_CONFIRM = "Hoangkm";
 	public static final String USER_NAME = "Hoangkm";
 	public static final String IDENTITY_NUMBER = "123456789";
 	public static final String PASSPORT_NUMBER = "abc12345678";
@@ -30,5 +28,18 @@ public class TransferIdentity_Data {
 	public static final String CURRENCY_VND = "VND";
 	public static final String CURRENCY_EURO = "EUR";
 	public static final String ISSUED = "Thành phố Hà Nội ";
+	public static final String ISSUED_SPACE = "Thành phố Hà Nội";
+	public static final String SPECIAL_CHARACTERS = "! @ # $ % ^ & * () /";
+	public static final String MAX_LENGTH_100 = "hẩu đến hết tháng 12 ước đạt gần 517 tỷ USD, tăng xấp xỉ 18% so với 2018.";
+	public static final String MAX_LENGTH_101 = "hẩu đến hết tháng 12 ước đạt gần 517 tỷ USD, tăng xấp xỉ 118% so với 2018.";
+	public static final String MAX_LENGTH_20_NUM = "12345678901234567890";
+	public static final String MAX_LENGTH_21_NUM = "123456789012345678901";
+	public static final String MAX_LENGTH_8_NUM = "12345678";
+	public static final String MAX_LENGTH_9_NUM = "123456789";
+	public static final String MAX_LENGTH_15_NUM = "123456789012345";
+	public static final String MAX_LENGTH_16_NUM = "1234567890123456";
+	public static final String CONFIRM_IDENTITY = "Số CMND không hợp lệ. Quý khách vui lòng kiểm tra lại";
+	public static final String CONTENT = "Nội dung";
+	public static final String CONTENT_UNIKEY = "chuyen tien cho nguoi nhan";
     }
 }
