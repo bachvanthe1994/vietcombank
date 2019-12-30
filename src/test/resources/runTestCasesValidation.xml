@@ -23,7 +23,7 @@
 			value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Address_Charity" /> -->
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" />
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_DestinationAccount_Charity" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Name_Charity" /> -->
