@@ -263,7 +263,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_08_10_Nhap ma OTP chinh xac");
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		
-		Thread.sleep(61000);
+		Thread.sleep(35000);
 		
 		log.info("TC_08_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
