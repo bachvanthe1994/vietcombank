@@ -85,7 +85,7 @@ public class LuckyGift extends Base {
 		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, "Nguời nhận (0/10)"));
 
 		log.info("TC_01_Step_Click add danh sach nguoi nhan");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_01_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -104,7 +104,7 @@ public class LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, "Số tiền");
 
 		log.info("TC_01_Step_Chon loi chuc");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/more_content");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
 		
 		log.info("TC_01_Step_Click tiep tuc popup");
@@ -176,7 +176,7 @@ public class LuckyGift extends Base {
 		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, "Nguời nhận (0/10)"));
 
 		log.info("TC_02_Step_Click add danh sach nguoi nhan");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_02_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -195,7 +195,7 @@ public class LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, "Số tiền");
 
 		log.info("TC_02_Step_Chon loi chuc");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/more_content");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
 		
 		log.info("TC_02_Step_Click tiep tuc popup");
@@ -265,7 +265,7 @@ public class LuckyGift extends Base {
 		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, "Nguời nhận (0/10)"));
 
 		log.info("TC_03_Step_Click add danh sach nguoi nhan");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_03_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -284,7 +284,7 @@ public class LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, "Số tiền");
 
 		log.info("TC_03_Step_Chon loi chuc");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/more_content");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
 		
 		log.info("TC_03_Step_Click tiep tuc popup");
@@ -355,7 +355,7 @@ public class LuckyGift extends Base {
 		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, "Nguời nhận (0/10)"));
 
 		log.info("TC_04_Step_Click add danh sach nguoi nhan");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_04_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -374,7 +374,7 @@ public class LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, "Số tiền");
 
 		log.info("TC_04_Step_Chon loi chuc");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/more_content");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
 		
 		log.info("TC_04_Step_Click tiep tuc popup");
@@ -445,7 +445,7 @@ public class LuckyGift extends Base {
 		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, "Nguời nhận (0/3)"));
 
 		log.info("TC_05_Step_Click add danh sach nguoi nhan");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
 		
 		log.info("TC_05_Step_So dien thoai/ tai khoan nhan");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_OUT_VCB, "Số điện thoại/tài khoản nhận");
@@ -461,7 +461,7 @@ public class LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, "Số tiền");
 
 		log.info("TC_05_Step_Chon loi chuc");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/more_content");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
 		
 		log.info("TC_05_Step_Click tiep tuc popup");
@@ -532,7 +532,7 @@ public class LuckyGift extends Base {
 		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, "Nguời nhận (0/3)"));
 
 		log.info("TC_06_Step_Click add danh sach nguoi nhan");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_06_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -551,7 +551,7 @@ public class LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, "Số tiền");
 
 		log.info("TC_06_Step_Chon loi chuc");
-		luckyGift.clickToDynamicBottomMenu(driver, "com.VCB:id/more_content");
+		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[1]);
 		
 		log.info("TC_06_Step_Click tiep tuc popup");
