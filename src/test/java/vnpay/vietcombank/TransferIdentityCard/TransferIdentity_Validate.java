@@ -70,7 +70,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 	log.info("TC_01_STEP_1: kiem tra hien thị mac dinh");
-	String beneficiary = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
+	String beneficiary = trasferPage.getDynamicTextInInputBox(driver, "Tên người hưởng");
 	verifyEquals(beneficiary, "Tên người hưởng");
 
 	log.info("TC_01_Step_2 : Click  nut Back");
@@ -86,7 +86,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người hưởng");
 
 	log.info("TC_02_STEP_2: lay ten nguoi thu huong vua nhap");
-	String beneficiaryInput = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME);
+	String beneficiaryInput = trasferPage.getDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME);
 
 	log.info("TC_02_STEP_3: kiem tra hien thi ten vua nhap");
 	verifyEquals(beneficiaryInput, TransferIdentity_Data.textDataInputForm.USER_NAME);
@@ -180,7 +180,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 	log.info("TC_07_STEP_1: kiem tra hien thị mac dinh");
-	String number = trasferPage.getTextDynamicTextInInputBox(driver, "Số");
+	String number = trasferPage.getDynamicTextInInputBox(driver, "Số");
 	verifyEquals(number, "Số");
 
 	log.info("TC_07_Step_3 : Click  nut Back");
@@ -196,7 +196,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER, "Số");
 
 	log.info("TC_08_STEP_2: lay so vua nhap");
-	String numberInput = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER);
+	String numberInput = trasferPage.getDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER);
 
 	log.info("TC_08_STEP_3: kiem tra hien thi so vua nhap");
 	verifyEquals(numberInput, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER);
@@ -214,14 +214,14 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM, "Số");
 
 	log.info("TC_09_STEP_2: kiem tra nhap = maxlength = 20 ki tu so");
-	String numberInputMaxlength = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM);
+	String numberInputMaxlength = trasferPage.getDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM);
 	verifyEquals(numberInputMaxlength, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM);
 
 	log.info("TC_09_STEP_3: nhap lon hon maxlength truong so");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_21_NUM, "Số");
 
 	log.info("TC_09_STEP_4: kiem tra nhap = maxlength = 20 ki tu so");
-	String numberInput20 = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM);
+	String numberInput20 = trasferPage.getDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM);
 	verifyEquals(numberInput20, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_20_NUM);
 
 	log.info("TC_09_Step_5 : Click  nut Back");

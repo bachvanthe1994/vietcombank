@@ -51,7 +51,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("Before class_Step_03: Click Tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_05_Step_04:  Dien mat khau");
+		log.info("Before class_Step_04:  Dien mat khau");
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
 
 		log.info("Before class_Step_05: Click tiep tuc");

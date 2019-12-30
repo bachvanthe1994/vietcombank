@@ -92,7 +92,7 @@ public class Login_Validation extends Base {
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.INVALID_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
 		
 		log.info("TC_03_Step_02: Kiem tra mat khau do khong duoc nhap");
-		verifyTrue(login.getTextDynamicTextInInputBox(driver,LogIn_Data.UI.PASSWORD_LABEL).equals(LogIn_Data.UI.PASSWORD_LABEL));
+		verifyTrue(login.getDynamicTextInInputBox(driver,LogIn_Data.UI.PASSWORD_LABEL).equals(LogIn_Data.UI.PASSWORD_LABEL));
 		
 	}
 
@@ -109,7 +109,7 @@ public class Login_Validation extends Base {
 		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20, LogIn_Data.UI.PASSWORD_LABEL);
 		
 		log.info("TC_04_Step_04: Kiem tra mat khau do khong duoc nhap");
-		verifyTrue(!login.getTextDynamicTextInInputBox(driver,LogIn_Data.UI.PASSWORD_LABEL).equals(LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20));
+		verifyTrue(!login.getDynamicTextInInputBox(driver,LogIn_Data.UI.PASSWORD_LABEL).equals(LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20));
 		
 	}
 	@Test

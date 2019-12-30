@@ -125,7 +125,7 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 		
 		log.info("TC_07_02_Kiem tra Quy/ To chuc tu thien duoc hien thi");
-		String actualOrganization = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
+		String actualOrganization = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
 		verifyEquals(actualOrganization, info.organization);
 	}
 	
