@@ -104,47 +104,32 @@ public class TransferIdentity_Validate extends Base {
 	log.info("TC_03_STEP_1: nhap ten nguoi thu huong gom ki tu so");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Tên người hưởng");
 
-	log.info("TC_03_STEP_2: lay ten nguoi thu huong vua nhap");
-	String beneficiaryInputNumber = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
-
-	log.info("TC_03_STEP_3: kiem tra hien thi ten vua nhap");
-	verifyEquals(beneficiaryInputNumber, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
+	log.info("TC_03_STEP_2: kiem ta ten nguoi huong vua nhap");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
 	log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
 	log.info("TC_03_STEP_5: lay ten nguoi thu huong vua nhap");
-	String specialCharacters = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
-
-	log.info("TC_03_STEP_6: kiem tra hien thi ten vua nhap");
-	verifyEquals(specialCharacters, "Tên người hưởng");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Tên người hưởng");
 
 	log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Tên người hưởng");
 
 	log.info("TC_03_STEP_8: lay ten nguoi thu huong vua nhap");
-	String CharactersVN = trasferPage.getTextDynamicTextInInputBox(driver, "Tên người hưởng");
-
-	log.info("TC_03_STEP_9: kiem tra hien thi ten vua nhap");
-	verifyEquals(CharactersVN, "Xac nhan thong tin");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Xac nhan thong tin");
 
 	log.info("TC_03_STEP_10: kiem tra max length = 100");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100, "Xac nhan thong tin");
 
 	log.info("TC_03_STEP_11: lay ten nguoi thu huong vua nhap");
-	String maxLength100 = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
-
-	log.info("TC_03_STEP_12: kiem tra hien thi ten vua nhap");
-	verifyEquals(maxLength100, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
 
 	log.info("TC_03_STEP_13: kiem tra max length = 101");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_101, "Xac nhan thong tin");
 
 	log.info("TC_03_STEP_14: lay ten nguoi thu huong vua nhap");
-	String maxLength101 = trasferPage.getTextDynamicTextInInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
-
-	log.info("TC_03_STEP_15: kiem tra hien thi ten vua nhap");
-	verifyEquals(maxLength101, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
 
 	log.info("TC_03_Step_16 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
