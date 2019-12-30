@@ -65,7 +65,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
-		String actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		String actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_01_2_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
@@ -76,7 +76,7 @@ public class Validation_Amount_Charity extends Base {
 		List<Keys> listKey = Arrays.asList(Keys.NUMPAD0, Keys.NUMPAD0, Keys.NUMPAD0, Keys.NUMPAD0);
 		transferMoneyCharity.pressKeyCodeIntoDynamicInputBoxByHeader(driver, listKey, "Thông tin giao dịch", "1");
 
-		String actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		String actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_02_2_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
@@ -93,7 +93,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_03_2_1_Nhap ki tu so");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "123", "Thông tin giao dịch", "1");
 
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_03_2_2_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "123");
 
@@ -104,7 +104,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_03_4_Nhap ki tu so, dau cham");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5.5", "Thông tin giao dịch", "1");
 
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_03_4_1_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "5.5");
 	}
@@ -119,7 +119,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_04_2_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "1234567899", "Thông tin giao dịch", "1");
 
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney.replaceAll("\\D+", "").length(), 10);
 
 		log.info("TC_04_3_Chon tai khoan nguon Ngoai te");
@@ -129,7 +129,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_04_4_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "111111111.11", "Thông tin giao dịch", "1");
 
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney.replaceAll("\\D+", "").length(), 11);
 	}
 
@@ -143,7 +143,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_05_2_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5000000", "Thông tin giao dịch", "1");
 
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyTrue(actualAmountMoney.contains(","));
 	}
 
@@ -205,7 +205,7 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_08_4_Kiem tra so tien trong o nhap So tien");
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney, "50,000");
 
 		log.info("TC_08_5_Focus lai vao o nhap So tien");
@@ -225,7 +225,7 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "500,000 VND");
 
 		log.info("TC_08_8_Kiem tra so tien trong o nhap So tien");
-		actualAmountMoney = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney, "500,000");
 	}
 

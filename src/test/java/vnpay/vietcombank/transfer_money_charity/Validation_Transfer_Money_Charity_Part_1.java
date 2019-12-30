@@ -63,7 +63,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
 		log.info("TC_01_2_Kiem tra gia tri trong o Ten nguoi ung ho");
 		verifyEquals(actualName, "Tên người ủng hộ");
 	}
@@ -74,7 +74,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.name, "Thông tin giao dịch", "2");
 		
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
 		log.info("TC_02_2_Kiem tra gia tri trong o Ten nguoi ung ho");
 		verifyEquals(actualName, info.name);
 	}
@@ -84,7 +84,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_03_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_HAS_SPECIAL_CHARACTERS, "Thông tin giao dịch", "2");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_03_2_Kiem tra gia tri trong o Ten nguoi ung ho");
@@ -96,7 +96,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_04_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_OVER_50_CHARACTERS, "Thông tin giao dịch", "2");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
 		int actualNameLength = actualName.length();
 		log.info("TC_04_2_Kiem tra gioi han ky tu nhap");
 		verifyEquals(actualNameLength, 45);
@@ -110,7 +110,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_05_1_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
 		log.info("TC_05_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
 		verifyEquals(actualName, "Địa chỉ người ủng hộ");
 	}
@@ -121,7 +121,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.address, "Thông tin giao dịch", "3");
 		
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
 		log.info("TC_06_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
 		verifyEquals(actualName, info.address);
 	}
@@ -131,7 +131,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_07_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_HAS_SPECIAL_CHARACTERS, "Thông tin giao dịch", "3");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_07_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
@@ -144,7 +144,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_08_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_OVER_50_CHARACTERS, "Thông tin giao dịch", "3");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
 		int actualNameLength = actualName.length();
 		log.info("TC_08_2_Kiem tra gioi han ky tu nhap");
 		verifyEquals(actualNameLength, 45);
@@ -161,7 +161,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		
 		transferMoneyCharity.scrollToText(driver, "Hoàn cảnh người ủng hộ");
 
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
 		log.info("TC_09_2_Kiem tra gia tri trong o Hoan canh nguoi ung ho");
 		verifyEquals(actualName, "Hoàn cảnh người ủng hộ");
 	}
@@ -171,7 +171,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_10_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.status, "Thông tin giao dịch", "4");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
 		log.info("TC_10_2_Kiem tra gia tri trong o Hoan canh nguoi ung ho");
 		verifyEquals(actualName, info.status);
 	}
@@ -181,7 +181,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_11_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_HAS_SPECIAL_CHARACTERS, "Thông tin giao dịch", "4");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_11_2_Kiem tra gia tri trong o Hoan canh nguoi ung ho");
@@ -193,7 +193,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		log.info("TC_12_1_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.STRING_OVER_50_CHARACTERS, "Thông tin giao dịch", "4");
 		
-		String actualName = transferMoneyCharity.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
+		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
 		int actualNameLength = actualName.length();
 		log.info("TC_12_2_Kiem tra gioi han ky tu nhap");
 		verifyEquals(actualNameLength, 50);

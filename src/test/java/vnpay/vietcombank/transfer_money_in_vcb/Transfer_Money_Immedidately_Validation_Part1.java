@@ -103,7 +103,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_15_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_02_Step_03: Lay do dai tai khoan huong duoc nhap vao");
-		int accountNumber = transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1").length();
+		int accountNumber = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1").length();
 
 		log.info("TC_02_Step_04: Kiem tra so tai khoan huong bi cat bot con 13 ky tu");
 		verifyEquals(accountNumber, 13);
@@ -177,7 +177,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.TEXT_AND_SPECIAL_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_05_Step_03:Kiem tra tai khoan khong duoc dien");
-		verifyEquals(transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"), "Nhập/chọn tài khoản nhận VND");
+		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"), "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_05_Step_04: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -249,7 +249,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_MONEY, "Số tiền");
 
 		log.info("TC_08_Step_03: Lay do dai so tien duoc nhap vao");
-		String Money = transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		String Money = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_08_Step_04: Kiem tra so tien bi cat bot con 10 ky tu");
 		verifyEquals(Money, "Số tiền");
@@ -274,7 +274,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_DECIMAL_MONEY, "Số tiền");
 
 		log.info("TC_09_Step_03: Lay do dai so tien duoc nhap vao");
-		String Money = transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		String Money = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_09_Step_04: Kiem tra so tien bi cat bot con 10 ky tu");
 		verifyEquals(Money, "Số tiền");
@@ -293,7 +293,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.TEXT_AND_SPECIAL_CHARACTERS, "Số tiền");
 
 		log.info("TC_10_Step_03: Lay do dai so tien duoc nhap vao");
-		String Money = transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		String Money = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_10_Step_04: Kiem tra text khong duoc nhap");
 		verifyEquals(Money, "Số tiền");
@@ -368,7 +368,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_13_Step_06: Kiem tra suggest list khong hien thi");
 		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
-		verifyEquals(transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
+		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
 
 		log.info("TC_13_Step_07: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -397,7 +397,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_14_Step_02: Kiem tra suggest list khong hien thi");
 		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
-		verifyEquals(transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
+		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
 
 		log.info("TC_14_Step_04: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -432,7 +432,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_15_Step_07: Kiem tra suggest list hien thi");
 		verifyFailure(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
-		verifyEquals(transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
+		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
 
 		log.info("TC_15_Step_08: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -464,7 +464,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_16_Step_07: Kiem tra suggest list khong hien thi");
 		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
-		verifyEquals(transferInVCB.getTextDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), suggestedMoney.get(0).replaceAll(" VND", ""));
+		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), suggestedMoney.get(0).replaceAll(" VND", ""));
 
 		log.info("TC_16_Step_08: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");

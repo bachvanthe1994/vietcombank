@@ -782,7 +782,7 @@ public class AbstractPage {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 	}
 
-	public String getTextDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	}
