@@ -65,7 +65,7 @@ public class TransferIdentity_Validate extends Base {
 
     }
 
-//    @Test
+    @Test
     public void TC_01_TenNguoiThuHuong() {
 	log.info("TC_01_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -78,7 +78,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_02_NhapTenNguoiThuHuong() {
 	log.info("TC_02_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -94,46 +94,6 @@ public class TransferIdentity_Validate extends Base {
 
 	log.info("TC_02_Step_4 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
-    }
-
-    @Test
-    public void TC_03_KiemTraLoaiKiTuNhap() {
-	log.info("TC_03_STEP_0: chon chuyển tiền nhận bằng CMT");
-	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
-
-	log.info("TC_03_STEP_1: nhap ten nguoi thu huong gom ki tu so");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Tên người hưởng");
-
-	log.info("TC_03_STEP_2: kiem ta ten nguoi huong vua nhap");
-	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
-
-	log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
-
-	log.info("TC_03_STEP_5: lay ten nguoi thu huong vua nhap");
-	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Tên người hưởng");
-
-	log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Tên người hưởng");
-
-	log.info("TC_03_STEP_8: lay ten nguoi thu huong vua nhap");
-	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Xac nhan thong tin");
-
-	log.info("TC_03_STEP_10: kiem tra max length = 100");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100, "Xac nhan thong tin");
-
-	log.info("TC_03_STEP_11: lay ten nguoi thu huong vua nhap");
-	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
-
-	log.info("TC_03_STEP_13: kiem tra max length = 101");
-	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_101, "Xac nhan thong tin");
-
-	log.info("TC_03_STEP_14: lay ten nguoi thu huong vua nhap");
-	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
-
-	log.info("TC_03_Step_16 : Click  nut Back");
-	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
-
     }
 
     @Test
@@ -392,6 +352,46 @@ public class TransferIdentity_Validate extends Base {
 
 	log.info("TC_13_Step_5 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+    }
+
+    @Test
+    public void TC_03_KiemTraLoaiKiTuNhap() {
+	log.info("TC_03_STEP_0: chon chuyển tiền nhận bằng CMT");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+	log.info("TC_03_STEP_1: nhap ten nguoi thu huong gom ki tu so");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Tên người hưởng");
+
+	log.info("TC_03_STEP_2: kiem ta ten nguoi huong vua nhap");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
+
+	log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
+
+	log.info("TC_03_STEP_5: lay ten nguoi thu huong vua nhap");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Tên người hưởng");
+
+	log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Tên người hưởng");
+
+	log.info("TC_03_STEP_8: lay ten nguoi thu huong vua nhap");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Xac nhan thong tin");
+
+	log.info("TC_03_STEP_10: kiem tra max length = 100");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100, "Xac nhan thong tin");
+
+	log.info("TC_03_STEP_11: lay ten nguoi thu huong vua nhap");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
+
+	log.info("TC_03_STEP_13: kiem tra max length = 101");
+	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_101, "Xac nhan thong tin");
+
+	log.info("TC_03_STEP_14: lay ten nguoi thu huong vua nhap");
+	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
+
+	log.info("TC_03_Step_16 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
     }
 
     @AfterClass(alwaysRun = true)
