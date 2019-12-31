@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
@@ -64,7 +65,7 @@ public class TransferIdentity_Validate extends Base {
 
     }
 
-//    @Test
+    @Test
     public void TC_01_TenNguoiThuHuong() {
 	log.info("TC_01_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -77,7 +78,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_02_NhapTenNguoiThuHuong() {
 	log.info("TC_02_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -95,7 +96,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_04_KiemTraMacDinhGiayToTuyThan() {
 	log.info("TC_04_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -108,7 +109,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_05_ChonLoaiGiayToTuyThan() {
 	log.info("TC_05_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -147,7 +148,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_06_KiemTraHienThiGiayToTuyThan() {
 	log.info("TC_06_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -174,7 +175,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_07_KiemTraMacDinhSo() {
 	log.info("TC_07_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -187,7 +188,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_08_KiemTraNhapSo() {
 	log.info("TC_08_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -205,7 +206,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_9_KiemTraMaxLengthSo() {
 	log.info("TC_09_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -228,7 +229,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_10_KiemTraSoCMT() {
 	log.info("TC_10_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -296,7 +297,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_11_HienThiMacDinhNoiCap() {
 	log.info("TC_11_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -308,7 +309,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_12_NoiCapCMT() {
 	log.info("TC_12_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -332,7 +333,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_13_NoiCapHoChieu() {
 	log.info("TC_13_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -353,7 +354,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_14_NoiCapCMTQuanDoi() {
 	log.info("TC_14_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -374,7 +375,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_15_NoiCapCanCuocCongDan() {
 	log.info("TC_15_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -398,7 +399,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_16_kiemTraMacDinhSoTien() {
 	log.info("TC_16_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -410,7 +411,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_17_kiemTraNhapSoTienBatDauBang0() {
 	log.info("TC_16_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -423,42 +424,42 @@ public class TransferIdentity_Validate extends Base {
 
     }
 
-//    @Test
-    public void TC_03_KiemTraLoaiKiTuNhap() {
-	log.info("TC_03_STEP_0: chon chuyển tiền nhận bằng CMT");
+    @Test
+    public void TC_17_KiemTraLoaiKiTuNhap() {
+	log.info("TC_17_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
-	log.info("TC_03_STEP_1: nhap ten nguoi thu huong gom ki tu so");
+	log.info("TC_17_STEP_1: nhap ten nguoi thu huong gom ki tu so");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Tên người hưởng");
 
-	log.info("TC_03_STEP_2: kiem ta ten nguoi huong vua nhap");
+	log.info("TC_17_STEP_2: kiem ta hien thi ten nguoi thu huong vua nhap");
 	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
-	log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
+	log.info("TC_17_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
-	log.info("TC_03_STEP_5: lay ten nguoi thu huong vua nhap");
+	log.info("TC_17_STEP_5: kiem tra hien thi ten nguoi thu huong vua nhap");
 	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Tên người hưởng");
 
-	log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
+	log.info("TC_17_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Tên người hưởng");
 
-	log.info("TC_03_STEP_8: lay ten nguoi thu huong vua nhap");
+	log.info("TC_17_STEP_8: kiem tra hien thi ten nguoi thu huong vua nhap");
 	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Xac nhan thong tin");
 
-	log.info("TC_03_STEP_10: kiem tra max length = 100");
+	log.info("TC_17_STEP_10: kiem tra max length = 100");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100, "Xac nhan thong tin");
 
-	log.info("TC_03_STEP_11: lay ten nguoi thu huong vua nhap");
+	log.info("TC_17_STEP_11: kiem tra hien thi ten nguoi thu huong vua nhap");
 	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
 
-	log.info("TC_03_STEP_13: kiem tra max length = 101");
+	log.info("TC_17_STEP_13: kiem tra max length = 101");
 	trasferPage.inputToDynamicInputBoxUsedValidate(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_101, "Xac nhan thong tin");
 
-	log.info("TC_03_STEP_14: lay ten nguoi thu huong vua nhap");
+	log.info("TC_17_STEP_14: kiem tra hien thi ten nguoi thu huong vua nhap");
 	trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100);
 
-	log.info("TC_03_Step_16 : Click  nut Back");
+	log.info("TC_17_Step_16 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 
     }
