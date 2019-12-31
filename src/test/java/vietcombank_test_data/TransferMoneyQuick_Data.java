@@ -11,7 +11,7 @@ public class TransferMoneyQuick_Data {
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
-		public static final String [] BANK = {"Ngân hàng DAB","Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu"};
+		public static final String [] BANK = {"Ngân hàng DAB","Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu","Ngân hàng TMCP Kỹ thương Việt Nam"};
 		public static final String BANK_INVALID = "Ngân hàng Test";
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
