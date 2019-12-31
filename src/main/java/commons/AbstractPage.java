@@ -875,6 +875,12 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
 
 	}
+	
+	public String getDynamicAmountLabelList(AndroidDriver<AndroidElement> driver, String ... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_LABEL_BY_HEADER, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_LABEL_BY_HEADER, dynamicTextValue);
+
+	}
 
 	public String getDynamicAmountCostLabel(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_COST, dynamicTextValue);
