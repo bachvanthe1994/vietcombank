@@ -144,7 +144,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
 
 		log.info("TC_01_Verify message thanh cong");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
@@ -325,7 +325,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
 
 		log.info("TC_01_Step_:");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
@@ -505,7 +505,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
 
 		log.info("TC_01_Step_:Verify message thanh cong ");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
@@ -691,7 +691,7 @@ public class QuickMoneyTransferViaAccount extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextDynamicPopup(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS), "CHUYỂN KHOẢN THÀNH CÔNG");
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
 
 		log.info("TC_01_Step_: Lay ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
