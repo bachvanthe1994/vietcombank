@@ -1,7 +1,6 @@
 package reportConfig;
 
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -9,8 +8,8 @@ import org.testng.ITestResult;
 import com.relevantcodes.extentreports.LogStatus;
 
 import commons.Base;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 public class ExtentTestListener extends Base implements ITestListener {
 
@@ -43,8 +42,8 @@ public class ExtentTestListener extends Base implements ITestListener {
 		System.out.println("---------- " + result.getName() + " FAILED test ----------");
 
 		Object testClass = result.getInstance();
-		AndroidDriver<AndroidElement> androidDriver = ((Base) testClass).getDriver();
-		String base64Screenshot = "data:image/png;base64," +  androidDriver.getScreenshotAs(OutputType.BASE64);
+		AppiumDriver<MobileElement> androidDriver = ((Base) testClass).getDriver();
+		String base64Screenshot = "data:image/png;base64," + androidDriver.getScreenshotAs(OutputType.BASE64);
 		ExtentTestManager.getTest().log(LogStatus.FAIL, "Test Failed", ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
 	}
 

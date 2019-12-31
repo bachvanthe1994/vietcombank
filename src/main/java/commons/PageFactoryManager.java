@@ -1,7 +1,7 @@
 package commons;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -17,51 +17,51 @@ import pageObjects.TransferMoneyStatusPageObject;
 
 public class PageFactoryManager {
 
-	public static LogInPageObject getLoginPageObject(AndroidDriver<AndroidElement> driver) {
+	public static LogInPageObject getLoginPageObject(AppiumDriver<MobileElement> driver) {
 		return new LogInPageObject(driver);
 	}
 
-	public static HomePageObject getHomePageObject(AndroidDriver<AndroidElement> driver) {
+	public static HomePageObject getHomePageObject(AppiumDriver<MobileElement> driver) {
 		return new HomePageObject(driver);
 	}
 
-	public static RegisterPageObject getRegisterPageObject(AndroidDriver<AndroidElement> driver) {
+	public static RegisterPageObject getRegisterPageObject(AppiumDriver<MobileElement> driver) {
 		return new RegisterPageObject(driver);
 	}
 
-	public static TransferMoneyInVcbPageObject getTransferMoneyInVcbPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyInVcbPageObject getTransferMoneyInVcbPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyInVcbPageObject(driver);
 	}
 
-	public static TransferMoneyObject getTransferMoneyObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyObject getTransferMoneyObject(AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyObject(driver);
 	}
 
-	public static TransferIdentiryPageObject getTransferIdentiryPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferIdentiryPageObject getTransferIdentiryPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferIdentiryPageObject(driver);
 	}
 
-	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyOutSideVCBPageObject(driver);
 	}
 
-	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyCharityPageObject getTransferMoneyCharityPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyCharityPageObject(driver);
 	}
 
-	public static TransactionReportPageObject getTransactionReportPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransactionReportPageObject getTransactionReportPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransactionReportPageObject(driver);
 	}
 
-	public static TransferMoneyStatusPageObject getTransferMoneyStatusPageObject(AndroidDriver<AndroidElement> driver) {
+	public static TransferMoneyStatusPageObject getTransferMoneyStatusPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyStatusPageObject(driver);
 	}
 
-	public static LuckyGiftPageObject getLuckyGiftPageObject(AndroidDriver<AndroidElement> driver) {
+	public static LuckyGiftPageObject getLuckyGiftPageObject(AppiumDriver<MobileElement> driver) {
 		return new LuckyGiftPageObject(driver);
 	}
 
-	public static SetupContactPageObject getSetupContactPageObject(AndroidDriver<AndroidElement> driver) {
+	public static SetupContactPageObject getSetupContactPageObject(AppiumDriver<MobileElement> driver) {
 		return new SetupContactPageObject(driver);
 
 	}

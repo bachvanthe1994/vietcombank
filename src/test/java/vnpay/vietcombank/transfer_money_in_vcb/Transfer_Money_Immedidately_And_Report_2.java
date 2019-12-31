@@ -9,8 +9,6 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
@@ -19,7 +17,6 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Immedidately_And_Report_2 extends Base {
-	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;

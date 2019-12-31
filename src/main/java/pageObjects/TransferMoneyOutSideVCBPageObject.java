@@ -1,20 +1,16 @@
 package pageObjects;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
-public class TransferMoneyOutSideVCBPageObject extends AbstractPage{
-	public TransferMoneyOutSideVCBPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+public class TransferMoneyOutSideVCBPageObject extends AbstractPage {
+	public TransferMoneyOutSideVCBPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
-	
-	private AndroidDriver<AndroidElement> driver;
-	
-	
-	
+
+	private AppiumDriver<MobileElement> driver;
+
 	public long canculateAvailableBalances(long surPlus, long money, long transactionFree) {
 		return surPlus - money - transactionFree;
 	}

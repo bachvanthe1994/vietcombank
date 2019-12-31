@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import model.TransferInVCBRecurrent;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -22,7 +22,7 @@ import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data;
 
 public class TransferMoneyRecurrent extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private TransferMoneyStatusPageObject transferStatus;

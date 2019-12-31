@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
@@ -18,7 +18,7 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
@@ -62,7 +62,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_32_KiemTraChuyenKhoanTuTaiKhoanUSDSangUSDVaDongPopup() {
 
 		log.info("TC_32_Step_01: Click Chuyen tien trong VCB");
@@ -98,7 +98,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_33_KiemTraChuyenKhoanTuTaiKhoanEURSangEURVaDongPopup() {
 
 		log.info("TC_33_Step_01: Click Chuyen tien trong VCB");
@@ -134,7 +134,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_34_KiemTraLoiKhongDuSoDuVaDongPopup() {
 
 		log.info("TC_34_Step_01: Click Chuyen tien trong VCB");
@@ -174,7 +174,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_35_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
 
 		log.info("TC_35_Step_01: Click Chuyen tien trong VCB");

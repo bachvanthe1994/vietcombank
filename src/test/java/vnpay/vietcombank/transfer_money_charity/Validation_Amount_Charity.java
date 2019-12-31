@@ -13,8 +13,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import model.TransferCharity;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -22,7 +22,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.LogIn_Data;
 
 public class Validation_Amount_Charity extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
