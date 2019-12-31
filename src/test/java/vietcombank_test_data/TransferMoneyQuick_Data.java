@@ -37,6 +37,8 @@ public class TransferMoneyQuick_Data {
 		public static final String INFO_FORM_LABEL = "Thông tin người chuyển";
 		public static final String INFO_TO_LABEL = "Thông tin người hưởng";
 		public static final String INVALID_ACC_ACCEPT_OVER_MAX = "012983729401298372940129837294";
+		public static final String INVALID_ACC_ACCEPT = "01298372940129";
+		public static final String INVALID_ACC_BLANK = "";
 		public static final String INVALID_ACC_ACCEPT_BLANK = "";
 		public static final String INVALID_ACC_VIETNAM_KEY = "Nhận123456";
 		public static final String NAME_INVALID = "testabc";
