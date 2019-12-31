@@ -42,5 +42,8 @@ public class TransferIdentity_Data {
 	public static final String CONTENT = "Nội dung";
 	public static final String CONTENT_UNIKEY = "chuyen tien cho nguoi nhan";
 	public static final String MONEY_0 = "0100000";
+	public static final String MIN_TRANSFER = "99999";
+	public static final String TRANSACTION_LIMIT = "100000";
+	public static final String TRANSACTION_MAX = "100000000";
     }
 }
