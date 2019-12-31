@@ -17,6 +17,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_TEXT_BY_ID = "//android.widget.TextView[@resource-id = '%s']";
     public static final String DYNAMIC_CONFIRM_SECOND_LINE_INFO = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout/following-sibling::android.widget.TextView";
     public static final String DYNAMIC_DEFAULT_SOURCE_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
+    public static final String DYNAMIC_DEFAULT_ACCOUNT_ACCEPT = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout/following-sibling::android.widget.LinearLayout[@resource-id='%s']//android.widget.EditText";
     public static final String DYNAMIC_CLOSE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
     public static final String DYNAMIC_ICON = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout";
 
@@ -30,4 +31,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_LABEL_COST = "//android.widget.TextView[@text='%s']//preceding::android.widget.TextView";
     public static final String DYNAMIC_LABEL_MONEY_BY_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
 
+    public static final String DYNAMIC_LABEL_LIST_ACCEPT = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.FrameLayout//android.widget.EditText";
+    public static final String DYNAMIC_LABEL_SEARCH_BANK = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.EditText";
+    public static final String DYNAMIC_INPUT_BOX_ACCOUNT = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.LinearLayout[@index='%s']/android.widget.EditText";
 }

@@ -8,6 +8,6 @@ public class SetupContact_Data {
 		public static final String ACCOUNT1 = "0129837294";
 		public static final String NAME_CARD2 = "Test2";
 		public static final String ACCOUNT2 = "012983729x";
-		public static final String BANK = "Ngân hàng DAB";
+		public static final String NAME_INVALID = "Testabc";
 	}
 }
