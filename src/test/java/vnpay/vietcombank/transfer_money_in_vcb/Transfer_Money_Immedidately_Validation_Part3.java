@@ -209,7 +209,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_36_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
 
 		log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
@@ -242,6 +242,83 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 		log.info("TC_36_Step_10: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+	}
+
+//	@Test
+	public void TC_37_KiemTraButtonBackTaiManHinhXacThucGiaoDich() {
+		log.info("TC_37_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+
+		log.info("TC_37_Step_02:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_37_Step_06: Chon tai khoan chuyen");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+
+		log.info("TC_37_Step_08: Nhap tai khoan nhan");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+
+		log.info("TC_37_Step_09: Nhap so tien chuyen");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
+
+		log.info("TC_37_Step_10: Nhap noi dung");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+
+		log.info("TC_37_Step_11: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_37_Step_10: Click Quay Lai");
+		transferInVCB.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
+
+		log.info("TC_37_Step_10: Click Quay Lai");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));
+
+		log.info("TC_37_Step_10: Click Quay Lai");
+		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+
+	}
+
+	@Test
+	public void TC_38_KiemTraButtonDongTaiPopupChonPhuongThucXacThuc() {
+		log.info("TC_38_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+
+		log.info("TC_38_Step_02:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_38_Step_06: Chon tai khoan chuyen");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+
+		log.info("TC_38_Step_08: Nhap tai khoan nhan");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+
+		log.info("TC_38_Step_09: Nhap so tien chuyen");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
+
+		log.info("TC_38_Step_10: Nhap noi dung");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+
+		log.info("TC_38_Step_11: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_38_Step_12: Chon Phuong thuc nhap");
+		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
+
+		log.info("TC_38_Step_13: Chon Dong");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
+
+		log.info("TC_38_Step_14: Click Quay Lai");
+		transferInVCB.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
+
+		log.info("TC_38_Step_15: Click Quay Lai");
+		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+
+		log.info("TC_38_Step_16: Click Quay Lai");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyền tiền trong VCB"));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền nhanh 24/7"));
+
 	}
 
 	@AfterClass(alwaysRun = true)
