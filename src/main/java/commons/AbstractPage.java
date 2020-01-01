@@ -25,6 +25,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -114,7 +115,7 @@ public class AbstractPage {
 		driver.context(webViewName);
 	}
 
-	public void scrollToText(AppiumDriver<MobileElement> driver, String text) {
+	public void scrollToText(MobileDriver<MobileElement> driver, String text) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.70);
@@ -495,7 +496,7 @@ public class AbstractPage {
 		return pattern.matcher(temp).replaceAll("");
 	}
 
-	public void sleep(AppiumDriver<MobileElement> driver, long milisecond) {
+	public void sleep(MobileDriver<MobileElement> driver, long milisecond) {
 		try {
 			Thread.sleep(milisecond);
 		} catch (InterruptedException e) {
