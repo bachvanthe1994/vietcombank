@@ -34,6 +34,7 @@ public class TransferMoneyQuick_Data {
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.2";
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.11";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.18";
+		
 		public static final String INFO_FROM_LABEL = "Thông tin người chuyển";
 		public static final String INFO_TO_LABEL = "Thông tin người hưởng";
 		public static final String INVALID_ACC_ACCEPT_OVER_MAX = "012983729401298372940129837294";
@@ -42,6 +43,12 @@ public class TransferMoneyQuick_Data {
 		public static final String INVALID_ACC_ACCEPT_BLANK = "";
 		public static final String INVALID_ACC_VIETNAM_KEY = "Nhận123456";
 		public static final String NAME_INVALID = "testabc";
+		
+		public static final String MONEY_NINE_NUMBER = "150450000";
+		public static final String MONEY_TEN_NUMBER = "1504500000";
+		public static final String MONEY_ELEVEN_NUMBER = "12345678912";
+		public static final String MONEY_TEXT_INVALID = "abc@12345";
+		public static final String MONEY_FOUR_NUMBER = "5000";
 
 	}
 

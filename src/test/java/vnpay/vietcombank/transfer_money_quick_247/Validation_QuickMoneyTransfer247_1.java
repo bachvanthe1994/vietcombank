@@ -23,7 +23,7 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
-public class Validation_QuickMoneyTransferViaAccount extends Base {
+public class Validation_QuickMoneyTransfer247_1 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -231,7 +231,6 @@ public class Validation_QuickMoneyTransferViaAccount extends Base {
 
 		log.info("TC_10_Step_Lay so du kha dung man hinh home");
 		amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng");
-		System.out.println(amountStartString);
 
 		log.info("TC_10_Step_Click tai khoan nguon");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
