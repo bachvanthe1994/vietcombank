@@ -23,13 +23,6 @@ public class TransferIdentiryPageObject extends AbstractPage {
 
     }
 
-    public void inputToDynamicInputBoxUsedValidate(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
-	scrollToText(driver, dynamicTextValue);
-	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
-
-    }
-
     public String getTextInDynamicIdentifition(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
 	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
 	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
