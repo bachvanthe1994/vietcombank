@@ -21,7 +21,7 @@ public class TransferIdentity_Data {
 	public static final String ACCOUNT_USD = "0011370000646";
 	public static final String ACCOUNT_EUR = "0011140000647";
 	public static final String MONEY_TRANSFER_VND = "100000";
-	public static final String MONEY_TRANSFER_USD = "100";
+	public static final String MONEY_TRANSFER_USD = "99.10";
 	public static final String MONEY_TRANSFER_EUR = "100";
 	public static final String CONTEN_TRANSFER = "ABC123";
 	public static final String CURRENCY_USD = "USD";
@@ -46,6 +46,6 @@ public class TransferIdentity_Data {
 	public static final String MAX_TRANSFER = "1000000000";
 	public static final String CONFIRM_MIN_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 	public static final String CONFIRM_MAX_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-	public static final String INVALID_MONEY = "12345678901";
+	public static final String INVALID_MONEY = "1234567890";
     }
 }
