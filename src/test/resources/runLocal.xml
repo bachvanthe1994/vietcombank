@@ -19,7 +19,7 @@
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
-	<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate" />
+	<class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Identity_And_Passport" />
 		</classes>
 	</test>
 
