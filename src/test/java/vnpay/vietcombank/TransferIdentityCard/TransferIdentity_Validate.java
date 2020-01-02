@@ -123,7 +123,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Hộ chiếu");
 
 	log.info("TC_05_STEP_4:kiem tra hien thi khi click chon HC");
-	String passPort = trasferPage.getTextDynamicPopup(driver, "Hộ chiếu");
+	String passPort = trasferPage.getTextDynamicInSelectBox(driver, "Hộ chiếu");
 	verifyTrue(trasferPage.isDynamicTextInInputBoxDisPlayed(driver, passPort));
 
 	log.info("TC_05_STEP_5:click chon CMTQD");
@@ -131,7 +131,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "CMT Quân đội");
 
 	log.info("TC_05_STEP_6:kiem tra hien thi khi click chon CMTQD");
-	String military = trasferPage.getTextDynamicPopup(driver, "CMT Quân đội");
+	String military = trasferPage.getTextDynamicInSelectBox(driver, "CMT Quân đội");
 	verifyTrue(trasferPage.isDynamicTextInInputBoxDisPlayed(driver, military));
 
 	log.info("TC_05_STEP_7:click chon CCCD");
@@ -139,7 +139,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thẻ căn cước công dân");
 
 	log.info("TC_05_STEP_8:kiem tra hien thi khi click chon CCCD");
-	String citizen = trasferPage.getTextDynamicPopup(driver, "Thẻ căn cước công dân");
+	String citizen = trasferPage.getTextDynamicInSelectBox(driver, "Thẻ căn cước công dân");
 	verifyTrue(trasferPage.isDynamicTextInInputBoxDisPlayed(driver, citizen));
 
 	log.info("TC_05_Step_9 : Click  nut Back");
