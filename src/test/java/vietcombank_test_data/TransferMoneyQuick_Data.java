@@ -7,7 +7,7 @@ public class TransferMoneyQuick_Data {
 		public static final String ACCOUNT_TO = "0129837294";
 		public static final String ACCOUNT_USD_FROM = "0011370000886";
 		public static final String ACCOUNT_EUR_FROM = "0011140000553";
-		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011370000646", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
+		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011370000646","0011140000647", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
@@ -44,11 +44,18 @@ public class TransferMoneyQuick_Data {
 		public static final String INVALID_ACC_VIETNAM_KEY = "Nhận123456";
 		public static final String NAME_INVALID = "testabc";
 		
-		public static final String MONEY_NINE_NUMBER = "150450000";
-		public static final String MONEY_TEN_NUMBER = "1504500000";
-		public static final String MONEY_ELEVEN_NUMBER = "12345678912";
-		public static final String MONEY_TEXT_INVALID = "abc@12345";
-		public static final String MONEY_FOUR_NUMBER = "5000";
+		public static final String MONEY_NINE_NUMBER_VND = "150450000";
+		public static final String MONEY_TEN_NUMBER_VND = "1504500000";
+		public static final String MONEY_ELEVEN_NUMBER_VND = "12345678912";
+		public static final String MONEY_TEXT_INVALID_VND = "abc@12345";
+		public static final String MONEY_FOUR_NUMBER_VND = "5000";
+		
+		public static final String MONEY_NINE_NUMBER_USD_EUR = "150450000.09";
+		public static final String MONEY_NINE_NUMBER_INVALID_USD_EUR = "150450000.091";
+		public static final String MONEY_TEN_NUMBER_USD_EUR = "1504500000.56";
+		public static final String MONEY_ELEVEN_NUMBER_USD_EUR = "12345678912";
+		public static final String MONEY_TEXT_INVALID_USD_EUR = "abc@12345";
+		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
 
 	}
 
@@ -56,6 +63,7 @@ public class TransferMoneyQuick_Data {
 		public static final String ACCOUNT_NOT_EXIST = "Giao dịch không thành công do tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại. Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String ACCOUNT_BLANK = "Quý khách vui lòng nhập tài khoản nhận";
 		public static final String BANK_BLANK = "Quý khách vui lòng chọn ngân hàng hưởng";
+		public static final String AMOUNT_BLANK = "Quý khách vui lòng nhập số tiền chuyển khoản";
 	}
 
 
