@@ -42,8 +42,10 @@ public class TransferIdentity_Data {
 	public static final String CONTENT = "Nội dung";
 	public static final String CONTENT_UNIKEY = "chuyen tien cho nguoi nhan";
 	public static final String MONEY_0 = "0100000";
-	public static final String MIN_TRANSFER = "99999";
-	public static final String TRANSACTION_LIMIT = "100000";
-	public static final String TRANSACTION_MAX = "100000000";
+	public static final String MIN_TRANSFER = "49999";
+	public static final String MAX_TRANSFER = "1000000000";
+	public static final String CONFIRM_MIN_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String CONFIRM_MAX_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String INVALID_MONEY = "12345678901";
     }
 }
