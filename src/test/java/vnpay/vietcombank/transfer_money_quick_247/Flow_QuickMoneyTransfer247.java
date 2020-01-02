@@ -17,7 +17,7 @@ import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
-public class QuickMoneyTransferViaAccount extends Base {
+public class Flow_QuickMoneyTransfer247 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private TransactionReportPageObject transReport;
 	private String transferTime;
