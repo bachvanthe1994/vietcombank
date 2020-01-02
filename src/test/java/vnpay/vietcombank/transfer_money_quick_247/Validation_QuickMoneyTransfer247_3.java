@@ -17,7 +17,6 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
-import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
@@ -31,14 +30,9 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	private SetupContactPageObject setupContact;
 	private TransferMoneyObject transferMoney;
 	private String amountStartString;
-	private String defaultAccount;
-	private String actualDefaultAccount;
-	List<String> listExpect;
-	List<String> listActual;
 	List<String> listActualAmountMoney;
 	List<String> listExpectAmountMoney;
 	private String amountExpect;
-
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -75,7 +69,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
- @Test
+	// @Test
 	public void TC_00_TaoDanhBaThuHuong() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -108,7 +102,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
 
- @Test
+	@Test
 	public void TC_01_KiemTraLabelSoTienVND() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -329,6 +323,6 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_15_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
 	}
+	}
 
 
-}
