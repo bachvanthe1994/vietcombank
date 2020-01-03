@@ -200,7 +200,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM);
 
 		log.info("TC_07_Verify gia tri tim kiem");
-		verifyEquals(listActual, listExpect);
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@Test

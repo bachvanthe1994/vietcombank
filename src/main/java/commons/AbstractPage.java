@@ -697,6 +697,11 @@ public class AbstractPage {
 		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
 
 	}
+	
+	//So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
+	public boolean checkListContain(List<String> actualList, List<String> expectList) {
+		return	expectList.containsAll(actualList);
+	}
 
 // input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
