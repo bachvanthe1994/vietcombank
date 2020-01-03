@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -17,9 +16,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
-import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
@@ -30,9 +27,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 	private HomePageObject homePage;
 	private SetupContactPageObject setupContact;
 	private TransferMoneyObject transferMoney;
-	private String amountStartString;
-	private String defaultAccount;
-	private String actualDefaultAccount;
+	
 	List<String> listExpect;
 	List<String> listActual;
 
@@ -69,10 +64,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
-	}
 
-	@Test
-	public void TC_00_TaoDanhBaThuHuong() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_Step_: Click menu header");
@@ -106,16 +98,15 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 
 	@Test
 	public void TC_19_VerifyDefaultDanhBaThuHuong() {
-		log.info("TC_01_Step_Scoll den man hinh chuyen tien nhanh");
+		log.info("TC_19_Step_Scoll den man hinh chuyen tien nhanh");
 		transferMoney.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 
-		log.info("TC_01_Step_Click Chuyen tien nhanh");
+		log.info("TC_19_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
-		
-		log.info("TC_18_click danh ba nguoi thu huong");
+
+		log.info("TC_19_click danh ba nguoi thu huong");
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivContent1");
 
-		
 		log.info("TC_19_verify tieu de danh ba nguoi huong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Danh bạ người hưởng"));
 
