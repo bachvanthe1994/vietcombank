@@ -69,10 +69,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
-	}
 
-	@Test
-	public void TC_00_TaoDanhBaThuHuong() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_Step_: Click menu header");
@@ -106,16 +103,15 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 
 	@Test
 	public void TC_19_VerifyDefaultDanhBaThuHuong() {
-		log.info("TC_01_Step_Scoll den man hinh chuyen tien nhanh");
+		log.info("TC_19_Step_Scoll den man hinh chuyen tien nhanh");
 		transferMoney.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 
-		log.info("TC_01_Step_Click Chuyen tien nhanh");
+		log.info("TC_19_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
-		
-		log.info("TC_18_click danh ba nguoi thu huong");
+
+		log.info("TC_19_click danh ba nguoi thu huong");
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivContent1");
 
-		
 		log.info("TC_19_verify tieu de danh ba nguoi huong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Danh bạ người hưởng"));
 
