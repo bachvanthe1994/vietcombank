@@ -8,31 +8,31 @@ import vietcombankUI.TransferIdentityPageUIs;
 
 public class TransferIdentiryPageObject extends AbstractPage {
 
-    public TransferIdentiryPageObject(AndroidDriver<AndroidElement> mappingDriver) {
-	driver = mappingDriver;
-    }
+	public TransferIdentiryPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+		driver = mappingDriver;
+	}
 
-    private AndroidDriver<AndroidElement> driver;
+	private AndroidDriver<AndroidElement> driver;
 
-    public String getDynamicAmountLabelConvertVNDToLong(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	String moneyString = getDynamicAmountLabel(driver, dynamicTextValue);
-	moneyString = moneyString.replaceAll("Phí: ", "");
-	moneyString = moneyString.replaceAll(",", "");
-	moneyString = moneyString.replaceAll("VND/giao dịch", "");
-	return moneyString;
+	public String getDynamicAmountLabelConvertVNDToLong(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		String moneyString = getDynamicAmountLabel(driver, dynamicTextValue);
+		moneyString = moneyString.replaceAll("Phí: ", "");
+		moneyString = moneyString.replaceAll(",", "");
+		moneyString = moneyString.replaceAll("VND/giao dịch", "");
+		return moneyString;
 
-    }
+	}
 
-    public String getTextInDynamicIdentifition(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
-	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
-	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
+	public String getTextInDynamicIdentifition(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
+		waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
+		return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
 
-    }
+	}
 
-    public String getTextDynamicPopupTransfers(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-	return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+	public String getTextDynamicPopupTransfers(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
-    }
+	}
 
 }

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -17,9 +16,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
-import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
@@ -69,7 +66,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
-		
+
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_Step_: Click menu header");
@@ -100,7 +97,6 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		log.info("TC_00_Step_: back lai man hinh home");
 		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
 	}
-
 
 	@Test
 	public void TC_01_KiemTraButtonBack() {
@@ -200,7 +196,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM);
 
 		log.info("TC_07_Verify gia tri tim kiem");
-		verifyEquals(listActual, listExpect);
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@Test
@@ -239,16 +235,13 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_10_Step_Verify ket qua");
 		verifyEquals(amountStartString, amountStartDefault);
-		
+
 		log.info("TC_10_Click ve man hinh chuyen tien");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]));
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
 	}
 
 	@Test
 	public void TC_11_ThongTinNguoiHuong() {
-		log.info("TC_10_Step_Click tai khoan nguon");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
-		
 		log.info("TC_11_Step_verify label thong tin nguoi huong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.INFO_TO_LABEL));
 	}
@@ -311,11 +304,26 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		log.info("Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
-	
+
+	@Test
+	public void TC_18_ClickIconDanhBa() {
+		log.info("TC_18_click danh ba nguoi thu huong");
+		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivContent1");
+
+		log.info("TC_18_Lay danh sach gia tri danh ba nguoi huong");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvName");
+
+		log.info("TC_18_danh sach gia tri bank actual");
+		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD);
+
+		log.info("TC_18_Verify gia tri tim kiem");
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
+	}
+
 	@AfterClass(alwaysRun = true)
+
 	public void afterClass() {
 		closeApp();
 		service.stop();
 	}
-
 }
