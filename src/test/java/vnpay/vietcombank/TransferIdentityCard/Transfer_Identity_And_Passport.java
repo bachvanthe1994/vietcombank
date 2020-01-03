@@ -66,7 +66,7 @@ public class Transfer_Identity_And_Passport extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_01_ChuyenTienQuaCMTNguoiChuyenTraPhiVNDXacNhanMatKhau() {
 		log.info("TC_01_Step_1: chon chuyển tiền nhận bằng CMT");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -210,7 +210,7 @@ public class Transfer_Identity_And_Passport extends Base {
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
-//	@Test
+	@Test
 	public void TC_02_ChuyenTienQuaCMTNguoiNhanTraPhiEURXacNhanMatKhau() {
 		log.info("TC_02_Step_1: chon chuyển tiền nhận bằng CMT");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -361,7 +361,7 @@ public class Transfer_Identity_And_Passport extends Base {
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
-//	@Test
+	@Test
 	public void TC_03_ChuyenTienQuaCMTNguoiNhanTraPhiUSDXacNhanMatKhau() {
 		log.info("TC_03_Step_1: chon chuyển tiền nhận bằng CMT");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -511,7 +511,7 @@ public class Transfer_Identity_And_Passport extends Base {
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
-//	@Test
+	@Test
 	public void TC_04_ChuyenTienQuaCMTNguoiChuyenTraPhiVNDRXacNhanOTP() {
 		log.info("TC_04_Step_1: chon chuyển tiền nhận bằng CMT");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -1490,6 +1490,7 @@ public class Transfer_Identity_And_Passport extends Base {
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
 
 		log.info("TC_10_Step_24: chon phuong thuc xac thuc");
+		trasferPage.scrollToText(driver, "Tiếp tục");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_10_Step_25: lay phi giao dich theo phuong thuc xac thuc");
