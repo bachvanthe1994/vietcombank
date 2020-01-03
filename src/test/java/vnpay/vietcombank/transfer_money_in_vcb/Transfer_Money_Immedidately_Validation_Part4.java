@@ -56,6 +56,9 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 		log.info("Before class_Step_01: Click Allow Button");
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
+		log.info("TC_48_Step_10: Click Tiep tuc");
+		login.clickToDynamicButton(driver, "Đóng");
+
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
@@ -109,6 +112,116 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 
 		log.info("TC_48_Step_15: Click tiep tuc");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu thụ hưởng"));
+	}
+
+	@Test
+	public void TC_49_KiemTraNhanChonButtonChiaSeKhiHuy() {
+		log.info("TC_49_Step_01: Click button chia se");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chia sẻ");
+
+		log.info("TC_49_Step_02: Click Allow Button");
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_deny_button");
+
+		log.info("TC_48_Step_15: Kiem tra user khong duoc cap quyen");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Bạn không được cấp quyền để sử dụng tính năng này."));
+
+		log.info("TC_48_Step_12: Click Dong");
+		transferInVCB.clickToDynamicButton(driver, "Đóng");
+
+	}
+
+	@Test
+	public void TC_50_KiemTraNhanChonDanhBaThuHuong() {
+		log.info("TC_50_Step_01: Click button chia se");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
+
+		log.info("TC_50_Step_02: Kiem tra user khong duoc cap quyen");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu danh bạ"));
+
+		log.info("TC_51_Step_03: Kiem tra user khong duoc cap quyen");
+		transferInVCB.clickToDynamicBackIcon(driver, "Lưu danh bạ");
+
+	}
+
+	@Test
+	public void TC_51_KiemTraIconHome() {
+
+		log.info("TC_50_Step_01: Click Icon Home");
+		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
+
+		log.info("TC_48_Step_10: Click Tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, "Đóng");
+
+		log.info("TC_48_Step_15: Kiem tra user khong duoc cap quyen");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "TÀI KHOẢN THANH TOÁN"));
+
+	}
+
+	@Test
+	public void TC_52_KiemTraTaiKhoanMacDinh() {
+
+		log.info("TC_52_Step_01: Click Chuyen tien trong VCB");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		transferInVCB.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+
+		log.info("TC_52_Step_02: Kiem tra tai khoan mac dinh");
+		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2);
+
+	}
+
+	@Test
+	public void TC_53_KiemTraDinhDangSoDuKhiChonTaiKhoanVND() {
+
+		log.info("TC_53_Step_02:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_53_Step_03: Chon tai khoan dich");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+
+		log.info("TC_53_Step_04: Lay so du tai khoan dich");
+		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+
+		log.info("TC_53_Step_04: Lay so du tai khoan dich");
+		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("VND"));
+
+	}
+
+	@Test
+	public void TC_54_KiemTraDinhDangSoDuKhiChonTaiKhoanUSD() {
+
+		log.info("TC_54_Step_01:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_54_Step_02: Chon tai khoan dich");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
+
+		log.info("TC_54_Step_03: Lay so du tai khoan dich");
+		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+
+		log.info("TC_54_Step_04: Lay so du tai khoan dich");
+		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("USD"));
+
+	}
+
+	@Test
+	public void TC_55_KiemTraDinhDangSoDuKhiChonTaiKhoanEUR() {
+
+		log.info("TC_55_Step_01:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_55_Step_02: Chon tai khoan dich");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+
+		log.info("TC_55_Step_03: Lay so du tai khoan dich");
+		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+
+		log.info("TC_55_Step_04: Lay so du tai khoan dich");
+		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("EUR"));
+
 	}
 
 	@AfterClass(alwaysRun = true)
