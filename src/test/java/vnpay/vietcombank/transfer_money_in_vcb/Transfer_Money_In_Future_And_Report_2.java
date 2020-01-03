@@ -157,7 +157,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_01_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -413,7 +413,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_04_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_04_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -666,7 +666,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_07_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -925,7 +925,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_10_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1159,7 +1159,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_13_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_13_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1381,7 +1381,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_16_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		log.info("TC_16_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1533,7 +1533,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
