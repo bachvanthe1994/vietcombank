@@ -940,4 +940,7 @@ public class AbstractPage {
 
 	}
 
+	public boolean checkListContain(List<String> actualList, List<String> expectList) {
+		return	expectList.containsAll(actualList);
+	}
 }

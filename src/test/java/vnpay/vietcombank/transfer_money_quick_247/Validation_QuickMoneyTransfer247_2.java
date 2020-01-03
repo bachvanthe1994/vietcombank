@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -17,9 +16,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
-import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
@@ -30,9 +27,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 	private HomePageObject homePage;
 	private SetupContactPageObject setupContact;
 	private TransferMoneyObject transferMoney;
-	private String amountStartString;
-	private String defaultAccount;
-	private String actualDefaultAccount;
+	
 	List<String> listExpect;
 	List<String> listActual;
 
