@@ -19,7 +19,7 @@
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
-	<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part4" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_1" />
 		</classes>
 	</test>
 
