@@ -792,6 +792,12 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 	}
+	
+	//Kiểm  tra text trong nội dung link thông báo
+		public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+			return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+		}
 
 //lấy text trong ô input, tham số truyền vào là text
 	public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {

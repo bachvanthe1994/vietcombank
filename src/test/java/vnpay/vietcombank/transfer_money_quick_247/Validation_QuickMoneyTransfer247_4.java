@@ -22,6 +22,7 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data.TransferQuick;
 
 public class Validation_QuickMoneyTransfer247_4 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -33,6 +34,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 	List<String> listActualAmountMoney;
 	List<String> listExpectAmountMoney;
 	private String amountExpect;
+	private String Note;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -72,7 +74,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 	}
 
-	@Test
+	//@Test
 	public void TC_48_KiemTraLabelSoTienEUR() {
 		log.info("TC_06_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -88,7 +90,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "1 EUR ~ 27,006 VND"));
 	}
 
-	@Test
+	//@Test
 	public void TC_49_KiemTraLabelLoaiTienEUR() {
 		log.info("TC_01_Kiem tra label loai tien");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "EUR"));
@@ -130,7 +132,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		verifyEquals(amountStartString, amountExpect);
 	}
 
-@Test
+//@Test
 	public void TC_52_KiemTraDinhDangHienThiEUR() {
 		log.info("TC_02_Invalid so tien co 9 chu so phan nguyen va 3 chu so phan thap phan");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_INVALID_USD_EUR, "Thông tin giao dịch", "1");
@@ -210,7 +212,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		log.info("TC_09_Kiem tra gia tri goi y khong hien thi tren man hinh");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextUndisplayed(driver, "500,020.00 USD ~ 15,000,600,000 VND"));
 	}
- @Test 
+// @Test 
 	public void TC_57_BoTrongTruongSoTien() {
 		log.info("TC_06_Clear text truong nhap so tien");
 		transferMoney.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivClearInput");
@@ -249,9 +251,56 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Hạn mức");
 		
 		log.info("TC_58_Check mot phan noi dung han muc");
-		transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Hạn mức giao dịch áp dụng cho các chức năng chuyển tiền:");
+		transferMoney.isDynamicTextInfoDisplayed(driver, "Hạn mức giao dịch áp dụng cho các chức năng chuyển tiền:");
 		
 		log.info("TC_58_Quay lai man hinh chuyen tien nhanh 24/7");
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+ }
+ 
+ @Test 
+	public void TC_59_KiemTraHienThiTextNoiDung() {
+		log.info("TC_059_Kiem tra label noi dung");
+		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Nội dung"));
+ }
+ 
+ @Test 
+	public void TC_60_KiemTraGiaTriChoPhepNoiDung() {
+		log.info("TC_059_Nhap 2 ky tu cho phep");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_2_CHAR, "Thông tin giao dịch","3");
+		
+		log.info("TC_59_text mac dinh 'noi dung' bi xoa");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextUndisplayed(driver, "Nội dung"));
+		
+		log.info("TC_59_Lay noi dung tren man hinh");
+		Note = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch","3");
+		
+		log.info("TC_59_Verify text noi dung");
+		verifyEquals(Note, TransferMoneyQuick_Data.TransferQuick.NOTE_2_CHAR);
+		
+		log.info("TC_059_Nhap 140 ky tu cho phep");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_140_CHAR, "Thông tin giao dịch","3");
+		
+		log.info("TC_59_Lay noi dung tren man hinh");
+		Note = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch","3");
+		
+		log.info("TC_59_Verify text noi dung");
+		verifyEquals(Note, TransferMoneyQuick_Data.TransferQuick.NOTE_140_CHAR);
+		
+		log.info("TC_059_Nhap tieng viet co dau");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_VIETNAM_KEY_INVALID, "Thông tin giao dịch","3");
+		
+		log.info("TC_59_Lay noi dung tren man hinh");
+		Note = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch","3");
+		
+		log.info("TC_59_Verify text noi dung");
+		verifyEquals(Note, transferMoney.removeUnicode(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_VIETNAM_KEY_INVALID));
+		
+	 
+ }
+ 
+ @Test 
+	public void TC_61_KiemTraGiaTriChoPhepNoiDung() {
+		log.info("TC_059_Nhap 2 ky tu cho phep");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_2_CHAR, "Thông tin giao dịch","3");
  }
 }

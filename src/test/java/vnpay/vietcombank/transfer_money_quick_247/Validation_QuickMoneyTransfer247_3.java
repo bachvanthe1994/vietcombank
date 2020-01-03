@@ -82,7 +82,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "VND"));
 	}
 
-	 @Test
+ @Test
 	public void TC_31_NhapNhoHon10KyTuVaKiemTraDauPhayVND() {
 		log.info("TC_02_Input so tien co 9 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND, "Thông tin giao dịch", "1");
@@ -139,7 +139,8 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_02_Lay so tien sau khi nhap");
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
-		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEXT_INVALID_VND.replace("abc@", "");
+		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEXT_INVALID_VND.replaceAll("\\D+","");
+		
 		amountExpect = amountExpect.substring(0, 2) + "," + amountExpect.substring(2, amountExpect.length());
 		log.info("TC_02_Kiem tra dau phay ngan cach hang ngan");
 		verifyEquals(amountStartString, amountExpect);

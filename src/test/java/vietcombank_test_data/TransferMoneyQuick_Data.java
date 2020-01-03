@@ -56,7 +56,11 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_ELEVEN_NUMBER_USD_EUR = "12345678912";
 		public static final String MONEY_TEXT_INVALID_USD_EUR = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
-
+		
+		public static final String NOTE_1_CHAR_VIETNAM = "á";
+		public static final String NOTE_2_CHAR = "ab";
+		public static final String NOTE_140_CHAR = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+		public static final String NOTE_VIETNAM_KEY_INVALID = "Xin chào";
 	}
 
 	public static class MessageTransferMoney {
