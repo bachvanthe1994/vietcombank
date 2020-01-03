@@ -966,10 +966,6 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 	}
 
-	public boolean checkListContain(List<String> actualList, List<String> expectList) {
-		return expectList.containsAll(actualList);
-	}
-
 	// Lấy text trên ô điền OTP
 	public String getTextInDynamicOtp(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
