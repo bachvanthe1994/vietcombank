@@ -29,6 +29,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import model.TransferInVCBRecurrent;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
@@ -927,4 +928,15 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 	}
 
+	public boolean checkFormatMoney(String moneyInput, TransferInVCBRecurrent.Currency currency) {
+		boolean result = true;
+		if (currency == TransferInVCBRecurrent.Currency.VND) {
+			result = moneyInput.matches("%,.2f .VND");
+		}
+		else if (currency == TransferInVCBRecurrent.Currency.CURRENCY) {
+			result = moneyInput.matches("%,d .*");
+		}
+		
+		return result;
+	}
 }
