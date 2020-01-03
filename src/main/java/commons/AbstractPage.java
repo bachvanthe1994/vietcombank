@@ -31,6 +31,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import model.TransferInVCBRecurrent;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.TransferMoneyInVCBPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 
 public class AbstractPage {
@@ -726,6 +727,14 @@ public class AbstractPage {
 		}
 	}
 
+	public void pressKeyCodeIntoAmountInput(AndroidDriver<AndroidElement> driver, List<Keys> dynamicKey) {
+		clearText(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
+		waitForElementVisible(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
+		for (Keys key : dynamicKey) {
+			driver.getKeyboard().sendKeys(key);
+		}
+	}
+	
 	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);

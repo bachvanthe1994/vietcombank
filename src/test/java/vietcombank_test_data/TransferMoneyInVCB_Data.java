@@ -36,6 +36,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 30,000 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 27,006 VND";
+		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
 
 	}
 

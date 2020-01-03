@@ -138,7 +138,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_03_03_Kiem tra Hien thi mac dinh");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền định kỳ"));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền ngay"));
 	}
 	
 	@Test
@@ -270,7 +270,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	public void TC_12_ChuyenTienDinhKy_TaiKhoanDich_KiemTraKyTuNhap() {
 		log.info("TC_12_01_Nhap gia tri tai khoan dich");
 		transferRecurrent.inputToDynamicInputBox(driver, "123456789", "Nhập/chọn tài khoản nhận VND");
-		
+	
 	}
 	
 	@AfterClass(alwaysRun = true)
