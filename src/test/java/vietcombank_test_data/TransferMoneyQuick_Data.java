@@ -7,7 +7,7 @@ public class TransferMoneyQuick_Data {
 		public static final String ACCOUNT_TO = "0129837294";
 		public static final String ACCOUNT_USD_FROM = "0011370000886";
 		public static final String ACCOUNT_EUR_FROM = "0011140000553";
-		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011000000645", "0011000000847", "0010000000323", "0010000000318", "0011140000647", "0010000000322", "0011000000659", "0011000001433" };
+		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011370000646","0011140000647", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
@@ -57,12 +57,14 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_TEXT_INVALID_USD_EUR = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
 		
-		public static final String NOTE_1_CHAR_VIETNAM = "á";
+		public static final String NOTE_1_CHAR_VIETNAM = "a";
 		public static final String NOTE_2_CHAR = "ab";
 		public static final String NOTE_140_CHAR = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+		public static final String NOTE_140_CHAR_VIETNAM = "Giao dịch không thành công do tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại. Chi tiết xem tại http://www.vietcombank.com.vn ";
+		public static final String NOTE_141_CHAR_INVALID = "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901";
 		public static final String NOTE_VIETNAM_KEY_INVALID = "Xin chào";
-		
-
+		public static final String NOTE_SPECAL_CHAR = "@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) =";
+		public static final String NOTE_NUMBER_CHAR = "12345";
 	}
 
 	public static class MessageTransferMoney {
@@ -70,7 +72,8 @@ public class TransferMoneyQuick_Data {
 		public static final String ACCOUNT_BLANK = "Quý khách vui lòng nhập tài khoản nhận";
 		public static final String BANK_BLANK = "Quý khách vui lòng chọn ngân hàng hưởng";
 		public static final String AMOUNT_BLANK = "Quý khách vui lòng nhập số tiền chuyển khoản";
-		
+		public static final String NOTE_BLANK = "Quý khách vui lòng nhập nội dung giao dịch";
 	}
+
 
 }

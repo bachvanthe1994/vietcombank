@@ -123,7 +123,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD);
 
 		log.info("TC_19_Verify gia tri tim kiem");
-		verifyEquals(listActual, listExpect);
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@Test
