@@ -36,6 +36,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 30,000 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 27,006 VND";
+		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
 
 	}
 
@@ -56,6 +57,11 @@ public class TransferMoneyInVCB_Data {
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 10,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String ERROR_MESSAGE_FOR_EMPTY_OTP = "Quý khách vui lòng nhập mã OTP";
+		public static final String ERROR_MESSAGE_FOR_EMPTY_PASSWORD = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
+		public static final String ERROR_MESSAGE_FOR_OTP_LESS_THAN_6 = "OTP phải đủ 6 ký tự, Quý khách vui lòng kiểm tra lại";
+		public static final String ERROR_MESSAGE_FOR_WRONG_OTP = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
+		public static final String ERROR_MESSAGE_FOR_WRONG_PASSWORD = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 5 lần.";
 	}
 
 	public static class InputDataInFutureForOTP {
@@ -91,6 +97,9 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_DECIMAL_MONEY = "1234567890.1234";
 		public static final String INVALID_MIN_TRANSFER_AMOUNT = "1";
 		public static final String INVALID_MAX_TRANSFER_AMOUNT = "9999999999";
+		public static final String OTP_WITH_LESS_THAN_6_CHARACTERS = "12345";
+		public static final String WRONG_OTP = "111111";
+		public static final String MORE_THAN_21_CHARACTERS = "123456789012345678901234";
 
 	}
 }

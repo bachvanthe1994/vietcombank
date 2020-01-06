@@ -24,5 +24,9 @@ public class TransferInVCBRecurrent {
 		this.note = note;
 		this.authenticationMethod = authenticationMethod;
 	}
+
+	public enum Currency {
+		  VND, CURRENCY
+	}
 	
 }
