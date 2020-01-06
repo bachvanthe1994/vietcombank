@@ -14,7 +14,6 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import model.TransferInVCBRecurrent;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
@@ -27,9 +26,6 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
 
-	TransferInVCBRecurrent info = new TransferInVCBRecurrent("0010000000322", "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent("0011140000647", "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
-	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
@@ -203,7 +199,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	
 	@Test
 	public void TC_09_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaThang_NhapNhoHon12() {
-		log.info("TC_09_01_Chon chu ky Tuan");
+		log.info("TC_09_01_Chon chu ky Ngay");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tuần"); // need to optimize
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tháng");
 		

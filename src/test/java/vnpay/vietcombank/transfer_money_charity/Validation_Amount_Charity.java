@@ -164,7 +164,7 @@ public class Validation_Amount_Charity extends Base {
 		listExpectAmountMoney.add("500,000 VND");
 		listExpectAmountMoney.add("5,000,000 VND");
 
-		log.info("TC_06_2_Kiem tra so tien goi y");
+		log.info("TC_06_3_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
 	}
 
@@ -184,7 +184,7 @@ public class Validation_Amount_Charity extends Base {
 		listExpectAmountMoney.add("100 EUR ~ 2,700,600 VND");
 		listExpectAmountMoney.add("1,000 EUR ~ 27,006,000 VND");
 
-		log.info("TC_07_2_Kiem tra so tien goi y");
+		log.info("TC_07_3_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
 	}
 
