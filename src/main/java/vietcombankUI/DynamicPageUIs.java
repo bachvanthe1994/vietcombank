@@ -39,5 +39,6 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_LABEL_SEARCH_BANK = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.EditText";
 
 	public static final String DYNAMIC_INPUT_LABEL_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";
-
+	public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
+	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";
 }

@@ -385,6 +385,33 @@ public class Base {
 
 	}
 
+	public String getForwardYear(long years) {
+		LocalDate now = LocalDate.now();
+		LocalDate futureYear = now.plusYears(years);
+
+		int year = futureYear.getYear();
+
+		int month = futureYear.getMonthValue();
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+		int day = futureYear.getDayOfMonth();
+		String day1;
+
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+		
+		System.out.println(day1 + "/" + month1 + "/" + year);
+		return day1 + "/" + month1 + "/" + year;
+
+	}
+	
 	public String getBackWardDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusDays(days);

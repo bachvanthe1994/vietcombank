@@ -235,6 +235,26 @@ public class AbstractPage {
 		return listTextView;
 	}
 
+	public List<String> getContentDescInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (AndroidElement element : listElements) {
+			listTextView.add(element.getAttribute("content-desc"));
+		}
+		return listTextView;
+	}
+	
+	public List<String> getEnableInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (AndroidElement element : listElements) {
+			listTextView.add(element.getAttribute("enabled"));
+		}
+		return listTextView;
+	}
+	
 	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
@@ -724,6 +744,11 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 	}
 
+	public void clickToDynamicImageButtonByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+	}
+	
 // input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
@@ -806,7 +831,7 @@ public class AbstractPage {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 
 	}
-
+	
 //Kiểm tra text có hiển thị hay không, tham số truyền vào là text 
 	public boolean isDynamicMessageAndLabelTextDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
@@ -1004,6 +1029,13 @@ public class AbstractPage {
 	public String getDynamicTextInDropDownByLable(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dynamicTextValue);
+
+	}
+	
+	public boolean isDynamicImageButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		scrollToText(driver, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 
 	}
 
