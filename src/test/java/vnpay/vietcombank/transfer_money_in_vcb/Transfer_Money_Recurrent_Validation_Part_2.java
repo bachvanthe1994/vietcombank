@@ -71,13 +71,14 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 	
+		log.info("TC_01_04_Scroll den nut Tiep tuc");
 		transferRecurrent.scrollToText(driver, "Tiếp tục");
 		
 		log.info("TC_01_05_Kiem tra xuat hien nhom thong Tan suat");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Tần suất"));
 		
 		log.info("TC_01_06_Kiem tra hien thi tan suat");
-		
+		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "1"));
 		
 		log.info("TC_01_07_Kiem tra hien thi don vi");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày"));
@@ -189,7 +190,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_08_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaTuan_NhaponHon53() {
+	public void TC_08_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaTuan_NhapLonHon53() {
 		log.info("TC_08_01_Nhap gia tri vao o So luong");
 		List<Keys> listKey = Arrays.asList(Keys.NUMPAD5, Keys.NUMPAD4);
 		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
@@ -198,6 +199,103 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_08_2_Kiem tra gia tri trong o So tien ung ho");
 		verifyEquals(actualAmountMoney, "5");
 
+	}
+	
+	@Test
+	public void TC_09_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaThang_NhapNhoHon12() {
+		log.info("TC_09_01_Chon chu ky Tuan");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tuần"); // need to optimize
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tháng");
+		
+		log.info("TC_09_02_Nhap gia tri vao o So luong");
+		transferRecurrent.inputFrequencyNumber("11");
+
+		String actualAmount = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
+		log.info("TC_09_03_Kiem tra gia tri trong o So tien ung ho");
+		verifyEquals(actualAmount, "11");
+
+		log.info("TC_09_04_Nhap gia tri vao o So luong");
+		transferRecurrent.inputFrequencyNumber("12");
+
+		actualAmount = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
+		log.info("TC_09_5_Kiem tra gia tri trong o So tien ung ho");
+		verifyEquals(actualAmount, "12");
+
+	}
+	
+	@Test
+	public void TC_10_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaThang_NhapLonHon12() {
+		log.info("TC_10_01_Nhap gia tri vao o So luong");
+		List<Keys> listKey = Arrays.asList(Keys.NUMPAD1, Keys.NUMPAD3);
+		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
+
+		String actualAmountMoney = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
+		log.info("TC_10_2_Kiem tra gia tri trong o So tien ung ho");
+		verifyEquals(actualAmountMoney, "1");
+
+	}
+	
+	@Test
+	public void TC_11_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraHienThiMacDinh() {
+		String startDate = getForwardDate(1);
+		log.info("TC_11_01_Kiem tra hien thi ngay bat dau");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, startDate));
+		
+	}
+	
+	@Test
+	public void TC_12_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraChonNgayBatDau_HonNgayHienTai_1Nam() {
+		String startDate;
+		startDate = getForwardDate(1);
+		
+		log.info("TC_12_01_Chon Ngay bat dau");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, startDate);
+		
+		startDate = getForwardYear(1);
+		
+		log.info("TC_12_02_Chon Ngay nam sau");
+		transferRecurrent.chooseDateNextYearInDatePickerByID("android:id/month_view", "2020");
+		
+		log.info("TC_12_03_Kiem tra cho phep chon");
+		verifyTrue(transferRecurrent.checkDateNextYearEnable("android:id/month_view", 4));
+		
+	}
+	
+	@Test
+	public void TC_13_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraChonNgayBatDau_HonNgayHienTai_LonHon1Nam() {
+		log.info("TC_13_01_Kiem tra khong cho phep chon");
+		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", 5));
+		
+	}
+	
+	@Test
+	public void TC_14_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraChonNgayBatDau_LaNgayQuaKhu() {
+		String startDate;
+		startDate = getForwardDate(1);
+		
+		log.info("TC_14_01_Click Huy");
+		transferRecurrent.clickToDynamicButton(driver, "Hủy");
+		
+		log.info("TC_14_02_Click Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+		
+		log.info("TC_14_03_Click Chuyen tien trong ngan hang");
+		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
+			
+		log.info("TC_14_04_Chon phuong thuc chuyen tien");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+	
+		log.info("TC_14_05_Scroll den nut Tiep tuc");
+		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		
+		log.info("TC_14_06_Chon Ngay bat dau");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, startDate);
+		
+		log.info("TC_14_07_Kiem tra khong cho phep chon");
+		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", 1));
+		
 	}
 	
 	@AfterClass(alwaysRun = true)
