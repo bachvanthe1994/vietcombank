@@ -259,7 +259,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_09_KiemTraMaxlengthSoTien() {
+	public void TC_09_KiemTraMaxlengthSoTienTaiKHoanNgoaiTe() {
 		log.info("TC_09_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
@@ -284,7 +284,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_10_KiemTraNhapSoTienVoiKyTuDacBiet() {
+	public void TC_10_KiemTraKyTuChoNhap() {
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
@@ -297,6 +297,14 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 		log.info("TC_10_Step_04: Kiem tra text khong duoc nhap");
 		verifyEquals(Money, "Số tiền");
+
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_PAYMENT_BY_OTP_FEE, "Thông tin giao dịch", "1");
+
+		log.info("TC_10_Step_03: Lay do dai so tien duoc nhap vao");
+		Money = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+
+		log.info("TC_10_Step_04: Kiem tra so tien duoc nhap");
+		verifyEquals(Money, TransferMoneyInVCB_Data.InputDataInVCB.EUR_PAYMENT_BY_OTP_FEE);
 
 		log.info("TC_10_Step_04: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -351,11 +359,11 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_07_Step_02:Click tai khoan nguon");
+		log.info("TC_13_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_07_Step_03: Chon tai khoan dich");
+		log.info("TC_13_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
 
 		log.info("TC_13_Step_04: Nhap so tien");
