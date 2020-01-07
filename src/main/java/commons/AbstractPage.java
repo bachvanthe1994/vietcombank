@@ -803,6 +803,14 @@ public class AbstractPage {
 			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
 			return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
 		}
+		
+		// Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
+		public boolean isDynamicImageSelect(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+			scrollToElementByID(driver, dynamicTextValue);
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+			return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		}
+
 
 //lấy text trong ô input, tham số truyền vào là text
 	public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -923,6 +931,13 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 	}
+	
+	// Lấy text phí giao dịch
+			public String getTextInDynamicFee(AndroidDriver<AndroidElement> driver, String ... dynamicTextValue) {
+				waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_BY_HEADER, dynamicTextValue);
+				return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_BY_HEADER, dynamicTextValue);
+			}
+
 	
 	public void clickToDynamicBottomMenu(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);

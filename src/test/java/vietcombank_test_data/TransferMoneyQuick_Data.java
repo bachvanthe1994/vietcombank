@@ -7,7 +7,7 @@ public class TransferMoneyQuick_Data {
 		public static final String ACCOUNT_TO = "0129837294";
 		public static final String ACCOUNT_USD_FROM = "0011370000886";
 		public static final String ACCOUNT_EUR_FROM = "0011140000553";
-		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011370000646","0011140000647", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
+		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011370000646","0011140000647","0011000000645", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
@@ -16,11 +16,10 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
 		public static final String MONEY_EUR = "40";
-		public static final String NOTE = "Test";
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS";
 		public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 
-		public static final String COST_AMOUNT = "0";
+		public static final String COST_AMOUNT = "7700";
 		public static final String COST_AMOUNT_USD = "000";
 		public static final String PASSWORD = "Nhập mật khẩu";
 		public static final String MESSAGE_SUCCESS = "CHUYỂN KHOẢN THÀNH CÔNG";
@@ -49,6 +48,13 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_ELEVEN_NUMBER_VND = "12345678912";
 		public static final String MONEY_TEXT_INVALID_VND = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_VND = "5000";
+		public static final String MONEY_LESS_MIN_LIMIT_VND = "4500";
+		public static final String MONEY_EXCEED_MAX_LIMIT_VND = "5000001";
+		public static final String MONEY_EXCEED_MAX_TRANSFER_ONE_DAY_VND = "10000001";
+		public static final String MONEY_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "8000001";
+		public static final String MONEY_EXCEED_MAX_TRANSFER_PACKAGE_ONE_DAY_VND = "6000001";
+		public static final String MONEY_ALLOW_VND = "4900000";
+
 		
 		public static final String MONEY_NINE_NUMBER_USD_EUR = "150450000.09";
 		public static final String MONEY_NINE_NUMBER_INVALID_USD_EUR = "150450000.091";
@@ -57,6 +63,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_TEXT_INVALID_USD_EUR = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
 		
+		public static final String NOTE = "Test";
 		public static final String NOTE_1_CHAR_VIETNAM = "a";
 		public static final String NOTE_2_CHAR = "ab";
 		public static final String NOTE_140_CHAR = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
@@ -73,7 +80,11 @@ public class TransferMoneyQuick_Data {
 		public static final String BANK_BLANK = "Quý khách vui lòng chọn ngân hàng hưởng";
 		public static final String AMOUNT_BLANK = "Quý khách vui lòng nhập số tiền chuyển khoản";
 		public static final String NOTE_BLANK = "Quý khách vui lòng nhập nội dung giao dịch";
+		public static final String MESSAGE_LESS_MIN_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 5,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String MESSAGE_EXCEED_MAX_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 5,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String MESSAGE_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 	}
 
 
 }
+
