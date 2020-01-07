@@ -419,17 +419,17 @@ public class TransferIdentity_Validate_1 extends Base {
 	log.info("TC_31_STEP_02: nhap noi dung");
 	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textCheckElement.PAGE_TRANSFER, "Nội dung");
 
-	log.info("TC_31_STEP_02: kiem tra hien thi noi dung vua nhap");
+	log.info("TC_31_STEP_03: kiem tra hien thi noi dung vua nhap");
 	verifyTrue(trasferPage.isDynamicTextInInputBoxDisPlayed(driver, "Chuyen tien cho nguoi nhan tai quay"));
 
-	log.info("TC_31_Step_03: Click quay lai");
+	log.info("TC_31_Step_04: Click quay lai");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//	closeApp();
-//	service.stop();
+	closeApp();
+	service.stop();
     }
 
 }

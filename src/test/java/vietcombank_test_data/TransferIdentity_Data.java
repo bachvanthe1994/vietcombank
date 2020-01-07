@@ -32,7 +32,7 @@ public class TransferIdentity_Data {
 	public static final String CURRENCY_EURO = "EUR";
 	public static final String ISSUED = "Thành phố Hà Nội ";
 	public static final String ISSUED_SPACE = "Thành phố Hà Nội";
-	public static final String SPECIAL_CHARACTERS = "! @ # $ % ^ & * () /";
+	public static final String SPECIAL_CHARACTERS = " {@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) = }";
 	public static final String MAX_LENGTH_100 = "TC validation chuyen tien ngay TC validation chuyen tien ngayTC validation chuyen tien ngayTC valida";
 	public static final String MAX_LENGTH_101 = "TC validation chuyen tien ngay TC validation chuyen tien ngayTC validation chuyen tien ngayTC validat";
 	public static final String MAX_LENGTH_20_NUM = "12345678901234567890";
@@ -53,5 +53,19 @@ public class TransferIdentity_Data {
 	public static final String MAX_LENGTH_13_MONEY = "11234567890.10";
 	public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("1,000,000 VND", "10,000,000 VND", "100,000,000 VND");
 	public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("1,000 EUR ~ 27,006,000 VND", "10,000 EUR ~ 270,060,000 VND");
+	public static final String MAX_LENGTH_140 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New1";
+	public static final String MAX_LENGTH_141 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New Y";
+    }
+
+    public static class confirmMessage {
+	public static final String MESSSAGE_USER = "Quý khách vui lòng nhập Tên người hưởng";
+	public static final String MESSSAGE_IDENTITY = "Quý khách vui lòng chọn giấy tờ tùy thân";
+	public static final String MESSSAGE_IDENTITY_NUMBER = "Quý khách vui lòng nhập số của giấy tờ tùy thân";
+	public static final String MESSSAGE_DATE = "Quý khách vui lòng chọn ngày cấp";
+	public static final String MESSSAGE_ISSUED = "Quý khách vui lòng nhập hoặc chọn nơi cấp";
+	public static final String MESSSAGE_MONEY = "Quý khách vui lòng nhập số tiền";
+	public static final String MESSSAGE_CONTENT = "Quý khách vui lòng nhập nội dung";
+	public static final String MESSSAGE_ACCOUNT_CO_OWNER = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
+	public static final String MESSSAGE_ACCOUNT_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
     }
 }
