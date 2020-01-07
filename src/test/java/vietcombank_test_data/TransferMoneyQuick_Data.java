@@ -5,8 +5,10 @@ public class TransferMoneyQuick_Data {
 	public static class TransferQuick {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền nhanh qua số tài khoản","Chuyển tiền nhanh qua số thẻ" };
 		public static final String ACCOUNT_TO = "0129837294";
+		public static final String ACCOUNT_TO_INVALID = "0129837294abc";
 		public static final String ACCOUNT_USD_FROM = "0011370000886";
 		public static final String ACCOUNT_EUR_FROM = "0011140000553";
+		public static final String SAME_OWNER_ACCOUNT = "0011000000793";
 		public static final String LIST_ACCOUNT_FROM[] = { "0011000000779", "0011370000646","0011140000647","0011000000645", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
@@ -15,8 +17,9 @@ public class TransferMoneyQuick_Data {
 		public static final String BANK_INVALID = "Ngân hàng Test";
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
+		public static final long TRANSFER_USD_VND = 30000;
 		public static final String MONEY_EUR = "40";
-		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS";
+		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS TEST ONLINE IBFT 247 VN";
 		public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 
 		public static final String COST_AMOUNT = "7700";
@@ -36,6 +39,9 @@ public class TransferMoneyQuick_Data {
 		
 		public static final String INFO_FROM_LABEL = "Thông tin người chuyển";
 		public static final String INFO_TO_LABEL = "Thông tin người hưởng";
+		public static final String MOUNT_LABEL = "Số tiền";
+		public static final String ACCOUNT_FROM_LABEL = "Tài khoản nguồn";
+		public static final String ACCOUNT_TO_LABEL = "Tài khoản đích/ VND";
 		public static final String INVALID_ACC_ACCEPT_OVER_MAX = "012983729401298372940129837294";
 		public static final String INVALID_ACC_ACCEPT = "01298372940129";
 		public static final String INVALID_ACC_BLANK = "";
@@ -83,6 +89,10 @@ public class TransferMoneyQuick_Data {
 		public static final String MESSAGE_LESS_MIN_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 5,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String MESSAGE_EXCEED_MAX_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 5,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String MESSAGE_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String AMOUNT_NOT_ENOUGH = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Quý khách vui lòng kiểm tra lại.";
+		public static final String SAME_ACCOUNT_NAME = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu";
+		public static final String ACCOUNT_TO_INVALID_MESSAGE = "Giao dịch không thành công do tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại. Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+
 	}
 
 
