@@ -57,6 +57,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String DUPLICATED_ACCOUNT_MESSAGE = "Số tài khoản chuyển đến và số tài khoản chuyển đi không được giống nhau, Quý khách vui lòng kiểm tra lại";
 		public static final String SAME_ACCOUNT_OWNER_MESSAGE = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
 		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản nhận không chính xác. Quý khách vui lòng kiểm tra lại";
+		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 10,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
@@ -91,6 +92,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_ACCOUNT_15_CHARACTERS = "445555555555555";
 		public static final String INVALID_ACCOUNT_LESS_THAN_10_CHARACTERS = "001100000";
 		public static final String INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS = "00110000000";
+		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_SYSTEM = "0011000000000";
+		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_VCB = "01825909301";
 		public static final String TEXT_AND_SPECIAL_CHARACTERS = "Abc!@#$%%";
 		public static final String VIETNAMESE_LANGUAGE = "Chuyển khoản nội bộ";
 		public static final String TEXT_WITH_MORE_THAN_140_CHARAC = "Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan ";
