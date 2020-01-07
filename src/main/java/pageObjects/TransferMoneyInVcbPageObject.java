@@ -22,21 +22,10 @@ public class TransferMoneyInVcbPageObject extends AbstractPage{
 
 	}
 	
-	public void chooseDateNextYearInDatePickerByID(String dynamicIDValue, String year) {
+	public void chooseDateNextYearInDatePicker(String dynamicIDValue, String year) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_BY_ID, dynamicIDValue);
-		
-		List<String> listDate = getContentDescInListElements(driver, DynamicPageUIs.DYNAMIC_VIEW_BY_ID, dynamicIDValue);
-		String firstDate = listDate.get(0);
-		int count = 12;
-		while (!firstDate.contains(String.valueOf(Integer.parseInt(year)))){
-			clickToDynamicImageButtonByID(driver, "android:id/next");
-			count --;
-			listDate = getContentDescInListElements(driver, DynamicPageUIs.DYNAMIC_VIEW_BY_ID, dynamicIDValue);
-			firstDate = listDate.get(0);
-			if (count <= 0) {
-				break;
-			}
-		}
+		clickToDynamicButtonLinkOrLinkText(driver, String.valueOf(Integer.parseInt(year) - 1));
+		clickToDynamicButtonLinkOrLinkText(driver, year);
 		
 	}
 	
@@ -44,6 +33,15 @@ public class TransferMoneyInVcbPageObject extends AbstractPage{
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_BY_ID, dynamicIDValue);
 		
 		List<String> listDate = getEnableInListElements(driver, DynamicPageUIs.DYNAMIC_VIEW_BY_ID, dynamicIDValue);
+		
+		if (index < 0) {
+			return false;
+		}
+		
+		if (index >= listDate.size()) {
+			return false;
+		}
+		
 		boolean firstDate = Boolean.parseBoolean(listDate.get(index));
 
 		return firstDate;
