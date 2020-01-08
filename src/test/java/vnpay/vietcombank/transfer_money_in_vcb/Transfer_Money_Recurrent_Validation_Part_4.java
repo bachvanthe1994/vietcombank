@@ -16,6 +16,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyCharity_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
@@ -24,9 +25,9 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
 
-	TransferInVCBRecurrent info = new TransferInVCBRecurrent("0010000000322", "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent("0011140000647", "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent("0011370000646", "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info = new TransferInVCBRecurrent(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT3, "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent(TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -349,6 +350,50 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		log.info("TC_18_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 		
+	}
+	
+	@Test
+	public void TC_19_ChuyenTienDinhKy_NutTiepTuc_LoiKhongDuSoDu() {
+		long surplus, moneyCharity;
+		log.info("TC_19_1_Chon tai khoan nguon");
+		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		surplus = Long.parseLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		moneyCharity = surplus + 1;
+		
+		log.info("TC_19_02_Nhap so tien");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
+		
+		log.info("TC_19_03_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_19_04_Kiem tra pop up hien thi thong bao");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE));
+		
+		log.info("TC_19_05_Kiem tra pop up hien thi nut Dong");
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
+		
+		log.info("TC_19_06_Click nut Dong");
+		transferRecurrent.clickToDynamicButton(driver, "Đóng");
+		
+	}
+	
+	@Test
+	public void TC_20__ChuyenTienDinhKy_NutTiepTuc_KiemTraSoTienGiaoDichVuotQuaHanMucToiDa1LanGiaoDich() {
+		log.info("TC_20_01_Nhap so tien");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.MONEY_OVER_TRANSACTION_PER_DAY, "Thông tin giao dịch", "1");
+		
+		log.info("TC_20_02_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_20_03_Kiem tra pop up hien thi thong bao");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE));
+		
+		log.info("TC_20_04_Kiem tra pop up hien thi nut Dong");
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
+		
+		log.info("TC_20_05_Click nut Dong");
+		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 	}
 	
 	@AfterClass(alwaysRun = true)

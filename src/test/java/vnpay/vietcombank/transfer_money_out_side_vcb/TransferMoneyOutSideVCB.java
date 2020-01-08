@@ -16,6 +16,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class TransferMoneyOutSideVCB extends Base {
     AndroidDriver<AndroidElement> driver;
@@ -23,17 +24,17 @@ public class TransferMoneyOutSideVCB extends Base {
     private HomePageObject homePage;
     private TransferMoneyOutSideVCBPageObject transferMoneyOutSide;
 
-    TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
-    TransferOutSideVCB_Info info1 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test", "SMS OTP");
-    TransferOutSideVCB_Info info2 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
-    TransferOutSideVCB_Info info3 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người nhận trả", "test", "SMS OTP");
-    TransferOutSideVCB_Info info4 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test",
+    TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
+    TransferOutSideVCB_Info info1 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test", "SMS OTP");
+    TransferOutSideVCB_Info info2 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
+    TransferOutSideVCB_Info info3 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người nhận trả", "test", "SMS OTP");
+    TransferOutSideVCB_Info info4 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test",
 	    "Mật khẩu đăng nhập");
-    TransferOutSideVCB_Info info5 = new TransferOutSideVCB_Info("0011000000779", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test",
+    TransferOutSideVCB_Info info5 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test",
 	    "Mật khẩu đăng nhập");
-    TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test",
+    TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người chuyển trả", "test",
 	    "Mật khẩu đăng nhập");
-    TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info("0011140000647", "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người nhận trả", "test", "Mật khẩu đăng nhập");
+    TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50", "Phí giao dịch người nhận trả", "test", "Mật khẩu đăng nhập");
 
     @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
