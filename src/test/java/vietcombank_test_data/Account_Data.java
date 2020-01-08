@@ -10,7 +10,7 @@ public class Account_Data {
 		public static final String DIFFERENT_OWNER_NAME = "PHAN THI THU THUY";
 		public static final String USD_ACCOUNT = "0011370124096";
 		public static final String USD_ACCOUNT_2 = "0011370080228";
-		public static final String EUR_ACCOUNT = "0011140124079";
+		public static final String EUR_ACCOUNT = "0011140124097";
 		public static final String EUR_ACCOUN_2 = "0011140313982";
 
 	}

@@ -22,6 +22,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -540,7 +541,14 @@ public class AbstractPage {
 	public void waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		}
+		catch(Exception e){
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
@@ -549,6 +557,8 @@ public class AbstractPage {
 		try {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
 		}
 	}
