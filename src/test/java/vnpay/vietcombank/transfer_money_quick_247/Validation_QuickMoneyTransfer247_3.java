@@ -2,10 +2,8 @@ package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -19,9 +17,8 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
-import vietcombankUI.DynamicPageUIs;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_QuickMoneyTransfer247_3 extends Base {
@@ -154,7 +151,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		log.info("TC_06_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_06_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
@@ -221,7 +218,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		
 		log.info("TC_06_Chon tai khoan nguon USD");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_01_Kiem tra label so tien");
 		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Số tiền"));

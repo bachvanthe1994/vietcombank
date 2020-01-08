@@ -41,6 +41,9 @@ public class TransferMoneyInVCB_Data {
 		public static final String NUMBER_WEEK_FREQUENCY = "2";
 		public static final String NUMBER_MONTH_FREQUENCY = "2";
 
+		public static final String MONEY_OVER_PER_TRANSACTION = "10000001";
+		public static final String MONEY_OVER_PER_DAY_OF_GROUP = "8000001";
+
 	}
 
 	public static class Output {
