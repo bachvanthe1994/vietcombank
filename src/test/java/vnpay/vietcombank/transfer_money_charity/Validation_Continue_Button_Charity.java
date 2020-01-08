@@ -15,6 +15,7 @@ import model.TransferCharity;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
 
@@ -24,7 +25,7 @@ public class Validation_Continue_Button_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity("0011000000779", "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
@@ -213,7 +214,7 @@ public class Validation_Continue_Button_Charity extends Base {
 	}
 	
 	@Test
-	public void TC_09_KiemTraSoTienGiaoDichVuotQuaHanMucToiThieu1LanGiaoDich() {
+	public void TC_09_KiemTraSoTienGiaoDichVuotQuaHanMucToiDa1LanGiaoDich() {
 		log.info("TC_09_1_Nhap so tien");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.MONEY_OVER_TRANSACTION_PER_DAY, "Thông tin giao dịch", "1");
 		

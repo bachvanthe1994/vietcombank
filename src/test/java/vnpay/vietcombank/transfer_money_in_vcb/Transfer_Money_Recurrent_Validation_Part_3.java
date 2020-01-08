@@ -18,6 +18,7 @@ import model.TransferInVCBRecurrent;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
@@ -27,8 +28,8 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
 
-	TransferInVCBRecurrent info = new TransferInVCBRecurrent("0010000000322", "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent("0011140000647", "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT3, "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
@@ -181,7 +182,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	}
 	
 	@Test
-	public void TC_08_ChuyenTienDinhKy_TextboxSoTien_KiemTraGioiHanNhap_NgoaiTe() {
+	public void TC_08_ChuyenTienDinhKy_KiemTraGoiYNhanh_LucChuaNhapGiaTri() {
 		List<String> listActualAmountMoney = new ArrayList<String>();
 		List<String> listExpectAmountMoney = new ArrayList<String>();
 		
@@ -300,6 +301,44 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		log.info("TC_13_03_Kiem tra so tien trong o nhap So tien");
 		actualAmountMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney, "50,000");
+		
+	}
+	
+	@Test
+	public void TC_14_ChuyenTienDinhKy_ComboPhiGiaoDich_KiemTraHienThiMacDinh() {
+		log.info("TC_14_01_Kiem tra hien thi mac dinh Phi giao dich nguoi chuyen tra");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người chuyển trả"));
+		
+		log.info("TC_14_02_Click chon combo Phi giao dich");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		
+		log.info("TC_14_03_Kiem tra Danh sach se kich chon doi voi gia tri duoc chon");
+		verifyTrue(transferRecurrent.isDynamicImageViewByTextView(driver, "Người chuyển trả"));
+		
+	}
+	
+	@Test
+	public void TC_15_ChuyenTienDinhKy_ComboPhiGiaoDich_KiemTraDanhSachPhiGiaoDich() {
+		List<String> listActual = new ArrayList<String>();
+		List<String> listExpect = new ArrayList<String>();
+		
+		log.info("TC_15_01_Lay danh sach Phi giao dich");
+		listActual = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		
+		listExpect= Arrays.asList("Người chuyển trả", "Người nhận trả");
+		
+		log.info("TC_15_02_Kiem tra danh sach Phi giao dich");
+		verifyEquals(listActual, listExpect);
+		
+	}
+	
+	@Test
+	public void TC_16_ChuyenTienDinhKy_ComboPhiGiaoDich_ChonMotLoaiPhi() {
+		log.info("TC_16_01_Lay danh sach Phi giao dich");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
+		
+		log.info("TC_16_02_Kiem tra hien thi loai Phi giao dich duoc chon");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người nhận trả"));
 	}
 	
 	@AfterClass(alwaysRun = true)

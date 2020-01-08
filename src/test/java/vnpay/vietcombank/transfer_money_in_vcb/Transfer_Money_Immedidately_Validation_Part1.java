@@ -15,6 +15,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
@@ -214,7 +215,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_07_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_EXCHANGE_RATE));
@@ -230,7 +231,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_07_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_EXCHANGE_RATE));
@@ -268,7 +269,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_01_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		log.info("TC_01_Step_03: Chon tai khoan dich");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_DECIMAL_MONEY, "Số tiền");
@@ -298,15 +299,21 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_10_Step_04: Kiem tra text khong duoc nhap");
 		verifyEquals(Money, "Số tiền");
 
+		log.info("TC_10_Step_05: Click chon tai khoan nguon ");
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_10_Step_06: Chon tai khoan dich");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
+
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_PAYMENT_BY_OTP_FEE, "Thông tin giao dịch", "1");
 
-		log.info("TC_10_Step_03: Lay do dai so tien duoc nhap vao");
+		log.info("TC_10_Step_07: Lay do dai so tien duoc nhap vao");
 		Money = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
-		log.info("TC_10_Step_04: Kiem tra so tien duoc nhap");
+		log.info("TC_10_Step_08: Kiem tra so tien duoc nhap");
 		verifyEquals(Money, TransferMoneyInVCB_Data.InputDataInVCB.EUR_PAYMENT_BY_OTP_FEE);
 
-		log.info("TC_10_Step_04: Click quay lai");
+		log.info("TC_10_Step_09: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 	}
@@ -339,7 +346,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_12_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_12_Step_04: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -364,7 +371,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_13_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_13_Step_04: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -393,7 +400,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_14_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_14_Step_02: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -422,7 +429,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_15_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_15_Step_04: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -457,7 +464,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_16_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_16_Step_04: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
