@@ -35,12 +35,21 @@ public class TransferIdentiryPageObject extends AbstractPage {
 
     }
 
-    // input vào ô input với tham số truyền vào là inputbox
     public void inputToDynamicInputBoxIdentityValidate(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 	scrollToText(driver, dynamicTextValue);
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
 
+    }
+
+    public String getDynamicTextHeader(AndroidDriver<AndroidElement> driver) {
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_TEXT_HEADER);
+	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_TEXT_HEADER);
+    }
+
+    public String getDynamicPopupPassword(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_PASSWORD, dynamicTextValue);
+	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_PASSWORD, dynamicTextValue);
     }
 
 }
