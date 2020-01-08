@@ -4,16 +4,12 @@ public class TransferMoneyQuick_Data {
 
 	public static class TransferQuick {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền nhanh qua số tài khoản","Chuyển tiền nhanh qua số thẻ" };
-		public static final String ACCOUNT_TO = "0129837294";
 		public static final String ACCOUNT_TO_INVALID = "0129837294abc";
-		public static final String ACCOUNT_USD_FROM = "0011370000886";
-		public static final String ACCOUNT_EUR_FROM = "0011140000553";
 		public static final String SAME_OWNER_ACCOUNT = "0011000000793";
-		public static final String LIST_ACCOUNT_FROM[] = { "0010000123773", "0011370124096","0011140000647","0011000000645", "0010000000323", "0011000000659", "0011000000847", "0011000001433", "0010000000319", "0010000000320", "0011000000635" };
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
-		public static final String [] BANK = {"Ngân hàng DAB","Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu","Ngân hàng TMCP Kỹ thương Việt Nam"};
+
 		public static final String BANK_INVALID = "Ngân hàng Test";
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
@@ -27,7 +23,6 @@ public class TransferMoneyQuick_Data {
 		public static final String MESSAGE_SUCCESS = "CHUYỂN KHOẢN THÀNH CÔNG";
 
 		public static final String CARD_FROM = "0011000000863";
-		public static final String CARD_TO = "0129837294";
 		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "LẬP LỆNH THÀNH CÔNG";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "3,300";
 		public static final String PAYMENT_BY_OTP_FEE = "5,500";

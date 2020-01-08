@@ -1,11 +1,8 @@
 package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -14,15 +11,11 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
-import vietcombankUI.DynamicPageUIs;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
-import vietcombank_test_data.TransferMoneyQuick_Data.TransferQuick;
 
 public class Validation_QuickMoneyTransfer247_6 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -77,14 +70,14 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Thông tin giao dịch", "1");
@@ -110,7 +103,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		String accountFrom = transferMoney.getDynamicAmountLabel(driver, "Tài khoản nguồn");
 
 		log.info("TC_58_verify so tai khoan");
-		verifyEquals(accountFrom, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		verifyEquals(accountFrom, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 	}
 
 	@Test
@@ -119,7 +112,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO_LABEL));
 
 		log.info("TC_01_Step_: Tai khoan dich va ten nguoi huong");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Tài khoản đích/ VND"), TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO + "/ " + TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Tài khoản đích/ VND"), Account_Data.Valid_Account.ACCOUNT_TO + "/ " + TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 	}
 
 	@Test
@@ -139,7 +132,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon la USD");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Thông tin giao dịch", "1");

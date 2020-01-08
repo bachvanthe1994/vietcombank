@@ -17,6 +17,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
@@ -86,10 +87,10 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		setupContact.deleteContactReceiver();
 
 		log.info("TC_00_Step_: Add contact 1");
-		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], TransferMoneyQuick_Data.TransferQuick.BANK[0], SetupContact_Data.UI.NAME_CARD[0], SetupContact_Data.UI.ACCOUNT[0]);
+		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3],Account_Data.Valid_Account.BANK[0] , SetupContact_Data.UI.NAME_CARD[0], SetupContact_Data.UI.ACCOUNT[0]);
 
 		log.info("TC_00_Step_: Add contact 2");
-		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], TransferMoneyQuick_Data.TransferQuick.BANK[0], SetupContact_Data.UI.NAME_CARD[1], SetupContact_Data.UI.ACCOUNT[1]);
+		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1], SetupContact_Data.UI.ACCOUNT[1]);
 
 		log.info("TC_00_Step_: back lai man hinh danh ba");
 		setupContact.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
@@ -155,7 +156,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	public void TC_05_TaiKhoanNhanTrong() {
 		log.info("TC_05_Step_verify message khi tai khoan nguoi nhan khong ton tai ");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.BANK[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_05_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
@@ -187,13 +188,13 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_07_LayDanhSachTaiKhoanNguon() {
 		log.info("TC_07_Step_Cho phep chon tai khoan thanh toan khac tai khoan mac dinh");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_07_Lay danh sach gia tri loai chuyen tien");
 		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent1");
 
 		log.info("TC_07_danh sach gia tri bank actual");
-		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM);
+		listExpect = Arrays.asList(Account_Data.Valid_Account.LIST_ACCOUNT_FROM);
 
 		log.info("TC_07_Verify gia tri tim kiem");
 		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
@@ -202,14 +203,14 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_08_ChonTaiKhoanNguonKhacMacDinh() {
 		log.info("TC_08_Step_Cho phep chon tai khoan thanh toan khac tai khoan mac dinh");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_08_Step_Verify tai khoan");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]));
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]));
 
 		log.info("TC_08_Step_Chon lai ve man hinh tai khoan mac dinh");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[1]);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 	}
 
@@ -222,13 +223,13 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_10_KiemTraThongTinTaiKhoanNguon() {
 		log.info("TC_10_Step_Verify tai khoan");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]));
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]));
 
 		log.info("TC_10_Step_Lay so du kha dung man hinh home");
 		amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_10_Step_Click tai khoan nguon");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_10_Step_Lay so du kha dung man hinh tai khoan nguon");
 		String amountStartDefault = transferMoney.getDynamicAmountLabelList(driver, "Tài khoản nguồn", "0", "com.VCB:id/tvContent2");
@@ -237,7 +238,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		verifyEquals(amountStartString, amountStartDefault);
 
 		log.info("TC_10_Click ve man hinh chuyen tien");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 	}
 
 	@Test
@@ -312,7 +313,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_18_Lay danh sach gia tri danh ba nguoi huong");
 		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvName");
-
+		
 		log.info("TC_18_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD);
 
