@@ -144,6 +144,13 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Thông tin giao dịch", "1");
 
+		log.info("TC_01_Lay so tien ty gia quy doi");
+		String [] a = transferMoney.getDynamicAmountLabel(driver, "Tỷ giá quy đổi tham khảo").split("~");
+		String getChangeVNDString = a[1].replaceAll("\\D+", "");
+		int getChangeVND = Integer.parseInt(getChangeVNDString);
+
+	
+		
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -155,7 +162,9 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		log.info("TC_05_Step_Verify so tien chuyen VND sau quy doi");
 		String amountTranferUSDString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số tiền").replaceAll("\\D+", "");
 		long amountAfterUSD = Long.parseLong(amountTranferUSDString);
-		verifyEquals(amountAfterUSD, amountAfter * TransferMoneyQuick_Data.TransferQuick.TRANSFER_USD_VND);
+		verifyEquals(amountAfterUSD, amountAfter * getChangeVND);
+
+		
 		
 	}
 
