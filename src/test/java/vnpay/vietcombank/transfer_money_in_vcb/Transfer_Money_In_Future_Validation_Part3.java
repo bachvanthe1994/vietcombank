@@ -18,7 +18,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
-public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
+public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -60,92 +60,105 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 	}
 
-	@Test
-	public void TC_32_KiemTraChuyenKhoanTuTaiKhoanUSDSangUSDVaDongPopup() {
+//	@Test
+	public void TC_36_KiemTraChuyenKhoanTuTaiKhoanUSDSangUSDVaDongPopup() {
 
-		log.info("TC_32_Step_01: Click Chuyen tien trong VCB");
+		log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_32_Step_02:Click tai khoan nguon");
+		log.info("TC_36_Step_02: Nhap tai khoan nhan");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+
+		log.info("TC_36_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_32_Step_03: Chon tai khoan dich");
+		log.info("TC_36_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
-		log.info("TC_32_Step_04: Nhap Tai Khoan Nhan");
+		log.info("TC_36_Step_04: Nhap Tai Khoan Nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.USD_ACCOUNT_2, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_32_Step_05: Nhap noi dung");
+		log.info("TC_36_Step_05: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
 
-		log.info("TC_32_Step_06: Nhap So Tien Chuyen");
+		log.info("TC_36_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
-		log.info("TC_32_Step_07: Click tiep tuc");
+		log.info("TC_36_Step_07: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_32_Step_08: Kiem tra yeu cau nhap noi dung");
+		log.info("TC_36_Step_08: Kiem tra yeu cau nhap noi dung");
 
 		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
-		log.info("TC_32_Step_09: Click Đong");
+		log.info("TC_36_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_32_Step_10: Click Quay Lai");
+		log.info("TC_36_Step_10: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
-	public void TC_33_KiemTraChuyenKhoanTuTaiKhoanEURSangEURVaDongPopup() {
+//	@Test
+	public void TC_37_KiemTraChuyenKhoanTuTaiKhoanEURSangEURVaDongPopup() {
 
-		log.info("TC_33_Step_01: Click Chuyen tien trong VCB");
+		log.info("TC_37_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_33_Step_02:Click tai khoan nguon");
+		log.info("TC_37_Step_02: Nhap tai khoan nhan");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+
+		log.info("TC_37_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_33_Step_03: Chon tai khoan dich");
+		log.info("TC_37_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
-		log.info("TC_33_Step_04: Nhap Tai Khoan Nhan");
+		log.info("TC_37_Step_04: Nhap Tai Khoan Nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.EUR_ACCOUN_2, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_33_Step_05: Nhap noi dung");
+		log.info("TC_37_Step_05: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
 
-		log.info("TC_33_Step_06: Nhap So Tien Chuyen");
+		log.info("TC_37_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
-		log.info("TC_33_Step_07: Click tiep tuc");
+		log.info("TC_37_Step_07: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_33_Step_08: Kiem tra yeu cau nhap noi dung");
+		log.info("TC_37_Step_08: Kiem tra yeu cau nhap noi dung");
 
 		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
-		log.info("TC_33_Step_09: Click Đong");
+		log.info("TC_37_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_33_Step_10: Click Quay Lai");
+		log.info("TC_37_Step_10: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
-	public void TC_34_KiemTraLoiKhongDuSoDuVaDongPopup() {
+//	@Test
+	public void TC_38_KiemTraLoiKhongDuSoDuVaDongPopup() {
 
-		log.info("TC_34_Step_01: Click Chuyen tien trong VCB");
+		log.info("TC_38_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_34_Step_02:Click tai khoan nguon");
+		log.info("TC_38_Step_02: Nhap tai khoan nhan");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+
+		log.info("TC_38_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_34_Step_03: Chon tai khoan dich");
+		log.info("TC_38_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_01_Step_07: Lay so du tai khoan chuyen");
@@ -153,64 +166,68 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		long beforeBalanceAmountOfAccount1 = convertMoneyToLong(beforeBalanceOfAccount1, "VND");
 
-		log.info("TC_34_Step_04: Nhap Tai Khoan Nhan");
+		log.info("TC_38_Step_04: Nhap Tai Khoan Nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_34_Step_05: Nhap noi dung");
+		log.info("TC_38_Step_05: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
 
-		log.info("TC_34_Step_06: Nhap So Tien Chuyen");
+		log.info("TC_38_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, beforeBalanceAmountOfAccount1 + 1000 + "", "Số tiền");
 
-		log.info("TC_34_Step_07: Click tiep tuc");
+		log.info("TC_38_Step_07: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_34_Step_08: Kiem tra yeu cau nhap noi dung");
+		log.info("TC_38_Step_08: Kiem tra yeu cau nhap noi dung");
 		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.NOT_ENOUGH_MONEY);
 
-		log.info("TC_34_Step_09: Click Đong");
+		log.info("TC_38_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_34_Step_10: Click Quay Lai");
+		log.info("TC_38_Step_10: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
 	@Test
-	public void TC_35_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
+	public void TC_39_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
 
-		log.info("TC_35_Step_01: Click Chuyen tien trong VCB");
+		log.info("TC_39_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_35_Step_02:Click tai khoan nguon");
+		log.info("TC_39_Step_02: Nhap tai khoan nhan");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+
+		log.info("TC_39_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_35_Step_03: Chon tai khoan dich");
+		log.info("TC_39_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
-		log.info("TC_35_Step_04: Nhap Tai Khoan Nhan");
+		log.info("TC_39_Step_04: Nhap Tai Khoan Nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_35_Step_05: Nhap noi dung");
+		log.info("TC_39_Step_05: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
 
-		log.info("TC_35_Step_06: Nhap So Tien Chuyen");
+		log.info("TC_39_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_MIN_TRANSFER_AMOUNT, "Số tiền");
 
-		log.info("TC_35_Step_07: Click tiep tuc");
+		log.info("TC_39_Step_07: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_35_Step_08: Kiem tra yeu cau nhap noi dung");
+		log.info("TC_39_Step_08: Kiem tra yeu cau nhap noi dung");
 		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY);
 
-		log.info("TC_35_Step_09: Click Đong");
+		log.info("TC_39_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_35_Step_10: Click Quay Lai");
+		log.info("TC_39_Step_10: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_36_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
 
 		log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
@@ -221,10 +238,10 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_36_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT3);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT3);
 
 		log.info("TC_36_Step_04: Nhap Tai Khoan Nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_36_Step_05: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
@@ -245,7 +262,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_37_KiemTraButtonBackTaiManHinhXacThucGiaoDich() {
 		log.info("TC_37_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -255,10 +272,10 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_37_Step_06: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_37_Step_08: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_37_Step_09: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -280,7 +297,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_38_KiemTraButtonDongTaiPopupChonPhuongThucXacThuc() {
 		log.info("TC_38_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -290,10 +307,10 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_38_Step_06: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_38_Step_08: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_38_Step_09: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -322,7 +339,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_39_KiemTraManHinhXacThucGiaoDichBangOTP() {
 		log.info("TC_39_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -332,10 +349,10 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_39_Step_03: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_39_Step_04: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_39_Step_05: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -363,7 +380,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_40_KiemTraBoTrongXacThucOTP() {
 
 		log.info("TC_40_Step_01: Click Tiep tuc");
@@ -377,7 +394,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_41_KiemXacThucOTPNhoHon6KyTu() {
 
 		log.info("TC_41_Step_02: Dien OTP nho hon 6 ky tu");
@@ -393,7 +410,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_42_KiemXacThucOTPLonHon6KyTu() {
 
 		log.info("TC_42_Step_02: Dien OTP lon hon 6 ky tu");
@@ -403,7 +420,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		verifyEquals(transferInVCB.getTextInDynamicOtp(driver, "Tiếp tục"), TransferMoneyInVCB_Data.InvalidInputData.INVALID_MAX_TRANSFER_AMOUNT.subSequence(0, 6));
 	}
 
-	@Test
+//	@Test
 	public void TC_43_KiemXacNhapSaiOTP() {
 
 		log.info("TC_42_Step_02: Dien OTP lon hon 6 ky tu");
@@ -428,7 +445,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_44_KiemTraManHinhNhapMatKhau() {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -438,10 +455,10 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_13_Step_06: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT1);
 
 		log.info("TC_13_Step_08: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_13_Step_09: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, "20000", "Số tiền");
@@ -469,7 +486,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_45_KiemTraBoTrongMatKhau() {
 		log.info("TC_40_Step_01: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -482,7 +499,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_46_KiemTraNhapMatKhauSai() {
 
 		log.info("TC_13_Step_23: Nhap Mat Khau sai");
@@ -499,7 +516,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_47_KiemTraNhapMatKhauDaiHon20KyTu() {
 
 		log.info("TC_13_Step_23: Nhap Mat Khau dai hon 20 ky tu");
@@ -522,7 +539,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-		closeApp();
+//		closeApp();
 		service.stop();
 	}
 

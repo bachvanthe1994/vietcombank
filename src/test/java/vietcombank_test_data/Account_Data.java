@@ -10,12 +10,12 @@ public class Account_Data {
 		public static final String DIFFERENT_OWNER_NAME = "PHAN THI THU THUY";
 		public static final String USD_ACCOUNT = "0011370124096";
 		public static final String USD_ACCOUNT_2 = "0011370080228";
-		public static final String EUR_ACCOUNT = "0011140124079";
+		public static final String EUR_ACCOUNT = "0011140124097";
 		public static final String EUR_ACCOUN_2 = "0011140313982";
 
 	}
 
-	public class Inalid_Account {
+	public class Invalid_Account {
 		public static final String SAME_OWNER_ACCOUNT_1 = "0010000123770";
 		public static final String SAME_OWNER_ACCOUNT_2 = "0011004162783";
 
