@@ -19,8 +19,8 @@ import model.TransferCharity;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Validation_Amount_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -28,8 +28,8 @@ public class Validation_Amount_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT3, "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info1 = new TransferCharity(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT3, "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info1 = new TransferCharity(Account_Data.Valid_Account.EUR_ACCOUNT, "Test order", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 

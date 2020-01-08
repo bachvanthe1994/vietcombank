@@ -15,6 +15,7 @@ import model.TransferInVCBRecurrent;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
@@ -25,9 +26,9 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
 
-	TransferInVCBRecurrent info = new TransferInVCBRecurrent(TransferMoneyInVCB_Data.InputDataInVCB.ACCOUNT3, "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(TransferMoneyInVCB_Data.InputDataInVCB.EUR_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent(TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT3, "0010000000318", "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, "0010000000318", "2", "Ngày", "", "", "10", "Người nhận trả", "test", "SMS OTP");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
