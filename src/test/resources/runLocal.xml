@@ -20,7 +20,10 @@
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<classes>
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part1" />
-
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" />
+			
 		</classes>
 	</test>
 
