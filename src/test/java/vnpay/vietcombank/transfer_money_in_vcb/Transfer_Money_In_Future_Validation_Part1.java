@@ -593,7 +593,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

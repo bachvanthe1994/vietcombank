@@ -1029,11 +1029,33 @@ public class AbstractPage {
 	}
 
 	public boolean checkFormatMoney(String moneyInput, TransferInVCBRecurrent.Currency currency) {
+		long longNumber;
+		double doubleNumber;
+		String money = moneyInput.split(" ")[0];
+		if(!money.contains(",")) {
+			return false;
+		}
+		money = money.replace(",", "");
+		
 		boolean result = true;
 		if (currency == TransferInVCBRecurrent.Currency.VND) {
-			result = moneyInput.matches("%,.2f .VND");
+			
+			try {
+				longNumber = Long.parseLong(money);
+				result = true;
+		    }
+		    catch(NumberFormatException e) {
+		    	result = false;
+		    }
+			
 		} else if (currency == TransferInVCBRecurrent.Currency.CURRENCY) {
-			result = moneyInput.matches("%,d .*");
+			try {
+				doubleNumber = Double.parseDouble(money);
+				result = true;
+		    }
+		    catch(NumberFormatException e) {
+		    	result = false;
+		    }
 		}
 
 		return result;
@@ -1067,4 +1089,8 @@ public class AbstractPage {
 
 	}
 
+	public boolean isDynamicImageViewByTextView(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	}
 }

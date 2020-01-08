@@ -181,7 +181,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	}
 	
 	@Test
-	public void TC_08_ChuyenTienDinhKy_TextboxSoTien_KiemTraGioiHanNhap_NgoaiTe() {
+	public void TC_08_ChuyenTienDinhKy_KiemTraGoiYNhanh_LucChuaNhapGiaTri() {
 		List<String> listActualAmountMoney = new ArrayList<String>();
 		List<String> listExpectAmountMoney = new ArrayList<String>();
 		
@@ -300,6 +300,44 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		log.info("TC_13_03_Kiem tra so tien trong o nhap So tien");
 		actualAmountMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney, "50,000");
+		
+	}
+	
+	@Test
+	public void TC_14_ChuyenTienDinhKy_ComboPhiGiaoDich_KiemTraHienThiMacDinh() {
+		log.info("TC_14_01_Kiem tra hien thi mac dinh Phi giao dich nguoi chuyen tra");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người chuyển trả"));
+		
+		log.info("TC_14_02_Click chon combo Phi giao dich");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		
+		log.info("TC_14_03_Kiem tra Danh sach se kich chon doi voi gia tri duoc chon");
+		verifyTrue(transferRecurrent.isDynamicImageViewByTextView(driver, "Người chuyển trả"));
+		
+	}
+	
+	@Test
+	public void TC_15_ChuyenTienDinhKy_ComboPhiGiaoDich_KiemTraDanhSachPhiGiaoDich() {
+		List<String> listActual = new ArrayList<String>();
+		List<String> listExpect = new ArrayList<String>();
+		
+		log.info("TC_15_01_Lay danh sach Phi giao dich");
+		listActual = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		
+		listExpect= Arrays.asList("Người chuyển trả", "Người nhận trả");
+		
+		log.info("TC_15_02_Kiem tra danh sach Phi giao dich");
+		verifyEquals(listActual, listExpect);
+		
+	}
+	
+	@Test
+	public void TC_16_ChuyenTienDinhKy_ComboPhiGiaoDich_ChonMotLoaiPhi() {
+		log.info("TC_16_01_Lay danh sach Phi giao dich");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
+		
+		log.info("TC_16_02_Kiem tra hien thi loai Phi giao dich duoc chon");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người nhận trả"));
 	}
 	
 	@AfterClass(alwaysRun = true)

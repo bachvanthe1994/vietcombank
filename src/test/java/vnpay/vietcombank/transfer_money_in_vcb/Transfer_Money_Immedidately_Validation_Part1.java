@@ -298,15 +298,21 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_10_Step_04: Kiem tra text khong duoc nhap");
 		verifyEquals(Money, "Số tiền");
 
+		log.info("TC_10_Step_05: Click chon tai khoan nguon ");
+		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+
+		log.info("TC_10_Step_06: Chon tai khoan dich");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_ACCOUNT);
+
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_PAYMENT_BY_OTP_FEE, "Thông tin giao dịch", "1");
 
-		log.info("TC_10_Step_03: Lay do dai so tien duoc nhap vao");
+		log.info("TC_10_Step_07: Lay do dai so tien duoc nhap vao");
 		Money = transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
-		log.info("TC_10_Step_04: Kiem tra so tien duoc nhap");
+		log.info("TC_10_Step_08: Kiem tra so tien duoc nhap");
 		verifyEquals(Money, TransferMoneyInVCB_Data.InputDataInVCB.EUR_PAYMENT_BY_OTP_FEE);
 
-		log.info("TC_10_Step_04: Click quay lai");
+		log.info("TC_10_Step_09: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 	}

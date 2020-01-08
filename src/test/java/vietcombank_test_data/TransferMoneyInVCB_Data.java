@@ -8,14 +8,14 @@ public class TransferMoneyInVCB_Data {
 	public static class InputDataInVCB {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngay", "Chuyển tiền ngay", "Chuyển tiền ngày tương lai" };
 		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
-		public static final String ACCOUNT1 = "0011000000847";
-		public static final String ACCOUNT2 = "0011000000779";
-		public static final String ACCOUNT3 = "0010000000322";
+		public static final String ACCOUNT1 = "0011000124085";
+		public static final String ACCOUNT2 = "0010000123773";
+		public static final String ACCOUNT3 = "0011000123988";
 		public static final String DIFFERENT_OWNER_ACCOUNT = "0011000000845";
 		public static final String DIFFERENT_OWNER_NAME = "PHAN THI THU THUY";
-		public static final String USD_ACCOUNT = "0011370000646";
+		public static final String USD_ACCOUNT = "0011370124096";
 		public static final String USD_ACCOUNT_2 = "0011370080228";
-		public static final String EUR_ACCOUNT = "0011140000647";
+		public static final String EUR_ACCOUNT = "0011140124079";
 		public static final String EUR_ACCOUN_2 = "0011140313982";
 		public static final String RECEIVER_NAME = "NGO TRI NAM";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
@@ -40,7 +40,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String NUMBER_DAY_FREQUENCY = "5";
 		public static final String NUMBER_WEEK_FREQUENCY = "2";
 		public static final String NUMBER_MONTH_FREQUENCY = "2";
-		
+
 	}
 
 	public static class Output {
@@ -57,6 +57,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String DUPLICATED_ACCOUNT_MESSAGE = "Số tài khoản chuyển đến và số tài khoản chuyển đi không được giống nhau, Quý khách vui lòng kiểm tra lại";
 		public static final String SAME_ACCOUNT_OWNER_MESSAGE = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
 		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản nhận không chính xác. Quý khách vui lòng kiểm tra lại";
+		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 10,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
@@ -86,11 +87,13 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class InvalidInputData {
-		public static final String SAME_OWNER_ACCOUNT_1 = "0011000000659";
-		public static final String SAME_OWNER_ACCOUNT_2 = "0011000000793";
+		public static final String SAME_OWNER_ACCOUNT_1 = "0010000123770";
+		public static final String SAME_OWNER_ACCOUNT_2 = "0011004162783";
 		public static final String INVALID_ACCOUNT_15_CHARACTERS = "445555555555555";
 		public static final String INVALID_ACCOUNT_LESS_THAN_10_CHARACTERS = "001100000";
 		public static final String INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS = "00110000000";
+		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_SYSTEM = "0011000000000";
+		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_VCB = "01825909301";
 		public static final String TEXT_AND_SPECIAL_CHARACTERS = "Abc!@#$%%";
 		public static final String VIETNAMESE_LANGUAGE = "Chuyển khoản nội bộ";
 		public static final String TEXT_WITH_MORE_THAN_140_CHARAC = "Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan Chuyen khoan ";
