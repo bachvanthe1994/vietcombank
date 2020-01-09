@@ -245,7 +245,7 @@ public class AbstractPage {
 		}
 		return listTextView;
 	}
-	
+
 	public List<String> getEnableInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
@@ -255,7 +255,7 @@ public class AbstractPage {
 		}
 		return listTextView;
 	}
-	
+
 	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
@@ -543,8 +543,7 @@ public class AbstractPage {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
@@ -758,7 +757,7 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
 	}
-	
+
 // input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
@@ -841,7 +840,7 @@ public class AbstractPage {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 
 	}
-	
+
 //Kiểm tra text có hiển thị hay không, tham số truyền vào là text 
 	public boolean isDynamicMessageAndLabelTextDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
@@ -892,14 +891,13 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 	}
-		
-		// Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
-		public boolean isDynamicImageSelect(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-			scrollToElementByID(driver, dynamicTextValue);
-			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
-			return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
-		}
 
+	// Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
+	public boolean isDynamicImageSelect(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		scrollToElementByID(driver, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	}
 
 //lấy text trong ô input, tham số truyền vào là text
 	public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -1019,13 +1017,13 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 	}
-	
+
 	// Lấy text phí giao dịch
-			public String getTextInDynamicFee(AndroidDriver<AndroidElement> driver, String ... dynamicTextValue) {
-				waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
-				return getTextElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
-			}
-	
+	public String getTextInDynamicFee(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
+	}
+
 	// Lấy text trên ô điền OTP
 	public String getTextInDynamicOtp(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
@@ -1042,30 +1040,28 @@ public class AbstractPage {
 		long longNumber;
 		double doubleNumber;
 		String money = moneyInput.split(" ")[0];
-		if(!money.contains(",")) {
+		if (!money.contains(",")) {
 			return false;
 		}
 		money = money.replace(",", "");
-		
+
 		boolean result = true;
 		if (currency == TransferInVCBRecurrent.Currency.VND) {
-			
+
 			try {
 				longNumber = Long.parseLong(money);
 				result = true;
-		    }
-		    catch(NumberFormatException e) {
-		    	result = false;
-		    }
-			
+			} catch (NumberFormatException e) {
+				result = false;
+			}
+
 		} else if (currency == TransferInVCBRecurrent.Currency.CURRENCY) {
 			try {
 				doubleNumber = Double.parseDouble(money);
 				result = true;
-		    }
-		    catch(NumberFormatException e) {
-		    	result = false;
-		    }
+			} catch (NumberFormatException e) {
+				result = false;
+			}
 		}
 
 		return result;
@@ -1077,7 +1073,7 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dynamicTextValue);
 
 	}
-	
+
 	public boolean isDynamicImageButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
@@ -1103,4 +1099,5 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 	}
+
 }
