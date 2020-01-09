@@ -22,6 +22,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 
 import io.appium.java_client.MobileElement;
@@ -40,7 +41,8 @@ public class AbstractPage {
 	int shortTime = 5;
 	long longTime1 = 30;
 	long shortTime1 = 5;
-
+	public static boolean checkBaseClass = true;
+	
 	public void TabtoElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);
@@ -537,6 +539,9 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			if (AbstractPage.checkBaseClass == true) {
+				Assert.assertTrue(false);
+			}
 			return false;
 		}
 		return true;
@@ -551,6 +556,10 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			checkBaseClass = false;
+			if (AbstractPage.checkBaseClass == true) {
+				Assert.assertTrue(false);
+			}
 			return false;
 		}
 		return true;
