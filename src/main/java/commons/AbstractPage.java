@@ -539,7 +539,7 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
-			if (AbstractPage.checkBaseClass == true) {
+			if (AbstractPage.checkBaseClass) {
 				Assert.assertTrue(false);
 			}
 			return false;

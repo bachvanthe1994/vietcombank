@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import commons.AbstractPage;
 import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
@@ -55,6 +56,8 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		
+		AbstractPage.checkBaseClass = false;
 	}
 
 	String defaultAccount;

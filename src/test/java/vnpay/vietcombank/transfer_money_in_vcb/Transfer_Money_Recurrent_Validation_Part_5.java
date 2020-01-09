@@ -19,6 +19,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -232,7 +233,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 	}
 	
 	@Test
-	public void TC_08_OTP_NutTiepTuc_OTPHetHieuLuc() throws InterruptedException {
+	public void TC_08_OTP_NutTiepTuc_OTPHopLe(){
 		log.info("TC_08_01_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -272,25 +273,11 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_08_11_Nhap ma OTP chinh xac");
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		
-		Thread.sleep(35000);
-		
 		log.info("TC_08_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_08_13_Kiem tra message thong bao loi");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.OTP_EXPIRE));
-		
-		log.info("TC_08_14_Kiem tra hien thi nut Dong");
-		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_08_15_Click nut Dong");
-		transferRecurrent.clickToDynamicButton(driver, "Đóng");
-		
-		log.info("TC_08_16_Kiem tra hien thi man hinh xac nhan thong tin");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực thông tin"));
-		
-		log.info("TC_08_17_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		log.info("TC_08_13_Kiem tra man hinh Chuyen khoan thanh cong");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 		
 	}
 	
