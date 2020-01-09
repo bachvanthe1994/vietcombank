@@ -53,7 +53,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
-//		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("TC_00_01_Click Chuyen tien trong ngan hang");
 		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -95,7 +95,6 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_00_11_Click Tiep tuc man hinh xac nhan thong tin");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-//		AbstractPage.checkBaseClass = false;
 	}
 
 	@Test
@@ -280,7 +279,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_09_OTP_NutTiepTuc_OTPHopLe() {
 		log.info("TC_09_01_Nhap ma OTP chinh xac");
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");

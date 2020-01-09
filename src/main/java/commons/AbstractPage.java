@@ -41,8 +41,7 @@ public class AbstractPage {
 	int shortTime = 5;
 	long longTime1 = 30;
 	long shortTime1 = 5;
-	public static boolean checkBaseClass = true;
-
+	
 	public void TabtoElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);
@@ -124,13 +123,14 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
-			checkBaseClass = false;
-			if (AbstractPage.checkBaseClass == true) {
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
 			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public void scrollToElementByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
@@ -551,12 +551,11 @@ public class AbstractPage {
 			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
-//			if (AbstractPage.checkBaseClass) {
-//				Assert.assertTrue(false);
-//			}
 			return false;
+			
 		}
 		return true;
+		
 	}
 
 	public boolean waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
@@ -568,10 +567,12 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
-			checkBaseClass = false;
-			if (AbstractPage.checkBaseClass == true) {
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
+			
 			return false;
 		}
 		return true;

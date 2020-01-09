@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.AbstractPage;
 import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
@@ -95,7 +94,6 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		log.info("TC_00_11_Click Tiep tuc man hinh xac nhan thong tin");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
-		AbstractPage.checkBaseClass = false;
 	}
 
 	@Test
