@@ -64,7 +64,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_36_KiemTraChuyenKhoanTuTaiKhoanUSDSangUSDVaDongPopup() {
 
 		log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
@@ -104,7 +104,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_37_KiemTraChuyenKhoanTuTaiKhoanEURSangEURVaDongPopup() {
 
 		log.info("TC_37_Step_01: Click Chuyen tien trong VCB");
@@ -144,7 +144,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_38_KiemTraLoiKhongDuSoDuVaDongPopup() {
 
 		log.info("TC_38_Step_01: Click Chuyen tien trong VCB");
@@ -227,7 +227,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_36_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
 
 		log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
@@ -262,7 +262,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_37_KiemTraButtonBackTaiManHinhXacThucGiaoDich() {
 		log.info("TC_37_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -297,7 +297,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_38_KiemTraButtonDongTaiPopupChonPhuongThucXacThuc() {
 		log.info("TC_38_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -339,7 +339,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_39_KiemTraManHinhXacThucGiaoDichBangOTP() {
 		log.info("TC_39_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -380,7 +380,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_40_KiemTraBoTrongXacThucOTP() {
 
 		log.info("TC_40_Step_01: Click Tiep tuc");
@@ -394,7 +394,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_41_KiemXacThucOTPNhoHon6KyTu() {
 
 		log.info("TC_41_Step_02: Dien OTP nho hon 6 ky tu");
@@ -410,7 +410,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 	}
 
-//	@Test
+	@Test
 	public void TC_42_KiemXacThucOTPLonHon6KyTu() {
 
 		log.info("TC_42_Step_02: Dien OTP lon hon 6 ky tu");
@@ -420,7 +420,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		verifyEquals(transferInVCB.getTextInDynamicOtp(driver, "Tiếp tục"), TransferMoneyInVCB_Data.InvalidInputData.INVALID_MAX_TRANSFER_AMOUNT.subSequence(0, 6));
 	}
 
-//	@Test
+	@Test
 	public void TC_43_KiemXacNhapSaiOTP() {
 
 		log.info("TC_42_Step_02: Dien OTP lon hon 6 ky tu");
@@ -445,7 +445,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-//	@Test
+	@Test
 	public void TC_44_KiemTraManHinhNhapMatKhau() {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -486,7 +486,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_45_KiemTraBoTrongMatKhau() {
 		log.info("TC_40_Step_01: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -499,7 +499,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_46_KiemTraNhapMatKhauSai() {
 
 		log.info("TC_13_Step_23: Nhap Mat Khau sai");
@@ -516,7 +516,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_47_KiemTraNhapMatKhauDaiHon20KyTu() {
 
 		log.info("TC_13_Step_23: Nhap Mat Khau dai hon 20 ky tu");
