@@ -141,8 +141,6 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		String [] a = transferMoney.getDynamicAmountLabel(driver, "Tỷ giá quy đổi tham khảo").split("~");
 		String getChangeVNDString = a[1].replaceAll("\\D+", "");
 		int getChangeVND = Integer.parseInt(getChangeVNDString);
-
-	
 		
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -156,9 +154,37 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		String amountTranferUSDString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số tiền").replaceAll("\\D+", "");
 		long amountAfterUSD = Long.parseLong(amountTranferUSDString);
 		verifyEquals(amountAfterUSD, amountAfter * getChangeVND);
+	}
+	
+	@Test
+	public void TC_86_KiemTraPhiChuyenTien() {
+		log.info("TC_05_Step_Verify label so tien phi");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.AMOUNT_FEE_LABEL));
 
+		log.info("TC_01_Step_: Verify so tien phi");
+		String amountfeeString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
+		verifyEquals(amountfeeString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_USD);
+		System.out.print(amountfeeString);
 		
-		
+		log.info("TC_01_Step_: Verify loai phi");
+		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Số tiền phí"),TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 	}
 
+	@Test
+	public void TC_87_KiemTraNoiDungChuyenTien() {
+		log.info("TC_05_Step_Verify label noi dung");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_LABEL));
+		
+		log.info("TC_58_Lay gia tri noi dung chuyen tien");
+		String note = transferMoney.getDynamicAmountLabel(driver, "Nội dung");
+
+		log.info("TC_58_verify noi dung");
+		verifyEquals(note, TransferMoneyQuick_Data.TransferQuick.NOTE);
+	}
+	
+	@Test
+	public void TC_88_KiemTraButtonTiepTuc() {
+		log.info("TC_05_Step_Verify label noi dung");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_LABEL));
+	}
 }
