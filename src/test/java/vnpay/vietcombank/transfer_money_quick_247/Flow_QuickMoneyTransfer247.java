@@ -123,7 +123,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC_01_Step_Verify so tien phi");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
+		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_VND);
 
 		log.info("TC_01_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
@@ -309,7 +309,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 		log.info("TC_05_Step_Verify phi chuyen tien");
 		costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replace(".00 USD", "");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
+		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_USD);
 		costTranfer = Long.parseLong(costTranferString);
 
 		log.info("TC_05_Step_Chon phuong thuc xac thuc");
@@ -489,7 +489,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 		log.info("TC_02_Step_Verify phi chuyen tien");
 		costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
+		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_VND);
 		costTranfer = Long.parseLong(costTranferString);
 
 		log.info("TC_02_Step_Chon phuong thuc xac thuc");
@@ -672,7 +672,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 		log.info("TC_02_Step_Verify phi chuyen tien");
 		costTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT);
+		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_USD);
 		costTranfer = Integer.parseInt(costTranferString);
 
 		log.info("TC_02_Step_Get ma giao dich");
