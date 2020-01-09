@@ -30,6 +30,8 @@ public class TransferMoneyQuick_Data {
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.11";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.18";
 		
+		public static final String CONFIRM_LABEL = "Xác thực giao dịch";
+		public static final String CONFIRM_INFO_LABEL = "Xác nhận thông tin";
 		public static final String NOTE_LABEL = "Nội dung";
 		public static final String AMOUNT_FEE_LABEL = "Số tiền phí";
 		public static final String INFO_FROM_LABEL = "Thông tin người chuyển";
