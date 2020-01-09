@@ -359,7 +359,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_79_Step_Nhap so tai khoan chuyen dong chu so huu voi tai khoan nguon");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, Account_Data.Inalid_Account.SAME_OWNER_ACCOUNT_2, "Thông tin người hưởng", "1");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_2, "Thông tin người hưởng", "1");
 
 		log.info("TC_79_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
