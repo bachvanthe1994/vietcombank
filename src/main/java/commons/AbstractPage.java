@@ -443,17 +443,6 @@ public class AbstractPage {
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
-	public void waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator) {
-
-		WebDriverWait wait = new WebDriverWait(driver, longTime1);
-		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-
-		}
-	}
-
 	public void waitForElementClickable(AndroidDriver<AndroidElement> driver, String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
@@ -538,7 +527,7 @@ public class AbstractPage {
 		sleep(driver, 1000);
 	}
 
-	public void waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -548,10 +537,12 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			return false;
 		}
+		return true;
 	}
 
-	public void waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -560,7 +551,9 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			return false;
 		}
+		return true;
 	}
 
 	public String getOTPText(AndroidDriver<AndroidElement> driver, String bankName, String allMesssage) {
@@ -632,62 +625,78 @@ public class AbstractPage {
 
 //Click vào Cho phép lúc khởi tạo app, hoặc check chức chăng có permission
 	public void clickToDynamicAcceptButton(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		}
 
 	}
 
 //Click vao 1 button sử dụng  tham số là text
 	public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
 
 	}
 
 //Click vào dropdown list tham số truyển vào là label của ô dropdown list đó
 	public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver, String dymanicText) {
 		scrollToText(driver, dymanicText);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		}
 	}
 
 //Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		}
 
 	}
 
 //Click vào ô textbox lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
 	public void clickToDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+		}
 
 	}
 
 //Click vào ô dropdown lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
 	public void clickToDynamicDropdownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
-
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
+		}
+			
 	}
 
 // Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
 	public void clickToDynamicDropdownAndDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		}
 
 	}
 
 // Click vào ngày trong date time picker , tham số truyền vào là text
 	public void clickToDynamicDateInDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicText) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
-
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
+		}
+		
 	}
 
 // Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
@@ -699,49 +708,63 @@ public class AbstractPage {
 
 //Click vào close icon có tham số truyền vào là text cạnh nó
 	public void clickToDynamicCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		}
 
 	}
 
 // Click nút back bằng label cạnh nó
 	public void clickToDynamicBackIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		}
 
 	}
 
 // click vào icon ứng dụng trên màn hình theo tên của icon đó
 	public void clickToDynamicIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
+		}
 
 	}
 
 // Click vào ô input box 
 	public void clickToDynamicInput(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		}
 
 	}
 
 //Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và resource-id
 	public void clickToDynamicTransactionInReport(AndroidDriver<AndroidElement> driver, String... dynamicIndexAndID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_REPORT, dynamicIndexAndID);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_REPORT, dynamicIndexAndID);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_REPORT, dynamicIndexAndID);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_REPORT, dynamicIndexAndID);
+		}
 	}
 
 //Click vào 1 giao dịch trong trạng thái lệnh chuyển tiền, tham số truyền vào là index và resource id
 	public void clickToDynamicTransactionInTransactionOrderStatus(AndroidDriver<AndroidElement> driver, String... dynamicIndex1ID2) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
+		}
 	}
 
 // Click vào số tiền được gợi ý ở ô số tiền, tham số truyền vào là vị trí số tiền và resource id chung của tất cả số tiền đó
 	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		if (checkWait) {
+			clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+		}
 	}
 
 	// So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
@@ -750,54 +773,65 @@ public class AbstractPage {
 	}
 
 	public void clickToDynamicBottomMenu(AndroidDriver<AndroidElement> driver, String dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		}
 	}
 
 	public void clickToDynamicImageButtonByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+		if (checkWait) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+		}
 	}
 	
 // input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
-		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		if (checkWait) {
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+		}
 
 	}
 
 //input vào 1 ô text box bằng label của nó, tham số truyền vào là text của label và vị trí của ô input
 	public void inputToDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, String inputValue, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
-		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, inputValue, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+		if (checkWait) {
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, inputValue, dynamicTextValue);
+		}
 
 	}
 
 	public void pressKeyCodeIntoDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, List<Keys> dynamicKey, String... dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue[0]);
-		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
-		for (Keys key : dynamicKey) {
-			driver.getKeyboard().sendKeys(key);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+		if (checkWait) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
+			for (Keys key : dynamicKey) {
+				driver.getKeyboard().sendKeys(key);
+			}
 		}
 	}
 
 	public void pressKeyCodeIntoAmountInput(AndroidDriver<AndroidElement> driver, List<Keys> dynamicKey) {
-		clearText(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
-		waitForElementVisible(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
-		for (Keys key : dynamicKey) {
-			driver.getKeyboard().sendKeys(key);
+		boolean checkWait = waitForElementVisible(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
+		if (checkWait) {
+			clearText(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
+			for (Keys key : dynamicKey) {
+				driver.getKeyboard().sendKeys(key);
+			}
 		}
 	}
 
 	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
-		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, inputValue, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
+		if (checkWait) {
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, inputValue, dynamicTextValue);
+		}
 	}
 
 //Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
@@ -809,29 +843,33 @@ public class AbstractPage {
 
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
 	public void inputToDynamicPopupPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
-		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (checkWait) {
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
 	}
 
 	public void inputToPasswordConfirm(AndroidDriver<AndroidElement> driver, String inputValue) {
-		clearText(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
-		waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
-		setValueToElement(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT, inputValue);
+		boolean checkWait = waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
+		if (checkWait) {
+			setValueToElement(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT, inputValue);
+		}
 	}
 
 	public void inputToDynamicInputBoxSearch(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
-		clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, inputValue, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, dynamicTextValue);
+		if (checkWait) {
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, inputValue, dynamicTextValue);
+		}
 	}
 
 	public void inputToDynamicInputBoxSearchBank(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		scrollToText(driver, dynamicTextValue);
-		clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
+		boolean checkWait = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
+		if (checkWait) {
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
+		}
 	}
 
 // check button có hiển thị hay không, tham số truyền vào là text của button
@@ -1102,5 +1140,25 @@ public class AbstractPage {
 	public boolean isDynamicImageViewByTextView(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	}
+	
+	public void inputOTPInvalidBy_N_Times(AndroidDriver<AndroidElement> driver, int time) {
+		for (int i = 0; i < time; i++) {
+			inputToDynamicOtpOrPIN(driver, "213456", "Tiếp tục");
+			clickToDynamicButton(driver, "Tiếp tục");
+			if (i < time - 1) {
+				clickToDynamicButton(driver, "Đóng");
+			}
+		}
+	}
+	
+	public void inputPasswordInvalidBy_N_Times(AndroidDriver<AndroidElement> driver, int time) {
+		for (int i = 0; i < time; i++) {
+			inputToDynamicPopupPasswordInput(driver, "12345678", "Tiếp tục");
+			clickToDynamicButton(driver, "Tiếp tục");
+			if (i < time - 1) {
+				clickToDynamicButton(driver, "Đóng");
+			}
+		}
 	}
 }

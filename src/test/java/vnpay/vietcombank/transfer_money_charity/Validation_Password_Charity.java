@@ -172,7 +172,7 @@ public class Validation_Password_Charity extends Base {
 //	@Test
 	public void TC_06_MatKhau_NutTiepTuc_NhapMatKhauKhongChinhXac_5_Lan() {
 		log.info("TC_06_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputPasswordInvalidBy_N_Times(LogIn_Data.Login_Account.PASSWORD_INVALID_TIMES);
+		transferMoneyCharity.inputPasswordInvalidBy_N_Times(driver, LogIn_Data.Login_Account.PASSWORD_INVALID_TIMES);
 		
 		log.info("TC_06_02_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.PASSWORD_INVALID_N_TIMES));

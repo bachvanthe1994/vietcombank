@@ -172,7 +172,7 @@ public class Validation_OTP_Charity extends Base {
 	@Test
 	public void TC_06_OTP_NutTiepTuc_NhapOTPKhongChinhXac_NhoHon_n_Lan() {
 		log.info("TC_06_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputOTPInvalidBy_N_Times(LogIn_Data.Login_Account.OTP_INVALID_TIMES - 1);
+		transferMoneyCharity.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES - 1);
 		
 		log.info("TC_06_02_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_INVALID));
@@ -193,7 +193,7 @@ public class Validation_OTP_Charity extends Base {
 	@Test
 	public void TC_07_OTP_NutTiepTuc_NhapOTPKhongChinhXac_n_Lan_LienTiep() {
 		log.info("TC_07_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputOTPInvalidBy_N_Times(LogIn_Data.Login_Account.OTP_INVALID_TIMES);
+		transferMoneyCharity.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES);
 		
 		log.info("TC_07_02_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_INVALID_N_TIMES));
