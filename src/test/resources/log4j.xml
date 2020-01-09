@@ -82,7 +82,63 @@
 </category>
 
 
-<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransferViaAccount">
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_6">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_6">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_6">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_5">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_4">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_3">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_2">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_1">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247">
 <priority value ="all"/>
 <appender-ref ref="console"/>
 <appender-ref ref="logfile"/>

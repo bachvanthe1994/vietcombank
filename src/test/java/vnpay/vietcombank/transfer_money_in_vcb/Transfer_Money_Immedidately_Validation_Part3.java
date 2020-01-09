@@ -406,78 +406,78 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 	@Test
 	public void TC_43_KiemXacNhapSaiOTP() {
 
-		log.info("TC_42_Step_02: Dien OTP lon hon 6 ky tu");
+		log.info("TC_43_Step_02: Dien OTP lon hon 6 ky tu");
 		transferInVCB.inputToDynamicOtpOrPIN(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
 
-		log.info("TC_41_Step_03: Click Tiep tuc");
+		log.info("TC_43_Step_03: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_42_Step_04: Kiem tra popup message hien thi");
+		log.info("TC_43_Step_04: Kiem tra popup message hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_OTP));
 
-		log.info("TC_41_Step_05: Chon Dong");
+		log.info("TC_43_Step_05: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_41_Step_05: Chon Quay lai");
+		log.info("TC_43_Step_05: Chon Quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Quay lại");
 
-		log.info("TC_38_Step_14: Click Quay Lai");
+		log.info("TC_43_Step_14: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
 
-		log.info("TC_38_Step_15: Click Quay Lai");
+		log.info("TC_43_Step_15: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
 	@Test
 	public void TC_44_KiemTraManHinhNhapMatKhau() {
-		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
+		log.info("TC_44_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_13_Step_02:Click tai khoan nguon");
+		log.info("TC_44_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_13_Step_06: Chon tai khoan chuyen");
+		log.info("TC_44_Step_06: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
-		log.info("TC_13_Step_08: Nhap tai khoan nhan");
+		log.info("TC_44_Step_08: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_13_Step_09: Nhap so tien chuyen");
+		log.info("TC_44_Step_09: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, "20000", "Số tiền");
 
-		log.info("TC_13_Step_10: Nhap noi dung");
+		log.info("TC_44_Step_10: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
 
-		log.info("TC_13_Step_11: Click tiep tuc");
+		log.info("TC_44_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_06_Step_20: Chon Phuong thuc nhap");
+		log.info("TC_44_Step_20: Chon Phuong thuc nhap");
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
-		log.info("TC_13_Step_21: Chon SMS OTP");
+		log.info("TC_44_Step_21: Chon SMS OTP");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		log.info("TC_13_Step_22: Click Tiep tuc");
+		log.info("TC_44_Step_22: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_39_Step_11: Kiem tra xac thuc giao dich hien thi");
+		log.info("TC_44_Step_11: Kiem tra xac thuc giao dich hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
-		log.info("TC_39_Step_12: Kiem tra inbox message hien thi");
+		log.info("TC_44_Step_12: Kiem tra inbox message hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch"));
 
 	}
 
 	@Test
 	public void TC_45_KiemTraBoTrongMatKhau() {
-		log.info("TC_40_Step_01: Click Tiep tuc");
+		log.info("TC_45_Step_01: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_40_Step_02: Kiem tra popup message hien thi");
+		log.info("TC_45_Step_02: Kiem tra popup message hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_EMPTY_PASSWORD));
 
-		log.info("TC_40_Step_03: Chon Dong");
+		log.info("TC_45_Step_03: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
 	}
@@ -485,16 +485,16 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 	@Test
 	public void TC_46_KiemTraNhapMatKhauSai() {
 
-		log.info("TC_13_Step_23: Nhap Mat Khau sai");
+		log.info("TC_46_Step_23: Nhap Mat Khau sai");
 		transferInVCB.inputToDynamicPopupPasswordInput(driver, "wrongpass", "Tiếp tục");
 
-		log.info("TC_40_Step_01: Click Tiep tuc");
+		log.info("TC_46_Step_01: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_40_Step_02: Kiem tra popup message hien thi");
+		log.info("TC_46_Step_02: Kiem tra popup message hien thi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_PASSWORD));
 
-		log.info("TC_40_Step_03: Chon Dong");
+		log.info("TC_46_Step_03: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
 
 	}
@@ -502,19 +502,19 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 	@Test
 	public void TC_47_KiemTraNhapMatKhauDaiHon20KyTu() {
 
-		log.info("TC_13_Step_23: Nhap Mat Khau dai hon 20 ky tu");
+		log.info("TC_47_Step_23: Nhap Mat Khau dai hon 20 ky tu");
 		transferInVCB.inputToDynamicPopupPasswordInput(driver, TransferMoneyInVCB_Data.InvalidInputData.MORE_THAN_21_CHARACTERS, "Tiếp tục");
 
-		log.info("TC_40_Step_02: Kiem tra do dai mat khau");
+		log.info("TC_47_Step_02: Kiem tra do dai mat khau");
 		verifyEquals(transferInVCB.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 20);
 
-		log.info("TC_41_Step_05: Chon Quay lai");
+		log.info("TC_47_Step_05: Chon Quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Quay lại");
 
-		log.info("TC_38_Step_14: Click Quay Lai");
+		log.info("TC_47_Step_14: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
 
-		log.info("TC_38_Step_15: Click Quay Lai");
+		log.info("TC_47_Step_15: Click Quay Lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 	}
