@@ -58,7 +58,7 @@ public class TransferIdentity_Data {
 	public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("1,000,000 VND", "10,000,000 VND", "100,000,000 VND");
 	public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("1,000 EUR ~ 27,006,000 VND", "10,000 EUR ~ 270,060,000 VND");
 	public static final String MAX_LENGTH_140 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New1";
-	public static final String MAX_LENGTH_141 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New Y";
+	public static final String MAX_LENGTH_141 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New11";
     }
 
     public static class confirmMessage {

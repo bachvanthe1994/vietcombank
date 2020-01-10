@@ -15,7 +15,11 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
+import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.Account_Data.Invalid_Account;
+import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.LogIn_Data.Login_Account;
 import vietcombank_test_data.TransferIdentity_Data;
 
 public class TransferIdentity_Validate_2 extends Base {
@@ -66,7 +70,7 @@ public class TransferIdentity_Validate_2 extends Base {
 
     }
 
-//    @Test
+    @Test
     public void TC_33_KiemTraHienThiNoiDungSauKhiNhapKiTuDacBiet() {
 	log.info("TC_33_Step_01: Click Chuyen tien trong VCB");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -75,13 +79,13 @@ public class TransferIdentity_Validate_2 extends Base {
 	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, "Nội dung");
 
 	log.info("TC_33_STEP_03: kiem tra hien thi noi dung vua nhap");
-	verifyTrue(trasferPage.isDynamicTextInInputBoxDisPlayed(driver, ""));
+	verifyTrue(trasferPage.isDynamicTextInInputBoxDisPlayed(driver, "Nội dung"));
 
 	log.info("TC_33_Step_04: Click quay lai");
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_34_KiemTraHienThiNoiDungNhapMaxLength140() {
 	log.info("TC_34_Step_01: Click Chuyen tien trong VCB");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -96,7 +100,7 @@ public class TransferIdentity_Validate_2 extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_35_KiemTraHienThiNoiDungNhapMaxLength141() {
 	log.info("TC_35_Step_01: Click Chuyen tien trong VCB");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -111,7 +115,7 @@ public class TransferIdentity_Validate_2 extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_36_KiemTraNutTiepTuc() {
 	log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -201,8 +205,8 @@ public class TransferIdentity_Validate_2 extends Base {
 	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT, "Nội dung");
 
 	log.info("TC_36_Step_28: kiểm tra khi tài đồng chủ sở hữu");
-	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textDataInputForm.ACCOUNT_VND);
-	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "0011000000659");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2);
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Invalid_Account.SAME_OWNER_ACCOUNT_3);
 
 	log.info("TC_36_Step_29: bỏ trống nội dung");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -214,17 +218,17 @@ public class TransferIdentity_Validate_2 extends Base {
 	trasferPage.clickToDynamicButton(driver, "Đóng");
 
 	log.info("TC_36_Step_31: chọn tài khoản nguồn kiểm tra không đủ số dư");
-	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "0011000000659");
-	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "0011000001433");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Invalid_Account.SAME_OWNER_ACCOUNT_3);
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
 
 	log.info("TC_36_Step_32: nhập số tiền chuyển đi");
-	trasferPage.inputToDynamicInputBoxIdentityValidate(driver, "6000000", "100,000");
+	trasferPage.inputToDynamicInputBoxIdentityValidate(driver, "6000000", "1,000,000");
 
 	log.info("TC_36_Step_33: chọn tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_36_STEP_30: kiểm tra hiển thị thông báo khi chọn tài khoản đồng chủ sở hữu");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_ACCOUNT_CO_OWNER));
+	log.info("TC_36_STEP_30: kiểm tra hiển thị thông báo khi chọn tài không đủ số dư");
+	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_ACCOUNT_MONEY));
 
 	log.info("TC_36_Step_31: chọn đóng");
 	trasferPage.clickToDynamicButton(driver, "Đóng");
@@ -233,7 +237,7 @@ public class TransferIdentity_Validate_2 extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
     }
 
-//    @Test
+    @Test
     public void TC_37_ManHinhXacNhanGiaoDich() {
 	log.info("TC_37_Step_1: chon chuyển tiền nhận bằng CMT");
 	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -333,9 +337,12 @@ public class TransferIdentity_Validate_2 extends Base {
 	log.info("TC_37_Step_28 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
 
+	log.info("TC_36_Step_04: Click quay lai");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
     }
 
-//    @Test
+    @Test
     public void TC_38_XacNhanGiaoDichBangSMSOTP() {
 	log.info("TC_38_Step_1: chon chuyển tiền nhận bằng CMT");
 	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -482,13 +489,13 @@ public class TransferIdentity_Validate_2 extends Base {
 
 	log.info("TC_38_Step_43 : chon tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+	log.info("TC_38_Step_43 : chon thuc hien giao dich moi");
+	trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
     }
 
     @Test
     public void TC_39_XacNhanGiaoDichBangMatKhau() {
-	log.info("TC_38_Step_1: chon chuyển tiền nhận bằng CMT");
-	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
-
 	log.info("TC_38_Step_2: chon tai khoan");
 	trasferPage.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
@@ -638,6 +645,24 @@ public class TransferIdentity_Validate_2 extends Base {
 
 	log.info("TC_38_Step_42 : chon tiep tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+	log.info("TC_36_Step_38: chọn đóng");
+	trasferPage.clickToDynamicButton(driver, "Đóng");
+
+	log.info("TC_38_Step_41 : chon quay lại");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
+
+	log.info("TC_38_Step_42 : chon tiep tục");
+	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+	log.info("TC_36_Step_39: kiem tra maxlength với 21 kí tự");
+	trasferPage.inputToDynamicPopupPasswordInput(driver, Login_Account.WRONG_PASSWORD, "Tiếp tục");
+
+	log.info("TC_38_Step_42 : chon tiep tục");
+	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+	log.info("TC_38_Step_42 : kiem tra man hinh xac nhan thanh cong");
+	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicPopup(driver, "com.VCB:id/tvTitle")));
 
     }
 
