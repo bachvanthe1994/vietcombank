@@ -8,15 +8,9 @@ public class TransferMoneyInVCB_Data {
 	public static class InputDataInVCB {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngay", "Chuyển tiền ngay", "Chuyển tiền ngày tương lai" };
 		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
-		public static final String ACCOUNT1 = "0011000124085";
-		public static final String ACCOUNT2 = "0010000123773";
-		public static final String ACCOUNT3 = "0011000123988";
-		public static final String DIFFERENT_OWNER_ACCOUNT = "0011000000845";
+
 		public static final String DIFFERENT_OWNER_NAME = "PHAN THI THU THUY";
-		public static final String USD_ACCOUNT = "0011370124096";
-		public static final String USD_ACCOUNT_2 = "0011370080228";
-		public static final String EUR_ACCOUNT = "0011140124079";
-		public static final String EUR_ACCOUN_2 = "0011140313982";
+
 		public static final String RECEIVER_NAME = "NGO TRI NAM";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
@@ -106,8 +100,7 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class InvalidInputData {
-		public static final String SAME_OWNER_ACCOUNT_1 = "0010000123770";
-		public static final String SAME_OWNER_ACCOUNT_2 = "0011004162783";
+
 		public static final String INVALID_ACCOUNT_15_CHARACTERS = "445555555555555";
 		public static final String INVALID_ACCOUNT_LESS_THAN_10_CHARACTERS = "001100000";
 		public static final String INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS = "00110000000";
