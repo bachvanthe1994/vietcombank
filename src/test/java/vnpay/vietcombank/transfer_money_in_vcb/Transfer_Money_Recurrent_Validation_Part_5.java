@@ -118,10 +118,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_02_02_Kiem tra message thong bao loi");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.OTP_EMPTY));
 
-		log.info("TC_02_03_Kiem tra hien thi nut Dong");
-		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
-
-		log.info("TC_02_04_Click nut Dong");
+		log.info("TC_02_03_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 	}
 
@@ -136,10 +133,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_03_03_Kiem tra message thong bao loi");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.OTP_LESS_THAN_6_CHARACTER));
 
-		log.info("TC_03_04_Kiem tra hien thi nut Dong");
-		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
-
-		log.info("TC_03_05_Click nut Dong");
+		log.info("TC_03_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 	}
 
@@ -161,16 +155,13 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_05_03_Kiem tra message thong bao loi");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.OTP_INVALID));
 
-		log.info("TC_05_04_Kiem tra hien thi nut Dong");
-		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
-
-		log.info("TC_05_05_Click nut Dong");
+		log.info("TC_05_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_05_06_Click nut Quay lai");
+		log.info("TC_05_05_Click nut Quay lai");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 
-		log.info("TC_05_07_Click Tiep tuc");
+		log.info("TC_05_06_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 	}
@@ -183,16 +174,13 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_06_02_Kiem tra message thong bao loi");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.OTP_INVALID));
 
-		log.info("TC_06_03_Kiem tra hien thi nut Dong");
-		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
-
-		log.info("TC_06_04_Click nut Dong");
+		log.info("TC_06_03_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_06_05_Click nut Quay lai");
+		log.info("TC_06_04_Click nut Quay lai");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 
-		log.info("TC_06_06_Click Tiep tuc");
+		log.info("TC_06_05_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 	}
 
@@ -204,22 +192,19 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_07_02_Kiem tra message thong bao loi");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.OTP_INVALID_N_TIMES));
 
-		log.info("TC_07_03_Kiem tra hien thi nut Dong");
-		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
-
-		log.info("TC_07_04_Click nut Dong");
+		log.info("TC_07_03_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 
 		transferRecurrent.scrollToText(driver, "Nội dung");
 
-		log.info("TC_07_05_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
+		log.info("TC_07_04_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));
 
-		log.info("TC_07_05_1_Kiem tra thong tin nguoi huong");
+		log.info("TC_07_04_1_Kiem tra thong tin nguoi huong");
 		String actualOrganization = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
 		verifyEquals(actualOrganization, "Nhập/chọn tài khoản nhận VND");
 
-		log.info("TC_07_05_2_Kiem tra thong tin giao dich");
+		log.info("TC_07_04_2_Kiem tra thong tin giao dich");
 		String actualMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualMoney, "Số tiền");
 
@@ -276,17 +261,6 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 
 		log.info("TC_08_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
-
-	}
-
-//	@Test
-	public void TC_09_OTP_NutTiepTuc_OTPHopLe() {
-		log.info("TC_09_01_Nhap ma OTP chinh xac");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("TC_09_02_Kiem tra man hinh Chuyen khoan thanh cong");
-		// verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver,
-		// TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 	}
 
