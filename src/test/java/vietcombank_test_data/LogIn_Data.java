@@ -15,6 +15,7 @@ public class LogIn_Data {
 	public static final String INVALID_PASSWORD = "123456a  @ABC";
 	public static final String NULL = "";
 	public static final String PASSWORD_GREATER_THAN_20 = "1ABC1111@11111111111111111";
+	public static final String OTP_NUMBER_INVALID = "111111";
     }
 
     public class Message {
