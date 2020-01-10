@@ -8,8 +8,8 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY = "//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_INPUT_BOX = "//android.widget.EditText[@text='%s']";
 	public static final String DYNAMIC_TEXT_INFO = "//android.view.View[@text='%s']";
-	public static final String DYNAMIC_INPUT_BOX_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
-	public static final String DYNAMIC_DROPDOWN_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
+	public static final String DYNAMIC_INPUT_BOX_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
+	public static final String DYNAMIC_DROPDOWN_BY_HEADER =  "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
 
 	public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout/android.widget.TextView";
 	public static final String DYNAMIC_PASSWORD_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
