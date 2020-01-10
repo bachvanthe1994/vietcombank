@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_Continue_Button_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -25,7 +26,7 @@ public class Validation_Continue_Button_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
@@ -162,7 +163,24 @@ public class Validation_Continue_Button_Charity extends Base {
 	
 	@Test
 	public void TC_05_KiemTraChonTaiKhoanNguonLaTaiKhoanDongChuSoHuu() {
-		
+		log.info("TC_05_Chon tai khoan nguon VND");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_1);
+
+		log.info("TC_05_Input so tien chuyen");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.money, "Thông tin giao dịch", "1");
+
+		log.info("TC_05_Step_Nhap so tai khoan chuyen dong chu so huu voi tai khoan nguon");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_2, "Thông tin người hưởng", "1");
+
+		log.info("TC_05_Step_Tiep tuc");
+		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_05_Step_verify message khi tai khoan dong chu so huu ");
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.SAME_ACCOUNT_NAME));
+
+		log.info("Close popup");
+		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
 	@Test
