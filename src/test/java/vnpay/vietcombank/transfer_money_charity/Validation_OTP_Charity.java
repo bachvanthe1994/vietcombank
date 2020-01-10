@@ -255,7 +255,7 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_08_12_Kiem tra man hinh Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 	}
 	
