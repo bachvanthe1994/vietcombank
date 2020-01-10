@@ -276,7 +276,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.destinationAccount, "Thông tin người hưởng", "1");
 	}
 	
-//	@Test
+	@Test
 	public void TC_15_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanVNDSangUSD() {
 		log.info("TC_15_01_Nhap tai khoan nguon VND");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -296,7 +296,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		
 	}
 	
-//	@Test
+	@Test
 	public void TC_16_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanVNDSangEURO() {
 		log.info("TC_16_01_Nhap tai khoan nguon VND");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -316,7 +316,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		
 	}
 	
-//	@Test
+	@Test
 	public void TC_17_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanUSDSangEURO() {
 		log.info("TC_17_01_Nhap tai khoan nguon USD");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -336,7 +336,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		
 	}
 	
-//	@Test
+	@Test
 	public void TC_18_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanEURSangUSD() {
 		log.info("TC_18_01_Nhap tai khoan nguon USD");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
