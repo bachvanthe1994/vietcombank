@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_OTP_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -229,7 +230,7 @@ public class Validation_OTP_Charity extends Base {
 	}
 	
 	@Test
-	public void TC_08_OTP_NutTiepTuc_OTPHetHieuLuc() throws InterruptedException {
+	public void TC_08_OTP_NutTiepTuc_OTPHopLe() {
 		log.info("TC_08_1_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
@@ -264,35 +265,13 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_08_10_Nhap ma OTP chinh xac");
 		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		
-		Thread.sleep(35000);
-		
 		log.info("TC_08_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_08_12_Kiem tra message thong bao loi");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_EXPIRE));
-		
-		log.info("TC_08_13_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_08_14_Click nut Dong");
-		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
-		
-		log.info("TC_08_15_Kiem tra hien thi man hinh xac nhan thong tin");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực thông tin"));
-		
-		log.info("TC_08_16_Click Tiep tuc");
-		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
-	}
-	
-	@Test
-	public void TC_09_OTP_NutTiepTuc_OTPHopLe() {
-		log.info("TC_09_01_Nhap ma OTP chinh xac");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-		
-		log.info("TC_09_02_Kiem tra man hinh Chuyen khoan thanh cong");
-		//verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		log.info("TC_08_12_Kiem tra man hinh Chuyen khoan thanh cong");
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
+		
 	}
 	
 	@AfterClass(alwaysRun = true)
