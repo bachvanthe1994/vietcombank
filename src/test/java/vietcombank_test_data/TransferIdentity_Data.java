@@ -76,5 +76,6 @@ public class TransferIdentity_Data {
 	public static final String MESSSAGE_OTP_FALSE = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
 	public static final String MESSSAGE_PASSWORD_FOUND = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
 	public static final String MESSSAGE_PASSWORD_FALSE = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 5 lần.";
+	public static final String MESSSAGE_TIME_OTP = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
     }
 }
