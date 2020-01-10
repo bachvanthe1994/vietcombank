@@ -147,9 +147,6 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 		log.info("TC_50_Step_01: Click Icon Home");
 		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
 
-		log.info("TC_48_Step_10: Click Tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, "Đóng");
-
 		log.info("TC_48_Step_15: Kiem tra user khong duoc cap quyen");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "TÀI KHOẢN THANH TOÁN"));
 
@@ -164,7 +161,7 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 		transferInVCB.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_52_Step_02: Kiem tra tai khoan mac dinh");
-		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.DEFAULT_ACCOUNT2);
+		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
 
 	}
 
