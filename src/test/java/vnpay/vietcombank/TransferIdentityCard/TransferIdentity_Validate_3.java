@@ -15,7 +15,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
-import vietcombank_test_data.Account_Data.Invalid_Account;
 import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.LogIn_Data.Login_Account;
@@ -70,22 +69,22 @@ public class TransferIdentity_Validate_3 extends Base {
     }
 
     @Test
-    public void TC_45_TaiKhoanDongSoDu() {
-	log.info("TC_45_Step_31: chọn tài khoản nguồn kiểm tra không đủ số dư");
-	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Invalid_Account.SAME_OWNER_ACCOUNT_3);
+    public void TC_46_ManHinhXacNhanGiaoDichVoiTaiKhoanNguonVND() {
+	log.info("TC_45_Step_31: chọn tài khoản nguồn VND");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.VND_ACCOUNT);
 
 	log.info("TC_45_Step_32: nhập số tiền chuyển đi");
-	trasferPage.inputToDynamicInputBoxIdentityValidate(driver, "6000000", "1,000,000");
+	trasferPage.inputToDynamicInputBoxIdentityValidate(driver, "1000000", "6,000,000");
 
 	log.info("TC_45_Step_33: chọn tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_45_STEP_30: kiểm tra hiển thị thông báo khi chọn tài không đủ số dư");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_ACCOUNT_MONEY));
+	log.info("TC_45_Step_33: kiem tra title man hinh");
+	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar")));
 
-	log.info("TC_45_Step_31: chọn đóng");
-	trasferPage.clickToDynamicButton(driver, "Đóng");
+	log.info("TC_45_Step_33: kiem tra title tai khoan nguon");
+	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar")));
     }
 
 //    @Test
