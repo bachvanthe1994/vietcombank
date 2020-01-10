@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_Password_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -226,7 +227,12 @@ public class Validation_Password_Charity extends Base {
 		log.info("TC_07_10_Nhap mat khau chinh xac");
 		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 		
+		log.info("TC_07_11_Click Tiep tuc");
+		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
+		log.info("TC_07_12_Kiem tra man hinh Chuyen khoan thanh cong");
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+
 	}
 	
 	@AfterClass(alwaysRun = true)
