@@ -4,19 +4,18 @@ public class LogIn_Data {
 	public static class Login_Account {
 		public static final String LOCKED_PHONE = "0335059863";
 		public static final String LOCKED_PASS = "1e9978d3";
-
-		public static final String PHONE = "0399764702";
+		public static final String PHONE = "0904797863";
 		public static final String PHONE_INVALID = "0904797863";
 		public static final String PHONE_HIDDEN = PHONE.substring(0, 4) + "***" + PHONE.substring(PHONE.length() - 3);
 		public static final int OTP_INVALID_TIMES = 3;
 		public static final int PASSWORD_INVALID_TIMES = 5;
-
-		public static final String WRONG_PASSWORD = "18a9713e";
-		public static final String NEW_PASSWORD = "aaaa1111";
+		public static final String WRONG_PASSWORD = "Abc12345";
+		public static final String NEW_PASSWORD = "Abc12345";
 		public static final String OTP = "123456";
 		public static final String INVALID_PASSWORD = "123456a  @ABC";
 		public static final String NULL = "";
 		public static final String PASSWORD_GREATER_THAN_20 = "1ABC1111@11111111111111111";
+		public static final String OTP_NUMBER_INVALID = "111111";
 	}
 
 	public class Message {
@@ -46,6 +45,5 @@ public class LogIn_Data {
 		public static final String AGREE_BUTTON = "Đồng ý";
 		public static final String REGISTER_NOW_BUTTON = "Đăng ký ngay";
 		public static final String CONTINUE_USE_SERVICE_BUTTON = "Tiếp tục sử dụng dịch vụ";
-
 	}
 }

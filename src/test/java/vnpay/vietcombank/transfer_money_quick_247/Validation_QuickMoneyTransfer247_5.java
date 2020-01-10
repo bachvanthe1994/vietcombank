@@ -297,9 +297,13 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	public void TC_76_ChonTaiKhoanNguonKhongDuSoDuVND() {
 		log.info("TC_76_Quay lai man hinh chuyen tien nhanh 24/7");
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
-
-		log.info("TC_76_Input so tien chuyen");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND, "Thông tin giao dịch", "1");
+		
+		log.info("TC_76_Lay so du tai khoan nguon");
+		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		Long moneyCharity = surplus + 1;
+		
+		log.info("TC_07_2_Nhap so tien");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 
 		log.info("TC_76_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -316,9 +320,13 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		log.info("TC_77_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[2]);
-
-		log.info("TC_77_Input so tien chuyen");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
+		
+		log.info("TC_76_Lay so du tai khoan nguon");
+		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		Long moneyCharity = surplus + 1;
+		
+		log.info("TC_07_2_Nhap so tien");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 
 		log.info("TC_77_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -335,9 +343,13 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		log.info("TC_78_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
-
-		log.info("TC_78_Input so tien chuyen");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
+		
+		log.info("TC_76_Lay so du tai khoan nguon");
+		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		Long moneyCharity = surplus + 1;
+		
+		log.info("TC_07_2_Nhap so tien");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 
 		log.info("TC_78_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
