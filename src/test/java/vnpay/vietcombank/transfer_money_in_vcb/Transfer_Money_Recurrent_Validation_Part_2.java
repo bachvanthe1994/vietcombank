@@ -113,8 +113,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_03_ChuyenTienDinhKy_KiemTraKyTuNhapOSoLuong() { 
 		log.info("TC_03_01_Nhap gia tri vao o So luong");
-		List<Keys> listKey = Arrays.asList(Keys.NUMPAD2, Keys.NUMPAD2);
-		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
+		transferRecurrent.inputFrequencyNumber("22");
 
 		String actualAmount = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
 		log.info("TC_03_2_Kiem tra gia tri trong o So luong");
@@ -125,8 +124,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_04_ChuyenTienDinhKy_KiemTraNhapKyTu0() {
 		log.info("TC_04_01_Nhap gia tri vao o So luong");
-		List<Keys> listKey = Arrays.asList(Keys.NUMPAD0);
-		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
+		transferRecurrent.inputFrequencyNumber("0");
 
 		String actualAmount = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
 		log.info("TC_04_2_Kiem tra gia tri trong o So luong");
@@ -154,12 +152,11 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_06_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaNgay_NhapLonHon31() {
 		log.info("TC_06_01_Nhap gia tri vao o So luong");
-		List<Keys> listKey = Arrays.asList(Keys.NUMPAD3, Keys.NUMPAD2);
-		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
+		transferRecurrent.inputFrequencyNumber("32");
 
 		String actualAmount = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
 		log.info("TC_06_02_Kiem tra gia tri trong o So tien ung ho");
-		verifyEquals(actualAmount, "3");
+		verifyEquals(actualAmount, "");
 
 	}
 	
@@ -188,12 +185,11 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_08_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaTuan_NhapLonHon53() {
 		log.info("TC_08_01_Nhap gia tri vao o So luong");
-		List<Keys> listKey = Arrays.asList(Keys.NUMPAD5, Keys.NUMPAD4);
-		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
+		transferRecurrent.inputFrequencyNumber("54");
 
 		String actualAmountMoney = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
 		log.info("TC_08_2_Kiem tra gia tri trong o So tien ung ho");
-		verifyEquals(actualAmountMoney, "5");
+		verifyEquals(actualAmountMoney, "");
 
 	}
 	
@@ -222,12 +218,11 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_10_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaThang_NhapLonHon12() {
 		log.info("TC_10_01_Nhap gia tri vao o So luong");
-		List<Keys> listKey = Arrays.asList(Keys.NUMPAD1, Keys.NUMPAD3);
-		transferRecurrent.pressKeyCodeIntoAmountInput(driver, listKey);
+		transferRecurrent.inputFrequencyNumber("13");
 
 		String actualAmountMoney = transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/edtContent");
 		log.info("TC_10_2_Kiem tra gia tri trong o So tien ung ho");
-		verifyEquals(actualAmountMoney, "1");
+		verifyEquals(actualAmountMoney, "");
 
 	}
 	
@@ -274,7 +269,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		startDate = getForwardDate(1);
 		
 		log.info("TC_14_01_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "Hủy");
+		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
 		
 		log.info("TC_14_02_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -299,7 +294,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 		
 		log.info("TC_14_08_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "Hủy");
+		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
 		
 		log.info("TC_14_09_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -359,7 +354,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		String endDate = getForwardDate(2);
 
 		log.info("TC_18_01_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "Hủy");
+		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
 		
 		log.info("TC_18_02_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
