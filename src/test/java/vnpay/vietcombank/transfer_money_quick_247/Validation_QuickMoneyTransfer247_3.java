@@ -1,7 +1,7 @@
 package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.testng.annotations.AfterClass;
@@ -13,9 +13,7 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
@@ -24,12 +22,11 @@ import vietcombank_test_data.TransferMoneyQuick_Data;
 public class Validation_QuickMoneyTransfer247_3 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
-	private HomePageObject homePage;
-	private SetupContactPageObject setupContact;
 	private TransferMoneyObject transferMoney;
 	private String amountStartString;
-	List<String> listActualAmountMoney;
-	List<String> listExpectAmountMoney;
+	private String amountExpectString;
+	List<String> listExpect;
+	List<String> listActual;
 	private String amountExpect;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
@@ -90,11 +87,12 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_31_Lay so tien sau khi nhap");
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
+		log.info("TC_31_So tien Nhap");
 		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND;
-		amountExpect = amountExpect.substring(0, 3) + "," + amountExpect.substring(3, 6) + "," + amountExpect.substring(6, amountExpect.length());
+		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
 
 		log.info("TC_31_Kiem tra dau phay ngan cach hang ngan");
-		verifyEquals(amountStartString, amountExpect);
+		verifyEquals(amountStartString, amountExpectString);
 	}
 
 	@Test
@@ -108,10 +106,12 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_32_Lay so tien sau khi nhap");
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
+		log.info("TC_32_So tien Nhap");
 		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_VND;
-		amountExpect = amountExpect.substring(0, 1) + "," + amountExpect.substring(1, 4) + "," + amountExpect.substring(4, 7) + "," + amountExpect.substring(7, amountExpect.length());
-		log.info("TC_02_Kiem tra dau phay ngan cach hang ngan");
-		verifyEquals(amountStartString, amountExpect);
+		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
+
+		log.info("TC_32_Kiem tra dau phay ngan cach hang ngan");
+		verifyEquals(amountStartString, amountExpectString);
 	}
 
 	@Test
@@ -124,7 +124,6 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		log.info("TC_33_Khong cho phep nhap hon 10 ky tu, truong so tien trong");
 		verifyEquals(amountStartString, "Số tiền");
-
 	}
 
 	@Test
@@ -136,18 +135,14 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEXT_INVALID_VND.replaceAll("\\D+", "");
+		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
 
-		amountExpect = amountExpect.substring(0, 2) + "," + amountExpect.substring(2, amountExpect.length());
 		log.info("TC_34_Kiem tra dau phay ngan cach hang ngan");
-		verifyEquals(amountStartString, amountExpect);
-
+		verifyEquals(amountStartString, amountExpectString);
 	}
 
 	@Test
 	public void TC_35_KiemTraHienThiGoiYNhanhVND() {
-		listActualAmountMoney = new ArrayList<String>();
-		listExpectAmountMoney = new ArrayList<String>();
-
 		log.info("TC_35_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
@@ -156,15 +151,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_35_Lay danh sach goi y");
-		listActualAmountMoney = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
 
-		log.info("TC_35_Danh sach goi y hien thi tren man hinh");
-		listExpectAmountMoney.add("50,000 VND");
-		listExpectAmountMoney.add("500,000 VND");
-		listExpectAmountMoney.add("5,000,000 VND");
+		log.info("TC_35_danh sach gia tri so tien goi y");
+		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_VND);
 
 		log.info("TC_35_Kiem tra so tien goi y");
-		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@Test
@@ -182,16 +175,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_37_Lay danh sach goi y");
-		listActualAmountMoney = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
 
-		log.info("TC_37_Danh sach goi y hien thi tren man hinh");
-		listExpectAmountMoney.add("50,000 VND");
-		listExpectAmountMoney.add("500,000 VND");
-		listExpectAmountMoney.add("5,000,000 VND");
+		log.info("TC_37_danh sach gia tri so tien goi y");
+		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_VND);
 
 		log.info("TC_37_Kiem tra so tien goi y");
-		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
-
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	// @Test ---> Loi app vẫn hiển thị popup gợi ý x10, x100
@@ -203,11 +193,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.clickToDynamicSuggestedMoney(driver, 1, "com.VCB:id/tvAmount");
 
 		log.info("TC_38_Lay danh sach goi y");
-		listActualAmountMoney = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
 
-		log.info("TC_38_Kiem tra gia tri goi y khong hien thi tren man hinh");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextUndisplayed(driver, "5,000,000 VND"));
+		log.info("TC_38_danh sach gia tri so tien goi y");
+		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_VND);
 
+		log.info("TC_38_Kiem tra khong co so tien trong danh sach");
+		verifyFailure(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@Test
@@ -246,11 +238,11 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_41_Lay so tien sau khi nhap");
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
-		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_USD_EUR;
-		amountExpect = amountExpect.substring(0, 3) + "," + amountExpect.substring(3, 6) + "," + amountExpect.substring(6, amountExpect.length());
-
+		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND;
+		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
+		String amountExpectDoubleString = amountExpectString + TransferMoneyQuick_Data.TransferQuick.MONEY_DOUBLE_NUMBER_USD_EUR;
 		log.info("TC_41_Kiem tra dau phay ngan cach hang ngan");
-		verifyEquals(amountStartString, amountExpect);
+		verifyEquals(amountStartString, amountExpectDoubleString);
 
 	}
 
@@ -265,10 +257,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_42_Lay so tien sau khi nhap");
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
-		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_USD_EUR;
-		amountExpect = amountExpect.substring(0, 1) + "," + amountExpect.substring(1, 4) + "," + amountExpect.substring(4, 7) + "," + amountExpect.substring(7, amountExpect.length());
-		log.info("TC_42_Kiem tra dau phay ngan cach hang ngan");
-		verifyEquals(amountStartString, amountExpect);
+		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_VND;
+		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
+		
+		String amountExpectDoubleString = amountExpectString + TransferMoneyQuick_Data.TransferQuick.MONEY_DOUBLE_NUMBER_USD_EUR;
+		
+		log.info("TC_41_Kiem tra dau phay ngan cach hang ngan");
+		verifyEquals(amountStartString, amountExpectDoubleString);
 	}
 
 	@Test
@@ -285,30 +280,27 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		log.info("TC_43_Lay gia tri nhap vao");
 		amountStartString = transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
-		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_USD_EUR;
-		amountExpect = amountExpect.substring(0, 3) + "," + amountExpect.substring(3, 6) + "," + amountExpect.substring(6, amountExpect.length());
-
+		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND;
+		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
+		String amountExpectDoubleString = amountExpectString + TransferMoneyQuick_Data.TransferQuick.MONEY_DOUBLE_NUMBER_USD_EUR;
+		
 		log.info("TC_43_Kiem tra dau phay ngan cach hang ngan");
-		verifyEquals(amountStartString, amountExpect);
+		verifyEquals(amountStartString, amountExpectDoubleString);
 	}
 
 	// @Test --- Lỗi app hiển thị dấu , ngăn cách hàng nghìn đang bị sai
 	public void TC_44_KiemTraDinhDangHienThiGoiYUSD() {
-
-		listActualAmountMoney = new ArrayList<String>();
-		listExpectAmountMoney = new ArrayList<String>();
-
 		log.info("TC_44_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
-		listActualAmountMoney = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		log.info("TC_44_Lay danh sach goi y");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
 
-		log.info("TC_44_List goi y hien thi tren man hinh");
-		listExpectAmountMoney.add("50,002.00 USD ~ 1,500,060,000 VND");
-		listExpectAmountMoney.add("500,020.00 USD ~ 15,000,600,000 VND");
+		log.info("TC_44_danh sach gia tri so tien goi y");
+		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_USD);
 
 		log.info("TC_44_Kiem tra so tien goi y");
-		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@Test
@@ -326,14 +318,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_46_Lay danh sach goi y");
-		listActualAmountMoney = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
 
-		log.info("TC_46_Danh sach goi y hien thi tren man hinh");
-		listExpectAmountMoney.add("50,002.00 USD ~ 1,500,060,000 VND");
-		listExpectAmountMoney.add("500,020.00 USD ~ 15,000,600,000 VND");
+		log.info("TC_46_danh sach gia tri so tien goi y");
+		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_USD);
 
 		log.info("TC_46_Kiem tra so tien goi y");
-		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
+		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 
 	}
 
@@ -346,11 +337,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.clickToDynamicSuggestedMoney(driver, 1, "com.VCB:id/tvAmount");
 
 		log.info("TC_47_Lay danh sach goi y");
-		listActualAmountMoney = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
 
-		log.info("TC_47_Kiem tra gia tri goi y khong hien thi tren man hinh");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextUndisplayed(driver, "500,020.00 USD ~ 15,000,600,000 VND"));
+		log.info("TC_47_danh sach gia tri so tien goi y");
+		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_USD);
 
+		log.info("TC_47_Kiem tra khong co so tien trong danh sach");
+		verifyFailure(transferMoney.checkListContain(listActual, listExpect));
 	}
 
 	@AfterClass(alwaysRun = true)
