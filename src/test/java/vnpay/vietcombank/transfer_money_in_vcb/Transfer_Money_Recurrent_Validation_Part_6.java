@@ -199,14 +199,13 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 	@Test
 	public void TC_07_MatKhau_NutTiepTuc_MatKhauHopLe(){
 		log.info("TC_07_01_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		
+
 		log.info("TC_07_02_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
 		log.info("TC_07_03_Nhap tai khoan dich");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.destinationAccount, "Thông tin người hưởng");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.destinationAccount, "Thông tin người hưởng", "1");
 
 		log.info("TC_07_04_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
