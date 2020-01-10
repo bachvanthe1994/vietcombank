@@ -1,7 +1,6 @@
 package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,9 +12,7 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
@@ -24,15 +21,12 @@ import vietcombank_test_data.TransferMoneyQuick_Data;
 public class Validation_QuickMoneyTransfer247_4 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
-	private HomePageObject homePage;
-	private SetupContactPageObject setupContact;
 	private TransferMoneyObject transferMoney;
 	private String amountStartString;
 	private String amountExpectString;
 	List<String> listExpect;
 	List<String> listActual;
 	private String amountExpect;
-	private String Note;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
