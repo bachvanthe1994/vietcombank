@@ -57,11 +57,15 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "8000001";
 		public static final String MONEY_EXCEED_MAX_TRANSFER_PACKAGE_ONE_DAY_VND = "6000001";
 		public static final String MONEY_ALLOW_VND = "4900000";
+		public static final String [] LIST_MONEY_SHOW_VND = {"50,000 VND","500,000 VND","5,000,000 VND"};
+		public static final String [] LIST_MONEY_SHOW_USD = {"50,002.00 USD ~ 1,500,060,000 VND","500,020.00 USD ~ 15,000,600,000 VND"};
+		public static final String [] LIST_MONEY_SHOW_EUR = {"50,002.00 EUR ~ 1,350,354,010 VND","500,020.00 EUR ~ 13,503,540,100 VND"};
 
-		
-		public static final String MONEY_NINE_NUMBER_USD_EUR = "150450000.09";
-		public static final String MONEY_NINE_NUMBER_INVALID_USD_EUR = "150450000.091";
-		public static final String MONEY_TEN_NUMBER_USD_EUR = "1504500000.56";
+
+		public static final String MONEY_DOUBLE_NUMBER_USD_EUR =".09";
+		public static final String MONEY_NINE_NUMBER_USD_EUR = MONEY_NINE_NUMBER_VND + MONEY_DOUBLE_NUMBER_USD_EUR; 
+		public static final String MONEY_NINE_NUMBER_INVALID_USD_EUR = MONEY_NINE_NUMBER_VND +".091";
+		public static final String MONEY_TEN_NUMBER_USD_EUR = MONEY_TEN_NUMBER_VND + MONEY_DOUBLE_NUMBER_USD_EUR;
 		public static final String MONEY_ELEVEN_NUMBER_USD_EUR = "12345678912";
 		public static final String MONEY_TEXT_INVALID_USD_EUR = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
@@ -91,6 +95,10 @@ public class TransferMoneyQuick_Data {
 		public static final String AMOUNT_NOT_ENOUGH = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Quý khách vui lòng kiểm tra lại.";
 		public static final String SAME_ACCOUNT_NAME = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
 		public static final String ACCOUNT_TO_INVALID_MESSAGE = "Giao dịch không thành công do tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại. Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String OTP_BLANK_MESSAGE = "Quý khách vui lòng nhập mã OTP";
+		public static final String OTP_NOT_ENOUGH_MESSAGE = "OTP phải đủ 6 ký tự, Quý khách vui lòng kiểm tra lại";
+		public static final String OTP_NOT_EXIST_MESSAGE = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
+		public static final String OTP_OVER_3_TIMES_MESSAGE = "Nhập sai OTP quá 3 lần. Quý khách vui lòng thực hiện giao dịch khác.";
 	}
 
 
