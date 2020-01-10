@@ -165,8 +165,8 @@ public class Validation_Password_Charity extends Base {
 		log.info("TC_05_06_Click nut Quay lai");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
-		log.info("TC_05_07_Click Tiep tuc");
-		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+		log.info("TC_05_07_Click Back");
+		transferMoneyCharity.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
 		
 	}
 	
@@ -231,7 +231,7 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_07_12_Kiem tra man hinh Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 	}
 	

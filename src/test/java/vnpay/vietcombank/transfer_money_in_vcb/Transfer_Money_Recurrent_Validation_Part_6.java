@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -191,8 +192,8 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		log.info("TC_06_05_Click nut Quay lai");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
-		log.info("TC_06_06_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		log.info("TC_05_07_Click Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
 	}
 	
 	@Test
@@ -237,6 +238,8 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		log.info("TC_07_11_Nhap mat khau chinh xac");
 		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 		
+		log.info("TC_07_12_Kiem tra man hinh Chuyen khoan thanh cong");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 		
 	}
 	
