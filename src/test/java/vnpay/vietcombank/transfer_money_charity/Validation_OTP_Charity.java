@@ -26,7 +26,7 @@ public class Validation_OTP_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT3, "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT3, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
@@ -113,10 +113,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_02_02_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_EMPTY));
 		
-		log.info("TC_02_03_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_02_04_Click nut Dong");
+		log.info("TC_02_03_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
@@ -131,10 +128,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_03_03_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_LESS_THAN_6_CHARACTER));
 		
-		log.info("TC_03_04_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_03_05_Click nut Dong");
+		log.info("TC_03_04_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
@@ -156,16 +150,13 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_05_03_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_INVALID));
 		
-		log.info("TC_05_04_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_05_05_Click nut Dong");
+		log.info("TC_05_04_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 		
-		log.info("TC_05_06_Click nut Quay lai");
+		log.info("TC_05_05_Click nut Quay lai");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
-		log.info("TC_05_07_Click Tiep tuc");
+		log.info("TC_05_06_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 	}
@@ -173,48 +164,43 @@ public class Validation_OTP_Charity extends Base {
 	@Test
 	public void TC_06_OTP_NutTiepTuc_NhapOTPKhongChinhXac_NhoHon_n_Lan() {
 		log.info("TC_06_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputOTPInvalidBy_N_Times(LogIn_Data.Login_Account.OTP_INVALID_TIMES - 1);
+		transferMoneyCharity.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES - 1);
 		
 		log.info("TC_06_02_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_INVALID));
 		
-		log.info("TC_06_03_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_06_04_Click nut Dong");
+		log.info("TC_06_03_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 		
-		log.info("TC_06_05_Click nut Quay lai");
+		log.info("TC_06_04_Click nut Quay lai");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 		
-		log.info("TC_06_06_Click Tiep tuc");
+		log.info("TC_06_05_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+		
 	}
 	
 	@Test
 	public void TC_07_OTP_NutTiepTuc_NhapOTPKhongChinhXac_n_Lan_LienTiep() {
 		log.info("TC_07_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputOTPInvalidBy_N_Times(LogIn_Data.Login_Account.OTP_INVALID_TIMES);
+		transferMoneyCharity.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES);
 		
 		log.info("TC_07_02_Kiem tra message thong bao loi");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_INVALID_N_TIMES));
 		
-		log.info("TC_07_03_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-		
-		log.info("TC_07_04_Click nut Dong");
+		log.info("TC_07_03_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 		
 		transferMoneyCharity.scrollToText(driver, "Hoàn cảnh người ủng hộ");
 		
-		log.info("TC_07_05_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
+		log.info("TC_07_04_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền từ thiện"));
 		
-		log.info("TC_07_05_1_Kiem tra thong tin nguoi huong");
+		log.info("TC_07_04_1_Kiem tra thong tin nguoi huong");
 		String actualOrganization = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
 		verifyEquals(actualOrganization, "Quỹ/ Tổ chức từ thiện");
 		
-		log.info("TC_07_05_2_Kiem tra thong tin giao dich");
+		log.info("TC_07_04_2_Kiem tra thong tin giao dich");
 		String actualMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualMoney, "Số tiền ủng hộ");
 		
@@ -269,9 +255,8 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_08_12_Kiem tra man hinh Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
-		
 	}
 	
 	@AfterClass(alwaysRun = true)

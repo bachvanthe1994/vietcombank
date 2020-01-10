@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_Continue_Button_Charity extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -25,7 +26,7 @@ public class Validation_Continue_Button_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Test order", "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 
@@ -83,7 +84,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_01_8_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.ORGANIZATION_INPUT_EMPTY_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.ORGANIZATION_INPUT_EMPTY_MESSAGE);
 		
 		log.info("TC_01_9_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -106,7 +107,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_02_3_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_EMPTY_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.MONEY_INPUT_EMPTY_MESSAGE);
 		
 		log.info("TC_02_4_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -127,7 +128,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_03_3_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.NAME_INPUT_EMPTY_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.NAME_INPUT_EMPTY_MESSAGE);
 		
 		log.info("TC_03_4_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -148,7 +149,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_04_3_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.STATUS_INPUT_EMPTY_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.STATUS_INPUT_EMPTY_MESSAGE);
 		
 		log.info("TC_04_4_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -162,7 +163,24 @@ public class Validation_Continue_Button_Charity extends Base {
 	
 	@Test
 	public void TC_05_KiemTraChonTaiKhoanNguonLaTaiKhoanDongChuSoHuu() {
-		
+		log.info("TC_05_Chon tai khoan nguon VND");
+		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_1);
+
+		log.info("TC_05_Input so tien chuyen");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.money, "Thông tin giao dịch", "1");
+
+		log.info("TC_05_Step_Nhap so tai khoan chuyen dong chu so huu voi tai khoan nguon");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_2, "Thông tin người hưởng", "1");
+
+		log.info("TC_05_Step_Tiep tuc");
+		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_05_Step_verify message khi tai khoan dong chu so huu ");
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.MessageTransferMoney.SAME_ACCOUNT_NAME);
+
+		log.info("Close popup");
+		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
 	@Test
@@ -186,7 +204,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_07_4_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE);
 		
 		log.info("TC_07_5_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -195,7 +213,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
-//	@Test
+	@Test
 	public void TC_08_KiemTraSoTienGiaoDichNhoHonHanMucToiThieu1LanGiaoDich() {
 		log.info("TC_08_1_Nhap so tien");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, TransferMoneyCharity_Data.MONEY_NOT_ENOUGH_FOR_TRANSACTION, "Thông tin giao dịch", "1");
@@ -204,7 +222,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_08_3_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_NOT_ENOUGH_PER_A_TRANSACTION_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.MONEY_INPUT_NOT_ENOUGH_PER_A_TRANSACTION_MESSAGE);
 		
 		log.info("TC_08_4_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -222,7 +240,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_09_3_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE));
+		verifyEquals(transferMoneyCharity.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE);
 		
 		log.info("TC_09_4_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng"));

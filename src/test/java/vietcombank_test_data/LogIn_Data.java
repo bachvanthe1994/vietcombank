@@ -45,6 +45,5 @@ public class LogIn_Data {
 	public static final String AGREE_BUTTON = "Đồng ý";
 	public static final String REGISTER_NOW_BUTTON = "Đăng ký ngay";
 	public static final String CONTINUE_USE_SERVICE_BUTTON = "Tiếp tục sử dụng dịch vụ";
-
     }
 }
