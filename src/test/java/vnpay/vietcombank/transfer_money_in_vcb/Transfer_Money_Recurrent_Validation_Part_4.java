@@ -70,6 +70,8 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		log.info("TC_01_02_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+
+		transferRecurrent.scrollToText(driver, "Tiếp tục");
 		
 		log.info("TC_01_03_Kiem tra gia tri mac dinh o Noi dung");
 		String actualNote = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
