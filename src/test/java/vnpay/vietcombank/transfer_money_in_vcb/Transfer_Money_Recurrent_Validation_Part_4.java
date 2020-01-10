@@ -125,7 +125,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_04_08_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.EMPTY_RECEIVE_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.EMPTY_RECEIVE_ACCOUNT_MESSAGE);
 	
 	}
 	
@@ -150,7 +150,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_06_03_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.EMPTY_MONEY_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.EMPTY_MONEY_MESSAGE);
 	}
 	
 	@Test
@@ -174,7 +174,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_08_03_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.EMPTY_TRANSFER_NOTE_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.EMPTY_TRANSFER_NOTE_MESSAGE);
 	}
 	
 	@Test
@@ -198,7 +198,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_10_03_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.DUPLICATED_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.DUPLICATED_ACCOUNT_MESSAGE);
 	}
 	
 	@Test
@@ -222,7 +222,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_12_03_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_12_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -243,7 +243,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_13_03_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_13_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -264,7 +264,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_14_03_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_14_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -289,7 +289,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_15_04_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_15_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -309,7 +309,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_16_04_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_16_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -329,7 +329,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_17_04_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_17_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -349,7 +349,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_18_04_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_18_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -412,7 +412,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_21_04_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE);
 		
 		log.info("TC_21_05_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -431,7 +431,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_22_03_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE);
 		
 		log.info("TC_22_04_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
@@ -449,7 +449,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_23_03_Kiem tra pop up hien thi thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE);
 		
 		log.info("TC_23_04_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
