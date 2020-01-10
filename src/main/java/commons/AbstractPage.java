@@ -1100,4 +1100,24 @@ public class AbstractPage {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 	}
 
+	public void inputOTPInvalidBy_N_Times(AndroidDriver<AndroidElement> driver, int time) {
+		for (int i = 0; i < time; i++) {
+			inputToDynamicOtpOrPIN(driver, "213456", "Tiếp tục");
+			clickToDynamicButton(driver, "Tiếp tục");
+			if (i < time - 1) {
+				clickToDynamicButton(driver, "Đóng");
+			}
+		}
+	}
+	
+	public void inputPasswordInvalidBy_N_Times(AndroidDriver<AndroidElement> driver, int time) {
+		for (int i = 0; i < time; i++) {
+			inputToDynamicPopupPasswordInput(driver, "12345678", "Tiếp tục");
+			clickToDynamicButton(driver, "Tiếp tục");
+			if (i < time - 1) {
+				clickToDynamicButton(driver, "Đóng");
+			}
+		}
+	}
+	
 }
