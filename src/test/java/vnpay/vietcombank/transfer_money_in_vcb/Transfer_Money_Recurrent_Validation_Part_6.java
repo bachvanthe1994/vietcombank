@@ -143,11 +143,14 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 	}
 	
-//	@Test
+	@Test
 	public void TC_04_MatKhau_NutTiepTuc_NhapMatKhauLonHon8KyTu() {
-		log.info("TC_04_01_Nhap mat khau lon hon 8 ky tu");
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, "123456789", "Tiếp tục");
-		
+		log.info("TC_04_01: Nhap Mat Khau dai hon 20 ky tu");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, TransferMoneyInVCB_Data.InvalidInputData.MORE_THAN_21_CHARACTERS, "Tiếp tục");
+
+		log.info("TC_04_02: Kiem tra do dai mat khau");
+		verifyEquals(transferRecurrent.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 20);
+
 	}
 	
 	@Test

@@ -268,7 +268,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		startDate = getForwardDate(1);
 		
 		log.info("TC_14_01_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
 		log.info("TC_14_02_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -293,7 +293,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 		
 		log.info("TC_14_08_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
 		log.info("TC_14_09_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -353,7 +353,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		String endDate = getForwardDate(2);
 
 		log.info("TC_18_01_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
 		log.info("TC_18_02_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
