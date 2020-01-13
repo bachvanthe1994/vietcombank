@@ -461,7 +461,7 @@ public class TransferIdentity_Validate_2 extends Base {
 	String amountLongToString = Long.toString(amountLong);
 
 	log.info("TC_47_Step_23: kiem tra noi dung");
-	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 	trasferPage.scrollToText(driver, "Tiếp tục");
 	log.info("TC_47_Step_24: chon phuong thuc xac thuc");
