@@ -270,13 +270,6 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		
 	}
 	
-//	@Test
-	public void TC_12_ChuyenTienDinhKy_TaiKhoanDich_KiemTraKyTuNhap() {
-		log.info("TC_12_01_Nhap gia tri tai khoan dich");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, "123456789", "Thông tin người hưởng", "1");
-	
-	}
-	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();

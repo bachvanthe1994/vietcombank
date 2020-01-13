@@ -195,7 +195,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_09_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaThang_NhapNhoHon12() {
 		log.info("TC_09_01_Chon chu ky Ngay");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tuần"); // need to optimize
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tuần"); 
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tháng");
 		
 		log.info("TC_09_02_Nhap gia tri vao o So luong");

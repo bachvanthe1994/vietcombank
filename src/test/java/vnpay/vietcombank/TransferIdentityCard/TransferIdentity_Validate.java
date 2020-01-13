@@ -93,6 +93,46 @@ public class TransferIdentity_Validate extends Base {
 	}
 
 	@Test
+	public void TC_03_KiemTraLoaiKiTuNhapVaGioiHanKyTuNhap() {
+		log.info("TC_03_STEP_0: chon chuyển tiền nhận bằng CMT");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+		log.info("TC_03_STEP_1: nhap ten nguoi thu huong gom ki tu so");
+		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Thông tin người hưởng", "2");
+
+		log.info("TC_03_STEP_2: kiem ta hien thi ten nguoi thu huong vua nhap");
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
+
+		log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
+		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, "Thông tin người hưởng", "2");
+
+		log.info("TC_03_STEP_5: kiem tra hien thi ten nguoi thu huong vua nhap");
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), "Tên người hưởng");
+
+		log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
+		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Thông tin người hưởng", "2");
+
+		log.info("TC_03_STEP_8: kiem tra hien thi ten nguoi thu huong vua nhap");
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), "Xac nhan thong tin");
+
+		log.info("TC_03_STEP_10: kiem tra max length = 100");
+		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100, "Thông tin người hưởng", "2");
+
+		log.info("TC_03_STEP_11: kiem tra hien thi ten nguoi thu huong vua nhap");
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2").length(), 100);
+
+		log.info("TC_03_STEP_13: kiem tra max length = 101");
+		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_101, "Thông tin người hưởng", "2");
+
+		log.info("TC_03_STEP_14: kiem tra hien thi ten nguoi thu huong vua nhap");
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2").length(), 100);
+
+		log.info("TC_03_Step_16 : Click  nut Back");
+		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+
+	}
+
+	@Test
 	public void TC_04_KiemTraMacDinhGiayToTuyThan() {
 		log.info("TC_04_STEP_0: chon chuyển tiền nhận bằng CMT");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
@@ -296,13 +336,14 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 		log.info("TC_11_STEP_1: kiem tra hien thị mac dinh");
+		verifyEquals(trasferPage.getDynamicTextInDropDownByHeader(driver, "Thông tin người hưởng", "7"), "Nơi cấp");
 
 		log.info("TC_12_Step_4 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
 	@Test
-	public void TC_12_NoiCapCMT() {
+	public void TC_12_KiemTraNoiCapCMTKhiChonGiayToLaCMT() {
 		log.info("TC_12_STEP_0: chon chuyển tiền nhận bằng CMT");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -319,14 +360,14 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_12_STEP_5:kiem tra gia tri vua chon");
-		trasferPage.isControlDisplayed(driver, TransferIdentity_Data.textDataInputForm.ISSUED);
+		verifyEquals(trasferPage.getDynamicTextInDropDownByHeader(driver, "Thông tin người hưởng", "7"), TransferIdentity_Data.textDataInputForm.ISSUED_SPACE);
 
 		log.info("TC_12_Step_6 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
 	@Test
-	public void TC_13_NoiCapHoChieu() {
+	public void TC_13_KiemTraNoiCapHoChieuKhiChonGiayToLaHoChieu() {
 		log.info("TC_13_STEP_0: chon chuyển tiền nhận bằng CMT");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -340,14 +381,14 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.inputToDynamicInputBox(driver, "Thành phố Hà Nội", "Nơi cấp");
 
 		log.info("TC_13_STEP_4:kiem tra gia tri vua chon");
-		trasferPage.isControlDisplayed(driver, TransferIdentity_Data.textDataInputForm.ISSUED_SPACE);
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "6"), "Thành phố Hà Nội");
 
 		log.info("TC_13_Step_5 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
 	@Test
-	public void TC_14_NoiCapCMTQuanDoi() {
+	public void TC_14_KiemTraNhapKhiChonCMTQuanDoi() {
 		log.info("TC_14_STEP_0: chon chuyển tiền nhận bằng CMT");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -358,10 +399,10 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "CMT Quân đội");
 
 		log.info("TC_13_STEP_3:click chon Ha Noi");
-		trasferPage.inputToDynamicInputBox(driver, "Thành phố Hà Nội", "Nơi cấp");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.ISSUED_SPACE, "Nơi cấp");
 
 		log.info("TC_13_STEP_4:kiem tra gia tri vua chon");
-		trasferPage.isControlDisplayed(driver, TransferIdentity_Data.textDataInputForm.ISSUED_SPACE);
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "6"), TransferIdentity_Data.textDataInputForm.ISSUED_SPACE);
 
 		log.info("TC_13_Step_5 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
@@ -411,47 +452,9 @@ public class TransferIdentity_Validate extends Base {
 		log.info("TC_16_STEP_1: nhap so tien bat dau la khong");
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_0, "Số tiền");
 
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
+
 		log.info("TC_16_Step_5 : Click  nut Back");
-		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
-
-	}
-
-	@Test
-	public void TC_03_KiemTraLoaiKiTuNhap() {
-		log.info("TC_03_STEP_0: chon chuyển tiền nhận bằng CMT");
-		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
-
-		log.info("TC_03_STEP_1: nhap ten nguoi thu huong gom ki tu so");
-		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Thông tin người hưởng", "2");
-
-		log.info("TC_03_STEP_2: kiem ta hien thi ten nguoi thu huong vua nhap");
-		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
-
-		log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
-		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, "Thông tin người hưởng", "2");
-
-		log.info("TC_03_STEP_5: kiem tra hien thi ten nguoi thu huong vua nhap");
-		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), "Tên người hưởng");
-
-		log.info("TC_03_STEP_7: nhap ten nguoi thu huong gom ki tu co dau");
-		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textCheckElement.PAGE_CONFIRM, "Thông tin người hưởng", "2");
-
-		log.info("TC_03_STEP_8: kiem tra hien thi ten nguoi thu huong vua nhap");
-		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), "Xac nhan thong tin");
-
-		log.info("TC_03_STEP_10: kiem tra max length = 100");
-		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_100, "Thông tin người hưởng", "2");
-
-		log.info("TC_03_STEP_11: kiem tra hien thi ten nguoi thu huong vua nhap");
-		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2").length(), 100);
-
-		log.info("TC_03_STEP_13: kiem tra max length = 101");
-		trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.MAX_LENGTH_101, "Thông tin người hưởng", "2");
-
-		log.info("TC_03_STEP_14: kiem tra hien thi ten nguoi thu huong vua nhap");
-		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2").length(), 100);
-
-		log.info("TC_03_Step_16 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	}
