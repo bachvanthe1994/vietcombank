@@ -237,11 +237,11 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "50000", "Thông tin giao dịch", "1");
 		
 		log.info("TC_10_02_Chon 1 gia tri trong danh sach goi y");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "50,000 VND");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "500,000 VND");
 
 		log.info("TC_10_03_Kiem tra so tien trong o nhap So tien");
 		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney, "50,000");
+		verifyEquals(actualAmountMoney, "500,000");
 	}
 	
 	@Test
