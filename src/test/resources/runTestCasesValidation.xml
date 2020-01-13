@@ -47,8 +47,8 @@
 
 		<package name="vnpay.vietcombank.TransferIdentityCard">
 			<classes>
-				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate" />
-<!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_1" /> -->
+<!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate" /> -->
+				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_1" />
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_2" /> -->
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_3" /> -->
 			
