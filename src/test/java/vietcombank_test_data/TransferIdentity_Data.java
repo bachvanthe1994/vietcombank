@@ -18,6 +18,7 @@ public class TransferIdentity_Data {
 	public static final String OTP_FALSE = "654321";
 	public static final String PASS_MAXLENGTH_20 = "acb12345678912345678";
 	public static final String PASS_MAXLENGTH_21 = "acb123456789123456783";
+	public static final String DYNAMIC_HOME = "Chuyển tiền trong VCB";
     }
 
     public static class textDataInputForm {
@@ -77,5 +78,7 @@ public class TransferIdentity_Data {
 	public static final String MESSSAGE_PASSWORD_FOUND = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
 	public static final String MESSSAGE_PASSWORD_FALSE = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 5 lần.";
 	public static final String MESSSAGE_TIME_OTP = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
+	public static final String TEXT_CONFIRM = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại";
+	public static final String TEXT_CONFIRM_PASS = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch";
     }
 }

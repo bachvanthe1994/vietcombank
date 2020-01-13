@@ -52,4 +52,28 @@ public class TransferIdentiryPageObject extends AbstractPage {
 	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_PASSWORD, dynamicTextValue);
     }
 
+    public void clickToDynamicHomeIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	scrollToText(driver, dynamicTextValue);
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_HOME_ICON, dynamicTextValue);
+	clickToElement(driver, TransferIdentityPageUIs.DYNAMIC_HOME_ICON, dynamicTextValue);
+
+    }
+
+    public String getDynamicTextTitle(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_TITLE_CONFIRM_TRANSFER, dynamicTextValue);
+	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_TITLE_CONFIRM_TRANSFER, dynamicTextValue);
+    }
+
+    public String getDynamicTextTitleMoneyUSD(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_MONEY_USD, dynamicTextValue);
+	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_MONEY_USD, dynamicTextValue);
+    }
+
+    public boolean isDynamicTextConfirmDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	scrollToText(driver, dynamicTextValue);
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_TEXT_CONFIM, dynamicTextValue);
+	return isControlDisplayed(driver, TransferIdentityPageUIs.DYNAMIC_TEXT_CONFIM, dynamicTextValue);
+
+    }
+
 }
