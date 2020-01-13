@@ -35,26 +35,28 @@
 
 
 
-<!-- 		<package name = "vnpay.vietcombank.transfer_money_charity" > -->
-<!-- 		<classes> -->
+		<package name = "vnpay.vietcombank.transfer_money_charity" >
+		<classes>
 <!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" /> -->
+		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Password_Charity" />
 <!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_1" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" /> -->
 
-<!-- 		</classes> -->
-<!-- 		</package> -->
+		</classes>
+		</package>
 
-		<package name="vnpay.vietcombank.TransferIdentityCard">
-			<classes>
+<!-- 		<package name="vnpay.vietcombank.TransferIdentityCard"> -->
+<!-- 			<classes> -->
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate" /> -->
-				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_1" />
+<!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_1" /> -->
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_2" /> -->
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_3" /> -->
 			
 
-			</classes>
-		</package>
+<!-- 			</classes> -->
+<!-- 		</package> -->
 	</test>
 
 
