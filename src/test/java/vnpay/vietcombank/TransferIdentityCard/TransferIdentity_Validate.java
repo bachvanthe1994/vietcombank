@@ -381,14 +381,14 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.inputToDynamicInputBox(driver, "Thành phố Hà Nội", "Nơi cấp");
 
 		log.info("TC_13_STEP_4:kiem tra gia tri vua chon");
-		verifyEquals(trasferPage.getDynamicTextInDropDownByHeader(driver, "Thông tin người hưởng", "6"), "Thành phố Hà Nội");
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "6"), "Thành phố Hà Nội");
 
 		log.info("TC_13_Step_5 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
 
 	@Test
-	public void TC_14_NoiCapCMTQuanDoi() {
+	public void TC_14_KiemTraNhapKhiChonCMTQuanDoi() {
 		log.info("TC_14_STEP_0: chon chuyển tiền nhận bằng CMT");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -452,7 +452,7 @@ public class TransferIdentity_Validate extends Base {
 		log.info("TC_16_STEP_1: nhap so tien bat dau la khong");
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_0, "Số tiền");
 
-		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferIdentity_Data.textDataInputForm.MONEY_0.substring(1));
+		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
 
 		log.info("TC_16_Step_5 : Click  nut Back");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");

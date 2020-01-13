@@ -110,7 +110,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_01_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_01_Step_12: tiep tuc");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -151,7 +151,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = Long.toString(amountLong);
 
 		log.info("TC_01_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_01_Step_24: chon phuong thuc xac thuc");
@@ -193,7 +193,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 
 		log.info("TC_01_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-		verifyEquals(conten, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(conten, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		log.info("TC_01_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -254,7 +254,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_02_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_02_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -296,7 +296,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_02_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_02_Step_24: chon phuong thuc xac thuc");
@@ -344,7 +344,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_02_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_02_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -404,7 +404,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_03_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_03_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -446,7 +446,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_03_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 
@@ -494,7 +494,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 
 		log.info("TC_03_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_03_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -554,7 +554,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_04_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_04_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -596,7 +596,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_04_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		log.info("TC_04_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
@@ -642,7 +642,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 
 		log.info("TC_04_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_04_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -702,7 +702,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_05_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_05_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -744,7 +744,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_05_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_05_Step_24: chon phuong thuc xac thuc");
@@ -791,7 +791,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 
 		log.info("TC_05_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_05_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -851,7 +851,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_06_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_06_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -892,7 +892,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_06_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_06_Step_24: chon phuong thuc xac thuc");
@@ -939,7 +939,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 
 		log.info("TC_06_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_06_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -998,7 +998,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_07_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_07_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -1039,7 +1039,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = Long.toString(amountLong);
 
 		log.info("TC_07_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_07_Step_24: chon phuong thuc xac thuc");
@@ -1081,7 +1081,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 
 		log.info("TC_07_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-		verifyTrue(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER.equals(conten));
+		verifyTrue(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER.equals(conten));
 
 		log.info("TC_07_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1141,7 +1141,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_08_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_08_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -1183,7 +1183,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_08_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Chọn phương thức xác thực");
 		log.info("TC_08_Step_24: chon phuong thuc xac thuc");
@@ -1231,7 +1231,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_08_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_08_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1291,7 +1291,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_09_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_09_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -1333,7 +1333,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_09_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Chọn phương thức xác thực");
 
@@ -1382,7 +1382,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_09_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_09_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1442,7 +1442,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_10_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_10_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -1484,7 +1484,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_10_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		log.info("TC_10_Step_24: chon phuong thuc xac thuc");
 		trasferPage.scrollToText(driver, "Tiếp tục");
@@ -1532,7 +1532,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_10_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_10_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1592,7 +1592,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_11_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_11_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -1634,7 +1634,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_11_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_11_Step_24: chon phuong thuc xac thuc");
@@ -1682,7 +1682,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_11_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_11_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1741,7 +1741,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 		log.info("TC_12_Step_11: noi dung");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 		log.info("TC_12_Step_12: noi dung");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -1782,7 +1782,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		String amountLongToString = String.valueOf(amountLong);
 
 		log.info("TC_12_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollToText(driver, "Tiếp tục");
 		log.info("TC_12_Step_24: chon phuong thuc xac thuc");
@@ -1830,7 +1830,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_12_Step_34: noi dung giao dich");
 		String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
-		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, conten);
+		verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 		log.info("TC_12_Step_35: xac thuc thuc hien giao dich moi");
 		String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();

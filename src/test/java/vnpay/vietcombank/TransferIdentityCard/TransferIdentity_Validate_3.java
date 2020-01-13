@@ -127,7 +127,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 	log.info("TC_37_Step_11: noi dung");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 	log.info("TC_37_Step_12: tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -168,7 +168,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	String amountLongToString = Long.toString(amountLong);
 
 	log.info("TC_37_Step_23: kiem tra noi dung");
-	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 	trasferPage.scrollToText(driver, "Tiếp tục");
 	log.info("TC_37_Step_24: chon phuong thuc xac thuc");
@@ -232,7 +232,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 	log.info("TC_38_Step_11: noi dung");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 	log.info("TC_38_Step_12: tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -273,7 +273,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	String amountLongToString = Long.toString(amountLong);
 
 	log.info("TC_38_Step_23: kiem tra noi dung");
-	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 	trasferPage.scrollToText(driver, "Tiếp tục");
 	log.info("TC_38_Step_24: chon phuong thuc xac thuc");
@@ -381,7 +381,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 	log.info("TC_38_Step_11: noi dung");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 	log.info("TC_38_Step_12: tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -422,7 +422,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	String amountLongToString = Long.toString(amountLong);
 
 	log.info("TC_38_Step_23: kiem tra noi dung");
-	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER);
+	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 	trasferPage.scrollToText(driver, "Tiếp tục");
 	log.info("TC_38_Step_24: chon phuong thuc xac thuc");
@@ -460,7 +460,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicButton(driver, "Đóng");
 
 	log.info("TC_36_Step_35: điền thiếu otp");
-	trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Tiếp tục");
+	trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Tiếp tục");
 
 	log.info("TC_38_Step_36 : chon tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");

@@ -94,7 +94,7 @@ public class TransferIdentity_Validate_1 extends Base {
 	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MIN_TRANSFER, "Số tiền");
 
 	log.info("TC_18_Step_7: noi dung");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 	log.info("TC_18_STEP_8: chon tiep tuc");
 	login.clickToDynamicButton(driver, "Tiếp tục");
@@ -140,7 +140,7 @@ public class TransferIdentity_Validate_1 extends Base {
 	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MAX_TRANSFER, "Số tiền");
 
 	log.info("TC_19_Step_8: noi dung");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTEN_TRANSFER, "Nội dung");
+	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "Nội dung");
 
 	log.info("TC_19_STEP_9: chon tiep tuc");
 	login.clickToDynamicButton(driver, "Tiếp tục");

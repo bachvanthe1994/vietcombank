@@ -30,7 +30,7 @@ public class TransferIdentity_Data {
 	public static final String MONEY_TRANSFER_VND = "1000000";
 	public static final String MONEY_TRANSFER_USD = "100";
 	public static final String MONEY_TRANSFER_EUR = "100";
-	public static final String CONTEN_TRANSFER = "ABC123";
+	public static final String CONTENT_TRANSFER = "ABC123";
 	public static final String CURRENCY_USD = "USD";
 	public static final String CURRENCY_VND = "VND";
 	public static final String CURRENCY_EURO = "EUR";
