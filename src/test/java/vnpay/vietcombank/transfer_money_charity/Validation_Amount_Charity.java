@@ -124,15 +124,27 @@ public class Validation_Amount_Charity extends Base {
 		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney.replaceAll("\\D+", "").length(), 10);
 
-		log.info("TC_04_3_Chon tai khoan nguon Ngoai te");
+		log.info("TC_04_3_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "1234567899112", "Thông tin giao dịch", "1");
+
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		verifyEquals(actualAmountMoney, "Số tiền");
+
+		log.info("TC_04_4_Chon tai khoan nguon Ngoai te");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
-		log.info("TC_04_4_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
+		log.info("TC_04_5_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "111111111.11", "Thông tin giao dịch", "1");
 
 		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		verifyEquals(actualAmountMoney.replaceAll("\\D+", "").length(), 11);
+
+		log.info("TC_04_6_Nhap ki tu so, chu, ki tu dac biet, dau cham vao o So tien ung ho");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "1111111111111.11", "Thông tin giao dịch", "1");
+
+		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
+		verifyEquals(actualAmountMoney, "Số tiền");
 	}
 
 	@Test
@@ -191,7 +203,7 @@ public class Validation_Amount_Charity extends Base {
 	}
 
 	@Test
-	public void TC_08_KiemTraHienThiGoiYNhanh() {
+	public void TC_08_KiemTraHienThiGoiYNhanhVaFocusRaBenNgoaiSauDoFocusLaiLanNua() {
 		String actualAmountMoney;
 		List<String> listActualAmountMoney = new ArrayList<String>();
 		List<String> listExpectAmountMoney = new ArrayList<String>();
