@@ -19,6 +19,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -73,54 +74,33 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		log.info("TC_01_03_Kiem tra title 'Chuyen tien trong Vietcombank' ");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));
 		
-		log.info("TC_01_04_Kiem tra icon Back' ");
-		
-		
-		log.info("TC_01_05_Kiem tra combobox Hinh thuc chuyen tien");
-		
-		
-		log.info("TC_01_06_Kiem tra label Thong tin nguoi chuyen ");
+		log.info("TC_01_04_Kiem tra label Thong tin nguoi chuyen ");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin người chuyển"));
-		
-		
-		log.info("TC_01_07_Kiem tra combo tai khoan nguon");
-		
-		
-		log.info("TC_01_08_Kiem tra so du kha dung tuong ung tai khoan nguon duoc chon");
-		
-		
-		log.info("TC_01_09_Kiem tra label Thong tin nguoi huong");
+
+		log.info("TC_01_05_Kiem tra label Thong tin nguoi huong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin người hưởng"));
 		
-		log.info("TC_01_10_Kiem tra tan suat");
+		log.info("TC_01_06_Kiem tra tan suat");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Tần suất"));
 		
+		log.info("TC_01_07_Kiem tra Thong tin giao dich");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin giao dịch"));
 		
-		log.info("TC_01_11_Kiem tra combo chu ky");
-		
-		
-		log.info("TC_01_12_Kiem tra thoi gian bat dau, thoi gian ket thuc");
-		
-		
-		log.info("TC_01_13_Kiem tra so lan giao dich");
-		
-		
-		log.info("TC_01_14_Kiem tra Thong tin giao dich");
-		
-		
-		log.info("TC_01_15_Kiem tra link Han muc");
+		log.info("TC_01_08_Kiem tra link Han muc");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Hạn mức"));
 		
 		transferRecurrent.scrollToText(driver, "Thông tin giao dịch");
 		
-		log.info("TC_01_16_Kiem tra textbox so tien");
+		log.info("TC_01_09_Kiem tra textbox so tien");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Số tiền"));
 		
-		log.info("TC_01_17_Kiem tra combo Phi giao dich");
+		log.info("TC_01_10_Kiem tra combo Phi giao dich");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người chuyển trả"));
 		
+		log.info("TC_01_14_Kiem tra textbox Noi dung");
+		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Nội dung"));
 		
-		log.info("TC_01_18_Kiem tra textbox Noi dung");
-		
-		
-		log.info("TC_01_19_Kiem tra button Tiep tuc");
+		log.info("TC_01_15_Kiem tra button Tiep tuc");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Tiếp tục"));
 	}
 	
@@ -148,7 +128,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 
 		log.info("TC_04_02_Lay list Hinh thuc chuyen tien");
-		List<String> actualList = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		List<String> actualList = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 		
 		
 		List<String> expectList = Arrays.asList("Chuyển tiền ngay", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai");
@@ -267,6 +247,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_11_08_Kiem tra thong bao tai khoan dich khong du 10 ky tu vui long nhap lai");
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.TRANSACTION_LIMIT_TEXT);
 		
 	}
 	

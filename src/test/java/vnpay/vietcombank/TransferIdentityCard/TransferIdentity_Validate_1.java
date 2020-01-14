@@ -244,7 +244,7 @@ public class TransferIdentity_Validate_1 extends Base {
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_VND, "Số tiền");
 
 		log.info("TC_23_Step_03: Kiem tra so tien goi y");
-		List<String> suggestedMoney = trasferPage.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		List<String> suggestedMoney = trasferPage.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 		verifyEquals(TransferIdentity_Data.textDataInputForm.SUGGESTED_VND_MONEY, suggestedMoney);
 
 		log.info("TC_03_Step_04: Click quay lai");
@@ -268,7 +268,7 @@ public class TransferIdentity_Validate_1 extends Base {
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_EUR, "Số tiền");
 
 		log.info("TC_24_Step_04: Kiem tra so tien goi y");
-		List<String> suggestedMoney = trasferPage.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		List<String> suggestedMoney = trasferPage.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 		verifyEquals(TransferIdentity_Data.textDataInputForm.SUGGESTED_EUR_MONEY, suggestedMoney);
 
 		log.info("TC_024_Step_05: Click quay lai");
@@ -355,7 +355,7 @@ public class TransferIdentity_Validate_1 extends Base {
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_VND, "Số tiền");
 
 		log.info("TC_27_Step_05: Click so tien goi y");
-		List<String> suggestedMoney = trasferPage.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		List<String> suggestedMoney = trasferPage.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_27_Step_06: Click dong suggest list");
 		trasferPage.clickToDynamicSuggestedMoney(driver, 0, "com.VCB:id/tvAmount");
