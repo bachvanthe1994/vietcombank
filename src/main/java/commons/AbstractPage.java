@@ -757,6 +757,7 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
 	clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
     }
+    
 
 // input vào ô input với tham số truyền vào là inputbox
     public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
@@ -898,6 +899,25 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 	return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
     }
+    
+    // Kiểm tra hiển thị image, check chuyển khoản thành công
+    public boolean isDynamicImageSuccess(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+	return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+    }
+    
+    // Kiểm tra hiển thị icon home man hinh chuyen tien thanh cong
+    public boolean isDynamicImageHomeDisplay(AndroidDriver<AndroidElement> driver, String dynamicID) {
+    	scrollToElementByID(driver, dynamicID);
+	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+	return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+    }
+    
+    // Kiểm tra hiển thị time màn hình chuyển khoản thành công
+    public boolean isDynamicTimeAndMoneyDisplay(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+    	return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+        }
 
 //lấy text trong ô input, tham số truyền vào là text
     public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
