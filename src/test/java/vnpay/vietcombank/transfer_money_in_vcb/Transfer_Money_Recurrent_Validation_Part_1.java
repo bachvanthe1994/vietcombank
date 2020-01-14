@@ -81,13 +81,13 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin người hưởng"));
 		
 		log.info("TC_01_06_Kiem tra tan suat");
-		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Tần suất"));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Tần suất"));
 		
 		log.info("TC_01_07_Kiem tra Thong tin giao dich");
-		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Thông tin giao dịch"));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin giao dịch"));
 		
 		log.info("TC_01_08_Kiem tra link Han muc");
-		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Hạn mức"));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Hạn mức"));
 		
 		transferRecurrent.scrollToText(driver, "Thông tin giao dịch");
 		
@@ -95,7 +95,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Số tiền"));
 		
 		log.info("TC_01_10_Kiem tra combo Phi giao dich");
-		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Phí giao dịch người chuyển trả"));
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người chuyển trả"));
 		
 		log.info("TC_01_14_Kiem tra textbox Noi dung");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Nội dung"));
