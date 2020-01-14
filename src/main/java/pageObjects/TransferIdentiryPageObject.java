@@ -69,11 +69,9 @@ public class TransferIdentiryPageObject extends AbstractPage {
 	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_MONEY_USD, dynamicTextValue);
     }
 
-    public boolean isDynamicTextConfirmDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	scrollToText(driver, dynamicTextValue);
-	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_TEXT_CONFIM, dynamicTextValue);
-	return isControlDisplayed(driver, TransferIdentityPageUIs.DYNAMIC_TEXT_CONFIM, dynamicTextValue);
-
+    public String getDynamicAccountTitle(AndroidDriver<AndroidElement> driver, String dynamicIdValue) {
+	waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_ACCOUNT_CONFIRM, dynamicIdValue);
+	return getTextElement(driver, TransferIdentityPageUIs.DYNAMIC_ACCOUNT_CONFIRM, dynamicIdValue);
     }
 
 }
