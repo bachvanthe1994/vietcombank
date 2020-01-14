@@ -248,8 +248,12 @@ public class TransferIdentity_Validate_3 extends Base {
 
     @Test
     public void TC_49_NhanIconBack() {
-	log.info("TC_49_Step_28 : Click  nut Back");
+	log.info("TC_49_Step_1 : Click  nut Back");
 	trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
+
+	log.info("TC_49_Step_2: kiem tra title man hinh");
+	String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
+	verifyEquals(titleBar, textCheckElement.TITLEBAR);
     }
 
     @Test
@@ -279,6 +283,10 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_51_Step_2 : chon tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
+	log.info("TC_52_Step_2: kiem tra OTP da dien");
+	String otp_message = trasferPage.getTextConfirmOtp(driver, "Đóng");
+	verifyEquals(otp_message, TransferIdentity_Data.confirmMessage.MESSSAGE_OTP_MISSING);
+
 	log.info("TC_51_Step_3: chọn đóng");
 	trasferPage.clickToDynamicButton(driver, "Đóng");
     }
@@ -288,20 +296,30 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_52_Step_1: điền thiếu otp");
 	trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textDataInputForm.MONEY_0, "Tiếp tục");
 
-	log.info("TC_52_Step_2: kiem tra OTP da dien");
-	String otp = trasferPage.getTextInDynamicOtp(driver, "Tiếp tục");
-	verifyEquals(otp, "010000");
+	log.info("TC_51_Step_2 : chon tiếp tục");
+	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
+	log.info("TC_52_Step_3: kiem tra OTP da dien");
+	String otp = trasferPage.getTextConfirmOtp(driver, "Đóng");
+	verifyEquals(otp, TransferIdentity_Data.confirmMessage.MESSSAGE_OTP_FALSE);
+
+	log.info("TC_52_Step_4: chọn đóng");
+	trasferPage.clickToDynamicButton(driver, "Đóng");
     }
 
     @Test
     public void TC_53_NhapOTPKhongDung() {
-	log.info("TC_53_Step_1 : chon tiếp tục");
+	log.info("TC_53_Step_1 : nhap otp sai");
+	trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
+
+	log.info("TC_53_Step_2 : chon tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_53_Step_2 : kiểm tra điền sai OTP");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_OTP_FALSE));
+	log.info("TC_53_Step_3 : kiểm tra điền sai OTP");
+	String otp = trasferPage.getTextConfirmOtp(driver, "Đóng");
+	verifyEquals(otp, TransferIdentity_Data.confirmMessage.MESSSAGE_OTP_FALSE);
 
-	log.info("TC_53_Step_3: chọn đóng");
+	log.info("TC_53_Step_4: chọn đóng");
 	trasferPage.clickToDynamicButton(driver, "Đóng");
 
     }
@@ -394,13 +412,16 @@ public class TransferIdentity_Validate_3 extends Base {
 
     @Test
     public void TC_57_MatKhauKhongChinhXac() {
-	log.info("TC_57_Step_1 : chon tiep tuc");
+	log.info("TC_57_Step_1: điền mat khau sai");
+	trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
+
+	log.info("TC_57_Step_2 : chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_57_Step_2 : kiểm tra bỏ trống mat khau");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_PASSWORD_FOUND));
+	log.info("TC_57_Step_3 : kiểm tra dien sai mat khau");
+	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_PASSWORD_FALSE));
 
-	log.info("TC_57_Step_3: chọn đóng");
+	log.info("TC_57_Step_4: chọn đóng");
 	trasferPage.clickToDynamicButton(driver, "Đóng");
     }
 
@@ -464,8 +485,8 @@ public class TransferIdentity_Validate_3 extends Base {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-	closeApp();
-	service.stop();
+//	closeApp();
+//	service.stop();
     }
 
 }
