@@ -225,14 +225,14 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		log.info("TC_10_Step_Verify tai khoan");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]));
 
-		log.info("TC_10_Step_Lay so du kha dung man hinh home");
+		log.info("TC_10_Step_Lay so du kha dung man hinh chuyen tien nhanh");
 		amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_10_Step_Click tai khoan nguon");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_10_Step_Lay so du kha dung man hinh tai khoan nguon");
-		String amountStartDefault = transferMoney.getDynamicAmountLabelList(driver, "Tài khoản nguồn", "0", "com.VCB:id/tvContent2");
+		String amountStartDefault = transferMoney.getMoneyByAccount(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_10_Step_Verify ket qua");
 		verifyEquals(amountStartString, amountStartDefault);
@@ -253,10 +253,14 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Nhập/chọn tài khoản nhận VND"));
 	}
 
-	// @Test--------------Chưa tìm đc giải pháp
+	 @Test
+	//------------Lỗi chỉ nhập được 19 ký tự
 	public void TC_13_TaiKhoanNhanLonHon25KyTu() {
-		log.info("TC_02_Nhap 26 ky tu vao truong tai khoan");
+		log.info("TC_13_Nhap 26 ky tu vao truong tai khoan");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.INVALID_ACC_ACCEPT_OVER_MAX, "Thông tin người hưởng", "1");
+		
+		log.info("TC_13_Verify ket qua trong");
+		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"),"");
 	}
 
 	@Test
@@ -328,3 +332,4 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		service.stop();
 	}
 }
+
