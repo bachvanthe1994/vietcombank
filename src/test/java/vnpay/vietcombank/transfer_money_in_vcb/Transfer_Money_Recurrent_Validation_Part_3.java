@@ -194,7 +194,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		transferRecurrent.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_08_03_Lay danh sach goi y nhanh");
-		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		listExpectAmountMoney = Arrays.asList("1,000", "10,000", "100,000");
 		
@@ -223,7 +223,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		transferRecurrent.inputToDynamicInputBoxByHeader(driver, "5000", "Thông tin giao dịch", "1");
 
 		log.info("TC_09_03_Lay danh sach goi y nhanh");
-		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		listExpectAmountMoney = Arrays.asList("50,000 VND", "500,000 VND", "5,000,000 VND");
 
@@ -243,7 +243,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		transferRecurrent.inputToDynamicInputBoxByHeader(driver, "10", "Thông tin giao dịch", "1");
 
 		log.info("TC_10_03_Lay danh sach goi y nhanh");
-		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 		
 		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,700,600 VND", "1,000 EUR ~ 27,006,000 VND");
 
@@ -280,7 +280,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		transferRecurrent.scrollToText(driver, "50,000,000 VND");
 
 		log.info("TC_12_02_Lay danh sach goi y nhanh");
-		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		listExpectAmountMoney = Arrays.asList("500,000 VND", "5,000,000 VND", "50,000,000 VND");
 		
@@ -323,7 +323,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		List<String> listExpect = new ArrayList<String>();
 		
 		log.info("TC_15_01_Lay danh sach Phi giao dich");
-		listActual = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		listActual = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 		
 		listExpect= Arrays.asList("Người chuyển trả", "Người nhận trả");
 		

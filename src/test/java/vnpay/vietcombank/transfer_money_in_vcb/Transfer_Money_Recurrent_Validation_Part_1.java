@@ -148,7 +148,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 
 		log.info("TC_04_02_Lay list Hinh thuc chuyen tien");
-		List<String> actualList = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		List<String> actualList = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 		
 		
 		List<String> expectList = Arrays.asList("Chuyển tiền ngay", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai");

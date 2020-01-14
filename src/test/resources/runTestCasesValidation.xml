@@ -19,8 +19,8 @@
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 
 
-<!-- 		<package name="vnpay.vietcombank.transfer_money_out_side_vcb"> -->
-<!-- 		<classes> -->
+		<package name="vnpay.vietcombank.transfer_money_out_side_vcb">
+		<classes>
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part1" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part2" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part3" /> -->
@@ -29,23 +29,30 @@
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part2" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part3" /> -->
 
+		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" />
+		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" />
+		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" />
+		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" />
+		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" />
+		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" />
 
-<!-- 		</classes> -->
-<!-- 		</package> -->
-
-
-
-		<package name = "vnpay.vietcombank.transfer_money_charity" >
-		<classes>
-<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" /> -->
-<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
-<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" /> -->
-		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Password_Charity" />
-<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_1" /> -->
-<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" /> -->
 
 		</classes>
 		</package>
+
+
+
+<!-- 		<package name = "vnpay.vietcombank.transfer_money_charity" > -->
+<!-- 		<classes> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Password_Charity" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_1" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" /> -->
+
+<!-- 		</classes> -->
+<!-- 		</package> -->
 
 <!-- 		<package name="vnpay.vietcombank.TransferIdentityCard"> -->
 <!-- 			<classes> -->

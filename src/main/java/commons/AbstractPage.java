@@ -1001,7 +1001,7 @@ public class AbstractPage {
 
     // Lấy toàn bộ số tiền được suggest ở ô số tiền và lưu vào array list
 
-    public List<String> getListOfSuggestedMoney(AndroidDriver<AndroidElement> driver, String dynamicID) {
+    public List<String> getListOfSuggestedMoneyOrListText(AndroidDriver<AndroidElement> driver, String dynamicID) {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
     }
