@@ -89,7 +89,6 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
-
 	}
 
 	@Test
@@ -195,10 +194,19 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_89_Verify text man hinh xac nhan thong tin");
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.CONFIRM_INFO_LABEL), "Xác nhận thông tin");
+		
+		log.info("TC_89_Step_click tiep button quay lai");
+		transferMoney.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_89_Verify text man hinh xac nhan thong tin");
+		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.TRANSFER_MONEY_LABEL), "Chuyển tiền nhanh 24/7");
 	}
 
 	@Test
 	public void TC_90_KiemTraManHinhXacThucBangOTP() {
+		log.info("TC_88_Step_click button tiep tục");
+		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
+		
 		log.info("TC_90_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
@@ -247,24 +255,8 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	// @Test ---- Check lai timeout
-	public void TC_93_OTPHetHieuLuc() throws InterruptedException {
-		log.info("TC_93_Nhap OTP chinh xac");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("TC_93_set time cho la 70s");
-		Thread.sleep(70000);
-
-		log.info("TC_93_Click button tiep tuc");
-		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_93_Step_verify message khi nhap ma OTP khong dung");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.OTP_OVER_TIMES_MESSAGE));
-
-		log.info("TC_93_Close popup");
-		transferMoney.clickToDynamicButton(driver, "Đóng");
-	}
-
+	// @Test TC93 ---- Check lai timeout OTP bỏ case này
+	
 	@Test
 	public void TC_94_VerifyMessageKhiNhapOTPLonHon6KyTu() {
 		log.info("TC_94_Nhap OTP la 123");
@@ -331,7 +323,8 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), "Nội dung");
 	}
 
-	// @Test ----->App đang bị lỗi báo tài khoản hưởng không hợp lệ mặc dù đã nhập đúng các thông tin
+	 @Test
+	 //---------Lỗi app, thông báo message lỗi và không thực hiện được giao dịch
 	public void TC_98_OTPNhapDungVaCheckManXacNhan() {
 		log.info("TC_98_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -377,5 +370,8 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		log.info("TC_98_Step_click button tiep tục");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
+		log.info("TC_01_Verify icon thanh cong");
+		verifyTrue(transferMoney.isDynamicImageSuccess(driver, "CHUYỂN KHOẢN THÀNH CÔNG"));
 	}
 }
+

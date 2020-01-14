@@ -97,7 +97,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 	@Test
 	public void TC_32_Nhap10KyTuVaKiemTraDauPhayVND() {
-		log.info("TC_32_Input so tien co 9 ky tu");
+		log.info("TC_32_Input so tien co 10 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_32_text mac dinh 'So tien' bi xoa");
@@ -116,7 +116,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 	@Test
 	public void TC_33_NhapLonHon10KyTuVaKiemTraDauPhayVND() {
-		log.info("TC_33_Input so tien co 9 ky tu");
+		log.info("TC_33_Input so tien lon hon 10 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_ELEVEN_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_33_Lay so tien sau khi nhap");
@@ -128,7 +128,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 	@Test
 	public void TC_34_NhapKyTuChuVaKiemTraDauPhayVND() {
-		log.info("TC_34_Input so tien co 9 ky tu");
+		log.info("TC_34_Input ky tu chu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_TEXT_INVALID_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_34_Lay so tien sau khi nhap");
@@ -167,9 +167,15 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		log.info("TC_36_Kiem tra gia tri goi y khong hien thi tren man hinh");
 		verifyTrue(transferMoney.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
+		
+		log.info("TC_36_verify ket qua hien thi khi focus ra ngoai so tien duoc giu nguyen");
+		String moneyExpect = addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND);
+		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), moneyExpect);
+				
 	}
 
-	// @Test ----Loi app không hiển thị popup gợi ý
+	 @Test
+	 //----Loi app không hiển thị popup gợi ý
 	public void TC_37_KiemTraHienThiGoiYNhanhTiepTucFocusVaoSoTienVND() {
 		log.info("TC_37_Click vao so tien vua nhap tren");
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
@@ -184,22 +190,17 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
-	// @Test ---> Loi app vẫn hiển thị popup gợi ý x10, x100
+	 @Test
+	//---- Loi app vẫn hiển thị popup gợi ý x10, x100
 	public void TC_38_ChonMotGoiYVaDongPopupVND() {
 		log.info("TC_38_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_38_Click vao so tien goi y");
 		transferMoney.clickToDynamicSuggestedMoney(driver, 1, "com.VCB:id/tvAmount");
-
-		log.info("TC_38_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
-
-		log.info("TC_38_danh sach gia tri so tien goi y");
-		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_VND);
-
-		log.info("TC_38_Kiem tra khong co so tien trong danh sach");
-		verifyFailure(transferMoney.checkListContain(listActual, listExpect));
+		
+		verifyFailure(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvAmount"));
+		
 	}
 
 	@Test
@@ -229,7 +230,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 	@Test
 	public void TC_41_NhapNhoHon10KyTuVaKiemTraDauChamUSD() {
-		log.info("TC_41_Input so tien co 9 ky tu phan nguyrm va 2 chu so phan thap phan");
+		log.info("TC_41_Input so tien co 9 ky tu phan nguyen va 2 chu so phan thap phan");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_41_text mac dinh 'So tien' bi xoa");
@@ -248,7 +249,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 	@Test
 	public void TC_42_Nhap10KyTuVaKiemTraDauChamUSD() {
-		log.info("TC_42_Input so tien co 9 ky tu");
+		log.info("TC_42_Input so tien co 10 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_42_text mac dinh 'So tien' bi xoa");
@@ -288,7 +289,8 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyEquals(amountStartString, amountExpectDoubleString);
 	}
 
-	// @Test --- Lỗi app hiển thị dấu , ngăn cách hàng nghìn đang bị sai
+	 @Test 
+	 //--- Lỗi app hiển thị dấu , ngăn cách hàng nghìn đang bị sai
 	public void TC_44_KiemTraDinhDangHienThiGoiYUSD() {
 		log.info("TC_44_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
@@ -310,9 +312,14 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		log.info("TC_45_Kiem tra gia tri goi y khong hien thi tren man hinh");
 		verifyTrue(transferMoney.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
+		
+		log.info("TC_45_verify ket qua hien thi khi focus ra ngoai so tien duoc giu nguyen");
+		String moneyExpect = addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR);
+		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"),moneyExpect );
 	}
 
-	// @Test ----Loi app không hiển thị popup gợi ý
+	 @Test 
+	 //----Loi app không hiển thị popup gợi ý
 	public void TC_46_KiemTraHienThiGoiYNhanhTiepTucFocusVaoSoTienUSD() {
 		log.info("TC_46_Click vao so tien vua nhap tren");
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
@@ -328,22 +335,16 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 	}
 
-	// @Test ---> Loi app vẫn hiển thị popup gợi ý x10, x100
+	@Test
+	//--- Loi app vẫn hiển thị popup gợi ý x10, x100
 	public void TC_47_ChonMotGoiYVaDongPopupUSD() {
 		log.info("TC_47_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_47_Click vao so tien goi y");
 		transferMoney.clickToDynamicSuggestedMoney(driver, 1, "com.VCB:id/tvAmount");
-
-		log.info("TC_47_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
-
-		log.info("TC_47_danh sach gia tri so tien goi y");
-		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_USD);
-
-		log.info("TC_47_Kiem tra khong co so tien trong danh sach");
-		verifyFailure(transferMoney.checkListContain(listActual, listExpect));
+		
+		verifyFailure(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvAmount"));
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -354,3 +355,4 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	}
 
 }
+
