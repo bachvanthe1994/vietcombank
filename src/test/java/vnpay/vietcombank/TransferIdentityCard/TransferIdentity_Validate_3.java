@@ -19,6 +19,7 @@ import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.LogIn_Data.Login_Account;
 import vietcombank_test_data.TransferIdentity_Data;
+import vietcombank_test_data.TransferIdentity_Data.textCheckElement;
 
 public class TransferIdentity_Validate_3 extends Base {
     AndroidDriver<AndroidElement> driver;
@@ -75,7 +76,7 @@ public class TransferIdentity_Validate_3 extends Base {
 
 	log.info("TC_48_Step_2: chon tai khoan");
 	trasferPage.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-	homePage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.VND_ACCOUNT);
+	homePage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
 
 	log.info("TC_48_Step_3: nhap ten nguoi thu huong");
 	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người hưởng");
@@ -99,7 +100,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 	log.info("TC_48_Step_9: nhap so tien chuyen di");
-	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_VND, "Số tiền");
+	trasferPage.inputToDynamicInputBox(driver, "50", "Số tiền");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 	log.info("TC_48_Step_10: noi dung");
@@ -111,39 +112,50 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.scrollToText(driver, "Tài khoản nguồn");
 
 	log.info("TC_48_Step_14: kiem tra title man hinh");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar")));
+	String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
+	verifyEquals(titleBar, textCheckElement.TITLEBAR);
 
 	log.info("TC_48_Step_15: kiem tra title man hinh");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleHead")));
+	String titleHead = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleHead");
+	verifyEquals(titleHead, textCheckElement.TITLEHEAD);
 
 	log.info("TC_48_Step_16: kiem tra title tai khoan nguon");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "0")));
+	String account = trasferPage.getDynamicAccountTitle(driver, "1");
+	verifyEquals(account, textCheckElement.ACCOUNT);
 
 	log.info("TC_48_Step_17: kiem tra title ten nguoi thu huong");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "1")));
+	String user = trasferPage.getDynamicTextTitle(driver, "1");
+	verifyEquals(user, textCheckElement.BENEFICIARY_NAME);
 
 	log.info("TC_48_Step_18: kiem tra title giấy tờ tùy thân");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "2")));
+	String identity = trasferPage.getDynamicTextTitle(driver, "2");
+	verifyEquals(identity, textCheckElement.IDENTITY);
 
 	log.info("TC_48_Step_19: kiem tra title số");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "3")));
+	String number = trasferPage.getDynamicTextTitle(driver, "3");
+	verifyEquals(number, textCheckElement.NUMBER);
 
 	log.info("TC_48_Step_20: kiem tra title ngày cấp");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "4")));
+	String date = trasferPage.getDynamicTextTitle(driver, "4");
+	verifyEquals(date, textCheckElement.DATE);
 
 	log.info("TC_48_Step_21: kiem tra title nơi cấp");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "5")));
+	String issued = trasferPage.getDynamicTextTitle(driver, "5");
+	verifyEquals(issued, textCheckElement.ISSUED);
 
 	log.info("TC_48_Step_22: kiem tra title số tiền");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "6")));
-
-	log.info("TC_48_Step_23: kiem tra title số tiền phí");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "7")));
+	String money = trasferPage.getDynamicTextTitleMoneyUSD(driver, "6");
+	verifyEquals(money, textCheckElement.MONEY_USD);
 
 	trasferPage.scrollToText(driver, "Tiếp tục");
 
+	log.info("TC_48_Step_23: kiem tra title số tiền phí");
+	String transaction_fee = trasferPage.getDynamicTextTitle(driver, "6");
+	verifyEquals(transaction_fee, textCheckElement.TRANSACTION_FEE);
+
 	log.info("TC_48_Step_24: kiem tra title nội dung");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "8")));
+	String content = trasferPage.getDynamicTextTitle(driver, "7");
+	verifyEquals(content, textCheckElement.CONNTENT);
 
 	log.info("TC_48_Step_25: kiem tra title nội dung");
 	trasferPage.isDynamicButtonDisplayed(driver, "Tiếp tục");
@@ -153,10 +165,10 @@ public class TransferIdentity_Validate_3 extends Base {
 
 	log.info("TC_48_Step_27: chon tai khoan");
 	trasferPage.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-	homePage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
+	homePage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.VND_ACCOUNT);
 
 	log.info("TC_48_Step_28: nhap so tien chuyen di");
-	trasferPage.inputToDynamicInputBoxByHeader(driver, "100", "Thông tin giao dịch", "1");
+	trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_VND, "Thông tin giao dịch", "1");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Thông tin giao dịch");
 
 	log.info("TC_48_Step_29: tiep tuc");
@@ -165,39 +177,50 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.scrollToText(driver, "Tài khoản nguồn");
 
 	log.info("TC_48_Step_30: kiem tra title man hinh");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar")));
+	String titleBarVND = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
+	verifyEquals(titleBarVND, textCheckElement.TITLEBAR);
 
 	log.info("TC_48_Step_31: kiem tra title man hinh");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleHead")));
+	String titleHeadVND = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleHead");
+	verifyEquals(titleHeadVND, textCheckElement.TITLEHEAD);
 
 	log.info("TC_48_Step_32: kiem tra title tai khoan nguon");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "0")));
+	String accountVND = trasferPage.getDynamicAccountTitle(driver, "1");
+	verifyEquals(accountVND, textCheckElement.ACCOUNT);
 
 	log.info("TC_48_Step_33: kiem tra title ten nguoi thu huong");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "1")));
+	String userVND = trasferPage.getDynamicTextTitle(driver, "1");
+	verifyEquals(userVND, textCheckElement.BENEFICIARY_NAME);
 
 	log.info("TC_48_Step_34: kiem tra title giấy tờ tùy thân");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "2")));
+	String identityVND = trasferPage.getDynamicTextTitle(driver, "2");
+	verifyEquals(identityVND, textCheckElement.IDENTITY);
 
 	log.info("TC_48_Step_35: kiem tra title số");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "3")));
+	String numberVND = trasferPage.getDynamicTextTitle(driver, "3");
+	verifyEquals(numberVND, textCheckElement.NUMBER);
 
 	log.info("TC_48_Step_36: kiem tra title ngày cấp");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "4")));
+	String dateVND = trasferPage.getDynamicTextTitle(driver, "4");
+	verifyEquals(dateVND, textCheckElement.DATE);
 
 	log.info("TC_48_Step_37: kiem tra title nơi cấp");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "5")));
+	String issuedVND = trasferPage.getDynamicTextTitle(driver, "5");
+	verifyEquals(issuedVND, textCheckElement.ISSUED);
 
 	log.info("TC_48_Step_38: kiem tra title số tiền");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitleMoneyUSD(driver, "6")));
+	String moneyVND = trasferPage.getDynamicTextTitle(driver, "6");
+	verifyEquals(moneyVND, textCheckElement.MONEY);
 
 	trasferPage.scrollToText(driver, "Tiếp tục");
 
 	log.info("TC_48_Step_39: kiem tra title số tiền phí");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "7")));
+	String transaction_feeVND = trasferPage.getDynamicTextTitle(driver, "7");
+	verifyEquals(transaction_feeVND, textCheckElement.TRANSACTION_FEE);
 
 	log.info("TC_48_Step_40: kiem tra title nội dung");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getDynamicTextTitle(driver, "8")));
+	String contentVND = trasferPage.getDynamicTextTitle(driver, "8");
+	verifyEquals(contentVND, textCheckElement.CONNTENT);
 
 	log.info("TC_48_Step_41: kiem tra title nội dung");
 	trasferPage.isDynamicButtonDisplayed(driver, "Tiếp tục");
@@ -219,7 +242,8 @@ public class TransferIdentity_Validate_3 extends Base {
 	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Quay lại"));
 
 	log.info("TC_49_Step_05: kiem tra text ghi chu");
-	verifyTrue(trasferPage.isDynamicTextConfirmDisplayed(driver, TransferIdentity_Data.confirmMessage.TEXT_CONFIRM));
+	String title = (trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/lblMessage"));
+	verifyEquals(title, TransferIdentity_Data.confirmMessage.TEXT_CONFIRM);
     }
 
     @Test
@@ -296,8 +320,6 @@ public class TransferIdentity_Validate_3 extends Base {
 
     @Test
     public void TC_55_KiemTraManHinhXacThucGiaoDichBangMatKhau() {
-	log.info("TC_55_Step_1: chon chuyển tiền nhận bằng CMT");
-	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 	log.info("TC_55_Step_2: chon tai khoan");
 	trasferPage.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -353,7 +375,8 @@ public class TransferIdentity_Validate_3 extends Base {
 	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Quay lại"));
 
 	log.info("TC_55_Step_17: kiem tra text ghi chu");
-	verifyTrue(trasferPage.isDynamicTextConfirmDisplayed(driver, TransferIdentity_Data.confirmMessage.TEXT_CONFIRM_PASS));
+	String textNote = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/lblMessage");
+	verifyEquals(textNote, TransferIdentity_Data.confirmMessage.TEXT_CONFIRM_PASS);
     }
 
     @Test
