@@ -138,11 +138,14 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 	
-//	@Test
+	@Test
 	public void TC_04_MatKhau_NutTiepTuc_NhapMatKhauLonHon8KyTu() {
 		log.info("TC_04_01_Nhap mat khau lon hon 8 ky tu");
 		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, "123456789", "Tiếp tục");
 		
+		log.info("TC_47_Step_02: Kiem tra do dai mat khau");
+		verifyEquals(transferMoneyCharity.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 8);
+
 	}
 	
 	@Test
@@ -202,16 +205,16 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 
 		log.info("TC_07_3_Nhap so tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.money, "Số tiền ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.money, "Thông tin giao dịch", "1");
 
 		log.info("TC_07_4_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, "Tên người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.name, "Thông tin giao dịch", "2");
 
 		log.info("TC_07_5_Nhap dia chi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.address, "Thông tin giao dịch", "3");
 
 		log.info("TC_07_6_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.status, "Thông tin giao dịch", "4");
 
 		log.info("TC_07_7_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
