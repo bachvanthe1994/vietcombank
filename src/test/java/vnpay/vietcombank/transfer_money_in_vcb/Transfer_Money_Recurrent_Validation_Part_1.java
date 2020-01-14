@@ -74,37 +74,27 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		log.info("TC_01_03_Kiem tra title 'Chuyen tien trong Vietcombank' ");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));
 		
-		log.info("TC_01_04_Kiem tra icon Back' ");
-		
-		
-		log.info("TC_01_05_Kiem tra combobox Hinh thuc chuyen tien");
-		
-		
-		log.info("TC_01_06_Kiem tra label Thong tin nguoi chuyen ");
+		log.info("TC_01_04_Kiem tra label Thong tin nguoi chuyen ");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin người chuyển"));
-		
-		
-		log.info("TC_01_07_Kiem tra combo tai khoan nguon");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2));
-		
-		log.info("TC_01_08_Kiem tra label Thong tin nguoi huong");
+
+		log.info("TC_01_05_Kiem tra label Thong tin nguoi huong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Thông tin người hưởng"));
 		
-		log.info("TC_01_09_Kiem tra tan suat");
+		log.info("TC_01_06_Kiem tra tan suat");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Tần suất"));
 		
-		log.info("TC_01_10_Kiem tra Thong tin giao dich");
+		log.info("TC_01_07_Kiem tra Thong tin giao dich");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Thông tin giao dịch"));
 		
-		log.info("TC_01_11_Kiem tra link Han muc");
+		log.info("TC_01_08_Kiem tra link Han muc");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Hạn mức"));
 		
 		transferRecurrent.scrollToText(driver, "Thông tin giao dịch");
 		
-		log.info("TC_01_12_Kiem tra textbox so tien");
+		log.info("TC_01_09_Kiem tra textbox so tien");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Số tiền"));
 		
-		log.info("TC_01_13_Kiem tra combo Phi giao dich");
+		log.info("TC_01_10_Kiem tra combo Phi giao dich");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Phí giao dịch người chuyển trả"));
 		
 		log.info("TC_01_14_Kiem tra textbox Noi dung");
