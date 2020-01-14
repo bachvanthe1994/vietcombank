@@ -97,7 +97,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_02_01_Mo danh sach chu ky");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
 		
-		List<String> actualList = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		List<String> actualList = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_02_02_danh sach gia tri chu ky");
 		List<String> expectList = Arrays.asList("Ngày", "Tuần", "Tháng");

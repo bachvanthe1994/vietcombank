@@ -172,7 +172,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_06_2_Nhap so tien");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "5000", "Thông tin giao dịch", "1");
 
-		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		listExpectAmountMoney.add("50,000 VND");
 		listExpectAmountMoney.add("500,000 VND");
@@ -193,7 +193,7 @@ public class Validation_Amount_Charity extends Base {
 		log.info("TC_07_2_Nhap so tien");
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "10", "Thông tin giao dịch", "1");
 
-		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		listExpectAmountMoney.add("100 EUR ~ 2,700,600 VND");
 		listExpectAmountMoney.add("1,000 EUR ~ 27,006,000 VND");
@@ -231,7 +231,7 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		transferMoneyCharity.scrollToText(driver, "50,000,000 VND");
 
-		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		listExpectAmountMoney.add("500,000 VND");
 		listExpectAmountMoney.add("5,000,000 VND");

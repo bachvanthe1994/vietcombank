@@ -245,7 +245,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	@Test
 	public void TC_74_ChonPhiGiaoDichNguoiChuyenVaKiemTraPhiChuyen() {
 		log.info("TC_74_Step_Kiem tra gia tri trong combobox");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_74_danh sach phi giao dich actual");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.COST_SUB);
