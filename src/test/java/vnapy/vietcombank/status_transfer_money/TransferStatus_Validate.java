@@ -1,4 +1,4 @@
-package vnapy.vietcombank.Status_Transfer_Money;
+package vnapy.vietcombank.status_transfer_money;
 
 import java.io.IOException;
 import java.util.List;
