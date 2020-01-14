@@ -129,7 +129,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 		log.info("TC_04_Step_04: Lay so du tai khoan dich");
 		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("EUR"));
-
+		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
 	@Test
