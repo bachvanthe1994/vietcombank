@@ -145,16 +145,16 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
 		log.info("TC_01_Verify message thanh cong");
-		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
+		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4");
 
 		log.info("TC_01_Step_: Get ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_:Ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_01_Step_: Tai khoan dich");
 		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);
@@ -326,16 +326,16 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
 		log.info("TC_01_Step_:");
-		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
+		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4");
 
 		log.info("TC_01_Step_: Check ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_:Check ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_01_Step_: Ccheck tai khoan dich");
 		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);
@@ -506,16 +506,16 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
 		log.info("TC_01_Step_:Verify message thanh cong ");
-		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS, "4");
+		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4");
 
 		log.info("TC_01_Step_:Lay ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_: Check ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_01_Step_: So sanh tai khoan chuyen di");
 		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);
@@ -692,13 +692,13 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.MESSAGE_SUCCESS);
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
 		log.info("TC_01_Step_: Lay ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_: So sanh ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_01_Step_: Tai khoan dich");
 		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);

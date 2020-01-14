@@ -19,7 +19,6 @@ public class TransferMoneyQuick_Data {
 		public static final String COST_AMOUNT_USD = "0.25";
 		public static final String COST_AMOUNT_VND = "7700";
 		public static final String PASSWORD = "Nhập mật khẩu";
-		public static final String MESSAGE_SUCCESS = "CHUYỂN KHOẢN THÀNH CÔNG";
 
 		public static final String CARD_FROM = "0011000000863";
 		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "LẬP LỆNH THÀNH CÔNG";
@@ -39,6 +38,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MOUNT_LABEL = "Số tiền";
 		public static final String ACCOUNT_FROM_LABEL = "Tài khoản nguồn";
 		public static final String ACCOUNT_TO_LABEL = "Tài khoản đích/ VND";
+		
 		public static final String INVALID_ACC_ACCEPT_OVER_MAX = "012983729401298372940129837294";
 		public static final String INVALID_ACC_ACCEPT = "01298372940129";
 		public static final String INVALID_ACC_BLANK = "";
@@ -106,6 +106,8 @@ public class TransferMoneyQuick_Data {
 		public static final String PASS_NOT_EXIST_MESSAGE = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 5 lần.";
 		public static final String PASS_OVER_3_TIMES_MESSAGE = "Nhập sai OTP quá 3 lần. Quý khách vui lòng thực hiện giao dịch khác.";
 		public static final String PASS_OVER_TIMES_MESSAGE = "OTP đã hết hiệu lực, Quý khách vui lòng khởi tạo mã xác thực mới.";
+		
+		public static final String SAVE_SUCCESS_MESSAGE = "Lưu vào thư viện ảnh thành công";
 	}
 
 
