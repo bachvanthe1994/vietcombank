@@ -65,7 +65,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_01_KiemTraTaiKhoanMacDinh() {
+	public void TC_01_KiemTraTaiKhoanNguonMacDinh() {
 
 		String defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
