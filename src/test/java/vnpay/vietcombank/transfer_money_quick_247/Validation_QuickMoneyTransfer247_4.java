@@ -154,7 +154,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_53_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_53_danh sach gia tri so tien goi y");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_EUR);
@@ -183,7 +183,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_55_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_55_danh sach gia tri so tien goi y");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_EUR);

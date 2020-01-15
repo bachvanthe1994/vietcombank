@@ -133,7 +133,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
 		log.info("TC_03_Lay danh sach gia tri loai chuyen tien");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_03_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER);
@@ -191,7 +191,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_07_Lay danh sach gia tri loai chuyen tien");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent1");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent1");
 
 		log.info("TC_07_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(Account_Data.Valid_Account.LIST_ACCOUNT_FROM);
@@ -316,7 +316,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivContent1");
 
 		log.info("TC_18_Lay danh sach gia tri danh ba nguoi huong");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvName");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvName");
 		
 		log.info("TC_18_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD);

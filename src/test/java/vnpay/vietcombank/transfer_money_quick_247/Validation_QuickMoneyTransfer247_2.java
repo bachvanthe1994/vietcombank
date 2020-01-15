@@ -118,7 +118,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Tìm kiếm"));
 
 		log.info("TC_19_Lay danh sach gia tri danh ba nguoi huong");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvName");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvName");
 
 		log.info("TC_19_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD);
@@ -133,7 +133,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		transferMoney.inputToDynamicInputBoxSearch(driver, SetupContact_Data.UI.NAME_CARD[0], "Danh bạ người hưởng");
 
 		log.info("TC_20_Lay danh sach gia tri danh ba nguoi huong");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvName");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvName");
 
 		log.info("TC_20_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD[0]);
@@ -148,7 +148,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		transferMoney.inputToDynamicInputBoxSearch(driver, SetupContact_Data.UI.ACCOUNT[0], "Danh bạ người hưởng");
 
 		log.info("TC_21_Lay danh sach gia tri danh ba nguoi huong");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvNo");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvNo");
 
 		log.info("TC_21_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(SetupContact_Data.UI.ACCOUNT[0]);
@@ -235,7 +235,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		transferMoney.inputToDynamicInputBoxSearchBank(driver, Account_Data.Valid_Account.BANK[2], "Ngân hàng hưởng");
 
 		log.info("TC_26_Lay danh sach gia tri bank");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_26_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(Account_Data.Valid_Account.BANK[2]);
