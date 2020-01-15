@@ -251,6 +251,16 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		
 	}
 	
+	@Test
+	public void TC_12_ChuyenTienDinhKy_TaiKhoanDich_KiemTraNhapTextVaKyTuDacBiet() {
+		log.info("TC_10_01_Nhap gia tri tai khoan dich");
+		transferRecurrent.inputToDynamicInputBox(driver, "!@#$%&*()abc", "Nhập/chọn tài khoản nhận VND");
+		
+		log.info("TC_10_01_Kiem tra do dai tai khoan dich");
+		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
+		verifyEquals(actualDestinationAccount, "Số tiền");
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();
