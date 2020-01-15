@@ -151,7 +151,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_35_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_35_danh sach gia tri so tien goi y");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_VND);
@@ -181,7 +181,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_37_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_37_danh sach gia tri so tien goi y");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_VND);
@@ -296,7 +296,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_44_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_44_danh sach gia tri so tien goi y");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_USD);
@@ -325,7 +325,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 
 		log.info("TC_46_Lay danh sach goi y");
-		listActual = transferMoney.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_46_danh sach gia tri so tien goi y");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.LIST_MONEY_SHOW_USD);
