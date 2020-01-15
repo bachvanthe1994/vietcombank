@@ -29,6 +29,7 @@ public class TransferMoneyQuick_Data {
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.11";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.18";
 		
+		public static final String TRANSFER_MONEY_LABEL = "Chuyển tiền nhanh 24/7";
 		public static final String CONFIRM_LABEL = "Xác thực giao dịch";
 		public static final String CONFIRM_INFO_LABEL = "Xác nhận thông tin";
 		public static final String NOTE_LABEL = "Nội dung";
@@ -91,7 +92,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MESSAGE_EXCEED_MAX_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 5,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String MESSAGE_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String MESSAGE_EXCEED_MAX_TRANSFER_PACKAGE_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 9,000,000 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
-		public static final String MESSAGE_EXCEED_MAX_TRANSFER_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức $1 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String MESSAGE_EXCEED_MAX_TRANSFER_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 5,000,000 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String AMOUNT_NOT_ENOUGH = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Quý khách vui lòng kiểm tra lại.";
 		public static final String SAME_ACCOUNT_NAME = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
 		public static final String ACCOUNT_TO_INVALID_MESSAGE = "Giao dịch không thành công do tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại. Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";

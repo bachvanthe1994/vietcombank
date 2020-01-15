@@ -200,7 +200,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_Step_06: Kiem tra message loi hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER));
+		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER);
 
 		log.info("TC_07_Step_07: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -227,7 +227,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_08_Step_05: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER));
+		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER);
 
 		log.info("TC_08_Step_06: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
