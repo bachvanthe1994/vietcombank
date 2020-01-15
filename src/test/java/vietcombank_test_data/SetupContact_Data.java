@@ -9,5 +9,7 @@ public class SetupContact_Data {
 		public static final String ACCOUNT2 = "012983729x";
 		public static final String BANK = "Ngân hàng DAB";
 		public static final String NAME_INVALID = "Testabc";
+		
+		public static final String SAVE_CONTACT_LABEL = "Lưu danh bạ";
 	}
 }
