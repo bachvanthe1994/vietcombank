@@ -118,16 +118,21 @@ public class AbstractPage {
 	public void scrollToText(MobileDriver<MobileElement> driver, String text) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
-		int startY = (int) (size.getHeight() * 0.70);
+		int startY = (int) (size.getHeight() * 0.80);
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
-		for (int i = 0; i < 20; i++) {
-			String sourceCode = driver.getPageSource();
-			if (sourceCode.contains(text)) {
-				break;
-			} else {
-				touch.press(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1000);
+		if (driver.getPageSource().contains(text)) {
+			System.out.println("Element displayed");
+		}
+
+		else {
+			for (int i = 0; i < 1000; i++) {
+				if (driver.getPageSource().contains(text)) {
+					break;
+				} else {
+					touch.press(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+
+				}
 			}
 		}
 	}
