@@ -17,6 +17,7 @@ import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_QuickMoneyTransfer247_7 extends Base {
@@ -165,7 +166,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+	//@Test
 	public void TC_102_NhapMatKhauVuotQua20KyTu() {
 		log.info("TC_95_Nhap mat khau lon hon 20 ky tu");
 		transferMoney.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20, "Tiếp tục");
@@ -255,7 +256,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 	
 	//@Test --- click may ko click dc button
 	public void TC_107_KiemTraButtonLuuAnh() {
-		log.info("TC_01_Nhan button  luu anh");
+		log.info("TC_01_Nhan button luu anh");
 		transferMoney.clickToDynamicButton(driver, "Lưu ảnh");
 		
 		log.info("TC_95_Step_verify message khi nhap mat khau khong dung");
@@ -266,7 +267,29 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 }
 	
 	@Test
-		public void TC_108_KiemTraButtonLuuAnh() {
+		public void TC_108_LuuThongTinThuHuongSTKChuaCoTrongDanhBa() {
+		log.info("TC_01_Verify hien thi button luu thu huong");
+		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Lưu thụ hưởng"));
 		
+		log.info("TC_01_Nhan button Lưu thụ hưởng");
+		transferMoney.clickToDynamicButton(driver, "Lưu thụ hưởng");
+		
+		log.info("TC_01_Verify label danh ba");
+		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, "Lưu danh bạ"), SetupContact_Data.UI.SAVE_CONTACT_LABEL);
+		
+		log.info("TC_01_Verify label danh ba");
+		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, "Lưu danh bạ"), SetupContact_Data.UI.SAVE_CONTACT_LABEL);
+		
+		log.info("TC_01_Input name contact");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, SetupContact_Data.UI.NAME_CARD[0], "Lưu danh bạ");
+		
+		log.info("TC_01_Verify so tai khoan");
+		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Số tài khoản"), Account_Data.Valid_Account.ACCOUNT_TO);
+		
+		log.info("TC_01_Verify ngan hàng huong");
+		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK);
+
+		log.info("TC_01_Nhan button luu");
+		transferMoney.clickToDynamicButton(driver, "Lưu");
 		}
 }
