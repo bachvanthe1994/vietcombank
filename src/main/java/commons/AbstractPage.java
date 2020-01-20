@@ -1139,4 +1139,16 @@ public class AbstractPage {
 	}
     }
 
+    public void inputIntoEditTextByID(AndroidDriver<AndroidElement> driver, String inputValue, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+    	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, inputValue, dynamicID);
+
+    }
+    
+    public String getTextInEditTextFieldByID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+    	return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+
+    }
+    
 }

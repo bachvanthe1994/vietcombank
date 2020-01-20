@@ -19,6 +19,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import vietcombank_test_data.LogIn_Data;
+import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
 
 public class Validation_HotelBooking_Part_1 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -174,7 +175,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		
 		log.info("TC_05_05_Kiem tra danh sach diem den noi bat");
 		List<String> listActualLocations = new ArrayList<String>();
-		List<String> listExpectLocations = Arrays.asList("Hà Nội", "TP Hồ Chí Minh", "Bình Dương");
+		List<String> listExpectLocations = Arrays.asList(HotelBooking_Data.FAMOUS_LOCATION);
 		listActualLocations = hotelBooking.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTitle");
 		verifyEquals(listActualLocations, listExpectLocations);
 		
@@ -194,9 +195,59 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 	
 	@Test
-	public void TC_07_KiemTraNhapKyTuVaoTextBoxSearch() {
+	public void TC_07_KiemTraNhapKyTuVaoTextBoxSearch_HienThiDanhSachGoiY() {
+		String actualSuggestLocation;
 		log.info("TC_07_01_Nhap ky tu vao o Search");
+		hotelBooking.inputIntoEditTextByID(driver, "Ga Hà Nội", "com.VCB:id/etSearch");
 		
+		log.info("TC_07_02_Kiem tra ket qua goi y");
+		actualSuggestLocation = hotelBooking.getDynamicTextInTransactionDetail(driver, "Ga Hà Nội");
+		verifyEquals(actualSuggestLocation, "ĐỊA ĐIỂM");
+		
+		log.info("TC_07_03_Nhap ky tu vao o Search");
+		hotelBooking.inputIntoEditTextByID(driver, "Khách sạn Thái Hà", "com.VCB:id/etSearch");
+		
+		log.info("TC_07_04_Kiem tra ket qua goi y");
+		actualSuggestLocation = hotelBooking.getDynamicTextInTransactionDetail(driver, "Khách sạn Thái Hà");
+		verifyEquals(actualSuggestLocation, "KHÁCH SẠN");
+		
+	}
+	
+	@Test
+	public void TC_08_KiemTraNhapKyTuVaoTextBoxSearch_Nhap2KyTu() {
+		log.info("TC_08_01_Nhap ky tu vao o Search");
+		hotelBooking.inputIntoEditTextByID(driver, "Ha", "com.VCB:id/etSearch");
+		
+		log.info("TC_08_02_Kiem tra hien thi ket qua goi y");
+		
+	}
+	
+	@Test
+	public void TC_09_KiemTraNhapKyTuVaoTextBoxSearch_ChoPhepNhap200KyTu_KyTuChu_KyTuDacBiet_KyTuTiengViet() {
+		log.info("TC_09_01_Nhap ky tu vao o Search");
+		hotelBooking.inputIntoEditTextByID(driver, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS, "com.VCB:id/etSearch");
+		
+		log.info("TC_09_02_Kiem tra ky tu nhap");
+		String inputText = hotelBooking.getTextInEditTextFieldByID(driver, "com.VCB:id/etSearch");	
+		
+		log.info("TC_09_03_Kiem tra hien thi 200 Ky tu");
+		verifyEquals(inputText.length(), 200);
+		
+		log.info("TC_09_04_Kiem tra cho phep nhap ky tu dac biet, tieng Viet");
+		verifyEquals(inputText, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS.substring(0, 199));
+		
+	}
+	
+	@Test
+	public void TC_10_KiemTraNhanVaoButtonViTriHienTai() {
+		log.info("TC_10_01_Xoa ky tu o Search");
+		hotelBooking.inputIntoEditTextByID(driver, "", "com.VCB:id/etSearch");
+		
+		log.info("TC_10_02_Click vao Vi tri hien tai");
+		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Vị trí hiện tại");
+		
+		log.info("TC_10_03_Kiem tra ung dung lap Vi tri hien tai hien thi vao o Dia diem");
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBooking_Data.CURRENT_LOCATION));
 	}
 	
 	@AfterClass(alwaysRun = true)
