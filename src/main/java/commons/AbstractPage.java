@@ -1151,4 +1151,16 @@ public class AbstractPage {
 
     }
     
+    public String getTextTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    	return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    	
+    }
+    
+    public void clickToTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    	clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    	
+    }
+    
 }
