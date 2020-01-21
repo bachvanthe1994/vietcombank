@@ -50,7 +50,7 @@ public class ReportNGListener extends Base implements ITestListener {
 
 		String screenshotPath = captureScreenshot(driver, result.getName());
 		Reporter.getCurrentTestResult();
-		Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotPath + "\">" + "<img src=\"file:///" + screenshotPath + "\" " + "height='100' width='150'/> " + "</a></br>");
+		Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotPath + "\">" + "<img src=\"file:///" + screenshotPath + "\" " + "height='150' width='50'/> " + "</a></br>");
 		Reporter.setCurrentTestResult(null);
 	}
 
