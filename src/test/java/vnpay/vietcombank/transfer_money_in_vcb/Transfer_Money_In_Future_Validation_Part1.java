@@ -137,7 +137,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		log.info("TC_03_Step_05: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER));
+		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER);
 
 		log.info("TC_03_Step_06: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -416,7 +416,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
 		log.info("TC_14_Step_04: Kiem tra so tien goi y");
-		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 		verifyEquals(TransferMoneyInVCB_Data.InputDataInVCB.SUGGESTED_VND_MONEY, suggestedMoney);
 
 		log.info("TC_14_Step_05: Click quay lai");
@@ -444,7 +444,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER, "Số tiền");
 
 		log.info("TC_15_Step_06: Kiem tra so tien goi y");
-		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 		verifyEquals(TransferMoneyInVCB_Data.InputDataInVCB.SUGGESTED_EUR_MONEY, suggestedMoney);
 
 		log.info("TC_15_Step_07: Click quay lai");
@@ -576,7 +576,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
 		log.info("TC_19_Step_06: Click so tien goi y");
-		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoney(driver, "com.VCB:id/tvAmount");
+		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_19_Step_07: Click dong suggest list");
 		transferInVCB.clickToDynamicSuggestedMoney(driver, 0, "com.VCB:id/tvAmount");

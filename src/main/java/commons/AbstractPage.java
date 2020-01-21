@@ -771,7 +771,6 @@ public class AbstractPage {
 //input vào 1 ô text box bằng label của nó, tham số truyền vào là text của label và vị trí của ô input
     public void inputToDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, String inputValue, String... dynamicTextValue) {
 	scrollToText(driver, dynamicTextValue[0]);
-	clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, inputValue, dynamicTextValue);
 

@@ -18,6 +18,17 @@ public class TransferIdentity_Data {
 	public static final String OTP_FALSE = "654321";
 	public static final String PASS_MAXLENGTH_20 = "acb12345678912345678";
 	public static final String PASS_MAXLENGTH_21 = "acb123456789123456783";
+	public static final String DYNAMIC_HOME = "Chuyển tiền trong VCB";
+	public static final String TITLEBAR = "Xác nhận thông tin";
+	public static final String TITLEHEAD = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
+	public static final String ACCOUNT = "Tài khoản nguồn";
+	public static final String IDENTITY = "Giấy tờ tùy thân";
+	public static final String NUMBER = "Số";
+	public static final String DATE = "Ngày cấp";
+	public static final String ISSUED = "Nơi cấp";
+	public static final String MONEY_USD = "Số tiền(USD)";
+	public static final String TRANSACTION_FEE = "Số tiền phí";
+	public static final String MONEY = "Số tiền";
     }
 
     public static class textDataInputForm {
@@ -27,10 +38,11 @@ public class TransferIdentity_Data {
 	public static final String ACCOUNT_VND = "0010000123771";
 	public static final String ACCOUNT_USD = "0011370000646";
 	public static final String ACCOUNT_EUR = "0011140000647";
-	public static final String MONEY_TRANSFER_VND = "1000000";
+	public static final String MONEY_TRANSFER_VND = "100000";
 	public static final String MONEY_TRANSFER_USD = "100";
 	public static final String MONEY_TRANSFER_EUR = "100";
-	public static final String CONTEN_TRANSFER = "ABC123";
+	public static final String PASS_FALSE = "123123";
+	public static final String CONTENT_TRANSFER = "ABC123";
 	public static final String CURRENCY_USD = "USD";
 	public static final String CURRENCY_VND = "VND";
 	public static final String CURRENCY_EURO = "EUR";
@@ -53,9 +65,9 @@ public class TransferIdentity_Data {
 	public static final String MAX_TRANSFER = "1000000000";
 	public static final String CONFIRM_MIN_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 	public static final String CONFIRM_MAX_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-	public static final String INVALID_MONEY = "12345678901";
-	public static final String MAX_LENGTH_13_MONEY = "11234567890.10";
-	public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("1,000,000 VND", "10,000,000 VND", "100,000,000 VND");
+	public static final String INVALID_MONEY = "123456789012";
+	public static final String MAX_LENGTH_13_MONEY = "11234567890.11";
+	public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("10,000,000 VND", "100,000,000 VND", "1,000,000,000 VND");
 	public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("1,000 EUR ~ 27,006,000 VND", "10,000 EUR ~ 270,060,000 VND");
 	public static final String MAX_LENGTH_140 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New1";
 	public static final String MAX_LENGTH_141 = "In Vietnam, bonuses are agreed between employers and workers, but the government encourages rewards based on performance Tet, the Lunar New11";
@@ -77,5 +89,7 @@ public class TransferIdentity_Data {
 	public static final String MESSSAGE_PASSWORD_FOUND = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
 	public static final String MESSSAGE_PASSWORD_FALSE = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 5 lần.";
 	public static final String MESSSAGE_TIME_OTP = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
+	public static final String TEXT_CONFIRM = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;
+	public static final String TEXT_CONFIRM_PASS = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch";
     }
 }

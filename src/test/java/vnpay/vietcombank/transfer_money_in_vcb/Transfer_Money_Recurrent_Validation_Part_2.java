@@ -97,7 +97,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_02_01_Mo danh sach chu ky");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
 		
-		List<String> actualList = transferRecurrent.getListOfSuggestedMoney(driver, "com.VCB:id/tvContent");
+		List<String> actualList = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_02_02_danh sach gia tri chu ky");
 		List<String> expectList = Arrays.asList("Ngày", "Tuần", "Tháng");
@@ -195,7 +195,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	@Test
 	public void TC_09_ChuyenTienDinhKy_KiemTraNhapSoLuongKhiDonviLaThang_NhapNhoHon12() {
 		log.info("TC_09_01_Chon chu ky Ngay");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tuần"); // need to optimize
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tuần"); 
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Tháng");
 		
 		log.info("TC_09_02_Nhap gia tri vao o So luong");
@@ -268,7 +268,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		startDate = getForwardDate(1);
 		
 		log.info("TC_14_01_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
 		log.info("TC_14_02_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -293,7 +293,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 		
 		log.info("TC_14_08_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
 		log.info("TC_14_09_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -353,7 +353,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		String endDate = getForwardDate(2);
 
 		log.info("TC_18_01_Click Huy");
-		transferRecurrent.clickToDynamicButton(driver, "THOÁT");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
 		log.info("TC_18_02_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
