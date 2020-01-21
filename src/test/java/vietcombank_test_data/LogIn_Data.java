@@ -4,7 +4,7 @@ public class LogIn_Data {
     public static class Login_Account {
 	public static final String LOCKED_PHONE = "0335059863";
 	public static final String LOCKED_PASS = "1e9978d3";
-	public static final String PHONE = "0399764702";
+	public static final String PHONE = "0914933322";
 	public static final String PHONE_INVALID = "0904797863";
 	public static final String PHONE_HIDDEN = PHONE.substring(0, 4) + "***" + PHONE.substring(PHONE.length() - 3);
 	public static final int OTP_INVALID_TIMES = 3;

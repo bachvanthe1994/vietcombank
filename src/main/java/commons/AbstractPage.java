@@ -256,6 +256,16 @@ public class AbstractPage {
 	return listTextView;
     }
 
+    public List<String> getSelectedInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+    	locator = String.format(locator, (Object[]) dynamicValue);
+    	List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+    	List<String> listTextView = new ArrayList<String>();
+    	for (AndroidElement element : listElements) {
+    	    listTextView.add(element.getAttribute("selected"));
+    	}
+    	return listTextView;
+        }
+    
     public String getTextElement(AndroidDriver<AndroidElement> driver, String locator) {
 	WebElement element = driver.findElement(By.xpath(locator));
 	return element.getText();
@@ -1155,6 +1165,21 @@ public class AbstractPage {
     	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
     	return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
     	
+    }
+    
+    public List<String> getListTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    }
+    
+    public List<String> getListTextViewByRelativeLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID, dynamicID);
+    	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID, dynamicID);
+    }
+    
+    public List<String> getListImageViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+    	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
     }
     
     public void clickToTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
