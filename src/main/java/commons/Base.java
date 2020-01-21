@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -46,6 +47,16 @@ public class Base {
 		System.out.println("-----------START DELETE ALL FILE -------");
 		deleteAllFileInFolder();
 		System.out.println("-----------END DELETE ALL FILE -------");
+	}
+
+//	@AfterSuite
+	public void sendEmail() {
+		String to = "anhtt@vnpay.vn";
+		String from = "automationteam@vnpay.vn";
+		String host = "localhost";
+		Properties properties = System.getProperties();
+		properties.setProperty("mail.smtp.host", host);
+
 	}
 
 	public void deleteAllFileInFolder() {
@@ -406,12 +417,12 @@ public class Base {
 		} else {
 			day1 = day + "";
 		}
-		
+
 		System.out.println(day1 + "/" + month1 + "/" + year);
 		return day1 + "/" + month1 + "/" + year;
 
 	}
-	
+
 	public String getBackWardDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusDays(days);
