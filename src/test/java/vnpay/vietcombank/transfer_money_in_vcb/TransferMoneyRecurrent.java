@@ -204,7 +204,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_03_08: Kiem tra ngay tao giao dich hien thi");
 		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").contains(transferTime.split(" ")[0]));
 
-		log.info("TC_03_9: Kiem tra thoi gian tao dao dich");
+		log.info("TC_03_9: Kiem tra thoi gian tao giao dich");
 		verifyTrue(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate").split(" ")[0].equals(transferTime.split(" ")[3]));
 
 		log.info("TC_03_10: Kiem tra nguoi nhan");
