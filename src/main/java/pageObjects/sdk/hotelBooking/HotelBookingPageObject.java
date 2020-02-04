@@ -1,16 +1,23 @@
 package pageObjects.sdk.hotelBooking;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.offset.PointOption;
+import model.HotelBookingInfo;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
 
 public class HotelBookingPageObject extends AbstractPage{
 
@@ -128,6 +135,70 @@ public class HotelBookingPageObject extends AbstractPage{
 			result = result + text;
 		}
 		return result;
+		
+	}
+	
+	public void verticalSwipeByPercentage (double startPercentage, double endPercentage, double anchorPercentage) {
+        Dimension size = driver.manage().window().getSize();
+        int anchor = (int) (size.width * anchorPercentage);
+        int startPoint = (int) (size.height * startPercentage);
+        int endPoint = (int) (size.height * endPercentage);
+ 
+        new TouchAction(driver)
+                .press(PointOption.point(anchor, startPoint))
+                .moveTo(PointOption.point(anchor, endPoint))
+                .release().perform();
+    }
+	
+	public void swipeElementToElementByText (String textStart, String textEnd) {
+		Dimension size = driver.manage().window().getSize();
+		String locatorStart = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, textStart);
+    	MobileElement elementStart = driver.findElement(By.xpath(locatorStart));
+    	
+    	String locatorEnd = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, textEnd);
+    	MobileElement elementEnd = driver.findElement(By.xpath(locatorEnd));
+    	
+		int xStart = elementStart.getLocation().getX();
+        int yStart = elementStart.getLocation().getY();
+        
+        int xEnd = elementEnd.getLocation().getX();
+        int yEnd = elementEnd.getLocation().getY();
+        
+        new TouchAction(driver)
+                .press(PointOption.point(xStart, yStart))
+                .moveTo(PointOption.point(xEnd, yEnd))
+                .release().perform();
+    }
+	
+	public List<HotelBookingInfo> getListHotelBookingHistory(){
+		List<HotelBookingInfo> listHotelBookingInfo = new ArrayList<HotelBookingInfo>();
+		List<String> listPayCode = new ArrayList<String>();
+		
+		for (int i = 0; i <= 30 ; i ++) {
+			String payCode = getTextInListElements(driver, HotelBookingPageUIs.TEXTVIEW_PAYCODE_BY_ID).get(0);
+			
+			if (listPayCode.contains(payCode)) {
+				break;
+			}
+			
+			if (!listPayCode.contains(payCode)) {
+				listPayCode.add(payCode);
+				String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_PAYCODE, payCode);
+		    	String hotelName = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelName")).getText();
+		    	String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelAddress")).getText();
+		    	String createdDate = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCreatedDate")).getText();
+		    	String checkinDate = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCheckinDate")).getText();
+		    	String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvPrice")).getText();
+		    	String status = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvStatus")).getText();
+		    	HotelBookingInfo info = new HotelBookingInfo(payCode, hotelName, hotelAddress, createdDate, checkinDate, price, status);
+		    	listHotelBookingInfo.add(info);
+		    	
+			}
+			swipeElementToElementByText("Trạng thái", "Danh sách đặt phòng");
+			
+		}
+		
+		return listHotelBookingInfo;
 		
 	}
 	
