@@ -1,11 +1,9 @@
 package pageObjects;
 
-import java.util.List;
-
 import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.TransferStatusPageUIs;
 
 public class TransferMoneyStatusPageObject extends AbstractPage {
 
@@ -15,8 +13,13 @@ public class TransferMoneyStatusPageObject extends AbstractPage {
 
     private AndroidDriver<AndroidElement> driver;
 
-    public List<String> getListStatusTransfer(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
-	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_STARUS, dynamicIndex);
-	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_STARUS, dynamicIndex);
+    public String getDynamicTextTitle(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	waitForElementVisible(driver, TransferStatusPageUIs.DYNAMIC_TITLE, dynamicID);
+	return getTextElement(driver, TransferStatusPageUIs.DYNAMIC_TITLE, dynamicID);
+    }
+
+    public void clickToDynamictTextBox(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	waitForElementVisible(driver, TransferStatusPageUIs.DYNAMIC_TRANSFER, dynamicID);
+	clickToElement(driver, TransferStatusPageUIs.DYNAMIC_TRANSFER, dynamicID);
     }
 }
