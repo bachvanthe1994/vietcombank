@@ -1,7 +1,10 @@
 package pageObjects.sdk.hotelBooking;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -168,7 +171,7 @@ public class HotelBookingPageObject extends AbstractPage{
                 .release().perform();
     }
 	
-	public List<HotelBookingInfo> getListHotelBookingHistory(){
+	public List<HotelBookingInfo> getListHotelBookingHistory() {
 		List<HotelBookingInfo> listHotelBookingInfo = new ArrayList<HotelBookingInfo>();
 		List<String> listPayCode = new ArrayList<String>();
 		
@@ -180,17 +183,26 @@ public class HotelBookingPageObject extends AbstractPage{
 			}
 			
 			if (!listPayCode.contains(payCode)) {
-				listPayCode.add(payCode);
-				String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_PAYCODE, payCode);
-		    	String hotelName = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelName")).getText();
-		    	String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelAddress")).getText();
-		    	String createdDate = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCreatedDate")).getText();
-		    	String checkinDate = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCheckinDate")).getText();
-		    	String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvPrice")).getText();
-		    	String status = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvStatus")).getText();
-		    	HotelBookingInfo info = new HotelBookingInfo(payCode, hotelName, hotelAddress, createdDate, checkinDate, price, status);
-		    	listHotelBookingInfo.add(info);
-		    	
+				try {
+					listPayCode.add(payCode);
+					String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_PAYCODE, payCode);
+				    String hotelName = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelName")).getText();
+				    String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelAddress")).getText();
+				    
+				    SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+				    SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
+			    	String createdDate = formatter2.format(formatter1.parse(driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCreatedDate")).getText()));
+			    	String checkinDate = formatter2.format(formatter1.parse(driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCheckinDate")).getText()));
+			    	
+				    String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvPrice")).getText();
+				    String status = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvStatus")).getText();
+				    HotelBookingInfo info = new HotelBookingInfo(payCode, hotelName, hotelAddress, createdDate, checkinDate, price, status);
+				    listHotelBookingInfo.add(info);
+			    	
+				} catch (Exception e) {
+					
+				}
+
 			}
 			swipeElementToElementByText("Trạng thái", "Danh sách đặt phòng");
 			
@@ -198,6 +210,34 @@ public class HotelBookingPageObject extends AbstractPage{
 		
 		return listHotelBookingInfo;
 		
+	}
+	
+	public static List<HotelBookingInfo> actualList = new ArrayList<HotelBookingInfo>();
+	public List<HotelBookingInfo> sortListHotelBookingHistory() {
+		List<HotelBookingInfo> listContainWaitingPay = new ArrayList<HotelBookingInfo>();
+		List<HotelBookingInfo> listNotContainWaitingPay = new ArrayList<HotelBookingInfo>();
+		List<HotelBookingInfo> actualListHotelBookingInfo = getListHotelBookingHistory();
+		actualList = actualListHotelBookingInfo;
+		List<HotelBookingInfo> expectListHotelBookingInfo = new ArrayList<HotelBookingInfo>();
+		
+		listContainWaitingPay = (List<HotelBookingInfo>) actualListHotelBookingInfo.stream().filter(p -> p.status.equals("Chờ thanh toán")).collect(Collectors.toList());
+		listContainWaitingPay.sort((o1, o2) -> o2.createDate.compareTo(o1.createDate));
+		
+		listNotContainWaitingPay = (List<HotelBookingInfo>) actualListHotelBookingInfo.stream().filter(p -> !p.status.equals("Chờ thanh toán")).collect(Collectors.toList());
+		listNotContainWaitingPay.sort((o1, o2) -> o2.createDate.compareTo(o1.createDate));
+		
+		for (HotelBookingInfo info : listNotContainWaitingPay) {
+			listContainWaitingPay.add(info);
+		}
+		
+		expectListHotelBookingInfo = listContainWaitingPay;
+		
+		return expectListHotelBookingInfo;
+	}
+	
+	public List<String> getListOfStatusHotelBooking(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_LISTVIEW, dynamicID);
+		return getTextInListElements(driver, HotelBookingPageUIs.TEXTVIEW_BY_LISTVIEW, dynamicID);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 public class HotelBookingInfo {
 	public String payCode;
 	public String hotelName;
