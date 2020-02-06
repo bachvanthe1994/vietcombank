@@ -158,10 +158,7 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
-//		List<AndroidElement> firstPageElement = driver.findElementsByAccessibilityId(locator);
-//		if (firstPageElement.size() > 0 && firstPageElement.get(0).isDisplayed()) {
-//			System.out.println("Element displayed");
-//		} else {
+
 		for (int i = 0; i < 10; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
 			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
@@ -173,7 +170,6 @@ public class AbstractPage {
 			}
 		}
 	}
-//	}
 
 	public void clickToElementByJava(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
