@@ -18,7 +18,7 @@ public class Global_Login extends AbstractPage {
 
 	private AndroidDriver<AndroidElement> driver;
 
-	public void Global_login() {
+	public AndroidDriver<AndroidElement> Global_login() {
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 
@@ -37,7 +37,7 @@ public class Global_Login extends AbstractPage {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
+		return driver;
 	}
 
 }

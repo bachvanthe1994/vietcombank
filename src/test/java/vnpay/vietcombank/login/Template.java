@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import Test.Global_Login;
 import commons.Base;
+import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
@@ -24,14 +25,15 @@ public class Template extends Base {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		login = PageFactoryManager.getLoginPageObject(driver);
 
 	}
 
 	@Test
 	public void TC_01_KiemTraChonDiemDenKhiChuaChonDiemDi() {
-		globalLogin.Global_login();
-		System.out.println("Start");
-		login.inputPhoneNumber("0904797863");
+		login.Global_login();
+		System.out.println("Endtest");
+
 	}
 
 	@AfterClass(alwaysRun = true)
