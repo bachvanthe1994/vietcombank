@@ -139,6 +139,18 @@ public class HotelBookingPageObject extends AbstractPage{
 		
 	}
 	
+	 public void horizontalSwipeByPercentage (double startPercentage, double endPercentage, double anchorPercentage) {
+	        Dimension size = driver.manage().window().getSize();
+	        int anchor = (int) (size.height * anchorPercentage);
+	        int startPoint = (int) (size.width * startPercentage);
+	        int endPoint = (int) (size.width * endPercentage);
+	 
+	        new TouchAction(driver)
+	                .press(PointOption.point(startPoint, anchor))
+	                .moveTo(PointOption.point(endPoint, anchor))
+	                .release().perform();
+	    }
+	
 	public void verticalSwipeByPercentage (double startPercentage, double endPercentage, double anchorPercentage) {
         Dimension size = driver.manage().window().getSize();
         int anchor = (int) (size.width * anchorPercentage);
@@ -233,11 +245,47 @@ public class HotelBookingPageObject extends AbstractPage{
 		expectListHotelBookingInfo = listContainWaitingPay;
 		
 		return expectListHotelBookingInfo;
+		
 	}
 	
 	public List<String> getListOfStatusHotelBooking(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_LISTVIEW, dynamicID);
 		return getTextInListElements(driver, HotelBookingPageUIs.TEXTVIEW_BY_LISTVIEW, dynamicID);
+		
+	}
+	
+	public List<HotelBookingInfo> getListHotelRecentView() {
+		List<HotelBookingInfo> listHotelBookingInfo = new ArrayList<HotelBookingInfo>();
+		List<String> listHotelName = new ArrayList<String>();
+		
+		for (int i = 0; i <= 30 ; i ++) {
+			String hotelName = getTextInListElements(driver, HotelBookingPageUIs.TEXTVIEW_HOTEL_NAME_BY_ID).get(0);
+			
+			if (listHotelName.contains(hotelName)) {
+				break;
+			}
+			
+			if (!listHotelName.contains(hotelName)) {
+				try {
+					listHotelName.add(hotelName);
+					String locator = String.format(HotelBookingPageUIs.TEXTVIEW_HOTEL_NAME_BY_ID, hotelName);
+				    String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvAddress")).getText();
+				    String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
+
+				    HotelBookingInfo info = new HotelBookingInfo(hotelName, hotelName, hotelAddress, "", "", price, "");
+				    listHotelBookingInfo.add(info);
+			    	
+				} catch (Exception e) {
+					
+				}
+
+			}
+			horizontalSwipeByPercentage(0.9, 0, 0.8);
+			
+		}
+		
+		return listHotelBookingInfo;
+		
 	}
 	
 }
