@@ -16,17 +16,16 @@ import pageObjects.LogInPageObject;
 public class Template extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
-	private Global_Login globalLogin;
-
+	private Global_Login globalLogin; 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
+		globalLogin = new Global_Login(driver);
 	}
-
+	
 	@Test
 	public void TC_01_KiemTraChonDiemDenKhiChuaChonDiemDi() {
 		globalLogin.Global_login();

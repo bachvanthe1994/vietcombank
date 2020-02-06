@@ -72,9 +72,4 @@ public class PageFactoryManager {
 
 	}
 
-//	public static Global_Login getGlobal_Login(AndroidDriver<AndroidElement> driver) {
-//		return new Global_Login(driver);
-//
-//	}
-
 }
