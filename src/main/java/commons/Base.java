@@ -3,14 +3,24 @@ package commons;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.PasswordAuthentication;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
