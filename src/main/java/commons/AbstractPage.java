@@ -114,6 +114,27 @@ public class AbstractPage {
 	System.out.println(contexts);
 	driver.context(webViewName);
     }
+    
+    public static void scrollIDown(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.80);
+		int endY = (int) (size.getHeight() * 0.30);
+		TouchAction touch = new TouchAction(driver);
+		locator = String.format(locator, (Object[]) dynamicValue);
+
+		for (int i = 0; i < 10; i++) {
+			locator = String.format(locator, (Object[]) dynamicValue);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+
+			}
+		}
+	}
+    
 
     public void scrollToText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 	try {
@@ -742,6 +763,17 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
     }
+    
+    public void clickDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+	}
+    
+    //Click button cancel
+    public void clickDynamicCancelIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+	}
 
     // So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
     public boolean checkListContain(List<String> actualList, List<String> expectList) {
@@ -758,6 +790,10 @@ public class AbstractPage {
 	clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
     }
     
+    public void clickToDynamicLink(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	}
 
 // input vào ô input với tham số truyền vào là inputbox
     public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
@@ -832,6 +868,14 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
 	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
     }
+    
+    //Nhập địa điểm tìm kiếm
+    public void inputToDynamicTextPoint(AndroidDriver<AndroidElement> driver, String inputValue,
+			String dynamicIndexValue) {
+		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
+	}
 
 // check button có hiển thị hay không, tham số truyền vào là text của button
     public boolean isDynamicButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -917,7 +961,29 @@ public class AbstractPage {
     	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
     	return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
         }
+    
+    public boolean isDynamicBackIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+	}
+    
+	public boolean isDynamicHistoryIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	}
+	
+	//Check hiển thị button chuyển đổi
+	public boolean isDynamicChangeIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+	}
 
+	//Check hiển thị icon combobox
+	public boolean isDynamicComboboxDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+	}
+	
 //lấy text trong ô input, tham số truyền vào là text
     public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -1025,6 +1091,11 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
     }
+    
+    public String getDynamicTextInPopUp(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+	}
 
 // Kiểm tra keyboard có hiển thị
     public boolean isKeyBoardDisplayed(AndroidDriver<AndroidElement> driver) {
@@ -1054,7 +1125,24 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 	return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
     }
+    
+    //Lấy text tìm hiếm điểm khởi hành và điểm đến
+    public String getDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+	}
 
+    //Lấy giá trị tìm kiếm trong danh sách
+	public String getDynamicInputPoint(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+	}
+	
+	public String getDynamicTextPointStart(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicIndexValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicIndexValue);
+	}
+	
     public boolean checkFormatMoney(String moneyInput, TransferInVCBRecurrent.Currency currency) {
 	long longNumber;
 	double doubleNumber;
