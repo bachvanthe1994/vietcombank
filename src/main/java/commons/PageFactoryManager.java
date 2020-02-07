@@ -14,6 +14,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
+import vehicalPageObject.VehicalPageObject;
 
 public class PageFactoryManager {
 
@@ -63,7 +64,10 @@ public class PageFactoryManager {
 
     public static SetupContactPageObject getSetupContactPageObject(AndroidDriver<AndroidElement> driver) {
 	return new SetupContactPageObject(driver);
+    }
 
+    public static VehicalPageObject getVehicalPageObject(AndroidDriver<AndroidElement> driver) {
+	return new VehicalPageObject(driver);
     }
 
 }
