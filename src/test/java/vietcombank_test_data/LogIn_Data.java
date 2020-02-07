@@ -1,6 +1,7 @@
 package vietcombank_test_data;
 
 public class LogIn_Data {
+
 	public static class Login_Account {
 		public static final String LOCKED_PHONE = "0335059863";
 		public static final String LOCKED_PASS = "1e9978d3";

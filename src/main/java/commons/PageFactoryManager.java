@@ -7,6 +7,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SetupContactPageObject;
+import pageObjects.TrainTicketPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
@@ -65,6 +66,10 @@ public class PageFactoryManager {
 	public static SetupContactPageObject getSetupContactPageObject(AndroidDriver<AndroidElement> driver) {
 		return new SetupContactPageObject(driver);
 
+	}
+
+	public static TrainTicketPageObject getTrainTicketPageObject(AndroidDriver<AndroidElement> driver) {
+		return new TrainTicketPageObject(driver);
 	}
 
 	public static HotelBookingPageObject getHotelBookingPageObject(AndroidDriver<AndroidElement> driver) {

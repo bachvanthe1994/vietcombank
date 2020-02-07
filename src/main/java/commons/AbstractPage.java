@@ -797,10 +797,15 @@ public class AbstractPage {
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 	}
 
-// Click vào số tiền được gợi ý ở ô số tiền, tham số truyền vào là vị trí số tiền và resource id chung của tất cả số tiền đó
-	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+	public void clickDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+	}
+
+	// Click button cancel
+	public void clickDynamicCancelIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
 	}
 
 	// So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
@@ -816,6 +821,16 @@ public class AbstractPage {
 	public void clickToDynamicImageButtonByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+	}
+
+	public void clickToDynamicLink(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	}
+
+	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
 	}
 
 // input vào ô input với tham số truyền vào là inputbox
@@ -869,6 +884,14 @@ public class AbstractPage {
 	}
 
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
+
+	// Nhập địa điểm tìm kiếm
+	public void inputToDynamicTextPoint(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicIndexValue) {
+		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
+	}
+
 	public void inputToDynamicPopupPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 		clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
@@ -930,16 +953,26 @@ public class AbstractPage {
 		return isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 	}
 
-//Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id 
-	public boolean isDynamicSuggestedMoneyDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	public boolean isDynamicBackIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 	}
 
-	// Kiểm tra text trong nội dung link thông báo
-	public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+	public boolean isDynamicHistoryIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	}
+
+	// Check hiển thị button chuyển đổi
+	public boolean isDynamicChangeIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+	}
+
+	// Check hiển thị icon combobox
+	public boolean isDynamicComboboxDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
 	}
 
 	public boolean isDynamicVerifyTextOnButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -956,9 +989,21 @@ public class AbstractPage {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 	}
 
+	// Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id
+	public boolean isDynamicSuggestedMoneyDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	}
+
+	// Kiểm tra text trong nội dung link thông báo
+	public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+	}
+
 	// Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
 	public boolean isDynamicImageSelect(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-//		scrollToElementByID(driver, dynamicTextValue);
+//			scrollToElementByID(driver, dynamicTextValue);
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
@@ -972,7 +1017,7 @@ public class AbstractPage {
 
 	// Kiểm tra hiển thị icon home man hinh chuyen tien thanh cong
 	public boolean isDynamicImageHomeDisplay(AndroidDriver<AndroidElement> driver, String dynamicID) {
-//		scrollToElementByID(driver, dynamicID);
+//			scrollToElementByID(driver, dynamicID);
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
@@ -1092,6 +1137,28 @@ public class AbstractPage {
 	}
 
 	// Lấy toàn bộ số tiền được suggest ở ô số tiền và lưu vào array list
+
+	public String getDynamicTextInPopUp(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+	}
+
+	// Lấy text tìm hiếm điểm khởi hành và điểm đến
+	public String getDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+	}
+
+	// Lấy giá trị tìm kiếm trong danh sách
+	public String getDynamicInputPoint(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+	}
+
+	public String getDynamicTextPointStart(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicIndexValue);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicIndexValue);
+	}
 
 	public List<String> getListOfSuggestedMoneyOrListText(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
