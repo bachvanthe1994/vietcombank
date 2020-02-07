@@ -40,32 +40,14 @@ public class TransferMoneyRecurrent extends Base {
 	TransferInVCBRecurrent info4 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.ACCOUNT3, "2", "Ngày", "", "", "10", "Người chuyển trả", "test", "SMS OTP");
 	TransferInVCBRecurrent info5 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.ACCOUNT3, "2", "Tháng", "", "", "10", "Người nhận trả", "test", "Mật khẩu đăng nhập");
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		homePage = PageFactoryManager.getHomePageObject(driver);
-
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 	}
 
 	@Test
@@ -81,9 +63,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_01_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		
+
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_01_4_Chon tan suat");
@@ -157,19 +139,19 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_01_13_Click Thuc hien giao dich moi");
 		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 	}
-	
+
 	@Test
 	public void TC_02_ChuyenTien_VND_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra() {
 		log.info("TC_02_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		
+
 		log.info("TC_02_02_Lay so du");
 		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		log.info("TC_02_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
-		
+
 	}
 
 	@Test
@@ -312,9 +294,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_05_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		
+
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		transferRecurrent.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_05_4_Chon tan suat");
@@ -395,15 +377,15 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_06_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		
+
 		log.info("TC_06_02_Lay so du");
 		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		log.info("TC_06_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
-		
+
 	}
-	
+
 	@Test
 	public void TC_07_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		String startDate = getForwardDate(1);
@@ -542,9 +524,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_09_03_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
-		
+
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		transferRecurrent.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_09_04_Chon tan suat");
@@ -625,15 +607,15 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_10_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
-		
+
 		log.info("TC_10_02_Lay so du");
 		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		log.info("TC_10_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
-		
+
 	}
-	
+
 	@Test
 	public void TC_11_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Thang_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhau() {
 		String startDate = getForwardDate(1);
@@ -772,9 +754,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_13_03_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
-		
+
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		transferRecurrent.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_13_04_Chon tan suat");
@@ -854,15 +836,15 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_14_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
-		
+
 		log.info("TC_14_02_Lay so du");
 		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		log.info("TC_14_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
-		
+
 	}
-	
+
 	@Test
 	public void TC_15_TrangThaiGiaoDich_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
 		String startDate = getForwardDate(1);
@@ -1001,9 +983,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_17_3_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
-		
+
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		transferRecurrent.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_17_4_Chon tan suat");
@@ -1078,19 +1060,19 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 	}
-	
+
 	@Test
 	public void TC_18_ChuyenTien_USD_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra() {
 		log.info("TC_18_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
-		
+
 		log.info("TC_18_02_Lay so du");
 		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		log.info("TC_18_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
-		
+
 	}
 
 	@Test
@@ -1217,7 +1199,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_20_16: Click  nut Back");
 		transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
-	
+
 	@Test
 	public void TC_21_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		log.info("TC_21_01_Click Chuyen tien trong ngan hang");
@@ -1231,9 +1213,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_21_03_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
-		
+
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		transferRecurrent.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_21_04_Chon tan suat");
@@ -1308,19 +1290,19 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 	}
-	
+
 	@Test
 	public void TC_22_ChuyenTien_USD_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiNhanTra() {
 		log.info("TC_22_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
-		
+
 		log.info("TC_22_02_Lay so du");
 		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
-		
+
 		log.info("TC_22_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
-		
+
 	}
 
 	@Test
@@ -1447,7 +1429,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_24_16: Click  nut Back");
 		transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();

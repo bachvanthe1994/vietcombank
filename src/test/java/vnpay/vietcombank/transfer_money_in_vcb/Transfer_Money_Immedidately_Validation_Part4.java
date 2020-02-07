@@ -24,38 +24,14 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
-		log.info("Before class_Step_00: Mo app ");
+		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("Before class_Step_01: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
-		log.info("Before class_Step_02: Dien so dien thoai ");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("Before class_Step_03: Click Tiep tuc");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class_Step_03:  Dien mat khau");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("Before class_Step_05: Click tiep tuc");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class_Step_06: Nhap OTP");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("Before class_Step_07: Click tiep tuc");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class_Step_01: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
