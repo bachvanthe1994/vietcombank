@@ -19,7 +19,7 @@ public class LogInPageObject extends AbstractPage {
 
 		clickToDynamicButton(driver, "Tiếp tục");
 
-		inputToDynamicInputBox(driver, pass, "Mật khẩu");
+		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
 
 		clickToDynamicButton(driver, "Tiếp tục");
 

@@ -3,7 +3,7 @@ package vnpay.vietcombank.lucky_gift;
 import java.io.IOException;
 
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -16,7 +16,6 @@ import pageObjects.LuckyGiftPageObject;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.LuckyGift_Data;
 
-
 public class LuckyGift extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
@@ -25,41 +24,16 @@ public class LuckyGift extends Base {
 	private long amountTranfer;
 	private String amountStartString;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
-
-	@BeforeMethod
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities,
-			String appPackage, String appName) throws IOException, InterruptedException {
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@BeforeClass
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		log.info("Before class");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "CHO PHÉP");
-
+		login.Global_login(phone, pass, opt);
 		luckyGift = PageFactoryManager.getLuckyGiftPageObject(driver);
+
 	}
 
 	@Test
@@ -106,7 +80,7 @@ public class LuckyGift extends Base {
 		log.info("TC_01_Step_Chon loi chuc");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+
 		log.info("TC_01_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -115,29 +89,28 @@ public class LuckyGift extends Base {
 
 		log.info("TC_01_Step_Doi kieu du lieu");
 		amountTranfer = Long.parseLong(amountTranferString);
-		
+
 		log.info("TC_01_Step_Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_01_Verify hinh thuc giao dich");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"),"Quà tặng may mắn");
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"), "Quà tặng may mắn");
+
 		log.info("TC_01_Verify tai khoan nguon");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"),LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+
 		log.info("TC_01_Verify thong tin nguoi nhan");
-		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver,LuckyGift_Data.LuckyGift.MOBI_ACCEPT +"/ "+LuckyGift_Data.LuckyGift.NAME_ACCEPT));
-		
-		
+		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT + "/ " + LuckyGift_Data.LuckyGift.NAME_ACCEPT));
+
 		log.info("TC_01_Verify So tien chuyen");
 		verifyEquals(amountTranferString, LuckyGift_Data.LuckyGift.MONEY);
-		
+
 		log.info("TC_01_Verify phi giao dich");
 		String amountCostString = luckyGift.getDynamicAmountCostLabel(driver, "Tổng số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_01_Step_: Verify loi chuc");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"),LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"), LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
+
 		log.info("TC_01_Step_Chon phuong thuc xac thuc");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
@@ -147,12 +120,12 @@ public class LuckyGift extends Base {
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
 		luckyGift.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
-		
+
 		log.info("TC_01_Step_Tiep tuc");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
 	}
-	
+
 	@Test
 	public void TC_02_ChuyenTienNguoiNhanTaiVCBXacNhanMKVaTK() {
 		log.info("TC_02_1_Click trang thai lenh chuyen tien");
@@ -197,7 +170,7 @@ public class LuckyGift extends Base {
 		log.info("TC_02_Step_Chon loi chuc");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+
 		log.info("TC_02_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -206,28 +179,28 @@ public class LuckyGift extends Base {
 
 		log.info("TC_02_Step_Doi kieu du lieu");
 		amountTranfer = Long.parseLong(amountTranferString);
-		
+
 		log.info("TC_02_Step_Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_02_Verify hinh thuc giao dich");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"),"Quà tặng may mắn");
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"), "Quà tặng may mắn");
+
 		log.info("TC_02_Verify tai khoan nguon");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"),LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+
 		log.info("TC_02_Verify thong tin nguoi nhan");
-		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver,LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_IN_VCB +"/ "+LuckyGift_Data.LuckyGift.NAME_ACCEPT));
-		
+		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_IN_VCB + "/ " + LuckyGift_Data.LuckyGift.NAME_ACCEPT));
+
 		log.info("TC_02_Verify So tien chuyen");
 		verifyEquals(amountTranferString, LuckyGift_Data.LuckyGift.MONEY);
-		
+
 		log.info("TC_02_Verify phi giao dich");
 		String amountCostString = luckyGift.getDynamicAmountCostLabel(driver, "Tổng số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_02_Step_: Verify loi chuc");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"),LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"), LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
+
 		log.info("TC_02_Step_Chon phuong thuc xac thuc");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
@@ -237,11 +210,11 @@ public class LuckyGift extends Base {
 
 		log.info("TC_02_Step_Nhap ma xac thuc");
 		luckyGift.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
-		
+
 		log.info("TC_02_Step_Tiep tuc");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 	}
-	
+
 	@Test
 	public void TC_03_ChuyenTienNguoiNhanVCBXacNhanOTPVaSĐT() {
 		log.info("TC_01_1_Click trang thai lenh chuyen tien");
@@ -286,7 +259,7 @@ public class LuckyGift extends Base {
 		log.info("TC_03_Step_Chon loi chuc");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+
 		log.info("TC_03_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -295,29 +268,28 @@ public class LuckyGift extends Base {
 
 		log.info("TC_03_Step_Doi kieu du lieu");
 		amountTranfer = Long.parseLong(amountTranferString);
-		
-		
+
 		log.info("TC_03_Step_Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_03_Verify hinh thuc giao dich");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"),"Quà tặng may mắn");
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"), "Quà tặng may mắn");
+
 		log.info("TC_03_Verify tai khoan nguon");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"),LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+
 		log.info("TC_03_Verify thong tin nguoi nhan");
-		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver,LuckyGift_Data.LuckyGift.MOBI_ACCEPT +"/ "+LuckyGift_Data.LuckyGift.NAME_ACCEPT));
-		
+		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT + "/ " + LuckyGift_Data.LuckyGift.NAME_ACCEPT));
+
 		log.info("TC_03_Verify So tien chuyen");
 		verifyEquals(amountTranferString, LuckyGift_Data.LuckyGift.MONEY);
-		
+
 		log.info("TC_03_Verify phi giao dich");
 		String amountCostString = luckyGift.getDynamicAmountCostLabel(driver, "Tổng số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_03_Step_: Verify loi chuc");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"),LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"), LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
+
 		log.info("TC_03_Step_Chon phuong thuc xac thuc");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[1]);
@@ -327,11 +299,11 @@ public class LuckyGift extends Base {
 
 		log.info("TC_03_Step_Nhap ma xac thuc");
 		luckyGift.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-		
+
 		log.info("TC_03_Step_Tiep tuc");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 	}
-	
+
 	@Test
 	public void TC_04_ChuyenTienNguoiNhanVCBXacNhanOTPVaSTK() {
 		log.info("TC_04_1_Click trang thai lenh chuyen tien");
@@ -376,7 +348,7 @@ public class LuckyGift extends Base {
 		log.info("TC_04_Step_Chon loi chuc");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+
 		log.info("TC_04_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -385,29 +357,28 @@ public class LuckyGift extends Base {
 
 		log.info("TC_04_Step_Doi kieu du lieu");
 		amountTranfer = Long.parseLong(amountTranferString);
-		
-		
+
 		log.info("TC_04_Step_Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_04_Verify hinh thuc giao dich");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"),"Quà tặng may mắn");
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"), "Quà tặng may mắn");
+
 		log.info("TC_04_Verify tai khoan nguon");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"),LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+
 		log.info("TC_04_Verify thong tin nguoi nhan");
-		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver,LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_IN_VCB +"/ "+LuckyGift_Data.LuckyGift.NAME_ACCEPT));
-		
+		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_IN_VCB + "/ " + LuckyGift_Data.LuckyGift.NAME_ACCEPT));
+
 		log.info("TC_04_Verify So tien chuyen");
 		verifyEquals(amountTranferString, LuckyGift_Data.LuckyGift.MONEY);
-		
+
 		log.info("TC_04_Verify phi giao dich");
 		String amountCostString = luckyGift.getDynamicAmountCostLabel(driver, "Tổng số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_04_Step_: Verify loi chuc");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"),LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"), LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
+
 		log.info("TC_04_Step_Chon phuong thuc xac thuc");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[1]);
@@ -417,11 +388,11 @@ public class LuckyGift extends Base {
 
 		log.info("TC_04_Step_Nhap ma xac thuc");
 		luckyGift.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-		
+
 		log.info("TC_04_Step_Tiep tuc");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 	}
-	
+
 	@Test
 	public void TC_05_ChuyenTienNguoiNhanKhacVCBXacNhanMKVaSTK() {
 		log.info("TC_05_1_Click trang thai lenh chuyen tien");
@@ -446,7 +417,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_05_Step_Click add danh sach nguoi nhan");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivAdd");
-		
+
 		log.info("TC_05_Step_So dien thoai/ tai khoan nhan");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_OUT_VCB, "Số điện thoại/tài khoản nhận");
 
@@ -463,7 +434,7 @@ public class LuckyGift extends Base {
 		log.info("TC_05_Step_Chon loi chuc");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+
 		log.info("TC_05_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -472,28 +443,28 @@ public class LuckyGift extends Base {
 
 		log.info("TC_05_Step_Doi kieu du lieu");
 		amountTranfer = Long.parseLong(amountTranferString);
-		
+
 		log.info("TC_05_Step_Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_05_Verify hinh thuc giao dich");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"),"Quà tặng may mắn");
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"), "Quà tặng may mắn");
+
 		log.info("TC_05_Verify tai khoan nguon");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"),LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+
 		log.info("TC_05_Verify thong tin nguoi nhan");
-		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver,LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_OUT_VCB +"/ "+LuckyGift_Data.LuckyGift.NAME_ACCEPT));
-		
+		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_OUT_VCB + "/ " + LuckyGift_Data.LuckyGift.NAME_ACCEPT));
+
 		log.info("TC_05_Verify So tien chuyen");
 		verifyEquals(amountTranferString, LuckyGift_Data.LuckyGift.MONEY);
-		
+
 		log.info("TC_05_Verify phi giao dich");
 		String amountCostString = luckyGift.getDynamicAmountCostLabel(driver, "Tổng số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_05_Step_: Verify loi chuc");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"),LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"), LuckyGift_Data.LuckyGift.WISHES_OPTION[0]);
+
 		log.info("TC_05_Step_Chon phuong thuc xac thuc");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
@@ -503,12 +474,11 @@ public class LuckyGift extends Base {
 
 		log.info("TC_05_Step_Nhap ma xac thuc");
 		luckyGift.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
-		
+
 		log.info("TC_05_Step_Tiep tuc");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 	}
 
-	
 	@Test
 	public void TC_06_ChuyenTienNguoiNhanKhacVCBXacNhanOTPVaSTK() {
 		log.info("TC_06_1_Click trang thai lenh chuyen tien");
@@ -553,7 +523,7 @@ public class LuckyGift extends Base {
 		log.info("TC_06_Step_Chon loi chuc");
 		luckyGift.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/more_content");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION[1]);
-		
+
 		log.info("TC_06_Step_Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -562,29 +532,28 @@ public class LuckyGift extends Base {
 
 		log.info("TC_06_Step_Doi kieu du lieu");
 		amountTranfer = Long.parseLong(amountTranferString);
-		
-		
+
 		log.info("TC_06_Step_Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_06_Verify hinh thuc giao dich");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"),"Quà tặng may mắn");
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Hình thức giao dịch"), "Quà tặng may mắn");
+
 		log.info("TC_06_Verify tai khoan nguon");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"),LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+
 		log.info("TC_06_Verify thong tin nguoi nhan");
-		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver,LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_OUT_VCB +"/ "+LuckyGift_Data.LuckyGift.NAME_ACCEPT));
-		
+		verifyTrue(luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_OUT_VCB + "/ " + LuckyGift_Data.LuckyGift.NAME_ACCEPT));
+
 		log.info("TC_06_Verify So tien chuyen");
 		verifyEquals(amountTranferString, LuckyGift_Data.LuckyGift.MONEY);
-		
+
 		log.info("TC_06_Verify phi giao dich");
 		String amountCostString = luckyGift.getDynamicAmountCostLabel(driver, "Tổng số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_06_Step_: Verify loi chuc");
-		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"),LuckyGift_Data.LuckyGift.WISHES_OPTION[1]);
-		
+		verifyEquals(luckyGift.getDynamicTextInTransactionDetail(driver, "Lời chúc"), LuckyGift_Data.LuckyGift.WISHES_OPTION[1]);
+
 		log.info("TC_06_Step_Chon phuong thuc xac thuc");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[0]);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.ACCURACY[1]);
@@ -594,17 +563,16 @@ public class LuckyGift extends Base {
 
 		log.info("TC_06_Step_Nhap ma xac thuc");
 		luckyGift.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-		
+
 		log.info("TC_06_Step_Tiep tuc");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
 	}
 
-
 	@AfterMethod(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
-	//	service.stop();
+		// service.stop();
 	}
 
 }

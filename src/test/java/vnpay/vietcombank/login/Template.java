@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import Test.Global_Login;
 import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
@@ -17,7 +16,6 @@ import pageObjects.LogInPageObject;
 public class Template extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
-	private Global_Login globalLogin;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -26,7 +24,6 @@ public class Template extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-
 		login.Global_login(phone, pass, opt);
 
 	}
