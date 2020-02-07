@@ -268,11 +268,11 @@ public class HotelBookingPageObject extends AbstractPage{
 			if (!listHotelName.contains(hotelName)) {
 				try {
 					listHotelName.add(hotelName);
-					String locator = String.format(HotelBookingPageUIs.TEXTVIEW_HOTEL_NAME_BY_ID, hotelName);
+					String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_HOTEL_NAME, hotelName);
 				    String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvAddress")).getText();
 				    String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
 
-				    HotelBookingInfo info = new HotelBookingInfo(hotelName, hotelName, hotelAddress, "", "", price, "");
+				    HotelBookingInfo info = new HotelBookingInfo("", hotelName, hotelAddress, "", "", price, "");
 				    listHotelBookingInfo.add(info);
 			    	
 				} catch (Exception e) {

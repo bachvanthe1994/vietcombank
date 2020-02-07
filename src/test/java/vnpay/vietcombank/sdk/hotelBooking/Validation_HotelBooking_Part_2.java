@@ -64,21 +64,18 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		log.info("TC_01_02_Click nut Dong y");
 		hotelBooking.clickToDynamicButton(driver, "Đồng ý");
 		
-//		log.info("TC_01_03_Click vao Loc theo gia va hang sao");
-//		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Lọc theo giá & hạng sao");
-//		
-//		log.info("TC_01_04_Kiem tra man hinh Loc theo gia va hang sao");
-//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xếp hạng sao"));
-//		verifyTrue(hotelBooking.checkStarRate());
-//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Giá phòng"));
-//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận"));
+		log.info("TC_01_03_Click vao Loc theo gia va hang sao");
+		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Lọc theo giá & hạng sao");
 		
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Xem gần đây");
-		List<HotelBookingInfo> list = hotelBooking.getListHotelRecentView();
-
+		log.info("TC_01_04_Kiem tra man hinh Loc theo gia va hang sao");
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xếp hạng sao"));
+		verifyTrue(hotelBooking.checkStarRate());
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Giá phòng"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận"));
+		
 	}
 	
-//	@Test
+	@Test
 	public void TC_02_DatPhongKhachSan_KiemTraXepHangSao() {
 		log.info("TC_02_01_Click chon hang sao");
 		hotelBooking.chooseStarRateHotel(3);
@@ -96,7 +93,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 	
 	String actualMinPrice;
 	String actualMaxPrice;
-//	@Test
+	@Test
 	public void TC_03_DatPhongKhachSan_KiemTraKeoChonMucGia() {
 		log.info("TC_03_01_Click chon hang sao");
 		hotelBooking.handleSeekBarPrice(6000000, 9999000, 12000000);
@@ -111,7 +108,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		
 	}
 	
-//	@Test
+	@Test
 	public void TC_04_DatPhongKhachSan_KiemTraNhanXacNhan() {
 		log.info("TC_04_01_Click chon hang sao");
 		hotelBooking.chooseStarRateHotel(3);
@@ -133,25 +130,8 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		
 	}
 	
-//	@Test
+	@Test
 	public void TC_05_DatPhongKhachSan_KiemTraNutXemGanDay() {
-		log.info("TC_04_01_Click chon hang sao");
-		hotelBooking.chooseStarRateHotel(3);
-		
-		log.info("TC_04_02_Click Xac nhan");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Xác nhận");
-		
-		log.info("TC_04_03_Kiem tra thong tin da chon");
-		String actualStarAndPriceInfomation =  hotelBooking.getTextRateAndPriceFilter();
-		
-		log.info("TC_04_03_01_Kiem tra gia Min da chon");
-		verifyTrue(actualStarAndPriceInfomation.contains(actualMinPrice.split(" ")[0]));
-		
-		log.info("TC_04_03_02_Kiem tra gia Max da chon");
-		verifyTrue(actualStarAndPriceInfomation.contains(actualMaxPrice.split(" ")[0]));
-		
-		log.info("TC_04_03_03_Kiem tra so Sao da chon");
-		verifyTrue(actualStarAndPriceInfomation.contains("3"));
 		
 	}
 	
