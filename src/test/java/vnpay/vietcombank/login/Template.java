@@ -19,19 +19,20 @@ public class Template extends Base {
 	private LogInPageObject login;
 	private Global_Login globalLogin;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 
+		login.Global_login(phone, pass, opt);
+
 	}
 
 	@Test
 	public void TC_01_KiemTraChonDiemDenKhiChuaChonDiemDi() {
-		login.Global_login();
 		System.out.println("Endtest");
 
 	}
