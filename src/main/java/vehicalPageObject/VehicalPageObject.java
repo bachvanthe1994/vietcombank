@@ -22,7 +22,7 @@ public class VehicalPageObject extends AbstractPage {
 
     // Click vào button, text có class là textview, tham số truyền vào là text
     public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	scrollToText(driver, dynamicTextValue);
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
 	waitForElementVisible(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
 	clickToElement(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
 
@@ -30,7 +30,7 @@ public class VehicalPageObject extends AbstractPage {
 
     // Click vào button, text có class là textview, tham số truyền vào là text
     public void clickToDynamicText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	scrollToText(driver, dynamicTextValue);
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 	waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 	clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 
