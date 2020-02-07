@@ -26,8 +26,8 @@
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part3" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part4" /> -->
 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part1" />
-		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part2" />
-		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part3" />
+<!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part2" /> -->
+<!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part3" /> -->
 
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
 <!-- 		<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" /> -->
