@@ -16,7 +16,6 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_QuickMoneyTransfer247_3 extends Base {
@@ -29,37 +28,14 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	List<String> listActual;
 	private String amountExpect;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		log.info("Before class");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
@@ -167,15 +143,15 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		log.info("TC_36_Kiem tra gia tri goi y khong hien thi tren man hinh");
 		verifyTrue(transferMoney.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
-		
+
 		log.info("TC_36_verify ket qua hien thi khi focus ra ngoai so tien duoc giu nguyen");
 		String moneyExpect = addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND);
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), moneyExpect);
-				
+
 	}
 
-	 @Test
-	 //----Loi app không hiển thị popup gợi ý
+	@Test
+	// ----Loi app không hiển thị popup gợi ý
 	public void TC_37_KiemTraHienThiGoiYNhanhTiepTucFocusVaoSoTienVND() {
 		log.info("TC_37_Click vao so tien vua nhap tren");
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
@@ -190,17 +166,17 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyTrue(transferMoney.checkListContain(listActual, listExpect));
 	}
 
-	 @Test
-	//---- Loi app vẫn hiển thị popup gợi ý x10, x100
+	@Test
+	// ---- Loi app vẫn hiển thị popup gợi ý x10, x100
 	public void TC_38_ChonMotGoiYVaDongPopupVND() {
 		log.info("TC_38_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
 
 		log.info("TC_38_Click vao so tien goi y");
 		transferMoney.clickToDynamicSuggestedMoney(driver, 1, "com.VCB:id/tvAmount");
-		
+
 		verifyFailure(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvAmount"));
-		
+
 	}
 
 	@Test
@@ -260,9 +236,9 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_VND;
 		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
-		
+
 		String amountExpectDoubleString = amountExpectString + TransferMoneyQuick_Data.TransferQuick.MONEY_DOUBLE_NUMBER_USD_EUR;
-		
+
 		log.info("TC_41_Kiem tra dau phay ngan cach hang ngan");
 		verifyEquals(amountStartString, amountExpectDoubleString);
 	}
@@ -284,13 +260,13 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		amountExpect = TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND;
 		amountExpectString = String.format("%,d", Long.parseLong(amountExpect.toString()));
 		String amountExpectDoubleString = amountExpectString + TransferMoneyQuick_Data.TransferQuick.MONEY_DOUBLE_NUMBER_USD_EUR;
-		
+
 		log.info("TC_43_Kiem tra dau phay ngan cach hang ngan");
 		verifyEquals(amountStartString, amountExpectDoubleString);
 	}
 
-	 @Test 
-	 //--- Lỗi app hiển thị dấu , ngăn cách hàng nghìn đang bị sai
+	@Test
+	// --- Lỗi app hiển thị dấu , ngăn cách hàng nghìn đang bị sai
 	public void TC_44_KiemTraDinhDangHienThiGoiYUSD() {
 		log.info("TC_44_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
@@ -312,14 +288,14 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 
 		log.info("TC_45_Kiem tra gia tri goi y khong hien thi tren man hinh");
 		verifyTrue(transferMoney.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
-		
+
 		log.info("TC_45_verify ket qua hien thi khi focus ra ngoai so tien duoc giu nguyen");
 		String moneyExpect = addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR);
-		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"),moneyExpect );
+		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), moneyExpect);
 	}
 
-	 @Test 
-	 //----Loi app không hiển thị popup gợi ý
+	@Test
+	// ----Loi app không hiển thị popup gợi ý
 	public void TC_46_KiemTraHienThiGoiYNhanhTiepTucFocusVaoSoTienUSD() {
 		log.info("TC_46_Click vao so tien vua nhap tren");
 		transferMoney.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
@@ -336,14 +312,14 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	}
 
 	@Test
-	//--- Loi app vẫn hiển thị popup gợi ý x10, x100
+	// --- Loi app vẫn hiển thị popup gợi ý x10, x100
 	public void TC_47_ChonMotGoiYVaDongPopupUSD() {
 		log.info("TC_47_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_47_Click vao so tien goi y");
 		transferMoney.clickToDynamicSuggestedMoney(driver, 1, "com.VCB:id/tvAmount");
-		
+
 		verifyFailure(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvAmount"));
 	}
 
@@ -355,4 +331,3 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	}
 
 }
-

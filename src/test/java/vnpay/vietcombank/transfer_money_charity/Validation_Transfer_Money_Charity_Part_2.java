@@ -17,7 +17,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
 
 public class Validation_Transfer_Money_Charity_Part_2 extends Base {
@@ -29,31 +28,14 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT3, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	TransferCharity info1 = new TransferCharity(Account_Data.Valid_Account.EUR_ACCOUNT, TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
-
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 	}
 
 	String defaultAccount;

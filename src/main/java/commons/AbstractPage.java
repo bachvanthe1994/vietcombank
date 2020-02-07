@@ -133,7 +133,7 @@ public class AbstractPage {
 		}
 	}
 
-	public static void scrollIDown(AndroidDriver<AndroidElement> driver, String locator) {
+	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.80);
@@ -141,7 +141,9 @@ public class AbstractPage {
 		TouchAction touch = new TouchAction(driver);
 
 		for (int i = 0; i < 10; i++) {
+			overRideTimeOut(driver, 2);
 			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
@@ -151,20 +153,19 @@ public class AbstractPage {
 		}
 	}
 
-	public static void scrollIDown(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.80);
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
-//		List<AndroidElement> firstPageElement = driver.findElementsByAccessibilityId(locator);
-//		if (firstPageElement.size() > 0 && firstPageElement.get(0).isDisplayed()) {
-//			System.out.println("Element displayed");
-//		} else {
+
 		for (int i = 0; i < 10; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
+			overRideTimeOut(driver, 3);
 			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
@@ -173,7 +174,6 @@ public class AbstractPage {
 			}
 		}
 	}
-//	}
 
 	public void clickToElementByJava(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -370,7 +370,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void overRideTimeOut(AndroidDriver<AndroidElement> driver, int time) {
+	public void overRideTimeOut(AndroidDriver<AndroidElement> driver, long time) {
 		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 	}
 

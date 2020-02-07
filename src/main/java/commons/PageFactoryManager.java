@@ -80,5 +80,4 @@ public class PageFactoryManager {
 	return new HotelBookingPageObject(driver);
 
     }
-
 }

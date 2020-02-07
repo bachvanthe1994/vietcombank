@@ -25,37 +25,14 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	List<String> listActual;
 	private String amountTranferString;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		log.info("Before class");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 
@@ -194,10 +171,10 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_89_Verify text man hinh xac nhan thong tin");
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.CONFIRM_INFO_LABEL), "Xác nhận thông tin");
-		
+
 		log.info("TC_89_Step_click tiep button quay lai");
 		transferMoney.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+
 		log.info("TC_89_Verify text man hinh xac nhan thong tin");
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.TRANSFER_MONEY_LABEL), "Chuyển tiền nhanh 24/7");
 	}
@@ -206,7 +183,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	public void TC_90_KiemTraManHinhXacThucBangOTP() {
 		log.info("TC_88_Step_click button tiep tục");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_90_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
@@ -256,7 +233,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	}
 
 	// @Test TC93 ---- Check lai timeout OTP bỏ case này
-	
+
 	@Test
 	public void TC_94_VerifyMessageKhiNhapOTPLonHon6KyTu() {
 		log.info("TC_94_Nhap OTP la 123");
@@ -323,8 +300,8 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), "Nội dung");
 	}
 
-	 @Test
-	 //---------Lỗi app, thông báo message lỗi và không thực hiện được giao dịch
+	@Test
+	// ---------Lỗi app, thông báo message lỗi và không thực hiện được giao dịch
 	public void TC_98_OTPNhapDungVaCheckManXacNhan() {
 		log.info("TC_98_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -374,4 +351,3 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicImageSuccess(driver, "CHUYỂN KHOẢN THÀNH CÔNG"));
 	}
 }
-

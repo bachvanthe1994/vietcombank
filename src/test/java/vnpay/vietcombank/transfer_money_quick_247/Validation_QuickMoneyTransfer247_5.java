@@ -15,7 +15,6 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_QuickMoneyTransfer247_5 extends Base {
@@ -27,37 +26,14 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	private String Note;
 	private String costTranferString;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		log.info("Before class");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 
@@ -297,11 +273,11 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	public void TC_76_ChonTaiKhoanNguonKhongDuSoDuVND() {
 		log.info("TC_76_Quay lai man hinh chuyen tien nhanh 24/7");
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
-		
+
 		log.info("TC_76_Lay so du tai khoan nguon");
 		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		Long moneyCharity = surplus + 1;
-		
+
 		log.info("TC_07_2_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 
@@ -320,11 +296,11 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		log.info("TC_77_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[2]);
-		
+
 		log.info("TC_76_Lay so du tai khoan nguon");
 		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		Long moneyCharity = surplus + 1;
-		
+
 		log.info("TC_07_2_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 
@@ -343,11 +319,11 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		log.info("TC_78_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
-		
+
 		log.info("TC_76_Lay so du tai khoan nguon");
 		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		Long moneyCharity = surplus + 1;
-		
+
 		log.info("TC_07_2_Nhap so tien");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 

@@ -31,41 +31,15 @@ public class TransferIdentity_Validate_3 extends Base {
     private String transactionNumber;
     String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-    @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
-    @BeforeClass
-    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
-	startServer();
-	log.info("Before class: Mo app ");
-	driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 
-	login = PageFactoryManager.getLoginPageObject(driver);
-	homePage = PageFactoryManager.getHomePageObject(driver);
-	trasferPage = PageFactoryManager.getTransferIdentiryPageObject(driver);
-	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-
-	log.info("Before class: Click Allow Button");
-	login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
-	log.info("TC_00_Step_1: chon tiep tuc");
-	login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-	log.info("TC_00_Step_2: chon tiep tuc");
-	login.clickToDynamicButton(driver, "Tiếp tục");
-
-	log.info("TC_00_Step_3: chon tiep tuc");
-	login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-	log.info("TC_00_Step_4: chon tiep tuc");
-	login.clickToDynamicButton(driver, "Tiếp tục");
-
-	log.info("TC_00_Step_5: chon tiep tuc");
-	login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-	log.info("TC_00_Step_6: chon tiep tuc");
-	login.clickToDynamicButton(driver, "Tiếp tục");
-
-	log.info("TC_00_Step_7: chon tu choi");
-	login.clickToDynamicButton(driver, "TỪ CHỐI");
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@BeforeClass
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+		startServer();
+		log.info("Before class: Mo app ");
+		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		login = PageFactoryManager.getLoginPageObject(driver);
+		login.Global_login(phone, pass, opt);
 
     }
 
@@ -241,20 +215,14 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_49_Step_04: kiem tra hien link quay lai");
 	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Quay lại"));
 
-	log.info("TC_49_Step_05: kiem tra text ghi chu");
-	String title = (trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/lblMessage"));
-	verifyEquals(title, TransferIdentity_Data.confirmMessage.TEXT_CONFIRM);
-    }
-
-    @Test
-    public void TC_49_NhanIconBack() {
-	log.info("TC_49_Step_1 : Click  nut Back");
-	trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
-
-	log.info("TC_49_Step_2: kiem tra title man hinh");
-	String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
-	verifyEquals(titleBar, textCheckElement.TITLEBAR);
-    }
+	@Test
+	public void TC_49_NhanIconBack() {
+		log.info("TC_49_Step_1 : Click  nut Back");
+		trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
+		log.info("TC_49_Step_2: kiem tra title man hinh");
+		String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
+		verifyEquals(titleBar, textCheckElement.TITLEBAR);
+	}
 
     @Test
     public void TC_50_BoTrongOTP() {
@@ -304,11 +272,9 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
     }
 
-    @Test
-    public void TC_53_NhapOTPKhongDung() {
-	log.info("TC_53_Step_0 : chon otp");
-	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
+	@Test
+	public void TC_53_NhapOTPKhongDung() {
 	log.info("TC_53_Step_1 : nhap otp sai");
 	trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
 
@@ -410,20 +376,20 @@ public class TransferIdentity_Validate_3 extends Base {
 
     }
 
-    @Test
-    public void TC_57_MatKhauKhongChinhXac() {
-	log.info("TC_57_Step_1: điền mat khau sai");
-	trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
+	@Test
+	public void TC_57_MatKhauKhongChinhXac() {
+		log.info("TC_57_Step_1: điền mat khau sai");
+		trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
 
-	log.info("TC_57_Step_2 : chon tiep tuc");
-	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+		log.info("TC_57_Step_2 : chon tiep tuc");
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_57_Step_3 : kiểm tra dien sai mat khau");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_PASSWORD_FALSE));
+		log.info("TC_57_Step_3 : kiểm tra dien sai mat khau");
+		verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_PASSWORD_FALSE));
 
-	log.info("TC_57_Step_4: chọn đóng");
-	trasferPage.clickToDynamicButton(driver, "Đóng");
-    }
+		log.info("TC_57_Step_4: chọn đóng");
+		trasferPage.clickToDynamicButton(driver, "Đóng");
+	}
 
     @Test
     public void TC_58_DienThieuMatKhau() {
@@ -479,14 +445,11 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_38_Step_42 : chon tiep tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	log.info("TC_38_Step_42 : kiem tra man hinh xac nhan thanh cong");
-	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, trasferPage.getTextInDynamicPopup(driver, "com.VCB:id/tvTitle")));
-    }
 
-    @AfterClass(alwaysRun = true)
-    public void afterClass() {
-//		closeApp();
-//		service.stop();
-    }
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		closeApp();
+		service.stop();
+	}
 
 }

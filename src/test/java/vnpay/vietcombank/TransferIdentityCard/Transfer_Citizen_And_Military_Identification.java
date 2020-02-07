@@ -28,41 +28,14 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	private String transactionNumber;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		trasferPage = PageFactoryManager.getTransferIdentiryPageObject(driver);
-		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-
-		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
-		log.info("TC_06_Step_0: chon tiep tuc");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("TC_06_Step_0: chon tiep tuc");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_02_Step_0: dien pass word");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("TC_06_Step_0: chon tiep tuc");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_06_Step_0: chon tiep tuc");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("TC_06_Step_0: chon tiep tuc");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_06_Step_0: chon tu choi");
-		login.clickToDynamicButton(driver, "TỪ CHỐI");
+		login.Global_login(phone, pass, opt);
 
 		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
 

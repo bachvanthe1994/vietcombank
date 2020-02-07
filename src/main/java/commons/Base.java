@@ -7,14 +7,29 @@ import java.net.ServerSocket;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
@@ -66,6 +81,65 @@ public class Base {
 
 	public void closeSMSApp() {
 		driver2.quit();
+	}
+
+	@AfterSuite
+	public void sendEmail() throws IOException {
+		String SMTP_SERVER = "smtp.gmail.com";
+		String PASSWORD = "Abc12345@";
+		String EMAIL_FROM = "vnpay.automation.team@gmail.com";
+		String EMAIL_TO = "vnpay.automation.team@gmail.com";
+
+		String EMAIL_SUBJECT = "TestNG Report";
+
+		System.out.println("Preparing to send email");
+		Properties prop = new Properties();
+		prop.put("mail.smtp.host", SMTP_SERVER);
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.port", "587");
+		String workingDir = System.getProperty("user.dir");
+
+		Session session = Session.getInstance(prop, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(EMAIL_FROM, PASSWORD);
+			}
+		});
+		Message msg = new MimeMessage(session);
+
+		try {
+
+			msg.setFrom(new InternetAddress(EMAIL_FROM));
+
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(EMAIL_TO, false));
+
+			msg.setSubject(EMAIL_SUBJECT);
+
+			Multipart emailContent = new MimeMultipart();
+			MimeBodyPart textBoyPart = new MimeBodyPart();
+			textBoyPart.setText("Download all files to see the report");
+
+			MimeBodyPart attachfile = new MimeBodyPart();
+			attachfile.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.html");
+			MimeBodyPart xmlFile1 = new MimeBodyPart();
+			xmlFile1.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.xml");
+			MimeBodyPart xmlFile2 = new MimeBodyPart();
+			xmlFile2.attachFile(workingDir + "\\test-output\\Vietcombank\\testng-failed.xml");
+			emailContent.addBodyPart(textBoyPart);
+			emailContent.addBodyPart(attachfile);
+			emailContent.addBodyPart(xmlFile1);
+			emailContent.addBodyPart(xmlFile2);
+			msg.setContent(emailContent);
+			msg.setSentDate(new Date());
+
+			Transport.send(msg);
+			System.out.println("Sent message successfully....");
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
@@ -245,11 +319,11 @@ public class Base {
 	}
 
 	public static int getCurrentDayOfWeek(LocalDate localDate) {
-		DayOfWeek dayOfWeek = DayOfWeek.from(localDate); 
-		int val = dayOfWeek.getValue(); 
+		DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+		int val = dayOfWeek.getValue();
 		return val;
 	}
-	
+
 	public static String getCurrentDay() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int day = nowUTC.getDayOfMonth();
@@ -309,7 +383,7 @@ public class Base {
 			return "";
 		}
 	}
-	
+
 	public String convertDayOfWeekVietNamese(int day) {
 		switch (day) {
 		case 1:
@@ -330,7 +404,7 @@ public class Base {
 			return "";
 		}
 	}
-	
+
 	public long convertMoneyToLong(String money, String currency) {
 		money = money.replaceAll(" " + currency, "");
 		money = money.replaceAll(",", "");
@@ -465,12 +539,12 @@ public class Base {
 		} else {
 			day1 = day + "";
 		}
-		
+
 		System.out.println(day1 + "/" + month1 + "/" + year);
 		return day1 + "/" + month1 + "/" + year;
 
 	}
-	
+
 	public String getBackWardDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusDays(days);

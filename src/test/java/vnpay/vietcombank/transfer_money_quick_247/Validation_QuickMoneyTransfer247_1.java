@@ -18,7 +18,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SetupContact_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
@@ -34,37 +33,14 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	List<String> listExpect;
 	List<String> listActual;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-
 		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("Before class: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		log.info("Before class");
-		login.inputToDynamicLogInTextBox(driver, LogIn_Data.Login_Account.PHONE, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.NEW_PASSWORD, LogIn_Data.UI.PASSWORD_LABEL);
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("Before class");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		login.Global_login(phone, pass, opt);
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 
@@ -87,7 +63,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		setupContact.deleteContactReceiver();
 
 		log.info("TC_00_Step_: Add contact 1");
-		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3],Account_Data.Valid_Account.BANK[0] , SetupContact_Data.UI.NAME_CARD[0], SetupContact_Data.UI.ACCOUNT[0]);
+		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[0], SetupContact_Data.UI.ACCOUNT[0]);
 
 		log.info("TC_00_Step_: Add contact 2");
 		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1], SetupContact_Data.UI.ACCOUNT[1]);
@@ -253,14 +229,14 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Nhập/chọn tài khoản nhận VND"));
 	}
 
-	 @Test
-	//------------Lỗi chỉ nhập được 19 ký tự
+	@Test
+	// ------------Lỗi chỉ nhập được 19 ký tự
 	public void TC_13_TaiKhoanNhanLonHon25KyTu() {
 		log.info("TC_13_Nhap 26 ky tu vao truong tai khoan");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.INVALID_ACC_ACCEPT_OVER_MAX, "Thông tin người hưởng", "1");
-		
+
 		log.info("TC_13_Verify ket qua trong");
-		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"),"");
+		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"), "");
 	}
 
 	@Test
@@ -317,7 +293,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_18_Lay danh sach gia tri danh ba nguoi huong");
 		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvName");
-		
+
 		log.info("TC_18_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(SetupContact_Data.UI.NAME_CARD);
 
@@ -332,4 +308,3 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		service.stop();
 	}
 }
-
