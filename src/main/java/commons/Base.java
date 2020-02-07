@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -243,6 +244,12 @@ public class Base {
 		return checkEquals(actual, expected);
 	}
 
+	public static int getCurrentDayOfWeek(LocalDate localDate) {
+		DayOfWeek dayOfWeek = DayOfWeek.from(localDate); 
+		int val = dayOfWeek.getValue(); 
+		return val;
+	}
+	
 	public static String getCurrentDay() {
 		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 		int day = nowUTC.getDayOfMonth();
@@ -272,6 +279,58 @@ public class Base {
 
 	}
 
+	public String convertMonthVietNamese(String month) {
+		switch (month) {
+		case "01":
+			return "Tháng 1";
+		case "02":
+			return "Tháng 2";
+		case "03":
+			return "Tháng 3";
+		case "04":
+			return "Tháng 4";
+		case "05":
+			return "Tháng 5";
+		case "06":
+			return "Tháng 6";
+		case "07":
+			return "Tháng 7";
+		case "08":
+			return "Tháng 8";
+		case "09":
+			return "Tháng 9";
+		case "10":
+			return "Tháng 10";
+		case "11":
+			return "Tháng 11";
+		case "12":
+			return "Tháng 12";
+		default:
+			return "";
+		}
+	}
+	
+	public String convertDayOfWeekVietNamese(int day) {
+		switch (day) {
+		case 1:
+			return "Thứ 2";
+		case 2:
+			return "Thứ 3";
+		case 3:
+			return "Thứ 4";
+		case 4:
+			return "Thứ 5";
+		case 5:
+			return "Thứ 6";
+		case 6:
+			return "Thứ 7";
+		case 7:
+			return "Chủ nhật";
+		default:
+			return "";
+		}
+	}
+	
 	public long convertMoneyToLong(String money, String currency) {
 		money = money.replaceAll(" " + currency, "");
 		money = money.replaceAll(",", "");

@@ -19,6 +19,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -216,30 +217,29 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	}
 	
 	@Test
-	public void TC_12_ChuyenTienDinhKy_NutTiepTuc_NhapSoTaiKhoanDichNhoHon13KyTu() {
-		log.info("TC_12_01_Nhap tai khoan dich nho hon 13 ky tu");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS, "Thông tin người hưởng", "1");
-		
-		log.info("TC_12_02_Click Tiep tuc");
+	public void TC_12_ChuyenTienDinhKy_NutTiepTuc_TaiKhoanNguonLaTaiKhoanDongChuSoHuu() {
+		log.info("TC_12_01_Chon tai khoan nguon la tai khoan dong chu so huu");
+		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_1);
+
+		log.info("TC_12_02_Step_Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
-		
-		log.info("TC_12_03_Kiem tra popup thong bao");
-		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
-		
-		log.info("TC_12_04_Click nut Dong");
+
+		log.info("TC_12_03_Step_verify message khi tai khoan dong chu so huu ");
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.MessageTransferMoney.SAME_ACCOUNT_NAME);
+
+		log.info("Close popup");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 		
-		log.info("TC_12_05_Kiem tra man hinh khoi tao chuyen tien trong VCB");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));
-		
-		log.info("TC_12_06_Nhap tai khoan dich");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.destinationAccount, "Thông tin người hưởng", "1");
+		log.info("TC_12_04_Chon tai khoan nguon hop le");
+		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 	}
 	
 	@Test
-	public void TC_13_ChuyenTienDinhKy_NutTiepTuc_NhapSoTaiKhoanDichKhongTonTaiTrenHeThong() {
-		log.info("TC_13_01_Nhap tai khoan dich khong ton tai tren he thong");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_NOT_EXISTED_IN_SYSTEM, "Thông tin người hưởng", "1");
+	public void TC_13_ChuyenTienDinhKy_NutTiepTuc_NhapSoTaiKhoanDichNhoHon13KyTu() {
+		log.info("TC_13_01_Nhap tai khoan dich nho hon 13 ky tu");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS, "Thông tin người hưởng", "1");
 		
 		log.info("TC_13_02_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -258,9 +258,9 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	}
 	
 	@Test
-	public void TC_14_ChuyenTienDinhKy_NutTiepTuc_NhapSoTaiKhoanDichKhongThuocVCB() {
-		log.info("TC_14_01_Nhap tai khoan dich khong thuoc VCB");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_NOT_EXISTED_IN_VCB, "Thông tin người hưởng", "1");
+	public void TC_14_ChuyenTienDinhKy_NutTiepTuc_NhapSoTaiKhoanDichKhongTonTaiTrenHeThong() {
+		log.info("TC_14_01_Nhap tai khoan dich khong ton tai tren he thong");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_NOT_EXISTED_IN_SYSTEM, "Thông tin người hưởng", "1");
 		
 		log.info("TC_14_02_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -279,33 +279,34 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	}
 	
 	@Test
-	public void TC_15_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanVNDSangUSD() {
-		log.info("TC_15_01_Nhap tai khoan nguon VND");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+	public void TC_15_ChuyenTienDinhKy_NutTiepTuc_NhapSoTaiKhoanDichKhongThuocVCB() {
+		log.info("TC_15_01_Nhap tai khoan dich khong thuoc VCB");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_NOT_EXISTED_IN_VCB, "Thông tin người hưởng", "1");
 		
-		log.info("TC_15_02_Nhap tai khoan dich USD");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info2.sourceAccount, "Thông tin người hưởng", "1");
-		
-		log.info("TC_15_03_Click Tiep tuc");
+		log.info("TC_15_02_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_15_04_Kiem tra popup thong bao");
+		log.info("TC_15_03_Kiem tra popup thong bao");
 		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
-		log.info("TC_15_05_Click nut Dong");
+		log.info("TC_15_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 		
+		log.info("TC_15_05_Kiem tra man hinh khoi tao chuyen tien trong VCB");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));
+		
+		log.info("TC_15_06_Nhap tai khoan dich");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.destinationAccount, "Thông tin người hưởng", "1");
 	}
 	
 	@Test
-	public void TC_16_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanVNDSangEURO() {
+	public void TC_16_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanVNDSangUSD() {
 		log.info("TC_16_01_Nhap tai khoan nguon VND");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
-		log.info("TC_16_02_Nhap tai khoan dich EUR");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.sourceAccount, "Thông tin người hưởng", "1");
+		log.info("TC_16_02_Nhap tai khoan dich USD");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info2.sourceAccount, "Thông tin người hưởng", "1");
 		
 		log.info("TC_16_03_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -319,10 +320,10 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	}
 	
 	@Test
-	public void TC_17_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanUSDSangEURO() {
-		log.info("TC_17_01_Nhap tai khoan nguon USD");
+	public void TC_17_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanVNDSangEURO() {
+		log.info("TC_17_01_Nhap tai khoan nguon VND");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
 		log.info("TC_17_02_Nhap tai khoan dich EUR");
 		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.sourceAccount, "Thông tin người hưởng", "1");
@@ -339,13 +340,13 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	}
 	
 	@Test
-	public void TC_18_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanEURSangUSD() {
+	public void TC_18_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanUSDSangEURO() {
 		log.info("TC_18_01_Nhap tai khoan nguon USD");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
 		log.info("TC_18_02_Nhap tai khoan dich EUR");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info2.sourceAccount, "Thông tin người hưởng", "1");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.sourceAccount, "Thông tin người hưởng", "1");
 		
 		log.info("TC_18_03_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -358,20 +359,20 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		
 	}
 	
-//	@Test
-	public void TC_19_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanUSDSangUSD() {
+	@Test
+	public void TC_19_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanEURSangUSD() {
 		log.info("TC_19_01_Nhap tai khoan nguon USD");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
 		log.info("TC_19_02_Nhap tai khoan dich EUR");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info4.sourceAccount, "Thông tin người hưởng", "1");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info2.sourceAccount, "Thông tin người hưởng", "1");
 		
 		log.info("TC_19_03_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_19_04_Kiem tra popup thong bao");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE);
 		
 		log.info("TC_19_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -379,13 +380,13 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 	}
 	
 //	@Test
-	public void TC_20_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanEURSangEUR() {
+	public void TC_20_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanUSDSangUSD() {
 		log.info("TC_20_01_Nhap tai khoan nguon USD");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
 		log.info("TC_20_02_Nhap tai khoan dich EUR");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info3.sourceAccount, "Thông tin người hưởng", "1");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info4.sourceAccount, "Thông tin người hưởng", "1");
 		
 		log.info("TC_20_03_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -398,66 +399,100 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		
 	}
 	
+//	@Test
+	public void TC_21_ChuyenTienDinhKy_NutTiepTuc_ChuyenKhoanEURSangEUR() {
+		log.info("TC_21_01_Nhap tai khoan nguon USD");
+		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		
+		log.info("TC_21_02_Nhap tai khoan dich EUR");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info3.sourceAccount, "Thông tin người hưởng", "1");
+		
+		log.info("TC_21_03_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_21_04_Kiem tra popup thong bao");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE));
+		
+		log.info("TC_21_05_Click nut Dong");
+		transferRecurrent.clickToDynamicButton(driver, "Đóng");
+		
+	}
+	
 	@Test
-	public void TC_21_ChuyenTienDinhKy_NutTiepTuc_LoiKhongDuSoDu() {
+	public void TC_22_ChuyenTienDinhKy_NutTiepTuc_LoiKhongDuSoDu() {
 		long surplus, moneyCharity;
-		log.info("TC_21_1_Chon tai khoan nguon");
+		log.info("TC_22_1_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		surplus = Long.parseLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		moneyCharity = surplus + 1;
 		
-		log.info("TC_21_02_Nhap so tien");
+		log.info("TC_22_02_Nhap so tien");
 		transferRecurrent.inputToDynamicInputBoxByHeader(driver, String.valueOf(moneyCharity), "Thông tin giao dịch", "1");
 		
-		log.info("TC_21_03_Click Tiep tuc");
+		log.info("TC_22_03_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_21_04_Kiem tra pop up hien thi thong bao");
+		log.info("TC_22_04_Kiem tra pop up hien thi thong bao");
 		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE);
 		
-		log.info("TC_21_05_Kiem tra pop up hien thi nut Dong");
+		log.info("TC_22_05_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
 		
-		log.info("TC_21_06_Click nut Dong");
+		log.info("TC_22_06_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 		
 	}
 	
 	@Test
-	public void TC_22__ChuyenTienDinhKy_NutTiepTuc_KiemTraSoTienGiaoDichVuotQuaHanMucToiDa1LanGiaoDich() {
-		log.info("TC_22_01_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.MONEY_OVER_PER_TRANSACTION, "Thông tin giao dịch", "1");
-		
-		log.info("TC_22_02_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
-		
-		log.info("TC_22_03_Kiem tra pop up hien thi thong bao");
-		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE);
-		
-		log.info("TC_22_04_Kiem tra pop up hien thi nut Dong");
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
-		
-		log.info("TC_22_05_Click nut Dong");
-		transferRecurrent.clickToDynamicButton(driver, "Đóng");
-	}
-	
-	@Test
-	public void TC_23__ChuyenTienDinhKy_NutTiepTuc_KiemTraSoTienGiaoDichVuotQuaHanMucToiDa1NgayCuaNhomGiaoDich() {
+	public void TC_23__ChuyenTienDinhKy_NutTiepTuc_KiemTraSoTienGiaoDichVuotQuaHanMucToiDa1LanGiaoDich() {
 		log.info("TC_23_01_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.MONEY_OVER_PER_DAY_OF_GROUP, "Thông tin giao dịch", "1");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.MONEY_OVER_PER_TRANSACTION, "Thông tin giao dịch", "1");
 		
 		log.info("TC_23_02_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_23_03_Kiem tra pop up hien thi thong bao");
-		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE);
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE);
 		
 		log.info("TC_23_04_Kiem tra pop up hien thi nut Dong");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
 		
 		log.info("TC_23_05_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
+	}
+	
+	@Test
+	public void TC_24__ChuyenTienDinhKy_NutTiepTuc_KiemTraSoTienGiaoDichVuotQuaHanMucToiDa1NgayCuaNhomGiaoDich() {
+		log.info("TC_24_01_Nhap so tien");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.MONEY_OVER_PER_DAY_OF_GROUP, "Thông tin giao dịch", "1");
+		
+		log.info("TC_24_02_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_24_03_Kiem tra pop up hien thi thong bao");
+		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE);
+		
+		log.info("TC_24_04_Kiem tra pop up hien thi nut Dong");
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng"));
+		
+		log.info("TC_24_05_Click nut Dong");
+		transferRecurrent.clickToDynamicButton(driver, "Đóng");
+	}
+	
+	@Test
+	public void TC_25_ChuyenTienDinhKy_KiemTraNhanIconBack() {
+		log.info("TC_24_01_Click nut Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+		
+		log.info("TC_24_02_Kiem tra man hinh tro ve");
+		
+	}
+	
+	@Test
+	public void TC_26_ChuyenTienDinhKy_KiemTraNhanIconHome() {
+		
 	}
 	
 	@AfterClass(alwaysRun = true)

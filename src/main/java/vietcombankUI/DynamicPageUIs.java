@@ -1,6 +1,21 @@
 package vietcombankUI;
 
 public class DynamicPageUIs {
+	public static final String DYNAMIC_HISTORY_ICON = "//android.widget.TextView[@text='%s']/following::android.widget.ImageView";
+
+	public static final String DYNAMIC_COMBOBOX = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.ImageView";
+	public static final String DYNAMIC_START_AND_END_TEXT = "//android.widget.TextView[@text='%s']//following::android.widget.ScrollView//android.widget.TextView[@text='%s']";
+	public static final String DYNAMIC_CANCEL_ICON = "//android.widget.EditText[@text ='%s']//ancestor::android.widget.LinearLayout/android.widget.ImageView";
+
+	public static final String DYNAMIC_CHANGE_ICON = "//android.widget.TextView[@text ='%s']//ancestor::android.widget.LinearLayout/android.widget.ImageView";
+
+	public static final String DYNAMIC_INPUT_POINT = "//android.widget.LinearLayout[@index ='%s']/android.widget.EditText";
+	public static final String DYNAMIC_VIEW_TEXT_START = "//android.widget.LinearLayout[@index ='%s']/android.widget.TextView";
+	public static final String DYNAMIC_LIST_ITEM = "//android.support.v7.widget.RecyclerView[@index ='%s']";
+
+	public static final String DYNAMIC_CALL_ICON = "//android.widget.TextView[@text='%s']/following::android.widget.FrameLayout/android.widget.ImageView";
+
+
     public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
     public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
     public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
@@ -43,4 +58,8 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
     public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";
     public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
+    public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.TextView";
+    public static final String DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.ImageView";
+    public static final String DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID = "//android.widget.RelativeLayout[@resource-id=\"%s\"]//android.widget.TextView";
+
 }

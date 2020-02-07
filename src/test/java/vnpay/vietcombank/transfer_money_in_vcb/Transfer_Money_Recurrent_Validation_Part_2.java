@@ -349,9 +349,10 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_18_ChuyenTienDinhKy_ComboNgayKetThuc_KiemTraChonNgayKetThuc_BangNgayBatDau() {
-		String endDate = getForwardDate(2);
-
+	public void TC_18_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraChonNgayKetThuc_LaNgayQuaKhu() {
+		String endDate;
+		endDate = getForwardDate(2);
+		
 		log.info("TC_18_01_Click Huy");
 		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 		
@@ -369,12 +370,60 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_18_05_Scroll den nut Tiep tuc");
 		transferRecurrent.scrollToText(driver, "Tiếp tục");
 		
-		log.info("TC_18_06_Chon Ngay Ket thuc");
+		log.info("TC_18_06_Chon Ngay ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
 		
 		endDate = getForwardYear(1);
 		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 2;
 		log.info("TC_18_07_Kiem tra khong cho phep chon");
+		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
+		
+		log.info("TC_18_08_Click Huy");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
+		
+		log.info("TC_18_09_Click Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+		
+		log.info("TC_18_10_Click Chuyen tien trong ngan hang");
+		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
+			
+		log.info("TC_18_11_Chon phuong thuc chuyen tien");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+	
+		log.info("TC_18_12_Scroll den nut Tiep tuc");
+		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		
+	}
+	
+	@Test
+	public void TC_19_ChuyenTienDinhKy_ComboNgayKetThuc_KiemTraChonNgayKetThuc_BangNgayBatDau() {
+		String endDate = getForwardDate(2);
+
+		log.info("TC_19_01_Click Huy");
+		login.clickToDynamicAcceptButton(driver, "android:id/button2");
+		
+		log.info("TC_19_02_Click Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+		
+		log.info("TC_19_03_Click Chuyen tien trong ngan hang");
+		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
+			
+		log.info("TC_19_04_Chon phuong thuc chuyen tien");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+	
+		log.info("TC_19_05_Scroll den nut Tiep tuc");
+		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		
+		log.info("TC_19_06_Chon Ngay Ket thuc");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
+		
+		endDate = getForwardYear(1);
+		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 1;
+		log.info("TC_19_07_Kiem tra khong cho phep chon");
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 	}
 	

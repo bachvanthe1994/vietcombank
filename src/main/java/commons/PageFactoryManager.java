@@ -7,6 +7,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SetupContactPageObject;
+import pageObjects.TrainTicketPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
@@ -15,6 +16,7 @@ import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vehicalPageObject.VehicalPageObject;
+import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 
 public class PageFactoryManager {
 
@@ -68,6 +70,15 @@ public class PageFactoryManager {
 
     public static VehicalPageObject getVehicalPageObject(AndroidDriver<AndroidElement> driver) {
 	return new VehicalPageObject(driver);
+    }
+
+    public static TrainTicketPageObject getTrainTicketPageObject(AndroidDriver<AndroidElement> driver) {
+	return new TrainTicketPageObject(driver);
+    }
+
+    public static HotelBookingPageObject getHotelBookingPageObject(AndroidDriver<AndroidElement> driver) {
+	return new HotelBookingPageObject(driver);
+
     }
 
 }
