@@ -7,7 +7,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SetupContactPageObject;
-import pageObjects.TrainTicketPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
@@ -17,6 +16,7 @@ import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBooking;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
+import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 
 public class PageFactoryManager {
 
