@@ -36,6 +36,7 @@ import model.TransferInVCBRecurrent;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
+import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class AbstractPage {
 	int longTime = 30;
@@ -798,14 +799,14 @@ public class AbstractPage {
 	}
 
 	public void clickDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		clickToElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
 	}
 
 	// Click button cancel
 	public void clickDynamicCancelIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
 	}
 
 	// So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
@@ -824,13 +825,19 @@ public class AbstractPage {
 	}
 
 	public void clickToDynamicLink(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		clickToElement(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
 	}
 
 	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+	}
+	
+	//Click icon change
+	public void clickToDynamicIconChange(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
+		clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
 	}
 
 // input vào ô input với tham số truyền vào là inputbox
@@ -887,9 +894,9 @@ public class AbstractPage {
 
 	// Nhập địa điểm tìm kiếm
 	public void inputToDynamicTextPoint(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicIndexValue) {
-		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
-		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
+		clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
 	}
 
 	public void inputToDynamicPopupPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
@@ -959,20 +966,20 @@ public class AbstractPage {
 	}
 
 	public boolean isDynamicHistoryIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
 	}
 
 	// Check hiển thị button chuyển đổi
 	public boolean isDynamicChangeIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		return isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
 	}
 
 	// Check hiển thị icon combobox
 	public boolean isDynamicComboboxDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		return isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
 	}
 
 	public boolean isDynamicVerifyTextOnButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -1145,19 +1152,19 @@ public class AbstractPage {
 
 	// Lấy text tìm hiếm điểm khởi hành và điểm đến
 	public String getDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
 	}
 
 	// Lấy giá trị tìm kiếm trong danh sách
 	public String getDynamicInputPoint(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
 	}
 
-	public String getDynamicTextPointStart(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicIndexValue);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicIndexValue);
+	public String getDynamicTextPointStart(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
+		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
 	}
 
 	public List<String> getListOfSuggestedMoneyOrListText(AndroidDriver<AndroidElement> driver, String dynamicID) {
@@ -1238,8 +1245,8 @@ public class AbstractPage {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
-
 	}
+
 
 	// lay text trong ô dropdown bằng index và header của nó
 	public String getDynamicTextInDropDownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValueAndID) {
