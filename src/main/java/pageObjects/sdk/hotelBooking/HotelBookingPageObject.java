@@ -146,7 +146,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	        int endPoint = (int) (size.width * endPercentage);
 	 
 	        new TouchAction(driver)
-	                .press(PointOption.point(startPoint, anchor))
+	                .longPress(PointOption.point(startPoint, anchor))
 	                .moveTo(PointOption.point(endPoint, anchor))
 	                .release().perform();
 	    }
@@ -280,12 +280,58 @@ public class HotelBookingPageObject extends AbstractPage{
 				}
 
 			}
-			horizontalSwipeByPercentage(0.9, 0, 0.8);
+			horizontalSwipeByPercentage(0.9, 0, 0.9);
 			
 		}
 		
 		return listHotelBookingInfo;
 		
+	}
+	
+	public List<HotelBookingInfo> getListHotelSearched() {
+		List<HotelBookingInfo> listHotelBookingInfo = new ArrayList<HotelBookingInfo>();
+		List<String> listHotelName = new ArrayList<String>();
+		
+		for (int i = 0; i <= 1 ; i ++) {
+			String hotelName = getTextInListElements(driver, HotelBookingPageUIs.TEXTVIEW_HOTEL_NAME_BY_ID).get(i);
+			
+			if (!listHotelName.contains(hotelName)) {
+				listHotelName.add(hotelName);
+				String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_HOTEL_NAME, hotelName);
+				String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvAddress")).getText();
+				String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
+
+				HotelBookingInfo info = new HotelBookingInfo("", hotelName, hotelAddress, "", "", price, "");
+				listHotelBookingInfo.add(info);
+			}
+			
+		}
+		
+		return listHotelBookingInfo;
+		
+	}
+	
+	public void viewHotelDetail() {
+		List<HotelBookingInfo> listHotelBookingInfo = getListHotelSearched();
+		
+		for (HotelBookingInfo info : listHotelBookingInfo) {
+			clickToDynamicButtonLinkOrLinkText(driver, info.hotelName);
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, info.hotelName);
+			navigateBack(driver);
+			
+		}
+	}
+	
+	public int getNumberOfHotelInMap(String... dynamicValue) {
+		String locator = String.format(HotelBookingPageUIs.VIEW_BY_CONTENT_DESC, (Object[]) dynamicValue);
+		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		return listElements.size();
+	}
+	
+	public boolean isDynamicTextViewDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
 	}
 	
 }
