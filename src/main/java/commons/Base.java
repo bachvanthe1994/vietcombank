@@ -548,8 +548,15 @@ public class Base {
 	public String getBackWardDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusDays(days);
-
 		int day = date.getDayOfMonth();
 		return day + "";
 	}
+
+	public String getForWardDay(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.plusDays(days);
+		int day = date.getDayOfMonth();
+		return day + "";
+	}
+
 }

@@ -183,25 +183,25 @@ public class AbstractPage {
 
 	public void clickToElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
-		if (element.isDisplayed()) {
-			element.click();
-		} else {
-			clickToElementByJava(driver, locator);
-		}
+		element.click();
+
 	}
 
 	public void clickToElement(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
-		if (element.isDisplayed()) {
-			element.click();
-		} else {
-			clickToElementByJava(driver, locator);
-		}
+		element.click();
+
 	}
 
 	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, String locator, int elementIndex, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		element.get(elementIndex).click();
+
+	}
+
+	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, int elementIndex, String locator) {
 		List<AndroidElement> element = driver.findElements(By.xpath(locator));
 		element.get(elementIndex).click();
 
@@ -605,7 +605,7 @@ public class AbstractPage {
 
 	public void waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		try {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
@@ -772,6 +772,7 @@ public class AbstractPage {
 
 // click vào icon ứng dụng trên màn hình theo tên của icon đó
 	public void clickToDynamicIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 
