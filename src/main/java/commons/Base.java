@@ -118,7 +118,7 @@ public class Base {
 
 			Multipart emailContent = new MimeMultipart();
 			MimeBodyPart textBoyPart = new MimeBodyPart();
-			textBoyPart.setText("Download all files to see the report");
+			textBoyPart.setText("Download all files to see the report" + new Date());
 
 			MimeBodyPart attachfile = new MimeBodyPart();
 			attachfile.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.html");

@@ -140,7 +140,7 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			overRideTimeOut(driver, 2);
 			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
@@ -160,10 +160,9 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
-
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
-			overRideTimeOut(driver, 3);
+			overRideTimeOut(driver, 2);
 			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
