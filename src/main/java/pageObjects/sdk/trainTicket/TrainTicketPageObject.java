@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.sdk.trainTicket;
 
 import java.util.List;
 

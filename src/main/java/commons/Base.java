@@ -118,7 +118,7 @@ public class Base {
 
 			Multipart emailContent = new MimeMultipart();
 			MimeBodyPart textBoyPart = new MimeBodyPart();
-			textBoyPart.setText("Download all files to see the report");
+			textBoyPart.setText("Download all files to see the report" + new Date());
 
 			MimeBodyPart attachfile = new MimeBodyPart();
 			attachfile.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.html");
@@ -548,8 +548,15 @@ public class Base {
 	public String getBackWardDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusDays(days);
-
 		int day = date.getDayOfMonth();
 		return day + "";
 	}
+
+	public String getForWardDay(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.plusDays(days);
+		int day = date.getDayOfMonth();
+		return day + "";
+	}
+
 }
