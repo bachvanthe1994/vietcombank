@@ -149,6 +149,7 @@ public class AbstractPage {
 				break;
 			} else {
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				sleep(driver, 500);
 
 			}
 		}
@@ -170,7 +171,7 @@ public class AbstractPage {
 				break;
 			} else {
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-
+				sleep(driver, 500);
 			}
 		}
 	}
@@ -833,8 +834,8 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
 	}
-	
-	//Click icon change
+
+	// Click icon change
 	public void clickToDynamicIconChange(AndroidDriver<AndroidElement> driver, String dynamicText) {
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
 		clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
@@ -1246,7 +1247,6 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 	}
-
 
 	// lay text trong ô dropdown bằng index và header của nó
 	public String getDynamicTextInDropDownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValueAndID) {

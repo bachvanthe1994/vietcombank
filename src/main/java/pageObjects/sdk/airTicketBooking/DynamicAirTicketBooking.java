@@ -69,6 +69,11 @@ public class DynamicAirTicketBooking extends AbstractPage {
 		return getTextElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, textAndID);
 	}
 
+	public String getDynamicTextByID(String id) {
+		waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);
+		return getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);
+	}
+
 	public boolean isDynamicTextDisplayed(String text) {
 		waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
 		return isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
