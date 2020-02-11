@@ -14,5 +14,7 @@ public class TrainTicketPageUIs {
 		public static final String DYNAMIC_LIST_ITEM = "//android.support.v7.widget.RecyclerView[@index ='%s']";
 
 		public static final String DYNAMIC_CALL_ICON = "//android.widget.TextView[@text='%s']/following::android.widget.FrameLayout/android.widget.ImageView";
+	    public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
+		public static final String DYNAMIC_DATE = "//android.widget.TextView[@resource-id='%s']";
 	}
 

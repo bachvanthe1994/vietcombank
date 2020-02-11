@@ -21,6 +21,9 @@ public class Validation_TrainTicket_2 extends Base {
 	private TrainTicketPageObject trainTicket;
 	List<String> listExpect;
 	List<String> listActual;
+	private String currentDay = getCurrentDay();
+	private String currentMonth = "TH"+getCurrenMonth();
+	private String currentYear = getCurrentYear();
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -77,8 +80,50 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyEquals(trainTicket.getDynamicTextPointStart(driver, "com.VCB:id/tvTextArrival"),  TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 	
-	@Test
-	public void TC_01_CheckHienThiThoiGianKhoiHanh() {
+	//@Test
+	//Chưa check được với ngày cuối tháng, và chưa check đc TH tháng <10 hiện tại tháng default có số 0
+	public void TC_02_CheckHienThiThoiGianKhoiHanh() {
+		log.info("TC_02_Check hien thi ngay di la ngay hien tai");
+		verifyEquals(trainTicket.getDynamicDateTime(driver, "com.VCB:id/tv_ngay_di"), currentDay);
+		
+		log.info("TC_02_Check hien thi thang di la thang hien tai");
+		verifyEquals(trainTicket.getDynamicDateTime(driver, "com.VCB:id/tv_thang_di"), currentMonth);
+		
+		log.info("TC_02_Check hien thi nam di la nam hien tai");
+		verifyEquals(trainTicket.getDynamicDateTime(driver, "com.VCB:id/tv_nam_di"), currentYear);
+		
+		log.info("TC_02_Check hien thi ngay ve la ngay di + 3");
 	
+		verifyEquals(trainTicket.getDynamicDateTime(driver, "com.VCB:id/tv_ngay_ve"), currentDay + 3);
+		
+		log.info("TC_02_Check hien thi thang ve la thang hien tai");
+		verifyEquals(trainTicket.getDynamicDateTime(driver, "com.VCB:id/tv_thang_ve"), currentMonth);
+		
+		log.info("TC_02_Check hien thi nam ve la nam hien tai");
+		verifyEquals(trainTicket.getDynamicDateTime(driver, "com.VCB:id/tv_nam_ve"), currentYear);
+	}
+	
+	@Test
+	public void TC_03_FocusNgayDiNgayVe() {
+		log.info("TC_03_Vao man hinh chon ngay");
+		trainTicket.clickToDynamicSelectDate(driver, "com.VCB:id/tv_ngay_di");
+		
+		log.info("TC_03_verify lable");
+		trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Chọn ngày");
+		
+		log.info("TC_03_verify icon quay ve");
+		trainTicket.isDynamicBackIconDisplayed(driver, "Chọn ngày");
+		
+		log.info("TC_03_verify lable ngay di");
+		trainTicket.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvLbNgayDiRound");
+		
+		/*log.info("TC_03_verify lable ngay ve");
+		trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "com.VCB:id/tvLbNgayVeRound");*/
+	}
+	
+	@Test
+	public void TC_04_NhanIconBack() {
+	/*	log.info("TC_03_Click icon back cua man hinh chon ngay");
+		trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "ngày về");*/
 	}
 }

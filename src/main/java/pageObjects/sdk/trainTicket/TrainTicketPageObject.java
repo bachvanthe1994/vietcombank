@@ -7,6 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.DynamicPageUIs;
 
+
 public class TrainTicketPageObject extends AbstractPage {
 
     public TrainTicketPageObject(AndroidDriver<AndroidElement> mappingDriver) {
@@ -19,4 +20,6 @@ public class TrainTicketPageObject extends AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_STARUS, dynamicIndex);
 	return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_STARUS, dynamicIndex);
     }
+    
+  
 }
