@@ -374,7 +374,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
