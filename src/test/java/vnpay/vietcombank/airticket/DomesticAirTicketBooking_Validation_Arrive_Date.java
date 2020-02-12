@@ -14,13 +14,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.sdk.airTicketBooking.DynamicAirTicketBooking;
+import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 
 public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
-	private DynamicAirTicketBooking airTicket;
+	private DynamicAirTicketBookingObjects airTicket;
 	private String yesterday = getBackWardDay(1);
 	private String twoDaysAgo = getBackWardDay(2);
 
