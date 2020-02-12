@@ -329,30 +329,23 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 	@Test
 	public void TC_18_DatPhongKhachSan_KiemTraChonNgayDatVaNgayTra() {
+		String nowDay = getForwardDate(0);
 		String expectCheckInDay = getForwardDate(1);
 		String expectCheckOutDay = getForwardDate(3);
 
-		log.info("TC_18_01_Click chon ngay dat");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Ngày đặt");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, expectCheckInDay.split("/")[0]);
-
-		log.info("TC_18_02_Click chon ngay tra");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Ngày trả");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, expectCheckOutDay.split("/")[0]);
-
-		log.info("TC_18_03_Kiem tra ngay duoc chon - Ngay dat");
-		verifyTrue(hotelBooking.checkDateSelected(expectCheckInDay.split("/")[0]));
-
-		log.info("TC_18_04_Kiem tra ngay duoc chon - Ngay tra");
-		verifyTrue(hotelBooking.checkDateSelected(expectCheckOutDay.split("/")[0]));
-
+		log.info("TC_18_01_Click chon ngay tra va ngay dat");
+		hotelBooking.clickToDateHotelBooking(nowDay, expectCheckInDay, expectCheckOutDay);
+		
+		log.info("TC_18_02_Kiem tra ngay duoc chon - Ngay tra, Ngay dat");
+		verifyTrue(hotelBooking.checkDateSelected(expectCheckOutDay.split("/")[0].replace("0", "")));
+		
 		String actualCheckInDay = hotelBooking.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDay");
 		String actualCheckOutDay = hotelBooking.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDay");
 
-		log.info("TC_18_05_Kiem tra ngay dat duoc chon chinh xac");
+		log.info("TC_18_03_Kiem tra ngay dat duoc chon chinh xac");
 		verifyEquals(actualCheckInDay, expectCheckInDay);
 
-		log.info("TC_18_06_Kiem tra ngay tra duoc chon chinh xac");
+		log.info("TC_18_04_Kiem tra ngay tra duoc chon chinh xac");
 		verifyEquals(expectCheckOutDay, actualCheckOutDay);
 
 	}

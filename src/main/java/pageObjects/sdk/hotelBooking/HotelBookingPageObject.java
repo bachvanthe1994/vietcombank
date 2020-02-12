@@ -179,7 +179,7 @@ public class HotelBookingPageObject extends AbstractPage{
         int yEnd = elementEnd.getLocation().getY();
         
         new TouchAction(driver)
-                .press(PointOption.point(xStart, yStart))
+                .longPress(PointOption.point(xStart, yStart))
                 .moveTo(PointOption.point(xEnd, yEnd))
                 .release().perform();
     }
@@ -404,6 +404,32 @@ public class HotelBookingPageObject extends AbstractPage{
 		waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
 		sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
 
+	}
+	
+	public void clickToDateHotelBooking(String now, String startDate, String endDate) {	
+		clickToDynamicTextView("Ngày đặt");
+		String nowDay = now.split("/")[0].replace("0", "");
+		String startDay = startDate.split("/")[0].replace("0", "");
+		String endDay = endDate.split("/")[0].replace("0", "");
+		
+		String nowMonth = now.split("/")[1].replace("0", "");
+		String startMonth = startDate.split("/")[1].replace("0", "");
+		String endMonth = endDate.split("/")[1].replace("0", "");
+		
+		String endYear = endDate.split("/")[2];
+		
+		boolean check = false;
+		if (!startMonth.equals(nowMonth)) {
+			swipeElementToElementByText("Tháng " + startMonth + " " + endYear, "Ngày đặt");
+			check = true;
+		}
+		clickToDynamicTextView(startDay);
+		clickToDynamicTextView("Ngày trả");
+		if (!endMonth.equals(nowMonth) && check == false) {
+			swipeElementToElementByText("Tháng " + startMonth + " " + endYear, "Ngày đặt");
+		}
+		clickToDynamicTextView(endDay);
+		
 	}
 	
 }

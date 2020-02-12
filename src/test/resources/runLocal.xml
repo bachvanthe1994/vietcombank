@@ -18,11 +18,11 @@
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0399764702" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-			<class name="vnpay.vietcombank.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate" />
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_1" />
 <!-- 			<class name="vnpay.vietcombank.airticket.DomesticAirTicketBooking_Validation_Arrive_Date" /> -->
 
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
