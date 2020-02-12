@@ -46,6 +46,7 @@ public class Base {
 
 	private String workingDir = System.getProperty("user.dir");
 	public AppiumDriverLocalService service;
+	private String arriveDay;
 
 	protected Base() {
 		log = Logger.getLogger(getClass());
@@ -379,6 +380,68 @@ public class Base {
 			return "Tháng 11";
 		case "12":
 			return "Tháng 12";
+		default:
+			return "";
+		}
+	}
+
+	public String convertMonFomatTH(String month) {
+		switch (month) {
+		case "01":
+			return "TH 1";
+		case "02":
+			return "TH 2";
+		case "03":
+			return "TH 3";
+		case "04":
+			return "TH 4";
+		case "05":
+			return "TH 5";
+		case "06":
+			return "TH 6";
+		case "07":
+			return "TH 7";
+		case "08":
+			return "TH 8";
+		case "09":
+			return "TH 9";
+		case "10":
+			return "TH 10";
+		case "11":
+			return "TH 11";
+		case "12":
+			return "TH 12";
+		default:
+			return "";
+		}
+	}
+
+	public String convertMonFomatTh(String month) {
+		switch (month) {
+		case "01":
+			return "Th1";
+		case "02":
+			return "Th2";
+		case "03":
+			return "Th3";
+		case "04":
+			return "Th4";
+		case "05":
+			return "Th5";
+		case "06":
+			return "Th6";
+		case "07":
+			return "Th7";
+		case "08":
+			return "Th8";
+		case "09":
+			return "Th9";
+		case "10":
+			return "Th10";
+		case "11":
+			return "Th11";
+		case "12":
+			return "Th12";
 		default:
 			return "";
 		}

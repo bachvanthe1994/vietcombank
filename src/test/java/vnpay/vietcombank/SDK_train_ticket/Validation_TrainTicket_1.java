@@ -172,11 +172,22 @@ public class Validation_TrainTicket_1 extends Base {
 
 		log.info("TC_06_Verify lay gia tri ga khoi hanh vua nhap");
 		verifyEquals(trainTicket.getDynamicInputPoint(driver, "0"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
+	}
+	
+	@Test
+	public void TC_10_NhapKyTimKiemGanDungGaKhoiHanh() {
+		log.info("TC_08_01_Nhap ky tu vao o Search");
+		trainTicket.inputToDynamicTextPoint(driver, TrainTicket_Data.inputText.POINT_SERACH_THE_SAME, "0");
 
+		log.info("TC_08_01_Lay danh sach tim kiem");
+		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTen");
+		
+		log.info("TC_08_02_Kiem tra hien thi ket qua goi y");
+		verifyTrue(trainTicket.checkSuggestPoint(listSuggestPoint, "binh"));
 	}
 
 	@Test
-	public void TC_10_NhapGaKhoiHanhHopLe() {
+	public void TC_11_NhapGaKhoiHanhHopLe() {
 		log.info("TC_06_Nhap text ga khoi hanh co trong danh sach");
 		trainTicket.inputToDynamicTextPoint(driver, TrainTicket_Data.inputText.POINT_START_END_VALID, "0");
 
@@ -188,7 +199,7 @@ public class Validation_TrainTicket_1 extends Base {
 	}
 
 	@Test
-	public void TC_11_ChonMotGaKhoiHanhHopLe() {
+	public void TC_12_ChonMotGaKhoiHanhHopLe() {
 		log.info("TC_06_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(driver, TrainTicket_Data.inputText.POINT_START_END_VALID);
 
@@ -197,13 +208,13 @@ public class Validation_TrainTicket_1 extends Base {
 	}
 
 	@Test
-	public void TC_12_KiemTraGiaTriNhapVaoGaKhoiHanh() {
+	public void TC_13_KiemTraGiaTriNhapVaoGaKhoiHanh() {
 		log.info("TC_06_Verify lay gia tri ga khoi hanh vua nhap");
 		verifyEquals(trainTicket.getDynamicInputPoint(driver, "0"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 
 	@Test
-	public void TC_13_KiemTraSuaGaKhoiHanh() {
+	public void TC_14_KiemTraSuaGaKhoiHanh() {
 		log.info("TC_06_Nhap text ga khoi hanh co trong danh sach");
 		trainTicket.inputToDynamicTextPoint(driver, TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "0");
 
@@ -212,7 +223,7 @@ public class Validation_TrainTicket_1 extends Base {
 	}
 
 	@Test
-	public void TC_14_TimKiemGaKhoiHanhKhongTonTai() {
+	public void TC_15_TimKiemGaKhoiHanhKhongTonTai() {
 		log.info("TC_06_Nhap text ga khoi hanh co trong danh sach");
 		trainTicket.inputToDynamicTextPoint(driver, TrainTicket_Data.inputText.POINT_NUMBER_VALID, "0");
 
@@ -221,13 +232,13 @@ public class Validation_TrainTicket_1 extends Base {
 	}
 
 	@Test
-	public void TC_15_CheckHienThiMacDinhTextGaDen() {
+	public void TC_16_CheckHienThiMacDinhTextGaDen() {
 		log.info("TC_01_Check text ga den");
 		verifyEquals(trainTicket.getDynamicInputPoint(driver, "2"), "Ga đến");
 	}
 
 	@Test
-	public void TC_16_DongPopupVaCheckManHinhNgoai() {
+	public void TC_17_DongPopupVaCheckManHinhNgoai() {
 		log.info("TC_07_Click icon X cancel");
 		trainTicket.clickDynamicCancelIcon(driver, TrainTicket_Data.inputText.POINT_NUMBER_VALID);
 
@@ -240,7 +251,7 @@ public class Validation_TrainTicket_1 extends Base {
 
 	@Test
 	// Lỗi app vẫn cho phép nhập hơn 100 ký tự
-	public void TC_17_NhapToiDaKyTuTruongGaden() {
+	public void TC_18_NhapToiDaKyTuTruongGaden() {
 		log.info("TC_06_Click ga khoi hanh");
 		trainTicket.clickDynamicPointStartAndEnd(driver, "ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_START);
 
@@ -255,7 +266,7 @@ public class Validation_TrainTicket_1 extends Base {
 	}
 
 	@Test
-	public void TC_18_NhapKyTuDacBietVaKyTuKhacTruongGaDen() {
+	public void TC_19_NhapKyTuDacBietVaKyTuKhacTruongGaDen() {
 		log.info("TC_06_Nhap text ky tu dac biet");
 		trainTicket.inputToDynamicTextPoint(driver, TrainTicket_Data.inputText.POINT_SPECIAL_INVALID, "2");
 
@@ -279,6 +290,17 @@ public class Validation_TrainTicket_1 extends Base {
 
 		log.info("TC_06_Verify lay gia tri ga den vua nhap");
 		verifyEquals(trainTicket.getDynamicInputPoint(driver, "2"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
+	}
+	
+	@Test
+	public void TC_20_NhapKyTimKiemGanDungGaDen() {
+		log.info("TC_08_01_Nhap ky tu vao o Search");
+		trainTicket.inputToDynamicTextPoint(driver, TrainTicket_Data.inputText.POINT_SERACH_THE_SAME, "2");
+
+		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTen");
+		
+		log.info("TC_08_02_Kiem tra hien thi ket qua goi y");
+		verifyTrue(trainTicket.checkSuggestPoint(listSuggestPoint, "binh"));
 	}
 
 	@Test
