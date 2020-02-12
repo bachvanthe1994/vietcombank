@@ -23,6 +23,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 
 import io.appium.java_client.MobileElement;
@@ -148,6 +149,7 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
+				sleep(driver, 500);
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 				sleep(driver, 500);
 
@@ -170,8 +172,9 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
+				sleep(driver, 1000);
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 500);
+				sleep(driver, 1000);
 			}
 		}
 	}
@@ -498,15 +501,25 @@ public class AbstractPage {
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
-	public void waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator) {
+	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator) {
 
-		WebDriverWait wait = new WebDriverWait(driver, longTime1);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+			return false;
 
 		}
+		return true;
+
 	}
 
 	public void waitForElementClickable(AndroidDriver<AndroidElement> driver, String locator) {
@@ -593,7 +606,7 @@ public class AbstractPage {
 		sleep(driver, 1000);
 	}
 
-	public void waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -602,19 +615,36 @@ public class AbstractPage {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+			return false;
+
 		}
+		return true;
+
 	}
 
-	public void waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			return false;
 		}
+		return true;
 	}
 
 	public String getOTPText(AndroidDriver<AndroidElement> driver, String bankName, String allMesssage) {

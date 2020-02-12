@@ -13,13 +13,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.sdk.airTicketBooking.DynamicAirTicketBooking;
+import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 
 public class DomesticAirTicketBooking_MainFlow extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
-	private DynamicAirTicketBooking airTicket;
+	private DynamicAirTicketBookingObjects airTicket;
 	private String tomorrowDay = getForWardDay(1);
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
