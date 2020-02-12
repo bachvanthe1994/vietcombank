@@ -161,6 +161,32 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
 		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày đi", "com.VCB:id/tvValue"), getForwardDate(1));
 		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày về", "com.VCB:id/tvValue"), getForwardDate(1));
 
+		log.info("TC_05_Step 06: Click quay lai");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+
+	}
+
+	@Test
+	public void TC_06_KiemTraNgayDiKhiChonTuVeMotChieuSangKhuHoi() {
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
+
+		log.info("Before class: Click Dong y ");
+		airTicket.clickToDynamicButton("Đồng ý");
+
+		airTicket.clickToDynamicTextOrButtonLink("Khứ hồi");
+
+		log.info("TC_05_Step 01: Click Ngay Đi");
+		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
+
+		log.info("TC_05_Step 03: Click Chon Ngay Di va Ngay Ve");
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
+
+		log.info("TC_05_Step 04: Click xac nhan");
+		airTicket.clickToDynamicButton("Xác nhận");
+
+		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
+
 	}
 
 	@AfterClass(alwaysRun = true)
