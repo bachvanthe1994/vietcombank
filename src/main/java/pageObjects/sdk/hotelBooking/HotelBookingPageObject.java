@@ -249,6 +249,10 @@ public class HotelBookingPageObject extends AbstractPage{
 		
 	}
 	
+	public HotelBookingInfo getHotelBookingHistoryByStatus(List<HotelBookingInfo> listHotel , String statusFilter) {
+		return listHotel.stream().filter(p -> p.status.equals(statusFilter)).collect(Collectors.toList()).get(0);
+	}
+	
 	public List<String> getListOfStatusHotelBooking(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_LISTVIEW, dynamicID);
 		return getTextInListElements(driver, HotelBookingPageUIs.TEXTVIEW_BY_LISTVIEW, dynamicID);
@@ -430,6 +434,13 @@ public class HotelBookingPageObject extends AbstractPage{
 		}
 		clickToDynamicTextView(endDay);
 		
+	}
+	
+	public void clickToDetailButtonByPayCode(String paycode) {
+		scrollIDown(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+		waitForElementVisible(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+		clickToElement(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+
 	}
 	
 }
