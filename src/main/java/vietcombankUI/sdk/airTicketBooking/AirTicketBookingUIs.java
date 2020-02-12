@@ -12,6 +12,9 @@ public class AirTicketBookingUIs {
 	public static final String DYNAMIC_CHECK_BOX_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.CheckBox[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout/android.widget.TextView[@text='%s']";
-	public static final String DYNAMIC_PLACE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView[@text='%s']";
+	public static final String DYNAMIC_SELECTED_PEOPLE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout/android.widget.TextView[@resource-id='com.VCB:id/tvNumber']";
+	public static final String DYNAMIC_PLACE_TEXT = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView[@text='%s']";
+	public static final String DYNAMIC_PRICE_INFO = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_ICON_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView[@resource-id=\"%s\"]";
 
 }

@@ -258,10 +258,10 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 	@Test
 	public void TC_10_KiemTraNgayDiNhoHonNgayHienTai() {
 		log.info("TC_10_Step 01: Chon  2 ngay truoc");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), twoDaysAgo);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearMinusDays(2), twoDaysAgo);
 
 		log.info("TC_10_Step 02: Chon ngay hom qua");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), yesterday);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearMinusDays(1), yesterday);
 
 		log.info("TC_10_Step 03: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
@@ -318,7 +318,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
 
 		log.info("TC_12_Step 03: Click ngay mai");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
 
 		log.info("TC_12_Step 04: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
@@ -360,8 +360,8 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 	public void TC_14_KiemTracChonjNgayHopLeVoiVe2Chieu() {
 
 		log.info("TC_14_Step 03: Click Chon Ngay Di va Ngay Ve");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(2));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(2), getForWardDay(2));
 
 		log.info("TC_14_Step 04: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
