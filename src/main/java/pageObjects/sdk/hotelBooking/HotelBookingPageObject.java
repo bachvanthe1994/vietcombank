@@ -11,6 +11,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
+import commons.Constants;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -158,7 +159,7 @@ public class HotelBookingPageObject extends AbstractPage{
         int endPoint = (int) (size.height * endPercentage);
  
         new TouchAction(driver)
-                .press(PointOption.point(anchor, startPoint))
+                .longPress(PointOption.point(anchor, startPoint))
                 .moveTo(PointOption.point(anchor, endPoint))
                 .release().perform();
     }
@@ -328,9 +329,80 @@ public class HotelBookingPageObject extends AbstractPage{
 		return listElements.size();
 	}
 	
-	public boolean isDynamicTextViewDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicTextViewDisplayed(String dynamicTextValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
+	}
+	
+	public void clickToDynamicTextView(String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
+	}
+	
+	public List<String> getServicesOfHotelByID(String... dynamicID){
+		List<String> listService = new ArrayList<String>();
+		String locator = String.format(HotelBookingPageUIs.TEXTVIEW_BY_LINEAR_LAYOUT_ID, (Object[]) dynamicID);
+		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		for(AndroidElement element : listElements) {
+			listService.add(element.getText());
+		}
+		return listService;
+		
+	} 
+	
+	public boolean checkSelectedService(String... dynamicValue) {
+		String locator = String.format(HotelBookingPageUIs.TEXTVIEW_BY_TEXT, (Object[]) dynamicValue);
+		AndroidElement element = driver.findElement(By.xpath(locator));
+		return Boolean.parseBoolean(element.getAttribute("selected"));
+		
+	}
+	
+	public boolean checkFilerHotelByDictrict(List<HotelBookingInfo> listHotelInfo, String expectDictrict) {
+		for (HotelBookingInfo info : listHotelInfo) {
+			if (!info.hotelAddress.contains(expectDictrict)) {
+				return false;
+			}
+		}
+		return true;
+		
+	}
+	
+	public boolean checkFilerHotelByPrice(List<HotelBookingInfo> listHotelInfo, String maxPrice, String minPrice) {
+		for (HotelBookingInfo info : listHotelInfo) {
+			if (( Integer.parseInt(info.price.replaceAll("\\D+","")) < Integer.parseInt(minPrice.replaceAll("\\D+","")) ) ||  ( Integer.parseInt(info.price.replaceAll("\\D+","")) > Integer.parseInt(maxPrice.replaceAll("\\D+","")) )) {
+				return false;
+			}
+		}
+		return true;
+		
+	}
+	
+	public void scrollIDownToText(String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.80);
+		int endY = (int) (size.getHeight() * 0.30);
+		TouchAction touch = new TouchAction(driver);
+		String locator = String.format(HotelBookingPageUIs.TEXTVIEW_BY_TEXT, (Object[]) dynamicValue);
+		for (int i = 0; i < 20; i++) {
+			locator = String.format(locator, (Object[]) dynamicValue);
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+
+			}
+		}
+	}
+	
+	public void inputToDynamicInputBoxByID(String inputValue, String dynamicID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
 
 	}
 	
