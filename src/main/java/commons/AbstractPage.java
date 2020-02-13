@@ -149,9 +149,9 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 500);
+				sleep(driver, 1500);
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 500);
+				sleep(driver, 1500);
 
 			}
 		}
@@ -171,9 +171,9 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 500);
+				sleep(driver, 1500);
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 500);
+				sleep(driver, 1500);
 
 			}
 		}
@@ -194,9 +194,9 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1000);
+				sleep(driver, 1500);
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1000);
+				sleep(driver, 1500);
 			}
 		}
 	}
@@ -216,9 +216,9 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1000);
+				sleep(driver, 1500);
 				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1000);
+				sleep(driver, 1500);
 			}
 		}
 	}

@@ -544,9 +544,6 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		log.info("TC_12_Step 06: kiem tra ngay di hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_date_ngayve"), airTicket.getDayInWeek(getForwardDate(2)) + " " + getForwardDate(2));
 
-		log.info("TC_12_Step 09: Kiem tra code bay hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_flightName"), "HAN - SGN");
-
 		log.info("TC_12_Step 10: Kiem tra icon loc hien thi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/iv_Filter"));
 
