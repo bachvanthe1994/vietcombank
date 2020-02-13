@@ -3,6 +3,8 @@ package vnpay.vietcombank.sdk.hotelBooking.data;
 import java.util.Arrays;
 import java.util.List;
 
+import vietcombank_test_data.LogIn_Data;
+
 public class HotelBooking_Data {
 	public static final String FAMOUS_LOCATION[] = {"Hà Nội", "TP Hồ Chí Minh", "Bình Dương"};
 	public static final String GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS = "!@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn";
@@ -17,5 +19,17 @@ public class HotelBooking_Data {
 	public static final String EMPTY_EMAIL_MESSAGE = "Quý khách vui lòng nhập Email";
 	public static final String NOT_VALID_EMAIL_MESSAGE = "Email không đúng định dạng. Vui lòng kiểm tra lại";
 	public static final String NOT_VALID_PHONE_MESSAGE = "Số điện thoại khách hàng không hợp lệ";
+	public static final String TRANSACTION_VALIDATION = "Xác thực giao dịch";
+	public static final String OTP_NOTIFICATION_SENDED = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;
+	public static final String PASSWORD_NOTIFICATION = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch";
+	public static final String OTP_EMPTY = "Quý khách vui lòng nhập mã OTP";
+	public static final String PASSWORD_EMPTY = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
+	public static final String OTP_LESS_THAN_6_CHARACTER = "OTP phải đủ 6 ký tự, Quý khách vui lòng kiểm tra lại";
+	public static final String PASSWORD_LESS_THAN_8_CHARACTER = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá " + LogIn_Data.Login_Account.PASSWORD_INVALID_TIMES + " lần.";
+	public static final String OTP_INVALID = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
+	public static final String PASSWORD_INVALID = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá " + LogIn_Data.Login_Account.PASSWORD_INVALID_TIMES + " lần.";
+	public static final String OTP_INVALID_N_TIMES = "Nhập sai OTP quá " + LogIn_Data.Login_Account.OTP_INVALID_TIMES + " lần. Quý khách vui lòng thực hiện giao dịch khác.";
+	public static final String PASSWORD_INVALID_N_TIMES = "";
+	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
 	
 }
