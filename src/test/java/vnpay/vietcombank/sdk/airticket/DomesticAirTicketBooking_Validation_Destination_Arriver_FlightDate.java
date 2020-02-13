@@ -1,4 +1,4 @@
-package vnpay.vietcombank.airticket;
+package vnpay.vietcombank.sdk.airticket;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -15,7 +15,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
-import vnpay.vietcombank.airticket.data.DomesticAirTicketBooking_Data;
+import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate extends Base {
 	AndroidDriver<AndroidElement> driver;

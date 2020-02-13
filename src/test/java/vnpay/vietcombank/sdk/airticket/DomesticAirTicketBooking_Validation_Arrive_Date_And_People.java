@@ -1,4 +1,4 @@
-package vnpay.vietcombank.airticket;
+package vnpay.vietcombank.sdk.airticket;
 
 import java.io.IOException;
 import java.util.Calendar;

@@ -149,9 +149,13 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1500);
-				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1500);
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
 
 			}
 		}
@@ -171,9 +175,13 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1500);
-				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1500);
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
 
 			}
 		}
@@ -194,9 +202,13 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1500);
-				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1500);
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
 			}
 		}
 	}
@@ -216,9 +228,13 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1500);
-				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1500);
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
 			}
 		}
 	}
@@ -243,7 +259,7 @@ public class AbstractPage {
 
 	}
 
-	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, String locator, int elementIndex, String... dynamicValue) {
+	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, int elementIndex, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<AndroidElement> element = driver.findElements(By.xpath(locator));
 		element.get(elementIndex).click();
@@ -751,11 +767,11 @@ public class AbstractPage {
 			;
 			break;
 		case 6:
-			dayInWeek = "Thứ bảy";
+			dayInWeek = "Thứ Bảy";
 			System.out.println(dayInWeek);
 			break;
 		case 7:
-			dayInWeek = "Chủ nhật";
+			dayInWeek = "Chủ Nhật";
 			System.out.println(dayInWeek);
 			break;
 		}
@@ -912,7 +928,7 @@ public class AbstractPage {
 
 	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+		clickToOneOfElement(driver, index, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	}
 
 	// Click icon change
