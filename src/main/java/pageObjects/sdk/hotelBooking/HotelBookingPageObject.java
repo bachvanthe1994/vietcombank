@@ -334,9 +334,14 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public boolean isDynamicTextViewDisplayed(String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
 
+	}
+	
+	public boolean isDynamicInputBoxByTextDisPlayed(String... dynamicTextValue) {
+		waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		return isControlDisplayed(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
 	}
 	
 	public void clickToDynamicTextView(String dynamicTextValue) {
@@ -440,6 +445,17 @@ public class HotelBookingPageObject extends AbstractPage{
 		scrollIDown(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
 		waitForElementVisible(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
 		clickToElement(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+
+	}
+	
+	public void waitForTextViewDisplay (String textView) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, textView);
+	
+	}
+	
+	public String getTextViewByID (String dynamicID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+		return getTextElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 
 	}
 	
