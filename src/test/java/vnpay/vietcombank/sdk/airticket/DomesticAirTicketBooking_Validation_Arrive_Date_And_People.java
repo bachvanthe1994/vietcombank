@@ -1,4 +1,4 @@
-package vnpay.vietcombank.airticket;
+package vnpay.vietcombank.sdk.airticket;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -16,7 +16,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 
-public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
+public class DomesticAirTicketBooking_Validation_Arrive_Date_And_People extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -74,10 +74,10 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
 	@Test
 	public void TC_02_KiemTraNgayDiNhoHonNgayHienTai() {
 		log.info("TC_02_Step 01: Chon  2 ngay truoc");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), twoDaysAgo);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearMinusDays(2), twoDaysAgo);
 
 		log.info("TC_02_Step 02: Chon ngay hom qua");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), yesterday);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearMinusDays(1), yesterday);
 
 		log.info("TC_02_Step 03: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
@@ -132,8 +132,8 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
 
 		log.info("TC_04_Step 03: Click Chon Ngay Di va Ngay Ve");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(2));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(2), getForWardDay(2));
 
 		log.info("TC_04_Step 04: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
@@ -151,8 +151,8 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
 
 		log.info("TC_05_Step 03: Click Chon Ngay Di va Ngay Ve");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(2), getForWardDay(1));
 
 		log.info("TC_05_Step 04: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
@@ -167,31 +167,123 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date extends Base {
 	}
 
 	@Test
-	public void TC_06_KiemTraNgayDiKhiChonTuVeMotChieuSangKhuHoi() {
+	public void TC_06_KiemTraNgayDiKhiChonTuKhuHoiSang1Chieu() {
+
+		log.info("TC_06_Step 01: Click Dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
 
-		log.info("Before class: Click Dong y ");
+		log.info("TC_06_Step 02: Click Dong y ");
 		airTicket.clickToDynamicButton("Đồng ý");
 
+		log.info("TC_06_Step 03: Click Khu hoi ");
 		airTicket.clickToDynamicTextOrButtonLink("Khứ hồi");
 
-		log.info("TC_05_Step 01: Click Ngay Đi");
+		log.info("TC_06_Step 04: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
 
-		log.info("TC_05_Step 03: Click Chon Ngay Di va Ngay Ve");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), getForWardDay(1));
+		log.info("TC_06_Step 05: Click Chon Ngay Di va Ngay Ve");
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(2), getForWardDay(1));
 
-		log.info("TC_05_Step 04: Click xac nhan");
+		log.info("TC_06_Step 06: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
 
+		log.info("TC_06_Step 07: Click Mot chieu");
 		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
 
+		log.info("TC_06_Step 09: Kiem tra ngay di ngay ve da duoc chon");
+		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày đi", "com.VCB:id/tvValue"), getForwardDate(1));
+
+	}
+
+	@Test
+	public void TC_07_KiemTraNgayDiKhiChonTuKhuHoiSang1ChieuQuayLaiKhuHoi() {
+
+		log.info("TC_07_Step 01: Click Khu hoi ");
+		airTicket.clickToDynamicTextOrButtonLink("Khứ hồi");
+
+		log.info("TC_07_Step 02: Kiem tra ngay di da duoc chon");
+		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày đi", "com.VCB:id/tvValue"), getForwardDate(1));
+
+		log.info("TC_07_Step 03: Kiem tra ngay ve bi reset");
+		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày về", "com.VCB:id/tvValue"), "Chọn ngày");
+
+	}
+
+	@Test
+	public void TC_08_KiemTraThayDoiSoLuongNguoiLon() {
+
+		log.info("TC_08_Step 01: Kiem tra so luong nguoi nho nhat ");
+		for (int i = 0; i < 2; i++) {
+			airTicket.clickToDynamicPlusAndMinusIcon("Người lớn (12 tuổi trở lên)", "-");
+			verifyEquals(airTicket.getTextSelectedPeople("Người lớn (12 tuổi trở lên)"), "1");
+
+		}
+		log.info("TC_08_Step 02: Kiem tra so luong nguoi  lon lon nhat ");
+		for (int i = 1; i < 9; i++) {
+			airTicket.clickToDynamicPlusAndMinusIcon("Người lớn (12 tuổi trở lên)", "+");
+			verifyEquals(airTicket.getTextSelectedPeople("Người lớn (12 tuổi trở lên)"), i + 1 + "");
+
+		}
+		log.info("TC_08_Step 03: Kiem tra so luong nguoi  lon lon nhat ");
+		airTicket.clickToDynamicPlusAndMinusIcon("Người lớn (12 tuổi trở lên)", "+");
+		verifyEquals(airTicket.getTextSelectedPeople("Người lớn (12 tuổi trở lên)"), "9");
+
+		log.info("TC_08_Step 04: Kiem tra so luong nguoi giam dan");
+		airTicket.clickToDynamicPlusAndMinusIcon("Người lớn (12 tuổi trở lên)", "-");
+		verifyEquals(airTicket.getTextSelectedPeople("Người lớn (12 tuổi trở lên)"), "8");
+	}
+
+	@Test
+	public void TC_09_KiemTraThayDoiSoLuongTreEm() {
+		log.info("TC_09_Step 01: Kiem tra so luong tre em nho nhat ");
+		for (int i = 0; i < 2; i++) {
+			airTicket.clickToDynamicPlusAndMinusIcon("Trẻ em (2 đến dưới 12 tuổi)", "-");
+			verifyEquals(airTicket.getTextSelectedPeople("Trẻ em (2 đến dưới 12 tuổi)"), "0");
+
+		}
+
+		log.info("TC_09_Step 02: Kiem tra so luong tre em lon nhat ");
+		for (int i = 0; i < 6; i++) {
+			airTicket.clickToDynamicPlusAndMinusIcon("Trẻ em (2 đến dưới 12 tuổi)", "+");
+			verifyEquals(airTicket.getTextSelectedPeople("Trẻ em (2 đến dưới 12 tuổi)"), i + 1 + "");
+
+		}
+		log.info("TC_09_Step 03: Kiem tra so luong tre em lon nhat ");
+		airTicket.clickToDynamicPlusAndMinusIcon("Trẻ em (2 đến dưới 12 tuổi)", "+");
+		verifyEquals(airTicket.getTextSelectedPeople("Trẻ em (2 đến dưới 12 tuổi)"), "6");
+
+		log.info("TC_09_Step 04: Kiem tra so luong tre em giam dan");
+		airTicket.clickToDynamicPlusAndMinusIcon("Trẻ em (2 đến dưới 12 tuổi)", "-");
+		verifyEquals(airTicket.getTextSelectedPeople("Trẻ em (2 đến dưới 12 tuổi)"), "5");
+	}
+
+	@Test
+	public void TC_10_KiemTraThayDoiSoLuongEmBe() {
+		log.info("TC_10_Step 01: Kiem tra so luong  em  be nho nhat ");
+		for (int i = 0; i < 2; i++) {
+			airTicket.clickToDynamicPlusAndMinusIcon("Em bé (Dưới 2 tuổi)", "-");
+			verifyEquals(airTicket.getTextSelectedPeople("Em bé (Dưới 2 tuổi)"), "0");
+
+		}
+		log.info("TC_10_Step 02: Kiem tra so luong  em be lon nhat ");
+		for (int i = 0; i < 9; i++) {
+			airTicket.clickToDynamicPlusAndMinusIcon("Em bé (Dưới 2 tuổi)", "+");
+			verifyEquals(airTicket.getTextSelectedPeople("Em bé (Dưới 2 tuổi)"), i + 1 + "");
+
+		}
+		log.info("TC_10_Step 04: Kiem tra so luong tre em lon nhat ");
+		airTicket.clickToDynamicPlusAndMinusIcon("Em bé (Dưới 2 tuổi)", "+");
+		verifyEquals(airTicket.getTextSelectedPeople("Em bé (Dưới 2 tuổi)"), "9");
+
+		log.info("TC_10_Step 05: Kiem tra so luong em be giam dan");
+		airTicket.clickToDynamicPlusAndMinusIcon("Em bé (Dưới 2 tuổi)", "-");
+		verifyEquals(airTicket.getTextSelectedPeople("Em bé (Dưới 2 tuổi)"), "8");
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

@@ -1,4 +1,4 @@
-package vnpay.vietcombank.airticket;
+package vnpay.vietcombank.sdk.airticket;
 
 import java.io.IOException;
 
@@ -46,7 +46,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 		airTicket.clickToDynamicTextOrButtonLink("TP Hồ Chí Minh");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYear(), tomorrowDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), tomorrowDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 		airTicket.clickToDynamicFlight(0);

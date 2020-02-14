@@ -149,9 +149,39 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 500);
-				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 500);
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+
+			}
+		}
+	}
+
+	public void scrollUp(AndroidDriver<AndroidElement> driver, String locator) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.30);
+		int endY = (int) (size.getHeight() * 0.80);
+		TouchAction touch = new TouchAction(driver);
+
+		for (int i = 0; i < 20; i++) {
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
 
 			}
 		}
@@ -172,9 +202,39 @@ public class AbstractPage {
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
 			} else {
-				sleep(driver, 1000);
-				touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				sleep(driver, 1000);
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+			}
+		}
+	}
+
+	public void scrollUp(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.30);
+		int endY = (int) (size.getHeight() * 0.80);
+		TouchAction touch = new TouchAction(driver);
+		locator = String.format(locator, (Object[]) dynamicValue);
+		for (int i = 0; i < 20; i++) {
+			locator = String.format(locator, (Object[]) dynamicValue);
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				try {
+					sleep(driver, 2000);
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+					sleep(driver, 1000);
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
 			}
 		}
 	}
@@ -199,7 +259,7 @@ public class AbstractPage {
 
 	}
 
-	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, String locator, int elementIndex, String... dynamicValue) {
+	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, int elementIndex, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<AndroidElement> element = driver.findElements(By.xpath(locator));
 		element.get(elementIndex).click();
@@ -272,6 +332,12 @@ public class AbstractPage {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
+	}
+
+	public String getTextInFirstElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		return element.get(index).getText();
 	}
 
 	public List<String> getTextInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
@@ -680,32 +746,32 @@ public class AbstractPage {
 		String dayInWeek = "";
 		switch (dayOfWeek) {
 		case 1:
-			dayInWeek = "Thứ hai";
+			dayInWeek = "Thứ Hai";
 			System.out.println(dayInWeek);
 			break;
 		case 2:
-			dayInWeek = "Thứ ba";
+			dayInWeek = "Thứ Ba";
 			System.out.println(dayInWeek);
 			break;
 		case 3:
-			dayInWeek = "Thứ tư";
+			dayInWeek = "Thứ Tư";
 			System.out.println(dayInWeek);
 			break;
 		case 4:
-			dayInWeek = "Thứ năm";
+			dayInWeek = "Thứ Năm";
 			System.out.println(dayInWeek);
 			break;
 		case 5:
-			dayInWeek = "Thứ sáu";
+			dayInWeek = "Thứ Sáu";
 			System.out.println(dayInWeek);
 			;
 			break;
 		case 6:
-			dayInWeek = "Thứ bảy";
+			dayInWeek = "Thứ Bảy";
 			System.out.println(dayInWeek);
 			break;
 		case 7:
-			dayInWeek = "Chủ nhật";
+			dayInWeek = "Chủ Nhật";
 			System.out.println(dayInWeek);
 			break;
 		}
@@ -862,7 +928,7 @@ public class AbstractPage {
 
 	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		clickToOneOfElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, index, dynamicID);
+		clickToOneOfElement(driver, index, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	}
 
 	// Click icon change

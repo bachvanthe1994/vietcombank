@@ -34,16 +34,16 @@ public class HotelBookingPageObject extends AbstractPage{
 		for (String text : listText) {
 			day = day + text;
 		}
-		return day;
+		return day.replace("Ngày đặt", "");
 	}
 	
 	public String getDayCheckOut() {
 		List<String> listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
 		String day = "";
 		for (String text : listText) {
-			day = day + " " + text;
+			day = day + text;
 		}
-		return day;
+		return day.replace("Ngày trả", "");
 	}
 	
 	public String getPassengerAndRoom() {
@@ -57,7 +57,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	
 	public boolean checkSuggestLocation(List<String> listSuggestLocations, String checkedValue) {
 		for (String location : listSuggestLocations) {
-			if (!location.contains(checkedValue)) {
+			if (!location.toLowerCase().contains(checkedValue)) {
 				return false;
 			}
 		}
@@ -179,7 +179,7 @@ public class HotelBookingPageObject extends AbstractPage{
         int yEnd = elementEnd.getLocation().getY();
         
         new TouchAction(driver)
-                .press(PointOption.point(xStart, yStart))
+                .longPress(PointOption.point(xStart, yStart))
                 .moveTo(PointOption.point(xEnd, yEnd))
                 .release().perform();
     }
@@ -247,6 +247,10 @@ public class HotelBookingPageObject extends AbstractPage{
 		
 		return expectListHotelBookingInfo;
 		
+	}
+	
+	public HotelBookingInfo getHotelBookingHistoryByStatus(List<HotelBookingInfo> listHotel , String statusFilter) {
+		return listHotel.stream().filter(p -> p.status.equals(statusFilter)).collect(Collectors.toList()).get(0);
 	}
 	
 	public List<String> getListOfStatusHotelBooking(AndroidDriver<AndroidElement> driver, String dynamicID) {
@@ -330,14 +334,31 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public boolean isDynamicTextViewDisplayed(String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
 
 	}
 	
+	public boolean isDynamicTextViewDisplayedByID(String dynamicTextID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+
+	}
+	
+	public boolean isDynamicInputBoxByTextDisPlayed(String... dynamicTextValue) {
+		waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		return isControlDisplayed(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+	}
+	
 	public void clickToDynamicTextView(String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+
+	}
+	
+	public void clickToDynamicTextViewByID(String dynamicTextID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
 
 	}
 	
@@ -403,6 +424,56 @@ public class HotelBookingPageObject extends AbstractPage{
 	public void inputToDynamicInputBoxByID(String inputValue, String dynamicID) {
 		waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
 		sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
+
+	}
+	
+	public void clickToDateHotelBooking(String now, String startDate, String endDate) {	
+		clickToDynamicTextView("Ngày đặt");
+		String nowDay = now.split("/")[0].replace("0", "");
+		String startDay = startDate.split("/")[0].replace("0", "");
+		String endDay = endDate.split("/")[0].replace("0", "");
+		
+		String nowMonth = now.split("/")[1].replace("0", "");
+		String startMonth = startDate.split("/")[1].replace("0", "");
+		String endMonth = endDate.split("/")[1].replace("0", "");
+		
+		String endYear = endDate.split("/")[2];
+		
+		boolean check = false;
+		if (!startMonth.equals(nowMonth)) {
+			swipeElementToElementByText("Tháng " + startMonth + " " + endYear, "Ngày đặt");
+			check = true;
+		}
+		clickToDynamicTextView(startDay);
+		clickToDynamicTextView("Ngày trả");
+		if (!endMonth.equals(nowMonth) && check == false) {
+			swipeElementToElementByText("Tháng " + startMonth + " " + endYear, "Ngày đặt");
+		}
+		clickToDynamicTextView(endDay);
+		
+	}
+	
+	public void clickToDetailButtonByPayCode(String paycode) {
+		scrollIDown(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+		waitForElementVisible(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+		clickToElement(driver, HotelBookingPageUIs.DETAIL_BUTTON_BY_PAYCODE, paycode);
+
+	}
+	
+	public void waitForTextViewDisplay (String textView) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, textView);
+	
+	}
+	
+	public String getTextViewByID (String dynamicID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+		return getTextElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+
+	}
+	
+	public String getTextInEditTextFieldByResourceID(String... dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 
 	}
 	
