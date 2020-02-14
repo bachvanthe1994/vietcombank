@@ -271,6 +271,117 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
 		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 99));
 		
+		log.info("TC_11_02_Kiem tra so luong ky tu cho phep");
+		verifyEquals(actualText.length(), 100);
+		
+	}
+	
+	@Test
+	public void TC_12_XuatHoaDon_TextBoxTenCongTy_DeTrongTruongTenCongTy() {
+		log.info("TC_12_01_Nhap ky tu vao o Ten cong ty");
+		hotelBooking.inputToDynamicInputBoxByID("", "");
+		
+		log.info("TC_12_02_Nhap ky tu vao o Ma so thue");
+		hotelBooking.inputToDynamicInputBoxByID("123456", "");
+		
+		log.info("TC_12_03_Nhap ky tu vao o Dia chi cong ty");
+		hotelBooking.inputToDynamicInputBoxByID("So 2, Lang Ha", "");
+		
+		log.info("TC_12_04_Nhap ky tu vao o Email nhan hoa don");
+		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "");
+		
+		log.info("TC_12_05_Click nut Gui thong tin");
+		hotelBooking.clickToDynamicTextView("Gửi thông tin");
+		
+		log.info("TC_12_06_Kiem tra messge thong bao");
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_HOTEL_NAME);
+		
+		log.info("TC_12_07_Click nut Dong y");
+		hotelBooking.clickToDynamicTextView("Đồng ý");
+		
+		log.info("TC_12_08_Nhap ky tu vao o Ten cong ty");
+		hotelBooking.inputToDynamicInputBoxByID("VNPay", "");
+		
+	}
+	
+	@Test
+	public void TC_13_XuatHoaDon_TextBoxMaSoThue_KiemTraGiaTriHienThiMacDinh() {
+		log.info("TC_13_01_Kiem tra o ten con ty hien thi mac dinh");
+		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Mã số thuế"));
+		
+	}
+	
+	@Test
+	public void TC_14_XuatHoaDon_TextBoxMaSoThue_KiemTraKyTuNhap() {
+		log.info("TC_14_01_Nhap ky tu vao o Ten cong ty");
+		hotelBooking.inputToDynamicInputBoxByID(HotelBooking_Data.NUMBER_OVER_15_CHARACTERS, "");
+		
+		log.info("TC_14_02_Kiem tra ky tu nhap");
+		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
+		verifyEquals(actualText, HotelBooking_Data.NUMBER_OVER_15_CHARACTERS.substring(0, 14));
+		
+		log.info("TC_14_02_Kiem tra so luong ky tu cho phep");
+		verifyEquals(actualText.length(), 15);
+		
+	}
+	
+	@Test
+	public void TC_15_XuatHoaDon_TextBoxMaSoThue_DeTrongTruongMaSoThue() {
+		log.info("TC_15_01_Nhap ky tu vao o Ma so thue");
+		hotelBooking.inputToDynamicInputBoxByID("", "");
+	
+		log.info("TC_15_02_Click nut Gui thong tin");
+		hotelBooking.clickToDynamicTextView("Gửi thông tin");
+		
+		log.info("TC_15_03_Kiem tra messge thong bao");
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_TAX_CODE);
+		
+		log.info("TC_15_04_Click nut Dong y");
+		hotelBooking.clickToDynamicTextView("Đồng ý");
+		
+		log.info("TC_15_05_Nhap ky tu vao o Ma so thue");
+		hotelBooking.inputToDynamicInputBoxByID("123456", "");
+		
+	}
+	
+	@Test
+	public void TC_16_XuatHoaDon_TextBoxDiaChiCongTy_KiemTraGiaTriHienThiMacDinh() {
+		log.info("TC_16_01_Kiem tra o Dia chi cong ty hien thi mac dinh");
+		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Địa chỉ công ty"));
+		
+	}
+	
+	@Test
+	public void TC_17_XuatHoaDon_TextBoxDiaChiCongTy_KiemTraKyTuNhap() {
+		log.info("TC_17_01_Nhap ky tu vao o Dia chi cong ty");
+		hotelBooking.inputToDynamicInputBoxByID(HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS, "");
+		
+		log.info("TC_17_02_Kiem tra ky tu nhap");
+		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
+		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 149));
+		
+		log.info("TC_17_02_Kiem tra so luong ky tu cho phep");
+		verifyEquals(actualText.length(), 150);
+		
+	}
+	
+	@Test
+	public void TC_18_XuatHoaDon_TextBoxDiaChiCongTy_DeTrongTruongDiaChiCongTy() {
+		log.info("TC_18_01_Nhap ky tu vao o Dia chi cong ty");
+		hotelBooking.inputToDynamicInputBoxByID("", "");
+	
+		log.info("TC_18_02_Click nut Gui thong tin");
+		hotelBooking.clickToDynamicTextView("Gửi thông tin");
+		
+		log.info("TC_18_03_Kiem tra messge thong bao");
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_HOTEL_ADDRESS);
+		
+		log.info("TC_18_04_Click nut Dong y");
+		hotelBooking.clickToDynamicTextView("Đồng ý");
+		
+		log.info("TC_18_05_Nhap ky tu vao o Ma so thue");
+		hotelBooking.inputToDynamicInputBoxByID("So 2, Lang Ha", "");
+		
 	}
 	
 	@AfterClass(alwaysRun = true)
