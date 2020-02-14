@@ -1,13 +1,20 @@
 package pageObjects.sdk.trainTicket;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 import org.openqa.selenium.By;
+
+import com.fasterxml.jackson.databind.deser.Deserializers.Base;
 
 import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
+import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
+import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 
 public class TrainTicketPageObject extends AbstractPage {
@@ -38,5 +45,27 @@ public class TrainTicketPageObject extends AbstractPage {
 		return Boolean.parseBoolean(element.getAttribute("selected"));
 }
     
-  
+	
+
+		
+    
+    public String getCurentMonthAndYear() {
+		LocalDate now = LocalDate.now();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		return "THÁNG" + " " + month + " " + year;
+	}
+    
+    public String getMonthAndYearFORMAT() {
+    	LocalDate now = LocalDate.now();
+		int month = now.getMonthValue();
+		int year = now.getYear();
+		return "T."  + month + " " + year;
+	}
+    
+	
 }
+
+    
+  
+
