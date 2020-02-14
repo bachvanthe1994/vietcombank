@@ -339,14 +339,26 @@ public class HotelBookingPageObject extends AbstractPage{
 
 	}
 	
+	public boolean isDynamicTextViewDisplayedByID(String dynamicTextID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+
+	}
+	
 	public boolean isDynamicInputBoxByTextDisPlayed(String... dynamicTextValue) {
 		waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
 		return isControlDisplayed(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
 	}
 	
 	public void clickToDynamicTextView(String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+
+	}
+	
+	public void clickToDynamicTextViewByID(String dynamicTextID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
 
 	}
 	

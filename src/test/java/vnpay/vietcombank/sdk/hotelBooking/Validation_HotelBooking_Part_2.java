@@ -58,7 +58,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xếp hạng sao"));
 		verifyTrue(hotelBooking.checkStarRate());
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Giá phòng"));
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayedByID("com.VCB:id/tvConfirm"));
 		
 	}
 	
@@ -101,7 +101,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.chooseStarRateHotel(3);
 		
 		log.info("TC_04_02_Click Xac nhan");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Xác nhận");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvConfirm");
 		
 		log.info("TC_04_03_Kiem tra thong tin da chon");
 		String actualStarAndPriceInfomation =  hotelBooking.getTextRateAndPriceFilter();
@@ -190,7 +190,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.handleSeekBarPrice(0, 9999000, 0);
 		
 		log.info("TC_08_06_Click Xac nhan");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Xác nhận");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvConfirm");
 		
 		log.info("TC_08_07_Click Tim kiem dia diem");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Tìm kiếm địa điểm hoặc khách sạn");
@@ -298,17 +298,17 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Khách sạn gần");
 		
 		log.info("TC_12_03_7_Kiem tra nut DAT LAI");
-		hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Đặt lại");
+		hotelBooking.isDynamicTextViewDisplayedByID("com.VCB:id/tvReset");
 		
 		log.info("TC_12_03_8_Kiem tra nut XAC NHAN");
-		hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận");
+		hotelBooking.isDynamicTextViewDisplayedByID("com.VCB:id/tvConfirm");
 		
 	}
 	
 	@Test
 	public void TC_13_DatPhongKhachSan_TimKiemKhachSan_KiemTraChucNangLoc_KiemTraComboSapXep() {
 		log.info("TC_13_01_Quay lai man hinh hien thi khach san duoc tim kiem");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Xác nhận");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvConfirm");
 		
 		log.info("TC_13_02_Click nut Loc");
 		hotelBooking.clickToDynamicTextView("Lọc");
@@ -386,8 +386,10 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		List<String> actualList = hotelBooking.getServicesOfHotelByID("com.VCB:id/llTagTienNghi");
 		verifyTrue(hotelBooking.checkListContain(actualList, HotelBooking_Data.SERVICE_HOTEL_LIST));
 		
+		log.info("TC_16_02_Click chon tien nghi");
 		hotelBooking.clickToDynamicTextView(actualList.get(0));
 		
+		log.info("TC_16_03_Kiem tra tien nghi duoc chon");
 		verifyTrue(hotelBooking.checkSelectedService(actualList.get(0)));
 		
 	}
@@ -400,8 +402,10 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		actualDictrictList = hotelBooking.getServicesOfHotelByID("com.VCB:id/llTagQuanHuyen");
 		verifyTrue(hotelBooking.checkListContain(actualDictrictList, HotelBooking_Data.DICTRICT_HOTEL_LIST));
 		
+		log.info("TC_17_02_Click chon Quan huyen");
 		hotelBooking.clickToDynamicTextView(actualDictrictList.get(0));
 		
+		log.info("TC_17_03_Kiem tra Quan huyen duoc chon");
 		verifyTrue(hotelBooking.checkSelectedService(actualDictrictList.get(0)));
 		
 	}
@@ -413,10 +417,13 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		List<String> actualList = hotelBooking.getServicesOfHotelByID("com.VCB:id/llTagKhachSanGan");
 		verifyTrue(hotelBooking.checkListContain(actualList, HotelBooking_Data.PLACE_NEARLY_HOTEL_LIST));
 		
+		log.info("TC_18_02_Click chon khach san gan");
 		hotelBooking.clickToDynamicTextView(actualList.get(0));
-		
+	
+		log.info("TC_18_03_Kiem tra khach san gan duoc chon");
 		verifyTrue(hotelBooking.checkSelectedService(actualList.get(0)));
 		
+		log.info("TC_18_04_Bo chon khach san gan");
 		hotelBooking.clickToDynamicTextView(actualList.get(0));
 		
 	}
@@ -424,7 +431,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 	@Test
 	public void TC_19_DatPhongKhachSan_TimKiemKhachSan_KiemTraChucNangLoc_KiemTraBamXacNhan() {
 		log.info("TC_19_01_Click chon Xac nhan");
-		hotelBooking.clickToDynamicTextView("Xác nhận");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvConfirm");
 		
 		log.info("TC_19_02_Kiem tra danh sach khach san tim kiem");
 		List<HotelBookingInfo> listHotelSearch = hotelBooking.getListHotelSearched();
@@ -462,9 +469,10 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.clickToDynamicTextView(HotelBooking_Data.PLACE_NEARLY_HOTEL_LIST.get(0));
 		
 		log.info("TC_20_04_Click Dat lai");
-		hotelBooking.clickToDynamicTextView("Đặt lại");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvReset");
 		
 		log.info("TC_20_05_Kiem tra danh sach tieu chi");
+		hotelBooking.swipeElementToElementByText("Xếp hạng sao", "Giá phòng");
 		log.info("TC_20_05_1_Kiem tra sap xep");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed(HotelBooking_Data.CRITERIA_ORDER_LIST.get(0)));
 		
