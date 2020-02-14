@@ -945,10 +945,16 @@ public class AbstractPage {
 
 	// Click chọn ngày trong lịch calendar
 	public void clickDynamicDateStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		clickToElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 	}
-
+		
+	// Click radio button
+		public void clickDynamicRadioSelectType(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+		}
 // input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 //		scrollToText(driver, dynamicTextValue);
@@ -1185,6 +1191,12 @@ public class AbstractPage {
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicResourceID);
 
 	}
+	
+	public String getTextInDynamicNote(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
+		return getTextElement(driver,TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
+
+	}
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -1287,7 +1299,6 @@ public class AbstractPage {
 	}
 
 	public String getMoneyByAccount(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-//		scrollToText(driver, dynamicTextValue);
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 		return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
@@ -1361,6 +1372,31 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 	}
+	
+	//Lấy text trường số lượng hành khách
+	public boolean isDynamicTextNumberCustomerDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+	}
+	
+	//Không hiển thị text trường số lượng hành khách
+		public boolean isDynamicTextNumberCustomerUnDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+			waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+			return isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		}
+		
+		//hiển thị icon trường số lượng hành khách
+		public boolean isDynamicIconChangeNumber(AndroidDriver<AndroidElement> driver, String ... dynamicTextValue) {
+			waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+			return isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		}
+		
+		//hiển thị text trường số lượng hành khách
+		public boolean isDynamicTextChangeNumber(AndroidDriver<AndroidElement> driver, String ... dynamicTextValue) {
+			waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+			return isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+		}
+	
 
 	// lay text trong ô dropdown bằng index và header của nó
 	public String getDynamicTextInDropDownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValueAndID) {
@@ -1440,11 +1476,30 @@ public class AbstractPage {
 		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
 	}
 
-	public String getDynamicMessageInvalid(AndroidDriver<AndroidElement> driver, String dynamicID) {
-		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_MESSAGE_INVALID, dynamicID);
-		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_MESSAGE_INVALID, dynamicID);
+	public String getDynamicTitleSelectDate(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
+		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
 	}
-
+	
+//Lay thu trong tuan
+	public String getDynamicTitleWeek(AndroidDriver<AndroidElement> driver, String ... dynamicText) {
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
+		return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
+	}
+	
+	
+	//Lấy message thông báo
+		public String getDynamicMessageInvalid(AndroidDriver<AndroidElement> driver, String ... dynamicText) {
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
+			return getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
+		}
+		
+	
+				public String getDynamicTextOld(AndroidDriver<AndroidElement> driver, String ... dynamicText) {
+					waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
+					return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
+				}
+		
 	public void clickToTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);

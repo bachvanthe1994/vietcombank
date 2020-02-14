@@ -16,8 +16,15 @@ public class TrainTicketPageUIs {
 	    public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
 		public static final String DYNAMIC_DATE = "//android.widget.TextView[@resource-id='%s']";
 		
-		public static final String DYNAMIC_DATE_SELECTED="//android.view.ViewGroup[@resource-id='com.VCB:id/calendar_grid']//android.widget.TextView[@text='%s']";
-		public static final String DYNAMIC_MESSAGE_INVALID="//android.widget.Toast[@index ='%s']";
-
+		public static final String DYNAMIC_DATE_SELECTED = "//android.widget.TextView[@text='%s']//following-sibling::android.view.ViewGroup//android.widget.TextView[@text='%s']";
+		public static final String DYNAMIC_TITLE_SELECT_DATE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout/android.widget.TextView";
+		
+		public static final String DYNAMIC_TITLE_SELECT_WEEK = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout//android.widget.TextView[@resource-id='%s']";
+		
+		public static final String DYNAMIC_NUMBER_CUSTOMER = "//android.widget.TextView[@text='%s']/following::android.widget.TextView";
+		
+		public static final String DYNAMIC_ICON_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.ImageView[@resource-id='%s']";
+		public static final String DYNAMIC_TEXT_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
+	    public static final String DYNAMIC_TEXT_INDEX = "//android.widget.TextView[@index ='%s']";
 	}
 
