@@ -6,7 +6,7 @@ import java.util.List;
 import vietcombank_test_data.LogIn_Data;
 
 public class HotelBooking_Data {
-	public static final String FAMOUS_LOCATION[] = {"Hà Nội", "TP Hồ Chí Minh", "Bình Dương"};
+	public static final String FAMOUS_LOCATION[] = {"Hà Nội", "TP Hồ Chí Minh"};
 	public static final String GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS = "!@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn";
 	public static final String CURRENT_LOCATION = "Đống Đa, Hà Nội";
 	public static final List<String> STATUS_HOTEL_BOOKING_LIST = Arrays.asList("Tất cả", "Chờ thanh toán", "Đặt phòng thành công", "Đặt phòng thất bại", "Đã huỷ", "Hết hạn thanh toán", "Chờ xử lý");
@@ -31,5 +31,6 @@ public class HotelBooking_Data {
 	public static final String OTP_INVALID_N_TIMES = "Nhập sai OTP quá " + LogIn_Data.Login_Account.OTP_INVALID_TIMES + " lần. Quý khách vui lòng thực hiện giao dịch khác.";
 	public static final String PASSWORD_INVALID_N_TIMES = "";
 	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
+	public static final String SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS = "!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc";
 	
 }

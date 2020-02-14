@@ -255,6 +255,24 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		
 	}
 	
+	@Test
+	public void TC_10_XuatHoaDon_TextBoxTenCongTy_KiemTraGiaTriHienThiMacDinh() {
+		log.info("TC_10_01_Kiem tra o ten con ty hien thi mac dinh");
+		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Tên công ty"));
+		
+	}
+	
+	@Test
+	public void TC_11_XuatHoaDon_TextBoxTenCongTy_KiemTraKyTuNhap() {
+		log.info("TC_11_01_Nhap ky tu vao o Ten cong ty");
+		hotelBooking.inputToDynamicInputBoxByID(HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS, "");
+		
+		log.info("TC_11_02_Kiem tra ky tu nhap");
+		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
+		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 99));
+		
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();

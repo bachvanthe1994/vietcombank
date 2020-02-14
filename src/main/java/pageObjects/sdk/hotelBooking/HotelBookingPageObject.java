@@ -34,16 +34,16 @@ public class HotelBookingPageObject extends AbstractPage{
 		for (String text : listText) {
 			day = day + text;
 		}
-		return day;
+		return day.replace("Ngày đặt", "");
 	}
 	
 	public String getDayCheckOut() {
 		List<String> listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
 		String day = "";
 		for (String text : listText) {
-			day = day + " " + text;
+			day = day + text;
 		}
-		return day;
+		return day.replace("Ngày trả", "");
 	}
 	
 	public String getPassengerAndRoom() {
@@ -57,7 +57,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	
 	public boolean checkSuggestLocation(List<String> listSuggestLocations, String checkedValue) {
 		for (String location : listSuggestLocations) {
-			if (!location.contains(checkedValue)) {
+			if (!location.toLowerCase().contains(checkedValue)) {
 				return false;
 			}
 		}
@@ -468,6 +468,12 @@ public class HotelBookingPageObject extends AbstractPage{
 	public String getTextViewByID (String dynamicID) {
 		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		return getTextElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+
+	}
+	
+	public String getTextInEditTextFieldByResourceID(String... dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 
 	}
 	
