@@ -269,7 +269,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		
 		log.info("TC_11_02_Kiem tra ky tu nhap");
 		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
-		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 99));
+		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 100));
 		
 		log.info("TC_11_02_Kiem tra so luong ky tu cho phep");
 		verifyEquals(actualText.length(), 100);
@@ -318,7 +318,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		
 		log.info("TC_14_02_Kiem tra ky tu nhap");
 		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
-		verifyEquals(actualText, HotelBooking_Data.NUMBER_OVER_15_CHARACTERS.substring(0, 14));
+		verifyEquals(actualText, HotelBooking_Data.NUMBER_OVER_15_CHARACTERS.substring(0, 15));
 		
 		log.info("TC_14_02_Kiem tra so luong ky tu cho phep");
 		verifyEquals(actualText.length(), 15);
@@ -358,7 +358,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		
 		log.info("TC_17_02_Kiem tra ky tu nhap");
 		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("");
-		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 149));
+		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 150));
 		
 		log.info("TC_17_02_Kiem tra so luong ky tu cho phep");
 		verifyEquals(actualText.length(), 150);
