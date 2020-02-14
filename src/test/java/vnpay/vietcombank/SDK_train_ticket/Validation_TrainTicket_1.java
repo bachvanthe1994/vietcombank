@@ -60,34 +60,34 @@ public class Validation_TrainTicket_1 extends Base {
 		verifyEquals(trainTicket.getDynamicPointStartAndEnd(driver, "ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_END), "Ga đến");
 
 		log.info("TC_01_Check hien thi button doi ga tau");
-		verifyTrue(trainTicket.isDynamicChangeIconDisplayed(driver, TrainTicket_Data.textDefault.TITLE_END));
+		trainTicket.isDynamicChangeIconDisplayed(driver, TrainTicket_Data.textDefault.TITLE_END);
 
 		log.info("TC_01_Check hien thi icon 1 chieu");
-		verifyTrue(trainTicket.isDynamicHistoryIconDisplayed(driver, "Một chiều"));
+		trainTicket.isDynamicHistoryIconDisplayed(driver, "Một chiều");
 
 		log.info("TC_01_Check hien thi icon khu hoi");
-		verifyTrue(trainTicket.isDynamicHistoryIconDisplayed(driver, "Khứ hồi"));
+		trainTicket.isDynamicHistoryIconDisplayed(driver, "Khứ hồi");
 
 		log.info("TC_01_Check hien thi ngay di");
-		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày đi"));
+		trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày đi");
 
 		log.info("TC_01_Check hien thi ngay ve");
-		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày về"));
+		trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày về");
 
 		log.info("TC_01_Check hien thi combobox hanh khach");
-		verifyTrue(trainTicket.isDynamicComboboxDisplayed(driver, "Hành khách"));
+		trainTicket.isDynamicComboboxDisplayed(driver, "Hành khách");
 
 		log.info("TC_01_Check hien thi combobox loai cho");
-		verifyTrue(trainTicket.isDynamicComboboxDisplayed(driver, "Loại chỗ"));
+		trainTicket.isDynamicComboboxDisplayed(driver, "Loại chỗ");
 
 		log.info("TC_01_Check hien thi button tiep tuc");
-		verifyTrue(trainTicket.isDynamicButtonDisplayed(driver, "TIẾP TỤC"));
+		trainTicket.isDynamicButtonDisplayed(driver, "TIẾP TỤC");
 	}
 
 	@Test
 	public void TC_02_KiemTraHienThiMacDinhKhuHoi() {
 		log.info("TC_02_Khi mac dinh tick chon ve khu hoi, se hien thi them truong ngay ve. Do vay se check hien thi ngay ve thay cho check icon tick ve khu hoi");
-		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày về"));
+		trainTicket.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày về");
 	}
 
 	@Test
@@ -96,7 +96,7 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickToDynamicLink(driver, "Lịch sử đặt vé");
 
 		log.info("TC_03_Check text man hinh lich su dat ve");
-		verifyTrue(trainTicket.isDynamicBackIconDisplayed(driver, "Lịch sử đặt vé"));
+		trainTicket.isDynamicBackIconDisplayed(driver, "Lịch sử đặt vé");
 
 		log.info("TC_03_Click quay tro ve man hinh dat ve");
 		trainTicket.clickToDynamicBackIcon(driver, "Lịch sử đặt vé");
@@ -105,7 +105,7 @@ public class Validation_TrainTicket_1 extends Base {
 	@Test
 	public void TC_04_KiemTraHienThiMacDinhButtonTiepTuc() {
 		log.info("TC_04_Check hien thi button tiep tuc");
-		verifyTrue(trainTicket.isDynamicButtonDisplayed(driver, "TIẾP TỤC"));
+		trainTicket.isDynamicButtonDisplayed(driver, "TIẾP TỤC");
 
 		log.info("TC_04_Click button tiep tuc");
 		trainTicket.clickToDynamicButton(driver, "TIẾP TỤC");
@@ -126,7 +126,7 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickDynamicPointStartAndEnd(driver, "ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_END);
 
 		log.info("TC_06_Check message");
-		verifyEquals(trainTicket.getTextInDynamicPopup(driver, "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
+		verifyEquals(trainTicket.getDynamicTextInPopUp(driver, TrainTicket_Data.message.BLANK_START), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
 
 		log.info("TC_06_Click OK");
 		trainTicket.clickToDynamicButton(driver, "OK");
@@ -184,8 +184,7 @@ public class Validation_TrainTicket_1 extends Base {
 		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTen");
 
 		log.info("TC_10_Kiem tra hien thi ket qua goi y");
-		System.out.print(listSuggestPoint);
-		verifyTrue(trainTicket.checkSuggestPoint(listSuggestPoint, "Hải"));
+		trainTicket.checkSuggestPoint(listSuggestPoint, "Hai");
 	}
 
 	@Test
@@ -302,7 +301,7 @@ public class Validation_TrainTicket_1 extends Base {
 		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTen");
 
 		log.info("TC_20_Kiem tra hien thi ket qua goi y");
-		verifyTrue(trainTicket.checkSuggestPoint(listSuggestPoint, "Hải"));
+		verifyTrue(trainTicket.checkSuggestPoint(listSuggestPoint, "Hai"));
 	}
 
 	@Test

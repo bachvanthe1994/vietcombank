@@ -1,9 +1,11 @@
 package pageObjects.sdk.hotelBooking;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
@@ -55,9 +57,15 @@ public class HotelBookingPageObject extends AbstractPage{
 		return passengerAndRoom;
 	}
 	
+	public String convertVietNameseStringToString(String vietnameseString) {
+		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
+	}
+	
 	public boolean checkSuggestLocation(List<String> listSuggestLocations, String checkedValue) {
 		for (String location : listSuggestLocations) {
-			if (!location.toLowerCase().contains(checkedValue)) {
+			if (!convertVietNameseStringToString(location).toLowerCase().contains(checkedValue)) {
 				return false;
 			}
 		}

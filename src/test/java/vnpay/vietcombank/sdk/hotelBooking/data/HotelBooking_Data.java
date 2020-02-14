@@ -32,5 +32,9 @@ public class HotelBooking_Data {
 	public static final String PASSWORD_INVALID_N_TIMES = "";
 	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
 	public static final String SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS = "!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc";
+	public static final String NUMBER_OVER_15_CHARACTERS = "1234567890000000";
+	public static final String EMPTY_HOTEL_NAME = "Quý khách vui lòng nhập Tên công ty.";
+	public static final String EMPTY_TAX_CODE = "Quý khách vui lòng nhập Mã số thuế.";
+	public static final String EMPTY_HOTEL_ADDRESS = "Quý khách vui lòng nhập Địa chỉ công ty.";
 	
 }

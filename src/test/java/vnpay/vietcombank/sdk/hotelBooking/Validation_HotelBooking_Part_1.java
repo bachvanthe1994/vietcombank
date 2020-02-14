@@ -217,7 +217,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		verifyEquals(inputText.length(), 200);
 
 		log.info("TC_09_04_Kiem tra cho phep nhap ky tu dac biet, tieng Viet");
-		verifyEquals(inputText, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS.substring(0, 199));
+		verifyEquals(inputText, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS.substring(0, 200));
 
 	}
 
@@ -258,7 +258,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llPlace");
 
 		log.info("TC_12_02_Nhap ky tu vao o Search");
-		hotelBooking.inputIntoEditTextByID(driver, "Thái Hà", "com.VCB:id/etSearch");
+		hotelBooking.inputIntoEditTextByID(driver, "CLASSY HOLIDAY HOTEL & SPA", "com.VCB:id/etSearch");
 
 		List<String> listSuggestLocations = hotelBooking.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTitle");
 
@@ -266,7 +266,12 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, listSuggestLocations.get(0));
 
 		log.info("TC_12_04_Kiem tra den trang thong tin khach san");
-
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("CLASSY HOLIDAY HOTEL & SPA"));
+		
+		log.info("TC_12_05_Quay lai man hinh hien thi khach san duoc tim kiem");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvCancel");
+		
 	}
 
 	@Test
@@ -286,7 +291,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		LocalDate date = now.plusDays(2);
 		log.info("TC_14_01_Kiem tra gia tri mac dinh ngay tra");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày trả"));
-		String actualCheckOutDay = hotelBooking.getDayCheckIn();
+		String actualCheckOutDay = hotelBooking.getDayCheckOut();
 		String expectCheckOutDay = getForwardDate(2).split("/")[0] + convertMonthVietNamese(getForwardDate(2).split("/")[1]) + convertDayOfWeekVietNamese(getCurrentDayOfWeek(date));
 		verifyEquals(actualCheckOutDay, expectCheckOutDay);
 
