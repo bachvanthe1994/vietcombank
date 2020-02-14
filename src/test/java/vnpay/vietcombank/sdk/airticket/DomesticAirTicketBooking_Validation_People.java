@@ -23,6 +23,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 	private DynamicAirTicketBookingObjects airTicket;
 	private String selectedAirTicketPrice;
 	private String totalPrice;
+	private long haftOfPrice;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -598,7 +599,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_flightCode_internal_chieudi"), firstTurnCode);
 
 		log.info("TC_13_Step 5: Kiem tra khoang thoi gian bay hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_time_internal_chieudi"), firstTurnDepartureTime + " - " + firstTurnArrivalTime);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_time_internal_chieudi"), firstTurnDepartureTime + "-" + firstTurnArrivalTime);
 
 		log.info("TC_13_Step 6: Kiem tra logo hang bay hien thi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/iv_flight_internal_chieuve"));
@@ -607,13 +608,14 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_flightCode_internal_chieuve"), secondTurnCode);
 
 		log.info("TC_13_Step 8: Kiem tra khoang thoi gian bay hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_time_internal_chieuve"), secondTurnDepartureTime + " - " + secondTurnArrivalTime);
+//		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_time_internal_chieuve"), secondTurnDepartureTime + "-" + secondTurnArrivalTime);
 
 		log.info("TC_13_Step 9: Kiem tra Tong hien thi");
 		verifyTrue(airTicket.isDynamicTextDisplayed("Tổng:"));
 
 		log.info("TC_13_Step 10: Lay Tong tien");
 		totalPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_Sum_amount_flight_selected");
+		haftOfPrice = convertMoneyToLong(totalPrice, "VND") / 2;
 
 		log.info("TC_13_Step 11: Kiem tra text xem chi tiet gia hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_detail_tecket"), "Xem chi tiết giá");
@@ -625,7 +627,50 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 
 	@Test
 	public void TC_14_KiemTraXemChiTietGiaVe2Chieu() {
+		log.info("TC_14_Step 01: Click Chi Tiet gia");
+		airTicket.clickToDynamicTextOrButtonLink("Xem chi tiết giá");
 
+		log.info("TC_14_Step 02: Kiem tra title chi tiet gia hien thi ");
+		verifyTrue(airTicket.isDynamicTextDisplayed("Chi tiết giá"));
+
+		log.info("TC_14_Step 03: Kiem tra tong so tien ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Chiều đi", "com.VCB:id/tv_sumAmount_chieudi"), addCommasToLong(haftOfPrice + "") + " VND");
+
+		log.info("TC_14_Step 04: Kiem tra title gia ve co ban ");
+		verifyTrue(airTicket.isDynamicTextByLabel("Chiều đi", "GIÁ VÉ CƠ BẢN"));
+
+		log.info("TC_14_Step 05: Kiem tra title Thue Phi ");
+		verifyTrue(airTicket.isDynamicTextByLabel("Chiều đi", "THUẾ & PHÍ"));
+
+		log.info("TC_14_Step 06: Kiem tra title dai ly ban ve ");
+		verifyTrue(airTicket.isDynamicTextByLabel("Chiều đi", "PHÍ ĐẠI LÝ BÁN VÉ"));
+
+		log.info("TC_14_Step 07: Kiem tra tong so tien ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Chiều về", "com.VCB:id/tv_sumAmount_chieuve"), addCommasToLong(haftOfPrice + "") + " VND");
+
+		log.info("TC_14_Step 08: Kiem tra title gia ve co ban ");
+		verifyTrue(airTicket.isDynamicTextByLabel("Chiều về", "GIÁ VÉ CƠ BẢN"));
+
+		log.info("TC_14_Step 09: Kiem tra title Thue Phi ");
+		verifyTrue(airTicket.isDynamicTextByLabel("Chiều về", "THUẾ & PHÍ"));
+
+		log.info("TC_14_Step 10: Kiem tra title dai ly ban ve ");
+		verifyTrue(airTicket.isDynamicTextByLabel("Chiều về", "PHÍ ĐẠI LÝ BÁN VÉ"));
+
+		log.info("TC_14_Step 11: kiem tra tong so tien ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Tổng cộng", "com.VCB:id/tv_sum"), totalPrice);
+
+		log.info("TC_14_Step 12: Kiem tra text dieu kien dat ve ");
+		verifyTrue(airTicket.isDynamicTextDisplayed("Điều khoản và Điều kiện đặt vé"));
+
+		log.info("TC_14_Step 13: Kiem tra button dat ve hien thi");
+		verifyTrue(airTicket.isDynamicButtonDisplayed("Đặt vé"));
+
+		log.info("TC_14_Step 14: CLick Dong");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+
+		log.info("TC_14_Step 15: CLick quay lai ");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
 	}
 
 	@AfterClass(alwaysRun = true)
