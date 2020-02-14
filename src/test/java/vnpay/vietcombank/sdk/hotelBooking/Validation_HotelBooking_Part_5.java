@@ -220,103 +220,37 @@ public class Validation_HotelBooking_Part_5 extends Base {
 	}
 
 	@Test
-	public void TC_08_OTP_NutTiepTuc_NhapOTPKhongChinhXac_NhoHon_n_Lan() {
-		log.info("TC_08_01_Nhap ma OTP khong chinh xac");
-		hotelBooking.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES - 1);
-
-		log.info("TC_08_02_Kiem tra message thong bao loi");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBooking_Data.OTP_INVALID));
-
-		log.info("TC_08_03_Click nut Dong");
-		hotelBooking.clickToDynamicButton(driver, "Đóng");
-
-		log.info("TC_08_04_Click nut Quay lai");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
-
-		log.info("TC_08_05_Click Tiep tuc");
-		hotelBooking.clickToDynamicButton(driver, "Tiếp tục");
-
-	}
-
-	@Test
-	public void TC_09_OTP_NutTiepTuc_NhapOTPKhongChinhXac_n_Lan_LienTiep() {
-		log.info("TC_09_01_Nhap ma OTP khong chinh xac");
-		hotelBooking.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES);
-
-		log.info("TC_09_02_Kiem tra message thong bao loi");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBooking_Data.OTP_INVALID_N_TIMES));
-
-		log.info("TC_09_03_Kiem tra thong tin nguoi chuyen");
-		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Tài khoản nguồn"));
-
-		log.info("TC_09_04_Kiem tra thong tin khach hang");
-		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Thông tin khách hàng"));
-		
-		log.info("TC_09_04_01_Kiem tra Ho ten");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Họ tên"), "Duc Do");
-		
-		log.info("TC_09_04_02_Kiem tra SDT");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), "0363056625");
-		
-		log.info("TC_09_04_03_Kiem tra Email");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Email"), "minhducdo2603@gmail.com");
-		
-		log.info("TC_09_05_Kiem tra thong tin hoa don");
-		hotelBooking.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Tiếp tục");
-		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Thông tin hóa đơn"));
-		
-		log.info("TC_09_05_01_Kiem tra Ma giao dich");
-		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Mã giao dịch"));
-		
-		paycode = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
-		
-		log.info("TC_09_05_02_Kiem tra Tong gia tri thanh toan");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Tổng giá trị thanh toán"), totalPrice);
-		
-		log.info("TC_09_05_Click Tiep tuc");
-		hotelBooking.clickToDynamicButton(driver, "Tiếp tục");
-		
-	}
-	
-	@Test
-	public void TC_10_ThanhToanDonDatPhong_DatPhongThanhCong() {
-		log.info("TC_10_01_Chon phuong thuc xac thuc");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
-		
-		log.info("TC_10_02_Click tiep tuc");
-		hotelBooking.clickToDynamicTextView("Tiếp tục");
-		
-		log.info("TC_10_03_Nhap ma OTP chinh xac");
+	public void TC_08_ThanhToanDonDatPhong_DatPhongThanhCong() {
+		log.info("TC_08_01_Nhap ma OTP chinh xac");
 		hotelBooking.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		
-		log.info("TC_10_04_Click tiep tuc");
+		log.info("TC_08_02_Click tiep tuc");
 		hotelBooking.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_10_05_Kiem tra dat phong thanh cong");
+		log.info("TC_08_03_Kiem tra dat phong thanh cong");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Thanh toán thành công"));
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lấy hóa đơn thanh toán"));
 		
 	}
 	
 	@Test
-	public void TC_11_ThanhToanDonDatPhong_LayHoaDonDatPhong_KiemTraManHinhHienThi() {
-		log.info("TC_11_01_Click Lay hoa don thanh toan");
+	public void TC_09_ThanhToanDonDatPhong_LayHoaDonDatPhong_KiemTraManHinhHienThi() {
+		log.info("TC_09_00_Click Lay hoa don thanh toan");
 		hotelBooking.clickToDynamicTextView("Lấy hóa đơn thanh toán");
 		
-		log.info("TC_11_01_Kiem tra man hinh lay hoa don thanh toan");
+		log.info("TC_09_01_Kiem tra man hinh lay hoa don thanh toan");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Thông tin xuất hóa đơn"));
 		
-		log.info("TC_11_01_02_Kiem tra o ten con ty");
+		log.info("TC_09_01_02_Kiem tra o ten con ty");
 		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Tên công ty"));
 		
-		log.info("TC_11_01_03_Kiem tra o ma so thue");
+		log.info("TC_09_01_03_Kiem tra o ma so thue");
 		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Mã số thuế"));
 		
-		log.info("TC_11_01_04_Kiem tra o dia chi cong ty");
+		log.info("TC_09_01_04_Kiem tra o dia chi cong ty");
 		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Địa chỉ công ty"));
 		
-		log.info("TC_11_01_05_Kiem tra o email nhan hoa don");
+		log.info("TC_09_01_05_Kiem tra o email nhan hoa don");
 		verifyTrue(hotelBooking.isDynamicInputBoxByTextDisPlayed("Email nhận hóa đơn"));
 		
 	}
