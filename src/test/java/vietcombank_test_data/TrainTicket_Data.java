@@ -25,7 +25,7 @@ public class TrainTicket_Data {
 		public static final String POINT_START_END_VALID ="Biên Hòa";
 		public static final String POINT_EDIT_SEARCH ="Hà Nội";
 		public static final String POINT_EDIT_SEARCH_END ="Vinh";
-		public static final String POINT_SERACH_THE_SAME ="Hải";
+		public static final String POINT_SERACH_THE_SAME ="hai";
 	
 	}
 	}
