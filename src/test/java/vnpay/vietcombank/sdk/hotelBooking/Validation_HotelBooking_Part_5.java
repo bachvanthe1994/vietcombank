@@ -76,7 +76,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
 		
 		log.info("TC_01_09_Click Thanh toan");
-		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "ĐẶT PHÒNG");
+		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPayment");
 		
 		log.info("TC_01_10_Kiem tra man hinh thanh toan");
@@ -401,10 +401,10 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		
 		log.info("TC_20_02_Kiem tra ky tu nhap");
 		String actualText = hotelBooking.getTextInEditTextFieldByResourceID("com.VCB:id/etEmail");
-		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 100));
+		verifyEquals(actualText, HotelBooking_Data.SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS.substring(0, 44)); // ---> Cho nhap 44 ky tu
 		
 		log.info("TC_20_03_Kiem tra so luong ky tu cho phep");
-		verifyEquals(actualText.length(), 100);
+		verifyEquals(actualText.length(), 44);
 		
 	}
 	
@@ -433,7 +433,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.clickToDynamicTextView("Gửi thông tin");
 		
 		log.info("TC_22_03_Kiem tra messge thong bao");
-		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.NOT_VALID_EMAIL_MESSAGE);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.NOT_VALID_EMAIL_BILL_MESSAGE);
 		
 		log.info("TC_22_04_Click nut Dong y");
 		hotelBooking.clickToDynamicTextView("Đồng ý");

@@ -18,6 +18,7 @@ public class HotelBooking_Data {
 	public static final String EMPTY_PHONE_MESSAGE = "Quý khách vui lòng nhập Số điện thoại";
 	public static final String EMPTY_EMAIL_MESSAGE = "Quý khách vui lòng nhập Email";
 	public static final String NOT_VALID_EMAIL_MESSAGE = "Email không đúng định dạng. Vui lòng kiểm tra lại";
+	public static final String NOT_VALID_EMAIL_BILL_MESSAGE = "Email không chính xác, Quý khách vui lòng kiểm tra lại.";
 	public static final String NOT_VALID_PHONE_MESSAGE = "Số điện thoại khách hàng không hợp lệ";
 	public static final String TRANSACTION_VALIDATION = "Xác thực giao dịch";
 	public static final String OTP_NOTIFICATION_SENDED = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;
