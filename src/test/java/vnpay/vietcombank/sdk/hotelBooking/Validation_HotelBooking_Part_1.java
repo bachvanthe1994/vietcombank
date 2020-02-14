@@ -258,7 +258,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llPlace");
 
 		log.info("TC_12_02_Nhap ky tu vao o Search");
-		hotelBooking.inputIntoEditTextByID(driver, "CLASSY HOLIDAY HOTEL & SPA", "com.VCB:id/etSearch");
+		hotelBooking.inputIntoEditTextByID(driver, HotelBooking_Data.HOTEL_NAME_BOOKING, "com.VCB:id/etSearch");
 
 		List<String> listSuggestLocations = hotelBooking.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTitle");
 
@@ -266,7 +266,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, listSuggestLocations.get(0));
 
 		log.info("TC_12_04_Kiem tra den trang thong tin khach san");
-		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("CLASSY HOLIDAY HOTEL & SPA"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed(HotelBooking_Data.HOTEL_NAME_BOOKING));
 		
 		log.info("TC_12_05_Quay lai man hinh hien thi khach san duoc tim kiem");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");

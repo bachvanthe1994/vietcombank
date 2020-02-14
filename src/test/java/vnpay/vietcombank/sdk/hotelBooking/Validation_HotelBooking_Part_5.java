@@ -54,15 +54,15 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		
 		log.info("TC_01_03_Tim kiem dia diem");
 		hotelBooking.clickToDynamicTextView("Tìm kiếm địa điểm hoặc khách sạn");
-		hotelBooking.inputToDynamicInputBox(driver, "CLASSY HOLIDAY HOTEL & SPA", "Tên khách sạn hoặc điểm đến");
+		hotelBooking.inputToDynamicInputBox(driver, HotelBooking_Data.HOTEL_NAME_BOOKING, "Tên khách sạn hoặc điểm đến");
 		
 		log.info("TC_01_04_Chon dia diem");
-		hotelBooking.clickToDynamicTextView("CLASSY HOLIDAY HOTEL & SPA");
+		hotelBooking.clickToDynamicTextView(HotelBooking_Data.HOTEL_NAME_BOOKING);
 		
 		log.info("TC_01_05_Click dat phong");
-		hotelBooking.waitForTextViewDisplay("CLASSY HOLIDAY HOTEL & SPA");
-		hotelBooking.scrollIDownToText("Đặt phòng");
-		hotelBooking.clickToDynamicTextView("Đặt phòng");
+		hotelBooking.waitForTextViewDisplay(HotelBooking_Data.HOTEL_NAME_BOOKING);
+		hotelBooking.scrollIDownToText("ĐẶT PHÒNG");
+		hotelBooking.clickToDynamicTextView("ĐẶT PHÒNG");
 
 		totalPrice = hotelBooking.getTextViewByID("com.VCB:id/tvTotalPrice").split(" ")[0] + " VND";
 		
@@ -76,8 +76,8 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
 		
 		log.info("TC_01_09_Click Thanh toan");
-		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
-		hotelBooking.clickToDynamicTextView("Thanh toán");
+		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "ĐẶT PHÒNG");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPayment");
 		
 		log.info("TC_01_10_Kiem tra man hinh thanh toan");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Thông tin hóa đơn"));
@@ -228,7 +228,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_08_03_Kiem tra dat phong thanh cong");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Thanh toán thành công"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "THANH TOÁN THÀNH CÔNG"));
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lấy hóa đơn thanh toán"));
 		
 	}
@@ -417,7 +417,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.clickToDynamicTextView("Gửi thông tin");
 		
 		log.info("TC_21_03_Kiem tra messge thong bao");
-		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_HOTEL_ADDRESS);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_EMAIL);
 		
 		log.info("TC_21_04_Click nut Dong y");
 		hotelBooking.clickToDynamicTextView("Đồng ý");
