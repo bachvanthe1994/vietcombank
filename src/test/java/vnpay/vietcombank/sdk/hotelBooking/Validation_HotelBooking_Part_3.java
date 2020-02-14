@@ -225,14 +225,14 @@ public class Validation_HotelBooking_Part_3 extends Base {
 		
 	}
 	
-	@Test
+//	@Test
 	public void TC_09_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_ChoThanhToan() {
 		log.info("TC_09_01_Quay ve man hinh Danh sach dat phong");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
 		
-		log.info("TC_09_02_Chon 1 khach san Het han thanh toan");
+		log.info("TC_09_02_Chon 1 khach san Cho thanh toan");
 		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Chờ thanh toán").payCode;
 		hotelBooking.clickToDetailButtonByPayCode(paycode);
 		

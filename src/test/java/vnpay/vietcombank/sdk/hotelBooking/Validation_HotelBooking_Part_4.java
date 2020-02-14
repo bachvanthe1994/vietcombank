@@ -59,8 +59,9 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		
 		hotelBooking.clickToDynamicTextView(listHotelSearch.get(0).hotelName);
 		
-//		hotelBooking.scrollIDownToText("Đặt phòng");
-		hotelBooking.clickToDynamicTextView("Đặt phòng");
+		hotelBooking.waitForTextViewDisplay(listHotelSearch.get(0).hotelName);
+		hotelBooking.scrollIDownToText("ĐẶT PHÒNG");
+		hotelBooking.clickToDynamicTextView("ĐẶT PHÒNG");
 		
 	}
 	

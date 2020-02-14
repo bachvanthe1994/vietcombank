@@ -1,9 +1,11 @@
 package pageObjects.sdk.hotelBooking;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
@@ -34,16 +36,16 @@ public class HotelBookingPageObject extends AbstractPage{
 		for (String text : listText) {
 			day = day + text;
 		}
-		return day;
+		return day.replace("Ngày đặt", "");
 	}
 	
 	public String getDayCheckOut() {
 		List<String> listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
 		String day = "";
 		for (String text : listText) {
-			day = day + " " + text;
+			day = day + text;
 		}
-		return day;
+		return day.replace("Ngày trả", "");
 	}
 	
 	public String getPassengerAndRoom() {
@@ -55,9 +57,15 @@ public class HotelBookingPageObject extends AbstractPage{
 		return passengerAndRoom;
 	}
 	
+	public String convertVietNameseStringToString(String vietnameseString) {
+		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
+	}
+	
 	public boolean checkSuggestLocation(List<String> listSuggestLocations, String checkedValue) {
 		for (String location : listSuggestLocations) {
-			if (!location.contains(checkedValue)) {
+			if (!convertVietNameseStringToString(location).toLowerCase().contains(checkedValue)) {
 				return false;
 			}
 		}
@@ -339,14 +347,26 @@ public class HotelBookingPageObject extends AbstractPage{
 
 	}
 	
+	public boolean isDynamicTextViewDisplayedByID(String dynamicTextID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+
+	}
+	
 	public boolean isDynamicInputBoxByTextDisPlayed(String... dynamicTextValue) {
 		waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
 		return isControlDisplayed(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
 	}
 	
 	public void clickToDynamicTextView(String dynamicTextValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+
+	}
+	
+	public void clickToDynamicTextViewByID(String dynamicTextID) {
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
 
 	}
 	
@@ -456,6 +476,12 @@ public class HotelBookingPageObject extends AbstractPage{
 	public String getTextViewByID (String dynamicID) {
 		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		return getTextElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+
+	}
+	
+	public String getTextInEditTextFieldByResourceID(String... dynamicID) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 
 	}
 	

@@ -385,7 +385,7 @@ public class Base {
 		}
 	}
 
-	public String convertMonFomatTH(String month) {
+	public String convertMonthFomatTH(String month) {
 		switch (month) {
 		case "01":
 			return "TH 1";
@@ -416,7 +416,7 @@ public class Base {
 		}
 	}
 
-	public String convertMonFomatTh(String month) {
+	public String convertMonthFomatTh(String month) {
 		switch (month) {
 		case "01":
 			return "Th1";
@@ -447,6 +447,8 @@ public class Base {
 		}
 	}
 
+
+
 	public String convertDayOfWeekVietNamese(int day) {
 		switch (day) {
 		case 1:
@@ -461,6 +463,27 @@ public class Base {
 			return "Thứ 6";
 		case 6:
 			return "Thứ 7";
+		case 7:
+			return "Chủ nhật";
+		default:
+			return "";
+		}
+	}
+	
+	public String convertDayOfWeekVietNameseFull(int day) {
+		switch (day) {
+		case 1:
+			return "Thứ hai";
+		case 2:
+			return "Thứ ba";
+		case 3:
+			return "Thứ tư";
+		case 4:
+			return "Thứ năm";
+		case 5:
+			return "Thứ sáu";
+		case 6:
+			return "Thứ bảy";
 		case 7:
 			return "Chủ nhật";
 		default:
