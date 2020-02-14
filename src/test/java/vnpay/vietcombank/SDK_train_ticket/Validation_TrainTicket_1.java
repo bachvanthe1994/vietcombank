@@ -301,7 +301,7 @@ public class Validation_TrainTicket_1 extends Base {
 		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTen");
 
 		log.info("TC_20_Kiem tra hien thi ket qua goi y");
-		trainTicket.checkSuggestPoint(listSuggestPoint, "Hai");
+		verifyTrue(trainTicket.checkSuggestPoint(listSuggestPoint, "Hai"));
 	}
 
 	@Test
