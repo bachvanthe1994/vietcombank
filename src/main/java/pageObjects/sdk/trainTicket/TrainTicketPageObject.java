@@ -32,13 +32,16 @@ public class TrainTicketPageObject extends AbstractPage {
     
     public boolean checkSuggestPoint(List<String> listSuggestPoint, String checkedValue) {
 		for (String point : listSuggestPoint) {
-			if (!point.contains(checkedValue)) {
+			if (!point.toLowerCase().contains(checkedValue)) {
 				return false;
 			}
 		}
 		return true;
 		
+		
+		
 	}
+    
     public boolean getSelectedAttributeOfDate(String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		AndroidElement element = driver.findElement(By.xpath(locator));
