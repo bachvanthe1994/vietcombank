@@ -1,4 +1,4 @@
-package vnpay.vietcombank.SDK_train_ticket;
+package vnpay.vietcombank.sdk_train_ticket;
 
 import java.io.IOException;
 import java.util.List;
