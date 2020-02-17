@@ -964,7 +964,6 @@ public class AbstractPage {
 	clickToElement(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
     }
 
-
 // input vào ô input với tham số truyền vào là inputbox
     public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
 //		scrollToText(driver, dynamicTextValue);
@@ -1078,7 +1077,8 @@ public class AbstractPage {
 	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
     }
-    
+
+//Kiểm tra gợi ý số tiền không hiển thị trên màn hình,tham số truyền vào là resource-id 
     public boolean isDynamicSuggestedMoneyUndisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 	waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 	return isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
@@ -1205,7 +1205,6 @@ public class AbstractPage {
 	return getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
 
     }
-
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
     public String getDynamicTextInTransactionDetail(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
@@ -1511,6 +1510,5 @@ public class AbstractPage {
 	clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 
     }
-
 
 }
