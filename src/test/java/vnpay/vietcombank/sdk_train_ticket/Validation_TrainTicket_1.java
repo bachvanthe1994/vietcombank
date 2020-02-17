@@ -127,7 +127,7 @@ public class Validation_TrainTicket_1 extends Base {
 
 		log.info("TC_06_Check message");
 		verifyEquals(trainTicket.getTextInDynamicPopup(driver, "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
-		
+
 		log.info("TC_06_Click OK");
 		trainTicket.clickToDynamicButton(driver, "OK");
 	}

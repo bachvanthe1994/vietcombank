@@ -203,7 +203,7 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickDynamicDateStartAndEnd(driver, trainTicket.getCurentMonthAndYear(), backDay);
 
 		String toastMessage = trainTicket.getToastMessage(driver);
-		
+
 		log.info("TC_08_Verify message thoi gian cho phep chon");
 		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " + convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay + " " + next6MonthFormat + ". Vui lòng chọn lại."));
 
@@ -473,7 +473,7 @@ public class Validation_TrainTicket_2 extends Base {
 		log.info("TC_17_Hien thi title note");
 		verifyEquals(trainTicket.getTextInDynamicNote(driver, "4"), TrainTicket_Data.message.NOTE_NUMBER_CUSTOMER);
 	}
-	
+
 	@Test
 	public void TC_18_FocusComboboxHanhKhach() {
 		log.info("TC_17_Click button hanh khach");

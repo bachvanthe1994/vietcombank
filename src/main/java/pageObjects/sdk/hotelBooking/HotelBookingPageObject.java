@@ -3,7 +3,6 @@ package pageObjects.sdk.hotelBooking;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -20,7 +19,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.offset.PointOption;
 import model.HotelBookingInfo;
-import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
 
 public class HotelBookingPageObject extends AbstractPage{
@@ -31,30 +29,48 @@ public class HotelBookingPageObject extends AbstractPage{
 	private AndroidDriver<AndroidElement> driver;
 	
 	public String getDayCheckIn() {
-		List<String> listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+		List<String> listText = new ArrayList<String>();
 		String day = "";
-		for (String text : listText) {
-			day = day + text;
+		if (status) {
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+			for (String text : listText) {
+				day = day + text;
+			}
+			day = day.replace("Ngày đặt", "");
 		}
-		return day.replace("Ngày đặt", "");
+		return day;
+		
 	}
 	
 	public String getDayCheckOut() {
-		List<String> listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+		List<String> listText = new ArrayList<String>();
 		String day = "";
-		for (String text : listText) {
-			day = day + text;
+		if (status) {
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+			for (String text : listText) {
+				day = day + text;
+			}
+			day = day.replace("Ngày trả", "");
 		}
-		return day.replace("Ngày trả", "");
+		return day;
+
 	}
 	
 	public String getPassengerAndRoom() {
-		List<String> listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+		List<String> listText = new ArrayList<String>();
 		String passengerAndRoom = "";
-		for (String text : listText) {
-			passengerAndRoom = passengerAndRoom + text;
+		if (status) {
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+			for (String text : listText) {
+				passengerAndRoom = passengerAndRoom + text;
+			}
+			
 		}
 		return passengerAndRoom;
+		
 	}
 	
 	public String convertVietNameseStringToString(String vietnameseString) {
@@ -74,9 +90,9 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public boolean checkDateSelected(String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicValue);
 		
-		String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		String locator = String.format(HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicValue);
 		
 		AndroidElement element = driver.findElement(By.xpath(locator));
 		
@@ -133,7 +149,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public boolean checkSelectedStarRate(int star) {
-		List<String> starList = getSelectedInListElements(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llStars");
+		List<String> starList = getSelectedInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llStars");
 		return Boolean.parseBoolean(starList.get(star - 1));
 		
 	}
@@ -174,10 +190,10 @@ public class HotelBookingPageObject extends AbstractPage{
 	
 	public void swipeElementToElementByText (String textStart, String textEnd) {
 		Dimension size = driver.manage().window().getSize();
-		String locatorStart = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, textStart);
+		String locatorStart = String.format(HotelBookingPageUIs.TEXTVIEW_BY_TEXT, textStart);
     	MobileElement elementStart = driver.findElement(By.xpath(locatorStart));
     	
-    	String locatorEnd = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, textEnd);
+    	String locatorEnd = String.format(HotelBookingPageUIs.TEXTVIEW_BY_TEXT, textEnd);
     	MobileElement elementEnd = driver.findElement(By.xpath(locatorEnd));
     	
 		int xStart = elementStart.getLocation().getX();
@@ -329,7 +345,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		
 		for (HotelBookingInfo info : listHotelBookingInfo) {
 			clickToDynamicButtonLinkOrLinkText(driver, info.hotelName);
-			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, info.hotelName);
+			waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, info.hotelName);
 			navigateBack(driver);
 			
 		}
@@ -480,9 +496,190 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public String getTextInEditTextFieldByResourceID(String... dynamicID) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
-		return getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+		waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		return getTextElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
 
+	}
+	
+	public void clickToDynamicTextOrButtonLink(String dynamicValue) {
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
+		}
+	}
+	
+	public void clickToDynamicButton(String dynamicValue) {
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
+		}
+	}
+	
+	public boolean isDynamicMessageAndLabelTextDisplayed(String text) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
+		}
+		return isDisplayed;
+	}
+	
+	public void clickToDynamicBackIcon(String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		}
+	}
+	
+	public boolean isDynamicTextInInputBoxDisPlayed(String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+	
+	public void clickToTextViewByLinearLayoutID(String... dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		}
+	}
+	
+	public void inputIntoEditTextByID(String inputValue, String... dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		if (status = true) {
+			sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
+		}
+	}
+	
+	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
+		String text = null;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+		if (status = true) {
+			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+		}
+		return text;
+	}
+	
+	public List<String> getListOfSuggestedMoneyOrListText(String dynamicID) {
+		List<String> listString = new ArrayList<String>();
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		if (status = true) {
+			listString = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		}
+		return listString;
+	}
+	
+	public String getTextInEditTextFieldByID(String... dynamicID) {
+		String text = null;
+		scrollIDown(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		if (status = true) {
+			text = getTextElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		}
+		return text;
+		
+	}
+	
+	public String getTextTextViewByLinearLayoutID(String... dynamicID) {
+		String text = null;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		if (status = true) {
+			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		}
+		return text;
+
+	}
+	
+	public void clickToDynamicBottomMenuOrCloseIcon(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+	}
+	
+	public String getTextInDynamicDropdownOrDateTimePicker(String dynamicID) {
+		String text = null;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		if (status = true) {
+			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		}
+		return text;
+	}
+	
+	public String getTextInDynamicPopup(String dynamicResourceID) {
+		String text = null;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);  
+		if (status = true) {
+			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+		}
+		return text;
+		
+	}
+	
+	public void clickToDynamicInput(String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		}
+
+	}
+	
+	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		if (status = true) {
+			sendKeyToElement(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+		}
+
+	}
+	
+	public void clickToDynamicDropDown(String dymanicText) {
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		if (status = true) {
+			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		}
+
+	}
+	
+	public boolean isDynamicButtonDisplayed(String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+		return isDisplayed;
+
+	}
+	
+	public void inputToDynamicOtpOrPIN(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		clearText(driver, HotelBookingPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+		if (status = true) {
+			setValueToElement(driver, HotelBookingPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
+		}
+		
 	}
 	
 }
