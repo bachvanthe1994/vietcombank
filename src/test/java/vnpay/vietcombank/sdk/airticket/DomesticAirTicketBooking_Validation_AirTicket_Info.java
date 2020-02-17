@@ -338,7 +338,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info extends Base {
 		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten"), "Họ Đệm và Tên (ví dụ: NGUYEN VAN A)");
 
 		log.info("TC_03_Step 31: Kiem tra text hanh ly chieu di");
-		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/switchIcon", "com.VCB:id/tv_content_price"), "Số thẻ khách hàng thường xuyên");
+		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/ll_price", "com.VCB:id/tv_content_price"), "Số thẻ khách hàng thường xuyên");
 
 		log.info("TC_03_Step 32: Kiem tra so luong tre em");
 		verifyEquals(airTicket.getTextInDynamicHeaderViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/tv_header_nguoi"), "Trẻ em 1");
@@ -356,7 +356,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info extends Base {
 		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price"), "Ngày sinh");
 
 		log.info("TC_03_Step 37: Kiem tra text hanh ly chieu di");
-		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/switchIcon", "com.VCB:id/tv_content_price"), "Số thẻ khách hàng thường xuyên");
+		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/ll_price", "com.VCB:id/tv_content_price"), "Số thẻ khách hàng thường xuyên");
 
 		log.info("TC_03_Step 38: Kiem tra so luong em be");
 		verifyEquals(airTicket.getTextInDynamicHeaderViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "2", "com.VCB:id/tv_header_nguoi"), "Em bé 1");
