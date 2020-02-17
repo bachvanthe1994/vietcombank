@@ -127,7 +127,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 	List<HotelBookingInfo> listHotelRecentView = new ArrayList<HotelBookingInfo>();
 	@Test
 	public void TC_06_DatPhongKhachSan_KiemTraNutXemGanDay_DaXemGanDay() {
-		hotelBooking.clickToDynamicTextOrButtonLink("Tìm kiếm địa điểm hoặc khách sạn");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
 		
 		hotelBooking.clickToDynamicTextOrButtonLink("Hà Nội");
 		

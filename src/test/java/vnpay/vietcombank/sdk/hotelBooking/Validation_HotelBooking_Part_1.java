@@ -47,10 +47,10 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_01_03_Kiem tra danh sach chuc nang dat phong khach san");
 		log.info("TC_01_03_01_Kiem tra text Dat phong khach san");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "ĐẶT PHÒNG\n" + "KHÁCH SẠN"));
+//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("ĐẶT PHÒNG\n" + "KHÁCH SẠN"));
 
 		log.info("TC_01_03_02_Kiem tra Lich su va huy phong");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lịch sử & hủy phòng"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Lịch sử & hủy phòng"));
 	}
 
 	@Test

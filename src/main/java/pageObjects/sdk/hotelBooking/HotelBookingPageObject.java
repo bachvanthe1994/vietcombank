@@ -29,30 +29,48 @@ public class HotelBookingPageObject extends AbstractPage{
 	private AndroidDriver<AndroidElement> driver;
 	
 	public String getDayCheckIn() {
-		List<String> listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+		List<String> listText = new ArrayList<String>();
 		String day = "";
-		for (String text : listText) {
-			day = day + text;
+		if (status) {
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+			for (String text : listText) {
+				day = day + text;
+			}
+			day = day.replace("Ngày đặt", "");
 		}
-		return day.replace("Ngày đặt", "");
+		return day;
+		
 	}
 	
 	public String getDayCheckOut() {
-		List<String> listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+		List<String> listText = new ArrayList<String>();
 		String day = "";
-		for (String text : listText) {
-			day = day + text;
+		if (status) {
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+			for (String text : listText) {
+				day = day + text;
+			}
+			day = day.replace("Ngày trả", "");
 		}
-		return day.replace("Ngày trả", "");
+		return day;
+
 	}
 	
 	public String getPassengerAndRoom() {
-		List<String> listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+		List<String> listText = new ArrayList<String>();
 		String passengerAndRoom = "";
-		for (String text : listText) {
-			passengerAndRoom = passengerAndRoom + text;
+		if (status) {
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+			for (String text : listText) {
+				passengerAndRoom = passengerAndRoom + text;
+			}
+			
 		}
 		return passengerAndRoom;
+		
 	}
 	
 	public String convertVietNameseStringToString(String vietnameseString) {
