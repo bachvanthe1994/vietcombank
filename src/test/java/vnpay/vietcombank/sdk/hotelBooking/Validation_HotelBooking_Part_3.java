@@ -15,7 +15,6 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import model.HotelBookingInfo;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
@@ -23,7 +22,6 @@ import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
 public class Validation_HotelBooking_Part_3 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
-	private HomePageObject homePage;
 	private HotelBookingPageObject hotelBooking;
 	
 
@@ -43,20 +41,19 @@ public class Validation_HotelBooking_Part_3 extends Base {
 
 	@Test
 	public void TC_01_LichSuDatPhong_KiemTraManHinhHienThi() {
-		homePage = PageFactoryManager.getHomePageObject(driver);
 		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
 
 		log.info("TC_01_01_Click Dat phong khach san");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Đặt phòng khách sạn");
+		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
 		
 		log.info("TC_01_02_Click nut Dong y");
-		hotelBooking.clickToDynamicButton(driver, "Đồng ý");
+		hotelBooking.clickToDynamicButton("Đồng ý");
 		
 		log.info("TC_01_03_Click vao Lich su & huy phong");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Lịch sử & hủy phòng");
+		hotelBooking.clickToDynamicTextOrButtonLink("Lịch sử & hủy phòng");
 		
 		log.info("TC_01_04_Kiem tra man hinh Lich su va huy phong");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Danh sách đặt phòng"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Danh sách đặt phòng"));
 
 	}
 	
@@ -73,83 +70,83 @@ public class Validation_HotelBooking_Part_3 extends Base {
 	@Test
 	public void TC_03_LichSuDatPhong_LocKetqua_KiemTraManHinhHienThi() {
 		log.info("TC_03_01_Bam vao icon Loc");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivFilter");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivFilter");
 		
 		log.info("TC_03_02_Kiem tra man hinh loc ket qua");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lọc kết quả"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Lọc kết quả"));
 		
 		log.info("TC_03_03_Kiem tra o Ma giao dich");
-		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Mã giao dịch"));
+		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed("Mã giao dịch"));
 		
 		log.info("TC_03_04_Kiem tra o Ma nhan phong");
-		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Mã nhận phòng"));
+		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed("Mã nhận phòng"));
 		
 		log.info("TC_03_05_Kiem tra o Ten khach san");
-		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Tên khách sạn"));
+		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed("Tên khách sạn"));
 		
 		log.info("TC_03_06_Kiem tra o Ngay nhan");
-		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Ngày nhận"));
+		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed("Ngày nhận"));
 		
 		log.info("TC_03_07_Kiem tra o Ngay tra");
-		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Ngày trả"));
+		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed("Ngày trả"));
 		
 		log.info("TC_03_08_Kiem tra combo Trang thai");
-		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Tất cả"));
+		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed("Tất cả"));
 		
 		log.info("TC_03_09_Kiem tra nut Tim kiem");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Tìm kiếm"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Tìm kiếm"));
 		
 	}
 	
 	@Test
 	public void TC_04_LichSuDatPhong_LocKetqua_KiemTraComboTrangThai() {
 		log.info("TC_04_01_Click chon combo Trang thai");
-		hotelBooking.clickToDynamicInput(driver, "Tất cả");
+		hotelBooking.clickToDynamicInput("Tất cả");
 		
 		log.info("TC_04_02_Kiem tra combo Trang thai");
 		List<String> actualList = hotelBooking.getListOfStatusHotelBooking(driver, "android:id/title");
 		verifyEquals(actualList, HotelBooking_Data.STATUS_HOTEL_BOOKING_LIST);
 		
 		log.info("TC_04_03_Click chon Trang thai");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, HotelBookingPageObject.actualList.get(0).status);
+		hotelBooking.clickToDynamicTextOrButtonLink(actualList.get(0));
 		
 	}
 	
 	@Test
 	public void TC_05_LichSuDatPhong_LocKetqua_NhanNutTimKiem_KhongTimThayKetQua() {
 		log.info("TC_05_01_Nhap Ma giao dich");
-		hotelBooking.inputToDynamicInputBox(driver, "abc123", "Mã giao dịch");
+		hotelBooking.inputToDynamicInputBox("abc123", "Mã giao dịch");
 		
 		log.info("TC_05_02_Bam nut Tim kiem");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Tìm kiếm");
+		hotelBooking.clickToDynamicTextOrButtonLink("Tìm kiếm");
 		
 		log.info("TC_05_03_Kiem tra hien thi thong bao Khong co du lieu hien thi");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Không có dữ liệu hiển thị"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Không có dữ liệu hiển thị"));
 		
 	}
 	
 	@Test
 	public void TC_06_LichSuDatPhong_LocKetqua_NhanNutTimKiem_TimThayKetQua() throws ParseException {
 		log.info("TC_06_01_Quay lai man hinh loc du lieu");
-		hotelBooking.clickToDynamicBackIcon(driver, "Danh sách đặt phòng");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Lịch sử & hủy phòng");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivFilter");
+		hotelBooking.clickToDynamicBackIcon("Danh sách đặt phòng");
+		hotelBooking.clickToDynamicTextOrButtonLink("Lịch sử & hủy phòng");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivFilter");
 		
 		log.info("TC_06_02_Nhap Ma giao dich");
-		hotelBooking.inputToDynamicInputBox(driver, HotelBookingPageObject.actualList.get(0).payCode, "Mã giao dịch");
+		hotelBooking.inputToDynamicInputBox(HotelBookingPageObject.actualList.get(0).payCode, "Mã giao dịch");
 		
 		log.info("TC_06_03_Bam nut Tim kiem");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Tìm kiếm");
+		hotelBooking.clickToDynamicTextOrButtonLink("Tìm kiếm");
 		
 		log.info("TC_06_04_Kiem tra du lieu loc");
 		log.info("TC_06_04_01_Kiem tra Ma giao dich");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch"), HotelBookingPageObject.actualList.get(0).payCode);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Mã giao dịch"), HotelBookingPageObject.actualList.get(0).payCode);
 		
 		log.info("TC_06_04_02_Kiem tra ten khach san");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBookingPageObject.actualList.get(0).hotelName));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(HotelBookingPageObject.actualList.get(0).hotelName));
 		
 		log.info("TC_06_04_03_Kiem tra dia chi khach san");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBookingPageObject.actualList.get(0).hotelAddress));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(HotelBookingPageObject.actualList.get(0).hotelAddress));
 		
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
@@ -157,35 +154,35 @@ public class Validation_HotelBooking_Part_3 extends Base {
 	    String checkinDate = formatter1.format(formatter2.parse(HotelBookingPageObject.actualList.get(0).checkinDate));
 		
 		log.info("TC_06_04_04_Kiem tra Ngay dat phong");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Ngày đặt phòng"), createdDate);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Ngày đặt phòng"), createdDate);
 		
 		log.info("TC_06_04_05_Kiem tra Ngay nhan phong");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Ngày nhận phòng"), checkinDate);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Ngày nhận phòng"), checkinDate);
 		
 		log.info("TC_06_04_06_Kiem tra Tong tien");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Tổng tiền"), HotelBookingPageObject.actualList.get(0).price);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Tổng tiền"), HotelBookingPageObject.actualList.get(0).price);
 		
 		log.info("TC_06_04_07_Kiem tra Trạng thái");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBookingPageObject.actualList.get(0).status));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(HotelBookingPageObject.actualList.get(0).status));
 		
 	}
 	
 	@Test
 	public void TC_07_LichSuDatPhong_ChiTietDatPhong_KiemTraManHinhHienThi() throws ParseException {
 		log.info("TC_07_01_Bam nut Chi tiet");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Chi tiết");
+		hotelBooking.clickToDynamicTextOrButtonLink("Chi tiết");
 		
 		log.info("TC_07_02_Kiem tra man hinh chi tiet dat phong");
-		hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Chi tiết đặt phòng");
+		hotelBooking.isDynamicMessageAndLabelTextDisplayed("Chi tiết đặt phòng");
 		
 		log.info("TC_07_02_01_Kiem tra Ma giao dich");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch"), HotelBookingPageObject.actualList.get(0).payCode);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Mã giao dịch"), HotelBookingPageObject.actualList.get(0).payCode);
 		
 		log.info("TC_07_02_02_Kiem tra ten khach san");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBookingPageObject.actualList.get(0).hotelName));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(HotelBookingPageObject.actualList.get(0).hotelName));
 		
 		log.info("TC_07_02_03_Kiem tra dia chi khach san");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, HotelBookingPageObject.actualList.get(0).hotelAddress));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(HotelBookingPageObject.actualList.get(0).hotelAddress));
 		
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
@@ -193,31 +190,31 @@ public class Validation_HotelBooking_Part_3 extends Base {
 	    String checkinDate = formatter1.format(formatter2.parse(HotelBookingPageObject.actualList.get(0).checkinDate));
 		
 		log.info("TC_07_02_04_Kiem tra Ngay dat phong");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Ngày đặt phòng"), createdDate);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Ngày đặt phòng"), createdDate);
 		
 		log.info("TC_07_02_05_Kiem tra Ngay nhan phong");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Ngày nhận phòng"), checkinDate);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Ngày nhận phòng"), checkinDate);
 		
 		log.info("TC_07_02_06_Kiem tra Tong tien");
-		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail(driver, "Tổng tiền"), HotelBookingPageObject.actualList.get(0).price);
+		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Tổng tiền"), HotelBookingPageObject.actualList.get(0).price);
 		
 		log.info("TC_07_02_07_Kiem tra hien thi ngay tra phong");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày trả phòng"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Ngày trả phòng"));
 		
 		log.info("TC_07_02_07_Kiem tra hien thi ma nhan phong");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Mã nhận phòng"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Mã nhận phòng"));
 		
 	}
 	
 	@Test
 	public void TC_08_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_HetHanThanhToan() {
 		log.info("TC_08_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
 		
 		log.info("TC_08_02_Chon 1 khach san Het han thanh toan");
-		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Hết hạn thanh toán").payCode;
+		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "HẾT HẠN THANH TOÁN").payCode;
 		hotelBooking.clickToDetailButtonByPayCode(paycode);
 		
 		log.info("TC_08_03_Kiem tra hien thi nut thuc hien lai");
@@ -228,23 +225,23 @@ public class Validation_HotelBooking_Part_3 extends Base {
 //	@Test
 	public void TC_09_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_ChoThanhToan() {
 		log.info("TC_09_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
 		
 		log.info("TC_09_02_Chon 1 khach san Cho thanh toan");
 		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Chờ thanh toán").payCode;
 		hotelBooking.clickToDetailButtonByPayCode(paycode);
 		
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Thanh toán"));
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Thanh toán"));
 		
 	}
 	
 //	@Test
 	public void TC_10_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_DatPhongThanhCong() {
 		log.info("TC_10_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
 		
 		log.info("TC_10_02_Chon 1 khach san Het han thanh toan");
@@ -256,8 +253,8 @@ public class Validation_HotelBooking_Part_3 extends Base {
 //	@Test
 	public void TC_11_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_HuyPhong() {
 		log.info("TC_11_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
 		
 		log.info("TC_11_02_Chon 1 khach san Het han thanh toan");
