@@ -212,16 +212,6 @@ public class VehicalTicket_3_Validate extends Base {
 
     @Test
     public void TC_28_KiemTraChonNgayMai() {
-	log.info("TC_13_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DEPARTURE, VehicalData.Data_ORDER_TICKET.FROMT_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DEPARTURE);
-
-	log.info("TC_13_Step_1: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DESTINATION);
-
 	log.info("TC_13_Step_1: Chọn ngày mai");
 	vehicalTicket.clickToDynamicTomorrow("com.VCB:id/lnNextday");
 
@@ -233,18 +223,8 @@ public class VehicalTicket_3_Validate extends Base {
 	verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnNextday"));
     }
 
-//    @Test
+    @Test
     public void TC_29_KiemTraChonNgayHomNay() {
-	log.info("TC_13_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DEPARTURE, VehicalData.Data_ORDER_TICKET.FROMT_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DEPARTURE);
-
-	log.info("TC_13_Step_1: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DESTINATION);
-
 	log.info("TC_13_Step_1: Chọn ngày hôm nay");
 	vehicalTicket.clickToDynamicTomorrow("com.VCB:id/lnToday");
 
@@ -256,44 +236,31 @@ public class VehicalTicket_3_Validate extends Base {
 	verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnToday"));
     }
 
-//    @Test
+    @Test
     public void TC_30_KiemTraNhanChonThoiGian() {
-	log.info("TC_13_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DEPARTURE, VehicalData.Data_ORDER_TICKET.FROMT_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DEPARTURE);
-
-	log.info("TC_13_Step_1: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DESTINATION);
-
 	log.info("TC_13_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
 	log.info("TC_13_Step_1: kiểm tra ngày được focus là ngày hiện tại");
 	verifyTrue(vehicalTicket.isControlForcus(driver, "//android.widget.TextView[@text='" + getCurrentDay() + "']"));
+
+	log.info("TC_13_Step_1: kiểm tra ngày được focus là ngày hiện tại");
+	vehicalTicket.clickToDynamicButtonBack("Chọn ngày đi");
     }
 
-//    @Test
+    @Test
     public void TC_31_KiemTraNhanChonNgayQuaKhu() {
-	log.info("TC_13_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DEPARTURE, VehicalData.Data_ORDER_TICKET.FROMT_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DEPARTURE);
-
-	log.info("TC_13_Step_1: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DESTINATION);
-
 	log.info("TC_13_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
 	log.info("TC_13_Step_1: kiểm tra ngày được focus là ngày hiện tại");
 	String string_date = getCurrentDay();
 	int yesterday = Integer.parseInt(string_date) - 1;
-	verifyFailure(vehicalTicket.isDynamicForcus("//android.widget.TextView[@text='" + yesterday + "']"));
+	String yesterdayString = Integer.toString(yesterday);
+
+	log.info("TC_13_Step_1: kiểm tra không chọn được");
+	vehicalTicket.clickToDynamicText(yesterdayString);
+	verifyFailure(vehicalTicket.isControlForcus(driver, "//android.widget.TextView[@text='" + yesterdayString + "']"));
     }
 
 }
