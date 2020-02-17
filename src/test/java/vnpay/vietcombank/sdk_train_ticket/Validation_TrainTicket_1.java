@@ -1,4 +1,4 @@
-package vnpay.vietcombank.SDK_train_ticket;
+package vnpay.vietcombank.sdk_train_ticket;
 
 import java.io.IOException;
 import java.util.List;
@@ -127,7 +127,7 @@ public class Validation_TrainTicket_1 extends Base {
 
 		log.info("TC_06_Check message");
 		verifyEquals(trainTicket.getTextInDynamicPopup(driver, "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
-		
+
 		log.info("TC_06_Click OK");
 		trainTicket.clickToDynamicButton(driver, "OK");
 	}
