@@ -43,8 +43,6 @@ public class VehicalTicket_1 extends Base {
 	vehicalTicket.clickToDynamicButtonLinkOrLinkText(driver, VehicalData.Data_ORDER_TICKET.TO_INPUT);
 	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
 	vehicalTicket.clickToDynamicText(driver, VehicalData.Data_ORDER_TICKET.DESTINATION);
- 
-	
     }
 
 }

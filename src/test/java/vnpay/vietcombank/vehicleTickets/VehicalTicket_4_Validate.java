@@ -179,7 +179,6 @@ public class VehicalTicket_4_Validate extends Base {
 	log.info("TC_13_Step_1: lấy ra tháng/năm hiện tại");
 	String today = "THÁNG" + getCurrenMonth() + "/" + getCurrentYear();
 //	vehicalTicket.isControlUnDisplayed(driver, locator, dynamicValue);
-	
     }
 
 }

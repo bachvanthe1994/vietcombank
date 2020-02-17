@@ -243,7 +243,6 @@ public class VehicalTicket_2_Validate extends Base {
     public void afterClass() {
 	closeApp();
 	service.stop();
-	
     }
 
 }

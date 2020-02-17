@@ -305,7 +305,6 @@ public class VehicalTicket_3_Validate extends Base {
 	String string_date = getCurrentDay();
 	int yesterday = Integer.parseInt(string_date) - 1;
 	verifyFailure(vehicalTicket.isControlForcus(driver, "//android.widget.TextView[@text='" + yesterday + "']"));
-	
     }
 
 }
