@@ -39,6 +39,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
+<<<<<<< HEAD
     SoftAssert softAssertion;
     protected final Logger log;
     protected AndroidDriver<AndroidElement> driver;
@@ -72,6 +73,46 @@ public class Base {
 	    for (int i = 0; i < listOfFiles.length; i++) {
 		if (listOfFiles[i].isFile()) {
 		    new File(listOfFiles[i].toString()).delete();
+=======
+	SoftAssert softAssertion;
+	protected final Logger log;
+	protected AndroidDriver<AndroidElement> driver;
+	private AndroidDriver<AndroidElement> driver2;
+
+	private String workingDir = System.getProperty("user.dir");
+	public AppiumDriverLocalService service;
+	private String arriveDay;
+
+	protected Base() {
+		log = Logger.getLogger(getClass());
+
+	}
+
+	public AndroidDriver<AndroidElement> getDriver() {
+		return driver;
+
+	}
+
+	@BeforeSuite
+	public void deleteAllFile() {
+		System.out.println("-----------START DELETE ALL FILE -------");
+		deleteAllFileInFolder();
+		System.out.println("-----------END DELETE ALL FILE -------");
+	}
+
+	public void deleteAllFileInFolder() {
+		try {
+			String pathFolderDownload = workingDir + "//ReportNGScreenShots";
+			File file = new File(pathFolderDownload);
+			File[] listOfFiles = file.listFiles();
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					new File(listOfFiles[i].toString()).delete();
+				}
+			}
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+>>>>>>> release/release04
 		}
 	    }
 	} catch (Exception e) {
@@ -79,9 +120,74 @@ public class Base {
 	}
     }
 
+<<<<<<< HEAD
     public void closeSMSApp() {
 	driver2.quit();
     }
+=======
+	public void closeSMSApp() {
+		driver2.quit();
+	}
+
+	@AfterSuite
+	public void sendEmail() throws IOException {
+		String SMTP_SERVER = "smtp.gmail.com";
+		String PASSWORD = "Abc12345@";
+		String EMAIL_FROM = "vnpay.automation.team@gmail.com";
+		String EMAIL_TO = "vnpay.automation.team@gmail.com";
+
+		String EMAIL_SUBJECT = "TestNG Report";
+
+		System.out.println("Preparing to send email");
+		Properties prop = new Properties();
+		prop.put("mail.smtp.host", SMTP_SERVER);
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.port", "587");
+		String workingDir = System.getProperty("user.dir");
+
+		Session session = Session.getInstance(prop, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(EMAIL_FROM, PASSWORD);
+			}
+		});
+		Message msg = new MimeMessage(session);
+
+		try {
+
+			msg.setFrom(new InternetAddress(EMAIL_FROM));
+
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(EMAIL_TO, false));
+
+			msg.setSubject(EMAIL_SUBJECT);
+
+			Multipart emailContent = new MimeMultipart();
+			MimeBodyPart textBoyPart = new MimeBodyPart();
+			textBoyPart.setText("Download all files to see the report" + new Date());
+
+			MimeBodyPart attachfile = new MimeBodyPart();
+			attachfile.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.html");
+			MimeBodyPart xmlFile1 = new MimeBodyPart();
+			xmlFile1.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.xml");
+			MimeBodyPart xmlFile2 = new MimeBodyPart();
+			xmlFile2.attachFile(workingDir + "\\test-output\\Vietcombank\\testng-failed.xml");
+			emailContent.addBodyPart(textBoyPart);
+			emailContent.addBodyPart(attachfile);
+			emailContent.addBodyPart(xmlFile1);
+			emailContent.addBodyPart(xmlFile2);
+			msg.setContent(emailContent);
+			msg.setSentDate(new Date());
+
+			Transport.send(msg);
+			System.out.println("Sent message successfully....");
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+
+	}
+>>>>>>> release/release04
 
     @AfterSuite
     public void sendEmail() throws IOException {
@@ -590,4 +696,132 @@ public class Base {
 	int year = date.getYear();
 	return "THÁNG" + " " + month + " " + year;
     }
+
+	public String convertMonthVietNamese(String month) {
+		switch (month) {
+		case "01":
+			return "Tháng 1";
+		case "02":
+			return "Tháng 2";
+		case "03":
+			return "Tháng 3";
+		case "04":
+			return "Tháng 4";
+		case "05":
+			return "Tháng 5";
+		case "06":
+			return "Tháng 6";
+		case "07":
+			return "Tháng 7";
+		case "08":
+			return "Tháng 8";
+		case "09":
+			return "Tháng 9";
+		case "10":
+			return "Tháng 10";
+		case "11":
+			return "Tháng 11";
+		case "12":
+			return "Tháng 12";
+		default:
+			return "";
+		}
+	}
+
+	public String convertMonthFomatTH(String month) {
+		switch (month) {
+		case "01":
+			return "TH 1";
+		case "02":
+			return "TH 2";
+		case "03":
+			return "TH 3";
+		case "04":
+			return "TH 4";
+		case "05":
+			return "TH 5";
+		case "06":
+			return "TH 6";
+		case "07":
+			return "TH 7";
+		case "08":
+			return "TH 8";
+		case "09":
+			return "TH 9";
+		case "10":
+			return "TH 10";
+		case "11":
+			return "TH 11";
+		case "12":
+			return "TH 12";
+		default:
+			return "";
+		}
+	}
+
+	public String convertMonthFomatTh(String month) {
+		switch (month) {
+		case "01":
+			return "Th1";
+		case "02":
+			return "Th2";
+		case "03":
+			return "Th3";
+		case "04":
+			return "Th4";
+		case "05":
+			return "Th5";
+		case "06":
+			return "Th6";
+		case "07":
+			return "Th7";
+		case "08":
+			return "Th8";
+		case "09":
+			return "Th9";
+		case "10":
+			return "Th10";
+		case "11":
+			return "Th11";
+		case "12":
+			return "Th12";
+		default:
+			return "";
+		}
+	}
+	
+	public String convertDayOfWeekVietNameseFull(int day) {
+		switch (day) {
+		case 1:
+			return "Thứ hai";
+		case 2:
+			return "Thứ ba";
+		case 3:
+			return "Thứ tư";
+		case 4:
+			return "Thứ năm";
+		case 5:
+			return "Thứ sáu";
+		case 6:
+			return "Thứ bảy";
+		case 7:
+			return "Chủ nhật";
+		default:
+			return "";
+		}
+	}
+
+
+
+
+
+
+
+	public String getForWardDay(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.plusDays(days);
+		int day = date.getDayOfMonth();
+		return day + "";
+	}
+
 }

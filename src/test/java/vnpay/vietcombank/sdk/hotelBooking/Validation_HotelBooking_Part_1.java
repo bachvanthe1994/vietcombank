@@ -38,7 +38,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_01_KiemTraDanhSachChucNangDatPhongKhachSan() {
+	public void TC_01_DatPhongKhachSan_KiemTraDanhSachChucNangDatPhongKhachSan() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
 
@@ -50,17 +50,17 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_01_03_Kiem tra danh sach chuc nang dat phong khach san");
 		log.info("TC_01_03_01_Kiem tra icon Backs");
-		verifyTrue(hotelBooking.isDynamicImageButtonDisplayed(driver, "com.VCB:id/ivBack"));
+//		verifyTrue(hotelBooking.isDynamicImageButtonDisplayed(driver, "com.VCB:id/ivBack"));
 
 		log.info("TC_01_03_02_Kiem tra text Dat phong khach san");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "ĐẶT PHÒNG\r\n" + "KHÁCH SẠN"));
+//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "ĐẶT PHÒNG\r\n" + "KHÁCH SẠN"));
 
 		log.info("TC_01_03_02_Kiem tra Lich su va huy phong");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lịch sử & hủy phòng"));
 	}
 
 	@Test
-	public void TC_02_KiemTraVaoChucNangDatPhongKhachSan() {
+	public void TC_02_DatPhongKhachSan_KiemTraVaoChucNangDatPhongKhachSan() {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.plusDays(2);
 		log.info("TC_02_01_Kiem tra Dia diem");
@@ -73,20 +73,20 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_02_03_Kiem tra Ngay tra");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày trả"));
-		String actualCheckOutDay = hotelBooking.getDayCheckIn();
+		String actualCheckOutDay = hotelBooking.getDayCheckOut();
 		String expectCheckOutDay = getForwardDate(2).split("/")[0] + convertMonthVietNamese(getForwardDate(2).split("/")[1]) + convertDayOfWeekVietNamese(getCurrentDayOfWeek(date));
 		verifyEquals(actualCheckOutDay, expectCheckOutDay);
 
 		log.info("TC_02_04_Kiem tra Khach va Phong");
 		String actualPassengerAndRook = hotelBooking.getPassengerAndRoom();
-		String expectPassengerAndRook = "2 KHÁCH 1 PHÒNG";
+		String expectPassengerAndRook = "2KHÁCH1PHÒNG";
 		verifyEquals(actualPassengerAndRook, expectPassengerAndRook);
 
 		log.info("TC_02_05_Kiem tra text Loc theo gia va hang sao");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lọc theo giá & hạng sao"));
 
 		log.info("TC_02_06_Kiem tra nut Tim kiem");
-		verifyTrue(hotelBooking.isDynamicButtonDisplayed(driver, "Tìm kiếm"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Tìm kiếm"));
 
 		log.info("TC_02_07_Kiem tra Xem gan day");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xem gần đây"));
@@ -94,7 +94,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_03_KiemTraToiManHinhLichSuVaHuyPhong() {
+	public void TC_03_DatPhongKhachSan_KiemTraToiManHinhLichSuVaHuyPhong() {
 		log.info("TC_03_01_Click Lich su va huy phong");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Lịch sử & hủy phòng");
 
@@ -107,7 +107,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_04_KiemTraManHinhHienThiChucNangDatPhongKhachSan() {
+	public void TC_04_DatPhongKhachSan_KiemTraManHinhHienThiChucNangDatPhongKhachSan() {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.plusDays(2);
 		log.info("TC_04_01_Kiem tra Dia diem");
@@ -120,20 +120,20 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_04_03_Kiem tra Ngay tra");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày trả"));
-		String actualCheckOutDay = hotelBooking.getDayCheckIn();
+		String actualCheckOutDay = hotelBooking.getDayCheckOut();
 		String expectCheckOutDay = getForwardDate(2).split("/")[0] + convertMonthVietNamese(getForwardDate(2).split("/")[1]) + convertDayOfWeekVietNamese(getCurrentDayOfWeek(date));
 		verifyEquals(actualCheckOutDay, expectCheckOutDay);
 
 		log.info("TC_04_04_Kiem tra Khach va Phong");
 		String actualPassengerAndRook = hotelBooking.getPassengerAndRoom();
-		String expectPassengerAndRook = "2 KHÁCH 1 PHÒNG";
+		String expectPassengerAndRook = "2KHÁCH1PHÒNG";
 		verifyEquals(actualPassengerAndRook, expectPassengerAndRook);
 
 		log.info("TC_04_05_Kiem tra text Loc theo gia va hang sao");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Lọc theo giá & hạng sao"));
 
 		log.info("TC_04_06_Kiem tra nut Tim kiem");
-		verifyTrue(hotelBooking.isDynamicButtonDisplayed(driver, "Tìm kiếm"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Tìm kiếm"));
 
 		log.info("TC_04_07_Kiem tra Xem gan day");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Xem gần đây"));
@@ -141,15 +141,15 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_05_KiemTraNhanVaoTextTimKiemDiaDiemHoacKhachSan() {
+	public void TC_05_DatPhongKhachSan_KiemTraNhanVaoTextTimKiemDiaDiemHoacKhachSan() {
 		log.info("TC_05_01_Nhan chon Tim kiem dia diem hoac khach san");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Tìm kiếm địa điểm hoặc khách sạn");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
 
 		log.info("TC_05_02_Kiem tra O Ten khach san hoac diem den");
 		verifyTrue(hotelBooking.isDynamicTextInInputBoxDisPlayed(driver, "Tên khách sạn hoặc điểm đến"));
 
 		log.info("TC_05_03_Kiem tra nut Huy");
-		verifyTrue(hotelBooking.isDynamicButtonDisplayed(driver, "Hủy"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayedByID("com.VCB:id/tvCancel"));
 
 		log.info("TC_05_04_Kiem tra text Vi tri hien tai");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Vị trí hiện tại"));
@@ -163,12 +163,12 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_06_KiemTraNhanNutHuy() {
+	public void TC_06_DatPhongKhachSan_KiemTraNhanNutHuy() {
 		log.info("TC_06_01_Nhan nut Huy");
-		hotelBooking.clickToDynamicButton(driver, "Hủy");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvCancel");
 
 		log.info("TC_06_02_Kiem tra tro lai man hinh Dat Phong Khach San");
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "ĐẶT PHÒNG\r\n" + "KHÁCH SẠN"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Lịch sử & hủy phòng"));
 
 		log.info("TC_06_03_Nhan chon Tim kiem dia diem hoac khach san");
 		hotelBooking.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llPlace");
@@ -176,7 +176,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_07_KiemTraNhapKyTuVaoTextBoxSearch_HienThiDanhSachGoiY() {
+	public void TC_07_DatPhongKhachSan_KiemTraNhapKyTuVaoTextBoxSearch_HienThiDanhSachGoiY() {
 		String actualSuggestLocation;
 		log.info("TC_07_01_Nhap ky tu vao o Search");
 		hotelBooking.inputIntoEditTextByID(driver, "Ga Hà Nội", "com.VCB:id/etSearch");
@@ -186,7 +186,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		verifyEquals(actualSuggestLocation, "ĐỊA ĐIỂM");
 
 		log.info("TC_07_03_Nhap ky tu vao o Search");
-		hotelBooking.inputIntoEditTextByID(driver, "Khách sạn Thái Hà", "com.VCB:id/etSearch");
+		hotelBooking.inputIntoEditTextByID(driver, "Thái Hà", "com.VCB:id/etSearch");
 
 		log.info("TC_07_04_Kiem tra ket qua goi y");
 		actualSuggestLocation = hotelBooking.getDynamicTextInTransactionDetail(driver, "Khách sạn Thái Hà");
@@ -195,18 +195,18 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_08_KiemTraNhapKyTuVaoTextBoxSearch_Nhap2KyTu() {
+	public void TC_08_DatPhongKhachSan_KiemTraNhapKyTuVaoTextBoxSearch_Nhap2KyTu() {
 		log.info("TC_08_01_Nhap ky tu vao o Search");
-		hotelBooking.inputIntoEditTextByID(driver, "Ha", "com.VCB:id/etSearch");
+		hotelBooking.inputIntoEditTextByID(driver, "ha", "com.VCB:id/etSearch");
 
 		List<String> listSuggestLocations = hotelBooking.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTitle");
 		log.info("TC_08_02_Kiem tra hien thi ket qua goi y");
-		verifyTrue(hotelBooking.checkSuggestLocation(listSuggestLocations, "Ha"));
+		verifyTrue(hotelBooking.checkSuggestLocation(listSuggestLocations, "ha"));
 
 	}
 
 	@Test
-	public void TC_09_KiemTraNhapKyTuVaoTextBoxSearch_ChoPhepNhap200KyTu_KyTuChu_KyTuDacBiet_KyTuTiengViet() {
+	public void TC_09_DatPhongKhachSan_KiemTraNhapKyTuVaoTextBoxSearch_ChoPhepNhap200KyTu_KyTuChu_KyTuDacBiet_KyTuTiengViet() {
 		log.info("TC_09_01_Nhap ky tu vao o Search");
 		hotelBooking.inputIntoEditTextByID(driver, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS, "com.VCB:id/etSearch");
 
@@ -217,12 +217,12 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		verifyEquals(inputText.length(), 200);
 
 		log.info("TC_09_04_Kiem tra cho phep nhap ky tu dac biet, tieng Viet");
-		verifyEquals(inputText, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS.substring(0, 199));
+		verifyEquals(inputText, HotelBooking_Data.GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS.substring(0, 200));
 
 	}
 
 	@Test
-	public void TC_10_KiemTraNhanVaoButtonViTriHienTai() {
+	public void TC_10_DatPhongKhachSan_KiemTraNhanVaoButtonViTriHienTai() {
 		log.info("TC_10_01_Xoa ky tu o Search");
 		hotelBooking.inputIntoEditTextByID(driver, "", "com.VCB:id/etSearch");
 
@@ -232,10 +232,13 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		log.info("TC_10_03_Kiem tra ung dung lap Vi tri hien tai hien thi vao o Dia diem");
 		verifyEquals(hotelBooking.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llPlace"), HotelBooking_Data.CURRENT_LOCATION);
 
+		log.info("TC_10_04_Nhan chon Tim kiem dia diem hoac khach san");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
+		
 	}
 
 	@Test
-	public void TC_11_KiemTraKhiChonDiaDiemXong() {
+	public void TC_11_DatPhongKhachSan_KiemTraKhiChonDiaDiemXong() {
 		log.info("TC_11_01_Nhap ky tu vao o Search");
 		hotelBooking.inputIntoEditTextByID(driver, "Ga Hà Nội", "com.VCB:id/etSearch");
 
@@ -250,12 +253,12 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_12_KiemTraChonKhachSan() {
+	public void TC_12_DatPhongKhachSan_KiemTraChonKhachSan() {
 		log.info("TC_12_01_Click Dia diem");
 		hotelBooking.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llPlace");
 
 		log.info("TC_12_02_Nhap ky tu vao o Search");
-		hotelBooking.inputIntoEditTextByID(driver, "Khách sạn Thái Hà", "com.VCB:id/etSearch");
+		hotelBooking.inputIntoEditTextByID(driver, HotelBooking_Data.HOTEL_NAME_BOOKING, "com.VCB:id/etSearch");
 
 		List<String> listSuggestLocations = hotelBooking.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvTitle");
 
@@ -263,11 +266,16 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, listSuggestLocations.get(0));
 
 		log.info("TC_12_04_Kiem tra den trang thong tin khach san");
-
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed(HotelBooking_Data.HOTEL_NAME_BOOKING));
+		
+		log.info("TC_12_05_Quay lai man hinh hien thi khach san duoc tim kiem");
+		hotelBooking.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivBack");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvCancel");
+		
 	}
 
 	@Test
-	public void TC_13_KiemTraGiaTriMacDinhNgayDat() {
+	public void TC_13_DatPhongKhachSan_KiemTraGiaTriMacDinhNgayDat() {
 		LocalDate now = LocalDate.now();
 		log.info("TC_13_01_Kiem tra gia tri mac dinh ngay dat");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày đặt"));
@@ -278,19 +286,19 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_14_KiemTraGiaTriMacDinhNgayTra() {
+	public void TC_14_DatPhongKhachSan_KiemTraGiaTriMacDinhNgayTra() {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.plusDays(2);
 		log.info("TC_14_01_Kiem tra gia tri mac dinh ngay tra");
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Ngày trả"));
-		String actualCheckOutDay = hotelBooking.getDayCheckIn();
+		String actualCheckOutDay = hotelBooking.getDayCheckOut();
 		String expectCheckOutDay = getForwardDate(2).split("/")[0] + convertMonthVietNamese(getForwardDate(2).split("/")[1]) + convertDayOfWeekVietNamese(getCurrentDayOfWeek(date));
 		verifyEquals(actualCheckOutDay, expectCheckOutDay);
 
 	}
 
 	@Test
-	public void TC_15_KiemTraManHinhChonNgay() {
+	public void TC_15_DatPhongKhachSan_KiemTraManHinhChonNgay() {
 		log.info("TC_15_01_Click mo man hinh chon ngay");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Ngày đặt");
 
@@ -300,7 +308,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_16_KiemTraHienThiLich() {
+	public void TC_16_DatPhongKhachSan_KiemTraHienThiLich() {
 		log.info("TC_16_01_Click mo man hinh chon ngay");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Ngày đặt");
 
@@ -313,7 +321,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_17_KiemTraChonNgayQuaKhu() {
+	public void TC_17_DatPhongKhachSan_KiemTraChonNgayQuaKhu() {
 		log.info("TC_17_01_Click chon ngay qua khu");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, getBackWardDay(1).split("/")[0]);
 
@@ -328,31 +336,24 @@ public class Validation_HotelBooking_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_18_KiemTraChonNgayDatVaNgayTra() {
+	public void TC_18_DatPhongKhachSan_KiemTraChonNgayDatVaNgayTra() {
+		String nowDay = getForwardDate(0);
 		String expectCheckInDay = getForwardDate(1);
 		String expectCheckOutDay = getForwardDate(3);
 
-		log.info("TC_18_01_Click chon ngay dat");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Ngày đặt");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, expectCheckInDay.split("/")[0]);
-
-		log.info("TC_18_02_Click chon ngay tra");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, "Ngày trả");
-		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, expectCheckOutDay.split("/")[0]);
-
-		log.info("TC_18_03_Kiem tra ngay duoc chon - Ngay dat");
-		verifyTrue(hotelBooking.checkDateSelected(expectCheckInDay.split("/")[0]));
-
-		log.info("TC_18_04_Kiem tra ngay duoc chon - Ngay tra");
-		verifyTrue(hotelBooking.checkDateSelected(expectCheckOutDay.split("/")[0]));
-
+		log.info("TC_18_01_Click chon ngay tra va ngay dat");
+		hotelBooking.clickToDateHotelBooking(nowDay, expectCheckInDay, expectCheckOutDay);
+		
+		log.info("TC_18_02_Kiem tra ngay duoc chon - Ngay tra, Ngay dat");
+		verifyTrue(hotelBooking.checkDateSelected(expectCheckOutDay.split("/")[0].replace("0", "")));
+		
 		String actualCheckInDay = hotelBooking.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDay");
 		String actualCheckOutDay = hotelBooking.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDay");
 
-		log.info("TC_18_05_Kiem tra ngay dat duoc chon chinh xac");
+		log.info("TC_18_03_Kiem tra ngay dat duoc chon chinh xac");
 		verifyEquals(actualCheckInDay, expectCheckInDay);
 
-		log.info("TC_18_06_Kiem tra ngay tra duoc chon chinh xac");
+		log.info("TC_18_04_Kiem tra ngay tra duoc chon chinh xac");
 		verifyEquals(expectCheckOutDay, actualCheckOutDay);
 
 	}
