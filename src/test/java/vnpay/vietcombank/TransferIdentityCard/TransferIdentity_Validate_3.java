@@ -31,15 +31,15 @@ public class TransferIdentity_Validate_3 extends Base {
     private String transactionNumber;
     String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
-		startServer();
-		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
+    @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+    @BeforeClass
+    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
+	    throws IOException, InterruptedException {
+	startServer();
+	log.info("Before class: Mo app ");
+	driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+	login = PageFactoryManager.getLoginPageObject(driver);
+	login.Global_login(phone, pass, opt);
 
     }
 
@@ -214,15 +214,16 @@ public class TransferIdentity_Validate_3 extends Base {
 
 	log.info("TC_49_Step_04: kiem tra hien link quay lai");
 	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, "Quay lại"));
+    }
 
-	@Test
-	public void TC_49_NhanIconBack() {
-		log.info("TC_49_Step_1 : Click  nut Back");
-		trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
-		log.info("TC_49_Step_2: kiem tra title man hinh");
-		String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
-		verifyEquals(titleBar, textCheckElement.TITLEBAR);
-	}
+    @Test
+    public void TC_49_NhanIconBack() {
+	log.info("TC_49_Step_1 : Click  nut Back");
+	trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
+	log.info("TC_49_Step_2: kiem tra title man hinh");
+	String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
+	verifyEquals(titleBar, textCheckElement.TITLEBAR);
+    }
 
     @Test
     public void TC_50_BoTrongOTP() {
@@ -272,9 +273,8 @@ public class TransferIdentity_Validate_3 extends Base {
 	trasferPage.clickToDynamicBackIcon(driver, "Quay lại");
     }
 
-
-	@Test
-	public void TC_53_NhapOTPKhongDung() {
+    @Test
+    public void TC_53_NhapOTPKhongDung() {
 	log.info("TC_53_Step_1 : nhap otp sai");
 	trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
 
@@ -376,20 +376,20 @@ public class TransferIdentity_Validate_3 extends Base {
 
     }
 
-	@Test
-	public void TC_57_MatKhauKhongChinhXac() {
-		log.info("TC_57_Step_1: điền mat khau sai");
-		trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
+    @Test
+    public void TC_57_MatKhauKhongChinhXac() {
+	log.info("TC_57_Step_1: điền mat khau sai");
+	trasferPage.inputToDynamicPopupPasswordInput(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
 
-		log.info("TC_57_Step_2 : chon tiep tuc");
-		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+	log.info("TC_57_Step_2 : chon tiep tuc");
+	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_57_Step_3 : kiểm tra dien sai mat khau");
-		verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_PASSWORD_FALSE));
+	log.info("TC_57_Step_3 : kiểm tra dien sai mat khau");
+	verifyTrue(trasferPage.isDynamicMessageAndLabelTextDisplayed(driver, TransferIdentity_Data.confirmMessage.MESSSAGE_PASSWORD_FALSE));
 
-		log.info("TC_57_Step_4: chọn đóng");
-		trasferPage.clickToDynamicButton(driver, "Đóng");
-	}
+	log.info("TC_57_Step_4: chọn đóng");
+	trasferPage.clickToDynamicButton(driver, "Đóng");
+    }
 
     @Test
     public void TC_58_DienThieuMatKhau() {
@@ -444,12 +444,12 @@ public class TransferIdentity_Validate_3 extends Base {
 
 	log.info("TC_38_Step_42 : chon tiep tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+    }
 
-
-	@AfterClass(alwaysRun = true)
-	public void afterClass() {
-		closeApp();
-		service.stop();
-	}
+    @AfterClass(alwaysRun = true)
+    public void afterClass() {
+	closeApp();
+	service.stop();
+    }
 
 }
