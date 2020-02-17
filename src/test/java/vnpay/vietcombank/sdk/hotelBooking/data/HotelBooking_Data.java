@@ -18,6 +18,7 @@ public class HotelBooking_Data {
 	public static final String EMPTY_PHONE_MESSAGE = "Quý khách vui lòng nhập Số điện thoại";
 	public static final String EMPTY_EMAIL_MESSAGE = "Quý khách vui lòng nhập Email";
 	public static final String NOT_VALID_EMAIL_MESSAGE = "Email không đúng định dạng. Vui lòng kiểm tra lại";
+	public static final String NOT_VALID_EMAIL_BILL_MESSAGE = "Email không chính xác, Quý khách vui lòng kiểm tra lại.";
 	public static final String NOT_VALID_PHONE_MESSAGE = "Số điện thoại khách hàng không hợp lệ";
 	public static final String TRANSACTION_VALIDATION = "Xác thực giao dịch";
 	public static final String OTP_NOTIFICATION_SENDED = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;
@@ -31,10 +32,12 @@ public class HotelBooking_Data {
 	public static final String OTP_INVALID_N_TIMES = "Nhập sai OTP quá " + LogIn_Data.Login_Account.OTP_INVALID_TIMES + " lần. Quý khách vui lòng thực hiện giao dịch khác.";
 	public static final String PASSWORD_INVALID_N_TIMES = "";
 	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
-	public static final String SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS = "!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc";
+	public static final String SPECIAL_TEXT_NUMBER_OVER_100_CHARACTERS = "m!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc!@#$%&*()abcabc";
 	public static final String NUMBER_OVER_15_CHARACTERS = "1234567890000000";
 	public static final String EMPTY_HOTEL_NAME = "Quý khách vui lòng nhập Tên công ty.";
 	public static final String EMPTY_TAX_CODE = "Quý khách vui lòng nhập Mã số thuế.";
 	public static final String EMPTY_HOTEL_ADDRESS = "Quý khách vui lòng nhập Địa chỉ công ty.";
+	public static final String EMPTY_EMAIL = "Quý khách vui lòng nhập Email nhận hóa đơn.";
+	public static final String HOTEL_NAME_BOOKING = "CLASSY HOLIDAY HOTEL & SPA";
 	
 }

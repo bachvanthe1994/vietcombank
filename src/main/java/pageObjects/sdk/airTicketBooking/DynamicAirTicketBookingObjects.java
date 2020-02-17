@@ -83,6 +83,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	}
 
 	public void clickToDynamicFlight(int index, String... dynamicText) {
+		scrollIDown(driver, AirTicketBookingUIs.LIST_FLIGHT, dynamicText);
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.LIST_FLIGHT, dynamicText);
 		if (status = true) {
 			clickToOneOfElement(driver, index, AirTicketBookingUIs.LIST_FLIGHT, dynamicText);
@@ -113,6 +114,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 
 	public String getAirTicketPriceInfo1Way(String... textAndId) {
 		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_PRICE_INFO, textAndId);
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PRICE_INFO, textAndId);
 		if (status = true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_PRICE_INFO, textAndId);
@@ -199,6 +201,17 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		return text;
 	}
 
+	public String getTextInDynamicHeaderViewAirTicketInfoOfCustomer(String... IdIndexID) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_HEADER_IN_TICKET_INFO, IdIndexID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_HEADER_IN_TICKET_INFO, IdIndexID);
+		if (status = true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_HEADER_IN_TICKET_INFO, IdIndexID);
+		}
+		return text;
+	}
+
 	public String getDynamicTextByID(String id) {
 		boolean status = false;
 		String text = null;
@@ -253,6 +266,17 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PLACE_TEXT, text);
 		if (status = true) {
 			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_PLACE_TEXT, text);
+		}
+		return isDisplayed;
+	}
+
+	public boolean isDynamicTextByLabel(String... textAndText) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndText);
+
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndText);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndText);
 		}
 		return isDisplayed;
 	}
