@@ -54,13 +54,13 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date_And_People extends 
 	@Test
 	public void TC_01_KiemTraGiaoDienManHinhNgayVe2Chieu() {
 
-		log.info("TC_1_Step 01: Click Khu Hoi");
+		log.info("TC_13_Step 01: Click Khu Hoi");
 		airTicket.clickToDynamicTextOrButtonLink("Khứ hồi");
 
-		log.info("TC_1_Step 02: Click Ngay Đi");
+		log.info("TC_13_Step 02: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày về");
 
-		log.info("TC_1_Step 03: Kiem tra giao dien cua chon ngay ve khu hoi");
+		log.info("TC_13_Step 03: Kiem tra giao dien cua chon ngay ve khu hoi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleLeft"));
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleRight"));
 		verifyTrue(airTicket.isDynamicTextDisplayed("Chọn ngày bay"));

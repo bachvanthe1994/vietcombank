@@ -13,6 +13,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import model.HotelBookingInfo;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
@@ -20,6 +21,7 @@ import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
 public class Validation_HotelBooking_Part_4 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private HotelBookingPageObject hotelBooking;
 	
 
@@ -39,13 +41,14 @@ public class Validation_HotelBooking_Part_4 extends Base {
 
 	@Test
 	public void TC_01_DatPhongKhachSan_ManHinhThongTinKhachHang_KiemTraManHinhNhapThongTinKhachHang() {
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
 
 		log.info("TC_01_01_Click Dat phong khach san");
-		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Đặt phòng khách sạn");
 		
 		log.info("TC_01_02_Click nut Dong y");
-		hotelBooking.clickToDynamicButton("Đồng ý");
+		hotelBooking.clickToDynamicButton(driver, "Đồng ý");
 		
 		hotelBooking.clickToDynamicTextView("Tìm kiếm địa điểm hoặc khách sạn");
 		hotelBooking.clickToDynamicTextView("Hà Nội");
@@ -57,8 +60,8 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		hotelBooking.clickToDynamicTextView(listHotelSearch.get(0).hotelName);
 		
 		hotelBooking.waitForTextViewDisplay(listHotelSearch.get(0).hotelName);
-		hotelBooking.scrollIDownToText("ĐẶT PHÒNG");
-		hotelBooking.clickToDynamicTextView("ĐẶT PHÒNG");
+		hotelBooking.scrollIDownToText("Đặt phòng");
+		hotelBooking.clickToDynamicTextView("Đặt phòng");
 		
 	}
 	
@@ -69,7 +72,7 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.clickToDynamicTextView("Thanh toán");
-		verifyEquals(hotelBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_NAME_MESSAGE);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_NAME_MESSAGE);
 		hotelBooking.clickToDynamicTextView("Đồng ý");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Thanh toán");
 		hotelBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
@@ -81,7 +84,7 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("", "com.VCB:id/etCustomerPhone");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.clickToDynamicTextView("Thanh toán");
-		verifyEquals(hotelBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_PHONE_MESSAGE);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_PHONE_MESSAGE);
 		hotelBooking.clickToDynamicTextView("Đồng ý");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Thanh toán");
 		hotelBooking.inputToDynamicInputBoxByID("0363056625", "com.VCB:id/etCustomerPhone");
@@ -93,7 +96,7 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("", "com.VCB:id/etCustomerEmail");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.clickToDynamicTextView("Thanh toán");
-		verifyEquals(hotelBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_EMAIL_MESSAGE);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.EMPTY_EMAIL_MESSAGE);
 		hotelBooking.clickToDynamicTextView("Đồng ý");
 	
 	}
@@ -103,7 +106,7 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603", "com.VCB:id/etCustomerEmail");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.clickToDynamicTextView("Thanh toán");
-		verifyEquals(hotelBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), HotelBooking_Data.NOT_VALID_EMAIL_MESSAGE);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.NOT_VALID_EMAIL_MESSAGE);
 		hotelBooking.clickToDynamicTextView("Đồng ý");
 		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
 		
@@ -114,7 +117,7 @@ public class Validation_HotelBooking_Part_4 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("363056625", "com.VCB:id/etCustomerPhone");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.clickToDynamicTextView("Thanh toán");
-		verifyEquals(hotelBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), HotelBooking_Data.NOT_VALID_PHONE_MESSAGE);
+		verifyEquals(hotelBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), HotelBooking_Data.NOT_VALID_PHONE_MESSAGE);
 		hotelBooking.clickToDynamicTextView("Đồng ý");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
 		hotelBooking.inputToDynamicInputBoxByID("0363056625", "com.VCB:id/etCustomerPhone");
@@ -123,7 +126,7 @@ public class Validation_HotelBooking_Part_4 extends Base {
 	
 	@Test
 	public void TC_07_DatPhongKhachSan_ManHinhThongTinKhachHang_KiemTraNhanNutBack() {
-		hotelBooking.clickToDynamicBackIcon("Đặt phòng");
+		hotelBooking.clickToDynamicBackIcon(driver, "Đặt phòng");
 		hotelBooking.scrollIDownToText("Đặt phòng");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Đặt phòng"));
 	}

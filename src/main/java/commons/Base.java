@@ -39,647 +39,610 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
-    SoftAssert softAssertion;
-    protected final Logger log;
-    protected AndroidDriver<AndroidElement> driver;
-    private AndroidDriver<AndroidElement> driver2;
+	SoftAssert softAssertion;
+	protected final Logger log;
+	protected AndroidDriver<AndroidElement> driver;
+	private AndroidDriver<AndroidElement> driver2;
 
-    private String workingDir = System.getProperty("user.dir");
-    public AppiumDriverLocalService service;
-    private String arriveDay;
+	private String workingDir = System.getProperty("user.dir");
+	public AppiumDriverLocalService service;
+	private String arriveDay;
 
-    protected Base() {
-	log = Logger.getLogger(getClass());
+	protected Base() {
+		log = Logger.getLogger(getClass());
 
-    }
+	}
 
-    public AndroidDriver<AndroidElement> getDriver() {
-	return driver;
+	public AndroidDriver<AndroidElement> getDriver() {
+		return driver;
 
-    }
+	}
 
-    @BeforeSuite
-    public void deleteAllFile() {
-	System.out.println("-----------START DELETE ALL FILE -------");
-	deleteAllFileInFolder();
-	System.out.println("-----------END DELETE ALL FILE -------");
-    }
+	@BeforeSuite
+	public void deleteAllFile() {
+		System.out.println("-----------START DELETE ALL FILE -------");
+		deleteAllFileInFolder();
+		System.out.println("-----------END DELETE ALL FILE -------");
+	}
 
-    public void deleteAllFileInFolder() {
-	try {
-	    String pathFolderDownload = workingDir + "//ReportNGScreenShots";
-	    File file = new File(pathFolderDownload);
-	    File[] listOfFiles = file.listFiles();
-	    for (int i = 0; i < listOfFiles.length; i++) {
-		if (listOfFiles[i].isFile()) {
-		    new File(listOfFiles[i].toString()).delete();
+	public void deleteAllFileInFolder() {
+		try {
+			String pathFolderDownload = workingDir + "//ReportNGScreenShots";
+			File file = new File(pathFolderDownload);
+			File[] listOfFiles = file.listFiles();
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					new File(listOfFiles[i].toString()).delete();
+				}
+			}
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
 		}
-	    }
-	} catch (Exception e) {
-	    System.out.print(e.getMessage());
-	}
-    }
-
-    public void closeSMSApp() {
-	driver2.quit();
-    }
-
-    @AfterSuite
-    public void sendEmail() throws IOException {
-	String SMTP_SERVER = "smtp.gmail.com";
-	String PASSWORD = "Abc12345@";
-	String EMAIL_FROM = "vnpay.automation.team@gmail.com";
-	String EMAIL_TO = "vnpay.automation.team@gmail.com";
-
-	String EMAIL_SUBJECT = "TestNG Report";
-
-	System.out.println("Preparing to send email");
-	Properties prop = new Properties();
-	prop.put("mail.smtp.host", SMTP_SERVER);
-	prop.put("mail.smtp.auth", "true");
-	prop.put("mail.smtp.starttls.enable", "true");
-	prop.put("mail.smtp.port", "587");
-	String workingDir = System.getProperty("user.dir");
-
-	Session session = Session.getInstance(prop, new Authenticator() {
-	    @Override
-	    protected PasswordAuthentication getPasswordAuthentication() {
-		return new PasswordAuthentication(EMAIL_FROM, PASSWORD);
-	    }
-	});
-	Message msg = new MimeMessage(session);
-
-	try {
-
-	    msg.setFrom(new InternetAddress(EMAIL_FROM));
-
-	    msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(EMAIL_TO, false));
-
-	    msg.setSubject(EMAIL_SUBJECT);
-
-	    Multipart emailContent = new MimeMultipart();
-	    MimeBodyPart textBoyPart = new MimeBodyPart();
-	    textBoyPart.setText("Download all files to see the report");
-
-	    MimeBodyPart attachfile = new MimeBodyPart();
-	    attachfile.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.html");
-	    MimeBodyPart xmlFile1 = new MimeBodyPart();
-	    xmlFile1.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.xml");
-	    MimeBodyPart xmlFile2 = new MimeBodyPart();
-	    xmlFile2.attachFile(workingDir + "\\test-output\\Vietcombank\\testng-failed.xml");
-	    emailContent.addBodyPart(textBoyPart);
-	    emailContent.addBodyPart(attachfile);
-	    emailContent.addBodyPart(xmlFile1);
-	    emailContent.addBodyPart(xmlFile2);
-	    msg.setContent(emailContent);
-	    msg.setSentDate(new Date());
-
-	    Transport.send(msg);
-	    System.out.println("Sent message successfully....");
-
-	} catch (MessagingException e) {
-	    e.printStackTrace();
 	}
 
-    }
+	public void closeSMSApp() {
+		driver2.quit();
+	}
 
-    public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName)
-	    throws MalformedURLException {
-	File file = new File("src/test/resources");
-	File appFile = new File(file, appName);
-	DesiredCapabilities cap = new DesiredCapabilities();
+	@AfterSuite
+	public void sendEmail() throws IOException {
+		String SMTP_SERVER = "smtp.gmail.com";
+		String PASSWORD = "Abc12345@";
+		String EMAIL_FROM = "vnpay.automation.team@gmail.com";
+		String EMAIL_TO = "vnpay.automation.team@gmail.com";
 
-	if (deviceType.equalsIgnoreCase("virtual")) {
-	    cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-	    cap.setCapability("appPackage", appPackage);
-	    cap.setCapability("appActivity", appActivities);
-	} else if (deviceType.equalsIgnoreCase("real")) {
-	    cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-	    cap.setCapability("uid", udid);
-	    cap.setCapability("appPackage", appPackage);
-	    cap.setCapability("appActivity", appActivities);
-	    cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
-	    cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+		String EMAIL_SUBJECT = "TestNG Report";
 
-	} else if (deviceType.equalsIgnoreCase("browserStack")) {
-	    cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-	    cap.setCapability("uid", udid);
-	    cap.setCapability("appPackage", appPackage);
-	    cap.setCapability("appActivity", appActivities);
+		System.out.println("Preparing to send email");
+		Properties prop = new Properties();
+		prop.put("mail.smtp.host", SMTP_SERVER);
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.port", "587");
+		String workingDir = System.getProperty("user.dir");
+
+		Session session = Session.getInstance(prop, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(EMAIL_FROM, PASSWORD);
+			}
+		});
+		Message msg = new MimeMessage(session);
+
+		try {
+
+			msg.setFrom(new InternetAddress(EMAIL_FROM));
+
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(EMAIL_TO, false));
+
+			msg.setSubject(EMAIL_SUBJECT);
+
+			Multipart emailContent = new MimeMultipart();
+			MimeBodyPart textBoyPart = new MimeBodyPart();
+			textBoyPart.setText("Download all files to see the report" + new Date());
+
+			MimeBodyPart attachfile = new MimeBodyPart();
+			attachfile.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.html");
+			MimeBodyPart xmlFile1 = new MimeBodyPart();
+			xmlFile1.attachFile(workingDir + "\\test-output\\Vietcombank\\Run test case on Android 9.xml");
+			MimeBodyPart xmlFile2 = new MimeBodyPart();
+			xmlFile2.attachFile(workingDir + "\\test-output\\Vietcombank\\testng-failed.xml");
+			emailContent.addBodyPart(textBoyPart);
+			emailContent.addBodyPart(attachfile);
+			emailContent.addBodyPart(xmlFile1);
+			emailContent.addBodyPart(xmlFile2);
+			msg.setContent(emailContent);
+			msg.setSentDate(new Date());
+
+			Transport.send(msg);
+			System.out.println("Sent message successfully....");
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 
 	}
 
-	cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-	cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
+	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
+		File file = new File("src/test/resources");
+		File appFile = new File(file, appName);
+		DesiredCapabilities cap = new DesiredCapabilities();
 
-	driver = new AndroidDriver<>(new URL(url), cap);
+		if (deviceType.equalsIgnoreCase("virtual")) {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+			cap.setCapability("appPackage", appPackage);
+			cap.setCapability("appActivity", appActivities);
+		} else if (deviceType.equalsIgnoreCase("real")) {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+			cap.setCapability("uid", udid);
+			cap.setCapability("appPackage", appPackage);
+			cap.setCapability("appActivity", appActivities);
+			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
-	driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
+		} else if (deviceType.equalsIgnoreCase("browserStack")) {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+			cap.setCapability("uid", udid);
+			cap.setCapability("appPackage", appPackage);
+			cap.setCapability("appActivity", appActivities);
 
-	return driver;
+		}
 
-    }
+		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
-    public void closeApp() {
-	driver.quit();
-    }
+		driver = new AndroidDriver<>(new URL(url), cap);
 
-    public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
-	DesiredCapabilities cap = new DesiredCapabilities();
-	if (device.equalsIgnoreCase("virtual ")) {
-	    cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
-	} else if (device.equalsIgnoreCase("real")) {
-	    cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
-	}
-	cap.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
-	System.setProperty("webdriver.chrome.driver", "E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
-	AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
-	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-	return driver;
+		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 
-    }
+		return driver;
 
-    public AppiumDriverLocalService startServer() throws IOException, InterruptedException {
-	boolean trueStatus = checkIfServerIsRunnning(4723);
-	if (!trueStatus) {
-	    service = AppiumDriverLocalService.buildDefaultService();
-	    service.start();
-	} else {
-	    Runtime.getRuntime().exec("taskkill /F /IM node.exe");
-	    Thread.sleep(2000);
-	    service = AppiumDriverLocalService.buildDefaultService();
-	    service.start();
-	}
-	return service;
-    }
-
-    public static boolean checkIfServerIsRunnning(int port) {
-
-	boolean isServerRunning = false;
-	ServerSocket serverSocket;
-	try {
-	    serverSocket = new ServerSocket(port);
-
-	    serverSocket.close();
-	} catch (IOException e) {
-	    isServerRunning = true;
-	} finally {
-	    serverSocket = null;
-	}
-	return isServerRunning;
-    }
-
-    public static int randomNumber() {
-
-	Random random = new Random();
-	int randomNumber = random.nextInt(999999);
-	return randomNumber;
-
-    }
-
-    protected boolean checkPassed(boolean condition) {
-	softAssertion = new SoftAssert();
-	boolean pass = true;
-	try {
-	    if (condition == true)
-		log.info("===PASSED===");
-	    else
-		log.info("===FAILED===");
-	    softAssertion.assertTrue(condition);
-	    softAssertion.assertAll();
-	} catch (Throwable e) {
-	    ;
-	    pass = false;
-	    VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-	    Reporter.getCurrentTestResult().setThrowable(e);
-	}
-	return pass;
-    }
-
-    protected boolean verifyTrue(boolean condition) {
-	return checkPassed(condition);
-    }
-
-    protected boolean checkFailed(boolean condition) {
-	softAssertion = new SoftAssert();
-	boolean pass = true;
-	try {
-	    if (condition == false)
-		log.info("===PASSED===");
-	    else
-		log.info("===FAILED===");
-	    softAssertion.assertFalse(condition);
-	    softAssertion.assertAll();
-	} catch (Throwable e) {
-	    ;
-	    pass = false;
-	    VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-	    Reporter.getCurrentTestResult().setThrowable(e);
-	}
-	return pass;
-    }
-
-    protected boolean verifyFailure(boolean condition) {
-	return checkFailed(condition);
-    }
-
-    protected boolean checkEquals(Object actual, Object expected) {
-	softAssertion = new SoftAssert();
-	boolean pass = true;
-	boolean status;
-	try {
-	    if (actual instanceof String && expected instanceof String) {
-		actual = actual.toString().trim();
-		log.info("Actual = " + actual);
-		expected = expected.toString().trim();
-		log.info("Expected = " + expected);
-		status = (actual.equals(expected));
-	    } else {
-		status = (actual == expected);
-	    }
-
-	    log.info("Compare value = " + status);
-	    if (status) {
-		log.info("===PASSED===");
-	    } else {
-		log.info("===FAILED===");
-	    }
-
-	    softAssertion.assertEquals(actual, expected, "Value is not matching!");
-	    softAssertion.assertAll();
-	} catch (Throwable e) {
-	    ;
-	    pass = false;
-	    VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-	    Reporter.getCurrentTestResult().setThrowable(e);
-	}
-	return pass;
-    }
-
-    protected boolean verifyEquals(Object actual, Object expected) {
-	return checkEquals(actual, expected);
-    }
-
-    public static int getCurrentDayOfWeek(LocalDate localDate) {
-	DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
-	int val = dayOfWeek.getValue();
-	return val;
-    }
-
-    public static String getCurrentDay() {
-	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
-	int day = nowUTC.getDayOfMonth();
-	if (day < 10) {
-	    String day1 = "0" + day;
-	    return day1;
-	} else {
-	    return day + "";
 	}
 
-    }
-
-    public static String getCurrenMonth() {
-	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
-	int month = nowUTC.getMonthOfYear();
-	if (month < 10) {
-	    String month1 = "0" + month;
-	    return month1;
-	} else {
-	    return month + "";
-	}
-    }
-
-    public static String getCurrentYear() {
-	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
-	return nowUTC.getYear() + "";
-
-    }
-
-    public String convertMonthVietNamese(String month) {
-	switch (month) {
-	case "01":
-	    return "Tháng 1";
-	case "02":
-	    return "Tháng 2";
-	case "03":
-	    return "Tháng 3";
-	case "04":
-	    return "Tháng 4";
-	case "05":
-	    return "Tháng 5";
-	case "06":
-	    return "Tháng 6";
-	case "07":
-	    return "Tháng 7";
-	case "08":
-	    return "Tháng 8";
-	case "09":
-	    return "Tháng 9";
-	case "10":
-	    return "Tháng 10";
-	case "11":
-	    return "Tháng 11";
-	case "12":
-	    return "Tháng 12";
-	default:
-	    return "";
-	}
-    }
-
-    public String convertDayOfWeekVietNamese(int day) {
-	switch (day) {
-	case 1:
-	    return "Thứ 2";
-	case 2:
-	    return "Thứ 3";
-	case 3:
-	    return "Thứ 4";
-	case 4:
-	    return "Thứ 5";
-	case 5:
-	    return "Thứ 6";
-	case 6:
-	    return "Thứ 7";
-	case 7:
-	    return "Chủ nhật";
-	default:
-	    return "";
-	}
-    }
-
-    public String convertDayOfWeekVietNamese2(int day) {
-	switch (day) {
-	case 1:
-	    return "Thứ hai";
-	case 2:
-	    return "Thứ ba";
-	case 3:
-	    return "Thứ tư";
-	case 4:
-	    return "Thứ năm";
-	case 5:
-	    return "Thứ sáu";
-	case 6:
-	    return "Thứ bảy";
-	case 7:
-	    return "Chủ nhật";
-	default:
-	    return "";
-	}
-    }
-
-    public long convertMoneyToLong(String money, String currency) {
-	money = money.replaceAll(" " + currency, "");
-	money = money.replaceAll(",", "");
-	long m = Long.parseLong(money);
-	return m;
-    }
-
-    public double convertMoneyToDouble(String money, String currency) {
-	money = money.replaceAll(" " + currency, "");
-	money = money.replaceAll(",", "");
-	double amount = Double.parseDouble(money);
-	return amount;
-    }
-
-    public String addCommasToDouble(String number) {
-	double amount = Double.parseDouble(number);
-	String m = String.format("%,.2f", amount);
-	return m;
-    }
-
-    public static String addCommasToLong(String number) {
-	long amount = Long.parseLong(number);
-	String m = String.format("%,d", amount);
-	return m;
-    }
-
-    public String getForwardDate(long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate thirtyDay = now.plusDays(days);
-
-	int year = thirtyDay.getYear();
-
-	int month = thirtyDay.getMonthValue();
-	String month1;
-	if (month < 10) {
-	    month1 = "0" + month;
-	} else {
-	    month1 = month + "";
-	}
-	int day = thirtyDay.getDayOfMonth();
-	String day1;
-
-	if (day < 10) {
-	    day1 = "0" + day;
-	} else {
-	    day1 = day + "";
-	}
-	System.out.println(day1 + "/" + month1 + "/" + year);
-	return day1 + "/" + month1 + "/" + year;
-
-    }
-
-    public String getBackwardDate(long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate thirtyDay = now.minusDays(days);
-
-	int year = thirtyDay.getYear();
-
-	int month = thirtyDay.getMonthValue();
-	String month1;
-	if (month < 10) {
-	    month1 = "0" + month;
-	} else {
-	    month1 = month + "";
-	}
-	int day = thirtyDay.getDayOfMonth();
-	String day1;
-
-	if (day < 10) {
-	    day1 = "0" + day;
-	} else {
-	    day1 = day + "";
-	}
-	System.out.println(day1 + "/" + month1 + "/" + year);
-	return day1 + "/" + month1 + "/" + year;
-
-    }
-
-    public String getForwardMonthAndForwardDay(long months, long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate dayLocal = now.plusDays(days);
-	LocalDate monthLocal = now.plusMonths(months);
-
-	int year = dayLocal.getYear();
-	int month = monthLocal.getMonthValue();
-	int monthNow = now.getMonthValue();
-	int day = dayLocal.getDayOfMonth();
-
-	String month1;
-	if (month < 10) {
-	    month1 = "0" + month;
-	} else {
-	    month1 = month + "";
+	public void closeApp() {
+		driver.quit();
 	}
 
-	String day1;
-	if (day < 10) {
-	    day1 = "0" + day;
-	} else {
-	    day1 = day + "";
+	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
+		DesiredCapabilities cap = new DesiredCapabilities();
+		if (device.equalsIgnoreCase("virtual ")) {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
+		} else if (device.equalsIgnoreCase("real")) {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
+		}
+		cap.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
+		System.setProperty("webdriver.chrome.driver", "E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
+		AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		return driver;
+
 	}
 
-	String year1;
-	if (month < monthNow) {
-	    year1 = year + 1 + "";
-	} else {
-	    year1 = year + "";
+	public AppiumDriverLocalService startServer() throws IOException, InterruptedException {
+		boolean trueStatus = checkIfServerIsRunnning(4723);
+		if (!trueStatus) {
+			service = AppiumDriverLocalService.buildDefaultService();
+			service.start();
+		} else {
+			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+			Thread.sleep(2000);
+			service = AppiumDriverLocalService.buildDefaultService();
+			service.start();
+		}
+		return service;
 	}
 
-	return day1 + "/" + month1 + "/" + year1;
+	public static boolean checkIfServerIsRunnning(int port) {
 
-    }
+		boolean isServerRunning = false;
+		ServerSocket serverSocket;
+		try {
+			serverSocket = new ServerSocket(port);
 
-    public String getForwardYear(long years) {
-	LocalDate now = LocalDate.now();
-	LocalDate futureYear = now.plusYears(years);
-
-	int year = futureYear.getYear();
-
-	int month = futureYear.getMonthValue();
-	String month1;
-	if (month < 10) {
-	    month1 = "0" + month;
-	} else {
-	    month1 = month + "";
-	}
-	int day = futureYear.getDayOfMonth();
-	String day1;
-
-	if (day < 10) {
-	    day1 = "0" + day;
-	} else {
-	    day1 = day + "";
+			serverSocket.close();
+		} catch (IOException e) {
+			isServerRunning = true;
+		} finally {
+			serverSocket = null;
+		}
+		return isServerRunning;
 	}
 
-	System.out.println(day1 + "/" + month1 + "/" + year);
-	return day1 + "/" + month1 + "/" + year;
+	public static int randomNumber() {
 
-    }
+		Random random = new Random();
+		int randomNumber = random.nextInt(999999);
+		return randomNumber;
 
-    public String getBackWardDay(long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate date = now.minusDays(days);
-
-	int day = date.getDayOfMonth();
-	return day + "";
-    }
-
-    public String getCurentMonthAndYearPlusDays(long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate date = now.plusDays(days);
-	int month = date.getMonthValue();
-	int year = date.getYear();
-	return "THÁNG" + " " + month + " " + year;
-    }
-
-    public String getCurentMonthAndYearMinusDays(long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate date = now.minusDays(days);
-	int month = date.getMonthValue();
-	int year = date.getYear();
-	return "THÁNG" + " " + month + " " + year;
-    }
-
-    public String convertMonthFomatTH(String month) {
-	switch (month) {
-	case "01":
-	    return "TH 1";
-	case "02":
-	    return "TH 2";
-	case "03":
-	    return "TH 3";
-	case "04":
-	    return "TH 4";
-	case "05":
-	    return "TH 5";
-	case "06":
-	    return "TH 6";
-	case "07":
-	    return "TH 7";
-	case "08":
-	    return "TH 8";
-	case "09":
-	    return "TH 9";
-	case "10":
-	    return "TH 10";
-	case "11":
-	    return "TH 11";
-	case "12":
-	    return "TH 12";
-	default:
-	    return "";
 	}
-    }
 
-    public String convertMonthFomatTh(String month) {
-	switch (month) {
-	case "01":
-	    return "Th1";
-	case "02":
-	    return "Th2";
-	case "03":
-	    return "Th3";
-	case "04":
-	    return "Th4";
-	case "05":
-	    return "Th5";
-	case "06":
-	    return "Th6";
-	case "07":
-	    return "Th7";
-	case "08":
-	    return "Th8";
-	case "09":
-	    return "Th9";
-	case "10":
-	    return "Th10";
-	case "11":
-	    return "Th11";
-	case "12":
-	    return "Th12";
-	default:
-	    return "";
+	protected boolean checkPassed(boolean condition) {
+		softAssertion = new SoftAssert();
+		boolean pass = true;
+		try {
+			if (condition == true)
+				log.info("===PASSED===");
+			else
+				log.info("===FAILED===");
+			softAssertion.assertTrue(condition);
+			softAssertion.assertAll();
+		} catch (Throwable e) {
+			;
+			pass = false;
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
 	}
-    }
 
-    public String convertDayOfWeekVietNameseFull(int day) {
-	switch (day) {
-	case 1:
-	    return "Thứ hai";
-	case 2:
-	    return "Thứ ba";
-	case 3:
-	    return "Thứ tư";
-	case 4:
-	    return "Thứ năm";
-	case 5:
-	    return "Thứ sáu";
-	case 6:
-	    return "Thứ bảy";
-	case 7:
-	    return "Chủ nhật";
-	default:
-	    return "";
+	protected boolean verifyTrue(boolean condition) {
+		return checkPassed(condition);
 	}
-    }
 
-    public String getForWardDay(long days) {
-	LocalDate now = LocalDate.now();
-	LocalDate date = now.plusDays(days);
-	int day = date.getDayOfMonth();
-	return day + "";
-    }
+	protected boolean checkFailed(boolean condition) {
+		softAssertion = new SoftAssert();
+		boolean pass = true;
+		try {
+			if (condition == false)
+				log.info("===PASSED===");
+			else
+				log.info("===FAILED===");
+			softAssertion.assertFalse(condition);
+			softAssertion.assertAll();
+		} catch (Throwable e) {
+			;
+			pass = false;
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
+	}
+
+	protected boolean verifyFailure(boolean condition) {
+		return checkFailed(condition);
+	}
+
+	protected boolean checkEquals(Object actual, Object expected) {
+		softAssertion = new SoftAssert();
+		boolean pass = true;
+		boolean status;
+		try {
+			if (actual instanceof String && expected instanceof String) {
+				actual = actual.toString().trim();
+				log.info("Actual = " + actual);
+				expected = expected.toString().trim();
+				log.info("Expected = " + expected);
+				status = (actual.equals(expected));
+			} else {
+				status = (actual == expected);
+			}
+
+			log.info("Compare value = " + status);
+			if (status) {
+				log.info("===PASSED===");
+			} else {
+				log.info("===FAILED===");
+			}
+
+			softAssertion.assertEquals(actual, expected, "Value is not matching!");
+			softAssertion.assertAll();
+		} catch (Throwable e) {
+			;
+			pass = false;
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
+	}
+
+	protected boolean verifyEquals(Object actual, Object expected) {
+		return checkEquals(actual, expected);
+	}
+
+	public static int getCurrentDayOfWeek(LocalDate localDate) {
+		DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+		int val = dayOfWeek.getValue();
+		return val;
+	}
+
+	public static String getCurrentDay() {
+		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
+		int day = nowUTC.getDayOfMonth();
+		if (day < 10) {
+			String day1 = "0" + day;
+			return day1;
+		} else {
+			return day + "";
+		}
+
+	}
+
+	public static String getCurrenMonth() {
+		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
+		int month = nowUTC.getMonthOfYear();
+		if (month < 10) {
+			String month1 = "0" + month;
+			return month1;
+		} else {
+			return month + "";
+		}
+	}
+
+	public static String getCurrentYear() {
+		DateTime nowUTC = new DateTime(DateTimeZone.UTC);
+		return nowUTC.getYear() + "";
+
+	}
+
+	public String convertMonthVietNamese(String month) {
+		switch (month) {
+		case "01":
+			return "Tháng 1";
+		case "02":
+			return "Tháng 2";
+		case "03":
+			return "Tháng 3";
+		case "04":
+			return "Tháng 4";
+		case "05":
+			return "Tháng 5";
+		case "06":
+			return "Tháng 6";
+		case "07":
+			return "Tháng 7";
+		case "08":
+			return "Tháng 8";
+		case "09":
+			return "Tháng 9";
+		case "10":
+			return "Tháng 10";
+		case "11":
+			return "Tháng 11";
+		case "12":
+			return "Tháng 12";
+		default:
+			return "";
+		}
+	}
+
+	public String convertMonthFomatTH(String month) {
+		switch (month) {
+		case "01":
+			return "TH 1";
+		case "02":
+			return "TH 2";
+		case "03":
+			return "TH 3";
+		case "04":
+			return "TH 4";
+		case "05":
+			return "TH 5";
+		case "06":
+			return "TH 6";
+		case "07":
+			return "TH 7";
+		case "08":
+			return "TH 8";
+		case "09":
+			return "TH 9";
+		case "10":
+			return "TH 10";
+		case "11":
+			return "TH 11";
+		case "12":
+			return "TH 12";
+		default:
+			return "";
+		}
+	}
+
+	public String convertMonthFomatTh(String month) {
+		switch (month) {
+		case "01":
+			return "Th1";
+		case "02":
+			return "Th2";
+		case "03":
+			return "Th3";
+		case "04":
+			return "Th4";
+		case "05":
+			return "Th5";
+		case "06":
+			return "Th6";
+		case "07":
+			return "Th7";
+		case "08":
+			return "Th8";
+		case "09":
+			return "Th9";
+		case "10":
+			return "Th10";
+		case "11":
+			return "Th11";
+		case "12":
+			return "Th12";
+		default:
+			return "";
+		}
+	}
+
+
+
+	public String convertDayOfWeekVietNamese(int day) {
+		switch (day) {
+		case 1:
+			return "Thứ 2";
+		case 2:
+			return "Thứ 3";
+		case 3:
+			return "Thứ 4";
+		case 4:
+			return "Thứ 5";
+		case 5:
+			return "Thứ 6";
+		case 6:
+			return "Thứ 7";
+		case 7:
+			return "Chủ nhật";
+		default:
+			return "";
+		}
+	}
+	
+	public String convertDayOfWeekVietNameseFull(int day) {
+		switch (day) {
+		case 1:
+			return "Thứ hai";
+		case 2:
+			return "Thứ ba";
+		case 3:
+			return "Thứ tư";
+		case 4:
+			return "Thứ năm";
+		case 5:
+			return "Thứ sáu";
+		case 6:
+			return "Thứ bảy";
+		case 7:
+			return "Chủ nhật";
+		default:
+			return "";
+		}
+	}
+
+	public long convertMoneyToLong(String money, String currency) {
+		money = money.replaceAll(" " + currency, "");
+		money = money.replaceAll(",", "");
+		long m = Long.parseLong(money);
+		return m;
+	}
+
+	public double convertMoneyToDouble(String money, String currency) {
+		money = money.replaceAll(" " + currency, "");
+		money = money.replaceAll(",", "");
+		double amount = Double.parseDouble(money);
+		return amount;
+	}
+
+	public String addCommasToDouble(String number) {
+		double amount = Double.parseDouble(number);
+		String m = String.format("%,.2f", amount);
+		return m;
+	}
+
+	public static String addCommasToLong(String number) {
+		long amount = Long.parseLong(number);
+		String m = String.format("%,d", amount);
+		return m;
+	}
+
+	public String getForwardDate(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate thirtyDay = now.plusDays(days);
+
+		int year = thirtyDay.getYear();
+
+		int month = thirtyDay.getMonthValue();
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+		int day = thirtyDay.getDayOfMonth();
+		String day1;
+
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+		System.out.println(day1 + "/" + month1 + "/" + year);
+		return day1 + "/" + month1 + "/" + year;
+
+	}
+
+	public String getBackwardDate(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate thirtyDay = now.minusDays(days);
+
+		int year = thirtyDay.getYear();
+
+		int month = thirtyDay.getMonthValue();
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+		int day = thirtyDay.getDayOfMonth();
+		String day1;
+
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+		System.out.println(day1 + "/" + month1 + "/" + year);
+		return day1 + "/" + month1 + "/" + year;
+
+	}
+
+	public String getForwardMonthAndForwardDay(long months, long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate dayLocal = now.plusDays(days);
+		LocalDate monthLocal = now.plusMonths(months);
+
+		int year = dayLocal.getYear();
+		int month = monthLocal.getMonthValue();
+		int monthNow = now.getMonthValue();
+		int day = dayLocal.getDayOfMonth();
+
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+
+		String day1;
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+
+		String year1;
+		if (month < monthNow) {
+			year1 = year + 1 + "";
+		} else {
+			year1 = year + "";
+		}
+
+		return day1 + "/" + month1 + "/" + year1;
+
+	}
+
+	public String getForwardYear(long years) {
+		LocalDate now = LocalDate.now();
+		LocalDate futureYear = now.plusYears(years);
+
+		int year = futureYear.getYear();
+
+		int month = futureYear.getMonthValue();
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+		int day = futureYear.getDayOfMonth();
+		String day1;
+
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+
+		System.out.println(day1 + "/" + month1 + "/" + year);
+		return day1 + "/" + month1 + "/" + year;
+
+	}
+
+	public String getBackWardDay(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.minusDays(days);
+		int day = date.getDayOfMonth();
+		return day + "";
+	}
+
+	public String getForWardDay(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.plusDays(days);
+		int day = date.getDayOfMonth();
+		return day + "";
+	}
 
 }
