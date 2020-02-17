@@ -21,5 +21,4 @@ public class AirTicketBookingUIs {
 	public static final String DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.EditText[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_HEADER_IN_TICKET_INFO = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
-
 }

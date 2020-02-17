@@ -143,4 +143,5 @@ public class VehicalPageObject extends AbstractPage {
 	waitForElementVisible(driver, CommonPageUIs.DYNAMIC_NULL_DATA, dynamicID);
 	return getTextElement(driver, CommonPageUIs.DYNAMIC_NULL_DATA, dynamicID);
     }
+    
 }
