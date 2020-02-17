@@ -191,7 +191,7 @@ public class Validation_TrainTicket_2 extends Base {
 		Calendar date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 6);
 		String next6Month = "THÁNG " + (date.get(Calendar.MONTH) + 1) + " " + date.get(Calendar.YEAR);
-		
+
 		String next6MonthFormat = "Th" + (date.get(Calendar.MONTH) + 1) + ", " + date.get(Calendar.YEAR);
 		String nextDay = getForWardDay(1);
 		String backDay = getBackWardDay(1);
@@ -201,19 +201,19 @@ public class Validation_TrainTicket_2 extends Base {
 
 		log.info("TC_08_Chon ngay di la ngay hien tai - 1");
 		trainTicket.clickDynamicDateStartAndEnd(driver, trainTicket.getCurentMonthAndYear(), backDay);
-		
+
 		String toastMessage = trainTicket.getToastMessage(driver);
 		
-		log.info("TC_08_Check ngay tuong lai cach ngay hien tai hon 6 thang disable");
-		verifyFailure((trainTicket.getSelectedAttributeOfDate(TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, next6Month, nextDay)));
+		log.info("TC_08_Verify message thoi gian cho phep chon");
+		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " + convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay + " " + next6MonthFormat + ". Vui lòng chọn lại."));
 
 		log.info("TC_08_Check ngay qua khu bi disable");
 		verifyFailure((trainTicket.getSelectedAttributeOfDate(TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, trainTicket.getCurentMonthAndYear(), backDay)));
 
 		log.info("TC_08_Lich cho phep chon ngay di, chon ngay di lon hon ngay hien tai hon 6 thang");
 		trainTicket.clickDynamicDateStartAndEnd(driver, next6Month, nextDay);
-		
-		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " +convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay+" " + next6MonthFormat +". Vui lòng chọn lại."));
+
+		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " + convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay + " " + next6MonthFormat + ". Vui lòng chọn lại."));
 
 		log.info("TC_08_Check ngay tuong lai cach ngay hien tai hon 6 thang disable");
 		verifyFailure((trainTicket.getSelectedAttributeOfDate(TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, next6Month, nextDay)));
@@ -242,13 +242,13 @@ public class Validation_TrainTicket_2 extends Base {
 		String next6MonthFormat = "Th" + (date.get(Calendar.MONTH) + 1) + ", " + date.get(Calendar.YEAR);
 		String nextDay = getForWardDay(1);
 		String backDay = getBackWardDay(1);
-		
+
 		log.info("TC_10_Chon ngay ve la ngay hien tai - 1");
 		trainTicket.clickDynamicDateStartAndEnd(driver, trainTicket.getCurentMonthAndYear(), backDay);
 
 		String toastMessage = trainTicket.getToastMessage(driver);
 		log.info("TC_10_Hien thi message");
-		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " +convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay+" " + next6MonthFormat +". Vui lòng chọn lại."));
+		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " + convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay + " " + next6MonthFormat + ". Vui lòng chọn lại."));
 
 		log.info("TC_10_Check ngay ve nho hon ngay hien tai bi disable");
 		verifyFailure((trainTicket.getSelectedAttributeOfDate(TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, trainTicket.getCurentMonthAndYear(), backDay)));
@@ -257,7 +257,7 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickDynamicDateStartAndEnd(driver, next6Month, nextDay);
 
 		log.info("TC_10_Check ngay ve lon hon ngay hien tai hon 6 thang");
-		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " +convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay+" " + next6MonthFormat +". Vui lòng chọn lại."));
+		verifyTrue(toastMessage.contains("Thời gian phải nằm trong khoảng " + currentDay + " " + convertMonthFomatTh(currentMonth) + ", " + currentYear + " đến " + currentDay + " " + next6MonthFormat + ". Vui lòng chọn lại."));
 
 		log.info("TC_10_Check ngay ve lon hon ngay hien tai hon 6 thang");
 		verifyFailure((trainTicket.getSelectedAttributeOfDate(TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, next6Month, nextDay)));
@@ -472,7 +472,10 @@ public class Validation_TrainTicket_2 extends Base {
 
 		log.info("TC_17_Hien thi title note");
 		verifyEquals(trainTicket.getTextInDynamicNote(driver, "4"), TrainTicket_Data.message.NOTE_NUMBER_CUSTOMER);
-
 	}
-
+	
+	@Test
+	public void TC_18_FocusComboboxHanhKhach() {
+		log.info("TC_17_Click button hanh khach");
+	}
 }

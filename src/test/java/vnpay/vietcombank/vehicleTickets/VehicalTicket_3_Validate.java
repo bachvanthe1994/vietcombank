@@ -33,7 +33,6 @@ public class VehicalTicket_3_Validate extends Base {
 	login = PageFactoryManager.getLoginPageObject(driver);
 	vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 	login.Global_login(phone, pass, opt);
-
 	vehicalTicket.Vehical_login();
     }
 
