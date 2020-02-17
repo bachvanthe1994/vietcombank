@@ -28,5 +28,6 @@ public class VehicalData {
 	public static final String NOTI_CHOISE_FROMT = "Quý khách vui lòng nhập Điểm đi";
 	public static final String NOTI_NULL_DATA = "Không có dữ liệu hợp lệ";
 	public static final String NOTI_CHOISE_DESTINATION_BEFORE = "Quý khách vui lòng nhập điểm đi trước khi chọn điểm đến.";
+	
     }
 }
