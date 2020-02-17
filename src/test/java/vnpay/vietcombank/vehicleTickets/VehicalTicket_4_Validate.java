@@ -54,7 +54,7 @@ public class VehicalTicket_4_Validate extends Base {
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
 	log.info("TC_13_Step_1: Chọn ngày hiện tai");
-	vehicalTicket.clickToDynamicText(driver, getCurrentDay());
+	vehicalTicket.clickToDynamicText(getCurrentDay());
 
 	log.info("TC_13_Step_1: kiểm tra ngày thay đổi đi");
 	String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
