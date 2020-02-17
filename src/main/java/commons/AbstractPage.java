@@ -1511,6 +1511,6 @@ public class AbstractPage {
 	clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 
     }
->>>>>>> release/release04
+
 
 }
