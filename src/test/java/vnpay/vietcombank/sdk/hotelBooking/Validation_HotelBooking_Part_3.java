@@ -108,7 +108,7 @@ public class Validation_HotelBooking_Part_3 extends Base {
 		verifyEquals(actualList, HotelBooking_Data.STATUS_HOTEL_BOOKING_LIST);
 		
 		log.info("TC_04_03_Click chon Trang thai");
-		hotelBooking.clickToDynamicTextOrButtonLink(HotelBookingPageObject.actualList.get(0).status);
+		hotelBooking.clickToDynamicTextOrButtonLink(actualList.get(0));
 		
 	}
 	
@@ -214,7 +214,7 @@ public class Validation_HotelBooking_Part_3 extends Base {
 		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
 		
 		log.info("TC_08_02_Chon 1 khach san Het han thanh toan");
-		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Hết hạn thanh toán").payCode;
+		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "HẾT HẠN THANH TOÁN").payCode;
 		hotelBooking.clickToDetailButtonByPayCode(paycode);
 		
 		log.info("TC_08_03_Kiem tra hien thi nut thuc hien lai");
