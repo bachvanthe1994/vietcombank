@@ -279,7 +279,7 @@ public class Validation_TrainTicket_2 extends Base {
 	@Test
 	public void TC_12_KiemTraButtonTiepTucEnable() {
 		log.info("TC_12_Check hien thi button xac nhan");
-		trainTicket.isDynamicButtonDisplayed("Tiếp tục");
+		verifyTrue(trainTicket.isDynamicButtonDisplayed("Tiếp tục"));
 
 		log.info("TC_12_Step_Check button tiep tuc enable");
 		verifyTrue(trainTicket.isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BUTTON,"Tiếp tục"));
@@ -338,13 +338,13 @@ public class Validation_TrainTicket_2 extends Base {
 		log.info("TC_14_Chon ngay di");
 		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay3 );
 
-		log.info("TC_13_Verify gia tri ngay di");
+		log.info("TC_14_Verify gia tri ngay di");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay3), nextDay3 );
 
-		log.info("TC_13_Verify gia tri thu di");
+		log.info("TC_14_Verify gia tri thu di");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày đi", "com.VCB:id/tv_thang_di"), convertDayOfWeekVietNameseFull(getCurrentDayOfWeek(date3)));
 
-		log.info("TC_13_Verify gia tri thang nam di");
+		log.info("TC_14_Verify gia tri thang nam di");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày đi", "com.VCB:id/tv_nam_di"), trainTicket.getMonthAndYearFORMAT());
 
 		log.info("TC_14_Ngay ve se bi remove, se thay bang title Chon ngay");
@@ -359,13 +359,13 @@ public class Validation_TrainTicket_2 extends Base {
 		log.info("TC_14_Chon ngay ve lon hon ngay hien tai");
 		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay4 );
 
-		log.info("TC_13_Verify gia tri ngay ve");
+		log.info("TC_14_Verify gia tri ngay ve");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(),  nextDay4 ),  nextDay4 );
 
-		log.info("TC_13_Verify gia tri thu ve");
+		log.info("TC_14_Verify gia tri thu ve");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày về", "com.VCB:id/tv_thang_ve"), convertDayOfWeekVietNameseFull(getCurrentDayOfWeek(date4)));
 
-		log.info("TC_13_Verify gia tri thang nam ve");
+		log.info("TC_14_Verify gia tri thang nam ve");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày về", "com.VCB:id/tv_nam_ve"), trainTicket.getMonthAndYearFORMAT());
 
 		log.info("TC_14_Step_Click button tiep tuc");
