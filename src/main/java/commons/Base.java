@@ -694,4 +694,20 @@ public class Base {
 		return day + "";
 	}
 
+	public String getCurentMonthAndYearPlusDays1(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.plusDays(days);
+		int month = date.getMonthValue();
+		int year = date.getYear();
+		return "THÁNG" + " " + month + " " + year;
+	}
+
+	public String getCurentMonthAndYearMinusDays1(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.minusDays(days);
+		int month = date.getMonthValue();
+		int year = date.getYear();
+		return "THÁNG" + " " + month + " " + year;
+	}
+
 }
