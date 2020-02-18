@@ -14,7 +14,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 import vehicalPageObject.VehicalPageObject;
-import vnpay.vietcombank.vehicleTicketData.VehicalData;
+import vnpay.vietcombank.sdk.vehicleTicketData.VehicalData;
 
 public class VehicalTicket_2_Validate extends Base {
     AndroidDriver<AndroidElement> driver;

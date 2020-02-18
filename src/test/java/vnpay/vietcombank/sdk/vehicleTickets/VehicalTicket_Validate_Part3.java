@@ -211,12 +211,6 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE);
     }
 
-    @Test
-    public void TC_39_KiemTraTimKiemChuyenDiTheoGoiY() {
-	log.info("TC_39_Step_1: chọn chuyến đi gợi ý");
-
-    }
-
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 	closeApp();
