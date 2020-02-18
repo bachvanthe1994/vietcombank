@@ -12,5 +12,5 @@ public class CommonPageUIs {
     public static final String DYNAMIC_NULL_DATA = "//android.widget.RelativeLayout[@resource-id=\"%s\"]//android.widget.LinearLayout//android.widget.TextView";
     public static final String DYNAMIC_FROMT_INPUT_BY_CLOSE = "//android.widget.ImageView/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.EditText";
     public static final String DYNAMIC_CALENDA = "//android.widget.ListView[@resource-id=\"%s\"]//android.widget.LinearLayout//android.widget.TextView";
-    
+    public static final String DYNAMIC_SUGGEST_TRIP = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.TextView";
 }

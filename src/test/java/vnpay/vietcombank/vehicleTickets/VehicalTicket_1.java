@@ -30,19 +30,19 @@ public class VehicalTicket_1 extends Base {
 	vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 	login.Global_login(phone, pass, opt);
 
-	vehicalTicket.Vehical_login(driver);
+	vehicalTicket.Vehical_login();
     }
 
     @Test
     public void TC_01_KiemTraLuongDatVeThanhCong() throws InterruptedException {
 	log.info("TC_01_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.clickToDynamicText(driver, VehicalData.Data_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.Data_ORDER_TICKET.DEPARTURE, VehicalData.Data_ORDER_TICKET.FROMT_INPUT);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DEPARTURE, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
 
 	log.info("TC_01_Step_1: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(driver, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(driver, VehicalData.Data_ORDER_TICKET.DESTINATION);
+	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.TO_INPUT);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DESTINATION, VehicalData.DATA_ORDER_TICKET.TO_INPUT);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.DESTINATION);
     }
 
 }
