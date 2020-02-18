@@ -312,13 +312,30 @@ public class TrainTicketPageObject extends AbstractPage {
 		return text;
 	}
 	
+	public String getTextMaxLength( String dynamicResourceID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicResourceID);
+		if (status = true) {
+			text =  getTextElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicResourceID);
+		}
+		return text;
+	}
+	
 	
 	public List<String> getListOfSuggestedMoneyOrListText( String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		return getTextInListElements(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	}
 
-		
+	public String getTextMessageInvalid( String dynamicResourceID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+		if (status = true) {
+			text =  getTextElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+		}
+		return text;
+	}
+	
 	//Kiểm tra text có hiển thị hay không, tham số truyền vào là text 
 		public boolean isDynamicMessageAndLabelTextDisplayed( String dynamicTextValue) {
 			boolean isDisplayed = false;

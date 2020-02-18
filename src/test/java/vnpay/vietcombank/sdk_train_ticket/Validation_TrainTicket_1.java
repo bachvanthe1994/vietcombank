@@ -149,7 +149,9 @@ public class Validation_TrainTicket_1 extends Base {
 
 		log.info("TC_08_Nhap text ga khoi hanh 101 ky tu vuot qua gioi han cho phep");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_MAX_INVALID, "com.VCB:id/linPickUp");
-	
+		
+		log.info("TC_08_Verify text nhap vao toi da");
+		verifyEquals(trainTicket.getTextMaxLength("com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_MAX_INVALID.substring(0, 200));
 		
 	}
 
@@ -258,43 +260,46 @@ public class Validation_TrainTicket_1 extends Base {
 	@Test
 	// Lỗi app vẫn cho phép nhập hơn 100 ký tự
 	public void TC_18_NhapToiDaKyTuTruongGaden() {
-		log.info("TC_06_Click ga khoi hanh");
+		log.info("TC_18_Click ga khoi hanh");
 		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp");
 
-		log.info("TC_06_Nhap text ga khoi hanh");
+		log.info("TC_18_Nhap text ga khoi hanh");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
 
-		log.info("TC_06_Click gia tri ga khoi hanh");
+		log.info("TC_18_Click gia tri ga khoi hanh");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
 
-		log.info("TC_06_Nhap text ga den 101 ky tu vuot qua gioi han cho phep");
+		log.info("TC_18_Nhap text ga den 101 ky tu vuot qua gioi han cho phep");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_MAX_INVALID, "com.VCB:id/linArival");
+	
+		log.info("TC_18_Verify text nhap vao toi da");
+		verifyEquals(trainTicket.getTextMaxLength("com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_MAX_INVALID.substring(0, 208));
 	}
 
 	@Test
 	public void TC_19_NhapKyTuDacBietVaKyTuKhacTruongGaDen() {
-		log.info("TC_06_Nhap text ky tu dac biet");
+		log.info("TC_19_Nhap text ky tu dac biet");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SPECIAL_INVALID, "com.VCB:id/linArival");
 
-		log.info("TC_06_Verify lay gia tri text rong");
+		log.info("TC_19_Verify lay gia tri text rong");
 		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.textDefault.TITLE_END);
 
-		log.info("TC_06_Nhap text ky tu so tu 0 den 9");
+		log.info("TC_19_Nhap text ky tu so tu 0 den 9");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "com.VCB:id/linArival");
 
-		log.info("TC_06_Verify lay gia tri ga den vua nhap");
+		log.info("TC_19_Verify lay gia tri ga den vua nhap");
 		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_NUMBER_VALID);
 
-		log.info("TC_06_Nhap text ky tu chu thuong va chu hoa");
+		log.info("TC_19_Nhap text ky tu chu thuong va chu hoa");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_CHAR_VALID, "com.VCB:id/linArival");
 
-		log.info("TC_06_Verify lay gia tri ga den vua nhap");
+		log.info("TC_19_Verify lay gia tri ga den vua nhap");
 		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_CHAR_VALID);
 
-		log.info("TC_06_Nhap text ky tu tieng viet co dau");
+		log.info("TC_019_Nhap text ky tu tieng viet co dau");
 		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_VIETNAM_VALID, "com.VCB:id/linArival");
 
-		log.info("TC_06_Verify lay gia tri ga den vua nhap");
+		log.info("TC_19_Verify lay gia tri ga den vua nhap");
 		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
 	}
 
@@ -372,7 +377,7 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival");
 
 		log.info("TC_26_Check message");
-		verifyEquals(trainTicket.getListOfSuggestedMoneyOrListText( "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
+		verifyEquals(trainTicket.getTextMessageInvalid( "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
 
 		log.info("TC_26_Click OK");
 		trainTicket.clickToDynamicButton("OK");
