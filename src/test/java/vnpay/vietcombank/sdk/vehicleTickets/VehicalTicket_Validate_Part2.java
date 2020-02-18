@@ -211,7 +211,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	vehicalTicket.isDynamicForcus("com.VCB:id/lnToday");
     }
 
-//    @Test
+    @Test
     public void TC_28_KiemTraChonNgayMai() {
 	log.info("TC_23_Step_1: Chọn ngày mai");
 	vehicalTicket.clickToDynamicTomorrow("com.VCB:id/lnNextday");
@@ -224,7 +224,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnNextday"));
     }
 
-//    @Test
+    @Test
     public void TC_29_KiemTraChonNgayHomNay() {
 	log.info("TC_29_Step_1: Chọn ngày hôm nay");
 	vehicalTicket.clickToDynamicTomorrow("com.VCB:id/lnToday");
@@ -237,7 +237,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnToday"));
     }
 
-//    @Test
+    @Test
     public void TC_30_KiemTraNhanChonThoiGian() {
 	log.info("TC_30_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
@@ -249,7 +249,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	vehicalTicket.clickToDynamicButtonBack("Chọn ngày đi");
     }
 
-//    @Test
+    @Test
     public void TC_31_KiemTraNhanChonNgayQuaKhu() {
 	log.info("TC_31_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
@@ -266,8 +266,8 @@ public class VehicalTicket_Validate_Part2 extends Base {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//	closeApp();
-//	service.stop();
+	closeApp();
+	service.stop();
     }
 
 }
