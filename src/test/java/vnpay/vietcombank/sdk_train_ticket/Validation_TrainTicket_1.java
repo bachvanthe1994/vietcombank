@@ -54,10 +54,10 @@ public class Validation_TrainTicket_1 extends Base {
 		verifyTrue(trainTicket.isDynamicHistoryIconDisplayed( "Lịch sử đặt vé"));
 
 		log.info("TC_01_Check text ga khoi hanh");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd("ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_START), "Ga khởi hành");
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp"), "Ga khởi hành");
 
 		log.info("TC_01_Check text ga den");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_END), "Ga đến");
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival"), "Ga đến");
 
 		log.info("TC_01_Check hien thi button doi ga tau");
 		verifyTrue(trainTicket.isDynamicChangeIconDisplayed( TrainTicket_Data.textDefault.TITLE_END));
@@ -117,13 +117,13 @@ public class Validation_TrainTicket_1 extends Base {
 	@Test
 	public void TC_05_CheckMacDinhHienThiTextGaKhoiHanh() {
 		log.info("TC_05_Check text ga khoi hanh");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_START), "Ga khởi hành");
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp"), "Ga khởi hành");
 	}
 
 	@Test
 	public void TC_06_CheckTextBoTrongGaKhoiHanh() {
 		log.info("TC_06_Click ga den");
-		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_END);
+		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival");
 
 		log.info("TC_06_Check message");
 		verifyEquals(trainTicket.getTextInDynamicPopup( "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
@@ -145,43 +145,45 @@ public class Validation_TrainTicket_1 extends Base {
 	// Lỗi app vẫn cho phép nhập hơn 100 ký tự
 	public void TC_08_NhapToiDaKyTuTruongGaKhoiHanh() {
 		log.info("TC_08_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_START);
+		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp");
 
 		log.info("TC_08_Nhap text ga khoi hanh 101 ky tu vuot qua gioi han cho phep");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_MAX_INVALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_MAX_INVALID, "com.VCB:id/linPickUp");
+	
+		
 	}
 
 	@Test
 	public void TC_09_NhapKyTuDacBietVaKyTuKhacTruongGaKhoiHanh() {
 		log.info("TC_09_Nhap text ky tu dac biet");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SPECIAL_INVALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SPECIAL_INVALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_09_Verify lay gia tri text rong");
-		verifyEquals(trainTicket.getDynamicInputPoint( "0"), TrainTicket_Data.textDefault.TITLE_START);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linPickUp"), TrainTicket_Data.textDefault.TITLE_START);
 
 		log.info("TC_09_Nhap text ky tu so tu 0 den 9");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_09_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "0"), TrainTicket_Data.inputText.POINT_NUMBER_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_NUMBER_VALID);
 
 		log.info("TC_09_Nhap text ky tu chu thuong va chu hoa");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_CHAR_VALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_CHAR_VALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_09_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "0"), TrainTicket_Data.inputText.POINT_CHAR_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_CHAR_VALID);
 
 		log.info("TC_09_Nhap text ky tu tieng viet co dau");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_VIETNAM_VALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_VIETNAM_VALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_09_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint("0"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint("com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
 	}
 
 	@Test
 	public void TC_10_NhapKyTuTimKiemGanDungGaKhoiHanh() {
 		log.info("TC_10_Nhap ky tu vao o Search");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SERACH_THE_SAME, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SERACH_THE_SAME, "com.VCB:id/linPickUp");
 
 		log.info("TC_10_Lay danh sach tim kiem");
 		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText( "com.VCB:id/tvTen");
@@ -193,10 +195,10 @@ public class Validation_TrainTicket_1 extends Base {
 	@Test
 	public void TC_11_NhapGaKhoiHanhHopLe() {
 		log.info("TC_11_Nhap text ga khoi hanh co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_START_END_VALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_START_END_VALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_11_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "0"), TrainTicket_Data.inputText.POINT_START_END_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 
 		log.info("TC_11_Verify gia tri tim kiem trong danh sach");
 		verifyEquals(trainTicket.getDynamicTextPointStart( "com.VCB:id/tvTen"), TrainTicket_Data.inputText.POINT_START_END_VALID);
@@ -208,37 +210,37 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_START_END_VALID);
 
 		log.info("TC_12_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "0"), TrainTicket_Data.inputText.POINT_START_END_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 
 	@Test
 	public void TC_13_KiemTraGiaTriNhapVaoGaKhoiHanh() {
 		log.info("TC_13_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "0"), TrainTicket_Data.inputText.POINT_START_END_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 
 	@Test
 	public void TC_14_KiemTraSuaGaKhoiHanh() {
 		log.info("TC_14_Nhap text ga khoi hanh co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
 
 		log.info("TC_14_Verify lay gia tri ga khoi hanh vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint("0"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
+		verifyEquals(trainTicket.getDynamicInputPoint("com.VCB:id/linPickUp"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
 	}
 
 	@Test
 	public void TC_15_TimKiemGaKhoiHanhKhongTonTai() {
 		log.info("TC_15_Nhap text ga khoi hanh co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_15_verify message khong co du lieu");
-		verifyEquals(trainTicket.getDynamicTextInPopUp( TrainTicket_Data.message.EMPTY_START), "Không có dữ liệu hợp lệ");
+		verifyEquals(trainTicket.getDynamicTextInPopUp( "com.VCB:id/vtWarning"), "Không có dữ liệu hợp lệ");
 	}
 
 	@Test
 	public void TC_16_CheckHienThiMacDinhTextGaDen() {
 		log.info("TC_16_Check text ga den");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), "Ga đến");
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), "Ga đến");
 	}
 
 	@Test
@@ -247,59 +249,59 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickDynamicCancelIcon( TrainTicket_Data.inputText.POINT_NUMBER_VALID);
 
 		log.info("TC_17_Check text ga khoi hanh chua duoc chon gia tri");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd("ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_START), "Ga khởi hành");
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp"), "Ga khởi hành");
 
 		log.info("TC_17_Check text ga den mac dinh la ga den");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd("ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_END), "Ga đến");
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival"), "Ga đến");
 	}
 
 	@Test
 	// Lỗi app vẫn cho phép nhập hơn 100 ký tự
 	public void TC_18_NhapToiDaKyTuTruongGaden() {
 		log.info("TC_06_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_START);
+		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp");
 
 		log.info("TC_06_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
 
 		log.info("TC_06_Click gia tri ga khoi hanh");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
 
 		log.info("TC_06_Nhap text ga den 101 ky tu vuot qua gioi han cho phep");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_MAX_INVALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_MAX_INVALID, "com.VCB:id/linArival");
 	}
 
 	@Test
 	public void TC_19_NhapKyTuDacBietVaKyTuKhacTruongGaDen() {
 		log.info("TC_06_Nhap text ky tu dac biet");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SPECIAL_INVALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SPECIAL_INVALID, "com.VCB:id/linArival");
 
 		log.info("TC_06_Verify lay gia tri text rong");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), TrainTicket_Data.textDefault.TITLE_END);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.textDefault.TITLE_END);
 
 		log.info("TC_06_Nhap text ky tu so tu 0 den 9");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "com.VCB:id/linArival");
 
 		log.info("TC_06_Verify lay gia tri ga den vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), TrainTicket_Data.inputText.POINT_NUMBER_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_NUMBER_VALID);
 
 		log.info("TC_06_Nhap text ky tu chu thuong va chu hoa");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_CHAR_VALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_CHAR_VALID, "com.VCB:id/linArival");
 
 		log.info("TC_06_Verify lay gia tri ga den vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), TrainTicket_Data.inputText.POINT_CHAR_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_CHAR_VALID);
 
 		log.info("TC_06_Nhap text ky tu tieng viet co dau");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_VIETNAM_VALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_VIETNAM_VALID, "com.VCB:id/linArival");
 
 		log.info("TC_06_Verify lay gia tri ga den vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_VIETNAM_VALID);
 	}
 
 	@Test
 	public void TC_20_NhapKyTimKiemGanDungGaDen() {
 		log.info("TC_20_Nhap ky tu vao o Search");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SERACH_THE_SAME, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_SERACH_THE_SAME, "com.VCB:id/linArival");
 
 		List<String> listSuggestPoint = trainTicket.getListOfSuggestedMoneyOrListText( "com.VCB:id/tvTen");
 
@@ -310,10 +312,10 @@ public class Validation_TrainTicket_1 extends Base {
 	@Test
 	public void TC_21_NhapGaDenHopLe() {
 		log.info("TC_21_Nhap text ga den co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_START_END_VALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_START_END_VALID, "com.VCB:id/linArival");
 
 		log.info("TC_21_Verify lay gia tri ga den vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), TrainTicket_Data.inputText.POINT_START_END_VALID);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 
 	@Test
@@ -322,34 +324,34 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickToDynamicButtonLinkOrLinkText( TrainTicket_Data.inputText.POINT_START_END_VALID);
 
 		log.info("TC_22_Check text ga den");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", TrainTicket_Data.inputText.POINT_START_END_VALID), TrainTicket_Data.inputText.POINT_START_END_VALID);
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 
 	@Test
 	public void TC_23_KiemTraGiaTriNhapVaoGaDen() {
 		log.info("TC_23_Check text ga den");
-		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", TrainTicket_Data.inputText.POINT_START_END_VALID), TrainTicket_Data.inputText.POINT_START_END_VALID);
+		verifyEquals(trainTicket.getDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival"), TrainTicket_Data.inputText.POINT_START_END_VALID);
 	}
 
 	@Test
 	public void TC_24_KiemTraEditGaDen() {
 		log.info("TC_24_Click ga den");
-		trainTicket.clickDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", TrainTicket_Data.inputText.POINT_START_END_VALID);
+		trainTicket.clickDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival");
 
 		log.info("TC_24_Nhap text ga den co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/linArival");
 
 		log.info("TC_24_Verify lay gia tri ga den vua nhap");
-		verifyEquals(trainTicket.getDynamicInputPoint("2"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
+		verifyEquals(trainTicket.getDynamicInputPoint("com.VCB:id/linArival"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
 	}
 
 	@Test
 	public void TC_25_TimKiemGaDenKhongTonTai() {
 		log.info("TC_25_Nhap text ga den khong co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_NUMBER_VALID, "com.VCB:id/linArival");
 
 		log.info("TC_25_verify message khong co du lieu");
-		verifyEquals(trainTicket.getDynamicTextInPopUp( TrainTicket_Data.message.EMPTY_START), "Không có dữ liệu hợp lệ");
+		verifyEquals(trainTicket.getDynamicTextInPopUp( "com.VCB:id/vtWarning"), "Không có dữ liệu hợp lệ");
 	}
 
 	@Test
@@ -367,10 +369,10 @@ public class Validation_TrainTicket_1 extends Base {
 		trainTicket.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_26_Click ga den");
-		trainTicket.clickDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", TrainTicket_Data.textDefault.TITLE_END);
+		trainTicket.clickDynamicPointStartAndEnd( "ĐẶT VÉ TÀU", "com.VCB:id/tvTextArrival");
 
 		log.info("TC_26_Check message");
-		verifyEquals(trainTicket.getDynamicTextInPopUp( TrainTicket_Data.message.BLANK_START), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
+		verifyEquals(trainTicket.getListOfSuggestedMoneyOrListText( "android:id/message"), "Quý khách vui lòng nhập Ga đi trước khi nhập Ga đến.");
 
 		log.info("TC_26_Click OK");
 		trainTicket.clickToDynamicButton("OK");
@@ -379,19 +381,19 @@ public class Validation_TrainTicket_1 extends Base {
 	@Test
 	public void TC_27_KiemTraSuaGaKhoiHanhSauKhiChonGaDenHopLe() {
 		log.info("TC_27_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
 
 		log.info("TC_27_Nhap text ga den co trong danh sach");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "2");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/linArival");
 
 		log.info("TC_27_Nhap lai ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_START_END_VALID, "0");
+		trainTicket.inputToDynamicTextPoint( TrainTicket_Data.inputText.POINT_START_END_VALID, "com.VCB:id/linPickUp");
 
 		log.info("TC_27_click chon ga khoi hanh");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_START_END_VALID);
 
 		log.info("TC_27_Check text ga den mac dinh la ga den");
-		verifyEquals(trainTicket.getDynamicInputPoint( "2"), TrainTicket_Data.textDefault.TITLE_END);
+		verifyEquals(trainTicket.getDynamicInputPoint( "com.VCB:id/linArival"), TrainTicket_Data.textDefault.TITLE_END);
 	}
 
 	@AfterClass(alwaysRun = true)

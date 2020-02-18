@@ -2,6 +2,7 @@ package pageObjects.sdk.trainTicket;
 
 import java.text.Normalizer;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -12,6 +13,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
+import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
@@ -61,7 +63,35 @@ public class TrainTicketPageObject extends AbstractPage {
 		int year = now.getYear();
 		return "T." + month + " " + year;
 	}
-
+	
+	public String getDayPickUp() {
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECT, "com.VCB:id/lnNgayDi");
+		List<String> listText = new ArrayList<String>();
+		String day = "";
+		if (status) {
+			listText = getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECT, "com.VCB:id/lnNgayDi");
+			for (String text : listText) {
+				day = day + text;
+			}
+			day = day.replace("Ngày đi", "");
+		}
+		return day;
+		
+	}
+	
+	public String getDayArrival() {
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECT, "com.VCB:id/lnNgayVe");
+		List<String> listText = new ArrayList<String>();
+		String day = "";
+		if (status) {
+			listText = getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECT, "com.VCB:id/lnNgayVe");
+			for (String text : listText) {
+				day = day + text;
+			}
+			day = day.replace("Ngày về", "");
+		}
+		return day;
+	}
 	// Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkText(String dynamicTextValue) {
 		boolean status = false;
@@ -100,11 +130,11 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 	}
 
-	public void clickDynamicPointStartAndEnd(String... dynamicTextValue) {
+	public void clickDynamicPointStartAndEnd(String... dynamicID) {
 		boolean status = false;
-		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicID);
 		if (status = true) {
-			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicID);
 		}
 	}
 
@@ -213,26 +243,26 @@ public class TrainTicketPageObject extends AbstractPage {
 }
 
 	// Lấy text tìm hiếm điểm khởi hành và điểm đến
-	public String getDynamicPointStartAndEnd( String... dynamicTextValue) {
+	public String getDynamicPointStartAndEnd( String... dynamicID) {
 
 		String text = null;
-		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicID);
 
 		if (status = true) {
-			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicID);
 
 	}
 	return text;
 }
 
 	// Lấy giá trị tìm kiếm trong danh sách
-	public String getDynamicInputPoint( String dynamicIndexValue) {
+	public String getDynamicInputPoint( String dynamicID) {
 
 		String text = null;
-		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 
 		if (status = true) {
-			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 	}
 	return text;
 }
@@ -266,9 +296,9 @@ public class TrainTicketPageObject extends AbstractPage {
 	
 	public String getDynamicTextInPopUp( String... dynamicTextValue) {
 		String text = null;
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IMAGE, dynamicTextValue);
 		if (status = true) {
-			text =  getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+			text =  getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IMAGE, dynamicTextValue);
 		}
 		return text;
 	}
@@ -410,12 +440,12 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 
 		// Nhập địa điểm tìm kiếm
-		public void inputToDynamicTextPoint( String inputValue, String dynamicIndexValue) {
-			clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		public void inputToDynamicTextPoint( String inputValue, String dynamicID) {
+			clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 			boolean status = false;
-			 waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+			 waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 			if (status = true) {
-				sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
+				sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicID);
 			}
 			
 	}
