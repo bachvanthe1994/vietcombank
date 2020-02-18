@@ -208,7 +208,12 @@ public class VehicalTicket_Validate_Part3 extends Base {
 
 	log.info("TC_38_Step_6: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE);
+    }
+
+    @Test
+    public void TC_39_KiemTraTimKiemTheoChuyenDiGoiY() {
+
     }
 
     @AfterClass(alwaysRun = true)
