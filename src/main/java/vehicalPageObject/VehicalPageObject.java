@@ -259,4 +259,5 @@ public class VehicalPageObject extends AbstractPage {
 	return isDisplayed;
 
     }
+    
 }
