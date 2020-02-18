@@ -505,7 +505,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean status = false;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
 		}
 	}
@@ -514,7 +514,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean status = false;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
 		}
 	}
@@ -522,7 +522,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public boolean isDynamicMessageAndLabelTextDisplayed(String text) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
-		if (status = true) {
+		if (status) {
 			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
 		}
 		return isDisplayed;
@@ -532,7 +532,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean status = false;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 		}
 	}
@@ -540,7 +540,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public boolean isDynamicTextInInputBoxDisPlayed(String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		}
 		return isDisplayed;
@@ -549,7 +549,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public void clickToTextViewByLinearLayoutID(String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		}
 	}
@@ -557,7 +557,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public void inputIntoEditTextByID(String inputValue, String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
-		if (status = true) {
+		if (status) {
 			sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
 		}
 	}
@@ -566,7 +566,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 		}
 		return text;
@@ -575,7 +575,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public List<String> getListOfSuggestedMoneyOrListText(String dynamicID) {
 		List<String> listString = new ArrayList<String>();
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		if (status = true) {
+		if (status) {
 			listString = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		}
 		return listString;
@@ -585,7 +585,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
-		if (status = true) {
+		if (status) {
 			text = getTextElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
 		}
 		return text;
@@ -596,7 +596,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
-		if (status = true) {
+		if (status) {
 			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		}
 		return text;
@@ -606,7 +606,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public void clickToDynamicBottomMenuOrCloseIcon(String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
 	}
@@ -615,7 +615,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		if (status = true) {
+		if (status) {
 			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		}
 		return text;
@@ -625,7 +625,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);  
-		if (status = true) {
+		if (status) {
 			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
 		}
 		return text;
@@ -635,7 +635,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	public void clickToDynamicInput(String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
 		}
 
@@ -645,7 +645,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean status = false;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			sendKeyToElement(driver, HotelBookingPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
 		}
 
@@ -655,7 +655,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean status = false;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
-		if (status = true) {
+		if (status) {
 			clickToElement(driver, HotelBookingPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
 		}
 
@@ -665,7 +665,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean isDisplayed = false;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 		return isDisplayed;
@@ -676,7 +676,7 @@ public class HotelBookingPageObject extends AbstractPage{
 		boolean status = false;
 		clearText(driver, HotelBookingPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
-		if (status = true) {
+		if (status) {
 			setValueToElement(driver, HotelBookingPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
 		

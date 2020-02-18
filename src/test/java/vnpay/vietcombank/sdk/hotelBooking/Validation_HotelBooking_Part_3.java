@@ -218,55 +218,13 @@ public class Validation_HotelBooking_Part_3 extends Base {
 		hotelBooking.clickToDetailButtonByPayCode(paycode);
 		
 		log.info("TC_08_03_Kiem tra hien thi nut thuc hien lai");
-//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Thực hiện lại")); --> Hiện tại ko có nút thực hiện lại
-		
-	}
-	
-//	@Test
-	public void TC_09_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_ChoThanhToan() {
-		log.info("TC_09_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
-		
-		log.info("TC_09_02_Chon 1 khach san Cho thanh toan");
-		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Chờ thanh toán").payCode;
-		hotelBooking.clickToDetailButtonByPayCode(paycode);
-		
-		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("Thanh toán"));
-		
-	}
-	
-//	@Test
-	public void TC_10_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_DatPhongThanhCong() {
-		log.info("TC_10_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
-		
-		log.info("TC_10_02_Chon 1 khach san Het han thanh toan");
-		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Đặt phòng thành công").payCode;
-		hotelBooking.clickToDetailButtonByPayCode(paycode);
-		
-	}
-	
-//	@Test
-	public void TC_11_LichSuDatPhong_ChiTietDatPhong_KiemTraNutChucNang_TrangThaiGiaoDich_HuyPhong() {
-		log.info("TC_11_01_Quay ve man hinh Danh sach dat phong");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		hotelBooking.clickToDynamicTextView("Lịch sử & hủy phòng");
-		
-		log.info("TC_11_02_Chon 1 khach san Het han thanh toan");
-		String paycode = hotelBooking.getHotelBookingHistoryByStatus(HotelBookingPageObject.actualList, "Hủy phòng").payCode;
-		hotelBooking.clickToDetailButtonByPayCode(paycode);
-		
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, "Thực hiện lại")); 
 		
 	}
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

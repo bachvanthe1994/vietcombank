@@ -349,6 +349,12 @@ public class Base {
 	}
     }
 
+    public static String getCurrenMonth2() {
+	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
+	int month = nowUTC.getMonthOfYear();
+	return month + "";
+    }
+
     public static String getCurrentYear() {
 	DateTime nowUTC = new DateTime(DateTimeZone.UTC);
 	return nowUTC.getYear() + "";
@@ -579,6 +585,14 @@ public class Base {
     public String getCurentMonthAndYearPlusDays(long days) {
 	LocalDate now = LocalDate.now();
 	LocalDate date = now.plusDays(days);
+	int month = date.getMonthValue();
+	int year = date.getYear();
+	return "THÁNG" + " " + month + " " + year;
+    }
+
+    public String getCurentMonthAndYearPlusMonth(long Months) {
+	LocalDate now = LocalDate.now();
+	LocalDate date = now.plusMonths(Months);
 	int month = date.getMonthValue();
 	int year = date.getYear();
 	return "THÁNG" + " " + month + " " + year;

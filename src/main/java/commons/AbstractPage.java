@@ -52,7 +52,8 @@ public class AbstractPage {
 
     }
 
-    public boolean isControlForcus(AndroidDriver<AndroidElement> driver, String locator) {
+    public boolean isControlForcus(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	locator = String.format(locator, (Object[]) dynamicValue);
 	WebElement element = driver.findElement(By.xpath(locator));
 	if (element.getAttribute("selected").equalsIgnoreCase("true")) {
 	    return true;
@@ -159,7 +160,7 @@ public class AbstractPage {
 		break;
 	    } else {
 		try {
-		    sleep(driver, 2000);
+		    sleep(driver, 1000);
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 		    sleep(driver, 1000);
 		} catch (Exception e) {
@@ -185,7 +186,7 @@ public class AbstractPage {
 		break;
 	    } else {
 		try {
-		    sleep(driver, 2000);
+		    sleep(driver, 1000);
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 		    sleep(driver, 1000);
 		} catch (Exception e) {
@@ -212,7 +213,7 @@ public class AbstractPage {
 		break;
 	    } else {
 		try {
-		    sleep(driver, 2000);
+		    sleep(driver, 1000);
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 		    sleep(driver, 1000);
 		} catch (Exception e) {
@@ -238,7 +239,7 @@ public class AbstractPage {
 		break;
 	    } else {
 		try {
-		    sleep(driver, 2000);
+		    sleep(driver, 1000);
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 		    sleep(driver, 1000);
 		} catch (Exception e) {

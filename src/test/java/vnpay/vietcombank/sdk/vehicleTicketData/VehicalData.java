@@ -1,7 +1,7 @@
-package vnpay.vietcombank.vehicleTicketData;
+package vnpay.vietcombank.sdk.vehicleTicketData;
 
 public class VehicalData {
-    public static class Data_ORDER_TICKET {
+    public static class DATA_ORDER_TICKET {
 	public static final String FROMT = "Chọn điểm đi";
 	public static final String TO = "Chọn điểm đến";
 	public static final String DEPARTURE = "Hà Nội";
@@ -28,7 +28,6 @@ public class VehicalData {
 	public static final String NOTI_CHOISE_FROMT = "Quý khách vui lòng nhập Điểm đi";
 	public static final String NOTI_NULL_DATA = "Không có dữ liệu hợp lệ";
 	public static final String NOTI_CHOISE_DESTINATION_BEFORE = "Quý khách vui lòng nhập điểm đi trước khi chọn điểm đến.";
-	
-	
+	public static final String LIST_TRIP = "Danh sách chuyến xe";
     }
 }
