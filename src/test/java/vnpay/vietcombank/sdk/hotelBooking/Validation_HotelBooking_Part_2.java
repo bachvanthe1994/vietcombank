@@ -116,10 +116,13 @@ public class Validation_HotelBooking_Part_2 extends Base {
 	
 	@Test
 	public void TC_05_DatPhongKhachSan_KiemTraNutXemGanDay_ChuaXemGanDay() {
+		log.info("TC_05_01_Click Xem gan day");
 		hotelBooking.clickToDynamicTextOrButtonLink("Xem gần đây");
 		
+		log.info("TC_05_02_Kiem tra message hien thi");
 		verifyEquals(hotelBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Gần đây bạn chưa xem phòng nào");
 		
+		log.info("TC_05_02_Click Dong y");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đồng ý");
 		
 	}
@@ -127,42 +130,53 @@ public class Validation_HotelBooking_Part_2 extends Base {
 	List<HotelBookingInfo> listHotelRecentView = new ArrayList<HotelBookingInfo>();
 	@Test
 	public void TC_06_DatPhongKhachSan_KiemTraNutXemGanDay_DaXemGanDay() {
+		log.info("TC_06_01_Click Tim kiem dia diem");
 		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
 		
+		log.info("TC_06_02_Click chon dia diem");
 		hotelBooking.clickToDynamicTextOrButtonLink("Hà Nội");
 		
+		log.info("TC_06_03_Click Tim kiem");
 		hotelBooking.clickToDynamicTextOrButtonLink("Tìm kiếm");
 		
+		log.info("TC_06_04_Lay danh sach tim kiem");
 		List<HotelBookingInfo> listHotelSearch = hotelBooking.getListHotelSearched();
 		
+		log.info("TC_06_05_Click Chi tiet");
 		hotelBooking.viewHotelDetail();
 		
+		log.info("TC_06_06_Click back");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		
+		log.info("TC_06_07_Click Xem gan day");
 		hotelBooking.clickToDynamicTextOrButtonLink("Xem gần đây");
 		
+		log.info("TC_06_08_Kiem tra danh sach xem gan day");
 		listHotelRecentView  = hotelBooking.getListHotelRecentView();
-		
 		verifyEquals(listHotelRecentView, listHotelSearch); 
 		
 	}
 	
 	@Test
 	public void TC_07_DatPhongKhachSan_KiemTraNutXemGanDay_XemChiTietKhachSan() {
+		log.info("TC_07_01_Nhan back");
 		hotelBooking.navigateBack(driver);
 		
+		log.info("TC_07_02_Click Back");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		
+		log.info("TC_07_03_Click Dat phong khach san");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
 		
+		log.info("TC_07_04_Click Dong y");
 		hotelBooking.clickToDynamicButton("Đồng ý");
 		
+		log.info("TC_07_05_Click Xem gan day");
 		hotelBooking.clickToDynamicTextOrButtonLink("Xem gần đây");
 		
+		log.info("TC_07_06_Kiem tra 1 khach san xem gan day");
 		String hotelName = listHotelRecentView.get(0).hotelName;
-		
 		hotelBooking.clickToDynamicTextOrButtonLink(hotelName);
-		
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed(hotelName));
 		
 	}
@@ -263,7 +277,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(listHotelSearch.get(0).hotelAddress));
 		
 		log.info("TC_11_03_03_Kiem tra so tien");
-//		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, listHotelSearch.get(0).price)); ---> App đang sai
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed(driver, listHotelSearch.get(0).price)); 
 		
 	}
 	
@@ -498,7 +512,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

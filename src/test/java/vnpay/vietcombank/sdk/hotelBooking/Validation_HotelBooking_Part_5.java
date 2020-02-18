@@ -187,13 +187,6 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.clickToDynamicButton("Đóng");
 	}
 
-//	@Test
-	public void TC_06_OTP_NutTiepTuc_NhapOTPLonHon6KyTu() {
-		log.info("TC_06_01_Nhap ma OTP lon hon 6 Ky tu");
-		hotelBooking.inputToDynamicOtpOrPIN("1234567", "Tiếp tục");
-
-	}
-
 	@Test
 	public void TC_07_OTP_NutTiepTuc_NhapOTPKhongChinhXac() {
 		log.info("TC_07_01_Nhap ma OTP khong chinh xac");
@@ -442,7 +435,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
