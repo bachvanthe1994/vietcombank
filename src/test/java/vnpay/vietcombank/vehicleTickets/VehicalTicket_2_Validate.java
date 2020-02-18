@@ -140,18 +140,18 @@ public class VehicalTicket_2_Validate extends Base {
     public void TC_08_KiemTraLoaiKiTuDuocNhap() {
 	log.info("TC_08_Step_1: nhập kí tự hợp lệ");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.DATA_ORDER_TICKET.DATA_INPUT_INVALID, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
+	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.DATA_ORDER_TICKET.DATA_INPUT_VN, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
 
 	log.info("TC_08_Step_2: kiểm tra hiển thị các kí tự vừa nhập");
 	String data_invalid = vehicalTicket.getDynamicEditText("com.VCB:id/edtTextPickUp");
-	verifyEquals(data_invalid, VehicalData.DATA_ORDER_TICKET.DATA_INPUT_INVALID);
+	verifyEquals(data_invalid, VehicalData.DATA_ORDER_TICKET.DATA_INPUT_VN);
 
 	log.info("TC_08_Step_3: chọn đóng");
 	vehicalTicket.clickToDynamicButtonIconBack("com.VCB:id/ivClose");
 
 	log.info("TC_08_Step_4: nhập kí tự không hợp lệ");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.DATA_ORDER_TICKET.DATA_INPUT_VALID, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
+	vehicalTicket.inputToDynamicInputBox(driver, VehicalData.DATA_ORDER_TICKET.DATA_INPUT_SPECCIAL, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
 
 	log.info("TC_08_Step_5: kiểm tra hiển thị các kí tự vừa nhập");
 	String data_valid = vehicalTicket.getDynamicEditText("com.VCB:id/edtTextPickUp");

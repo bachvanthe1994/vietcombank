@@ -136,9 +136,6 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_35_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
-	log.info("TC_35_Step_2: lấy ra tháng/năm hiện tại");
-	String today = "THÁNG" + getCurrenMonth2() + "/" + getCurrentYear();
-
 	log.info("TC_35_Step_3: lấy ra tháng/năm của 3 tháng sau");
 	String MonthAndYear = getCurentMonthAndYearPlusMonth(3);
 	verifyTrue(vehicalTicket.isDynamicDisplayed(MonthAndYear));
@@ -177,7 +174,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 
 	log.info("TC_37_Step_3: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.DEPARTURE);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION);
 
 	log.info("TC_37_Step_4: click back");
 	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
