@@ -208,7 +208,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	verifyEquals(date, today);
 
 	log.info("TC_27_Step_2: kiểm tra button được focus");
-	vehicalTicket.isDynamicForcus("com.VCB:id/lnToday");
+	verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnToday"));
     }
 
     @Test
