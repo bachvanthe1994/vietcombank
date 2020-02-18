@@ -211,11 +211,6 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE);
     }
 
-    @Test
-    public void TC_39_KiemTraTimKiemTheoChuyenDiGoiY() {
-
-    }
-
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 	closeApp();
