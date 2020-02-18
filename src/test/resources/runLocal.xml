@@ -36,7 +36,7 @@
 
 
 
-<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" /> -->
+			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" />
 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" />
 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" />
 
