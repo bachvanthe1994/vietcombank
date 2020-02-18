@@ -1,4 +1,4 @@
-package vnpay.vietcombank.vehicleTickets;
+package vnpay.vietcombank.sdk.vehicleTickets;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -14,9 +14,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 import vehicalPageObject.VehicalPageObject;
-import vnpay.vietcombank.vehicleTicketData.VehicalData;
+import vnpay.vietcombank.sdk.vehicleTicketData.VehicalData;
 
-public class VehicalTicket_4_Validate extends Base {
+public class VehicalTicket_Validate_Part3 extends Base {
     AndroidDriver<AndroidElement> driver;
     private LogInPageObject login;
     private VehicalPageObject vehicalTicket;
