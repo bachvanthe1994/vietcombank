@@ -4,11 +4,11 @@ public class VehicalData {
     public static class DATA_ORDER_TICKET {
 	public static final String FROMT = "Chọn điểm đi";
 	public static final String TO = "Chọn điểm đến";
-	public static final String DEPARTURE = "Hà Nội";
-	public static final String EDIT_DEPARTURE = "Bắc Giang";
-	public static final String DESTINATION = "Bắc Ninh";
-	public static final String FROMT_INPUT = "Điểm đi";
-	public static final String TO_INPUT = "Điểm đến";
+	public static final String PLACE_1 = "Hà Nội";
+	public static final String PLACE_2 = "Bắc Giang";
+	public static final String PLACE_3 = "Bắc Ninh";
+	public static final String DESTINATION = "Điểm đi";
+	public static final String ARRIVAL = "Điểm đến";
 	public static final String ORDER_TICKET = "Đặt vé xe";
 	public static final String HISTORY_TICKET = "Lịch sử đặt vé";
 	public static final String TODAY = "Hôm nay";
