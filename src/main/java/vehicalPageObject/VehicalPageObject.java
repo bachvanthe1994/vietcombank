@@ -196,6 +196,17 @@ public class VehicalPageObject extends AbstractPage {
 	return text;
     }
 
+    public String getDynamicSuggestTrip(String dynamicID) {
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicID);
+	if (status = true) {
+	    text = getTextElement(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicID);
+
+	}
+	return text;
+    }
+
     // Click close chọn điểm đi
     public void clickToDynamicButtonIconBack(String dynamicID) {
 	boolean status = false;
@@ -223,6 +234,27 @@ public class VehicalPageObject extends AbstractPage {
 	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
 	if (status = true) {
 	    isDisplayed = isControlForcus(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicDisplayed(String dynamicTextValue) {
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
+
+    public boolean isDynamicUnDisplayed(String dynamicTextValue) {
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	boolean isDisplayed = true;
+	boolean status = waitForElementInvisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlUnDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 	}
 	return isDisplayed;
 

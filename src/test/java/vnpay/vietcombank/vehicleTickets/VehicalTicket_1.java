@@ -36,13 +36,13 @@ public class VehicalTicket_1 extends Base {
     @Test
     public void TC_01_KiemTraLuongDatVeThanhCong() throws InterruptedException {
 	log.info("TC_01_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DEPARTURE, VehicalData.Data_ORDER_TICKET.FROMT_INPUT);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DEPARTURE, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
 
 	log.info("TC_01_Step_1: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.Data_ORDER_TICKET.DESTINATION, VehicalData.Data_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.Data_ORDER_TICKET.DESTINATION);
+	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.TO_INPUT);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DESTINATION, VehicalData.DATA_ORDER_TICKET.TO_INPUT);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.DESTINATION);
 
     }
 
