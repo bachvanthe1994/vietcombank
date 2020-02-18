@@ -70,7 +70,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 	verifyEquals(tomorrow, VehicalData.DATA_ORDER_TICKET.TOMORROW);
 
 	log.info("TC_02_Step_10: kiểm tra hiển thị button tìm kiếm chuyến đi");
-	vehicalTicket.isDynamicButtonDisplayed(driver, VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
+	verifyTrue(vehicalTicket.isDynamicButtonDisplayed(driver, VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP));
     }
 
     @Test
