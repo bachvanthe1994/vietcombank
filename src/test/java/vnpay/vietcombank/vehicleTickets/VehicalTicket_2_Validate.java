@@ -73,7 +73,7 @@ public class VehicalTicket_2_Validate extends Base {
 	vehicalTicket.isDynamicButtonDisplayed(driver, VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
     }
 
-//    @Test
+    @Test
     public void TC_03_KiemTraManHinhTimKiemChuyenDiKhachHangSuDungLanSau() {
 	log.info("TC_03_Step_1: kiểm tra hiển thị text gợi ý chuyến đi");
 	vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.SUGGEST_TRIP);
@@ -87,7 +87,7 @@ public class VehicalTicket_2_Validate extends Base {
 
 	log.info("TC_03_Step_4: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.DEPARTURE);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.DESTINATION);
     }
 
     @Test
@@ -243,7 +243,7 @@ public class VehicalTicket_2_Validate extends Base {
     public void afterClass() {
 	closeApp();
 	service.stop();
-	
+
     }
 
 }
