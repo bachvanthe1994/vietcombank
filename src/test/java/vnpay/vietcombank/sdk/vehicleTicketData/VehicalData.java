@@ -1,4 +1,4 @@
-package vnpay.vietcombank.vehicleTicketData;
+package vnpay.vietcombank.sdk.vehicleTicketData;
 
 public class VehicalData {
     public static class DATA_ORDER_TICKET {

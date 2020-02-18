@@ -28,6 +28,8 @@ public class LogInPageObject extends AbstractPage {
 
 		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
+		clickToDynamicButton(driver, "Đóng");
+
 	}
 
 }

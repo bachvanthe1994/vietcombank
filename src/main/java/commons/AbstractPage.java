@@ -52,8 +52,7 @@ public class AbstractPage {
 
     }
 
-    public boolean isControlForcus(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
-	locator = String.format(locator, (Object[]) dynamicValue);
+    public boolean isControlForcus(AndroidDriver<AndroidElement> driver, String locator, String... dynamicVaue) {
 	WebElement element = driver.findElement(By.xpath(locator));
 	if (element.getAttribute("selected").equalsIgnoreCase("true")) {
 	    return true;
