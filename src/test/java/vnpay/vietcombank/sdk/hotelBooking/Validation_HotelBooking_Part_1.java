@@ -228,7 +228,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_10_04_Nhan chon Tim kiem dia diem hoac khach san");
 		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
-		
+
 	}
 
 	@Test
@@ -261,11 +261,11 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_12_04_Kiem tra den trang thong tin khach san");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("CLASSY HOLIDAY HOTEL & SPA"));
-		
+
 		log.info("TC_12_05_Quay lai man hinh hien thi khach san duoc tim kiem");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
 		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvCancel");
-		
+
 	}
 
 	@Test
@@ -337,10 +337,10 @@ public class Validation_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_18_01_Click chon ngay tra va ngay dat");
 		hotelBooking.clickToDateHotelBooking(nowDay, expectCheckInDay, expectCheckOutDay);
-		
+
 		log.info("TC_18_02_Kiem tra ngay duoc chon - Ngay tra, Ngay dat");
 		verifyTrue(hotelBooking.checkDateSelected(expectCheckOutDay.split("/")[0].replace("0", "")));
-		
+
 		String actualCheckInDay = hotelBooking.getTextInDynamicDropdownOrDateTimePicker("com.VCB:id/tvFromDay");
 		String actualCheckOutDay = hotelBooking.getTextInDynamicDropdownOrDateTimePicker("com.VCB:id/tvToDay");
 
