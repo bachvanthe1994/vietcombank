@@ -14,7 +14,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
-import vietcombank_test_data.TrainTicket_Data;
+import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Validation_TrainTicket_1 extends Base {
 	AndroidDriver<AndroidElement> driver;

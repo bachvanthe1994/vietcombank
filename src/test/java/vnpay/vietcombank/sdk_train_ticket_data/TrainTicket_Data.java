@@ -1,4 +1,4 @@
-package vietcombank_test_data;
+package vnpay.vietcombank.sdk_train_ticket_data;
 
 public class TrainTicket_Data {
 	
@@ -13,7 +13,7 @@ public class TrainTicket_Data {
 		public static final String EMPTY_START ="Không có dữ liệu hợp lệ" ;
 		public static final String LOCATION_BLANK ="Quý khách vui lòng chọn số lượng hành khách để tiếp tục mua vé" ;
 		public static final String NOTE_NUMBER_CUSTOMER ="Trẻ em dưới 06 tuổi không cần phải mua vé nếu ngồi cùng vé với phụ huynh. Mỗi người lớn (người cao tuổi/ sinh viên) được ngồi cùng ghế tối đa với 02 trẻ em dưới 06 tuổi, trẻ em dưới 06 tuổi thứ 3 trở đi phải mua vé." ;
-		
+		public static final String ONLY_SELECT_NUMBER_CHILD ="Điều kiện chọn không phù hợp. Trẻ em không được phép đặt vé khi không có người lớn đi kèm. Quý khách vui lòng chọn lại."; 
 	}
 	
 	public static class inputText {

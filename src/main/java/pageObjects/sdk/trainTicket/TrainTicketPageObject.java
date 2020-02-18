@@ -12,8 +12,6 @@ import commons.AbstractPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
-import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
@@ -183,7 +181,16 @@ public class TrainTicketPageObject extends AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
 		}
 	}
-
+	
+	
+	public void clickDynamicButtonNumber(String ... dynamicTextValue) {
+		boolean status = false;
+		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		if (status = true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		}
+	}
+	
 	// Lay thu trong tuan
 	public String getDynamicTitleWeek(String... dynamicText) {
 		String text = null;
@@ -321,6 +328,15 @@ public class TrainTicketPageObject extends AbstractPage {
 		return text;
 	}
 	
+	//lấy số lượng khách hàng
+	public String getTextCustomerNumber( String ...dynamicResourceID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicResourceID);
+		if (status = true) {
+			text =  getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicResourceID);
+		}
+		return text;
+	}
 	
 	public List<String> getListOfSuggestedMoneyOrListText( String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
@@ -468,3 +484,4 @@ public class TrainTicketPageObject extends AbstractPage {
 	}
 }
 		
+

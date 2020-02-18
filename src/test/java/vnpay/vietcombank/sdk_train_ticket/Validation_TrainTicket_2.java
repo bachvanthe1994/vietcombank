@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
-import vietcombank_test_data.TrainTicket_Data;
+import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Validation_TrainTicket_2 extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -126,7 +127,7 @@ public class Validation_TrainTicket_2 extends Base {
 	@Test
 	public void TC_05_KiemTraTrangThaiButtonTiepTuc() {
 		log.info("TC_05_Hien thi button tiep tuc");
-		verifyTrue(trainTicket.isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BUTTON,"TIẾP TỤC"));
+		verifyTrue(trainTicket.isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BUTTON, "TIẾP TỤC"));
 	}
 
 	@Test
@@ -253,7 +254,7 @@ public class Validation_TrainTicket_2 extends Base {
 	public void TC_11_KiemTraRangBuocNgayDiNgayVe() {
 		String nextDay5 = getForWardDay(5);
 		String nextDay4 = getForWardDay(4);
-		
+
 		log.info("TC_11_Click icon back cua man hinh chon ngay");
 		trainTicket.clickToDynamicBackIcon("Chọn ngày");
 
@@ -261,16 +262,16 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_11_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay5)+"");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay5) + "");
 
 		log.info("TC_11_Chon ngay ve nho hon ngay di, chuong trinh khong chon duoc ngay ve hien thi ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay4)+"");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay4) + "");
 
 		log.info("TC_11_Ngay ve se bi remove, se thay bang title Chon ngay");
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
 
 		log.info("TC_11_Chon ngay ve  = ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay4)+"");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay4) + "");
 
 		log.info("TC_11_Check hien thi button xac nhan");
 		verifyTrue(trainTicket.isDynamicButtonDisplayed("Tiếp tục"));
@@ -282,7 +283,7 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyTrue(trainTicket.isDynamicButtonDisplayed("Tiếp tục"));
 
 		log.info("TC_12_Step_Check button tiep tuc enable");
-		verifyTrue(trainTicket.isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BUTTON,"Tiếp tục"));
+		verifyTrue(trainTicket.isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Tiếp tục"));
 
 		log.info("TC_12_Click button tiep tuc");
 		trainTicket.clickToDynamicButton("Tiếp tục");
@@ -300,10 +301,10 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_13_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay1 );
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay1);
 
 		log.info("TC_13_Chon ngay ve");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay2 );
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay2);
 
 		log.info("TC_13_Verify gia tri ngay di");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay1), nextDay1);
@@ -315,7 +316,7 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày đi", "com.VCB:id/tv_nam_di"), trainTicket.getMonthAndYearFORMAT());
 
 		log.info("TC_13_Verify gia tri ngay ve");
-		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(),  nextDay2),  nextDay2);
+		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay2), nextDay2);
 
 		log.info("TC_13_Verify gia tri thu ve");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày về", "com.VCB:id/tv_thang_ve"), convertDayOfWeekVietNameseFull(getCurrentDayOfWeek(date2)));
@@ -326,20 +327,19 @@ public class Validation_TrainTicket_2 extends Base {
 
 	@Test
 	public void TC_14_KiemTraChonLaiNgayDiHoacNgayVe() {
-			String nextDay2 = getForWardDay(2);
+		String nextDay2 = getForWardDay(2);
 		String nextDay3 = getForWardDay(3);
 		String nextDay4 = getForWardDay(4);
-		
+
 		LocalDate now = LocalDate.now();
 		LocalDate date3 = now.plusDays(3);
 		LocalDate date4 = now.plusDays(4);
-	
 
 		log.info("TC_14_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay3 );
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay3);
 
 		log.info("TC_14_Verify gia tri ngay di");
-		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay3), nextDay3 );
+		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay3), nextDay3);
 
 		log.info("TC_14_Verify gia tri thu di");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày đi", "com.VCB:id/tv_thang_di"), convertDayOfWeekVietNameseFull(getCurrentDayOfWeek(date3)));
@@ -351,16 +351,16 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
 
 		log.info("TC_14_Chon ngay ve nho hon ngay di vua chon");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay2 );
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay2);
 
 		log.info("TC_14_Ngay ve se bi remove, se thay bang title Chon ngay");
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
-		
+
 		log.info("TC_14_Chon ngay ve lon hon ngay hien tai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay4 );
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay4);
 
 		log.info("TC_14_Verify gia tri ngay ve");
-		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(),  nextDay4 ),  nextDay4 );
+		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay4), nextDay4);
 
 		log.info("TC_14_Verify gia tri thu ve");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày về", "com.VCB:id/tv_thang_ve"), convertDayOfWeekVietNameseFull(getCurrentDayOfWeek(date4)));
@@ -378,7 +378,7 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyTrue(trainTicket.isDynamicTextNumberCustomerUnDisplayed("Hành khách"));
 	}
 
-	@Test
+	// @Test
 	public void TC_16_BoTrongKhongChonSoLuongHanhKhach() {
 		log.info("TC_16_Click chon loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -467,5 +467,204 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyEquals(trainTicket.getTextInDynamicNote("4"), TrainTicket_Data.message.NOTE_NUMBER_CUSTOMER);
 	}
 
-	
+	@Test
+	public void TC_18_KiemTraThayDoiSoLuongNguoiLon() {
+		log.info("TC_18_Hien thi so luong nguoi mac dinh la 0");
+		verifyTrue(trainTicket.isDynamicTextChangeNumber("Người lớn", "com.VCB:id/tvQuantity"));
+
+		log.info("TC_18_Click so luon nguoi giam di 1, khong thuc hien duoc do so luong min = 0");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 0");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người lớn", "com.VCB:id/tvQuantity"), "0");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 1");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người lớn", "com.VCB:id/tvQuantity"), "1");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 2");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người lớn", "com.VCB:id/tvQuantity"), "2");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 3");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người lớn", "com.VCB:id/tvQuantity"), "3");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 4");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người lớn", "com.VCB:id/tvQuantity"), "4");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi, so luon khong tang do max = 4");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 4");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người lớn", "com.VCB:id/tvQuantity"), "4");
+	}
+
+	@Test
+	public void TC_19_KiemTraRangBuocLoaiKhachHang() {
+		log.info("TC_18_Click so luon nguoi lon giam ve = 0 ");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Click chon so luong tre em tang len 1");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Verify message dieu kien khong phu hop");
+		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tvTitle"), TrainTicket_Data.message.ONLY_SELECT_NUMBER_CHILD);
+
+		log.info("TC_18_Click button dong y");
+		trainTicket.clickToDynamicButton("ĐỒNG Ý");
+	}
+
+	@Test
+	public void TC_20_KiemTraThayDoiSoLuongTreEm() {
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi mac dinh la 0");
+		verifyTrue(trainTicket.isDynamicTextChangeNumber("Trẻ em", "com.VCB:id/tvQuantity"));
+
+		log.info("TC_18_Click so luon nguoi giam di 1, khong thuc hien duoc do so luong min = 0");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 0");
+		verifyEquals(trainTicket.getTextCustomerNumber("Trẻ em", "com.VCB:id/tvQuantity"), "0");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 1");
+		verifyEquals(trainTicket.getTextCustomerNumber("Trẻ em", "com.VCB:id/tvQuantity"), "1");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 2");
+		verifyEquals(trainTicket.getTextCustomerNumber("Trẻ em", "com.VCB:id/tvQuantity"), "2");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 3");
+		verifyEquals(trainTicket.getTextCustomerNumber("Trẻ em", "com.VCB:id/tvQuantity"), "3");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 3");
+		verifyEquals(trainTicket.getTextCustomerNumber("Trẻ em", "com.VCB:id/tvQuantity"), "3");
+	}
+
+	@Test
+	public void TC_21_KiemTraThayDoiSoLuongSinhVien() {
+		log.info("TC_18_Click so luon nguoi giam ve = 0 ");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Trẻ em", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Người lớn", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Hien thi so luong nguoi mac dinh la 0");
+		verifyTrue(trainTicket.isDynamicTextChangeNumber("Sinh viên", "com.VCB:id/tvQuantity"));
+
+		log.info("TC_18_Click so luon nguoi giam di 1, khong thuc hien duoc do so luong min = 0");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 0");
+		verifyEquals(trainTicket.getTextCustomerNumber("Sinh viên", "com.VCB:id/tvQuantity"), "0");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 1");
+		verifyEquals(trainTicket.getTextCustomerNumber("Sinh viên", "com.VCB:id/tvQuantity"), "1");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 2");
+		verifyEquals(trainTicket.getTextCustomerNumber("Sinh viên", "com.VCB:id/tvQuantity"), "2");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 3");
+		verifyEquals(trainTicket.getTextCustomerNumber("Sinh viên", "com.VCB:id/tvQuantity"), "3");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 4");
+		verifyEquals(trainTicket.getTextCustomerNumber("Sinh viên", "com.VCB:id/tvQuantity"), "4");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi, so luon khong tang do max = 4");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 4");
+		verifyEquals(trainTicket.getTextCustomerNumber("Sinh viên", "com.VCB:id/tvQuantity"), "4");
+	}
+
+	@Test
+	public void TC_22_KiemTraThayDoiSoLuongSinhVien() {
+		log.info("TC_18_Click so luon nguoi giam ve = 0 ");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivDecrase");
+		trainTicket.clickDynamicButtonNumber("Sinh viên", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Hien thi so luong nguoi mac dinh la 0");
+		verifyTrue(trainTicket.isDynamicTextChangeNumber("Người cao tuổi", "com.VCB:id/tvQuantity"));
+
+		log.info("TC_18_Click so luon nguoi giam di 1, khong thuc hien duoc do so luong min = 0");
+		trainTicket.clickDynamicButtonNumber("Người cao tuổi", "com.VCB:id/ivDecrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 0");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "0");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người cao tuổi", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 1");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "1");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người cao tuổi", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 2");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "2");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người cao tuổi", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 3");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "3");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi");
+		trainTicket.clickDynamicButtonNumber("Người cao tuổi", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 4");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "4");
+
+		log.info("TC_18_Click so luon nguoi tang len 1 don vi, so luon khong tang do max = 4");
+		trainTicket.clickDynamicButtonNumber("Người cao tuổi", "com.VCB:id/ivIncrase");
+
+		log.info("TC_18_Hien thi so luong nguoi la 4");
+		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "4");
+	}
+
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		closeApp();
+		service.stop();
+	}
 }

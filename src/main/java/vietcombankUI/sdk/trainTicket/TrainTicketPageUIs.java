@@ -27,5 +27,6 @@ public class TrainTicketPageUIs {
 		public static final String DYNAMIC_TEXT_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 	    public static final String DYNAMIC_TEXT_INDEX = "//android.widget.TextView[@index ='%s']";
 	    public static final String DYNAMIC_DATE_SELECT = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
+	   
 	}
 
