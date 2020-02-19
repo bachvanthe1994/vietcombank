@@ -68,11 +68,8 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_32_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
-	int tomorrow = Integer.parseInt(getCurrentDay()) + 1;
-	String tomorrow_string = Integer.toString(tomorrow);
-
 	log.info("TC_32_Step_2: Chọn ngày hiện tai");
-	vehicalTicket.clickToDynamicText(tomorrow_string);
+	vehicalTicket.clickToDynamicSelectedDate(getCurentMonthAndYearPlusDays1(1), getForWardDay(1));
 
 	log.info("TC_32_Step_3: kiểm tra ngày thay đổi đi");
 	String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
@@ -85,11 +82,8 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_33_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
-	int tomorrow = Integer.parseInt(getCurrentDay()) + 2;
-	String tomorrow_string = Integer.toString(tomorrow);
-
 	log.info("TC_33_Step_2: chọn ngày lớn hon ngày mai");
-	vehicalTicket.clickToDynamicText(tomorrow_string);
+	vehicalTicket.clickToDynamicSelectedDate(getCurentMonthAndYearPlusDays1(2), getForWardDay(2));
 
 	log.info("TC_33_Step_3: kiểm tra ngày thay đổi đi");
 	String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
@@ -105,11 +99,8 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_34_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
-	int tomorrow = Integer.parseInt(getCurrentDay()) + 1;
-	String tomorrow_string = Integer.toString(tomorrow);
-
 	log.info("TC_34_Step_2: Chọn ngày mai");
-	vehicalTicket.clickToDynamicText(tomorrow_string);
+	vehicalTicket.clickToDynamicSelectedDate(getCurentMonthAndYearPlusDays1(1), getForWardDay(1));
 
 	log.info("TC_34_Step_3: Tim kiếm chuyến đi");
 	vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
@@ -120,11 +111,8 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_34_Step_5: chon lại ngày đi");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
-	int date = Integer.parseInt(getCurrentDay()) + 2;
-	String date_string = Integer.toString(date);
-
 	log.info("TC_34_Step_6: chọn ngày lớn hon ngày mai");
-	vehicalTicket.clickToDynamicText(date_string);
+	vehicalTicket.clickToDynamicSelectedDate(getCurentMonthAndYearPlusDays1(2), getForWardDay(2));
 
 	log.info("TC_34_Step_7: kiểm tra ngày thay đổi đi");
 	String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
@@ -174,7 +162,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 
 	log.info("TC_37_Step_3: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 
 	log.info("TC_37_Step_4: click back");
 	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
@@ -205,7 +193,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 
 	log.info("TC_38_Step_6: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.DESTINATION);
     }
 
     @AfterClass(alwaysRun = true)
