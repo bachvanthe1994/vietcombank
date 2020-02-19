@@ -29,7 +29,7 @@ public class VehicalPageObject extends AbstractPage {
 	}
     }
 
-    public void inputToDynamicInputBoxIDandIndex(String inputValue, String dynamicID) {
+    public void inputToDynamicInputBoxID(String inputValue, String dynamicID) {
 	boolean status = false;
 	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_FROMT_INPUT_BY_CLOSE, dynamicID);
 	if (status) {
@@ -48,7 +48,7 @@ public class VehicalPageObject extends AbstractPage {
     }
 
     // Click vào button, text có class là textview, tham số truyền vào là text
-    public void clickToDynamicButtonLinkOrLinkText(String dynamicTextValue) {
+    public void clickToDynamicInputBox(String dynamicTextValue) {
 	scrollIDown(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
 	boolean status = false;
 	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
@@ -175,7 +175,7 @@ public class VehicalPageObject extends AbstractPage {
     }
 
     // Click icon đổi điểm đi điểm đến
-    public void clickToDynamicIconChangePlacek(String dynamicID) {
+    public void clickToDynamicIconChangePlace(String dynamicID) {
 	boolean status = false;
 	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
 	if (status) {
