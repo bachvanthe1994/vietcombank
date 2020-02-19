@@ -29,7 +29,7 @@ public class VehicalPageObject extends AbstractPage {
 	}
     }
 
-    public void inputToDynamicInputBoxIDandIndex(String inputValue, String dynamicID) {
+    public void inputToDynamicInputBoxID(String inputValue, String dynamicID) {
 	boolean status = false;
 	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_FROMT_INPUT_BY_CLOSE, dynamicID);
 	if (status) {
