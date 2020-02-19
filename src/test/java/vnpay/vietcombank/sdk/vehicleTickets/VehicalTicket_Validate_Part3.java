@@ -43,7 +43,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
     public void TC_31_KiemTraChonNgayHienTai() {
 	log.info("TC_31_Step_1: Chọn và nhập điểm đi");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.PLACE_3);
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
 	log.info("TC_31_Step_2: Chọn và nhập điểm đến");
@@ -162,7 +162,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 
 	log.info("TC_37_Step_3: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.DESTINATION);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_37_Step_4: click back");
 	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
