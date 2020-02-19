@@ -16,6 +16,7 @@ import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vehicalPageObject.VehicalPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
+import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 
@@ -84,6 +85,10 @@ public class PageFactoryManager {
 	public static DynamicAirTicketBookingObjects getDynamicAirTicketBooking(AndroidDriver<AndroidElement> driver) {
 		return new DynamicAirTicketBookingObjects(driver);
 
+	}
+	
+	public static FilmTicketBookingPageObject getFilmTicketBookingPageObject(AndroidDriver<AndroidElement> driver) {
+		return new FilmTicketBookingPageObject(driver);
 	}
 	
 }

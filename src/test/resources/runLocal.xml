@@ -18,7 +18,7 @@
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0399764702" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
@@ -36,9 +36,11 @@
 
 
 
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" />
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" />
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" />
+<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" /> -->
+
+			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_1" />
 
 		</classes>
 	</test>
