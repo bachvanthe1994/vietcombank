@@ -19,4 +19,13 @@ public class DomesticAirTicketBooking_Data {
 		public static final String INVALID_NUMBER_OF_CHILDREN = "1 hành khách người lớn chỉ được phép đi kèm với 1 hành khách trẻ em và 1 hành khách em bé.";
 	}
 
+	public class validInput {
+		public static final String ADULT_NAME = "NGUOI LON";
+		public static final String ADULT_GENDER = "Nữ";
+		public static final String ADULT_EMAIL = "abcd@gmail.com";
+		public static final String ADULT_PHONE = "0901234567";
+		public static final String CONTENT = "DAT CHUYEN BAY DI TP HO CHI MINH";
+		public static final String CHILD_NAME = "NGUYEN NGOC ANH";
+
+	}
 }

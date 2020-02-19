@@ -41,6 +41,16 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		}
 	}
 
+	public void inputToDynamicInputBoxByLabelAndIndex(String inputValue, String... dynamicTextAndID) {
+		boolean status = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, dynamicTextAndID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, dynamicTextAndID);
+		if (status == true) {
+			clearText(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, dynamicTextAndID);
+			sendKeyToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, inputValue, dynamicTextAndID);
+		}
+	}
+
 	public void clickToDynamicCheckBoxByLabel(String... dynamicValue) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicValue);
@@ -50,12 +60,30 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		}
 	}
 
-	public void clickToDynamicTextOrDropDownByLabel(String... dynamicValue) {
+	public void checkToDynamicTextOrDropDownByLabel(String... dynamicValue) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, dynamicValue);
 		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, dynamicValue);
 		if (status == true) {
 			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, dynamicValue);
+		}
+	}
+
+	public void clickToDynamicTextOrDropDownByLabelAndIndex(String... dynamicValue) {
+		boolean status = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, dynamicValue);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, dynamicValue);
+		if (status == true) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, dynamicValue);
+		}
+	}
+
+	public void uncheckToDynamicCheckBoxByLabel(String... dynamicValue) {
+		boolean status = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicValue);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicValue);
+		if (status == true && isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicValue) == true) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicValue);
 		}
 	}
 

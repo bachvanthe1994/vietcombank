@@ -15,11 +15,12 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 
-public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details extends Base {
+public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private DynamicAirTicketBookingObjects airTicket;
+	private String validName = "ANh TA";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -150,8 +151,8 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details extends 
 
 	@Test
 	public void TC_06_ThongTinLienHe_KiemTraKhongCheckVaoCheckBox() {
-		log.info("TC_06_Step 01: Dien 1 Ten khong dung dinh dang ");
-		airTicket.clickToDynamicTextOrDropDownByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/tv_NuContact");
+		log.info("TC_06_Step 01: Chon gioi tinh");
+		airTicket.checkToDynamicTextOrDropDownByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/tv_NuContact");
 
 		log.info("TC_06_Step 02: Click Tiep Tuc ");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -232,7 +233,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details extends 
 	public void TC_12_ThongTinLienHe_KiemTraNhapSoDienThoaiKhongHopLe() {
 		String[] invalidPhone = { "abc" };
 		for (String phone : invalidPhone) {
-			log.info("TC_12_Step 01: Dien Email khong dung dinh dang ");
+			log.info("TC_12_Step 01: Dien Phone khong dung dinh dang ");
 			airTicket.inputToDynamicInputBoxByLabel(phone, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber");
 
 			log.info("TC_12_Step 23:Kiem tra text so dien thoai");
@@ -242,7 +243,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details extends 
 
 		String[] invalidPhoneNumber = { "1234", "1234567891" };
 		for (String phone : invalidPhoneNumber) {
-			log.info("TC_12_Step 01: Dien Email khong dung dinh dang ");
+			log.info("TC_12_Step 01: Dien Phone khong dung dinh dang ");
 			airTicket.inputToDynamicInputBoxByLabel(phone, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber");
 
 			log.info("TC_12_Step 01: Click Tiep Tuc ");
@@ -258,11 +259,69 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details extends 
 	@Test
 	public void TC_13_ThongTinLienHe_KiemTraNhapSoDienThoaiHopLe() {
 		String validPhone = "0123456789";
-		log.info("TC_13_Step 01: Dien Email khong dung dinh dang ");
+		log.info("TC_13_Step 01: Dien Phone khong dung dinh dang ");
 		airTicket.inputToDynamicInputBoxByLabel(validPhone, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber");
 
 		log.info("TC_13_Step 02:Kiem tra text so dien thoai");
 		verifyEquals(airTicket.getTextInDynamicTextBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber"), validPhone);
+
+	}
+
+	@Test
+	public void TC_14_ThongTinLienHe_KiemTraDoDaiHoTenCuaVietNamAirLine() {
+
+		log.info("TC_02_Step 13: CLick quay lai ");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+
+		log.info("TC_02_Step 13: CLick quay lai ");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+
+		log.info("TC_01_Step 12: Click Tim Chuyen Bay ");
+		airTicket.clickToDynamicButton("Tìm chuyến bay");
+
+		airTicket.sleep(driver, 10000);
+
+		log.info("TC_01_Step 13: Click Chon Viet Jet ");
+		airTicket.clickToDynamicFlight(0, "VN");
+
+		log.info("TC_01_Step 14: Click Dat ve ");
+		airTicket.clickToDynamicButton("Đặt vé");
+
+		log.info("TC_03_Step 01: Dien 1 Ten khong dung dinh dang ");
+		String invalidText = "ANh TA ANh TA ANh TA ANh TAANh TAANh TAANh TA ANh TAANh TA ANh TA ANh TA";
+		airTicket.inputToDynamicInputBoxByLabel(invalidText, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
+
+		log.info("TC_07_Step 01: Check vao check box chon dung lam thong tin hanh khach bay");
+		airTicket.clickToDynamicCheckBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active");
+
+		log.info("TC_12_Step 02: Kiem tra pop-up Email khong dung dinh dang hien thi");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Độ dài họ tên của Hành khách bay vượt quá quy định của hãng hàng không (tối đa 28 ký tự). Quý khách vui lòng nhập lại. Vui lòng liên hệ tổng đài 1900555520 hoặc 0962555520 để được hỗ trợ. Xin cảm ơn!");
+
+	}
+
+	@Test
+	public void TC_15_ThongTinLienHe_KiemTraNhapDungHoTenCuaVietNamAirLine() {
+		log.info("TC_15_Step 01: Dien 1 Ten khong dung dinh dang ");
+		airTicket.inputToDynamicInputBoxByLabel(validName, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
+
+		log.info("TC_15_Step 01 : Kiem tra ten da duoc dien");
+		verifyEquals(airTicket.getTextInDynamicTextBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten"), validName);
+
+	}
+
+	@Test
+	public void TC_16_ThongTinLienHe_KiemTraBoChonCHeckBox() {
+		log.info("TC_16_Step 01: Check vao check box chon dung lam thong tin hanh khach bay");
+		airTicket.clickToDynamicCheckBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active");
+
+		log.info("TC_16_Step 01: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten"), validName);
+
+		log.info("TC_16_Step 02: Check vao check box chon dung lam thong tin hanh khach bay");
+		airTicket.uncheckToDynamicCheckBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active");
+
+		log.info("TC_16_Step 03: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten"), "Họ Đệm và Tên (ví dụ: NGUYEN VAN A)");
 
 	}
 
