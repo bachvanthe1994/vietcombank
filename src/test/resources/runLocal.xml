@@ -22,6 +22,8 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
+		
+		<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate" /> -->
@@ -36,9 +38,9 @@
 
 
 
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" />
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" />
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" />
+<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" /> -->
 
 		</classes>
 	</test>
