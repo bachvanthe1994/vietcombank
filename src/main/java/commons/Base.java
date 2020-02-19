@@ -710,5 +710,4 @@ public class Base {
 	int year = date.getYear();
 	return "THÁNG" + " " + month + " " + year;
     }
-
 }

@@ -43,13 +43,13 @@ public class VehicalTicket_Validate_Part3 extends Base {
     public void TC_31_KiemTraChonNgayHienTai() {
 	log.info("TC_31_Step_1: Chọn và nhập điểm đi");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DEPARTURE, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.DEPARTURE);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.PLACE_3);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
 	log.info("TC_31_Step_2: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DESTINATION, VehicalData.DATA_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.DESTINATION);
+	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_31_Step_3: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
@@ -158,7 +158,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_37_Step_2: kiể tra hiển thị thời gian khởi hành và điểm đi");
 	String suggest_from = vehicalTicket.getDynamicDayStart("com.VCB:id/tvFrom");
 	String from = suggest_from.substring(12);
-	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.DEPARTURE);
+	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
 	log.info("TC_37_Step_3: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
@@ -172,13 +172,13 @@ public class VehicalTicket_Validate_Part3 extends Base {
     public void TC_38_KiemTraLuuThongTinChuyenDiGoiY() {
 	log.info("TC_38_Step_1: Chọn và nhập điểm đi");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.DESTINATION, VehicalData.DATA_ORDER_TICKET.FROMT_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.DESTINATION);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.PLACE_3);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_38_Step_2: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE, VehicalData.DATA_ORDER_TICKET.TO_INPUT);
-	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.EDIT_DEPARTURE);
+	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_2, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
 
 	log.info("TC_38_Step_3: click button tìm kiếm chuyến đi");
 	vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
@@ -189,11 +189,11 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	log.info("TC_38_Step_5: kiể tra hiển thị thời gian khởi hành và điểm đi");
 	String suggest_from = vehicalTicket.getDynamicDayStart("com.VCB:id/tvFrom");
 	String from = suggest_from.substring(12);
-	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.DESTINATION);
+	verifyEquals(from, VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_38_Step_6: kiểm tra điểm tới trong gợi ý");
 	String to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTo");
-	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.DESTINATION);
+	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.PLACE_2);
     }
 
     @AfterClass(alwaysRun = true)
