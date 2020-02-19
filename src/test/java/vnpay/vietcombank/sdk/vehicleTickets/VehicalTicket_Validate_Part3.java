@@ -48,7 +48,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 
 	log.info("TC_31_Step_2: Chọn và nhập điểm đến");
 	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linArival");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_31_Step_3: Chọn ngày");
@@ -90,8 +90,8 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	verifyEquals(DayStart, tomorrow_week);
 
 	log.info("TC_33_Step_4: kiểm tra không focus vào ngày button nào");
-	verifyFailure(vehicalTicket.isControlForcus(driver, "//android.widget.LinearLayout[@resource-id='com.VCB:id/lnToday']"));
-	verifyFailure(vehicalTicket.isControlForcus(driver, "//android.widget.LinearLayout[@resource-id='com.VCB:id/lnNextday']"));
+	verifyFailure(vehicalTicket.isDynamicForcus("com.VCB:id/lnToday"));
+	verifyFailure(vehicalTicket.isDynamicForcus("com.VCB:id/lnNextday"));
     }
 
     @Test
@@ -172,12 +172,12 @@ public class VehicalTicket_Validate_Part3 extends Base {
     public void TC_38_KiemTraLuuThongTinChuyenDiGoiY() {
 	log.info("TC_38_Step_1: Chọn và nhập điểm đi");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.PLACE_3);
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_38_Step_2: Chọn và nhập điểm đến");
 	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_2, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linArival");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
 
 	log.info("TC_38_Step_3: click button tìm kiếm chuyến đi");
