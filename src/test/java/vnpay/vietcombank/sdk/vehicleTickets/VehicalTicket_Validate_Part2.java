@@ -243,7 +243,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
 	log.info("TC_30_Step_2: kiểm tra ngày được focus là ngày hiện tại");
-	verifyTrue(vehicalTicket.isControlForcus(driver, "//android.widget.TextView[@text='" + getCurrentDay() + "']"));
+	verifyTrue(vehicalTicket.isDynamicForcusText(getCurrentDay()));
 
 	log.info("TC_30_Step_3: kiểm tra ngày được focus là ngày hiện tại");
 	vehicalTicket.clickToDynamicButtonBack("Chọn ngày đi");
@@ -261,7 +261,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 
 	log.info("TC_31_Step_3: kiểm tra không chọn được");
 	vehicalTicket.clickToDynamicText(yesterdayString);
-	verifyFailure(vehicalTicket.isControlForcus(driver, "//android.widget.TextView[@text='" + yesterdayString + "']"));
+	verifyFailure(vehicalTicket.isDynamicForcusText(yesterdayString));
     }
 
     @AfterClass(alwaysRun = true)
