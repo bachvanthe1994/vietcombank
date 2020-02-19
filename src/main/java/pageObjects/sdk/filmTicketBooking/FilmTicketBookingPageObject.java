@@ -423,4 +423,26 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		return result;
 	} 
 	
+	public String getDuration(String dateStart, String dateStop) {
+		String result = "";
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm - dd/MM/yyyy");
+
+		Date d1 = null;
+		Date d2 = null;
+
+		try {
+			d1 = format.parse(dateStart);
+			d2 = format.parse(dateStop);
+			
+			long diff = d2.getTime() - d1.getTime();
+			long diffMinutes = diff / (60 * 1000) % 60;
+			long diffHours = diff / (60 * 60 * 1000) % 24;
+			
+			result = diffHours + "h" + diffMinutes + "'";
+		}
+		catch(Exception e){
+			
+		}
+		return result;
+	}
 }

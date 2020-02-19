@@ -20,29 +20,6 @@ import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
 public class Validation_FilmTicketBooking_Part_2 extends Base {
-	public String getDuration() {
-		String result = "";
-		String dateStart = "19/02/2020 09:29";
-		String dateStop = "20/02/2020 10:28";
-
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
-		Date d1 = null;
-		Date d2 = null;
-
-		try {
-			d1 = format.parse(dateStart);
-			d2 = format.parse(dateStop);
-			
-			long diff = d2.getTime() - d1.getTime();
-			result = String.valueOf(diff);
-		}
-		catch(Exception e){
-			
-		}
-		return result;
-	}
-	
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private FilmTicketBookingPageObject filmTicketBooking;
@@ -50,7 +27,6 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
-		getDuration();
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
