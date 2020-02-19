@@ -104,7 +104,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 		log.info("TC_20_Step_2: Chọn và nhập điểm đến");
-		vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linArival");
 
 		log.info("TC_20_Step_3: Kiểm tra tìm kiếm tương đối");
@@ -170,7 +170,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
 		log.info("TC_25_Step_2: Chọn và nhập điểm đến");
-		vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 
 		log.info("TC_25_Step_3: chỉnh sửa lại điểm đi");
@@ -186,12 +186,12 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	@Test
 	public void TC_26_KiemTraNhanDoiDiemDiDiemDen() {
 		log.info("TC_26_Step_1: Chọn và nhập điểm đến");
-		vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 		log.info("TC_26_Step_2: click icon");
-		vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivround");
+		vehicalTicket.clickToDynamicIconChangePlace("com.VCB:id/ivround");
 
 		log.info("TC_23_Step_3: kiểm tra hiển thị sau khi đổi vị trí");
 		String fromt = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTextPickUp");
@@ -256,8 +256,12 @@ public class VehicalTicket_Validate_Part2 extends Base {
 		log.info("TC_31_Step_2: Chon ngay qua khu");
 		vehicalTicket.clickToDynamicSelectedDate(getCurentMonthAndYearMinusDays(1), getBackWardDay(1));
 
-		log.info("TC_31_Step_3: kiểm tra không chọn được");
-		verifyFailure(vehicalTicket.isDynamicForcusText(getForWardDay(0)));
+		log.info("TC_31_Step_2: Click Quay lai");
+		vehicalTicket.clickToDynamicButtonIconBack("com.VCB:id/ivTitleLeft");
+
+		log.info("TC_31_Step_3: kiểm tra ngay qua khu khong duoc chon");
+		String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+		verifyEquals(vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth"), today);
 	}
 
 	@AfterClass(alwaysRun = true)
