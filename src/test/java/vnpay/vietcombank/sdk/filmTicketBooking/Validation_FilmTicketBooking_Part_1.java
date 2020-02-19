@@ -36,12 +36,12 @@ public class Validation_FilmTicketBooking_Part_1 extends Base {
 
 	@Test
 	public void TC_01_ChonTheoRap_KiemTraManHinhMuaVeXemPhim() {
-		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		filmTicketBooking = new FilmTicketBookingPageObject(driver);
 
 		log.info("TC_01_01_Click Dat ve xem phim");
 		filmTicketBooking.clickToDynamicTextOrButtonLink("Đặt vé xem phim");
 
-		log.info("TC_01_02_Click nut Dong ý");
+		log.info("TC_01_02_Click nut Dong y");
 		filmTicketBooking.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_01_03_Kiem tra man hinh mua ve xem phim");
@@ -71,7 +71,7 @@ public class Validation_FilmTicketBooking_Part_1 extends Base {
 		
 		log.info("TC_03_02_Tat dinh vi trong setting");
 		driver = openGlobalSetting(deviceName, udid, url);
-		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		filmTicketBooking = new FilmTicketBookingPageObject(driver);
 		filmTicketBooking.turnOffSwitchInGlobalSetting("Vị trí");
 		
 		
@@ -81,7 +81,7 @@ public class Validation_FilmTicketBooking_Part_1 extends Base {
 	public void TC_04_ChonTheoRap_DanhSachTinhThanhVaTenRap_KiemTraHienThiMacDinh_ThietBiDaTatDinhVi(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		log.info("TC_04_01_Tat dinh vi trong setting");
 		driver = openGlobalSetting(deviceName, udid, url);
-		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		filmTicketBooking = new FilmTicketBookingPageObject(driver);
 		filmTicketBooking.turnOffSwitchInGlobalSetting("Vị trí");
 		
 		log.info("TC_04_01_Bat lai app");
@@ -90,7 +90,7 @@ public class Validation_FilmTicketBooking_Part_1 extends Base {
 		login.Global_login(phone, pass, opt);
 		
 		log.info("TC_04_02_Truy cap den chuc nang dat ve xem phim");
-		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		filmTicketBooking = new FilmTicketBookingPageObject(driver);
 		filmTicketBooking.clickToDynamicTextOrButtonLink("Đặt vé xem phim");
 		filmTicketBooking.clickToDynamicButton("Đồng ý");
 		

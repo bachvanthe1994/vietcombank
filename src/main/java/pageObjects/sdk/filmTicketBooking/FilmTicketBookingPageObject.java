@@ -1,6 +1,8 @@
 package pageObjects.sdk.filmTicketBooking;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -84,6 +86,26 @@ public class FilmTicketBookingPageObject extends AbstractPage{
     	MobileElement elementStart = driver.findElement(By.xpath(locatorStart));
     	
     	String locatorEnd = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, textEnd);
+    	MobileElement elementEnd = driver.findElement(By.xpath(locatorEnd));
+    	
+		int xStart = elementStart.getLocation().getX();
+        int yStart = elementStart.getLocation().getY();
+        
+        int xEnd = elementEnd.getLocation().getX();
+        int yEnd = elementEnd.getLocation().getY();
+        
+        new TouchAction(driver)
+                .longPress(PointOption.point(xStart, yStart))
+                .moveTo(PointOption.point(xEnd, yEnd))
+                .release().perform();
+    }
+	
+	public void swipeElementToElement (String locatorStart, String locatorEnd, String dynamicValueStart, String dynamicValueEnd) {
+		Dimension size = driver.manage().window().getSize();
+		locatorStart = String.format(locatorStart, dynamicValueStart);
+    	MobileElement elementStart = driver.findElement(By.xpath(locatorStart));
+    	
+    	locatorEnd = String.format(locatorEnd, dynamicValueEnd);
     	MobileElement elementEnd = driver.findElement(By.xpath(locatorEnd));
     	
 		int xStart = elementStart.getLocation().getX();
@@ -327,5 +349,78 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		return location;
 		
 	}
+	
+	public List<String> getListCity(){
+		List<String> listCity = new ArrayList<String>();
+		List<String> tempList1 = new ArrayList<String>();
+		List<String> tempList2 = new ArrayList<String>();
+		boolean check = true;
+		
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTitle");
+		if (status) {
+			tempList1 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTitle");
+			tempList2 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTitle");
+			while (check) {
+				for(String text : tempList1) {
+					if (!listCity.contains(text) ) {
+						listCity.add(text);
+					}
+					
+				}
+				swipeElementToElement(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, tempList1.get(tempList1.size() - 1), "Tìm kiếm");
+				tempList1 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTitle");
+				if (tempList1.equals(tempList2)) {
+					break;
+				}
+				else {
+					tempList2 = tempList1;
+				}
+			}
+		}
+		
+		return listCity;
+		
+	}
+	
+	public boolean checkIconAndCinemaName(List<String> listCinemaGroup) {
+		boolean result = true;
+		int countList = listCinemaGroup.size();
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, "com.VCB:id/ivArrow");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, "com.VCB:id/ivArrow");
+		List<AndroidElement> elements = null;
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
+		}
+	
+		for (int i = 0; i < countList; i++) {
+			elements.get(i).click();
+			result = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvNameCinema");
+		}
+		return result;
+		
+	}
+	
+	public String getDuration() {
+		String result = "";
+		String dateStart = "19/02/2020 09:29";
+		String dateStop = "01/15/2020 10:28";
+
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+		Date d1 = null;
+		Date d2 = null;
+
+		try {
+			d1 = format.parse(dateStart);
+			d2 = format.parse(dateStop);
+			
+			long diff = d2.getTime() - d1.getTime();
+			result = String.valueOf(diff);
+		}
+		catch(Exception e){
+			
+		}
+		return result;
+	} 
 	
 }

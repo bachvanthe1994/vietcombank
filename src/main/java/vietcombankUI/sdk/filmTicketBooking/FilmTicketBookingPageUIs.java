@@ -19,5 +19,6 @@ public class FilmTicketBookingPageUIs {
 	public static final String DYNAMIC_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
 	public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.TextView";
 	public static final String DYNAMIC_SWITCH_SETTING_BY_TEXT = "//android.widget.TextView[@text = '%s']/parent::android.widget.RelativeLayout/parent::android.widget.LinearLayout/following-sibling::android.widget.Switch";
+	public static final String DYNAMIC_IMAGE_VIEW_BY_ID = "//android.widget.ImageView[@resource-id='%s']";
 	
 }
