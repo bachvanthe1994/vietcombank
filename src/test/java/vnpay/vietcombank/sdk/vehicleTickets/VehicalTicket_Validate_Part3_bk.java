@@ -47,7 +47,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
 	log.info("TC_31_Step_2: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linArival");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
@@ -133,7 +133,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	vehicalTicket.isDynamicUnDisplayed(MonthAndYear4);
 
 	log.info("TC_35_Step_5: click back");
-	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
+	vehicalTicket.clickToDynamicIconChangePlace("com.VCB:id/ivTitleLeft");
     }
 
     @Test
@@ -146,7 +146,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	verifyEquals(text, VehicalData.NOTIFICATION.LIST_TRIP);
 
 	log.info("TC_36_Step_3: click back");
-	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
+	vehicalTicket.clickToDynamicIconChangePlace("com.VCB:id/ivTitleLeft");
     }
 
     @Test
@@ -165,7 +165,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	verifyEquals(to, VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_37_Step_4: click back");
-	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
+	vehicalTicket.clickToDynamicIconChangePlace("com.VCB:id/ivTitleLeft");
     }
 
     @Test
@@ -176,7 +176,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 	log.info("TC_38_Step_2: Chọn và nhập điểm đến");
-	vehicalTicket.clickToDynamicButtonLinkOrLinkText(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linArival");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
 
@@ -184,7 +184,7 @@ public class VehicalTicket_Validate_Part3 extends Base {
 	vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
 
 	log.info("TC_38_Step_4: click back");
-	vehicalTicket.clickToDynamicIconChangePlacek("com.VCB:id/ivTitleLeft");
+	vehicalTicket.clickToDynamicIconChangePlace("com.VCB:id/ivTitleLeft");
 
 	log.info("TC_38_Step_5: kiể tra hiển thị thời gian khởi hành và điểm đi");
 	String suggest_from = vehicalTicket.getDynamicDayStart("com.VCB:id/tvFrom");
