@@ -378,7 +378,7 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyTrue(trainTicket.isDynamicTextNumberCustomerUnDisplayed("Hành khách"));
 	}
 
-	// @Test
+	 @Test
 	public void TC_16_BoTrongKhongChonSoLuongHanhKhach() {
 		log.info("TC_16_Click chon loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -392,7 +392,7 @@ public class Validation_TrainTicket_2 extends Base {
 		log.info("TC_16_Step_Click button tiep tuc");
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
 
-		verifyEquals(trainTicket.getDynamicMessageInvalid("Thông báo"), TrainTicket_Data.message.LOCATION_BLANK);
+		verifyEquals(trainTicket.getDynamicMessageInvalid("Thông báo"), TrainTicket_Data.message.NUMBER_BLANK);
 
 		log.info("TC_16_Step_Click button tiep tuc");
 		trainTicket.clickToDynamicButton("ĐỒNG Ý");
