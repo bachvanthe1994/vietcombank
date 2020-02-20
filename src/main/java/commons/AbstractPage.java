@@ -337,7 +337,7 @@ public class AbstractPage {
 		return element.getText();
 	}
 
-	public String getTextInFirstElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
+	public String getTextInOneOFElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<AndroidElement> element = driver.findElements(By.xpath(locator));
 		return element.get(index).getText();

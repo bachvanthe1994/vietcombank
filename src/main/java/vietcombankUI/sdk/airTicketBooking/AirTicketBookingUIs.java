@@ -1,6 +1,7 @@
 package vietcombankUI.sdk.airTicketBooking;
 
 public class AirTicketBookingUIs {
+	public static final String DATE_IN_CALENDAR = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP = "//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
 	public static final String DYNAMIC_DATE_SELECTED = "//android.widget.TextView[@text='%s']//following-sibling::android.view.ViewGroup//android.widget.TextView[@text='%s']";

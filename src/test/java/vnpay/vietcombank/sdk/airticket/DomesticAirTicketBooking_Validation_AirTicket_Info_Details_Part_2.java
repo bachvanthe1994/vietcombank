@@ -1,6 +1,8 @@
 package vnpay.vietcombank.sdk.airticket;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,7 +23,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private DynamicAirTicketBookingObjects airTicket;
-	private String validName = "ANh TA";
+	String cardNumber = "888888888888888888888888888888";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -73,9 +75,6 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 		log.info("TC_01_Step 07: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");
 
-		log.info("TC_01_Step 08: Kiem tra so luong nguoi  lon lon nhat ");
-		airTicket.clickToDynamicPlusAndMinusIcon("Người lớn (12 tuổi trở lên)", "+");
-
 		log.info("TC_01_Step 09: Click Chon Tre em");
 		airTicket.clickToDynamicPlusAndMinusIcon("Trẻ em (2 đến dưới 12 tuổi)", "+");
 
@@ -87,50 +86,50 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 
 		airTicket.sleep(driver, 10000);
 
-		log.info("TC_01_Step 12: Click Chon VietNamAirLine ");
-		airTicket.clickToDynamicFlight(0, "VN");
-
-		log.info("TC_01_Step 13: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
-
-		log.info("TC_01_Step 14: Click Tiep Tuc ");
-		airTicket.clickToDynamicButton("Tiếp tục");
-
-		log.info("TC_01_Step 15: Dien  Ten  ");
-		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
-
-		log.info("TC_01_Step 16: Chon gioi tinh nu");
-		airTicket.checkToDynamicTextOrDropDownByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/tv_NuContact");
-
-		log.info("TC_01_Step 17: Dien Email  ");
-		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_EMAIL, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_email");
-
-		log.info("TC_11_Step 18: Dien Phone ");
-		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_PHONE, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber");
-
-		log.info("TC_11_Step 19: Dien Phone ");
-		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.CONTENT, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_content");
-
-		log.info("TC_01_Step 20: Kiem tra text Noi dung");
-		verifyEquals(airTicket.getTextInDynamicTextBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_content"), DomesticAirTicketBooking_Data.validInput.CONTENT);
+//		log.info("TC_01_Step 12: Click Chon VietNamAirLine ");
+//		airTicket.clickToDynamicFlight(0, "VN");
+//
+//		log.info("TC_01_Step 13: Click Dat ve ");
+//		airTicket.clickToDynamicButton("Đặt vé");
+//
+//		log.info("TC_01_Step 14: Click Tiep Tuc ");
+//		airTicket.clickToDynamicButton("Tiếp tục");
+//
+//		log.info("TC_01_Step 15: Dien  Ten  ");
+//		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
+//
+//		log.info("TC_01_Step 16: Chon gioi tinh nu");
+//		airTicket.checkToDynamicTextOrDropDownByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/tv_NuContact");
+//
+//		log.info("TC_01_Step 17: Dien Email  ");
+//		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_EMAIL, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_email");
+//
+//		log.info("TC_11_Step 18: Dien Phone ");
+//		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_PHONE, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber");
+//
+//		log.info("TC_11_Step 19: Dien Phone ");
+//		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.CONTENT, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_content");
+//
+//		log.info("TC_01_Step 20: Kiem tra text Noi dung");
+//		verifyEquals(airTicket.getTextInDynamicTextBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_content"), DomesticAirTicketBooking_Data.validInput.CONTENT);
 
 	}
 
-	@Test
-	public void TC_02_ThongTinHanhKhach_BoTrongHoTen() {
+//	@Test
+	public void TC_02_ThongTinHanhKhach_ThongTinNguoiLon_BoTrongHoTen() {
 		log.info("TC_02_Step 01: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_02_Step 02: Kiem Tra popup yeu cau nhap ho ten");
-		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập đầy đủ Họ và tên hành khách 1");
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập đầy đủ Họ và tên hành khách 1");
 
 		log.info("TC_02_Step 03: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
 
 	}
 
-	@Test
-	public void TC_03_ThongTinHanhKhach_KiemTraNhapHoTenKhongDungDinhDang() {
+//	@Test
+	public void TC_03_ThongTinHanhKhach_ThongTinNguoiLon_KiemTraNhapHoTenKhongDungDinhDang() {
 		log.info("TC_03_Step 01: Nhap tieng  viet co dau");
 		airTicket.inputToDynamicInputBoxByLabelAndIndex("Tiếng việt có dấu", "com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten");
 
@@ -151,8 +150,8 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 
 	}
 
-	@Test
-	public void TC_04_ThongTinHanhKhach_KiemTraNhapHoTenDungDinhDangVoiKyThuThuong() {
+//	@Test
+	public void TC_04_ThongTinHanhKhach_ThongTinNguoiLon_KiemTraNhapHoTenDungDinhDangVoiKyThuThuong() {
 		log.info("TC_04_Step 01: Nhap ky tu thuong");
 		airTicket.inputToDynamicInputBoxByLabelAndIndex("ANH TA", "com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten");
 
@@ -161,21 +160,21 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 
 	}
 
-	@Test
-	public void TC_05_ThongTinHanhKhach_KiemTraKhongChonGioiTinh() {
+//	@Test
+	public void TC_05_ThongTinHanhKhach_ThongTinNguoiLon_KiemTraKhongChonGioiTinh() {
 		log.info("TC_02_Step 01: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_02_Step 02: Kiem Tra popup yeu cau nhap ho ten");
-		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập đầy đủ Họ và tên hành khách 1");
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng chọn giới tính của hành khách Người lớn 1.");
 
 		log.info("TC_02_Step 03: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
 
 	}
 
-	@Test
-	public void TC_06_ThongTinHanhKhach_KiemTraNhapSoTheKhongHopLe() {
+//	@Test
+	public void TC_06_ThongTinHanhKhach_ThongTinNguoiLon_KiemTraNhapSoTheKhongHopLe() {
 		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/ll_NuNoiDia", "com.VCB:id/tv_NuNoiDia");
 		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/ll_sothe", "com.VCB:id/tv_content_price");
 
@@ -183,8 +182,224 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 		log.info("TC_04_Step 01: Nhap ky tu thuong");
 		airTicket.inputToDynamicInputBoxByLabelAndIndex(invaidCardNumber, "com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_CardNo");
 
-		log.info("TC_02_Step 01: Click Tiep Tuc");
+		log.info("TC_04_Step 02: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_CardNo").length(), 50);
+
+		log.info("TC_02_Step 13: CLick quay lai ");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+	}
+
+//	@Test
+	public void TC_07_ThongTinHanhKhach_ThongTinNguoiLon_KiemTraManHinhChonGoiHanhLyVaDong() {
+		log.info("TC_01_Step 12: Click Chon VietNamAirLine ");
+		airTicket.clickToDynamicFlight(0, "VJ");
+
+		log.info("TC_01_Step 13: Click Dat ve ");
+		airTicket.clickToDynamicButton("Đặt vé");
+
+		log.info("TC_01_Step 14: Click hanh ly chieu di");
+		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price");
+
+		log.info("TC_01_Step 14: Kiem tra title Chon hanh ly hien thi");
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tv_title_dialog"), "Chọn hành lý");
+
+		log.info("TC_01_Step 14:  Kiem tra icon Dong hien thi ");
+		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/iv_close"));
+
+		log.info("TC_01_Step 14: Kiem tra co goi hanh ly ");
+		verifyTrue(airTicket.isDynamicTextByIdDisplayed("com.VCB:id/tv_content_price"));
+
+		log.info("TC_01_Step 14: Dong pop-up");
+		airTicket.clickToDynamicIcon("com.VCB:id/iv_close");
+	}
+
+//	@Test
+	public void TC_08_ThongTinHanhKhach_ThongTinNguoiLon_KiemTraChonGoiHanhLy() {
+		for (int i = 0; i < 2; i++) {
+
+			log.info("TC_01_Step 14: Click hanh ly chieu di");
+			airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price");
+
+			log.info("TC_01_Step 14: Click hanh ly chieu di");
+			String selectedPackage = airTicket.getTextInOneOfDropDownValue(i, "com.VCB:id/tv_content_price");
+
+			log.info("TC_01_Step 14: Click hanh ly chieu di");
+			String[] packageName = selectedPackage.split(" - ");
+
+			airTicket.clickToDynamicPackage(i, "com.VCB:id/tv_content_price");
+
+			log.info("TC_01_Step 14: Click hanh ly chieu di");
+			verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price"), packageName[0]);
+		}
+		log.info("TC_02_Step 13: CLick quay lai ");
+		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+	}
+
+	@Test
+	public void TC_09_ThongTinHanhKhach_ThongTinTreEm_ThongTinTreEm_KiemTraBoTrongHoTen() {
+		log.info("TC_09_Step 01: Click Chon VietNamAirLine ");
+		airTicket.clickToDynamicFlight(0, "VN");
+
+		log.info("TC_09_Step 02: Click Dat ve ");
+		airTicket.clickToDynamicButton("Đặt vé");
+
+		log.info("TC_09_Step 03: Dien  Ten  ");
+		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
+
+		log.info("TC_09_Step 04: Chon gioi tinh nu");
+		airTicket.checkToDynamicTextOrDropDownByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/tv_NuContact");
+
+		log.info("TC_09_Step 05: Dien Email  ");
+		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_EMAIL, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_email");
+
+		log.info("TC_11_Step 06: Dien Phone ");
+		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_PHONE, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_phonenumber");
+
+		log.info("TC_11_Step 07: Dien Noi Dung ");
+		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.CONTENT, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_content");
+
+		log.info("TC_11_Step 08: Chon Gioi Tinh Nguoi Lon 1 ");
+		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/ll_NuNoiDia", "com.VCB:id/tv_NuNoiDia");
+
+		log.info("TC_11_Step 09: Dien ten nguoi lon 1 ");
+		airTicket.inputToDynamicInputBoxByLabelAndIndex(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten");
+
+		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/ll_NuNoiDia", "com.VCB:id/tv_NuNoiDia");
+//		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/ll_sothe", "com.VCB:id/tv_content_price");
+//
+//		log.info("TC_04_Step 01: Nhap ky tu thuong");
+//		airTicket.inputToDynamicInputBoxByLabelAndIndex(cardNumber, "com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_CardNo");
+//		airTicket.hideKeyBoard(driver);
+
+//
+//		log.info("TC_09_Step 10: Click Tiep Tuc");
+//		airTicket.clickToDynamicButton("Tiếp tục");
+//
+//		log.info("TC_09_Step 11: Kiem Tra popup yeu cau nhap ho ten tre em");
+//		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập đầy đủ Họ và tên hành khách 2");
+//
+//		log.info("TC_09_Step 12: Click Dong y");
+//		airTicket.clickToDynamicButton("Đồng ý");
+
+	}
+
+//	@Test
+	public void TC_10_ThongTinHanhKhach_ThongTinTreEm_KiemTraNhapHoTenKhongDungDinhDang() {
+		log.info("TC_03_Step 01: Nhap tieng  viet co dau");
+		airTicket.inputToDynamicInputBoxByLabelAndIndex("Tiếng việt có dấu", "com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten");
+
+		log.info("TC_03_Step 02: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten"), "Tieng viet co dau");
+
+		log.info("TC_03_Step 03: Nhap so co dau");
+		airTicket.inputToDynamicInputBoxByLabelAndIndex("1234", "com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten");
+
+		log.info("TC_03_Step 04: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten"), "Họ Đệm và Tên (ví dụ: NGUYEN VAN A)");
+
+		log.info("TC_03_Step 05: Nhap ky tu dac biet ");
+		airTicket.inputToDynamicInputBoxByLabelAndIndex("@$$$s", "com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten");
+
+		log.info("TC_03_Step 06: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten"), "Họ Đệm và Tên (ví dụ: NGUYEN VAN A)");
+	}
+
+	@Test
+	public void TC_11_ThongTinHanhKhach_ThongTinTreEm_KiemTraNhapHoTenDungDinhDang() {
+
+		log.info("TC_11_Step 01: Nhap tieng  viet co dau");
+		airTicket.inputToDynamicInputBoxByLabelAndIndex(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten");
+
+		log.info("TC_11_Step 02: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_hoten"), DomesticAirTicketBooking_Data.validInput.CHILD_NAME);
+
+	}
+
+	@Test
+	public void TC_12_ThongTinHanhKhach_ThongTinTreEm_KiemTraKhongChonGioiTinh() {
+		log.info("TC_12_Step 01: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_12_Step 02: Kiem Tra popup yeu cau nhap ho ten");
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng chọn giới tính của hành khách Trẻ em 1.");
+
+		log.info("TC_12_Step 03: Click Dong y");
+		airTicket.clickToDynamicButton("Đồng ý");
+
+		log.info("TC_12_Step 03: Chon Gioi Tinh Nu");
+		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/ll_NuNoiDia", "com.VCB:id/tv_NuNoiDia");
+
+	}
+
+	@Test
+	public void TC_13ThongTinHanhKhach_ThongTinTreEm_KiemTraChonNgaySinh() {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.minusYears(12);
+		String currentfocusday = date.plusDays(2).getDayOfMonth() + "";
+		LocalDate curentfocusDate = date.plusDays(2);
+		String[] day = curentfocusDate.toString().split("-");
+		if (currentfocusday != "1") {
+			log.info("TC_01_Step 14: Click hanh ly chieu di");
+			airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price");
+
+			airTicket.clickToDynamicDateInCalendar(Integer.parseInt(currentfocusday) - 1 + "");
+
+			log.info("TC_02_Step 03: Click OK");
+			airTicket.clickToDynamicButton("OK");
+			log.info("TC_01_Step 36: Kiem tra text ngay sinh");
+			verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price"), day[2] + "/" + day[1] + "/" + day[0]);
+
+		}
+		log.info("TC_01_Step 14: Click hanh ly chieu di");
+		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price");
+
+		airTicket.clickToDynamicDateInCalendar(currentfocusday);
+		log.info("TC_02_Step 03: Click OK");
+		airTicket.clickToDynamicButton("OK");
+
+		log.info("TC_01_Step 36: Kiem tra text ngay sinh");
+		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price"), day[2] + "/" + day[1] + "/" + day[0]);
+
+		LocalDate twoYearAgo = now.minusYears(2);
+		LocalDate curentfocusDate1 = twoYearAgo.plusDays(1);
+		LocalDate newDate = now.plusDays(2);
+		String[] dayAftTer = newDate.toString().split("-");
+		Calendar calendar = Calendar.getInstance();
+		int lastDate = calendar.getActualMaximum(Calendar.DATE);
+		calendar.set(Calendar.DATE, lastDate);
+		int lastDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+		if ((curentfocusDate1.getDayOfMonth() + "") != lastDay + "") {
+			log.info("TC_01_Step 14: Click hanh ly chieu di");
+			airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price");
+			airTicket.clickToDynamicTextByID("android:id/date_picker_header_year");
+
+			airTicket.clickToDynamicTextOrButtonLink(twoYearAgo.getYear() + "");
+			airTicket.clickToDynamicDateInCalendar(curentfocusDate1.getDayOfMonth() + 1 + "");
+
+			log.info("TC_02_Step 03: Click OK");
+			airTicket.clickToDynamicButton("OK");
+			log.info("TC_01_Step 36: Kiem tra text ngay sinh");
+			verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price"), dayAftTer[2] + "/" + dayAftTer[1] + "/" + dayAftTer[0]);
+
+		}
+	}
+
+	@Test
+	public void TC_14ThongTinHanhKhach_ThongTinTreEm_KiemTraMaxSoTheKhachHangThuongXuyen() {
+
+		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/ll_sothe", "com.VCB:id/tv_content_price");
+
+		String invaidCardNumber = "888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888";
+		log.info("TC_04_Step 01: Nhap ky tu thuong");
+		airTicket.inputToDynamicInputBoxByLabelAndIndex(invaidCardNumber, "com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_CardNo");
+
+		log.info("TC_04_Step 02: Kiem tra text box ho ten");
+		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/edt_CardNo").length(), 50);
+
+//		log.info("TC_02_Step 13: CLick quay lai ");
+//		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+
 	}
 
 	@AfterClass(alwaysRun = true)

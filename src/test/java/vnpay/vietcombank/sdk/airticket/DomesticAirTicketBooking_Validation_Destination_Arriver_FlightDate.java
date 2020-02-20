@@ -103,7 +103,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_03_Step 04: Kiem tra thong bao loi hien thi ");
-		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_DEPARTURE_POINT);
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_DEPARTURE_POINT);
 
 		log.info("TC_03_Step 05: Click Dong y ");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -125,7 +125,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_04_Step 04: Kiem tra thong bao loi hien thi ");
-		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_DEPARTURE_POINT);
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_DEPARTURE_POINT);
 
 		log.info("TC_04_Step 05: Click Dong y ");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -193,7 +193,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_07_Step 06: Kiem tra thong bao loi hien thi");
-		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_ARRIVE_POINT);
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_ARRIVE_POINT);
 
 		log.info("TC_07_Step 07: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -227,7 +227,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate 
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_08_Step 08: Kiem tra thong bao loi hien thi");
-		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_TIME_FLIGHT);
+		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.EMPTY_TIME_FLIGHT);
 
 		log.info("TC_08_Step 09: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
