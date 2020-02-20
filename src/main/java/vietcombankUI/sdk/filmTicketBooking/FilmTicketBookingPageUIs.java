@@ -15,10 +15,12 @@ public class FilmTicketBookingPageUIs {
 	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.TextView";
 	public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY = "//android.widget.TextView[@resource-id=\"%s\"]";
-	public static final String DYNAMIC_BOTTOM_MENU_CLOSE_ICON = "//android.widget.ImageView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_IMAGE_VIEW_BY_ID = "//android.widget.ImageView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
 	public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.TextView";
 	public static final String DYNAMIC_SWITCH_SETTING_BY_TEXT = "//android.widget.TextView[@text = '%s']/parent::android.widget.RelativeLayout/parent::android.widget.LinearLayout/following-sibling::android.widget.Switch";
-	public static final String DYNAMIC_IMAGE_VIEW_BY_ID = "//android.widget.ImageView[@resource-id='%s']";
+	public static final String DYNAMIC_TEXT_VIEW_LINEAR_LAYOUT_BY_LINEAER_LAYOUT_ID = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
+	public static final String FILM_DATE_TEXT_VIEW_LINEAR_LAYOUT_BY_LINEAER_LAYOUT_ID = "//android.widget.LinearLayout[@resource-id='com.VCB:id/llDate']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
+	public static final String DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID = "//android.view.ViewGroup[@resource-id='%s']//android.widget.TextView[@index='%s']";
 	
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
 import commons.Constants;
@@ -15,6 +16,9 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.offset.PointOption;
+import model.FilmInfo;
+import model.SeatType;
+import model.SeatType.TypeButton;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 
 public class FilmTicketBookingPageObject extends AbstractPage{
@@ -25,31 +29,80 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 	private AndroidDriver<AndroidElement> driver;
 
 	public boolean isDynamicTextViewDisplayed(String dynamicTextValue) {
-		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
-		return isControlDisplayed(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
 
 	}
 	
 	public boolean isDynamicTextViewDisplayedByID(String dynamicTextID) {
-		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
-		return isControlDisplayed(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		}
+		return isDisplayed;
 
 	}
 	
 	public boolean isDynamicInputBoxByTextDisPlayed(String... dynamicTextValue) {
-		waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
-		return isControlDisplayed(driver, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+	
+	public boolean isDynamicImageViewDisplayed(String dynamicID) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, dynamicID);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, dynamicID);
+		}
+		return isDisplayed;
+
+	}
+	
+	public boolean isDynamicTextViewSelected(String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
+
 	}
 	
 	public void clickToDynamicTextView(String dynamicTextValue) {
-		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
-		clickToElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		boolean status = false;
+		scrollIDown(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		if (status) {
+			clickToElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		}
 
 	}
 	
 	public void clickToDynamicTextViewByID(String dynamicTextID) {
-		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
-		clickToElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		boolean status = false;
+		scrollIDown(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		if (status) {
+			clickToElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		}
+	}
+	
+	public void clickToDynamicTextViewByViewGroupID(String... dynamicValue) {
+		boolean status = false;
+		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicValue);
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicValue);
+		if (status) {
+			clickToElement(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicValue);
+		}
 
 	}
 	
@@ -75,9 +128,12 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 	}
 	
 	public void inputToDynamicInputBoxByID(String inputValue, String dynamicID) {
-		waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
-		sendKeyToElement(driver, FilmTicketBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
-
+		boolean status = false;
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		if (status) {
+			sendKeyToElement(driver, FilmTicketBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
+		}
+		
 	}
 	
 	public void swipeElementToElementByText (String textStart, String textEnd) {
@@ -119,6 +175,26 @@ public class FilmTicketBookingPageObject extends AbstractPage{
                 .moveTo(PointOption.point(xEnd, yEnd))
                 .release().perform();
     }
+	
+	public void horizontalSwipeByPercentage (double startPercentage, double endPercentage, double anchorPercentage) {
+        Dimension size = driver.manage().window().getSize();
+        int anchor = (int) (size.height * anchorPercentage);
+        int startPoint = (int) (size.width * startPercentage);
+        int endPoint = (int) (size.width * endPercentage);
+ 
+        new TouchAction(driver)
+                .longPress(PointOption.point(startPoint, anchor))
+                .moveTo(PointOption.point(endPoint, anchor))
+                .release().perform();
+	}
+	
+	public void swipeToTheEndDate(int numberOfSwipe) {
+		while (numberOfSwipe > 0) {
+			horizontalSwipeByPercentage(0.9, 0.1, 0.19);
+			numberOfSwipe--;
+		}
+		
+	}
 	
 	public void waitForTextViewDisplay (String textView) {
 		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, textView);
@@ -239,11 +315,11 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 
 	}
 	
-	public void clickToDynamicBottomMenuOrCloseIcon(String dynamicID) {
+	public void clickToDynamicImageViewByID(String dynamicID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, dynamicID);
 		if (status) {
-			clickToElement(driver, FilmTicketBookingPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+			clickToElement(driver, FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, dynamicID);
 		}
 	}
 	
@@ -445,4 +521,134 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		}
 		return result;
 	}
+	
+	public FilmInfo getInfoOfTheFirstFilm() {
+		String name = getTextViewByID("com.VCB:id/tvFilmName");
+		String category = getTextViewByID("com.VCB:id/tvCategory");
+		String duration = getTextViewByID("com.VCB:id/tvDuration");
+		String rate = getTextViewByID("com.VCB:id/tvIMDb");
+		FilmInfo info = new FilmInfo(name, category, duration, rate);
+		return info;
+		
+	}
+	
+	public String canculateDurationOfFilm(String duration) {
+		String result = "";
+		String hour = "";
+		String minute = "";
+		if (duration.contains("giờ")) {
+			hour = duration.split(" ")[0];
+			minute = duration.split(" ")[2];
+			result = Integer.parseInt(hour) * 60 + Integer.parseInt(minute) + " phút";
+		}
+		else {
+			result = duration;
+		}
+		return result;
+		
+	}
+	
+	public List<String> getListFilmSchedule(){
+		List<String> listSchedule = new ArrayList<String>();
+		for (int i = 0; i <= 6; i = i + 2) {
+			String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_LINEAR_LAYOUT_BY_LINEAER_LAYOUT_ID, "com.VCB:id/llDate", String.valueOf(i));
+			boolean status = waitForElementVisible(driver, locator);
+			if (status) {
+				List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+				String textDate = "";
+				for (AndroidElement element : listElements) {
+					textDate = textDate + element.getText();
+				}
+				listSchedule.add(textDate);
+			}
+		}
+		return listSchedule;
+		
+	}
+	
+	public List<SeatType> getListSeatType(){
+		List<SeatType> listSeatType = new ArrayList<SeatType>();
+		List<String> listSeatName = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTypeName");
+		List<String> listSeatPrice = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvAmount");
+		List<String> listSeatNumber = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvNumber");
+		
+		int count = listSeatName.size();
+		for (int i = 0; i < count; i++) {
+			SeatType seat = new SeatType(listSeatName.get(i), listSeatPrice.get(i), listSeatNumber.get(i));
+			listSeatType.add(seat);
+		}
+		return listSeatType;
+		
+	}
+	
+	public boolean checkSeatTypeDefault(List<SeatType> listSeatType) {
+		boolean result = true;
+		for (SeatType seat : listSeatType) {
+			if (!seat.number.equals("0")) {
+				return false;
+			}
+		}
+		
+		return result;
+	}
+	
+	public void clickToChangeNumberSeat(TypeButton type, int numberClick) {
+		if(type == TypeButton.INCREASE) {
+			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+			
+			boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+			List<AndroidElement> elements = null;
+			
+			if (status) {
+				elements = driver.findElements(By.xpath(locator));
+			}
+			
+			int count = numberClick;
+			for (AndroidElement element : elements) {
+				while(numberClick > 0) {
+					element.click();
+					numberClick--;
+				}
+				numberClick = count;
+			}
+			
+		}
+
+		else if(type == TypeButton.INCREASE) {
+			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvMinus");
+			
+			boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvMinus");
+			List<AndroidElement> elements = null;
+			
+			if (status) {
+				elements = driver.findElements(By.xpath(locator));
+			}
+			
+			for (AndroidElement element : elements) {
+				while(numberClick > 0) {
+					element.click();
+					numberClick--;
+				}
+			}
+			
+		}
+		
+	}
+	
+	public static String addCommasToLong(String number) {
+		long amount = Long.parseLong(number);
+		String m = String.format("%,d", amount);
+		return m;
+	}
+	
+	public String canculateAmountFilmBooking(List<SeatType> seats) {
+		String result = "";
+		int amount = 0;
+		for(SeatType seat : seats) {
+			amount += Integer.parseInt(seat.price.replaceAll("\\D+","")) * Integer.parseInt(seat.number);
+		}
+		result = addCommasToLong(amount + "") + " VND";
+		return result;
+	}
+	
 }

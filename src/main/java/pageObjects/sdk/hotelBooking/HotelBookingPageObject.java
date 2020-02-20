@@ -174,7 +174,7 @@ public class HotelBookingPageObject extends AbstractPage{
 	                .longPress(PointOption.point(startPoint, anchor))
 	                .moveTo(PointOption.point(endPoint, anchor))
 	                .release().perform();
-	    }
+	}
 	
 	public void verticalSwipeByPercentage (double startPercentage, double endPercentage, double anchorPercentage) {
         Dimension size = driver.manage().window().getSize();
@@ -358,31 +358,52 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public boolean isDynamicTextViewDisplayed(String dynamicTextValue) {
-		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
-		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
 
 	}
 	
 	public boolean isDynamicTextViewDisplayedByID(String dynamicTextID) {
-		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
-		return isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
-
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		}
+		return isDisplayed;
+		
 	}
 	
 	public boolean isDynamicInputBoxByTextDisPlayed(String... dynamicTextValue) {
-		waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
-		return isControlDisplayed(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, HotelBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
+		
 	}
 	
 	public void clickToDynamicTextView(String dynamicTextValue) {
-		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
-		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		if (status) {
+			clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		}
 
 	}
 	
 	public void clickToDynamicTextViewByID(String dynamicTextID) {
-		waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
-		clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		boolean status = false;
+		scrollIDown(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		status = waitForElementVisible(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		if (status) {
+			clickToElement(driver, HotelBookingPageUIs.TEXTVIEW_BY_ID, dynamicTextID);
+		}
 
 	}
 	
@@ -446,9 +467,11 @@ public class HotelBookingPageObject extends AbstractPage{
 	}
 	
 	public void inputToDynamicInputBoxByID(String inputValue, String dynamicID) {
-		waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
-		sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
-
+		boolean status = false;
+		status = waitForElementVisible(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
+		if (status) {
+			sendKeyToElement(driver, HotelBookingPageUIs.INPUTBOX_BY_ID, inputValue, dynamicID);
+		}
 	}
 	
 	public void clickToDateHotelBooking(String now, String startDate, String endDate) {	
