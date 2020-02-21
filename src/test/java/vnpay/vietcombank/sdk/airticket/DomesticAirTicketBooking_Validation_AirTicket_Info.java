@@ -14,6 +14,7 @@ import io.appium.java_client.android.AndroidElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
+import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_Validation_AirTicket_Info extends Base {
 	AndroidDriver<AndroidElement> driver;
@@ -54,13 +55,13 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_01_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink("Hà Nội");
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
 
 		log.info("TC_01_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_01_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink("TP Hồ Chí Minh");
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
 
 		log.info("TC_01_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");

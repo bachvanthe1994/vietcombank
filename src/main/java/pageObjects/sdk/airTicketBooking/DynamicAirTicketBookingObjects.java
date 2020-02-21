@@ -232,11 +232,20 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	}
 
 //Lấy thông tin vé máy bay 2 chiều sử dụng ID, 1 phần của flight code và ID
-	public String getAirTicketPriceInfo2Way(String... IDAndFlightcodeID) {
+	public String getAirTicketPriceInfoByFlightCode2Way(String... IDAndFlightcodeID) {
 		String text = null;
-		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE, IDAndFlightcodeID);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
 		if (status == true) {
-			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE, IDAndFlightcodeID);
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
+		}
+		return text;
+	}
+
+	public String getAirTicketPriceInfoByFlightCode1Way(String... IDAndFlightcodeID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
 		}
 		return text;
 	}
@@ -385,7 +394,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	}
 
 //Kiểm  tra 
-	public boolean isDynamicPlaceDisplayed(String... text) {
+	public boolean isDynamicPlaceAndCustomerNameDisplayed(String... text) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PLACE_TEXT, text);
 		if (status == true) {
