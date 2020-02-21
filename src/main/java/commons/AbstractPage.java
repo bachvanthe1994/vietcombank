@@ -325,6 +325,12 @@ public class AbstractPage {
 		driver.getKeyboard().sendKeys(value);
 	}
 
+	public String getTextInOneOFElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		return element.get(index).getText();
+	}
+
 	public String getAttributeValue(AndroidDriver<AndroidElement> driver, String locator, String attribute) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getAttribute(attribute);
@@ -959,11 +965,11 @@ public class AbstractPage {
 	}
 
 // input vào ô input với tham số truyền vào là inputbox
-    public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
-	scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-	clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-	waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
-	sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
 
 	}
 
