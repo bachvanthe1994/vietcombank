@@ -89,7 +89,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_01_Step 11: Kiem tra thong bao loi hien thi ");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvContent"), DomesticAirTicketBooking_Data.Message.OVER_NUMBER_OF_ALLOWED_PEOPLE);
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvContent"), DomesticAirTicketBooking_Data.Message.OVER_NUMBER_OF_ALLOWED_PEOPLE);
 
 		log.info("TC_01_Step 12: Click Dong y ");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -148,7 +148,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_01_Step 11: Kiem tra thong bao loi hien thi ");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.INVALID_NUMBER_OF_ALLOWED_PEOPLE);
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.INVALID_NUMBER_OF_ALLOWED_PEOPLE);
 	}
 
 	@Test
@@ -223,7 +223,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_05_Step 11: Kiem tra thong bao loi hien thi ");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.INVALID_NUMBER_OF_BABIES);
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.INVALID_NUMBER_OF_BABIES);
 
 		log.info("TC_05_Step 12: Click Dong y ");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -244,7 +244,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_06_Step 11: Kiem tra thong bao loi hien thi ");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.INVALID_NUMBER_OF_CHILDREN);
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), DomesticAirTicketBooking_Data.Message.INVALID_NUMBER_OF_CHILDREN);
 
 		log.info("TC_06_Step 12: Click Dong y ");
 		airTicket.clickToDynamicButton("Đồng ý");

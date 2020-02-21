@@ -182,7 +182,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	@Test
 	public void TC_39_KiemTraLabelSoTienUSD() {
 		log.info("TC_39_Clear text truong nhap so tien");
-		transferMoney.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivClearInput");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivClearInput");
 
 		log.info("TC_39_Chon tai khoan nguon USD");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");

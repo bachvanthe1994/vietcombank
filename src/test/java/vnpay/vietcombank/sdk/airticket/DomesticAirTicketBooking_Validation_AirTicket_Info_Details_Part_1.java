@@ -94,7 +94,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_Step 16: Kiem Tra popup yeu cau nhap ho ten");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập đầy đủ Họ tên người liên hệ.");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập đầy đủ Họ tên người liên hệ.");
 
 		log.info("TC_02_Step 02: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -110,7 +110,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_02_Step 03: Kiem Tra popup ten khong dung dinh dang");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Định dạng họ tên hành khách bay không hợp lệ. Quý khách vui lòng kiểm tra lại hoặc liên hệ 1900555520 để được hỗ trợ.");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Định dạng họ tên hành khách bay không hợp lệ. Quý khách vui lòng kiểm tra lại hoặc liên hệ 1900555520 để được hỗ trợ.");
 
 		log.info("TC_02_Step 02: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -143,7 +143,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_05_Step 03: Kiem Tra popup ten khong dung dinh dang");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng chọn giới tính của người liên hệ");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng chọn giới tính của người liên hệ");
 
 		log.info("TC_05_Step 02: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -159,7 +159,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_06_Step 03: Kiem Tra popup ten khong dung dinh dang");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập Email liên hệ.");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập Email liên hệ.");
 
 		log.info("TC_06_Step 02: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -182,7 +182,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_08_Step 02: Kiem Tra popup ten khong dung dinh dang");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập Email liên hệ.");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập Email liên hệ.");
 
 		log.info("TC_08_Step 03: Click Dong y");
 		airTicket.clickToDynamicButton("Đồng ý");
@@ -200,7 +200,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 			airTicket.clickToDynamicButton("Tiếp tục");
 
 			log.info("TC_09_Step 02: Kiem tra pop-up Email khong dung dinh dang hien thi");
-			verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Email không đúng định dạng. Quý khách vui lòng kiểm tra lại.");
+			verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Email không đúng định dạng. Quý khách vui lòng kiểm tra lại.");
 
 			log.info("TC_09_Step 03: Click Dong y");
 			airTicket.clickToDynamicButton("Đồng ý");
@@ -226,7 +226,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_11_Step 02: Kiem tra pop-up Email khong dung dinh dang hien thi");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập Số điện thoại người liên hệ.");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Quý khách vui lòng nhập Số điện thoại người liên hệ.");
 
 	}
 
@@ -251,7 +251,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 			airTicket.clickToDynamicButton("Tiếp tục");
 
 			log.info("TC_12_Step 02: Kiem tra pop-up Email khong dung dinh dang hien thi");
-			verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Số điện thoại không đúng định dạng. Quý khách vui lòng kiểm tra lại.");
+			verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Số điện thoại không đúng định dạng. Quý khách vui lòng kiểm tra lại.");
 
 		}
 
@@ -296,7 +296,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicCheckBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active");
 
 		log.info("TC_12_Step 02: Kiem tra pop-up Email khong dung dinh dang hien thi");
-		verifyEquals(airTicket.getTextInDynamicPopUpAndTitle("com.VCB:id/tvTitle"), "Độ dài họ tên của Hành khách bay vượt quá quy định của hãng hàng không (tối đa 28 ký tự). Quý khách vui lòng nhập lại. Vui lòng liên hệ tổng đài 1900555520 hoặc 0962555520 để được hỗ trợ. Xin cảm ơn!");
+		verifyEquals(airTicket.getTextInDynamicPopUp("com.VCB:id/tvTitle"), "Độ dài họ tên của Hành khách bay vượt quá quy định của hãng hàng không (tối đa 28 ký tự). Quý khách vui lòng nhập lại. Vui lòng liên hệ tổng đài 1900555520 hoặc 0962555520 để được hỗ trợ. Xin cảm ơn!");
 
 	}
 

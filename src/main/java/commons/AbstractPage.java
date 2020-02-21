@@ -337,7 +337,7 @@ public class AbstractPage {
 		return element.getText();
 	}
 
-	public String getTextInOneOFElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
+	public String getTextInFirstElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<AndroidElement> element = driver.findElements(By.xpath(locator));
 		return element.get(index).getText();
@@ -849,7 +849,7 @@ public class AbstractPage {
 	}
 
 // Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
-	public void clickToDynamicBottomMenuOrCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public void clickToDynamicImageViewByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 

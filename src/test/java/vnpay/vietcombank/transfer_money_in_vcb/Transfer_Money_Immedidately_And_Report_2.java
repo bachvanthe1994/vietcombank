@@ -181,7 +181,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_14_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_14_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -317,7 +317,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_14_Step_37: Click quay lai");
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -462,7 +462,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_16_Step_02:Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_16_Step_03:Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -598,7 +598,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_16_Step_47: Click quay lai");
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -751,7 +751,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_18_Step 02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_18_Step 03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -895,7 +895,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_18_Step 49: Click quay lai");
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1049,7 +1049,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_20_Step 02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_20_Step 03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -1193,7 +1193,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_20_Step 49: Click quay lai");
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1309,7 +1309,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_22_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_22_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -1384,7 +1384,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		log.info("TC_22_Step_36: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1502,7 +1502,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_24_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_24_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -1578,7 +1578,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
 		log.info("TC_24_Step_37: Click quay lai");
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/menu_1");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

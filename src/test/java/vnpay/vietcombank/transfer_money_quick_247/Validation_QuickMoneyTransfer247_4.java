@@ -184,7 +184,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 	@Test
 	public void TC_57_BoTrongTruongSoTien() {
 		log.info("TC_57_Clear text truong nhap so tien");
-		transferMoney.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivClearInput");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivClearInput");
 
 		log.info("TC_57_Nhap so tai khoan huong");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Thông tin người hưởng", "1");
