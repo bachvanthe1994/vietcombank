@@ -33,5 +33,6 @@ public class TrainTicketPageUIs {
 	    
 	    public static final String DYNAMIC_TEXT_NAME_TRAIN = "//android.widget.TextView[@resource-id='%s']//ancestor::android.widget.LinearLayout[@index='%s']";	
 	    
+	    
 }
 

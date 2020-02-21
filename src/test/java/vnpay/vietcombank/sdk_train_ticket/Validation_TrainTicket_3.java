@@ -126,26 +126,20 @@ public class Validation_TrainTicket_3 extends Base {
 		log.info("TC_17_Click link loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
 
-		/*
-		 * log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
-		 * verifyTrue(trainTicket.isDynamicIconUncheck("Ghế phụ","com.VCB:id/ivCheck"));
-		 * 
-		 * log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
-		 * verifyTrue(trainTicket.isDynamicIconUncheck("Giường nằm (khoang 6 chỗ)"
-		 * ,"com.VCB:id/ivCheck"));
-		 * 
-		 * log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
-		 * verifyTrue(trainTicket.isDynamicIconUncheck("Giường nằm (khoang 4 chỗ)"
-		 * ,"com.VCB:id/ivCheck"));
-		 * 
-		 * log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
-		 * verifyTrue(trainTicket.isDynamicIconUncheck("Ngồi cứng","com.VCB:id/ivCheck")
-		 * );
-		 * 
-		 * log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
-		 * verifyTrue(trainTicket.isDynamicIconUncheck("Ngồi mềm","com.VCB:id/ivCheck"))
-		 * ;
-		 */
+		log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
+		verifyTrue(trainTicket.isDynamicIconUncheck("Ghế phụ", "com.VCB:id/ivCheck"));
+
+		log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
+		verifyTrue(trainTicket.isDynamicIconUncheck("Giường nằm (khoang 6 chỗ)", "com.VCB:id/ivCheck"));
+
+		log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
+		verifyTrue(trainTicket.isDynamicIconUncheck("Giường nằm (khoang 4 chỗ)", "com.VCB:id/ivCheck"));
+
+		log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
+		verifyTrue(trainTicket.isDynamicIconUncheck("Ngồi cứng", "com.VCB:id/ivCheck"));
+
+		log.info("TC_15_Verify Mac dinh ghe phu khong duoc check");
+		verifyTrue(trainTicket.isDynamicIconUncheck("Ngồi mềm", "com.VCB:id/ivCheck"));
 
 		log.info("TC_22_Click dong man hinh hanh khach");
 		trainTicket.clickDynamicRadioSelectType("Chọn loại chỗ");
@@ -175,7 +169,7 @@ public class Validation_TrainTicket_3 extends Base {
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tvTitle"), TrainTicket_Data.message.LOCATION_BLANK);
 	}
 
-	//@Test
+	// @Test
 	public void TC_06_FocusVaoComboboxGheNgoi() {
 		log.info("TC_17_Click link loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -208,7 +202,7 @@ public class Validation_TrainTicket_3 extends Base {
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Ngồi mềm"));
 	}
 
-@Test
+	@Test
 	public void TC_07_KiemTraNhanIconDong() {
 		log.info("TC_22_Click dong man hinh chon loai cho");
 		trainTicket.clickDynamicRadioSelectType("Chọn loại chỗ");
@@ -217,7 +211,7 @@ public class Validation_TrainTicket_3 extends Base {
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("ĐẶT VÉ TÀU"));
 	}
 
-@Test
+	@Test
 	public void TC_08_KiemTraChon1LoaiGheThanhCong() {
 		log.info("TC_17_Click link loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -232,7 +226,7 @@ public class Validation_TrainTicket_3 extends Base {
 		verifyEquals(trainTicket.getTextMessageInvalid("com.VCB:id/tv_ghe_ngoi"), "Ngồi cứng");
 	}
 
-@Test
+	@Test
 	public void TC_09_KiemTraChonLonHon1LoaiGhe() {
 		log.info("TC_17_Click link loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -323,48 +317,48 @@ public class Validation_TrainTicket_3 extends Base {
 
 		String weekPickup = convertDayOfWeekVietNamese(getCurrentDayOfWeek(now));
 		String weekArrival = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date3));
-		String expectDay = weekPickup + " " + getForwardDate(0) +" - " + weekArrival + " " + getForwardDate(3);
+		String expectDay = weekPickup + " " + getForwardDate(0) + " - " + weekArrival + " " + getForwardDate(3);
 
 		log.info("TC_02_verify thoi gian khu hoi");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_date_title"), expectDay);
 
 		log.info("TC_12_Verify lo trinh diem khoi hanh");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_from"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
-		
+
 		log.info("TC_12_Verify lo trinh diem den");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-		
+
 		log.info("TC_02_Check hien thi ten tau");
-		verifyTrue(trainTicket.isDynamicNameTrainDisplay("com.VCB:id/tv_ten_tau","0"));
-		
+		verifyTrue(trainTicket.isDynamicNameTrainDisplay("com.VCB:id/tv_ten_tau", "0"));
+
 		log.info("TC_12_Check hien thi thoi gian bat dau chay");
 		verifyTrue(trainTicket.isDynamicDateTimeDisplay("com.VCB:id/tv_thoi_di"));
-		
+
 		String timeStart = trainTicket.getDynamicDateTime("com.VCB:id/tv_thoi_di") + " - " + getForwardDate(0);
 
 		log.info("TC_12_Check hien thi thoi gian den");
-		String timeEnd = trainTicket.getDynamicDateTime("com.VCB:id/tv_thoi_gian_den") + trainTicket.getDynamicDateTime("com.VCB:id/tv_ngay_den") ;
+		String timeEnd = trainTicket.getDynamicDateTime("com.VCB:id/tv_thoi_gian_den") + trainTicket.getDynamicDateTime("com.VCB:id/tv_ngay_den");
 
 		String expectTime = trainTicket.getDuration(timeStart, timeEnd);
 
 		log.info("TC_12_Verify tong thoi gian di chuyen");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_tong_thoi_gian"), expectTime);
 	}
-	
+
 	@Test
 	public void TC_13_KiemTraIconBack() {
 		log.info("TC_12_Click button quay lai man hinh dat ve tau");
 		trainTicket.clickToDynamicBackIcon("Danh sách chiều đi");
-		
+
 		log.info("TC_01_Check title dat ve tau");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("ĐẶT VÉ TÀU"));
 	}
-	
+
 	@Test
 	public void TC_14_KiemTraThongTinHanhTrinh() {
 		LocalDate now = LocalDate.now();
 		LocalDate date3 = now.plusDays(3);
-		
+
 		log.info("TC_12_Verify text gio chay");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_gio_khoi_hanh"), "Giờ chạy");
 
@@ -373,20 +367,20 @@ public class Validation_TrainTicket_3 extends Base {
 
 		String weekPickup = convertDayOfWeekVietNamese(getCurrentDayOfWeek(now));
 		String weekArrival = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date3));
-		String expectDay = weekPickup + " " + getForwardDate(0) +" - " + weekArrival + " " + getForwardDate(3);
+		String expectDay = weekPickup + " " + getForwardDate(0) + " - " + weekArrival + " " + getForwardDate(3);
 
 		log.info("TC_02_verify thoi gian khu hoi");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_date_title"), expectDay);
 
 		log.info("TC_12_Verify lo trinh diem khoi hanh");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_from"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
-		
+
 		log.info("TC_12_Verify lo trinh diem den");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
 	}
-	
+
 	@Test
 	public void TC_14_KiemTraDanhSachKetQuaTraVe() {
-	
+
 	}
 }

@@ -4,7 +4,6 @@ import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -38,72 +37,71 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 		return true;
 	}
-	
+
 	public boolean orderSortIncrase(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
-		for(int i = 0; i <= count; i++) {
-			if (canculateConvertTimehh(listOrderSort.get(i)) < canculateConvertTimehh(listOrderSort.get(i+1))) {
+		for (int i = 0; i <= count; i++) {
+			if (canculateConvertTimehh(listOrderSort.get(i)) < canculateConvertTimehh(listOrderSort.get(i + 1))) {
 				return result;
 			}
-		}	
-	return false;
+		}
+		return false;
 	}
-	
+
 	public boolean orderSortDecrase(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
-		for(int i = 1; i >= count; i--) {
-			if (canculateConvertTimehh(listOrderSort.get(i)) > canculateConvertTimehh(listOrderSort.get(i-1))) {
-				return result;
+		for (int i = 0; i <= count; i--) {
+			if (canculateConvertTimehh(listOrderSort.get(i)) < canculateConvertTimehh(listOrderSort.get(i - 1))) {
+				return false;
 			}
-		}	
-	return false;
+		}
+		return result;
 	}
-	
+
 	public boolean orderSortIncraseFormat(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
-		for(int i = 0; i <= count; i++) {
-			if (canculateConvertTimehh(listOrderSort.get(i)) < canculateConvertTimehh(listOrderSort.get(i+1))) {
+		for (int i = 0; i <= count; i++) {
+			if (canculateConvertTime(listOrderSort.get(i)) < canculateConvertTime(listOrderSort.get(i + 1))) {
 				return result;
 			}
-		}	
-	return false;
+		}
+		return false;
 	}
-	
+
 	public boolean orderSortDecraseFormat(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
-		for(int i = 0; i <= count; i--) {
-			if (canculateConvertTimehh(listOrderSort.get(i)) > canculateConvertTimehh(listOrderSort.get(i-1))) {
+		for (int i = 0; i <= count; i--) {
+			if (canculateConvertTime(listOrderSort.get(i)) > canculateConvertTime(listOrderSort.get(i - 1))) {
 				return result;
 			}
-		}	
-	return false;
+		}
+		return false;
 	}
-	
+
 	public int canculateConvertTimehh(String duration) {
 		int result = 0;
 		String hour = "";
 		String minute = "";
 		hour = duration.split("h")[0];
 		minute = duration.split("h")[1].replace("'", "");
-		result = Integer.parseInt(hour) * 60 + Integer.parseInt(minute) ;
+		result = Integer.parseInt(hour) * 60 + Integer.parseInt(minute);
 		return result;
 	}
-	
+
 	public int canculateConvertTime(String duration) {
 		int result = 0;
 		String hour = "";
 		String minute = "";
 		hour = duration.split(":")[0];
 		minute = duration.split(":")[1];
-		result = Integer.parseInt(hour) * 60 + Integer.parseInt(minute) ;
+		result = Integer.parseInt(hour) * 60 + Integer.parseInt(minute);
 		return result;
 	}
-	
-	
+
 	public String getDuration(String dateStart, String dateStop) {
 		String result = "";
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm - dd/MM/yyyy");
@@ -114,18 +112,17 @@ public class TrainTicketPageObject extends AbstractPage {
 		try {
 			d1 = format.parse(dateStart);
 			d2 = format.parse(dateStop);
-			
+
 			long diff = d2.getTime() - d1.getTime();
 			long diffMinutes = diff / (60 * 1000) % 60;
-			long diffHours = diff / (60 * 60  * 1000) % 24;
-			
+			long diffHours = diff / (60 * 60 * 1000) % 24;
+
 			result = diffHours + "h" + diffMinutes + "'";
-		}
-		catch(Exception e){
-			
+		} catch (Exception e) {
+
 		}
 		return result;
-	
+
 	}
 
 	public String convertVietNameseStringToString(String vietnameseString) {
@@ -255,6 +252,16 @@ public class TrainTicketPageObject extends AbstractPage {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
 		}
 	}
+	
+	// Click Chọn chuyến
+		public void clickDynamicSelectTrain(String ... dynamicTextID) {
+			boolean status = false;
+			
+			waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicTextID);
+			if (status = true) {
+				clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicTextID);
+			}
+		}
 
 	// Click chọn ngày trong lịch calendar
 	public void clickDynamicDateStartAndEnd(String... dynamicTextValue) {
@@ -454,17 +461,17 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 		return isDisplayed;
 	}
-	
+
 	// Hiển thị button sửa
-		public boolean isDynamicButtonEditDisplay(String dynamicTextValue) {
-			boolean isDisplayed = false;
-			scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicTextValue);
-			boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicTextValue);
-			if (status = true) {
-				isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicTextValue);
-			}
-			return isDisplayed;
+	public boolean isDynamicButtonEditDisplay(String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicTextValue);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicTextValue);
 		}
+		return isDisplayed;
+	}
 
 	// Kiểm tra hiển thị image, check chuyển khoản thành công
 	public boolean isDynamicImageSuccess(String dynamicTextValue) {
@@ -486,39 +493,39 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 		return isDisplayed;
 	}
-	
+
 	// Hiển thị time chay
-		public boolean isDynamicDateTimeDisplay(String dynamicID) {
-			boolean isDisplayed = false;
-			scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
-			boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
-			if (status = true) {
-				isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
-			}
-			return isDisplayed;
+	public boolean isDynamicDateTimeDisplay(String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
 		}
-		
-		// Hiển thị tên tàu
-				public boolean isDynamicNameTrainDisplay(String ... dynamicID) {
-					boolean isDisplayed = false;
-					scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicID);
-					boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicID);
-					if (status = true) {
-						isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicID);
-					}
-					return isDisplayed;
-				}
-	
+		return isDisplayed;
+	}
+
+	// Hiển thị tên tàu
+	public boolean isDynamicNameTrainDisplay(String... dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicID);
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicID);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicID);
+		}
+		return isDisplayed;
+	}
+
 	// hiển thị radio button
-		public boolean isDynamicRadioDisplayed(String dynamicID) {
-			boolean isDisplayed = false;
-			scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
-			boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
-			if (status = true) {
-				isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
-			}
-			return isDisplayed;
+	public boolean isDynamicRadioDisplayed(String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status = true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
+		return isDisplayed;
+	}
 
 	public boolean isDynamicBackIconDisplayed(String dynamicTextValue) {
 		boolean isDisplayed = false;
@@ -607,13 +614,11 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 		return isUndisplayed;
 	}
-	
-	
-	
+
 	// Không hiển thị icon check
-	public boolean isDynamicIconUncheck(String  ... dynamicTextValue) {
+	public boolean isDynamicIconUncheck(String... dynamicTextValue) {
 		boolean isUndisplayed = false;
-		boolean status = waitForElementInvisible(driver,TrainTicketPageUIs.DYNAMIC_ICON_CHECK, dynamicTextValue);
+		boolean status = waitForElementInvisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHECK, dynamicTextValue);
 		if (status = true) {
 			isUndisplayed = isControlUnDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHECK, dynamicTextValue);
 		}
@@ -629,7 +634,5 @@ public class TrainTicketPageObject extends AbstractPage {
 			sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicID);
 		}
 	}
-
-
 
 }
