@@ -157,6 +157,23 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		
 	}
 	
+	@Test
+	public void TC_05_ChonTheoRap_ChonSoLuongVe_ChonSoVeToiDa() {
+		log.info("TC_05_01_Nhan nut Back");
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
+		
+		log.info("TC_05_02_Nhan chon gio chieu");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
+		
+		log.info("TC_05_03_Thay doi so luong ve");
+		filmTicketBooking.clickToChangeNumberSeat(TypeButton.INCREASE, 11);
+		
+		List<SeatType> seats = filmTicketBooking.getListSeatType();
+		log.info("TC_05_04_Kiem tra tong tien");
+		verifyEquals(filmTicketBooking.getTextViewByID("com.VCB:id/tvTotalAmount"), filmTicketBooking.canculateAmountFilmBooking(seats));
+		
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
