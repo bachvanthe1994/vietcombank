@@ -440,7 +440,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
