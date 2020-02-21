@@ -27,6 +27,12 @@ public class TrainTicketPageUIs {
 		public static final String DYNAMIC_TEXT_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 	    public static final String DYNAMIC_TEXT_INDEX = "//android.widget.TextView[@index ='%s']";
 	    public static final String DYNAMIC_DATE_SELECT = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
-	   
-	}
+	    public static final String DYNAMIC_BOTTOM_MENU_CLOSE_ICON = "//android.widget.ImageView[@resource-id=\"%s\"]";
+		public static final String DYNAMIC_ICON_CHECK = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView[@resource-id='%s']";
+	    public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";	
+	    
+	    public static final String DYNAMIC_TEXT_NAME_TRAIN = "//android.widget.TextView[@resource-id='%s']//ancestor::android.widget.LinearLayout[@index='%s']";	
+	    
+	    
+}
 
