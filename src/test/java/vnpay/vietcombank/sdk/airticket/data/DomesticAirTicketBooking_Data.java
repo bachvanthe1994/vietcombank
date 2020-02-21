@@ -26,6 +26,12 @@ public class DomesticAirTicketBooking_Data {
 		public static final String ADULT_PHONE = "0901234567";
 		public static final String CONTENT = "DAT CHUYEN BAY DI TP HO CHI MINH";
 		public static final String CHILD_NAME = "NGUYEN NGOC ANH";
+		public static final String BABY_NAME = "NGUYEN NGOC LAN";
+		public static final String DEPARTURE_PLACE = "Hà Nội";
+		public static final String DEPARTURE_CODE = "HAN";
+
+		public static final String ARRIVAL_PLACE = "TP Hồ Chí Minh";
+		public static final String ARRIVAL_CODE = "SGN";
 
 	}
 }
