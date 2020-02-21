@@ -67,6 +67,30 @@
 
 		<!-- </classes> -->
 		<!-- </package> -->
+		<package name="vnpay.vietcombank.sdk.hotelBooking">
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_1" />
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_2" />
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_3" />
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_4" />
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_5" />
+
+
+		</package>
+		<package name="vnpay.vietcombank.sdk.vehicleTickets">
+			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" />
+			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" />
+			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" />
+		</package>
+
+
+		<package name="vnpay.vietcombank.sdk.airticket">
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info" />
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People" />
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate" />
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People" />
+
+		</package>
+
 	</test>
 
 

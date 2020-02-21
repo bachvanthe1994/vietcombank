@@ -173,7 +173,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.CONFIRM_INFO_LABEL), "Xác nhận thông tin");
 
 		log.info("TC_89_Step_click tiep button quay lai");
-		transferMoney.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_89_Verify text man hinh xac nhan thong tin");
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.TRANSFER_MONEY_LABEL), "Chuyển tiền nhanh 24/7");

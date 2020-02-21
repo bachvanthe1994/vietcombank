@@ -176,7 +176,7 @@ public class VehicalTicket_2_Validate extends Base {
     @Test
     public void TC_10_KiemTraTimKiemTuongDoi() {
 	log.info("TC_10_Step_1: nhập và chọn điểm đi");
-	vehicalTicket.inputToDynamicInputBoxIDandIndex(VehicalData.DATA_ORDER_TICKET.CONTENT_DEPARTURE, "com.VCB:id/linPickUp");
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.CONTENT_DEPARTURE, "com.VCB:id/linPickUp");
 
 	log.info("TC_10_Step_2: lấy vị trí được sugget để so sánh");
 	String sugget_fromt = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTen");
@@ -186,10 +186,10 @@ public class VehicalTicket_2_Validate extends Base {
     @Test
     public void TC_11_KiemTraSuaDiemDi() {
 	log.info("TC_11_Step_1: nhập và chọn điểm đi");
-	vehicalTicket.inputToDynamicInputBoxIDandIndex(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 	log.info("TC_11_Step_2: chỉnh sửa lại điểm đi");
-	vehicalTicket.inputToDynamicInputBoxIDandIndex(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linPickUp");
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_3, "com.VCB:id/linPickUp");
 
 	log.info("TC_11_Step_3: kiểm tra tìm kiếm tương đối");
 	String sugget_to = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTen");
@@ -199,7 +199,7 @@ public class VehicalTicket_2_Validate extends Base {
     @Test
     public void TC_12_KiemTraGiaTriNhapVaoDiemDi() {
 	log.info("TC_12_Step_1: nhập và chọn điểm đi");
-	vehicalTicket.inputToDynamicInputBoxIDandIndex(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 	log.info("TC_12_Step_2: kiểm tra tìm kiếm tương đối");
 	String sugget_fromt = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTen");
@@ -209,7 +209,7 @@ public class VehicalTicket_2_Validate extends Base {
     @Test
     public void TC_13_KiemTraDiemDiKhongTonTai() {
 	log.info("TC_13_Step_1: Chọn và nhập điểm đi");
-	vehicalTicket.inputToDynamicInputBoxIDandIndex(VehicalData.DATA_ORDER_TICKET.DESTINATION_INVALID, "com.VCB:id/linPickUp");
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.DESTINATION_INVALID, "com.VCB:id/linPickUp");
 
 	log.info("TC_13_Step_3: kiểm tra thông báo");
 	String nullData = vehicalTicket.getDynamicConfirmNullData("com.VCB:id/rlNullData");

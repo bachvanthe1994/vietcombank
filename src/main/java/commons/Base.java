@@ -179,6 +179,21 @@ public class Base {
 
     }
 
+    public AndroidDriver<AndroidElement> openGlobalSetting(String deviceName, String udid, String url)
+    	    throws MalformedURLException {
+    	DesiredCapabilities cap = new DesiredCapabilities();
+    	cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+    	cap.setCapability("uid", udid);
+    	cap.setCapability("appPackage", "com.android.settings");
+    	cap.setCapability("appActivity", "com.android.settings.Settings");
+    	driver = new AndroidDriver<>(new URL(url), cap);
+
+    	driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
+
+    	return driver;
+
+    }
+    
     public void closeApp() {
 	driver.quit();
     }

@@ -77,12 +77,6 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info extends Base {
 		log.info("TC_01_Step 09: Click Chon Em be");
 		airTicket.clickToDynamicPlusAndMinusIcon("Em bé (Dưới 2 tuổi)", "+");
 
-		log.info("TC_01_Step 10: Click Tim Chuyen Bay ");
-		airTicket.clickToDynamicButton("Tìm chuyến bay");
-
-		log.info("TC_01_Step 11: CLick quay lai ");
-		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
-
 		log.info("TC_01_Step 12: Click Tim Chuyen Bay ");
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 

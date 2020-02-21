@@ -104,6 +104,34 @@
 <appender-ref ref="testng"/>
 </category>
 
+<category name = "vnpay.vietcombank.sdk_train_ticket">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.sdk.airticket">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.sdk.hotelBooking">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.sdk.vehicleTickets">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
 <root>
 	<priority value = "warn"/>
 </root>
