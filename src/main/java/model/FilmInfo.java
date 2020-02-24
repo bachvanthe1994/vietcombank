@@ -14,4 +14,8 @@ public class FilmInfo {
 
 	}
 	
+	public enum TypeShow {
+		  HORIZONTAL, VERTICAL
+	}
+	
 }

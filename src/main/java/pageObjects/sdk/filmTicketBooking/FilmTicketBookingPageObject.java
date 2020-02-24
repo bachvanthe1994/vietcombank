@@ -1,9 +1,11 @@
 package pageObjects.sdk.filmTicketBooking;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -16,6 +18,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.offset.PointOption;
 import model.FilmInfo;
+import model.FilmInfo.TypeShow;
 import model.SeatType;
 import model.SeatType.TypeButton;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
@@ -70,9 +73,28 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
 		if (status) {
-			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+			isDisplayed = isControlForcus(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
 		}
 		return isDisplayed;
+
+	}
+	
+	public boolean isDynamicTextViewByViewGroupID(String... dynamicID) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicID);
+		if (status) {
+			isDisplayed = isControlDisplayed(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicID);
+		}
+		return isDisplayed;
+
+	}
+	
+	public void clickToTextViewByText(String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		if (status) {
+			clickToElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		}
 
 	}
 	
@@ -475,28 +497,27 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		
 	}
 	
-	public String getDuration() {
-		String result = "";
-		String dateStart = "19/02/2020 09:29";
-		String dateStop = "01/15/2020 10:28";
-
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
-		Date d1 = null;
-		Date d2 = null;
-
-		try {
-			d1 = format.parse(dateStart);
-			d2 = format.parse(dateStop);
-			
-			long diff = d2.getTime() - d1.getTime();
-			result = String.valueOf(diff);
+	public boolean checkIconAndCinemaNameAndInfo(List<String> listCinemaGroup) {
+		boolean result = true;
+		int countList = listCinemaGroup.size();
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, "com.VCB:id/ivArrow");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_IMAGE_VIEW_BY_ID, "com.VCB:id/ivArrow");
+		List<AndroidElement> elements = null;
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
 		}
-		catch(Exception e){
+	
+		for (int i = 0; i < countList; i++) {
+			elements.get(i).click();
+			result = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvCinemaName") 
+					&& waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvCinemaAddress")
+					&& (isDynamicTextViewDisplayed("2D") || isDynamicTextViewDisplayed("3D"))
+					&& isDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 			
 		}
 		return result;
-	} 
+		
+	}
 	
 	public String getDuration(String dateStart, String dateStop) {
 		String result = "";
@@ -634,6 +655,34 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		
 	}
 	
+	public void clickToChangeNumberSeatSum10Tickets() {
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+			
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+		List<AndroidElement> elements = null;
+			
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
+		}
+		int numberClickAll = 10/elements.size();
+		int numberClickFirst = 10 % elements.size();
+		int count = numberClickAll;
+		
+		while(numberClickFirst > 0) {
+			elements.get(0).click();
+			numberClickFirst--;
+		}
+		
+		for (AndroidElement element : elements) {
+			while(numberClickAll > 0) {
+				element.click();
+				numberClickAll--;
+			}
+			numberClickAll = count;
+		}
+			
+	}
+	
 	public static String addCommasToLong(String number) {
 		long amount = Long.parseLong(number);
 		String m = String.format("%,d", amount);
@@ -649,5 +698,60 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		result = addCommasToLong(amount + "") + " VND";
 		return result;
 	}
+	
+	public boolean checkTypeShowFilmList(TypeShow typeShow) {
+		boolean result = true;
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, "Đặt vé");
+		
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, "Đặt vé");
+		List<AndroidElement> elements = null;
+			
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
+		}
+		
+		int count = elements.size();
+		
+		if (typeShow == TypeShow.HORIZONTAL) {
+			if (count == 1) {
+				result = true;
+			}
+			else {
+				result = false;
+			}
+		}
+		else if(typeShow == TypeShow.VERTICAL) {
+			if (count > 1) {
+				result = true;
+			}
+			else {
+				result = false;
+			}
+		}
+		
+		return result;
+	}
+	
+	public String convertVietNameseStringToString(String vietnameseString) {
+		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
+	}
+	
+	public boolean checkSeachFilm(List<String> listSuggestLocations, String checkedValue) {
+		for (String location : listSuggestLocations) {
+			if (!convertVietNameseStringToString(location).toLowerCase().contains(convertVietNameseStringToString(checkedValue).toLowerCase())) {
+				return false;
+			}
+		}
+		return true;
+		
+	}
+	
+	public boolean checkListContain(List<String> actualList, List<String> expectList) {
+		return expectList.containsAll(actualList);
+		
+	}
+	
 	
 }

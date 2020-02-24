@@ -247,7 +247,7 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 	
 		log.info("TC_12_02_Nhan nut Dat ve");
-		filmTicketBooking.clickToDynamicTextView("Đặt vé");
+		filmTicketBooking.clickToTextViewByText("Đặt vé");
 		
 		log.info("TC_12_03_Kiem tra highlight ngay chieu Hom nay");
 		verifyTrue(filmTicketBooking.isDynamicTextViewSelected("Hôm nay"));
@@ -310,7 +310,7 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		
 		log.info("TC_15_08_Nhan nut Dat ve");
-		filmTicketBooking.clickToDynamicTextView("Đặt vé");
+		filmTicketBooking.clickToTextViewByText("Đặt vé");
 		
 		log.info("TC_15_09_Nhan chon gio chieu");
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
