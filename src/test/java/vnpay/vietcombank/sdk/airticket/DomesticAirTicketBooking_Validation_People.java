@@ -585,12 +585,12 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		log.info("TC_13_Step 2: Chon ve may bay chieu ve");
 		airTicket.clickToDynamicFirstFlightShiftByFlightCode("com.VCB:id/recy_chieuve", "VJ");
 
-		String firstTurnCode = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_flightcode_internal");
-		String firstTurnDepartureTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
-		String firstTurnArrivalTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
-		String secondTurnCode = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_flightcode_internal");
-		String secondTurnDepartureTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
-		String secondTurnArrivalTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
+		String firstTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_flightcode_internal");
+		String firstTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
+		String firstTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
+		String secondTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_flightcode_internal");
+		String secondTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
+		String secondTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
 
 		log.info("TC_13_Step 3: Kiem tra logo hang bay hien thi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/iv_flight_internal_chieudi"));

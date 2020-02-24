@@ -31,6 +31,9 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 	private String duration;
 	private String packagePrice1;
 	private String packagePrice2;
+	Long subTotal1;
+	Long subTotal2;
+	Long subTotal3;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -94,11 +97,12 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 		airTicket.sleep(driver, 10000);
 
 		log.info("TC_01_Step 12: Click Chon VietNamAirLine ");
+		flightCode = airTicket.getAirTicketInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_flightNo");
+		departureTime = airTicket.getAirTicketInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_time_deptTime");
+		arrivalTime = airTicket.getAirTicketInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_time_deptTime_arrival");
+		duration = airTicket.getAirTicketInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_timeduration");
+
 		airTicket.clickToDynamicFlight(0, "QH");
-		flightCode = airTicket.getAirTicketPriceInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_flightNo");
-		departureTime = airTicket.getAirTicketPriceInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_time_deptTime");
-		arrivalTime = airTicket.getAirTicketPriceInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_time_deptTime_arrival");
-		duration = airTicket.getAirTicketPriceInfoByFlightCode1Way("com.VCB:id/recycler_view_one", "QH", "com.VCB:id/tv_timeduration");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 
 		log.info("TC_01_Step 13: Click Dat ve ");
@@ -126,7 +130,8 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 
 		log.info("TC_01_Step 14: Click hanh ly chieu di");
 		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price");
-		log.info("TC_02_Step 02: Click hanh ly chieu di");
+
+		log.info("TC_02_Step 02: Click chon goi hanh ly 1");
 		String selectedPackage = airTicket.getTextInOneOfDropDownValue(1, "com.VCB:id/tv_content_price");
 
 		log.info("TC_02_Step 03: Click hanh ly chieu di");
@@ -265,7 +270,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 
 	@Test
 	public void TC_08_ThongTinHanhKhach_ThongTinEmBe_KiemTraChonNgaySinh() {
-		log.info("TC_08_Step 01: Lay time cach hien tai 22 năm ");
+		log.info("TC_08_Step 01: Lay time cach hien tai 2 năm ");
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusYears(2);
 		String currentfocusday = date.plusDays(2).getDayOfMonth() + "";
@@ -438,9 +443,81 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 
 	}
 
+	@Test
+	public void TC_11_KiemTraDropDownIconTaiNguoiLon1() {
+
+		log.info("TC_11_Step 01: Click Dropdown Icon Nguoi lon 1");
+		airTicket.clickToDynamicIconByLabel("Người lớn 1", "com.VCB:id/ivImage");
+
+		log.info("TC_11_Step 02: Kiem tra text gia ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Giá vé"));
+		Long adultPrice = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Giá vé"), "VND");
+
+		log.info("TC_11_Step 03: Kiem tra text Phi Va Thue nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Phí và thuế"));
+		Long adultTax = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Phí và thuế"), "VND");
+
+		log.info("TC_11_Step 04: Kiem tra text Phi Dai Ly Ban ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Phí đại lý bán vé"));
+		Long adultAgentFee = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Phí đại lý bán vé"), "VND");
+
+		log.info("TC_11_Step 04: Kiem tra text Phi Hanh ly ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Hành lý chiều đi"));
+		Long packageFee = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "Hành lý chiều đi").split(" - ")[1], "VND");
+
+		subTotal1 = adultPrice + adultTax + adultAgentFee + packageFee;
+	}
+
+	@Test
+	public void TC_12_KiemTraDropDownIconTaiTreEm1() {
+		log.info("TC_12_Step 01: Click Dropdown Icon Nguoi lon 1");
+		airTicket.clickToDynamicIconByLabel("Trẻ em 1", "com.VCB:id/ivImage");
+
+		log.info("TC_12_Step 02: Kiem tra text gia ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Giá vé"));
+		Long childPrice = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Giá vé"), "VND");
+
+		log.info("TC_12_Step 03: Kiem tra text Phi Va Thue nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Phí và thuế"));
+		Long childTax = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Phí và thuế"), "VND");
+
+		log.info("TC_12_Step 04: Kiem tra text Phi Dai Ly Ban ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Phí đại lý bán vé"));
+		Long childAgentFee = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Phí đại lý bán vé"), "VND");
+
+		log.info("TC_11_Step 04: Kiem tra text Phi Hanh ly ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Hành lý chiều đi"));
+		Long packageFee = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.CHILD_NAME, "Hành lý chiều đi").split(" - ")[1], "VND");
+
+		subTotal2 = childPrice + childTax + childAgentFee + packageFee;
+	}
+
+	@Test
+	public void TC_13_KiemTraDropDownIconTaiEmBe1() {
+		log.info("TC_13_Step 01: Click Dropdown Icon Nguoi lon 1");
+		airTicket.clickToDynamicIconByLabel("Em bé 1", "com.VCB:id/ivImage");
+
+		log.info("TC_13_Step 02: Kiem tra text gia ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.BABY_NAME, "Giá vé"));
+		Long babyTicketPrice = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.BABY_NAME, "Giá vé"), "VND");
+
+		log.info("TC_13_Step 03: Kiem tra text Phi Va Thue nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.BABY_NAME, "Phí và thuế"));
+		Long babyTax = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.BABY_NAME, "Phí và thuế"), "VND");
+
+		log.info("TC_13_Step 04: Kiem tra text Phi Dai Ly Ban ve nguoi lon 1 hien thi");
+		verifyTrue(airTicket.isDynamicPaymentInfoByName(DomesticAirTicketBooking_Data.validInput.BABY_NAME, "Phí đại lý bán vé"));
+		Long babyAgentFee = convertMoneyToLong(airTicket.getTextAmountOfMoneyInPayment(DomesticAirTicketBooking_Data.validInput.BABY_NAME, "Phí đại lý bán vé"), " VND");
+		subTotal3 = babyTicketPrice + babyTax + babyAgentFee;
+		String totalAmount = addCommasToLong(subTotal1 + subTotal2 + subTotal3 + "");
+
+		log.info("TC_13_Step 05: Kiem tra tong so tien hien thi dung");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Tổng tiền", "com.VCB:id/tvText2"), totalAmount + " VND");
+	}
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
+//		closeApp();
 		service.stop();
 	}
 

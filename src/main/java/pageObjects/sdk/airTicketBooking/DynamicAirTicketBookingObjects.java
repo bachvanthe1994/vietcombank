@@ -131,6 +131,15 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		}
 	}
 
+//Click vao icon băng id va label
+	public void clickToDynamicIconByLabel(String... textandId) {
+		boolean status = false;
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_ICON_BY_LABEL, textandId);
+		if (status == true) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_ICON_BY_LABEL, textandId);
+		}
+	}
+
 //Click nut tang giam ơ man hinh dat ve may bay, tham số là text và icon cần click
 	public void clickToDynamicPlusAndMinusIcon(String... textAndIcon) {
 		boolean status = false;
@@ -232,8 +241,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	}
 
 //Lấy thông tin vé máy bay 2 chiều sử dụng ID, 1 phần của flight code và ID
-	public String getAirTicketPriceInfoByFlightCode2Way(String... IDAndFlightcodeID) {
+	public String getAirTicketInfoByFlightCode2Way(String... IDAndFlightcodeID) {
 		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
 		if (status == true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
@@ -241,8 +251,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		return text;
 	}
 
-	public String getAirTicketPriceInfoByFlightCode1Way(String... IDAndFlightcodeID) {
+	public String getAirTicketInfoByFlightCode1Way(String... IDAndFlightcodeID) {
 		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
 		if (status == true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
@@ -311,6 +322,17 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexID);
 		if (status == true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexID);
+		}
+		return text;
+	}
+
+	public String getTextAmountOfMoneyInPayment(String... TextAndtext) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, TextAndtext);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, TextAndtext);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, TextAndtext);
 		}
 		return text;
 	}
@@ -431,6 +453,18 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, text);
 		if (status == true) {
 			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, text);
+		}
+		return isDisplayed;
+	}
+
+//Kiểm tra thong tin thanh toan trong icon dropdown
+	public boolean isDynamicPaymentInfoByName(String... textAndText) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
+
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
 		}
 		return isDisplayed;
 	}

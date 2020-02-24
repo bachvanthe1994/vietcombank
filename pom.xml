@@ -157,7 +157,7 @@
 					</property>
 
 					<suiteXmlFiles>
-						<suiteXMLfile>src/test/resources/runTestCases.xml</suiteXMLfile>
+						<suiteXMLfile>src/test/resources/runLocal.xml</suiteXMLfile>
 					</suiteXmlFiles>
 
 				</configuration>
