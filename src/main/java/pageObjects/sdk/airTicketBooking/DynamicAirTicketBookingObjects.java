@@ -375,8 +375,8 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 
 //Kiểm tra text có hiển thị không
 	public boolean isDynamicTextDisplayed(String text) {
-
 		boolean isDisplayed = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
 		if (status == true) {
 			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, text);
@@ -425,14 +425,34 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		return isDisplayed;
 	}
 
-//Kiểm tra check box có được check không sử dụng
-	public boolean isDynamicCheckBoxChecked(String... textAndID) {
-		boolean isDisplayed = false;
+//Kiểm tra check box có được check không 
+	public boolean isDynamicCheckBoxByLabelChecked(String... textAndID) {
+		boolean isChecked = false;
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, textAndID);
 		if (status == true) {
-			isDisplayed = isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, textAndID);
+			isChecked = isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, textAndID);
 		}
-		return isDisplayed;
+		return isChecked;
+	}
+
+//Kiểm tra check box  bằng text có được check khong
+	public boolean isDynamicCheckBoxByLabelChecked(String text) {
+		boolean isChecked = false;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_TEXT, text);
+		if (status == true) {
+			isChecked = isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_TEXT, text);
+		}
+		return isChecked;
+	}
+
+//Kiểm tra radioButton  bằng checkbox có được check khong
+	public boolean isDynamicRadioButtonByLabelChecked(String... textAndText) {
+		boolean isChecked = false;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndText);
+		if (status == true) {
+			isChecked = isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndText);
+		}
+		return isChecked;
 	}
 
 //Kiểm tra text có hiển thị hay không bằng label của nó
@@ -465,6 +485,30 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
 		if (status == true) {
 			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
+		}
+		return isDisplayed;
+	}
+
+//Kiểm tra text tren checkbox hien thi
+	public boolean isDynamicCheckBoxDisplayed(String text) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_TEXT, text);
+
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_TEXT, text);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_TEXT, text);
+		}
+		return isDisplayed;
+	}
+
+//Kiểm tra text tren checkbox hien thi
+	public boolean isDynamicRadioButtonByLabelDisplayed(String... textAndtext) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndtext);
+
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndtext);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndtext);
 		}
 		return isDisplayed;
 	}

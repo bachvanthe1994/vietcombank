@@ -18,7 +18,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
-public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 extends Base {
+public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -68,13 +68,13 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_01_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_01_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_01_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_01_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -366,16 +366,16 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 		verifyTrue(airTicket.isDynamicPlaceAndCustomerNameDisplayed("Họ tên", DomesticAirTicketBooking_Data.validInput.BABY_NAME));
 
 		log.info("TC_09_Step 11: Kiem tra diem khoi hanh hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem1"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem1"), DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_09_Step 12: Kiem tra ma diem khoi hanh hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem2"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem2"), DomesticAirTicketBooking_Data.validInput.HANOI_CODE);
 
 		log.info("TC_09_Step 13: Kiem tra diem den hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem3"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem3"), DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_09_Step 14: Kiem tra code diem den hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem4"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextttdiadiem4"), DomesticAirTicketBooking_Data.validInput.HCM_CODE);
 
 		log.info("TC_09_Step 15: Kiem tra icon dia diem hien thi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivttdiadiem1"));
@@ -399,10 +399,10 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_3 e
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextRight1"), airTicket.getDayInWeek(getForwardDate(1)) + " " + getForwardDate(1));
 
 		log.info("TC_09_Step 23: Kiem tra gio khoi hanh");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextLeft3"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_CODE + " " + departureTime);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextLeft3"), DomesticAirTicketBooking_Data.validInput.HANOI_CODE + " " + departureTime);
 
 		log.info("TC_09_Step 24: Kiem tra gio den");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextRight2"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_CODE + " " + arrivalTime);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTextRight2"), DomesticAirTicketBooking_Data.validInput.HCM_CODE + " " + arrivalTime);
 
 		log.info("TC_09_Step 25: Kiem tra thoi gian bay");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDuration"), duration);

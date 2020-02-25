@@ -18,7 +18,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
-public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 extends Base {
+public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -58,13 +58,13 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_01_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_01_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_01_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_01_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -345,7 +345,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 		String currentfocusday = date.plusDays(2).getDayOfMonth() + "";
 		LocalDate curentfocusDate = date.plusDays(2);
 		String[] day = curentfocusDate.toString().split("-");
-		if (currentfocusday != "1") {
+		if (!currentfocusday.equals("1")) {
 			log.info("TC_13_Step 02: Click chon ngay sinh");
 			airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price");
 
@@ -381,7 +381,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_2 e
 		calendar.set(Calendar.DATE, lastDate);
 		int lastDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-		if ((curentfocusDate1.getDayOfMonth() + "") != lastDay + "") {
+		if (!(curentfocusDate1.getDayOfMonth() + "").equals(lastDay + "")) {
 			log.info("TC_13_Step 10: Click ngay sinh");
 			airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price");
 

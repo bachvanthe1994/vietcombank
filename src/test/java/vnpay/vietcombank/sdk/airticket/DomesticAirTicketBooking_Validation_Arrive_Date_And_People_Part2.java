@@ -16,7 +16,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 
-public class DomesticAirTicketBooking_Validation_Arrive_Date_And_People extends Base {
+public class DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
