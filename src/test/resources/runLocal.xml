@@ -40,7 +40,7 @@
 <!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" /> -->
 
-			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_2" />
+			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_4" />
 
 		</classes>
 	</test>

@@ -17,6 +17,7 @@ import model.SeatType;
 import model.SeatType.TypeButton;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
+import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
 public class Validation_FilmTicketBooking_Part_3 extends Base {
@@ -202,6 +203,71 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		
 		log.info("TC_06_04_Kiem tra ten phong");
 		verifyEquals(filmTicketBooking.getTextViewByID("com.VCB:id/tvRoomName"), roomName);
+	}
+	
+	@Test
+	public void TC_07_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_DaDat() {
+		log.info("TC_07_01_Lay mau cua loai ghe Da Dat");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đã đặt");
+		
+		log.info("TC_07_03_Click chon cho ngoi loai ghe Da dat");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, colorOfSeat));
+		
+	}
+	
+	@Test
+	public void TC_08_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_Thuong() {
+		log.info("TC_08_01_Lay mau cua loai ghe Thuong");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
+		String checkColor = "(73,200,230)";
+		
+		log.info("TC_08_02_Click chon cho ngoi loai ghe Thuong");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
+		
+	}
+	
+	@Test
+	public void TC_09_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_DaChon() {
+		log.info("TC_09_01_Lay mau cua loai ghe Da chon");
+		String colorOfSeat = "(73,200,230)";
+		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
+		
+		log.info("TC_09_02_Click chon cho ngoi loai ghe Da chon");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
+		
+	}
+	
+	@Test
+	public void TC_10_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_Vip() {
+		log.info("TC_10_01_Lay mau cua loai ghe Vip");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Vip");
+		String checkColor = "(73,200,230)";
+
+		log.info("TC_10_02_Click chon cho ngoi loai ghe Vip");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
+
+	}
+	
+	@Test
+	public void TC_11_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_Deluxe() {
+		log.info("TC_11_01_Lay mau cua loai ghe Deluxe");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Deluxe");
+		String checkColor = "(73,200,230)";
+
+		log.info("TC_11_02_Click chon cho ngoi loai ghe Deluxe");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
+		
+	}
+	
+	@Test
+	public void TC_12_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_Couple() {
+		log.info("TC_12_01_Lay mau cua loai ghe Couple");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Couple");
+		String checkColor = "(73,200,230)";
+
+		log.info("TC_12_02_Click chon cho ngoi loai ghe Couple");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
+		
 	}
 	
 	@AfterClass(alwaysRun = true)

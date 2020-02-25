@@ -5,6 +5,7 @@ public class FilmTicketBookingPageUIs {
 	public static final String VIEW_BY_CONTENT_DESC = "//android.view.View[@content-desc = '%s']//android.view.View";
 	public static final String TEXTVIEW_BY_LINEAR_LAYOUT_ID = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
 	public static final String TEXTVIEW_BY_TEXT = "//android.widget.TextView[@text='%s']";
+	public static final String VIEW_BY_TEXT = "//android.widget.TextView[@text='%s']/preceding-sibling::android.view.View";
 	public static final String INPUTBOX_BY_ID = "//android.widget.EditText[@resource-id='%s']";
 	public static final String TEXTVIEW_BY_ID = "//android.widget.TextView[@resource-id='%s']";
 	public static final String INPUT_BOX_BY_TEXT = "//android.widget.EditText[@text='%s']";

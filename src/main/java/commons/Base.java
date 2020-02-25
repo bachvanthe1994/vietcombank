@@ -157,7 +157,7 @@ public class Base {
 	    cap.setCapability("uid", udid);
 	    cap.setCapability("appPackage", appPackage);
 	    cap.setCapability("appActivity", appActivities);
-	    cap.setCapability("appWaitPackage", "com.android.packageinstaller");
+	    cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 	    cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
 	} else if (deviceType.equalsIgnoreCase("browserStack")) {

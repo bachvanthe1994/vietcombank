@@ -1,5 +1,8 @@
 package pageObjects.sdk.filmTicketBooking;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,8 +10,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.imageio.ImageIO;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import commons.AbstractPage;
 import commons.Constants;
@@ -753,5 +761,171 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		
 	}
 	
+	public String getColorOfElement(String locator, String... dynamicValue) {
+		String colorOfElement = "";
+		locator = String.format(locator, (Object[]) dynamicValue);
+		boolean status = waitForElementVisible(driver, locator);
+		if (status) {
+			MobileElement element = driver.findElement(By.xpath(locator));
+			
+			File imageFile  = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
+			try {
+				BufferedImage bufferedImage = ImageIO.read(imageFile);
+				imageFile.delete();
+				
+		        int height = bufferedImage.getHeight();
+		        int width = bufferedImage.getWidth();
+		        int x= width/2;
+		        int y = height/2;
+		       	int RGBA = bufferedImage.getRGB(x, y);
+		        int red = (RGBA >> 16) & 255;
+		        int green = (RGBA >> 8) & 255;
+		        int blue = RGBA & 255;  
+		        colorOfElement = "(" + red + "," + green + "," + blue + ")";
+		       
+			}
+			catch (Exception e) {
+				
+			}
+			
+		}
+		return colorOfElement;
+		
+	}
+	
+	public boolean checkColorOfElement(String colorCheck, String locator, String... dynamicValue) {
+		boolean colorOfElement = true;
+		locator = String.format(locator, (Object[]) dynamicValue);
+		boolean status = waitForElementVisible(driver, locator);
+		if (status) {
+			MobileElement element = driver.findElement(By.xpath(locator));
+			
+			File imageFile  = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
+			try {
+				BufferedImage bufferedImage = ImageIO.read(imageFile);
+				imageFile.delete();
+				
+		        int height = bufferedImage.getHeight();
+		        int width = bufferedImage.getWidth();
+		        int y = height/2;
+		        
+		        for (int x = 0; x < width; x++) {
+		        	int RGBA = bufferedImage.getRGB(x, y);
+		        	int red = (RGBA >> 16) & 255;
+		        	int green = (RGBA >> 8) & 255;
+		        	int blue = RGBA & 255;  
+		        	if (colorCheck.equals("(" + red + "," + green + "," + blue + ")")) {
+		        		return true;
+		        	}
+		       }
+		       colorOfElement = false;
+		       
+			}
+			catch (Exception e) {
+				
+			}
+			
+		}
+		return colorOfElement;
+		
+	}
+	
+	public boolean chooseSeatsAndCheckColorAfterChoose(int numberOfSeats, String colorOfSeat, String checkColor) {
+		boolean result = true;
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
+		if (status) {
+			List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+			for (AndroidElement element : elements) {
+				File imageFile  = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
+				try {
+					BufferedImage bufferedImage = ImageIO.read(imageFile);
+					imageFile.delete();
+					
+					int height = bufferedImage.getHeight();
+			        int width = bufferedImage.getWidth();
+			        int x= width/2;
+			        int y = height/2;
+			       	int RGBA = bufferedImage.getRGB(x, y);
+			        int red = (RGBA >> 16) & 255;
+			        int green = (RGBA >> 8) & 255;
+			        int blue = RGBA & 255;  
+			        String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+			        
+			        if (colorOfSeat.equals(colorOfElement)) {
+			        	element.click();
+			        	imageFile  = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
+			        	bufferedImage = ImageIO.read(imageFile);
+			        	imageFile.delete();
+						height = bufferedImage.getHeight();
+				        width = bufferedImage.getWidth();
+				        x= width/2;
+				        y = height/2;
+				       	RGBA = bufferedImage.getRGB(x, y);
+				        red = (RGBA >> 16) & 255;
+				        green = (RGBA >> 8) & 255;
+				        blue = RGBA & 255;
+				        colorOfElement = "(" + red + "," + green + "," + blue + ")";
+				        
+				        result = checkColor.equals(colorOfElement);
+				        
+			        	if(!result) {
+			        		return false;
+			        	}
+			        	
+			        	numberOfSeats --;
+			        }
+			        
+			        if (numberOfSeats <= 0) {
+			        	break;
+			        }
+			       
+				}
+				catch (Exception e) {
+					
+				}
+			}
+			
+		}
+		return result;
+		
+	}
+	
+	public int getNumberSeatsByColor(String colorOfSeat) {
+		int numberOfSeats = 0;
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
+		if (status) {
+			List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+			for (AndroidElement element : elements) {
+				File imageFile  = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
+				try {
+					BufferedImage bufferedImage = ImageIO.read(imageFile);
+					imageFile.delete();
+					
+					int height = bufferedImage.getHeight();
+			        int width = bufferedImage.getWidth();
+			        int x= width/2;
+			        int y = height/2;
+			       	int RGBA = bufferedImage.getRGB(x, y);
+			        int red = (RGBA >> 16) & 255;
+			        int green = (RGBA >> 8) & 255;
+			        int blue = RGBA & 255;  
+			        String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+			        
+			        if (colorOfSeat.equals(colorOfElement)) {
+			        	numberOfSeats++;
+			        }
+			       
+				}
+				catch (Exception e) {
+					
+				}
+			}
+			
+		}
+		return numberOfSeats;
+		
+	}
 	
 }
