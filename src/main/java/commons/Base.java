@@ -217,7 +217,12 @@ public class Base {
 			service = AppiumDriverLocalService.buildDefaultService();
 			service.start();
 		} else {
-			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+			String osName = System.getProperty("os.name").toLowerCase();
+			if (osName.toLowerCase().contains("window")) {
+				Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+			} else if (osName.toLowerCase().contains("mac")) {
+				Runtime.getRuntime().exec("/usr/bin/killall -KILL node");
+			}
 			Thread.sleep(2000);
 			service = AppiumDriverLocalService.buildDefaultService();
 			service.start();
