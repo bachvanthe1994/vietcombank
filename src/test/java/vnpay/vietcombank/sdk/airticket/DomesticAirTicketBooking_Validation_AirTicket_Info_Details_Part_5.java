@@ -16,7 +16,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
-public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 extends Base {
+public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -56,13 +56,13 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_01_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_01_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_01_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_01_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -173,7 +173,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_1 e
 		airTicket.clickToDynamicCheckBoxByLabel("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active");
 
 		log.info("TC_07_Step 02: Kiem tra check box da duoc chon");
-		verifyTrue(airTicket.isDynamicCheckBoxChecked("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active"));
+		verifyTrue(airTicket.isDynamicCheckBoxByLabelChecked("THÔNG TIN LIÊN HỆ", "com.VCB:id/iv_check_active"));
 	}
 
 	@Test

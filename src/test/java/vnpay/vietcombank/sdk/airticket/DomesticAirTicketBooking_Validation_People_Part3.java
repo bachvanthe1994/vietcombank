@@ -16,7 +16,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
-public class DomesticAirTicketBooking_Validation_People extends Base {
+public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -59,13 +59,13 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_01_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_01_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_01_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_01_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -114,13 +114,13 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_01_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_01_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_01_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_01_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -195,13 +195,13 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_05_Step 02: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_05_Step 03: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_05_Step 04: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_05_Step 05: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -269,13 +269,13 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
 
 		log.info("TC_07_Step 05: Click Ha Noi");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_07_Step 06: Click Diem Den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
 
 		log.info("TC_07_Step 07: Click TP Ho Chi Minh");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_07_Step 08: Click Ngay Đi");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -290,8 +290,8 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_07_Step 12:  Kiem tra ma chuyen bay hien thi ");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Left"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_CODE);
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Right"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Left"), DomesticAirTicketBooking_Data.validInput.HANOI_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Right"), DomesticAirTicketBooking_Data.validInput.HCM_CODE);
 
 		log.info("TC_06_Step 13: CLick quay lai ");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
@@ -303,7 +303,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2"), airTicket.getDayInWeek(getForwardDate(1)) + " " + getForwardDate(1));
 
 		log.info("TC_07_Step 16: Kiem tra diem di ");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDi"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDi"), DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_06_Step 17: CLick quay lai ");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
@@ -312,7 +312,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_07_Step 19: Kiem tra diem den ");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDen"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDen"), DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_07_Step 20: Kiem tra text dang tim chuyen bay ");
 		verifyTrue(airTicket.isDynamicTextDisplayed("Đang tìm kiếm chuyến bay"));
@@ -342,19 +342,19 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleRight"));
 
 		log.info("TC_08_Step 04: Kiem tra diem di hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail"), DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_08_Step 05: Kiem tra ma diem di hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_source"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_source"), DomesticAirTicketBooking_Data.validInput.HANOI_CODE);
 
 		log.info("TC_08_Step 06: kiem tra ngay di hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_thu"), airTicket.getDayInWeek(getForwardDate(1)) + " " + getForwardDate(1));
 
 		log.info("TC_08_Step 07: Kiem tra diem den hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail"), DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_08_Step 08: Kiem tra ma diem den hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_Dest"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_Dest"), DomesticAirTicketBooking_Data.validInput.HCM_CODE);
 
 		log.info("TC_08_Step 09: Kiem tra code bay hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_flightName"), "HAN - SGN");
@@ -480,8 +480,8 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_11_Step 06:  Kiem tra ma chuyen bay hien thi ");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Left"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_CODE);
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Right"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Left"), DomesticAirTicketBooking_Data.validInput.HANOI_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2Right"), DomesticAirTicketBooking_Data.validInput.HCM_CODE);
 
 		log.info("TC_11_Step 07: CLick quay lai ");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
@@ -491,7 +491,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 
 		log.info("TC_11_Step 09: Kiem tra ma chuyen bay va diem den ");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle2"), airTicket.getDayInWeek(getForwardDate(1)) + " " + getForwardDate(1) + " - " + airTicket.getDayInWeek(getForwardDate(2)) + " " + getForwardDate(2));
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDi"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDi"), DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_11_Step 10: CLick quay lai ");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
@@ -500,7 +500,7 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_11_Step 12: Kiem tra diem di va text dang tim chuyen bay ");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDen"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvDiemDen"), DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 		verifyTrue(airTicket.isDynamicTextDisplayed("Đang tìm kiếm chuyến bay"));
 
 		log.info("TC_11_Step 13: CLick quay lai ");
@@ -528,19 +528,19 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleRight"));
 
 		log.info("TC_12_Step 04: Kiem tra diem di hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail"), DomesticAirTicketBooking_Data.validInput.HANOI_PLACE);
 
 		log.info("TC_12_Step 05: Kiem tra ma diem di hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_source"), DomesticAirTicketBooking_Data.validInput.DEPARTURE_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_source"), DomesticAirTicketBooking_Data.validInput.HANOI_CODE);
 
 		log.info("TC_12_Step 06: kiem tra ngay di hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_date_ngaydi"), airTicket.getDayInWeek(getForwardDate(1)) + " " + getForwardDate(1));
 
 		log.info("TC_12_Step 07: Kiem tra diem den hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_PLACE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail"), DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
 
 		log.info("TC_12_Step 08: Kiem tra ma diem den hien thi");
-		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_Dest"), DomesticAirTicketBooking_Data.validInput.ARRIVAL_CODE);
+		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_Dest"), DomesticAirTicketBooking_Data.validInput.HCM_CODE);
 
 		log.info("TC_12_Step 06: kiem tra ngay di hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_date_ngayve"), airTicket.getDayInWeek(getForwardDate(2)) + " " + getForwardDate(2));
@@ -585,12 +585,12 @@ public class DomesticAirTicketBooking_Validation_People extends Base {
 		log.info("TC_13_Step 2: Chon ve may bay chieu ve");
 		airTicket.clickToDynamicFirstFlightShiftByFlightCode("com.VCB:id/recy_chieuve", "VJ");
 
-		String firstTurnCode = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_flightcode_internal");
-		String firstTurnDepartureTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
-		String firstTurnArrivalTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
-		String secondTurnCode = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_flightcode_internal");
-		String secondTurnDepartureTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
-		String secondTurnArrivalTime = airTicket.getAirTicketPriceInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
+		String firstTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_flightcode_internal");
+		String firstTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
+		String firstTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
+		String secondTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_flightcode_internal");
+		String secondTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
+		String secondTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
 
 		log.info("TC_13_Step 3: Kiem tra logo hang bay hien thi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/iv_flight_internal_chieudi"));
