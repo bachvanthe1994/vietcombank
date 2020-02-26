@@ -15,8 +15,8 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import model.FilmInfo;
-import model.SeatType;
 import model.FilmInfo.TypeShow;
+import model.SeatType;
 import model.SeatType.TypeButton;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
@@ -450,70 +450,148 @@ public class Validation_FilmTicketBooking_Part_4 extends Base {
 		verifyTrue(filmTicketBooking.isDynamicImageViewDisplayed("com.VCB:id/ivBack"));
 		
 		log.info("TC_18_04_Kiem tra ten phong");
-		verifyEquals(filmTicketBooking.getTextViewByID("com.VCB:id/tvRoomName"), roomName);
+//		verifyEquals(filmTicketBooking.getTextViewByID("com.VCB:id/tvRoomName"), roomName);
 	}
 	
 	@Test
-	public void TC_19_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_DaDat() {
-		log.info("TC_19_01_Lay mau cua loai ghe Da Dat");
+	public void TC_19_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_KhongChonGheNao() {
+		log.info("TC_19_01_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText("Thanh toán");
+		
+		log.info("TC_19_02_Kiem tra Thong bao");
+		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Quý khách vui lòng chọn ghế");
+		
+		log.info("TC_19_03_Dong Thong bao");
+		filmTicketBooking.clickToTextViewByText("Đồng ý");
+		
+	}
+	
+	@Test
+	public void TC_20_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_BoTrongGheOGiua() {
+		log.info("TC_20_01_Chon ghe bo trong ghe o giua");
+		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat("A");
+		
+		log.info("TC_20_02_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText("Thanh toán");
+		
+		log.info("TC_20_03_Kiem tra Thong bao");
+		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Quý khách không thể bỏ trống ghế ở giữa. Vui lòng chọn lại.");
+		
+		log.info("TC_20_04_Dong Thong bao");
+		filmTicketBooking.clickToTextViewByText("Đồng ý");
+		
+		log.info("TC_20_05_Bo ghe da chon");
+		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat("A");
+		
+	}
+	
+	@Test
+	public void TC_21_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_BoTrongGheNgoaiCung() {
+		log.info("TC_21_01_Chon ghe bo trong ghe o giua");
+		filmTicketBooking.chooseSeatsByLineEmptyLastSeat("A");
+		
+		log.info("TC_21_02_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText("Thanh toán");
+		
+		log.info("TC_21_03_Kiem tra Thong bao");
+		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Quý khách không thể bỏ trống ghế ngoài cùng bên phải hoặc bên trái, vui lòng chọn lại.");
+		
+		log.info("TC_21_04_Dong Thong bao");
+		filmTicketBooking.clickToTextViewByText("Đồng ý");
+		
+		log.info("TC_21_05_Nhan nut Back");
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
+		
+		log.info("TC_21_06_Nhan chon gio chieu");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
+		
+	}
+	
+	@Test
+	public void TC_22_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_ChonToiDaSoGhe() {
+		log.info("TC_10_01_Lay tong tien luc dau");
+		String beforePrice = filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince");
+		
+		log.info("TC_22_02_Click chon cho ngoi loai ghe Thuong");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
+		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
+		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(10, colorOfSeat, checkColor));
+		
+		log.info("TC_22_03_Lay tong tien luc sau");
+		String afterPrice = filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince");
+		
+		log.info("TC_22_04_Kiem tra tong tien");
+		verifyTrue(!beforePrice.equals(afterPrice));
+		
+		log.info("TC_22_05_Nhan nut Back");
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
+		
+		log.info("TC_22_06_Nhan chon gio chieu");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
+		
+	}
+	
+	@Test
+	public void TC_23_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_DaDat() {
+		log.info("TC_23_01_Lay mau cua loai ghe Da Dat");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đã đặt");
 		
-		log.info("TC_19_03_Click chon cho ngoi loai ghe Da dat");
+		log.info("TC_23_03_Click chon cho ngoi loai ghe Da dat");
 		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, colorOfSeat));
 		
 	}
 	
 	@Test
-	public void TC_20_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Thuong() {
-		log.info("TC_20_01_Lay mau cua loai ghe Thuong");
+	public void TC_24_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Thuong() {
+		log.info("TC_24_01_Lay mau cua loai ghe Thuong");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
-		String checkColor = "(56,195,228)";
+		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
 		
-		log.info("TC_20_02_Click chon cho ngoi loai ghe Thuong");
+		log.info("TC_24_02_Click chon cho ngoi loai ghe Thuong");
 		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
 		
 	}
 	
 	@Test
-	public void TC_21_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_DaChon() {
-		log.info("TC_21_01_Lay mau cua loai ghe Da chon");
-		String colorOfSeat = "(56,195,228)";
+	public void TC_25_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_DaChon() {
+		log.info("TC_25_01_Lay mau cua loai ghe Da chon");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
 		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
 		
-		log.info("TC_21_02_Click chon cho ngoi loai ghe Da chon");
+		log.info("TC_25_02_Click chon cho ngoi loai ghe Da chon");
 		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
 		
 	}
 	
 	@Test
-	public void TC_22_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Vip() {
-		log.info("TC_22_01_Lay mau cua loai ghe Vip");
+	public void TC_26_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Vip() {
+		log.info("TC_26_01_Lay mau cua loai ghe Vip");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Vip");
-		String checkColor = "(56,195,228)";
+		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
 
-		log.info("TC_22_02_Click chon cho ngoi loai ghe Vip");
+		log.info("TC_26_02_Click chon cho ngoi loai ghe Vip");
 		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
 
 	}
 	
 	@Test
-	public void TC_23_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Deluxe() {
-		log.info("TC_23_01_Lay mau cua loai ghe Deluxe");
+	public void TC_27_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Deluxe() {
+		log.info("TC_27_01_Lay mau cua loai ghe Deluxe");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Deluxe");
-		String checkColor = "(56,195,228)";
+		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
 
-		log.info("TC_23_02_Click chon cho ngoi loai ghe Deluxe");
+		log.info("TC_27_02_Click chon cho ngoi loai ghe Deluxe");
 		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
 		
 	}
 	
 	@Test
-	public void TC_24_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Couple() {
-		log.info("TC_24_01_Lay mau cua loai ghe Couple");
+	public void TC_28_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_Couple() {
+		log.info("TC_28_01_Lay mau cua loai ghe Couple");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Couple");
-		String checkColor = "(56,195,228)";
+		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
 
-		log.info("TC_24_02_Click chon cho ngoi loai ghe Couple");
+		log.info("TC_28_02_Click chon cho ngoi loai ghe Couple");
 		verifyTrue(filmTicketBooking.chooseSeatsAndCheckColorAfterChoose(2, colorOfSeat, checkColor));
 		
 	}

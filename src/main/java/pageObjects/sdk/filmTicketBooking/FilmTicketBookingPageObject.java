@@ -1,8 +1,8 @@
 package pageObjects.sdk.filmTicketBooking;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -219,7 +218,7 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 	
 	public void swipeToTheEndDate(int numberOfSwipe) {
 		while (numberOfSwipe > 0) {
-			horizontalSwipeByPercentage(0.9, 0.1, 0.19);
+			horizontalSwipeByPercentage(0.9, 0.1, 0.18);
 			numberOfSwipe--;
 		}
 		
@@ -761,6 +760,10 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		
 	}
 	
+	public int getRGBColor(Color c) {
+		return c.getRGB();
+	}
+	
 	public String getColorOfElement(String locator, String... dynamicValue) {
 		String colorOfElement = "";
 		locator = String.format(locator, (Object[]) dynamicValue);
@@ -776,7 +779,7 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		        int height = bufferedImage.getHeight();
 		        int width = bufferedImage.getWidth();
 		        int x= width/2;
-		        int y = height/2;
+		        int y = height/4;
 		       	int RGBA = bufferedImage.getRGB(x, y);
 		        int red = (RGBA >> 16) & 255;
 		        int green = (RGBA >> 8) & 255;
@@ -807,7 +810,7 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 				
 		        int height = bufferedImage.getHeight();
 		        int width = bufferedImage.getWidth();
-		        int y = height/2;
+		        int y = height/4;
 		        
 		        for (int x = 0; x < width; x++) {
 		        	int RGBA = bufferedImage.getRGB(x, y);
@@ -832,8 +835,8 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 	
 	public boolean chooseSeatsAndCheckColorAfterChoose(int numberOfSeats, String colorOfSeat, String checkColor) {
 		boolean result = true;
-		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
 		if (status) {
 			List<AndroidElement> elements = driver.findElements(By.xpath(locator));
 			for (AndroidElement element : elements) {
@@ -845,7 +848,7 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 					int height = bufferedImage.getHeight();
 			        int width = bufferedImage.getWidth();
 			        int x= width/2;
-			        int y = height/2;
+			        int y = height/4;
 			       	int RGBA = bufferedImage.getRGB(x, y);
 			        int red = (RGBA >> 16) & 255;
 			        int green = (RGBA >> 8) & 255;
@@ -860,7 +863,7 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 						height = bufferedImage.getHeight();
 				        width = bufferedImage.getWidth();
 				        x= width/2;
-				        y = height/2;
+				        y = height/4;
 				       	RGBA = bufferedImage.getRGB(x, y);
 				        red = (RGBA >> 16) & 255;
 				        green = (RGBA >> 8) & 255;
@@ -891,10 +894,88 @@ public class FilmTicketBookingPageObject extends AbstractPage{
 		
 	}
 	
+	public void chooseMaxSeats(List<SeatType> listSeatType) {
+		for (SeatType seat : listSeatType) {
+			String type = seat.name;
+			String colorOfSeat = "";
+			int numberOfSeats = Integer.parseInt(seat.number);
+			
+			if(type.contains("Standard") || type.contains("Thường")) {
+				colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
+			}
+			
+			else if(type.contains("VIP") || type.contains("Vip")) {
+				colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Vip");
+			}
+			
+			else if(type.contains("Couple")) {
+				colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Couple");
+			}
+			
+			String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+			boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+			if (status) {
+				List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+				for (AndroidElement element : elements) {
+					File imageFile  = ((TakesScreenshot)element).getScreenshotAs(OutputType.FILE);
+					try {
+						BufferedImage bufferedImage = ImageIO.read(imageFile);
+						imageFile.delete();
+						
+						int height = bufferedImage.getHeight();
+				        int width = bufferedImage.getWidth();
+				        int x= width/2;
+				        int y = height/4;
+				       	int RGBA = bufferedImage.getRGB(x, y);
+				        int red = (RGBA >> 16) & 255;
+				        int green = (RGBA >> 8) & 255;
+				        int blue = RGBA & 255;  
+				        String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+				        
+				        if (colorOfSeat.equals(colorOfElement)) {
+				        	element.click();
+				        	numberOfSeats --;
+				        }
+				        
+				        if (numberOfSeats <= 0) {
+				        	break;
+				        }
+				       
+					}
+					catch (Exception e) {
+						
+					}
+				}
+				
+			}
+		}
+	}
+	
+	public void chooseSeatsByLineEmptyLastSeat(String line) {
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
+		if (status) {
+			List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+			int count = elements.size();
+			elements.get(count - 2).click();
+		}
+	}
+	
+	public void chooseSeatsByLineEmptyBetweenSeat(String line) {
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
+		if (status) {
+			List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+			int count = elements.size();
+			elements.get(count - 3).click();
+			elements.get(count - 5).click();
+		}
+	}
+	
 	public int getNumberSeatsByColor(String colorOfSeat) {
 		int numberOfSeats = 0;
-		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSeat");
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
 		if (status) {
 			List<AndroidElement> elements = driver.findElements(By.xpath(locator));
 			for (AndroidElement element : elements) {
