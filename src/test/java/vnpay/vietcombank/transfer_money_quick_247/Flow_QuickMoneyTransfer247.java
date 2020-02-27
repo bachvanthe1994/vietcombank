@@ -105,8 +105,6 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		log.info("TC_01_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
 
-		log.info("TC_01_Step_Get ma giao dich");
-		transactionNumber = transferMoney.getDynamicTextInTextViewLine2(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
@@ -122,9 +120,9 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Verify message thanh cong");
-		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		verifyEquals(transferMoney.getTextInDynamicPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
-		log.info("TC_01_Verify message thanh cong");
+		log.info("TC_01_get thoi gian giao dich thanh cong");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4");
 
 		log.info("TC_01_Step_: Get ma giao dich");
@@ -149,7 +147,8 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_01_Step_:Check so du kha dung sau khi chuyen tien");
-		String amountAfterString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số dư khả dụng");
+		String amountAfterString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số dư khả dụng").replaceAll("\\D+", "");
+	
 		long amountAfter = Long.parseLong(amountAfterString);
 
 		log.info("TC_01_Step_:Check so du kha dung sau khi chuyen tien");
@@ -159,6 +158,9 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 	@Test
 	public void TC_02_BaoCaoGiaoDichChuyenTienNhanh() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
+		
+		log.info("TC_Step_: Click back man hinh home");
+		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");
 
 		log.info("TC_Step_: Click menu header");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
