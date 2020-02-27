@@ -404,7 +404,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 	}
 	
 	@Test
-	public void TC_16_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_Couple() {
+	public void TC_17_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_Couple() {
 		log.info("TC_17_01_Lay mau cua loai ghe Couple");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Couple");
 		String checkColor = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
