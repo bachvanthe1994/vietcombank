@@ -152,7 +152,7 @@ public class DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2 ex
 
 		log.info("TC_05_Step 03: Click Chon Ngay Di va Ngay Ve");
 		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(2), getForWardDay(1));
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(1), getForWardDay(1));
 
 		log.info("TC_05_Step 04: Click xac nhan");
 		airTicket.clickToDynamicButton("Xác nhận");

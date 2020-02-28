@@ -160,9 +160,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -186,9 +184,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -213,9 +209,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -239,9 +233,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -869,9 +861,9 @@ public class AbstractPage {
 // Click vào ngày trong date time picker , tham số truyền vào là text
 	public void clickToDynamicDateInDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicText) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		}
 
 	}
@@ -1336,9 +1328,9 @@ public class AbstractPage {
 	// Kiểm tra text trong nội dung link thông báo
 	public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		}
 		return isDisplayed;
 	}
