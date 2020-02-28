@@ -175,8 +175,10 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh qua số tài khoản");
 
-		log.info("TC_Step_: Chon time");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	/*	log.info("TC_Step_: Chon time");
+		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");*/
+		
+		//Thiếu 1 bước click
 
 		log.info("TC_Step_: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
