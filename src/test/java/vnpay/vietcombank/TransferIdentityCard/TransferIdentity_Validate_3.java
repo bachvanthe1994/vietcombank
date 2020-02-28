@@ -83,7 +83,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_48_Step_11: tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	trasferPage.scrollToText(driver, "Tài khoản nguồn");
+	trasferPage.scrollDownToText(driver, "Tài khoản nguồn");
 
 	log.info("TC_48_Step_14: kiem tra title man hinh");
 	String titleBar = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
@@ -121,7 +121,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	String money = trasferPage.getDynamicTextTitleMoneyUSD(driver, "6");
 	verifyEquals(money, textCheckElement.MONEY_USD);
 
-	trasferPage.scrollToText(driver, "Tiếp tục");
+	trasferPage.scrollDownToButton(driver, "Tiếp tục");
 
 	log.info("TC_48_Step_23: kiem tra title số tiền phí");
 	String transaction_fee = trasferPage.getDynamicTextTitle(driver, "6");
@@ -148,7 +148,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_48_Step_29: tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	trasferPage.scrollToText(driver, "Tài khoản nguồn");
+	trasferPage.scrollDownToText(driver, "Tài khoản nguồn");
 
 	log.info("TC_48_Step_30: kiem tra title man hinh");
 	String titleBarVND = trasferPage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar");
@@ -186,7 +186,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	String moneyVND = trasferPage.getDynamicTextTitle(driver, "6");
 	verifyEquals(moneyVND, textCheckElement.MONEY);
 
-	trasferPage.scrollToText(driver, "Tiếp tục");
+	trasferPage.scrollDownToButton(driver, "Tiếp tục");
 
 	log.info("TC_48_Step_39: kiem tra title số tiền phí");
 	String transaction_feeVND = trasferPage.getDynamicTextTitle(driver, "7");
@@ -340,7 +340,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	log.info("TC_55_Step_11: tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-	trasferPage.scrollToText(driver, "Tiếp tục");
+	trasferPage.scrollDownToButton(driver, "Tiếp tục");
 
 	log.info("TC_55_Step_12: kiem tra title nội dung");
 	trasferPage.isDynamicButtonDisplayed(driver, "Tiếp tục");

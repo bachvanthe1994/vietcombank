@@ -6,7 +6,6 @@ public class CommonPageUIs {
     public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
     public static final String DYNAMIC_BUTTON_ID = "//android.widget.Button[@resource-id=\"%s\"]";
     public static final String DYNAMIC_TEXT = "//android.widget.TextView[@text='%s']";
-    public static final String DYNAMIC_MANUFACTURER = "//android.widget.TextView[@resource-id=\"%s\"]";
     public static final String DYNAMIC_ICON_BACK = "//android.widget.TextView[@text='%s']/preceding::android.widget.ImageView";
     public static final String DYNAMIC_ICON_CHANGE_PLACE_AND_BACK = "//android.widget.ImageView[@resource-id=\"%s\"]";
     public static final String DYNAMIC_TEXT_BY_ID = "//android.widget.TextView[@resource-id=\"%s\"]";
