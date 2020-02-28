@@ -229,6 +229,14 @@ public class TrainTicketPageObject extends AbstractPage {
 		int year = date.getYear();
 		return "THÁNG" + " " + month + " " + year;
 	}
+	
+	public String getMonthAndYearPlusFORMAT(long days) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.plusDays(days);
+		int month = date.getMonthValue();
+		int year = date.getYear();
+		return "T." + month + " " + year;
+	}
 
 	// Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkText(String dynamicTextValue) {
@@ -427,7 +435,9 @@ public class TrainTicketPageObject extends AbstractPage {
 	// Lấy text ngày đặt vé
 	public String getTextInDynamicDateTicket(String... dynamicTextValue) {
 		String text = null;
+		
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		if (status = true) {
 			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		}
