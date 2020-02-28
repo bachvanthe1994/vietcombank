@@ -54,7 +54,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.TO);
 
 		log.info("TC_02_Step_6: kiểm tra hiển thị icon thay đổi điểm đi điểm đến");
-		vehicalTicket.isDynamicIconChangePlaceDisplayed("com.VCB:id/ivround");
+		vehicalTicket.isDynamicIconChangePlaceAndBackAndFinndDisplayed("com.VCB:id/ivround");
 
 		log.info("TC_02_Step_7: kiểm tra hiển thị thơi gian khởi hành");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");

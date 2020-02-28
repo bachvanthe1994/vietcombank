@@ -35,14 +35,29 @@ public class VehicalTicket_1 extends Base {
 
     @Test
     public void TC_01_KiemTraLuongDatVeThanhCong() throws InterruptedException {
-	log.info("TC_01_Step_1: Chọn và nhập điểm đi");
+	log.info("TC_63_Step_1: Chọn và nhập điểm đi");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.PLACE_3);
+	vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
-	log.info("TC_01_Step_1: Chọn và nhập điểm đến");
+	log.info("TC_63_Step_2: Chọn và nhập điểm đến");
 	vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_2, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
+
+	vehicalTicket.clickToDynamicTomorrowAndFilterTrip("com.VCB:id/lnNextday");
+
+	log.info("TC_63_Step_3: click button tìm kiếm chuyến đi");
+	vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
+
+	log.info("TC_63_Step_3: click chọn ghê");
+	vehicalTicket.clickToDynamicText("Chọn ghế");
+
+	log.info("TC_63_Step_3: chọn ghế");
+	vehicalTicket.clickBookingChair("0", "0");
+
+	log.info("TC_63_Step_3: click chọn ghê");
+//	vehicalTicket.clickToDynamicText("Đặt chỗ");
     }
 
 }
