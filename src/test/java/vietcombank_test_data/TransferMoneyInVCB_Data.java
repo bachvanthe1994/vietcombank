@@ -11,7 +11,7 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String DIFFERENT_OWNER_NAME = "PHAN THI THU THUY";
 
-		public static final String RECEIVER_NAME = "NGO TRI NAM";
+		public static final String RECEIVER_NAME = "NGUYEN NGOC TOAN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
 		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 540,120 VND", "200 EUR ~ 5,401,200 VND");

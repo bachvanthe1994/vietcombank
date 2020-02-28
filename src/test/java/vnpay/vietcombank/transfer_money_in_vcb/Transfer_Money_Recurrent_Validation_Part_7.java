@@ -34,6 +34,9 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
+		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_01_Click Chuyen tien trong ngan hang");
 		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");

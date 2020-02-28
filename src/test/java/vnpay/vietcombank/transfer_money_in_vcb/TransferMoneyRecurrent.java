@@ -12,7 +12,6 @@ import commons.PageFactoryManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import model.TransferInVCBRecurrent;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
@@ -28,7 +27,6 @@ public class TransferMoneyRecurrent extends Base {
 	private LogInPageObject login;
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private TransferMoneyStatusPageObject transferStatus;
-	private HomePageObject homePage;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	private String transferTime;
 	String expectAvailableBalance;
@@ -52,8 +50,9 @@ public class TransferMoneyRecurrent extends Base {
 
 	@Test
 	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
 		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_2_Chon phuong thuc chuyen tien");
@@ -88,6 +87,7 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_01_9_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_9_1_Kiem tra hinh thuc chuyen tien");
+		transferRecurrent.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Hình thức chuyển tiền");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
 
 		log.info("TC_01_9_2_Kiem tra tai khoan nguon");
@@ -104,7 +104,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_01_9_6_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info.fee);
+		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER + " VND");
 
 		log.info("TC_01_9_7_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
@@ -165,7 +165,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_03_2: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_03_3: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -284,7 +284,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_05_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		log.info("TC_05_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_05_2_Chon phuong thuc chuyen tien");
@@ -318,6 +318,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_9_Kiem tra man hinh xac nhan thong tin");
+		transferRecurrent.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Hình thức chuyển tiền");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
 
 		log.info("TC_05_9_1_Kiem tra tai khoan nguon");
@@ -333,7 +334,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_05_9_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info1.fee);
 
 		log.info("TC_05_9_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
@@ -395,7 +395,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_07_02: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_07_03: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -514,7 +514,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_09_ChuyenTien_VND_DinhKy_1Thang_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhau() {
 		log.info("TC_09_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_09_02_Chon phuong thuc chuyen tien");
@@ -550,6 +550,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_09_09_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_09_09_1_Kiem tra hinh thuc chuyen tien");
+		transferRecurrent.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Hình thức chuyển tiền");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
 
 		log.info("TC_09_09_2_Kiem tra tai khoan nguon");
@@ -563,7 +564,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_09_09_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info2.fee);
 
 		log.info("TC_09_9_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
@@ -625,7 +625,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_11_02: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_11_03: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -744,7 +744,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_13_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
 		log.info("TC_13_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_13_02_Chon phuong thuc chuyen tien");
@@ -779,6 +779,7 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_13_09_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_13_09_1_Kiem tra hinh thuc chuyen tien");
+		transferRecurrent.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Hình thức chuyển tiền");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
 
 		log.info("TC_13_09_2_Kiem tra tai khoan nguon");
@@ -792,7 +793,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_13_09_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info3.fee);
 
 		log.info("TC_13_09_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
@@ -854,7 +854,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_15_02: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_15_03: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -973,7 +973,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_17_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		log.info("TC_17_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_17_2_Chon phuong thuc chuyen tien");
@@ -1007,6 +1007,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_17_9_Kiem tra man hinh xac nhan thong tin");
+		transferRecurrent.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Hình thức chuyển tiền");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
 
 		log.info("TC_17_9_1_Kiem tra tai khoan nguon");
@@ -1022,7 +1023,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_17_9_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info4.fee);
 
 		log.info("TC_17_9_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.note);
@@ -1084,7 +1084,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_19_02: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_19_03: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -1203,7 +1203,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_21_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		log.info("TC_21_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_21_02_Chon phuong thuc chuyen tien");
@@ -1237,6 +1237,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_21_09_Kiem tra man hinh xac nhan thong tin");
+		transferRecurrent.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Hình thức chuyển tiền");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
 
 		log.info("TC_21_09_1_Kiem tra tai khoan nguon");
@@ -1252,7 +1253,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_21_09_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info5.fee);
 
 		log.info("TC_21_09_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.note);
@@ -1314,7 +1314,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_23_02: Click Trang thai lenh chuyen tien");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_23_03: Chon loai giao dich");
 		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
