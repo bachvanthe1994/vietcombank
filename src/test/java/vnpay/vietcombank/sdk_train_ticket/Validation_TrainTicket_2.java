@@ -185,7 +185,7 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_08_Chon ngay di la ngay hien tai - 1");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), backDay);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearMinusDay(1), backDay);
 
 		String toastMessage = trainTicket.getToastMessage(driver);
 
@@ -215,7 +215,7 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_09_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay) + "");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(4), nextDay);
 
 		log.info("TC_09_Ngay ve se bi remove, se thay bang title Chon ngay");
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
@@ -231,7 +231,7 @@ public class Validation_TrainTicket_2 extends Base {
 		String backDay = getBackWardDay(1);
 
 		log.info("TC_10_Chon ngay ve la ngay hien tai - 1");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), backDay);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearMinusDay(1), backDay);
 
 		String toastMessage = trainTicket.getToastMessage(driver);
 		log.info("TC_10_Hien thi message");
@@ -262,16 +262,16 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_11_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay5) + "");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(5), nextDay5);
 
 		log.info("TC_11_Chon ngay ve nho hon ngay di, chuong trinh khong chon duoc ngay ve hien thi ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay4) + "");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(4), nextDay4);
 
 		log.info("TC_11_Ngay ve se bi remove, se thay bang title Chon ngay");
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
 
 		log.info("TC_11_Chon ngay ve  = ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), Integer.parseInt(nextDay4) + "");
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(4), nextDay4);
 
 		log.info("TC_11_Check hien thi button xac nhan");
 		verifyTrue(trainTicket.isDynamicButtonDisplayed("Tiếp tục"));
@@ -301,10 +301,10 @@ public class Validation_TrainTicket_2 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_13_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay1);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(1), nextDay1);
 
 		log.info("TC_13_Chon ngay ve");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay2);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(2), nextDay2);
 
 		log.info("TC_13_Verify gia tri ngay di");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay1), nextDay1);
@@ -336,7 +336,7 @@ public class Validation_TrainTicket_2 extends Base {
 		LocalDate date4 = now.plusDays(4);
 
 		log.info("TC_14_Chon ngay di");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay3);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(3), nextDay3);
 
 		log.info("TC_14_Verify gia tri ngay di");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay3), nextDay3);
@@ -351,13 +351,13 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
 
 		log.info("TC_14_Chon ngay ve nho hon ngay di vua chon");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay2);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(2), nextDay2);
 
 		log.info("TC_14_Ngay ve se bi remove, se thay bang title Chon ngay");
 		verifyEquals(trainTicket.getDynamicTitleSelectDate("Ngày về"), "Chọn ngày");
 
 		log.info("TC_14_Chon ngay ve lon hon ngay hien tai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getCurentMonthAndYear(), nextDay4);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(4), nextDay4);
 
 		log.info("TC_14_Verify gia tri ngay ve");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getCurentMonthAndYear(), nextDay4), nextDay4);
@@ -378,7 +378,7 @@ public class Validation_TrainTicket_2 extends Base {
 		verifyTrue(trainTicket.isDynamicTextNumberCustomerUnDisplayed("Hành khách"));
 	}
 
-	 @Test
+	@Test
 	public void TC_16_BoTrongKhongChonSoLuongHanhKhach() {
 		log.info("TC_16_Click chon loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -660,7 +660,7 @@ public class Validation_TrainTicket_2 extends Base {
 
 		log.info("TC_22_Hien thi so luong nguoi la 4");
 		verifyEquals(trainTicket.getTextCustomerNumber("Người cao tuổi", "com.VCB:id/tvQuantity"), "4");
-		
+
 		log.info("TC_22_Click dong man hinh hanh khach");
 		trainTicket.clickDynamicRadioSelectType("Số lượng hành khách");
 	}

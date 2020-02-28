@@ -5,6 +5,7 @@ public class TrainTicket_Data {
 	public static class textDefault {
 		public static final String TITLE_START ="Ga khởi hành" ;
 		public static final String TITLE_END ="Ga đến" ;
+		public static final String  TRAIN_NAME [] = {"Tàu SE35","Tàu TN1", "Tàu SE1" , "Tàu NA1" };
 	}
 	
 	public static class message {
@@ -27,7 +28,7 @@ public class TrainTicket_Data {
 		public static final String POINT_EDIT_SEARCH ="Hà Nội";
 		public static final String POINT_EDIT_SEARCH_END ="Vinh";
 		public static final String POINT_SERACH_THE_SAME ="hai";
-	
+		public static final String POINT_EDIT_CHANGE ="Đà Nẵng";
 	}
 	}
 	
