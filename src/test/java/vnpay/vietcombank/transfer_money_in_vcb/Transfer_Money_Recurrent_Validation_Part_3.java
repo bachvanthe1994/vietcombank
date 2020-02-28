@@ -294,7 +294,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
 
 		log.info("TC_14_03_Kiem tra Danh sach se kich chon doi voi gia tri duoc chon");
-		verifyTrue(transferRecurrent.isDynamicImageViewByTextView(driver, "Người chuyển trả"));
+		verifyTrue(transferRecurrent.isDynamicImageViewByTextViewdDisplayed(driver, "Người chuyển trả"));
 
 	}
 
