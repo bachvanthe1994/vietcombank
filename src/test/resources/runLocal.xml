@@ -44,12 +44,14 @@
 <!-- 			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_4" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_7" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_7" /> -->
+			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" />
+			
 		</classes>
 	</test>
 
