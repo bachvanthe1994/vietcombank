@@ -25,47 +25,31 @@ public class SetupContactPageObject extends AbstractPage {
 		while (countList > 0) {
 
 			AndroidElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
-			contact.click();			
-			clickToDynamicText(driver, "Xóa");
-			
+			contact.click();
+			clickToDynamicButtonLinkOrLinkText(driver, "Xóa");
+
 			clickToDynamicButton(driver, "Đồng ý");
-			
+
 			clickToDynamicButton(driver, "Đóng");
 			countList--;
 
 		}
 	}
 
-	public void addContactReceiver(String type,String nameBank, String name, String account) {
-
-		clickToDynamicText(driver, "Thêm mới");
-
-		clickToDynamicText(driver, "Chuyển tiền trong Vietcombank");
+	public void addContactReceiver(String type, String nameBank, String name, String account) {
+		clickToDynamicButtonLinkOrLinkText(driver, "Thêm mới");
+		clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong Vietcombank");
 
 		clickToDynamicButtonLinkOrLinkText(driver, type);
 
 		clickToDynamicButtonLinkOrLinkText(driver, nameBank);
 
-		AndroidElement name1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_NAME));
-		name1.sendKeys(name);
-
-		AndroidElement account1 = driver.findElement(By.xpath(SetupContactPageUIs.INPUT_ACCOUNT));
-		account1.sendKeys(account);
+		inputToDynamicInputBox(driver, name, "Tên gợi nhớ");
+		inputToDynamicInputBox(driver, account, "Số tài khoản");
 
 		clickToDynamicButton(driver, "Hoàn thành");
 
 		clickToDynamicButton(driver, "Đóng");
 	}
 
-
-
-public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	waitForElementVisible(driver, SetupContactPageUIs.CLICK_BUTTON, dynamicTextValue);
-	clickToElement(driver, SetupContactPageUIs.CLICK_BUTTON, dynamicTextValue);
-}
-
-public void clickToDynamicText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-	waitForElementVisible(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
-	clickToElement(driver, SetupContactPageUIs.CLICK_TEXT, dynamicTextValue);
-}
 }

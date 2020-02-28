@@ -447,7 +447,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER, "Số tiền");
 
 		log.info("TC_16_Step_05: Click dong suggest list");
-		transferInVCB.clickToDynamicBottomMenuOrCloseIcon(driver, "com.VCB:id/ivClearInput");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivClearInput");
 
 		log.info("TC_16_Step_06: Kiem tra suggest list khong hien thi");
 		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
