@@ -36,6 +36,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienDinhKy_KiemTraNhomThongTinTanSuat() {
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
 		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");

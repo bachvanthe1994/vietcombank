@@ -43,6 +43,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienDinhKy_KiemTraHienThiManHinh() {
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
 		defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
 
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
