@@ -175,7 +175,7 @@ public class InternationalAirTicketBooking_Validation_Destination_Arriver_Flight
 	public void TC_03_KiemTraDanhSachDiemKhoiHanh() {
 
 		log.info("TC_03_Step 00: Chon mot chieu ");
-		airTicket.scrollUpToTextView("Một chiều");
+		airTicket.scrollUpToTextView("Khởi hành");
 		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
 
 		log.info("TC-03_Step 01: Click Khoi Hanh ");
