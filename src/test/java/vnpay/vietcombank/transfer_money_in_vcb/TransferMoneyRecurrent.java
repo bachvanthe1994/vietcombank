@@ -104,7 +104,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_01_9_6_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info.fee);
+		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER + " VND");
 
 		log.info("TC_01_9_7_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
@@ -334,7 +334,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_05_9_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info1.fee);
 
 		log.info("TC_05_9_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
@@ -565,7 +564,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_09_09_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info2.fee);
 
 		log.info("TC_09_9_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
@@ -795,7 +793,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_13_09_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info3.fee);
 
 		log.info("TC_13_09_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
@@ -1026,7 +1023,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_17_9_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info4.fee);
 
 		log.info("TC_17_9_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.note);
@@ -1257,7 +1253,6 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
 
 		log.info("TC_21_09_5_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), info5.fee);
 
 		log.info("TC_21_09_6_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.note);

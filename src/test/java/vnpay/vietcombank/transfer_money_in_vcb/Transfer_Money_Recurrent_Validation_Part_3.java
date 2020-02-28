@@ -42,7 +42,9 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienDinhKy_KiemTraGiaTriNgayKetThuc_SauKhiNhapChonTanSuat_BangNgay() {
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
+		
 		String endDate = getForwardDate(1 + Integer.parseInt(TransferMoneyInVCB_Data.InputDataInVCB.NUMBER_DAY_FREQUENCY));
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
 		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");

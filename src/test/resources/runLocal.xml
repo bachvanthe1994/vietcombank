@@ -18,7 +18,7 @@
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0399764702" />
+		<parameter name="phone" value="0981790798" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
@@ -41,7 +41,15 @@
 <!-- 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" /> -->
 
 <!-- 			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_3" /> -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
+<!-- 			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_4" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_7" />
 		</classes>
 	</test>
 
