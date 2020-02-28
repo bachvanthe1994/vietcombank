@@ -20,7 +20,7 @@ import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
-public class Validation_FilmTicketBooking_Part_3 extends Base {
+public class Validation_FilmTicketBooking_Part_7 extends Base {
 	AndroidDriver<AndroidElement> driver;
 	private LogInPageObject login;
 	private FilmTicketBookingPageObject filmTicketBooking;
@@ -35,49 +35,60 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-
-		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
 		
+		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+
 		log.info("TC_00_01_Click Dat ve xem phim");
 		filmTicketBooking.clickToDynamicTextOrButtonLink("Đặt vé xem phim");
 
 		log.info("TC_00_02_Click nut Dong y");
 		filmTicketBooking.clickToDynamicButton("Đồng ý");
 
-		log.info("TC_00_03_Click chon Tinh thanh");
-		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
-
-		log.info("TC_00_04_Tim kiem thanh pho");
-		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");;
-
-		log.info("TC_00_05_Click chon thanh pho");
-		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
+		log.info("TC_00_03_Click chon Tab Phim");
+		filmTicketBooking.clickToTextViewByText("Phim");
+		
+		log.info("TC_00_04_Nhan nut Dat ve");
+		filmTicketBooking.clickToDynamicTextView("Đặt vé");
+		
 	}
 	
 	@Test
-	public void TC_01_ChonTheoRap_ChonSuatChieu_ChonSuatChieuThanhCongVoiRap_MegaGS() {
-		log.info("TC_01_02_Click chon cum rap Mega GS");
+	public void TC_01_ChonTheoPhim_ChonSuatChieu_ChonSuatChieuThanhCongVoiRap_MegaGS() {
+		log.info("TC_01_01_Click chon Tinh thanh");
+		filmTicketBooking.clickToDynamicTextView("Đặt vé");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
+		
+		log.info("TC_01_02_Tim kiem thanh pho");
+		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");;
+
+		log.info("TC_01_03_Click chon thanh pho");
+		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
+		
+		log.info("TC_01_04_Click chon cum rap Mega GS");
 		filmTicketBooking.clickToDynamicTextView("Mega GS");
 		
-		log.info("TC_01_02_Click chon rap phim");
+		log.info("TC_01_05_Click chon rap phim");
 		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");
 		cinemaName = listCinema.get(0);
 		filmTicketBooking.clickToDynamicTextView(cinemaName);
 		
-		log.info("TC_01_03_Click xem chi tiet phim");
+		log.info("TC_01_06_Click xem chi tiet phim");
 		filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		
-		log.info("TC_01_04_Nhan nut Dat ve");
-		filmTicketBooking.clickToTextViewByText("Đặt vé");
+		log.info("TC_01_07_Nhan nut Dat ve");
+		filmTicketBooking.clickToDynamicTextView("Đặt vé");
 		
-		log.info("TC_01_05_Nhan chon gio chieu");
+		log.info("TC_01_08_Nhan chon gio chieu");
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 		
+		log.info("TC_01_09_Kiem tra man hinh chon so luong ve");
+		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Chọn số lượng vé"));
+		
 	}
-
+	
 	@Test
-	public void TC_02_ChonTheoRap_ChonSoLuongVe_KiemTraManHinh_ThongTinChiTiet() {
+	public void TC_02_ChonTheoPhim_ChonSoLuongVe_KiemTraManHinh_ThongTinChiTiet() {
 		log.info("TC_02_01_Kiem tra man hinh chon so luong ve");
 		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Chọn số lượng vé"));
 		
@@ -117,7 +128,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	}
 	
 	@Test
-	public void TC_03_ChonTheoRap_ChonSoLuongVe_KiemTraNutBack() {
+	public void TC_03_ChonTheoPhim_ChonSoLuongVe_KiemTraNutBack() {
 		log.info("TC_03_01_Nhan nut Back");
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 		
@@ -127,7 +138,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	}
 	
 	@Test
-	public void TC_04_ChonTheoRap_ChonSoLuongVe_ChonSoVeBang0() {
+	public void TC_04_ChonTheoPhim_ChonSoLuongVe_ChonSoVeBang0() {
 		log.info("TC_04_01_Nhan chon gio chieu");
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 		
@@ -149,7 +160,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	}
 	
 	@Test
-	public void TC_05_ChonTheoRap_ChonSoLuongVe_ChoPhepThayDoiSoLuongVe() {
+	public void TC_05_ChonTheoPhim_ChonSoLuongVe_ChoPhepThayDoiSoLuongVe() {
 		log.info("TC_05_01_Nhan nut Back");
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 		
@@ -164,7 +175,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	
 	String roomName = "";
 	@Test
-	public void TC_06_ChonTheoRap_ChonSoLuongVe_ChonSoVeToiDa() {
+	public void TC_06_ChonTheoPhim_ChonSoLuongVe_ChonSoVeToiDa() {
 		log.info("TC_06_01_Nhan nut Back");
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 		
@@ -184,19 +195,19 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		log.info("TC_06_06_Kiem tra message thong bao chi cho chon toi da 10 ve 1 lan");
 		verifyEquals(filmTicketBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), FilmTicketBooking_Data.MAX_10_SEATS_PER_1_MESSAGE);
 		
-		log.info("TC_06_07_Click Dong y");
+		log.info("TC_05_07_Click Dong y");
 		filmTicketBooking.clickToDynamicTextView("Đồng ý");
 		
-		log.info("TC_06_08_Nhan nut Back");
+		log.info("TC_05_08_Nhan nut Back");
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 		
-		log.info("TC_06_09_Nhan chon gio chieu");
+		log.info("TC_05_09_Nhan chon gio chieu");
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 		
-		log.info("TC_06_10_Lay ten phong");
+		log.info("TC_05_10_Lay ten phong");
 		roomName = filmTicketBooking.getTextViewByID("com.VCB:id/tvRoomName");
 		
-		log.info("TC_06_11_Click chon 2 ghe");
+		log.info("TC_05_11_Click chon 2 ghe");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
 		
@@ -231,7 +242,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	}
 	
 	@Test
-	public void TC_09_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_BoTrongGheOGiua() {
+	public void TC_08_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_BoTrongGheOGiua() {
 		log.info("TC_09_01_Chon ghe bo trong ghe o giua");
 		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat("A");
 		

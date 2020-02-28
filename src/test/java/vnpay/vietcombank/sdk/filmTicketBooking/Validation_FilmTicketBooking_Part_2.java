@@ -282,49 +282,6 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 		
 	}
 	
-	@Test
-	public void TC_15_ChonTheoRap_ChonSuatChieu_ChonSuatChieuThanhCongVoiRapBHD_GALAXY_MegaGS_DDC() {
-		log.info("TC_15_01_Nhan nut Back");
-		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
-		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
-		
-		log.info("TC_15_02_Click chon Tinh thanh");
-		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
-		
-		log.info("TC_15_03_Tim kiem thanh pho");
-		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");;
-
-		log.info("TC_15_04_Click chon thanh pho");
-		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
-		
-		log.info("TC_15_05_Click chon cum rap Mega GS");
-		filmTicketBooking.clickToDynamicTextView("Mega GS");
-		
-		log.info("TC_15_06_Click chon rap phim");
-		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");
-		cinemaName = listCinema.get(0);
-		filmTicketBooking.clickToDynamicTextView(cinemaName);
-		
-		log.info("TC_15_07_Click xem chi tiet phim");
-		filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
-		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
-		
-		log.info("TC_15_08_Nhan nut Dat ve");
-		filmTicketBooking.clickToTextViewByText("Đặt vé");
-		
-		log.info("TC_15_09_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
-		
-		log.info("TC_15_10_Kiem tra man hinh chon so luong ve");
-		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Chọn số lượng vé"));
-		
-	}
-	
-	@Test
-	public void TC_16_ChonTheoRap_ChonSuatChieu_ChonSuatChieuThanhCongVoiRapCineStar() {
-		
-	}
-	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
