@@ -29,6 +29,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
@@ -83,7 +84,7 @@ public class Base {
 		driver2.quit();
 	}
 
-//    @AfterSuite
+	@AfterSuite
 	public void sendEmail() throws IOException {
 		String SMTP_SERVER = "smtp.gmail.com";
 		String PASSWORD = "Abc12345@";
