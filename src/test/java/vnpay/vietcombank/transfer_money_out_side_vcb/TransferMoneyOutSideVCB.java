@@ -61,9 +61,9 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác 123");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.scrollIDown(driver, info.sourceAccount);
+		transferMoneyOutSide.scrollDownToText(driver, info.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		surplus = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -111,7 +111,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
 
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollIDown(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
@@ -245,9 +245,9 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.scrollIDown(driver, info1.sourceAccount);
+		transferMoneyOutSide.scrollDownToText(driver, info1.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		surplus = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -296,7 +296,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
 
-		transferMoneyOutSide.scrollIDown(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
@@ -429,9 +429,9 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_05_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.scrollIDown(driver, info2.sourceAccount);
+		transferMoneyOutSide.scrollDownToText(driver, info2.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
 		surplusCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -487,7 +487,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferFeeCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 		
 		log.info("TC_05_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollIDown(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
@@ -622,7 +622,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_07_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
@@ -813,7 +813,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_09_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 
@@ -996,7 +996,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_11_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 
@@ -1179,7 +1179,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_13_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.sourceAccount);
 
@@ -1371,7 +1371,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_15_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.sourceAccount);
 
