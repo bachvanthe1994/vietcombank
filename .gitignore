@@ -2,3 +2,4 @@
 /test-output/
 /Vietcombank.txt
 /ReportNGScreenShots/
+src/test/java/vnpay/vietcombank/login/Test.java

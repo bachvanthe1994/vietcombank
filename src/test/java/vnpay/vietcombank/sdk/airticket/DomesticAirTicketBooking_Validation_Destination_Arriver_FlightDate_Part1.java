@@ -53,7 +53,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_01_KiemTraGiaoDienManHinhDatVeMayBayNoiDiaMotChieu() {
 		log.info("TC_01_Step 01: Kiem tra title dat ve may bay noi dia");
 		verifyTrue(airTicket.isDynamicTextDisplayed("Đặt vé máy bay nội địa"));
@@ -142,7 +142,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_KiemTraGiaoDienManHinhDatVeMayBayNoiDiaHaiChieu() {
 
 		log.info("TC_02_Step 00: Chon mot chieu ");
@@ -232,7 +232,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 		verifyTrue(airTicket.isDynamicCheckBoxByLabelChecked("Jetstar Pacific"));
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KiemTraDanhSachDiemKhoiHanh() {
 
 		log.info("TC_03_Step 00: Chon mot chieu ");
@@ -253,7 +253,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraChonDiemKhoiHanh() {
 
 		log.info("TC_04_Step 01: Chon Ha Noi ");
@@ -275,7 +275,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
 	}
 
-	@Test
+//	@Test
 	public void TC_05_KiemTraKhongChonDiemKhoiHanh() {
 		log.info("TC_05_Step 01: Click Dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -297,7 +297,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_06_KiemTrChonDiemDenKhiKhongChonDiemKhoiHanh() {
 		log.info("TC_06_Step 01: Click Dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -316,7 +316,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_07_KiemTraDanhSachDiemDen() {
 		log.info("TC_07_Step 01: Click Khoi hanh ");
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
@@ -338,7 +338,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_08_KiemTraChonDiemDen() {
 		log.info("TC_08_Step 01: Click TP Ho CHi Minh ");
 		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
@@ -359,7 +359,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
 	}
 
-	@Test
+//	@Test
 	public void TC_09_KiemTraKhongChonDiemDen() {
 		log.info("TC_09_Step 01: Click dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -387,7 +387,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_10_KiemTraKhongChonNgayDi() {
 		log.info("TC_10_Step 01: Click Dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -421,7 +421,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_11_KiemTraGiaoDienManHinhNgayDiVe1Chieu() {
 		log.info("TC_11_Step 01: Click Dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -439,7 +439,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-	@Test
+//	@Test
 	public void TC_12_KiemTraNgayDiNhoHonNgayHienTai() {
 		LocalDate now = LocalDate.now();
 		if (!(now.getDayOfMonth() + "").equals("1")) {
@@ -466,33 +466,46 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 	@Test
 	public void TC_13_KiemTraNgayDiLonHonNgayHienTai11Thang() {
 
-		log.info("TC_13_Step 01: Click Ngay Đi");
-		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
+		log.info("TC_13_Step 02: Lay ngay cuoi cung cua thang");
+		Calendar calendar = Calendar.getInstance();
+		int lastDate = calendar.getActualMaximum(Calendar.DATE);
+		calendar.set(Calendar.DATE, lastDate);
+		int lastDay = calendar.get(Calendar.DAY_OF_MONTH);
 
+		log.info("TC_13_Step 03: Lay Thang cach thang hien tai 11 thang");
 		Calendar date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 11);
 		String next11Month = "THÁNG " + (date.get(Calendar.MONTH) + 1) + " " + date.get(Calendar.YEAR);
 		String nextDay = getForWardDay(1);
 		String next2Days = getForWardDay(2);
 
-		log.info("TC_13_Step 02: Chon  1 ngay truoc ngay hien tai 11 thang");
-		airTicket.clickToDynamicDay(next11Month, nextDay);
+		log.info("TC_13_Step 04: Lay ngay hien tai dang focus");
+		LocalDate now = LocalDate.now();
+		String curentFocusDay = now.getDayOfMonth() + "";
 
-		log.info("TC_13_Step 02: Chon 2 ngay truoc ngay hien tai 11 thang");
-		airTicket.clickToDynamicDay(next11Month, next2Days);
+		if (!curentFocusDay.equals(lastDay + "")) {
 
-		log.info("TC_13_Step 04: Click xac nhan");
-		airTicket.clickToDynamicButton("Xác nhận");
+			log.info("TC_13_Step 01: Click Ngay Đi");
+			airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
 
-		log.info("TC_13_Step 05: Click quay lai");
-		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+			log.info("TC_13_Step 02: Chon  1 ngay truoc ngay hien tai 11 thang");
+			airTicket.clickToDynamicDay(next11Month, nextDay);
 
-		log.info("TC_13_Step 06: Kiem tra text chon ngay hien thi");
-		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày đi", "com.VCB:id/tvValue"), "Chọn ngày");
+			log.info("TC_13_Step 03: Chon 2 ngay truoc ngay hien tai 11 thang");
+			airTicket.clickToDynamicDay(next11Month, next2Days);
 
-		log.info("TC_13_Step 07: Kiem tra text chon ngay hien thi");
-		verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày về", "com.VCB:id/tvValue"), "Chọn ngày");
+			log.info("TC_13_Step 04: Click xac nhan");
+			airTicket.clickToDynamicButton("Xác nhận");
 
+			log.info("TC_13_Step 05: Click quay lai");
+			airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
+
+			log.info("TC_13_Step 06: Kiem tra text chon ngay hien thi");
+			verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày đi", "com.VCB:id/tvValue"), "Chọn ngày");
+
+			log.info("TC_13_Step 07: Kiem tra text chon ngay hien thi");
+			verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày về", "com.VCB:id/tvValue"), "Chọn ngày");
+		}
 	}
 
 	@Test

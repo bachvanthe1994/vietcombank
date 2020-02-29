@@ -430,35 +430,39 @@ public class InternationalAirTicketBooking_Validation_Destination_Arriver_Flight
 	@Test
 	public void TC_13_KiemTraNgayDiLonHonNgayHienTai11Thang() {
 
-		log.info("TC_13_Step 01: Click Ngay Đi");
-		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		log.info("TC_13_Step 09: Lay ngay cuoi cung cua thang");
+		log.info("TC_13_Step 02: Lay ngay cuoi cung cua thang");
 		Calendar calendar = Calendar.getInstance();
 		int lastDate = calendar.getActualMaximum(Calendar.DATE);
 		calendar.set(Calendar.DATE, lastDate);
 		int lastDay = calendar.get(Calendar.DAY_OF_MONTH);
 
+		log.info("TC_13_Step 03: Lay Thang cach thang hien tai 11 thang");
 		Calendar date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 11);
-		String curentFocusDay = date.get(Calendar.DAY_OF_MONTH) + "";
 		String next11Month = "THÁNG " + (date.get(Calendar.MONTH) + 1) + " " + date.get(Calendar.YEAR);
 		String nextDay = getForWardDay(1);
 
-		if (!curentFocusDay.equals(lastDay + "")) {
+		log.info("TC_13_Step 04: Lay ngay hien tai dang focus");
+		LocalDate now = LocalDate.now();
+		String curentFocusDay = now.getDayOfMonth() + "";
 
-			log.info("TC_13_Step 02: Chon  1 ngay truoc ngay hien tai 11 thang");
+		if (!curentFocusDay.equals(lastDay + "")) {
+			log.info("TC_13_Step 01: Click Ngay Đi");
+			airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
+
+			log.info("TC_13_Step 05: Chon  1 ngay truoc ngay hien tai 11 thang");
 			airTicket.clickToDynamicDay(next11Month, nextDay);
 
-			log.info("TC_13_Step 04: Click xac nhan");
+			log.info("TC_13_Step 06: Click xac nhan");
 			airTicket.clickToDynamicButton("Xác nhận");
 
-			log.info("TC_13_Step 05: Click quay lai");
+			log.info("TC_13_Step 07: Click quay lai");
 			airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
 
-			log.info("TC_13_Step 06: Kiem tra text chon ngay hien thi");
+			log.info("TC_13_Step 08: Kiem tra text chon ngay hien thi");
 			verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày đi", "com.VCB:id/tvValue"), "Chọn ngày");
 
-			log.info("TC_13_Step 07: Kiem tra text chon ngay hien thi");
+			log.info("TC_13_Step 09: Kiem tra text chon ngay hien thi");
 			verifyEquals(airTicket.getTextInDynamicDropDownByLabel("Ngày về", "com.VCB:id/tvValue"), "Chọn ngày");
 
 		}
