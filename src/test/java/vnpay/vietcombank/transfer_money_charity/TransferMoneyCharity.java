@@ -127,7 +127,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_01_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info.organization);
 
 		log.info("TC_01_12_3_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
@@ -308,7 +308,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_03_12_1_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info1.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info1.organization);
 
 		log.info("TC_02_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
@@ -666,7 +666,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_07_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info3.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info3.organization);
 
 		log.info("TC_07_12_3_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
