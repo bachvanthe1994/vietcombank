@@ -687,6 +687,11 @@ public class AbstractPage {
 			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
+			
+			if(!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+			
 			return false;
 
 		}
@@ -708,7 +713,11 @@ public class AbstractPage {
 			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
-
+			
+			if(!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+			
 			return false;
 		}
 		return true;
