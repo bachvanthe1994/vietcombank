@@ -9,18 +9,22 @@ public class TransferMoneyInVCB_Data {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngay", "Chuyển tiền ngay", "Chuyển tiền ngày tương lai" };
 		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
 
-		public static final String DIFFERENT_OWNER_NAME = "PHAN THI THU THUY";
+		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
 		public static final String RECEIVER_NAME = "NGUYEN NGOC TOAN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
+
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
-		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 540,120 VND", "200 EUR ~ 5,401,200 VND");
+
 		public static final String VND_MONEY = "20000";
+
+		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 540,120 VND", "200 EUR ~ 5,401,200 VND");
 		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("200,000 VND", "2,000,000 VND", "20,000,000 VND");
 
 		public static final String NOTE = "Test";
-		public static final String TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER = "2,200";
+		public static final String TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER = "1,100";
 		public static final String TRANSFER_PASSWORD_FEE_TO_OTHER_ACCOUNT_OWNER = "2,200";
+
 		public static final String PAYMENT_BY_PASSWORD_FEE = "1,100";
 		public static final String PAYMENT_BY_OTP_FEE = "2,200";
 
@@ -29,9 +33,10 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.05";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
+
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
-		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,140.00 VND";
-		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274.03 VND";
+		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,140 VND";
+		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274 VND";
 		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
 		public static final String NUMBER_DAY_FREQUENCY = "5";
 		public static final String NUMBER_WEEK_FREQUENCY = "2";

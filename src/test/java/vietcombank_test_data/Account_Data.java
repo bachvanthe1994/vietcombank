@@ -5,8 +5,8 @@ public class Account_Data {
 	public static class Valid_Account {
 		public static final String ACCOUNT1 = "0019961175";
 		public static final String LIST_ACCOUNT_FROM[] = { "0121000667333", "0011370124096", "0011140124097", "0011000124085", "0010000123770", "0011000124297", "0010000123771", "0011000123988", "0010000123768", "0011000124095", "0011000124109", "0010000123772", "0011000124883", "0010000123769", "0011000124229" };
-		public static final String DEFAULT_ACCOUNT2 = "0121000667333";
-		public static final String ACCOUNT3 = "0019967190";
+		public static final String ACCOUNT2 = "0121000667333";
+		public static final String DEFAULT_ACCOUNT3 = "0019967190";
 		public static final String DIFFERENT_OWNER_ACCOUNT = "0541001555240";
 		public static final String DIFFERENT_OWNER_NAME = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 
