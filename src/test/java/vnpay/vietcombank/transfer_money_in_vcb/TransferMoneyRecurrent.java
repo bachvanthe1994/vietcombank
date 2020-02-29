@@ -52,7 +52,7 @@ public class TransferMoneyRecurrent extends Base {
 	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
 		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_2_Chon phuong thuc chuyen tien");
@@ -110,7 +110,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
 
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
+		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 
@@ -284,7 +284,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_05_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		log.info("TC_05_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_05_2_Chon phuong thuc chuyen tien");
@@ -339,7 +339,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
 
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
+		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
@@ -514,7 +514,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_09_ChuyenTien_VND_DinhKy_1Thang_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhau() {
 		log.info("TC_09_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_09_02_Chon phuong thuc chuyen tien");
@@ -569,7 +569,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
 
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
+		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 
@@ -744,7 +744,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_13_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
 		log.info("TC_13_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_13_02_Chon phuong thuc chuyen tien");
@@ -798,7 +798,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
 
 		log.info("TC_13_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
+		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 
@@ -973,7 +973,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_17_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		log.info("TC_17_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_17_2_Chon phuong thuc chuyen tien");
@@ -1028,7 +1028,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.note);
 
 		log.info("TC_17_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
+		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
 
@@ -1203,7 +1203,7 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_21_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		log.info("TC_21_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Chuyển tiền tới ngân hàng khác");
+		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_21_02_Chon phuong thuc chuyen tien");
@@ -1258,7 +1258,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.note);
 
 		log.info("TC_21_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollToText(driver, "Chọn phương thức xác thực");
+		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
 

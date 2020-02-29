@@ -62,7 +62,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.scrollToText(driver, info.sourceAccount);
+		transferMoneyOutSide.scrollDownToText(driver, info.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 
@@ -110,7 +110,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
 
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info.authenticationMethod).replaceAll("\\D+", ""));
@@ -249,7 +249,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_03_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.scrollToText(driver, info1.sourceAccount);
+		transferMoneyOutSide.scrollDownToText(driver, info1.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 
@@ -298,7 +298,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
 
-		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod).replaceAll("\\D+", ""));
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
@@ -436,7 +436,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_05_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.scrollToText(driver, info2.sourceAccount);
+		transferMoneyOutSide.scrollDownToText(driver, info2.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 
@@ -489,7 +489,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
 
 		log.info("TC_05_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod).replaceAll("\\D+", "")) / 100;

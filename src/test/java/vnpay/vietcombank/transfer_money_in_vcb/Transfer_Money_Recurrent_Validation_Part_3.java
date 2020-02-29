@@ -47,7 +47,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		
 		String endDate = getForwardDate(1 + Integer.parseInt(TransferMoneyInVCB_Data.InputDataInVCB.NUMBER_DAY_FREQUENCY));
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_02_Chon phuong thuc chuyen tien");
@@ -116,7 +116,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_05_02_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 		String actualAmountMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_05_03_Kiem tra gia tri trong o So tien");
@@ -261,7 +261,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 
 		log.info("TC_12_01_Focus lai vao o nhap So tien");
 		transferRecurrent.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		transferRecurrent.scrollToText(driver, "50,000,000 VND");
+		transferRecurrent.scrollDownToText(driver, "50,000,000 VND");
 
 		log.info("TC_12_02_Lay danh sach goi y nhanh");
 		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
