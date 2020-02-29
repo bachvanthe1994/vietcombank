@@ -70,4 +70,14 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 			}
 		}
 	}
+	
+	public String convertEUROToVNeseMoney(String money, String currentcy) {
+		String result = "";
+		try {
+			result =  String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy))) + " VND";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
 }

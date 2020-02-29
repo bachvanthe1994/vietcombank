@@ -13,7 +13,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_IN_POPUP = "//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_TEXT_BY_ID = "//android.widget.TextView[@resource-id = '%s']";
-	public static final String DYNAMIC_CONFIRM_SECOND_LINE_INFO = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
+	public static final String DYNAMIC_CONFIRM_SECOND_LINE_INFO = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_DEFAULT_SOURCE_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
 	public static final String DYNAMIC_LABEL_AMOUNT = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_CURRENTCY_IN_MONEY_TEXTBOX = "//android.widget.EditText[@text='%s']//following-sibling::android.widget.TextView";
