@@ -220,11 +220,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_02_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
 
-//		log.info("TC_02_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_02_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_02_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -407,11 +404,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_04_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info1.money) + " VND"));
 
-//		log.info("TC_04_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_04_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -481,7 +475,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_05_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info2.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info2.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_05_10_6_Kiem tra so tien");
@@ -600,11 +594,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_06_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
 
-//		log.info("TC_06_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_06_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info2.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_06_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_06_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -673,7 +667,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_07_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info3.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info3.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_07_10_6_Kiem tra so tieni");
@@ -727,7 +721,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		actualAvailableBalanceCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
-		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Long.parseLong(info2.money), 0);
+		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Long.parseLong(info3.money), 0);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 	
 	}
@@ -789,13 +783,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_08_18: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_08_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info3.money) + " EUR"));
 
-//		log.info("TC_08_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_08_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info3.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_08_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_08_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -977,11 +971,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_10_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info4.money) + " VND"));
 
-//		log.info("TC_10_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_10_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_10_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -1163,11 +1154,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_12_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info5.money) + " VND"));
 
-//		log.info("TC_12_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_12_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_12_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -1236,7 +1224,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_13_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info6.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_13_10_6_Kiem tra so tien");
@@ -1332,7 +1320,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info6.note));
 
 		log.info("TC_14_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info2.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info6.money) + " EUR"));
 
 		log.info("TC_14_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1353,13 +1341,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), info6.destinationAccount);
 
 		log.info("TC_14_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info6.money) + " EUR"));
 
-//		log.info("TC_14_20: Kiem tra so tien quy doi");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi"), info.organization);
+		log.info("TC_14_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_14_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_14_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
@@ -1428,7 +1416,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_15_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info7.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_15_10_6_Kiem tra so tien");
@@ -1482,7 +1470,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.sourceAccount);
 		actualAvailableBalanceCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
-		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info7.money), 0);
+		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Long.parseLong(info7.money), 0);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 	
 	}
@@ -1524,7 +1512,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info7.note));
 
 		log.info("TC_16_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info2.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info7.money) + " EUR"));
 
 		log.info("TC_16_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1544,13 +1532,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_16_18: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_16_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info7.money) + " EUR"));
 
-//		log.info("TC_16_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_16_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info7.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_16_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_16_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
