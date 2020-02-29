@@ -30,6 +30,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	private String transferTime;
 	private String transactionNumber;
 	long transferFee = 0;
+	double transferFeeCurrentcy = 0;
 
 	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
 	TransferOutSideVCB_Info info1 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "500000", "Phí giao dịch người nhận trả", "test", "SMS OTP");
@@ -48,23 +49,23 @@ public class TransferMoneyOutSideVCB extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
-	@Test
+	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy;
+//	@Test
 	public void TC_01_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
-
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác 123");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.scrollDownToText(driver, info.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplus = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -113,8 +114,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info.authenticationMethod).replaceAll("\\D+", ""));
-
+		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
+		
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
 
@@ -154,13 +155,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
+		actualAvailableBalance = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
 	}
 	
-	@Test
+//	@Test
 	public void TC_02_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
@@ -219,14 +220,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_02_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
 
-//		log.info("TC_02_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_02_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_02_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_02_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info.note));
@@ -241,17 +239,17 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_03_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
 		log.info("TC_03_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.scrollDownToText(driver, info1.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplus = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -300,7 +298,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod).replaceAll("\\D+", ""));
+		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
@@ -341,13 +339,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_03_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
+		actualAvailableBalance = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info1.money), 0);
 		verifyEquals(actualAvailableBalance, availableBalance);
 
 	}
 	
-	@Test
+//	@Test
 	public void TC_04_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraXacThucBangOTP_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
@@ -406,14 +404,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_04_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info1.money) + " VND"));
 
-//		log.info("TC_04_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_04_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_04_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info1.note));
@@ -428,18 +423,19 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_05_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
 		log.info("TC_05_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_05_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.scrollDownToText(driver, info2.sourceAccount);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
-
+		
+		surplusCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		
 		log.info("TC_05_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/chọn tài khoản nhận VND");
 
@@ -479,7 +475,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_05_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info2.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info2.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_05_10_6_Kiem tra so tien");
@@ -488,14 +484,14 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_05_10_7_Kiem tra noi dung chuyen tien");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
 
+		transferFeeCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
+		
 		log.info("TC_05_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod).replaceAll("\\D+", "")) / 100;
-
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
 
 		log.info("TC_05_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -533,13 +529,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_05_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
-		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info2.money), transferFee);
-		verifyEquals(actualAvailableBalance, availableBalance);
+		actualAvailableBalanceCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Long.parseLong(info2.money), transferFeeCurrentcy);
+		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 
 	}
 
-	@Test
+//	@Test
 	public void TC_06_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP_BaoCao() {
 		log.info("TC_06_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
@@ -598,14 +594,14 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_06_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
 
-//		log.info("TC_06_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_06_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info2.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_06_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_06_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_06_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info2.note));
@@ -620,17 +616,17 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 	
-	@Test
+//	@Test
 	public void TC_07_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
 		log.info("TC_07_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_07_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplusCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_07_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -671,7 +667,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_07_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info3.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info3.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_07_10_6_Kiem tra so tieni");
@@ -680,13 +676,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_07_10_7_Kiem tra noi dung chuyen tien");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
 
+		transferFeeCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
+		
 		log.info("TC_07_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod).replaceAll("\\D+", "")) / 100;
-
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
 
 		log.info("TC_07_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -724,13 +720,13 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_07_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
-		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info3.money), 0);
-		verifyEquals(actualAvailableBalance, availableBalance);
+		actualAvailableBalanceCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Long.parseLong(info3.money), 0);
+		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 	
 	}
 	
-	@Test
+//	@Test
 	public void TC_08_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiNhanTraXacThucBangOTP_BaoCao() {
 		log.info("TC_08_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
@@ -787,16 +783,16 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_08_18: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_08_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info3.money) + " EUR"));
 
-//		log.info("TC_08_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_08_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info3.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_08_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_08_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_08_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info3.note));
@@ -817,11 +813,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_09_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplus = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_09_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -839,7 +835,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_09_7_Chọn phí giao dịch");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_09_8_Nhap noi dung chuyen tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.note, "Nội dung");
@@ -869,7 +865,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_09_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod).replaceAll("\\D+", ""));
+		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
 
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
@@ -910,7 +906,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_09_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
+		actualAvailableBalance = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info4.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 
@@ -975,14 +971,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_10_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info4.money) + " VND"));
 
-//		log.info("TC_10_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_10_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_10_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_10_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info4.note));
@@ -1003,11 +996,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_11_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplus = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_11_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -1055,7 +1048,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_11_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod).replaceAll("\\D+", ""));
+		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
 
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
@@ -1096,7 +1089,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_11_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
+		actualAvailableBalance = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info5.money), 0);
 		verifyEquals(actualAvailableBalance, availableBalance);
 
@@ -1161,14 +1154,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_12_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info5.money) + " VND"));
 
-//		log.info("TC_12_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
-
 		log.info("TC_12_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_12_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_12_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info5.note));
@@ -1189,11 +1179,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_13_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.sourceAccount);
 
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplusCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_13_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -1234,7 +1224,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_13_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info6.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_13_10_6_Kiem tra so tien");
@@ -1242,14 +1232,14 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_13_10_7_Kiem tra noi dung chuyen tien");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info6.note);
+		
+		transferFeeCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_13_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info6.authenticationMethod).replaceAll("\\D+", "")) / 100;
-
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
 
 		log.info("TC_13_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1287,9 +1277,9 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_13_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
-		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info6.money), transferFee);
-		verifyEquals(actualAvailableBalance, availableBalance);
+		actualAvailableBalanceCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info6.money), transferFeeCurrentcy);
+		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 		
 	}
 	
@@ -1330,7 +1320,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info6.note));
 
 		log.info("TC_14_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info2.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info6.money) + " EUR"));
 
 		log.info("TC_14_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1348,18 +1338,19 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info6.sourceAccount);
 
 		log.info("TC_14_18: Kiem tra so tai khoan ghi co");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), info6.destinationAccount);
 
 		log.info("TC_14_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info6.money) + " EUR"));
 
-//		log.info("TC_14_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_14_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_14_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
 
 		log.info("TC_14_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_14_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info6.note));
@@ -1380,11 +1371,11 @@ public class TransferMoneyOutSideVCB extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_15_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,"Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.sourceAccount);
 
-		surplus = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplusCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_15_3_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.destinationAccount, "Nhập/chọn tài khoản nhận VND");
@@ -1425,7 +1416,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_15_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = String.format("%,d", Long.parseLong(info7.money) * 27006) + " VND";
+		String expectMoney = transferMoneyOutSide.convertEUROToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_15_10_6_Kiem tra so tien");
@@ -1433,14 +1424,14 @@ public class TransferMoneyOutSideVCB extends Base {
 
 		log.info("TC_15_10_7_Kiem tra noi dung chuyen tien");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info7.note);
+		
+		transferFeeCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_15_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		long transferFee = Long.parseLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info7.authenticationMethod).replaceAll("\\D+", "")) / 100;
-
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.authenticationMethod);
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%.2f", Double.parseDouble(String.valueOf(transferFee))) + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
 
 		log.info("TC_15_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1478,9 +1469,9 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_15_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.sourceAccount);
-		actualAvailableBalance = Long.parseLong(transferMoneyOutSide.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng").replaceAll("\\D+", ""));
-		availableBalance = transferMoneyOutSide.canculateAvailableBalances(surplus, Long.parseLong(info7.money), 0);
-		verifyEquals(actualAvailableBalance, availableBalance);
+		actualAvailableBalanceCurrentcy = transferMoneyOutSide.convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		availableBalanceCurrentcy = transferMoneyOutSide.canculateAvailableBalancesCurrentcy(surplusCurrentcy, Long.parseLong(info7.money), 0);
+		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 	
 	}
 
@@ -1521,7 +1512,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info7.note));
 
 		log.info("TC_16_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info2.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info7.money) + " EUR"));
 
 		log.info("TC_16_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1541,16 +1532,16 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_16_18: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_16_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info2.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info7.money) + " EUR"));
 
-//		log.info("TC_16_20: Kiem tra ten quy, to chuc tu thien");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		log.info("TC_16_20: Kiem tra so tien quy doi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEUROToVNeseMoney(info7.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE)));
 
 		log.info("TC_16_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,.2f", transferFee) + " EUR");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
 
 		log.info("TC_16_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới ngân hàng khác");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền tới NH khác qua TK");
 
 		log.info("TC_16_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info7.note));
