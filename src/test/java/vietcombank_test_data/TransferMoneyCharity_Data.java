@@ -28,6 +28,6 @@ public class TransferMoneyCharity_Data {
 	public static final String OTP_INVALID_N_TIMES = "Nhập sai OTP quá " + LogIn_Data.Login_Account.OTP_INVALID_TIMES + " lần. Quý khách vui lòng thực hiện giao dịch khác.";
 	public static final String PASSWORD_INVALID_N_TIMES = "";
 	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
-	public static final String ORGANIZATION = "Tấm lòng nhân ái";
+	public static final String ORGANIZATION = "Tấm lòng nhân ái - TK 10 số";
 	
 }
