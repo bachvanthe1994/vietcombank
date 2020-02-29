@@ -43,7 +43,7 @@ public class TransferMoneyOutSideVCBPageObject extends AbstractPage{
 		return result;
 	}
 	
-	public String convertEUROToVNeseMoney(String money, String currentcy) {
+	public String convertEURO_USDToVNeseMoney(String money, String currentcy) {
 		String result = "";
 		try {
 			result =  String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy))) + " VND";
