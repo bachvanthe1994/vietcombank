@@ -391,7 +391,7 @@ public class TransferIdentity_Validate_1 extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 		log.info("TC_29_STEP_02: kiem tra hien thi nguoi chuyen tra");
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(trasferPage.getDynamicTextInDropDownByHeader(driver, "Thông tin giao dịch", "2"), "Phí giao dịch người chuyển trả");
 
 		log.info("TC_29_STEP_03: chon phi giao dich");
@@ -429,7 +429,7 @@ public class TransferIdentity_Validate_1 extends Base {
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
 		log.info("TC_31_STEP_02: kiem tra hien thi mac dinh");
-		trasferPage.scrollToText(driver, "Nội dung");
+		trasferPage.scrollDownToButton(driver, "Nội dung");
 		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), "Nội dung");
 
 		log.info("TC_31_Step_03: Click quay lai");

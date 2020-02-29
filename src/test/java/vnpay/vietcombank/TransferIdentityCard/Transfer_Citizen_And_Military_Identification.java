@@ -37,7 +37,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
-		homePage.scrollToText(driver, "Chuyển tiền nhận bằng CMT");
+		homePage.scrollDownToText(driver, "Chuyển tiền nhận bằng CMT");
 
 	}
 
@@ -126,7 +126,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_01_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_01_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -271,7 +271,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_02_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_02_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -421,7 +421,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_03_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
@@ -719,7 +719,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_05_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_05_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -867,7 +867,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_06_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_06_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -1014,7 +1014,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_07_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_07_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -1158,7 +1158,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_08_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Chọn phương thức xác thực");
+		trasferPage.scrollDownToButton(driver, "Chọn phương thức xác thực");
 		log.info("TC_08_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -1308,7 +1308,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_09_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Chọn phương thức xác thực");
+		trasferPage.scrollDownToText(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_09_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
@@ -1460,7 +1460,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		log.info("TC_10_Step_24: chon phuong thuc xac thuc");
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_10_Step_25: lay phi giao dich theo phuong thuc xac thuc");
@@ -1609,7 +1609,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_11_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_11_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -1757,7 +1757,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 		log.info("TC_12_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_12_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 

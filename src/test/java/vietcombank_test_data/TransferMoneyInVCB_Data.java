@@ -23,10 +23,12 @@ public class TransferMoneyInVCB_Data {
 		public static final String TRANSFER_PASSWORD_FEE_TO_OTHER_ACCOUNT_OWNER = "2,200";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "1,100";
 		public static final String PAYMENT_BY_OTP_FEE = "2,200";
-		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.12";
-		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.2";
-		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.11";
-		public static final String USD_PAYMENT_BY_OTP_FEE = "0.04";
+
+		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.05";
+		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
+
+		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.05";
+		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,140.00 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274.03 VND";

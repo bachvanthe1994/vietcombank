@@ -729,6 +729,11 @@ public class AbstractPage {
 
 	}
 
+	public void scrollUpToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
 	public void scrollDownToButton(AndroidDriver<AndroidElement> driver, String dynamicText) {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicText);
 
