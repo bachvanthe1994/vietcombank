@@ -26,7 +26,7 @@ public class TransferMoneyOutSideVCBPageObject extends AbstractPage{
 	public double convertAvailableBalanceCurrentcyToDouble(String money) {
 		double result = 0;
 		try {
-			result = Double.parseDouble(money.split(" ")[0].replace(",", ""));
+			result = Double.parseDouble(money.replaceAll("[^\\.0123456789]",""));
 		}catch (Exception e) {
 			
 		}
@@ -36,7 +36,7 @@ public class TransferMoneyOutSideVCBPageObject extends AbstractPage{
 	public long convertAvailableBalanceCurrentcyToLong(String money) {
 		long result = 0;
 		try {
-			result = Long.parseLong(money.split(" ")[0].replace(",", ""));
+			result = Long.parseLong(money.replaceAll("[^\\.0123456789]",""));
 		}catch (Exception e) {
 			
 		}
