@@ -35,7 +35,7 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 	}
 

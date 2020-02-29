@@ -45,7 +45,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 
 	}
 
@@ -630,7 +630,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
 
 		log.info("TC_07_Step_22: Chon Phuong thuc nhap");
-		transferInVCB.scrollToText(driver, "Tiếp tục");
+		transferInVCB.scrollDownToButton(driver, "Tiếp tục");
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_07_Step_23: Chon Mật khẩu đăng nhập");
@@ -889,7 +889,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
 
 		log.info("TC_10_Step_24: Chon Phuong thuc nhap");
-		transferInVCB.scrollToText(driver, "Tiếp tục");
+		transferInVCB.scrollDownToButton(driver, "Tiếp tục");
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_10_Step_25: Chon Mật khẩu đăng nhập");
