@@ -49,7 +49,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
 
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_02_Chon phuong thuc chuyen tien");
@@ -74,7 +74,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		log.info("TC_01_08_Kiem tra link Han muc");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Hạn mức"));
 
-		transferRecurrent.scrollToText(driver, "Thông tin giao dịch");
+		transferRecurrent.scrollDownToText(driver, "Thông tin giao dịch");
 
 		log.info("TC_01_09_Kiem tra textbox so tien");
 		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, "Số tiền"));
@@ -100,7 +100,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	@Test
 	public void TC_03_ChuyenTienDinhKy_ComboHinhThucChuyenTien_KiemTraHienThiMacDinh() {
 		log.info("TC_03_01_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_03_03_Kiem tra Hien thi mac dinh");

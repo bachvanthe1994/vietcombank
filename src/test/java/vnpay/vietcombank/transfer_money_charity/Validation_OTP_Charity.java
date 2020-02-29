@@ -174,7 +174,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_07_03_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 
-		transferMoneyCharity.scrollToText(driver, "Hoàn cảnh người ủng hộ");
+		transferMoneyCharity.scrollDownToText(driver, "Hoàn cảnh người ủng hộ");
 
 		log.info("TC_07_04_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền từ thiện"));
