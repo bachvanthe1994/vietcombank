@@ -11,11 +11,11 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
-		public static final String RECEIVER_NAME = "NGUYEN NGOC TOAN";
+		public static final String RECEIVER_NAME_ACCOUNT_2 = "NGUYEN NGOC TOAN";
+		public static final String RECEIVER_NAME_ACCOUNT_1 = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
 
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
-
 		public static final String VND_MONEY = "20000";
 
 		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 540,120 VND", "200 EUR ~ 5,401,200 VND");
@@ -31,7 +31,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.05";
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
 
-		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.05";
+		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.04";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
