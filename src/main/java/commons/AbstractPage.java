@@ -46,7 +46,7 @@ public class AbstractPage {
 	long shortTime1 = 5;
 
 	public String getPageSource(AndroidDriver<AndroidElement> driver) {
-		sleep(driver, 3000);
+		sleep(driver, 5000);
 		String text = driver.getPageSource();
 		return text;
 
