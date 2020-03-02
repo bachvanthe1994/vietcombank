@@ -53,7 +53,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_01_KiemTraGiaoDienManHinhDatVeMayBayNoiDiaMotChieu() {
 		log.info("TC_01_Step 01: Kiem tra title dat ve may bay noi dia");
 		verifyTrue(airTicket.isDynamicTextDisplayed("Đặt vé máy bay nội địa"));
@@ -142,7 +142,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_02_KiemTraGiaoDienManHinhDatVeMayBayNoiDiaHaiChieu() {
 
 		log.info("TC_02_Step 00: Chon mot chieu ");
@@ -232,7 +232,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 		verifyTrue(airTicket.isDynamicCheckBoxByLabelChecked("Jetstar Pacific"));
 	}
 
-//	@Test
+	@Test
 	public void TC_03_KiemTraDanhSachDiemKhoiHanh() {
 
 		log.info("TC_03_Step 00: Chon mot chieu ");
@@ -253,7 +253,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_KiemTraChonDiemKhoiHanh() {
 
 		log.info("TC_04_Step 01: Chon Ha Noi ");
@@ -275,7 +275,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
 	}
 
-//	@Test
+	@Test
 	public void TC_05_KiemTraKhongChonDiemKhoiHanh() {
 		log.info("TC_05_Step 01: Click Dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -297,7 +297,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_KiemTrChonDiemDenKhiKhongChonDiemKhoiHanh() {
 		log.info("TC_06_Step 01: Click Dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -316,7 +316,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_07_KiemTraDanhSachDiemDen() {
 		log.info("TC_07_Step 01: Click Khoi hanh ");
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
@@ -338,7 +338,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_08_KiemTraChonDiemDen() {
 		log.info("TC_08_Step 01: Click TP Ho CHi Minh ");
 		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.HCM_PLACE);
@@ -359,7 +359,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 		airTicket.clickToDynamicIcon("com.VCB:id/ivTitleLeft");
 	}
 
-//	@Test
+	@Test
 	public void TC_09_KiemTraKhongChonDiemDen() {
 		log.info("TC_09_Step 01: Click dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -387,7 +387,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_KiemTraKhongChonNgayDi() {
 		log.info("TC_10_Step 01: Click Dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -421,7 +421,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_11_KiemTraGiaoDienManHinhNgayDiVe1Chieu() {
 		log.info("TC_11_Step 01: Click Dat ve may bay noi dia");
 		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
@@ -439,7 +439,7 @@ public class DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_
 
 	}
 
-//	@Test
+	@Test
 	public void TC_12_KiemTraNgayDiNhoHonNgayHienTai() {
 		LocalDate now = LocalDate.now();
 		if (!(now.getDayOfMonth() + "").equals("1")) {
