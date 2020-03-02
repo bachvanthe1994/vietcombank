@@ -45,6 +45,13 @@ public class AbstractPage {
 	long longTime1 = 30;
 	long shortTime1 = 5;
 
+	public String getPageSource(AndroidDriver<AndroidElement> driver) {
+		sleep(driver, 5000);
+		String text = driver.getPageSource();
+		return text;
+
+	}
+
 	public void TabtoElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);

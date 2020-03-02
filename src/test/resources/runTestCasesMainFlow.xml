@@ -18,7 +18,9 @@
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059863"/>
+
+		<parameter name="phone" value="0918679292" />
+
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<package name="vnpay.vietcombank.transfer_money_out_side_vcb">
