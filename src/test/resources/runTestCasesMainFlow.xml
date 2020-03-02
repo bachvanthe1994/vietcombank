@@ -18,18 +18,18 @@
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863"/>
+		<parameter name="phone" value="0335059863"/>
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<package name="vnpay.vietcombank.transfer_money_out_side_vcb">
 			<classes>
-				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
-				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
+<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
+<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
-				<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
-				<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
-				<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" />
+<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+<!-- 				<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
+<!-- 				<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
 
 			</classes>
 		</package>
