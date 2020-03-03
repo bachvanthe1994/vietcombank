@@ -59,8 +59,8 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	private long surplus, availableBalance, actualAvailableBalance;
 	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy;
-//	@Test
-	public void TC_01_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
+	@Test
+	public void TC_01_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
@@ -118,10 +118,10 @@ public class TransferMoneyOutSideVCB extends Base {
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
 		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
-		
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
+		
+		log.info("TC_01_10_01_Kiem tra so tien phi");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
 
 		log.info("TC_01_11_Click Tiep tuc");
@@ -166,8 +166,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		
 	}
 	
-//	@Test
-	public void TC_02_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP_BaoCao() {
+	@Test
+	public void TC_02_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
 
@@ -244,8 +244,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Test
-	public void TC_03_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
+	@Test
+	public void TC_03_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
 		log.info("TC_03_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
@@ -300,12 +300,12 @@ public class TransferMoneyOutSideVCB extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
 
 		log.info("TC_03_11_Chon phuong thuc xac thuc");
-
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = transferMoneyOutSide.convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
+		log.info("TC_03_11_01_Kiem tra so tien phi");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
 
 		log.info("TC_03_12_Click Tiep tuc");
@@ -350,7 +350,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	}
 	
-//	@Test
+	@Test
 	public void TC_04_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraXacThucBangOTP_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
@@ -428,8 +428,8 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Test
-	public void TC_05_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
+	@Test
+	public void TC_05_ChuyenTienLienNganHangNgoaite_EUR_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
 		log.info("TC_05_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
 
@@ -540,7 +540,7 @@ public class TransferMoneyOutSideVCB extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiChuyenTraXacThucBangOTP_BaoCao() {
 		log.info("TC_06_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
@@ -623,7 +623,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	
 
 	
-//	@Test
+	@Test
 	public void TC_07_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
 		log.info("TC_07_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -733,7 +733,7 @@ public class TransferMoneyOutSideVCB extends Base {
 	
 	}
 	
-//	@Test
+	@Test
 	public void TC_08_ChuyenTienLienNganHangNgoaiteCoPhiGiaoDichNguoiNhanTraXacThucBangOTP_BaoCao() {
 		log.info("TC_08_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền tới NH khác qua TK");
