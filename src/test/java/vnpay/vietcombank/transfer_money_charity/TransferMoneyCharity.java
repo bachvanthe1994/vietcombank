@@ -39,6 +39,7 @@ public class TransferMoneyCharity extends Base {
 	TransferCharity info3 = new TransferCharity(Account_Data.Valid_Account.EUR_ACCOUNT, TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 	TransferCharity info4 = new TransferCharity(Account_Data.Valid_Account.USD_ACCOUNT, TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	TransferCharity info5 = new TransferCharity(Account_Data.Valid_Account.USD_ACCOUNT, TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
@@ -219,7 +220,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
 
 		log.info("TC_02_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", fee) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_02_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
@@ -290,14 +291,13 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_03_9_7_Kiem tra hoan canh");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh người ủng hộ"), info1.status);
-
-		transferFeeCurrentcy = 0.02;
 		
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
+		fee = transferMoneyCharity.convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
+		transferFeeCurrentcy = 0.02;
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
-
+		
 		log.info("TC_03_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -389,7 +389,8 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_04_19: Kiem tra so tai khoan trich no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info1.sourceAccount);
 
-		log.info("TC_04_20: Kiem tra so tai khoan ghi co");
+		log.info("TC_04_20: Kiem tra phi giao dich hien thi");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_21: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info1.money) + " EUR"));
@@ -477,6 +478,9 @@ public class TransferMoneyCharity extends Base {
 		fee = transferMoneyCharity.convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod));
 
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
+		
+		log.info("TC_05_10_01_Kiem tra so tien phi");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_05_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -569,31 +573,30 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_06_17: Kiem tra so tai khoan trich no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info2.sourceAccount);
 
-		log.info("TC_06_18: Kiem tra so tai khoan ghi co");
-
-		log.info("TC_06_19: Kiem tra so tien giao dich hien thi");
+		log.info("TC_06_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info2.money) + " VND"));
 
-		log.info("TC_06_20: Kiem tra ten quy, to chuc tu thien");
+		log.info("TC_06_19: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info2.organization);
 
-		log.info("TC_06_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", fee) + " VND");
+		log.info("TC_06_20: Kiem tra phi giao dich hien thi");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
-		log.info("TC_06_22: Kiem tra loai giao dich");
+		log.info("TC_06_21: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
-		log.info("TC_06_23: Kiem Tra noi dung giao dich");
+		log.info("TC_06_22: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info2.status));
 
-		log.info("TC_06_24: Click  nut Back");
+		log.info("TC_06_23: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 
-		log.info("TC_06_25: Click  nut Back");
+		log.info("TC_06_24: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
-		log.info("TC_06_26: Click  nut Home");
+		log.info("TC_06_25: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
 	}
 
 	@Test
@@ -650,12 +653,14 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_07_9_7_Kiem tra hoan canh");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh người ủng hộ"), info3.status);
 
-		transferFeeCurrentcy = 0.04;
-		
 		log.info("TC_07_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
+		fee = transferMoneyCharity.convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod));
+		transferFeeCurrentcy = 0.04;
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
+		
+		log.info("TC_07_10_01_Kiem tra so tien phi");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_07_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -750,8 +755,6 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_08_17: Kiem tra so tai khoan trich no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info3.sourceAccount);
 
-		log.info("TC_08_18: Kiem tra so tai khoan ghi co");
-
 		log.info("TC_08_19: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info3.money) + " EUR"));
 
@@ -762,7 +765,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info3.organization);
 
 		log.info("TC_08_22: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", 1100) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_08_23: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
@@ -834,12 +837,14 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_09_9_7_Kiem tra hoan canh");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh người ủng hộ"), info4.status);
 
-		transferFeeCurrentcy = 0.02;
-		
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
+		fee = transferMoneyCharity.convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
+		transferFeeCurrentcy = 0.02;
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
+		
+		log.info("TC_09_10_01_Kiem tra so tien phi");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_09_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -879,7 +884,7 @@ public class TransferMoneyCharity extends Base {
 	}
 
 	@Test
-	public void TC_10_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau_BaoCao() {
+	public void TC_10_ChuyenTienTuThienBangNgoaiTe_USD_ThanhToanMatKhau_BaoCao() {
 		log.info("TC_10_1: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chuyển tiền từ thiện");
 
@@ -938,12 +943,13 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info4.money) + " USD"));
 
 		log.info("TC_10_22: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyCharity.convertEUROToVNeseMoney(info4.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyCharity.convertEUROToVNeseMoney(info4.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
 
 		log.info("TC_10_23: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info4.organization);
 
 		log.info("TC_10_24: Kiem tra phi giao dich hien thi");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_10_25: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
@@ -1003,7 +1009,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_11_9_4_Kiem tra so tien ung ho");
 		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ");
-		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info5.money))) + " EUR";
+		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info5.money))) + " USD";
 		verifyEquals(actualMoney, expectedMoney);
 
 		log.info("TC_11_9_5_Kiem tra ten nguoi chuyen");
@@ -1015,12 +1021,14 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_11_9_7_Kiem tra hoan canh");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh người ủng hộ"), info5.status);
 
-		transferFeeCurrentcy = 0.05;
-		
 		log.info("TC_11_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
+		fee = transferMoneyCharity.convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
+		transferFeeCurrentcy = 0.04;
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
+		
+		log.info("TC_11_10_01_Kiem tra so tien phi");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_11_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -1098,7 +1106,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info5.status));
 
 		log.info("TC_12_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info5.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info5.money) + " USD"));
 
 		log.info("TC_12_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1118,16 +1126,16 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_12_18: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_12_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info5.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info5.money) + " USD"));
 
 		log.info("TC_12_20: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyCharity.convertEUROToVNeseMoney(info1.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyCharity.convertEUROToVNeseMoney(info1.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
 
 		log.info("TC_12_21: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info5.organization);
 
 		log.info("TC_12_22: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", 1100) + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_12_23: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
