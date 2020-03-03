@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import model.TransferInVCBRecurrent;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -21,7 +21,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
@@ -44,9 +44,9 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienDinhKy_NoiDung_KiemTraHienThiMacDinh() {
-		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		
+
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
 		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");

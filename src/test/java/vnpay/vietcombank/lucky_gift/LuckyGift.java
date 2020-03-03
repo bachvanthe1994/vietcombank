@@ -21,7 +21,7 @@ import vietcombank_test_data.LuckyGift_Data;
 import vietcombank_test_data.LuckyGift_Data.TitleLuckyGift;
 
 public class LuckyGift extends Base {
-    AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
     private LogInPageObject login;
     private LuckyGiftPageObject luckyGift;
     private HomePageObject homePage;

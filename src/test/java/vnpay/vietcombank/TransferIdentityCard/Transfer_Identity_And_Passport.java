@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
@@ -19,14 +19,14 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferIdentity_Data;
 
 public class Transfer_Identity_And_Passport extends Base {
-    AndroidDriver<AndroidElement> driver;
-    private LogInPageObject login;
-    private HomePageObject homePage;
-    private TransferIdentiryPageObject trasferPage;
-    private TransactionReportPageObject transReport;
-    private String transferTime;
-    private String transactionNumber;
-    String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+	AppiumDriver<MobileElement> driver;
+	private LogInPageObject login;
+	private HomePageObject homePage;
+	private TransferIdentiryPageObject trasferPage;
+	private TransactionReportPageObject transReport;
+	private String transferTime;
+	private String transactionNumber;
+	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
     @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
     @BeforeClass

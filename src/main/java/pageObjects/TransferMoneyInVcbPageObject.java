@@ -3,18 +3,18 @@ package pageObjects;
 import java.util.List;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 
 public class TransferMoneyInVcbPageObject extends AbstractPage {
 
-	public TransferMoneyInVcbPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public TransferMoneyInVcbPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
 	public void inputFrequencyNumber(String inputValue) {
 

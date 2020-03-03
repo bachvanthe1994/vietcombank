@@ -10,18 +10,17 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vietcombankUI.DynamicPageUIs;
 import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Validation_TrainTicket_7 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TrainTicketPageObject trainTicket;
-
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -32,7 +31,7 @@ public class Validation_TrainTicket_7 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		trainTicket = PageFactoryManager.getTrainTicketPageObject(driver);
-		
+
 		log.info("TC_01_Step_Click dat ve tau");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Đặt vé tàu");
 
@@ -59,7 +58,7 @@ public class Validation_TrainTicket_7 extends Base {
 
 		log.info("TC_08_Vao man hinh chon ngay");
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
-		
+
 		String nextDay = getForWardDay(4);
 		String EndDay = getForWardDay(7);
 
@@ -95,14 +94,14 @@ public class Validation_TrainTicket_7 extends Base {
 
 		log.info("TC_12_Click button tiep tuc");
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
-		
+
 		log.info("TC_10_Click chon mot chuyen di");
 		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
 
 		log.info("TC_12_Click button tiep tuc chon chieu ve");
 		trainTicket.clickToDynamicButton("TIẾP TỤC CHỌN CHIỀU VỀ");
 	}
-	
+
 	@Test
 	public void TC_01_KiemTraNhomThongTinSapXep() {
 		log.info("TC_01_Kiem tra icon sap xep, mac dinh o tab gio chay");
@@ -335,7 +334,7 @@ public class Validation_TrainTicket_7 extends Base {
 		log.info("TC_16_verify message khong co du lieu");
 		verifyEquals(trainTicket.getDynamicTextInPopUp("com.VCB:id/vtWarning"), "Không có dữ liệu hợp lệ");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();
@@ -343,5 +342,3 @@ public class Validation_TrainTicket_7 extends Base {
 	}
 
 }
-
-
