@@ -10,14 +10,14 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Validation_TrainTicket_3 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TrainTicketPageObject trainTicket;
 
@@ -169,7 +169,7 @@ public class Validation_TrainTicket_3 extends Base {
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tvTitle"), TrainTicket_Data.message.LOCATION_BLANK);
 	}
 
-@Test
+	@Test
 	public void TC_06_FocusVaoComboboxGheNgoi() {
 		log.info("TC_06_Click link loai cho");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Loại chỗ");
@@ -358,10 +358,10 @@ public class Validation_TrainTicket_3 extends Base {
 	public void TC_14_KiemTraThongTinHanhTrinh() {
 		LocalDate now = LocalDate.now();
 		LocalDate date3 = now.plusDays(3);
-		
+
 		log.info("TC_14_Click button tiep tuc");
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
-		
+
 		log.info("TC_14_Verify text gio chay");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_gio_khoi_hanh"), "Giờ chạy");
 

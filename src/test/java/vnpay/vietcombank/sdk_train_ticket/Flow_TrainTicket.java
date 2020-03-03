@@ -9,14 +9,14 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Flow_TrainTicket extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TrainTicketPageObject trainTicket;
 	private String currentDay = getCurrentDay();
@@ -155,12 +155,12 @@ public class Flow_TrainTicket extends Base {
 		log.info("TC_12_Verify tong thoi gian di chuyen");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_tong_thoi_gian"), expectTime);
 	}
-	
+
 	@Test
 	public void TC_03_KiemTraThaoTacSuaChieuDiThanhCong() {
 		String startDay = getForWardDay(2);
 		String EndDay = getForWardDay(5);
-		
+
 		LocalDate now = LocalDate.now();
 		LocalDate date2 = now.plusDays(2);
 		LocalDate date5 = now.plusDays(5);
@@ -169,7 +169,7 @@ public class Flow_TrainTicket extends Base {
 
 		log.info("TC_09_Click ga khoi hanh");
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tvTextPickUp");
-		
+
 		log.info("TC_01_Nhap text ga khoi hanh");
 		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
 
@@ -181,7 +181,7 @@ public class Flow_TrainTicket extends Base {
 
 		log.info("TC_01_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_CHANGE);
-		
+
 		log.info("TC_08_Vao man hinh chon ngay");
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
@@ -190,13 +190,13 @@ public class Flow_TrainTicket extends Base {
 
 		log.info("TC_08_Chon ngay ve la ngay tuong lai");
 		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(5), EndDay);
-		
+
 		log.info("TC_12_Click button tiep tuc");
 		trainTicket.clickToDynamicButton("Tiếp tục");
-		
+
 		log.info("TC_07_Click button ap dung");
 		trainTicket.clickToDynamicButton("ÁP DỤNG");
-		
+
 		String weekPickup = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date2));
 		String weekArrival = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date5));
 		String expectDay = weekPickup + " " + getForwardDate(2) + " - " + weekArrival + " " + getForwardDate(5);
@@ -210,15 +210,12 @@ public class Flow_TrainTicket extends Base {
 		log.info("TC_12_Verify lo trinh diem den");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_CHANGE);
 	}
-	
+
 	@Test
 	public void TC_04_KiemTraThaoTacSuaChieuVeThanhCong() {
-		
-		
+
 		LocalDate now = LocalDate.now();
 		LocalDate date3 = now.plusDays(3);
-		
-		
 
 		log.info("TC_12_Lay gia tri ten tau duoc tra ve ket qua tim kiem");
 		trainTicket.getDynamicList("com.VCB:id/tv_ten_tau");
@@ -269,5 +266,5 @@ public class Flow_TrainTicket extends Base {
 
 		log.info("TC_12_Verify tong thoi gian di chuyen");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_tong_thoi_gian"), expectTime);
-}
+	}
 }

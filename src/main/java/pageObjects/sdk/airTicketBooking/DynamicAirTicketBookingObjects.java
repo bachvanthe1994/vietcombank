@@ -3,13 +3,13 @@ package pageObjects.sdk.airTicketBooking;
 import java.time.LocalDate;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
 
 public class DynamicAirTicketBookingObjects extends AbstractPage {
 
-	public DynamicAirTicketBookingObjects(AndroidDriver<AndroidElement> mappingDriver) {
+	public DynamicAirTicketBookingObjects(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
@@ -29,7 +29,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		return "THÁNG" + " " + month + " " + year;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
 //dien vao o text box phan thong tin lien he, tham so text va id
 	public void inputToDynamicInputBoxByLabel(String inputValue, String... dynamicTextAndID) {
