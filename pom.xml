@@ -119,19 +119,18 @@
 		</dependency>
 
 	</dependencies>
-
-	<build>
 	
+
+	<build>	
 		<resources>
 			<resource>
 				<directory>src/main/java/reportConfig</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
+	
+	
 		<plugins>
-
-
 			<!-- compiler code -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -157,18 +156,15 @@
 					</property>
 
 					<suiteXmlFiles>
-						<suiteXMLfile>src/test/resources/runLocal.xml</suiteXMLfile>
+						<suiteXMLfile>src/test/resources/runTestCasesMainFlow.xml</suiteXMLfile>
 					</suiteXmlFiles>
 
 				</configuration>
 			</plugin>
-
 
 		</plugins>
 
 	</build>
 
 
-
-  
 </project>

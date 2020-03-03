@@ -355,7 +355,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_45_Step_23: kiem tra noi dung");
 		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_45_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
@@ -421,7 +421,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_47_Step_12: tiep tuc");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-		trasferPage.scrollToText(driver, "Tiếp tục");
+		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_47_Step_24: chon phuong thuc xac thuc");
 		trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 

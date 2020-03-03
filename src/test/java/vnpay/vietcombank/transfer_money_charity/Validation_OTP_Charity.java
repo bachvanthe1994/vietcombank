@@ -26,7 +26,7 @@ public class Validation_OTP_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT3, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -174,7 +174,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_07_03_Click nut Dong");
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 
-		transferMoneyCharity.scrollToText(driver, "Hoàn cảnh người ủng hộ");
+		transferMoneyCharity.scrollDownToText(driver, "Hoàn cảnh người ủng hộ");
 
 		log.info("TC_07_04_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền từ thiện"));

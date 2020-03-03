@@ -45,6 +45,13 @@ public class AbstractPage {
 	long longTime1 = 30;
 	long shortTime1 = 5;
 
+	public String getPageSource(AndroidDriver<AndroidElement> driver) {
+		sleep(driver, 5000);
+		String text = driver.getPageSource();
+		return text;
+
+	}
+
 	public void TabtoElement(AndroidDriver<AndroidElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);
@@ -129,21 +136,21 @@ public class AbstractPage {
 		driver.context(webViewName);
 	}
 
-	public void scrollToText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
-		try {
-			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + dynamicTextValue + "\"));");
-		} catch (Exception e) {
-			System.out.print(e.getMessage());
-		}
-	}
-
-	public void scrollToElementByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
-		try {
-			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().resourceId(\"" + dynamicID + "\"));");
-		} catch (Exception e) {
-			System.out.print(e.getMessage());
-		}
-	}
+//	public void scrollToText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+//		try {
+//			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + dynamicTextValue + "\"));");
+//		} catch (Exception e) {
+//			System.out.print(e.getMessage());
+//		}
+//	}
+//
+//	public void scrollToElementByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+//		try {
+//			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().resourceId(\"" + dynamicID + "\"));");
+//		} catch (Exception e) {
+//			System.out.print(e.getMessage());
+//		}
+//	}
 
 	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator) {
 		Dimension size = driver.manage().window().getSize();
@@ -160,9 +167,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -186,9 +191,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -213,9 +216,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -239,9 +240,7 @@ public class AbstractPage {
 				break;
 			} else {
 				try {
-					sleep(driver, 1000);
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-					sleep(driver, 1000);
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
@@ -481,73 +480,6 @@ public class AbstractPage {
 		driver.switchTo().defaultContent();
 	}
 
-//upload
-	public void uploadSingleFile(AndroidDriver<AndroidElement> driver, String locator, String fileName) {
-		WebElement addFileButton = driver.findElement(By.xpath(locator));
-		String rootFolder = System.getProperty("user.dir");
-		String filePath = rootFolder + "\\Upload_file\\" + fileName;
-		addFileButton.sendKeys(filePath);
-
-	}
-
-	public void uploadMultipleFilesInQueue(AndroidDriver<AndroidElement> driver, String locator, String fileName01, String fileName02, String fileName03) {
-		String rootFolder = System.getProperty("user.dir");
-		String filePath01 = rootFolder + "\\Upload_file\\" + fileName01;
-		String filePath02 = rootFolder + "\\Upload_file\\" + fileName02;
-		String filePath03 = rootFolder + "\\Upload_file\\" + fileName03;
-		String[] files = { filePath01, filePath02, filePath03 };
-		for (String file : files) {
-			WebElement addFileButton = driver.findElement(By.xpath(locator));
-
-			addFileButton.sendKeys(file);
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void uploadMultipleFilesAtOnce(AndroidDriver<AndroidElement> driver, String locator, String fileName01, String fileName02, String fileName03) {
-		WebElement addFileButton = driver.findElement(By.xpath(locator));
-		String rootFolder = System.getProperty("user.dir");
-		String filePath01 = rootFolder + "\\Upload_file\\" + fileName01;
-		String filePath02 = rootFolder + "\\Upload_file\\" + fileName02;
-		String filePath03 = rootFolder + "\\Upload_file\\" + fileName03;
-		String filePath = filePath01 + "\n" + filePath02 + "\n" + filePath03;
-
-		addFileButton.sendKeys(filePath);
-	}
-
-	public void uploadByAutoIT(AndroidDriver<AndroidElement> driver, String uploadButtonlocator, String fileName01, String fileName02, String fileName03) throws Exception {
-		String rootFolder = System.getProperty("user.dir");
-		String filePath01 = rootFolder + "\\Upload_file\\" + fileName01;
-		String filePath02 = rootFolder + "\\Upload_file\\" + fileName02;
-		String filePath03 = rootFolder + "\\Upload_file\\" + fileName03;
-		String[] files = { filePath01, filePath02, filePath03 };
-		String chromePath = rootFolder + "\\Upload_file\\chrome.exe";
-		String firefoxPath = rootFolder + "\\Upload_file\\firefox.exe";
-		String iePath = rootFolder + "\\Upload_file\\ie.exe";
-		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-		for (String file : files) {
-
-			WebElement uploadFileButton = driver.findElement(By.xpath(uploadButtonlocator));
-			jsExecutor.executeScript("arguments[0].click();", uploadFileButton);
-
-			uploadFileButton.click();
-
-			if (driver.toString().contains("chrome")) {
-				Runtime.getRuntime().exec(new String[] { chromePath, file });
-			} else if (driver.toString().contains("firefox")) {
-				Runtime.getRuntime().exec(new String[] { firefoxPath, file });
-			} else if (driver.toString().contains("ie")) {
-				Runtime.getRuntime().exec(new String[] { iePath, file });
-			}
-			Thread.sleep(2000);
-		}
-
-	}
-
 //waits
 	public void implicitWaitLongTime(AndroidDriver<AndroidElement> driver) {
 
@@ -695,6 +627,11 @@ public class AbstractPage {
 			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
 			return false;
 
 		}
@@ -714,6 +651,10 @@ public class AbstractPage {
 			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
 			System.out.println(nameofCurrMethod);
 			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
 				Assert.assertTrue(false);
 			}
 
@@ -786,6 +727,23 @@ public class AbstractPage {
 		}
 
 		return dayInWeek;
+
+	}
+
+	/* SCROLL DOWN */
+	public void scrollDownToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
+	/* SCROLL UP */
+	public void scrollUpToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
+	public void scrollDownToButton(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicText);
 
 	}
 
@@ -869,9 +827,9 @@ public class AbstractPage {
 // Click vào ngày trong date time picker , tham số truyền vào là text
 	public void clickToDynamicDateInDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicText) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER, dynamicText);
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		}
 
 	}
@@ -1336,9 +1294,9 @@ public class AbstractPage {
 	// Kiểm tra text trong nội dung link thông báo
 	public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_INFO, dynamicTextValue);
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		}
 		return isDisplayed;
 	}

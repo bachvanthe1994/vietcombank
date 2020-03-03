@@ -34,7 +34,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 	}
@@ -230,7 +230,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 
 		log.info("TC_08_Step_02: Nhap so tien chuyen");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_08_Step_03: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
@@ -261,7 +261,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 
 		log.info("TC_09_Step_02: Nhap so tien chuyen");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_09_Step_03: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");

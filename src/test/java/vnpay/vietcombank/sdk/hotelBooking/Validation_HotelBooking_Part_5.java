@@ -100,7 +100,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Email"), "minhducdo2603@gmail.com");
 
 		log.info("TC_01_13_Kiem tra thong tin hoa don");
-		hotelBooking.scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Tiếp tục");
+		hotelBooking.scrollDownToButton(driver, "Tiếp tục");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Thông tin hóa đơn"));
 
 		log.info("TC_01_13_01_Kiem tra Ma giao dich");

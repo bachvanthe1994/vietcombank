@@ -26,7 +26,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
 
-	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.DEFAULT_ACCOUNT2, Account_Data.Valid_Account.ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -41,7 +41,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_01_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_00_02_Chon phuong thuc chuyen tien");
@@ -180,7 +180,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		log.info("TC_07_03_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
 
-		transferRecurrent.scrollToText(driver, "Nội dung");
+		transferRecurrent.scrollDownToText(driver, "Nội dung");
 
 		log.info("TC_07_04_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong Vietcombank"));

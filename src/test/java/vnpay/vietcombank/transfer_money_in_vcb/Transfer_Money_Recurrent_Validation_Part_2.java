@@ -40,7 +40,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_02_Kiem tra chua xuat hien nhom thong tin Tan suat");
@@ -51,7 +51,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_01_04_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 		log.info("TC_01_05_Kiem tra xuat hien nhom thong Tan suat");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Tần suất"));
@@ -258,7 +258,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_14_03_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_14_04_Chon phuong thuc chuyen tien");
@@ -266,7 +266,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_14_05_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 		log.info("TC_14_06_Chon Ngay bat dau");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, startDate);
@@ -283,7 +283,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_14_10_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_14_11_Chon phuong thuc chuyen tien");
@@ -291,7 +291,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_14_12_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 	}
 
@@ -344,7 +344,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_18_03_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_18_04_Chon phuong thuc chuyen tien");
@@ -352,7 +352,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_18_05_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 		log.info("TC_18_06_Chon Ngay ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
@@ -369,7 +369,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_18_10_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_18_11_Chon phuong thuc chuyen tien");
@@ -377,7 +377,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_18_12_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 	}
 
@@ -392,7 +392,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_19_03_Click Chuyen tien trong ngan hang");
-		homePage.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_19_04_Chon phuong thuc chuyen tien");
@@ -400,7 +400,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_19_05_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
 
 		log.info("TC_19_06_Chon Ngay Ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);

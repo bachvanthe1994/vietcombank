@@ -173,8 +173,8 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		
 		log.info("TC_Step_: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
-		
-		log.info("TC_Step_: Chon so tai khoan chuyen");
+
+		log.info("TC_Step_: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 		
 		log.info("TC_Step_: verify thoi tim kiem tu ngay");
@@ -250,7 +250,6 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 	@Test
 	public void TC_03_ChuyenTienNhanhQuaTaiKhoanChonUSDNguoiChuyenTraPhiOTP() {
-		log.info("TC_01_Step_Click chuyen tien nhanh 24/7");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
 		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
