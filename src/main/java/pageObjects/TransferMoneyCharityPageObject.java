@@ -137,7 +137,7 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
 	    try {
-	    	result = stringDate.split(" ")[3] + stringDate.split(" ")[0];
+	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
 	    }
 	    catch (Exception e) {
 			
