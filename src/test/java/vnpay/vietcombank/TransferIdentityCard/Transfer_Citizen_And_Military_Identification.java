@@ -19,28 +19,28 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferIdentity_Data;
 
 public class Transfer_Citizen_And_Military_Identification extends Base {
-    AndroidDriver<AndroidElement> driver;
-    private LogInPageObject login;
-    private HomePageObject homePage;
-    private TransferIdentiryPageObject trasferPage;
-    private TransactionReportPageObject transReport;
-    private String transferTime;
-    private String transactionNumber;
-    String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-    @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-    @BeforeClass
-    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
-	    throws IOException, InterruptedException {
-	startServer();
-	log.info("Before class: Mo app ");
-	driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-	login = PageFactoryManager.getLoginPageObject(driver);
-	login.Global_login(phone, pass, opt);
+	AndroidDriver<AndroidElement> driver;
+	private LogInPageObject login;
+	private HomePageObject homePage;
+	private TransferIdentiryPageObject trasferPage;
+	private TransactionReportPageObject transReport;
+	private String transferTime;
+	private String transactionNumber;
+	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-	homePage.scrollDownToText(driver, "Chuyển tiền nhận bằng CMT");
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@BeforeClass
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+		startServer();
+		log.info("Before class: Mo app ");
+		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		login = PageFactoryManager.getLoginPageObject(driver);
+		login.Global_login(phone, pass, opt);
 
-    }
+		homePage.scrollDownToText(driver, "Chuyển tiền nhận bằng CMT");
+
+	}
 
 //	@Test
     public void TC_01_ChuyenTienQuaCCCDNguoiChuyenTraPhiVNDXacNhanMatKhau() {
@@ -1309,7 +1309,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	log.info("TC_09_Step_23: kiem tra noi dung");
 	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
-	trasferPage.scrollDownToButton(driver, "Chọn phương thức xác thực");
+	trasferPage.scrollDownToText(driver, "Chọn phương thức xác thực");
 
 	log.info("TC_09_Step_24: chon phuong thuc xac thuc");
 	trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");

@@ -420,9 +420,11 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_03_Step_23: kiem tra noi dung");
 	verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
+
 	trasferPage.scrollDownToButton(driver, "Tiếp tục");
 	log.info("TC_03_Step_24: chon phuong thuc xac thuc");
 	trasferPage.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
+
 
 	log.info("TC_03_Step_25: lay phi giao dich theo phuong thuc xac thuc");
 	String moneyAuthen = trasferPage.getDynamicAmountLabelConvertVNDToLong(driver, "Mật khẩu đăng nhập");

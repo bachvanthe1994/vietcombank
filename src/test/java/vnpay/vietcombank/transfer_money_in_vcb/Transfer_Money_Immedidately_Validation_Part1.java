@@ -35,7 +35,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 
 	}
 
@@ -45,7 +45,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		String defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		transferInVCB.scrollToText(driver, "Trạng thái lệnh chuyển tiền");
+		transferInVCB.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		transferInVCB.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_Step_02: Kiem tra tai khoan mac dinh");

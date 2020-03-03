@@ -40,6 +40,7 @@ import vietcombankUI.TransferMoneyOutSideVCBPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class AbstractPage {
+<<<<<<< HEAD
     int longTime = 30;
     int shortTime = 5;
     long longTime1 = 30;
@@ -168,6 +169,214 @@ public class AbstractPage {
 		}
 
 	    }
+=======
+	int longTime = 30;
+	int shortTime = 5;
+	long longTime1 = 30;
+	long shortTime1 = 5;
+
+	public String getPageSource(AndroidDriver<AndroidElement> driver) {
+		sleep(driver, 3000);
+		String text = driver.getPageSource();
+		return text;
+
+	}
+
+	public void TabtoElement(AndroidDriver<AndroidElement> driver, String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		TouchAction touch = new TouchAction(driver);
+		touch.tap(tapOptions().withElement(element(element))).perform();
+
+	}
+
+	public boolean isControlForcus(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("selected").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void navigateBack(AndroidDriver<AndroidElement> driver) {
+		driver.navigate().back();
+	}
+
+	public void navigatForward(AndroidDriver<AndroidElement> driver) {
+		driver.navigate().forward();
+		;
+	}
+
+	public void LongPressToElement(AndroidDriver<AndroidElement> driver, String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		TouchAction touch = new TouchAction(driver);
+		touch.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(2))).release().perform();
+
+	}
+
+	public void SwipingFromOneElementToOtherElement(AndroidDriver<AndroidElement> driver, String locator1, String locator2) {
+		WebElement element1 = driver.findElement(By.xpath(locator1));
+		WebElement element2 = driver.findElement(By.xpath(locator2));
+		TouchAction touch = new TouchAction(driver);
+		touch.longPress(longPressOptions().withElement(element(element1)).withDuration(ofSeconds(2))).moveTo(element(element2)).release().perform();
+
+	}
+
+	public void DragAndDrop(AndroidDriver<AndroidElement> driver, String locator1, String locator2) {
+		WebElement element1 = driver.findElement(By.xpath(locator1));
+		WebElement element2 = driver.findElement(By.xpath(locator2));
+		TouchAction touch = new TouchAction(driver);
+		touch.longPress(longPressOptions().withElement(element(element1))).moveTo(element(element2)).release().perform();
+	}
+
+	public void BackKeyCode(AndroidDriver<AndroidElement> driver) {
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+
+	}
+
+	public void hideKeyBoard(AndroidDriver<AndroidElement> driver) {
+		driver.hideKeyboard();
+
+	}
+
+	public void HomeKeyCode(AndroidDriver<AndroidElement> driver) {
+		driver.pressKey(new KeyEvent(AndroidKey.HOME));
+
+	}
+
+	public void EnterKeyCode(AndroidDriver<AndroidElement> driver) {
+		driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+
+	}
+
+	public String getToastMessage(AndroidDriver<AndroidElement> driver) {
+		String toastMessage = driver.findElement(By.xpath("//android.widget.Toast[1]")).getAttribute("name");
+		return toastMessage;
+	}
+
+	public double convertToDouble(String value) {
+		double value1 = Double.parseDouble(value.substring(1));
+		return value1;
+	}
+
+	public void SwitchToContext(AndroidDriver<AndroidElement> driver, String webViewName) {
+		Set<String> contexts = driver.getContextHandles();
+		System.out.println(contexts);
+		driver.context(webViewName);
+	}
+
+//	public void scrollToText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+//		try {
+//			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + dynamicTextValue + "\"));");
+//		} catch (Exception e) {
+//			System.out.print(e.getMessage());
+//		}
+//	}
+//
+//	public void scrollToElementByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+//		try {
+//			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().resourceId(\"" + dynamicID + "\"));");
+//		} catch (Exception e) {
+//			System.out.print(e.getMessage());
+//		}
+//	}
+
+	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.80);
+		int endY = (int) (size.getHeight() * 0.30);
+		TouchAction touch = new TouchAction(driver);
+
+		for (int i = 0; i < 20; i++) {
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				try {
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+
+			}
+		}
+	}
+
+	public void scrollUp(AndroidDriver<AndroidElement> driver, String locator) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.30);
+		int endY = (int) (size.getHeight() * 0.80);
+		TouchAction touch = new TouchAction(driver);
+
+		for (int i = 0; i < 20; i++) {
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				try {
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+
+			}
+		}
+	}
+
+	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.80);
+		int endY = (int) (size.getHeight() * 0.30);
+		TouchAction touch = new TouchAction(driver);
+		locator = String.format(locator, (Object[]) dynamicValue);
+		for (int i = 0; i < 20; i++) {
+			locator = String.format(locator, (Object[]) dynamicValue);
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				try {
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+			}
+		}
+	}
+
+	public void scrollUp(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.30);
+		int endY = (int) (size.getHeight() * 0.80);
+		TouchAction touch = new TouchAction(driver);
+		locator = String.format(locator, (Object[]) dynamicValue);
+		for (int i = 0; i < 20; i++) {
+			locator = String.format(locator, (Object[]) dynamicValue);
+			overRideTimeOut(driver, 2);
+			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+				break;
+			} else {
+				try {
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+			}
+		}
+>>>>>>> release/release05
 	}
     }
 
@@ -190,6 +399,7 @@ public class AbstractPage {
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 		    sleep(driver, 1000);
 		} catch (Exception e) {
+<<<<<<< HEAD
 		    System.out.print(e.getMessage());
 		}
 
@@ -212,6 +422,89 @@ public class AbstractPage {
 	    if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 		break;
 	    } else {
+=======
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	public boolean isControlUnDisplayed(AndroidDriver<AndroidElement> driver, String locator) {
+		overRideTimeOut(driver, shortTime);
+		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
+			overRideTimeOut(driver, longTime);
+			return false;
+		} else {
+			overRideTimeOut(driver, longTime);
+			return true;
+
+		}
+	}
+
+	public void overRideTimeOut(AndroidDriver<AndroidElement> driver, long time) {
+		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+	}
+
+	public boolean isControlEnabled(AndroidDriver<AndroidElement> driver, String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isControlEnabled(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void switchToIframe(AndroidDriver<AndroidElement> driver, String locator) {
+		WebElement frame = driver.findElement(By.xpath(locator));
+		driver.switchTo().frame(frame);
+	}
+
+	public void backToDefault(AndroidDriver<AndroidElement> driver) {
+		driver.switchTo().defaultContent();
+	}
+
+//waits
+	public void implicitWaitLongTime(AndroidDriver<AndroidElement> driver) {
+
+		driver.manage().timeouts().implicitlyWait(longTime1, TimeUnit.SECONDS);
+
+	}
+
+	public void implicitWaitShortTime(AndroidDriver<AndroidElement> driver) {
+
+		driver.manage().timeouts().implicitlyWait(shortTime1, TimeUnit.SECONDS);
+	}
+
+	public void waitForElementPresent(AndroidDriver<AndroidElement> driver, String locator) {
+		WebDriverWait wait = new WebDriverWait(driver, longTime1);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+	}
+
+	public void waitForAllElementPresent(AndroidDriver<AndroidElement> driver, String locator) {
+		WebDriverWait wait = new WebDriverWait(driver, longTime1);
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(locator)));
+	}
+
+	public void waitForAllElementPresent(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebDriverWait wait = new WebDriverWait(driver, longTime1);
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(locator)));
+	}
+
+	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator) {
+
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+>>>>>>> release/release05
 		try {
 		    sleep(driver, 1000);
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
@@ -279,8 +572,31 @@ public class AbstractPage {
 	locator = String.format(locator, (Object[]) dynamicValue);
 	WebElement element = driver.findElement(By.xpath(locator));
 
+<<<<<<< HEAD
 	element.clear();
     }
+=======
+	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
+			return false;
+>>>>>>> release/release05
 
     public void checkToElement(AndroidDriver<AndroidElement> driver, String locator) {
 	WebElement element = driver.findElement(By.xpath(locator));
@@ -481,6 +797,7 @@ public class AbstractPage {
 	driver.switchTo().defaultContent();
     }
 
+<<<<<<< HEAD
 //upload
     public void uploadSingleFile(AndroidDriver<AndroidElement> driver, String locator, String fileName) {
 	WebElement addFileButton = driver.findElement(By.xpath(locator));
@@ -798,6 +1115,117 @@ public class AbstractPage {
     }
 
     /* CLICK METHOD */
+=======
+	public boolean waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
+		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
+			return false;
+		}
+		return true;
+	}
+
+	public String getOTPText(AndroidDriver<AndroidElement> driver, String bankName, String allMesssage) {
+
+		clickToElement(driver, "//android.widget.TextView[contains(@text,\"" + bankName + "\")]");
+		waitForAllElementsVisible(driver, allMesssage);
+		int no = countElementNumber(driver, allMesssage);
+		String message = driver.findElements(By.xpath(allMesssage)).get(no - 1).getText();
+		int index = message.indexOf("So OTP");
+		String otp = message.substring(index + 8, index + 14);
+		System.out.println(otp);
+		return otp;
+	}
+
+	public String[] getAllValueInList(AndroidDriver<AndroidElement> driver, String AllChidren) {
+		WebDriverWait waitExplicit = new WebDriverWait(driver, 60);
+		waitExplicit.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(AllChidren)));
+		List<AndroidElement> elements = driver.findElements(By.xpath(AllChidren));
+		int noOfElement = elements.size();
+		System.out.println("Tong so gia Tri " + noOfElement);
+		String[] Array1 = new String[noOfElement];
+		for (int i = 0; i < noOfElement; i++) {
+			Array1[i] = driver.findElements(By.xpath(AllChidren)).get(i).getText();
+			System.out.println("Gia Tri Trong Mang " + i + "  " + Array1[i]);
+		}
+		return Array1;
+	}
+
+	public String getDayInWeek(String dayMonthYear) {
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("d/M/yyyy");
+		LocalDate localDate = formatter.parseLocalDate(dayMonthYear);
+		int dayOfWeek = localDate.getDayOfWeek();
+		String dayInWeek = "";
+		switch (dayOfWeek) {
+		case 1:
+			dayInWeek = "Thứ Hai";
+			System.out.println(dayInWeek);
+			break;
+		case 2:
+			dayInWeek = "Thứ Ba";
+			System.out.println(dayInWeek);
+			break;
+		case 3:
+			dayInWeek = "Thứ Tư";
+			System.out.println(dayInWeek);
+			break;
+		case 4:
+			dayInWeek = "Thứ Năm";
+			System.out.println(dayInWeek);
+			break;
+		case 5:
+			dayInWeek = "Thứ Sáu";
+			System.out.println(dayInWeek);
+			;
+			break;
+		case 6:
+			dayInWeek = "Thứ Bảy";
+			System.out.println(dayInWeek);
+			break;
+		case 7:
+			dayInWeek = "Chủ Nhật";
+			System.out.println(dayInWeek);
+			break;
+		}
+
+		return dayInWeek;
+
+	}
+
+	/* SCROLL DOWN */
+	public void scrollDownToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
+	/* SCROLL UP */
+	public void scrollUpToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
+	public void scrollDownToButton(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicText);
+
+	}
+
+	/* CLICK METHOD */
+>>>>>>> release/release05
 
 //Click vào Cho phép lúc khởi tạo app, hoặc check chức chăng có permission
     public void clickToDynamicAcceptButton(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
@@ -872,7 +1300,17 @@ public class AbstractPage {
 	    clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 	}
 
+<<<<<<< HEAD
     }
+=======
+// Click vào ngày trong date time picker , tham số truyền vào là text
+	public void clickToDynamicDateInDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
+		}
+>>>>>>> release/release05
 
 // Click vào ngày trong date time picker , tham số truyền vào là text
     public void clickToDynamicDateInDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicText) {
@@ -1292,6 +1730,7 @@ public class AbstractPage {
     }
 
 //Kiểm tra gợi ý số tiền không hiển thị trên màn hình,tham số truyền vào là resource-id 
+<<<<<<< HEAD
     public boolean isDynamicSuggestedMoneyUndisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
 	boolean isDisplayed = false;
 	boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
@@ -1477,6 +1916,193 @@ public class AbstractPage {
     }
 
     /* GET TEXT METHOD */
+=======
+	public boolean isDynamicSuggestedMoneyUndisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	public boolean isDynamicBackIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	public boolean isDynamicHistoryIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Check hiển thị button chuyển đổi
+	public boolean isDynamicChangeIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Check hiển thị icon combobox
+	public boolean isDynamicComboboxDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	public boolean isDynamicVerifyTextOnButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+		return isDisplayed;
+
+	}
+
+	public boolean isDynamicTextDetailByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		}
+		return isDisplayed;
+
+	}
+
+	// Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id
+	public boolean isDynamicSuggestedMoneyDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Kiểm tra text trong nội dung link thông báo
+	public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
+	public boolean isDynamicImageSelect(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Kiểm tra hiển thị image, check chuyển khoản thành công
+	public boolean isDynamicImageSuccess(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Kiểm tra hiển thị icon home man hinh chuyen tien thanh cong
+	public boolean isDynamicImageHomeDisplay(AndroidDriver<AndroidElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		}
+		return isDisplayed;
+	}
+
+	// Kiểm tra hiển thị time màn hình chuyển khoản thành công
+	public boolean isDynamicTimeAndMoneyDisplay(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+		}
+		return isDisplayed;
+
+	}
+
+	public boolean isDynamicTextNumberCustomerDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// Không hiển thị text trường số lượng hành khách
+	public boolean isDynamicTextNumberCustomerUnDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	// hiển thị icon trường số lượng hành khách
+	public boolean isDynamicIconChangeNumber(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		}
+		return isDisplayed;
+
+	}
+
+	// hiển thị text trường số lượng hành khách
+	public boolean isDynamicTextChangeNumber(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+		}
+		return isDisplayed;
+
+	}
+
+	public boolean isDynamicImageButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	/* GET TEXT METHOD */
+>>>>>>> release/release05
 
 // lay text trong ô dropdown bằng index và header của nó
     public String getDynamicTextInDropDownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValueAndID) {

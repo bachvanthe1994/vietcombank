@@ -76,7 +76,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 	@Test
 	public void TC_19_VerifyDefaultDanhBaThuHuong() {
 		log.info("TC_19_Step_Scoll den man hinh chuyen tien nhanh");
-		transferMoney.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoney.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_19_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");

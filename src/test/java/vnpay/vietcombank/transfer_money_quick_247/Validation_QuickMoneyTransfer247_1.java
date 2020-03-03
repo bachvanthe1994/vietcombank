@@ -78,7 +78,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_01_KiemTraButtonBack() {
 		log.info("TC_01_Step_Scoll den man hinh chuyen tien nhanh");
-		transferMoney.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoney.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -96,7 +96,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_02_KiemTraGiaTriDefaultHinhThucChuyenTien() {
 		log.info("TC_02_Step_Quay lai man hinh chuyen tien nhanh");
-		transferMoney.scrollToText(driver, "Chuyển tiền tới ngân hàng khác");
+		transferMoney.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 
 		log.info("TC_02_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
