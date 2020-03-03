@@ -55,8 +55,8 @@ public class VehicalTicket_1 extends Base {
 
 	log.info("TC_63_Step_3: chọn ghế");
 	vehicalTicket.clickBookingChair("0", "0");
-
-	log.info("TC_63_Step_3: click chọn ghê");
+//
+//	log.info("TC_63_Step_3: click chọn ghê");
 //	vehicalTicket.clickToDynamicText("Đặt chỗ");
     }
 

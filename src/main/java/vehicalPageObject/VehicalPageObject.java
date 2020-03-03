@@ -359,4 +359,26 @@ public class VehicalPageObject extends AbstractPage {
 
     }
 
+    // kiểm tra text ghi chú trạng thái ghế
+    public boolean isDynamicChairStatus(String dynamicId) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicId);
+	if (status) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicId);
+	}
+	return isDisplayed;
+
+    }
+
+    // kiểm tra sơ đồ ghế ngồi
+    public boolean isDynamicChairMap(String dynamicId) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicId);
+	if (status) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicId);
+	}
+	return isDisplayed;
+
+    }
+
 }

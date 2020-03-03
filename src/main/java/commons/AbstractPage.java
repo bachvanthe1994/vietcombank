@@ -1045,11 +1045,41 @@ public class AbstractPage {
 	}
     }
 
-    public void clickToTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+    public void clickToTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String dynamicID) {
 	boolean status = false;
 	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 	if (status == true) {
 	    clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	}
+
+    }
+
+//    cick chọn text trong selectbox tham số truyền vào là id
+    public void clickToTextID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	boolean status = false;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	}
+
+    }
+
+//  cick chọn thêm người nhận
+    public void clickToImageAddReceiver(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	boolean status = false;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	}
+
+    }
+
+//  cick chọn chọn lời chúc
+    public void clickToWishes(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	boolean status = false;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 	}
 
     }

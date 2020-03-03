@@ -26,6 +26,10 @@ public class VehicalData {
 	public static final String EDIT_DESTINATION = "Quảng Ninh";
 	public static final String TITLE_FIND = "Lọc chuyến xe";
 	public static final String TITLE_EDIT_DATA_FIND = "Thay đổi thông tin tìm kiếm";
+	public static final String TITLE_CHOISE_CHAIR = "Chọn ghế";
+	public static final String CHAIR_EMPTY = "Ghế trống";
+	public static final String CHAIR_SOLD = "Ghế đã bán";
+	public static final String CHAIR_SELECTED = "Đang chọn";
     }
 
     public static class NOTIFICATION {
