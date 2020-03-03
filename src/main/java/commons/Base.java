@@ -33,6 +33,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -41,8 +43,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 public class Base {
 	SoftAssert softAssertion;
 	protected final Logger log;
-	protected AndroidDriver<AndroidElement> driver;
-	private AndroidDriver<AndroidElement> driver2;
+	protected AppiumDriver<MobileElement> driver;
 
 	private String workingDir = System.getProperty("user.dir");
 	public AppiumDriverLocalService service;
@@ -53,7 +54,7 @@ public class Base {
 
 	}
 
-	public AndroidDriver<AndroidElement> getDriver() {
+	public AppiumDriver<MobileElement> getDriver() {
 		return driver;
 
 	}
@@ -78,10 +79,6 @@ public class Base {
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
-	}
-
-	public void closeSMSApp() {
-		driver2.quit();
 	}
 
 	@AfterSuite
@@ -143,7 +140,7 @@ public class Base {
 
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
 		File file = new File("src/test/resources");
 		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
@@ -179,7 +176,7 @@ public class Base {
 
 	}
 
-	public AndroidDriver<AndroidElement> openGlobalSetting(String deviceName, String udid, String url) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openGlobalSetting(String deviceName, String udid, String url) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 		cap.setCapability("uid", udid);

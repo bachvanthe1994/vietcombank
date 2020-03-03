@@ -13,14 +13,14 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
 
 public class Validation_HotelBooking_Part_1 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HotelBookingPageObject hotelBooking;
 

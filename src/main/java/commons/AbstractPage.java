@@ -26,6 +26,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.HasOnScreenKeyboard;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -45,21 +47,21 @@ public class AbstractPage {
 	long longTime1 = 30;
 	long shortTime1 = 5;
 
-	public String getPageSource(AndroidDriver<AndroidElement> driver) {
-		sleep(driver, 5000);
+	public String getPageSource(AppiumDriver<MobileElement> driver) {
+		sleep(driver, 3000);
 		String text = driver.getPageSource();
 		return text;
 
 	}
 
-	public void TabtoElement(AndroidDriver<AndroidElement> driver, String locator) {
+	public void TabtoElement(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);
 		touch.tap(tapOptions().withElement(element(element))).perform();
 
 	}
 
-	public boolean isControlForcus(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean isControlForcus(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("selected").equalsIgnoreCase("true")) {
@@ -69,23 +71,23 @@ public class AbstractPage {
 		}
 	}
 
-	public void navigateBack(AndroidDriver<AndroidElement> driver) {
+	public void navigateBack(AppiumDriver<MobileElement> driver) {
 		driver.navigate().back();
 	}
 
-	public void navigatForward(AndroidDriver<AndroidElement> driver) {
+	public void navigatForward(AppiumDriver<MobileElement> driver) {
 		driver.navigate().forward();
 		;
 	}
 
-	public void LongPressToElement(AndroidDriver<AndroidElement> driver, String locator) {
+	public void LongPressToElement(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		TouchAction touch = new TouchAction(driver);
 		touch.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(2))).release().perform();
 
 	}
 
-	public void SwipingFromOneElementToOtherElement(AndroidDriver<AndroidElement> driver, String locator1, String locator2) {
+	public void SwipingFromOneElementToOtherElement(AppiumDriver<MobileElement> driver, String locator1, String locator2) {
 		WebElement element1 = driver.findElement(By.xpath(locator1));
 		WebElement element2 = driver.findElement(By.xpath(locator2));
 		TouchAction touch = new TouchAction(driver);
@@ -93,7 +95,7 @@ public class AbstractPage {
 
 	}
 
-	public void DragAndDrop(AndroidDriver<AndroidElement> driver, String locator1, String locator2) {
+	public void DragAndDrop(AppiumDriver<MobileElement> driver, String locator1, String locator2) {
 		WebElement element1 = driver.findElement(By.xpath(locator1));
 		WebElement element2 = driver.findElement(By.xpath(locator2));
 		TouchAction touch = new TouchAction(driver);
@@ -105,7 +107,7 @@ public class AbstractPage {
 
 	}
 
-	public void hideKeyBoard(AndroidDriver<AndroidElement> driver) {
+	public void hideKeyBoard(AppiumDriver<MobileElement> driver) {
 		driver.hideKeyboard();
 
 	}
@@ -120,7 +122,7 @@ public class AbstractPage {
 
 	}
 
-	public String getToastMessage(AndroidDriver<AndroidElement> driver) {
+	public String getToastMessage(AppiumDriver<MobileElement> driver) {
 		String toastMessage = driver.findElement(By.xpath("//android.widget.Toast[1]")).getAttribute("name");
 		return toastMessage;
 	}
@@ -130,13 +132,13 @@ public class AbstractPage {
 		return value1;
 	}
 
-	public void SwitchToContext(AndroidDriver<AndroidElement> driver, String webViewName) {
+	public void SwitchToContext(AppiumDriver<MobileElement> driver, String webViewName) {
 		Set<String> contexts = driver.getContextHandles();
 		System.out.println(contexts);
 		driver.context(webViewName);
 	}
 
-//	public void scrollToText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+//	public void scrollToText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 //		try {
 //			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + dynamicTextValue + "\"));");
 //		} catch (Exception e) {
@@ -144,7 +146,7 @@ public class AbstractPage {
 //		}
 //	}
 //
-//	public void scrollToElementByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+//	public void scrollToElementByID(AppiumDriver<MobileElement> driver, String dynamicID) {
 //		try {
 //			driver.findElementByAndroidUIAutomator("new UiScrollable(" + "new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().resourceId(\"" + dynamicID + "\"));");
 //		} catch (Exception e) {
@@ -152,7 +154,7 @@ public class AbstractPage {
 //		}
 //	}
 
-	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator) {
+	public void scrollIDown(AppiumDriver<MobileElement> driver, String locator) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.80);
@@ -161,7 +163,7 @@ public class AbstractPage {
 
 		for (int i = 0; i < 20; i++) {
 			overRideTimeOut(driver, 2);
-			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
@@ -176,7 +178,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void scrollUp(AndroidDriver<AndroidElement> driver, String locator) {
+	public void scrollUp(AppiumDriver<MobileElement> driver, String locator) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.30);
@@ -185,7 +187,7 @@ public class AbstractPage {
 
 		for (int i = 0; i < 20; i++) {
 			overRideTimeOut(driver, 2);
-			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
@@ -200,7 +202,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void scrollIDown(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void scrollIDown(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.80);
@@ -210,7 +212,7 @@ public class AbstractPage {
 		for (int i = 0; i < 20; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
 			overRideTimeOut(driver, 2);
-			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
@@ -224,7 +226,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void scrollUp(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void scrollUp(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.30);
@@ -234,7 +236,7 @@ public class AbstractPage {
 		for (int i = 0; i < 20; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
 			overRideTimeOut(driver, 2);
-			List<AndroidElement> elementsOne = driver.findElements(By.xpath(locator));
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
@@ -248,54 +250,54 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickToElement(AndroidDriver<AndroidElement> driver, String locator) {
+	public void clickToElement(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 
 	}
 
-	public void clickToElement(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void clickToElement(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 
 	}
 
-	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, int elementIndex, String locator, String... dynamicValue) {
+	public void clickToOneOfElement(AppiumDriver<MobileElement> driver, int elementIndex, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		List<MobileElement> element = driver.findElements(By.xpath(locator));
 		element.get(elementIndex).click();
 
 	}
 
-	public void clickToOneOfElement(AndroidDriver<AndroidElement> driver, int elementIndex, String locator) {
-		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+	public void clickToOneOfElement(AppiumDriver<MobileElement> driver, int elementIndex, String locator) {
+		List<MobileElement> element = driver.findElements(By.xpath(locator));
 		element.get(elementIndex).click();
 
 	}
 
-	public void clearText(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void clearText(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 
 		element.clear();
 	}
 
-	public void checkToElement(AndroidDriver<AndroidElement> driver, String locator) {
+	public void checkToElement(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (!element.isSelected()) {
 			element.click();
 		}
 	}
 
-	public void uncheckToElement(AndroidDriver<AndroidElement> driver, String locator) {
+	public void uncheckToElement(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
 			element.click();
 		}
 	}
 
-	public void uncheckToElement(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void uncheckToElement(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
@@ -303,13 +305,13 @@ public class AbstractPage {
 		}
 	}
 
-	public void sendKeyToElement(AndroidDriver<AndroidElement> driver, String locator, String value) {
+	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.clear();
 		element.sendKeys(value);
 	}
 
-	public void sendKeyToElement(AndroidDriver<AndroidElement> driver, String locator, String value, String... dynamicValue) {
+	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.clear();
@@ -317,94 +319,94 @@ public class AbstractPage {
 
 	}
 
-	public void setValueToElement(AndroidDriver<AndroidElement> driver, String locator, String value, String... dynamicValue) {
+	public void setValueToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		MobileElement element1 = driver.findElement(By.xpath(locator));
 		element1.clear();
 		driver.getKeyboard().sendKeys(value);
 	}
 
-	public String getTextInOneOFElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
+	public String getTextInOneOFElement(AppiumDriver<MobileElement> driver, int index, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		List<MobileElement> element = driver.findElements(By.xpath(locator));
 		return element.get(index).getText();
 	}
 
-	public String getAttributeValue(AndroidDriver<AndroidElement> driver, String locator, String attribute) {
+	public String getAttributeValue(AppiumDriver<MobileElement> driver, String locator, String attribute) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getAttribute(attribute);
 	}
 
-	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public String getTextElement(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
 	}
 
-	public String getTextInFirstElement(AndroidDriver<AndroidElement> driver, int index, String locator, String... dynamicValue) {
+	public String getTextInFirstElement(AppiumDriver<MobileElement> driver, int index, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> element = driver.findElements(By.xpath(locator));
+		List<MobileElement> element = driver.findElements(By.xpath(locator));
 		return element.get(index).getText();
 	}
 
-	public List<String> getTextInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public List<String> getTextInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		List<String> listTextView = new ArrayList<String>();
-		for (AndroidElement element : listElements) {
+		for (MobileElement element : listElements) {
 			listTextView.add(element.getText());
 		}
 		return listTextView;
 	}
 
-	public List<String> getContentDescInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public List<String> getContentDescInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		List<String> listTextView = new ArrayList<String>();
-		for (AndroidElement element : listElements) {
+		for (MobileElement element : listElements) {
 			listTextView.add(element.getAttribute("content-desc"));
 		}
 		return listTextView;
 	}
 
-	public List<String> getEnableInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public List<String> getEnableInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		List<String> listTextView = new ArrayList<String>();
-		for (AndroidElement element : listElements) {
+		for (MobileElement element : listElements) {
 			listTextView.add(element.getAttribute("enabled"));
 		}
 		return listTextView;
 	}
 
-	public List<String> getSelectedInListElements(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public List<String> getSelectedInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> listElements = driver.findElements(By.xpath(locator));
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		List<String> listTextView = new ArrayList<String>();
-		for (AndroidElement element : listElements) {
+		for (MobileElement element : listElements) {
 			listTextView.add(element.getAttribute("selected"));
 		}
 		return listTextView;
 	}
 
-	public String getTextElement(AndroidDriver<AndroidElement> driver, String locator) {
+	public String getTextElement(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
 	}
 
-	public int countElementNumber(AndroidDriver<AndroidElement> driver, String locator) {
-		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+	public int countElementNumber(AppiumDriver<MobileElement> driver, String locator) {
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		return elements.size();
 	}
 
-	public int countElementNumber(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public int countElementNumber(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		return elements.size();
 	}
 
-	public boolean isControlSelected(AndroidDriver<AndroidElement> driver, String locator) {
+	public boolean isControlSelected(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
 			return true;
@@ -413,7 +415,7 @@ public class AbstractPage {
 		}
 	}
 
-	public boolean isControlSelected(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean isControlSelected(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
@@ -423,7 +425,7 @@ public class AbstractPage {
 		}
 	}
 
-	public boolean isControlDisplayed(AndroidDriver<AndroidElement> driver, String locator) {
+	public boolean isControlDisplayed(AppiumDriver<MobileElement> driver, String locator) {
 		try {
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			WebElement element = driver.findElement(By.xpath(locator));
@@ -435,9 +437,9 @@ public class AbstractPage {
 		}
 	}
 
-	public boolean isControlUnDisplayed(AndroidDriver<AndroidElement> driver, String locator) {
+	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator) {
 		overRideTimeOut(driver, shortTime);
-		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
 			overRideTimeOut(driver, longTime);
 			return false;
@@ -448,11 +450,11 @@ public class AbstractPage {
 		}
 	}
 
-	public void overRideTimeOut(AndroidDriver<AndroidElement> driver, long time) {
+	public void overRideTimeOut(AppiumDriver<MobileElement> driver, long time) {
 		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 	}
 
-	public boolean isControlEnabled(AndroidDriver<AndroidElement> driver, String locator) {
+	public boolean isControlEnabled(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
 			return true;
@@ -461,7 +463,7 @@ public class AbstractPage {
 		}
 	}
 
-	public boolean isControlEnabled(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean isControlEnabled(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
@@ -471,44 +473,44 @@ public class AbstractPage {
 		}
 	}
 
-	public void switchToIframe(AndroidDriver<AndroidElement> driver, String locator) {
+	public void switchToIframe(AppiumDriver<MobileElement> driver, String locator) {
 		WebElement frame = driver.findElement(By.xpath(locator));
 		driver.switchTo().frame(frame);
 	}
 
-	public void backToDefault(AndroidDriver<AndroidElement> driver) {
+	public void backToDefault(AppiumDriver<MobileElement> driver) {
 		driver.switchTo().defaultContent();
 	}
 
 //waits
-	public void implicitWaitLongTime(AndroidDriver<AndroidElement> driver) {
+	public void implicitWaitLongTime(AppiumDriver<MobileElement> driver) {
 
 		driver.manage().timeouts().implicitlyWait(longTime1, TimeUnit.SECONDS);
 
 	}
 
-	public void implicitWaitShortTime(AndroidDriver<AndroidElement> driver) {
+	public void implicitWaitShortTime(AppiumDriver<MobileElement> driver) {
 
 		driver.manage().timeouts().implicitlyWait(shortTime1, TimeUnit.SECONDS);
 	}
 
-	public void waitForElementPresent(AndroidDriver<AndroidElement> driver, String locator) {
+	public void waitForElementPresent(AppiumDriver<MobileElement> driver, String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, longTime1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
 	}
 
-	public void waitForAllElementPresent(AndroidDriver<AndroidElement> driver, String locator) {
+	public void waitForAllElementPresent(AppiumDriver<MobileElement> driver, String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, longTime1);
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
-	public void waitForAllElementPresent(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void waitForAllElementPresent(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, longTime1);
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
-	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator) {
+	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator) {
 
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -529,17 +531,17 @@ public class AbstractPage {
 
 	}
 
-	public void waitForElementClickable(AndroidDriver<AndroidElement> driver, String locator) {
+	public void waitForElementClickable(AppiumDriver<MobileElement> driver, String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
 	}
 
-	public void waitForAllElementsVisible(AndroidDriver<AndroidElement> driver, String locator) {
+	public void waitForAllElementsVisible(AppiumDriver<MobileElement> driver, String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
-	public void waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator) {
+	public void waitForElementInvisible(AppiumDriver<MobileElement> driver, String locator) {
 		overRideTimeOut(driver, shortTime);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
@@ -551,23 +553,23 @@ public class AbstractPage {
 		}
 	}
 
-	public String getAttributeValue(AndroidDriver<AndroidElement> driver, String locator, String attribute, String... dynamicValue) {
+	public String getAttributeValue(AppiumDriver<MobileElement> driver, String locator, String attribute, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getAttribute(attribute);
 	}
 
-	public void clickToElementByJava(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public void clickToElementByJava(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].click();", element);
 	}
 
-	public boolean isControlDisplayed(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean isControlDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
 			return true;
 		} else {
@@ -576,10 +578,10 @@ public class AbstractPage {
 		}
 	}
 
-	public boolean isControlUnDisplayed(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		overRideTimeOut(driver, shortTime);
 		locator = String.format(locator, (Object[]) dynamicValue);
-		List<AndroidElement> elements = driver.findElements(By.xpath(locator));
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
 			overRideTimeOut(driver, longTime);
 			return false;
@@ -590,14 +592,14 @@ public class AbstractPage {
 		}
 	}
 
-	public String removeUnicode(AndroidDriver<AndroidElement> driver, String locator) {
+	public String removeUnicode(AppiumDriver<MobileElement> driver, String locator) {
 
 		String temp = Normalizer.normalize(locator, Normalizer.Form.NFD);
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(temp).replaceAll("");
 	}
 
-	public void sleep(AndroidDriver<AndroidElement> driver, long milisecond) {
+	public void sleep(AppiumDriver<MobileElement> driver, long milisecond) {
 		try {
 			Thread.sleep(milisecond);
 		} catch (InterruptedException e) {
@@ -605,7 +607,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void removeAttributeInDOM(AndroidDriver<AndroidElement> driver, String locator, String attribute, String... value) {
+	public void removeAttributeInDOM(AppiumDriver<MobileElement> driver, String locator, String attribute, String... value) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		locator = String.format(locator, (Object[]) value);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -613,7 +615,7 @@ public class AbstractPage {
 		sleep(driver, 1000);
 	}
 
-	public boolean waitForElementVisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -639,7 +641,7 @@ public class AbstractPage {
 
 	}
 
-	public boolean waitForElementInvisible(AndroidDriver<AndroidElement> driver, String locator, String... dynamicValue) {
+	public boolean waitForElementInvisible(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -663,7 +665,7 @@ public class AbstractPage {
 		return true;
 	}
 
-	public String getOTPText(AndroidDriver<AndroidElement> driver, String bankName, String allMesssage) {
+	public String getOTPText(AppiumDriver<MobileElement> driver, String bankName, String allMesssage) {
 
 		clickToElement(driver, "//android.widget.TextView[contains(@text,\"" + bankName + "\")]");
 		waitForAllElementsVisible(driver, allMesssage);
@@ -675,10 +677,10 @@ public class AbstractPage {
 		return otp;
 	}
 
-	public String[] getAllValueInList(AndroidDriver<AndroidElement> driver, String AllChidren) {
+	public String[] getAllValueInList(AppiumDriver<MobileElement> driver, String AllChidren) {
 		WebDriverWait waitExplicit = new WebDriverWait(driver, 60);
 		waitExplicit.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(AllChidren)));
-		List<AndroidElement> elements = driver.findElements(By.xpath(AllChidren));
+		List<MobileElement> elements = driver.findElements(By.xpath(AllChidren));
 		int noOfElement = elements.size();
 		System.out.println("Tong so gia Tri " + noOfElement);
 		String[] Array1 = new String[noOfElement];
@@ -731,18 +733,18 @@ public class AbstractPage {
 	}
 
 	/* SCROLL DOWN */
-	public void scrollDownToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+	public void scrollDownToText(AppiumDriver<MobileElement> driver, String dynamicText) {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
 
 	/* SCROLL UP */
-	public void scrollUpToText(AndroidDriver<AndroidElement> driver, String dynamicText) {
+	public void scrollUpToText(AppiumDriver<MobileElement> driver, String dynamicText) {
 		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
 
-	public void scrollDownToButton(AndroidDriver<AndroidElement> driver, String dynamicText) {
+	public void scrollDownToButton(AppiumDriver<MobileElement> driver, String dynamicText) {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicText);
 
 	}
@@ -750,7 +752,7 @@ public class AbstractPage {
 	/* CLICK METHOD */
 
 //Click vào Cho phép lúc khởi tạo app, hoặc check chức chăng có permission
-	public void clickToDynamicAcceptButton(AndroidDriver<AndroidElement> driver, String dynamicIDValue) {
+	public void clickToDynamicAcceptButton(AppiumDriver<MobileElement> driver, String dynamicIDValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		if (status == true) {
@@ -760,7 +762,7 @@ public class AbstractPage {
 	}
 
 //Click vao 1 button sử dụng  tham số là text
-	public void clickToDynamicButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicButton(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
@@ -771,7 +773,7 @@ public class AbstractPage {
 	}
 
 //Click vào dropdown list tham số truyển vào là label của ô dropdown list đó
-	public void clickToDynamicDropDown(AndroidDriver<AndroidElement> driver, String dymanicText) {
+	public void clickToDynamicDropDown(AppiumDriver<MobileElement> driver, String dymanicText) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
@@ -782,7 +784,7 @@ public class AbstractPage {
 	}
 
 //Click vào button, text có class là textview, tham số truyền vào là text
-	public void clickToDynamicButtonLinkOrLinkText(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicButtonLinkOrLinkText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -793,7 +795,7 @@ public class AbstractPage {
 	}
 
 //Click vào ô textbox lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
-	public void clickToDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public void clickToDynamicInputBoxByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
@@ -804,7 +806,7 @@ public class AbstractPage {
 	}
 
 //Click vào ô dropdown lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
-	public void clickToDynamicDropdownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public void clickToDynamicDropdownByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
@@ -815,7 +817,7 @@ public class AbstractPage {
 	}
 
 // Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
-	public void clickToDynamicDropdownAndDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public void clickToDynamicDropdownAndDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		if (status == true) {
@@ -825,7 +827,7 @@ public class AbstractPage {
 	}
 
 // Click vào ngày trong date time picker , tham số truyền vào là text
-	public void clickToDynamicDateInDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicText) {
+	public void clickToDynamicDateInDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		if (status == true) {
@@ -835,7 +837,7 @@ public class AbstractPage {
 	}
 
 // Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
-	public void clickToDynamicImageViewByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public void clickToDynamicImageViewByID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		if (status == true) {
@@ -844,7 +846,7 @@ public class AbstractPage {
 	}
 
 //Click vào close icon có tham số truyền vào là text cạnh nó
-	public void clickToDynamicCloseIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicCloseIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		if (status == true) {
@@ -853,7 +855,7 @@ public class AbstractPage {
 	}
 
 // Click nút back bằng label cạnh nó
-	public void clickToDynamicBackIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicBackIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
@@ -864,7 +866,7 @@ public class AbstractPage {
 	}
 
 // click vào icon ứng dụng trên màn hình theo tên của icon đó
-	public void clickToDynamicIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
@@ -874,7 +876,7 @@ public class AbstractPage {
 	}
 
 // Click vào ô input box 
-	public void clickToDynamicInput(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicInput(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		if (status == true) {
@@ -884,7 +886,7 @@ public class AbstractPage {
 	}
 
 //Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và resource-id
-	public void clickToDynamicTransactionInReport(AndroidDriver<AndroidElement> driver, String... dynamicIndexAndID) {
+	public void clickToDynamicTransactionInReport(AppiumDriver<MobileElement> driver, String... dynamicIndexAndID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_REPORT, dynamicIndexAndID);
 		if (status == true) {
@@ -894,7 +896,7 @@ public class AbstractPage {
 	}
 
 //Click vào 1 giao dịch trong trạng thái lệnh chuyển tiền, tham số truyền vào là index và resource id
-	public void clickToDynamicTransactionInTransactionOrderStatus(AndroidDriver<AndroidElement> driver, String... dynamicIndex1ID2) {
+	public void clickToDynamicTransactionInTransactionOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIndex1ID2) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 		if (status == true) {
@@ -902,7 +904,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public void clickDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
 		if (status == true) {
@@ -911,7 +913,7 @@ public class AbstractPage {
 	}
 
 	// Click button cancel
-	public void clickDynamicCancelIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickDynamicCancelIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
 		if (status == true) {
@@ -925,7 +927,7 @@ public class AbstractPage {
 		return expectList.containsAll(actualList);
 	}
 
-	public void clickToDynamicBottomMenu(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public void clickToDynamicBottomMenu(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		if (status == true) {
@@ -934,7 +936,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickToDynamicImageButtonByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public void clickToDynamicImageButtonByID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
 		if (status == true) {
@@ -942,7 +944,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickToDynamicLink(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public void clickToDynamicLink(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
 		if (status == true) {
@@ -950,7 +952,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickToDynamicSuggestedMoney(AndroidDriver<AndroidElement> driver, int index, String dynamicID) {
+	public void clickToDynamicSuggestedMoney(AppiumDriver<MobileElement> driver, int index, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		if (status == true) {
@@ -959,7 +961,7 @@ public class AbstractPage {
 	}
 
 	// Click icon change
-	public void clickToDynamicIconChange(AndroidDriver<AndroidElement> driver, String dynamicText) {
+	public void clickToDynamicIconChange(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
 		if (status == true) {
@@ -968,7 +970,7 @@ public class AbstractPage {
 	}
 
 	// Click select date
-	public void clickToDynamicSelectDate(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public void clickToDynamicSelectDate(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
 		if (status == true) {
@@ -977,7 +979,7 @@ public class AbstractPage {
 	}
 
 	// Click chọn ngày trong lịch calendar
-	public void clickDynamicDateStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public void clickDynamicDateStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
@@ -987,7 +989,7 @@ public class AbstractPage {
 	}
 
 	// Click radio button
-	public void clickDynamicRadioSelectType(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickDynamicRadioSelectType(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
 		if (status == true) {
@@ -995,7 +997,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickToTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+	public void clickToTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		if (status == true) {
@@ -1006,7 +1008,7 @@ public class AbstractPage {
 
 	/* INPUT BOX METHOD */
 
-	public void inputOTPInvalidBy_N_Times(AndroidDriver<AndroidElement> driver, int time) {
+	public void inputOTPInvalidBy_N_Times(AppiumDriver<MobileElement> driver, int time) {
 		for (int i = 0; i < time; i++) {
 			inputToDynamicOtpOrPIN(driver, "213456", "Tiếp tục");
 			clickToDynamicButton(driver, "Tiếp tục");
@@ -1016,7 +1018,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputPasswordInvalidBy_N_Times(AndroidDriver<AndroidElement> driver, int time) {
+	public void inputPasswordInvalidBy_N_Times(AppiumDriver<MobileElement> driver, int time) {
 		for (int i = 0; i < time; i++) {
 			inputToDynamicPopupPasswordInput(driver, "12345678", "Tiếp tục");
 			clickToDynamicButton(driver, "Tiếp tục");
@@ -1026,7 +1028,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputIntoEditTextByID(AndroidDriver<AndroidElement> driver, String inputValue, String... dynamicID) {
+	public void inputIntoEditTextByID(AppiumDriver<MobileElement> driver, String inputValue, String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 		if (status == true) {
@@ -1038,7 +1040,7 @@ public class AbstractPage {
 
 //Dien text vao input box
 // input vào ô input với tham số truyền vào là inputbox
-	public void inputToDynamicInputBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicInputBox(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -1050,7 +1052,7 @@ public class AbstractPage {
 	}
 
 //input vào 1 ô text box bằng label của nó, tham số truyền vào là text của label và vị trí của ô input
-	public void inputToDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, String inputValue, String... dynamicTextValueAndID) {
+	public void inputToDynamicInputBoxByHeader(AppiumDriver<MobileElement> driver, String inputValue, String... dynamicTextValueAndID) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValueAndID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValueAndID);
@@ -1061,7 +1063,7 @@ public class AbstractPage {
 
 	}
 
-	public void pressKeyCodeIntoDynamicInputBoxByHeader(AndroidDriver<AndroidElement> driver, List<Keys> dynamicKey, String... dynamicTextValueAndID) {
+	public void pressKeyCodeIntoDynamicInputBoxByHeader(AppiumDriver<MobileElement> driver, List<Keys> dynamicKey, String... dynamicTextValueAndID) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValueAndID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValueAndID);
@@ -1073,7 +1075,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void pressKeyCodeIntoAmountInput(AndroidDriver<AndroidElement> driver, List<Keys> dynamicKey) {
+	public void pressKeyCodeIntoAmountInput(AppiumDriver<MobileElement> driver, List<Keys> dynamicKey) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TransferMoneyInVCBPageUIs.FREQUENCY_NUMBER_INPUT);
 		if (status == true) {
@@ -1084,7 +1086,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputToDynamicLogInTextBox(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicLogInTextBox(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_IN_LOGIN, dynamicTextValue);
 		;
@@ -1095,7 +1097,7 @@ public class AbstractPage {
 	}
 
 //Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
-	public void inputToDynamicOtpOrPIN(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicOtpOrPIN(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		if (status == true) {
@@ -1107,7 +1109,7 @@ public class AbstractPage {
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
 
 	// Nhập địa điểm tìm kiếm
-	public void inputToDynamicTextPoint(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicIndexValue) {
+	public void inputToDynamicTextPoint(AppiumDriver<MobileElement> driver, String inputValue, String dynamicIndexValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
 		if (status == true) {
@@ -1116,7 +1118,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputToDynamicPopupPasswordInput(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicPopupPasswordInput(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 		if (status == true) {
@@ -1125,7 +1127,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputToPasswordConfirm(AndroidDriver<AndroidElement> driver, String inputValue) {
+	public void inputToPasswordConfirm(AppiumDriver<MobileElement> driver, String inputValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
 		if (status == true) {
@@ -1134,7 +1136,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputToDynamicInputBoxSearch(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicInputBoxSearch(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, dynamicTextValue);
 		if (status == true) {
@@ -1143,7 +1145,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputToDynamicInputBoxSearchBank(AndroidDriver<AndroidElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicInputBoxSearchBank(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
 		if (status == true) {
@@ -1154,7 +1156,7 @@ public class AbstractPage {
 
 	/* BOLEAN METHOD */
 // check button có hiển thị hay không, tham số truyền vào là text của button
-	public boolean isDynamicButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicButtonDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
@@ -1166,7 +1168,7 @@ public class AbstractPage {
 	}
 
 //Kiểm tra text có hiển thị hay không, tham số truyền vào là text 
-	public boolean isDynamicMessageAndLabelTextDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicMessageAndLabelTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -1177,7 +1179,7 @@ public class AbstractPage {
 
 	}
 
-	public boolean isDynamicImageViewByTextViewdDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicImageViewByTextViewdDisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		if (status == true) {
@@ -1186,12 +1188,12 @@ public class AbstractPage {
 		return isDisplayed;
 	}
 
-	public boolean isKeyBoardDisplayed(AndroidDriver<AndroidElement> driver) {
-		return driver.isKeyboardShown();
+	public boolean isKeyBoardDisplayed(AppiumDriver<MobileElement> driver) {
+		return ((HasOnScreenKeyboard) driver).isKeyboardShown();
 	}
 
 //Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
-	public boolean isDynamicMessageAndLabelTextUndisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicMessageAndLabelTextUndisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = true;
 		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
@@ -1201,7 +1203,7 @@ public class AbstractPage {
 	}
 
 //Kiểm  tra text trong ô input có hiển thị hay không, tham số truyền vào là text
-	public boolean isDynamicTextInInputBoxDisPlayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicTextInInputBoxDisPlayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -1212,7 +1214,7 @@ public class AbstractPage {
 	}
 
 //Kiểm tra gợi ý số tiền không hiển thị trên màn hình,tham số truyền vào là resource-id 
-	public boolean isDynamicSuggestedMoneyUndisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicSuggestedMoneyUndisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 		if (status == true) {
@@ -1221,7 +1223,7 @@ public class AbstractPage {
 		return isDisplayed;
 	}
 
-	public boolean isDynamicBackIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicBackIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
 		if (status == true) {
@@ -1230,7 +1232,7 @@ public class AbstractPage {
 		return isDisplayed;
 	}
 
-	public boolean isDynamicHistoryIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicHistoryIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
 		if (status == true) {
@@ -1240,7 +1242,7 @@ public class AbstractPage {
 	}
 
 	// Check hiển thị button chuyển đổi
-	public boolean isDynamicChangeIconDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicChangeIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
 		if (status == true) {
@@ -1250,7 +1252,7 @@ public class AbstractPage {
 	}
 
 	// Check hiển thị icon combobox
-	public boolean isDynamicComboboxDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicComboboxDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
 		if (status == true) {
@@ -1259,7 +1261,7 @@ public class AbstractPage {
 		return isDisplayed;
 	}
 
-	public boolean isDynamicVerifyTextOnButton(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicVerifyTextOnButton(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
@@ -1270,7 +1272,7 @@ public class AbstractPage {
 
 	}
 
-	public boolean isDynamicTextDetailByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public boolean isDynamicTextDetailByID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -1282,7 +1284,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id
-	public boolean isDynamicSuggestedMoneyDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicSuggestedMoneyDisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 		if (status == true) {
@@ -1292,7 +1294,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra text trong nội dung link thông báo
-	public boolean isDynamicTextInfoDisplayed(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicTextInfoDisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		if (status == true) {
@@ -1302,7 +1304,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
-	public boolean isDynamicImageSelect(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicImageSelect(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
@@ -1313,7 +1315,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra hiển thị image, check chuyển khoản thành công
-	public boolean isDynamicImageSuccess(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicImageSuccess(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
@@ -1324,7 +1326,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra hiển thị icon home man hinh chuyen tien thanh cong
-	public boolean isDynamicImageHomeDisplay(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public boolean isDynamicImageHomeDisplay(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
@@ -1335,7 +1337,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra hiển thị time màn hình chuyển khoản thành công
-	public boolean isDynamicTimeAndMoneyDisplay(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicTimeAndMoneyDisplay(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
 		if (status == true) {
@@ -1345,7 +1347,7 @@ public class AbstractPage {
 
 	}
 
-	public boolean isDynamicTextNumberCustomerDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicTextNumberCustomerDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
 		if (status == true) {
@@ -1355,7 +1357,7 @@ public class AbstractPage {
 	}
 
 	// Không hiển thị text trường số lượng hành khách
-	public boolean isDynamicTextNumberCustomerUnDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicTextNumberCustomerUnDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
 		if (status == true) {
@@ -1365,7 +1367,7 @@ public class AbstractPage {
 	}
 
 	// hiển thị icon trường số lượng hành khách
-	public boolean isDynamicIconChangeNumber(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicIconChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
 		if (status == true) {
@@ -1376,7 +1378,7 @@ public class AbstractPage {
 	}
 
 	// hiển thị text trường số lượng hành khách
-	public boolean isDynamicTextChangeNumber(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicTextChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
 		if (status == true) {
@@ -1386,7 +1388,7 @@ public class AbstractPage {
 
 	}
 
-	public boolean isDynamicImageButtonDisplayed(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public boolean isDynamicImageButtonDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
@@ -1399,7 +1401,7 @@ public class AbstractPage {
 	/* GET TEXT METHOD */
 
 // lay text trong ô dropdown bằng index và header của nó
-	public String getDynamicTextInDropDownByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextValueAndID) {
+	public String getDynamicTextInDropDownByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValueAndID);
@@ -1412,7 +1414,7 @@ public class AbstractPage {
 	}
 
 // lay loại tiền tệ trong ô text box số tiền bằng text
-	public String getDynamicCurrencyInMoneyTextbox(AndroidDriver<AndroidElement> driver, String... dynamicText) {
+	public String getDynamicCurrencyInMoneyTextbox(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CURRENTCY_IN_MONEY_TEXTBOX, dynamicText);
@@ -1425,7 +1427,7 @@ public class AbstractPage {
 	}
 
 //lấy text trong ô input, tham số truyền vào là text
-	public String getDynamicTextInInputBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextInInputBox(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -1437,7 +1439,7 @@ public class AbstractPage {
 	}
 
 //Lấy text trong ô input bằng bằng label của nó, tham số truyền vào là  text của label và vị trí index của ô input
-	public String getDynamicTextInInputBoxByHeader(AndroidDriver<AndroidElement> driver, String... dynamicTextAndIndex) {
+	public String getDynamicTextInInputBoxByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextAndIndex);
@@ -1451,7 +1453,7 @@ public class AbstractPage {
 	}
 
 //lấy tài khoản nguồn mặc định bằng label của nó, tham số truyền vào là text và index 
-	public String getTextDynamicDefaultSourceAccount(AndroidDriver<AndroidElement> driver, String... dynamicTextValueAndIndex) {
+	public String getTextDynamicDefaultSourceAccount(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndIndex) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_DEFAULT_SOURCE_ACCOUNT, dynamicTextValueAndIndex);
@@ -1464,7 +1466,7 @@ public class AbstractPage {
 	}
 
 //lấy thời gian tạo giao dịch ở màn hình xác thực giao dịch, tham số truyền vào là text và vị trí index của nó
-	public String getDynamicTransferTimeAndMoney(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getDynamicTransferTimeAndMoney(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
@@ -1476,7 +1478,7 @@ public class AbstractPage {
 
 	}
 
-	public String getTextDynamicInSelectBox(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getTextDynamicInSelectBox(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -1488,7 +1490,7 @@ public class AbstractPage {
 
 	}
 
-	public String getTextInDynamicPopup(AndroidDriver<AndroidElement> driver, String dynamicResourceID) {
+	public String getTextInDynamicPopup(AppiumDriver<MobileElement> driver, String dynamicResourceID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicResourceID);
@@ -1499,7 +1501,7 @@ public class AbstractPage {
 		return text;
 	}
 
-	public String getTextInDynamicNote(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
+	public String getTextInDynamicNote(AppiumDriver<MobileElement> driver, String dynamicIndex) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
@@ -1511,7 +1513,7 @@ public class AbstractPage {
 	}
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
-	public String getDynamicTextInTransactionDetail(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextInTransactionDetail(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
@@ -1525,7 +1527,7 @@ public class AbstractPage {
 	}
 
 //Lấy text bằng id
-	public String getDynamicTextDetailByID(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public String getDynamicTextDetailByID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -1538,7 +1540,7 @@ public class AbstractPage {
 	}
 
 //lấy text ở dòng thứ 2 của phí chuyển tromg xác thực giao dich
-	public String getDynamicTextInTextViewLine2(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextInTextViewLine2(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONFIRM_SECOND_LINE_INFO, dynamicTextValue);
@@ -1552,7 +1554,7 @@ public class AbstractPage {
 	}
 
 //lấy thông tin giao dịch được tạo ở chị tiết giao dich của báo cáo giao dịch
-	public String getTextInDynamicTransactionInReport(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
+	public String getTextInDynamicTransactionInReport(AppiumDriver<MobileElement> driver, String... dynamicIndex1Index2) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_REPORT, dynamicIndex1Index2);
@@ -1565,7 +1567,7 @@ public class AbstractPage {
 
 	// lấy thông tin giao dịch được tạo ở chị tiết giao dich của trạng thái lệnh
 	// chuyển tiền
-	public String getTextInDynamicTransactionInTransferOrderStatus(AndroidDriver<AndroidElement> driver, String... dynamicIndex1ResouceID) {
+	public String getTextInDynamicTransactionInTransferOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIndex1ResouceID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ResouceID);
@@ -1576,7 +1578,7 @@ public class AbstractPage {
 		return text;
 	}
 
-	public String getDynamicAmountLabel(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicAmountLabel(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
@@ -1587,7 +1589,7 @@ public class AbstractPage {
 
 	}
 
-	public String getDynamicAmountLabelList(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getDynamicAmountLabelList(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_LABEL_BY_HEADER, dynamicTextValue);
@@ -1597,7 +1599,7 @@ public class AbstractPage {
 		return text;
 	}
 
-	public String getDynamicAmountCostLabel(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicAmountCostLabel(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_COST, dynamicTextValue);
@@ -1609,7 +1611,7 @@ public class AbstractPage {
 	}
 
 //Lấy text ở dropdown hoặc datetime picker bằng id
-	public String getTextInDynamicDropdownOrDateTimePicker(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public String getTextInDynamicDropdownOrDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
@@ -1622,7 +1624,7 @@ public class AbstractPage {
 
 	// Lấy toàn bộ số tiền được suggest ở ô số tiền và lưu vào array list
 
-	public String getDynamicTextInPopUp(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getDynamicTextInPopUp(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -1633,7 +1635,7 @@ public class AbstractPage {
 	}
 
 	// Lấy text tìm hiếm điểm khởi hành và điểm đến
-	public String getDynamicPointStartAndEnd(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
@@ -1645,7 +1647,7 @@ public class AbstractPage {
 	}
 
 	// Lấy giá trị tìm kiếm trong danh sách
-	public String getDynamicInputPoint(AndroidDriver<AndroidElement> driver, String dynamicIndexValue) {
+	public String getDynamicInputPoint(AppiumDriver<MobileElement> driver, String dynamicIndexValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
@@ -1656,7 +1658,7 @@ public class AbstractPage {
 
 	}
 
-	public String getDynamicTextPointStart(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public String getDynamicTextPointStart(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
@@ -1666,7 +1668,7 @@ public class AbstractPage {
 		return text;
 	}
 
-	public List<String> getListOfSuggestedMoneyOrListText(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public List<String> getListOfSuggestedMoneyOrListText(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		List<String> text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
@@ -1679,7 +1681,7 @@ public class AbstractPage {
 
 // Kiểm tra keyboard có hiển thị
 
-	public String getMoneyByAccount(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getMoneyByAccount(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
@@ -1692,7 +1694,7 @@ public class AbstractPage {
 	}
 
 	// Lấy text phí giao dịch
-	public String getTextInDynamicFee(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getTextInDynamicFee(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
@@ -1704,7 +1706,7 @@ public class AbstractPage {
 	}
 
 	// Lấy text trên ô điền OTP
-	public String getTextInDynamicOtp(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getTextInDynamicOtp(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
@@ -1717,7 +1719,7 @@ public class AbstractPage {
 	}
 
 	// Lấy text trên ô điền Mat khau xac thuc
-	public String getTextInDynamicPasswordInput(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public String getTextInDynamicPasswordInput(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
@@ -1729,7 +1731,7 @@ public class AbstractPage {
 	}
 
 	// Lấy text ngày đặt vé
-	public String getTextInDynamicDateTicket(AndroidDriver<AndroidElement> driver, String... dynamicTextValue) {
+	public String getTextInDynamicDateTicket(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
@@ -1772,7 +1774,7 @@ public class AbstractPage {
 	}
 
 	// lay tai khoan mac dinh băng label
-	public String getDynamicTextInDropDownByLable(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextInDropDownByLable(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_LABEL, dynamicTextValue);
@@ -1785,7 +1787,7 @@ public class AbstractPage {
 
 	// Lấy text trường số lượng hành khách
 
-	public String getTextInEditTextFieldByID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+	public String getTextInEditTextFieldByID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
@@ -1796,7 +1798,7 @@ public class AbstractPage {
 
 	}
 
-	public String getTextTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
@@ -1807,7 +1809,7 @@ public class AbstractPage {
 
 	}
 
-	public List<String> getListTextViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+	public List<String> getListTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		List<String> text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
@@ -1818,7 +1820,7 @@ public class AbstractPage {
 
 	}
 
-	public List<String> getListTextViewByRelativeLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+	public List<String> getListTextViewByRelativeLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 
 		boolean status = false;
 		List<String> text = null;
@@ -1830,7 +1832,7 @@ public class AbstractPage {
 
 	}
 
-	public List<String> getListImageViewByLinearLayoutID(AndroidDriver<AndroidElement> driver, String... dynamicID) {
+	public List<String> getListImageViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		List<String> text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
@@ -1841,7 +1843,7 @@ public class AbstractPage {
 	}
 
 	// Hiển thị time ngay book
-	public String getDynamicDateTime(AndroidDriver<AndroidElement> driver, String dynamicID) {
+	public String getDynamicDateTime(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
@@ -1852,7 +1854,7 @@ public class AbstractPage {
 
 	}
 
-	public String getDynamicTitleSelectDate(AndroidDriver<AndroidElement> driver, String dynamicText) {
+	public String getDynamicTitleSelectDate(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
@@ -1864,7 +1866,7 @@ public class AbstractPage {
 	}
 
 //Lay thu trong tuan
-	public String getDynamicTitleWeek(AndroidDriver<AndroidElement> driver, String... dynamicText) {
+	public String getDynamicTitleWeek(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
@@ -1875,7 +1877,7 @@ public class AbstractPage {
 	}
 
 	// Lấy message thông báo
-	public String getDynamicMessageInvalid(AndroidDriver<AndroidElement> driver, String... dynamicText) {
+	public String getDynamicMessageInvalid(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
@@ -1886,7 +1888,7 @@ public class AbstractPage {
 
 	}
 
-	public String getDynamicTextOld(AndroidDriver<AndroidElement> driver, String... dynamicText) {
+	public String getDynamicTextOld(AppiumDriver<MobileElement> driver, String... dynamicText) {
 
 		boolean status = false;
 		String text = null;

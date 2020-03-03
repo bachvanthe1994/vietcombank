@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
@@ -19,7 +19,7 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Flow_QuickMoneyTransfer247 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private TransactionReportPageObject transReport;
 	private String transferTime;
 	private LogInPageObject login;
