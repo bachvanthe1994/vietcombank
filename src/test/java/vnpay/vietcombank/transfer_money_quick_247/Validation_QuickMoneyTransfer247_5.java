@@ -10,15 +10,15 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Validation_QuickMoneyTransfer247_5 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TransferMoneyObject transferMoney;
 	List<String> listExpect;

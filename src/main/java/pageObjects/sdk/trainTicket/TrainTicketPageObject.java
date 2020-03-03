@@ -11,23 +11,19 @@ import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import model.Train_Ticket_Object;
-import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.SetupContactPageUIs;
-import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
 
-	public TrainTicketPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public TrainTicketPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
-	public List<String> getListStatusTransfer(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
+	public List<String> getListStatusTransfer(AppiumDriver<MobileElement> driver, String dynamicIndex) {
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 		return getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 	}
@@ -167,7 +163,7 @@ public class TrainTicketPageObject extends AbstractPage {
 
 	public boolean getSelectedAttributeOfDate(String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		AndroidElement element = driver.findElement(By.xpath(locator));
+		MobileElement element = driver.findElement(By.xpath(locator));
 		return Boolean.parseBoolean(element.getAttribute("selected"));
 	}
 
@@ -229,7 +225,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		int year = date.getYear();
 		return "THÁNG" + " " + month + " " + year;
 	}
-	
+
 	public String getMonthAndYearPlusFORMAT(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.plusDays(days);
@@ -418,7 +414,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return text;
 	}
 
-	public List<String> getDynamicList( String dynamicID) {
+	public List<String> getDynamicList(String dynamicID) {
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
 		return getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
 	}
@@ -435,7 +431,7 @@ public class TrainTicketPageObject extends AbstractPage {
 	// Lấy text ngày đặt vé
 	public String getTextInDynamicDateTicket(String... dynamicTextValue) {
 		String text = null;
-		
+
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		if (status = true) {
