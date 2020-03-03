@@ -147,11 +147,11 @@ public class Base {
 		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
 
-		if (deviceType.equalsIgnoreCase("virtual")) {
+		if (deviceType.equalsIgnoreCase("androidVirtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
-		} else if (deviceType.equalsIgnoreCase("real")) {
+		} else if (deviceType.equalsIgnoreCase("androidReal")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("uid", udid);
 			cap.setCapability("appPackage", appPackage);
@@ -159,14 +159,7 @@ public class Base {
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
-		} else if (deviceType.equalsIgnoreCase("browserStack")) {
-			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-			cap.setCapability("uid", udid);
-			cap.setCapability("appPackage", appPackage);
-			cap.setCapability("appActivity", appActivities);
-
 		}
-
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
