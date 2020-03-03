@@ -395,7 +395,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 		log.info("TC_Step_: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + ".00 USD"));
 
 		log.info("TC_Step_: Chon ngay thang");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -677,7 +677,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		log.info("TC_02_Step_Verify so tien chuyen");
 
 		amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replaceAll("\\D+", "");
-		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
+		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY_EUR);
 		amountTranfer = Integer.parseInt(amountTranferString);
 
 		log.info("TC_02_Step_Verify phi chuyen tien");
@@ -780,7 +780,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 		log.info("TC_Step_: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR) + ".00 EUR"));
 
 		log.info("TC_Step_: Chon ngay thang");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -801,7 +801,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_Step_: Check so tien giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 EUR"));
+		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR) + ".00 EUR"));
 
 		log.info("TC_Step_: Check so nguoi huong");
 		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
