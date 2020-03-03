@@ -257,9 +257,8 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
-		log.info("TC_04_Step_Select tai khoan nguon");
+		log.info("TC_01_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_04_Step_Get so du kha dung");
@@ -336,7 +335,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_01_Step_: Chon tai khoan chuyen den");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_01_Step_: Check so du");
 		String amountAfterString = transferMoney.getDynamicTextInTextViewLine2(driver, "Số dư khả dụng");
@@ -350,6 +349,9 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 	public void TC_04_BaoCaoGiaoDichChuyenTienNhanh() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
+		log.info("TC_Step_: Click back man hinh home");
+		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");
+
 		log.info("TC_Step_: Click menu header");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
@@ -362,12 +364,12 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh qua số tài khoản");
-
+		
 		log.info("TC_Step_: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 		
 		log.info("TC_Step_: Chon so tai khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 		
 		log.info("TC_Step_: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -408,13 +410,13 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_Step_: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_Step_: Check tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_Step_: Check so tien giao dich");
-		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + ".00 USD"));
+		verifyTrue(transReport.getDynamicTextInTextViewLine2(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + ".00 USD"));
 
 		log.info("TC_Step_: Check so nguoi huong");
 		verifyEquals(transReport.getDynamicTextInTextViewLine2(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
@@ -452,7 +454,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		;
+		
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_01_Step_Get so du kha dung");
