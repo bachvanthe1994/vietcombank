@@ -10,14 +10,14 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Validation_TrainTicket_6 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TrainTicketPageObject trainTicket;
 

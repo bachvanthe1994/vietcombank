@@ -1,16 +1,16 @@
 package pageObjects;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 public class LogInPageObject extends AbstractPage {
 
-	public LogInPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public LogInPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
 	public void Global_login(String phone, String pass, String otp) {
 		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");

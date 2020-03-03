@@ -15,8 +15,8 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 
 import commons.Base;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 public class ReportNGListener extends Base implements ITestListener {
 
@@ -46,7 +46,7 @@ public class ReportNGListener extends Base implements ITestListener {
 		System.setProperty("org.uncommons.reportng.escape-output", "false");
 
 		Object testClass = result.getInstance();
-		AndroidDriver<AndroidElement> driver = ((Base) testClass).getDriver();
+		AppiumDriver<MobileElement> driver = ((Base) testClass).getDriver();
 
 		String screenshotPath = captureScreenshot(driver, result.getName());
 		Reporter.getCurrentTestResult();

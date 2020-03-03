@@ -1,19 +1,19 @@
 package pageObjects;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.TransferIdentityPageUIs;
 
 public class TransferIdentiryPageObject extends AbstractPage {
 
-	public TransferIdentiryPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public TransferIdentiryPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
-	public String getDynamicAmountLabelConvertVNDToLong(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicAmountLabelConvertVNDToLong(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		String moneyString = getDynamicAmountLabel(driver, dynamicTextValue);
 		moneyString = moneyString.replaceAll("Phí: ", "");
 		moneyString = moneyString.replaceAll(",", "");
@@ -22,7 +22,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 
 	}
 
-	public String getTextInDynamicIdentifition(AndroidDriver<AndroidElement> driver, String... dynamicIndex1Index2) {
+	public String getTextInDynamicIdentifition(AppiumDriver<MobileElement> driver, String... dynamicIndex1Index2) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_IDENTIFITION, dynamicIndex1Index2);
@@ -35,7 +35,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 
 	}
 
-	public String getDynamicPopupPassword(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicPopupPassword(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_PASSWORD, dynamicTextValue);
@@ -47,7 +47,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 		return text;
 	}
 
-	public void clickToDynamicHomeIcon(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public void clickToDynamicHomeIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, TransferIdentityPageUIs.DYNAMIC_HOME_ICON, dynamicTextValue);
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_HOME_ICON, dynamicTextValue);
@@ -58,7 +58,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 
 	}
 
-	public String getDynamicTextTitle(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextTitle(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_TITLE_CONFIRM_TRANSFER, dynamicTextValue);
@@ -69,7 +69,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 		return text;
 	}
 
-	public String getDynamicTextTitleMoneyUSD(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getDynamicTextTitleMoneyUSD(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_MONEY_USD, dynamicTextValue);
@@ -80,7 +80,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 		return text;
 	}
 
-	public String getDynamicAccountTitle(AndroidDriver<AndroidElement> driver, String dynamicIdValue) {
+	public String getDynamicAccountTitle(AppiumDriver<MobileElement> driver, String dynamicIdValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_ACCOUNT_CONFIRM, dynamicIdValue);
@@ -91,7 +91,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
 		return text;
 	}
 
-	public String getTextConfirmOtp(AndroidDriver<AndroidElement> driver, String dynamicTextValue) {
+	public String getTextConfirmOtp(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, TransferIdentityPageUIs.DYNAMIC_OTP_CONFIRM, dynamicTextValue);

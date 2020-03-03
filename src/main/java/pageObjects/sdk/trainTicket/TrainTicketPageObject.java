@@ -11,23 +11,19 @@ import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import model.Train_Ticket_Object;
-import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.SetupContactPageUIs;
-import vietcombankUI.sdk.hotelBooking.HotelBookingPageUIs;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
 
-	public TrainTicketPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public TrainTicketPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
-	public List<String> getListStatusTransfer(AndroidDriver<AndroidElement> driver, String dynamicIndex) {
+	public List<String> getListStatusTransfer(AppiumDriver<MobileElement> driver, String dynamicIndex) {
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 		return getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 	}
@@ -146,7 +142,7 @@ public class TrainTicketPageObject extends AbstractPage {
 	//Kiểm tra ngày hiện tại được check
 	public boolean getSelectedAttributeOfDate(String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		AndroidElement element = driver.findElement(By.xpath(locator));
+		MobileElement element = driver.findElement(By.xpath(locator));
 		return Boolean.parseBoolean(element.getAttribute("selected"));
 	}
 
@@ -214,6 +210,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		int year = date.getYear();
 		return "THÁNG" + " " + month + " " + year;
 	}
+
 
 	//Lấy tháng và năm cho ngày tương lai, định dạng T.2 2020
 	public String getMonthAndYearPlusFORMAT(long days) {
