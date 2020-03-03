@@ -123,7 +123,7 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 	public String convertDateTimeIgnoreSecond(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd HH:mm");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 	    try {
 	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
@@ -137,7 +137,7 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
 	    try {
-	    	result = stringDate.split(" ")[0] + stringDate.split(" ")[3];
+	    	result = stringDate.split(" ")[3] + stringDate.split(" ")[0];
 	    }
 	    catch (Exception e) {
 			
