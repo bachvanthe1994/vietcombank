@@ -14,14 +14,14 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_USD = "10";
 		public static final String MONEY_EUR = "40";
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS TEST ONLINE IBFT 247 VN";
-		public static final String SUCCESS_TRANSFER_MONEY = "Chuyển khoản thành công";
+		public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 
 		public static final String COST_AMOUNT_USD = "0.33";
 		public static final String COST_AMOUNT_VND = "7700";
 		public static final String PASSWORD = "Nhập mật khẩu";
 
 		public static final String CARD_FROM = "0011000000863";
-		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "Lập lệnh thành công";
+		public static final String SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT = "LẬP LỆNH THÀNH CÔNG";
 		public static final String PAYMENT_BY_PASSWORD_FEE = "3,300";
 		public static final String PAYMENT_BY_OTP_FEE = "5,500";
 		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.12";
