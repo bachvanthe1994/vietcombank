@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +118,32 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 
 	public double canculateAvailableBalancesCurrentcy(double surPlus, double money, double transactionFree) {
 		return surPlus - money - transactionFree;
+	}
+
+	public String convertDateTimeIgnoreSecond(String stringDate) {
+		String result = "";
+		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	    try {
+	    	result = formatter2.format(formatter1.parse(stringDate));
+	    }
+	    catch (Exception e) {
+			
+		}
+		return result;
+		
+	}
+	
+	public String convertTransferTimeToReportDateTime(String stringDate) {
+		String result = "";
+	    try {
+	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
+	    }
+	    catch (Exception e) {
+			
+		}
+		return result;
+		
 	}
 
 }
