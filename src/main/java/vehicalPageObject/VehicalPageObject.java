@@ -239,6 +239,16 @@ public class VehicalPageObject extends AbstractPage {
 	}
     }
 
+    // Click vao 1 button ngay mai
+    public void clickToDynamicTomorrowAndFilterTrip(String dynamicId) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicId);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicId);
+	}
+
+    }
+
     public String getDynamicConfirmNullData(String dynamicID) {
 	boolean status = false;
 	String text = null;
@@ -376,6 +386,16 @@ public class VehicalPageObject extends AbstractPage {
 	}
 	return isDisplayed;
 
+    }
+
+//  kiểm tra button có được forcus
+    public boolean isDynamicForcusAndPriceDisplay(String dynamicID) {
+	boolean isForcus = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicID);
+	if (status) {
+	    isForcus = isControlForcus(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicID);
+	}
+	return isForcus;
     }
 
 }
