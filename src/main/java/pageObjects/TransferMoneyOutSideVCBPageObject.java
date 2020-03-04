@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.text.SimpleDateFormat;
+
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -47,6 +49,32 @@ public class TransferMoneyOutSideVCBPageObject extends AbstractPage {
 			// TODO: handle exception
 		}
 		return result;
+	}
+
+	public String convertDateTimeIgnoreSecond(String stringDate) {
+		String result = "";
+		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	    try {
+	    	result = formatter2.format(formatter1.parse(stringDate));
+	    }
+	    catch (Exception e) {
+			
+		}
+		return result;
+		
+	}
+	
+	public String convertTransferTimeToReportDateTime(String stringDate) {
+		String result = "";
+	    try {
+	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
+	    }
+	    catch (Exception e) {
+			
+		}
+		return result;
+		
 	}
 
 }
