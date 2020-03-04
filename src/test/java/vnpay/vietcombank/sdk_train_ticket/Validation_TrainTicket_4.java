@@ -163,12 +163,7 @@ public class Validation_TrainTicket_4 extends Base {
 		verifyTrue(trainTicket.orderSortIncraseFormat(listSuggestTime));
 
 	}
-
-	@Test
-	public void TC_05_KiemTraNhomThongTinMotChuyenDi() {
-
-	}
-
+	
 	@Test
 	public void TC_06_KiemTraThaoTacChonMotChuyenDi() {
 		log.info("TC_06_Click chon mot chuyen di");
