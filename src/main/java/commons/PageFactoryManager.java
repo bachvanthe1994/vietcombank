@@ -1,5 +1,9 @@
 package commons;
 
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import pageObjects.LockCardPageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
@@ -90,5 +94,8 @@ public class PageFactoryManager {
 	public static FilmTicketBookingPageObject getFilmTicketBookingPageObject(AppiumDriver<MobileElement> driver) {
 		return new FilmTicketBookingPageObject(driver);
 	}
-
+	
+	public static LockCardPageObject LockCardPageObject(AppiumDriver<MobileElement> driver) {
+		return new LockCardPageObject(driver);
+	}
 }

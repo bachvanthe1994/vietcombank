@@ -171,11 +171,6 @@ public class Validation_TrainTicket_7 extends Base {
 	}
 
 	@Test
-	public void TC_05_KiemTraNhomThongTinMotChuyenDi() {
-
-	}
-
-	@Test
 	public void TC_06_KiemTraThaoTacChonMotChuyenDi() {
 		log.info("TC_06_Click chon mot chuyen di");
 		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
