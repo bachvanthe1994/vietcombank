@@ -16,7 +16,7 @@ public class TransferMoneyQuick_Data {
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS TEST ONLINE IBFT 247 VN";
 		public static final String SUCCESS_TRANSFER_MONEY = "Chuyển khoản thành công";
 
-		public static final String COST_AMOUNT_USD = "0.02";
+		public static final String COST_AMOUNT_USD = "0.33";
 		public static final String COST_AMOUNT_VND = "7700";
 		public static final String PASSWORD = "Nhập mật khẩu";
 
