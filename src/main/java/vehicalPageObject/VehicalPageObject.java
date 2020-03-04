@@ -133,9 +133,9 @@ public class VehicalPageObject extends AbstractPage {
 
     public boolean isDynamicIconChangePlaceDisplayed(String dynamicId) {
 	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicId);
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicId);
 	if (status) {
-	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicId);
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicId);
 	}
 	return isDisplayed;
     }
@@ -156,7 +156,6 @@ public class VehicalPageObject extends AbstractPage {
 	if (status) {
 	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
 	}
-	return text;
 
     }
 
@@ -181,12 +180,10 @@ public class VehicalPageObject extends AbstractPage {
     // Click icon đổi điểm đi điểm đến
     public void clickToDynamicIconChangePlace(String dynamicID) {
 	boolean status = false;
-	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
 	if (status) {
-	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
 	}
-    }return text;
-
     }
 
 //    get text ở edit text
@@ -212,15 +209,25 @@ public class VehicalPageObject extends AbstractPage {
 	return text;
     }
 
+    public String getDynamicDayStart(String dynamicID) {
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	if (status) {
+	    text = getTextElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+
+	}
+	return text;
+
+    }
+
     // Click close chọn điểm đi
     public void clickToDynamicButtonIconBack(String dynamicID) {
 	boolean status = false;
-	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
 	if (status) {
-	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
 	}
-
-    }return text;
 
     }
 
