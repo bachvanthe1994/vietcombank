@@ -6,25 +6,25 @@ import java.util.List;
 import org.openqa.selenium.By;
 
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.SetupContactPageUIs;
 
 public class SetupContactPageObject extends AbstractPage {
 
-	public SetupContactPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public SetupContactPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
 	public void deleteContactReceiver() {
-		List<AndroidElement> listContact = new ArrayList<AndroidElement>();
+		List<MobileElement> listContact = new ArrayList<MobileElement>();
 		listContact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT));
 		int countList = listContact.size();
 		while (countList > 0) {
 
-			AndroidElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
+			MobileElement contact = driver.findElements(By.xpath(SetupContactPageUIs.LIST_CONTACT)).get(0);
 			contact.click();
 			clickToDynamicButtonLinkOrLinkText(driver, "Xóa");
 

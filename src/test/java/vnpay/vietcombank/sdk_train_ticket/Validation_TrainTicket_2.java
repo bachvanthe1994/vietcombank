@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vietcombankUI.DynamicPageUIs;
@@ -21,7 +21,7 @@ import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Validation_TrainTicket_2 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TrainTicketPageObject trainTicket;
 	List<String> listExpect;
@@ -316,7 +316,6 @@ public class Validation_TrainTicket_2 extends Base {
 
 		log.info("TC_13_Verify gia tri ngay ve");
 		verifyEquals(trainTicket.getTextInDynamicDateTicket(trainTicket.getMonthAndYearPlusDay(2), nextDay2), nextDay2);
-
 
 		log.info("TC_13_Verify gia tri thu ve");
 		verifyEquals(trainTicket.getDynamicTitleWeek("Ngày về", "com.VCB:id/tv_thang_ve"), convertDayOfWeekVietNameseFull(getCurrentDayOfWeek(date2)));

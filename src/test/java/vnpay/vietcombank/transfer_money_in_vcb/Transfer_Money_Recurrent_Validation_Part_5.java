@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import model.TransferInVCBRecurrent;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -21,7 +21,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
@@ -36,8 +36,8 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
-		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver); 
+
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_01_Click Chuyen tien trong ngan hang");

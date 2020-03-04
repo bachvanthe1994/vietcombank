@@ -33,16 +33,19 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Base {
 	SoftAssert softAssertion;
 	protected final Logger log;
-	protected AndroidDriver<AndroidElement> driver;
-	private AndroidDriver<AndroidElement> driver2;
+	protected AppiumDriver<MobileElement> driver;
 
 	private String workingDir = System.getProperty("user.dir");
 	public AppiumDriverLocalService service;
@@ -53,7 +56,7 @@ public class Base {
 
 	}
 
-	public AndroidDriver<AndroidElement> getDriver() {
+	public AppiumDriver<MobileElement> getDriver() {
 		return driver;
 
 	}
@@ -78,10 +81,6 @@ public class Base {
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
-	}
-
-	public void closeSMSApp() {
-		driver2.quit();
 	}
 
 	@AfterSuite
@@ -143,16 +142,16 @@ public class Base {
 
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
 		File file = new File("src/test/resources");
 		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
 
-		if (deviceType.equalsIgnoreCase("virtual")) {
+		if (deviceType.equalsIgnoreCase("androidVirtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
-		} else if (deviceType.equalsIgnoreCase("real")) {
+		} else if (deviceType.equalsIgnoreCase("androidReal")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 			cap.setCapability("uid", udid);
 			cap.setCapability("appPackage", appPackage);
@@ -160,14 +159,7 @@ public class Base {
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
-		} else if (deviceType.equalsIgnoreCase("browserStack")) {
-			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-			cap.setCapability("uid", udid);
-			cap.setCapability("appPackage", appPackage);
-			cap.setCapability("appActivity", appActivities);
-
 		}
-
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
@@ -179,7 +171,23 @@ public class Base {
 
 	}
 
-	public AndroidDriver<AndroidElement> openGlobalSetting(String deviceName, String udid, String url) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openIOSApp(String deviceName, String udid, String url) throws MalformedURLException {
+		DesiredCapabilities caps = new DesiredCapabilities();
+
+		caps.setCapability("xcodeSigningId", "iPhone Developer");
+		caps.setCapability(MobileCapabilityType.UDID, udid);
+		caps.setCapability("bundleId", "com.vcbmb.enterprise");
+
+		caps.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+		caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+		caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.3.1");
+		caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
+		driver = new IOSDriver(new URL(url), caps);
+		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
+		return driver;
+	}
+
+	public AppiumDriver<MobileElement> openGlobalSetting(String deviceName, String udid, String url) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 		cap.setCapability("uid", udid);

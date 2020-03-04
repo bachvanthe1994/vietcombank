@@ -4,21 +4,19 @@ package pageObjects;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.By;
-
 import commons.AbstractPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.LockCardPageUIs;
 
 public class LockCardPageObject extends AbstractPage{
 	
-	public LockCardPageObject(AndroidDriver<AndroidElement> mappingDriver) {
+	public LockCardPageObject(AppiumDriver<MobileElement> mappingDriver) {
 		driver = mappingDriver;
 	}
 
-	private AndroidDriver<AndroidElement> driver;
+	private AppiumDriver<MobileElement> driver;
 	
 	public void openCardTypeDropdownList() {
 		waitForElementVisible(driver, LockCardPageUIs.CARD_TYPES_DROPDOWN);
@@ -38,9 +36,9 @@ public class LockCardPageObject extends AbstractPage{
 	public boolean isCardNumberDisplayedInDropdownList(String expTextVal) {
 		waitForElementVisible(driver, LockCardPageUIs.CARD_NUMBER_DROPDOWN_LIST);
 		boolean result = false;
-		List<AndroidElement> elements = driver.findElementsByXPath(LockCardPageUIs.CARD_NUMBER_DROPDOWN_LIST);
+		List<MobileElement> elements = driver.findElementsByXPath(LockCardPageUIs.CARD_NUMBER_DROPDOWN_LIST);
 		ArrayList<String> allTextElement = new ArrayList<String>();
-		for (AndroidElement element : elements) {
+		for (MobileElement element : elements) {
 			allTextElement.add(element.getText());
 		}
 		for(String textElement : allTextElement) {

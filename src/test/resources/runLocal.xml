@@ -14,17 +14,19 @@
 
 
 	<test name="Run test case on Android 9">
-		<parameter name="deviceType" value="real" />
-		<parameter name="deviceName" value="Galaxy Note+" />
-		<parameter name="deviceUDID" value="K3VDU18C04001409" />
+		<parameter name="deviceType" value="ios" />
+<!-- 		<parameter name="deviceName" value="Galaxy Note+" /> -->
+<!-- 		<parameter name="deviceUDID" value="K3VDU18C04001409" /> -->
+			<parameter name="deviceName" value="P Nghiệp vụ 502" />
+		<parameter name="deviceUDID" value="aaa358ede2afe9cd223548b282d255553b5b1d66" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0399764702" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
 		
-<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info" /> -->
-<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People" /> -->
+		
+			<class name="vnpay.vietcombank.login.Login_Validation" />
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People" /> -->
 
@@ -80,7 +82,7 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_7" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
+			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" />
 			
 <!-- 			<class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_2" /> -->
@@ -90,8 +92,6 @@
 <!-- 			<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_6" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_7" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_8" /> -->
-<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
- 				<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />	
 		</classes>
 	</test>
 

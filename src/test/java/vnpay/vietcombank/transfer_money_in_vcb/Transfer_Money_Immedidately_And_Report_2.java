@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
@@ -20,7 +20,7 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Immedidately_And_Report_2 extends Base {
-	AndroidDriver<AndroidElement> driver;
+	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
@@ -319,7 +319,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_14_Step_36: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
-		
+
 		log.info("TC_14_Step_37: Click Home icon");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
@@ -605,10 +605,9 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_16_Step_46: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
-		
+
 		log.info("TC_16_Step_47: Click Home icon");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-
 
 	}
 
@@ -652,7 +651,6 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		exchangeRateUSD = exchangeRate.split(" ~ ");
 //		rate = convertMoneyToDouble(exchangeRateUSD[1], "VND");
 		rate = convertMoneyToDouble("23,140", "VND");
-	
 
 		log.info("TC_17_Step 11: Chon phuong thuc xac thuc");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
@@ -909,10 +907,9 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_18_Step 48: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
-		
+
 		log.info("TC_18_Step_49: Click Home icon");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-
 
 	}
 
@@ -954,7 +951,6 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		exchangeRateUSD = exchangeRate.split(" ~ ");
 		rate = convertMoneyToDouble(exchangeRateUSD[1], "VND");
 		rate = convertMoneyToDouble("24,274", "VND");
-		
 
 		log.info("TC_19_Step 11: Chon phuong thuc xac thuc");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
@@ -1212,7 +1208,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_20_Step 48: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
-		
+
 		log.info("TC_20_Step_49: Click Home icon");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
@@ -1405,7 +1401,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_22_Step_36: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
-		
+
 		log.info("TC_22_Step_37: Click Home icon");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
