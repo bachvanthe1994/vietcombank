@@ -82,7 +82,7 @@ public class TransferMoneyQuick_Data {
 		public static final String NOTE_SPECAL_CHAR = "@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) =";
 		public static final String NOTE_NUMBER_CHAR = "12345";
 		public static final String EXCHANGE_EUR = "24274.03";
-		public static final String EXCHANGE_USD = "23140.00";
+		public static final String EXCHANGE_USD = "23145.00";
 		
 	}
 

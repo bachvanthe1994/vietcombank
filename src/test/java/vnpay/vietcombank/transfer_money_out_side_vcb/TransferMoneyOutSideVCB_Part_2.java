@@ -789,7 +789,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info9.money) + " USD"));
 
 		log.info("TC_20_18: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEURO_USDToVNeseMoney(info7.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyOutSide.convertEURO_USDToVNeseMoney(info9.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
 
 		log.info("TC_20_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
