@@ -183,6 +183,7 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Diễn viên"));
 
 		log.info("TC_08_03_09_Kiem tra hien thi dao dien");
+		filmTicketBooking.scrollDownToText(driver, "Đạo diễn");
 		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Đạo diễn"));
 
 		log.info("TC_08_03_10_Kiem tra hien thi nut Dat ve");
