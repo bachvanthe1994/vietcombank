@@ -756,7 +756,7 @@ public class Base {
 	}
 
 	public double canculateAvailableBalancesCurrentcy(double surPlus, double money, double transactionFree) {
-		return Math.round(surPlus - money - transactionFree);
+		return surPlus - money - transactionFree;
 	}
 	
 	public double convertAvailableBalanceCurrentcyToDouble(String money) {
