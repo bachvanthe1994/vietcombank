@@ -126,7 +126,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		log.info("TC_13_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyOutSide.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 		
@@ -316,7 +316,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		log.info("TC_15_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyOutSide.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 		
@@ -694,7 +694,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		log.info("TC_19_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyOutSide.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 		
@@ -1074,7 +1074,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		log.info("TC_23_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyOutSide.inputToPasswordConfirm(driver, LogIn_Data.Login_Account.NEW_PASSWORD);
+		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 		
