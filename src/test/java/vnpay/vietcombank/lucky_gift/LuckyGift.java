@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -21,7 +21,7 @@ import vietcombank_test_data.LuckyGift_Data;
 import vietcombank_test_data.LuckyGift_Data.TitleLuckyGift;
 
 public class LuckyGift extends Base {
-	AppiumDriver<MobileElement> driver;
+    AppiumDriver<MobileElement> driver;
     private LogInPageObject login;
     private LuckyGiftPageObject luckyGift;
     private HomePageObject homePage;
@@ -62,11 +62,11 @@ public class LuckyGift extends Base {
 
 	String moneySurplus = luckyGift.getTextInDynamicPopup(driver, "com.VCB:id/available_balance");
 	String[] moneySurplusSplit = moneySurplus.split(" ");
-	String moneySurplusReplace = moneySurplusSplit[0].replace(',', ' ');
+	String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
 	int surplus = Integer.parseInt(moneySurplusReplace);
 
 	log.info("TC_01_Step5: Thêm người nhận");
-	luckyGift.clickToDynamicImageViewByID("com.VCB:id/ivAdd");
+	luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
 
 	log.info("TC_01_Step5: chọn tiếp tục");
 	luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -81,7 +81,7 @@ public class LuckyGift extends Base {
 
 	log.info("TC_01_Step_8: Chon loi chuc");
 	luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/more_content");
-	luckyGift.clickToTextID(driver, "com.VCB:id/title");
+	luckyGift.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/title");
 
 	log.info("TC_01_Step_9: Click tiep tuc popup");
 	luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -137,13 +137,16 @@ public class LuckyGift extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
 	log.info("TC_02_Step_05: click chọn tài khoản");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_02_Step_05: kiểm tra số dư");
 	String moneyTransfer = transReport.getDynamicTextInTransactionDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
 	String[] moneyTransferSplit = moneyTransfer.split(" ");
 	String moneyTransferReplace = moneyTransferSplit[0].replace(',', ' ');
 	verifyEquals(moneyTransferReplace, surplusString);
+
+	log.info("TC_02_Step_05: chọn đóng");
+	transReport.clickToTextID(driver, "com.VCB:id/cancel_button");
 
 	log.info("TC_02_Step_08: CLick Tim Kiem");
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -176,7 +179,7 @@ public class LuckyGift extends Base {
 	log.info("TC_02_Step_35: Click quay lai");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "com.VCB:id/tvSelectAcc");
+//	transReport.clickToDynamicButtonLinkOrLinkText(driver, "com.VCB:id/tvSelectAcc");
 //	log.info("TC_02_Step_36: Click quay lai");
 //	transferInVCB.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 //
