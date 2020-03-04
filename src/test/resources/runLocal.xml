@@ -15,6 +15,7 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="ios" />
+<!-- 		<parameter name="deviceType" value="androidReal" /> -->
 <!-- 		<parameter name="deviceName" value="Galaxy Note+" /> -->
 <!-- 		<parameter name="deviceUDID" value="K3VDU18C04001409" /> -->
 			<parameter name="deviceName" value="P Nghiệp vụ 502" />
