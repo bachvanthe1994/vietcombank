@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
+import pageObjects.saving_online.SavingOnlinePageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
@@ -98,4 +99,9 @@ public class PageFactoryManager {
 	public static LockCardPageObject LockCardPageObject(AppiumDriver<MobileElement> driver) {
 		return new LockCardPageObject(driver);
 	}
+	
+	public static SavingOnlinePageObject getSavingOnlinePageObject(AppiumDriver<MobileElement> driver) {
+		return new SavingOnlinePageObject(driver);
+	}
+	
 }
