@@ -475,14 +475,26 @@ public class Base {
 	}
 
 	public String addCommasToDouble(String number) {
-		double amount = Double.parseDouble(number);
-		String m = String.format("%,.2f", amount);
+		String m = "";
+		try {
+			double amount = Double.parseDouble(number);
+			m = String.format("%,.2f", amount);
+		} catch (Exception e) {
+			
+		}
+		
 		return m;
 	}
 
 	public static String addCommasToLong(String number) {
-		long amount = Long.parseLong(number);
-		String m = String.format("%,d", amount);
+		String m = "";
+		try {
+			long amount = Long.parseLong(number);
+			m = String.format("%,d", amount);
+		} catch (Exception e) {
+			
+		}
+		
 		return m;
 	}
 
