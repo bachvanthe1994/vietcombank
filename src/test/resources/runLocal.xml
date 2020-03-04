@@ -49,7 +49,6 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
 
-<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" /> -->
