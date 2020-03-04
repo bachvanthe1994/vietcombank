@@ -25,9 +25,9 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
+	<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part1" />
 
-
-			<class name="vnpay.vietcombank.card_services.Card_Services" />
+		
 <!-- 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
 			
 			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate" /> -->
@@ -84,7 +84,7 @@
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_7" /> -->
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
 
 			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_2" /> -->
