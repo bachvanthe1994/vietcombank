@@ -23,18 +23,28 @@
 		<parameter name="otp" value="123456" />
 		
 		
-		<package name="vnpay.vietcombank.transfer_money_out_side_vcb">
-			<classes>
+<!-- 		<package name="vnpay.vietcombank.transfer_money_in_vcb"> -->
+<!-- 			<classes> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
-				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
+<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
-<!-- 				<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
+
+<!-- 			</classes> -->
+<!-- 		</package> -->
+		
+			<package name="vnpay.vietcombank.transfer_money_out_side_vcb">
+			<classes>
+
+<!-- 				<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" /> -->
+				<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+
 
 			</classes>
 		</package>
+		
 
 
 
