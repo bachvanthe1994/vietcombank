@@ -14,7 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LockCardPageObject;
 import pageObjects.LogInPageObject;
-import vnpay.vietcombank.card_sevices_data.Lock_Card_Data;
+import vietcombank_test_data.Lock_Card_Data;
 
 public class Card_Services extends Base {
 	AppiumDriver<MobileElement> driver;
