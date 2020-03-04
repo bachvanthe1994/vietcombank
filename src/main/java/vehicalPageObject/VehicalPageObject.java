@@ -6,20 +6,19 @@ import io.appium.java_client.MobileElement;
 import vehicalTicketBookingUI.CommonPageUIs;
 
 public class VehicalPageObject extends AbstractPage {
-	public VehicalPageObject(AppiumDriver<MobileElement> mappingDriver) {
-		driver = mappingDriver;
-	}
+    public VehicalPageObject(AppiumDriver<MobileElement> mappingDriver) {
+	driver = mappingDriver;
+    }
 
-	private AppiumDriver<MobileElement> driver;
+    private AppiumDriver<MobileElement> driver;
 
-	public void Vehical_login() {
+    public void Vehical_login() {
 
-		clickToDynamicText("Đặt vé xe");
+	clickToDynamicText("Đặt vé xe");
 
-		clickToDynamicButton(driver, "Đồng ý");
-	}
+	clickToDynamicButton(driver, "Đồng ý");
+    }
 
-<<<<<<< HEAD
     // input vào ô textbox
     public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
 	boolean status = false;
@@ -51,36 +50,29 @@ public class VehicalPageObject extends AbstractPage {
 	if (status) {
 	    clickToElement(driver, CommonPageUIs.DYNAMIC_FROMT_INPUT_BY_CLOSE, dynamicID);
 	}
+    }
 
-	// Click vào button, text có class là textview, tham số truyền vào là text
-	public void clickToDynamicInputBox(String dynamicTextValue) {
-		scrollIDown(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
-		}
-
+    // Click vào button, text có class là textview, tham số truyền vào là text
+    public void clickToDynamicInputBox(String dynamicTextValue) {
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_INPUT_TEXT, dynamicTextValue);
 	}
 
-	// Click vào button, text có class là textview, tham số truyền vào là text
-	public void clickToDynamicText(String dynamicTextValue) {
-		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		}
+    }
 
+    // Click vào button, text có class là textview, tham số truyền vào là text
+    public void clickToDynamicText(String dynamicTextValue) {
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 	}
 
-	// Click vao 1 button sử dụng tham số là text
-	public void clickToDynamicButton(String dynamicTextValue) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+    }
 
     // Chọn ghế ngồi trong màn hình chi tiết chuyến xe
     public void clickBookingChair(String... dynamicIndex) {
@@ -100,24 +92,26 @@ public class VehicalPageObject extends AbstractPage {
 	if (status) {
 	    clickToElement(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 	}
+    }
 
-	// Click vao 1 button ngay mai
-	public void clickToDynamicTomorrow(String dynamicTextValue) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
-		}
-
+    // Click vao 1 button ngay mai
+    public void clickToDynamicTomorrow(String dynamicTextValue) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
 	}
 
-	public boolean isDynamicMessageAndLabelTextDisplayed(String dynamicTextValue) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		if (status) {
-			isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		}
-		return isDisplayed;
+    }
+
+    public boolean isDynamicMessageAndLabelTextDisplayed(String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
 
 //    click chọn áp dụng trong màn hình nhập, chỉnh sửa điểm đi điểm đến
     public void clickToDynamicButtonForID(String dynamicID) {
@@ -126,26 +120,26 @@ public class VehicalPageObject extends AbstractPage {
 	if (status) {
 	    clickToElement(driver, CommonPageUIs.DYNAMIC_BUTTON_ID, dynamicID);
 	}
-	}
+    }
 
-	public boolean isDynamicIconBackDisplayed(String dynamicTextValue) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
-		if (status) {
-			isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
-		}
-		return isDisplayed;
+    public boolean isDynamicIconBackDisplayed(String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
+	if (status) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
 	}
+	return isDisplayed;
+    }
 
-	public boolean isDynamicIconChangePlaceDisplayed(String dynamicId) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicId);
-		if (status) {
-			isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicId);
-		}
-		return isDisplayed;
+    public boolean isDynamicIconChangePlaceDisplayed(String dynamicId) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicId);
+	if (status) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicId);
 	}
-	
+	return isDisplayed;
+    }
+
 //    click chọn tìm kiếm chuyến đi
     public void clickToDynamicFilterTrips(String dynamicIndex) {
 	boolean status = false;
@@ -153,7 +147,7 @@ public class VehicalPageObject extends AbstractPage {
 	if (status) {
 	    clickToElement(driver, CommonPageUIs.DYNAMIC_FILTER_TRIPS, dynamicIndex);
 	}
-	}
+    }
 
     // Click icon đổi điểm đi điểm đến
     public void clickToDynamicIconChangePlaceAndBack(String dynamicID) {
@@ -161,143 +155,132 @@ public class VehicalPageObject extends AbstractPage {
 	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
 	if (status) {
 	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE_AND_BACK, dynamicID);
-		}
-		return text;
-
-	}
-
-	// check button có hiển thị hay không, tham số truyền vào là text của button
-	public boolean isDynamicButtonDisplayed(String dynamicTextValue) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		if (status) {
-			isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
-		return isDisplayed;
-
-	}
-
-	// Click vao 1 button back tham số truyền vào là text
-	public void clickToDynamicButtonBack(String dynamicTextValue) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
-		}
-	}
-
-	// Click chọn ngày
-	public void clickToDynamicButtonChoiseDate(String dynamicTextValue) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
-		}
-	}
-
-	// Click icon đổi điểm đi điểm đến
-	public void clickToDynamicIconChangePlace(String dynamicID) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
-		}
 	}
 	return text;
+
+    }
+
+    // Click vao 1 button back tham số truyền vào là text
+    public void clickToDynamicButtonBack(String dynamicTextValue) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
 	}
-	
+    }
+
+    // Click chọn ngày
+    public void clickToDynamicButtonChoiseDate(String dynamicTextValue) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+	}
+    }
+
+    // Click icon đổi điểm đi điểm đến
+    public void clickToDynamicIconChangePlace(String dynamicID) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	}
+    }return text;
+
+    }
+
 //    get text ở edit text
-	public String getDynamicEditText(String dynamicID) {
-		boolean status = false;
-		String text = null;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicID);
-		if (status) {
-			text = getTextElement(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicID);
-
-		}
-		return text;
-	}
-
-	public String getDynamicSuggestTrip(String dynamicID) {
-		boolean status = false;
-		String text = null;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicID);
-		if (status) {
-			text = getTextElement(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicID);
-
-		}
-		return text;
-	}
-
-	// Click close chọn điểm đi
-	public void clickToDynamicButtonIconBack(String dynamicID) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
-		}
+    public String getDynamicEditText(String dynamicID) {
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicID);
+	if (status) {
+	    text = getTextElement(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicID);
 
 	}
 	return text;
-	}
-	
-	public void clickToDynamicSelectedDate(String... dynamicTextAndText) {
-		boolean status = false;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextAndText);
-		if (status) {
-			clickToElement(driver, CommonPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextAndText);
-		}
-	}
+    }
 
-	public String getDynamicConfirmNullData(String dynamicID) {
-		boolean status = false;
-		String text = null;
-		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_NULL_DATA, dynamicID);
-		if (status) {
-			text = getTextElement(driver, CommonPageUIs.DYNAMIC_NULL_DATA, dynamicID);
-
-		}
-		return text;
-	}
-
-	public boolean isDynamicForcus(String dynamicTextValue) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
-		if (status) {
-			isDisplayed = isControlForcus(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
-		}
-		return isDisplayed;
-	}
-
-	public boolean isDynamicForcusText(String dynamicTextValue) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		if (status) {
-			isDisplayed = isControlForcus(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		}
-		return isDisplayed;
-	}
-
-	public boolean isDynamicDisplayed(String dynamicTextValue) {
-		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		if (status) {
-			isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		}
-		return isDisplayed;
-	}
-
-	public boolean isDynamicUnDisplayed(String dynamicTextValue) {
-		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		boolean isDisplayed = true;
-		boolean status = waitForElementInvisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		if (status == true) {
-			isDisplayed = isControlUnDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-		}
-		return isDisplayed;
+    public String getDynamicSuggestTrip(String dynamicID) {
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicID);
+	if (status) {
+	    text = getTextElement(driver, CommonPageUIs.DYNAMIC_SUGGEST_TRIP, dynamicID);
 
 	}
+	return text;
+    }
+
+    // Click close chọn điểm đi
+    public void clickToDynamicButtonIconBack(String dynamicID) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_CHANGE_PLACE, dynamicID);
+	}
+
+    }return text;
+
+    }
+
+    public void clickToDynamicSelectedDate(String... dynamicTextAndText) {
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextAndText);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextAndText);
+	}
+    }
+
+    public String getDynamicConfirmNullData(String dynamicID) {
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_NULL_DATA, dynamicID);
+	if (status) {
+	    text = getTextElement(driver, CommonPageUIs.DYNAMIC_NULL_DATA, dynamicID);
+
+	}
+	return text;
+    }
+
+    public boolean isDynamicForcus(String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
+	if (status) {
+	    isDisplayed = isControlForcus(driver, CommonPageUIs.DYNAMIC_TITlE, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicForcusText(String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status) {
+	    isDisplayed = isControlForcus(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicDisplayed(String dynamicTextValue) {
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status) {
+	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicUnDisplayed(String dynamicTextValue) {
+	scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	boolean isDisplayed = true;
+	boolean status = waitForElementInvisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlUnDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
 
 //    kiểm tra hiển thị tên hãng xe
     public boolean isDynamicDisplayedManufacturerAndRateAndTimeRunAndRouter(String dynamicID) {
@@ -306,17 +289,6 @@ public class VehicalPageObject extends AbstractPage {
 	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 	if (status) {
 	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-	}
-	return isDisplayed;
-
-    }
-
-//    kiểm tra hiển thị icon back
-    public boolean isDynamicIconBackDisplayed(String dynamicTextValue) {
-	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
-	if (status) {
-	    isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
 	}
 	return isDisplayed;
 
