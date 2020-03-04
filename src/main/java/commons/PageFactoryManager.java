@@ -2,6 +2,7 @@ package commons;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import pageObjects.LockCardPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -91,4 +92,7 @@ public class PageFactoryManager {
 		return new FilmTicketBookingPageObject(driver);
 	}
 	
+	public static LockCardPageObject LockCardPageObject(AndroidDriver<AndroidElement> driver) {
+		return new LockCardPageObject(driver);
+	}
 }
