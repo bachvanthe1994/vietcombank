@@ -191,7 +191,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 		log.info("TC_26_Step_2: click icon");
-		vehicalTicket.clickToDynamicIconChangePlace("com.VCB:id/ivround");
+		vehicalTicket.clickToDynamicIconChangePlaceAndBack("com.VCB:id/ivround");
 
 		log.info("TC_23_Step_3: kiểm tra hiển thị sau khi đổi vị trí");
 		String fromt = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTextPickUp");
@@ -207,33 +207,33 @@ public class VehicalTicket_Validate_Part2 extends Base {
 		verifyEquals(date, today);
 
 		log.info("TC_27_Step_2: kiểm tra button được focus");
-		verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnToday"));
+		verifyTrue(vehicalTicket.isDynamicForcusAndPriceDisplay("com.VCB:id/lnToday"));
 	}
 
 	@Test
 	public void TC_28_KiemTraChonNgayMai() {
 		log.info("TC_23_Step_1: Chọn ngày mai");
-		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/lnNextday");
+		vehicalTicket.clickToDynamicTomorrowAndFilterTrip("com.VCB:id/lnNextday");
 
 		log.info("TC_23_Step_2: kiểm tra ngày thay đổi đi");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
 		verifyEquals(DayStart, tommorrowDate);
 
 		log.info("TC_23_Step_3: kiểm tra button được focus");
-		verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnNextday"));
+		verifyTrue(vehicalTicket.isDynamicForcusAndPriceDisplay("com.VCB:id/lnNextday"));
 	}
 
 	@Test
 	public void TC_29_KiemTraChonNgayHomNay() {
 		log.info("TC_29_Step_1: Chọn ngày hôm nay");
-		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/lnToday");
+		vehicalTicket.clickToDynamicTomorrowAndFilterTrip("com.VCB:id/lnToday");
 
 		log.info("TC_29_Step_2: kiểm tra ngày thay đổi đi");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
 		verifyEquals(DayStart, today);
 
 		log.info("TC_29_Step_3: kiểm tra button được focus");
-		verifyTrue(vehicalTicket.isDynamicForcus("com.VCB:id/lnToday"));
+		verifyTrue(vehicalTicket.isDynamicForcusAndPriceDisplay("com.VCB:id/lnToday"));
 	}
 
 	@Test

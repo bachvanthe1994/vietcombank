@@ -60,7 +60,6 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 	public void TC_02_ChonTheoRap_ChonMotTinhThanh() {
 		log.info("TC_02_01_Tim kiem thanh pho");
 		filmTicketBooking.inputIntoEditTextByID("Hà Nội", "com.VCB:id/edtSearch");
-		;
 
 		log.info("TC_02_02_Click chon thanh pho");
 		filmTicketBooking.clickToDynamicTextView("Hà Nội");
@@ -81,7 +80,6 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 
 		log.info("TC_03_02_Tim kiem thanh pho");
 		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");
-		;
 
 		log.info("TC_03_03_Click chon thanh pho");
 		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
@@ -183,6 +181,7 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Diễn viên"));
 
 		log.info("TC_08_03_09_Kiem tra hien thi dao dien");
+		filmTicketBooking.scrollDownToText(driver, "Đạo diễn");
 		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Đạo diễn"));
 
 		log.info("TC_08_03_10_Kiem tra hien thi nut Dat ve");

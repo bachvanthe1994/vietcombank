@@ -91,7 +91,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_01_7_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_01_8_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -275,7 +275,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 		log.info("TC_03_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info1.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_03_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -306,7 +306,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
 		log.info("TC_03_11_01_Kiem tra so tien phi");
-//		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), String.format("%,d", transferFee) + " VND");
 
 		log.info("TC_03_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -460,7 +460,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_05_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info2.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_05_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -498,7 +498,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 		
 		log.info("TC_05_11_01_Kiem tra so tien phi");
-//		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
 
 		log.info("TC_05_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -656,7 +656,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 		log.info("TC_07_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info3.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info3.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_07_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -693,7 +693,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 		
 		log.info("TC_07_11_01_Kiem tra so tien phi");
-//		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " EUR");
 
 		log.info("TC_07_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -849,7 +849,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_09_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info4.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_09_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1032,7 +1032,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 		log.info("TC_11_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info5.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_11_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1215,7 +1215,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_13_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info6.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_13_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1409,7 +1409,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 		log.info("TC_15_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info7.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_15_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1603,7 +1603,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_17_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info8.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_17_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1641,7 +1641,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info8.authenticationMethod);
 		
 		log.info("TC_17_11_01_Kiem tra so tien phi");
-//		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " USD");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " USD");
 
 		log.info("TC_17_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1797,7 +1797,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 		log.info("TC_19_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info9.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_19_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -1991,7 +1991,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 		log.info("TC_21_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info10.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_21_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -2029,7 +2029,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info10.authenticationMethod);
 		
 		log.info("TC_21_11_01_Kiem tra so tien phi");
-//		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " USD");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), transferFeeCurrentcy + " USD");
 
 		log.info("TC_21_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
@@ -2185,7 +2185,7 @@ public class TransferMoneyOutSideVCB extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 		log.info("TC_23_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.note, "Nội dung");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info11.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_23_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
