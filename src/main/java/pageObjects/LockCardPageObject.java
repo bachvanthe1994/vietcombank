@@ -7,7 +7,6 @@ import java.util.List;
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.LockCardPageUIs;
 
 public class LockCardPageObject extends AbstractPage{
@@ -17,21 +16,6 @@ public class LockCardPageObject extends AbstractPage{
 	}
 
 	private AppiumDriver<MobileElement> driver;
-	
-	public void openCardTypeDropdownList() {
-		waitForElementVisible(driver, LockCardPageUIs.CARD_TYPES_DROPDOWN);
-		clickToElement(driver, LockCardPageUIs.CARD_TYPES_DROPDOWN);
-	}
-	
-	public void openCardNumberDropdownList(String text,String id) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER,text,id);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER,text,id);
-	}
-	
-	public String getFirstCardNumberInDropdownList() {
-		waitForElementVisible(driver, LockCardPageUIs.CARD_NUMBER_DROPDOWN_VIEW);
-		return getTextInFirstElement(driver, 1, LockCardPageUIs.CARD_NUMBER_DROPDOWN_LIST);
-	}
 	
 	public boolean isCardNumberDisplayedInDropdownList(String expTextVal) {
 		waitForElementVisible(driver, LockCardPageUIs.CARD_NUMBER_DROPDOWN_LIST);
@@ -46,6 +30,10 @@ public class LockCardPageObject extends AbstractPage{
 			result = true;
 		}}
 		return result;
+	}
+	public void clickToConfirmCheckBox() {
+		waitForElementVisible(driver, LockCardPageUIs.CONFIRM_CHECKBOX);
+		clickToElement(driver, LockCardPageUIs.CONFIRM_CHECKBOX);
 	}
 	
 	public void clickBackToHomePage() {

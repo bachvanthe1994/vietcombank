@@ -21,11 +21,13 @@
 		<parameter name="phone" value="0904797863"/>
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
+		
+		
 		<package name="vnpay.vietcombank.transfer_money_out_side_vcb">
 			<classes>
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
-				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
+<!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
 <!-- 				<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
@@ -34,13 +36,28 @@
 			</classes>
 		</package>
 
+
+
+
 <!-- 		<package name="vnpay.vietcombank.TransferIdentityCard"> -->
 <!-- 			<classes> -->
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Citizen_And_Military_Identification" /> -->
 <!-- 				<class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Identity_And_Passport" /> -->
 <!-- 			</classes> -->
 <!-- 		</package> -->
+
+
+
+
+<!-- 		<package name="vnpay.vietcombank.TransferIdentityCard"> -->
+<!-- 			<classes> -->
+<!-- 					<class name="vnpay.vietcombank.card_services.Card_Services" />-->
+<!-- 			</classes> -->
+<!-- 		</package> -->
+	
 	</test>
+	
+	
 
 
 
