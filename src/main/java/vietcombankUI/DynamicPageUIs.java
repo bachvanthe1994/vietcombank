@@ -56,4 +56,7 @@ public class DynamicPageUIs {
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";
 
+	//CHECK BOX
+	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";
+	
 }
