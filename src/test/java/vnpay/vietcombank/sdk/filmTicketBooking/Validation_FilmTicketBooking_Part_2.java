@@ -60,7 +60,6 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 	public void TC_02_ChonTheoRap_ChonMotTinhThanh() {
 		log.info("TC_02_01_Tim kiem thanh pho");
 		filmTicketBooking.inputIntoEditTextByID("Hà Nội", "com.VCB:id/edtSearch");
-		;
 
 		log.info("TC_02_02_Click chon thanh pho");
 		filmTicketBooking.clickToDynamicTextView("Hà Nội");
@@ -81,7 +80,6 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 
 		log.info("TC_03_02_Tim kiem thanh pho");
 		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");
-		;
 
 		log.info("TC_03_03_Click chon thanh pho");
 		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
