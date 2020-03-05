@@ -1,8 +1,7 @@
 package commons;
 
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+
 import pageObjects.LockCardPageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -19,6 +18,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
+import pageObjects.saving_online.SavingOnlinePageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
@@ -104,4 +104,9 @@ public class PageFactoryManager {
 		return new RegisterOnlinePageObject(driver);
 	}
 
+
+	public static SavingOnlinePageObject getSavingOnlinePageObject(AppiumDriver<MobileElement> driver) {
+		return new SavingOnlinePageObject(driver);
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Date;
@@ -475,14 +476,26 @@ public class Base {
 	}
 
 	public String addCommasToDouble(String number) {
-		double amount = Double.parseDouble(number);
-		String m = String.format("%,.2f", amount);
+		String m = "";
+		try {
+			double amount = Double.parseDouble(number);
+			m = String.format("%,.2f", amount);
+		} catch (Exception e) {
+			
+		}
+		
 		return m;
 	}
 
 	public static String addCommasToLong(String number) {
-		long amount = Long.parseLong(number);
-		String m = String.format("%,d", amount);
+		String m = "";
+		try {
+			long amount = Long.parseLong(number);
+			m = String.format("%,d", amount);
+		} catch (Exception e) {
+			
+		}
+		
 		return m;
 	}
 
@@ -747,4 +760,71 @@ public class Base {
 		int year = date.getYear();
 		return "THÁNG" + " " + month + " " + year;
 	}
+	
+	public long canculateAvailableBalances(long surPlus, long money, long transactionFree) {
+		return surPlus - money - transactionFree;
+	}
+
+	public double canculateAvailableBalancesCurrentcy(double surPlus, double money, double transactionFree) {
+		double scale = Math.pow(10, 2);
+		return Math.round((surPlus - money - transactionFree) * scale) / scale;
+		
+	}
+	
+	public double convertAvailableBalanceCurrentcyToDouble(String money) {
+		double result = 0;
+		try {
+			result = Double.parseDouble(money.replaceAll("[^\\.0123456789]", ""));
+		} catch (Exception e) {
+
+		}
+		return result;
+	}
+
+	public long convertAvailableBalanceCurrentcyToLong(String money) {
+		long result = 0;
+		try {
+			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
+		} catch (Exception e) {
+
+		}
+		return result;
+	}
+
+	public String convertEURO_USDToVNeseMoney(String money, String currentcy) {
+		String result = "";
+		try {
+			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy))) + " VND";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
+
+	public String convertDateTimeIgnoreSecond(String stringDate) {
+		String result = "";
+		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	    try {
+	    	result = formatter2.format(formatter1.parse(stringDate));
+	    }
+	    catch (Exception e) {
+			
+		}
+		return result;
+		
+	}
+	
+	public String convertTransferTimeToReportDateTime(String stringDate) {
+		String result = "";
+	    try {
+	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
+	    }
+	    catch (Exception e) {
+			
+		}
+		return result;
+		
+	}
+	
 }

@@ -872,6 +872,45 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
+	public void chooseSeats(int numberOfSeats, String colorOfSeat) {
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+		if (status) {
+			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			for (MobileElement element : elements) {
+				File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+				try {
+					BufferedImage bufferedImage = ImageIO.read(imageFile);
+					imageFile.delete();
+
+					int height = bufferedImage.getHeight();
+					int width = bufferedImage.getWidth();
+					int x = width / 2;
+					int y = height / 4;
+					int RGBA = bufferedImage.getRGB(x, y);
+					int red = (RGBA >> 16) & 255;
+					int green = (RGBA >> 8) & 255;
+					int blue = RGBA & 255;
+					String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+
+					if (colorOfSeat.equals(colorOfElement)) {
+						element.click();
+						numberOfSeats--;
+					}
+
+					if (numberOfSeats <= 0) {
+						break;
+					}
+
+				} catch (Exception e) {
+
+				}
+			}
+
+		}
+
+	}
+	
 	public void chooseMaxSeats(List<SeatType> listSeatType) {
 		for (SeatType seat : listSeatType) {
 			String type = seat.name;
@@ -928,6 +967,41 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 	}
 
+	public void cancelAllChoosenSeats() {
+		String colorOfSeat = "";
+		colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
+		String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+		if (status) {
+			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			for (MobileElement element : elements) {
+				File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+				try {
+					BufferedImage bufferedImage = ImageIO.read(imageFile);
+					imageFile.delete();
+	
+					int height = bufferedImage.getHeight();
+					int width = bufferedImage.getWidth();
+					int x = width / 2;
+					int y = height / 4;
+					int RGBA = bufferedImage.getRGB(x, y);
+					int red = (RGBA >> 16) & 255;
+					int green = (RGBA >> 8) & 255;
+					int blue = RGBA & 255;
+					String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+	
+					if (colorOfSeat.equals(colorOfElement)) {
+						element.click();
+					}
+	
+				}
+				catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		}
+	}
+	
 	public void chooseSeatsByLineEmptyLastSeat(String line) {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
 		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);

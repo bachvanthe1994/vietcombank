@@ -12,7 +12,6 @@ public class Account_Data {
 		public static final String DEFAULT_ACCOUNT3 = "0019967190";
 		public static final String DIFFERENT_OWNER_ACCOUNT = "0541001555240";
 		public static final String DIFFERENT_OWNER_NAME = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
-
 		public static final String USD_ACCOUNT = "0019961177";
 		public static final String USD_ACCOUNT_2 = "0011370080228";
 		public static final String EUR_ACCOUNT = "0019961178";

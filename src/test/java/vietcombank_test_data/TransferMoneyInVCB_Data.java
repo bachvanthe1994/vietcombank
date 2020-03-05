@@ -18,7 +18,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
 		public static final String VND_MONEY = "20000";
 
-		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 540,120 VND", "200 EUR ~ 5,401,200 VND");
+		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 48548060 VND", "200 EUR ~ 485480600 VND");
 		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("200,000 VND", "2,000,000 VND", "20,000,000 VND");
 
 		public static final String NOTE = "Test";
