@@ -52,7 +52,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 		
 		log.info("TC_01_Step_05: Tao moi 'Thong tin nguoi thu huong' ");
-		setupContact.clickToAddNewPeopleContactButton();
+		setupContact.clickToDynamicDropdownAndDateTimePicker(driver,"com.VCB:id/btnAddContact");
 		
 		log.info("TC_01_Step_06: Mo DropdownList 'Chuyen Tien' ");
 		setupContact.clickToDynamicDropdownByHeader(driver, "Thông tin người thụ hưởng","4");
@@ -84,7 +84,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToContactKeyMenu(Contact.CONTACT_NAME_01+"\n"+Contact.CONTACT_CARD_NUMBER_01);
 		
 		log.info("TC_02_Step_02: An vao phan 'Cap nhat thong tin'");
-		setupContact.clickToUpdateContactLabel();
+		setupContact.clickToUpdateDeleteContactLabel("com.VCB:id/liEdit");
 		
 		log.info("TC_02_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSelect1"), Contact.CARD_FAST_TRANSACTION);
@@ -117,7 +117,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToContactKeyMenu(Contact.CONTACT_NAME_02+"\n"+Contact.CONTACT_CARD_NUMBER_02);
 		
 		log.info("TC_03_Step_02: An vao phan 'Xoa'");
-		setupContact.clickToDeleteContactLabel();
+		setupContact.clickToUpdateDeleteContactLabel("com.VCB:id/liDelete");
 		
 		log.info("TC_03_Step_03: An nut 'Dong y' xoa danh ba");
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -145,7 +145,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 		
 		log.info("TC_04_Step_04: Tao moi 'Danh ba hoa don'");
-		setupContact.clickToAddNewContactButton();
+		setupContact.clickToDynamicBottomMenu(driver,"com.VCB:id/ic_add_contact");
 		
 		log.info("TC_04_Step_04: Nhap thong tin 'Danh ba hoa don'");
 		setupContact.clickToDynamicDropdownByHeader(driver, "Thông tin danh bạ hóa đơn","4");
@@ -173,7 +173,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToContactKeyMenu(Contact.CONTACT_NAME_01+"\n"+Contact.CONTACT_CARD_NUMBER_01);
 		
 		log.info("TC_05_Step_02: An vao phan 'Cap nhat thong tin'");
-		setupContact.clickToUpdateContactLabel();
+		setupContact.clickToUpdateDeleteContactLabel("com.VCB:id/liEdit");
 		
 		log.info("TC_05_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSelect1"), Contact.ADSL_SERVICE);
@@ -207,7 +207,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToContactKeyMenu(Contact.CONTACT_NAME_02+"\n"+Contact.CONTACT_CARD_NUMBER_02);
 		
 		log.info("TC_06_Step_02: An vao phan 'Xoa'");
-		setupContact.clickToDeleteContactLabel();
+		setupContact.clickToUpdateDeleteContactLabel("com.VCB:id/liDelete");
 		
 		log.info("TC_06_Step_03: An nut 'Dong y' xoa danh ba");
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -235,7 +235,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 		
 		log.info("TC_07_Step_04: Tao moi 'Danh ba the/vi dien tu'");
-		setupContact.clickToAddNewContactButton();
+		setupContact.clickToDynamicBottomMenu(driver,"com.VCB:id/ic_add_contact");
 		
 		log.info("TC_07_Step_05: Nhap thong tin 'Danh ba the/vi dien tu'");
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.BANK_CARD_CHARGE);
@@ -265,7 +265,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToContactKeyMenu(Contact.CONTACT_NAME_02+"\n"+Contact.CONTACT_CARD_NUMBER_02);
 		
 		log.info("TC_08_Step_02: An vao phan 'Cap nhat thong tin'");
-		setupContact.clickToUpdateContactLabel();
+		setupContact.clickToUpdateDeleteContactLabel("com.VCB:id/liEdit");
 		
 		log.info("TC_05_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"), Contact.E_WALLET_CHARGE);
@@ -275,7 +275,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, Contact.CONTACT_CARD_NUMBER_02));
 		
 		log.info("TC_05_Step_04: An nut 'Cap nhat thong tin'");
-		setupContact.clickToEditInfoButton();
+		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btEdit");;
 		
 		log.info("TC_07_Step_05: Nhap thong tin 'Danh ba the/vi dien tu'");
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.E_WALLET_CHARGE);
@@ -304,7 +304,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToContactKeyMenu(Contact.CONTACT_NAME_01+"\n"+Contact.CONTACT_CARD_NUMBER_01);
 		
 		log.info("TC_06_Step_02: An vao phan 'Xoa'");
-		setupContact.clickToDeleteContactLabel();
+		setupContact.clickToUpdateDeleteContactLabel("com.VCB:id/liDelete");
 		
 		log.info("TC_06_Step_03: An nut 'Dong y' xoa danh ba");
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
