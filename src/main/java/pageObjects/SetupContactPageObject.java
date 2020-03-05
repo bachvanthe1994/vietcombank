@@ -54,34 +54,14 @@ public class SetupContactPageObject extends AbstractPage {
 		clickToDynamicButton(driver, "Đóng");
 	}
 	
-	public void clickToAddNewPeopleContactButton() {
-		waitForElementVisible(driver, SetupContactPageUIs.ADD_NEW_PEOPLE_CONTACT_BUTTON);
-		clickToElement(driver, SetupContactPageUIs.ADD_NEW_PEOPLE_CONTACT_BUTTON);
-	}
-	
-	public void clickToAddNewContactButton() {
-		waitForElementVisible(driver, SetupContactPageUIs.ADD_NEW_CONTACT_BUTTON);
-		clickToElement(driver, SetupContactPageUIs.ADD_NEW_CONTACT_BUTTON);
-	}
-	
 	public void clickToContactKeyMenu(String dynamicKey) {
-		waitForElementVisible(driver, SetupContactPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
-		clickToElement(driver, SetupContactPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 	}
 	
-	public void clickToUpdateContactLabel() {
-		waitForElementVisible(driver, SetupContactPageUIs.CONTACT_UPDATE_INFO_LABEL);
-		clickToElement(driver, SetupContactPageUIs.CONTACT_UPDATE_INFO_LABEL);
-	}
-	
-	public void clickToDeleteContactLabel() {
-		waitForElementVisible(driver, SetupContactPageUIs.CONTACT_DELETE_INFO_LABEL);
-		clickToElement(driver, SetupContactPageUIs.CONTACT_DELETE_INFO_LABEL);
-	}
-	
-	public void clickToEditInfoButton() {
-		waitForElementVisible(driver, SetupContactPageUIs.EDIT_INFO_BUTTON);
-		clickToElement(driver, SetupContactPageUIs.EDIT_INFO_BUTTON);
+	public void clickToUpdateDeleteContactLabel(String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID,dynamicValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID,dynamicValue);
 	}
 	
 	public void clickToClearInputLabel(String dynamicValue) {
