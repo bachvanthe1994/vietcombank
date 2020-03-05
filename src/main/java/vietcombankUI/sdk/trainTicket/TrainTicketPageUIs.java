@@ -35,7 +35,7 @@ public class TrainTicketPageUIs {
 	public static final String DYNAMIC_ICON_CHECK = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView[@resource-id='%s']";
 
 	// Input
-	public static final String DYNAMIC_INPUT_POINT = "//android.widget.LinearLayout[@resource-id ='%s']/android.widget.EditText";
+	public static final String DYNAMIC_INPUT_POINT = "//android.widget.EditText[@resource-id='%s']";
 
 	// button
 	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
