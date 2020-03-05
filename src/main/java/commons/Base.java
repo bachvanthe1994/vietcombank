@@ -620,6 +620,16 @@ public class Base {
 		int day = date.getDayOfMonth();
 		return day + "";
 	}
+	
+	
+	//Back năm về quá khứ so với năm hiện tại
+	public String getBackWardYear(long years) {
+		LocalDate now = LocalDate.now();
+		LocalDate date = now.minusYears(years);
+
+		int year = date.getYear();
+		return year + "";
+	}
 
 	public String getCurentMonthAndYearPlusDays(long days) {
 		LocalDate now = LocalDate.now();
@@ -756,7 +766,9 @@ public class Base {
 	}
 
 	public double canculateAvailableBalancesCurrentcy(double surPlus, double money, double transactionFree) {
-		return Math.round(surPlus - money - transactionFree);
+		double scale = Math.pow(10, 2);
+		return Math.round((surPlus - money - transactionFree) * scale) / scale;
+		
 	}
 	
 	public double convertAvailableBalanceCurrentcyToDouble(String money) {
