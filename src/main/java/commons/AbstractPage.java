@@ -896,6 +896,17 @@ public class AbstractPage {
 
     }
 
+    // Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và
+    // resource-id
+    public void clickToDynamicWishes(AppiumDriver<MobileElement> driver, String dynamicText) {
+	boolean status = false;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
+	}
+
+    }
+
 //Click vào 1 giao dịch trong trạng thái lệnh chuyển tiền, tham số truyền vào là index và resource id
     public void clickToDynamicTransactionInTransactionOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIndex1ID2) {
 	boolean status = false;
@@ -1526,7 +1537,7 @@ public class AbstractPage {
     public String getDynamicTextInTransactionDetail(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 	boolean status = false;
 	String text = null;
-	scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
+//	scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
 	if (status == true) {
 	    text = getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
