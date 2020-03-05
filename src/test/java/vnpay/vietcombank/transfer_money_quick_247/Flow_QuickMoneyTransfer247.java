@@ -45,7 +45,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-	// @Test
+	@Test
 	public void TC_01_ChuyenTienCoPhiGiaoDichChonNguoiChuyenOTP() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -151,7 +151,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		verifyEquals(amountStart - amountTranfer - costTranfer, amountAfter);
 	}
 
-	// @Test
+	@Test
 	public void TC_02_BaoCaoGiaoDichChuyenTienNhanh() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -248,7 +248,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	// @Test
+	@Test
 	public void TC_03_ChuyenTienNhanhQuaTaiKhoanChonUSDNguoiChuyenTraPhiOTP() {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
@@ -347,7 +347,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 
 	}
 
-	// @Test
+	@Test
 	public void TC_04_BaoCaoGiaoDichChuyenTienNhanh() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -444,7 +444,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	// @Test
+	@Test
 	public void TC_05_ChuyenTienQuaTKNguoiChuyenTraPhiVNDXacThucMatKhau() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -542,7 +542,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		verifyEquals(amountStart - amountTranfer - costTranfer, amountAfter);
 	}
 
-	// @Test
+	@Test
 	public void TC_06_BaoCaoGiaoDichChuyenTienNhanh() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -830,7 +830,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_09_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -1029,7 +1029,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -1045,7 +1045,6 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		log.info("TC_01_Step_Get so du kha dung");
 		amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng");
 		double amountStart1 = convertMoneyToDouble(amountStartString, "USD");
-
 
 		log.info("TC_01_Step_Doi kieu du lieu");
 		amountStart = Long.parseLong(amountStartString);
