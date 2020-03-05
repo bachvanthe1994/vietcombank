@@ -255,7 +255,7 @@ public void TC_03_MoTheTietKiem_TaiKhoanTienGuiCoKyHan() throws InterruptedExcep
 	log.info("TC_Step_: Click button thuc hien giao dich khác");
 	registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 }
-}
+
 
 @Test
 public void TC_04_MoTheTietKiem_TaiKhoanTienGuiCoKyHan() throws InterruptedException {
@@ -337,4 +337,5 @@ public void TC_04_MoTheTietKiem_TaiKhoanTienGuiCoKyHan() throws InterruptedExcep
 
 	log.info("TC_Step_: Click button thuc hien giao dich khác");
 	registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+}
 }
