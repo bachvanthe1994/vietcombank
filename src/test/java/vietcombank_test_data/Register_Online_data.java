@@ -16,7 +16,7 @@ public class Register_Online_data {
 		public static final String BANK_NAME = "NHTMCP Cong thuong VN";
 		public static final String LIST_SEND_MONEY[] = {"Tài khoản tiền gửi có kỳ hạn","Thẻ tiết kiệm không kỳ hạn","Thẻ tiết kiệm có kỳ hạn"};
 		public static final String LIST_PERIOD[] = {"14 ngày","1 tháng","3 tháng","6 tháng","9 tháng","12 tháng","24 tháng"};
-		public static final String INTEREST_RECEPT_TYPE[] = {"Nhận gốc","Tiền mặt","Chuyển khoản"};
+		public static final String INTEREST_RECEPT_TYPE[] = {"Nhập gốc","Tiền mặt","Chuyển khoản"};
 	}
 
 	public class Message {
