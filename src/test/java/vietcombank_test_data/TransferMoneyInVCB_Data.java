@@ -53,7 +53,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String CONFIRMATION_MESSAGE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
 		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_RECEIVE_ACCOUNT = "Tài khoản nhận không đúng hoặc không hợp lệ, Quý khách vui lòng kiểm tra lại";
-		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER = "Tài khoản nhận không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
+		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER = "Tài khoản đích không đủ 10 ký tự, Quý khách vui lòng kiểm tra lại";
 		public static final String TRANSACTION_LIMIT_TEXT = "Tài khoản nhận không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
 		public static final String EMPTY_RECEIVE_ACCOUNT_MESSAGE = "Quý khách vui lòng nhập tài khoản nhận";
 		public static final String EMPTY_MONEY_MESSAGE = "Quý khách vui lòng nhập số tiền chuyển khoản";
@@ -63,7 +63,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản nhận không chính xác. Quý khách vui lòng kiểm tra lại";
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
-		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 10,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_FUTURE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 80,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_FOR_EMPTY_OTP = "Quý khách vui lòng nhập mã OTP";
@@ -122,7 +122,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_MONEY = "12345678901";
 		public static final String INVALID_DECIMAL_MONEY = "1234567890.1234";
 		public static final String INVALID_MIN_TRANSFER_AMOUNT = "1";
-		public static final String INVALID_MAX_TRANSFER_AMOUNT = "20000000";
+		public static final String INVALID_MAX_TRANSFER_AMOUNT = "200000000";
 		public static final String OTP_WITH_LESS_THAN_6_CHARACTERS = "12345";
 		public static final String WRONG_OTP = "111111";
 		public static final String MORE_THAN_21_CHARACTERS = "123456789012345678901234";

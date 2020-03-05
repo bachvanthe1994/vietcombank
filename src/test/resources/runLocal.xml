@@ -3,7 +3,7 @@
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-		<!-- <listener class-name="reportConfig.ExtentReportListener" /> -->
+		<listener class-name="reportConfig.ExtentReportListener" />
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
@@ -17,7 +17,7 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="Galaxy S9" />
-		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="deviceUDID" value="8d7a4491" />
 		<!-- <parameter name="deviceType" value="ios" /> -->
 		<!-- <parameter name="deviceName" value="P Nghiệp vụ 502" /> -->
 		<!-- <parameter name="deviceUDID" value="aaa358ede2afe9cd223548b282d255553b5b1d66" /> -->
@@ -26,75 +26,14 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part1" />
+	<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" />
 
-
-			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
-
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People" /> -->
-
-
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_1" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_2" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_3" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_4" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_5" /> -->
-
-
-
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" /> -->
-
-			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_3" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_4" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
-
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" /> -->
-
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.airticket.InternationalAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" /> -->
-
-
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_1" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_2" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_3" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_4" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_5" /> -->
-
-
-
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" /> -->
-
-			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_3" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_4" /> -->
-
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_7" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB" /> -->
-
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_2" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_3" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_4" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_5" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_6" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_7" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_8" /> -->
 		</classes>
 	</test>
 
