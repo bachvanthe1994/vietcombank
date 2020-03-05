@@ -19,11 +19,11 @@ public class TrainTicket_Data {
 	}
 	
 	public static class inputText {
-		public static final String POINT_MAX_INVALID ="1111111111222222222233333333334444444444555555555666666666677777777778888888888999999999911111111112222222222333333333344444444445555555556666666666777777777788888888889999999999111111111122222222223333333333" ;
+		public static final String POINT_MAX_INVALID ="111111111122222222223333333333444444444455555555566666666667777777777888888888899999999991111111111" ;
 		public static final String POINT_SPECIAL_INVALID ="~!@#$%^&*()_+Ơ}|:<>?/`-=[];',./ \'";
 		public static final String POINT_NUMBER_VALID ="1234567890";
 		public static final String POINT_CHAR_VALID ="abcXYZ";
-		public static final String POINT_VIETNAM_VALID ="Chọn ga đến";
+		public static final String POINT_VIETNAM_VALID ="Chon ga khoi hanh";
 		public static final String POINT_START_END_VALID ="Biên Hòa";
 		public static final String POINT_EDIT_SEARCH ="Hà Nội";
 		public static final String POINT_EDIT_SEARCH_END ="Vinh";
