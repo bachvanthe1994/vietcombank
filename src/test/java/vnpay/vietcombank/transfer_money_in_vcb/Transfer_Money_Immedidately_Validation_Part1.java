@@ -35,21 +35,19 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 
 	}
 
 	@Test
 	public void TC_01_KiemTraTaiKhoanNguonMacDinh() {
 
-		String defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		transferInVCB.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_Step_02: Kiem tra tai khoan mac dinh");
-		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), defaultAccount);
+		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 
 	}
 

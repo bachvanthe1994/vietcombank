@@ -24,20 +24,20 @@
 
 		<package name="vnpay.vietcombank.transfer_money_in_vcb">
 			<classes>
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part1" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part2" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part3" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part4" /> -->
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part1" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part2" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part3" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part4" />
 				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part1" />
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part2" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part3" /> -->
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part2" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part3" />
 
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" /> -->
-				<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" /> -->
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" />
+				<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" />
 
 
 			</classes>
@@ -45,53 +45,102 @@
 
 
 
-		<!-- <package name = "vnpay.vietcombank.transfer_money_charity" > -->
-		<!-- <classes> -->
-		<!-- <class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" /> -->
-		<!-- <class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
-		<!-- <class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" /> -->
-		<!-- <class name="vnpay.vietcombank.transfer_money_charity.Validation_Password_Charity" /> -->
-		<!-- <class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_1" /> -->
-		<!-- <class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" /> -->
+		<package name="vnpay.vietcombank.transfer_money_charity">
+			<classes>
+				<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" />
+				<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" />
+				<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" />
+				<class name="vnpay.vietcombank.transfer_money_charity.Validation_Password_Charity" />
+				<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_1" />
+				<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" />
 
-		<!-- </classes> -->
-		<!-- </package> -->
-
-		<!-- <package name="vnpay.vietcombank.TransferIdentityCard"> -->
-		<!-- <classes> -->
-		<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate" /> -->
-		<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_1" /> -->
-		<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_2" /> -->
-		<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_3" /> -->
-
-
-		<!-- </classes> -->
-		<!-- </package> -->
-		<package name="vnpay.vietcombank.sdk.hotelBooking">
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_1" />
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_2" />
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_3" />
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_4" />
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_5" />
-
-
+			</classes>
 		</package>
+
+		<package name="vnpay.vietcombank.transfer_money_quick_247">
+			<classes>
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_1" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_2" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_3" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_4" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_5" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_6" />
+				<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_7" />
+
+
+			</classes>
+		</package>
+
+
+
+
+		<package name="vnpay.vietcombank.TransferIdentityCard">
+			<classes>
+				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate" />
+				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_1" />
+				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_2" />
+				<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_Validate_3" />
+
+
+			</classes>
+		</package>
+
+
+		<package name="vnpay.vietcombank.sdk.hotelBooking">
+			<classes>
+				<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_1" />
+				<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_2" />
+				<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_3" />
+				<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_4" />
+				<class name="vnpay.vietcombank.sdk.hotelBooking.Validation_HotelBooking_Part_5" />
+
+			</classes>
+		</package>
+
 		<package name="vnpay.vietcombank.sdk.vehicleTickets">
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" />
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" />
-			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" />
+			<classes>
+				<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part1" />
+				<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part2" />
+				<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalTicket_Validate_Part3" />
+			</classes>
 		</package>
 
 
 		<package name="vnpay.vietcombank.sdk.airticket">
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" />
+			<classes>
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" />
+				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" />
+			</classes>
+		</package>
+		<package name="vnpay.vietcombank.sdk.filmTicketBooking">
+			<classes>
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_1" />
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_2" />
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_3" />
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_4" />
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_5" />
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_6" />
+				<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_7" />
 
+			</classes>
+		</package>
+		<package name="vnpay.vietcombank.sdk_train_ticket">
+			<classes>
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_1" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_2" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_3" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_4" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_5" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_6" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_7" />
+				<class name="vnpay.vietcombank.sdk_train_ticket.Validation_TrainTicket_8" />
+
+			</classes>
 		</package>
 
 	</test>
