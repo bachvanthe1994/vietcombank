@@ -1,4 +1,4 @@
-package vnpay.vietcombank.card_sevices_data;
+package vietcombank_test_data;
 
 public class Lock_Card_Data {
 	

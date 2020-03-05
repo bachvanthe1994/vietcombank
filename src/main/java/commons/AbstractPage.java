@@ -932,6 +932,16 @@ public class AbstractPage {
 	}
     }
 
+ // Click button cancel
+    public void clickDynamicCheckBox(AppiumDriver<MobileElement> driver, String dynamicID) {
+	boolean status = false;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicID);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicID);
+
+	}
+    }
+    
     // So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
     public boolean checkListContain(List<String> actualList, List<String> expectList) {
 	return expectList.containsAll(actualList);
@@ -1143,15 +1153,6 @@ public class AbstractPage {
 	if (status == true) {
 	    clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
 	    sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
-	}
-    }
-
-    public void inputToPasswordConfirm(AppiumDriver<MobileElement> driver, String inputValue) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
-	if (status == true) {
-	    clearText(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT);
-	    setValueToElement(driver, TransferMoneyOutSideVCBPageUIs.PASSWORD_CONFIRM_INPUT, inputValue);
 	}
     }
 
