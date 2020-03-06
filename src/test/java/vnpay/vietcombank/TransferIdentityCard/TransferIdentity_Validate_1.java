@@ -58,7 +58,7 @@ public class TransferIdentity_Validate_1 extends Base {
 	login.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_00_Step_5: chon tiep tuc");
-	login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	login.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 	log.info("TC_00_Step_6: chon tiep tuc");
 	login.clickToDynamicButton(driver, "Tiếp tục");

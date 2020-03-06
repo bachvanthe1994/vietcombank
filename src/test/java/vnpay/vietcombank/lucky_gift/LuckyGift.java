@@ -267,7 +267,7 @@ public class LuckyGift extends Base {
 	luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_03_Step_16: điền OTP");
-	luckyGift.inputToDynamicOtpOrPIN(driver, LuckyGift_Data.LuckyGift.OTP, "Tiếp tục");
+	luckyGift.inputToDynamicOtp(driver, LuckyGift_Data.LuckyGift.OTP, "Tiếp tục");
 
 	log.info("TC_03_Step_17: Click tiep tuc popup");
 	luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -429,7 +429,7 @@ public class LuckyGift extends Base {
 	luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_05_Step_16: điền OTP");
-	luckyGift.inputToDynamicOtpOrPIN(driver, LuckyGift_Data.LuckyGift.OTP, "Tiếp tục");
+	luckyGift.inputToDynamicOtp(driver, LuckyGift_Data.LuckyGift.OTP, "Tiếp tục");
 
 	log.info("TC_05_Step_17: Click tiep tuc popup");
 	luckyGift.clickToDynamicButton(driver, "Tiếp tục");

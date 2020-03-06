@@ -76,7 +76,7 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_11: Nhap OTP");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferInVCB.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_01_Step_12: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
