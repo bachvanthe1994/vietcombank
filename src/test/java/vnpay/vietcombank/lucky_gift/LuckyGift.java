@@ -134,13 +134,13 @@ public class LuckyGift extends Base {
 	log.info("TC_01_Step_21: Lấy thời gian thực hiện giao dịch");
 	date = new Date();
 
-	log.info("TC_02_Step_01 : Click home");
+	log.info("TC_01_Step_22 : Click home");
 	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
 
     }
 
     @Test
-    public void TC_02_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManVaXacThucBangMK() {
+    public void TC_02_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManTrongVCBVaXacThucBangMK() {
 	log.info("TC_02_Step_02: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
@@ -200,9 +200,11 @@ public class LuckyGift extends Base {
 	log.info("TC_02_Step_18: Click quay lai");
 	transReport.navigateBack(driver);
 
+	log.info("TC_02_Step_20: Click vao More Icon");
+	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
     }
 
-//    @Test
+    @Test
     public void TC_03_NGuoiNhanTrongVCBSoTaiKhoanXacThucBangOTP() {
 	log.info("TC_03_Step_1: Chọn quà tặng may mắn");
 	luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -289,8 +291,8 @@ public class LuckyGift extends Base {
 	date = new Date();
     }
 
-//    @Test
-    public void TC_04_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManVaXacThucBangOTP() {
+    @Test
+    public void TC_04_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManTrongVCBVaXacThucBangOTP() {
 	log.info("TC_04_Step_01 : Click home");
 	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
 
@@ -354,9 +356,12 @@ public class LuckyGift extends Base {
 	log.info("TC_04_Step_18: Click quay lai");
 	transReport.navigateBack(driver);
 
+	log.info("TC_02_Step_19: Click vao More Icon");
+	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+
     }
 
-//    @Test
+    @Test
     public void TC_05_NGuoiNhanNgoaiVCBSoTaiKhoanXacThucBangOTP() {
 	log.info("TC_05_Step_1: Chọn quà tặng may mắn");
 	luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -448,74 +453,77 @@ public class LuckyGift extends Base {
 	date = new Date();
     }
 
-//    @Test
-    public void TC_06_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManVaXacThucBangOTP() {
-	log.info("TC_02_Step_01 : Click home");
+    @Test
+    public void TC_06_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangOTP() {
+	log.info("TC_06_Step_01 : Click home");
 	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
 
-	log.info("TC_02_Step_02: Click vao More Icon");
+	log.info("TC_06_Step_02: Click vao More Icon");
 	homePage = PageFactoryManager.getHomePageObject(driver);
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-	log.info("TC_02_Step_03: Click Bao Cao Dao Dich");
+	log.info("TC_06_Step_03: Click Bao Cao Dao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TRANSFER_REPORT);
 
-	log.info("TC_02_Step_04: Click Tat Ca Cac Loai Giao Dich");
+	log.info("TC_06_Step_04: Click Tat Ca Cac Loai Giao Dich");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
-	log.info("TC_02_Step_05: Chon quà tặng may mắn");
+	log.info("TC_06_Step_05: Chon quà tặng may mắn");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
-	log.info("TC_02_Step_06: click chọn tài khoản");
+	log.info("TC_06_Step_06: click chọn tài khoản");
 	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 
-	log.info("TC_02_Step_07: chọn đóng");
+	log.info("TC_06_Step_07: chọn đóng");
 	transReport.clickToTextID(driver, "com.VCB:id/cancel_button");
 
-	log.info("TC_02_Step_08: CLick Tim Kiem");
+	log.info("TC_06_Step_08: CLick Tim Kiem");
 	transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
-	log.info("TC_02_Step_9: Kiem tra ngày giao dịch");
+	log.info("TC_06_Step_9: Kiem tra ngày giao dịch");
 	String dateSuccess = transReport.getDynamicTextDetailByID(driver, "com.VCB:id/tvDate");
 	String[] dateSplit = dateSuccess.split(" ");
 	verifyEquals(dateSplit[0], formatter.format(date));
 
-	log.info("TC_02_Step_10: Kiem tra noi dung hien thi");
+	log.info("TC_06_Step_10: Kiem tra noi dung hien thi");
 	String content = transReport.getDynamicTextDetailByID(driver, "com.VCB:id/tvContent");
 	verifyEquals(content, wishes.trim());
 
-	log.info("TC_02_Step_11: Kiem tra số tiền chuyển đi");
+	log.info("TC_06_Step_11: Kiem tra số tiền chuyển đi");
 	String getMoney = transReport.getDynamicTextDetailByID(driver, "com.VCB:id/tvMoney");
 	String[] moneySplit = getMoney.split(" ");
 	verifyEquals(moneySplit[1] + " " + moneySplit[2], money);
 
-	log.info("TC_02_Step_12: Click vao giao dich");
+	log.info("TC_06_Step_12: Click vao giao dich");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_02_Step_13: Kiem tra ngày giao dịch");
+	log.info("TC_06_Step_13: Kiem tra ngày giao dịch");
 	String getDate = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 	String[] dateDeal = getDate.split(" ");
 	verifyEquals(dateDeal[0], formatter.format(date));
 
-	log.info("TC_02_Step_14: Kiem tra tài khoản nguồn");
+	log.info("TC_06_Step_14: Kiem tra tài khoản nguồn");
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
 
-	log.info("TC_02_Step_15: Kiem tra tài khoản thụ hưởng");
+	log.info("TC_06_Step_15: Kiem tra tài khoản thụ hưởng");
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
 
-	log.info("TC_02_Step_16: Click quay lai");
+	log.info("TC_06_Step_16: Click quay lai");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 
-	log.info("TC_02_Step_17: Click quay lai");
+	log.info("TC_06_Step_17: Click quay lai");
 	transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
-	log.info("TC_02_Step_18: Click quay lai");
+	log.info("TC_06_Step_18: Click quay lai");
 	transReport.navigateBack(driver);
+
+	log.info("TC_02_Step_19: Click vao More Icon");
+	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
     }
 
-//    @Test
+    @Test
     public void TC_07_NGuoiNhanNgoaiVCBSoTaiKhoanXacThucBangMK() {
 	log.info("TC_07_Step_1: Chọn quà tặng may mắn");
 	luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -603,7 +611,7 @@ public class LuckyGift extends Base {
 	date = new Date();
     }
 
-//    @Test
+    @Test
     public void TC_08_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangMK() {
 	log.info("TC_08_Step_01 : Click home");
 	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
@@ -668,11 +676,14 @@ public class LuckyGift extends Base {
 	log.info("TC_08_Step_18: Click quay lai");
 	transReport.navigateBack(driver);
 
+	log.info("TC_02_Step_19: Click vao More Icon");
+	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterClass() {
-//	closeApp();
+	closeApp();
 	service.stop();
     }
 
