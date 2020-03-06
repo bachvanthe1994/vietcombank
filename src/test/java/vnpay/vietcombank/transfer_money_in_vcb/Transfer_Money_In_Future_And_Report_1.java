@@ -93,7 +93,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_01_Step_13: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_01_Step_14: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -339,7 +339,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_04_Step_13: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_04_Step_14: Click nguoi chuyen tra");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
@@ -442,7 +442,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_05_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_05_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -514,7 +514,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_06_Step_01: Click Huy Lenh");
@@ -549,7 +549,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_07_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
 
 		log.info("TC_07_Step_01: Click Chuyen tien trong VCB");
@@ -593,7 +593,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER, "Số tiền");
 
 		log.info("TC_07_Step_13: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_07_Step_14: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -691,7 +691,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_08_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
 		log.info("TC_08_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -763,7 +763,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_09_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_09_Step_01: Click Huy Lenh");
@@ -798,7 +798,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
 
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
@@ -842,7 +842,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER, "Số tiền");
 
 		log.info("TC_10_Step_13: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_10_Step_14: Click nguoi chuyen tra");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
@@ -946,7 +946,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_11_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
 		log.info("TC_11_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1018,7 +1018,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_12_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_12_Step_01: Click Huy Lenh");
@@ -1053,7 +1053,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_13_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -1083,7 +1083,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_13_Step_09: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_13_Step_10: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1160,7 +1160,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_14_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraEURVaXacThucBangOTP() {
 		log.info("TC_14_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1232,7 +1232,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_15_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_15_Step_01: Click Huy Lenh");
@@ -1267,7 +1267,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_16_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_16_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -1297,7 +1297,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_16_Step_09: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_16_Step_14: Click nguoi chuyen tra");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
@@ -1380,7 +1380,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_17_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
 		log.info("TC_17_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -1452,7 +1452,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_18_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_18_Step_01: Click Huy Lenh");
@@ -1490,7 +1490,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

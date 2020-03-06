@@ -18,7 +18,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
-public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
+public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -43,6 +43,10 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 	public void TC_01_KiemTraManHinhXacThucGiaoDichBangOTP() {
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+
+		log.info("TC_01_Step_02: Chon chuyen tien tuong lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
 
 		log.info("TC_01_Step_02:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -178,10 +182,17 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 	@Test
 	public void TC_08_KiemTraHienThiGoiYNhanhKhiFocusVaoOSoTien() {
 
-		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
+		log.info("TC_08_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
+		log.info("TC_08_Step_02: Chon chuyen tien tuong lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+
+		log.info("TC_08_Step_03: Click So tien");
 		transferInVCB.clickToDynamicInput(driver, "Số tiền");
+
+		log.info("TC_08_Step_04: Kiem tra keyboard hien thi");
 		verifyTrue(transferInVCB.isKeyBoardDisplayed(driver));
 
 		transferInVCB.hideKeyBoard(driver);
