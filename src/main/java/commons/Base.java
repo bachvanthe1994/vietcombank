@@ -801,6 +801,17 @@ public class Base {
 		return result;
 	}
 
+	public double convertVNeseMoneyToEUROOrUSD(String money, String currentcy) {
+		double result = 0;
+		try {
+			double scale = Math.pow(10, 2);
+			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
+	
 	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
