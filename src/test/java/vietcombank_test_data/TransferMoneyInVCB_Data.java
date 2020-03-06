@@ -18,7 +18,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
 		public static final String VND_MONEY = "20000";
 
-		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 48548060 VND", "200 EUR ~ 485480600 VND");
+		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 485,480 VND, 200 EUR ~ 4,854,800 VND");
 		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("200,000 VND", "2,000,000 VND", "20,000,000 VND");
 
 		public static final String NOTE = "Test";
@@ -35,8 +35,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
-		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,140 VND";
-		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274 VND";
+		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,145.00 VND";
+		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274.03 VND";
 		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
 		public static final String NUMBER_DAY_FREQUENCY = "5";
 		public static final String NUMBER_WEEK_FREQUENCY = "2";
@@ -71,7 +71,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String ERROR_MESSAGE_FOR_EMPTY_PASSWORD = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
 		public static final String ERROR_MESSAGE_FOR_OTP_LESS_THAN_6 = "OTP phải đủ 6 ký tự, Quý khách vui lòng kiểm tra lại";
 		public static final String ERROR_MESSAGE_FOR_WRONG_OTP = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
-		public static final String ERROR_MESSAGE_FOR_WRONG_OTP_N_TIMES = "[Nhập sai OTP quá 4 lần. Quý khách vui lòng thực hiện giao dịch mới.";
+		public static final String ERROR_MESSAGE_FOR_WRONG_OTP_N_TIMES = "Nhập sai OTP quá 4 lần. Quý khách vui lòng thực hiện giao dịch mới.";
 		public static final String ERROR_MESSAGE_FOR_WRONG_PASSWORD = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 3 lần.";
 		public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 10,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";

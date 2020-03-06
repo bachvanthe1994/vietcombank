@@ -302,6 +302,16 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 		return text;
 	}
+	
+	public String getDynamicTextViewByViewGroupID(String... dynamicTextValue) {
+		String text = null;
+		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicTextValue);
+		if (status) {
+			text = getTextElement(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicTextValue);
+		}
+		return text;
+	}
 
 	public List<String> getListOfSuggestedMoneyOrListText(String dynamicID) {
 		List<String> listString = new ArrayList<String>();
@@ -646,6 +656,22 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
+	public void clickToChooseEachTypeASeate() {
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+		List<MobileElement> elements = null;
+
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
+		}
+
+		for (MobileElement element : elements) {
+				element.click();
+		}
+
+	}
+
 	public void clickToChangeNumberSeatSum10Tickets() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 
@@ -673,7 +699,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
-
+	
 	public static String addCommasToLong(String number) {
 		long amount = Long.parseLong(number);
 		String m = String.format("%,d", amount);
