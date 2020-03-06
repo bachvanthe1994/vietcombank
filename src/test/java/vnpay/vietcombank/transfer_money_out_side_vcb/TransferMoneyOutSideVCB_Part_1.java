@@ -382,9 +382,6 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_04_12: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
-		log.info("TC_04_13: Kiem tra ngay giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch").contains(transferTime.split(" ")[0]));
-
 		log.info("TC_04_14: Kiem tra ngay tao giao dich hien thi");
 		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
