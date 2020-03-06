@@ -53,7 +53,7 @@ public class TransferMoneyCharityPageObject extends AbstractPage {
 
 	public void inputOTPInvalidBy_N_Times(int time) {
 		for (int i = 0; i < time; i++) {
-			inputToDynamicOtpOrPIN(driver, "213456", "Tiếp tục");
+			inputToDynamicOtp(driver, "213456", "Tiếp tục");
 			clickToDynamicButton(driver, "Tiếp tục");
 			if (i < time - 1) {
 				clickToDynamicButton(driver, "Đóng");

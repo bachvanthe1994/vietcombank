@@ -110,7 +110,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -303,7 +303,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_Nhap ma xac thuc");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -890,7 +890,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -1093,7 +1093,7 @@ public class Flow_QuickMoneyTransfer247 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");

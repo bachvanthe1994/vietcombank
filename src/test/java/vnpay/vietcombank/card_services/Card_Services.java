@@ -135,7 +135,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_08: Nhap Ma OTP");
-		lockCard.inputToDynamicOtpOrPIN(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
 
 		log.info("TC_02_Step_09: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -303,7 +303,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_04_Step_08: Nhap Ma OTP");
-		lockCard.inputToDynamicOtpOrPIN(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
 
 		log.info("TC_04_Step_09: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -406,7 +406,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_11: Nhap 'SMS OTP'");
-		lockCard.inputToDynamicOtpOrPIN(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
 
 		log.info("TC_05_Step_12: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
