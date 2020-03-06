@@ -476,7 +476,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_05_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyCharity.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoneyCharity.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -652,7 +652,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_07_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyCharity.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoneyCharity.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1012,7 +1012,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_11_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyCharity.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoneyCharity.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 

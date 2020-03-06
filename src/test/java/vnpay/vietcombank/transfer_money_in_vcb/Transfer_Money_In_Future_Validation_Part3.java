@@ -390,7 +390,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 	public void TC_10_KiemXacThucOTPNhoHon6KyTu() {
 
 		log.info("TC_10_Step_02: Dien OTP nho hon 6 ky tu");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, TransferMoneyInVCB_Data.InvalidInputData.OTP_WITH_LESS_THAN_6_CHARACTERS, "Tiếp tục");
+		transferInVCB.inputToDynamicOtp(driver, TransferMoneyInVCB_Data.InvalidInputData.OTP_WITH_LESS_THAN_6_CHARACTERS, "Tiếp tục");
 
 		log.info("TC_10_Step_03: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -406,7 +406,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 	public void TC_11_KiemXacThucOTPLonHon6KyTu() {
 
 		log.info("TC_11_Step_02: Dien OTP lon hon 6 ky tu");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_MAX_TRANSFER_AMOUNT, "Tiếp tục");
+		transferInVCB.inputToDynamicOtp(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_MAX_TRANSFER_AMOUNT, "Tiếp tục");
 
 		log.info("TC_11_Step_04: Kiem tra popup message hien thi");
 		verifyEquals(transferInVCB.getTextInDynamicOtp(driver, "Tiếp tục"), TransferMoneyInVCB_Data.InvalidInputData.INVALID_MAX_TRANSFER_AMOUNT.subSequence(0, 6));
@@ -416,7 +416,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 	public void TC_12_KiemXacNhapSaiOTP() {
 
 		log.info("TC_12_Step_02: Dien OTP lon hon 6 ky tu");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
+		transferInVCB.inputToDynamicOtp(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
 
 		log.info("TC_12_Step_03: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -433,7 +433,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 	public void TC_13_KiemXacNhapSaiOTPNhoHonNLan() {
 		for (int i = 0; i < 1; i++) {
 			log.info("TC_13_Step_01: Dien OTP lon hon 6 ky tu");
-			transferInVCB.inputToDynamicOtpOrPIN(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
+			transferInVCB.inputToDynamicOtp(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
 
 			log.info("TC_13_Step_02: Click Tiep tuc");
 			transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -446,7 +446,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		}
 
 		log.info("TC_13_Step_05: Dien OTP lon hon 6 ky tu");
-		transferInVCB.inputToDynamicOtpOrPIN(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
+		transferInVCB.inputToDynamicOtp(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
 
 		log.info("TC_13_Step_06: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");

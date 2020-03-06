@@ -587,7 +587,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_04_Step_28: xac thuc giao dich");
-	trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_04_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
@@ -736,7 +736,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_05_Step_28: xac thuc giao dich");
-	trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_05_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
@@ -884,7 +884,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_06_Step_28: xac thuc giao dich");
-	trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_06_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
@@ -1476,7 +1476,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_10_Step_28: xac thuc giao dich");
-	trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_10_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
@@ -1626,7 +1626,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_11_Step_28: xac thuc giao dich");
-	trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_11_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
@@ -1774,7 +1774,7 @@ public class Transfer_Citizen_And_Military_Identification extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_12_Step_28: xac thuc giao dich");
-	trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+	trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_12_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");

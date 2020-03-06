@@ -171,7 +171,7 @@ public class Login_Validation extends Base {
 		login.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_Step_05: Dien OTP");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		login.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_07_Step_06: Click tiep tuc");
 		login.clickToDynamicButton(driver, "Tiếp tục");

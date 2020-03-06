@@ -110,7 +110,7 @@ public class SavingOnline_Folow extends Base {
 		log.info("TC_01_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
-		savingOnline.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
