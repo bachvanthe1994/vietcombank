@@ -220,7 +220,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	@Test
 	public void TC_92_VerifyMessageKhiNhapOTPNhoHon6KyTu() {
 		log.info("TC_92_Nhap OTP la 123");
-		transferMoney.inputToDynamicOtpOrPIN(driver, "123", "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, "123", "Tiếp tục");
 
 		log.info("TC_92_Click button tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -237,7 +237,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	@Test
 	public void TC_94_VerifyMessageKhiNhapOTPLonHon6KyTu() {
 		log.info("TC_94_Nhap OTP la 123");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP + "0", "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP + "0", "Tiếp tục");
 
 		log.info("TC_94_Lay gia tri OTP nhap tren app");
 		String otp = transferMoney.getTextInDynamicOtp(driver, "Tiếp tục");
@@ -249,7 +249,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	@Test
 	public void TC_95_VerifyMessageKhiNhapOTPKhongTonTai() {
 		log.info("TC_95_Nhap OTP khong ton tai");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
 
 		log.info("TC_95_Click button tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -261,7 +261,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 
 		log.info("TC_95_Nhap OTP khong ton tai");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
 
 		log.info("TC_95_Click button tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -273,7 +273,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	@Test
 	public void TC_96_VerifyMessageNhapSaiOTPQua3Lan() {
 		log.info("TC_96_Nhap OTP khong ton tai");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
 
 		log.info("TC_96_Click button tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -342,7 +342,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_98_Nhap OTP");
-		transferMoney.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_98_Step_click button tiep tục");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");

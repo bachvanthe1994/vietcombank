@@ -103,7 +103,7 @@ public class Validation_OTP_Charity extends Base {
 	@Test
 	public void TC_03_OTP_NutTiepTuc_NhapOTPNhoHon6KyTu() {
 		log.info("TC_03_01_Nhap ma OTP nho hon 6 Ky tu");
-		transferMoneyCharity.inputToDynamicOtpOrPIN(driver, "123", "Tiếp tục");
+		transferMoneyCharity.inputToDynamicOtp(driver, "123", "Tiếp tục");
 
 		log.info("TC_03_02_Click nut Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -118,14 +118,14 @@ public class Validation_OTP_Charity extends Base {
 //	@Test
 	public void TC_04_OTP_NutTiepTuc_NhapOTPLonHon6KyTu() {
 		log.info("TC_04_01_Nhap ma OTP lon hon 6 Ky tu");
-		transferMoneyCharity.inputToDynamicOtpOrPIN(driver, "1234567", "Tiếp tục");
+		transferMoneyCharity.inputToDynamicOtp(driver, "1234567", "Tiếp tục");
 
 	}
 
 	@Test
 	public void TC_05_OTP_NutTiepTuc_NhapOTPKhongChinhXac() {
 		log.info("TC_05_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputToDynamicOtpOrPIN(driver, "213456", "Tiếp tục");
+		transferMoneyCharity.inputToDynamicOtp(driver, "213456", "Tiếp tục");
 
 		log.info("TC_05_02_Click nut Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -232,7 +232,7 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_08_10_Nhap ma OTP chinh xac");
-		login.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		login.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_08_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");

@@ -120,7 +120,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_01_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -352,7 +352,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_05_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1049,7 +1049,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_17_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 

@@ -32,11 +32,11 @@
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 
-			<!-- chuyển tiền ngoài vcb -->
+		<!-- chuyển tiền ngoài vcb --> 
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
 
-			<!-- Chuyển tiên qua cmt -->
+<!-- Chuyển tiên qua cmt -->
 			<class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Citizen_And_Military_Identification" />
 			<class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Identity_And_Passport" />
 

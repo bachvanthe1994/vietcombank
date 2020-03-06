@@ -246,7 +246,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	@Test
 	public void TC_51_NhapOTPItHon6KiTu() {
 		log.info("TC_51_Step_1: điền thiếu otp");
-		trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textCheckElement.OTP_DATA, "Tiếp tục");
+		trasferPage.inputToDynamicOtp(driver, TransferIdentity_Data.textCheckElement.OTP_DATA, "Tiếp tục");
 
 		log.info("TC_51_Step_2 : chon tiếp tục");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -262,7 +262,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	@Test
 	public void TC_52_NhapOTPNhieuHon6KiTu() {
 		log.info("TC_52_Step_1: điền thiếu otp");
-		trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textDataInputForm.MONEY_0, "Tiếp tục");
+		trasferPage.inputToDynamicOtp(driver, TransferIdentity_Data.textDataInputForm.MONEY_0, "Tiếp tục");
 
 		log.info("TC_52_Step_: kiem tra OTP da dien");
 		String otp = trasferPage.getTextInDynamicOtp(driver, "Tiếp tục");
@@ -275,7 +275,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	@Test
 	public void TC_53_NhapOTPKhongDung() {
 		log.info("TC_53_Step_1 : nhap otp sai");
-		trasferPage.inputToDynamicOtpOrPIN(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
+		trasferPage.inputToDynamicOtp(driver, TransferIdentity_Data.textDataInputForm.PASS_FALSE, "Tiếp tục");
 
 		log.info("TC_53_Step_2 : chon tiếp tục");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
@@ -292,7 +292,7 @@ public class TransferIdentity_Validate_3 extends Base {
 	@Test
 	public void TC_54_NhapOTPDung() {
 		log.info("TC_54_Step_1: điền đúng otp");
-		trasferPage.inputToDynamicOtpOrPIN(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		trasferPage.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 
 		log.info("TC_54_Step_2 : chon tiếp tục");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
