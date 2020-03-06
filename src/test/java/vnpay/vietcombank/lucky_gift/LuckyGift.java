@@ -49,6 +49,7 @@ public class LuckyGift extends Base {
 	login.Global_login(phone, pass, opt);
 	luckyGift = PageFactoryManager.getLuckyGiftPageObject(driver);
 	homePage = PageFactoryManager.getHomePageObject(driver);
+	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
     }
 
@@ -145,7 +146,6 @@ public class LuckyGift extends Base {
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 	log.info("TC_02_Step_03: Click Bao Cao Dao Dich");
-	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TRANSFER_REPORT);
 
 	log.info("TC_02_Step_04: Click Tat Ca Cac Loai Giao Dich");
@@ -221,9 +221,6 @@ public class LuckyGift extends Base {
 	log.info("TC_03_Step_3: Thêm người nhận");
 	luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
 
-	log.info("TC_03_Step_4: chọn tiếp tục");
-	luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-
 	log.info("TC_03_Step_5: nhập số tài khoản");
 	luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.ACCOUNT_ACCEPT_IN_VCB, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
@@ -297,11 +294,10 @@ public class LuckyGift extends Base {
 	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
 
 	log.info("TC_04_Step_02: Click vao More Icon");
-	homePage = PageFactoryManager.getHomePageObject(driver);
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 	log.info("TC_04_Step_03: Click Bao Cao Dao Dich");
-	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
+
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TRANSFER_REPORT);
 
 	log.info("TC_04_Step_04: Click Tat Ca Cac Loai Giao Dich");
@@ -451,20 +447,19 @@ public class LuckyGift extends Base {
 
 	log.info("TC_05_Step_22: Lấy thời gian thực hiện giao dịch");
 	date = new Date();
+
+	log.info("TC_05_Step_23 : Click home");
+	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
+
     }
 
     @Test
     public void TC_06_KiemTraChiTietGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangOTP() {
-	log.info("TC_06_Step_01 : Click home");
-	luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
-
-	log.info("TC_06_Step_02: Click vao More Icon");
-	homePage = PageFactoryManager.getHomePageObject(driver);
-	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+	log.info("TC_06_Step_2: Click vao More Icon");
+	luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 	log.info("TC_06_Step_03: Click Bao Cao Dao Dich");
-	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TRANSFER_REPORT);
+	luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TRANSFER_REPORT);
 
 	log.info("TC_06_Step_04: Click Tat Ca Cac Loai Giao Dich");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
@@ -505,9 +500,6 @@ public class LuckyGift extends Base {
 
 	log.info("TC_06_Step_14: Kiem tra tài khoản nguồn");
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
-
-	log.info("TC_06_Step_15: Kiem tra tài khoản thụ hưởng");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
 
 	log.info("TC_06_Step_16: Click quay lai");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -621,7 +613,6 @@ public class LuckyGift extends Base {
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 	log.info("TC_08_Step_03: Click Bao Cao Dao Dich");
-	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TRANSFER_REPORT);
 
 	log.info("TC_08_Step_04: Click Tat Ca Cac Loai Giao Dich");
@@ -664,9 +655,6 @@ public class LuckyGift extends Base {
 	log.info("TC_08_Step_14: Kiem tra tài khoản nguồn");
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
 
-	log.info("TC_08_Step_15: Kiem tra tài khoản thụ hưởng");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
-
 	log.info("TC_08_Step_16: Click quay lai");
 	transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 
@@ -683,8 +671,8 @@ public class LuckyGift extends Base {
 
     @AfterMethod(alwaysRun = true)
     public void afterClass() {
-	closeApp();
-	service.stop();
+//	closeApp();
+//	service.stop();
     }
 
 }
