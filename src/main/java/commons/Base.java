@@ -801,10 +801,21 @@ public class Base {
 		return result;
 	}
 
-	public String convertDateTimeIgnoreSecond(String stringDate) {
+	public double convertVNeseMoneyToEUROOrUSD(String money, String currentcy) {
+		double result = 0;
+		try {
+			double scale = Math.pow(10, 2);
+			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
+	
+	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 	    try {
 	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
@@ -817,8 +828,10 @@ public class Base {
 	
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
+		SimpleDateFormat formatter1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 	    try {
-	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
+	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
 	    catch (Exception e) {
 			

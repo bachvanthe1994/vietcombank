@@ -29,5 +29,8 @@ public class TransferMoneyCharity_Data {
 	public static final String PASSWORD_INVALID_N_TIMES = "";
 	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
 	public static final String ORGANIZATION = "Tấm lòng nhân ái - TK 10 số";
+	public static final String EXCHANGE_EUR = "24274.03";
+	public static final String EXCHANGE_USD = "23145.00";
+	public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 	
 }
