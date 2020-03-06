@@ -111,7 +111,7 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 		log.info("TC_03_Step_02: Kiem tra user khong duoc cap quyen");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu danh bạ"));
 
-		log.info("TC_04_Step_03: Kiem tra user khong duoc cap quyen");
+		log.info("TC_04_Step_03: Click quay lai ");
 		transferInVCB.clickToDynamicBackIcon(driver, "Lưu danh bạ");
 
 	}
@@ -141,7 +141,7 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("TC_05_Step_03: Kiem tra user khong duoc cap quyen");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu vào thư viện ảnh thành công"));
+		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Lưu vào thư viện ảnh thành công");
 
 		log.info("TC_05_Step_04: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -153,11 +153,8 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 		log.info("TC_06_Step_01: Click button chia se");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu ảnh");
 
-		log.info("TC_06_Step_02: Click Allow Button");
-		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
 		log.info("TC_06_Step_03: Kiem tra user khong duoc cap quyen");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu vào thư viện ảnh thành công"));
+		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Ảnh đã lưu trong thư viện.");
 
 		log.info("TC_06_Step_04: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
