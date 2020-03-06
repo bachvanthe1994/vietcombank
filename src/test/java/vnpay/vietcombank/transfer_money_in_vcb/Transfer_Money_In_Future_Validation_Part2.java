@@ -202,7 +202,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
 		log.info("TC_07_Step_04: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_07_Step_05: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -233,7 +233,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_08_Step_03: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_08_Step_04: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -301,7 +301,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_2, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_10_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_10_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -341,7 +341,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Invalid_Account.SAME_OWNER_ACCOUNT_1, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_11_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_11_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -381,7 +381,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_15_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_12_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_12_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -421,7 +421,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.USD_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_13_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_13_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -461,7 +461,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.EUR_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_14_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_14_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -497,7 +497,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.EUR_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_15_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_15_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -533,7 +533,7 @@ public class Transfer_Money_In_Future_Validation_Part2 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.USD_ACCOUNT, "Nhập/chọn tài khoản nhận VND");
 
 		log.info("TC_16_Step_05: Nhap noi dung");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Nội dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_16_Step_06: Nhap So Tien Chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");

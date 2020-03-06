@@ -468,11 +468,9 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 
 	}
 
-//	
-
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
