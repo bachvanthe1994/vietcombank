@@ -27,6 +27,7 @@ public class LuckyGift_Data {
 
     public static class TitleLuckyGift {
 	public static final String TITLE = "Quà tặng may mắn";
+	public static final String TITLE_GIFT = "QUÀ TẶNG";
 	public static final String TITLE_CHOISE_ACCOUNT = "Số điện thoại/tài khoản nhận";
 	public static final String TITLE_AMOUNT_MONEY = "Số tiền";
     }
