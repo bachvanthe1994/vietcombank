@@ -802,8 +802,20 @@ public class AbstractPage {
 	if (status == true) {
 	    clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValue);
 	}
-
     }
+	
+	//Click vào ô textbox lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
+		public void clickToDynamicComboboxText(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+			boolean status = false;
+			scrollIDown(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT, dynamicTextValue);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT, dynamicTextValue);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT, dynamicTextValue);
+			}
+
+		}
+
+    
 
 //Click vào ô dropdown lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
     public void clickToDynamicDropdownByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
@@ -1027,6 +1039,17 @@ public class AbstractPage {
 	    clickToElement(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
 	}
     }
+	
+	//
+	public void clickToDynamicImageCombobox(AppiumDriver<MobileElement> driver, String ...dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_COMBOBOX, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_COMBOBOX, dynamicTextValue);
+
+		}
+	}
+
 
     public void clickToTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 	boolean status = false;
@@ -1057,6 +1080,36 @@ public class AbstractPage {
 	    }
 	}
     }
+	
+	//Click combobox
+	public void clickToTextViewCombobox(AppiumDriver<MobileElement> driver, String... dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		}
+
+	}
+	
+	//Click combobox
+	public void clickToTextViewDate(AppiumDriver<MobileElement> driver, String... dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDIT_INDEX, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_EDIT_INDEX, dynamicText);
+		}
+	}
+	
+	//Click select năm, sử dụng scroll up
+		public void clickToTextListview(AppiumDriver<MobileElement> driver, String... dynamicText) {
+			boolean status = false;
+			scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
+			}
+
+		}
 
     public void inputPasswordInvalidBy_N_Times(AppiumDriver<MobileElement> driver, int time) {
 	for (int i = 0; i < time; i++) {
@@ -1176,14 +1229,24 @@ public class AbstractPage {
 	}
     }
 
-    public void inputToDynamicInputBoxSearchBank(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
-	boolean status = false;
-	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
-	if (status == true) {
-	    clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
-	    sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
+	public void inputToDynamicInputBoxSearchBank(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
+		}
 	}
-    }
+	
+	//Input theo textview
+	public void inputToDynamicInputText(AppiumDriver<MobileElement> driver, String inputValue, String ...dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDIT_FOLLOW_TEXT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_EDIT_FOLLOW_TEXT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_EDIT_FOLLOW_TEXT, inputValue, dynamicTextValue);
+		}
+	}
 
     /* BOLEAN METHOD */
 // check button có hiển thị hay không, tham số truyền vào là text của button
@@ -1244,7 +1307,20 @@ public class AbstractPage {
 	return isDisplayed;
     }
 
-//Kiểm tra gợi ý số tiền không hiển thị trên màn hình,tham số truyền vào là resource-id 
+//Kiểm tra gợi ý số tiền không hiển thị trên màn hình,tham số truyền vào là resource-id 	
+	public boolean isDynamicImageTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+
+	/* GET TEXT METHOD */
+
     public boolean isDynamicSuggestedMoneyUndisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 	boolean isDisplayed = false;
 	boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
@@ -1520,6 +1596,47 @@ public class AbstractPage {
 	return text;
 
     }
+
+	
+	//Get text theo image
+	public String getTextDynamicFollowImage(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IMAGE, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IMAGE, dynamicTextValue);
+
+		}
+		return text;
+
+	}
+	
+	//get text theo button
+	public String getTextDynamicFollowImageIndex(AppiumDriver<MobileElement> driver, String ...dynamicIndex) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
+
+		}
+		return text;
+
+	}
+	
+	//get text theolayout
+		public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String ...dynamicIndex) {
+			boolean status = false;
+			String text = null;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
+
+			}
+			return text;
+
+		}
+
 
     public String getTextInDynamicPopup(AppiumDriver<MobileElement> driver, String dynamicResourceID) {
 	boolean status = false;

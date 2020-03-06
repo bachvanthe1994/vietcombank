@@ -30,7 +30,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXTVIEW_FOLLOW_IMAGE = "//android.widget.ImageView[@index='%s']//following-sibling::android.widget.TextView[@index='%s']";
 	public static final String DYNAMIC_EDIT_INDEX = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_FOLLOW_LAYOUT = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
-	 public static final String DYNAMIC_WISHES = "//android.widget.LinearLayout[@index ='1']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_WISHES = "//android.widget.LinearLayout[@index ='1']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
     public static final String DYNAMIC_ACCOUNT_OUT_VCB = "//android.widget.TextView[@text ='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//descendant::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 
 	// LINEAER LAYOUT
