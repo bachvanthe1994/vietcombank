@@ -211,6 +211,77 @@ public class SavingOnline_Folow extends Base {
 		
 		
 	}
+	
+	@Test
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+		log.info("TC_04_1: Click  nut Back");
+		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
+
+		log.info("TC_04_2: Click vao More Icon");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_04_3: Click Bao Cao giao Dich");
+		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+
+		log.info("TC_04_4: Click Tat Ca Cac Loai Giao Dich");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
+
+		log.info("TC_04_5: Chon Chuyen Tien Trong VCB");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
+
+		log.info("TC_04_6: Click Chon Tai Khoan");
+		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+
+		log.info("TC_04_7: Chon tai Khoan chuyen");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+
+		log.info("TC_04_8: Click Tim Kiem");
+		transReport.clickToDynamicButton(driver, "Tìm kiếm");
+
+		log.info("TC_04_9: Kiem tra ngay tao giao dich hien thi");
+		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+
+		log.info("TC_04_10: Kiem tra so tien tat toan");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("+ " + addCommasToLong(info.money) + " VND"));
+
+		log.info("TC_04_11: Click vao giao dich");
+		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+
+		log.info("TC_04_13: Kiem tra so lenh giao dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+
+		log.info("TC_04_14: Kiem tra tai khoan/the trich no");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), savingAccount);
+		
+		log.info("TC_04_14: Kiem tra so tai khoan ghi co");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
+
+		log.info("TC_04_15: Kiem tra so tien giao dich hien thi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
+
+		log.info("TC_04_16: Kiem tra loai giao dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Tất toán tài khoản tiết kiệm");
+		
+		log.info("TC_04_17: Kiem tra noi dung giao dich");
+		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK tiet kiem tu TK " + savingAccount + " " + info.term;
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), expectContent);
+
+		log.info("TC_04_18: Click  nut Back");
+		savingOnline.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
+
+		log.info("TC_04_19: Click  nut Back");
+		savingOnline.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
+
+		log.info("TC_04_20: Click  nut Home");
+		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
