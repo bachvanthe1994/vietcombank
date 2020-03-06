@@ -1852,7 +1852,7 @@ public class AbstractPage {
 	public String getTextInDynamicOtp(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
