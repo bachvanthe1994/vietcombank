@@ -244,7 +244,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.EUR_EXCHANGE_RATE));
+		verifyEquals(transferInVCB.getDynamicTextDetailByID(driver, "com.VCB:id/tvTiGia"), TransferMoneyInVCB_Data.InputDataInVCB.EUR_EXCHANGE_RATE);
 
 		log.info("TC_09_Step_05: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -260,7 +260,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.USD_EXCHANGE_RATE));
+		verifyEquals(transferInVCB.getDynamicTextDetailByID(driver, "com.VCB:id/tvTiGia"), TransferMoneyInVCB_Data.InputDataInVCB.USD_EXCHANGE_RATE);
 
 		log.info("TC_09_Step_04: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
