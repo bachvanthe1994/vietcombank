@@ -101,7 +101,7 @@ public class SavingOnline_Folow extends Base {
 		log.info("TC_01_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = savingOnline.convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_01_10_Kiem tra so tien phi");
@@ -129,8 +129,8 @@ public class SavingOnline_Folow extends Base {
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		actualAvailableBalance = savingOnline.convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
-		availableBalance = savingOnline.canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
+		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
 	}
@@ -164,7 +164,7 @@ public class SavingOnline_Folow extends Base {
 
 		log.info("TC_02_9: Kiem tra ngay tao giao dich hien thi");
 		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_10: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(info.money) + " VND"));
@@ -174,7 +174,7 @@ public class SavingOnline_Folow extends Base {
 
 		log.info("TC_02_12: Kiem tra thoi gian tao giao dich hien thi");
 		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_13: Kiem tra so lenh giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
@@ -205,8 +205,12 @@ public class SavingOnline_Folow extends Base {
 	
 	@Test
 	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
-		log.info("TC_02_1: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
+		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
+
+		log.info("TC_03_2_Chon so tai khoan");
+		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
 		
 		
@@ -241,7 +245,7 @@ public class SavingOnline_Folow extends Base {
 
 		log.info("TC_04_9: Kiem tra ngay tao giao dich hien thi");
 		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_10: Kiem tra so tien tat toan");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("+ " + addCommasToLong(info.money) + " VND"));
@@ -251,7 +255,7 @@ public class SavingOnline_Folow extends Base {
 
 		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
 		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_13: Kiem tra so lenh giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);

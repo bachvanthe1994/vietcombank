@@ -193,8 +193,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_14_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_14_10: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info6.note));
@@ -206,8 +206,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_14_13: Kiem tra ngay tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_14_14: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
@@ -383,8 +383,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_16_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_16_11: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info7.note));
@@ -396,8 +396,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_16_14: Kiem tra ngay tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_16_15: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
@@ -574,8 +574,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_18_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_18_10: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info8.note));
@@ -587,8 +587,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_18_13: Kiem tra ngay tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_18_14: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
@@ -761,8 +761,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_20_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_20_10: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info9.note));
@@ -774,8 +774,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_20_13: Kiem tra ngay tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_20_14: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
@@ -952,8 +952,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_22_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_22_10: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info10.note));
@@ -965,8 +965,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_22_13: Kiem tra ngay tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_22_14: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
@@ -1141,8 +1141,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_24_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_24_10: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info11.note));
@@ -1154,8 +1154,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_24_13: Kiem tra ngay tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
-		verifyEquals(convertDateTimeIgnoreSecond(reportTime), convertTransferTimeToReportDateTime(transferTime));
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_24_14: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);

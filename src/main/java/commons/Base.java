@@ -801,10 +801,10 @@ public class Base {
 		return result;
 	}
 
-	public String convertDateTimeIgnoreSecond(String stringDate) {
+	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 	    try {
 	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
@@ -817,8 +817,10 @@ public class Base {
 	
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
+		SimpleDateFormat formatter1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 	    try {
-	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
+	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
 	    catch (Exception e) {
 			
