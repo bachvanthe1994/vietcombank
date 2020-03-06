@@ -18,7 +18,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
 		public static final String VND_MONEY = "20000";
 
-		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 48548060 VND", "200 EUR ~ 485480600 VND");
+		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 485,480 VND, 200 EUR ~ 4,854,800 VND");
 		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("200,000 VND", "2,000,000 VND", "20,000,000 VND");
 
 		public static final String NOTE = "Test";
@@ -35,8 +35,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
-		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,140 VND";
-		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274 VND";
+		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,145.00 VND";
+		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274.03 VND";
 		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
 		public static final String NUMBER_DAY_FREQUENCY = "5";
 		public static final String NUMBER_WEEK_FREQUENCY = "2";
