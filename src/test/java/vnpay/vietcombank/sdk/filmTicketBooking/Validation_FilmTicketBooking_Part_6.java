@@ -96,7 +96,7 @@ public class Validation_FilmTicketBooking_Part_6 extends Base {
 	@Test
 	public void TC_04_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_BoTrongGheOGiua() {
 		log.info("TC_04_01_Chon ghe bo trong ghe o giua");
-		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat("A");
+		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat();
 
 		log.info("TC_04_02_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
@@ -108,14 +108,14 @@ public class Validation_FilmTicketBooking_Part_6 extends Base {
 		filmTicketBooking.clickToTextViewByText("Đồng ý");
 
 		log.info("TC_04_05_Bo ghe da chon");
-		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat("A");
+		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat();
 
 	}
 
 	@Test
 	public void TC_05_ChonTheoPhim_ChonChoNgoi_KiemTraChonGhe_BoTrongGheNgoaiCung() {
 		log.info("TC_05_01_Chon ghe bo trong ghe o giua");
-		filmTicketBooking.chooseSeatsByLineEmptyLastSeat("A");
+		filmTicketBooking.chooseSeatsByLineEmptyLastSeat();
 
 		log.info("TC_05_02_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
