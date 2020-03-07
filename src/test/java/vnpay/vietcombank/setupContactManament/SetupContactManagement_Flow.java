@@ -86,7 +86,7 @@ public class SetupContactManagement_Flow extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Lưu");
 
 		log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
 
 		log.info("TC_01_Step_16: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -107,8 +107,8 @@ public class SetupContactManagement_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ người hưởng");
 
 		log.info("TC_01_Step_22: Xac nhan lai thong tin");
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvKey"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2 + "\n" + Account_Data.Valid_Account.ACCOUNT2);
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvValue"), "Chuyển tiền trong Vietcombank");
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2 + "\n" + Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_01_Step_24: An nut ba cham ben canh thong tin nguoi huong");
 		setupContact.clickToDynamicIconByText(driver, TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2 + "\n" + Account_Data.Valid_Account.ACCOUNT2);
@@ -120,7 +120,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_27: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Xóa danh bạ thành công");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Xóa danh bạ thành công");
 
 		log.info("TC_01_Step_28: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -151,8 +151,8 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_02_Step_12: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01 + "\n" + Contact.CONTACT_CARD_NUMBER_01);
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvValue"), Contact.CARD_FAST_TRANSACTION);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01 + "\n" + Contact.CONTACT_CARD_NUMBER_01);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.CARD_FAST_TRANSACTION);
 	}
 
 	@Test
@@ -240,8 +240,8 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_05_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01 + "\n" + Contact.CONTACT_CARD_NUMBER_01);
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvValue"), Contact.ADSL_SERVICE);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01 + "\n" + Contact.CONTACT_CARD_NUMBER_01);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.ADSL_SERVICE);
 	}
 
 	@Test
@@ -274,8 +274,8 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_06_Step_07: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_02 + "\n" + Contact.CONTACT_CARD_NUMBER_02);
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvValue"), Contact.VNPT_SERVICE);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_02 + "\n" + Contact.CONTACT_CARD_NUMBER_02);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.VNPT_SERVICE);
 	}
 
 	@Test
@@ -332,8 +332,8 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_08_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_02 + "\n" + Contact.CONTACT_CARD_NUMBER_02);
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền MoMo");
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_02 + "\n" + Contact.CONTACT_CARD_NUMBER_02);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền MoMo");
 	}
 
 	@Test
@@ -373,7 +373,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_09_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getTextInDynamicPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01 + "\n" + Contact.CONTACT_CARD_NUMBER_01);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01 + "\n" + Contact.CONTACT_CARD_NUMBER_01);
 	}
 
 	@Test

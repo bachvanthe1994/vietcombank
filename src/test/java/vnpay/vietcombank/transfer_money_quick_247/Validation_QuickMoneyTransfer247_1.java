@@ -90,7 +90,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		verifyTrue(transferMoney.isDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc"));
 
 		log.info("TC_01_Lay gia tri tai khoan mac dinh account");
-		defaultAccount = transferMoney.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
+		defaultAccount = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvDefaultAcc");
 	}
 
 	@Test

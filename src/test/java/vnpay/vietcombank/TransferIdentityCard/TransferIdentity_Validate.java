@@ -253,7 +253,7 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_STEP_5: kiem tra thong bao trong popup");
-		String confirmMaxlength = trasferPage.getTextInDynamicPopup(driver, "com.VCB:id/tvContent");
+		String confirmMaxlength = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent");
 		verifyEquals(confirmMaxlength, TransferIdentity_Data.textDataInputForm.CONFIRM_IDENTITY);
 
 		log.info("TC_10_STEP_6: click dong popup");
@@ -266,7 +266,7 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_STEP_9: kiem tra thong bao trong popup");
-		String confirmMaxlength15 = trasferPage.getTextInDynamicPopup(driver, "com.VCB:id/tvContent");
+		String confirmMaxlength15 = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent");
 		verifyEquals(confirmMaxlength15, TransferIdentity_Data.textDataInputForm.CONFIRM_IDENTITY);
 
 		log.info("TC_10_STEP_10: click dong popup");
@@ -279,7 +279,7 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_STEP_13: kiem tra thong bao trong popup");
-		String confirm = trasferPage.getTextInDynamicPopup(driver, "com.VCB:id/tvContent");
+		String confirm = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent");
 		verifyEquals(confirm, "Quý khách vui lòng chọn ngày cấp");
 
 		log.info("TC_10_STEP_14: click dong popup");
@@ -292,7 +292,7 @@ public class TransferIdentity_Validate extends Base {
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_STEP_17: kiem tra thong bao trong popup");
-		String confirm1 = trasferPage.getTextInDynamicPopup(driver, "com.VCB:id/tvContent");
+		String confirm1 = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent");
 		verifyEquals(confirm1, "Quý khách vui lòng chọn ngày cấp");
 
 		log.info("TC_10_STEP_18: click dong popup");

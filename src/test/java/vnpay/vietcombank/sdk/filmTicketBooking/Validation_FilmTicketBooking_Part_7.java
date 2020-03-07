@@ -194,7 +194,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
 
 		log.info("TC_06_06_Kiem tra message thong bao chi cho chon toi da 10 ve 1 lan");
-		verifyEquals(filmTicketBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), FilmTicketBooking_Data.MAX_10_SEATS_PER_1_MESSAGE);
+		verifyEquals(filmTicketBooking.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), FilmTicketBooking_Data.MAX_10_SEATS_PER_1_MESSAGE);
 
 		log.info("TC_05_07_Click Dong y");
 		filmTicketBooking.clickToDynamicTextView("Đồng ý");
