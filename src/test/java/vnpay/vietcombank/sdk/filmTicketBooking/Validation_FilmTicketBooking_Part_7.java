@@ -66,7 +66,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
 
 		log.info("TC_01_04_Click chon cum rap Mega GS");
-		filmTicketBooking.clickToDynamicTextView("BHD Star Cineplex");
+		filmTicketBooking.clickToDynamicTextView("Mega GS");
 
 		log.info("TC_01_05_Click chon rap phim");
 		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");
@@ -81,7 +81,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicTextView("Đặt vé");
 
 		log.info("TC_01_08_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "1");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_01_09_Kiem tra man hinh chon so luong ve");
 		verifyTrue(filmTicketBooking.isDynamicTextViewDisplayed("Chọn số lượng vé"));
@@ -140,7 +140,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 	@Test
 	public void TC_04_ChonTheoPhim_ChonSoLuongVe_ChonSoVeBang0() {
 		log.info("TC_04_01_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "1");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		List<SeatType> seats = filmTicketBooking.getListSeatType();
 		log.info("TC_04_02_Kiem tra so luong ve mac dinh bang 0");
@@ -181,7 +181,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 
 		log.info("TC_06_02_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "1");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_06_03_Thay doi so luong ve tong ve bang 10");
 		filmTicketBooking.clickToChangeNumberSeatSum10Tickets();
@@ -203,7 +203,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 
 		log.info("TC_05_09_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "1");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_05_10_Lay ten phong");
 		roomName = filmTicketBooking.getTextViewByID("com.VCB:id/tvRoomName");
@@ -261,7 +261,7 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 
 		log.info("TC_09_06_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "1");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_09_07_Click chon 1 ghe");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
@@ -290,10 +290,10 @@ public class Validation_FilmTicketBooking_Part_7 extends Base {
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 
 		log.info("TC_10_06_Nhan chon gio chieu");
-		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "1");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_10_07_Click chon toi da so ghe");
-		filmTicketBooking.clickToChangeNumberSeatSum10Tickets();
+		filmTicketBooking.clickToChangeNumberSeatSum10Tickets_DeluxeVipStandardCouble_Only();
 
 	}
 

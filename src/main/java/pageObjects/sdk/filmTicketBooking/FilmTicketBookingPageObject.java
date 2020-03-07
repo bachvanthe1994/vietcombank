@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
@@ -679,8 +680,36 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
-
+	
 	public void clickToChangeNumberSeatSum10Tickets() {
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+		List<MobileElement> elements = null;
+
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
+		}
+		int numberClickAll = 10 / elements.size();
+		int numberClickFirst = 10 % elements.size();
+		int count = numberClickAll;
+
+		while (numberClickFirst > 0) {
+			elements.get(0).click();
+			numberClickFirst--;
+		}
+
+		for (MobileElement element : elements) {
+			while (numberClickAll > 0) {
+				element.click();
+				numberClickAll--;
+			}
+			numberClickAll = count;
+		}
+
+	}
+
+	public void clickToChangeNumberSeatSum10Tickets_DeluxeVipStandardCouble_Only() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 		String locatorTypeOfSeats = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTypeName");
 		
@@ -1027,6 +1056,26 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 	}
 
+	public String getTypeOfSeat(List<SeatType> listSeatType) {
+		String result = "";
+		listSeatType = listSeatType.stream().filter(o -> !o.number.equals("0")).collect(Collectors.toList());
+		String type = listSeatType.get(0).name.toUpperCase(); 
+		if (type.contains("standard") || type.contains("thường")) {
+			result = "Standard";
+		}
+		else if (type.contains("vip")) {
+			result = "Vip";
+		}
+		else if (type.contains("deluxe")) {
+			result = "Deluxe";
+		}
+		else if (type.contains("couple")) {
+			result = "Couple";
+		}
+		return result;
+		
+	}
+	
 	public void cancelAllChoosenSeats() {
 		String colorOfSeat = "";
 		colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");

@@ -272,7 +272,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_10_07_Click chon toi da so ghe");
-		filmTicketBooking.clickToChangeNumberSeatSum10Tickets();
+		filmTicketBooking.clickToChangeNumberSeatSum10Tickets_DeluxeVipStandardCouble_Only();
 
 	}
 
@@ -294,9 +294,11 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 
 		log.info("TC_11_05_Kiem tra tong tien");
 		verifyTrue(!beforePrice.equals(afterPrice));
+		
+		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
 
 		log.info("TC_11_06_Click chon them 1 ghe");
-		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
 		filmTicketBooking.chooseSeats(1, colorOfSeat);
 
 		log.info("TC_11_07_Kiem tra Thong bao");
