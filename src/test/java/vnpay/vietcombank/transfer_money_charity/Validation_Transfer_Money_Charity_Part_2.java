@@ -45,7 +45,7 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
-		defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
+		defaultAccount = homePage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvDefaultAcc");
 		log.info("TC_01_01_Click Chuyen tien tu thien");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 

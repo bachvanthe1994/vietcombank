@@ -96,7 +96,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
 		log.info("TC_05_Step_03: Xac nhan hien thi thong bao so dien thoai khong hop le");
-		verifyEquals(mobileTopup.getDynamicTextDetailByID(driver, "com.VCB:id/tvContent"), UIs.PHONE_NUMBER_INVALID_MESSAGE);
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.PHONE_NUMBER_INVALID_MESSAGE);
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}
 	
@@ -110,7 +110,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
 		log.info("TC_06_Step_03: Xac nhan hien thi thong bao so dien thoai khong hop le");
-		verifyEquals(mobileTopup.getDynamicTextDetailByID(driver, "com.VCB:id/tvContent"), UIs.PHONE_NUMBER_INVALID_MESSAGE);
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.PHONE_NUMBER_INVALID_MESSAGE);
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}
 	
@@ -124,7 +124,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
 		log.info("TC_07_Step_03: Xac nhan hien thi thong bao so dien thoai khong hop le");
-		verifyEquals(mobileTopup.getDynamicTextDetailByID(driver, "com.VCB:id/tvContent"), UIs.PHONE_NUMBER_INVALID_MESSAGE);
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.PHONE_NUMBER_INVALID_MESSAGE);
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	
 	}
@@ -142,7 +142,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
 		log.info("TC_08_Step_04: Xac nhan hien thi thong bao so dien thoai khong hop le");
-		verifyEquals(mobileTopup.getDynamicTextDetailByID(driver, "com.VCB:id/tvContent"), UIs.ACCOUNT_MONEY_NOT_ENOUGH);
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.ACCOUNT_MONEY_NOT_ENOUGH);
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 	}
@@ -160,7 +160,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
 		log.info("TC_09_Step_04: Hien thi man hinh xac nhan thong tin");
-		verifyEquals(mobileTopup.getDynamicTextDetailByID(driver, "com.VCB:id/tvTitleHead"), UIs.MOBILE_TOPUP_CONFIRM_TITLE);
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), UIs.MOBILE_TOPUP_CONFIRM_TITLE);
 	}
 	
 	@AfterClass(alwaysRun = true)
