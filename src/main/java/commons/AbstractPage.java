@@ -797,6 +797,16 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
+	}
+
+	// Click vao 1 button sử dụng tham số là text
+	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String dynamicTextAndIndex) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		}
 
 	}
 
@@ -981,6 +991,15 @@ public class AbstractPage {
 		}
 	}
 
+	// Click radio theo text
+	public void clickToImageRadio(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
+		}
+	}
+
 	// So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
 	public boolean checkListContain(List<String> actualList, List<String> expectList) {
 		return expectList.containsAll(actualList);
@@ -1080,6 +1099,17 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		}
+
+	}
+
+	// Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và
+	// resource-id
+	public void clickToDynamicTextIndex(AppiumDriver<MobileElement> driver, String... dynamicIndexAndText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndexAndText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndexAndText);
 		}
 
 	}
@@ -1837,6 +1867,19 @@ public class AbstractPage {
 		}
 		return text;
 
+	}
+
+	// lấy text trong ô edit tham số truyền vào là text và index
+	public String getTextDynamicFollowIndex(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndIndex) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_EDIT_FOLLOW_TEXT, dynamicTextValueAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDIT_FOLLOW_TEXT, dynamicTextValueAndIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_EDIT_FOLLOW_TEXT, dynamicTextValueAndIndex);
+
+		}
+		return text;
 	}
 
 // Kiểm tra keyboard có hiển thị
