@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
@@ -658,20 +659,28 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	public void clickToChooseEachTypeASeate() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
-
+		String locatorTypeOfSeats = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTypeName");
+		
 		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
-		List<MobileElement> elements = null;
+		List<MobileElement> elementsPlus = null;
+		List<MobileElement> elementsTypeSeats = null;
 
 		if (status) {
-			elements = driver.findElements(By.xpath(locator));
+			elementsPlus = driver.findElements(By.xpath(locator));
+			elementsTypeSeats = driver.findElements(By.xpath(locatorTypeOfSeats));
 		}
 
-		for (MobileElement element : elements) {
+		int index = 0;
+		for (MobileElement element : elementsPlus) {
+			String typeSeats = elementsTypeSeats.get(index).getText().toLowerCase();
+			if (typeSeats.contains("standard") || typeSeats.contains("deluxe") || typeSeats.contains("vip") || typeSeats.contains("couple")) {
 				element.click();
+			}
+			index ++;	
 		}
 
 	}
-
+	
 	public void clickToChangeNumberSeatSum10Tickets() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 
@@ -696,6 +705,51 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 				numberClickAll--;
 			}
 			numberClickAll = count;
+		}
+
+	}
+
+	public void clickToChangeNumberSeatSum10Tickets_DeluxeVipStandardCouble_Only() {
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+		String locatorTypeOfSeats = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTypeName");
+		
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
+		List<MobileElement> elements = null;
+		List<MobileElement> elementsTypeSeats = null;
+		
+		if (status) {
+			elements = driver.findElements(By.xpath(locator));
+			elementsTypeSeats = driver.findElements(By.xpath(locatorTypeOfSeats));
+			
+			int countTypeSeat = elements.size();
+			
+			for (MobileElement elementsTypeSeat : elementsTypeSeats) {
+				String typeSeat = elementsTypeSeat.getText().toLowerCase();
+				if (!typeSeat.contains("standard") && !typeSeat.contains("deluxe") && !typeSeat.contains("vip") && !typeSeat.contains("couple")) {
+					countTypeSeat--;
+				}
+			}
+			
+			int numberClickAll = 10 / countTypeSeat;
+			int numberClickFirst = 10 % countTypeSeat;
+			
+			int index = 0;
+			int count = numberClickAll;
+			for (MobileElement elementsTypeSeat : elementsTypeSeats) {
+				String typeSeat = elementsTypeSeat.getText().toLowerCase();
+				if (typeSeat.contains("standard") || typeSeat.contains("deluxe") || typeSeat.contains("vip") || typeSeat.contains("couple")) {
+					while (numberClickFirst > 0) {
+						elements.get(index).click();
+						numberClickFirst--;
+					}
+					while (numberClickAll > 0) {
+						elements.get(index).click();
+						numberClickAll--;
+					}
+					numberClickAll = count;
+				}
+			}
+			
 		}
 
 	}
@@ -942,57 +996,86 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 			String type = seat.name;
 			String colorOfSeat = "";
 			int numberOfSeats = Integer.parseInt(seat.number);
-
-			if (type.contains("Standard") || type.contains("Thường")) {
-				colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
-			}
-
-			else if (type.contains("VIP") || type.contains("Vip")) {
-				colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Vip");
-			}
-
-			else if (type.contains("Couple")) {
-				colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Couple");
-			}
-
-			String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
-			boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
-			if (status) {
-				List<MobileElement> elements = driver.findElements(By.xpath(locator));
-				for (MobileElement element : elements) {
-					File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
-					try {
-						BufferedImage bufferedImage = ImageIO.read(imageFile);
-						imageFile.delete();
-
-						int height = bufferedImage.getHeight();
-						int width = bufferedImage.getWidth();
-						int x = width / 2;
-						int y = height / 4;
-						int RGBA = bufferedImage.getRGB(x, y);
-						int red = (RGBA >> 16) & 255;
-						int green = (RGBA >> 8) & 255;
-						int blue = RGBA & 255;
-						String colorOfElement = "(" + red + "," + green + "," + blue + ")";
-
-						if (colorOfSeat.equals(colorOfElement)) {
-							element.click();
-							numberOfSeats--;
-						}
-
-						if (numberOfSeats <= 0) {
-							break;
-						}
-
-					} catch (Exception e) {
-
-					}
+			
+			if (numberOfSeats > 0) {
+				
+				if (type.contains("Standard") || type.contains("Thường")) {
+					colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
 				}
 
+				else if (type.contains("VIP") || type.contains("Vip")) {
+					colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Vip");
+				}
+
+				else if (type.contains("Couple")) {
+					colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Couple");
+				}
+
+				else if (type.contains("Deluxe")) {
+					colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Deluxe");
+				}
+				
+				String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+				boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
+				if (status) {
+					List<MobileElement> elements = driver.findElements(By.xpath(locator));
+					for (MobileElement element : elements) {
+						File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+						try {
+							BufferedImage bufferedImage = ImageIO.read(imageFile);
+							imageFile.delete();
+
+							int height = bufferedImage.getHeight();
+							int width = bufferedImage.getWidth();
+							int x = width / 2;
+							int y = height / 4;
+							int RGBA = bufferedImage.getRGB(x, y);
+							int red = (RGBA >> 16) & 255;
+							int green = (RGBA >> 8) & 255;
+							int blue = RGBA & 255;
+							String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+
+							if (colorOfSeat.equals(colorOfElement)) {
+								element.click();
+								numberOfSeats--;
+							}
+
+							if (numberOfSeats <= 0) {
+								break;
+							}
+
+						} catch (Exception e) {
+
+						}
+					}
+
+				}
+				
 			}
+
 		}
 	}
 
+	public String getTypeOfSeat(List<SeatType> listSeatType) {
+		String result = "";
+		listSeatType = listSeatType.stream().filter(o -> !o.number.equals("0")).collect(Collectors.toList());
+		String type = listSeatType.get(0).name.toUpperCase(); 
+		if (type.contains("standard") || type.contains("thường")) {
+			result = "Standard";
+		}
+		else if (type.contains("vip")) {
+			result = "Vip";
+		}
+		else if (type.contains("deluxe")) {
+			result = "Deluxe";
+		}
+		else if (type.contains("couple")) {
+			result = "Couple";
+		}
+		return result;
+		
+	}
+	
 	public void cancelAllChoosenSeats() {
 		String colorOfSeat = "";
 		colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
@@ -1028,25 +1111,47 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 	}
 	
-	public void chooseSeatsByLineEmptyLastSeat(String line) {
-		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
-		if (status) {
+	public void chooseSeatsByLineEmptyLastSeat() {
+		String index = "0";
+		boolean check = false;
+		while (!check) {
+			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_LINEARLAYOUT_NAF_TRUE, index);
+			overRideTimeOut(driver, 2);
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			
 			int count = elements.size();
-			elements.get(count - 2).click();
+			if	(count > 2) {
+				elements.get(count - 2).click();
+				check = true;
+			}
+			else {
+				index = String.valueOf(Integer.parseInt(index) + 1);
+			}
+
 		}
+		overRideTimeOut(driver, 30);
 	}
 
-	public void chooseSeatsByLineEmptyBetweenSeat(String line) {
-		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_FOLOWING_TEXTVIEW_NAF_TRUE, line);
-		if (status) {
+	public void chooseSeatsByLineEmptyBetweenSeat() {
+		String index = "0";
+		boolean check = false;
+		while (!check) {
+			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_LINEARLAYOUT_NAF_TRUE, index);
+			overRideTimeOut(driver, 2);
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			
 			int count = elements.size();
-			elements.get(count - 3).click();
-			elements.get(count - 5).click();
+			if	(count > 5) {
+				elements.get(count - 3).click();
+				elements.get(count - 5).click();
+				check = true;
+			}
+			else {
+				index = String.valueOf(Integer.parseInt(index) + 1);
+			}
+
 		}
+		overRideTimeOut(driver, 30);
 	}
 
 	public int getNumberSeatsByColor(String colorOfSeat) {

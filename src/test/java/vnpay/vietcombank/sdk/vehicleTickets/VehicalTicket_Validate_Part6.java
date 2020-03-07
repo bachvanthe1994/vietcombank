@@ -51,6 +51,9 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_2, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
 
+	log.info("TC_89_Step_4: Chọn ngày mai");
+	vehicalTicket.clickToDynamicTomorrowAndFilterTrip("com.VCB:id/lnNextday");
+
 	log.info("TC_79_Step_3: click button tìm kiếm chuyến đi");
 	vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
 
@@ -77,15 +80,15 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
 
 	log.info("TC_80_Step_2: Chọn ngày hiện tai");
-	vehicalTicket.clickToDynamicText(getCurrentDay());
+	vehicalTicket.clickToDynamicTextScollUP(getCurrentDay().replace("0", ""));
 
 	log.info("TC_80_Step_3: kiểm tra ngày thay đổi đi");
 	String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
-	verifyEquals(DayStart, getCurrentDay());
+	verifyEquals(DayStart, today);
 
     }
 
-//    @Test
+    @Test
     public void TC_81_KiemTraChonNgayMai() {
 	log.info("TC_81_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
@@ -99,7 +102,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 
     }
 
-//    @Test
+    @Test
     public void TC_82_KiemTraChonNgayLonHonNgayMai() {
 	log.info("TC_82_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
@@ -116,7 +119,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyFailure(vehicalTicket.isDynamicForcusAndPriceDisplay("com.VCB:id/lnNextday"));
     }
 
-//    @Test
+    @Test
     public void TC_83_KiemTraThayDoiThoiGianDi() {
 	log.info("TC_83_Step_1: Chọn ngày");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvMonth");
@@ -141,7 +144,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyEquals(DayStart, tomorrow_week);
     }
 
-//    @Test
+    @Test
     public void TC_84_KiemTraButtonApDung() {
 	log.info("TC_84_Step_1: lấy thời gian đi");
 	String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
@@ -166,7 +169,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyEquals(date[2], dateEdit[1]);
     }
 
-//    @Test
+    @Test
     public void TC_85_KiemTraClickBack() {
 	log.info("TC_85_Step_1: chọn sửa");
 	vehicalTicket.clickToDynamicButtonForID("com.VCB:id/btnEdit");
@@ -179,7 +182,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyEquals(title, VehicalData.NOTIFICATION.LIST_TRIP);
     }
 
-//    @Test
+    @Test
     public void TC_86_KiemTraThayDoiDiemDi() {
 	log.info("TC_86_Step_1: chọn sửa");
 	vehicalTicket.clickToDynamicButtonForID("com.VCB:id/btnEdit");
@@ -205,7 +208,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyEquals(fromtEdit, VehicalData.DATA_ORDER_TICKET.PLACE_3);
     }
 
-//    @Test
+    @Test
     public void TC_87_KiemTraThayDoiDiemDen() {
 	log.info("TC_87_Step_1: nhập điểm đến");
 	vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
@@ -223,7 +226,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyEquals(totEdit, VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION);
     }
 
-//    @Test
+    @Test
     public void TC_88_KiemTraThayDoiDiemDiDiemDen() {
 	log.info("TC_88_Step_1: nhập điểm đi");
 	vehicalTicket.clickToDynamicButtonChoiseDate("com.VCB:id/tvTextPickUp");
@@ -247,7 +250,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	verifyEquals(fromttEdit, VehicalData.DATA_ORDER_TICKET.PLACE_1);
     }
 
-//    @Test
+    @Test
     public void TC_89_KiemTraThayDoiDiemDiDiemDenVaNgayDi() {
 	log.info("TC_89_Step_1: chọn sửa");
 	vehicalTicket.clickToDynamicButtonForID("com.VCB:id/btnEdit");
@@ -284,7 +287,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 
     }
 
-//    @Test
+    @Test
     public void TC_90_KiemTraManHinhChonGhe() {
 	log.info("TC_90_Step_1: click chọn ghê");
 	vehicalTicket.clickToDynamicText("Chọn ghế");
