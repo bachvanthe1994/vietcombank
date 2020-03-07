@@ -15,7 +15,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_In_Future_Validation_Part3 extends Base {
@@ -111,7 +110,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 		log.info("TC_02_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT_EUR);
 
 		log.info("TC_02_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -135,7 +134,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_03_Step_03: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 
 		log.info("TC_01_Step_07: Lay so du tai khoan chuyen");
 		transferInVCB.sleep(driver, 2000);
@@ -194,7 +193,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_04_Step_08: Kiem tra yeu cau nhap noi dung");
-		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MIN_LIMIT_FUTURE_TRANSFER_MONEY);
 
 		log.info("TC_04_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -204,7 +203,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 	}
 
 	@Test
-	public void TC_05_KiemTraSoTienGiaoDichNhoHonHanMucToiThieuVaDongPopup() {
+	public void TC_05_KiemTraSoTienGiaoDichLonHonHanMucToiDaVaDongPopup() {
 
 		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -227,7 +226,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_05_Step_06: Nhap So Tien Chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, "100000000", "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_MAX_TRANSFER_AMOUNT, "Số tiền");
 
 		log.info("TC_05_Step_07: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -327,8 +326,9 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	}
 
+	@Parameters({ "phone" })
 	@Test
-	public void TC_08_KiemTraManHinhXacThucGiaoDichBangOTP() {
+	public void TC_08_KiemTraManHinhXacThucGiaoDichBangOTP(String phone) {
 		log.info("TC_08_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
@@ -368,7 +368,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
 		log.info("TC_08_Step_12: Kiem tra inbox message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE.substring(0, 4) + "***" + LogIn_Data.Login_Account.PHONE.substring(7, 10)));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phone.substring(0, 4) + "***" + phone.substring(7, 10)));
 
 	}
 
@@ -431,7 +431,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 	@Test
 	public void TC_13_KiemXacNhapSaiOTPNhoHonNLan() {
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			log.info("TC_13_Step_01: Dien OTP lon hon 6 ky tu");
 			transferInVCB.inputToDynamicOtp(driver, TransferMoneyInVCB_Data.InvalidInputData.WRONG_OTP, "Tiếp tục");
 
@@ -495,7 +495,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		log.info("TC_14_Step_20: Chon Phuong thuc nhap");
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
-		log.info("TC_14_Step_21: Chon SMS OTP");
+		log.info("TC_14_Step_21: Chon  Mat Khau");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_14_Step_22: Click Tiep tuc");
