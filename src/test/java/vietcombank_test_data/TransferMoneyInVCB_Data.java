@@ -59,9 +59,9 @@ public class TransferMoneyInVCB_Data {
 		public static final String EMPTY_RECEIVE_ACCOUNT_MESSAGE = "Quý khách vui lòng nhập tài khoản nhận";
 		public static final String EMPTY_MONEY_MESSAGE = "Quý khách vui lòng nhập số tiền chuyển khoản";
 		public static final String EMPTY_TRANSFER_NOTE_MESSAGE = "Quý khách vui lòng nhập nội dung giao dịch";
-		public static final String DUPLICATED_ACCOUNT_MESSAGE = "Số tài khoản chuyển đến và số tài khoản chuyển đi không được giống nhau, Quý khách vui lòng kiểm tra lại";
+		public static final String DUPLICATED_ACCOUNT_MESSAGE = "Tài khoản nguồn và tài khoản đích không được giống nhau, Quý khách vui lòng kiểm tra lại";
 		public static final String SAME_ACCOUNT_OWNER_MESSAGE = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
-		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản nhận không chính xác. Quý khách vui lòng kiểm tra lại";
+		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
