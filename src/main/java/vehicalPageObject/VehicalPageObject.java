@@ -76,7 +76,7 @@ public class VehicalPageObject extends AbstractPage {
 
     // Click vào button, text có class là textview, tham số truyền vào là text
     public void clickToDynamicTextScollUP(String dynamicTextValue) {
-	scrollUp(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	scrollUp(driver, CommonPageUIs.DYNAMIC_TEXT);
 	boolean status = false;
 	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 	if (status) {
