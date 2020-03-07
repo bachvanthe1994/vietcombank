@@ -69,7 +69,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 	public void TC_02_KiemTraTrangThaiMacDinhNutTiepTuc_AnIconBack() {
 		
 		log.info("TC_02_Step_01: Kiem tra trang thai mac dich cua Button 'Tiep tuc'");
-		mobileTopup.isDynamicButtonByIdEnable(driver,"com.VCB:id/btn_submit");
+		verifyTrue(mobileTopup.isDynamicButtonByIdEnable(driver,"com.VCB:id/btn_submit"));
 		
 		log.info("TC_02_Step_02: An nut 'Back' de quay ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");

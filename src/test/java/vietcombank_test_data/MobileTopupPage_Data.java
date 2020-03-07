@@ -5,6 +5,8 @@ public class MobileTopupPage_Data {
 	public static class UIs {
 		public static final String MOBILE_TOPUP_TITLE = "Nạp tiền điện thoại";
 		public static final String MOBILE_TOPUP_CONFIRM_HEADER_TITLE = "Xác nhận thông tin";
+		public static final String MOBILE_TOPUP_CONFIRM_TRANSACTION_TITLE = "Xác thực giao dịch";
+		public static final String MOBILE_TOPUP_CONFIRM_TRANSACTION_MESSAGE = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch";
 		public static final String MOBILE_TOPUP_CONFIRM_TITLE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
 		public static final String MOBILE_TOPUP_GUIDE = "Hỗ trợ tất cả các mạng viễn thông (Viettel, Vinaphone, Mobifone, G-Mobile, Vietnamobile)";
 		public static final String MOBILE_TOPUP_DES_ACCOUNT = "Tài khoản nguồn";

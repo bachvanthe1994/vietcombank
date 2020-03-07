@@ -36,40 +36,104 @@ public class Mobile_Topup_Validate_03 extends Base {
 	}
 
 	@Test
-	public void TC_01_ManHinhXacNhanThongTin_KiemTraManHinhHienThi() {
+	public void TC_01_ManHinhXacNhanThongTin_NhanIconBack() {
 
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
+		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
+	
+		log.info("TC_01_Step_02: Click vao menh gia 30,000");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[0]);
+		
+		log.info("TC_01_Step_03: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+		
+		log.info("TC_01_Step_04: An nut 'Back' de quay ve man hinh 'Nap tien dien thoai");
+		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_01_Step_05: Xac nhan quay ve man hinh 'Nap tien dien thoai");
+		verifyEquals(mobileTopup.getDynamicTextDetailByID(driver, "com.VCB:id/tvTitleBar"), UIs.MOBILE_TOPUP_TITLE);
 		
 	}
 
 	@Test
-	public void TC_02_KiemTraBoTrongSoDienThoaiMacDinh() {
+	public void TC_02_ManHinhXacNhanThongTin_NhanIconHome() {
 		
-	
+		log.info("TC_02_Step_01: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
+		log.info("TC_02_Step_02: An nut 'Home' de quay ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleRight");
+		
+		log.info("TC_02_Step_03: Xac nhan quay ve man hinh chinh");
+		verifyTrue(home.isDynamicImageHomeDisplay(driver, "com.VCB:id/menu_1"));
 	}
 	
 	@Test
-	public void TC_03_KiemTraGioiHanKiTu() {
+	public void TC_03_ManHinhXacNhanThongTin_KiemTraThongTinHienThi() {
 		
-		
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
+		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 	
+		log.info("TC_03_Step_02: Click vao menh gia 30,000");
+		originAccountNumber = mobileTopup.getTextInDynamicPopup(driver, "com.VCB:id/number_account");
+		originPhoneNumber = mobileTopup.getTextInEditTextFieldByID(driver, "com.VCB:id/mobile");
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[0]);
+		
+		log.info("TC_03_Step_03: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+		
+		log.info("TC_03_Step_04: Xac nhan 'Tai khoan nguon' hien thi dung voi input");
+		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Tài khoản nguồn"), originAccountNumber);
+		
+		log.info("TC_03_Step_04: Xac nhan 'So dien thoai duoc nap' hien thi dung voi input");
+		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Số điện thoại được nạp"), originPhoneNumber);
+		
+		log.info("TC_03_Step_04: Xac nhan 'Menh gia the' hien thi dung voi input");
+		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Mệnh giá thẻ"), UIs.LIST_UNIT_VALUE[0]+" VND");
 	}
 	
 	@Test
-	public void TC_04_NhanIconX() {
+	public void TC_04_ManHinhXacNhanThongTin_KiemTraTrangThaiCuaNutTiepTuc() {
 		
+		log.info("TC_04_Step_01: Xac nhan Nut 'Tiep tuc' duoc enable");
+		verifyTrue(mobileTopup.isDynamicButtonByIdEnable(driver,"com.VCB:id/btContinue"));
 	}
 	
 	@Test
-	public void TC_05_NhapSoDienThoaiNhoHon10KiTu() {
+	public void TC_05_ManHinhXacNhanThongTin_NhanNutTiepTuc() {
 		
+		log.info("TC_05_Step_01: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
+		log.info("TC_05_Step_02: Xac nhan hien thi pop-up 'Xac thuc giao dich' ");
+		verifyEquals(mobileTopup.getTextInDynamicPopup(driver, "com.VCB:id/lblTitle"), UIs.MOBILE_TOPUP_CONFIRM_TRANSACTION_TITLE);
 	}
 	
 	@Test
-	public void TC_06_NhapSoDienThoaiBatDauBangKiTuKhac0() {
+	public void TC_06_XacThucGiaoDichBangMatKhau_KiemTraManHinhHienThi() {
 		
+		log.info("TC_06_Step_01: Xac nhan hien thi Title 'Xac thuc giao dich'");
+		verifyEquals(mobileTopup.getTextInDynamicPopup(driver, "com.VCB:id/lblTitle"), UIs.MOBILE_TOPUP_CONFIRM_TRANSACTION_TITLE);
 		
+		log.info("TC_06_Step_01: Xac nhan hien thi Icon 'Quay lai'");
+		verifyTrue(mobileTopup.isDynamicLinearlayoutByIdDisplayed(driver, "com.VCB:id/layout_back"));
+		verifyEquals(mobileTopup.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout_back"), "Quay lại");
+		
+		log.info("TC_06_Step_01: Xac nhan hien thi dung message thong bao");
+		verifyEquals(mobileTopup.getTextInDynamicPopup(driver, "com.VCB:id/lblMessage"), UIs.MOBILE_TOPUP_CONFIRM_TRANSACTION_MESSAGE);
+		
+		log.info("TC_06_Step_01: Xac nhan hien thi textbox 'Nhap mat khau'");
+		verifyEquals(mobileTopup.getTextInEditTextFieldByID(driver, "com.VCB:id/pin"), "Nhập mật khẩu");
+		
+		log.info("TC_06_Step_01: Xac nhan hien thi button 'Tiep tuc'");
+		verifyTrue(mobileTopup.isDynamicButtonByIdDisplayed(driver, "com.VCB:id/btContinue"));
 	}
 	
 	@Test

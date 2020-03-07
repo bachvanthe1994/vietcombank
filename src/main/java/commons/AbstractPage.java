@@ -1399,6 +1399,17 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
+	
+	//Kiem tra element Linearlayout ID co hien thi hay khong
+	public boolean isDynamicLinearlayoutByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
 
 	/* GET TEXT METHOD */
 
