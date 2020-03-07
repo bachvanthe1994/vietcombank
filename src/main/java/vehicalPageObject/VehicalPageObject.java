@@ -74,6 +74,17 @@ public class VehicalPageObject extends AbstractPage {
 
     }
 
+    // Click vào button, text có class là textview, tham số truyền vào là text
+    public void clickToDynamicTextScollUP(String dynamicTextValue) {
+	scrollUp(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	boolean status = false;
+	status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	if (status) {
+	    clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+	}
+
+    }
+
     // Chọn ghế ngồi trong màn hình chi tiết chuyến xe
     public void clickBookingChair(String... dynamicIndex) {
 	scrollIDown(driver, CommonPageUIs.DYNAMIC_BOOKING_CHAIR, dynamicIndex);
