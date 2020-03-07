@@ -84,28 +84,28 @@ public class SavingOnline_Folow extends Base {
 		log.info("TC_01_8_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_01_8_1_Kiem tra tai khoan nguon");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info.sourceAccount);
+		verifyEquals(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info.sourceAccount);
 
 		log.info("TC_01_8_2_Kiem tra ky han gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), info.term);
+		verifyEquals(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Kỳ hạn gửi"), info.term);
 
 		log.info("TC_01_8_3_Kiem tra lai suat");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "6.6%/Năm");
+		verifyEquals(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Lãi suất"), "6.6%/Năm");
 
 		log.info("TC_01_8_4_Kiem tra so tien gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền gửi"), addCommasToLong(info.money) + " VND");
+		verifyEquals(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền gửi"), addCommasToLong(info.money) + " VND");
 		
 		log.info("TC_01_8_5_Kiem tra hinh thuc tra lai");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info.formOfPayment);
+		verifyEquals(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Hình thức trả lãi"), info.formOfPayment);
 		
 		log.info("TC_01_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_01_10_Kiem tra so tien phi");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		verifyEquals(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 		
 		log.info("TC_01_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -120,8 +120,8 @@ public class SavingOnline_Folow extends Base {
 
 		log.info("TC_01_12_6_Lay ma giao dich");
 		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
-		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
-		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
+		savingAccount = savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Số tài khoản tiết kiệm");
+		transactionNumber = savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_13_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -129,7 +129,7 @@ public class SavingOnline_Folow extends Base {
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -173,24 +173,24 @@ public class SavingOnline_Folow extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_13: Kiem tra so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02_14: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
 
 		log.info("TC_02_15: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_02_16: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Mở tài khoản tiết kiệm");
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Mở tài khoản tiết kiệm");
 		
 		log.info("TC_02_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".Mo TK tiet kiem tu TK " + info.sourceAccount + " " + info.term;
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), expectContent);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), expectContent);
 
 		log.info("TC_02_18: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -254,27 +254,27 @@ public class SavingOnline_Folow extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_13: Kiem tra so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_04_14: Kiem tra tai khoan/the trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), savingAccount);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), savingAccount);
 		
 		log.info("TC_04_14: Kiem tra so tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
 
 		log.info("TC_04_15: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_04_16: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Tất toán tài khoản tiết kiệm");
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Tất toán tài khoản tiết kiệm");
 		
 		log.info("TC_04_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK tiet kiem tu TK " + savingAccount + " " + info.term;
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), expectContent);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), expectContent);
 
 		log.info("TC_04_18: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");

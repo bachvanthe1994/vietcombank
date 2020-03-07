@@ -275,7 +275,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_76_Lay so du tai khoan nguon");
-		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		Long surplus = Long.parseLong(transferMoney.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		Long moneyCharity = surplus + 1;
 
 		log.info("TC_07_2_Nhap so tien");
@@ -298,7 +298,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[2]);
 
 		log.info("TC_76_Lay so du tai khoan nguon");
-		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		Long surplus = Long.parseLong(transferMoney.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		Long moneyCharity = surplus + 1;
 
 		log.info("TC_07_2_Nhap so tien");
@@ -321,7 +321,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
 		log.info("TC_76_Lay so du tai khoan nguon");
-		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		Long surplus = Long.parseLong(transferMoney.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		Long moneyCharity = surplus + 1;
 
 		log.info("TC_07_2_Nhap so tien");

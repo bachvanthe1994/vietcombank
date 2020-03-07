@@ -176,7 +176,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		log.info("TC_07_1_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		surplus = Long.parseLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplus = Long.parseLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		moneyCharity = surplus + 1;
 
 		log.info("TC_07_2_Nhap so tien");

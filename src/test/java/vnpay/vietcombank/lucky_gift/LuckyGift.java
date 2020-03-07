@@ -122,7 +122,7 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_19: kiểm tra số dư");
-		String moneyTransfer = luckyGift.getDynamicTextInTransactionDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+		String moneyTransfer = luckyGift.getDynamicTextInFilmTicketInfoDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
 		String[] moneyTransferSplit = moneyTransfer.split(" ");
 		String moneyTransferReplace = moneyTransferSplit[0].replace(",", "");
 		verifyEquals(moneyTransferReplace, surplusString);
@@ -180,15 +180,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String getDate = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_02_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
 
 		log.info("TC_02_Step_15: Kiem tra tài khoản thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản ghi có"), beneficiary_account);
 
 		log.info("TC_02_Step_16: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -278,7 +278,7 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/number_account");
 
 		log.info("TC_03_Step_20: kiểm tra số dư");
-		String moneyTransfer = luckyGift.getDynamicTextInTransactionDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+		String moneyTransfer = luckyGift.getDynamicTextInFilmTicketInfoDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
 		String[] moneyTransferSplit = moneyTransfer.split(" ");
 		String moneyTransferReplace = moneyTransferSplit[0].replace(",", "");
 		verifyEquals(moneyTransferReplace, surplusString);
@@ -336,15 +336,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String getDate = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_04_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
 
 		log.info("TC_04_Step_15: Kiem tra tài khoản thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản ghi có"), beneficiary_account);
 
 		log.info("TC_04_Step_16: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -440,7 +440,7 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/number_account");
 
 		log.info("TC_05_Step_20: kiểm tra số dư");
-		String moneyTransfer = luckyGift.getDynamicTextInTransactionDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+		String moneyTransfer = luckyGift.getDynamicTextInFilmTicketInfoDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
 		String[] moneyTransferSplit = moneyTransfer.split(" ");
 		String moneyTransferReplace = moneyTransferSplit[0].replace(",", "");
 		verifyEquals(moneyTransferReplace, surplusString);
@@ -498,15 +498,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String getDate = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_06_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
 
 		log.info("TC_06_Step_15: Kiem tra tài khoản thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản ghi có"), beneficiary_account);
 
 		log.info("TC_06_Step_16: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -598,7 +598,7 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/number_account");
 
 		log.info("TC_07_Step_20: kiểm tra số dư");
-		String moneyTransfer = luckyGift.getDynamicTextInTransactionDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
+		String moneyTransfer = luckyGift.getDynamicTextInFilmTicketInfoDetail(driver, LuckyGift_Data.LuckyGift.ACCOUNT_FORM);
 		String[] moneyTransferSplit = moneyTransfer.split(" ");
 		String moneyTransferReplace = moneyTransferSplit[0].replace(",", "");
 		verifyEquals(moneyTransferReplace, surplusString);
@@ -656,15 +656,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String getDate = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_08_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), source_account);
 
 		log.info("TC_08_Step_15: Kiem tra tài khoản thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản ghi có"), beneficiary_account);
 
 		log.info("TC_08_Step_16: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");

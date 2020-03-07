@@ -50,7 +50,7 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_02_Kiem tra hien thi so du mac dinh la VND");
-		String availableBalance = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+		String availableBalance = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
 		verifyTrue(availableBalance.contains("VND"));
 
 	}
@@ -77,7 +77,7 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Số dư khả dụng"));
 
 		log.info("TC_04_05_Kiem tra so tien hien thi dung voi tai khoan nguon duoc chon");
-		String availableBalance = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
+		String availableBalance = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
 		verifyEquals(availableBalance, expectAvailableBalance);
 	}
 

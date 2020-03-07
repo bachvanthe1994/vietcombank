@@ -408,7 +408,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		log.info("TC_22_1_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		surplus = Long.parseLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
+		surplus = Long.parseLong(transferRecurrent.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		moneyCharity = surplus + 1;
 
 		log.info("TC_22_02_Nhap so tien");

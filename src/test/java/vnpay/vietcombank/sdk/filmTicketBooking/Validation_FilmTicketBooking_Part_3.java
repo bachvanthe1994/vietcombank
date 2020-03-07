@@ -58,7 +58,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	@Test
 	public void TC_01_ChonTheoRap_ChonSuatChieu_ChonSuatChieuThanhCongVoiRap_MegaGS() {
 		log.info("TC_01_02_Click chon cum rap Mega GS");
-		filmTicketBooking.clickToDynamicTextView("BHD Star Cineplex");
+		filmTicketBooking.clickToDynamicTextView("Mega GS");
 
 		log.info("TC_01_02_Click chon rap phim");
 		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");
