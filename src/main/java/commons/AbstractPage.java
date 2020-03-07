@@ -210,8 +210,8 @@ public class AbstractPage {
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		for (int i = 0; i < 20; i++) {
+			overRideTimeOut(driver, 4);
 			locator = String.format(locator, (Object[]) dynamicValue);
-			overRideTimeOut(driver, 2);
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
