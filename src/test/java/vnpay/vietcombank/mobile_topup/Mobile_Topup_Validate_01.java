@@ -131,11 +131,10 @@ public class Mobile_Topup_Validate_01 extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 
 		log.info("TC_06_Step_02: Click vao tai khoan nguon bat ki trong Droddownlist");
-//		originAccMoney = mobileTopup.getDynamicAmountLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_06_Step_03: Xac nhan tai khoan nguon vua chon da hien thi");
-		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/number_account"), UIs.MOBILE_TOPUP_BANK_ACCOUNT_01);
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/number_account"), Account_Data.Valid_Account.ACCOUNT2);
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, originAccMoney));
 	}
 
@@ -191,7 +190,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 
