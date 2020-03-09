@@ -71,4 +71,7 @@ public class DynamicPageUIs {
     // CHECK BOX
     public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";
 
+//    Bắt expath với class bị mã hóa chỉ có id
+    public static final String DYNAMIC_ESPECIALLY = "//*[@resource-id=\"%s\"]";
+
 }
