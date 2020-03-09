@@ -71,7 +71,6 @@ public class Mobile_Topup_Validate_02 extends Base {
 		log.info("TC_02_Step_05: Hien thi man hinh xac nhan thong tin voi so dien thoai mac dinh hien thi");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
 
-
 	}
 	
 	@Test void TC_03_KiemTraKiTuNhap() {

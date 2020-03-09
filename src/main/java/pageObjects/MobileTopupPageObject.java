@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import commons.AbstractPage;
@@ -48,6 +47,18 @@ public class MobileTopupPageObject extends AbstractPage {
 		}
 		
 		return m;
+	}
+	
+	public String getStringNumberAfterCaculate(String beforeAcc,String cardMoney, String feeMoney) {
+		
+		long before = Long.parseLong(beforeAcc.replaceAll("\\D+",""));
+		long card = Long.parseLong(cardMoney.replaceAll("\\D+",""));
+		long fee = Long.parseLong(feeMoney.replaceAll("\\D+",""));
+		
+		long after = before - card - fee;
+		String afterCal = after+"";
+		
+		return addCommasToLong(afterCal);
 	}
 
 }
