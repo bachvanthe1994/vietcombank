@@ -68,8 +68,9 @@ public class Mobile_Topup_Validate_02 extends Base {
 		log.info("TC_02_Step_04: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_02_Step_04: Hien thi man hinh xac nhan thong tin voi so dien thoai mac dinh hien thi");
-		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Số điện thoại được nạp"), phone);
+		log.info("TC_02_Step_05: Hien thi man hinh xac nhan thong tin voi so dien thoai mac dinh hien thi");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
+
 
 	}
 	

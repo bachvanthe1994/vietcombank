@@ -202,7 +202,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]));
 
 		log.info("TC_10_Step_Lay so du kha dung man hinh chuyen tien nhanh");
-		amountStartString = transferMoney.getDynamicAmountLabel(driver, "Số dư khả dụng");
+		amountStartString = transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_10_Step_Click tai khoan nguon");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);

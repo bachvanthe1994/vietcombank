@@ -1330,8 +1330,8 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-	
-	//Kiem tra element Linearlayout ID co hien thi hay khong
+
+	// Kiem tra element Linearlayout ID co hien thi hay khong
 	public boolean isDynamicLinearlayoutByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
@@ -1527,7 +1527,6 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-
 
 	public boolean isDynamicImageByFollowingImageIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
@@ -1775,7 +1774,7 @@ public class AbstractPage {
 		return text;
 	}
 
-	public String getDynamicAmountLabel(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	public String getDynamicTextByLabel(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
@@ -2080,18 +2079,6 @@ public class AbstractPage {
 			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
 		}
 		return text;
-	}
-
-	// Lấy message thông báo
-	public String getDynamicMessageInvalid(AppiumDriver<MobileElement> driver, String... dynamicText) {
-		boolean status = false;
-		String text = null;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
-		if (status == true) {
-			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
-		}
-		return text;
-
 	}
 
 	public String getDynamicTextOld(AppiumDriver<MobileElement> driver, String... dynamicText) {
