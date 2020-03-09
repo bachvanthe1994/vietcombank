@@ -323,26 +323,6 @@ public class AbstractPage {
 		return ((HasOnScreenKeyboard) driver).isKeyboardShown();
 	}
 
-	/* BOLEAN METHOD */
-
-	// Xac nhan Button Enable qua Button ID
-	public boolean isDynamicButtonByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-	}
-
-	// Xac dinh text co duoc Focus hay khong
-	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
-		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
-	}
-
-	// Xac nhan hien thi text qua Text ID
-	public boolean isDynamicTextByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
-	}
-
 	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		overRideTimeOut(driver, shortTime);
 		locator = String.format(locator, (Object[]) dynamicValue);
@@ -1266,6 +1246,25 @@ public class AbstractPage {
 	}
 
 	/* BOLEAN METHOD */
+
+	// Xac nhan Button Enable qua Button ID
+	public boolean isDynamicButtonByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+	}
+
+	// Xac dinh text co duoc Focus hay khong
+	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+	}
+
+	// Xac nhan hien thi text qua Text ID
+	public boolean isDynamicTextByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
+	}
+
 // check button có hiển thị hay không, tham số truyền vào là text của button
 	public boolean isDynamicButtonDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
@@ -1341,8 +1340,6 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-
-	/* GET TEXT METHOD */
 
 	public boolean isDynamicSuggestedMoneyUndisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;

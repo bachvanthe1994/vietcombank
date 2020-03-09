@@ -32,7 +32,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
 
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.04";
-		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
+		public static final String USD_PAYMENT_BY_OTP_FEE = "0";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,145.00 VND";
