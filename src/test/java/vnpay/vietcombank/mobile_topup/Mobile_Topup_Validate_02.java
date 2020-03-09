@@ -2,6 +2,7 @@ package vnpay.vietcombank.mobile_topup;
 
 import java.io.IOException;
 
+import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -14,6 +15,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.MobileTopupPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.MobileTopupPage_Data.UIs;
 
 public class Mobile_Topup_Validate_02 extends Base {
@@ -21,6 +23,8 @@ public class Mobile_Topup_Validate_02 extends Base {
 	private LogInPageObject login;
 	private HomePageObject home;
 	private MobileTopupPageObject mobileTopup;
+	
+	private String dynamicValue = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -52,13 +56,19 @@ public class Mobile_Topup_Validate_02 extends Base {
 	@Test
 	public void TC_02_KiemTraBoTrongSoDienThoaiMacDinh(String phone) {
 
-		log.info("TC_02_Step_01: Xoa So dien thoai khoi o nhap so dien thoai");
+		log.info("TC_02_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
+		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		
+		log.info("TC_02_Step_02: Chon tai khoan nguon");
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		log.info("TC_02_Step_03: Xoa So dien thoai khoi o nhap so dien thoai");
 		mobileTopup.inputIntoEditTextByID(driver, "", "com.VCB:id/mobile");
 
-		log.info("TC_02_Step_02: An nut 'Tiep tuc'");
+		log.info("TC_02_Step_04: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_02_Step_03: Hien thi man hinh xac nhan thong tin voi so dien thoai mac dinh hien thi");
+		log.info("TC_02_Step_04: Hien thi man hinh xac nhan thong tin voi so dien thoai mac dinh hien thi");
 		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Số điện thoại được nạp"), phone);
 
 	}
@@ -139,30 +149,35 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 	}
-	//@Test
-	public void TC_09_SoTienGiaoDichLonHonSoDuTKNguon() {
+	
+	@Parameters ({"phone"})
+	@Test
+	public void TC_09_SoTienGiaoDichLonHonSoDuTKNguon(String phone) {
 		
-//		log.info("TC_09_Step_01: Click vào Dropdown 'Tai khoan nguon");
-//		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
-//		
-//		if(mobileTopup.isMoneyLessThanExpextedDisplayed("com.VCB:id/descript", 500000) == true) {
-//
-//		log.info("TC_09_Step_02: Chon tai khoan nguon");	
-//		mobileTopup.clickToDynamicButtonLinkOrLinkText("com.VCB:id/descript", 500000);
-//		
-//		log.info("TC_09_Step_02: Click vao menh gia 500,000");
-//		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[5]);
-//
-//		log.info("TC_09_Step_03: An nut 'Tiep tuc'");
-//		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-//
-//		log.info("TC_09_Step_04: Xac nhan hien thi thong bao so dien thoai khong hop le");
-//		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.ACCOUNT_MONEY_NOT_ENOUGH);
-//		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK"); 
-//		
-//		} else {
-//			verifyTrue(false);
-//		}
+		log.info("TC_09_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
+		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		dynamicValue = mobileTopup.getStringNumber(500000, "com.VCB:id/descript");
+		if(dynamicValue !="0") {
+			
+			log.info("TC_09_Step_02: Chon tai khoan nguon nho hon 500,000");
+			mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, dynamicValue+" VND");
+			
+			log.info("TC_09_Step 03: Chon menh gia the 500,000");
+			mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[5]);
+			
+			log.info("TC_09_Step_04: Nhap so dien thoai hop le vao So dien thoai mac dinh");
+			mobileTopup.inputIntoEditTextByID(driver, phone, "com.VCB:id/mobile");
+			
+			log.info("TC_09_Step_05: An but 'Tiep tuc'");
+			mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+			
+			log.info("TC_09_Step_06: Xac nhan hien thi thong bao tai khoan nguon khong du so du");
+			verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.ACCOUNT_MONEY_NOT_ENOUGH);
+			mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+			
+		}else {
+			throw new SkipException("These Tests shouldn't be run in Production");
+		}
 
 	}
 
@@ -170,22 +185,27 @@ public class Mobile_Topup_Validate_02 extends Base {
 	@Test
 	public void TC_10_KhoiTaoGiaoDichHopLe(String phone) {
 
-		log.info("TC_10_Step_01: Nhap so dien thoai hop le vao So dien thoai mac dinh");
+		log.info("TC_10_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
+		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		
+		log.info("TC_10_Step_02: Chon tai khoan nguon");
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		log.info("TC_10_Step_03: Nhap so dien thoai hop le vao So dien thoai mac dinh");
 		mobileTopup.inputIntoEditTextByID(driver, phone, "com.VCB:id/mobile");
 
-		log.info("TC_10_Step_02: Click vao menh gia 30,000");
+		log.info("TC_10_Step_04: Click vao menh gia 30,000");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[0]);
 
-		log.info("TC_10_Step_03: An nut 'Tiep tuc'");
+		log.info("TC_10_Step_05: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_10_Step_04: Hien thi man hinh xac nhan thong tin");
+		log.info("TC_10_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), UIs.MOBILE_TOPUP_CONFIRM_TITLE);
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
 		service.stop();
 	}
 
