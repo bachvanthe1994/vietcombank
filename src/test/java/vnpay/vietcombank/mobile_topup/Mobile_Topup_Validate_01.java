@@ -45,24 +45,44 @@ public class Mobile_Topup_Validate_01 extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 
-		log.info("TC_01_Step_02: Xac nhan thong tin tren man hinh hien thi");
+		log.info("TC_01_Step_02: Xac nhan hien thi title 'Nap tien dien thoai'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), UIs.MOBILE_TOPUP_TITLE);
+		
+		log.info("TC_01_Step_03: Xac nhan hien thi Icon 'Back'");
 		verifyTrue(mobileTopup.isDynamicImageHomeDisplay(driver, "com.VCB:id/ivTitleLeft"));
+		
+		log.info("TC_01_Step_04: Xac nhan hien thi Label huong dan");
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvCarrier"), UIs.MOBILE_TOPUP_GUIDE);
+		
+		log.info("TC_01_Step_05: Xac nhan hien thi Label 'Tai khoan nguon'");
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/descript_account"), UIs.MOBILE_TOPUP_DES_ACCOUNT);
+		
+		log.info("TC_01_Step_06: Xac nhan hien thi Combobox 'So tai khoan' ");
 		verifyTrue(mobileTopup.isDynamicTextDetailByID(driver, "com.VCB:id/number_account"));
+		
+		log.info("TC_01_Step_07: Xac nhan hien thi Label 'So du kha dung'");
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.MOBILE_TOPUP_BALANCE_LABEL));
+		
+		log.info("TC_01_Step_08: Xac nhan hien thi Label 'Thong tin giao dich'");
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/title_phone_topup"), UIs.MOBILE_TOPUP_TRANSACTION_INFO);
+		
+		log.info("TC_01_Step_09: Xac nhan hien thi Label huong dan nhap SDT");
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.MOBILE_TOPUP_TRANSACTION_GUIDE));
+		
+		log.info("TC_01_Step_10: Xac nhan hien thi Textbox 'So dien thoai duoc nap");
 		verifyTrue(mobileTopup.isDynamicEditTexByIdDisplayed(driver, "com.VCB:id/mobile"));
 		verifyTrue(mobileTopup.isDynamicImageButtonDisplayed(driver, "com.VCB:id/ic_payee"));
+		
+		log.info("TC_01_Step_11: Xac nhan hien thi du cac button 'Menh gia the'");
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.LIST_UNIT_VALUE[0]));
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.LIST_UNIT_VALUE[1]));
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.LIST_UNIT_VALUE[2]));
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.LIST_UNIT_VALUE[3]));
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.LIST_UNIT_VALUE[4]));
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, UIs.LIST_UNIT_VALUE[5]));
+		
+		log.info("TC_01_Step_12: Xac nhan hien thi Button 'Tiep tuc");
 		verifyTrue(mobileTopup.isDynamicButtonByIdDisplayed(driver, "com.VCB:id/btn_submit"));
 	}
 
@@ -70,8 +90,8 @@ public class Mobile_Topup_Validate_01 extends Base {
 	public void TC_02_KiemTraTrangThaiMacDinhNutTiepTuc_AnIconBack() {
 
 		log.info("TC_02_Step_01: Kiem tra trang thai mac dich cua Button 'Tiep tuc'");
-		mobileTopup.isDynamicButtonByIdEnable(driver, "com.VCB:id/btn_submit");
-
+		verifyTrue(mobileTopup.isDynamicButtonByIdEnable(driver,"com.VCB:id/btn_submit"));
+		
 		log.info("TC_02_Step_02: An nut 'Back' de quay ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -81,7 +101,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 	}
 
 	@Test
-	public void TC_03_KiemTraMacDinhHienThiTaiKhoanNguon_UseCoLonHon1TK() {
+	public void TC_03_KiemTraMacDinhHienThiTaiKhoanNguon_UserCoLonHon1TK() {
 
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
@@ -116,11 +136,14 @@ public class Mobile_Topup_Validate_01 extends Base {
 		log.info("TC_05_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 
-		log.info("TC_05_Step_02: Xac nhan hien thi Tai khoan + So du + don vi tien VND");
+		log.info("TC_05_Step_02: Xac nhan hien thi Tai khoan");
 		verifyTrue(mobileTopup.isDynamicTextByIdDisplayed(driver, "com.VCB:id/title"));
+		
+		log.info("TC_05_Step_03: Xac nhan hien thi So du + Don vi tien VND");
 		verifyTrue(mobileTopup.isDynamicTextByIdDisplayed(driver, "com.VCB:id/descript"));
 		verifyTrue(mobileTopup.isTextDisplayedInListTextElements(driver, "VND", "com.VCB:id/descript"));
 
+		log.info("TC_05_Step_04: Tat Dropdownlist");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
@@ -131,6 +154,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 
 		log.info("TC_06_Step_02: Click vao tai khoan nguon bat ki trong Droddownlist");
+		originAccMoney = mobileTopup.getMoneyByAccount(driver, Account_Data.Valid_Account.ACCOUNT2);
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_06_Step_03: Xac nhan tai khoan nguon vua chon da hien thi");

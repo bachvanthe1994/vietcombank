@@ -286,7 +286,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_11_KiemTraTaiKhoanNguonVaTaiKhoanDichDongChuTaiKhoanVaDongPopup() {
 
 		log.info("TC_11_Step_01: Click Chuyen tien trong VCB");

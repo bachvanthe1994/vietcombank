@@ -9,6 +9,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
     public static final String DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY = "//android.widget.TextView[@resource-id='%s']";
     public static final String DYNAMIC_TEXT_IMAGE = "//android.widget.ImageView[@resource-id='%s']//following-sibling::android.widget.TextView";
+    public static final String DYNAMIC_IMAGE_BY_FOLLOWING_IMAGE_ID = "//android.widget.ImageView[@resource-id='%s']//following-sibling::android.widget.ImageView";
     public static final String DYNAMIC_DROPDOWN_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
     public static final String DYNAMIC_TEXT_IN_POPUP = "//android.widget.TextView[@resource-id=\"%s\"]";
     public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
