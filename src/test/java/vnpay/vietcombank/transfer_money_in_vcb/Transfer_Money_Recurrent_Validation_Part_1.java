@@ -154,7 +154,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 
 		log.info("TC_07_04_Hien thi so du kha dung, loai tien tuong ung voi tai khoan da chon");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Số dư khả dụng"));
-		String availableBalance = transferRecurrent.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String availableBalance = transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		verifyEquals(availableBalance, expectAvailableBalance);
 
 		log.info("TC_07_05_So du hien thi dung dinh dang");
@@ -177,7 +177,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 
 		log.info("TC_08_04_Hien thi so du kha dung, loai tien tuong ung voi tai khoan da chon");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Số dư khả dụng"));
-		String availableBalance = transferRecurrent.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String availableBalance = transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		verifyEquals(availableBalance, expectAvailableBalance);
 
 		log.info("TC_08_05_So du hien thi dung dinh dang");

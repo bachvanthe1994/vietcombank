@@ -63,7 +63,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
-		surplus = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -87,31 +87,31 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_01_9_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_01_9_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info.sourceAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info.sourceAccount);
 
 		log.info("TC_01_9_2_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), info.organization.toUpperCase());
 		
 		log.info("TC_01_9_2_Kiem tra tai khoan nguon");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
 		String expectMoney = addCommasToLong(info.money) + " VND";
 		log.info("TC_01_9_3_Kiem tra so tien ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền ủng hộ"), expectMoney);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ"), expectMoney);
 
 		log.info("TC_01_9_4_Kiem tra ten nguoi ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người ủng hộ"), info.name);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info.name);
 
 		log.info("TC_01_9_5_Kiem tra dia chi nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Địa chỉ người ủng hộ"), info.address);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Địa chỉ người ủng hộ"), info.address);
 
 		log.info("TC_01_9_6_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Hoàn cảnh ủng hộ"), info.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info.status);
 
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, info.authenticationMethod));
+		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
 
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 
@@ -127,20 +127,20 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_01_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người hưởng"), info.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info.organization);
 
 		log.info("TC_01_12_3_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích"), destinationAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
 
 		log.info("TC_01_12_4_Kiem tra noi dung chuyen tien");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), info.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.status);
 
 		log.info("TC_01_12_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_01_12_6_Lay ma giao dich");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
-		transactionNumber = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -149,7 +149,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info.money), fee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 
@@ -196,31 +196,31 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
-		log.info("TC_02_14: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		log.info("TC_02_14: Kiem tra ma giao dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info.sourceAccount);
 
 		log.info("TC_02_16: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_02_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_02_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info.organization);
 
 		log.info("TC_02_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_02_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
 		log.info("TC_02_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung giao dịch").contains(info.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info.status));
 
 		log.info("TC_02_22: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -241,7 +241,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
-		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -264,31 +264,31 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_03_9_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_03_9_1_Kiem tra man tai khoan nguon");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info1.sourceAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info1.sourceAccount);
 
 		log.info("TC_03_9_2_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), info1.organization.toUpperCase());
 
 		log.info("TC_03_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
 		log.info("TC_03_9_4_Kiem tra so tien ung ho");
-		String actualMoney = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền ủng hộ");
+		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ");
 		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info1.money))) + " EUR";
 		verifyEquals(actualMoney, expectedMoney);
 
 		log.info("TC_03_9_5_Kiem tra ten nguoi ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người ủng hộ"), info1.name);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info1.name);
 
 		log.info("TC_03_9_6_Kiem tra dia chia nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Địa chỉ người ủng hộ"), info1.address);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Địa chỉ người ủng hộ"), info1.address);
 
 		log.info("TC_03_9_7_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Hoàn cảnh ủng hộ"), info1.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info1.status);
 
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, info1.authenticationMethod));
+		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), TransferMoneyCharity_Data.EXCHANGE_EUR);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
@@ -303,20 +303,20 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_03_12_1_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người hưởng"), info1.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info1.organization);
 
 		log.info("TC_02_12_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích"), destinationAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
 
 		log.info("TC_03_12_3_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), info1.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.status);
 
 		log.info("TC_03_12_4_Kiem tra nut thuc hien giao dich moi");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_03_12_5_Lay ma giao dich");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
-		transactionNumber = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_03_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -324,7 +324,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_03_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info1.money), transferFeeCurrentcy);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 	}
@@ -370,35 +370,35 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_04_15: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_04_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info1.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info1.sourceAccount);
 
 		log.info("TC_04_17: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info1.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info1.money) + " EUR"));
 
 		log.info("TC_04_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info1.money, TransferMoneyCharity_Data.EXCHANGE_EUR)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info1.money, TransferMoneyCharity_Data.EXCHANGE_EUR)));
 
 		log.info("TC_04_20: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info1.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info1.organization);
 
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 		
 		log.info("TC_04_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
 		log.info("TC_04_23: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung giao dịch").contains(info1.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info1.status));
 
 		log.info("TC_04_24: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -419,7 +419,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 
-		surplus = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_05_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -442,36 +442,36 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_05_9_Kiem tra man xac dinh giao dich");
 		log.info("TC_05_9_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info2.sourceAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info2.sourceAccount);
 
 		log.info("TC_05_9_2_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), info2.organization.toUpperCase());
 
 		log.info("TC_05_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
 		String expectMoney = addCommasToLong(info2.money) + " VND";
 		log.info("TC_05_9_4_Kiem tra so tien ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền ủng hộ"), expectMoney);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ"), expectMoney);
 
 		log.info("TC_05_9_5_Kiem tra ten nguoi ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người ủng hộ"), info2.name);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info2.name);
 
 		log.info("TC_05_9_6_Kiem tra dia chi nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Địa chỉ người ủng hộ"), info2.address);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Địa chỉ người ủng hộ"), info2.address);
 
 		log.info("TC_05_9_7_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Hoàn cảnh ủng hộ"), info2.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info2.status);
 
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, info2.authenticationMethod));
+		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod));
 
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 
 		log.info("TC_05_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_05_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -485,17 +485,17 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_05_12_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích"), destinationAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
 
 		log.info("TC_05_12_3_Kiem tra noi dung chuyen tien");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), info2.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.status);
 
 		log.info("TC_05_12_4_Kiem tra nut thuc hien giao dich moi");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_05_12_5_Lay ma giao dich");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
-		transactionNumber = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_05_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -504,7 +504,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info2.money), fee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 
@@ -551,29 +551,29 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_06_14: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_06_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info2.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info2.sourceAccount);
 
 		log.info("TC_06_16: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info2.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(info2.money) + " VND"));
 
 		log.info("TC_06_17: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info2.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info2.organization);
 
 		log.info("TC_06_18: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_06_19: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
 		log.info("TC_06_20: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung giao dịch").contains(info2.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info2.status));
 
 		log.info("TC_06_21: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -595,7 +595,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
-		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_07_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -618,36 +618,36 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_07_9_Kiem tra man xac nhan thong tin");
 		log.info("TC_07_9_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info3.sourceAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info3.sourceAccount);
 
 		log.info("TC_07_9_2_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), info3.organization.toUpperCase());
 
 		log.info("TC_07_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
 		log.info("TC_07_9_4_Kiem tra so tien ung ho");
-		String actualMoney = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền ủng hộ");
+		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ");
 		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info3.money))) + " EUR";
 		verifyEquals(actualMoney, expectedMoney);
 
 		log.info("TC_07_9_5_Kiem tra ten nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người ủng hộ"), info3.name);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info3.name);
 
 		log.info("TC_07_9_6_Kiem tra dia chi nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Địa chỉ người ủng hộ"), info3.address);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Địa chỉ người ủng hộ"), info3.address);
 
 		log.info("TC_07_9_7_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Hoàn cảnh ủng hộ"), info3.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info3.status);
 
 		log.info("TC_07_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, info3.authenticationMethod));
+		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), TransferMoneyCharity_Data.EXCHANGE_EUR);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 
 		log.info("TC_07_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_07_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -661,20 +661,20 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_07_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người hưởng"), info3.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info3.organization);
 
 		log.info("TC_07_12_3_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích"), destinationAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
 
 		log.info("TC_07_12_4_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), info3.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.status);
 
 		log.info("TC_07_12_5_Kiem tra nut thuc hien giao dich");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_07_12_6_Lay ma chuy tien");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
-		transactionNumber = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_07_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -682,7 +682,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_07_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
-		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info3.money), transferFeeCurrentcy);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 
@@ -729,32 +729,32 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_08_14: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_08_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info3.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info3.sourceAccount);
 
 		log.info("TC_08_16: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info3.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info3.money) + " EUR"));
 
 		log.info("TC_08_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info1.money, TransferMoneyCharity_Data.EXCHANGE_EUR)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info1.money, TransferMoneyCharity_Data.EXCHANGE_EUR)));
 
 		log.info("TC_08_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info3.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info3.organization);
 
 		log.info("TC_08_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_08_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
 		log.info("TC_08_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung giao dịch").contains(info3.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info3.status));
 
 		log.info("TC_08_22: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -776,7 +776,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 
-		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_09_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -799,36 +799,36 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_09_9_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_09_9_1_Kiem tra man tai khoan nguon");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info4.sourceAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info4.sourceAccount);
 
 		log.info("TC_09_9_2_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), info4.organization.toUpperCase());
 
 		log.info("TC_09_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
 		log.info("TC_09_9_4_Kiem tra so tien ung ho");
-		String actualMoney = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền ủng hộ");
+		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ");
 		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info4.money))) + " USD";
 		verifyEquals(actualMoney, expectedMoney);
 
 		log.info("TC_09_9_5_Kiem tra ten nguoi ung ho");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người ủng hộ"), info4.name);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info4.name);
 
 		log.info("TC_09_9_6_Kiem tra dia chia nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Địa chỉ người ủng hộ"), info4.address);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Địa chỉ người ủng hộ"), info4.address);
 
 		log.info("TC_09_9_7_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Hoàn cảnh ủng hộ"), info4.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info4.status);
 
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, info4.authenticationMethod));
+		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), TransferMoneyCharity_Data.EXCHANGE_USD);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
 
 		log.info("TC_09_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_09_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -841,20 +841,20 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_09_12_1_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người hưởng"), info4.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info4.organization);
 
 		log.info("TC_09_12_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích"), destinationAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
 
 		log.info("TC_09_12_3_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), info4.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.status);
 
 		log.info("TC_09_12_4_Kiem tra nut thuc hien giao dich moi");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_09_12_5_Lay ma giao dich");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
-		transactionNumber = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_09_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -862,7 +862,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_09_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
-		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info4.money), transferFeeCurrentcy);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 	}
@@ -908,32 +908,32 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_10_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_10_14: Kiem tra ma giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_10_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info4.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info4.sourceAccount);
 
 		log.info("TC_10_16: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info4.money) + " USD"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info4.money) + " USD"));
 
 		log.info("TC_10_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info4.money, TransferMoneyCharity_Data.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info4.money, TransferMoneyCharity_Data.EXCHANGE_USD)));
 
 		log.info("TC_10_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info4.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info4.organization);
 
 		log.info("TC_10_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_10_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
 		log.info("TC_10_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung giao dịch").contains(info4.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info4.status));
 
 		log.info("TC_10_22: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -955,7 +955,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 
-		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_11_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -978,36 +978,36 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_11_9_Kiem tra man xac nhan thong tin");
 		log.info("TC_11_9_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), info5.sourceAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info5.sourceAccount);
 
 		log.info("TC_11_9_2_Kiem tra to chuc");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTextViewLine2(driver, "Tài khoản đích"), info5.organization.toUpperCase());
 
 		log.info("TC_11_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích").split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích").split("/")[0].trim();
 
 		log.info("TC_11_9_4_Kiem tra so tien ung ho");
-		String actualMoney = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền ủng hộ");
+		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền ủng hộ");
 		String expectedMoney = String.format("%.2f", new BigDecimal(Double.parseDouble(info5.money))) + " USD";
 		verifyEquals(actualMoney, expectedMoney);
 
 		log.info("TC_11_9_5_Kiem tra ten nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người ủng hộ"), info5.name);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người ủng hộ"), info5.name);
 
 		log.info("TC_11_9_6_Kiem tra dia chi nguoi chuyen");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Địa chỉ người ủng hộ"), info5.address);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Địa chỉ người ủng hộ"), info5.address);
 
 		log.info("TC_11_9_7_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Hoàn cảnh ủng hộ"), info5.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info5.status);
 
 		log.info("TC_11_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, info5.authenticationMethod));
+		fee = convertAvailableBalanceCurrentcyToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), TransferMoneyCharity_Data.EXCHANGE_USD);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
 
 		log.info("TC_11_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_11_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -1021,20 +1021,20 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_11_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người hưởng"), info5.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info5.organization);
 
 		log.info("TC_11_12_3_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản đích"), destinationAccount);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), destinationAccount);
 
 		log.info("TC_11_12_4_Kiem tra hoan canh");
-		verifyEquals(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), info5.status);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.status);
 
 		log.info("TC_11_12_5_Kiem tra nut thuc hien giao dich");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_11_12_6_Lay ma chuy tien");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
-		transactionNumber = transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Mã giao dịch");
+		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_11_13_Click Thuc hien giao dich moi");
 		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -1042,7 +1042,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_11_14_Kiem tra so du kha dung luc sau");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
-		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info5.money), transferFeeCurrentcy);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 
@@ -1089,34 +1089,34 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_12_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 		
 		log.info("TC_12_14: Kiem tra ma giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_12_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản/thẻ trích nợ"), info5.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), info5.sourceAccount);
 
 		log.info("TC_12_16: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_12_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info5.money) + " USD"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info5.money) + " USD"));
 
 		log.info("TC_12_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info1.money, TransferMoneyCharity_Data.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info1.money, TransferMoneyCharity_Data.EXCHANGE_USD)));
 
 		log.info("TC_12_19: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info5.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên Quỹ/Tổ chức từ thiện"), info5.organization);
 
 		log.info("TC_12_20: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_12_21: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Chuyển tiền từ thiện");
 
 		log.info("TC_12_22: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung giao dịch").contains(info5.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(info5.status));
 
 		log.info("TC_12_23: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");

@@ -252,7 +252,7 @@ public class TransferIdentity_Validate_2 extends Base {
 
 		log.info("TC_44_Step_03: Lay so du tai khoan chuyen");
 		trasferPage.sleep(driver, 2000);
-		String beforeBalanceOfAccount1 = trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String beforeBalanceOfAccount1 = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		long beforeBalanceAmountOfAccount1 = convertMoneyToLong(beforeBalanceOfAccount1, "VND");
 
 		log.info("TC_38_Step_04: Nhap So Tien Chuyen");
@@ -283,7 +283,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textDataInputForm.ACCOUNT_VND);
 
 		log.info("TC_45_Step_3: lay so tien truoc khi chuyen khoan");
-		String overbalanceBefore = trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String overbalanceBefore = trasferPage.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		Long overbalanceBeforeLong = convertMoneyToLong(overbalanceBefore, "VND");
 
 		log.info("TC_45_Step_4: nhap ten nguoi thu huong");
@@ -322,25 +322,25 @@ public class TransferIdentity_Validate_2 extends Base {
 		verifyTrue(confirm.equals(TransferIdentity_Data.textCheckElement.PAGE_CONFIRM));
 
 		log.info("TC_45_Step_14: kiem tra tai khoan nguon");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Tài khoản nguồn"), TransferIdentity_Data.textDataInputForm.ACCOUNT_VND);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), TransferIdentity_Data.textDataInputForm.ACCOUNT_VND);
 
 		log.info("TC_45_Step_15: kiem tra ten nguoi thu huong");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Tên người hưởng"), TransferIdentity_Data.textDataInputForm.USER_NAME);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferIdentity_Data.textDataInputForm.USER_NAME);
 
 		log.info("TC_45_Step_16: kiem tra giay to tuy than");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Giấy tờ tùy thân"), "Hộ chiếu");
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Giấy tờ tùy thân"), "Hộ chiếu");
 
 		log.info("TC_45_Step_17: kiem tra so HC");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Số"), TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Số"), TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
 
 		log.info("TC_45_Step_18: kiem tra ngay cap");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Ngày cấp"), today);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Ngày cấp"), today);
 
 		log.info("TC_45_Step_19: kiem tra noi cap");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Nơi cấp"), TransferIdentity_Data.textDataInputForm.ISSUED);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nơi cấp"), TransferIdentity_Data.textDataInputForm.ISSUED);
 
 		log.info("TC_45_Step_20: lay ra so tien chuyen di");
-		String moneyTransfer = trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền");
+		String moneyTransfer = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền");
 		Long moneyTransferLong = convertMoneyToLong(moneyTransfer, TransferIdentity_Data.textDataInputForm.CURRENCY_VND);
 		String moneyTransferLongToString = Long.toString(moneyTransferLong);
 
@@ -348,12 +348,12 @@ public class TransferIdentity_Validate_2 extends Base {
 		verifyEquals(moneyTransferLongToString, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_VND);
 
 		log.info("TC_45_Step_22: lay phi");
-		String amount = trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Số tiền phí");
+		String amount = trasferPage.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		Long amountLong = convertMoneyToLong(amount, TransferIdentity_Data.textDataInputForm.CURRENCY_VND);
 		String amountLongToString = Long.toString(amountLong);
 
 		log.info("TC_45_Step_23: kiem tra noi dung");
-		verifyEquals(trasferPage.getDynamicTextInFilmTicketInfoDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
+		verifyEquals(trasferPage.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 		trasferPage.scrollDownToButton(driver, "Tiếp tục");
 		log.info("TC_45_Step_24: chon phuong thuc xac thuc");

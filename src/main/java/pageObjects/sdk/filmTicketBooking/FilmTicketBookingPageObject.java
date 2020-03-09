@@ -135,6 +135,16 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
+	
+	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
+		public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
+			boolean status = false;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			}
+
+		}
 
 	public void scrollIDownToText(String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();

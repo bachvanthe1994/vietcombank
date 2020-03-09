@@ -61,14 +61,14 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_08: Hien thi phan 'Xac nhan thong tin'");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Loại thẻ"), "Thẻ ghi nợ");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Yêu cầu"), "Khóa thẻ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Loại thẻ"), "Thẻ ghi nợ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Yêu cầu"), "Khóa thẻ");
 
 		log.info("TC_01_Step_09: An button 'Tiep tuc'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "KHÓA THẺ THÀNH CÔNG"));
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
 
 		log.info("TC_01_Step_10: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, "Quay về màn hình dịch vụ thẻ");
@@ -121,9 +121,9 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_04: Hien thi phan 'Xac nhan thong tin'");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Loại thẻ"), "Thẻ ghi nợ");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Yêu cầu"), "Mở khóa thẻ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Loại thẻ"), "Thẻ ghi nợ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Yêu cầu"), "Mở khóa thẻ");
 
 		log.info("TC_02_Step_05: Mo DropdownList 'Phuong Thuc Xac Thuc'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -142,8 +142,8 @@ public class Card_Services extends Base {
 
 		log.info("TC_02_Step_10: Hien thi phan 'Xac nhan thong tin'");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "MỞ KHÓA THẺ THÀNH CÔNG"));
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Loại thẻ"), "Thẻ ghi nợ");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Loại thẻ"), "Thẻ ghi nợ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD01);
 
 		log.info("TC_02_Step_11: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, "Quay về màn hình dịch vụ thẻ");
@@ -217,9 +217,9 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_08: Hien thi phan 'Xac nhan thong tin'");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Loại thẻ"), "Thẻ tín dụng");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD01);
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Yêu cầu"), "Khóa thẻ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Loại thẻ"), "Thẻ tín dụng");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Yêu cầu"), "Khóa thẻ");
 
 		log.info("TC_03_Step_09: An button 'Tiep tuc'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -289,9 +289,9 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_04_Step_04: Hien thi phan 'Xac nhan thong tin'");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Loại thẻ"), "Thẻ tín dụng");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD01);
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Yêu cầu"), "Mở khóa thẻ");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Loại thẻ"), "Thẻ tín dụng");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Yêu cầu"), "Mở khóa thẻ");
 
 		log.info("TC_04_Step_05: Mo DropdownList 'Phuong Thuc Xac Thuc'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -310,8 +310,8 @@ public class Card_Services extends Base {
 
 		log.info("TC_04_Step_10: Hien thi phan 'Xac nhan thong tin'");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "MỞ KHÓA THẺ THÀNH CÔNG"));
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Loại thẻ"), "Thẻ tín dụng");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD01);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Loại thẻ"), "Thẻ tín dụng");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD01);
 
 		log.info("TC_04_Step_11: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, "Quay về màn hình dịch vụ thẻ");
@@ -393,8 +393,8 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_07: Hien thi phan 'Xac nhan thong tin'");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Yêu cầu"), "Đăng ký sử dụng thẻ trên Internet");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Yêu cầu"), "Đăng ký sử dụng thẻ trên Internet");
 
 		log.info("TC_05_Step_08: Mo DropdownList 'Phuong Thuc Xac Thuc'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -413,7 +413,7 @@ public class Card_Services extends Base {
 
 		log.info("TC_05_Step_13: Hien thi phan 'Xac nhan thong tin'");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "ĐĂNG KÝ SỬ DỤNG THẺ TRÊN INTERNET THÀNH CÔNG"));
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
 
 		log.info("TC_05_Step_14: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, "Quay về màn hình dịch vụ thẻ");
@@ -463,15 +463,15 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_06_Step_03: Hien thi phan 'Xac nhan thong tin'");
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Yêu cầu"), "Hủy đăng ký sử dụng thẻ trên Internet");
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Yêu cầu"), "Hủy đăng ký sử dụng thẻ trên Internet");
 
 		log.info("TC_06_Step_04: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_06_Step_04: Hien thi phan 'Xac nhan thong tin'");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "HỦY ĐĂNG KÝ SỬ DỤNG THẺ TRÊN INTERNET THÀNH CÔNG"));
-		verifyEquals(lockCard.getDynamicTextInFilmTicketInfoDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
+		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD02);
 
 		log.info("TC_06_Step_05: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, "Quay về màn hình dịch vụ thẻ");

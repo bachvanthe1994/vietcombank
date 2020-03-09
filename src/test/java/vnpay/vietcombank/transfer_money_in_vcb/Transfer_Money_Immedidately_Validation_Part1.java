@@ -62,7 +62,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_02_Step_04: Lay so du tai khoan dich");
-		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
 		log.info("TC_02_Step_04: Lay so du tai khoan dich");
 		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("VND"));
@@ -80,7 +80,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		log.info("TC_03_Step_03: Lay so du tai khoan dich");
-		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
 		log.info("TC_03_Step_04: Lay so du tai khoan dich");
 		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("USD"));
@@ -98,7 +98,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_04_Step_03: Lay so du tai khoan dich");
-		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
 		log.info("TC_04_Step_04: Lay so du tai khoan dich");
 		verifyTrue(beforeBalanceOfAccount2.contains(",") && beforeBalanceOfAccount2.contains("EUR"));

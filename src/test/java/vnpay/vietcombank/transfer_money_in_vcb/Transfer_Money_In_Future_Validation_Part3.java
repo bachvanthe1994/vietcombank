@@ -139,7 +139,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 		log.info("TC_01_Step_07: Lay so du tai khoan chuyen");
 		transferInVCB.sleep(driver, 2000);
-		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInFilmTicketInfoDetail(driver, "Số dư khả dụng");
+		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		long beforeBalanceAmountOfAccount1 = convertMoneyToLong(beforeBalanceOfAccount1, "VND");
 
 		log.info("TC_03_Step_04: Nhap Tai Khoan Nhan");
