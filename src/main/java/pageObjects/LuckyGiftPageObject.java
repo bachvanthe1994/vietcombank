@@ -17,7 +17,7 @@ public class LuckyGiftPageObject extends AbstractPage {
     // resource id
     public void clickToDynamicImageViewByID(String dynamicID) {
 	boolean status = false;
-	scrollUp(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+	scrollUp(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON);
 	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 	if (status == true) {
 	    clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);

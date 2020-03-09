@@ -15,7 +15,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
@@ -298,8 +297,9 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 
 	}
 
+	@Parameters({ "phone" })
 	@Test
-	public void TC_08_KiemTraManHinhXacThucGiaoDichBangOTP() {
+	public void TC_08_KiemTraManHinhXacThucGiaoDichBangOTP(String phone) {
 		log.info("TC_08_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
@@ -335,7 +335,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
 		log.info("TC_08_Step_12: Kiem tra inbox message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE.substring(0, 4) + "***" + LogIn_Data.Login_Account.PHONE.substring(7, 10)));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phone.substring(0, 4) + "***" + phone.substring(7, 10)));
 
 	}
 

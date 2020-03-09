@@ -173,7 +173,6 @@ public class AbstractPage {
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
-
 			}
 		}
 	}
@@ -197,7 +196,6 @@ public class AbstractPage {
 				} catch (Exception e) {
 					System.out.print(e.getMessage());
 				}
-
 			}
 		}
 	}
@@ -220,33 +218,173 @@ public class AbstractPage {
 				try {
 					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 				} catch (Exception e) {
-					System.out.print(e.getMessage());
+
+					System.out.println(e.getMessage());
+					overRideTimeOut(driver, longTime);
 				}
 			}
 		}
 	}
 
-	public void scrollUp(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		Dimension size = driver.manage().window().getSize();
-		int x = size.getWidth() / 2;
-		int startY = (int) (size.getHeight() * 0.30);
-		int endY = (int) (size.getHeight() * 0.80);
-		TouchAction touch = new TouchAction(driver);
+	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		for (int i = 0; i < 20; i++) {
-			locator = String.format(locator, (Object[]) dynamicValue);
-			overRideTimeOut(driver, 2);
-			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
-			overRideTimeOut(driver, Constants.LONG_TIME);
-			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
-				break;
-			} else {
-				try {
-					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
-				} catch (Exception e) {
-					System.out.print(e.getMessage());
-				}
-			}
+		WebElement element = driver.findElement(By.xpath(locator));
+		element.clear();
+		element.sendKeys(value);
+
+	}
+
+	public void setValueToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		MobileElement element1 = driver.findElement(By.xpath(locator));
+		element1.clear();
+		driver.getKeyboard().sendKeys(value);
+	}
+
+	public String getTextInOneOFElement(AppiumDriver<MobileElement> driver, int index, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> element = driver.findElements(By.xpath(locator));
+		return element.get(index).getText();
+	}
+
+	public String getAttributeValue(AppiumDriver<MobileElement> driver, String locator, String attribute, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		return element.getAttribute(attribute);
+
+	}
+
+	public String getTextElement(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		return element.getText();
+	}
+
+	public String getTextInFirstElement(AppiumDriver<MobileElement> driver, int index, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> element = driver.findElements(By.xpath(locator));
+		return element.get(index).getText();
+	}
+
+	public List<String> getTextInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (MobileElement element : listElements) {
+			listTextView.add(element.getText());
+		}
+		return listTextView;
+	}
+
+	public List<String> getContentDescInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (MobileElement element : listElements) {
+			listTextView.add(element.getAttribute("content-desc"));
+		}
+		return listTextView;
+	}
+
+	public List<String> getEnableInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (MobileElement element : listElements) {
+			listTextView.add(element.getAttribute("enabled"));
+		}
+		return listTextView;
+	}
+
+	public List<String> getSelectedInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (MobileElement element : listElements) {
+			listTextView.add(element.getAttribute("selected"));
+		}
+		return listTextView;
+	}
+
+	public boolean isControlDisplayed(AppiumDriver<MobileElement> driver, String locator) {
+		try {
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			WebElement element = driver.findElement(By.xpath(locator));
+			boolean status = element.isDisplayed();
+			return status;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	public boolean isKeyBoardDisplayed(AppiumDriver<MobileElement> driver) {
+		return ((HasOnScreenKeyboard) driver).isKeyboardShown();
+	}
+
+	/* BOLEAN METHOD */
+
+	// Xac nhan Button Enable qua Button ID
+	public boolean isDynamicButtonByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+	}
+
+	// Xac dinh text co duoc Focus hay khong
+	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+	}
+
+	// Xac nhan hien thi text qua Text ID
+	public boolean isDynamicTextByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
+	}
+
+	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		overRideTimeOut(driver, shortTime);
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
+		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
+			overRideTimeOut(driver, longTime);
+			return false;
+		} else {
+			overRideTimeOut(driver, longTime);
+			return true;
+
+		}
+	}
+
+	public void overRideTimeOut(AppiumDriver<MobileElement> driver, long time) {
+		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+	}
+
+	public boolean isControlEnabled(AppiumDriver<MobileElement> driver, String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isControlEnabled(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void sleep(AppiumDriver<MobileElement> driver, long milisecond) {
+		try {
+			Thread.sleep(milisecond);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -311,186 +449,23 @@ public class AbstractPage {
 		element.sendKeys(value);
 	}
 
-	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		WebElement element = driver.findElement(By.xpath(locator));
-		element.clear();
-		element.sendKeys(value);
-
+	/* CLICK METHOD */
+	// Click dau ... dua theo ten
+	public void clickToDynamicIconByText(AppiumDriver<MobileElement> driver, String dynamicKey) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 	}
 
-	public void setValueToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		MobileElement element1 = driver.findElement(By.xpath(locator));
-		element1.clear();
-		driver.getKeyboard().sendKeys(value);
+//Click Icon by linerLayout
+	public void clickToDynamicLinerLayoutID(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
 	}
 
-	public String getTextInOneOFElement(AppiumDriver<MobileElement> driver, int index, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> element = driver.findElements(By.xpath(locator));
-		return element.get(index).getText();
-	}
-
-	public String getAttributeValue(AppiumDriver<MobileElement> driver, String locator, String attribute) {
-		WebElement element = driver.findElement(By.xpath(locator));
-		return element.getAttribute(attribute);
-	}
-
-	public String getTextElement(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-
-		locator = String.format(locator, (Object[]) dynamicValue);
-		WebElement element = driver.findElement(By.xpath(locator));
-		return element.getText();
-	}
-
-	public String getTextInFirstElement(AppiumDriver<MobileElement> driver, int index, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> element = driver.findElements(By.xpath(locator));
-		return element.get(index).getText();
-	}
-
-	public List<String> getTextInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
-		List<String> listTextView = new ArrayList<String>();
-		for (MobileElement element : listElements) {
-			listTextView.add(element.getText());
-		}
-		return listTextView;
-	}
-
-	// Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và
-	// resource-id
-	public void clickToDynamicWishes(AppiumDriver<MobileElement> driver, String dynamicText) {
-		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
-		}
-
-	}
-
-	public List<String> getContentDescInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
-		List<String> listTextView = new ArrayList<String>();
-		for (MobileElement element : listElements) {
-			listTextView.add(element.getAttribute("content-desc"));
-		}
-		return listTextView;
-	}
-
-	public List<String> getEnableInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
-		List<String> listTextView = new ArrayList<String>();
-		for (MobileElement element : listElements) {
-			listTextView.add(element.getAttribute("enabled"));
-		}
-		return listTextView;
-	}
-
-	public List<String> getSelectedInListElements(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
-		List<String> listTextView = new ArrayList<String>();
-		for (MobileElement element : listElements) {
-			listTextView.add(element.getAttribute("selected"));
-		}
-		return listTextView;
-	}
-
-	public String getTextElement(AppiumDriver<MobileElement> driver, String locator) {
-		WebElement element = driver.findElement(By.xpath(locator));
-		return element.getText();
-	}
-
-	public int countElementNumber(AppiumDriver<MobileElement> driver, String locator) {
-		List<MobileElement> elements = driver.findElements(By.xpath(locator));
-		return elements.size();
-	}
-
-	public int countElementNumber(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> elements = driver.findElements(By.xpath(locator));
-		return elements.size();
-	}
-
-	public boolean isControlSelected(AppiumDriver<MobileElement> driver, String locator) {
-		WebElement element = driver.findElement(By.xpath(locator));
-		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isControlSelected(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		WebElement element = driver.findElement(By.xpath(locator));
-		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isControlDisplayed(AppiumDriver<MobileElement> driver, String locator) {
-		try {
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			WebElement element = driver.findElement(By.xpath(locator));
-			boolean status = element.isDisplayed();
-			return status;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			return false;
-		}
-	}
-
-	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator) {
-		overRideTimeOut(driver, shortTime);
-		List<MobileElement> elements = driver.findElements(By.xpath(locator));
-		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
-			overRideTimeOut(driver, longTime);
-			return false;
-		} else {
-			overRideTimeOut(driver, longTime);
-			return true;
-
-		}
-	}
-
-	public void overRideTimeOut(AppiumDriver<MobileElement> driver, long time) {
-		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
-	}
-
-	public boolean isControlEnabled(AppiumDriver<MobileElement> driver, String locator) {
-		WebElement element = driver.findElement(By.xpath(locator));
-		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isControlEnabled(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		WebElement element = driver.findElement(By.xpath(locator));
-		if (element.getAttribute("enabled").equalsIgnoreCase("true")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public void switchToIframe(AppiumDriver<MobileElement> driver, String locator) {
-		WebElement frame = driver.findElement(By.xpath(locator));
-		driver.switchTo().frame(frame);
-	}
-
-	public void backToDefault(AppiumDriver<MobileElement> driver) {
-		driver.switchTo().defaultContent();
+	// Click vào icon clear trong ô input
+	public void clickToDynamicIconByLinerLayout(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicValue);
+		clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicValue);
 	}
 
 //waits
@@ -564,44 +539,26 @@ public class AbstractPage {
 		}
 	}
 
-	/* BOLEAN METHOD */
-
-	// Xac nhan Button Enable qua Button ID
-	public boolean isDynamicButtonByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-	}
-
-	// Xac dinh text co duoc Focus hay khong
-	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
-		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
-	}
-
-// check button có hiển thị hay không, tham số truyền vào là text của button
-	public boolean isDynamicButtonByTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-
-		boolean isDisplayed = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
-		return isDisplayed;
-	}
-
-	public String getAttributeValue(AppiumDriver<MobileElement> driver, String locator, String attribute, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
-		WebElement element = driver.findElement(By.xpath(locator));
-		return element.getAttribute(attribute);
-
-	}
-
 	public void clickToElementByJava(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].click();", element);
+	}
+
+	public int countElementNumber(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
+		return elements.size();
+	}
+
+	public boolean isControlSelected(AppiumDriver<MobileElement> driver, String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean isControlDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
@@ -616,8 +573,33 @@ public class AbstractPage {
 		}
 	}
 
-	public boolean isKeyBoardDisplayed(AppiumDriver<MobileElement> driver) {
-		return ((HasOnScreenKeyboard) driver).isKeyboardShown();
+	public boolean isControlSelected(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (element.getAttribute("checked").equalsIgnoreCase("true")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+// check button có hiển thị hay không, tham số truyền vào là text của button
+	public boolean isDynamicButtonByTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
+	public String removeUnicode(AppiumDriver<MobileElement> driver, String locator) {
+
+		String temp = Normalizer.normalize(locator, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
 	}
 
 	// Xac nhan hien thi text box qua editText ID
@@ -630,12 +612,6 @@ public class AbstractPage {
 	public boolean isDynamicButtonByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-	}
-
-	// Xac nhan hien thi text qua Text ID
-	public boolean isDynamicTextByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
 	}
 
 	// Kiem tra text co trong List Element Text hay khong
@@ -657,43 +633,6 @@ public class AbstractPage {
 			}
 		}
 		return result;
-	}
-
-	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		overRideTimeOut(driver, shortTime);
-		locator = String.format(locator, (Object[]) dynamicValue);
-		List<MobileElement> elements = driver.findElements(By.xpath(locator));
-		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
-			overRideTimeOut(driver, longTime);
-			return false;
-		} else {
-			overRideTimeOut(driver, longTime);
-			return true;
-
-		}
-	}
-
-	public String removeUnicode(AppiumDriver<MobileElement> driver, String locator) {
-
-		String temp = Normalizer.normalize(locator, Normalizer.Form.NFD);
-		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-		return pattern.matcher(temp).replaceAll("");
-	}
-
-	public void sleep(AppiumDriver<MobileElement> driver, long milisecond) {
-		try {
-			Thread.sleep(milisecond);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void removeAttributeInDOM(AppiumDriver<MobileElement> driver, String locator, String attribute, String... value) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		locator = String.format(locator, (Object[]) value);
-		WebElement element = driver.findElement(By.xpath(locator));
-		js.executeScript("arguments[0].removeAttribute('" + attribute + "');", element);
-		sleep(driver, 1000);
 	}
 
 	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
@@ -822,7 +761,7 @@ public class AbstractPage {
 
 	/* SCROLL UP */
 	public void scrollUpToText(AppiumDriver<MobileElement> driver, String dynamicText) {
-		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT);
 
 	}
 
@@ -832,23 +771,6 @@ public class AbstractPage {
 	}
 
 	/* CLICK METHOD */
-	// Click dau ... dua theo ten
-	public void clickToDynamicIconByText(AppiumDriver<MobileElement> driver, String dynamicKey) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
-	}
-
-//Click Icon by linerLayout
-	public void clickToDynamicLinerLayoutID(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
-	}
-
-	// Click vào icon clear trong ô input
-	public void clickToDynamicIconByLinerLayout(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicValue);
-		clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicValue);
-	}
 
 //Click vào Cho phép lúc khởi tạo app, hoặc check chức chăng có permission
 	public void clickToDynamicAcceptButton(AppiumDriver<MobileElement> driver, String dynamicIDValue) {
@@ -885,7 +807,7 @@ public class AbstractPage {
 //Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -1038,7 +960,6 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
-
 		}
 	}
 
@@ -1143,7 +1064,6 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		}
-
 	}
 
 	public void clickToTextID(AppiumDriver<MobileElement> driver, String dynamicID) {
@@ -1151,6 +1071,17 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		}
+
+	}
+
+	// Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và
+	// resource-id
+	public void clickToDynamicWishes(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
 		}
 
 	}
@@ -1189,7 +1120,7 @@ public class AbstractPage {
 	// Click select năm, sử dụng scroll up
 	public void clickToTextListview(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
-		scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
@@ -1597,6 +1528,7 @@ public class AbstractPage {
 		return isDisplayed;
 	}
 
+
 	public boolean isDynamicImageByFollowingImageIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BY_FOLLOWING_IMAGE_ID, dynamicTextValue);
@@ -1606,6 +1538,17 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
+
+	public boolean isDynamicImageButtonBackDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+		return isDisplayed;
+	}
+
 	/* GET TEXT METHOD */
 
 // lay text trong ô dropdown bằng index và header của nó
@@ -1780,10 +1723,11 @@ public class AbstractPage {
 	}
 
 //Lấy text bằng id
+
 	public String getDynamicTextDetailByIDOrPopup(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -1941,19 +1885,7 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
-		}
-		return text;
 
-	}
-
-	// Lấy text phí giao dịch
-	public String getTextInDynamicFee(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-		boolean status = false;
-		String text = null;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
-		if (status == true) {
-			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
 		}
 		return text;
 	}
@@ -1967,8 +1899,20 @@ public class AbstractPage {
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 		}
-		return text;
 
+		return text;
+	}
+
+	// Lấy text phí giao dịch
+	public String getTextInDynamicFee(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValue);
+		}
+		return text;
 	}
 
 	// Lấy text trên ô điền Mat khau xac thuc
@@ -2002,7 +1946,6 @@ public class AbstractPage {
 			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
 		}
 		return text;
-
 	}
 
 	public boolean checkFormatMoney(String moneyInput, TransferInVCBRecurrent.Currency currency) {
