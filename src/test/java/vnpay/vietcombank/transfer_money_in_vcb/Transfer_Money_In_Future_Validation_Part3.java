@@ -71,7 +71,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 		log.info("TC_01_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
 		log.info("TC_01_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -111,7 +111,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 
 		log.info("TC_02_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
 		log.info("TC_02_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -155,7 +155,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_08: Kiem tra yeu cau nhap noi dung");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.NOT_ENOUGH_MONEY);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.NOT_ENOUGH_MONEY);
 
 		log.info("TC_03_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -194,7 +194,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_04_Step_08: Kiem tra yeu cau nhap noi dung");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY);
 
 		log.info("TC_04_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -233,7 +233,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_08: Kiem tra yeu cau nhap noi dung");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MAX_LIMIT_FUTURE_TRANSFER_MONEY);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MAX_LIMIT_FUTURE_TRANSFER_MONEY);
 
 		log.info("TC_05_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -439,7 +439,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 			transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 			log.info("TC_13_Step_03: Kiem tra popup message hien thi");
-			verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_OTP);
+			verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_OTP);
 
 			log.info("TC_13_Step_04: Chon Dong");
 			transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -452,7 +452,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_13_Step_07: Kiem tra popup message hien thi");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_OTP_N_TIMES);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_OTP_N_TIMES);
 
 		log.info("TC_13_Step_08: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");

@@ -46,7 +46,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
-		defaultAccount = homePage.getDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc");
+		defaultAccount = homePage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvDefaultAcc");
 
 		log.info("TC_01_01_Click Chuyen tien trong ngan hang");
 		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -231,7 +231,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_11_08_Kiem tra thong bao tai khoan dich khong du 10 ky tu vui long nhap lai");
-		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.TRANSACTION_LIMIT_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.TRANSACTION_LIMIT_TEXT);
 
 		log.info("TC_11_09_Nhan nut dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");

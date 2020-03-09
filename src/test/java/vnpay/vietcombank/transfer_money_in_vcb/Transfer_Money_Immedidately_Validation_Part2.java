@@ -277,7 +277,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_10_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.DUPLICATED_ACCOUNT_MESSAGE);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.DUPLICATED_ACCOUNT_MESSAGE);
 
 		log.info("TC_10_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -313,7 +313,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_11_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.SAME_ACCOUNT_OWNER_MESSAGE);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.SAME_ACCOUNT_OWNER_MESSAGE);
 
 		log.info("TC_11_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -349,7 +349,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_12_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INEXISTED_ACCOUNT_OWNER_MESSAGE);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INEXISTED_ACCOUNT_OWNER_MESSAGE);
 
 		log.info("TC_12_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -385,7 +385,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_13_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
 		log.info("TC_13_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -421,7 +421,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_14_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
 		log.info("TC_14_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -457,7 +457,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_12_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
 		log.info("TC_12_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -493,7 +493,7 @@ public class Transfer_Money_Immedidately_Validation_Part2 extends Base {
 
 		log.info("TC_13_Step_08: Kiem tra yeu cau nhap noi dung");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_RECEIVE_ACCOUNT);
 
 		log.info("TC_13_Step_09: Click Đong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");

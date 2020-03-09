@@ -18,7 +18,7 @@ import pageObjects.TransactionReportPageObject;
 import pageObjects.saving_online.SavingOnlinePageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
-import vnpay.vietcombank.saving_online.data.SavingOnline_Data;
+import vietcombank_test_data.SavingOnline_Data;
 
 public class SavingOnline_Folow extends Base {
 	AppiumDriver<MobileElement> driver;
