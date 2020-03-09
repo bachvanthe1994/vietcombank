@@ -166,7 +166,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), UIs.LIST_UNIT_VALUE[0]+ " VND");
 		
 		log.info("TC_13_Step_05: Xac nhan hien thi dung So dien thoai duoc nap");
-		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Số điện thoại được nạp"), phone);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
 	}
 	
 	@Parameters ({"phone"})
@@ -186,7 +186,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), UIs.LIST_UNIT_VALUE[0]+ " VND");
 		
 		log.info("TC_08_Step_05: Xac nhan hien thi Label 'So dien thoai duoc nap'");
-		verifyEquals(mobileTopup.getDynamicAmountLabel(driver, "Số điện thoại được nạp"), phone);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
 		
 		log.info("TC_08_Step_06: Xac nhan hien thi Label 'Ma giao dich'");
 		verifyTrue(mobileTopup.isDynamicTextNumberCustomerDisplayed(driver, "Mã giao dịch"));

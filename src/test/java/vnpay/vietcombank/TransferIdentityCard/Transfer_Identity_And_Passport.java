@@ -146,25 +146,25 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_01_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	verifyTrue(moneyTransfer.equals(transferMoney));
 
 	log.info("TC_01_Step_30: lay ra thoi gian chuyen di o man hinh xac thuc thanh cong");
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_01_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_01_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
 
 	log.info("TC_01_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_01_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 	verifyEquals(conten, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
 
 	log.info("TC_01_Step_35: xac thuc thuc hien giao dich moi");
@@ -291,7 +291,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_02_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("EUR", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "EUR");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -303,18 +303,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_02_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_02_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
 
 	log.info("TC_02_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_02_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -443,7 +443,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_03_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("USD", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "USD");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -455,18 +455,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_03_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_03_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
 
 	log.info("TC_03_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_03_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -593,7 +593,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_04_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("VND", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "VND");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -605,18 +605,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_04_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_04_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
 
 	log.info("TC_04_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_04_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -744,7 +744,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_05_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("EUR", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "EUR");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -756,18 +756,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_05_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_05_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
 
 	log.info("TC_05_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_05_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -894,7 +894,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_06_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("USD", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "USD");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -906,18 +906,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_06_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_06_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER.equals(destinationAccount));
 
 	log.info("TC_06_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_06_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -1042,25 +1042,25 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_07_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	verifyTrue(moneyTransfer.equals(transferMoney));
 
 	log.info("TC_07_Step_30: lay ra thoi gian chuyen di o man hinh xac thuc thanh cong");
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_07_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_07_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER.equals(destinationAccount));
 
 	log.info("TC_07_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_07_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER.equals(conten));
 
 	log.info("TC_07_Step_35: xac thuc thuc hien giao dich moi");
@@ -1186,7 +1186,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_08_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("USD", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "USD");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -1198,18 +1198,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_08_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_08_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER.equals(destinationAccount));
 
 	log.info("TC_08_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_08_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 	log.info("TC_08_Step_35: xac thuc thuc hien giao dich moi");
@@ -1336,7 +1336,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_09_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("EUR", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "EUR");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -1348,18 +1348,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_09_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_09_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER.equals(destinationAccount));
 
 	log.info("TC_09_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_09_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -1486,7 +1486,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_10_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("VND", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "VND");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -1498,18 +1498,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_10_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_10_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER.equals(destinationAccount));
 
 	log.info("TC_10_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_10_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -1637,7 +1637,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_11_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("USD", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "USD");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -1649,18 +1649,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_11_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_11_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER.equals(destinationAccount));
 
 	log.info("TC_11_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_11_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
@@ -1787,7 +1787,7 @@ public class Transfer_Identity_And_Passport extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_12_Step_29: lay ra so tien chuyen di o man hinh xac thuc thanh cong");
-	String transferMoney = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
+	String transferMoney = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
 	String transferMoneyLong = transferMoney.replaceAll("EUR", "");
 	double transferMoneyLongString = convertMoneyToDouble(transferMoneyLong, "EUR");
 	String transferMoneyLongToStringFormat = String.format("%.0f", transferMoneyLongString);
@@ -1799,18 +1799,18 @@ public class Transfer_Identity_And_Passport extends Base {
 	transferTime = trasferPage.getDynamicTransferTimeAndMoney(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS, "4");
 
 	log.info("TC_12_Step_31: ten nguoi thu huong");
-	String beneficiaryName = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
+	String beneficiaryName = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.BENEFICIARY_NAME);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.USER_NAME.equals(beneficiaryName));
 
 	log.info("TC_12_Step_32: tai khoan giao dich");
-	String destinationAccount = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
+	String destinationAccount = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.DESTINATION_ACCOUNT);
 	verifyTrue(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER.equals(destinationAccount));
 
 	log.info("TC_12_Step_33: ma giao dich");
-	transactionNumber = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
+	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
 	log.info("TC_12_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicAmountLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
+	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
 
 	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 

@@ -34,7 +34,7 @@
 <!-- 				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" /> -->
 <!-- 				<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" /> -->
 				
-				<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_02" />
+				<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_03" />
 
 		</classes>
 	</test>

@@ -110,7 +110,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.CONFIRM_LABEL), "Xác thực giao dịch");
 
 		log.info("TC_90_Verify message xac thuc mat khau");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Xác thực giao dịch"), "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch");
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Xác thực giao dịch"), "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch");
 
 		log.info("TC_90_Verify hien thi button tiep tuc");
 		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Tiếp tục"));
@@ -179,16 +179,16 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		verifyTrue(transferMoney.isDynamicTimeAndMoneyDisplay(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4"));
 
 		log.info("TC_01_Step_:Ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_01_Step_:Ngan hàng huong");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_01_Step_: Tai khoan dich");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_01_Step_: Noi dung");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 		log.info("TC_01_Step_: Hien thi button thuc hien giao dich moi");
 		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
@@ -261,10 +261,10 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, SetupContact_Data.UI.NAME_CARD[0], "Lưu danh bạ");
 
 		log.info("TC_01_Verify so tai khoan");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Số tài khoản"), Account_Data.Valid_Account.ACCOUNT_TO);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Số tài khoản"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_01_Verify ngan hàng huong");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK);
 
 		log.info("TC_01_Nhan button luu");
 		transferMoney.clickToDynamicButton(driver, "Lưu");
