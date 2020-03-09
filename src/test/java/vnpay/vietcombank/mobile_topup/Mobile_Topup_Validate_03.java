@@ -33,16 +33,15 @@ public class Mobile_Topup_Validate_03 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
+		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
 	@Test
 	public void TC_01_ManHinhXacNhanThongTin_NhanIconBack() {
 
-		home = PageFactoryManager.getHomePageObject(driver);
-
 		log.info("TC_01_Step_00: Keo xuong va click vao phan 'Nap tien dien thoai'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
-		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 
 		log.info("TC_01_Step_01:Chon tai khoan nguon");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
