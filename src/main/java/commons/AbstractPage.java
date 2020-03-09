@@ -927,9 +927,9 @@ public class AbstractPage {
 
 	public void clickToDynamicDropDownListTextViewByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValueAndID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValueAndID);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX_BY_HEADER, dynamicTextValueAndID);
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROPDOWN_BY_HEADER, dynamicTextValueAndID);
 		}
 
 	}
