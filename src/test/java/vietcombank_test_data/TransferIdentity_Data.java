@@ -14,6 +14,7 @@ public class TransferIdentity_Data {
 	public static final String CONNTENT = "Nội dung";
 	public static final String TRANSECTION_NUMBER = "Mã giao dịch";
 	public static final String AMOUNT = "11000";
+	public static final String AMOUNT_USD = "1";
 	public static final String OTP_DATA = "12345";
 	public static final String OTP_FALSE = "654321";
 	public static final String PASS_MAXLENGTH_20 = "acb12345678912345678";
@@ -29,6 +30,7 @@ public class TransferIdentity_Data {
 	public static final String MONEY_USD = "Số tiền(USD)";
 	public static final String TRANSACTION_FEE = "Số tiền phí";
 	public static final String MONEY = "Số tiền";
+	public static final String PASSWORD = "aaaa1111";
     }
 
     public static class textDataInputForm {
