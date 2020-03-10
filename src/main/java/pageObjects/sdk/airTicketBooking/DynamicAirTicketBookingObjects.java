@@ -71,6 +71,16 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	    clickToElement(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicTextAndID);
 	}
     }
+    
+  //click vao check box phan dieu khoan, tham so truyen vao la id 
+    public void clickToDynamicCheckBoxByID(String... dynamicID) {
+	boolean status = false;
+	scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_ID, dynamicID);
+	status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_ID, dynamicID);
+	if (status == true) {
+	    clickToElement(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_ID, dynamicID);
+	}
+    }
 
 //click vao text, hoac button tren phan thong tin lien he,phan gioi tinh, tham so la id va text
     public void checkToDynamicTextOrDropDownByLabel(String... dynamicTextAndID) {
@@ -195,6 +205,15 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	}
     }
 
+    //Chon chieu di / chieu ve bang index linearlayout
+    public void clickToDynamicFlight2WayCode(String... idAndIndex) {
+	scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
+	boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
+	if (status == true) {
+	    clickToElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
+	}
+    }
+    
     public void waitForAirPlainDisapear(String dynamicText) {
 	waitForElementInvisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicText);
     }

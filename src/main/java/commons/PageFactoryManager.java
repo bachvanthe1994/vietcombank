@@ -9,6 +9,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
+import pageObjects.OnlineTopupPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SetupContactPageObject;
@@ -114,4 +115,7 @@ public class PageFactoryManager {
 		return new MobileTopupPageObject(driver);
 	}
 	
+	public static OnlineTopupPageObject getOnlineTopupPageObject(AppiumDriver<MobileElement> driver) {
+		return new OnlineTopupPageObject(driver);
+	}
 }
