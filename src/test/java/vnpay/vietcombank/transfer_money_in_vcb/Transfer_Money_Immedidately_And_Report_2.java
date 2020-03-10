@@ -59,7 +59,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_13_Step_04: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -70,7 +70,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_06: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_13_Step_07: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -152,7 +152,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_33: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_13_Step_34: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -167,7 +167,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_37: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_13_Step_38: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -336,7 +336,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_15_Step_03: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_15_Step_04: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -347,7 +347,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_15_Step_06: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_15_Step_07: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -435,7 +435,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_15_Step_26: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_15_Step_27: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -450,7 +450,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_15_Step_30: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_15_Step_31:Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -618,7 +618,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_17_Step 03: Chon account 1");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_17_Step 04: Lay so du kha dung tai khoan 1");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -629,7 +629,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_17_Step 06: Chon USD account");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_17_Step 07: Lay so du tai khoan USD");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -911,7 +911,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_19_Step 03: Chon account 1");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_19_Step 04: Lay so du kha dung tai khoan 1");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -922,7 +922,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_19_Step 06: Chon EUR account");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_19_Step 07: Lay so du tai khoan EUR");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1202,7 +1202,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_21_Step_03: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_21_Step_04: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1284,7 +1284,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_21_Step_30: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_21_Step_31: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1394,7 +1394,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_23_Step_03: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_23_Step_04: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -1482,7 +1482,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_23_Step_30: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-		transferInVCB.sleep(driver, 1000);
+		transferInVCB.sleep(driver, 2000);
 
 		log.info("TC_23_Step_31: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
