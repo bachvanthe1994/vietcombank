@@ -37,13 +37,13 @@ public class Mobile_Topup_Flow extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+
+		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
 	@Parameters({ "pass", "phone" })
 	@Test
 	public void TC_01_NapTheDienThoai_GiaTriMin_QuaMK(String pass, String phone) {
-
-		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
