@@ -37,7 +37,7 @@ public class DomesticAirTicketBooking_Data {
 		public static final String HCM_CODE = "SGN";
 		public static final String INTERNATIONAL_PLACE = "Singapore";
 		public static final String INTERNATIONAL_CODE = "SIN";
-		public static final String ACCOUNT2 = "0121000667333";
+		public static final String ACCOUNT2 = "0541001555240";
 
 	}
 
