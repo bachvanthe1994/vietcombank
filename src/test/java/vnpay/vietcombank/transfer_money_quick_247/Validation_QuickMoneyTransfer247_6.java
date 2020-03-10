@@ -74,7 +74,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_FROM_LABEL));
 
 		log.info("TC_82_Lay gia tri tai khoan nguon tren man xac nhan thong tin");
-		String accountFrom = transferMoney.getDynamicAmountLabel(driver, "Tài khoản nguồn");
+		String accountFrom = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
 
 		log.info("TC_82_verify so tai khoan");
 		verifyEquals(accountFrom, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
@@ -86,7 +86,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO_LABEL));
 
 		log.info("TC_83_Step_: Tai khoan dich va ten nguoi huong");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Tài khoản đích/ VND"), Account_Data.Valid_Account.ACCOUNT_TO + "/ " + TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tài khoản đích/ VND"), Account_Data.Valid_Account.ACCOUNT_TO + "/ " + TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 	}
 
 	@Test
@@ -95,7 +95,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.MOUNT_LABEL));
 
 		log.info("TC_84_Step_Verify so tien chuyen");
-		amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replaceAll("\\D+", "");
+		amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replaceAll("\\D+", "");
 		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
 	}
 
@@ -112,7 +112,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Thông tin giao dịch", "1");
 
 		log.info("TC_85_Lay so tien ty gia quy doi");
-		String[] a = transferMoney.getDynamicAmountLabel(driver, "Tỷ giá quy đổi tham khảo").split("~");
+		String[] a = transferMoney.getDynamicTextByLabel(driver, "Tỷ giá quy đổi tham khảo").split("~");
 		String getChangeVNDString = a[1].replaceAll("\\D+", "");
 		int getChangeVND = Integer.parseInt(getChangeVNDString);
 
@@ -120,7 +120,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_85_Step_Verify so tien chuyen USD");
-		amountTranferString = transferMoney.getDynamicAmountLabel(driver, "Số tiền").replace(".00 USD", "");
+		amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replace(".00 USD", "");
 		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY_USD);
 		long amountAfter = Long.parseLong(amountTranferString);
 
@@ -136,7 +136,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.AMOUNT_FEE_LABEL));
 
 		log.info("TC_86_Step_: Verify so tien phi");
-		String amountfeeString = transferMoney.getDynamicAmountLabel(driver, "Số tiền phí").replace(" USD", "");
+		String amountfeeString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replace(" USD", "");
 		verifyEquals(amountfeeString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_USD);
 
 		log.info("TC_86_Step_: Verify loai phi");
@@ -149,7 +149,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.NOTE_LABEL));
 
 		log.info("TC_87_Lay gia tri noi dung chuyen tien");
-		String note = transferMoney.getDynamicAmountLabel(driver, "Nội dung");
+		String note = transferMoney.getDynamicTextByLabel(driver, "Nội dung");
 
 		log.info("TC_87_verify noi dung");
 		verifyEquals(note, TransferMoneyQuick_Data.TransferQuick.NOTE);
@@ -195,11 +195,11 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.CONFIRM_LABEL), "Xác thực giao dịch");
 
 		log.info("TC_90_Verify so dien thoai bi an");
-		String[] phone = transferMoney.getDynamicAmountLabel(driver, "Xác thực giao dịch").split("thoại ");
+		String[] phone = transferMoney.getDynamicTextByLabel(driver, "Xác thực giao dịch").split("thoại ");
 		verifyEquals(phone[1], LogIn_Data.Login_Account.PHONE_HIDDEN);
 
 		log.info("TC_90_Verify message xac thuc OTP");
-		verifyEquals(transferMoney.getDynamicAmountLabel(driver, "Xác thực giao dịch"), "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN);
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Xác thực giao dịch"), "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN);
 
 		log.info("TC_90_Verify hien thi button tiep tuc");
 		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Tiếp tục"));

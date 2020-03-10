@@ -32,12 +32,12 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
 
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.04";
-		public static final String USD_PAYMENT_BY_OTP_FEE = "0.1";
+		public static final String USD_PAYMENT_BY_OTP_FEE = "0";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,145.00 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274.03 VND";
-		public static final String USD_CHANGED_MONEY = "46280";
+		public static final String USD_CHANGED_MONEY = "46290";
 		public static final String EUR_CHANGED_MONEY = "48548";
 
 		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
@@ -45,7 +45,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String NUMBER_WEEK_FREQUENCY = "2";
 		public static final String NUMBER_MONTH_FREQUENCY = "2";
 
-		public static final String MONEY_OVER_PER_TRANSACTION = "10000001";
+		public static final String MONEY_OVER_PER_TRANSACTION = "100000001";
 		public static final String MONEY_OVER_PER_DAY_OF_GROUP = "8000001";
 
 	}
@@ -58,13 +58,14 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_RECEIVE_ACCOUNT = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_RECEIVE_ACCOUNT_EUR = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
 		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER = "Tài khoản đích không đủ 10 ký tự, Quý khách vui lòng kiểm tra lại";
-		public static final String TRANSACTION_LIMIT_TEXT = "Tài khoản nhận không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
+		public static final String TRANSACTION_LIMIT_TEXT = "Tài khoản đích không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
 		public static final String EMPTY_RECEIVE_ACCOUNT_MESSAGE = "Quý khách vui lòng nhập tài khoản nhận";
 		public static final String EMPTY_MONEY_MESSAGE = "Quý khách vui lòng nhập số tiền chuyển khoản";
 		public static final String EMPTY_TRANSFER_NOTE_MESSAGE = "Quý khách vui lòng nhập nội dung giao dịch";
 		public static final String DUPLICATED_ACCOUNT_MESSAGE = "Tài khoản nguồn và tài khoản đích không được giống nhau, Quý khách vui lòng kiểm tra lại";
 		public static final String SAME_ACCOUNT_OWNER_MESSAGE = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
 		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
+		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE_1 = "Số tài khoản người nhận không đúng. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
@@ -77,7 +78,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String ERROR_MESSAGE_FOR_WRONG_OTP = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_FOR_WRONG_OTP_N_TIMES = "Nhập sai OTP quá 4 lần. Quý khách vui lòng thực hiện giao dịch mới.";
 		public static final String ERROR_MESSAGE_FOR_WRONG_PASSWORD = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 3 lần.";
-		public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 10,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String TRANSACTION_VALIDATION = "Xác thực giao dịch";
 		public static final String OTP_NOTIFICATION_SENDED = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;
@@ -117,7 +118,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_ACCOUNT_15_CHARACTERS = "445555555555555";
 		public static final String INVALID_ACCOUNT_LESS_THAN_10_CHARACTERS = "001100000";
 		public static final String INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS = "00110000000";
-		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_SYSTEM = "0011000000000";
+		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_SYSTEM = "0011111111111";
 		public static final String INVALID_ACCOUNT_NOT_EXISTED_IN_VCB = "01825909301";
 		public static final String TEXT_AND_SPECIAL_CHARACTERS = "Abc!@#$%%";
 		public static final String VIETNAMESE_LANGUAGE = "Chuyển khoản nội bộ";

@@ -14,7 +14,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
     private AppiumDriver<MobileElement> driver;
 
     public String getDynamicAmountLabelConvertVNDToLong(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-	String moneyString = getDynamicAmountLabel(driver, dynamicTextValue);
+	String moneyString = getDynamicTextByLabel(driver, dynamicTextValue);
 	moneyString = moneyString.replaceAll("Phí: ", "");
 	moneyString = moneyString.replaceAll(",", "");
 	moneyString = moneyString.replaceAll("VND/giao dịch", "");

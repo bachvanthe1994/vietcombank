@@ -17,6 +17,7 @@ public class FilmTicketBookingPageUIs {
 	public static final String FILM_DATE_TEXT_VIEW_LINEAR_LAYOUT_BY_LINEAER_LAYOUT_ID = "//android.widget.LinearLayout[@resource-id='com.VCB:id/llDate']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID = "//android.view.ViewGroup[@resource-id='%s']//android.widget.TextView[@index='%s']";
 	public static final String DYNAMIC_TEXT_VIEW_LINEAR_LAYOUT_BY_LINEAER_LAYOUT_ID = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
+	public static final String DYNAMIC_TEXT_FILM_TICKET_DETAIL_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.TextView";
 	
 	//View
 	public static final String VIEW_BY_CONTENT_DESC = "//android.view.View[@content-desc = '%s']//android.view.View";
