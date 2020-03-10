@@ -190,7 +190,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_08_03_Nhap tai khoan dich");
-		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.destinationAccount, "Thông tin người hưởng", "1");
 
 		log.info("TC_08_04_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -198,7 +198,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		transferRecurrent.inputFrequencyNumber(info.frequencyNumber);
 
 		log.info("TC_08_05_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.money, "Thông tin giao dịch", "1");
 
 		log.info("TC_08_06_Chon nguoi tra phi giao dich");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
