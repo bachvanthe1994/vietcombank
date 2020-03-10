@@ -239,7 +239,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC_74_Step_Verify so tien phi");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_VND);
+		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_OTP_VND);
 
 		log.info("TC_74_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]));
@@ -263,7 +263,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC_75_Step_Verify so tien phi");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_VND);
+		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_MK_VND);
 
 		log.info("TC_75_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]));
