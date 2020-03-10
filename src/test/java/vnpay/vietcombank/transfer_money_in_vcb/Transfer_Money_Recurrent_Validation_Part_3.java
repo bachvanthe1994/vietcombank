@@ -237,7 +237,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		log.info("TC_10_03_Lay danh sach goi y nhanh");
 		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
-		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,700,600 VND", "1,000 EUR ~ 27,006,000 VND");
+		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,427,400 VND", "1,000 EUR ~ 24,274,000 VND");
 
 		log.info("TC_10_04_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
@@ -270,7 +270,6 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 
 		log.info("TC_12_01_Focus lai vao o nhap So tien");
 		transferRecurrent.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		transferRecurrent.scrollDownToText(driver, "50,000,000 VND");
 
 		log.info("TC_12_02_Lay danh sach goi y nhanh");
 		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
@@ -286,7 +285,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	public void TC_13_ChuyenTienDinhKy_ChonMotGiaTriGoiY() {
 		String actualAmountMoney;
 		log.info("TC_13_01_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, "5000", "Thông tin giao dịch", "1");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, "50", "Thông tin giao dịch", "1");
 
 		log.info("TC_13_02_Chon 1 gia tri trong danh sach goi y");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "50,000 VND");
