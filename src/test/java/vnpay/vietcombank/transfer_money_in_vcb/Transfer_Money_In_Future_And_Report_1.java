@@ -29,7 +29,8 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	private String transferFee;
 	private String transferTime;
 	private String transactionNumber;
-	double rate;
+	private long fee;
+	private double rate;
 	String[] exchangeRateUSD;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(1);
@@ -68,6 +69,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_01_Step_05: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_01_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -78,6 +80,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_01_Step_08: Chon tai khoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_01_Step_09: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -124,9 +127,11 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_01_Step_23: Chon SMS OTP");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
+		fee = convertMoneyToLong(transferFee, "VND");
 
 		log.info("TC_01_Step_24: Kiem tra so tien phi hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (TransferMoneyInVCB_Data.InputDataInFutureForOTP.OTP_FEE + " VND"));
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), (addCommasToLong(fee + "") + " VND"));
 
 		log.info("TC_01_Step_25: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -167,6 +172,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_01_Step_38: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_01_Step_39: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -180,6 +186,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_01_Step_42: Chon tai khoan nguoi nhan");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_01_Step_43: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
