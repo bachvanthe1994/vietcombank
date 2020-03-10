@@ -1281,6 +1281,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 		log.info("TC_21_Step_30: Chon tai ngoan chuyen");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transferInVCB.sleep(driver, 10000);
 
 		log.info("TC_21_Step_31: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
