@@ -20,6 +20,7 @@ public class AirTicketBookingUIs {
 	public static final String DYNAMIC_FLIGHT_SHIFT_BY_FLIGHT_CODE = "//*[@resource-id=\"%s\"]//android.widget.TextView[@resource-id='com.VCB:id/tv_flightcode_internal' and contains(@text,'%s')]";
 	public static final String DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY = "//*[@resource-id=\"%s\"]//android.widget.TextView[@resource-id='com.VCB:id/tv_flightcode_internal' and contains(@text,'%s')]//parent::android.widget.LinearLayout//parent::android.widget.LinearLayout//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY = "//*[@resource-id=\"%s\"]//android.widget.TextView[@resource-id='com.VCB:id/tv_flightNo' and contains(@text,'%s')]//following::android.widget.LinearLayout//android.widget.TextView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']";
 	public static final String DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_HEADER_IN_TICKET_INFO = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.TextView[@text='%s']";
@@ -37,5 +38,6 @@ public class AirTicketBookingUIs {
 //Check box
 	public static final String DYNAMIC_CHECK_BOX_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.CheckBox[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_CHECK_BOX_BY_TEXT = "//android.widget.CheckBox[@text=\"%s\"]";
+	public static final String DYNAMIC_CHECK_BOX_BY_ID = "//android.widget.CheckBox[@resource-id=\"%s\"]";
 
 }

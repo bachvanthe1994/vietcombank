@@ -49,6 +49,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_00_03_Chon tai khoan nguon");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
@@ -68,7 +69,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.fee);
 
 		log.info("TC_00_08_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBox(driver, info.note, "Nội dung");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_00_09_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -189,6 +190,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		log.info("TC_07_01_Chon phuong thuc chuyen tien");
 
 		log.info("TC_07_02_Chon tai khoan nguon");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 

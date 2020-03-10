@@ -37,7 +37,9 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.HasSettings;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.Setting;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSDriver;
@@ -167,6 +169,7 @@ public class Base {
 		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
 		driver = new AndroidDriver<>(new URL(url), cap);
+		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
 
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 
@@ -186,6 +189,7 @@ public class Base {
 		caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.3.1");
 		caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
 		driver = new IOSDriver(new URL(url), caps);
+		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 		return driver;
 	}
@@ -483,9 +487,9 @@ public class Base {
 			double amount = Double.parseDouble(number);
 			m = String.format("%,.2f", amount);
 		} catch (Exception e) {
-			
+
 		}
-		
+
 		return m;
 	}
 
@@ -495,9 +499,9 @@ public class Base {
 			long amount = Long.parseLong(number);
 			m = String.format("%,d", amount);
 		} catch (Exception e) {
-			
+
 		}
-		
+
 		return m;
 	}
 
@@ -622,9 +626,8 @@ public class Base {
 		int day = date.getDayOfMonth();
 		return day + "";
 	}
-	
-	
-	//Back năm về quá khứ so với năm hiện tại
+
+	// Back năm về quá khứ so với năm hiện tại
 	public String getBackWardYear(long years) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusYears(years);
@@ -762,7 +765,7 @@ public class Base {
 		int year = date.getYear();
 		return "THÁNG" + " " + month + " " + year;
 	}
-	
+
 	public long canculateAvailableBalances(long surPlus, long money, long transactionFree) {
 		return surPlus - money - transactionFree;
 	}
@@ -770,9 +773,9 @@ public class Base {
 	public double canculateAvailableBalancesCurrentcy(double surPlus, double money, double transactionFree) {
 		double scale = Math.pow(10, 2);
 		return Math.round((surPlus - money - transactionFree) * scale) / scale;
-		
+
 	}
-	
+
 	public double convertAvailableBalanceCurrentcyToDouble(String money) {
 		double result = 0;
 		try {
@@ -786,6 +789,9 @@ public class Base {
 	public long convertAvailableBalanceCurrentcyToLong(String money) {
 		long result = 0;
 		try {
+			if (money.contentEquals("Không mất phí")) {
+				result = 0;
+			}
 			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
 		} catch (Exception e) {
 
@@ -813,39 +819,37 @@ public class Base {
 		}
 		return result;
 	}
-	
+
 	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
-	    try {
-	    	result = formatter2.format(formatter1.parse(stringDate));
-	    }
-	    catch (Exception e) {
-			
+		SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			result = formatter2.format(formatter1.parse(stringDate));
+		} catch (Exception e) {
+
 		}
 		return result;
-		
+
 	}
-	
+
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
-	    try {
-	    	result = formatter2.format(formatter1.parse(stringDate));
-	    }
-	    catch (Exception e) {
-			
+		SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			result = formatter2.format(formatter1.parse(stringDate));
+		} catch (Exception e) {
+
 		}
 		return result;
-		
+
 	}
-	
+
 	public String convertVietNameseStringToString(String vietnameseString) {
 		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(temp).replaceAll("");
 	}
-	
+
 }

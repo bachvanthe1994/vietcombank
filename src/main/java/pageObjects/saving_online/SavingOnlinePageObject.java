@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.saving_online.SavingOnlineUIs;
+import io.appium.java_client.TouchAction;
 
 public class SavingOnlinePageObject extends AbstractPage {
 
@@ -28,12 +29,13 @@ public class SavingOnlinePageObject extends AbstractPage {
 	}
 	
 	//Click vào dropdown list tham số truyển vào là label của ô dropdown list đó
-	public void clickToDynamicDropDown(String dymanicText) {
+	public void clickToDynamicDropDownInSavingOnline(String dymanicText) {
 		boolean status = false;
-		scrollIDown(driver, SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
-		status = waitForElementVisible(driver, SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		String locator = String.format(SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		scrollIDown(driver, locator);
+		status = waitForElementVisible(driver, locator);
 		if (status == true) {
-			clickToElement(driver, SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+			TabtoElementByPoint(driver, locator);
 		}
 
 	}

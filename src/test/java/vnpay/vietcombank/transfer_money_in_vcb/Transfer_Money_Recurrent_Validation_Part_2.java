@@ -51,7 +51,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_01_04_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToButton(driver, "Tiếp tục");
 
 		log.info("TC_01_05_Kiem tra xuat hien nhom thong Tan suat");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Tần suất"));
@@ -266,7 +266,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_14_05_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToButton(driver, "Tiếp tục");
 
 		log.info("TC_14_06_Chon Ngay bat dau");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, startDate);
@@ -291,7 +291,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_14_12_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToButton(driver, "Tiếp tục");
 
 	}
 
@@ -352,7 +352,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_18_05_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToButton(driver, "Tiếp tục");
 
 		log.info("TC_18_06_Chon Ngay ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
@@ -365,49 +365,32 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_18_08_Click Huy");
 		login.clickToDynamicAcceptButton(driver, "android:id/button2");
 
-		log.info("TC_18_09_Click Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
-
-		log.info("TC_18_10_Click Chuyen tien trong ngan hang");
-		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
-
-		log.info("TC_18_11_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-
-		log.info("TC_18_12_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
-
 	}
 
 	@Test
 	public void TC_19_ChuyenTienDinhKy_ComboNgayKetThuc_KiemTraChonNgayKetThuc_BangNgayBatDau() {
 		String endDate = getForwardDate(2);
 
-		log.info("TC_19_01_Click Huy");
-		login.clickToDynamicAcceptButton(driver, "android:id/button2");
-
-		log.info("TC_19_02_Click Back");
+		log.info("TC_19_01_Click Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
-		log.info("TC_19_03_Click Chuyen tien trong ngan hang");
+		log.info("TC_19_02_Click Chuyen tien trong ngan hang");
 		homePage.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
-		log.info("TC_19_04_Chon phuong thuc chuyen tien");
+		log.info("TC_19_03_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
-		log.info("TC_19_05_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
+		log.info("TC_19_04_Scroll den nut Tiep tuc");
+		transferRecurrent.scrollDownToButton(driver, "Tiếp tục");
 
-		log.info("TC_19_06_Chon Ngay Ket thuc");
+		log.info("TC_19_05_Chon Ngay Ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
 
 		endDate = getForwardYear(1);
 		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 1;
-		log.info("TC_19_07_Kiem tra khong cho phep chon");
+		log.info("TC_19_06_Kiem tra khong cho phep chon");
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 	}
 

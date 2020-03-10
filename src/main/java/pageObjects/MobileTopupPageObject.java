@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import commons.AbstractPage;
@@ -19,66 +18,47 @@ public class MobileTopupPageObject extends AbstractPage {
 	}
 	private AppiumDriver<MobileElement> driver;
 	
+	public String getStringNumber(long expVal,String... dynamicValue){
+		
+		long exp = 0;
+		String locator = String.format(DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, (Object[]) dynamicValue);
+		ArrayList<Long> allStringNumber = new ArrayList<Long>();
+		List<MobileElement> elements = driver.findElementsByXPath(locator);
+		for(MobileElement element : elements) {
+			allStringNumber.add(Long.parseLong(element.getText().replaceAll("\\D+","")));
+		}
+		for(int i=0;i<allStringNumber.size();i++) {
+			if(expVal > allStringNumber.get(i)) {
+				exp = allStringNumber.get(i);
+			}
+		}
+		String data = Long.toString(exp); 
+		data = addCommasToLong(data);
+		return data;		
+	}
 	
+	public static String addCommasToLong(String number) {
+		String m = "";
+		try {
+			long amount = Long.parseLong(number);
+			m = String.format("%,d", amount);
+		} catch (Exception e) {
+			
+		}
+		
+		return m;
+	}
 	
-//	public boolean isMoneyLessThanExpextedDisplayed(String dynamicID,long expValue) {
-//		
-//		boolean isDisplayed = false;
-//		String dynamicTextValue = getTextInconvertListStringToLong(expValue, dynamicID);
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-//		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-//		if (status == true) {
-//			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-//		}
-//		return isDisplayed;
-//
-//	}
-//	
-//	public void clickToDynamicButtonLinkOrLinkText(String dynamicID,long expValue) {
-//		boolean status = false;
-//		String dynamicTextValue = getTextInconvertListStringToLong(expValue, dynamicID);
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-//		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-//		if (status == true) {
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-//
-//		}
-//	}
-//	
-//	public String getTextInconvertListStringToLong(long expValue,String dynamicID){
-//		
-//		String getText = "";
-//		List<String> listText = getListOfSuggestedMoneyOrListText(driver, dynamicID);
-//		ArrayList<Long> longList = new ArrayList<Long>(Arrays.asList(1L, 2L));
-//		for(String text :listText) {
-//			longList.add(convertMoneyToLong(text, "VND"));
-//		}
-//		for(int i=0;i<longList.size();i++) {
-//			if(expValue > longList.indexOf(i)) {
-//				getText = longList.indexOf(i)+" VND";
-//			}
-//		}
-//		return getText;
-//		
-//	}
-//	
-//	public long convertMoneyToLong(String money, String currency) {
-//		money = money.replaceAll(" " + currency, "");
-//		money = money.replaceAll(",", "");
-//		long m = Long.parseLong(money);
-//		return m;
-//	}
-//	
-//	public static String addCommasToLong(String number) {
-//		String m = "";
-//		try {
-//			long amount = Long.parseLong(number);
-//			m = String.format("%,d", amount);
-//		} catch (Exception e) {
-//			
-//		}
-//		
-//		return m;
-//	}
+	public String getStringNumberAfterCaculate(String beforeAcc,String cardMoney, String feeMoney) {
+		
+		long before = Long.parseLong(beforeAcc.replaceAll("\\D+",""));
+		long card = Long.parseLong(cardMoney.replaceAll("\\D+",""));
+		long fee = Long.parseLong(feeMoney.replaceAll("\\D+",""));
+		
+		long after = before - card - fee;
+		String afterCal = after+"";
+		
+		return addCommasToLong(afterCal);
+	}
 
 }
