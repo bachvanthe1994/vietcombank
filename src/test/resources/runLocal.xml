@@ -35,7 +35,7 @@
 			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" /> -->
 
 			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_04" /> -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
 
 
 		</classes>
