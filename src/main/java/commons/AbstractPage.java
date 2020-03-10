@@ -61,6 +61,15 @@ public class AbstractPage {
 
 	}
 
+	public void TabtoElementByPoint(AppiumDriver<MobileElement> driver, String locator) {
+		MobileElement element = driver.findElement(By.xpath(locator));
+		TouchAction touch = new TouchAction(driver);
+		int x = element.getLocation().getX();
+		int y = element.getLocation().getY();
+		touch.tap(PointOption.point(x, y)).perform();
+
+	}
+	
 	public boolean isControlForcus(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -807,7 +816,7 @@ public class AbstractPage {
 //Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
