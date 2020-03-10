@@ -186,7 +186,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void scrollUp(AppiumDriver<MobileElement> driver, String locator) {
+	public void scrollUp(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
 		int startY = (int) (size.getHeight() * 0.30);
@@ -750,7 +750,7 @@ public class AbstractPage {
 
 	/* SCROLL UP */
 	public void scrollUpToText(AppiumDriver<MobileElement> driver, String dynamicText) {
-		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT);
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
 
