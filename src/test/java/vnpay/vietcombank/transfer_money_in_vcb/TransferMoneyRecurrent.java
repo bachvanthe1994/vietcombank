@@ -116,7 +116,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
 
 	log.info("TC_01_10_Chon phuong thuc xac thuc");
-	transferRecurrent.scrollDownToText(driver, "Phương thức xác thực");
+	transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 	transferFee = convertAvailableBalanceCurrentcyToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
@@ -347,7 +347,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
 
 	log.info("TC_05_10_Chon phuong thuc xac thuc");
-	transferRecurrent.scrollDownToText(driver, "Phương thức xác thực");
+	transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 	transferFee = convertAvailableBalanceCurrentcyToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
@@ -579,7 +579,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
 
 	log.info("TC_09_10_Chon phuong thuc xac thuc");
-	transferRecurrent.scrollDownToText(driver, "Phương thức xác thực");
+	transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 	transferFee = convertAvailableBalanceCurrentcyToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod));
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
@@ -810,7 +810,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
 
 	log.info("TC_13_10_Chon phuong thuc xac thuc");
-	transferRecurrent.scrollDownToText(driver, "Phương thức xác thực");
+	transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 	transferFee = convertAvailableBalanceCurrentcyToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod));
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
@@ -1042,7 +1042,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.note);
 
 	log.info("TC_17_10_Chon phuong thuc xac thuc");
-	transferRecurrent.scrollDownToText(driver, "Phương thức xác thực");
+	transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 	transferFee = convertAvailableBalanceCurrentcyToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
@@ -1274,7 +1274,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.note);
 
 	log.info("TC_21_10_Chon phuong thuc xac thuc");
-	transferRecurrent.scrollDownToText(driver, "Phương thức xác thực");
+	transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 	transferFee = convertAvailableBalanceCurrentcyToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
