@@ -216,10 +216,15 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> elementsOne = null;
 		for (int i = 0; i < 30; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
 			overRideTimeOut(driver, 2);
-			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+			try {
+				elementsOne = driver.findElements(By.xpath(locator));
+			} catch (Exception e) {
+			}
+
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
 				break;
