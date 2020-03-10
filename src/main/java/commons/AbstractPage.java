@@ -192,7 +192,7 @@ public class AbstractPage {
 		int startY = (int) (size.getHeight() * 0.30);
 		int endY = (int) (size.getHeight() * 0.80);
 		TouchAction touch = new TouchAction(driver);
-
+		locator = String.format(locator, (Object[]) dynamicValue);
 		for (int i = 0; i < 20; i++) {
 			overRideTimeOut(driver, 2);
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
