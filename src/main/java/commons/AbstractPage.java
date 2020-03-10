@@ -1118,7 +1118,7 @@ public class AbstractPage {
 	// Click combobox
 	public void clickToTextViewCombobox(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
-		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
