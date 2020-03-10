@@ -47,6 +47,7 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_00_03_Chon tai khoan nguon");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 

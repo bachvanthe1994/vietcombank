@@ -112,17 +112,19 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	@Test
 	public void TC_05_ChuyenTienDinhKy_TextboxSoTien_KiemTraHienThiMacDinh() {
 		log.info("TC_05_01_Chon tai khoan nguon VND");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_05_02_Scroll den nut Tiep tuc");
-		transferRecurrent.scrollDownToText(driver, "Tiếp tục");
+		transferRecurrent.scrollDownToButton(driver, "Tiếp tục");
 
 		String actualAmountMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
 		log.info("TC_05_03_Kiem tra gia tri trong o So tien");
 		verifyEquals(actualAmountMoney, "Số tiền");
 
 		log.info("TC_05_04_Chon tai khoan nguon ngoai te");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
@@ -136,6 +138,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	public void TC_06_ChuyenTienDinhKy_TextboxSoTien_KiemTraGioiHanNhap_VND() {
 		String actualAmountMoney;
 		log.info("TC_06_01_Chon tai khoan nguon VND");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
@@ -152,6 +155,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	public void TC_07_ChuyenTienDinhKy_TextboxSoTien_KiemTraGioiHanNhap_NgoaiTe() {
 		String actualAmountMoney;
 		log.info("TC_07_01_Chon tai khoan nguon Ngoai te");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
@@ -171,6 +175,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		List<String> listExpectAmountMoney = new ArrayList<String>();
 
 		log.info("TC_08_01_Chon tai khoan nguon VND");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
@@ -186,6 +191,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
 
 		log.info("TC_08_05_Chon tai khoan nguon VND");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
@@ -200,6 +206,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		List<String> listActualAmountMoney = new ArrayList<String>();
 		List<String> listExpectAmountMoney = new ArrayList<String>();
 		log.info("TC_09_01_Chon tai khoan nguon VND");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
@@ -220,6 +227,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		List<String> listActualAmountMoney = new ArrayList<String>();
 		List<String> listExpectAmountMoney = new ArrayList<String>();
 		log.info("TC_10_01_Chon tai khoan nguon Ngoai te");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
@@ -240,6 +248,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		String actualAmountMoney;
 
 		log.info("TC_11_01_Chon tai khoan nguon");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 

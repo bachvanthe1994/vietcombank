@@ -95,6 +95,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_02_02: Kiem tra hien thi man hinh Home");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền trong VCB"));
 	}
 
 	@Test
@@ -104,12 +105,14 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_03_03_Kiem tra Hien thi mac dinh");
+		transferRecurrent.scrollUpToText(driver, "Chuyển tiền ngay");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền ngay"));
 	}
 
 	@Test
 	public void TC_04_ChuyenTienDinhKy_ComboHinhThucChuyenTien_KiemTraDanhSachHinhThuc() {
 		log.info("TC_04_01_Chon phuong thuc chuyen tien");
+		transferRecurrent.scrollUpToText(driver, "Chuyển tiền ngay");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
 
 		log.info("TC_04_02_Lay list Hinh thuc chuyen tien");
@@ -142,6 +145,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	@Test
 	public void TC_07_ChuyenTienDinhKy_ComboTaiKhoanNguon_ChonMotTaiKhoanVNDKhac() {
 		log.info("TC_07_01_Chon mot tai khoan VND khac");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_07_02_Lay so du tuong ung voi tai khoan nguon");
@@ -150,6 +154,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_07_03_So tai khoan chon duoc fill vao textbox");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, info.sourceAccount));
 
 		log.info("TC_07_04_Hien thi so du kha dung, loai tien tuong ung voi tai khoan da chon");
@@ -165,6 +170,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	@Test
 	public void TC_08_ChuyenTienDinhKy_ComboTaiKhoanNguon_ChonMotTaiKhoanNgoaiTeKhac() {
 		log.info("TC_08_01_Chon mot tai khoan Ngoai te khac");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_08_02_Lay so du tuong ung voi tai khoan nguon");
@@ -173,6 +179,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
 		log.info("TC_08_03_So tai khoan chon duoc fill vao textbox");
+		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, info1.sourceAccount));
 
 		log.info("TC_08_04_Hien thi so du kha dung, loai tien tuong ung voi tai khoan da chon");
@@ -225,7 +232,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.fee);
 
 		log.info("TC_11_06_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBox(driver, info.note, "Nội dung");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
 
 		log.info("TC_11_07_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
