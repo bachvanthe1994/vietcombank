@@ -28,6 +28,7 @@ import model.FilmInfo;
 import model.FilmInfo.TypeShow;
 import model.SeatType;
 import model.SeatType.TypeButton;
+import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 
 public class FilmTicketBookingPageObject extends AbstractPage {
@@ -134,6 +135,16 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
+	
+	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
+		public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
+			boolean status = false;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			}
+
+		}
 
 	public void scrollIDownToText(String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
@@ -165,6 +176,15 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
+	public void inputToDynamicPopupPasswordInput(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
+	}
+	
 	public void swipeElementToElementByText(String textStart, String textEnd) {
 		Dimension size = driver.manage().window().getSize();
 		String locatorStart = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, textStart);
@@ -233,6 +253,19 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
+	//lấy thời gian tạo giao dịch ở màn hình xác thực giao dịch, tham số truyền vào là text và vị trí index của nó
+	public String getDynamicTransferTimeAndMoney(String... dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+
+		}
+		return text;
+
+	}
+	
 	public void clickToDynamicTextOrButtonLink(String dynamicValue) {
 		boolean status = false;
 		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
@@ -374,6 +407,19 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
+	public String getDynamicTextInFilmTicketInfoDetail(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_FILM_TICKET_DETAIL_INFO, dynamicTextValue);
+		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_FILM_TICKET_DETAIL_INFO, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_FILM_TICKET_DETAIL_INFO, dynamicTextValue);
+
+		}
+		return text;
+
+	}
+	
 	public void clickToDynamicInput(String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
@@ -820,7 +866,19 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		return expectList.containsAll(actualList);
 
 	}
+	
+	/* SCROLL UP */
+	public void scrollUpToText(String dynamicText) {
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT);
 
+	}
+
+	/* SCROLL DOWN */
+	public void scrollDownToText(String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+	
 	public int getRGBColor(Color c) {
 		return c.getRGB();
 	}
@@ -1059,7 +1117,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public String getTypeOfSeat(List<SeatType> listSeatType) {
 		String result = "";
 		listSeatType = listSeatType.stream().filter(o -> !o.number.equals("0")).collect(Collectors.toList());
-		String type = listSeatType.get(0).name.toUpperCase(); 
+		String type = listSeatType.get(0).name.toLowerCase(); 
 		if (type.contains("standard") || type.contains("thường")) {
 			result = "Standard";
 		}

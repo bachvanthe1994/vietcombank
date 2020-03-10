@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -784,6 +786,9 @@ public class Base {
 	public long convertAvailableBalanceCurrentcyToLong(String money) {
 		long result = 0;
 		try {
+			if (money.contentEquals("Không mất phí")) {
+				result = 0;
+			}
 			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
 		} catch (Exception e) {
 
@@ -838,6 +843,12 @@ public class Base {
 		}
 		return result;
 		
+	}
+	
+	public String convertVietNameseStringToString(String vietnameseString) {
+		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
 	}
 	
 }

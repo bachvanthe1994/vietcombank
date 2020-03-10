@@ -199,7 +199,7 @@ public class TransferMoneyCharity extends Base {
 		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
-		log.info("TC_02_14: Kiem tra thoi gian tao giao dich hien thi");
+		log.info("TC_02_14: Kiem tra ma giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02_15: Kiem tra so tai khoan trich no");
