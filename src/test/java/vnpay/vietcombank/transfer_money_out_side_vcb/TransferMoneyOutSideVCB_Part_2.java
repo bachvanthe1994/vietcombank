@@ -100,7 +100,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info6.name);
 
 		log.info("TC_13_10_4_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info6.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info6.destinationBank);
 
 		log.info("TC_13_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
@@ -140,7 +140,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info6.destinationAccount);
 
 		log.info("TC_13_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info6.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info6.destinationBank);
 
 		log.info("TC_13_13_5_Kiem tra noi dung");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info6.note);
@@ -291,7 +291,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info7.name);
 
 		log.info("TC_15_10_4_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info7.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info7.destinationBank);
 
 		log.info("TC_15_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
@@ -331,7 +331,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info7.destinationAccount);
 
 		log.info("TC_15_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info7.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info7.destinationBank);
 
 		log.info("TC_15_13_5_Kiem tra noi dung");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info7.note);
@@ -481,7 +481,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info8.name);
 
 		log.info("TC_17_10_4_Kiem tra ngan hang dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info8.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info8.destinationBank);
 
 		log.info("TC_17_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
@@ -495,7 +495,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info8.note);
 
 		log.info("TC_17_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollDownToText(driver, "Phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info8.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
@@ -522,7 +522,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info8.destinationAccount);
 
 		log.info("TC_17_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info8.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info8.destinationBank);
 
 		log.info("TC_17_13_5_Kiem tra noi dung");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info8.note);
@@ -670,7 +670,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info9.name);
 
 		log.info("TC_19_10_4_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info9.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info9.destinationBank);
 
 		log.info("TC_19_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
@@ -710,7 +710,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info9.destinationAccount);
 
 		log.info("TC_19_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info9.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info9.destinationBank);
 
 		log.info("TC_19_13_5_Kiem tra noi dung");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info9.note);
@@ -860,7 +860,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info10.name);
 
 		log.info("TC_21_10_4_Kiem tra ngan hang dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info10.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info10.destinationBank);
 
 		log.info("TC_21_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
@@ -874,7 +874,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info10.note);
 
 		log.info("TC_21_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollDownToText(driver, "Phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = 0;
 		transferFeeCurrentcy = 0;
@@ -901,7 +901,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info10.destinationAccount);
 
 		log.info("TC_21_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info10.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info10.destinationBank);
 
 		log.info("TC_21_13_5_Kiem tra noi dung");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info10.note);
@@ -1051,7 +1051,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), info11.name);
 
 		log.info("TC_23_10_4_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info11.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info11.destinationBank);
 
 		log.info("TC_23_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
@@ -1091,7 +1091,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info11.destinationAccount);
 
 		log.info("TC_23_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), info11.destinationBank);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info11.destinationBank);
 
 		log.info("TC_23_13_5_Kiem tra noi dung");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info11.note);

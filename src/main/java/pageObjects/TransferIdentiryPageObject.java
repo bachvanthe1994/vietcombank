@@ -3,6 +3,7 @@ package pageObjects;
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferIdentityPageUIs;
 
 public class TransferIdentiryPageObject extends AbstractPage {
@@ -91,6 +92,29 @@ public class TransferIdentiryPageObject extends AbstractPage {
 
 	}
 	return text;
+    }
+
+    // Dien text vao input box
+    // input vào ô input với tham số truyền vào là inputbox
+    public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
+	boolean status = false;
+	scrollUp(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX);
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+	if (status == true) {
+	    clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+	    sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+	}
+
+    }
+
+    public void clickToTextID(String dynamicID) {
+	boolean status = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	}
+
     }
 
 }
