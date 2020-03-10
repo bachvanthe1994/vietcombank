@@ -147,7 +147,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 
 		log.info("TC_06_03_Kiem tra gioi han nhap");
 		actualAmountMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney.replaceAll("\\D+", "").length(), 10);
+		verifyEquals(actualAmountMoney, "Số tiền");
 
 	}
 
@@ -164,7 +164,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 
 		log.info("TC_07_03_Kiem tra gioi han nhap");
 		actualAmountMoney = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney.replaceAll("\\D+", "").length(), 12);
+		verifyEquals(actualAmountMoney, "Số tiền");
 
 		transferRecurrent.inputToDynamicInputBoxByHeader(driver, "", "Thông tin giao dịch", "1");
 	}
