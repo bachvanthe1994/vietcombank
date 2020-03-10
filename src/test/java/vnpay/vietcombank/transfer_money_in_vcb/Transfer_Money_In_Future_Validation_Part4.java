@@ -100,7 +100,7 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_deny_button");
 
 		log.info("TC_01_Step_03: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Bạn không được cấp quyền để sử dụng tính năng này.");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Bạn không được cấp quyền để sử dụng tính năng này.");
 
 		log.info("TC_01_Step_04: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -129,7 +129,7 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_deny_button");
 
 		log.info("TC_04_Step_03: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Bạn không được cấp quyền để sử dụng tính năng này.");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Bạn không được cấp quyền để sử dụng tính năng này.");
 
 		log.info("TC_04_Step_04: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -158,7 +158,7 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu ảnh");
 
 		log.info("TC_06_Step_03: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), "Ảnh đã lưu trong thư viện.");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Ảnh đã lưu trong thư viện.");
 
 		log.info("TC_06_Step_04: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");

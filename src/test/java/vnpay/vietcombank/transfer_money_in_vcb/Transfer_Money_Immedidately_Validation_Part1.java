@@ -173,7 +173,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_Step_06: Kiem tra message loi hien thi");
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER);
 
 		log.info("TC_07_Step_07: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -200,7 +200,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_08_Step_05: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		verifyEquals(transferInVCB.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER);
 
 		log.info("TC_08_Step_06: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -259,7 +259,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
-		verifyEquals(transferInVCB.getDynamicTextDetailByID(driver, "com.VCB:id/tvTiGia"), TransferMoneyInVCB_Data.InputDataInVCB.EUR_EXCHANGE_RATE);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"), TransferMoneyInVCB_Data.InputDataInVCB.EUR_EXCHANGE_RATE);
 
 		log.info("TC_11_Step_04: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -275,7 +275,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
-		verifyEquals(transferInVCB.getDynamicTextDetailByID(driver, "com.VCB:id/tvTiGia"), TransferMoneyInVCB_Data.InputDataInVCB.USD_EXCHANGE_RATE);
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"), TransferMoneyInVCB_Data.InputDataInVCB.USD_EXCHANGE_RATE);
 
 		log.info("TC_11_Step_04: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");

@@ -119,7 +119,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_03_Kiem tra message thong bao loi");
-		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.PASSWORD_LESS_THAN_8_CHARACTER);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.PASSWORD_LESS_THAN_8_CHARACTER);
 
 		log.info("TC_03_04_Kiem tra hien thi nut Dong");
 		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");
@@ -147,7 +147,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_03_Kiem tra message thong bao loi");
-		verifyEquals(transferRecurrent.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.PASSWORD_INVALID);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.PASSWORD_INVALID);
 
 		log.info("TC_05_04_Kiem tra hien thi nut Dong");
 		transferRecurrent.isDynamicButtonDisplayed(driver, "Đóng");

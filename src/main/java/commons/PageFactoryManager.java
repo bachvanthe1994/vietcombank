@@ -8,6 +8,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
+import pageObjects.MobileTopupPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SetupContactPageObject;
@@ -107,6 +108,10 @@ public class PageFactoryManager {
 
 	public static SavingOnlinePageObject getSavingOnlinePageObject(AppiumDriver<MobileElement> driver) {
 		return new SavingOnlinePageObject(driver);
+	}
+	
+	public static MobileTopupPageObject getMobileTopupPageObject(AppiumDriver<MobileElement> driver) {
+		return new MobileTopupPageObject(driver);
 	}
 	
 }

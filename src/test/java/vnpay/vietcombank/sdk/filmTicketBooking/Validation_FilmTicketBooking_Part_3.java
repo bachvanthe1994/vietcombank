@@ -173,7 +173,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
 
 		log.info("TC_06_06_Kiem tra message thong bao chi cho chon toi da 10 ve 1 lan");
-		verifyEquals(filmTicketBooking.getTextInDynamicPopup(driver, "com.VCB:id/tvContent"), FilmTicketBooking_Data.MAX_10_SEATS_PER_1_MESSAGE);
+		verifyEquals(filmTicketBooking.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), FilmTicketBooking_Data.MAX_10_SEATS_PER_1_MESSAGE);
 
 		log.info("TC_06_07_Click Dong y");
 		filmTicketBooking.clickToDynamicTextView("Đồng ý");
@@ -214,7 +214,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
 
 		log.info("TC_08_02_Kiem tra Thong bao");
-		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Quý khách vui lòng chọn ghế");
+		verifyEquals(filmTicketBooking.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách vui lòng chọn ghế");
 
 		log.info("TC_08_03_Dong Thong bao");
 		filmTicketBooking.clickToTextViewByText("Đồng ý");
@@ -224,13 +224,13 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	@Test
 	public void TC_09_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_BoTrongGheOGiua() {
 		log.info("TC_09_01_Chon ghe bo trong ghe o giua");
-		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat("A");
+		filmTicketBooking.chooseSeatsByLineEmptyBetweenSeat();
 
 		log.info("TC_09_02_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
 
 		log.info("TC_09_03_Kiem tra Thong bao");
-		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Quý khách không thể bỏ trống ghế ở giữa. Vui lòng chọn lại.");
+		verifyEquals(filmTicketBooking.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách không thể bỏ trống ghế ở giữa. Vui lòng chọn lại.");
 
 		log.info("TC_09_04_Dong Thong bao");
 		filmTicketBooking.clickToTextViewByText("Đồng ý");
@@ -253,13 +253,13 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	@Test
 	public void TC_10_ChonTheoRap_ChonChoNgoi_KiemTraChonGhe_BoTrongGheNgoaiCung() {
 		log.info("TC_10_01_Chon ghe bo trong ghe o giua");
-		filmTicketBooking.chooseSeatsByLineEmptyLastSeat("A");
+		filmTicketBooking.chooseSeatsByLineEmptyLastSeat();
 
 		log.info("TC_10_02_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
 
 		log.info("TC_10_03_Kiem tra Thong bao");
-		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Quý khách không thể bỏ trống ghế ngoài cùng bên phải hoặc bên trái, vui lòng chọn lại.");
+		verifyEquals(filmTicketBooking.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách không thể bỏ trống ghế ngoài cùng bên phải hoặc bên trái, vui lòng chọn lại.");
 
 		log.info("TC_10_04_Dong Thong bao");
 		filmTicketBooking.clickToTextViewByText("Đồng ý");
@@ -272,7 +272,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
 		log.info("TC_10_07_Click chon toi da so ghe");
-		filmTicketBooking.clickToChangeNumberSeatSum10Tickets();
+		filmTicketBooking.clickToChangeNumberSeatSum10Tickets_DeluxeVipStandardCouble_Only();
 
 	}
 
@@ -294,13 +294,15 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 
 		log.info("TC_11_05_Kiem tra tong tien");
 		verifyTrue(!beforePrice.equals(afterPrice));
+		
+		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
 
 		log.info("TC_11_06_Click chon them 1 ghe");
-		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
 		filmTicketBooking.chooseSeats(1, colorOfSeat);
-		
+
 		log.info("TC_11_07_Kiem tra Thong bao");
-		verifyEquals(filmTicketBooking.getTextInDynamicPopup("com.VCB:id/tvContent"), "Bạn đã chọn đủ số lượng vé đã đặt");
+		verifyEquals(filmTicketBooking.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Bạn đã chọn đủ số lượng vé đã đặt");
 
 		log.info("TC_11_08_Dong Thong bao");
 		filmTicketBooking.clickToTextViewByText("Đồng ý");

@@ -1,10 +1,10 @@
 package pageObjects.saving_online;
 
-import java.text.SimpleDateFormat;
-
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.saving_online.SavingOnlineUIs;
 
 public class SavingOnlinePageObject extends AbstractPage {
 
@@ -13,69 +13,39 @@ public class SavingOnlinePageObject extends AbstractPage {
 	}
 
 	private AppiumDriver<MobileElement> driver;
-
-	public long canculateAvailableBalances(long surPlus, long money, long transactionFree) {
-		return surPlus - money - transactionFree;
-	}
-
-	public double canculateAvailableBalancesCurrentcy(double surPlus, double money, double transactionFree) {
-		return surPlus - money - transactionFree;
-	}
-
-	public double convertAvailableBalanceCurrentcyToDouble(String money) {
-		double result = 0;
-		try {
-			result = Double.parseDouble(money.replaceAll("[^\\.0123456789]", ""));
-		} catch (Exception e) {
+	
+	//Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
+	public String getDynamicTextAvailableBalanceInSavingOnline(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, SavingOnlineUIs.AVAILABLE_BALANCE_SAVING_ONLINE, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, SavingOnlineUIs.AVAILABLE_BALANCE_SAVING_ONLINE, dynamicTextValue);
 
 		}
-		return result;
-	}
+		return text;
 
-	public long convertAvailableBalanceCurrentcyToLong(String money) {
-		long result = 0;
-		try {
-			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
-		} catch (Exception e) {
-
-		}
-		return result;
-	}
-
-	public String convertEURO_USDToVNeseMoney(String money, String currentcy) {
-		String result = "";
-		try {
-			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy))) + " VND";
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return result;
-	}
-
-	public String convertDateTimeIgnoreSecond(String stringDate) {
-		String result = "";
-		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-	    try {
-	    	result = formatter2.format(formatter1.parse(stringDate));
-	    }
-	    catch (Exception e) {
-			
-		}
-		return result;
-		
 	}
 	
-	public String convertTransferTimeToReportDateTime(String stringDate) {
-		String result = "";
-	    try {
-	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
-	    }
-	    catch (Exception e) {
-			
+	//Click vào dropdown list tham số truyển vào là label của ô dropdown list đó
+	public void clickToDynamicDropDown(String dymanicText) {
+		boolean status = false;
+		scrollIDown(driver, SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		status = waitForElementVisible(driver, SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
+		if (status == true) {
+			clickToElement(driver, SavingOnlineUIs.DYNAMIC_DROPDOWN_BY_LABEL, dymanicText);
 		}
-		return result;
-		
+
+	}
+	
+	//Click vao 1 button sử dụng  tham số là text
+	public void clickToDynamicButton(String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -801,10 +803,21 @@ public class Base {
 		return result;
 	}
 
-	public String convertDateTimeIgnoreSecond(String stringDate) {
+	public double convertVNeseMoneyToEUROOrUSD(String money, String currentcy) {
+		double result = 0;
+		try {
+			double scale = Math.pow(10, 2);
+			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
+	
+	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 	    try {
 	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
@@ -817,14 +830,22 @@ public class Base {
 	
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
+		SimpleDateFormat formatter1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+	    SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 	    try {
-	    	result = stringDate.split(" ")[3] + " " + stringDate.split(" ")[0];
+	    	result = formatter2.format(formatter1.parse(stringDate));
 	    }
 	    catch (Exception e) {
 			
 		}
 		return result;
 		
+	}
+	
+	public String convertVietNameseStringToString(String vietnameseString) {
+		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(temp).replaceAll("");
 	}
 	
 }
