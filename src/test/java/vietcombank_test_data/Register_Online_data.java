@@ -8,7 +8,7 @@ public class Register_Online_data {
 		public static final String LOCATION[] = { "Cuc QLHC ve TTXH","THANH PHO HA NOI","THANH PHO HO CHI MINH"};
 		public static final String NO_IDENTIFICATION = "123456789123";
 		public static final String TYPE_RETURN_MONEY[] = {"Rút lãi","Rút gốc"};
-		public static final String EMAIL = "hieppt@gmail.com";
+		public static final String EMAIL = "hieppt@vnpay.vn";
 		public static final String CARD_RANK[] = {"Chuẩn","Vàng","Đặc biệt"};
 		public static final String FEE_PAYMENT[] = {"Trích nợ tự động từ TK","Nộp tiền mặt"};
 		public static final String TYPE_AMOUNT[] = {"VND","EUR","USD"};

@@ -1097,13 +1097,13 @@ public class Flow_RegisterOnline_LoginUser extends Base {
 		registerOnline.clickToDynamicButton(driver, "OK");
 		
 		log.info("TC_Step_: Input noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION,  "Chủ thẻ phụ 2", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1],  "Chủ thẻ phụ 2", "5");
 		
 		log.info("TC_Step_: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		log.info("TC_Step_: Click radio toi dong y");
-		registerOnline.clickToDynamicRadioIndex(driver, "agreement");
+		registerOnline.clickToDynamicRadioIndex(driver, "Nội dung thỏa thuận sử dụng dịch vụ Ngân hàng điện tử của Vietcombank","3");
 
 		log.info("TC_Step_: Click dong y");
 		registerOnline.clickToDynamicDateInDateTimePicker(driver, "Đồng ý");

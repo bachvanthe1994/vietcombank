@@ -28,7 +28,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID = "//android.widget.RelativeLayout[@resource-id=\"%s\"]//android.widget.TextView";
     public static final String DYNAMIC_TEXTVIEW_BY_LISTVIEW = "//android.widget.ListView[@resource-id=\"%s\"]//android.widget.TextView[@text='%s']";
     public static final String DYNAMIC_TEXTVIEW_FOLLOW_IMAGE = "//android.widget.ImageView[@index='%s']//following-sibling::android.widget.TextView[@index='%s']";
-    public static final String DYNAMIC_EDIT_INDEX = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
+    public static final String DYNAMIC_EDIT_INDEX = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
     public static final String DYNAMIC_TEXT_FOLLOW_LAYOUT = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
     public static final String DYNAMIC_WISHES = "//android.widget.LinearLayout[@index ='1']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
     public static final String DYNAMIC_ACCOUNT_OUT_VCB = "//android.widget.TextView[@text ='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//descendant::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
@@ -48,7 +48,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_TEXT_BOX_WITH_ID = "//android.widget.EditText[@resource-id=\"%s\"]";
     public static final String DYNAMIC_LABEL_LIST_ACCEPT = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.FrameLayout//android.widget.EditText";
     public static final String DYNAMIC_LABEL_SEARCH_BANK = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.EditText";
-    public static final String DYNAMIC_EDIT_FOLLOW_TEXT = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
+    public static final String DYNAMIC_EDIT_FOLLOW_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
 
     // ICON
     public static final String DYNAMIC_CLOSE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
@@ -63,7 +63,8 @@ public class DynamicPageUIs {
     // VIEW
     public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
     public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
-    public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@resource-id='%s']/following-sibling::android.view.View/android.view.View";
+    public static final String DYNAMIC_VIEW_VIEW_BY_INDEX1 = "//android.view.View[@text = '%s']/parent::android.view.View//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
+    public static final String DYNAMIC_VIEW_VIEW_BY_INDEX ="//android.view.View[@index='%s']/android.view.View[@index='%s']/android.view.View[@index='0']";
 
     // IMAGE
     public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";

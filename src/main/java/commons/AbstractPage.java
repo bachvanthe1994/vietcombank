@@ -208,7 +208,7 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 30; i++) {
 			locator = String.format(locator, (Object[]) dynamicValue);
 			overRideTimeOut(driver, 2);
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
@@ -800,7 +800,7 @@ public class AbstractPage {
 	}
 
 	// Click vao 1 button sử dụng tham số là text
-	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String dynamicTextAndIndex) {
+	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String ... dynamicTextAndIndex) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
