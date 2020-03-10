@@ -786,6 +786,9 @@ public class Base {
 	public long convertAvailableBalanceCurrentcyToLong(String money) {
 		long result = 0;
 		try {
+			if (money.contentEquals("Không mất phí")) {
+				result = 0;
+			}
 			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
 		} catch (Exception e) {
 

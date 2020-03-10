@@ -7,9 +7,14 @@ public class Register_Online_data {
 		public static final String TYPE_IDENTIFICATION[] = { "So CMND","Ho Chieu","The CCCD"};
 		public static final String LOCATION[] = { "Cuc QLHC ve TTXH","THANH PHO HA NOI","THANH PHO HO CHI MINH"};
 		public static final String NO_IDENTIFICATION = "123456789123";
-		public static final String EMAIL = "hieppt@gmail.com";
+		public static final String TYPE_RETURN_MONEY[] = {"Rút lãi","Rút gốc"};
+		public static final String EMAIL = "hieppt@vnpay.vn";
+		public static final String CARD_RANK[] = {"Chuẩn","Vàng","Đặc biệt"};
+		public static final String FEE_PAYMENT[] = {"Trích nợ tự động từ TK","Nộp tiền mặt"};
+		public static final String TYPE_AMOUNT[] = {"VND","EUR","USD"};
 		public static final String ACCOUNT_TAKE[] ={"0019967190","0121000667333"};
 		public static final String AMOUNT = "100000";
+		public static final String AMOUNT_OPEN_CARD = "200000";
 		public static final String AMOUNT_USD_EUR = "10";
 		public static final String NOTE = "test";
 		public static final String CUSTOMER_NAME_ACCEPT = "NGUYEN VAN A";
@@ -26,3 +31,4 @@ public class Register_Online_data {
 
 	}
 }
+
