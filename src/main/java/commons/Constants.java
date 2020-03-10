@@ -10,7 +10,7 @@ public class Constants {
 	// current step is failed
 	// RUN_CONTINUE_AFTER_STEP_FAIL = false --> testcase will stop at current step
 	// and continue next testcase.
-	public static final boolean RUN_CONTINUE_AFTER_STEP_FAIL = false;
+	public static final boolean RUN_CONTINUE_AFTER_STEP_FAIL = true;
 
 	public static String runAfterfail;
 

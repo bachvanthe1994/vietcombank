@@ -1,6 +1,11 @@
 package pageObjects.saving_online;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+
 import commons.AbstractPage;
+import commons.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
@@ -35,7 +40,14 @@ public class SavingOnlinePageObject extends AbstractPage {
 		scrollIDown(driver, locator);
 		status = waitForElementVisible(driver, locator);
 		if (status == true) {
-			TabtoElementByPoint(driver, locator);
+			overRideTimeOut(driver, 2);
+			clickToElement(driver, locator);
+			String locatorCheck = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Đóng");
+			List<MobileElement> element = driver.findElements(By.xpath(locatorCheck));
+			if(element.size() == 0) {
+				clickToElement(driver, locator);
+			}
+			overRideTimeOut(driver, Constants.LONG_TIME);
 		}
 
 	}
