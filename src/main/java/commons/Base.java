@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -478,7 +479,10 @@ public class Base {
 		money = money.replaceAll(" " + currency, "");
 		money = money.replaceAll(",", "");
 		double amount = Double.parseDouble(money);
-		return amount;
+		DecimalFormat decim = new DecimalFormat("#.##");
+		Double amount1 = Double.parseDouble(decim.format(amount));
+
+		return amount1;
 	}
 
 	public String addCommasToDouble(String number) {
