@@ -292,7 +292,6 @@ public class Mobile_Topup_Validate_03 extends Base {
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
 		service.stop();
 	}
 
