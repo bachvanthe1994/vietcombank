@@ -1,5 +1,8 @@
 package pageObjects.saving_online;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,7 +13,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.saving_online.SavingOnlineUIs;
-import io.appium.java_client.TouchAction;
 
 public class SavingOnlinePageObject extends AbstractPage {
 
@@ -60,6 +62,49 @@ public class SavingOnlinePageObject extends AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 
+	}
+	
+	public int getCurrentDayOfWeek(LocalDateTime localDate) {
+		DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+		int val = dayOfWeek.getValue();
+		return val;
+	}
+	
+	public String convertDayOfWeekVietNamese(int day) {
+		switch (day) {
+		case 1:
+			return "Thứ Hai";
+		case 2:
+			return "Thứ Ba";
+		case 3:
+			return "Thứ Tư";
+		case 4:
+			return "Thứ Năm";
+		case 5:
+			return "Thứ Sáu";
+		case 6:
+			return "Thứ Bảy";
+		case 7:
+			return "Chủ Nhật";
+		default:
+			return "";
+		}
+	}
+	
+	public String getTransferTimeSuccess(String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+		
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");  
+		LocalDateTime now = LocalDateTime.now();  
+		
+		String dateOfWeek = convertDayOfWeekVietNamese(getCurrentDayOfWeek(now));
+		if (transferTime.equals("") || transferTime == null) {
+			String time = dateFormat.format(now);
+			transferTime = time.split(" ")[0] + dateOfWeek + time.split(" ")[1];
+		}
+		
+		return transferTime;
 	}
 	
 }
