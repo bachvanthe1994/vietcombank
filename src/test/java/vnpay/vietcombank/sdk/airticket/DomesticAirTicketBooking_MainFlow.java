@@ -76,7 +76,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		log.info("TC_01_Step_05: Chon chuyen bay va dat ve");
 		airTicket.clickToDynamicFlight(0, "VJ");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 		
 		log.info("TC_01_Step 06: Dien Ten Nguoi lon ");
 		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
@@ -250,7 +250,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		
 		log.info("TC_03_Step_09: Click Dat ve");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_Sum_amount_flight_selected");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 		
 		log.info("TC_03_Step 10: Dien Ten Nguoi lon ");
 		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");

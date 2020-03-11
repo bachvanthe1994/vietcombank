@@ -1,11 +1,22 @@
 package pageObjects.saving_online;
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import org.openqa.selenium.By;
+
 import commons.AbstractPage;
+import commons.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.saving_online.SavingOnlineUIs;
-import io.appium.java_client.TouchAction;
 
 public class SavingOnlinePageObject extends AbstractPage {
 
@@ -35,7 +46,14 @@ public class SavingOnlinePageObject extends AbstractPage {
 		scrollIDown(driver, locator);
 		status = waitForElementVisible(driver, locator);
 		if (status == true) {
-			TabtoElementByPoint(driver, locator);
+			overRideTimeOut(driver, 2);
+			clickToElement(driver, locator);
+			String locatorCheck = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Đóng");
+			List<MobileElement> element = driver.findElements(By.xpath(locatorCheck));
+			if(element.size() == 0) {
+				clickToElement(driver, locator);
+			}
+			overRideTimeOut(driver, Constants.LONG_TIME);
 		}
 
 	}
@@ -48,6 +66,35 @@ public class SavingOnlinePageObject extends AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 
+	}
+	
+	public String getTransferTimeSuccess(String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+
+		if (transferTime.equals("") || transferTime == null) {
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[]{
+			        "Unused",
+			        "Chủ Nhật",
+			        "Thứ Hai",
+			        "Thứ Ba",
+			        "Thứ Tư",
+			        "Thứ Năm",
+			        "Thứ Sáu",
+			        "Thứ Bảy",
+			});
+			
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat =
+			        new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+			
+		}
+		
+		return transferTime;
 	}
 	
 }

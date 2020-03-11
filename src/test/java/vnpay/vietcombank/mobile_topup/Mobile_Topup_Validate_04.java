@@ -73,7 +73,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 		verifyEquals(mobileTopup.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout_back"), "Quay lại");
 
 		log.info("TC_01_Step_10: Xac nhan hien thi dung message thong bao");
-		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), UIs.MOBILE_TOPUP_CONFIRM_SMS_OTP_TRANSACTION_MESSAGE + " " + phone.substring(0, 4) + "***" + phone.substring(7, 10));
+		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), UIs.MOBILE_TOPUP_CONFIRM_SMS_OTP_TRANSACTION_MESSAGE + " " + phone.substring(0, 3) + "*****" + phone.substring(8, 10));
 
 		log.info("TC_01_Step_11: Xac nhan hien thi textbox 'Nhap OTP'");
 		verifyTrue(mobileTopup.isDynamicTextDetailByID(driver, "com.VCB:id/otp"));

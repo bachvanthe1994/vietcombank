@@ -5,6 +5,7 @@ package commons;
 import pageObjects.LockCardPageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -106,7 +107,6 @@ public class PageFactoryManager {
 		return new RegisterOnlinePageObject(driver);
 	}
 
-
 	public static SavingOnlinePageObject getSavingOnlinePageObject(AppiumDriver<MobileElement> driver) {
 		return new SavingOnlinePageObject(driver);
 	}
@@ -117,5 +117,9 @@ public class PageFactoryManager {
 	
 	public static OnlineTopupPageObject getOnlineTopupPageObject(AppiumDriver<MobileElement> driver) {
 		return new OnlineTopupPageObject(driver);
+	}
+	
+	public static AutoSavingPageObject getAutoSavingPageObject(AppiumDriver<MobileElement> driver) {
+		return new AutoSavingPageObject(driver);
 	}
 }

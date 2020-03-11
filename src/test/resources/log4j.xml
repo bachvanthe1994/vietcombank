@@ -159,6 +159,14 @@
 <appender-ref ref="logfile"/>
 <appender-ref ref="testng"/>
 </category>
+
+<category name = "vnpay.vietcombank.auto_saving">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
 <root>
 	<priority value = "warn"/>
 </root>

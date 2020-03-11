@@ -6,10 +6,14 @@ import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
 
+import java.text.DateFormatSymbols;
 import java.text.Normalizer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -193,11 +197,19 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.80);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> elementsOne = null;
 		for (int i = 0; i < 20; i++) {
+			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
-			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+			try {
+				elementsOne = driver.findElements(By.xpath(locator));
+				checkElementDisplayed = elementsOne.get(0).isDisplayed();
+			} catch (Exception e) {
+				checkElementDisplayed = true;
+			}
+
 			overRideTimeOut(driver, Constants.LONG_TIME);
-			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+			if (elementsOne.size() > 0 && checkElementDisplayed) {
 				break;
 			} else {
 				try {
@@ -216,12 +228,19 @@ public class AbstractPage {
 		int endY = (int) (size.getHeight() * 0.30);
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> elementsOne = null;
 		for (int i = 0; i < 30; i++) {
-			locator = String.format(locator, (Object[]) dynamicValue);
+			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
-			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+			try {
+				elementsOne = driver.findElements(By.xpath(locator));
+				checkElementDisplayed = elementsOne.get(0).isDisplayed();
+			} catch (Exception e) {
+				checkElementDisplayed = true;
+			}
+
 			overRideTimeOut(driver, Constants.LONG_TIME);
-			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+			if (elementsOne.size() > 0 && checkElementDisplayed) {
 				break;
 			} else {
 				try {
@@ -637,32 +656,32 @@ public class AbstractPage {
 		String dayInWeek = "";
 		switch (dayOfWeek) {
 		case 1:
-			dayInWeek = "Thứ Hai";
+			dayInWeek = "Thứ hai";
 			System.out.println(dayInWeek);
 			break;
 		case 2:
-			dayInWeek = "Thứ Ba";
+			dayInWeek = "Thứ ba";
 			System.out.println(dayInWeek);
 			break;
 		case 3:
-			dayInWeek = "Thứ Tư";
+			dayInWeek = "Thứ tư";
 			System.out.println(dayInWeek);
 			break;
 		case 4:
-			dayInWeek = "Thứ Năm";
+			dayInWeek = "Thứ năm";
 			System.out.println(dayInWeek);
 			break;
 		case 5:
-			dayInWeek = "Thứ Sáu";
+			dayInWeek = "Thứ sáu";
 			System.out.println(dayInWeek);
 			;
 			break;
 		case 6:
-			dayInWeek = "Thứ Bảy";
+			dayInWeek = "Thứ bảy";
 			System.out.println(dayInWeek);
 			break;
 		case 7:
-			dayInWeek = "Chủ Nhật";
+			dayInWeek = "Chủ nhật";
 			System.out.println(dayInWeek);
 			break;
 		}
@@ -770,6 +789,16 @@ public class AbstractPage {
 		}
 	}
 
+	// Click vào button, text có class là textview, tham số truyền vào là text
+	public void clickToDynamicButtonLinkOrLinkTextNotScrollDown(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
+		}
+	}
+
 //Click vào ô textbox lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
 	public void clickToDynamicInputBoxByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
@@ -860,6 +889,16 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
+		}
+	}
+
+// click vào icon trong trang thai lenh chuyen tien
+	public void clickToDynamicIconInOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIDAndTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ICON_IN_LIST_VIEW, dynamicIDAndTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON_IN_LIST_VIEW, dynamicIDAndTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON_IN_LIST_VIEW, dynamicIDAndTextValue);
 		}
 	}
 
@@ -1078,7 +1117,6 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
-
 	}
 
 	// Click combobox
@@ -1770,6 +1808,40 @@ public class AbstractPage {
 		}
 		return text;
 
+	}
+
+	// Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text
+	// phía bên tay trái
+	public String getDynamicTextInLine2DestinationAccount(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT, dynamicTextValue);
+
+		}
+		return text;
+
+	}
+
+	public String getTransferTimeSuccess(AppiumDriver<MobileElement> driver, String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+
+		if (transferTime.equals("") || transferTime == null) {
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[] { "Unused", "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", });
+
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+
+		}
+
+		return transferTime;
 	}
 
 //Lấy text bằng id

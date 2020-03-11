@@ -6,7 +6,7 @@ public class MobileTopupPage_Data {
 		public static final String MOBILE_TOPUP_TITLE = "Nạp tiền điện thoại";
 		public static final String MOBILE_TOPUP_CONFIRM_HEADER_TITLE = "Xác nhận thông tin";
 		public static final String MOBILE_TOPUP_CONFIRM_TRANSACTION_TITLE = "Xác thực giao dịch";
-		public static final String MOBILE_TOPUP_CONFIRM_PASSWORD_TRANSACTION_MESSAGE = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch";
+		public static final String MOBILE_TOPUP_CONFIRM_PASSWORD_TRANSACTION_MESSAGE = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác thực giao dịch";
 		public static final String MOBILE_TOPUP_CONFIRM_SMS_OTP_TRANSACTION_MESSAGE = "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại";
 		public static final String MOBILE_TOPUP_CONFIRM_TITLE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
 		public static final String MOBILE_TOPUP_GUIDE = "Hỗ trợ tất cả các mạng viễn thông (Viettel, Vinaphone, Mobifone, G-Mobile, Vietnamobile)";
