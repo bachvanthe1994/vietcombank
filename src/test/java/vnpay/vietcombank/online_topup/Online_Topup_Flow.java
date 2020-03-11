@@ -540,7 +540,7 @@ public class Online_Topup_Flow extends Base {
 		log.info("TC_07_Step_14: Hien thi man hinh thong bao nap thanh cong");
 		verifyEquals(onlineTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "GIAO DỊCH THÀNH CÔNG");
 		verifyEquals(onlineTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), "50,000 VND");
-		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Loại hình"), "Nạp tiền tài khoan VETC");
+		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Loại hình"), "Nạp tiền tài khoản VETC");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Nhà cung cấp"), "VETC");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Biển số xe/Mã khách hàng"), "E0100065030");
 		transactionID = onlineTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
