@@ -137,7 +137,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_86_Step_: Verify so tien phi");
 		String amountfeeString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replace(" USD", "");
-		verifyEquals(amountfeeString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_USD);
+		verifyEquals(amountfeeString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_USD_EUR_OTP);
 
 		log.info("TC_86_Step_: Verify loai phi");
 		verifyEquals(transferMoney.getDynamicTextInTextViewLine2(driver, "Số tiền phí"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
