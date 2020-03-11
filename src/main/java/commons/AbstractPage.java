@@ -193,11 +193,19 @@ public class AbstractPage {
 	int endY = (int) (size.getHeight() * 0.80);
 	TouchAction touch = new TouchAction(driver);
 	locator = String.format(locator, (Object[]) dynamicValue);
+	List<MobileElement> elementsOne = null;
 	for (int i = 0; i < 20; i++) {
+		boolean checkElementDisplayed = false;
 	    overRideTimeOut(driver, 2);
-	    List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+	    try {
+	    	elementsOne = driver.findElements(By.xpath(locator));
+	    	checkElementDisplayed = elementsOne.get(0).isDisplayed();
+	    } catch (Exception e) {
+	    	checkElementDisplayed = true;
+	    }
+	    
 	    overRideTimeOut(driver, Constants.LONG_TIME);
-	    if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+	    if (elementsOne.size() > 0 && checkElementDisplayed) {
 		break;
 	    } else {
 		try {
@@ -218,15 +226,17 @@ public class AbstractPage {
 	locator = String.format(locator, (Object[]) dynamicValue);
 	List<MobileElement> elementsOne = null;
 	for (int i = 0; i < 30; i++) {
-	    locator = String.format(locator, (Object[]) dynamicValue);
+		boolean checkElementDisplayed = false;
 	    overRideTimeOut(driver, 2);
 	    try {
-		elementsOne = driver.findElements(By.xpath(locator));
+	    	elementsOne = driver.findElements(By.xpath(locator));
+	    	checkElementDisplayed = elementsOne.get(0).isDisplayed();
 	    } catch (Exception e) {
+	    	checkElementDisplayed = true;
 	    }
 
 	    overRideTimeOut(driver, Constants.LONG_TIME);
-	    if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
+	    if (elementsOne.size() > 0 && checkElementDisplayed) {
 		break;
 	    } else {
 		try {
@@ -775,6 +785,16 @@ public class AbstractPage {
 	}
     }
 
+  //Click vào button, text có class là textview, tham số truyền vào là text
+    public void clickToDynamicButtonLinkOrLinkTextNotScrollDown(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean status = false;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+	if (status == true) {
+	    clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
+	}
+    }
+    
 //Click vào ô textbox lấy theo header, có 2 tham số truyền vào là text của label và vị trí index của ô input đó
     public void clickToDynamicInputBoxByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 	boolean status = false;
