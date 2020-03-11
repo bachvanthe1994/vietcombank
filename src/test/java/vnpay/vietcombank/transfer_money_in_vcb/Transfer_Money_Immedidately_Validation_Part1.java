@@ -113,10 +113,10 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 		log.info("TC_05_Step_02: Kiem tra Chuyen Tien Ngay hien thi");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền ngay"));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]));
 
 		log.info("TC_05_Step_02:Click Chuyen Tien Ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
 
 		log.info("TC_05_Step_02:Click Chuyen Tien Dinh Ky");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");

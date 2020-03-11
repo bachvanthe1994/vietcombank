@@ -102,7 +102,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	@Test
 	public void TC_85_KiemTraSoTienGocVoiTaiKhoanNguonLaUSD() {
 		log.info("TC_85_Step_Click quay lai man hinh chuyen tien nhanh 24/7");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_85_Step_Select tai khoan nguon la USD");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");

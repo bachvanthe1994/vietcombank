@@ -981,7 +981,7 @@ public class AbstractPage {
 		return expectList.containsAll(actualList);
 	}
 
-	public void clickToDynamicBottomMenu(AppiumDriver<MobileElement> driver, String dynamicID) {
+	public void clickToDynamicBottomMenuOrIcon(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		if (status == true) {

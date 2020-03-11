@@ -226,7 +226,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin"));
 
 		log.info("TC_58_Step_Kiem tra button back");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
