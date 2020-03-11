@@ -366,7 +366,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 		log.info("TC_15_Step_02: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, "2", "Số tiền");
 
 		log.info("TC_15_Step_03: Kiem tra so tien goi y");
 		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
