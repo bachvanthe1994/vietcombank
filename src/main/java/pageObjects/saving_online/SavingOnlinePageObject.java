@@ -1,6 +1,13 @@
 package pageObjects.saving_online;
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.openqa.selenium.By;
 
@@ -10,7 +17,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.saving_online.SavingOnlineUIs;
-import io.appium.java_client.TouchAction;
 
 public class SavingOnlinePageObject extends AbstractPage {
 
@@ -60,6 +66,35 @@ public class SavingOnlinePageObject extends AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 
+	}
+	
+	public String getTransferTimeSuccess(String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+
+		if (transferTime.equals("") || transferTime == null) {
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[]{
+			        "Unused",
+			        "Chủ Nhật",
+			        "Thứ Hai",
+			        "Thứ Ba",
+			        "Thứ Tư",
+			        "Thứ Năm",
+			        "Thứ Sáu",
+			        "Thứ Bảy",
+			});
+			
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat =
+			        new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+			
+		}
+		
+		return transferTime;
 	}
 	
 }

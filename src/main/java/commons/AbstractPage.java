@@ -6,10 +6,14 @@ import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
 
+import java.text.DateFormatSymbols;
 import java.text.Normalizer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -1804,6 +1808,40 @@ public class AbstractPage {
 		}
 		return text;
 
+	}
+
+	// Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text
+	// phía bên tay trái
+	public String getDynamicTextInLine2DestinationAccount(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT, dynamicTextValue);
+
+		}
+		return text;
+
+	}
+
+	public String getTransferTimeSuccess(AppiumDriver<MobileElement> driver, String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+
+		if (transferTime.equals("") || transferTime == null) {
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[] { "Unused", "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", });
+
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+
+		}
+
+		return transferTime;
 	}
 
 //Lấy text bằng id

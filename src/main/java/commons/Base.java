@@ -467,7 +467,7 @@ public class Base {
 			return "";
 		}
 	}
-
+	
 	public long convertMoneyToLong(String money, String currency) {
 		money = money.replaceAll(" " + currency, "");
 		money = money.replaceAll(",", "");
@@ -839,12 +839,11 @@ public class Base {
 
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
-		SimpleDateFormat formatter1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-		SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 		try {
-			result = formatter2.format(formatter1.parse(stringDate));
-		} catch (Exception e) {
-
+			result =  stringDate.split(" ")[3];
+		}
+		catch (Exception e) {
+			
 		}
 		return result;
 
