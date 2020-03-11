@@ -101,7 +101,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info.formOfPayment);
 		
 		log.info("TC_01_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -235,10 +235,10 @@ public class SavingOnline_Folow extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_05_13_Click Thuc hien giao dich moi");
+		log.info("TC_03_7_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_03_3_Chon tai khoan dich");
+		log.info("TC_03_8_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
@@ -365,7 +365,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info1.formOfPayment);
 		
 		log.info("TC_05_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -629,7 +629,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info2.formOfPayment);
 		
 		log.info("TC_09_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -893,7 +893,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info3.formOfPayment);
 		
 		log.info("TC_13_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -1157,7 +1157,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info4.formOfPayment);
 		
 		log.info("TC_17_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -1421,7 +1421,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info5.formOfPayment);
 		
 		log.info("TC_21_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
