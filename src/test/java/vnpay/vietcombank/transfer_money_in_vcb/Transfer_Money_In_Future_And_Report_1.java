@@ -156,10 +156,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_01_Step_32: Lay ma giao dich" + transactionNumber);
 
 		log.info("TC_01_Step_33: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_01_Step_34: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_35: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
@@ -410,10 +410,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_04_Step_27: Lay ma giao dich" + transactionNumber);
 
 		log.info("TC_04_Step_34: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_04_Step_35: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_04_Step_36: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
@@ -659,10 +659,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_07_Step_32: Lay ma giao dich" + transactionNumber);
 
 		log.info("TC_07_Step_33: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_07_Step_34: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_07_Step_35: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
@@ -914,10 +914,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_10_Step_34: Lay ma giao dich" + transactionNumber);
 
 		log.info("TC_10_Step_35: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_10_Step_36: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_10_Step_37: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
@@ -1141,10 +1141,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_13_Step_26: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_NAME);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_NAME);
 
 		log.info("TC_13_Step_27: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), Account_Data.Valid_Account.DIFFERENT_OWNER_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.DIFFERENT_OWNER_ACCOUNT);
 
 		log.info("TC_13_Step_28: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
@@ -1361,10 +1361,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_16_Step_26: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_NAME);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.DIFFERENT_OWNER_NAME);
 
 		log.info("TC_16_Step_27: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), Account_Data.Valid_Account.DIFFERENT_OWNER_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.DIFFERENT_OWNER_ACCOUNT);
 
 		log.info("TC_16_Step_28: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
