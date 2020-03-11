@@ -110,7 +110,7 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "1234567899112", "Thông tin giao dịch", "1");
 
 		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney, "Số tiền");
+		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 
 		log.info("TC_04_4_Chon tai khoan nguon Ngoai te");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -126,7 +126,7 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, "1111111111111.11", "Thông tin giao dịch", "1");
 
 		actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualAmountMoney, "Số tiền");
+		verifyEquals(actualAmountMoney, "Số tiền ủng hộ");
 	}
 
 	@Test
@@ -177,8 +177,8 @@ public class Validation_Amount_Charity extends Base {
 
 		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
-		listExpectAmountMoney.add("100 EUR ~ 2,700,600 VND");
-		listExpectAmountMoney.add("1,000 EUR ~ 27,006,000 VND");
+		listExpectAmountMoney.add("100 EUR ~ 2,399,776 VND");
+		listExpectAmountMoney.add("1,000 EUR ~ 23,997,760 VND");
 
 		log.info("TC_07_3_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
