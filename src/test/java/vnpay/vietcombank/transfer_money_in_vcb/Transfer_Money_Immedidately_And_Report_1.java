@@ -47,7 +47,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -180,7 +180,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
 		log.info("TC_02_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -324,7 +324,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_03_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 
 		log.info("TC_03_Step_01: Click Chuyen tien trong VCB");
@@ -461,7 +461,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 
 		log.info("TC_04_Step_01:Click  nut Back");
@@ -604,7 +604,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_05_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
 
 		log.info("TC05_Step 01: Click Chuyen tien trong VCB");
@@ -746,7 +746,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_06_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
 
 		log.info("TC06_Step 01 : Click  nut Back");

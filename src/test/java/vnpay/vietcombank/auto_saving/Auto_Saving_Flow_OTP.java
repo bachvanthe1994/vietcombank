@@ -115,7 +115,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 
 		log.info("TC_01_13_Click nut Home ve man hinh chinh");
-		savingOnline.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
+		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 
 	}
 
@@ -173,14 +173,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_02_Step_14: Click back ve man hinh chinh");
-		autoSaving.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_03_TietKiemTuDong_TaiKhoanNguon_VND_OTP_BaoCaoGiaoDich() {
 		
 		log.info("TC_03_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_03_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -220,14 +220,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_03_Step_14: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_03_Step_15: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_03_Step_16: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Test
@@ -267,7 +267,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_04_Step_11: An nut back ve man hinh menu");
-		autoSaving.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 	}
@@ -276,7 +276,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 		
 		log.info("TC_05_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_05_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -313,14 +313,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_05_Step_13: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_05_Step_14: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_05_Step_15: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Parameters ({"otp"})
@@ -395,7 +395,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 
 		log.info("TC_06_13_Click nut Home ve man hinh chinh");
-		savingOnline.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
+		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 
 	}
 	
@@ -453,14 +453,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_07_Step_14: Click back ve man hinh chinh");
-		autoSaving.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_08_TietKiemTuDong_TaiKhoanNguon_USD_OTP_BaoCaoGiaoDich() {
 		
 		log.info("TC_08_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_08_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -497,14 +497,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_08_Step_13: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_08_Step_14: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_08_Step_15: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Test
@@ -544,7 +544,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_09_Step_12: An nut back ve man hinh menu");
-		autoSaving.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);		
 	}
 	
@@ -552,7 +552,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 		
 		log.info("TC_10_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_10_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -589,14 +589,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_10_Step_13: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_10_Step_14: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_10_Step_15: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Parameters ({"otp"})
@@ -671,7 +671,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 
 		log.info("TC_11_13_Click nut Home ve man hinh chinh");
-		savingOnline.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
+		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 
 	}
 	
@@ -728,14 +728,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_12_Step_14: Click back ve man hinh chinh");
-		autoSaving.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_13_TietKiemTuDong_TaiKhoanNguon_EUR_OTP_BaoCaoGiaoDich() {
 		
 		log.info("TC_13_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_13_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -772,14 +772,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_13_Step_13: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_13_Step_14: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_13_Step_15: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Test
@@ -819,7 +819,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_14_Step_11: An nut back ve man hinh menu");
-		autoSaving.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);		
 	}
 	
@@ -827,7 +827,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	public void TC_15_HuyTietKiemTuDong_TaiKhoanNguon_EUR_BaoCaoGiaoDich() {
 		
 		log.info("TC_15_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_15_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -861,14 +861,14 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_15_Step_13: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_15_Step_14: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_15_Step_15: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@AfterClass(alwaysRun = true)

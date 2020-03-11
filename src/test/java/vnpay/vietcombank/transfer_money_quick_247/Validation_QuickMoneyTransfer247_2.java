@@ -45,7 +45,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_00_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_00Step_: Click cai dat");
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
@@ -67,10 +67,10 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1], SetupContact_Data.UI.ACCOUNT[1]);
 
 		log.info("TC_00_Step_: back lai man hinh danh ba");
-		setupContact.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_00_Step_: back lai man hinh home");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
 		log.info("TC_19_click danh ba nguoi thu huong");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivContent1");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivContent1");
 
 		log.info("TC_19_verify tieu de danh ba nguoi huong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Danh bạ người hưởng"));
@@ -161,7 +161,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 	@Test
 	public void TC_24_NganHangHuongBoTrong() {
 		log.info("TC_24_Step_button back");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_24_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");

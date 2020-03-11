@@ -58,7 +58,7 @@ public class Mobile_Topup_Validate_03 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 		
 		log.info("TC_01_Step_06: An nut 'Back' de quay ve man hinh 'Nap tien dien thoai");
-		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_01_Step_07: Xac nhan quay ve man hinh 'Nap tien dien thoai");
 		verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), UIs.MOBILE_TOPUP_TITLE);
@@ -72,7 +72,7 @@ public class Mobile_Topup_Validate_03 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_02_Step_02: An nut 'Home' de quay ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleRight");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleRight");
 
 		log.info("TC_02_Step_03: Xac nhan quay ve man hinh chinh");
 		verifyTrue(home.isDynamicImageHomeDisplay(driver, "com.VCB:id/menu_1"));

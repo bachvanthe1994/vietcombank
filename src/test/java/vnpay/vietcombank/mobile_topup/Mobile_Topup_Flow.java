@@ -91,7 +91,7 @@ public class Mobile_Topup_Flow extends Base {
 	@Test
 	public void TC_02_KiemTraBaoCaoGiaoDich(String phone) {
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 	
@@ -102,7 +102,7 @@ public class Mobile_Topup_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_02_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -142,14 +142,14 @@ public class Mobile_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_02_Step_14: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_15: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_16: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "pass", "phone" })
@@ -206,7 +206,7 @@ public class Mobile_Topup_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -246,14 +246,14 @@ public class Mobile_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_04_Step_14: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_15: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_16: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "otp", "phone" })
@@ -311,7 +311,7 @@ public class Mobile_Topup_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_06_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -351,14 +351,14 @@ public class Mobile_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_06_Step_14: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_06_Step_15: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_06_Step_16: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "otp", "phone" })
@@ -416,7 +416,7 @@ public class Mobile_Topup_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_08_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -456,14 +456,14 @@ public class Mobile_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_08_Step_14: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_08_Step_15: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_08_Step_16: Mo tab Home");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

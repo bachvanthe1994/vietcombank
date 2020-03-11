@@ -53,7 +53,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.isDynamicTextInfoDisplayed(driver, "Hạn mức giao dịch áp dụng cho các chức năng chuyển tiền:");
 
 		log.info("TC_64_Quay lai man hinh chuyen tien nhanh 24/7");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -248,7 +248,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	@Test
 	public void TC_75_ChonPhiGiaoDichNguoiNhanVaKiemTraPhiChuyen() {
 		log.info("TC_75_Quay lai man hinh chuyen tien nhanh 24/7");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_75_Step_Chon phi giao dich la nguoi nhan tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
@@ -272,7 +272,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	@Test
 	public void TC_76_ChonTaiKhoanNguonKhongDuSoDuVND() {
 		log.info("TC_76_Quay lai man hinh chuyen tien nhanh 24/7");
-		transferMoney.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_76_Lay so du tai khoan nguon");
 		Long surplus = Long.parseLong(transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));

@@ -155,7 +155,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 	public void TC_02_XacNhanDatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_TrongBaoCaoGiaoDich() {
 		
 		log.info("TC_02_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -198,14 +198,14 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), "Thanh toán vé máy bay");
 		
 		log.info("TC_02_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_02_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_02_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Parameters ({"otp"})
@@ -329,7 +329,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 	public void TC_04_XacNhanDatVeMayBayNoiDiaKhuHoiThanhCong_1Nguoi_TrongBaoCaoGiaoDich() {
 		
 		log.info("TC_04_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 		
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -372,14 +372,14 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), "Thanh toán vé máy bay");
 		
 		log.info("TC_04_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_04_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_04_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 	
 	
