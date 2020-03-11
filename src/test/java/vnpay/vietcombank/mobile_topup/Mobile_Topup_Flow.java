@@ -299,7 +299,7 @@ public class Mobile_Topup_Flow extends Base {
 
 	@Parameters({ "phone" })
 	@Test
-	public void TC_06_KiemTraBaoCaoGiaoDich(String otp, String phone) {
+	public void TC_06_KiemTraBaoCaoGiaoDich(String phone) {
 		log.info("TC_06_Step_01: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
