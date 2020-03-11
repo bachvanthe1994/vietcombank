@@ -1,9 +1,13 @@
 package pageObjects.saving_online;
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.openqa.selenium.By;
 
@@ -64,44 +68,30 @@ public class SavingOnlinePageObject extends AbstractPage {
 
 	}
 	
-	public int getCurrentDayOfWeek(LocalDateTime localDate) {
-		DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
-		int val = dayOfWeek.getValue();
-		return val;
-	}
-	
-	public String convertDayOfWeekVietNamese(int day) {
-		switch (day) {
-		case 1:
-			return "Thứ Hai";
-		case 2:
-			return "Thứ Ba";
-		case 3:
-			return "Thứ Tư";
-		case 4:
-			return "Thứ Năm";
-		case 5:
-			return "Thứ Sáu";
-		case 6:
-			return "Thứ Bảy";
-		case 7:
-			return "Chủ Nhật";
-		default:
-			return "";
-		}
-	}
-	
 	public String getTransferTimeSuccess(String textSuccess) {
 		String transferTime = "";
 		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
-		
-		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");  
-		LocalDateTime now = LocalDateTime.now();  
-		
-		String dateOfWeek = convertDayOfWeekVietNamese(getCurrentDayOfWeek(now));
+
 		if (transferTime.equals("") || transferTime == null) {
-			String time = dateFormat.format(now);
-			transferTime = time.split(" ")[0] + dateOfWeek + time.split(" ")[1];
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[]{
+			        "Unused",
+			        "Chủ Nhật",
+			        "Thứ Hai",
+			        "Thứ Ba",
+			        "Thứ Tư",
+			        "Thứ Năm",
+			        "Thứ Sáu",
+			        "Thứ Bảy",
+			});
+			
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat =
+			        new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+			
 		}
 		
 		return transferTime;
