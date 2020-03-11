@@ -134,7 +134,7 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_01_13_Kiem tra man hinh Lap lenh thanh cong");
 	verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 	
-	transferTime = transferRecurrent.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+	transferTime = transferRecurrent.getTransferMoneyCharityTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 	
 	log.info("TC_01_13_1_Kiem tra ten nguoi huong thu");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
@@ -239,7 +239,7 @@ public class TransferMoneyRecurrent extends Base {
 	String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));
 
 	log.info("TC_04_01: Click Huy Lenh");
-	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "1", "com.VCB:id/tvHuyLenh");
+	transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 	log.info("TC_04_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
@@ -361,7 +361,7 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_05_13_Kiem tra man hinh Lap lenh thanh cong");
 	verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
-	transferTime = transferRecurrent.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+	transferTime = transferRecurrent.getTransferMoneyCharityTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_05_13_1_Kiem tra ten nguoi huong thu");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
@@ -467,7 +467,7 @@ public class TransferMoneyRecurrent extends Base {
 	String endDate = getForwardDate(1 + Integer.parseInt(info1.frequencyNumber));
 
 	log.info("TC_08_01: Click Huy Lenh");
-	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "1", "com.VCB:id/tvHuyLenh");
+	transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 	log.info("TC_08_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
@@ -589,7 +589,7 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_09_13_Kiem tra man hinh Lap lenh thanh cong");
 	verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
-	transferTime = transferRecurrent.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+	transferTime = transferRecurrent.getTransferMoneyCharityTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_09_13_1_Kiem tra ten nguoi huong thu");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
@@ -695,7 +695,7 @@ public class TransferMoneyRecurrent extends Base {
 	String endDate = getForwardMonthAndForwardDay(Long.parseLong(info2.frequencyNumber), 1);
 
 	log.info("TC_12_01: Click Huy Lenh");
-	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "1", "com.VCB:id/tvHuyLenh");
+	transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 	log.info("TC_12_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
@@ -816,7 +816,7 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_13_13_Kiem tra man hinh Lap lenh thanh cong");
 	verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
-	transferTime = transferRecurrent.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+	transferTime = transferRecurrent.getTransferMoneyCharityTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_13_13_1_Kiem tra ten nguoi huong thu");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
@@ -922,7 +922,7 @@ public class TransferMoneyRecurrent extends Base {
 	String endDate = getForwardMonthAndForwardDay(Long.parseLong(info3.frequencyNumber), 1);
 
 	log.info("TC_16_01: Click Huy Lenh");
-	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "1", "com.VCB:id/tvHuyLenh");
+	transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 	log.info("TC_16_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
@@ -1044,7 +1044,7 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_17_13_Kiem tra man hinh Lap lenh thanh cong");
 	verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
-	transferTime = transferRecurrent.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+	transferTime = transferRecurrent.getTransferMoneyCharityTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_17_13_1_Kiem tra ten nguoi huong thu");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
@@ -1150,7 +1150,7 @@ public class TransferMoneyRecurrent extends Base {
 	String endDate = getForwardDate(1 + Integer.parseInt(info5.frequencyNumber));
 
 	log.info("TC_20_01: Click Huy Lenh");
-	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "1", "com.VCB:id/tvHuyLenh");
+	transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 	log.info("TC_20_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
@@ -1272,7 +1272,7 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_21_13_Kiem tra man hinh Lap lenh thanh cong");
 	verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
-	transferTime = transferRecurrent.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+	transferTime = transferRecurrent.getTransferMoneyCharityTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_21_13_1_Kiem tra ten nguoi huong thu");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
@@ -1378,7 +1378,7 @@ public class TransferMoneyRecurrent extends Base {
 	String endDate = getForwardDate(1 + Integer.parseInt(info5.frequencyNumber));
 
 	log.info("TC_24_01: Click Huy Lenh");
-	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "1", "com.VCB:id/tvHuyLenh");
+	transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 	log.info("TC_24_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
