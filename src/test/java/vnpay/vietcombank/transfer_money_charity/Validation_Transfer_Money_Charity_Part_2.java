@@ -87,14 +87,14 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_05_02_Kiem tra hien thi mac dinh");
-		verifyTrue(transferMoneyCharity.isDynamicTextInInputBoxDisPlayed(driver, "Quỹ/ Tổ chức từ thiện"));
+		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Quỹ/ Tổ chức từ thiện"));
 
 	}
 
 	@Test
 	public void TC_06_KiemTraDanhSachQuyToChucTuThien() {
 		log.info("TC_06_01_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
 
 		List<String> actualListOrganizationCharity = transferMoneyCharity.getListOrganizationCharity();
 
@@ -108,7 +108,7 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 
 		log.info("TC_07_02_Kiem tra Quy/ To chuc tu thien duoc hien thi");
-		String actualOrganization = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
+		String actualOrganization = transferMoneyCharity.getDynamicTextInDropDownByHeader(driver, "Thông tin người hưởng", "1");
 		verifyEquals(actualOrganization, info.organization);
 	}
 
