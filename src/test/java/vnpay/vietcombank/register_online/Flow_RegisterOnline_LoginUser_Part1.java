@@ -33,7 +33,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 	}
 
-//@Test
+@Test
 	public void TC_01_GiaoDichNopTienThanhCong() throws InterruptedException {
 		log.info("TC_Step_: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -105,8 +105,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_Step_: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-
-//@Test
+@Test
 	public void TC_02_GiaoDichRutTienVNDThanhCong() throws InterruptedException {
 		log.info("TC_Step_: Click rut tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
@@ -177,7 +176,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_03_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMat() throws InterruptedException {
 		log.info("TC_Step_: Click giao dich Gui/rut tiết kiệm");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi/rút tiết kiệm");
@@ -254,7 +253,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_04_MoTheTietKiem_TaiKhoanTienGuiKhongKyHan() throws InterruptedException {
 
 		log.info("TC_Step_: Click gui tiet kiem");
@@ -329,7 +328,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_05_MoTheTietKiem_TaiKhoanTienGuiCoKyHanChuyenKhoan() throws InterruptedException {
 		log.info("TC_Step_: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -412,7 +411,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_06_MoTheTietKiem_TheTietKiemCoKyHanChuyenKhoanVaTienMatNhanGoc() throws InterruptedException {
 		log.info("TC_Step_: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -576,7 +575,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc() throws InterruptedException {
 		log.info("TC_Step_: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -651,7 +650,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_09_RutSoTietKiem_RutLaiPhuongThucTienMat() throws InterruptedException {
 		log.info("TC_Step_: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
@@ -724,7 +723,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//@Test
+@Test
 	public void TC_10_RutSoTietKiem_RutGocPhuongThucChuyenKhoanVaTienMat() throws InterruptedException {
 		log.info("TC_Step_: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
@@ -812,7 +811,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-	//@Test
+	@Test
 	public void TC_11_MoTaiKhoanThanhToan_ManHinhThongTinKhachHang() throws InterruptedException {
 		log.info("TC_Step_: Click giao dich mo tai khoan thanh toan");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản thanh toán");
@@ -856,7 +855,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 	}
 
-	//@Test
+	@Test
 	public void TC_12_MoTaiKhoanThanhToan_ManHinhDangKyDichVuDienTu() throws InterruptedException {
 		log.info("TC_Step_: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
@@ -882,7 +881,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
 	}
 	
-	//@Test
+	@Test
 	public void TC_13_MoTaiKhoanThanhToan_ManHinhConnect24_ChonMotThePhu() throws InterruptedException {
 		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the connect24");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ Connect24");

@@ -10,14 +10,19 @@ public class TransferMoneyQuick_Data {
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
 
 		public static final String BANK_INVALID = "Ngân hàng Test";
+		public static final double TRANSFER_VND_USD = 23087;
+		public static final double TRANSFER_VND_EUR = 24274;
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
-		public static final String MONEY_EUR = "40";
+		public static final String MONEY_EUR = "10";
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS TEST ONLINE IBFT 247 VN";
 		public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 
-		public static final String COST_AMOUNT_USD = "0.33";
-		public static final String COST_AMOUNT_EUR = "0.02";
+		public static final String COST_AMOUNT_USD_EUR_OTP = "0.33";
+		public static final String COST_AMOUNT_USD_EUR_MK = "0.02";
+
+		public static final String FEE_OTP_VND_CARD = "2200";
+		public static final String FEE_MK_VND_CARD = "550";
 		public static final String COST_AMOUNT_OTP_VND = "7700";
 		public static final String COST_AMOUNT_MK_VND = "550";
 		public static final String PASSWORD = "Nhập mật khẩu";
