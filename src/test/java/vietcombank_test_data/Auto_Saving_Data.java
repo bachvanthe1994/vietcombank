@@ -14,6 +14,8 @@ public class Auto_Saving_Data {
 		public static final String INPUT_VND = "2000000";
 		public static final String INPUT_USD = "100";
 		public static final String INPUT_EUR = "100";
+		public static final String AUTO_SAVING_CANCEL_MESSAGE = "Quý khách có chắc chắn muốn hủy đăng ký gửi tiết kiệm tự động này không ?";
+		public static final String AUTO_SAVING_CANCEL_SUCCESS_MESSAGE = "Quý khách đã hủy đăng ký tiết kiệm tự động thành công.";
 	}
 	
 }
