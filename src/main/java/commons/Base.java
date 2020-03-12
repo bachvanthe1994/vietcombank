@@ -467,7 +467,7 @@ public class Base {
 			return "";
 		}
 	}
-	
+
 	public long convertMoneyToLong(String money, String currency) {
 		money = money.replaceAll(" " + currency, "");
 		money = money.replaceAll(",", "");
@@ -790,7 +790,7 @@ public class Base {
 		return result;
 	}
 
-	public long convertAvailableBalanceCurrentcyToLong(String money) {
+	public long convertAvailableBalanceCurrentcyOrFeeToLong(String money) {
 		long result = 0;
 		try {
 			if (money.contentEquals("Không mất phí")) {
@@ -813,6 +813,7 @@ public class Base {
 		return result;
 	}
 
+//
 	public double convertVNeseMoneyToEUROOrUSD(String money, String currentcy) {
 		double result = 0;
 		try {
@@ -840,10 +841,9 @@ public class Base {
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
 		try {
-			result =  stringDate.split(" ")[3];
-		}
-		catch (Exception e) {
-			
+			result = stringDate.split(" ")[3];
+		} catch (Exception e) {
+
 		}
 		return result;
 

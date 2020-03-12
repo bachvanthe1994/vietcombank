@@ -63,7 +63,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_01_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
@@ -102,7 +102,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_01_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_01_10_Kiem tra so tien phi");
@@ -130,7 +130,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -220,7 +220,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		
 		log.info("TC_03_4_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -274,7 +274,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, - Long.parseLong(info2.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -360,7 +360,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_05_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
@@ -399,7 +399,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_05_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_05_10_Kiem tra so tien phi");
@@ -427,7 +427,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_05_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info1.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -517,7 +517,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		
 		log.info("TC_07_4_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -571,7 +571,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, - Long.parseLong(info2.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -657,7 +657,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_09_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
@@ -696,7 +696,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_09_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_09_10_Kiem tra so tien phi");
@@ -724,7 +724,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_09_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info2.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -814,7 +814,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		
 		log.info("TC_11_4_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -868,7 +868,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, - Long.parseLong(info2.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -954,7 +954,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_13_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
@@ -993,7 +993,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_13_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_13_10_Kiem tra so tien phi");
@@ -1021,7 +1021,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_13_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info3.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -1111,7 +1111,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		
 		log.info("TC_15_4_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -1165,7 +1165,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, - Long.parseLong(info3.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -1251,7 +1251,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_17_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
@@ -1290,7 +1290,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_17_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_17_10_Kiem tra so tien phi");
@@ -1318,7 +1318,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_17_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info4.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -1408,7 +1408,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		
 		log.info("TC_19_4_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -1462,7 +1462,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 		
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, - Long.parseLong(info4.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -1548,7 +1548,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_21_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
@@ -1587,7 +1587,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_21_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
 		log.info("TC_21_10_Kiem tra so tien phi");
@@ -1615,7 +1615,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_21_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info5.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
@@ -1705,7 +1705,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 		
-		surplus = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		
 		log.info("TC_23_4_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -1759,7 +1759,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 		
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline("Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, - Long.parseLong(info5.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
 		
