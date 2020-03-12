@@ -20,6 +20,7 @@ public class MobileTopupPageObject extends AbstractPage {
 	
 	public String getStringNumber(long expVal,String... dynamicValue){
 		
+		String data = "0";
 		long exp = 0;
 		String locator = String.format(DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, (Object[]) dynamicValue);
 		ArrayList<Long> allStringNumber = new ArrayList<Long>();
@@ -30,10 +31,10 @@ public class MobileTopupPageObject extends AbstractPage {
 		for(int i=0;i<allStringNumber.size();i++) {
 			if(expVal > allStringNumber.get(i)) {
 				exp = allStringNumber.get(i);
+				data = Long.toString(exp); 
+				data = addCommasToLong(data);
 			}
 		}
-		String data = Long.toString(exp); 
-		data = addCommasToLong(data);
 		return data;		
 	}
 	

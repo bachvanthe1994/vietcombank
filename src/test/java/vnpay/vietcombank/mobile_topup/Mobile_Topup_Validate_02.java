@@ -176,7 +176,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 			mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 			
 		}else {
-			log.info("TC_01_Step_02: Tat Dropdownlist");
+			log.info("TC_09_Step_02: Tat Dropdownlist");
 			mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 			throw new SkipException("These Tests shouldn't be run in Production");
 		}
