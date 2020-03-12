@@ -244,46 +244,43 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_04_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
 
-	log.info("TC_04_03: Kiem Tra Thong Bao hien thi");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thông báo"));
+	log.info("TC_04_03: Kiem Tra Success hiển thị");
+	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thành công"));
 
-	log.info("TC_04_04: Kiem Tra Success hiển thị");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Success"));
-
-	log.info("TC_04_05: Click nut Dong");
+	log.info("TC_04_04: Click nut Dong");
 	transferStatus.clickToDynamicButton(driver, "Đóng");
 
-	log.info("TC_04_06: Kiem tra trang thai Da Huy hien thi");
+	log.info("TC_04_05: Kiem tra trang thai Da Huy hien thi");
 	verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
-	log.info("TC_04_07: click vao giao dich");
+	log.info("TC_04_06: click vao giao dich");
 	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_04_08: Kiem tra ngay tao giao dich hien thi");
+	log.info("TC_04_07: Kiem tra ngay tao giao dich hien thi");
 	verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
 
-	log.info("TC_04_09: Kiem tra ten nguoi huong hien thi");
+	log.info("TC_04_08: Kiem tra ten nguoi huong hien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
-	log.info("TC_04_10: Kiem tra so tien thi");
+	log.info("TC_04_09: Kiem tra so tien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info.money) + " VND");
 
-	log.info("TC_04_11: Kiem tra tan suat");
+	log.info("TC_04_10: Kiem tra tan suat");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info.frequencyNumber + " " + info.frequencyCategory + "/ lần");
 
-	log.info("TC_04_12: Kiem ngay bat dau");
+	log.info("TC_04_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
 
-	log.info("TC_04_13: Kiem ngay ket thuc");
+	log.info("TC_04_12: Kiem ngay ket thuc");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
 
-	log.info("TC_04_14: Kiem tra trang thai  Da Huy hien thi");
+	log.info("TC_04_13: Kiem tra trang thai  Da Huy hien thi");
 	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Không thành công"));
 
-	log.info("TC_04_15: Click  nut Back");
+	log.info("TC_04_14: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 
-	log.info("TC_04_16: Click  nut Back");
+	log.info("TC_04_15: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
     }
 
@@ -472,46 +469,43 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_08_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
 
-	log.info("TC_08_03: Kiem Tra Thong Bao hien thi");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thông báo"));
+	log.info("TC_08_03: Kiem Tra Success hiển thị");
+	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thành công"));
 
-	log.info("TC_08_04: Kiem Tra Success hiển thị");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Success"));
-
-	log.info("TC_08_05: Click nut Dong");
+	log.info("TC_08_04: Click nut Dong");
 	transferStatus.clickToDynamicButton(driver, "Đóng");
 
-	log.info("TC_08_06: Kiem tra trang thai Da Huy hien thi");
+	log.info("TC_08_05: Kiem tra trang thai Da Huy hien thi");
 	verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
-	log.info("TC_08_07: click vao giao dich");
+	log.info("TC_08_06: click vao giao dich");
 	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_08_08: Kiem tra ngay tao giao dich hien thi");
+	log.info("TC_08_07: Kiem tra ngay tao giao dich hien thi");
 	verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
 
-	log.info("TC_08_09: Kiem tra ten nguoi huong hien thi");
+	log.info("TC_08_08: Kiem tra ten nguoi huong hien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
-	log.info("TC_08_10: Kiem tra so tien thi");
+	log.info("TC_08_09: Kiem tra so tien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info1.money) + " EUR");
 
-	log.info("TC_08_11: Kiem tra tan suat");
+	log.info("TC_08_10: Kiem tra tan suat");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
 
-	log.info("TC_08_12: Kiem ngay bat dau");
+	log.info("TC_08_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
 
-	log.info("TC_08_13: Kiem ngay ket thuc");
+	log.info("TC_08_12: Kiem ngay ket thuc");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
 
-	log.info("TC_08_14: Kiem tra trang thai  Da Huy hien thi");
+	log.info("TC_08_13: Kiem tra trang thai  Da Huy hien thi");
 	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Không thành công"));
 
-	log.info("TC_08_15: Click  nut Back");
+	log.info("TC_08_14: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 
-	log.info("TC_08_16: Click  nut Back");
+	log.info("TC_08_15: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
     }
 
@@ -700,46 +694,43 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_12_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
 
-	log.info("TC_12_03: Kiem Tra Thong Bao hien thi");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thông báo"));
+	log.info("TC_12_03: Kiem Tra Success hiển thị");
+	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thành công"));
 
-	log.info("TC_12_04: Kiem Tra Success hiển thị");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Success"));
-
-	log.info("TC_12_05: Click nut Dong");
+	log.info("TC_12_04: Click nut Dong");
 	transferStatus.clickToDynamicButton(driver, "Đóng");
 
-	log.info("TC_12_06: Kiem tra trang thai Da Huy hien thi");
+	log.info("TC_12_05: Kiem tra trang thai Da Huy hien thi");
 	verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
-	log.info("TC_12_07: click vao giao dich");
+	log.info("TC_12_06: click vao giao dich");
 	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_12_08: Kiem tra ngay tao giao dich hien thi");
+	log.info("TC_12_07: Kiem tra ngay tao giao dich hien thi");
 	verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
 
-	log.info("TC_12_09: Kiem tra ten nguoi huong hien thi");
+	log.info("TC_12_08: Kiem tra ten nguoi huong hien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
-	log.info("TC_12_10: Kiem tra so tien thi");
+	log.info("TC_12_09: Kiem tra so tien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info2.money) + " VND");
 
-	log.info("TC_12_11: Kiem tra tan suat");
+	log.info("TC_12_10: Kiem tra tan suat");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
 
-	log.info("TC_12_12: Kiem ngay bat dau");
+	log.info("TC_12_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
 
-	log.info("TC_12_13: Kiem ngay ket thuc");
+	log.info("TC_12_12: Kiem ngay ket thuc");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
 
-	log.info("TC_12_14: Kiem tra trang thai  Da Huy hien thi");
+	log.info("TC_12_13: Kiem tra trang thai  Da Huy hien thi");
 	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Không thành công"));
 
-	log.info("TC_12_15: Click  nut Back");
+	log.info("TC_12_14: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 
-	log.info("TC_12_16: Click  nut Back");
+	log.info("TC_12_15: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
     }
 
@@ -927,46 +918,43 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_16_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
 
-	log.info("TC_16_03: Kiem Tra Thong Bao hien thi");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thông báo"));
+	log.info("TC_16_03: Kiem Tra Success hiển thị");
+	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thành công"));
 
-	log.info("TC_16_04: Kiem Tra Success hiển thị");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Success"));
-
-	log.info("TC_16_05: Click nut Dong");
+	log.info("TC_16_04: Click nut Dong");
 	transferStatus.clickToDynamicButton(driver, "Đóng");
 
-	log.info("TC_16_06: Kiem tra trang thai Da Huy hien thi");
+	log.info("TC_16_05: Kiem tra trang thai Da Huy hien thi");
 	verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
-	log.info("TC_16_07: click vao giao dich");
+	log.info("TC_16_06: click vao giao dich");
 	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_16_08: Kiem tra ngay tao giao dich hien thi");
+	log.info("TC_16_07: Kiem tra ngay tao giao dich hien thi");
 	verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
 
-	log.info("TC_16_09: Kiem tra ten nguoi huong hien thi");
+	log.info("TC_16_08: Kiem tra ten nguoi huong hien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
-	log.info("TC_16_10: Kiem tra so tien thi");
+	log.info("TC_16_09: Kiem tra so tien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info3.money) + " EUR");
 
-	log.info("TC_16_11: Kiem tra tan suat");
+	log.info("TC_16_10: Kiem tra tan suat");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
 
-	log.info("TC_16_12: Kiem ngay bat dau");
+	log.info("TC_16_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
 
-	log.info("TC_16_13: Kiem ngay ket thuc");
+	log.info("TC_16_12: Kiem ngay ket thuc");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
 
-	log.info("TC_16_14: Kiem tra trang thai  Da Huy hien thi");
+	log.info("TC_16_13: Kiem tra trang thai  Da Huy hien thi");
 	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Không thành công"));
 
-	log.info("TC_16_15: Click  nut Back");
+	log.info("TC_16_14: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 
-	log.info("TC_16_16: Click  nut Back");
+	log.info("TC_16_15: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
     }
 
@@ -1155,46 +1143,43 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_20_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
 
-	log.info("TC_20_03: Kiem Tra Thong Bao hien thi");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thông báo"));
+	log.info("TC_20_03: Kiem Tra Success hiển thị");
+	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thành công"));
 
-	log.info("TC_20_04: Kiem Tra Success hiển thị");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Success"));
-
-	log.info("TC_20_05: Click nut Dong");
+	log.info("TC_20_04: Click nut Dong");
 	transferStatus.clickToDynamicButton(driver, "Đóng");
 
-	log.info("TC_20_06: Kiem tra trang thai Da Huy hien thi");
+	log.info("TC_20_05: Kiem tra trang thai Da Huy hien thi");
 	verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
-	log.info("TC_20_07: click vao giao dich");
+	log.info("TC_20_06: click vao giao dich");
 	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_20_08: Kiem tra ngay tao giao dich hien thi");
+	log.info("TC_20_07: Kiem tra ngay tao giao dich hien thi");
 	verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
 
-	log.info("TC_20_09: Kiem tra ten nguoi huong hien thi");
+	log.info("TC_20_08: Kiem tra ten nguoi huong hien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
-	log.info("TC_20_10: Kiem tra so tien thi");
+	log.info("TC_20_09: Kiem tra so tien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info4.money) + " USD");
 
-	log.info("TC_20_11: Kiem tra tan suat");
+	log.info("TC_20_10: Kiem tra tan suat");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info4.frequencyNumber + " " + info4.frequencyCategory + "/ lần");
 
-	log.info("TC_20_12: Kiem ngay bat dau");
+	log.info("TC_20_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
 
-	log.info("TC_20_13: Kiem ngay ket thuc");
+	log.info("TC_20_12: Kiem ngay ket thuc");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
 
-	log.info("TC_20_14: Kiem tra trang thai  Da Huy hien thi");
+	log.info("TC_20_13: Kiem tra trang thai  Da Huy hien thi");
 	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Không thành công"));
 
-	log.info("TC_20_15: Click  nut Back");
+	log.info("TC_20_14: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 
-	log.info("TC_20_16: Click  nut Back");
+	log.info("TC_20_15: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
     }
 
@@ -1383,46 +1368,43 @@ public class TransferMoneyRecurrent extends Base {
 	log.info("TC_24_02: Click Dong Y");
 	transferStatus.clickToDynamicButton(driver, "Đồng ý");
 
-	log.info("TC_24_03: Kiem Tra Thong Bao hien thi");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thông báo"));
+	log.info("TC_24_03: Kiem Tra Success hiển thị");
+	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Thành công"));
 
-	log.info("TC_24_04: Kiem Tra Success hiển thị");
-	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Success"));
-
-	log.info("TC_24_05: Click nut Dong");
+	log.info("TC_24_04: Click nut Dong");
 	transferStatus.clickToDynamicButton(driver, "Đóng");
 
-	log.info("TC_24_06: Kiem tra trang thai Da Huy hien thi");
+	log.info("TC_24_05: Kiem tra trang thai Da Huy hien thi");
 	verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
-	log.info("TC_24_07: click vao giao dich");
+	log.info("TC_24_06: click vao giao dich");
 	transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
-	log.info("TC_24_08: Kiem tra ngay tao giao dich hien thi");
+	log.info("TC_24_07: Kiem tra ngay tao giao dich hien thi");
 	verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày lập lệnh").contains(transferTime.split(" ")[0]));
 
-	log.info("TC_24_09: Kiem tra ten nguoi huong hien thi");
+	log.info("TC_24_08: Kiem tra ten nguoi huong hien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
-	log.info("TC_24_10: Kiem tra so tien thi");
+	log.info("TC_24_09: Kiem tra so tien thi");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info5.money) + " USD");
 
-	log.info("TC_24_11: Kiem tra tan suat");
+	log.info("TC_24_10: Kiem tra tan suat");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info5.frequencyNumber + " " + info5.frequencyCategory + "/ lần");
 
-	log.info("TC_24_12: Kiem ngay bat dau");
+	log.info("TC_24_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
 
-	log.info("TC_24_13: Kiem ngay ket thuc");
+	log.info("TC_24_12: Kiem ngay ket thuc");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày kết thúc"), endDate);
 
-	log.info("TC_24_14: Kiem tra trang thai  Da Huy hien thi");
+	log.info("TC_24_13: Kiem tra trang thai  Da Huy hien thi");
 	verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, "Không thành công"));
 
-	log.info("TC_24_15: Click  nut Back");
+	log.info("TC_24_14: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Chi tiết lệnh chuyển tiền");
 
-	log.info("TC_24_16: Click  nut Back");
+	log.info("TC_24_15: Click  nut Back");
 	transferStatus.clickToDynamicBackIcon(driver, "Trạng thái lệnh chuyển tiền");
     }
 
