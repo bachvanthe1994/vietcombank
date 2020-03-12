@@ -28,7 +28,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	private TransactionReportPageObject transactionReport;
 	private SavingOnlinePageObject savingOnline;
 	
-	private String transactionID,savingAccount,tranferMoney,transactionDate;
+	private String transactionID,savingAccount,tranferMoney,transactionDate,startDate,endDate, fee;
 	private long transferFee;
 	
 	
@@ -47,7 +47,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_TaiKhoanNguon_VND (String otp) {
 		
-		home = PageFactoryManager.getHomePageObject(driver);
+home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
@@ -91,7 +91,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_01_8_5_Kiem tra hinh thuc tra lai");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), Auto_Saving_Data.TEXT.FORM_OF_PAYMENT);
 		
-		log.info("TC_01_09_Chon phuong thuc xac thuc");
+		log.info("TC_01_9_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
@@ -137,43 +137,82 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 		
-		log.info("TC_02_Step_04: Chon ngay ket thuc");
+		log.info("TC_02_Step_04: Xac nhan Ky han va so du TK tiet kiem");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		startDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayBatDau");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số dư hiện tại"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND)+ " VND");
 		
+		log.info("TC_02_Step_05: Chon ngay ket thuc");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Ngày kết thúc");
 		autoSaving.clickToDynamicDateInDateTimePicker(driver, getForWardDay(3));
 		autoSaving.clickToDynamicButton(driver, "OK");
+		endDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 		
-		log.info("TC_02_Step_05: Nhap so tien chuyen");
+		log.info("TC_02_Step_06: Nhap so tien chuyen");
 		autoSaving.inputToDynamicInputBox(driver,Auto_Saving_Data.TEXT.INPUT_VND, "Số tiền chuyển");
 		
-		log.info("TC_02_Step_06: An Tiep tuc");
+		log.info("TC_02_Step_07: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_02_Step_07: Hien thi man hinh xac nhan thong tin");
+		log.info("TC_02_Step_08: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
 		
-		log.info("TC_02_Step_08: Chon phương thuc xac thuc");
+		log.info("TC_02_Step_09: Hien thi thông tin xac nhan");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo");
+		
+		log.info("TC_02_Step_10: Hien thi tai khoan nguon");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_VND);
+		
+		log.info("TC_02_Step_11: Hien thi tai khoan tiet kiem");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_02_Step_12: Hien thi ky han gui");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		
+		log.info("TC_02_Step_13: Hien thi ngay den han");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày đến hạn"), endDate);
+		
+		log.info("TC_02_Step_14: Hien thi So tien hien tai");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số tiền hiện tại"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
+		
+		log.info("TC_02_Step_15: Hien thi Chu ky chuyen");
+		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, "Chu kỳ chuyển"));
+		
+		log.info("TC_02_Step_16: Hien thi ngay bat dau");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày bắt đầu"), startDate);
+		
+		log.info("TC_02_Step_17: Hien thi ngay ket thuc");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_02_Step_18: Hien thi so tien chuyen");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số tiền chuyển"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
+		
+		log.info("TC_02_Step_19: Chon phương thuc xac thuc");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
-		log.info("TC_02_Step_09: An Tiep tuc");
+		log.info("TC_02_Step_20: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_02_Step_10: Nhap du ki tu vao o nhap OTP");
+		log.info("TC_02_Step_21: Nhap du ki tu vao o nhap OTP");
 		autoSaving.inputToDynamicOtp(driver, otp, "Tiếp tục");;
 
-		log.info("TC_02_Step_11: An tiep button 'Tiep tuc'");
+		log.info("TC_02_Step_22: An tiep button 'Tiep tuc'");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_02_Step_12: Hien thi man hinh thong bao giao dich thanh cong");
+		log.info("TC_02_Step_23: Hien thi man hinh thong bao giao dich thanh cong");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "GIAO DỊCH THÀNH CÔNG");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
 		transactionDate = autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 		transactionID = autoSaving.getDynamicTextByLabel(driver, "Mã giao dịch");
 		
-		log.info("TC_02_Step_13: An thuc hien giao dich moi");
+		log.info("TC_02_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_02_Step_14: Click back ve man hinh chinh");
+		log.info("TC_02_Step_25: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -216,18 +255,22 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_03_Step_12: Xac nhan hien thi so tai khoan giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"),  Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_VND);
 		
-		log.info("TC_03_Step_13: Xac nhan hien thi so dien thoai duoc nap");
+		log.info("TC_03_Step_13: Xac nhan hien thi tai khoan ghi co");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
-		log.info("TC_03_Step_14: An nut back ve man hinh bao cao giao dich");
+		log.info("TC_03_Step_14: Xac nhan hien thi so tien giao dich");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND", "com.VCB:id/tvContent"));
+		
+		log.info("TC_03_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_03_Step_15: An nut back ve man hinh menu");
+		log.info("TC_03_Step_16: An nut back ve man hinh menu");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
-		log.info("TC_03_Step_16: Mo tab Home");
+		log.info("TC_03_Step_17: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+
 	}
 	
 	@Test
@@ -257,8 +300,12 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_04_Step_07: Xac nhan hien thi so tien chuyen");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTienChuyen"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
 		
+		log.info("TC_04_Step_08: Xac nhan hien thi chu ky chuyen");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvThoiGian"), startDate+" - "+endDate);
+		
 		log.info("TC_04_Step_09: An nut Huy");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvHuy");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Auto_Saving_Data.TEXT.AUTO_SAVING_CANCEL_MESSAGE);
 		
 		log.info("TC_04_Step_10: An nut Dong y");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
@@ -266,8 +313,9 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_04_Step_11: An nut Dong ");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
-		log.info("TC_04_Step_11: An nut back ve man hinh menu");
+		log.info("TC_04_Step_12: An nut back ve man hinh menu");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
 		home = PageFactoryManager.getHomePageObject(driver);
 		
 	}
@@ -306,21 +354,25 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_05_Step_10: Xac nhan hien thi thoi gian giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 		
-		log.info("TC_05_Step_11: Xac nhan hien thi so tai khoan giao dich");
+		log.info("TC_05_Step_12: Xac nhan hien thi so tai khoan giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"),  Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_VND);
 		
-		log.info("TC_05_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		log.info("TC_05_Step_13: Xac nhan hien thi tai khoan ghi co");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
-		log.info("TC_05_Step_13: An nut back ve man hinh bao cao giao dich");
+		log.info("TC_03_Step_14: Xac nhan hien thi so tien giao dich");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, Auto_Saving_Data.TEXT.INPUT_VND + " VND", "com.VCB:id/tvContent"));
+		
+		log.info("TC_05_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_05_Step_14: An nut back ve man hinh menu");
+		log.info("TC_05_Step_16: An nut back ve man hinh menu");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
-		log.info("TC_05_Step_15: Mo tab Home");
+		log.info("TC_05_Step_17: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+
 	}
 	
 	@Parameters ({"otp"})
@@ -367,6 +419,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 		log.info("TC_06_8_4_Kiem tra so tien gui");
 		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver,"com.VCB:id/tvSoTien"), Auto_Saving_Data.TEXT.INPUT_USD+".00 USD");
+		tranferMoney = savingOnline.getDynamicTextDetailByIDOrPopup(driver,"com.VCB:id/tvQuyDoi");
 		
 		log.info("TC_06_8_5_Kiem tra hinh thuc tra lai");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), Auto_Saving_Data.TEXT.FORM_OF_PAYMENT);
@@ -411,49 +464,89 @@ public class Auto_Saving_Flow_OTP extends Base {
 		
 		log.info("TC_07_Step_02: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
 		
 		log.info("TC_07_Step_03: Chon tai khoan tiet kiem");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 		
-		log.info("TC_07_Step_04: Chon ngay ket thuc");
+		log.info("TC_02_Step_04: Xac nhan Ky han va so du TK tiet kiem");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		startDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayBatDau");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số dư hiện tại"), tranferMoney);
 		
+		log.info("TC_07_Step_05: Chon ngay ket thuc");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Ngày kết thúc");
 		autoSaving.clickToDynamicDateInDateTimePicker(driver, getForWardDay(3));
 		autoSaving.clickToDynamicButton(driver, "OK");
+		endDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 		
-		log.info("TC_07_Step_05: Nhap so tien chuyen");
+		log.info("TC_07_Step_06: Nhap so tien chuyen");
 		autoSaving.inputToDynamicInputBox(driver,Auto_Saving_Data.TEXT.INPUT_USD, "Số tiền chuyển");
 		
-		log.info("TC_07_Step_06: An Tiep tuc");
+		log.info("TC_07_Step_07: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_07_Step_07: Hien thi man hinh xac nhan thong tin");
+		log.info("TC_07_Step_08: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
-		tranferMoney = autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvQuyDoi");
 		
-		log.info("TC_07_Step_08: Chon phương thuc xac thuc");
+		log.info("TC_07_Step_09: Hien thi thông tin xac nhan");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo");
+		
+		log.info("TC_07_Step_10: Hien thi tai khoan nguon");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		
+		log.info("TC_07_Step_11: Hien thi tai khoan tiet kiem");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_07_Step_12: Hien thi ky han gui");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		
+		log.info("TC_07_Step_13: Hien thi ngay den han");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày đến hạn"), endDate);
+		
+		log.info("TC_07_Step_14: Hien thi So tien hien tai");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số tiền hiện tại"), tranferMoney);
+		
+		log.info("TC_07_Step_15: Hien thi Chu ky chuyen");
+		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, "Chu kỳ chuyển"));
+		
+		log.info("TC_07_Step_16: Hien thi ngay bat dau");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày bắt đầu"), startDate);
+		
+		log.info("TC_07_Step_17: Hien thi ngay ket thuc");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_07_Step_18: Hien thi so tien chuyen");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTien"), addCommasToDouble(Auto_Saving_Data.TEXT.INPUT_USD) + " USD");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvQuyDoi"), tranferMoney);
+		
+		log.info("TC_07_Step_19: Chon phương thuc xac thuc");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
-		log.info("TC_07_Step_09: An Tiep tuc");
+		log.info("TC_07_Step_20: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_07_Step_10: Nhap du ki tu vao o nhap OTP");
+		log.info("TC_07_Step_21: Nhap du ki tu vao o nhap OTP");
 		autoSaving.inputToDynamicOtp(driver, otp, "Tiếp tục");;
 
-		log.info("TC_07_Step_11: An tiep button 'Tiep tuc'");
+		log.info("TC_07_Step_22: An tiep button 'Tiep tuc'");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_07_Step_12: Hien thi man hinh thong bao giao dich thanh cong");
+		log.info("TC_07_Step_23: Hien thi man hinh thong bao giao dich thanh cong");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "GIAO DỊCH THÀNH CÔNG");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), tranferMoney);
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
+		transactionDate = autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 		transactionID = autoSaving.getDynamicTextByLabel(driver, "Mã giao dịch");
 		
-		log.info("TC_07_Step_13: An thuc hien giao dich moi");
+		log.info("TC_07_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_07_Step_14: Click back ve man hinh chinh");
+		log.info("TC_07_Step_25: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -487,24 +580,34 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_08_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
 		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
 		
-		log.info("TC_08_Step_10: Xac nhan hien thi dung ma giao dich");
+		log.info("TC_08_Step_10: Xac nhan hien thi thoi gian giao dich");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
+		
+		log.info("TC_08_Step_11: Xac nhan hien thi dung ma giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số lệnh giao dịch"), transactionID);
 		
-		log.info("TC_08_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		log.info("TC_08_Step_12: Xac nhan hien thi so tai khoan giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"),  Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
 		
-		log.info("TC_08_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		log.info("TC_08_Step_13: Xac nhan hien thi tai khoan ghi co");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
-		log.info("TC_08_Step_13: An nut back ve man hinh bao cao giao dich");
+		log.info("TC_08_Step_14: Xac nhan hien thi so tien giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số tiền giao dịch"), addCommasToDouble(Auto_Saving_Data.TEXT.INPUT_USD)+ " USD");
+		
+		log.info("TC_08_Step_15: Xac nhan hien thi so tien quy doi");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, addCommasToLong(tranferMoney) + " VND", "com.VCB:id/tvContent"));
+
+		log.info("TC_08_Step_16: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_08_Step_14: An nut back ve man hinh menu");
+		log.info("TC_08_Step_17: An nut back ve man hinh menu");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
-		log.info("TC_08_Step_15: Mo tab Home");
+		log.info("TC_08_Step_18: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+
 	}
 	
 	@Test
@@ -534,18 +637,22 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_09_Step_07: Xac nhan hien thi so tien chuyen");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTienChuyen"), tranferMoney);
 		
+		log.info("TC_09_Step_08: Xac nhan hien thi chu ky chuyen");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvThoiGian"), startDate+" - "+endDate);
+		
 		log.info("TC_09_Step_09: An nut Huy");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvHuy");
 		
 		log.info("TC_09_Step_10: An nut Dong y");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
-		
+
 		log.info("TC_09_Step_11: An nut Dong ");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_09_Step_12: An nut back ve man hinh menu");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		home = PageFactoryManager.getHomePageObject(driver);		
+		home = PageFactoryManager.getHomePageObject(driver);			
+
 	}
 	
 	@Test
@@ -585,7 +692,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_10_Step_11: Xac nhan hien thi so tai khoan giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
 		
-		log.info("TC_10_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		log.info("TC_10_Step_12: Xac nhan hien thi tai khoan ghi co");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_10_Step_13: An nut back ve man hinh bao cao giao dich");
@@ -643,6 +750,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 		log.info("TC_11_8_4_Kiem tra so tien gui");
 		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver,"com.VCB:id/tvSoTien"), Auto_Saving_Data.TEXT.INPUT_EUR+".00 EUR");
+		tranferMoney = savingOnline.getDynamicTextDetailByIDOrPopup(driver,"com.VCB:id/tvQuyDoi");
 		
 		log.info("TC_11_8_5_Kiem tra hinh thuc tra lai");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), Auto_Saving_Data.TEXT.FORM_OF_PAYMENT);
@@ -687,48 +795,89 @@ public class Auto_Saving_Flow_OTP extends Base {
 		
 		log.info("TC_12_Step_02: Chon tai khoan nguon EUR");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019961175");
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
 		
 		log.info("TC_12_Step_03: Chon tai khoan tiet kiem");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 		
-		log.info("TC_12_Step_04: Chon ngay ket thuc");
+		log.info("TC_12_Step_04: Xac nhan Ky han va so du TK tiet kiem");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		startDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayBatDau");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số dư hiện tại"), tranferMoney);
+		
+		log.info("TC_12_Step_05: Chon ngay ket thuc");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Ngày kết thúc");
 		autoSaving.clickToDynamicDateInDateTimePicker(driver, getForWardDay(3));
 		autoSaving.clickToDynamicButton(driver, "OK");
+		endDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 		
-		log.info("TC_12_Step_05: Nhap so tien chuyen");
+		log.info("TC_12_Step_06: Nhap so tien chuyen");
 		autoSaving.inputToDynamicInputBox(driver,Auto_Saving_Data.TEXT.INPUT_EUR, "Số tiền chuyển");
 		
-		log.info("TC_12_Step_06: An Tiep tuc");
+		log.info("TC_12_Step_07: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_12_Step_07: Hien thi man hinh xac nhan thong tin");
+		log.info("TC_12_Step_08: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
-		tranferMoney = autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvQuyDoi");
 		
-		log.info("TC_12_Step_08: Chon phương thuc xac thuc");
+		log.info("TC_12_Step_09: Hien thi thông tin xac nhan");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo");
+		
+		log.info("TC_12_Step_10: Hien thi tai khoan nguon");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_EUR);
+		
+		log.info("TC_12_Step_11: Hien thi tai khoan tiet kiem");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_12_Step_12: Hien thi ky han gui");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		
+		log.info("TC_12_Step_13: Hien thi ngay den han");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày đến hạn"), endDate);
+		
+		log.info("TC_12_Step_14: Hien thi So tien hien tai");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số tiền hiện tại"), tranferMoney);
+		
+		log.info("TC_12_Step_15: Hien thi Chu ky chuyen");
+		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, "Chu kỳ chuyển"));
+		
+		log.info("TC_12_Step_16: Hien thi ngay bat dau");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày bắt đầu"), startDate);
+		
+		log.info("TC_12_Step_17: Hien thi ngay ket thuc");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày kết thúc"), endDate);
+		
+		log.info("TC_12_Step_18: Hien thi so tien chuyen");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTien"), addCommasToDouble(Auto_Saving_Data.TEXT.INPUT_EUR) + " EUR");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvQuyDoi"), tranferMoney);
+		
+		log.info("TC_12_Step_19: Chon phương thuc xac thuc");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		
-		log.info("TC_12_Step_09: An Tiep tuc");
+		log.info("TC_12_Step_20: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_12_Step_10: Nhap du ki tu vao o nhap OTP");
+		log.info("TC_12_Step_21: Nhap du ki tu vao o nhap OTP");
 		autoSaving.inputToDynamicOtp(driver, otp, "Tiếp tục");;
 
-		log.info("TC_12_Step_11: An tiep button 'Tiep tuc'");
+		log.info("TC_12_Step_22: An tiep button 'Tiep tuc'");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_12_Step_12: Hien thi man hinh thong bao giao dich thanh cong");
+		log.info("TC_12_Step_23: Hien thi man hinh thong bao giao dich thanh cong");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "GIAO DỊCH THÀNH CÔNG");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), tranferMoney);
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
+		transactionDate = autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 		transactionID = autoSaving.getDynamicTextByLabel(driver, "Mã giao dịch");
 		
-		log.info("TC_12_Step_13: An thuc hien giao dich moi");
+		log.info("TC_12_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_12_Step_14: Click back ve man hinh chinh");
+		log.info("TC_12_Step_25: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -762,24 +911,34 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_13_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
 		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
 		
-		log.info("TC_13_Step_10: Xac nhan hien thi dung ma giao dich");
+		log.info("TC_13_Step_10: Xac nhan hien thi thoi gian giao dich");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
+		
+		log.info("TC_13_Step_11: Xac nhan hien thi dung ma giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số lệnh giao dịch"), transactionID);
 		
-		log.info("TC_13_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_EUR);
+		log.info("TC_13_Step_12: Xac nhan hien thi so tai khoan giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"),  Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_EUR);
 		
-		log.info("TC_13_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		log.info("TC_13_Step_13: Xac nhan hien thi tai khoan ghi co");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
-		log.info("TC_13_Step_13: An nut back ve man hinh bao cao giao dich");
+		log.info("TC_13_Step_14: Xac nhan hien thi so tien giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số tiền giao dịch"), addCommasToDouble(Auto_Saving_Data.TEXT.INPUT_EUR)+ " EUR");
+		
+		log.info("TC_13_Step_15: Xac nhan hien thi so tien quy doi");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, addCommasToLong(tranferMoney) + " VND", "com.VCB:id/tvContent"));
+
+		log.info("TC_13_Step_16: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_13_Step_14: An nut back ve man hinh menu");
+		log.info("TC_13_Step_17: An nut back ve man hinh menu");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 		
-		log.info("TC_13_Step_15: Mo tab Home");
+		log.info("TC_13_Step_18: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+
 	}
 	
 	@Test
@@ -809,17 +968,21 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_14_Step_07: Xac nhan hien thi so tien chuyen");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTienChuyen"), tranferMoney);
 		
+		log.info("TC_14_Step_08: Xac nhan hien thi chu ky chuyen");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvThoiGian"), startDate+" - "+endDate);
+		
 		log.info("TC_14_Step_09: An nut Huy");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvHuy");
 		
 		log.info("TC_14_Step_10: An nut Dong y");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
-		
+
 		log.info("TC_14_Step_11: An nut Dong ");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
-		log.info("TC_14_Step_11: An nut back ve man hinh menu");
+		log.info("TC_14_Step_12: An nut back ve man hinh menu");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
 		home = PageFactoryManager.getHomePageObject(driver);		
 	}
 	
@@ -854,10 +1017,13 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_15_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
 		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
 		
+		log.info("TC_15_Step_10: Xac nhan hien thi thoi gian giao dich");
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
+		
 		log.info("TC_15_Step_11: Xac nhan hien thi so tai khoan giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_EUR);
 		
-		log.info("TC_15_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		log.info("TC_15_Step_12: Xac nhan hien thi tai khoan ghi co");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản ghi có"), savingAccount);
 		
 		log.info("TC_15_Step_13: An nut back ve man hinh bao cao giao dich");
