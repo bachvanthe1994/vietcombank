@@ -86,14 +86,6 @@ public class Mobile_Topup_Flow extends Base {
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
-
-	@Parameters({ "phone" })
-	@Test
-	public void TC_02_KiemTraBaoCaoGiaoDich(String phone) {
-		log.info("TC_02_Step_01: Click back ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
-		
-	}
 	
 	@Parameters ({"phone"})
 	@Test
