@@ -44,7 +44,7 @@
 
 
 
-			<package name="vnpay.vietcombank.transfer_money_charity">
+<!-- 			<package name="vnpay.vietcombank.transfer_money_charity"> -->
 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" />
 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" />
 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" />
@@ -63,7 +63,7 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_7" /> -->
 
 
-			<package name="vnpay.vietcombank.mobile_topup">
+<!-- 			<package name="vnpay.vietcombank.mobile_topup"> -->
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_01" />
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_02" />
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_03" />
