@@ -132,7 +132,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_01_18_Chon tai khoan nguon");
 		filmTicketBooking.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		surplus = convertAvailableBalanceCurrentcyToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_01_19_Kiem tra man hinh Thong tin mua ve");
 		log.info("TC_01_19_01: Kiem tra ten phim");
@@ -174,7 +174,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
 		
 		log.info("TC_01_22_01: Kiem tra so tien phi");
@@ -200,7 +200,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicButton("Thực hiện giao dịch mới");
 		
 		log.info("TC_01_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
-		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyToLong(info.price), fee);
+		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyOrFeeToLong(info.price), fee);
 		
 	}
 
@@ -225,7 +225,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
 		
 		log.info("TC_02_7: Lay so du kha dung luc sau");
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
 		
 		log.info("TC_02_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
@@ -367,7 +367,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_03_18_Chon tai khoan nguon");
 		filmTicketBooking.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		surplus = convertAvailableBalanceCurrentcyToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		
 		log.info("TC_03_19_Kiem tra man hinh Thong tin mua ve");
 		log.info("TC_03_19_01: Kiem tra ten phim");
@@ -409,7 +409,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		
 		log.info("TC_03_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
 		
 		log.info("TC_03_22_01: Kiem tra so tien phi");
@@ -435,7 +435,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicButton("Thực hiện giao dịch mới");
 		
 		log.info("TC_03_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
-		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyToLong(info.price), fee);
+		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyOrFeeToLong(info.price), fee);
 		
 	}
 
@@ -460,7 +460,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
 		
 		log.info("TC_04_7: Lay so du kha dung luc sau");
-		actualAvailableBalance = convertAvailableBalanceCurrentcyToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
 		
 		log.info("TC_04_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
