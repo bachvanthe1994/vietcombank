@@ -2,6 +2,7 @@ package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -34,6 +35,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	private long costTranfer;
 	private String accountStart;
 	private long fee;
+	private String exchangeRate;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName",  "pass", "otp" })
 	@BeforeClass
@@ -47,7 +49,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-	 @Test
+	// @Test
 	public void TC_09_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -75,6 +77,10 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
 
+		log.info("TC_01_Step_:Lay so tien quy doi ra VND");
+		String exchange = transferMoney.getDynamicTextInTransactionDetail(driver, "Tỷ giá quy đổi tham khảo").split(" ~ ", 2)[1];
+		exchangeRate = exchange.replace(" VND", "");
+		
 		log.info("TC_01_Step_Chon phi giao dich la nguoi nhan tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
@@ -155,7 +161,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountStart - amountTranfer, amountAfter);
 	}
 
-	 @Test
+	// @Test
 	// App lỗi số tiền giao dịch, hiện tiền VND hiển thị dạng số thập phân VD:
 	// 10000.00 VND => tiền ghi bị sai, ghi là "Một triệu đồng", expect ghi "mười
 	// nghìn đồng"
@@ -256,6 +262,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 @Test
+//Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -309,7 +316,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		
 		log.info("TC05_Step 23: So tien phi chuyen doi ra USD");
 		String Fee = transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền phí").replaceAll("\\D+", "");
-		double usdTransferFee = Double.parseDouble(Fee) / TransferMoneyQuick_Data.TransferQuick.TRANSFER_VND_USD;
+		double usdTransferFee = convertMoneyToDouble(Fee,"USD") / convertMoneyToDouble(exchangeRate,"VND");
 
 		log.info("TC_01_Step_Verify so tien phi");
 		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.FEE_OTP_VND_CARD);
@@ -449,11 +456,11 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		
 		log.info("TC_Step_: So tien quy doi expect");
 		double amountAfter = convertMoneyToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "USD");
-		double amountExpect = amountAfter * TransferMoneyQuick_Data.TransferQuick.TRANSFER_VND_USD;
+		double amountExpect = amountAfter * convertMoneyToDouble(exchangeRate,"VND");
 		
 		log.info("TC_Step_: So tien quy doi atual");
 		String amountAfter1 = transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").replaceAll(".00 USD", "");
-		double amountActual = convertMoneyToDouble(amountAfter1,"VND") * TransferMoneyQuick_Data.TransferQuick.TRANSFER_VND_USD;
+		double amountActual = convertMoneyToDouble(amountAfter1,"VND") * convertMoneyToDouble(exchangeRate,"VND");
 		
 		log.info("TC_Step_: verify so tien quy doi");
 		verifyEquals(amountActual, amountExpect);
@@ -477,7 +484,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	 @Test
+@Test
 		public void TC_13_ChuyenTienQuaTheNguoiNhanTRaPhiVNDVaXacThucBangMatKhau() {
 			log.info("TC_01_Step_Click Chuyen tien nhanh");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -585,7 +592,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			verifyEquals(amountStart - amountTranfer, amountAfter);
 		}
 
-	 @Test
+ @Test
 		// App lỗi số tiền giao dịch, hiện tiền VND hiển thị dạng số thập phân VD:
 		// 10000.00 VND => tiền ghi bị sai, ghi là "Một triệu đồng", expect ghi "mười
 		// nghìn đồng"
@@ -687,6 +694,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		}
 	 
 	@Test
+	//Lỗi app, số tiền bị bỏ đơn vị USD
 		public void TC_15_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangMatKhau() {
 			log.info("TC_01_Step_Click Chuyen tien nhanh");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -722,8 +730,8 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			log.info("TC_01_Step_Tiep tuc");
 			transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-			log.info("TC_01_Step_Lay gia tri so tien chuyen");
-			amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replaceAll(".00 USD", "");
+			log.info("TC_01_Step_Lay gia tri so tien chuyen");//Loi app, số tiền bỏ đơn vị USD
+			amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền(USD)").replaceAll(".00 USD", "");
 
 			log.info("TC_01_Step_Verify so tien chuyen");
 			verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY_USD);
@@ -733,14 +741,14 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 			log.info("TC_01_Step_Chon phuong thuc xac thuc");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
+			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 
 			log.info("TC_01_Step_Lay gia tri so tien phí chuyen");
 			costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 			
 			log.info("TC05_Step 23: So tien phi chuyen doi ra USD");
 			String Fee = transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền phí").replaceAll("\\D+", "");
-			double usdTransferFee = Double.parseDouble(Fee) / TransferMoneyQuick_Data.TransferQuick.TRANSFER_VND_USD;
+			double usdTransferFee = convertMoneyToDouble(Fee,"VND") / convertMoneyToDouble(exchangeRate,"VND");
 
 			log.info("TC_01_Step_Verify so tien phi");
 			verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.FEE_MK_VND_CARD);
@@ -751,8 +759,8 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			log.info("TC_01_Step_Tiep tuc");
 			transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-			log.info("TC_01_Step_Nhap ma xac thuc");
-			transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+			log.info("TC_02_Step_Nhap ma xac thuc");
+			transferMoney.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
 			log.info("TC_01_Step_Tiep tuc");
 			transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -880,11 +888,11 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			
 			log.info("TC_Step_: So tien quy doi expect");
 			double amountAfter = convertMoneyToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "USD");
-			double amountExpect = amountAfter * TransferMoneyQuick_Data.TransferQuick.TRANSFER_VND_USD;
+			double amountExpect = amountAfter * convertMoneyToDouble(exchangeRate,"VND");
 			
 			log.info("TC_Step_: So tien quy doi atual");
 			String amountAfter1 = transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").replaceAll(".00 USD", "");
-			double amountActual = convertMoneyToDouble(amountAfter1,"VND") * TransferMoneyQuick_Data.TransferQuick.TRANSFER_VND_USD;
+			double amountActual = convertMoneyToDouble(amountAfter1,"VND") * convertMoneyToDouble(exchangeRate,"VND");
 			
 			log.info("TC_Step_: verify so tien quy doi");
 			verifyEquals(amountActual, amountExpect);
@@ -907,5 +915,10 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			log.info("TC_01_Step_Click button home");
 			transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 		}
+@AfterClass(alwaysRun = true)
 
+public void afterClass() {
+	closeApp();
+	service.stop();
+}
 }
