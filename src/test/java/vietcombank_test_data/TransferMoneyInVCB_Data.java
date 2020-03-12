@@ -18,8 +18,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
 		public static final String VND_MONEY = "20000";
 
-		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 479,960 VND VND", "200 EUR ~ 4,799,600 VND");
-		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("20,000 VND", "200,000 VND", "2,000,000 VND");
+		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 479,960 VND", "200 EUR ~ 4,799,600 VND");
+		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("2,000 VND", "20,000 VND", "200,000 VND");
 
 		public static final String NOTE = "Test";
 		public static final String TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER = "1,100";

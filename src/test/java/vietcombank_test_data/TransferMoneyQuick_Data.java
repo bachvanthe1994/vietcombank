@@ -10,8 +10,6 @@ public class TransferMoneyQuick_Data {
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
 
 		public static final String BANK_INVALID = "Ngân hàng Test";
-		public static final double TRANSFER_VND_USD = 23087;
-		public static final double TRANSFER_VND_EUR = 24274;
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
 		public static final String MONEY_EUR = "10";
@@ -86,8 +84,6 @@ public class TransferMoneyQuick_Data {
 		public static final String NOTE_VIETNAM_KEY_INVALID = "Xin chào";
 		public static final String NOTE_SPECAL_CHAR = "@ _ - \\ . , & * # ! $ + : ; ? / | % ( ) =";
 		public static final String NOTE_NUMBER_CHAR = "12345";
-		public static final String EXCHANGE_EUR = "24274.03";
-		public static final String EXCHANGE_USD = "23145.00";
 
 	}
 

@@ -85,14 +85,9 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
-	}
-
-	@Parameters({ "phone" })
-	@Test
-	public void TC_02_KiemTraBaoCaoGiaoDich(String phone) {
-		log.info("TC_02_Step_01: Click back ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
+		log.info("TC_01_Step_12: Click back ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 	
 	@Parameters ({"phone"})
@@ -303,7 +298,6 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	
 	@Parameters({"phone"})
 	@Test
 	public void TC_06_NapTheDienThoai_GiaTriMin_QuaOTP_BaoCaoGiaoDich(String phone) {
@@ -408,7 +402,6 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	
 	@Parameters({"phone"})
 	@Test
 	public void TC_08_NapTheDienThoai_GiaTriMax_QuaOTP_BaoCaoGiaoDich(String phone) {

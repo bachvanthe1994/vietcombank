@@ -388,7 +388,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_14_Step_03: Nhap so tien");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, "2", "Số tiền");
 
 		log.info("TC_14_Step_04: Kiem tra so tien goi y");
 		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
