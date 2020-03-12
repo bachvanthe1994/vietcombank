@@ -796,7 +796,10 @@ public class Base {
 			if (money.contentEquals("Không mất phí")) {
 				result = 0;
 			}
-			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
+			else {
+				result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
+			}
+			
 		} catch (Exception e) {
 
 		}
@@ -821,6 +824,16 @@ public class Base {
 			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		return result;
+	}
+	
+	public String getCurrentcyMoney(String money) {
+		String result = "";
+		try {
+			result = money.split("~")[1].replaceAll("[^\\.0123456789]", "");
+		} catch (Exception e) {
+			result = "0";
 		}
 		return result;
 	}

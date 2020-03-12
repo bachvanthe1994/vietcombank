@@ -30,6 +30,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	private String transactionNumber;
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
+	String currentcy = "";
 	
 	TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", "Phí giao dịch người chuyển trả", "test", "Mật khẩu đăng nhập");
 	TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", "Phí giao dịch người nhận trả", "test", "Mật khẩu đăng nhập");
@@ -76,6 +77,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.destinationBank);
 
+		currentcy =  getCurrentcyMoney(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_13_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.money, "Số tiền");
 
@@ -104,7 +106,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_13_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = convertEURO_USDToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR);
+		String expectMoney = convertEURO_USDToVNeseMoney(info6.money, currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_13_10_6_Kiem tra so tien");
@@ -116,7 +118,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		log.info("TC_13_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info6.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR);
+		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), currentcy);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.authenticationMethod);
 		
 		log.info("TC_13_11_01_Kiem tra so tien phi");
@@ -223,7 +225,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info6.money) + " EUR"));
 
 		log.info("TC_14_18: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info6.money, currentcy)));
 
 		log.info("TC_14_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
@@ -267,6 +269,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info7.destinationBank);
 
+		currentcy =  getCurrentcyMoney(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_15_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.money, "Số tiền");
 
@@ -295,7 +298,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
-		String expectMoney = convertEURO_USDToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR);
+		String expectMoney = convertEURO_USDToVNeseMoney(info6.money, currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_15_10_6_Kiem tra so tien");
@@ -413,7 +416,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info7.money) + " EUR"));
 
 		log.info("TC_16_19: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info7.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_EUR)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info7.money, currentcy)));
 
 		log.info("TC_16_20: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
@@ -457,6 +460,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info8.destinationBank);
 
+		currentcy =  getCurrentcyMoney(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_17_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.money, "Số tiền");
 
@@ -485,7 +489,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
-		String expectMoney = convertEURO_USDToVNeseMoney(info8.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
+		String expectMoney = convertEURO_USDToVNeseMoney(info8.money,currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_17_10_6_Kiem tra so tien");
@@ -498,7 +502,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info8.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
+		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee),currentcy);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info8.authenticationMethod);
 		
 		log.info("TC_17_11_01_Kiem tra so tien phi");
@@ -602,7 +606,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info8.money) + " USD"));
 
 		log.info("TC_18_17: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info8.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info8.money,currentcy)));
 
 		log.info("TC_18_18: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
@@ -646,6 +650,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info9.destinationBank);
 
+		currentcy =  getCurrentcyMoney(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_19_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.money, "Số tiền");
 
@@ -674,7 +679,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_19_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
-		String expectMoney = convertEURO_USDToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
+		String expectMoney = convertEURO_USDToVNeseMoney(info6.money,currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_19_10_6_Kiem tra so tien");
@@ -792,7 +797,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info9.money) + " USD"));
 
 		log.info("TC_20_18: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info9.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info9.money,currentcy)));
 
 		log.info("TC_20_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
@@ -836,6 +841,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info10.destinationBank);
 
+		currentcy =  getCurrentcyMoney(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_21_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.money, "Số tiền");
 
@@ -864,7 +870,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
-		String expectMoney = convertEURO_USDToVNeseMoney(info10.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
+		String expectMoney = convertEURO_USDToVNeseMoney(info10.money,currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_21_10_6_Kiem tra so tien");
@@ -983,7 +989,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info10.money) + " USD"));
 
 		log.info("TC_22_18: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info10.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info10.money,currentcy)));
 
 		log.info("TC_22_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người nhận trả");
@@ -1027,6 +1033,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info11.destinationBank);
 
+		currentcy =  getCurrentcyMoney(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_23_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.money, "Số tiền");
 
@@ -1055,7 +1062,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_10_5_Kiem tra so tien quy doi");
 		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(USD)");
-		String expectMoney = convertEURO_USDToVNeseMoney(info11.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
+		String expectMoney = convertEURO_USDToVNeseMoney(info11.money,currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_23_10_6_Kiem tra so tien");
@@ -1067,7 +1074,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		log.info("TC_23_11_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, info11.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD);
+		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee),currentcy);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info11.authenticationMethod);
 		
 		log.info("TC_23_11_01_Kiem tra so tien phi");
@@ -1174,7 +1181,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToDouble(info6.money) + " USD"));
 
 		log.info("TC_24_18: Kiem tra so tien quy doi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info6.money, TransferMoneyQuick_Data.TransferQuick.EXCHANGE_USD)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(convertEURO_USDToVNeseMoney(info6.money,currentcy)));
 
 		log.info("TC_24_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), "Người chuyển trả");
