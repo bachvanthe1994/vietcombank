@@ -817,7 +817,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_13_13_1_Kiem tra ten nguoi huong thu");
-	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGO TRI NAM");
+	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGUYEN NGOC TOAN");
 
 	log.info("TC_13_123_2_Kiem tra tai khoan dich");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info3.destinationAccount);
