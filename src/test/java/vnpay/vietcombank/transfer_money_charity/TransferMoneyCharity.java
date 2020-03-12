@@ -59,6 +59,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		log.info("TC_01_1_Click Chuyen tien tu thien");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
@@ -237,6 +238,7 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_03_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
 		log.info("TC_03_1_Click Chuyen tien tu thien");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_03_2_Chon tai khoan nguon");
@@ -416,6 +418,7 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_05_ChuyenTienTuThienBangVNDThanhToanSMSOTP() {
 		log.info("TC_05_1_Click Chuyen tien tu thien");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_05_2_Chon tai khoan nguon");
@@ -592,6 +595,7 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_07_ChuyenTienTuThienBangNgoaiTeThanhToanOTP() {
 		log.info("TC_07_1_Click Chuyen tien tu thien");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_07_2_Chon tai khoan nguon");
@@ -774,6 +778,7 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_09_ChuyenTienTuThienBangNgoaiTe_USD_ThanhToanMatKhau() {
 		log.info("TC_09_1_Click Chuyen tien tu thien");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_09_2_Chon tai khoan nguon");
@@ -954,6 +959,7 @@ public class TransferMoneyCharity extends Base {
 	@Test
 	public void TC_11_ChuyenTienTuThienBangNgoaiTe_USD_ThanhToanOTP() {
 		log.info("TC_11_1_Click Chuyen tien tu thien");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_11_2_Chon tai khoan nguon");
