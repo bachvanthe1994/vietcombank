@@ -19,4 +19,5 @@ public class AutoSavingPageObject extends AbstractPage {
 	}
 	private AppiumDriver<MobileElement> driver;
 
+
 }

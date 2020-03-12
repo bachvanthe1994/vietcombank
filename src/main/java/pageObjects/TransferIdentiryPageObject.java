@@ -98,7 +98,7 @@ public class TransferIdentiryPageObject extends AbstractPage {
     // input vào ô input với tham số truyền vào là inputbox
     public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
 	boolean status = false;
-	scrollUp(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX);
+	scrollUp(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	if (status == true) {
 	    clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);

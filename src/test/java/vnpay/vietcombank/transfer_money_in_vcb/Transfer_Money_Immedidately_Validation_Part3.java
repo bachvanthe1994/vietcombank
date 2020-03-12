@@ -335,7 +335,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
 		log.info("TC_08_Step_12: Kiem tra inbox message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phone.substring(0, 4) + "***" + phone.substring(7, 10)));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phone.substring(0, 3) + "*****" + phone.substring(8, 10)));
 
 	}
 
@@ -468,7 +468,7 @@ public class Transfer_Money_Immedidately_Validation_Part3 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
 		log.info("TC_14_Step_12: Kiem tra inbox message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch"));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác thực giao dịch"));
 
 	}
 

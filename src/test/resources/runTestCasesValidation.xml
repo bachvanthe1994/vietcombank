@@ -63,6 +63,11 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_7" /> -->
 
 
+			<!-- <package name="vnpay.vietcombank.mobile_topup"> -->
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_01" /> -->
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_02" /> -->
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_03" /> -->
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_04" /> -->
 
 
 

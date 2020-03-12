@@ -467,7 +467,7 @@ public class Base {
 			return "";
 		}
 	}
-	
+
 	public long convertMoneyToLong(String money, String currency) {
 		money = money.replaceAll(" " + currency, "");
 		money = money.replaceAll(",", "");
@@ -790,13 +790,16 @@ public class Base {
 		return result;
 	}
 
-	public long convertAvailableBalanceCurrentcyToLong(String money) {
+	public long convertAvailableBalanceCurrentcyOrFeeToLong(String money) {
 		long result = 0;
 		try {
 			if (money.contentEquals("Không mất phí")) {
 				result = 0;
 			}
-			result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
+			else {
+				result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
+			}
+			
 		} catch (Exception e) {
 
 		}
@@ -813,6 +816,7 @@ public class Base {
 		return result;
 	}
 
+//
 	public double convertVNeseMoneyToEUROOrUSD(String money, String currentcy) {
 		double result = 0;
 		try {
@@ -820,6 +824,16 @@ public class Base {
 			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		return result;
+	}
+	
+	public String getCurrentcyMoney(String money) {
+		String result = "";
+		try {
+			result = money.split("~")[1].replaceAll("[^\\.0123456789]", "");
+		} catch (Exception e) {
+			result = "0";
 		}
 		return result;
 	}
@@ -840,10 +854,9 @@ public class Base {
 	public String convertTransferTimeToReportDateTime(String stringDate) {
 		String result = "";
 		try {
-			result =  stringDate.split(" ")[3];
-		}
-		catch (Exception e) {
-			
+			result = stringDate.split(" ")[3];
+		} catch (Exception e) {
+
 		}
 		return result;
 
@@ -854,5 +867,20 @@ public class Base {
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(temp).replaceAll("");
 	}
+	
+	//Viet hoa chu cai dau
+	protected String capitalizeString(String string) {
+		  char[] chars = string.toLowerCase().toCharArray();
+		  boolean found = false;
+		  for (int i = 0; i < chars.length; i++) {
+		    if (!found && Character.isLetter(chars[i])) {
+		      chars[i] = Character.toUpperCase(chars[i]);
+		      found = true;
+		    } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
+		      found = false;
+		    }
+		  }
+		  return String.valueOf(chars);
+		}
 
 }

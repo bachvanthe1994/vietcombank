@@ -53,6 +53,8 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_LABEL_SEARCH_BANK = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.EditText";
 	public static final String DYNAMIC_EDIT_FOLLOW_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
 	public static final String DYNAMIC_IMAGE_COMBOBOX = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.ImageView";
+	public static final String DYNAMIC_EDI_TEXT = "//android.widget.LinearLayout[@index='%s']//android.widget.EditText";
+
 
 	// ICON
 	public static final String DYNAMIC_CLOSE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
@@ -64,6 +66,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.ImageView";
 	public static final String DYNAMIC_CONTACT_KEY_MENU = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON_IN_LIST_VIEW = "//android.widget.ListView[@resource-id='com.VCB:id/nlvHisDetailAcc']/android.widget.LinearLayout[@index='%s']//android.widget.ImageView[@resource-id=\"%s\"]";
+
 
 	// VIEW
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
