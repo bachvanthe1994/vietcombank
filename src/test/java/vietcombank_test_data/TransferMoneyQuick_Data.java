@@ -10,8 +10,6 @@ public class TransferMoneyQuick_Data {
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
 
 		public static final String BANK_INVALID = "Ngân hàng Test";
-		public static final double TRANSFER_VND_USD = 23087;
-		public static final double TRANSFER_VND_EUR = 24274;
 		public static final String MONEY = "100000";
 		public static final String MONEY_USD = "10";
 		public static final String MONEY_EUR = "10";

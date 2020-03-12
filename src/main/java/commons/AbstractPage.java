@@ -1380,6 +1380,18 @@ public class AbstractPage {
 	return isDisplayed;
 
     }
+    
+    //Check Date Picker By ID co hien thi
+    public boolean isDynamicDatePickerByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
 
 //Kiểm tra text có hiển thị hay không, tham số truyền vào là text 
     public boolean isDynamicMessageAndLabelTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -1645,6 +1657,16 @@ public class AbstractPage {
 	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 	if (status == true) {
 	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+	}
+	return isDisplayed;
+    }
+    
+    public boolean isDynamicTextViewByLinearLayoutIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 	}
 	return isDisplayed;
     }

@@ -43,7 +43,7 @@ public class TransferMoneyRecurrent extends Base {
 	    "Mật khẩu đăng nhập");
     TransferInVCBRecurrent info4 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Ngày", "", "", "10", "Người chuyển trả",
 	    "test", "SMS OTP");
-    TransferInVCBRecurrent info5 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Tháng", "", "", "10", "Người nhận trả", "test",
+    TransferInVCBRecurrent info5 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Ngày", "", "", "10", "Người nhận trả", "test",
 	    "Mật khẩu đăng nhập");
 
     @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -817,7 +817,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 	log.info("TC_13_13_1_Kiem tra ten nguoi huong thu");
-	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), "NGUYEN NGOC TOAN");
+	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 	log.info("TC_13_123_2_Kiem tra tai khoan dich");
 	verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info3.destinationAccount);
