@@ -368,7 +368,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
 		log.info("TC_08_Step_12: Kiem tra inbox message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phone.substring(0, 4) + "***" + phone.substring(7, 10)));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phone.substring(0, 3) + "*****" + phone.substring(8, 10)));
 
 	}
 
@@ -379,7 +379,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_09_Step_02: Kiem tra popup message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_EMPTY_OTP));
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_EMPTY_OTP);
 
 		log.info("TC_09_Step_03: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -396,7 +396,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_Step_04: Kiem tra popup message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_OTP_LESS_THAN_6));
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_OTP_LESS_THAN_6);
 
 		log.info("TC_10_Step_05: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -505,7 +505,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Xác thực giao dịch"));
 
 		log.info("TC_14_Step_12: Kiem tra inbox message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch"));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác thực giao dịch"));
 
 	}
 
@@ -515,7 +515,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_15_Step_02: Kiem tra popup message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_EMPTY_PASSWORD));
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_EMPTY_PASSWORD);
 
 		log.info("TC_15_Step_03: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
@@ -532,7 +532,7 @@ public class Transfer_Money_In_Future_Validation_Part3 extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_16_Step_02: Kiem tra popup message hien thi");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_PASSWORD));
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_FOR_WRONG_PASSWORD);
 
 		log.info("TC_16_Step_03: Chon Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
