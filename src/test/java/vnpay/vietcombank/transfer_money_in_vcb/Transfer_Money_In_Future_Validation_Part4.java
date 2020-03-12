@@ -113,10 +113,10 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
 
 		log.info("TC_03_Step_02: Kiem tra user khong duoc cap quyen");
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu danh bạ"));
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu thụ hưởng"));
 
 		log.info("TC_04_Step_03: Kiem tra user khong duoc cap quyen");
-		transferInVCB.clickToDynamicBackIcon(driver, "Lưu danh bạ");
+		transferInVCB.clickToDynamicBackIcon(driver, "Lưu thụ hưởng");
 
 	}
 
@@ -169,7 +169,7 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 	public void TC_07_KiemTraIconHome() {
 
 		log.info("TC_07_Step_01: Click Icon Home");
-		transferInVCB.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
+		transferInVCB.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 
 		log.info("TC_07_Step_15: Kiem tra user khong duoc cap quyen");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "TÀI KHOẢN THANH TOÁN"));

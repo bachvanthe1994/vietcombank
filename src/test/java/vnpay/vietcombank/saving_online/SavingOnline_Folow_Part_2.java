@@ -55,7 +55,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -137,7 +137,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -205,7 +205,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = getForwardDate(0);
+		String expiredDate = getForwardMonthAndForwardDay(1, 0);
+		
 		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -225,7 +228,37 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_03_5_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton("Tiếp tục");
 		
-		log.info("TC_03_6_Click nut Tiep tuc");
+		log.info("TC_03_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_03_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_03_06_2: Kiem tra ten tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên tài khoản tiết kiệm"), "NGUYEN NGOC TOAN");
+		
+		log.info("TC_03_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		
+		log.info("TC_03_06_4: Kiem tra lai suat");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
+		
+		log.info("TC_03_06_5: Kiem tra ngay gui tien");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		
+		log.info("TC_03_06_6: Kiem tra ngay den han");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
+		
+		log.info("TC_03_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền gửi gốc"), info.money);
+		
+		log.info("TC_03_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền thực hưởng"), info.money);
+		
+		log.info("TC_03_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
+		
+		log.info("TC_03_06_10: Kiem tra so tien phi");
+		
+		log.info("TC_03_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -234,10 +267,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_03_7_Click Thuc hien giao dich moi");
+		log.info("TC_03_8_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_03_8_Chon tai khoan dich");
+		log.info("TC_03_9_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
@@ -248,7 +281,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -319,7 +352,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_05_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -401,7 +434,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
+	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_06_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -469,7 +502,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = getForwardDate(0);
+		String expiredDate = getForwardMonthAndForwardDay(3, 0);
+		
 		log.info("TC_07_1_Click Tat toan tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -489,7 +525,37 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_07_5_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton("Tiếp tục");
 		
-		log.info("TC_07_6_Click nut Tiep tuc");
+		log.info("TC_07_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_07_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_07_06_2: Kiem tra ten tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên tài khoản tiết kiệm"), "NGUYEN NGOC TOAN");
+		
+		log.info("TC_07_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		
+		log.info("TC_07_06_4: Kiem tra lai suat");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
+		
+		log.info("TC_07_06_5: Kiem tra ngay gui tien");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		
+		log.info("TC_07_06_6: Kiem tra ngay den han");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
+		
+		log.info("TC_07_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền gửi gốc"), info.money);
+		
+		log.info("TC_07_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền thực hưởng"), info.money);
+		
+		log.info("TC_07_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
+		
+		log.info("TC_07_06_10: Kiem tra so tien phi");
+		
+		log.info("TC_07_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -498,10 +564,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_07_13_Click Thuc hien giao dich moi");
+		log.info("TC_07_8_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_07_3_Chon tai khoan dich");
+		log.info("TC_07_9_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 		
@@ -512,7 +578,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
+	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_08_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -583,7 +649,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_09_MoTaiKhoanTietKiem_VND_6Thang_LaiNhapGoc() {
+	public void TC_09_MoTaiKhoanTietKiem_VND_6Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_09_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -665,7 +731,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_10_MoTaiKhoanTietKiem_VND_6Thang_LaiNhapGoc_BaoCao() {
+	public void TC_10_MoTaiKhoanTietKiem_VND_6Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_10_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -733,7 +799,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_11_TatToanTaiKhoanTietKiem_VND_6Thang_LaiNhapGoc() {
+	public void TC_11_TatToanTaiKhoanTietKiem_VND_6Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = getForwardDate(0);
+		String expiredDate = getForwardMonthAndForwardDay(6, 0);
+		
 		log.info("TC_11_1_Click Tat toan tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -753,7 +822,37 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_11_5_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton("Tiếp tục");
 		
-		log.info("TC_11_6_Click nut Tiep tuc");
+		log.info("TC_11_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_11_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_11_06_2: Kiem tra ten tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên tài khoản tiết kiệm"), "NGUYEN NGOC TOAN");
+		
+		log.info("TC_11_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		
+		log.info("TC_11_06_4: Kiem tra lai suat");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
+		
+		log.info("TC_11_06_5: Kiem tra ngay gui tien");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		
+		log.info("TC_11_06_6: Kiem tra ngay den han");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
+		
+		log.info("TC_11_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền gửi gốc"), info.money);
+		
+		log.info("TC_11_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền thực hưởng"), info.money);
+		
+		log.info("TC_11_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
+		
+		log.info("TC_11_06_10: Kiem tra so tien phi");
+		
+		log.info("TC_11_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -762,10 +861,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_09_13_Click Thuc hien giao dich moi");
+		log.info("TC_11_7_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_11_3_Chon tai khoan dich");
+		log.info("TC_11_8_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		
@@ -776,7 +875,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_12_TatToanTaiKhoanTietKiem_VND_6Thang_LaiNhapGoc_BaoCao() {
+	public void TC_12_TatToanTaiKhoanTietKiem_VND_6Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_12_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -847,7 +946,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_13_MoTaiKhoanTietKiem_VND_9Thang_LaiNhapGoc() {
+	public void TC_13_MoTaiKhoanTietKiem_VND_9Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_13_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -929,7 +1028,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_14_MoTaiKhoanTietKiem_VND_9Thang_LaiNhapGoc_BaoCao() {
+	public void TC_14_MoTaiKhoanTietKiem_VND_9Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_14_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -997,7 +1096,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_15_TatToanTaiKhoanTietKiem_VND_9Thang_LaiNhapGoc() {
+	public void TC_15_TatToanTaiKhoanTietKiem_VND_9Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = getForwardDate(0);
+		String expiredDate = getForwardMonthAndForwardDay(9, 0);
+		
 		log.info("TC_15_1_Click Tat toan tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -1017,7 +1119,37 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_15_5_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton("Tiếp tục");
 		
-		log.info("TC_15_6_Click nut Tiep tuc");
+		log.info("TC_15_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_15_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_15_06_2: Kiem tra ten tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên tài khoản tiết kiệm"), "NGUYEN NGOC TOAN");
+		
+		log.info("TC_15_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		
+		log.info("TC_15_06_4: Kiem tra lai suat");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
+		
+		log.info("TC_15_06_5: Kiem tra ngay gui tien");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		
+		log.info("TC_15_06_6: Kiem tra ngay den han");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
+		
+		log.info("TC_15_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền gửi gốc"), info.money);
+		
+		log.info("TC_15_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền thực hưởng"), info.money);
+		
+		log.info("TC_15_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
+		
+		log.info("TC_15_06_10: Kiem tra so tien phi");
+		
+		log.info("TC_15_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -1026,10 +1158,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_13_13_Click Thuc hien giao dich moi");
+		log.info("TC_15_8_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_15_3_Chon tai khoan dich");
+		log.info("TC_15_9_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		
@@ -1040,7 +1172,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_16_TatToanTaiKhoanTietKiem_VND_9Thang_LaiNhapGoc_BaoCao() {
+	public void TC_16_TatToanTaiKhoanTietKiem_VND_9Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_16_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -1111,7 +1243,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_17_MoTaiKhoanTietKiem_VND_12Thang_LaiNhapGoc() {
+	public void TC_17_MoTaiKhoanTietKiem_VND_12Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_17_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -1193,7 +1325,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_18_MoTaiKhoanTietKiem_VND_12Thang_LaiNhapGoc_BaoCao() {
+	public void TC_18_MoTaiKhoanTietKiem_VND_12Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_18_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -1261,7 +1393,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_19_TatToanTaiKhoanTietKiem_VND_12Thang_LaiNhapGoc() {
+	public void TC_19_TatToanTaiKhoanTietKiem_VND_12Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = getForwardDate(0);
+		String expiredDate = getForwardYear(1);
+		
 		log.info("TC_19_1_Click Tat toan tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -1281,7 +1416,37 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_19_5_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton("Tiếp tục");
 		
-		log.info("TC_19_6_Click nut Tiep tuc");
+		log.info("TC_19_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_19_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_19_06_2: Kiem tra ten tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên tài khoản tiết kiệm"), "NGUYEN NGOC TOAN");
+		
+		log.info("TC_19_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		
+		log.info("TC_19_06_4: Kiem tra lai suat");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
+		
+		log.info("TC_19_06_5: Kiem tra ngay gui tien");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		
+		log.info("TC_19_06_6: Kiem tra ngay den han");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
+		
+		log.info("TC_19_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền gửi gốc"), info.money);
+		
+		log.info("TC_19_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền thực hưởng"), info.money);
+		
+		log.info("TC_19_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
+		
+		log.info("TC_19_06_10: Kiem tra so tien phi");
+		
+		log.info("TC_19_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -1290,10 +1455,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_17_13_Click Thuc hien giao dich moi");
+		log.info("TC_17_8_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_19_3_Chon tai khoan dich");
+		log.info("TC_19_9_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 		
@@ -1304,7 +1469,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_20_TatToanTaiKhoanTietKiem_VND_12Thang_LaiNhapGoc_BaoCao() {
+	public void TC_20_TatToanTaiKhoanTietKiem_VND_12Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_20_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -1375,7 +1540,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_21_MoTaiKhoanTietKiem_VND_24Thang_LaiNhapGoc() {
+	public void TC_21_MoTaiKhoanTietKiem_VND_24Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_21_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -1457,7 +1622,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_22_MoTaiKhoanTietKiem_VND_24Thang_LaiNhapGoc_BaoCao() {
+	public void TC_22_MoTaiKhoanTietKiem_VND_24Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_22_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -1525,7 +1690,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_23_TatToanTaiKhoanTietKiem_VND_24Thang_LaiNhapGoc() {
+	public void TC_23_TatToanTaiKhoanTietKiem_VND_24Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = getForwardDate(0);
+		String expiredDate = getForwardYear(2);
+		
 		log.info("TC_23_1_Click Tat toan tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -1545,7 +1713,37 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		log.info("TC_23_5_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton("Tiếp tục");
 		
-		log.info("TC_23_6_Click nut Tiep tuc");
+		log.info("TC_23_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_23_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản tiết kiệm"), savingAccount);
+		
+		log.info("TC_23_06_2: Kiem tra ten tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên tài khoản tiết kiệm"), "NGUYEN NGOC TOAN");
+		
+		log.info("TC_23_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		
+		log.info("TC_23_06_4: Kiem tra lai suat");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
+		
+		log.info("TC_23_06_5: Kiem tra ngay gui tien");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		
+		log.info("TC_23_06_6: Kiem tra ngay den han");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
+		
+		log.info("TC_23_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền gửi gốc"), info.money);
+		
+		log.info("TC_23_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền thực hưởng"), info.money);
+		
+		log.info("TC_23_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
+		
+		log.info("TC_23_06_10: Kiem tra so tien phi");
+		
+		log.info("TC_23_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 		
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -1554,10 +1752,10 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_21_13_Click Thuc hien giao dich moi");
+		log.info("TC_23_8_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_23_3_Chon tai khoan dich");
+		log.info("TC_23_9_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 		
@@ -1568,7 +1766,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_24_TatToanTaiKhoanTietKiem_VND_24Thang_LaiNhapGoc_BaoCao() {
+	public void TC_24_TatToanTaiKhoanTietKiem_VND_24Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_24_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 

@@ -981,7 +981,7 @@ public class AbstractPage {
 		return expectList.containsAll(actualList);
 	}
 
-	public void clickToDynamicBottomMenu(AppiumDriver<MobileElement> driver, String dynamicID) {
+	public void clickToDynamicBottomMenuOrIcon(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		if (status == true) {
@@ -1841,6 +1841,25 @@ public class AbstractPage {
 
 		}
 
+		return transferTime;
+	}
+	
+	public String getTransferMoneyCharityTimeSuccess(AppiumDriver<MobileElement> driver, String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+		
+		if (transferTime.equals("") || transferTime == null || transferTime.contains("Giao dịch sẽ được tự động khởi tạo vào")) {
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[] { "Unused", "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", });
+
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+
+		}
+		
 		return transferTime;
 	}
 

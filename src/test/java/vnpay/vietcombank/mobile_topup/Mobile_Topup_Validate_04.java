@@ -206,7 +206,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 	public void TC_09_ManHinhKetQuaGiaoDich_AnNutHome() {
 
 		log.info("TC_09_Step_01: An nut 'Home' de quay ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivHome");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 
 		log.info("TC_09_Step_02: Xac nhan quay ve man hinh chinh");
 		verifyTrue(home.isDynamicImageHomeDisplay(driver, "com.VCB:id/menu_1"));
