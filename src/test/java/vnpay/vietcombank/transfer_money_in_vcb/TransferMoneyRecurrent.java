@@ -157,6 +157,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
+	transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 	log.info("TC_02_02_Lay so du");
 	String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
@@ -385,6 +386,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
+	transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 	log.info("TC_06_02_Lay so du");
 	String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
@@ -611,6 +613,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 
+	transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 	log.info("TC_10_02_Lay so du");
 	String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
@@ -836,6 +839,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
+	transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 	log.info("TC_14_02_Lay so du");
 	String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
@@ -1062,6 +1066,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 
+	transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 	log.info("TC_18_02_Lay so du");
 	String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
@@ -1288,6 +1293,7 @@ public class TransferMoneyRecurrent extends Base {
 	transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 	transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 
+	transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 	log.info("TC_22_02_Lay so du");
 	String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
