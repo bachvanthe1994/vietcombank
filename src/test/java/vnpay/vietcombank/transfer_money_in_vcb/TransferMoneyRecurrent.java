@@ -493,7 +493,7 @@ public class TransferMoneyRecurrent extends Base {
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info1.money) + " EUR");
 
 	log.info("TC_08_10: Kiem tra tan suat");
-	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
+	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
 
 	log.info("TC_08_11: Kiem ngay bat dau");
 	verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
