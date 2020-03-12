@@ -232,7 +232,6 @@ public class AbstractPage {
 		try {
 		    touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
 		} catch (Exception e) {
-
 		    System.out.println(e.getMessage());
 		    overRideTimeOut(driver, longTime);
 		}
@@ -1135,6 +1134,17 @@ public class AbstractPage {
 	if (status == true) {
 	    clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 	    sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+	}
+    }
+
+    // input vào ô input với tham số truyền vào là inputbox
+    public void inputToDynamicInputBoxContent(AppiumDriver<MobileElement> driver, String inputValue, String dynamicIndex) {
+	boolean status = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_EDI_TEXT, dynamicIndex);
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDI_TEXT, dynamicIndex);
+	if (status == true) {
+	    clearText(driver, DynamicPageUIs.DYNAMIC_EDI_TEXT, dynamicIndex);
+	    sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_EDI_TEXT, inputValue, dynamicIndex);
 	}
     }
 

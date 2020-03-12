@@ -33,7 +33,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_EDIT_INDEX = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
     public static final String DYNAMIC_TEXT_FOLLOW_LAYOUT = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
     public static final String DYNAMIC_WISHES = "//android.widget.LinearLayout[@index ='1']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
-    public static final String DYNAMIC_TEXT_INDEX ="//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@text='%s']";
+    public static final String DYNAMIC_TEXT_INDEX = "//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@text='%s']";
 
     // LINEAER LAYOUT
     public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
@@ -42,7 +42,7 @@ public class DynamicPageUIs {
     // TEXT BOX OR INPUT BOX
     public static final String DYNAMIC_INPUT_BOX = "//android.widget.EditText[@text='%s']";
     public static final String DYNAMIC_INPUT_BOX_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
-    public static final String DYNAMIC_COMBOBOX_TEXT       = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
+    public static final String DYNAMIC_COMBOBOX_TEXT = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
     public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.TextView";
     public static final String DYNAMIC_PASSWORD_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
     public static final String DYNAMIC_INPUT_IN_LOGIN = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
@@ -50,6 +50,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_LABEL_LIST_ACCEPT = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.FrameLayout//android.widget.EditText";
     public static final String DYNAMIC_LABEL_SEARCH_BANK = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.EditText";
     public static final String DYNAMIC_EDIT_FOLLOW_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
+    public static final String DYNAMIC_EDI_TEXT = "//android.widget.LinearLayout[@index='%s']//android.widget.EditText";
 
     // ICON
     public static final String DYNAMIC_CLOSE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
@@ -65,7 +66,7 @@ public class DynamicPageUIs {
     public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
     public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
     public static final String DYNAMIC_VIEW_VIEW_BY_INDEX1 = "//android.view.View[@text = '%s']/parent::android.view.View//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
-    public static final String DYNAMIC_VIEW_VIEW_BY_INDEX ="//android.view.View[@index='%s']/android.view.View[@index='%s']/android.view.View[@index='0']";
+    public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@index='%s']/android.view.View[@index='%s']/android.view.View[@index='0']";
 
     // IMAGE
     public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";
