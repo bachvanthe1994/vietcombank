@@ -1856,7 +1856,7 @@ public class AbstractPage {
 	return transferTime;
     }
 
-    public String getTransferMoneyCharityTimeSuccess(AppiumDriver<MobileElement> driver, String textSuccess) {
+    public String getTransferMoneyRecurrentTimeSuccess(AppiumDriver<MobileElement> driver, String textSuccess) {
 	String transferTime = "";
 	transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
 
