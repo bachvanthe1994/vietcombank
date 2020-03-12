@@ -823,6 +823,16 @@ public class Base {
 		}
 		return result;
 	}
+	
+	public String getCurrentcyMoney(String money) {
+		String result = "";
+		try {
+			result = money.split("~")[1].replaceAll("[^\\.0123456789]", "");
+		} catch (Exception e) {
+			result = "0";
+		}
+		return result;
+	}
 
 	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";
