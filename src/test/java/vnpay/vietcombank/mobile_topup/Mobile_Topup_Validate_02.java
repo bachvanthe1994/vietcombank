@@ -76,7 +76,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 	@Test void TC_03_KiemTraKiTuNhap() {
 		
 		log.info("TC_03_Step_01: An nut 'Back' de quay ve man hinh Nap tien dien thoai");
-		mobileTopup.clickToDynamicBottomMenu(driver, "com.VCB:id/ivTitleLeft");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_03_Step_02: Nhap ki tu vao o nhap so dien thoai");
 		mobileTopup.inputIntoEditTextByID(driver, "4nh5jh6nb7", "com.VCB:id/mobile");
@@ -176,6 +176,8 @@ public class Mobile_Topup_Validate_02 extends Base {
 			mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 			
 		}else {
+			log.info("TC_01_Step_02: Tat Dropdownlist");
+			mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 			throw new SkipException("These Tests shouldn't be run in Production");
 		}
 

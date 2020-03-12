@@ -20,6 +20,7 @@ import pageObjects.TransferMoneyCharityPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyCharity_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class TransferMoneyCharity extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -139,7 +140,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_01_12_6_Lay ma giao dich");
-		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
+		transferTime = transferMoneyCharity.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_13_Click Thuc hien giao dich moi");
@@ -315,7 +316,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_03_12_5_Lay ma giao dich");
-		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
+		transferTime = transferMoneyCharity.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_03_13_Click Thuc hien giao dich moi");
@@ -494,7 +495,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_05_12_5_Lay ma giao dich");
-		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
+		transferTime = transferMoneyCharity.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_05_13_Click Thuc hien giao dich moi");
@@ -853,7 +854,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_09_12_5_Lay ma giao dich");
-		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
+		transferTime = transferMoneyCharity.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_09_13_Click Thuc hien giao dich moi");

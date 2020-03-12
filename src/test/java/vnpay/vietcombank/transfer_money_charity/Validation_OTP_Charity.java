@@ -26,7 +26,7 @@ public class Validation_OTP_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 
-	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, TransferMoneyCharity_Data.ORGANIZATION, "1000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -48,7 +48,7 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_00_3_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 
 		log.info("TC_00_4_Nhap so tien ung ho");
@@ -61,7 +61,7 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
 
 		log.info("TC_00_7_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh ủng hộ");
 
 		log.info("TC_00_8_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -115,11 +115,15 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 	}
 
-//	@Test
+	@Test
 	public void TC_04_OTP_NutTiepTuc_NhapOTPLonHon6KyTu() {
 		log.info("TC_04_01_Nhap ma OTP lon hon 6 Ky tu");
 		transferMoneyCharity.inputToDynamicOtp(driver, "1234567", "Tiếp tục");
 
+		log.info("TC_04_02_Kiem tra OTP");
+		String otp = transferMoneyCharity.getTextInDynamicOtp(driver, "Tiếp tục");
+		verifyEquals(otp, "123456");
+		
 	}
 
 	@Test
@@ -158,43 +162,8 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_06_04_Click nut Quay lai");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
 
-		log.info("TC_06_05_Click Tiep tuc");
-		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
-
-	}
-
-	@Test
-	public void TC_07_OTP_NutTiepTuc_NhapOTPKhongChinhXac_n_Lan_LienTiep() {
-		log.info("TC_07_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputOTPInvalidBy_N_Times(driver, LogIn_Data.Login_Account.OTP_INVALID_TIMES);
-
-		log.info("TC_07_02_Kiem tra message thong bao loi");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_INVALID_N_TIMES));
-
-		log.info("TC_07_03_Click nut Dong");
-		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
-
-		transferMoneyCharity.scrollDownToText(driver, "Hoàn cảnh người ủng hộ");
-
-		log.info("TC_07_04_Kiem tra quay ve man hinh tao, xoa het thong tin da nhap");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền từ thiện"));
-
-		log.info("TC_07_04_1_Kiem tra thong tin nguoi huong");
-		String actualOrganization = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
-		verifyEquals(actualOrganization, "Quỹ/ Tổ chức từ thiện");
-
-		log.info("TC_07_04_2_Kiem tra thong tin giao dich");
-		String actualMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
-		verifyEquals(actualMoney, "Số tiền ủng hộ");
-
-		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");
-		verifyEquals(actualName, "Tên người ủng hộ");
-
-		String actualAddress = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3");
-		verifyEquals(actualAddress, "Địa chỉ người ủng hộ");
-
-		String actualStatus = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "4");
-		verifyEquals(actualStatus, "Hoàn cảnh người ủng hộ");
+		log.info("TC_06_04_Click nut Back");
+		transferMoneyCharity.clickToDynamicBackIcon(driver, "Xác nhận thông tin");
 
 	}
 

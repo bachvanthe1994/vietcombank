@@ -60,7 +60,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
 
 		log.info("TC_01_6_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh ủng hộ");
 
 		log.info("TC_01_7_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -75,7 +75,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
 
 		log.info("TC_01_11_Chon Quy, to chuc tu thien");
-		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 
 	}
@@ -143,7 +143,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.status, "Thông tin giao dịch", "4");
 	}
 
-	@Test
+//	@Test
 	public void TC_05_KiemTraChonTaiKhoanNguonLaTaiKhoanDongChuSoHuu() {
 		log.info("TC_05_Chon tai khoan nguon VND");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -175,7 +175,7 @@ public class Validation_Continue_Button_Charity extends Base {
 		long surplus, moneyCharity;
 		log.info("TC_07_1_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 		surplus = Long.parseLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", ""));
 		moneyCharity = surplus + 1;
 

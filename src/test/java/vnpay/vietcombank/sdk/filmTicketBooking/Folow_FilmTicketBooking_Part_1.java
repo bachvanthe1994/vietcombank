@@ -103,7 +103,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Phim"), info.filmName);
 		
 		log.info("TC_01_15_02: Kiem tra suat chieu");
-		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Suất chiếu"), info.time);
+		verifyTrue(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Suất chiếu").contains(info.time));
 		
 		log.info("TC_01_15_03: Kiem tra thời lượng");
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Thời lượng"), info.filmDuration);
@@ -338,7 +338,7 @@ public class Folow_FilmTicketBooking_Part_1 extends Base {
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Phim"), info.filmName);
 		
 		log.info("TC_03_15_02: Kiem tra suat chieu");
-		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Suất chiếu"), info.time);
+		verifyTrue(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Suất chiếu").contains(info.time));
 		
 		log.info("TC_03_15_03: Kiem tra thời lượng");
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail("Thời lượng"), info.filmDuration);

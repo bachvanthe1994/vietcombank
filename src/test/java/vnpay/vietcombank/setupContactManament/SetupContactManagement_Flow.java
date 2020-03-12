@@ -95,7 +95,7 @@ public class SetupContactManagement_Flow extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_01_Step_18: Mo tab 'Menu' ");
-		home.clickToDynamicBottomMenu(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step_19: Mo sub-menu 'Cai dat' ");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
@@ -223,7 +223,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 
 		log.info("TC_05_Step_04: Tao moi 'Danh ba hoa don'");
-		setupContact.clickToDynamicBottomMenu(driver, "com.VCB:id/ic_add_contact");
+		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ic_add_contact");
 
 		log.info("TC_05_Step_05: Nhap thong tin 'Danh ba hoa don'");
 		setupContact.clickToDynamicDropdownByHeader(driver, "Thông tin danh bạ hóa đơn", "4");
@@ -313,7 +313,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 
 		log.info("TC_08_Step_04: Tao moi 'Danh ba the/vi dien tu'");
-		setupContact.clickToDynamicBottomMenu(driver, "com.VCB:id/ic_add_contact");
+		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ic_add_contact");
 
 		log.info("TC_08_Step_05: Nhap thong tin 'Danh ba the/vi dien tu'");
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.BANK_CARD_CHARGE);

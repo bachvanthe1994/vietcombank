@@ -16,7 +16,7 @@ import pageObjects.RegisterOnlinePageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Register_Online_data;
 
-public class Flow_RegisterOnline_LoginUser2 extends Base {
+public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private RegisterOnlinePageObject registerOnline;

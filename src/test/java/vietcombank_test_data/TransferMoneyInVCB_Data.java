@@ -6,7 +6,7 @@ import java.util.List;
 public class TransferMoneyInVCB_Data {
 
 	public static class InputDataInVCB {
-		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngay", "Chuyển tiền ngay", "Chuyển tiền ngày tương lai" };
+		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai" };
 		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
@@ -18,8 +18,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
 		public static final String VND_MONEY = "20000";
 
-		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 485,480 VND", "200 EUR ~ 4,854,800 VND");
-		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("200,000 VND", "2,000,000 VND", "20,000,000 VND");
+		public static final List<String> SUGGESTED_EUR_MONEY = Arrays.asList("20 EUR ~ 479,960 VND VND", "200 EUR ~ 4,799,600 VND");
+		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("20,000 VND", "200,000 VND", "2,000,000 VND");
 
 		public static final String NOTE = "Test";
 		public static final String TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER = "1,100";
@@ -32,13 +32,13 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
 
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.04";
-		public static final String USD_PAYMENT_BY_OTP_FEE = "0";
+		public static final String USD_PAYMENT_BY_OTP_FEE = "0.24";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
-		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,145.00 VND";
-		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 24,274.03 VND";
-		public static final String USD_CHANGED_MONEY = "46290";
-		public static final String EUR_CHANGED_MONEY = "48548";
+		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,087.00 VND";
+		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 23,997.76 VND";
+		public static final String USD_CHANGED_MONEY = "46174";
+		public static final String EUR_CHANGED_MONEY = "47996";
 
 		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
 		public static final String NUMBER_DAY_FREQUENCY = "5";
@@ -92,13 +92,14 @@ public class TransferMoneyInVCB_Data {
 		public static final String OTP_INVALID_N_TIMES = "Nhập sai OTP quá " + LogIn_Data.Login_Account.OTP_INVALID_TIMES + " lần. Quý khách vui lòng thực hiện giao dịch khác.";
 		public static final String PASSWORD_INVALID_N_TIMES = "";
 		public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
+		public static final String ORDER_TIME = "Giao dịch sẽ được tự động khởi tạo vào ";
 
 	}
 
 	public static class InputDataInFutureForOTP {
 		public static final String OTP_FEE = "2,200";
 		public static final String TRANSFER_AMOUNT = "20000";
-		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "0.2";
+		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "1";
 		public static final String USD_SMS_OTP_FEE = "0.1";
 		public static final String EUR_SMS_OTP_FEE = "0.09";
 

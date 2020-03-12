@@ -20,7 +20,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 
-public class SavingOnline_Folow extends Base {
+public class SavingOnline_Folow_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -32,12 +32,12 @@ public class SavingOnline_Folow extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 	
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "1 tháng", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "3 tháng", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info2 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "6 tháng", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info3 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "9 tháng", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info4 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "12 tháng", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info5 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "24 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "3 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info2 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "6 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info3 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "9 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info4 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "12 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info5 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "24 tháng", "2000000", "Lãi nhập gốc");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -101,7 +101,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info.formOfPayment);
 		
 		log.info("TC_01_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -121,7 +121,7 @@ public class SavingOnline_Folow extends Base {
 		verifyTrue(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, SavingOnline_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_01_12_6_Lay ma giao dich");
-		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
+		transferTime = savingOnline.getTransferTimeSuccess(SavingOnline_Data.SUCCESS_TRANSACTION);
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
@@ -235,10 +235,10 @@ public class SavingOnline_Folow extends Base {
 		
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		
-		log.info("TC_05_13_Click Thuc hien giao dich moi");
+		log.info("TC_03_7_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
-		log.info("TC_03_3_Chon tai khoan dich");
+		log.info("TC_03_8_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 		
@@ -365,7 +365,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info1.formOfPayment);
 		
 		log.info("TC_05_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -385,7 +385,7 @@ public class SavingOnline_Folow extends Base {
 		verifyTrue(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, SavingOnline_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_05_12_6_Lay ma giao dich");
-		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
+		transferTime = savingOnline.getTransferTimeSuccess(SavingOnline_Data.SUCCESS_TRANSACTION);
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
@@ -629,7 +629,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info2.formOfPayment);
 		
 		log.info("TC_09_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -649,7 +649,7 @@ public class SavingOnline_Folow extends Base {
 		verifyTrue(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, SavingOnline_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_09_12_6_Lay ma giao dich");
-		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
+		transferTime = savingOnline.getTransferTimeSuccess(SavingOnline_Data.SUCCESS_TRANSACTION);
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
@@ -893,7 +893,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info3.formOfPayment);
 		
 		log.info("TC_13_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -913,7 +913,7 @@ public class SavingOnline_Folow extends Base {
 		verifyTrue(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, SavingOnline_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_13_12_6_Lay ma giao dich");
-		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
+		transferTime = savingOnline.getTransferTimeSuccess(SavingOnline_Data.SUCCESS_TRANSACTION);
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
@@ -1157,7 +1157,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info4.formOfPayment);
 		
 		log.info("TC_17_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -1177,7 +1177,7 @@ public class SavingOnline_Folow extends Base {
 		verifyTrue(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, SavingOnline_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_17_12_6_Lay ma giao dich");
-		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
+		transferTime = savingOnline.getTransferTimeSuccess(SavingOnline_Data.SUCCESS_TRANSACTION);
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
@@ -1421,7 +1421,7 @@ public class SavingOnline_Folow extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), info5.formOfPayment);
 		
 		log.info("TC_21_09_Chon phuong thuc xac thuc");
-		savingOnline.scrollDownToText(driver, "Phương thức xác thực");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
@@ -1441,7 +1441,7 @@ public class SavingOnline_Folow extends Base {
 		verifyTrue(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, SavingOnline_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_21_12_6_Lay ma giao dich");
-		transferTime = savingOnline.getDynamicTransferTimeAndMoney(driver, SavingOnline_Data.SUCCESS_TRANSACTION, "4");
+		transferTime = savingOnline.getTransferTimeSuccess(SavingOnline_Data.SUCCESS_TRANSACTION);
 		savingAccount = savingOnline.getDynamicTextInTransactionDetail(driver, "Số tài khoản tiết kiệm");
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 

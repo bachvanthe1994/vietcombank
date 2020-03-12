@@ -47,8 +47,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_Step_02:  Chon chuyen tien tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_15_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
@@ -68,8 +68,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_02_Step_02: Chon chuyen tien tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_LESS_THAN_10_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
@@ -98,8 +98,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_03_Step_02: Chon chuyen tien tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.INVALID_ACCOUNT_LESS_THAN_13_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
@@ -127,8 +127,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_04_Step_02:  Chon chuyen tien tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.TEXT_AND_SPECIAL_CHARACTERS, "Nhập/chọn tài khoản nhận VND");
 
@@ -146,8 +146,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_05_Step_03: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_05_Step_04: Kiem tra ngay hieu luc la today");
 		verifyEquals(transferInVCB.getDynamicTextInDropDownByHeader(driver, "Ngày hiệu lực", "1"), tomorrow);
@@ -202,8 +202,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_08_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_08_Step_03: Kiem tra placeholder o so tien va don vi tien te");
 		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
@@ -233,8 +233,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_09_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_09_Step_03:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -272,8 +272,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_10_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_10_Step_02: Nhap so tien");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -295,8 +295,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_11_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_11_Step_02: Click chon tai khoan nguon ");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -324,8 +324,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_12_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_12_Step_02: Nhap so tien");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InvalidInputData.TEXT_AND_SPECIAL_CHARACTERS, "Số tiền");
@@ -361,8 +361,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_13_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_13_Step_03: Click vao textbox so tien");
 		transferInVCB.clickToDynamicInputBoxByHeader(driver, "Thông tin giao dịch", "1");
@@ -384,8 +384,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_14_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_14_Step_03: Nhap so tien");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -405,8 +405,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_15_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_15_Step_03:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -433,8 +433,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_16_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_16_Step_02:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -465,8 +465,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_16_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_17_Step_03:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -497,8 +497,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_18_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_18_Step_03:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -536,8 +536,8 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_16_Step_02: Chon Chuyen tien ngay tuong lai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_19_Step_03:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
