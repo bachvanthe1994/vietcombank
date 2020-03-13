@@ -24,7 +24,11 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 
@@ -73,7 +77,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		log.info("TC_Step_: Nhap email");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/edtEmail");
-		
+
 		log.info("TC_Step_: Nhap so tai khoan nhan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin tài khoản ghi nợ", "1");
 
@@ -97,15 +101,15 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		Thread.sleep(5000);
 		log.info("TC_Step_: verify man hinh dang ky thanh cong");
-		System.out.print(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"));
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
-		
+		System.out.print(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"));
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
+
 		log.info("TC_Step_: verify text dieu kien");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "4"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
 		log.info("TC_Step_: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
-		
+
 		log.info("TC_Step_: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
@@ -166,7 +170,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		log.info("TC_Step_: Nhap ten tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi có", "6");
-		
+
 		log.info("TC_Step_: Chon ngan hang");
 		registerOnline.clickToDynamicComboboxText(driver, "Thông tin tài khoản ghi có", "7");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.BANK_NAME);
@@ -182,21 +186,21 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		Thread.sleep(5000);
 		log.info("TC_Step_: verify man hinh dang ky thanh cong");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
+
 		log.info("TC_Step_: verify text dieu kien");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "4"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
 		log.info("TC_Step_: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
-		
+
 		log.info("TC_Step_: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
 		log.info("TC_Step_: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_03_GiaoDichNopTienThanhCong() throws InterruptedException {
 		log.info("TC_Step_: Click nop tien");
@@ -241,7 +245,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		log.info("TC_Step_: Nhap ten tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi có", "4");
-		
+
 		log.info("TC_Step_: Chon ngan hang");
 		registerOnline.clickToDynamicComboboxText(driver, "Thông tin tài khoản ghi có", "5");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.BANK_NAME);
@@ -251,7 +255,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		log.info("TC_Step_: Nhap nguoi nop tien");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Thông tin giao dịch", "8");
-		
+
 		log.info("TC_Step_: Nhap noi dung chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin giao dịch", "9");
 
@@ -260,21 +264,21 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		Thread.sleep(5000);
 		log.info("TC_Step_: verify man hinh dang ky thanh cong");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
+
 		log.info("TC_Step_: verify text dieu kien");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "4"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
 		log.info("TC_Step_: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
-		
+
 		log.info("TC_Step_: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
 		log.info("TC_Step_: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_04_GiaoDichRutTienUSDThanhCong() throws InterruptedException {
 		log.info("TC_Step_: Click nop tien");
@@ -319,17 +323,17 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		log.info("TC_Step_: Nhap ten tai khoan phan ghi nợ");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi nợ", "4");
-		
+
 		log.info("TC_Step_: Chon loai tien la USD");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch","7");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "7");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "USD");
-		
+
 		log.info("TC_Step_: Verify loai tien la USD");
-		verifyEquals(registerOnline.getDynamicTextInDropDownByHeader(driver, "Thông tin giao dịch","7"), "USD");
+		verifyEquals(registerOnline.getDynamicTextInDropDownByHeader(driver, "Thông tin giao dịch", "7"), "USD");
 
 		log.info("TC_Step_: Nhap so tien chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT_USD_EUR, "Thông tin giao dịch", "7");
-		
+
 		log.info("TC_Step_: Nhap noi dung chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin giao dịch", "8");
 
@@ -338,14 +342,14 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 		Thread.sleep(5000);
 		log.info("TC_Step_: verify man hinh dang ky thanh cong");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
+
 		log.info("TC_Step_: verify text dieu kien");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
-		
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "4"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
 		log.info("TC_Step_: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
-		
+
 		log.info("TC_Step_: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 

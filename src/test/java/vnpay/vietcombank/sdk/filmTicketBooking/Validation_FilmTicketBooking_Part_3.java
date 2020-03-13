@@ -32,7 +32,11 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
@@ -294,7 +298,7 @@ public class Validation_FilmTicketBooking_Part_3 extends Base {
 
 		log.info("TC_11_05_Kiem tra tong tien");
 		verifyTrue(!beforePrice.equals(afterPrice));
-		
+
 		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
 
 		log.info("TC_11_06_Click chon them 1 ghe");
