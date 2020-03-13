@@ -4,6 +4,7 @@ public class DynamicPageUIs {
 	// BUTTON
 	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
+
 	// TEXT VIEW
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY = "//android.widget.TextView[@resource-id='%s']";
@@ -55,7 +56,6 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_COMBOBOX = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.ImageView";
 	public static final String DYNAMIC_EDI_TEXT = "//android.widget.LinearLayout[@index='%s']//android.widget.EditText";
 
-
 	// ICON
 	public static final String DYNAMIC_CLOSE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout";
@@ -66,7 +66,6 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.ImageView";
 	public static final String DYNAMIC_CONTACT_KEY_MENU = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON_IN_LIST_VIEW = "//android.widget.ListView[@resource-id='com.VCB:id/nlvHisDetailAcc']/android.widget.LinearLayout[@index='%s']//android.widget.ImageView[@resource-id=\"%s\"]";
-
 
 	// VIEW
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
@@ -82,6 +81,6 @@ public class DynamicPageUIs {
 
 //    Bắt expath với class bị mã hóa chỉ có id
 	public static final String DYNAMIC_ESPECIALLY = "//*[@resource-id=\"%s\"]";
-
+//DATE PICKER
 	public static final String DYNAMIC_DATE_PICKER_BY_ID = "//android.widget.DatePicker[@resource-id=\"%s\"]";
 }

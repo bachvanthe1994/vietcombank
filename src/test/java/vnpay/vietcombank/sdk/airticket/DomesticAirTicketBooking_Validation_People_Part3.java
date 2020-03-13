@@ -38,6 +38,8 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 
 		log.info("Before class: Dang nhap ");
 		login = PageFactoryManager.getLoginPageObject(driver);
+
+		System.out.println("Tên driver là " + login.getDriverName(driver));
 		login.Global_login(phone, pass, opt);
 
 		log.info("Before class: Click Dat ve may bay ");
