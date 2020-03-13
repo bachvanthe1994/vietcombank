@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.Normalizer;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -875,7 +876,7 @@ public class Base {
 	}
 	
 	//Viet hoa chu cai dau
-	protected String capitalizeString(String string) {
+	public String capitalizeString(String string) {
 		  char[] chars = string.toLowerCase().toCharArray();
 		  boolean found = false;
 		  for (int i = 0; i < chars.length; i++) {
@@ -888,5 +889,26 @@ public class Base {
 		  }
 		  return String.valueOf(chars);
 		}
+	
+	//Kiem tra thoi gian hien thi co dung format hay khong
+	public static boolean validateDateFormat(String strDate, String dateFormat)
+	   {
+		if (strDate.trim().equals(""))
+		{ return true;	}
+		else
+		{
+		    SimpleDateFormat sdfrmt = new SimpleDateFormat(dateFormat);
+		    sdfrmt.setLenient(false);
+		    try
+		    {
+		        Date javaDate = sdfrmt.parse(strDate); 
+		    }
+		    catch (ParseException e)
+		    {
+		        return false;
+		    }
+		    return true;
+		}
+	   }
 
 }
