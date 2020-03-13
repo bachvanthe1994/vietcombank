@@ -58,7 +58,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_RECEIVE_ACCOUNT = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_RECEIVE_ACCOUNT_EUR = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
 		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_10_CHARACTER = "Tài khoản đích không đủ 10 ký tự, Quý khách vui lòng kiểm tra lại";
-		public static final String TRANSACTION_LIMIT_TEXT = "Tài khoản đích không đủ 10 ký tự. Quý khách vui lòng kiểm tra lại";
+		public static final String TRANSACTION_LIMIT_TEXT = "Tài khoản đích không đủ 10 ký tự, Quý khách vui lòng kiểm tra lại";
 		public static final String EMPTY_RECEIVE_ACCOUNT_MESSAGE = "Quý khách vui lòng nhập tài khoản nhận";
 		public static final String EMPTY_MONEY_MESSAGE = "Quý khách vui lòng nhập số tiền chuyển khoản";
 		public static final String EMPTY_TRANSFER_NOTE_MESSAGE = "Quý khách vui lòng nhập nội dung giao dịch";
