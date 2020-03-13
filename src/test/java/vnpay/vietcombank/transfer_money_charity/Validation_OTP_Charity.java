@@ -34,7 +34,11 @@ public class Validation_OTP_Charity extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
@@ -126,7 +130,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_04_02_Kiem tra OTP");
 		String otp = transferMoneyCharity.getTextInDynamicOtp(driver, "Tiếp tục");
 		verifyEquals(otp, "123456");
-		
+
 	}
 
 	@Test

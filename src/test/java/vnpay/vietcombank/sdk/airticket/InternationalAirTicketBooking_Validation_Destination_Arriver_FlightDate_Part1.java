@@ -31,7 +31,11 @@ public class InternationalAirTicketBooking_Validation_Destination_Arriver_Flight
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 
 		log.info("Before class: Dang nhap ");
 		login = PageFactoryManager.getLoginPageObject(driver);
