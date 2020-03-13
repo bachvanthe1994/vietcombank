@@ -237,7 +237,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		log.info("TC_10_03_Lay danh sach goi y nhanh");
 		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
-		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,427,400 VND", "1,000 EUR ~ 24,274,000 VND");
+		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,399,780 VND", "1,000 EUR ~ 23,997,800 VND");
 
 		log.info("TC_10_04_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
