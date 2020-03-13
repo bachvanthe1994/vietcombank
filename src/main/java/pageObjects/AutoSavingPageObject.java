@@ -22,7 +22,6 @@ public class AutoSavingPageObject extends AbstractPage {
 		return getTextInFirstElement(driver, 0, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
 	}
 	
-	
 	public String getFirstElementContainsText(String expText,String... dynamicValue) {
 		String locator = String.format(DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, (Object[]) dynamicValue);
 		String text="";
@@ -34,8 +33,6 @@ public class AutoSavingPageObject extends AbstractPage {
 		   }
 		}
 		return text;
-		
-		
 	}
 
 }

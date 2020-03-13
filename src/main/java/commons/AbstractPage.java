@@ -1136,6 +1136,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_EDIT_INDEX, dynamicText);
 		}
+
 	}
 
 	// Click select năm, sử dụng scroll up
