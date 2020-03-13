@@ -160,27 +160,6 @@ public class Validation_Password_Charity extends Base {
 
 	}
 
-//	@Test
-	public void TC_06_MatKhau_NutTiepTuc_NhapMatKhauKhongChinhXac_5_Lan() {
-		log.info("TC_06_01_Nhap ma OTP khong chinh xac");
-		transferMoneyCharity.inputPasswordInvalidBy_N_Times(driver, LogIn_Data.Login_Account.PASSWORD_INVALID_TIMES);
-
-		log.info("TC_06_02_Kiem tra message thong bao loi");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.PASSWORD_INVALID_N_TIMES));
-
-		log.info("TC_06_03_Kiem tra hien thi nut Dong");
-		transferMoneyCharity.isDynamicButtonDisplayed(driver, "Đóng");
-
-		log.info("TC_06_04_Click nut Dong");
-		transferMoneyCharity.clickToDynamicButton(driver, "Đóng");
-
-		log.info("TC_06_05_Click nut Quay lai");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quay lại");
-
-		log.info("TC_06_06_Click Tiep tuc");
-		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
-	}
-
 	@Test
 	public void TC_07_MatKhau_NutTiepTuc_MatKhauHopLe() {
 		log.info("TC_07_1_Chon tai khoan nguon");
@@ -188,7 +167,7 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_07_2_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
+		transferMoneyCharity.clickToDynamicDropdownByHeader(driver, "Thông tin người hưởng", "1");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 
 		log.info("TC_07_3_Nhap so tien ung ho");
