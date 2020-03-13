@@ -23,6 +23,30 @@
 
 
 		<classes>
+		
+		<!-- Flow app -->
+					<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+
+			
+			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
+			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+			
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" />
+			
+			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+			
+			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
+			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
+			
+				<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
+		
+		
 			<!-- <package name="vnpay.vietcombank.transfer_money_in_vcb"> -->
 
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_Validation_Part1" />
@@ -54,13 +78,13 @@
 
 
 			<!-- <package name="vnpay.vietcombank.transfer_money_quick_247"> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_3" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_4" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_5" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_6" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_7" /> -->
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_1" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_2" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_3" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_4" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_5" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_6" />
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_7" />
 
 
 <!-- 			<package name="vnpay.vietcombank.mobile_topup"> -->
@@ -97,11 +121,11 @@
 			<!-- <package name="vnpay.vietcombank.sdk.airticket"> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" /> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" /> -->
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" />
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" /> -->
 
 			<!-- <package name="vnpay.vietcombank.sdk.filmTicketBooking"> -->
 <!-- 			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Validation_FilmTicketBooking_Part_1" /> -->
