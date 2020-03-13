@@ -72,7 +72,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
 	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX1 = "//android.view.View[@text = '%s']/parent::android.view.View//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
-	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@index='%s']/android.view.View[@index='%s']/android.view.View[@index='0']";
+	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@resource-id='%s']//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
 
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";

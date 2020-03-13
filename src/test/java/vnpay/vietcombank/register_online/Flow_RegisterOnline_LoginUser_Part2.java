@@ -37,7 +37,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 	}
 
-//@Test
+@Test
 	public void TC_01_DangKyDichVuNganHangDienTu_ManHinhDangKyDVNHDT() throws InterruptedException {
 		log.info("TC_Step_: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -67,9 +67,6 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		log.info("TC_Step_: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
 
-		log.info("TC_Step_: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-
 		log.info("TC_Step_: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
 
@@ -90,7 +87,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 	}
 
-//@Test
+@Test
 	public void TC_02_DangKyDichVuNganHangDienTu_ManHinhDangKyDichVuDienTu() throws InterruptedException {
 		log.info("TC_Step_: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
@@ -121,7 +118,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		Thread.sleep(20000);
 
 		log.info("TC_Step_: Click radio toi dong y");
-		registerOnline.clickToDynamicRadioIndex(driver, "3", "0");
+		registerOnline.clickToDynamicRadioIndex(driver, "agreement","3");
 
 		log.info("TC_Step_: Click dong y");
 		registerOnline.clickToDynamicDateInDateTimePicker(driver, "Đồng ý");

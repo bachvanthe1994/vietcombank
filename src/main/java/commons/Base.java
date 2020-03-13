@@ -500,8 +500,14 @@ public class Base {
 	public static String addCommasToLong(String number) {
 		String m = "";
 		try {
-			long amount = Long.parseLong(number);
-			m = String.format("%,d", amount);
+			if(number.equals("0")) {
+				m = "0";
+			}
+			else {
+				long amount = Long.parseLong(number);
+				m = String.format("%,d", amount);
+			}
+			
 		} catch (Exception e) {
 
 		}
