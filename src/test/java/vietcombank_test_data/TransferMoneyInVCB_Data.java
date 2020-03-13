@@ -78,7 +78,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String ERROR_MESSAGE_FOR_WRONG_OTP = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_FOR_WRONG_OTP_N_TIMES = "Nhập sai OTP quá 4 lần. Quý khách vui lòng thực hiện giao dịch mới.";
 		public static final String ERROR_MESSAGE_FOR_WRONG_PASSWORD = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 3 lần.";
-		public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String MONEY_INPUT_OVER_PER_A_DAY_OF_GROUP_MESSAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String TRANSACTION_VALIDATION = "Xác thực giao dịch";
 		public static final String OTP_NOTIFICATION_SENDED = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;

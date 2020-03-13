@@ -18,7 +18,7 @@ public class TransferMoneyCharity_Data {
 	public static final String MONEY_NOT_ENOUGH_FOR_TRANSACTION = "1";
 	public static final String TRANSACTION_VALIDATION = "Xác thực giao dịch";
 	public static final String OTP_NOTIFICATION_SENDED = "Quý khách vui lòng nhập OTP đã được gửi về số điện thoại " + LogIn_Data.Login_Account.PHONE_HIDDEN;
-	public static final String PASSWORD_NOTIFICATION = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch";
+	public static final String PASSWORD_NOTIFICATION = "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác thực giao dịch";
 	public static final String OTP_EMPTY = "Quý khách vui lòng nhập mã OTP";
 	public static final String PASSWORD_EMPTY = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
 	public static final String OTP_LESS_THAN_6_CHARACTER = "OTP phải đủ 6 ký tự, Quý khách vui lòng kiểm tra lại";
