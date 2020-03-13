@@ -83,4 +83,5 @@ public class DynamicPageUIs {
 //    Bắt expath với class bị mã hóa chỉ có id
 	public static final String DYNAMIC_ESPECIALLY = "//*[@resource-id=\"%s\"]";
 
+	public static final String DYNAMIC_DATE_PICKER_BY_ID = "//android.widget.DatePicker[@resource-id=\"%s\"]";
 }

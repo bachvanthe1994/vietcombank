@@ -47,7 +47,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextUndisplayed(driver, "Tần suất"));
 
 		log.info("TC_01_03_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_01_04_Scroll den nut Tiep tuc");
@@ -262,7 +262,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_14_04_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_14_05_Scroll den nut Tiep tuc");
@@ -287,7 +287,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_14_11_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_14_12_Scroll den nut Tiep tuc");
@@ -348,7 +348,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_18_04_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_18_05_Scroll den nut Tiep tuc");
@@ -379,7 +379,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_19_03_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_19_04_Scroll den nut Tiep tuc");

@@ -18,4 +18,15 @@ public class Auto_Saving_Data {
 		public static final String AUTO_SAVING_CANCEL_SUCCESS_MESSAGE = "Quý khách đã hủy đăng ký tiết kiệm tự động thành công.";
 	}
 	
+	public class VALIDATE {
+		
+		public static final String AUTO_SAVING_TITLE = "Tiết kiệm tự động";
+		public static final String SOURCE_ACCOUNT_TITLE = "Tài khoản nguồn";
+		public static final String TRANSACTION_INFO_TITLE = "Thông tin giao dịch";
+		public static final String SAVING_ACCOUNT_DEFAULT_TEXT = "Tài khoản tiết kiệm";
+		public static final String TRANSFER_MONEY_TEXT = "Số tiền chuyển";
+		public static final String EXCHANGE_RATE_TITLE = "Tỷ giá quy đổi tham khảo";
+		public static final String END_DATE_TEXT = "Ngày kết thúc";
+	}
+	
 }

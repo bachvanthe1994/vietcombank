@@ -17,7 +17,7 @@
 		<parameter name="deviceName" value="Galaxy Note+" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0335059860" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
@@ -34,17 +34,17 @@
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part3" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Validation_Part4" />
 
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" /> -->
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_3" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_4" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_5" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Validation_Part_6" />
 
 
 
 
-			<!-- <package name="vnpay.vietcombank.transfer_money_charity"> -->
+<!-- 			<package name="vnpay.vietcombank.transfer_money_charity"> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" /> -->
@@ -63,11 +63,11 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Validation_QuickMoneyTransfer247_7" /> -->
 
 
-			<!-- <package name="vnpay.vietcombank.mobile_topup"> -->
-<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_01" /> -->
-<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_02" /> -->
-<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_03" /> -->
-<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_04" /> -->
+<!-- 			<package name="vnpay.vietcombank.mobile_topup"> -->
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_01" />
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_02" />
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_03" />
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_04" />
 
 
 
