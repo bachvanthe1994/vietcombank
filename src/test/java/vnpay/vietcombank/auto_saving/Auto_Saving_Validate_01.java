@@ -15,11 +15,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.TransactionReportPageObject;
-import pageObjects.saving_online.SavingOnlinePageObject;
 import vietcombank_test_data.Auto_Saving_Data;
-import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.Account_Data;
 
 public class Auto_Saving_Validate_01 extends Base {
@@ -27,11 +23,8 @@ public class Auto_Saving_Validate_01 extends Base {
 	private LogInPageObject login;
 	private HomePageObject home;
 	private AutoSavingPageObject autoSaving;
-	private TransactionReportPageObject transactionReport;
-	private SavingOnlinePageObject savingOnline;
 	
-	private String sourceAccount,savingAccount,term,savingAccountMoney,startDate,endDate, fee,text;
-	private long transferFee;
+	private String sourceAccount,savingAccount,term,savingAccountMoney,startDate,endDate,text;
 	private boolean status;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -140,18 +133,16 @@ public class Auto_Saving_Validate_01 extends Base {
 		}
 	}
 
-	@Parameters({ "otp" })
 	@Test
-	public void TC_06_TietKiemTuDong_KiemTraTKDichMacDinh(String otp) {
+	public void TC_06_TietKiemTuDong_KiemTraTKDichMacDinh() {
 
 		log.info("TC_06_Step_01: Xac nhan hien thi Dropdown 'Tai khoan tiet kiem");
 		verifyEquals(autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/TaiKhoanTietKiem"), Auto_Saving_Data.VALIDATE.SAVING_ACCOUNT_DEFAULT_TEXT);
 		
 	}
 
-	@Parameters({ "pass" })
 	@Test
-	public void TC_07_TietKiemTuDong_KiemTraHienThiThongTinTKDich(String pass) {
+	public void TC_07_TietKiemTuDong_KiemTraHienThiThongTinTKDich() {
 
 		log.info("TC_07_Step_01: Click vao drodown 'Tai khoan nguon");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
@@ -333,7 +324,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	}
 	
 	@Test
-	public void TC_17_TietKiemTuDong_KiemTranChonNgayKetThucLonHonHienTai() {
+	public void TC_17_TietKiemTuDong_KiemTraChonNgayKetThucLonHonHienTai() {
 		
 		log.info("TC_17_Step_01: Chon ngay ket thuc lon hon hien tai");
 		autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
@@ -343,6 +334,14 @@ public class Auto_Saving_Validate_01 extends Base {
 		log.info("TC_17_Step_02: Xac nhan hien thi dung ngay ket thuc");
 		verifyEquals(autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc"), getForwardDate(2));
 		
+	}
+	
+	@Test
+	public void TC_18_TietKiemTuDong_KiemTraDinhDangNgayKetThuc() {
+		
+		log.info("TC_18_Step_01: Xac nhan hien thi dung dinh dang ngay ket thuc");
+		endDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
+		verifyTrue(validateDateFormat(endDate, "dd/mm/yyyy"));
 	}
 
 	@AfterClass(alwaysRun = true)

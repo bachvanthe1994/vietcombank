@@ -243,7 +243,7 @@ public class Mobile_Topup_Validate_03 extends Base {
 
 	@Parameters ({"phone"})
 	@Test
-	public void TC_14_ManHinhXacNhanThongTin_KiemTraManHinhHienTi(String phone) {
+	public void TC_14_ManHinhXacNhanThongTin_KiemTraManHinhHienThi(String phone) {
 		
 		log.info("TC_14_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");

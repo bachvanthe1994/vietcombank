@@ -28,7 +28,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	private TransactionReportPageObject transactionReport;
 	private SavingOnlinePageObject savingOnline;
 	
-	private String transactionID,savingAccount,tranferMoney,transactionDate,startDate,endDate, fee;
+	private String transactionID,savingAccount,tranferMoney,transactionDate,startDate,endDate,sourceAccountMoney;
 	private long transferFee;
 	
 	
@@ -47,7 +47,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_TaiKhoanNguon_VND (String otp) {
 		
-home = PageFactoryManager.getHomePageObject(driver);
+		home = PageFactoryManager.getHomePageObject(driver);
 		
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
@@ -132,6 +132,7 @@ home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_02_Step_02: Chon tai khoan nguon VND");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver,  Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_VND);
+		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		
 		log.info("TC_02_Step_03: Chon tai khoan tiet kiem");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
@@ -210,7 +211,12 @@ home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_02_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_02_Step_25: Click back ve man hinh chinh");
+		log.info("TC_02_Step_25: Chon tai khoan nguon VND");
+		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver,  Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_VND);
+		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
+		
+		log.info("TC_02_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
@@ -465,6 +471,7 @@ home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_07_Step_02: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		
 		log.info("TC_07_Step_03: Chon tai khoan tiet kiem");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
@@ -544,7 +551,12 @@ home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_07_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_07_Step_25: Click back ve man hinh chinh");
+		log.info("TC_07_Step_25: Chon tai khoan nguon USD");
+		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
+		
+		log.info("TC_07_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
@@ -796,6 +808,7 @@ home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_12_Step_02: Chon tai khoan nguon EUR");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
+		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		
 		log.info("TC_12_Step_03: Chon tai khoan tiet kiem");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
@@ -875,7 +888,12 @@ home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_12_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_12_Step_25: Click back ve man hinh chinh");
+		log.info("TC_12_Step_25: Chon tai khoan nguon EUR");
+		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
+		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
+		
+		log.info("TC_12_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
