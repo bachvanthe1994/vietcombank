@@ -27,9 +27,13 @@ public class Card_Services extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0918679292", "aaaa1111", opt);
+		login.Global_login("0918679292", "aaaaa11111", opt);
 
 	}
 
@@ -85,13 +89,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
-		verifyFailure(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.DEBIT_CARD01));
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.DEBIT_CARD01, "com.VCB:id/tvContent"));
 
 		log.info("TC_01_Step_15: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_01_Step_16: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_17: Click vao phan 'Dich vu the'");
@@ -105,7 +109,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_01_Step_20: Xac nhan the vua bi khoa hien thi trong danh sach");
-		verifyTrue(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.DEBIT_CARD01));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.DEBIT_CARD01, "com.VCB:id/tvContent"));
 	}
 
 	@Test
@@ -115,7 +119,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.DEBIT_CARD01);
 
 		log.info("TC_02_Step_02: An chon checkbox Xac Nhan Dieu Khoan");
-		lockCard.clickToConfirmCheckBox();
+		lockCard.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
 
 		log.info("TC_02_Step_03: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -160,13 +164,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_02_Step_15: Xac nhan the vua mo khoa hien thị trong danh sach");
-		verifyTrue(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.DEBIT_CARD01));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.DEBIT_CARD01, "com.VCB:id/tvContent"));
 
 		log.info("TC_2_Step_16: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_02_Step_17: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_18: Click vao phan 'Dich vu the'");
@@ -180,13 +184,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_02_Step_21: Xac nhan the vua mo khoa bi xoa khoi danh sach");
-		verifyFailure(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.DEBIT_CARD01));
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.DEBIT_CARD01, "com.VCB:id/tvContent"));
 
 		log.info("TC_02_Step_22: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_02_Step_23: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 	}
@@ -247,13 +251,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_03_Step_16: Xac nhan the bi khoa bi xoa khoi danh sach");
-		verifyFailure(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD01));
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD01, "com.VCB:id/tvContent"));
 
 		log.info("TC_03_Step_17: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_03_Step_18: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_03_Step_19: Click vao phan 'Dich vu the'");
@@ -273,7 +277,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_03_Step_24: Xac nhan the bi khoa bi xoa khoi danh sach");
-		verifyTrue(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD01));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD01, "com.VCB:id/tvContent"));
 	}
 
 	@Test
@@ -283,7 +287,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD01);
 
 		log.info("TC_04_Step_02: An chon checkbox Xac Nhan Dieu Khoan");
-		lockCard.clickToConfirmCheckBox();
+		lockCard.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
 
 		log.info("TC_04_Step_03: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -334,13 +338,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_04_Step_17: Xac nhan the vua mo khoa hien thị trong danh sach");
-		verifyTrue(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD01));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD01, "com.VCB:id/tvContent"));
 
 		log.info("TC_04_Step_18: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_04_Step_19: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_20: Click vao phan 'Dich vu the'");
@@ -360,13 +364,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_04_Step_25: Xac nhan the vua mo khoa bi xoa khoi danh sach");
-		verifyFailure(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD01));
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD01, "com.VCB:id/tvContent"));
 
 		log.info("TC_04_Step_26: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_04_Step_27: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
@@ -387,7 +391,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD02);
 
 		log.info("TC_05_Step_05: An chon checkbox Xac Nhan Dieu Khoan");
-		lockCard.clickToConfirmCheckBox();
+		lockCard.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
 
 		log.info("TC_05_Step_06: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -430,13 +434,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "1");
 
 		log.info("TC_05_Step_18: Xac nhan the vua dang ky Internet bi xoa khoi danh sach");
-		verifyFailure(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD02));
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD02, "com.VCB:id/tvContent"));
 
 		log.info("TC_05_Step_19: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_05_Step_20: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_05_Step_21: Click vao phan 'Dich vu the'");
@@ -450,7 +454,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "1");
 
 		log.info("TC_05_Step_24: Xac nhan the vua dang ky Internet hien thi trong danh sach");
-		verifyTrue(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD02));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD02, "com.VCB:id/tvContent"));
 	}
 
 	@Test
@@ -488,13 +492,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "1");
 
 		log.info("TC_06_Step_09: Xac nhan the vua huy dang ky Internet hien thi trong danh sach");
-		verifyTrue(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD02));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD02, "com.VCB:id/tvContent"));
 
 		log.info("TC_06_Step_10: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_06_Step_11: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_06_Step_12: Click vao phan 'Dich vu the'");
@@ -508,13 +512,13 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "1");
 
 		log.info("TC_06_Step_15: Xac nhan the vua huy dang ky Internet bi xoa khoi danh sach");
-		verifyFailure(lockCard.isCardNumberDisplayedInDropdownList(Lock_Card_Data.CREDIT_CARD02));
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD02, "com.VCB:id/tvContent"));
 
 		log.info("TC_06_Step_16: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
 		log.info("TC_06_Step_17: Click ve 'Trang chu'");
-		lockCard.clickBackToHomePage();
+		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 	}

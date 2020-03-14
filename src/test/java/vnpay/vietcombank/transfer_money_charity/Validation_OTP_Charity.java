@@ -25,7 +25,8 @@ public class Validation_OTP_Charity extends Base {
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
-
+	String phoneNumber = "";
+	
 	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -33,10 +34,16 @@ public class Validation_OTP_Charity extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
+		phoneNumber = phone;
+		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
@@ -81,7 +88,7 @@ public class Validation_OTP_Charity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.TRANSACTION_VALIDATION));
 
 		log.info("TC_01_02_Kiem tra text Ma OTP da duoc gui den SDT ...");
-		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.OTP_NOTIFICATION_SENDED));
+		verifyEquals(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phoneNumber.substring(0, 4) + "***" + phoneNumber.substring(7, 10));
 
 		log.info("TC_01_03_Kiem tra button Tiep tuc");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Tiếp tục"));
@@ -123,7 +130,7 @@ public class Validation_OTP_Charity extends Base {
 		log.info("TC_04_02_Kiem tra OTP");
 		String otp = transferMoneyCharity.getTextInDynamicOtp(driver, "Tiếp tục");
 		verifyEquals(otp, "123456");
-		
+
 	}
 
 	@Test
@@ -174,20 +181,20 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_08_2_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicInput(driver, "Quỹ/ Tổ chức từ thiện");
+		transferMoneyCharity.clickToDynamicDropdownByHeader(driver, "Thông tin người hưởng", "1");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
 
 		log.info("TC_08_3_Nhap so tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.money, "Số tiền ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.money, "Thông tin giao dịch", "1");
 
 		log.info("TC_08_4_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, "Tên người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.name, "Thông tin giao dịch", "2");
 
 		log.info("TC_08_5_Nhap dia chi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.address, "Thông tin giao dịch", "3");
 
 		log.info("TC_08_6_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh người ủng hộ");
+		transferMoneyCharity.inputToDynamicInputBoxByHeader(driver, info.status, "Thông tin giao dịch", "4");
 
 		log.info("TC_08_7_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");

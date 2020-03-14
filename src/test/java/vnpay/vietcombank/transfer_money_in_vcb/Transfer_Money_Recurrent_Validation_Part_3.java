@@ -35,7 +35,11 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 	}
@@ -51,7 +55,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_02_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_01_03_Nhap tan suat");
@@ -237,7 +241,7 @@ public class Transfer_Money_Recurrent_Validation_Part_3 extends Base {
 		log.info("TC_10_03_Lay danh sach goi y nhanh");
 		listActualAmountMoney = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
-		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,427,400 VND", "1,000 EUR ~ 24,274,000 VND");
+		listExpectAmountMoney = Arrays.asList("100 EUR ~ 2,399,780 VND", "1,000 EUR ~ 23,997,800 VND");
 
 		log.info("TC_10_04_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);

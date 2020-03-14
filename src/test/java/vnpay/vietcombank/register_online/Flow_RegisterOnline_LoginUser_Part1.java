@@ -2,7 +2,6 @@ package vnpay.vietcombank.register_online;
 
 import java.io.IOException;
 
-import org.apache.tools.ant.taskdefs.Sleep;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -26,14 +25,18 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		phoneNumber = phone;
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 	}
 
-@Test
+	@Test
 	public void TC_01_GiaoDichNopTienThanhCong() throws InterruptedException {
 		log.info("TC_Step_: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -105,7 +108,8 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_Step_: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-@Test
+
+	@Test
 	public void TC_02_GiaoDichRutTienVNDThanhCong() throws InterruptedException {
 		log.info("TC_Step_: Click rut tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
@@ -176,7 +180,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_03_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMat() throws InterruptedException {
 		log.info("TC_Step_: Click giao dich Gui/rut tiết kiệm");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi/rút tiết kiệm");
@@ -253,7 +257,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_04_MoTheTietKiem_TaiKhoanTienGuiKhongKyHan() throws InterruptedException {
 
 		log.info("TC_Step_: Click gui tiet kiem");
@@ -328,7 +332,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_05_MoTheTietKiem_TaiKhoanTienGuiCoKyHanChuyenKhoan() throws InterruptedException {
 		log.info("TC_Step_: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -411,7 +415,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_06_MoTheTietKiem_TheTietKiemCoKyHanChuyenKhoanVaTienMatNhanGoc() throws InterruptedException {
 		log.info("TC_Step_: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -575,7 +579,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc() throws InterruptedException {
 		log.info("TC_Step_: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -650,7 +654,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_09_RutSoTietKiem_RutLaiPhuongThucTienMat() throws InterruptedException {
 		log.info("TC_Step_: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
@@ -723,7 +727,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_10_RutSoTietKiem_RutGocPhuongThucChuyenKhoanVaTienMat() throws InterruptedException {
 		log.info("TC_Step_: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
@@ -862,44 +866,44 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_Step_: Select option VCB-iB@nKing");
 		registerOnline.clickToDynamicTextIndex(driver, "0", "VCB-iB@nking");
-		
+
 		log.info("TC_Step_: Select option VCB-SMS B@nking");
 		registerOnline.clickToDynamicTextIndex(driver, "1", "VCB-SMS B@nking");
-		
+
 		log.info("TC_Step_: Nhap so dien thoai");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, phoneNumber, "VCB-SMS B@nking", "1");
-		registerOnline.clickToDynamicImageViewByID(driver,"com.VCB:id/ivAdd");
-		
+		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
+
 		log.info("TC_Step_: Select option VCB-SMS B@nking");
 		registerOnline.clickToDynamicTextIndex(driver, "2", "VCB-Mobile B@nking");
-		
+
 		log.info("TC_Step_: Chon so dien thoai dang ky");
-		registerOnline.clickToDynamicComboboxText(driver, "VCB-Mobile B@nking","1");
+		registerOnline.clickToDynamicComboboxText(driver, "VCB-Mobile B@nking", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, phoneNumber);
-		
+
 		log.info("TC_Step_: Click button tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
 	}
-	
+
 	@Test
 	public void TC_13_MoTaiKhoanThanhToan_ManHinhConnect24_ChonMotThePhu() throws InterruptedException {
 		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the connect24");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ Connect24");
 
 		log.info("TC_Step_: Click hang the, chon hang the la vang");
-		registerOnline.clickToTextViewDate(driver, "Hạng thẻ","1");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
-		
+
 		log.info("TC_Step_: Click hang the, chon hang the la vang");
-		registerOnline.clickToTextViewDate(driver, "Số lượng thẻ chính 01","3");
+		registerOnline.clickToTextViewDate(driver, "Số lượng thẻ chính 01", "3");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
-		
+
 		log.info("TC_Step_: Select option yeu cau phat hanh the phu");
 		registerOnline.clickToDynamicTextIndex(driver, "4", "Yêu cầu phát hành thẻ phụ");
-		
+
 		log.info("TC_Step_: Nhap ho ten chu the");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
-		
+
 		log.info("TC_Step_: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
@@ -918,23 +922,23 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_Step_: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
-		
+
 		log.info("TC_Step_: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
-		
+
 		log.info("TC_Step_: Input noi cap");
 		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
-		
+
 		log.info("TC_Step_: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_Step_: Click radio toi dong y");
 		registerOnline.clickToDynamicRadioIndex(driver, "agreement");
 
 		log.info("TC_Step_: Click dong y");
 		registerOnline.clickToDynamicDateInDateTimePicker(driver, "Đồng ý");
 		Thread.sleep(10000);
-		
+
 		log.info("TC_Step_: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
 
@@ -951,7 +955,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_Step_: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_14_MoTaiKhoanThanhToan_ManHinhConnect24_ChonHaiThePhu() throws InterruptedException {
 		log.info("TC_Step_: Click menu header");
@@ -1000,50 +1004,50 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_Step_: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
-		
+
 		log.info("TC_Step_: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
 
 		log.info("TC_Step_: Select option VCB-iB@nKing");
 		registerOnline.clickToDynamicTextIndex(driver, "0", "VCB-iB@nking");
-		
+
 		log.info("TC_Step_: Select option VCB-SMS B@nking");
 		registerOnline.clickToDynamicTextIndex(driver, "1", "VCB-SMS B@nking");
-		
+
 		log.info("TC_Step_: Nhap so dien thoai");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, phoneNumber, "VCB-SMS B@nking", "1");
-		registerOnline.clickToDynamicImageViewByID(driver,"com.VCB:id/ivAdd");
-		
+		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
+
 		log.info("TC_Step_: Select option VCB-SMS B@nking");
 		registerOnline.clickToDynamicTextIndex(driver, "2", "VCB-Mobile B@nking");
-		
+
 		log.info("TC_Step_: Chon so dien thoai dang ky");
-		registerOnline.clickToDynamicComboboxText(driver, "VCB-Mobile B@nking","1");
+		registerOnline.clickToDynamicComboboxText(driver, "VCB-Mobile B@nking", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, phoneNumber);
-		
+
 		log.info("TC_Step_: Click button tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the connect24");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ Connect24");
 
 		log.info("TC_Step_: Click hang the, chon hang the la vang");
-		registerOnline.clickToTextViewDate(driver, "Hạng thẻ","1");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
-		
+
 		log.info("TC_Step_: Click hang the, chon hang the la vang");
-		registerOnline.clickToTextViewDate(driver, "Số lượng thẻ chính 01","3");
+		registerOnline.clickToTextViewDate(driver, "Số lượng thẻ chính 01", "3");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
-		
+
 		log.info("TC_Step_: Select option yeu cau phat hanh the phu");
 		registerOnline.clickToDynamicTextIndex(driver, "4", "Yêu cầu phát hành thẻ phụ");
-		
+
 		log.info("TC_Step_: Select option yeu cau phat hanh the phu");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "02 thẻ");
-		
+
 		log.info("TC_Step_: Nhap ho ten chu the");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
-		
+
 		log.info("TC_Step_: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
@@ -1062,26 +1066,25 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_Step_: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
-		
+
 		log.info("TC_Step_: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
-		
+
 		log.info("TC_Step_: Input noi cap");
 		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
-		
-	
+
 		log.info("TC_Step_: Nhap ho ten chu the");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Chủ thẻ phụ 2", "1");
-		
+
 		log.info("TC_Step_: Click giay to tuy than");
-		registerOnline.clickToDynamicComboboxText(driver, "Chủ thẻ phụ 2","3");
+		registerOnline.clickToDynamicComboboxText(driver, "Chủ thẻ phụ 2", "3");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
 
 		log.info("TC_Step_: Input so ho chieu");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION,  "Chủ thẻ phụ 2", "3");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Chủ thẻ phụ 2", "3");
 
 		log.info("TC_Step_: Click ngay cap");
-		registerOnline.clickToDynamicComboboxText(driver, "Chủ thẻ phụ 2","4");
+		registerOnline.clickToDynamicComboboxText(driver, "Chủ thẻ phụ 2", "4");
 
 		log.info("TC_Step_: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
@@ -1091,23 +1094,23 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_Step_: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
-		
+
 		log.info("TC_Step_: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
-		
+
 		log.info("TC_Step_: Input noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1],  "Chủ thẻ phụ 2", "5");
-		
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Chủ thẻ phụ 2", "5");
+
 		log.info("TC_Step_: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_Step_: Click radio toi dong y");
-		registerOnline.clickToDynamicRadioIndex(driver, "Nội dung thỏa thuận sử dụng dịch vụ Ngân hàng điện tử của Vietcombank","3");
+		registerOnline.clickToDynamicRadioIndex(driver, "Nội dung thỏa thuận sử dụng dịch vụ Ngân hàng điện tử của Vietcombank", "3");
 
 		log.info("TC_Step_: Click dong y");
 		registerOnline.clickToDynamicDateInDateTimePicker(driver, "Đồng ý");
 		Thread.sleep(10000);
-		
+
 		log.info("TC_Step_: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
 

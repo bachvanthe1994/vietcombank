@@ -30,10 +30,16 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 
 		log.info("Before class: Dang nhap ");
 		login = PageFactoryManager.getLoginPageObject(driver);
+
+		System.out.println("Tên driver là " + login.getDriverName(driver));
 		login.Global_login(phone, pass, opt);
 
 		log.info("Before class: Click Dat ve may bay ");

@@ -42,7 +42,11 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login("0904797864", pass, opt);
 
@@ -158,7 +162,9 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 	@Test
-	// App lỗi số tiền giao dịch, hiện tiền VND hiển thị dạng số thập phân VD:10000.00 VND => tiền ghi bị sai, ghi là "Một triệu đồng", expect ghi "mườinghìn đồng"
+	// App lỗi số tiền giao dịch, hiện tiền VND hiển thị dạng số thập phân
+	// VD:10000.00 VND => tiền ghi bị sai, ghi là "Một triệu đồng", expect ghi
+	// "mườinghìn đồng"
 	public void TC_10_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -585,7 +591,8 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 	@Test
 	// App lỗi số tiền giao dịch, hiện tiền VND hiển thị dạng số thập phân VD:
-	// 10000.00 VND => tiền ghi bị sai, ghi là "Một triệu đồng", expect ghi "mười nghìn đồng"
+	// 10000.00 VND => tiền ghi bị sai, ghi là "Một triệu đồng", expect ghi "mười
+	// nghìn đồng"
 
 	public void TC_14_ReportChuyenTienQuaTheNguoiNhanTRaPhiVNDVaXacThucBangMatKhau() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
