@@ -167,6 +167,13 @@
 <appender-ref ref="testng"/>
 </category>
 
+<category name = "vnpay.vietcombank.vcb_auto_debit">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
 <root>
 	<priority value = "warn"/>
 </root>

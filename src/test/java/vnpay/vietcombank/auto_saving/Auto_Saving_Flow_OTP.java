@@ -200,7 +200,6 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 		log.info("TC_02_Step_21: Nhap du ki tu vao o nhap OTP");
 		autoSaving.inputToDynamicOtp(driver, otp, "Tiếp tục");
-		;
 
 		log.info("TC_02_Step_22: An tiep button 'Tiep tuc'");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
