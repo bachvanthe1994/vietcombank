@@ -1380,8 +1380,8 @@ public class AbstractPage {
 	return isDisplayed;
 
     }
-    
-    //Check Date Picker By ID co hien thi
+
+    // Check Date Picker By ID co hien thi
     public boolean isDynamicDatePickerByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 	boolean isDisplayed = false;
 	scrollIDown(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
@@ -1660,7 +1660,7 @@ public class AbstractPage {
 	}
 	return isDisplayed;
     }
-    
+
     public boolean isDynamicTextViewByLinearLayoutIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
 	boolean isDisplayed = false;
 	scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
@@ -2277,6 +2277,17 @@ public class AbstractPage {
 	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
 	if (status == true) {
 	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
+	}
+	return text;
+    }
+
+    public String getDynamicTitleTransferSuccess(AppiumDriver<MobileElement> driver, String... dynamicIdText) {
+
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIdText);
+	if (status == true) {
+	    text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIdText);
 	}
 	return text;
     }
