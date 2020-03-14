@@ -210,6 +210,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		String expiredDate = getForwardMonthAndForwardDay(1, 0);
 
 		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
+		homePage.scrollDownToText(driver, "Tín dụng");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_03_2_Chon so tai khoan tiet kiem");
@@ -507,6 +508,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		String expiredDate = getForwardMonthAndForwardDay(3, 0);
 
 		log.info("TC_07_1_Click Tat toan tai khoan tiet kiem");
+		homePage.scrollDownToText(driver, "Tín dụng");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_07_2_Chon so tai khoan tiet kiem");

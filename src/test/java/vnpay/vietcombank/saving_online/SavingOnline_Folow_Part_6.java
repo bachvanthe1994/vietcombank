@@ -218,6 +218,7 @@ public class SavingOnline_Folow_Part_6 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_03_2_Chon so tai khoan tiet kiem");
+		homePage.scrollDownToText(driver, "Tín dụng");
 		savingOnline.clickToDynamicDropDownInSavingOnline("Tài khoản tiết kiệm");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 
@@ -523,6 +524,7 @@ public class SavingOnline_Folow_Part_6 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_07_2_Chon so tai khoan tiet kiem");
+		homePage.scrollDownToText(driver, "Tín dụng");
 		savingOnline.clickToDynamicDropDownInSavingOnline("Tài khoản tiết kiệm");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 
