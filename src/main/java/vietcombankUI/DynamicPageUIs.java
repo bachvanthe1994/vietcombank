@@ -28,7 +28,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.TextView";
 	public static final String DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.EditText";
 	public static final String DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID = "//android.widget.RelativeLayout[@resource-id=\"%s\"]//android.widget.TextView";
-	public static final String DYNAMIC_TEXTVIEW_BY_LISTVIEW = "//android.widget.ListView[@resource-id=\"%s\"]//android.widget.TextView[@text='%s']";
+	public static final String DYNAMIC_TEXTVIEW_BY_LISTVIEW = "//android.widget.ListView[@resource-id='%s']//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TEXTVIEW_FOLLOW_IMAGE = "//android.widget.ImageView[@index='%s']//following-sibling::android.widget.TextView[@index='%s']";
 	public static final String DYNAMIC_EDIT_INDEX = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_FOLLOW_LAYOUT = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.LinearLayout[@index='%s']//android.widget.TextView";
@@ -71,8 +71,12 @@ public class DynamicPageUIs {
 	// VIEW
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
-	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX1 = "//android.view.View[@text = '%s']/parent::android.view.View//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
-	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@index='%s']/android.view.View[@index='%s']/android.view.View[@index='0']";
+	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@resource-id='%s']//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
+	
+	
+	
+	
+	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX2 = "//android.view.View[@resource-id='%s']//ancestor::android.widget.LinearLayout//android.view.View[@index='%s']";
 
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";

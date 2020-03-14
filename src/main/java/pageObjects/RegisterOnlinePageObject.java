@@ -23,10 +23,10 @@ public class RegisterOnlinePageObject extends AbstractPage {
 		clickToTextViewDate(driver, "Giấy tờ tùy thân", "7");
 
 		clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-
-		clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-
+	
 		clickToTextListview(driver, "android:id/date_picker_year_picker", Plusyear);
+		
+
 
 		clickToDynamicButton(driver, "OK");
 

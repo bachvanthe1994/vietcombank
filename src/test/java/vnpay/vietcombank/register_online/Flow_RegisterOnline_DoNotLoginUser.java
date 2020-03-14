@@ -33,324 +33,315 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 
 	@Test
 	public void TC_01_GiaoDichChuyenTienTrongVietComBankThanhCong() throws InterruptedException {
-		log.info("TC_Step_: Click dang ky truc tuyen");
+		log.info("TC_01_Step: Click dang ky truc tuyen");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
 
-		log.info("TC_Step_: Click giao dich tien mat/chuyen tien");
+		log.info("TC_01_Step: Click giao dich tien mat/chuyen tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Giao dịch tiền mặt/chuyển tiền");
 
-		log.info("TC_Step_: Click chuyen tien");
+		log.info("TC_01_Step: Click chuyen tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền");
 
-		log.info("TC_Step_: Nhap thong tin khach hang");
+		log.info("TC_01_Step: Nhap thong tin khach hang");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
-		log.info("TC_Step_: Click chon giay to tuy than");
+		log.info("TC_01_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_Step_: Click chon ho chieu");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+		log.info("TC_01_Step: Click chon CMT");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
-		log.info("TC_Step_: Input so ho chieu");
+		log.info("TC_01_Step: Input so ho chieu");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
-		log.info("TC_Step_: Click ngay cap");
+		log.info("TC_01_Step: Click ngay cap");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
 
-		log.info("TC_Step_: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		log.info("TC_01_Step: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
 
-		log.info("TC_Step_: Chon nam cap");
+		log.info("TC_01_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
 
-		log.info("TC_Step_: Click OK");
+		log.info("TC_01_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_Step_: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[2]);
-
-		log.info("TC_Step_: Nhap email");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/edtEmail");
+		log.info("TC_1_Step: Click noi cap");
+		registerOnline.clickToDynamicComboboxText(driver, "Giấy tờ tùy thân", "3");
+		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 		
-		log.info("TC_Step_: Nhap so tai khoan nhan");
+		log.info("TC_01_Step: Nhap email");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
+		
+		log.info("TC_01_Step: Nhap so tai khoan nhan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin tài khoản ghi nợ", "1");
 
-		log.info("TC_Step_: Nhap ten chu tai khoan");
+		log.info("TC_01_Step: Nhap ten chu tai khoan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Thông tin tài khoản ghi nợ", "2");
 
-		log.info("TC_Step_: Nhap so tai khoan phan ghi co");
+		log.info("TC_01_Step: Nhap so tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Thông tin tài khoản ghi có", "5");
 
-		log.info("TC_Step_: Nhap ten tai khoan phan ghi co");
+		log.info("TC_01_Step: Nhap ten tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi có", "6");
 
-		log.info("TC_Step_: Nhap so tien chuyen");
+		log.info("TC_01_Step: Nhap so tien chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin tài khoản ghi có", "8");
 
-		log.info("TC_Step_: Nhap noi dung");
+		log.info("TC_01_Step: Nhap noi dung");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin tài khoản ghi có", "9");
 
-		log.info("TC_Step_: Click button xac nhan");
+		log.info("TC_01_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
 		Thread.sleep(5000);
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_01_Step: verify man hinh dang ky thanh cong");
 		System.out.print(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"));
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
 		
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_01_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
 		
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_01_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 		
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_01_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_01_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
 	public void TC_02_GiaoDichChuyenTienNgoaiVietComBankThanhCong() throws InterruptedException {
-		log.info("TC_Step_: Click chuyen tien");
+		log.info("TC_02_Step: Click chuyen tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền");
 
-		log.info("TC_Step_: Nhap thong tin khach hang");
+		log.info("TC_02_Step: Nhap thong tin khach hang");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
-		log.info("TC_Step_: Click chon giay to tuy than");
+		log.info("TC_02_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_Step_: Click chon ho chieu");
+		log.info("TC_02_Step: Click chon ho chieu");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
 
-		log.info("TC_Step_: Input so ho chieu");
+		log.info("TC_02_Step: Input so ho chieu");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
-		log.info("TC_Step_: Click ngay cap");
+		log.info("TC_02_Step: Click ngay cap");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
 
-		log.info("TC_Step_: Click nam");
+		log.info("TC_02_Step: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
 
-		log.info("TC_Step_: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-
-		log.info("TC_Step_: Chon nam cap");
+		log.info("TC_02_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
 
-		log.info("TC_Step_: Click OK");
+		log.info("TC_02_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_Step_: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[2]);
+		log.info("TC_02_Step: Nhap noi cap");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Loại xác nhận", "3");
 
-		log.info("TC_Step_: Nhap email");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/edtEmail");
+		log.info("TC_02_Step: Nhap email");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
 
-		log.info("TC_Step_: Nhap so tai khoan nhan");
+		log.info("TC_02_Step: Nhap so tai khoan nhan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin tài khoản ghi nợ", "1");
 
-		log.info("TC_Step_: Nhap ten chu tai khoan");
+		log.info("TC_02_Step: Nhap ten chu tai khoan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Thông tin tài khoản ghi nợ", "2");
 
-		log.info("TC_Step_: Click tab ngoai he thong VCB");
+		log.info("TC_02_Step: Click tab ngoai he thong VCB");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Ngoài hệ thống Vietcombank");
 
-		log.info("TC_Step_: Nhap so tai khoan phan ghi co");
+		log.info("TC_02_Step: Nhap so tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Thông tin tài khoản ghi có", "5");
 
-		log.info("TC_Step_: Nhap ten tai khoan phan ghi co");
+		log.info("TC_02_Step: Nhap ten tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi có", "6");
 		
-		log.info("TC_Step_: Chon ngan hang");
+		log.info("TC_02_Step: Chon ngan hang");
 		registerOnline.clickToDynamicComboboxText(driver, "Thông tin tài khoản ghi có", "7");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.BANK_NAME);
 
-		log.info("TC_Step_: Nhap so tien chuyen");
+		log.info("TC_02_Step: Nhap so tien chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin tài khoản ghi có", "8");
 
-		log.info("TC_Step_: Nhap noi dung");
+		log.info("TC_02_Step: Nhap noi dung");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin tài khoản ghi có", "9");
 
-		log.info("TC_Step_: Click button xac nhan");
+		log.info("TC_02_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
 		Thread.sleep(5000);
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_02_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
 		
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_02_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
 		
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_02_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 		
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_02_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_02_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
 	}
 	
 	@Test
 	public void TC_03_GiaoDichNopTienThanhCong() throws InterruptedException {
-		log.info("TC_Step_: Click nop tien");
+		log.info("TC_03_Step: Click nop tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Nộp tiền");
 
-		log.info("TC_Step_: Nhap thong tin khach hang");
+		log.info("TC_03_Step: Nhap thong tin khach hang");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
-		log.info("TC_Step_: Click chon giay to tuy than");
+		log.info("TC_03_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_Step_: Click chon ho chieu");
+		log.info("TC_03_Step: Click chon ho chieu");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
 
-		log.info("TC_Step_: Input so ho chieu");
+		log.info("TC_03_Step: Input so ho chieu");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
-		log.info("TC_Step_: Click ngay cap");
+		log.info("TC_03_Step: Click ngay cap");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
 
-		log.info("TC_Step_: Click nam");
+		log.info("TC_03_Step: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
 
-		log.info("TC_Step_: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-
-		log.info("TC_Step_: Chon nam cap");
+		log.info("TC_03_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
 
-		log.info("TC_Step_: Click OK");
+		log.info("TC_03_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_Step_: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[2]);
+		log.info("TC_03_Step: Nhap noi cap");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Loại xác nhận", "3");
 
-		log.info("TC_Step_: Nhap email");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/edtEmail");
+		log.info("TC_03_Step: Nhap email");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
 
-		log.info("TC_Step_: Nhap so tai khoan phan ghi co");
+		log.info("TC_03_Step: Nhap so tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Thông tin tài khoản ghi có", "3");
 
-		log.info("TC_Step_: Nhap ten tai khoan phan ghi co");
+		log.info("TC_03_Step: Nhap ten tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi có", "4");
 		
-		log.info("TC_Step_: Chon ngan hang");
+		log.info("TC_03_Step: Chon ngan hang");
 		registerOnline.clickToDynamicComboboxText(driver, "Thông tin tài khoản ghi có", "5");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.BANK_NAME);
 
-		log.info("TC_Step_: Nhap so tien chuyen");
+		log.info("TC_03_Step: Nhap so tien chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "7");
 
-		log.info("TC_Step_: Nhap nguoi nop tien");
+		log.info("TC_03_Step: Nhap nguoi nop tien");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Thông tin giao dịch", "8");
 		
-		log.info("TC_Step_: Nhap noi dung chuyen");
+		log.info("TC_03_Step: Nhap noi dung chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin giao dịch", "9");
 
-		log.info("TC_Step_: Click button xac nhan");
+		log.info("TC_03_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
 		Thread.sleep(5000);
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_03_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
 		
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_03_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
 		
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_03_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 		
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_03_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_03_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
 	}
 	
 	@Test
 	public void TC_04_GiaoDichRutTienUSDThanhCong() throws InterruptedException {
-		log.info("TC_Step_: Click nop tien");
+		log.info("TC_04_Step: Click nop tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
 
-		log.info("TC_Step_: Nhap thong tin khach hang");
+		log.info("TC_04_Step: Nhap thong tin khach hang");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
-		log.info("TC_Step_: Click chon giay to tuy than");
+		log.info("TC_04_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_Step_: Click chon ho chieu");
+		log.info("TC_04_Step: Click chon ho chieu");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
 
-		log.info("TC_Step_: Input so ho chieu");
+		log.info("TC_04_Step: Input so ho chieu");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
-		log.info("TC_Step_: Click ngay cap");
+		log.info("TC_04_Step: Click ngay cap");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
 
-		log.info("TC_Step_: Click nam");
+		log.info("TC_04_Step: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
 
-		log.info("TC_Step_: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-
-		log.info("TC_Step_: Chon nam cap");
+		log.info("TC_04_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
 
-		log.info("TC_Step_: Click OK");
+		log.info("TC_04_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_Step_: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[2]);
+		log.info("TC_04_Step: Nhap noi cap");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Loại xác nhận", "3");
 
-		log.info("TC_Step_: Nhap email");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/edtEmail");
+		log.info("TC_04_Step: Nhap email");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
 
-		log.info("TC_Step_: Nhap so tai khoan phan ghi nợ");
+		log.info("TC_04_Step: Nhap so tai khoan phan ghi nợ");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Thông tin tài khoản ghi nợ", "3");
 
-		log.info("TC_Step_: Nhap ten tai khoan phan ghi nợ");
+		log.info("TC_04_Step: Nhap ten tai khoan phan ghi nợ");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi nợ", "4");
 		
-		log.info("TC_Step_: Chon loai tien la USD");
+		log.info("TC_04_Step: Chon loai tien la USD");
 		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch","7");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "USD");
 		
-		log.info("TC_Step_: Verify loai tien la USD");
+		log.info("TC_04_Step: Verify loai tien la USD");
 		verifyEquals(registerOnline.getDynamicTextInDropDownByHeader(driver, "Thông tin giao dịch","7"), "USD");
 
-		log.info("TC_Step_: Nhap so tien chuyen");
+		log.info("TC_04_Step: Nhap so tien chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT_USD_EUR, "Thông tin giao dịch", "7");
 		
-		log.info("TC_Step_: Nhap noi dung chuyen");
+		log.info("TC_04_Step: Nhap noi dung chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin giao dịch", "8");
 
-		log.info("TC_Step_: Click button xac nhan");
+		log.info("TC_04_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
 		Thread.sleep(5000);
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_04_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","1"), "ĐĂNG KÝ THÀNH CÔNG");
 		
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_04_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0","4"),  Register_Online_data.Message.MESSAGE_SUCCESS);
 		
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_04_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 		
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_04_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_04_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
+
 
 }
