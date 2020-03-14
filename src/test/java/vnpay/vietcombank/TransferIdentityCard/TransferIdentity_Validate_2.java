@@ -164,7 +164,7 @@ public class TransferIdentity_Validate_2 extends Base {
     }
 
     @Test
-    public void TC_37_BoTrongGiayToTuyThan() {
+    public void TC_40_BoTrongGiayToTuyThan() {
 	log.info("TC_37_Step_00: Click Chuyen tien trong VCB");
 	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
