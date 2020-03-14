@@ -150,8 +150,6 @@ public class Base {
 	}
 
 	public AppiumDriver<MobileElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
-		File file = new File("src/test/resources");
-		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
 
 		if (deviceType.equalsIgnoreCase("androidVirtual")) {
@@ -168,7 +166,6 @@ public class Base {
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
@@ -501,14 +498,13 @@ public class Base {
 	public static String addCommasToLong(String number) {
 		String m = "";
 		try {
-			if(number.equals("0")) {
+			if (number.equals("0")) {
 				m = "0";
-			}
-			else {
+			} else {
 				long amount = Long.parseLong(number);
 				m = String.format("%,d", amount);
 			}
-			
+
 		} catch (Exception e) {
 
 		}
@@ -802,11 +798,10 @@ public class Base {
 		try {
 			if (money.contentEquals("Không mất phí")) {
 				result = 0;
-			}
-			else {
+			} else {
 				result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
 			}
-			
+
 		} catch (Exception e) {
 
 		}
@@ -834,7 +829,7 @@ public class Base {
 		}
 		return result;
 	}
-	
+
 	public String getCurrentcyMoney(String money) {
 		String result = "";
 		try {
@@ -874,41 +869,36 @@ public class Base {
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(temp).replaceAll("");
 	}
-	
-	//Viet hoa chu cai dau
+
+	// Viet hoa chu cai dau
 	public String capitalizeString(String string) {
-		  char[] chars = string.toLowerCase().toCharArray();
-		  boolean found = false;
-		  for (int i = 0; i < chars.length; i++) {
-		    if (!found && Character.isLetter(chars[i])) {
-		      chars[i] = Character.toUpperCase(chars[i]);
-		      found = true;
-		    } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
-		      found = false;
-		    }
-		  }
-		  return String.valueOf(chars);
+		char[] chars = string.toLowerCase().toCharArray();
+		boolean found = false;
+		for (int i = 0; i < chars.length; i++) {
+			if (!found && Character.isLetter(chars[i])) {
+				chars[i] = Character.toUpperCase(chars[i]);
+				found = true;
+			} else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '\'') { // You can add other chars here
+				found = false;
+			}
 		}
-	
-	//Kiem tra thoi gian hien thi co dung format hay khong
-	public static boolean validateDateFormat(String strDate, String dateFormat)
-	   {
-		if (strDate.trim().equals(""))
-		{ return true;	}
-		else
-		{
-		    SimpleDateFormat sdfrmt = new SimpleDateFormat(dateFormat);
-		    sdfrmt.setLenient(false);
-		    try
-		    {
-		        Date javaDate = sdfrmt.parse(strDate); 
-		    }
-		    catch (ParseException e)
-		    {
-		        return false;
-		    }
-		    return true;
+		return String.valueOf(chars);
+	}
+
+	// Kiem tra thoi gian hien thi co dung format hay khong
+	public static boolean validateDateFormat(String strDate, String dateFormat) {
+		if (strDate.trim().equals("")) {
+			return true;
+		} else {
+			SimpleDateFormat sdfrmt = new SimpleDateFormat(dateFormat);
+			sdfrmt.setLenient(false);
+			try {
+				Date javaDate = sdfrmt.parse(strDate);
+			} catch (ParseException e) {
+				return false;
+			}
+			return true;
 		}
-	   }
+	}
 
 }
