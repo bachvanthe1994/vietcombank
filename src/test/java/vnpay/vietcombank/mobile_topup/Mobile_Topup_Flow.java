@@ -34,7 +34,11 @@ public class Mobile_Topup_Flow extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
@@ -85,17 +89,17 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
-		
+
 		log.info("TC_01_Step_12: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
-	
-	@Parameters ({"phone"})
+
+	@Parameters({ "phone" })
 	@Test
 	public void TC_02_NapTheDienThoai_GiaTriMin_QuaMK_BaoCaoGiaoDich(String phone) {
-		
+
 		home = PageFactoryManager.getHomePageObject(driver);
-		
+
 		log.info("TC_02_Step_01: Mo tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
@@ -194,10 +198,10 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	@Parameters ({"phone"})
+	@Parameters({ "phone" })
 	@Test
 	public void TC_04_NapTheDienThoai_GiaTriMax_QuaMK_BaoCaoGiaoDich(String phone) {
-		
+
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_01: Mo tab Menu");
@@ -298,10 +302,10 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	@Parameters({"phone"})
+	@Parameters({ "phone" })
 	@Test
 	public void TC_06_NapTheDienThoai_GiaTriMin_QuaOTP_BaoCaoGiaoDich(String phone) {
-		
+
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_06_Step_01: Mo tab Menu");
@@ -402,10 +406,10 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	@Parameters({"phone"})
+	@Parameters({ "phone" })
 	@Test
 	public void TC_08_NapTheDienThoai_GiaTriMax_QuaOTP_BaoCaoGiaoDich(String phone) {
-		
+
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_08_Step_01: Mo tab Menu");

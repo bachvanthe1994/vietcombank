@@ -23,7 +23,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 	private LogInPageObject login;
 	private HomePageObject home;
 	private MobileTopupPageObject mobileTopup;
-	
+
 	private String dynamicValue = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -31,7 +31,11 @@ public class Mobile_Topup_Validate_02 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 	}
@@ -51,17 +55,17 @@ public class Mobile_Topup_Validate_02 extends Base {
 		verifyEquals(mobileTopup.getTextInEditTextFieldByID(driver, "com.VCB:id/mobile"), phone);
 
 	}
-	
+
 	@Parameters({ "phone" })
 	@Test
 	public void TC_02_KiemTraBoTrongSoDienThoaiMacDinh(String phone) {
 
 		log.info("TC_02_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
-		
+
 		log.info("TC_02_Step_02: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		log.info("TC_02_Step_03: Xoa So dien thoai khoi o nhap so dien thoai");
 		mobileTopup.inputIntoEditTextByID(driver, "", "com.VCB:id/mobile");
 
@@ -72,15 +76,16 @@ public class Mobile_Topup_Validate_02 extends Base {
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
 
 	}
-	
-	@Test void TC_03_KiemTraKiTuNhap() {
-		
+
+	@Test
+	void TC_03_KiemTraKiTuNhap() {
+
 		log.info("TC_03_Step_01: An nut 'Back' de quay ve man hinh Nap tien dien thoai");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+
 		log.info("TC_03_Step_02: Nhap ki tu vao o nhap so dien thoai");
 		mobileTopup.inputIntoEditTextByID(driver, "4nh5jh6nb7", "com.VCB:id/mobile");
-		
+
 		log.info("TC_03_Step_02: Xac nhan chi hien thi chu so o o nhap so dien thoai");
 		verifyEquals(mobileTopup.getTextInEditTextFieldByID(driver, "com.VCB:id/mobile"), "4567");
 	}
@@ -149,34 +154,34 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 	}
-	
-	@Parameters ({"phone"})
+
+	@Parameters({ "phone" })
 	@Test
 	public void TC_09_SoTienGiaoDichLonHonSoDuTKNguon(String phone) {
-		
+
 		log.info("TC_09_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		dynamicValue = mobileTopup.getStringNumber(500000, "com.VCB:id/descript");
-		if(dynamicValue !="0") {
-			
+		if (dynamicValue != "0") {
+
 			log.info("TC_09_Step_02: Chon tai khoan nguon nho hon 500,000");
-			mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, dynamicValue+" VND");
-			
+			mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, dynamicValue + " VND");
+
 			log.info("TC_09_Step 03: Chon menh gia the 500,000");
 			mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[5]);
-			
+
 			log.info("TC_09_Step_04: Nhap so dien thoai hop le vao So dien thoai mac dinh");
 			mobileTopup.inputIntoEditTextByID(driver, phone, "com.VCB:id/mobile");
-			
+
 			log.info("TC_09_Step_05: An but 'Tiep tuc'");
 			mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-			
+
 			log.info("TC_09_Step_06: Xac nhan hien thi thong bao tai khoan nguon khong du so du");
 			verifyEquals(mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), UIs.ACCOUNT_MONEY_NOT_ENOUGH);
 			mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-			
-		}else {
-			log.info("TC_01_Step_02: Tat Dropdownlist");
+
+		} else {
+			log.info("TC_09_Step_02: Tat Dropdownlist");
 			mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 			throw new SkipException("These Tests shouldn't be run in Production");
 		}
@@ -189,10 +194,10 @@ public class Mobile_Topup_Validate_02 extends Base {
 
 		log.info("TC_10_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
-		
+
 		log.info("TC_10_Step_02: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		log.info("TC_10_Step_03: Nhap so dien thoai hop le vao So dien thoai mac dinh");
 		mobileTopup.inputIntoEditTextByID(driver, phone, "com.VCB:id/mobile");
 

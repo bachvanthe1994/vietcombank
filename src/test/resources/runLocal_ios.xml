@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Vietcombank" parallel="false">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="reportConfig.ExtentReportListener" />
+		<listener class-name="reportConfig.ReportNGListener" />
+		<!-- <listener class-name="reportConfig.RetryListener" /> -->
+	</listeners>
+	<parameter name="appActivities" value="com.VCB.activities.AbotActivity" />
+	<parameter name="appPackage" value="com.VCB" />
+	<parameter name="appName" value="vcbtnewdesign.apk" />
+	<parameter name="runAfterFail" value="true" />
+
+
+
+	<test name="Run test case on Android 9">
+		<parameter name="deviceType" value="ios" />
+		<parameter name="deviceName" value="iPhone" />
+		<parameter name="deviceUDID" value="6f54d7f0f063c0a15482020a5ef73fdf32cc2406" />
+		<!-- <parameter name="deviceType" value="ios" /> -->
+		<!-- <parameter name="deviceName" value="iPhone" /> -->
+		<!-- <parameter name="deviceUDID" value="6f54d7f0f063c0a15482020a5ef73fdf32cc2406" /> -->
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
+		<parameter name="phone" value="0904797863" />
+		<parameter name="pass" value="aaaa1111" />
+		<parameter name="otp" value="123456" />
+		<classes>
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Destination_Arriver_FlightDate_Part1" /> -->
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_Arrive_Date_And_People_Part2" /> -->
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_People_Part3" /> -->
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Part4" /> -->
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_5" /> -->
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6" /> -->
+			<!-- <class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_7" /> -->
+
+			<class name="vnpay.vietcombank.login.Login_Validation" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+
+
+		</classes>
+	</test>
+
+
+
+</suite> 
+
+

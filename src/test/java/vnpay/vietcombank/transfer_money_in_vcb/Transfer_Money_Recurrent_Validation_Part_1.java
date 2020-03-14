@@ -34,7 +34,11 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 	}
@@ -53,7 +57,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_02_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_01_03_Kiem tra title 'Chuyen tien trong Vietcombank' ");
@@ -105,20 +109,20 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_03_03_Kiem tra Hien thi mac dinh");
-		transferRecurrent.scrollUpToText(driver, "Chuyển tiền ngay");
-		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền ngay"));
+		transferRecurrent.scrollUpToText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Chuyển tiền ngày giá trị hiện tại"));
 	}
 
 	@Test
 	public void TC_04_ChuyenTienDinhKy_ComboHinhThucChuyenTien_KiemTraDanhSachHinhThuc() {
 		log.info("TC_04_01_Chon phuong thuc chuyen tien");
-		transferRecurrent.scrollUpToText(driver, "Chuyển tiền ngay");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.scrollUpToText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 
 		log.info("TC_04_02_Lay list Hinh thuc chuyen tien");
 		List<String> actualList = transferRecurrent.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
 
-		List<String> expectList = Arrays.asList("Chuyển tiền ngay", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai");
+		List<String> expectList = Arrays.asList("Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai");
 
 		log.info("TC_04_03_Kiem tra list Hinh thuc chuyen tien");
 		verifyEquals(actualList, expectList);
@@ -128,7 +132,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	public void TC_05_ChuyenTienDinhKy_ComboHinhThucChuyenTien_KiemTraChonHinhThucChuyenTienKhac() {
 		log.info("TC_05_01_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngay");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
 
 		log.info("TC_05_02_Kiem tra Hinh thuc chuyen tien khac duoc chon");

@@ -40,14 +40,18 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
- @Test
+	@Test
 	public void TC_01_ChuyenTienNguoiChuyenTraPhiVNDOTP() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -156,7 +160,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(amountStart - amountTranfer - costTranfer, amountAfter);
 	}
 
- @Test
+	@Test
 	public void TC_02_BaoCaoChuyenTienNguoiChuyenTraPhiVNDOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -296,7 +300,9 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_05_Step_Verify so tien chuyen");
 		System.out.print(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD));
-		//verifyTrue(transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền(USD)").contains(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + " USD"));
+		// verifyTrue(transferMoney.getDynamicTextInTransactionDetail(driver, "Số
+		// tiền(USD)").contains(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD)
+		// + " USD"));
 
 		log.info("TC_05_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
@@ -306,7 +312,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		String Fee = transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC05_Step 23: So tien phi chuyen doi ra USD");
-		double usdTransferFee = convertMoneyToDouble(Fee,"VND") / convertMoneyToDouble(exchangeRate,"VND");
+		double usdTransferFee = convertMoneyToDouble(Fee, "VND") / convertMoneyToDouble(exchangeRate, "VND");
 
 		log.info("TC_05_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -432,11 +438,11 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_Step_: So tien quy doi expect");
 		double amountAfter = convertMoneyToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "USD");
-		double amountExpect = amountAfter * convertMoneyToDouble(exchangeRate,"VND");
+		double amountExpect = amountAfter * convertMoneyToDouble(exchangeRate, "VND");
 
 		log.info("TC_Step_: So tien quy doi atual");
 		String amountAfter1 = transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").replaceAll(".00 USD", "");
-		double amountActual = convertMoneyToDouble(amountAfter1, "VND") * convertMoneyToDouble(exchangeRate,"VND");
+		double amountActual = convertMoneyToDouble(amountAfter1, "VND") * convertMoneyToDouble(exchangeRate, "VND");
 
 		log.info("TC_Step_: verify so tien quy doi");
 		verifyEquals(amountActual, amountExpect);
@@ -469,7 +475,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
- @Test
+	@Test
 	public void TC_05_ChuyenTienQuaTKNguoiChuyenTraPhiVNDXacThucMatKhau() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -697,7 +703,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		log.info("TC_01_Step_:Lay so tien quy doi ra VND");
 		String exchange = transferMoney.getDynamicTextInTransactionDetail(driver, "Tỷ giá quy đổi tham khảo").split(" ~ ", 2)[1];
 		exchangeRate = exchange.replace(" VND", "");
-		
+
 		log.info("TC_04_Step_Chon phi giao dich la nguoi chuyen");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -709,7 +715,9 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_Verify so tien chuyen");
-		//verifyTrue(transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền(EUR)").contains(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR) + " EUR"));
+		// verifyTrue(transferMoney.getDynamicTextInTransactionDetail(driver, "Số
+		// tiền(EUR)").contains(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR)
+		// + " EUR"));
 
 		log.info("TC_05_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
@@ -719,7 +727,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		String Fee = transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC05_Step 23: So tien phi chuyen doi ra EUR");
-		double EURTransferFee = convertMoneyToDouble(Fee, "VND") / convertMoneyToDouble(exchangeRate,"VND");
+		double EURTransferFee = convertMoneyToDouble(Fee, "VND") / convertMoneyToDouble(exchangeRate, "VND");
 
 		log.info("TC_05_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -771,7 +779,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(amountAtual, amountExpect);
 	}
 
- @Test
+	@Test
 	public void TC_08_BaoCaoChuyenTienQuaTaiKhoanNguoiChuyenTraPhiEURXacThucMatKhau() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -845,11 +853,11 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_Step_: So tien quy doi expect");
 		double amountAfter = convertMoneyToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR, "EUR");
-		double amountExpect = amountAfter * convertMoneyToDouble(exchangeRate,"VND");
+		double amountExpect = amountAfter * convertMoneyToDouble(exchangeRate, "VND");
 
 		log.info("TC_Step_: So tien quy doi atual");
 		String amountAfter1 = transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").replaceAll(".00 EUR", "");
-		double amountActual = convertMoneyToDouble(amountAfter1, "VND") * convertMoneyToDouble(exchangeRate,"VND");
+		double amountActual = convertMoneyToDouble(amountAfter1, "VND") * convertMoneyToDouble(exchangeRate, "VND");
 
 		log.info("TC_Step_: verify so tien quy doi");
 		verifyEquals(amountActual, amountExpect);
