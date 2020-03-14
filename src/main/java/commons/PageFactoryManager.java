@@ -21,6 +21,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
+import pageObjects.VCBAutoDebitPageObject;
 import pageObjects.saving_online.SavingOnlinePageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
@@ -121,5 +122,9 @@ public class PageFactoryManager {
 	
 	public static AutoSavingPageObject getAutoSavingPageObject(AppiumDriver<MobileElement> driver) {
 		return new AutoSavingPageObject(driver);
+	}
+	
+	public static VCBAutoDebitPageObject getVCBAutoDebitPageObject(AppiumDriver<MobileElement> driver) {
+		return new VCBAutoDebitPageObject(driver);
 	}
 }
