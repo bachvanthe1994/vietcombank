@@ -1281,6 +1281,17 @@ public class AbstractPage {
 		}
 	}
 
+<<<<<<< HEAD
+    }
+
+    // Check Date Picker By ID co hien thi
+    public boolean isDynamicDatePickerByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DATE_PICKER_BY_ID, dynamicTextValue);
+=======
 	public void inputToDynamicInputBoxSearch(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, dynamicTextValue);
@@ -1288,6 +1299,7 @@ public class AbstractPage {
 			clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, dynamicTextValue);
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_LIST_ACCEPT, inputValue, dynamicTextValue);
 		}
+>>>>>>> release/release06
 	}
 
 	public void inputToDynamicInputBoxSearchBank(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
@@ -1461,6 +1473,244 @@ public class AbstractPage {
 	}
 
 //Kiểm tra gợi ý số tiền không hiển thị trên màn hình,tham số truyền vào là resource-id 	
+<<<<<<< HEAD
+    public boolean isDynamicImageTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Kiem tra element Linearlayout ID co hien thi hay khong
+    public boolean isDynamicLinearlayoutByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicSuggestedMoneyUndisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicBackIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BACK_ICON, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicHistoryIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Check hiển thị button chuyển đổi
+    public boolean isDynamicChangeIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Check hiển thị icon combobox
+    public boolean isDynamicComboboxDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicVerifyTextOnButton(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
+
+    public boolean isDynamicTextDetailByID(AppiumDriver<MobileElement> driver, String dynamicID) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+	}
+	return isDisplayed;
+
+    }
+
+    // Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id
+    public boolean isDynamicSuggestedMoneyDisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Kiểm tra text trong nội dung link thông báo
+    public boolean isDynamicTextInfoDisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Kiểm tra hiển thị image, check đã chọn có định dạng ImageView
+    public boolean isDynamicImageSelect(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Kiểm tra hiển thị image, check chuyển khoản thành công
+    public boolean isDynamicImageSuccess(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Kiểm tra hiển thị icon home man hinh chuyen tien thanh cong
+    public boolean isDynamicImageHomeDisplay(AppiumDriver<MobileElement> driver, String dynamicID) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+	}
+	return isDisplayed;
+    }
+
+    // Kiểm tra hiển thị time màn hình chuyển khoản thành công
+    public boolean isDynamicTimeAndMoneyDisplay(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TRANSFER_TIME, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
+
+    public boolean isDynamicTextNumberCustomerDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // Không hiển thị text trường số lượng hành khách
+    public boolean isDynamicTextNumberCustomerUnDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    // hiển thị icon trường số lượng hành khách
+    public boolean isDynamicIconChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
+
+    // hiển thị text trường số lượng hành khách
+    public boolean isDynamicTextChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	boolean isDisplayed = false;
+	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+	}
+	return isDisplayed;
+
+    }
+
+    public boolean isDynamicImageButtonDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicImageByFollowingImageIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BY_FOLLOWING_IMAGE_ID, dynamicTextValue);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BY_FOLLOWING_IMAGE_ID, dynamicTextValue);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGE_BY_FOLLOWING_IMAGE_ID, dynamicTextValue);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicImageButtonBackDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+	}
+	return isDisplayed;
+    }
+
+    public boolean isDynamicTextViewByLinearLayoutIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
+	boolean isDisplayed = false;
+	scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	if (status == true) {
+	    isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+	}
+	return isDisplayed;
+    }
+
+    /* GET TEXT METHOD */
+=======
 	public boolean isDynamicImageTextDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicTextValue);
@@ -1470,6 +1720,7 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
+>>>>>>> release/release06
 
 	// Kiem tra element Linearlayout ID co hien thi hay khong
 	public boolean isDynamicLinearlayoutByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -2305,5 +2556,16 @@ public class AbstractPage {
 		}
 		return text;
 	}
+
+    public String getDynamicTitleTransferSuccess(AppiumDriver<MobileElement> driver, String... dynamicIdText) {
+
+	boolean status = false;
+	String text = null;
+	status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIdText);
+	if (status == true) {
+	    text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIdText);
+	}
+	return text;
+    }
 
 }

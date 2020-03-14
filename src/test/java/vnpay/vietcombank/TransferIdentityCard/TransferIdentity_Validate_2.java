@@ -56,6 +56,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_33_STEP_03: kiem tra hien thi noi dung vua nhap");
 		verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS);
 
+
 		log.info("TC_33_Step_04: Click quay lai");
 		trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
 	}
@@ -95,6 +96,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_36_Step_01: Click Chuyen tien trong VCB");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
+
 		log.info("TC_36_Step_02: bỏ trống tên người thụ hưởng");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -129,6 +131,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_38_Step_02: bỏ trống số giấy tờ tùy thân");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
+
 		log.info("TC_38_STEP_13: kiểm tra hiển thị thông báo khi không nhập số giấy tờ tùy thân");
 		verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.confirmMessage.MESSSAGE_IDENTITY_NUMBER);
 
@@ -142,8 +145,10 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_39_STEP_1: nhap số giấy tờ tùy thân");
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER, "Số");
 
+
 		log.info("TC_39_Step_2: bỏ trống ngày cấp");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+
 
 		log.info("TC_39_STEP_3: kiểm tra hiển thị thông báo khi không nhập ngày cấp");
 		verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.confirmMessage.MESSSAGE_DATE);
@@ -151,15 +156,20 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_39_Step_4: chọn đóng");
 		trasferPage.clickToDynamicButton(driver, "Đóng");
 
-		log.info("TC_39_Step_5: ngay cap");
-		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
-		trasferPage.clickToDynamicButton(driver, "OK");
-	}
+	log.info("TC_36_Step_04: chọn đóng");
+	trasferPage.clickToDynamicButton(driver, "Đóng");
 
-	@Test
-	public void TC_40_BoTrongNoiCap() {
-		log.info("TC_40_Step_1: bỏ trống nơi cấp");
-		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
+	log.info("TC_36_Step_05: Click quay lai");
+	trasferPage.clickToDynamicBackIcon(driver, "Chuyển tiền cho người nhận tại quầy");
+    }
+
+    @Test
+    public void TC_37_BoTrongGiayToTuyThan() {
+	log.info("TC_37_Step_00: Click Chuyen tien trong VCB");
+	homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
+
+	log.info("TC_37_STEP_01: nhap tên người thụ hưởng");
+	trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người thụ hưởng");
 
 		log.info("TC_40_STEP_2: kiểm tra hiển thị thông báo khi không nhập nới cấp");
 		verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.confirmMessage.MESSSAGE_ISSUED);
@@ -167,10 +177,12 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_40_Step_3: chọn đóng");
 		trasferPage.clickToDynamicButton(driver, "Đóng");
 
+
 		log.info("TC_40_Step_4: noi cap");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textDataInputForm.ISSUED);
 	}
+
 
 	@Test
 	public void TC_41_BoTrongSoTienVaChonTiepTuc() {
@@ -183,6 +195,7 @@ public class TransferIdentity_Validate_2 extends Base {
 		log.info("TC_41_Step_3: chọn đóng");
 		trasferPage.clickToDynamicButton(driver, "Đóng");
 	}
+
 
 	@Test
 	public void TC_42_BoTrongNoiDung() {
