@@ -15,17 +15,16 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-
-import vietcombank_test_data.Auto_Saving_Data;
 import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.Auto_Saving_Data;
 
 public class Auto_Saving_Validate_01 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject home;
 	private AutoSavingPageObject autoSaving;
-	
-	private String sourceAccount,savingAccount,term,savingAccountMoney,startDate,endDate,text;
+
+	private String sourceAccount, savingAccount, term, savingAccountMoney, startDate, endDate, text;
 	private boolean status;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -39,7 +38,7 @@ public class Auto_Saving_Validate_01 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0335059860", pass, opt);
+		login.Global_login(phone, pass, opt);
 
 	}
 
@@ -239,10 +238,10 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_12_TietKiemTuDong_NhapSoThapPhan() {
 
 		log.info("TC_12_Step_01: Nhap hon 10 chu so vào o So dien thoai mac dinh");
-		autoSaving.inputIntoEditTextByID(driver, "1.2.3.4.", "com.VCB:id/edtContent2");
+		autoSaving.inputIntoEditTextByID(driver, "1.2", "com.VCB:id/edtContent2");
 
 		log.info("TC_12_Step_02: Xac nhan chi hien thi duy nhat 10 chu so dau tien o trong o");
-		verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), addCommasToLong("1234"));
+		verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), addCommasToLong("12"));
 
 		log.info("TC_12_Step_03: Click vao drodown 'Tai khoan nguon");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
@@ -260,7 +259,7 @@ public class Auto_Saving_Validate_01 extends Base {
 			autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 
 			log.info("TC_12_Step_07: Nhap hon 10 chu so vào o So dien thoai mac dinh");
-			autoSaving.inputIntoEditTextByID(driver, "1.2.3.4.5.6.7.8.9.0.12345", "com.VCB:id/edtContent2");
+			autoSaving.inputIntoEditTextByID(driver, "1.2", "com.VCB:id/edtContent2");
 
 			log.info("TC_12_Step_08: Xac nhan chi hien thi duy nhat 10 chu so dau tien o trong o");
 			verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), "1.2");
@@ -309,7 +308,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	}
 
 	@Test
-	public void TC_15_TietKiemTuDong_KiemTranNhanNgayKetThuc() {
+	public void TC_15_TietKiemTuDong_KiemTraNhanNgayKetThuc() {
 
 		log.info("TC_15_Step_01: Kiem tra hien thi lich");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Ngày kết thúc");
@@ -320,7 +319,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_16_TietKiemTuDong_KiemTranChonNgayKetThucNhoHonHienTai() {
 
 		log.info("TC_16_Step_01: Chon ngay ket thuc nho hon hien tai");
-		autoSaving.clickToDynamicDateInDateTimePicker(driver, getBackWardDay(2));
+		autoSaving.clickToDynamicDateInDateTimePicker(driver, getBackWardDay(1));
 		autoSaving.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_16_Step_02: Xac nhan hien thi ngay hien tai o o chon ngay ket thuc");
@@ -340,10 +339,10 @@ public class Auto_Saving_Validate_01 extends Base {
 		verifyEquals(autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc"), getForwardDate(2));
 
 	}
-	
+
 	@Test
 	public void TC_18_TietKiemTuDong_KiemTraDinhDangNgayKetThuc() {
-		
+
 		log.info("TC_18_Step_01: Xac nhan hien thi dung dinh dang ngay ket thuc");
 		endDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 		verifyTrue(validateDateFormat(endDate, "dd/mm/yyyy"));
