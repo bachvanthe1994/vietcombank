@@ -10,7 +10,7 @@ public class VCBAuto_Debit_Data {
 		public static final String REGISTER_SUCCESS_TITLE = "ĐĂNG KÝ VCB-AUTO DEBIT THÀNH CÔNG";
 		public static final String REGISTED_MESSAGE = "Mã khách hàng này đã đăng ký dịch vụ Auto Debit.";
 		public static final String CHANGE_SUCCESS_TITLE = "THAY ĐỔI THÔNG TIN THÀNH CÔNG";
-		public static final String AUTO_SAVING_CANCEL_SUCCESS_MESSAGE = "Quý khách đã hủy đăng ký tiết kiệm tự động thành công.";
+		public static final String CANCELED_SUCCESS_TITLE = "HỦY ĐĂNG KÝ THÀNH CÔNG";
 	}
 	
 	public class VALIDATE {
