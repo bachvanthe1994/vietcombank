@@ -24,7 +24,11 @@ public class Validation_FilmTicketBooking_Part_1 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openGlobalSetting(deviceName, udid, url);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
 		filmTicketBooking.turnOnSwitchInGlobalSetting("Vị trí");
 

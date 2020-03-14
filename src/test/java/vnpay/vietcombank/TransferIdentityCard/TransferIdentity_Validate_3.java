@@ -31,15 +31,20 @@ public class TransferIdentity_Validate_3 extends Base {
     private String transactionNumber;
     String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-    @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-    @BeforeClass
-    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
-	    throws IOException, InterruptedException {
-	startServer();
-	log.info("Before class: Mo app ");
-	driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-	login = PageFactoryManager.getLoginPageObject(driver);
-	login.Global_login(phone, pass, opt);
+
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@BeforeClass
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+		startServer();
+		log.info("Before class: Mo app ");
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
+		login = PageFactoryManager.getLoginPageObject(driver);
+		login.Global_login(phone, pass, opt);
+
 
 	homePage = PageFactoryManager.getHomePageObject(driver);
 	trasferPage = PageFactoryManager.getTransferIdentiryPageObject(driver);
