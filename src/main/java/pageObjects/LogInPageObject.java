@@ -13,26 +13,33 @@ public class LogInPageObject extends AbstractPage {
 	private AppiumDriver<MobileElement> driver;
 
 	public void Global_login(String phone, String pass, String otp) {
-		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		if (getDriverName(driver).contains("android")) {
+			clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
-		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
+			inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
-		clickToDynamicButton(driver, "Tiếp tục");
+			clickToDynamicButton(driver, "Tiếp tục");
 
-		if (getPageSource(driver).contains("Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
+			if (getPageSource(driver).contains("Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
 
-			clickToDynamicButton(driver, "Đồng ý");
+				clickToDynamicButton(driver, "Đồng ý");
+			}
+
+			inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
+
+			clickToDynamicButton(driver, "Tiếp tục");
+
+			inputToDynamicOtp(driver, otp, "Tiếp tục");
+			clickToDynamicButton(driver, "Tiếp tục");
+
+			clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		} else if (getDriverName(driver).contains("ios")) {
+
+			inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
+
+			clickToDynamicButton(driver, "Tiếp tục");
+
 		}
-
-		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
-
-		clickToDynamicButton(driver, "Tiếp tục");
-
-		inputToDynamicOtp(driver, otp, "Tiếp tục");
-		clickToDynamicButton(driver, "Tiếp tục");
-
-		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-
 	}
 
 }
