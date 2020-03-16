@@ -23,6 +23,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TRANSFER_TIME = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView[@index='%s']";
 	public static final String DYNAMIC_TRANSACTION_INFO_IN_REPORT = "//android.widget.LinearLayout[@index ='0']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS = "//android.widget.ListView[@resource-id =\"com.VCB:id/nlvHisDetailAcc\"]//android.widget.LinearLayout[@index='0']//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID = "//android.widget.ListView[@resource-id =\"com.VCB:id/nlvHisDetailAcc\"]//android.view.ViewGroup[@index='%s']";
 	public static final String DYNAMIC_LABEL_COST = "//android.widget.TextView[@text='%s']//preceding::android.widget.TextView";
 	public static final String DYNAMIC_LABEL_MONEY_BY_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_INPUT_LABEL_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";

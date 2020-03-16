@@ -31,7 +31,7 @@ public class Auto_Saving_Validate_02 extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0335059860", pass, opt);
+		login.Global_login(phone, pass, opt);
 
 	}
 
@@ -41,6 +41,7 @@ public class Auto_Saving_Validate_02 extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Tiet kiem tu dong'");
+		home.scrollDownToText(driver, "Tín dụng");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Tiết kiệm tự động");
 		autoSaving = PageFactoryManager.getAutoSavingPageObject(driver);
 		
@@ -482,13 +483,23 @@ public class Auto_Saving_Validate_02 extends Base {
 		log.info("TC_16_Step_02: Xac nhan nhap duoc toi da 20 Ki tu");
 		verifyEquals(autoSaving.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 20);
 		
-		log.info("TC_16_Step_03: Nhap sai mat khau");
+		log.info("TC_16_Step_03: Nhap mat khau nho hon 8 ki tu");
 		autoSaving.inputIntoEditTextByID(driver, "sadaasd", "com.VCB:id/pin");
 		
 		log.info("TC_16_Step_04: Click button 'Tiep tuc'");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_16_Step_05: Xac nhan hien thi thong bao nhap ma MK");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Auto_Saving_Data.VALIDATE.PASSWORD_METHOD_ERROR_MESSAGE);
+		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_16_Step_06: Nhap sai mat khau");
+		autoSaving.inputIntoEditTextByID(driver, "sadaasdsd", "com.VCB:id/pin");
+		
+		log.info("TC_16_Step_07: Click button 'Tiep tuc'");
+		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		
+		log.info("TC_16_Step_08: Xac nhan hien thi thong bao nhap ma MK");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Auto_Saving_Data.VALIDATE.PASSWORD_METHOD_ERROR_MESSAGE);
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}

@@ -940,6 +940,14 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 		}
 	}
+	
+	public void clickToDynamicGroupviewByListviewId(AppiumDriver<MobileElement> driver, String... dynamicIndex1ID2) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
+		}
+	}
 
 	public void clickDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
