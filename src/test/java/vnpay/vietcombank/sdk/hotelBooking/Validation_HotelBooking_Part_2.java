@@ -209,7 +209,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvConfirm");
 
 		log.info("TC_08_07_Click Tim kiem dia diem");
-		hotelBooking.clickToDynamicTextOrButtonLink("Tìm kiếm địa điểm hoặc khách sạn");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
 
 		log.info("TC_08_08_Click chon Dia diem");
 		hotelBooking.clickToDynamicTextOrButtonLink("Hà Nội");
@@ -235,7 +235,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_09_04_Click Tim kiem dia diem");
-		hotelBooking.clickToDynamicTextOrButtonLink("Tìm kiếm địa điểm hoặc khách sạn");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
 
 		log.info("TC_09_05_Click chon Dia diem");
 		hotelBooking.clickToDynamicTextOrButtonLink("Hà Nội");
@@ -308,6 +308,7 @@ public class Validation_HotelBooking_Part_2 extends Base {
 		hotelBooking.isDynamicMessageAndLabelTextDisplayed("Tiện nghi");
 
 		log.info("TC_12_03_5_Kiem tra chuc nang chon Quan huyện");
+		hotelBooking.scrollDownToText(driver, "Khách sạn gần");
 		hotelBooking.isDynamicMessageAndLabelTextDisplayed("Quận huyện");
 
 		log.info("TC_12_03_6_Kiem tra chuc nang Khach san gan");
