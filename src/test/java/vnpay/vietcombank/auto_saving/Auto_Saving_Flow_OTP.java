@@ -1160,6 +1160,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 		log.info("TC_18_7_Click nut Home ve man hinh chinh");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		
 	}
 	
 	@AfterClass(alwaysRun = true)

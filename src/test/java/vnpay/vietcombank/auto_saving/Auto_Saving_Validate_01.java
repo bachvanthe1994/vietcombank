@@ -455,6 +455,7 @@ public class Auto_Saving_Validate_01 extends Base {
 
 		log.info("TC_19_7_Click nut Home ve man hinh chinh");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		
 	}
 
 	@AfterClass(alwaysRun = true)
