@@ -53,16 +53,16 @@ public class Validation_HotelBooking_Part_5 extends Base {
 		hotelBooking.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_01_03_Tim kiem dia diem");
-		hotelBooking.clickToDynamicTextView("Tìm kiếm địa điểm hoặc khách sạn");
-		hotelBooking.inputToDynamicInputBox("CLASSY HOLIDAY HOTEL & SPA", "Tên khách sạn hoặc điểm đến");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
+		hotelBooking.inputToDynamicInputBox(HotelBooking_Data.HOTEL_NAME_BOOKING_INPUT, "Tên khách sạn hoặc điểm đến");
 
 		log.info("TC_01_04_Chon dia diem");
-		hotelBooking.clickToDynamicTextView("CLASSY HOLIDAY HOTEL & SPA");
+		hotelBooking.clickToDynamicTextView(HotelBooking_Data.HOTEL_NAME_BOOKING);
 
 		log.info("TC_01_05_Click dat phong");
-		hotelBooking.waitForTextViewDisplay("CLASSY HOLIDAY HOTEL & SPA");
-		hotelBooking.scrollIDownToText("Đặt phòng");
-		hotelBooking.clickToDynamicTextView("Đặt phòng");
+		hotelBooking.waitForTextViewDisplay(HotelBooking_Data.HOTEL_NAME_BOOKING);
+		hotelBooking.scrollIDownToText("ĐẶT PHÒNG");
+		hotelBooking.clickToDynamicTextView("ĐẶT PHÒNG");
 
 		totalPrice = hotelBooking.getTextViewByID("com.VCB:id/tvTotalPrice").split(" ")[0] + " VND";
 
@@ -77,7 +77,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 
 		log.info("TC_01_09_Click Thanh toan");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
-		hotelBooking.clickToDynamicTextView("Thanh toán");
+		hotelBooking.clickToDynamicTextView("THANH TOÁN");
 
 		log.info("TC_01_10_Kiem tra man hinh thanh toan");
 		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("Thông tin hóa đơn"));
