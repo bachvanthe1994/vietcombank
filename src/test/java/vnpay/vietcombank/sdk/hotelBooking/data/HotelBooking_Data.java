@@ -39,5 +39,6 @@ public class HotelBooking_Data {
 	public static final String EMPTY_HOTEL_ADDRESS = "Quý khách vui lòng nhập Địa chỉ công ty.";
 	public static final String EMPTY_EMAIL = "Quý khách vui lòng nhập Email nhận hóa đơn.";
 	public static final String HOTEL_NAME_BOOKING = "CLASSY HOLIDAY HOTEL & SPA";
+	public static final String HOTEL_NAME_BOOKING_INPUT = "CLASSY HOLIDAY HOTEL";
 	
 }

@@ -33,7 +33,7 @@ public class Card_Services extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0918679292", "aaaa1111", opt);
+		login.Global_login("0918679292", "aaaaa11111", opt);
 
 	}
 

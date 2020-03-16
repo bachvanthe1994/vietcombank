@@ -96,7 +96,7 @@ public class Transfer_Money_Recurrent_Validation_Part_5 extends Base {
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSACTION_VALIDATION));
 
 		log.info("TC_01_02_Kiem tra text Ma OTP da duoc gui den SDT ...");
-		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phoneNumber.substring(0, 4) + "***" + phoneNumber.substring(7, 10));
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phoneNumber.substring(0, 3) + "*****" + phoneNumber.substring(8, 10));
 
 		log.info("TC_01_03_Kiem tra button Tiep tuc");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Tiếp tục"));

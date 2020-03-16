@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -33,6 +35,7 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -150,8 +153,6 @@ public class Base {
 	}
 
 	public AppiumDriver<MobileElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
-		File file = new File("src/test/resources");
-		File appFile = new File(file, appName);
 		DesiredCapabilities cap = new DesiredCapabilities();
 
 		if (deviceType.equalsIgnoreCase("androidVirtual")) {
@@ -168,7 +169,6 @@ public class Base {
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-		cap.setCapability(MobileCapabilityType.APP, appFile.getAbsolutePath());
 
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
@@ -280,8 +280,9 @@ public class Base {
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			softAssertion.assertTrue(condition);
-			softAssertion.assertAll();
+//			softAssertion.assertTrue(condition);
+//			softAssertion.assertAll();
+			Assert.assertTrue(condition);
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -303,8 +304,10 @@ public class Base {
 				log.info("===PASSED===");
 			else
 				log.info("===FAILED===");
-			softAssertion.assertFalse(condition);
-			softAssertion.assertAll();
+//			softAssertion.assertFalse(condition);
+//			softAssertion.assertAll();
+
+			Assert.assertFalse(condition);
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -339,9 +342,11 @@ public class Base {
 			} else {
 				log.info("===FAILED===");
 			}
+//
+//			softAssertion.assertEquals(actual, expected, "Value is not matching!");
+//			softAssertion.assertAll();
 
-			softAssertion.assertEquals(actual, expected, "Value is not matching!");
-			softAssertion.assertAll();
+			Assert.assertEquals(actual, expected, "Value is not matching!");
 		} catch (Throwable e) {
 			;
 			pass = false;
@@ -501,14 +506,13 @@ public class Base {
 	public static String addCommasToLong(String number) {
 		String m = "";
 		try {
-			if(number.equals("0")) {
+			if (number.equals("0")) {
 				m = "0";
-			}
-			else {
+			} else {
 				long amount = Long.parseLong(number);
 				m = String.format("%,d", amount);
 			}
-			
+
 		} catch (Exception e) {
 
 		}
@@ -603,6 +607,43 @@ public class Base {
 
 	}
 
+	public String getForwardMonthAndForwardDayFolowDate(String date, long months, long days) {
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate now = LocalDate.parse(date, dateTimeFormatter);  
+		
+		LocalDate dayLocal = now.plusDays(days);
+		LocalDate monthLocal = now.plusMonths(months);
+
+		int year = dayLocal.getYear();
+		int month = monthLocal.getMonthValue();
+		int monthNow = now.getMonthValue();
+		int day = dayLocal.getDayOfMonth();
+
+		String month1;
+		if (month < 10) {
+			month1 = "0" + month;
+		} else {
+			month1 = month + "";
+		}
+
+		String day1;
+		if (day < 10) {
+			day1 = "0" + day;
+		} else {
+			day1 = day + "";
+		}
+
+		String year1;
+		if (month < monthNow) {
+			year1 = year + 1 + "";
+		} else {
+			year1 = year + "";
+		}
+
+		return day1 + "/" + month1 + "/" + year1;
+
+	}
+	
 	public String getForwardYear(long years) {
 		LocalDate now = LocalDate.now();
 		LocalDate futureYear = now.plusYears(years);
@@ -802,11 +843,10 @@ public class Base {
 		try {
 			if (money.contentEquals("Không mất phí")) {
 				result = 0;
-			}
-			else {
+			} else {
 				result = Long.parseLong(money.replaceAll("[^\\.0123456789]", ""));
 			}
-			
+
 		} catch (Exception e) {
 
 		}
@@ -834,7 +874,7 @@ public class Base {
 		}
 		return result;
 	}
-	
+
 	public String getCurrentcyMoney(String money) {
 		String result = "";
 		try {
@@ -874,41 +914,68 @@ public class Base {
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(temp).replaceAll("");
 	}
-	
-	//Viet hoa chu cai dau
+
+	// Viet hoa chu cai dau
 	public String capitalizeString(String string) {
-		  char[] chars = string.toLowerCase().toCharArray();
-		  boolean found = false;
-		  for (int i = 0; i < chars.length; i++) {
-		    if (!found && Character.isLetter(chars[i])) {
-		      chars[i] = Character.toUpperCase(chars[i]);
-		      found = true;
-		    } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
-		      found = false;
-		    }
-		  }
-		  return String.valueOf(chars);
+		char[] chars = string.toLowerCase().toCharArray();
+		boolean found = false;
+		for (int i = 0; i < chars.length; i++) {
+			if (!found && Character.isLetter(chars[i])) {
+				chars[i] = Character.toUpperCase(chars[i]);
+				found = true;
+			} else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '\'') { // You can add other chars here
+				found = false;
+			}
 		}
+		return String.valueOf(chars);
+	}
+
+	// Kiem tra thoi gian hien thi co dung format hay khong
+	public static boolean validateDateFormat(String strDate, String dateFormat) {
+		if (strDate.trim().equals("")) {
+			return true;
+		} else {
+			SimpleDateFormat sdfrmt = new SimpleDateFormat(dateFormat);
+			sdfrmt.setLenient(false);
+			try {
+				Date javaDate = sdfrmt.parse(strDate);
+			} catch (ParseException e) {
+				return false;
+			}
+			return true;
+		}
+	}
 	
-	//Kiem tra thoi gian hien thi co dung format hay khong
-	public static boolean validateDateFormat(String strDate, String dateFormat)
-	   {
-		if (strDate.trim().equals(""))
-		{ return true;	}
-		else
-		{
-		    SimpleDateFormat sdfrmt = new SimpleDateFormat(dateFormat);
-		    sdfrmt.setLenient(false);
-		    try
-		    {
-		        Date javaDate = sdfrmt.parse(strDate); 
-		    }
-		    catch (ParseException e)
-		    {
-		        return false;
-		    }
-		    return true;
-		}
-	   }
+	 public boolean checkDateLessThanNow(String date){
+		 boolean result = true;
+		 try {
+	         	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+	         
+	         	Date date1 = formatDate.parse(date);
+	         	
+	         	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	         	Date now = new Date(); 
+	         	 
+	         	Date date2 = formatDate.parse(dateFormat.format(now).toString());
+
+	            if(date1.after(date2)){
+	            	result = false;
+	            }
+
+	            if(date1.before(date2)){
+	            	result = true;
+	            }
+
+	            if(date1.equals(date2)){
+	            	result = false;
+	            }
+
+	        }
+	        catch(ParseException ex){
+	            ex.printStackTrace();
+	        }
+		 return result;
+	
+	    }
 
 }

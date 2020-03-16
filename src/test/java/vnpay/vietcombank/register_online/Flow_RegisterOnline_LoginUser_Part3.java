@@ -25,11 +25,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		if (deviceType.contains("android")) {
-			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("ios")) {
-			driver = openIOSApp(deviceName, udid, url);
-		}
+		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		phoneNumber = phone;
@@ -38,212 +34,1096 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 	@Test
 	public void TC_01_DangKyPhatHanhTheGhiNo_ChonHangVangConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
-		log.info("TC_Step_: Click menu header");
+		log.info("TC_1_Step: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("TC_Step_: Click chuc nang dang ky truc tuyen");
+		log.info("TC_1_Step: Click chuc nang dang ky truc tuyen");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
 
-		log.info("TC_Step_: Click giao dich tien mat/chuyen tien");
+		log.info("TC_1_Step: Click giao dich tien mat/chuyen tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký dịch vụ ngân hàng điện tử/Đăng ký phát hành thẻ ghi nợ");
 
-		log.info("TC_Step_: Nhap thong tin man hinh dang ky");
+		log.info("TC_1_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
-		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the ghi no");
+		log.info("TC_1_Step: Verify text man hinh dang ky phat hanh the ghi no");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
 
-		log.info("TC_Step_: Click hang the, chon hang the la vang");
+		log.info("TC_1_Step: Click hang the, chon hang the la vang");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
 
-		log.info("TC_Step_: Click chon loai thanh toan phi");
+		log.info("TC_1_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
 
-		log.info("TC_Step_: Select yeu cau phat hanh the phu");
+		log.info("TC_1_Step: Select yeu cau phat hanh the phu");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 
-		log.info("TC_Step_: Nhap ho ten chu the");
+		log.info("TC_1_Step: Nhap ho ten chu the");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
 
-		log.info("TC_Step_: Click giay to tuy than");
+		log.info("TC_1_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
 
-		log.info("TC_Step_: Input so ho chieu");
+		log.info("TC_1_Step: Input so ho chieu");
 		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
 
-		log.info("TC_Step_: Click ngay cap");
+		log.info("TC_1_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
 
-		log.info("TC_Step_: Click nam");
+		log.info("TC_1_Step: Click nam");
 		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
 
-		log.info("TC_Step_: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		log.info("TC_1_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
 
-		log.info("TC_Step_: Chon nam cap");
-		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
-
-		log.info("TC_Step_: Click OK");
+		log.info("TC_1_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_Step_: Input noi cap");
+		log.info("TC_1_Step: Input noi cap");
 		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
 
-		log.info("TC_Step_: Click tiep tuc");
+		log.info("TC_1_Step: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
-
-		log.info("TC_Step_: verify text dieu kien");
-		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
-
-		log.info("TC_Step_: verify image chia se");
-		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
-
-		log.info("TC_Step_: verify image luu anh");
-		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 		Thread.sleep(2000);
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_1_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_1_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_1_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_1_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+
+		log.info("TC_1_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
 	}
 
 	@Test
 	public void TC_02_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankPlusNopTienMatBoPhatHanhThePhu() throws InterruptedException {
-		log.info("TC_Step_: Nhap thong tin man hinh dang ky");
+		log.info("TC_02_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
-		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the ghi no");
+		log.info("TC_02_Step: Verify text man hinh dang ky phat hanh the ghi no");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
 
-		log.info("TC_Step_: Click hang the, chon hang the la vang");
+		log.info("TC_02_Step: Click hang the, chon hang the la vang");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
 
-		log.info("TC_Step_: Click loại the ghi no");
+		log.info("TC_02_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
 
-		log.info("TC_Step_: Click chon loai thanh toan phi");
+		log.info("TC_02_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
 
-		log.info("TC_Step_: Click tiep tuc");
+		log.info("TC_02_Step: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_02_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
 
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_02_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
 
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_02_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_02_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 		Thread.sleep(2000);
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_02_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
 	public void TC_03_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankPlusNopTienMatBoPhatHanhThePhu() throws InterruptedException {
-		log.info("TC_Step_: Click menu header");
-		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_Step_: Click chuc nang dang ky truc tuyen");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
-
-		log.info("TC_Step_: Click giao dich tien mat/chuyen tien");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký dịch vụ ngân hàng điện tử/Đăng ký phát hành thẻ ghi nợ");
-
-		log.info("TC_Step_: Nhap thong tin man hinh dang ky");
+		log.info("TC_03_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
-		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the ghi no");
+		log.info("TC_03_Step: Verify text man hinh dang ky phat hanh the ghi no");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
 
-		log.info("TC_Step_: Click hang the, chon hang the la vang");
+		log.info("TC_03_Step: Click hang the, chon hang the la vang");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
 
-		log.info("TC_Step_: Click loại the ghi no");
+		log.info("TC_03_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
 
-		log.info("TC_Step_: Click chon loai thanh toan phi");
+		log.info("TC_03_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
 
-		log.info("TC_Step_: Click tiep tuc");
+		log.info("TC_03_Step: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_03_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
 
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_03_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
 
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_03_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_03_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 		Thread.sleep(2000);
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_03_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
 	public void TC_04_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24VISATrichNoTuDongPhatHanhThePhu() throws InterruptedException {
-		log.info("TC_Step_: Click menu header");
-		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_Step_: Click chuc nang dang ky truc tuyen");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
-
-		log.info("TC_Step_: Click giao dich tien mat/chuyen tien");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký dịch vụ ngân hàng điện tử/Đăng ký phát hành thẻ ghi nợ");
-
-		log.info("TC_Step_: Nhap thong tin man hinh dang ky");
+		log.info("TC_04_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
-		log.info("TC_Step_: Verify text man hinh dang ky phat hanh the ghi no");
+		log.info("TC_04_Step: Verify text man hinh dang ky phat hanh the ghi no");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
 
-		log.info("TC_Step_: Click hang the, chon hang the la vang");
+		log.info("TC_04_Step: Click hang the, chon hang the la vang");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
 
-		log.info("TC_Step_: Click loại the ghi no");
+		log.info("TC_04_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank Connect24 Visa");
 
-		log.info("TC_Step_: Click chon loai thanh toan phi");
+		log.info("TC_04_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
 
-		log.info("TC_Step_: Click tiep tuc");
+		log.info("TC_04_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_04_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_04_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_04_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_04_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_04_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_04_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_04_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_04_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_04_Step: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_Step_: verify man hinh dang ky thanh cong");
+		log.info("TC_04_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
 
-		log.info("TC_Step_: verify text dieu kien");
+		log.info("TC_04_Step: verify text dieu kien");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
 
-		log.info("TC_Step_: verify image chia se");
+		log.info("TC_04_Step: verify image chia se");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
 
-		log.info("TC_Step_: verify image luu anh");
+		log.info("TC_04_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
 		Thread.sleep(2000);
 
-		log.info("TC_Step_: Click button thuc hien giao dich khác");
+		log.info("TC_04_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+
+	@Test
+	public void TC_05_DangKyPhatHanhTheGhiNo_ChonHangVangUnionPayNopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_05_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_05_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_05_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
+
+		log.info("TC_05_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank UnionPay");
+
+		log.info("TC_05_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_05_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_05_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_05_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_05_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_05_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_05_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_05_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_05_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_05_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_05_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_05_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_05_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_05_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_05_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_05_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
+
+	@Test
+	public void TC_06_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24TrichNoTuDongPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_06_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_06_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_06_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
+
+		log.info("TC_06_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_06_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_06_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_06_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_06_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_06_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_06_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_06_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_06_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_06_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_06_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_06_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_06_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_06_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_06_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_06_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+
+
+	@Test
+	public void TC_07_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_07_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_07_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_07_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
+
+		log.info("TC_07_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
+
+		log.info("TC_07_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_07_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_07_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_07_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_07_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_07_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_07_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+
+	@Test
+	public void TC_08_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_08_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_08_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_08_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
+
+		log.info("TC_08_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank MasterCard");
+
+		log.info("TC_08_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_08_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_08_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_08_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_08_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_08_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_08_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+
+	@Test
+	public void TC_09_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_09_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_09_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_09_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
+
+		log.info("TC_09_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank Connect24 Visa");
+
+		log.info("TC_09_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_09_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_09_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_09_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_09_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_09_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_09_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_09_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_09_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_09_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_09_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_09_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_09_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_09_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_09_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_09_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+
+	@Test
+	public void TC_10_DangKyPhatHanhTheGhiNo_ChonHangVangUnionPayNopTienMatBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_10_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_10_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_10_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[1]);
+
+		log.info("TC_10_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank UnionPay");
+
+		log.info("TC_10_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_10_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_10_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_10_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_10_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_10_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_10_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+
+	@Test
+	public void TC_11_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_11_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_11_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_11_Step: Click hang the, chon hang the la vang");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_11_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_11_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_11_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_11_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_11_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_11_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_11_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_11_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_11_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_11_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_11_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_11_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_11_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_11_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_11_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_11_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+	
+	@Test
+	public void TC_12_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_12_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_12_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_12_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_12_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
+		
+		log.info("TC_12_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_12_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_12_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_12_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_12_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_12_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_12_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_12_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_12_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_12_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_12_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_12_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_12_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_12_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_12_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_12_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+	
+	@Test
+	public void TC_13_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_13_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_13_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_13_Step: Click hang the, chon hang the la đặc biệt");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_13_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank MasterCard");
+		
+		log.info("TC_13_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_13_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_13_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_13_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_13_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_13_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_13_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+	
+	@Test
+	public void TC_14_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24VISATrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_14_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_14_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_14_Step: Click hang the, chon hang the la đặc biệt");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_14_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank Connect24 Visa");
+		
+		log.info("TC_14_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_14_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_14_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_14_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_14_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_14_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_14_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+	
+	@Test
+	public void TC_15_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBUnionPayNopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_15_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_15_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_15_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_15_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank UnionPay");
+		
+		log.info("TC_15_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_15_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_15_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_15_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_15_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_15_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_15_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_15_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_15_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_15_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_15_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_15_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_15_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_15_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_15_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_15_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+	}
+	
+	@Test
+	public void TC_16_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_16_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_16_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_16_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+		
+		log.info("TC_16_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_16_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_16_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_16_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_16_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_16_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_16_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_16_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_16_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_16_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_16_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_16_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_16_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_16_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_16_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_16_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+	
+	@Test
+	public void TC_17_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBCardPlusTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_17_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_17_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_17_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+		
+		log.info("TC_17_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
+		
+		log.info("TC_17_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_17_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_17_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_17_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_17_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_17_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_17_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+	
+	@Test
+	public void TC_18_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_18_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_18_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_18_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+		
+		log.info("TC_18_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank MasterCard");
+		
+		log.info("TC_18_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_18_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_18_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_18_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_18_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_18_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_18_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+	
+	@Test
+	public void TC_19_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnectVISATrichNoTuDongPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_19_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_19_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_19_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_19_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank Connect24 Visa");
+		
+		log.info("TC_19_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
+
+		log.info("TC_19_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_19_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_19_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_19_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_19_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_19_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_19_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_19_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_19_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_19_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_19_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_19_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_19_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_19_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_19_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+	
+	@Test
+	public void TC_20_DangKyPhatHanhTheGhiNo_ChonHangDacBietUnionPAYNopTienMatPhatHanhThePhu() throws InterruptedException {
+		log.info("TC_20_Step: Nhap thong tin man hinh dang ky");
+		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
+
+		log.info("TC_20_Step: Verify text man hinh dang ky phat hanh the ghi no");
+		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ ghi nợ");
+
+		log.info("TC_20_Step: Click hang the, chon hang the la dac biet");
+		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
+
+		log.info("TC_20_Step: Click loại the ghi no");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank UnionPay");
+		
+		log.info("TC_20_Step: Click chon loai thanh toan phi");
+		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
+
+		log.info("TC_20_Step: Select yeu cau phat hanh the phu");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
+
+		log.info("TC_20_Step: Nhap ho ten chu the");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+
+		log.info("TC_20_Step: Click giay to tuy than");
+		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+
+		log.info("TC_20_Step: Input so ho chieu");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "3");
+
+		log.info("TC_20_Step: Click ngay cap");
+		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "4");
+
+		log.info("TC_20_Step: Click nam");
+		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+
+		log.info("TC_20_Step: Chon nam cap");
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
+
+		log.info("TC_20_Step: Click OK");
+		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_20_Step: Input noi cap");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "5");
+
+		log.info("TC_20_Step: Click tiep tuc");
+		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_20_Step: verify man hinh dang ky thanh cong");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
+
+		log.info("TC_20_Step: verify text dieu kien");
+		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "5"), Register_Online_data.Message.MESSAGE_SUCCESS);
+
+		log.info("TC_20_Step: verify image chia se");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Chia sẻ"));
+
+		log.info("TC_20_Step: verify image luu anh");
+		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
+		Thread.sleep(2000);
+
+		log.info("TC_20_Step: Click button thuc hien giao dich khác");
+		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
+
+	}
+	
 }
