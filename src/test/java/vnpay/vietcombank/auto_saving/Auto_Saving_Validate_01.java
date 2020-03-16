@@ -117,7 +117,6 @@ public class Auto_Saving_Validate_01 extends Base {
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 	}
 	
-
 	@Test
 	public void TC_01_TietKiemTuDong_KiemTraManHinhChucNang() {
 
@@ -350,19 +349,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	@Test
 	public void TC_13_TietKiemTuDong_KiemTraMacDinhSoTienQuyDoi() {
 
-		log.info("TC_13_Step_01: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-
-		log.info("TC_13_Step_02: Click vao tai khoan nguon USD dau tien tim duoc");
-		text = autoSaving.getFirstElementContainsText("USD", "com.VCB:id/tvContent2");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, text);
-		
-		log.info("TC_13_Step_03: Chon tai khoan dich ");
-		autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/TaiKhoanTietKiem");
-		savingAccount = autoSaving.getFirstOptionInList("com.VCB:id/tvContent1");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
-
-		log.info("TC_13_Step_04: Xac nhan hien thi label ty gia quy doi");
+		log.info("TC_13_Step_01: Xac nhan hien thi label ty gia quy doi");
 		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.VALIDATE.EXCHANGE_RATE_TITLE));
 		verifyTrue(autoSaving.isDynamicTextNumberCustomerDisplayed(driver, Auto_Saving_Data.VALIDATE.EXCHANGE_RATE_TITLE));
 	}

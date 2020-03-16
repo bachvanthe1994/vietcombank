@@ -119,7 +119,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	// @Test
+	 @Test
 	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
@@ -269,7 +269,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
 	}
 
-	// @Test
+	 @Test
 	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");

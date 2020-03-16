@@ -790,7 +790,7 @@ public class Auto_Saving_Flow_MK extends Base {
 	}
 	
 	@Parameters({ "otp" })
-	//@Test
+	@Test
 	public void TC_13_MoTaiKhoanTietKiem_TaiKhoanNguon_EUR(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
