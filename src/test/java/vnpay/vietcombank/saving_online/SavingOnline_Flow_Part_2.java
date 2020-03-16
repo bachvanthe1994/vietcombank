@@ -20,7 +20,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 
-public class SavingOnline_Folow_Part_1 extends Base {
+public class SavingOnline_Flow_Part_2 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -32,8 +32,8 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1 tháng", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "3 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "3 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -55,7 +55,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -137,7 +137,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -205,7 +205,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -283,7 +283,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -354,7 +354,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		log.info("TC_05_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -436,7 +436,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
+	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_06_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -504,7 +504,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -582,7 +582,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
+	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
 		log.info("TC_08_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 

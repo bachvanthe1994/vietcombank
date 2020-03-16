@@ -21,7 +21,7 @@ import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 
-public class Folow_FilmTicketBooking_Part_1 extends Base {
+public class Flow_FilmTicketBooking_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private FilmTicketBookingPageObject filmTicketBooking;
