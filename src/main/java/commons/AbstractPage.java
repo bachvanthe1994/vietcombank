@@ -211,6 +211,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -242,6 +243,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
