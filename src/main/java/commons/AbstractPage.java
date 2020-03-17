@@ -43,6 +43,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import model.TransferInVCBRecurrent;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
+import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
 
 public class AbstractPage {
 	int longTime = 30;
@@ -1576,6 +1577,36 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
+	
+	public boolean isDynamicCheckboxByCheckboxIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicID);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicID);
+		}
+		return isDisplayed;
+	}
+	
+	public boolean isDynamicImageViewByLinearLayoutIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		}
+		return isDisplayed;
+	}
+	
+	//Kiểm tra check box  bằng ID có được check khong
+    public boolean isDynamicCheckBoxByIdChecked(AppiumDriver<MobileElement> driver,String dynamicValue) {
+	boolean isChecked = false;
+	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicValue);
+	if (status == true) {
+	    isChecked = isControlSelected(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicValue);
+	}
+	return isChecked;
+    }
 
 	/* GET TEXT METHOD */
 
@@ -1724,6 +1755,13 @@ public class AbstractPage {
 		occurrences = Collections.frequency(allStatusElement, "true");
 		return occurrences;
 	}
+	
+	// Xac dinh lay so luong element trong List Element
+		public int getCountNumberOfDynamicListElements(AppiumDriver<MobileElement> driver, String... dynamicValue) {
+
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
+			return countElementNumber(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
+		}
 
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
@@ -1802,6 +1840,18 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+
+		}
+		return text;
+	}
+	
+	public String getDynamicTextButtonById(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		String text = null;
+//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
 
 		}
 		return text;
@@ -1976,6 +2026,29 @@ public class AbstractPage {
 		return text;
 
 	}
+	//Lay text dau tien trong list element
+	public String getFirstOptionInDynamicListElements(AppiumDriver<MobileElement> driver,String dynamicValue) {
+		
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
+		if (status == true) {
+			text = getTextInFirstElement(driver, 0, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
+		}
+		return text;
+	}
+	
+	public String getTextInDynamicLinelayoutById(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicID);
+		}
+		return text;
+
+	}
+	
 
 	// Chuyen tu Array sang List
 	public List<String> arrayToArrayList(String[] arr) {

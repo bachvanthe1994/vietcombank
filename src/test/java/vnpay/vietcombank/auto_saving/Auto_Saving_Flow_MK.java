@@ -991,7 +991,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_15_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_EUR);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver,"0019961175");
 
 		log.info("TC_15_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");

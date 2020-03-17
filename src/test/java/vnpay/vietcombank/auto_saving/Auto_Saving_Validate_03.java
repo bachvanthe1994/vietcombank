@@ -201,6 +201,7 @@ public class Auto_Saving_Validate_03 extends Base {
 		
 		log.info("TC_02_Step_06: Xac nhan button Tim Kiem hien thi va enable");
 		verifyTrue(autoSaving.isDynamicButtonByIdEnable(driver, "com.VCB:id/btSearch"));
+		verifyEquals(autoSaving.getDynamicTextButtonById(driver, "com.VCB:id/btSearch"), "Tìm kiếm");
 
 		log.info("TC_02_Step_07: Click button Back");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -246,6 +247,7 @@ public class Auto_Saving_Validate_03 extends Base {
 		
 		log.info("TC_04_Step_05: Xac nhan hien thi button Huy");
 		verifyTrue(autoSaving.isDynamicTextDetailByID(driver, "com.VCB:id/tvHuy"));
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvHuy"), "Hủy");
 	
 		log.info("TC_04_Step_06: Xac nhan hien thi Tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTaiKhoanTietKiemDes"), "Tài khoản tiết kiệm");

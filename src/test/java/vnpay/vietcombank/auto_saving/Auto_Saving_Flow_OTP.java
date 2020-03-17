@@ -510,7 +510,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 		log.info("TC_08_Step_02: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
 		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 
 		log.info("TC_08_Step_03: Chon tai khoan tiet kiem");
@@ -993,7 +993,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_15_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_EUR);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "0019961175");
 
 		log.info("TC_15_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
