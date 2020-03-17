@@ -20,7 +20,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 
-public class SavingOnline_Folow_Part_1 extends Base {
+public class SavingOnline_Flow_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -206,8 +206,8 @@ public class SavingOnline_Folow_Part_1 extends Base {
 
 	@Test
 	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
-		String savingDate = getForwardDate(0);
-		String expiredDate = getForwardMonthAndForwardDay(1, 0);
+		String savingDate = "";
+		String expiredDate = "";
 
 		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
 		homePage.scrollDownToText(driver, "Tín dụng");
@@ -227,7 +227,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_06_Kiem tra man hinh xac thuc thong tin");
 		log.info("TC_03_06_1: Kiem tra tai khoan tiet kiem");
@@ -240,12 +240,13 @@ public class SavingOnline_Folow_Part_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
 
 		log.info("TC_03_06_4: Kiem tra lai suat");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
 
 		log.info("TC_03_06_5: Kiem tra ngay gui tien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		savingDate = transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền");
+		verifyTrue(checkDateLessThanNow(savingDate));
 
 		log.info("TC_03_06_6: Kiem tra ngay den han");
+		expiredDate = getForwardMonthAndForwardDayFolowDate(savingDate, 1, 0);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
 
 		log.info("TC_03_06_7: Kiem tra so tien gui goc");
@@ -504,8 +505,8 @@ public class SavingOnline_Folow_Part_1 extends Base {
 
 	@Test
 	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
-		String savingDate = getForwardDate(0);
-		String expiredDate = getForwardMonthAndForwardDay(3, 0);
+		String savingDate = "";
+		String expiredDate = "";
 
 		log.info("TC_07_1_Click Tat toan tai khoan tiet kiem");
 		homePage.scrollDownToText(driver, "Tín dụng");
@@ -525,7 +526,7 @@ public class SavingOnline_Folow_Part_1 extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_06_Kiem tra man hinh xac thuc thong tin");
 		log.info("TC_07_06_1: Kiem tra tai khoan tiet kiem");
@@ -538,12 +539,13 @@ public class SavingOnline_Folow_Part_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info1.term.toLowerCase());
 
 		log.info("TC_07_06_4: Kiem tra lai suat");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
 
 		log.info("TC_07_06_5: Kiem tra ngay gui tien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		savingDate = transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền");
+		verifyTrue(checkDateLessThanNow(savingDate));
 
 		log.info("TC_07_06_6: Kiem tra ngay den han");
+		expiredDate = getForwardMonthAndForwardDayFolowDate(savingDate, 3, 0);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
 
 		log.info("TC_07_06_7: Kiem tra so tien gui goc");

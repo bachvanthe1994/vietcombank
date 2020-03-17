@@ -26,7 +26,7 @@ public class Validation_OTP_Charity extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 	String phoneNumber = "";
-	
+
 	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -43,7 +43,7 @@ public class Validation_OTP_Charity extends Base {
 		login.Global_login(phone, pass, opt);
 
 		phoneNumber = phone;
-		
+
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
@@ -88,7 +88,7 @@ public class Validation_OTP_Charity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.TRANSACTION_VALIDATION));
 
 		log.info("TC_01_02_Kiem tra text Ma OTP da duoc gui den SDT ...");
-		verifyEquals(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phoneNumber.substring(0, 4) + "***" + phoneNumber.substring(7, 10));
+		verifyEquals(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), "Quý khách vui lòng nhập mã OTP đã được gửi về số điện thoại " + phoneNumber.substring(0, 3) + "*****" + phoneNumber.substring(8, 10));
 
 		log.info("TC_01_03_Kiem tra button Tiep tuc");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Tiếp tục"));

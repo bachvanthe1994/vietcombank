@@ -24,7 +24,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	private HomePageObject home;
 	private VCBAutoDebitPageObject vcbAutoDebit;
 	
-	private String sourceAccountMoney,departmentUnit,hostContact, address, transactionID;
+	private String departmentUnit,hostContact, address, transactionID;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -53,7 +53,6 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		sourceAccountMoney = vcbAutoDebit.getMoneyByAccount(driver, "Số dư khả dụng");
 		
 		log.info("TC_01_Step_03: Chon loai dich vu 'Hoa don tien dien'");
 		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
@@ -135,41 +134,37 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		
 		log.info("TC_01_Step_28: Hien thi ma giao dich");
 		transactionID = vcbAutoDebit.getDynamicTextByLabel(driver, "Mã giao dịch");
+	
+		log.info("TC_01_Step_29: An tiep button 'Thuc hien giao dich moi'");
+		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		
+		log.info("TC_01_Step_30: Chon tai khoan nguon");
+		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		log.info("TC_01_Step_31: Chon loai dich vu 'Hoa don tien dien'");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
+		
+		log.info("TC_01_Step_32: Chon nha cung cap 'EVN mien Trung'");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
+		
+		log.info("TC_01_Step_33: Nhap Ma Khach Hang");
+		vcbAutoDebit.inputToDynamicEditviewByLinearlayoutId(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01, "com.VCB:id/layoutMaHoaDon");
+		
+		log.info("TC_01_Step_34: Click checkbox");
+		vcbAutoDebit.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
+		
+		log.info("TC_01_Step_35: Click Tiep tuc");
+		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		
+		log.info("TC_01_Step_36: Xac nhan hien thi thong bao da dang ky dich vu");
+		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VCBAuto_Debit_Data.TEXT.REGISTED_MESSAGE);
+		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_01_Step_37: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
-		
-//		log.info("TC_01_Step_29: An tiep button 'Thuc hien giao dich moi'");
-//		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-//		
-//		log.info("TC_01_Step_30: Chon tai khoan nguon");
-//		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-//		sourceAccountMoney = vcbAutoDebit.getMoneyByAccount(driver, "Số dư khả dụng");
-//		
-//		log.info("TC_01_Step_31: Chon loai dich vu 'Hoa don tien dien'");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
-//		
-//		log.info("TC_01_Step_32: Chon nha cung cap 'EVN mien Trung'");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
-//		
-//		log.info("TC_01_Step_33: Nhap Ma Khach Hang");
-//		vcbAutoDebit.inputToDynamicEditviewByLinearlayoutId(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01, "com.VCB:id/layoutMaHoaDon");
-//		
-//		log.info("TC_01_Step_34: Click checkbox");
-//		vcbAutoDebit.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
-//		
-//		log.info("TC_01_Step_35: Click Tiep tuc");
-//		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-//		
-//		log.info("TC_01_Step_36: Xac nhan hien thi thong bao da dang ky dich vu");
-//		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VCBAuto_Debit_Data.TEXT.REGISTED_MESSAGE);
-//		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-//		
-//		log.info("TC_01_Step_37: Click back ve man hinh chinh");
-//		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 	
 	@Parameters ({"otp"})
@@ -278,38 +273,35 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_02_Step_28: Hien thi ma giao dich");
 		transactionID = vcbAutoDebit.getDynamicTextByLabel(driver, "Mã giao dịch");
 		
-		log.info("TC_01_Step_37: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		log.info("TC_02_Step_29: An tiep button 'Thuc hien giao dich moi'");
+		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-//		log.info("TC_02_Step_29: An tiep button 'Thuc hien giao dich moi'");
-//		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-//		
-//		log.info("TC_02_Step_30: Chon loai dich vu 'Hoa don tien dien'");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
-//		
-//		log.info("TC_02_Step_31: Chon nha cung cap 'EVN mien Trung'");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
-//		
-//		log.info("TC_02_Step_31: Nhap Ma Khach Hang");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/thongTinMaKhachHang");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01 +" - "+ hostContact);
-//		
-//		log.info("TC_02_Step_32: Xac nhan hien thi dung don vi truc thuoc");
-//		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Đơn vị trực thuộc"), departmentUnit);
-//		
-//		log.info("TC_02_Step_33: Xac nhan hien thi dung chu hop dong");
-//		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
-//		
-//		log.info("TC_02_Step_34: Xac nhan hien thi dung dia chi");
-//		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ"), address);
-//		
-//		log.info("TC_02_Step_35: Xac nhan hien thi dung so tai khoan");
-//		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Số tài khoản"), Account_Data.Valid_Account.ACCOUNT1);
-//		
-//		log.info("TC_02_Step_36: Click back ve man hinh chinh");
-//		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		log.info("TC_02_Step_30: Chon loai dich vu 'Hoa don tien dien'");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
+		
+		log.info("TC_02_Step_31: Chon nha cung cap 'EVN mien Trung'");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
+		
+		log.info("TC_02_Step_31: Nhap Ma Khach Hang");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/thongTinMaKhachHang");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01 +" - "+ hostContact);
+		
+		log.info("TC_02_Step_32: Xac nhan hien thi dung don vi truc thuoc");
+		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Đơn vị trực thuộc"), departmentUnit);
+		
+		log.info("TC_02_Step_33: Xac nhan hien thi dung chu hop dong");
+		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
+		
+		log.info("TC_02_Step_34: Xac nhan hien thi dung dia chi");
+		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ"), address);
+		
+		log.info("TC_02_Step_35: Xac nhan hien thi dung so tai khoan");
+		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Số tài khoản"), Account_Data.Valid_Account.ACCOUNT1);
+		
+		log.info("TC_02_Step_36: Click back ve man hinh chinh");
+		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -379,20 +371,20 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_01_Step_37: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 		
-//		log.info("TC_02_Step_29: An tiep button 'Thuc hien giao dich moi'");
-//		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-//		
-//		log.info("TC_03_Step_19: Chon loai dich vu 'Hoa don tien dien'");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
-//		
-//		log.info("TC_03_Step_20: Chon nha cung cap 'EVN mien Trung'");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
-//		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
-//		
-//		log.info("TC_03_Step_21: Xac nhan ma khach hang khong con trong dropdown");
-//		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/thongTinMaKhachHang");
-//		verifyTrue(vcbAutoDebit.isDynamicMessageAndLabelTextUndisplayed(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01 +" - "+ hostContact));
+		log.info("TC_02_Step_29: An tiep button 'Thuc hien giao dich moi'");
+		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		
+		log.info("TC_03_Step_19: Chon loai dich vu 'Hoa don tien dien'");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutDichVu");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
+		
+		log.info("TC_03_Step_20: Chon nha cung cap 'EVN mien Trung'");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
+		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
+		
+		log.info("TC_03_Step_21: Xac nhan ma khach hang khong con trong dropdown");
+		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/thongTinMaKhachHang");
+		verifyTrue(vcbAutoDebit.isDynamicMessageAndLabelTextUndisplayed(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01 +" - "+ hostContact));
 	}
 	
 	@AfterClass(alwaysRun = true)

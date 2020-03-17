@@ -66,7 +66,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
 		log.info("TC_01_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -333,7 +333,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
 		log.info("TC_98_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_98_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");

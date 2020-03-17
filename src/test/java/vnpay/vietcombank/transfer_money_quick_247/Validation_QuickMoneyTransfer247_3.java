@@ -122,6 +122,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	}
 
 	@Test
+	//Lỗi app, không hiển thị theo cấp X10, X100, X1000
 	public void TC_35_KiemTraHienThiGoiYNhanhVND() {
 		log.info("TC_35_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -199,7 +200,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
 
 		log.info("TC_39_Kiem tra label ty gia quy doi tham khao");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "1 USD ~ 30,000 VND"));
+		verifyTrue(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvTiGia"));
 	}
 
 	@Test

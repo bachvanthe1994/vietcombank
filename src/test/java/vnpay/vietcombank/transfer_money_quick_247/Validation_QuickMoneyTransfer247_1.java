@@ -50,7 +50,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
-		log.info("TC_00_Step_: Click menu header");
+		/*log.info("TC_00_Step_: Click menu header");
 		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_00Step_: Click cai dat");
@@ -65,18 +65,17 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_00_Step_: delete danh sach co tu truoc");
 		setupContact.deleteContactReceiver();
-
+		
 		log.info("TC_00_Step_: Add contact 1");
 		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[0], SetupContact_Data.UI.ACCOUNT[0]);
 
 		log.info("TC_00_Step_: Add contact 2");
 		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1], SetupContact_Data.UI.ACCOUNT[1]);
-
-		log.info("TC_00_Step_: back lai man hinh danh ba");
+	log.info("TC_00_Step_: back lai man hinh danh ba");
 		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_00_Step_: back lai man hinh home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");*/
 	}
 
 	@Test
@@ -146,7 +145,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
 		log.info("TC_05_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_05_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -159,6 +158,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	}
 
 	@Test
+	//Lỗi app, hiển thị tài khoản nguồn mặc định sai
 	public void TC_06_KiemTraHienThiTaiKhoanMacDinh() {
 		log.info("TC_06_01_Kiem tra hien thi tai khoan mac dinh");
 		actualDefaultAccount = transferMoney.getTextDynamicDefaultSourceAccount(driver, "Tài khoản nguồn");
@@ -168,7 +168,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_07_LayDanhSachTaiKhoanNguon() {
 		log.info("TC_07_Step_Cho phep chon tai khoan thanh toan khac tai khoan mac dinh");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[3]);
 
 		log.info("TC_07_Lay danh sach gia tri loai chuyen tien");
 		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent1");
@@ -191,7 +191,6 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		log.info("TC_08_Step_Chon lai ve man hinh tai khoan mac dinh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
-
 	}
 
 	@Test
@@ -264,6 +263,9 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	public void TC_16_TaiKhoanNhanKhongTonTai() {
 		log.info("TC_16_Step_Invalid nhap so tai khoan nguoi nhan khong ton tai");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.INVALID_ACC_ACCEPT, "Thông tin người hưởng", "1");
+		
+		log.info("TC_24_Step_Nhap so tien chuyen");
+		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
 
 		log.info("TC_16_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");

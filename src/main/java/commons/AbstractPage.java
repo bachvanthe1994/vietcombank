@@ -211,6 +211,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -242,6 +243,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -939,6 +941,14 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 		}
 	}
+	
+	public void clickToDynamicGroupviewByListviewId(AppiumDriver<MobileElement> driver, String... dynamicIndex1ID2) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
+		}
+	}
 
 
 	public void clickToDynamicDropDownListTextViewByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndID) {
@@ -1089,7 +1099,7 @@ public class AbstractPage {
 	// Click select năm, sử dụng scroll up
 	public void clickToTextListview(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
-		scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW);
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
@@ -2035,7 +2045,7 @@ public class AbstractPage {
 
 	}
 
-	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);

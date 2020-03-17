@@ -48,7 +48,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
-		log.info("TC_00_Step_: Click menu header");
+	/*	log.info("TC_00_Step_: Click menu header");
 		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_00Step_: Click cai dat");
@@ -74,10 +74,10 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_00_Step_: back lai man hinh home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");*/
 	}
 
-	@Test
+/*	@Test
 	public void TC_19_VerifyDefaultDanhBaThuHuong() {
 		log.info("TC_19_Step_Scoll den man hinh chuyen tien nhanh");
 		transferMoney.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -160,13 +160,13 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 
 		log.info("TC_23_check ngan hang thu huong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, Account_Data.Valid_Account.BANK[0]));
-	}
+	}*/
 
 	@Test
 	public void TC_24_NganHangHuongBoTrong() {
-		log.info("TC_24_Step_button back");
+		/*log.info("TC_24_Step_button back");
 		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-
+*/
 		log.info("TC_24_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
@@ -185,7 +185,7 @@ public class Validation_QuickMoneyTransfer247_2 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
 
 		log.info("TC_24_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_24_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
