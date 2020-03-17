@@ -405,7 +405,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_06_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_06_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -776,7 +776,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_12_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_12_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -1147,7 +1147,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_18_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_18_6_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
