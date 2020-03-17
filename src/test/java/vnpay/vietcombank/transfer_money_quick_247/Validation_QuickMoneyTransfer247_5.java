@@ -61,6 +61,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	}
 
 	@Test
+	//Lỗi app, hiển thị text null chuyển tiền
 	public void TC_65_KiemTraHienThiTextNoiDung() {
 		log.info("TC_65_Kiem tra label noi dung");
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), "Nội dung");
@@ -241,10 +242,14 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 
 		log.info("TC_74_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
+		
+		log.info("TC_01_Step_Chon phuong thuc xac thuc");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
 
 		log.info("TC_74_Step_Verify so tien phi");
 		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_OTP_VND);
-
+		
 		log.info("TC_74_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]));
 	}
@@ -341,7 +346,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+@Test
 	public void TC_79_ChonTaiKhoanDongChuSoHuu() {
 		log.info("TC_79_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -374,6 +379,9 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 
 		log.info("TC_80_Step_Nhap so tai khoan chuyen khong hop le");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO_INVALID, "Thông tin người hưởng", "1");
+		
+		log.info("TC_80_Step_Nhap noi dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_80_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");

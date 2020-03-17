@@ -21,7 +21,8 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 	private LogInPageObject login;
 	private RegisterOnlinePageObject registerOnline;
 	String phoneNumber = "";
-
+	String nameCustomer ="";
+	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
@@ -38,6 +39,9 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 	public void TC_01_DangKyDichVuNganHangDienTu_ManHinhDangKyDVNHDT() throws InterruptedException {
 		log.info("TC_01_Step: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		
+		log.info("TC_01_Step: Lay ten user");
+		nameCustomer = registerOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
 
 		log.info("TC_01_Step: Click chuc nang dang ky truc tuyen");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
@@ -49,7 +53,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký dịch vụ ngân hàng điện tử");
 
 		log.info("TC_01_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), nameCustomer);
 
 		log.info("TC_01_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -144,7 +148,7 @@ public void TC_03_DangKyPhatHanhTheGhiNo_ManHinhThongTinKhachHang() throws Inter
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký phát hành thẻ ghi nợ");
 
 	log.info("TC_03_Step: verify ten khach hang, defaul fill ten khach hang");
-	verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), Register_Online_data.Valid_Account.ACC_NAME);
+	verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), nameCustomer);
 
 	log.info("TC_03_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -196,7 +200,7 @@ public void TC_04_DangKyPhatHanhTheGhiNo_ChonHangChuanTheGhiNoVCBconnectNopTienM
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_04_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_04_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -304,7 +308,7 @@ public void TC_06_DangKyPhatHanhTheGhiNo_ChonHangChuanVCBMasterCardNopTienMat() 
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_06_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_06_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -371,7 +375,7 @@ public void TC_07_DangKyPhatHanhTheGhiNo_ChonHangChuanVCBConnect24VISATrichNoTuD
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_07_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_07_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -438,7 +442,7 @@ public void TC_08_DangKyPhatHanhTheGhiNo_ChonHangChuanUnionPAYNopTienMat() throw
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_08_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_08_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -503,7 +507,7 @@ public void TC_09_DangKyPhatHanhTheGhiNo_ChonHangChuanVCBConnect24NopTienMatPhat
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_09_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_09_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -610,7 +614,7 @@ public void TC_11_DangKyPhatHanhTheGhiNo_ChonHangChuanVCBMasterCardTrichNoTuDong
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_11_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_11_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -717,7 +721,7 @@ public void TC_13_DangKyPhatHanhTheGhiNo_ChonHangChuanUnionPAYNopTienMatBoPhatHa
 	registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Yêu cầu phát hành thẻ phụ");
 	
 	log.info("TC_13_Step: Nhap ho ten chu the");
-	registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+	registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 	
 	log.info("TC_13_Step: Click giay to tuy than");
 	registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");

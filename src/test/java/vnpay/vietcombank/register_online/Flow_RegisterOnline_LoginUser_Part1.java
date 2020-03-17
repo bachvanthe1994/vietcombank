@@ -20,6 +20,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	private LogInPageObject login;
 	private RegisterOnlinePageObject registerOnline;
 	String phoneNumber = "";
+	String nameCustomer = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -38,6 +39,9 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_01_Step: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
+		log.info("TC_01_Step: Lay ten user");
+		nameCustomer = registerOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
+
 		log.info("TC_01_Step: Click chuc nang dang ky truc tuyen");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
 
@@ -48,7 +52,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Nộp tiền");
 
 		log.info("TC_01_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), nameCustomer);
 
 		log.info("TC_01_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
@@ -70,10 +74,10 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_01_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
-		
+
 		log.info("TC_01_Step: Nhap email");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
-		
+
 		log.info("TC_01_Step: Click chon so tai khoan nguoi nhan");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtContent2");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0]);
@@ -86,6 +90,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_01_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
+		Thread.sleep(10000);
 
 		log.info("TC_01_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
@@ -103,13 +108,13 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_02_GiaoDichRutTienVNDThanhCong() throws InterruptedException {
 		log.info("TC_02_Step: Click rut tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
 
 		log.info("TC_02_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), nameCustomer);
 
 		log.info("TC_02_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
@@ -134,7 +139,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_02_Step: Nhap email");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
-		
+
 		log.info("TC_02_Step: Click chon so tai khoan nguoi nhan");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtContent2");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1]);
@@ -171,8 +176,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-
-@Test
+	@Test
 	public void TC_03_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMat() throws InterruptedException {
 		log.info("TC_03_Step: Click giao dich Gui/rut tiết kiệm");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi/rút tiết kiệm");
@@ -181,7 +185,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_03_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_03_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -201,7 +205,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_03_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
-		
+
 		log.info("TC_03_Step: Nhap noi cap");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
 
@@ -213,7 +217,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[0]);
 
 		log.info("TC_03_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "12");
+		registerOnline.clickToDynamicCloseIcon(driver, "Kỳ hạn");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
 
 		log.info("TC_03_Step: Nhap so tien gui");
@@ -255,7 +259,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_04_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_04_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -329,7 +333,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_05_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_05_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -355,7 +359,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_05_Step: Nhap email");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
-
 
 		log.info("TC_05_Step: Chon hinh thuc gui tien co ky han");
 		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
@@ -409,12 +412,12 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 	@Test
 	public void TC_06_MoTheTietKiem_TheTietKiemCoKyHanChuyenKhoanVaTienMatNhanGoc() throws InterruptedException {
-		
+
 		log.info("TC_06_Step: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_06_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_06_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -504,7 +507,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_07_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_07_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -580,7 +583,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_08_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_08_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -656,7 +659,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
 
 		log.info("TC_09_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_09_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -722,12 +725,12 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 	@Test
 	public void TC_10_RutSoTietKiem_RutGocPhuongThucChuyenKhoanVaTienMat() throws InterruptedException {
-	
+
 		log.info("TC_10_Step: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
 
 		log.info("TC_10_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "2"), nameCustomer);
 
 		log.info("TC_10_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -772,7 +775,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_10_Step: check text da chon la chuyen khoan");
 		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan", "0"), "Chuyển khoản");
-
 		log.info("TC_10_Step: Nhap so tien mat nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Tiền mặt", "1");
 
@@ -780,7 +782,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Chuyển khoản", "1");
 
 		log.info("TC_10_Step: Nhap ten chu tai khoan");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chuyển khoản", "2");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chuyển khoản", "2");
 
 		log.info("TC_10_Step: Nhap so tien nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Chuyển khoản", "3");
@@ -813,7 +815,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản thanh toán");
 
 		log.info("TC_11_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), nameCustomer);
 
 		log.info("TC_11_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -846,7 +848,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 	}
 
-@Test
+	@Test
 	public void TC_12_MoTaiKhoanThanhToan_ManHinhDangKyDichVuDienTu() throws InterruptedException {
 		log.info("TC_12_Step: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
@@ -889,7 +891,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicTextIndex(driver, "4", "Yêu cầu phát hành thẻ phụ");
 
 		log.info("TC_13_Step: Nhap ho ten chu the");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 
 		log.info("TC_13_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -948,7 +950,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản thanh toán");
 
 		log.info("TC_14_Step: verify ten khach hang, defaul fill ten khach hang");
-		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), Register_Online_data.Valid_Account.ACC_NAME);
+		verifyEquals(registerOnline.getDynamicTextInInputBoxByHeader(driver, "Thông tin khách hàng", "1"), nameCustomer);
 
 		log.info("TC_14_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -1020,7 +1022,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "02 thẻ");
 
 		log.info("TC_14_Step: Nhap ho ten chu the");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACC_NAME, "Chủ thẻ phụ 1", "1");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, nameCustomer, "Chủ thẻ phụ 1", "1");
 
 		log.info("TC_14_Step: Click giay to tuy than");
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
@@ -1066,7 +1068,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_14_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
-		
+
 		log.info("TC_13_Step: Click noi cap");
 		registerOnline.clickToTextViewDate(driver, "Chủ thẻ phụ 2", "5");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
