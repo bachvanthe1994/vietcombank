@@ -13,6 +13,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
 
@@ -91,7 +92,7 @@ public class Validation_HotelBooking_Part_5 extends Base {
 
 		log.info("TC_01_12_00_Chon tai khoan nguon");
 		hotelBooking.clickToDynamicDropDown("Tài khoản nguồn");
-		hotelBooking.clickToDynamicTextOrButtonLink("0541001555240");
+		hotelBooking.clickToDynamicTextOrButtonLink(Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_12_01_Kiem tra Ho ten");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Họ tên"), "Duc Do");

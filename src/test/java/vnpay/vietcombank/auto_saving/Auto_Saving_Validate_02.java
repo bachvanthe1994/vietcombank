@@ -377,7 +377,6 @@ public class Auto_Saving_Validate_02 extends Base {
 
 		log.info("TC_12_Step_01: Nhap du ki tu vao o nhap OTP");
 		autoSaving.inputToDynamicOtp(driver, otp, "Tiếp tục");
-		;
 
 		log.info("TC_12_Step_02: An tiep button 'Tiep tuc'");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
