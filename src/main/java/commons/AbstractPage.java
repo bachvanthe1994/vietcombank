@@ -182,6 +182,7 @@ public class AbstractPage {
 
 		for (int i = 0; i < 20; i++) {
 			overRideTimeOut(driver, 2);
+			driver.getPageSource();
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
@@ -211,6 +212,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -242,6 +244,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -939,7 +942,7 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 		}
 	}
-	
+
 	public void clickToDynamicGroupviewByListviewId(AppiumDriver<MobileElement> driver, String... dynamicIndex1ID2) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
@@ -947,7 +950,6 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
 		}
 	}
-
 
 	public void clickToDynamicDropDownListTextViewByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndID) {
 		boolean status = false;
@@ -1216,7 +1218,6 @@ public class AbstractPage {
 	}
 
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
-
 
 	public void inputToDynamicPopupPasswordInput(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
@@ -1724,7 +1725,6 @@ public class AbstractPage {
 		occurrences = Collections.frequency(allStatusElement, "true");
 		return occurrences;
 	}
-
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
