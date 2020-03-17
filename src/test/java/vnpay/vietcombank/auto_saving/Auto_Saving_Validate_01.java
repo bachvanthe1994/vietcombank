@@ -474,7 +474,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_19_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_19_6_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");

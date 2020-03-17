@@ -383,7 +383,7 @@ public class Auto_Saving_Validate_03 extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_10_6_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
