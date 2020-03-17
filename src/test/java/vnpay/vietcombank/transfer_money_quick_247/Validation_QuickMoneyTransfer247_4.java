@@ -59,7 +59,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
 
 		log.info("TC_48_Kiem tra label ty gia quy doi tham khao");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "1 EUR ~ 27,006 VND"));
+		verifyTrue(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvTiGia"));
 	}
 
 	@Test
@@ -201,8 +201,8 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_057_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Nội dung");
+		log.info("TC_57_Step_Nhap noi dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
 		log.info("TC_057_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
@@ -221,7 +221,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[3]);
 
 		log.info("TC_58_Nhap so tien");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_VND, "Thông tin giao dịch", "1");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Thông tin giao dịch", "1");
 
 		log.info("TC_58_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
