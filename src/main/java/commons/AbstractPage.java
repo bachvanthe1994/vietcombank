@@ -999,6 +999,7 @@ public class AbstractPage {
 	// Click radio theo text
 	public void clickToImageRadio(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
