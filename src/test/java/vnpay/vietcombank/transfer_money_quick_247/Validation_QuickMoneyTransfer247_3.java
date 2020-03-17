@@ -200,7 +200,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Tỷ giá quy đổi tham khảo"));
 
 		log.info("TC_39_Kiem tra label ty gia quy doi tham khao");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "1 USD ~ 30,000 VND"));
+		verifyTrue(transferMoney.isDynamicSuggestedMoneyDisplayed(driver, "com.VCB:id/tvTiGia"));
 	}
 
 	@Test

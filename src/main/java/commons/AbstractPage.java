@@ -2043,7 +2043,7 @@ public class AbstractPage {
 
 	}
 
-	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
