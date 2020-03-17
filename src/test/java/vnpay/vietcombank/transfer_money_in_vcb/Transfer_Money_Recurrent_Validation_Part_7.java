@@ -96,7 +96,7 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 	}
 
 	@Test
-	public void TC_01_KisemTraButton_LuuAnh() {
+	public void TC_01_KiemTraButton_LuuAnh() {
 		log.info("TC_01_01_Click nut Luu anh");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Lưu ảnh");
 		
