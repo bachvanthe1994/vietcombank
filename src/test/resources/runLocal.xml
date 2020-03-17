@@ -27,14 +27,10 @@
 		<parameter name="otp" value="123456" />
 		<classes>
 
-<class name="vnpay.vietcombank.transfer_money_charity.Validation_Amount_Charity" />
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Continue_Button_Charity" />
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_OTP_Charity" />
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Password_Charity" />
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_1" />
-			<class name="vnpay.vietcombank.transfer_money_charity.Validation_Transfer_Money_Charity_Part_2" />
-
-
+<!-- 		<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_01" /> -->
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_02" /> -->
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_03" /> -->
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Validate_04" />
 
 		</classes>
 	</test>

@@ -87,7 +87,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 		mobileTopup.inputIntoEditTextByID(driver, "4nh5jh6nb7", "com.VCB:id/mobile");
 
 		log.info("TC_03_Step_02: Xac nhan chi hien thi chu so o o nhap so dien thoai");
-		verifyEquals(mobileTopup.getTextInEditTextFieldByID(driver, "com.VCB:id/mobile"), "4567");
+		verifyEquals(mobileTopup.getTextInEditTextFieldByID(driver, "com.VCB:id/mobile"), "");
 	}
 
 	@Test
