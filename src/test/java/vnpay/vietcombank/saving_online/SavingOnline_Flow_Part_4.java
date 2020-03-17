@@ -403,7 +403,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), info1.term);
 
 		log.info("TC_05_8_3_Kiem tra lai suat");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "4.5%/Năm");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "4.6%/Năm");
 
 		log.info("TC_05_8_4_Kiem tra so tien gui");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền gửi"), addCommasToDouble(info1.money) + " USD");
