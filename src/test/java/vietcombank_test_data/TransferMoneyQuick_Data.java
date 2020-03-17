@@ -3,7 +3,7 @@ package vietcombank_test_data;
 public class TransferMoneyQuick_Data {
 
 	public static class TransferQuick {
-		public static final String[] OPTION_TRANSFER = { "Chuyển tiền nhanh qua số tài khoản", "Chuyển tiền nhanh qua số thẻ" };
+		public static final String[] OPTION_TRANSFER = { "Chuyển nhanh qua số tài khoản", "Chuyển nhanh qua số thẻ" };
 		public static final String ACCOUNT_TO_INVALID = "0129837294abc";
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };

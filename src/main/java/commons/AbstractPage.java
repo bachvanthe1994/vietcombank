@@ -1089,7 +1089,7 @@ public class AbstractPage {
 	// Click select năm, sử dụng scroll up
 	public void clickToTextListview(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
-		scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW);
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LISTVIEW, dynamicText);

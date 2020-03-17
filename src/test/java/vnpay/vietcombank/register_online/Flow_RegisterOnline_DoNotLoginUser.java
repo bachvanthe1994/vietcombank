@@ -51,7 +51,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_01_Step: Click chon CMT");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
-		log.info("TC_01_Step: Input so ho chieu");
+		log.info("TC_01_Step: Input so giay to");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_01_Step: Click ngay cap");
@@ -72,7 +72,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 		
 		log.info("TC_01_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
 		
 		log.info("TC_01_Step: Nhap so tai khoan nhan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin tài khoản ghi nợ", "1");
@@ -124,8 +124,8 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_02_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_02_Step: Click chon ho chieu");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+		log.info("TC_02_Step: Click chon CMT");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_02_Step: Input so ho chieu");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
@@ -142,11 +142,13 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_02_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_02_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Loại xác nhận", "3");
+		log.info("TC_02_Step: Click noi cap");
+		registerOnline.clickToDynamicComboboxText(driver, "Giấy tờ tùy thân", "3");
+		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
 		log.info("TC_02_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
 
 		log.info("TC_02_Step: Nhap so tai khoan nhan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin tài khoản ghi nợ", "1");
@@ -205,10 +207,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_03_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_03_Step: Click chon ho chieu");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+		log.info("TC_03_Step: Click chon CMT");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
-		log.info("TC_03_Step: Input so ho chieu");
+		log.info("TC_03_Step: Input so giay to");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_03_Step: Click ngay cap");
@@ -223,11 +225,13 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_03_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_03_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Loại xác nhận", "3");
+		log.info("TC_03_Step: Click noi cap");
+		registerOnline.clickToDynamicComboboxText(driver, "Giấy tờ tùy thân", "3");
+		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
 		log.info("TC_03_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
 
 		log.info("TC_03_Step: Nhap so tai khoan phan ghi co");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Thông tin tài khoản ghi có", "3");
@@ -280,10 +284,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_04_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
 
-		log.info("TC_04_Step: Click chon ho chieu");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+		log.info("TC_04_Step: Click chon CMT");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
-		log.info("TC_04_Step: Input so ho chieu");
+		log.info("TC_04_Step: Input so giay to");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_04_Step: Click ngay cap");
@@ -298,11 +302,13 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_04_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_04_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Loại xác nhận", "3");
+		log.info("TC_04_Step: Click noi cap");
+		registerOnline.clickToDynamicComboboxText(driver, "Giấy tờ tùy thân", "3");
+		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
 		log.info("TC_04_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Loại xác nhận", "4");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
 
 		log.info("TC_04_Step: Nhap so tai khoan phan ghi nợ");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Thông tin tài khoản ghi nợ", "3");

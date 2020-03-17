@@ -122,6 +122,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 	}
 
 	@Test
+	//Lỗi app, không hiển thị theo cấp X10, X100, X1000
 	public void TC_35_KiemTraHienThiGoiYNhanhVND() {
 		log.info("TC_35_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
