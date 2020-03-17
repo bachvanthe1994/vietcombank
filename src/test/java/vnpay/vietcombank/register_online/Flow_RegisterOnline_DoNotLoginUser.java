@@ -10,13 +10,11 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import pageObjects.LogInPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import vietcombank_test_data.Register_Online_data;
 
 public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	AppiumDriver<MobileElement> driver;
-	private LogInPageObject login;
 	private RegisterOnlinePageObject registerOnline;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -25,7 +23,6 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		login = PageFactoryManager.getLoginPageObject(driver);
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 
 		registerOnline.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");

@@ -797,7 +797,7 @@ public class AbstractPage {
 	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		}
