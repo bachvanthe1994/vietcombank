@@ -32,7 +32,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	}
 
 	@Test
-	public void TC_01_GiaoDichChuyenTienTrongVietComBankThanhCong() throws InterruptedException {
+	public void TC_01_GiaoDichChuyenTienTrongVietComBankThanhCong() {
 		log.info("TC_01_Step: Click dang ky truc tuyen");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
 
@@ -95,7 +95,6 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_01_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
-		Thread.sleep(5000);
 		log.info("TC_01_Step: verify man hinh dang ky thanh cong");
 		System.out.print(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"));
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
@@ -114,7 +113,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	}
 
 	@Test
-	public void TC_02_GiaoDichChuyenTienNgoaiVietComBankThanhCong() throws InterruptedException {
+	public void TC_02_GiaoDichChuyenTienNgoaiVietComBankThanhCong() {
 		log.info("TC_02_Step: Click chuyen tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền");
 
@@ -178,7 +177,6 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_02_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
-		Thread.sleep(5000);
 		log.info("TC_02_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
 
@@ -197,7 +195,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	}
 
 	@Test
-	public void TC_03_GiaoDichNopTienThanhCong() throws InterruptedException {
+	public void TC_03_GiaoDichNopTienThanhCong() {
 		log.info("TC_03_Step: Click nop tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Nộp tiền");
 
@@ -255,7 +253,6 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_03_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
-		Thread.sleep(5000);
 		log.info("TC_03_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
 
@@ -274,7 +271,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	}
 
 	@Test
-	public void TC_04_GiaoDichRutTienUSDThanhCong() throws InterruptedException {
+	public void TC_04_GiaoDichRutTienUSDThanhCong() {
 		log.info("TC_04_Step: Click nop tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
 
@@ -332,7 +329,6 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_04_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 
-		Thread.sleep(5000);
 		log.info("TC_04_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "0", "1"), "ĐĂNG KÝ THÀNH CÔNG");
 
