@@ -104,7 +104,7 @@ public class TransferMoneyQuick_Data {
 		public static final String OTP_BLANK_MESSAGE = "Quý khách vui lòng nhập mã OTP";
 		public static final String OTP_NOT_ENOUGH_MESSAGE = "OTP phải đủ 6 ký tự, Quý khách vui lòng kiểm tra lại";
 		public static final String OTP_NOT_EXIST_MESSAGE = "OTP không chính xác, Quý khách vui lòng kiểm tra lại.";
-		public static final String OTP_OVER_3_TIMES_MESSAGE = "Nhập sai OTP quá 3 lần. Quý khách vui lòng thực hiện giao dịch khác.";
+		public static final String OTP_OVER_4_TIMES_MESSAGE = "Nhập sai OTP quá 4 lần. Quý khách vui lòng thực hiện giao dịch khác.";
 		public static final String OTP_OVER_TIMES_MESSAGE = "OTP đã hết hiệu lực, Quý khách vui lòng khởi tạo mã xác thực mới.";
 
 		public static final String PASS_BLANK_MESSAGE = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
