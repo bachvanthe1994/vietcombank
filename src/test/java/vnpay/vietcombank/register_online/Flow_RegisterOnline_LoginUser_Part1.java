@@ -929,7 +929,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_14_MoTaiKhoanThanhToan_ManHinhConnect24_ChonHaiThePhu()  {
+	public void TC_14_MoTaiKhoanThanhToan_ManHinhConnect24_ChonHaiThePhu() {
 		log.info("TC_14_Step: Click giao dich mo tai khoan thanh toan");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản thanh toán");
 
@@ -952,8 +952,13 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_14_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_14_Step: Input noi cap");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[0], "Giấy tờ tùy thân", "8");
+		log.info("TC_14_Step: Chon noi cap");
+		registerOnline.clickToDynamicComboboxText(driver, "Giấy tờ tùy thân", "8");
+		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
+
+		log.info("TC_14_Step: Input dia chi hien tai");
+		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.LOCATION[0], "Giấy tờ tùy thân", "9");
 
 		log.info("TC_14_Step: verify so account");
 		System.out.print(registerOnline.getTextDynamicFollowIndex(driver, "Giấy tờ tùy thân", "10"));
@@ -1054,7 +1059,8 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_14_Step: Click noi cap");
-		registerOnline.clickToTextViewDate(driver, "Chủ thẻ phụ 2", "5");
+		registerOnline.clickToDynamicComboboxText(driver, "Chủ thẻ phụ 2", "5");
+		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
 		log.info("TC_14_Step: Click tiep tuc");
@@ -1080,6 +1086,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_14_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
-
+		
 	}
+	
 }
