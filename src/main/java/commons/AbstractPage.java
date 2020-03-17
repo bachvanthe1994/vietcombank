@@ -1727,6 +1727,7 @@ public class AbstractPage {
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);

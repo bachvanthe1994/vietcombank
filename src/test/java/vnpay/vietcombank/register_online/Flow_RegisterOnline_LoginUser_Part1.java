@@ -226,7 +226,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_03_Step: Tien mat mac dinh chon, verify text 'Tien mat' hien thi");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_03_Step: Nhap so tien nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "17");
@@ -299,7 +299,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[1]);
 
 		log.info("TC_04_Step: Tien mat mac dinh chon, verify text 'Tien mat' hien thi");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_04_Step: Nhap so tien nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
@@ -378,7 +378,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToImageRadio(driver, "Tiền mặt");
 
 		log.info("TC_05_Step: check text da chon la chuyen khoan");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan", "0"), "Chuyển khoản");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan"), "Chuyển khoản");
 
 		log.info("TC_05_Step: Nhap so tai khoan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[1], "Chuyển khoản", "1");
@@ -461,10 +461,10 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin giao dịch", "16");
 
 		log.info("TC_06_Step: check text mac dinh chon la tien mat");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_06_Step: check text da chon la chuyen khoan");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan", "0"), "Chuyển khoản");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan"), "Chuyển khoản");
 
 		log.info("TC_06_Step: Nhap so tien mat nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Tiền mặt", "1");
@@ -544,7 +544,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_07_Step: check text mac dinh chon la tien mat");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_07_Step: Nhap so tien nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
@@ -618,7 +618,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_08_Step: check text mac dinh chon la tien mat");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_08_Step: Nhap so tien nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
@@ -687,7 +687,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NOTE, "Thông tin giao dịch", "13");
 
 		log.info("TC_09_Step: check text mac dinh chon la tien mat");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_09_Step: Nhap so tien nhan");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "15");
@@ -759,10 +759,10 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToImageRadio(driver, "Chuyển khoản");
 
 		log.info("TC_10_Step: check text mac dinh chon la tien mat");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat", "0"), "Tiền mặt");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_10_Step: check text da chon la chuyen khoan");
-		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan", "0"), "Chuyển khoản");
+		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llChuyenKhoan"), "Chuyển khoản");
 		log.info("TC_10_Step: Nhap so tien mat nop");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Tiền mặt", "1");
 
