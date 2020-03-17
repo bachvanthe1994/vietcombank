@@ -240,10 +240,8 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		log.info("TC_11_01_Nhap ky tu vao o Search");
 		hotelBooking.inputIntoEditTextByID("Ga Hà Nội", "com.VCB:id/etSearch");
 
-		List<String> listSuggestLocations = hotelBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvTitle");
-
 		log.info("TC_11_02_Click chon Dia diem");
-		hotelBooking.clickToDynamicTextOrButtonLink(listSuggestLocations.get(0));
+		hotelBooking.clickToDynamicTextOrButtonLink("Ga Hà Nội");
 
 		log.info("TC_11_03_Kiem tra dia diem duoc chon thanh cong");
 		verifyEquals(hotelBooking.getTextTextViewByLinearLayoutID("com.VCB:id/llPlace"), "Ga Hà Nội");
@@ -256,7 +254,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToTextViewByLinearLayoutID("com.VCB:id/llPlace");
 
 		log.info("TC_12_02_Nhap ky tu vao o Search");
-		hotelBooking.inputIntoEditTextByID("CLASSY HOLIDAY HOTEL & SPA", "com.VCB:id/etSearch");
+		hotelBooking.inputIntoEditTextByID(HotelBooking_Data.HOTEL_NAME_BOOKING_INPUT, "com.VCB:id/etSearch");
 
 		List<String> listSuggestLocations = hotelBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvTitle");
 
@@ -264,7 +262,7 @@ public class Validation_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicTextOrButtonLink(listSuggestLocations.get(0));
 
 		log.info("TC_12_04_Kiem tra den trang thong tin khach san");
-		verifyTrue(hotelBooking.isDynamicTextViewDisplayed("CLASSY HOLIDAY HOTEL & SPA"));
+		verifyTrue(hotelBooking.isDynamicTextViewDisplayed(HotelBooking_Data.HOTEL_NAME_BOOKING));
 
 		log.info("TC_12_05_Quay lai man hinh hien thi khach san duoc tim kiem");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");

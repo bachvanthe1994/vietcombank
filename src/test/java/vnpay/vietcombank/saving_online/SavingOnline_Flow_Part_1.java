@@ -20,7 +20,7 @@ import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 
-public class SavingOnline_Folow_Part_2 extends Base {
+public class SavingOnline_Flow_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -32,8 +32,8 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "3 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1 tháng", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "3 tháng", "2000000", "Lãi nhập gốc");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -55,7 +55,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -137,7 +137,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -205,9 +205,9 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
-		String savingDate = getForwardDate(0);
-		String expiredDate = getForwardMonthAndForwardDay(1, 0);
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+		String savingDate = "";
+		String expiredDate = "";
 
 		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
 		homePage.scrollDownToText(driver, "Tín dụng");
@@ -240,12 +240,13 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
 
 		log.info("TC_03_06_4: Kiem tra lai suat");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
 
 		log.info("TC_03_06_5: Kiem tra ngay gui tien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		savingDate = transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền");
+		verifyTrue(checkDateLessThanNow(savingDate));
 
 		log.info("TC_03_06_6: Kiem tra ngay den han");
+		expiredDate = getForwardMonthAndForwardDayFolowDate(savingDate, 1, 0);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
 
 		log.info("TC_03_06_7: Kiem tra so tien gui goc");
@@ -282,7 +283,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 
@@ -353,7 +354,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
 		log.info("TC_05_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
@@ -435,7 +436,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
 		log.info("TC_06_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
 
@@ -503,9 +504,9 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
-		String savingDate = getForwardDate(0);
-		String expiredDate = getForwardMonthAndForwardDay(3, 0);
+	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+		String savingDate = "";
+		String expiredDate = "";
 
 		log.info("TC_07_1_Click Tat toan tai khoan tiet kiem");
 		homePage.scrollDownToText(driver, "Tín dụng");
@@ -538,12 +539,13 @@ public class SavingOnline_Folow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info1.term.toLowerCase());
 
 		log.info("TC_07_06_4: Kiem tra lai suat");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "");
 
 		log.info("TC_07_06_5: Kiem tra ngay gui tien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền"), savingDate);
+		savingDate = transReport.getDynamicTextInTransactionDetail(driver, "Ngày gửi tiền");
+		verifyTrue(checkDateLessThanNow(savingDate));
 
 		log.info("TC_07_06_6: Kiem tra ngay den han");
+		expiredDate = getForwardMonthAndForwardDayFolowDate(savingDate, 3, 0);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngày đến hạn"), expiredDate);
 
 		log.info("TC_07_06_7: Kiem tra so tien gui goc");
@@ -580,7 +582,7 @@ public class SavingOnline_Folow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
 		log.info("TC_08_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");
 

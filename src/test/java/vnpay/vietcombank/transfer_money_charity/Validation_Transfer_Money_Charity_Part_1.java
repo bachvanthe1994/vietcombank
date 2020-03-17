@@ -74,7 +74,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_03_2_Kiem tra gia tri trong o Ten nguoi ung ho");
-		verifyTrue(condition);
+		verifyTrue(!condition);
 	}
 
 	@Test
@@ -120,7 +120,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_07_2_Kiem tra gia tri trong o Dia chi nguoi ung ho");
-		verifyTrue(condition);
+		verifyTrue(!condition);
 
 	}
 
@@ -168,7 +168,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 		boolean condition = regex.matcher(actualName).find();
 		log.info("TC_11_2_Kiem tra gia tri trong o Hoan canh nguoi ung ho");
-		verifyTrue(condition);
+		verifyTrue(!condition);
 	}
 
 	@Test
