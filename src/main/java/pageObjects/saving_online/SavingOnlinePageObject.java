@@ -58,16 +58,6 @@ public class SavingOnlinePageObject extends AbstractPage {
 
 	}
 	
-	//Click vao 1 button sử dụng  tham số là text
-	public void clickToDynamicButton(String dynamicTextValue) {
-		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
-
-	}
-	
 	public String getTransferTimeSuccess(String textSuccess) {
 		String transferTime = "";
 		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");

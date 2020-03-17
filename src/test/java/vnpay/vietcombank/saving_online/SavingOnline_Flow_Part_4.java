@@ -232,7 +232,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_06_Kiem tra man hinh xac thuc thong tin");
 		log.info("TC_03_06_1: Kiem tra tai khoan tiet kiem");
@@ -539,7 +539,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_5_Click nut Tiep tuc");
-		savingOnline.clickToDynamicButton("Tiếp tục");
+		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_06_Kiem tra man hinh xac thuc thong tin");
 		log.info("TC_07_06_1: Kiem tra tai khoan tiet kiem");

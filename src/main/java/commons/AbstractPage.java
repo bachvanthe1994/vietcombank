@@ -182,6 +182,7 @@ public class AbstractPage {
 
 		for (int i = 0; i < 20; i++) {
 			overRideTimeOut(driver, 2);
+			driver.getPageSource();
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			overRideTimeOut(driver, Constants.LONG_TIME);
 			if (elementsOne.size() > 0 && elementsOne.get(0).isDisplayed()) {
@@ -211,6 +212,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -238,10 +240,11 @@ public class AbstractPage {
 		TouchAction touch = new TouchAction(driver);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<MobileElement> elementsOne = null;
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 20; i++) {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -439,6 +442,32 @@ public class AbstractPage {
 
 	}
 
+	public boolean waitForElementVisible_LongTime(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
+			return false;
+
+		}
+		return true;
+
+	}
+	
 	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -769,7 +798,7 @@ public class AbstractPage {
 	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		}
@@ -939,7 +968,7 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TRANSACTION_INFO_IN_TRANSFER_ORDER_STATUS, dynamicIndex1ID2);
 		}
 	}
-	
+
 	public void clickToDynamicGroupviewByListviewId(AppiumDriver<MobileElement> driver, String... dynamicIndex1ID2) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
@@ -947,7 +976,6 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LISTVIEW_ID, dynamicIndex1ID2);
 		}
 	}
-
 
 	public void clickToDynamicDropDownListTextViewByHeader(AppiumDriver<MobileElement> driver, String... dynamicTextValueAndID) {
 		boolean status = false;
@@ -971,6 +999,7 @@ public class AbstractPage {
 	// Click radio theo text
 	public void clickToImageRadio(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXT, dynamicText);
@@ -1217,7 +1246,6 @@ public class AbstractPage {
 
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
 
-
 	public void inputToDynamicPopupPasswordInput(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
@@ -1277,14 +1305,25 @@ public class AbstractPage {
 
 	// Xac nhan hien thi text box qua editText ID
 	public boolean isDynamicEditTexByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicValue);
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicValue);
+		}
+		return isDisplayed;
 	}
 
 	// Xac nhan hien thi button qua Button ID
 	public boolean isDynamicButtonByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		;
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		}
+		return isDisplayed;
 	}
 
 	// Kiem tra text co trong List Element Text hay khong
@@ -1686,7 +1725,7 @@ public class AbstractPage {
 	public String getTextDynamicFollowImageIndex(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
 		String text = null;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
 
@@ -1694,11 +1733,25 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	// get text theo text
+		public String getTextDynamicFollowText(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
+			boolean status = false;
+			String text = null;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
+
+			}
+			return text;
+
+		}
 
 	// get text theolayout
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
@@ -1724,7 +1777,6 @@ public class AbstractPage {
 		occurrences = Collections.frequency(allStatusElement, "true");
 		return occurrences;
 	}
-
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -2043,7 +2095,7 @@ public class AbstractPage {
 
 	}
 
-	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+	public String getTextTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
