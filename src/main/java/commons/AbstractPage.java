@@ -211,6 +211,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -242,6 +243,7 @@ public class AbstractPage {
 			boolean checkElementDisplayed = false;
 			overRideTimeOut(driver, 2);
 			try {
+				driver.getPageSource();
 				elementsOne = driver.findElements(By.xpath(locator));
 				checkElementDisplayed = elementsOne.get(0).isDisplayed();
 			} catch (Exception e) {
@@ -439,6 +441,32 @@ public class AbstractPage {
 
 	}
 
+	public boolean waitForElementVisible_LongTime(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
+			return false;
+
+		}
+		return true;
+
+	}
+	
 	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -769,7 +797,7 @@ public class AbstractPage {
 	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		}
@@ -1686,7 +1714,7 @@ public class AbstractPage {
 	public String getTextDynamicFollowImageIndex(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
 		String text = null;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_FOLLOW_IMAGE, dynamicIndex);
 
@@ -1712,6 +1740,7 @@ public class AbstractPage {
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicIndex);

@@ -34,7 +34,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 
 	@Test
-	public void TC_01_DangKyPhatHanhTheGhiNo_ChonHangVangConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_01_DangKyPhatHanhTheGhiNo_ChonHangVangConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_1_Step: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 		
@@ -91,7 +91,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_1_Step: Click tiep tuc");
 		registerOnline.clickToDynamicButton(driver, "Tiếp tục");
-		Thread.sleep(2000);
 
 		log.info("TC_1_Step: verify man hinh dang ky thanh cong");
 		verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");
@@ -111,7 +110,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 
 	@Test
-	public void TC_02_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankPlusNopTienMatBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_02_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankPlusNopTienMatBoPhatHanhThePhu() {
 		log.info("TC_02_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -143,14 +142,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_02_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_02_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
-	public void TC_03_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankPlusNopTienMatBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_03_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankPlusNopTienMatBoPhatHanhThePhu() {
 		log.info("TC_03_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -182,14 +180,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_03_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_03_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
-	public void TC_04_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24VISATrichNoTuDongPhatHanhThePhu() throws InterruptedException {
+	public void TC_04_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24VISATrichNoTuDongPhatHanhThePhu() {
 		log.info("TC_04_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -249,7 +246,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_04_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_04_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -257,7 +253,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 
 	@Test
-	public void TC_05_DangKyPhatHanhTheGhiNo_ChonHangVangUnionPayNopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_05_DangKyPhatHanhTheGhiNo_ChonHangVangUnionPayNopTienMatPhatHanhThePhu() {
 		log.info("TC_05_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -317,14 +313,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_05_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_05_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
-	public void TC_06_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24TrichNoTuDongPhatHanhThePhu() throws InterruptedException {
+	public void TC_06_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24TrichNoTuDongPhatHanhThePhu() {
 		log.info("TC_06_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -381,7 +376,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_06_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_06_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -389,7 +383,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 
 	@Test
-	public void TC_07_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_07_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_07_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -421,14 +415,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_07_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_07_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
-	public void TC_08_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_08_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_08_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -460,14 +453,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_08_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_08_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
-	public void TC_09_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_09_DangKyPhatHanhTheGhiNo_ChonHangVangVCBConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_09_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -527,7 +519,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_09_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_09_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -535,7 +526,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 
 	@Test
-	public void TC_10_DangKyPhatHanhTheGhiNo_ChonHangVangUnionPayNopTienMatBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_10_DangKyPhatHanhTheGhiNo_ChonHangVangUnionPayNopTienMatBoPhatHanhThePhu() {
 		log.info("TC_10_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -567,14 +558,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_10_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_10_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
 	@Test
-	public void TC_11_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_11_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_11_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -631,14 +621,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_11_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_11_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 	
 	@Test
-	public void TC_12_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_12_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_12_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -698,14 +687,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_12_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_12_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 	
 	@Test
-	public void TC_13_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_13_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_13_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -737,14 +725,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_13_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_13_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 	
 	@Test
-	public void TC_14_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24VISATrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_14_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24VISATrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_14_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -776,14 +763,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_14_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_14_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 	
 	@Test
-	public void TC_15_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBUnionPayNopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_15_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBUnionPayNopTienMatPhatHanhThePhu() {
 		log.info("TC_15_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -843,14 +829,13 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_15_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_15_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 	
 	@Test
-	public void TC_16_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnect24NopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_16_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_16_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -907,7 +892,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_16_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_16_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -915,7 +899,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 	
 	@Test
-	public void TC_17_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBCardPlusTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_17_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBCardPlusTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_17_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -947,7 +931,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_17_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_17_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -955,7 +938,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 	
 	@Test
-	public void TC_18_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() throws InterruptedException {
+	public void TC_18_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_18_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -987,7 +970,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_18_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_18_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -995,7 +977,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 	
 	@Test
-	public void TC_19_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnectVISATrichNoTuDongPhatHanhThePhu() throws InterruptedException {
+	public void TC_19_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnectVISATrichNoTuDongPhatHanhThePhu() {
 		log.info("TC_19_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -1055,7 +1037,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_19_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_19_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
@@ -1063,7 +1044,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	}
 	
 	@Test
-	public void TC_20_DangKyPhatHanhTheGhiNo_ChonHangDacBietUnionPAYNopTienMatPhatHanhThePhu() throws InterruptedException {
+	public void TC_20_DangKyPhatHanhTheGhiNo_ChonHangDacBietUnionPAYNopTienMatPhatHanhThePhu() {
 		log.info("TC_20_Step: Nhap thong tin man hinh dang ky");
 		registerOnline.DangKyPhatHanhTheGhiNo(Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1], Register_Online_data.Valid_Account.NO_IDENTIFICATION, getBackWardYear(2), Register_Online_data.Valid_Account.LOCATION[1], Register_Online_data.Valid_Account.EMAIL);
 
@@ -1123,7 +1104,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_20_Step: verify image luu anh");
 		verifyTrue(registerOnline.isDynamicImageTextDisplayed(driver, "Lưu ảnh"));
-		Thread.sleep(2000);
 
 		log.info("TC_20_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
