@@ -1694,6 +1694,19 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	// get text theo text
+		public String getTextDynamicFollowText(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
+			boolean status = false;
+			String text = null;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
+
+			}
+			return text;
+
+		}
 
 	// get text theolayout
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
