@@ -51,7 +51,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_01_ChuyenTienNguoiChuyenTraPhiVNDOTP() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -160,7 +160,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(amountStart - amountTranfer - costTranfer, amountAfter);
 	}
 
-//	@Test
+	@Test
 	public void TC_02_BaoCaoChuyenTienNguoiChuyenTraPhiVNDOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
