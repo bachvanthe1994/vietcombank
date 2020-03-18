@@ -42,19 +42,17 @@ public class Auto_Saving_Validate_01 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-
+		home = PageFactoryManager.getHomePageObject(driver);
+		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 	}
 
 	@Parameters({ "otp" })
 	@Test
 	public void TC_00_MoTaiKhoanTietKiem_TaiKhoanNguon_VND(String otp) {
 
-		home = PageFactoryManager.getHomePageObject(driver);
-
 		log.info("TC_00_1_Click Mo tai khoan tiet kiem");
 		home.scrollDownToText(driver, "Tín dụng");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
-		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 
 		log.info("TC_00_2_Chon so tai khoan");
 		savingOnline.clickToDynamicDropDown(driver, "Số tài khoản");
@@ -125,7 +123,6 @@ public class Auto_Saving_Validate_01 extends Base {
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Tiet kiem tu dong'");
 		home.scrollDownToText(driver, "Tín dụng");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Tiết kiệm tự động");
-		autoSaving = PageFactoryManager.getAutoSavingPageObject(driver);
 
 		log.info("TC_01_Step_02: Xac nhan hien thi title 'Tiet kiem tu dong");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Auto_Saving_Data.VALIDATE.AUTO_SAVING_TITLE);
@@ -210,7 +207,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_05_Step_02: Click vao tai khoan nguon USD");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		log.info("TC_05_Step_03: Xac nhan hien thi dung so du la USD");
 		sourceAccountMoney = autoSaving.getDynamicTextByLabel(driver, "Số dư khả dụng");
@@ -333,8 +330,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_12_Step_02: Click vao tai khoan nguon VND dau tien tim duoc");
-		text = autoSaving.getFirstElementContainsText("VND", "com.VCB:id/tvContent2");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, text);
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_12_Step_03: Chon tai khoan dich ");
 		autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/TaiKhoanTietKiem");
@@ -345,13 +341,13 @@ public class Auto_Saving_Validate_01 extends Base {
 		autoSaving.inputIntoEditTextByID(driver, "1.2", "com.VCB:id/edtContent2");
 
 		log.info("TC_12_Step_05: Xac nhan chi hien thi duy nhat 10 chu so dau tien o trong o");
-		verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), "12");
+		verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), "Số tiền chuyển");
 
 		log.info("TC_12_Step_06: Click vao drodown 'Tai khoan nguon");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_12_Step_07: Click vao tai khoan nguon USD");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
 
 		log.info("TC_12_Step_08: Chon tai khoan dich ");
 		autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/TaiKhoanTietKiem");
@@ -360,6 +356,7 @@ public class Auto_Saving_Validate_01 extends Base {
 
 		log.info("TC_12_Step_09: Nhap so thap phan vao o So tien chuyen");
 		autoSaving.inputIntoEditTextByID(driver, "1.2", "com.VCB:id/edtContent2");
+		autoSaving.sleep(driver, 2000);
 
 		log.info("TC_12_Step_10: Xac nhan chi hien thi duy nhat 10 chu so dau tien o trong o");
 		verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), "1.2");
@@ -424,9 +421,9 @@ public class Auto_Saving_Validate_01 extends Base {
 	@Test
 	public void TC_17_TietKiemTuDong_KiemTraChonNgayKetThucLonHonHienTai() {
 
+		log.info("TC_17_Step_01: Chon ngay ket thuc lon hon hien tai");
+		autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 		if (getForWardDay(1) == "1") {
-			log.info("TC_17_Step_01: Chon ngay ket thuc lon hon hien tai");
-			autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 			autoSaving.clickToDynamicRadioIndex(driver, "android:id/next");
 		}
 		autoSaving.clickToDynamicDateInDateTimePicker(driver, getForWardDay(1));
