@@ -598,6 +598,15 @@ public class HotelBookingPageObject extends AbstractPage {
 		}
 	}
 
+	public void inputToDynamicPopupPasswordInput(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
+	}
+	
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);

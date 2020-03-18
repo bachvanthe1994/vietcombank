@@ -96,13 +96,13 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
 		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
-		hotelBooking.clickToDynamicTextOrButtonLink("SMS OTP");
+		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
 
 		log.info("TC_01_14_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_15_Nhap ma OTP chinh xac");
-		hotelBooking.inputToDynamicOtpOrPIN(LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		hotelBooking.inputToDynamicPopupPasswordInput(LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 		
 		log.info("TC_01_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
