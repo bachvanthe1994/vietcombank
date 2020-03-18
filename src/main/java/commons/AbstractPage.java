@@ -43,7 +43,6 @@ import io.appium.java_client.touch.offset.PointOption;
 import model.TransferInVCBRecurrent;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
-import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
 
 public class AbstractPage {
 	int longTime = 30;
@@ -52,7 +51,9 @@ public class AbstractPage {
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
-		sleep(driver, 3000);
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
 		String text = driver.getPageSource();
 		return text;
 
@@ -266,7 +267,7 @@ public class AbstractPage {
 			}
 		}
 	}
-	
+
 	public void scrollDown_LongDistance(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
@@ -396,7 +397,7 @@ public class AbstractPage {
 	}
 
 	public void waitForElementInvisible(AppiumDriver<MobileElement> driver, String locator) {
-		overRideTimeOut(driver, shortTime);
+		overRideTimeOut(driver, longTime);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
@@ -502,7 +503,7 @@ public class AbstractPage {
 		return true;
 
 	}
-	
+
 	public void sendKeyToElement(AppiumDriver<MobileElement> driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -675,8 +676,9 @@ public class AbstractPage {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
+			overRideTimeOut(driver, shortTime1);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
-
+			overRideTimeOut(driver, longTime1);
 		} catch (Exception e) {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
@@ -816,6 +818,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi quý khách") | driver.getPageSource().contains("Không tìm thấy")) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		}
 
 	}
 
@@ -825,6 +834,13 @@ public class AbstractPage {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi quý khách") | driver.getPageSource().contains("Không tìm thấy")) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 	}
@@ -1650,7 +1666,7 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-	
+
 	public boolean isDynamicCheckboxByCheckboxIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicID);
@@ -1660,7 +1676,7 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-	
+
 	public boolean isDynamicImageViewByLinearLayoutIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID, dynamicID);
@@ -1670,16 +1686,16 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-	
-	//Kiểm tra check box  bằng ID có được check khong
-    public boolean isDynamicCheckBoxByIdChecked(AppiumDriver<MobileElement> driver,String dynamicValue) {
-	boolean isChecked = false;
-	boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicValue);
-	if (status == true) {
-	    isChecked = isControlSelected(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicValue);
+
+	// Kiểm tra check box bằng ID có được check khong
+	public boolean isDynamicCheckBoxByIdChecked(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		boolean isChecked = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicValue);
+		if (status == true) {
+			isChecked = isControlSelected(driver, DynamicPageUIs.DYNAMIC_CHECK_BOX, dynamicValue);
+		}
+		return isChecked;
 	}
-	return isChecked;
-    }
 
 	/* GET TEXT METHOD */
 
@@ -1798,19 +1814,19 @@ public class AbstractPage {
 		return text;
 
 	}
-	
-	// get text theo text
-		public String getTextDynamicFollowText(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
-			boolean status = false;
-			String text = null;
-			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
-			if (status == true) {
-				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
 
-			}
-			return text;
+	// get text theo text
+	public String getTextDynamicFollowText(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
 
 		}
+		return text;
+
+	}
 
 	// get text theolayout
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
@@ -1842,13 +1858,13 @@ public class AbstractPage {
 		occurrences = Collections.frequency(allStatusElement, "true");
 		return occurrences;
 	}
-	
-	// Xac dinh lay so luong element trong List Element
-		public int getCountNumberOfDynamicListElements(AppiumDriver<MobileElement> driver, String... dynamicValue) {
 
-			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
-			return countElementNumber(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
-		}
+	// Xac dinh lay so luong element trong List Element
+	public int getCountNumberOfDynamicListElements(AppiumDriver<MobileElement> driver, String... dynamicValue) {
+
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
+		return countElementNumber(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
+	}
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -1930,7 +1946,7 @@ public class AbstractPage {
 		}
 		return text;
 	}
-	
+
 	public String getDynamicTextButtonById(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
@@ -2112,9 +2128,10 @@ public class AbstractPage {
 		return text;
 
 	}
-	//Lay text dau tien trong list element
-	public String getFirstOptionInDynamicListElements(AppiumDriver<MobileElement> driver,String dynamicValue) {
-		
+
+	// Lay text dau tien trong list element
+	public String getFirstOptionInDynamicListElements(AppiumDriver<MobileElement> driver, String dynamicValue) {
+
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicValue);
@@ -2123,7 +2140,7 @@ public class AbstractPage {
 		}
 		return text;
 	}
-	
+
 	public String getTextInDynamicLinelayoutById(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
@@ -2134,7 +2151,6 @@ public class AbstractPage {
 		return text;
 
 	}
-	
 
 	// Chuyen tu Array sang List
 	public List<String> arrayToArrayList(String[] arr) {
