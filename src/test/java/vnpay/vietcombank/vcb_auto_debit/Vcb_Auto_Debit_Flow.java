@@ -32,7 +32,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0974862669", pass, opt);
+		login.Global_login("0335059860", pass, opt);
 
 	}
 
