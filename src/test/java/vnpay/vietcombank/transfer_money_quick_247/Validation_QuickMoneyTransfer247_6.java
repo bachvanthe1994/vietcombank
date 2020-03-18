@@ -278,10 +278,19 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_95_Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");
+		
+		log.info("TC_95_Nhap OTP khong ton tai");
+		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
+
+		log.info("TC_95_Click button tiep tuc");
+		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
+
+		log.info("TC_95_Close popup");
+		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
 	@Test
-	public void TC_96_VerifyMessageNhapSaiOTPQua3Lan() {
+	public void TC_96_VerifyMessageNhapSaiOTPQua4Lan() {
 		log.info("TC_96_Nhap OTP khong ton tai");
 		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
 
@@ -296,7 +305,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	}
 
 	@Test
-	public void TC_97_XoaThongTinKhiQua3LanNhap() {
+	public void TC_97_XoaThongTinKhiQua4LanNhap() {
 		log.info("TC_97_Kiem tra text mac dinh truong so tai khoan nhan");
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"), "Nhập/chọn tài khoản nhận VND");
 
@@ -305,13 +314,9 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_97_Kiem tra text mac dinh truong So tien");
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
-
-		log.info("TC_97_Kiem tra text mac dinh truong noi dung");
-		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), "Nội dung");
 	}
 
 	@Test
-	// ---------Lỗi app, thông báo message lỗi và không thực hiện được giao dịch
 	public void TC_98_OTPNhapDungVaCheckManXacNhan() {
 		log.info("TC_98_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");

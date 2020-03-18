@@ -29,6 +29,8 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 	List<String> listExpect;
 	List<String> listActual;
 	private String transferTime;
+	String transactionNumber = "";
+	String nameCustomer = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -45,27 +47,31 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
-		log.info("TC_00_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_00Step_: Click cai dat");
-		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
-
-		log.info("TC_00_Step_: Click quan ly danh ba");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
-
-		log.info("TC_00_Step_: Click Danh bạ người hưởng");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ người hưởng");
-
-		log.info("TC_00_Step_: delete danh sach co tu truoc");
-		setupContact.deleteContactReceiver();
-
-		log.info("TC_00_Step_: back lai man hinh danh ba");
-		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-
-		log.info("TC_00_Step_: back lai man hinh home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		/*
+		 * log.info("TC_00_Step_: Click menu header");
+		 * homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		 * 
+		 * log.info("TC_00Step_: Click cai dat"); setupContact =
+		 * PageFactoryManager.getSetupContactPageObject(driver);
+		 * setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+		 * 
+		 * log.info("TC_00_Step_: Click quan ly danh ba");
+		 * setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
+		 * 
+		 * log.info("TC_00_Step_: Click Danh bạ người hưởng");
+		 * setupContact.clickToDynamicButtonLinkOrLinkText(driver,
+		 * "Danh bạ người hưởng");
+		 * 
+		 * log.info("TC_00_Step_: delete danh sach co tu truoc");
+		 * setupContact.deleteContactReceiver();
+		 * 
+		 * log.info("TC_00_Step_: back lai man hinh danh ba");
+		 * setupContact.clickToDynamicBottomMenuOrIcon(driver,
+		 * "com.VCB:id/ivTitleLeft");
+		 * 
+		 * log.info("TC_00_Step_: back lai man hinh home");
+		 * homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		 */
 
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 
@@ -114,7 +120,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.CONFIRM_LABEL), "Xác thực giao dịch");
 
 		log.info("TC_90_Verify message xac thuc mat khau");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Xác thực giao dịch"), "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác nhận giao dịch");
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Xác thực giao dịch"), "Vui lòng nhập mật khẩu đăng nhập ứng dụng của Quý khách để xác thực giao dịch");
 
 		log.info("TC_90_Verify hien thi button tiep tuc");
 		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Tiếp tục"));
@@ -132,7 +138,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	// @Test
+	@Test
 	public void TC_101_VerifyMessageKhiNhapMatKhauKhongTonTai() {
 		log.info("TC_95_Nhap mat khau khong ton tai");
 		transferMoney.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.WRONG_PASSWORD, "Tiếp tục");
@@ -147,7 +153,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	// @Test
+	@Test
 	public void TC_102_NhapMatKhauVuotQua20KyTu() {
 		log.info("TC_95_Nhap mat khau lon hon 20 ky tu");
 		transferMoney.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.PASSWORD_GREATER_THAN_20, "Tiếp tục");
@@ -176,23 +182,26 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		log.info("TC_01_Verify icon thanh cong");
 		verifyTrue(transferMoney.isDynamicImageSuccess(driver, "CHUYỂN KHOẢN THÀNH CÔNG"));
 
-		log.info("TC_95_Verify text chuyen khoan thanh cong");
-		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY), "CHUYỂN KHOẢN THÀNH CÔNG");
+		log.info("TC_01_Verify message thanh cong");
+		verifyEquals(transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
-		log.info("TC_01_Verify time giao dich thanh cong");
-		verifyTrue(transferMoney.isDynamicTimeAndMoneyDisplay(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4"));
+		log.info("TC_01_get thoi gian giao dich thanh cong");
+		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4").split(" ")[3];
+
+		log.info("TC_01_Step_: Get ma giao dich");
+		transactionNumber = transferMoney.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_:Ten nguoi thu huong");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
-
-		log.info("TC_01_Step_:Ngan hàng huong");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_01_Step_: Tai khoan dich");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tài khoản đích"), Account_Data.Valid_Account.ACCOUNT_TO);
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT_TO);
+
+		log.info("TC_01_Step_: ngan hang thu huong");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_01_Step_: Noi dung");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 		log.info("TC_01_Step_: Hien thi button thuc hien giao dich moi");
 		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
@@ -204,7 +213,8 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu ảnh"));
 
 		log.info("TC_01_Step_: Hien thi Button luu thu huong");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu thụ hưởng"));
+		// verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu
+		// thụ hưởng"));
 	}
 
 	@Test
@@ -221,56 +231,64 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		log.info("TC_01_Nhan button chia se");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chia sẻ");
 
-		log.info("TC_01_Verify man hinh chia se");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Cho phép Vietcombank truy cập ảnh, phương tiện và tệp trên thiết bị của bạn?"));
+		log.info("TC_01_verify select share");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/sem_title_default"), "Select");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text1"), "Link Sharing");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text2"), "Chia sẻ các file lớn lên đến 2 GB một ngày.");
+		
+		log.info("TC_02_Step_18: Click quay lai");
+		transferMoney.navigateBack(driver);
 
-		log.info("TC_01_Click button cho phep");
-		transferMoney.clickToDynamicButton(driver, "CHO PHÉP");
-
-		log.info("TC_01_verify select sahre");
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Select"));
-		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Link Sharing"));
-
-		log.info("TC_01_Click ve man hinh chuyen tien thanh cong");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 	}
 
-	// @Test --- click may ko click dc button
+	@Test
 	public void TC_107_KiemTraButtonLuuAnh() {
 		log.info("TC_01_Nhan button luu anh");
-		transferMoney.clickToDynamicButton(driver, "Lưu ảnh");
-
-		log.info("TC_95_Step_verify message khi nhap mat khau khong dung");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Lưu ảnh");
+		
+		
+		log.info("TC_95_Step_verify message luu anh thanh cong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.SAVE_SUCCESS_MESSAGE));
 
 		log.info("TC_95_Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+@Test
 	public void TC_108_LuuThongTinThuHuongSTKChuaCoTrongDanhBa() {
-		log.info("TC_01_Verify hien thi button luu thu huong");
-		verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Lưu thụ hưởng"));
-
 		log.info("TC_01_Nhan button Lưu thụ hưởng");
-		transferMoney.clickToDynamicButton(driver, "Lưu thụ hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
 
-		log.info("TC_01_Verify label danh ba");
-		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, "Lưu danh bạ"), SetupContact_Data.UI.SAVE_CONTACT_LABEL);
+		log.info("TC_01_Verify label luu thu huong");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), SetupContact_Data.UI.SAVE_CONTACT_LABEL);
 
-		log.info("TC_01_Verify label danh ba");
-		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, "Lưu danh bạ"), SetupContact_Data.UI.SAVE_CONTACT_LABEL);
+		log.info("TC_01_Verify text chuyen tien nhanh");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvType"), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER);
 
 		log.info("TC_01_Input name contact");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, SetupContact_Data.UI.NAME_CARD[0], "Lưu danh bạ");
+		transferMoney.inputIntoEditTextByID(driver, SetupContact_Data.UI.NAME_CARD[0], "com.VCB:id/edtCusName");
 
 		log.info("TC_01_Verify so tai khoan");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Số tài khoản"), Account_Data.Valid_Account.ACCOUNT_TO);
+		verifyEquals(transferMoney.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/tvContent"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_01_Verify ngan hàng huong");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK);
+		verifyEquals(transferMoney.getTextInDynamicIndexAndID(driver, "1", "com.VCB:id/tvContent"), Account_Data.Valid_Account.BANK);
 
 		log.info("TC_01_Nhan button luu");
-		transferMoney.clickToDynamicButton(driver, "Lưu");
+		transferMoney.clickToDynamicButton(driver, "Hoàn thành");
+
+		log.info("TC_01_Verify so tai khoan");
+		verifyEquals(transferMoney.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/tvContent"), TransferMoneyQuick_Data.MessageTransferMoney.SAVE_CONTACT_SUCCESS_MESSAGE);
+
+		log.info("TC_01_Nhan button dong message");
+		transferMoney.clickToDynamicButton(driver, "Đóng");
+	}
+
+	@Test
+	public void TC_109_LuuThongTinThuHuongSTKDaCoTrongDanhBa() {
+		/*
+		 * log.info("TC_01_Verify hien thi button luu thu huong");
+		 * verifyTrue(transferMoney.isDynamicButtonDisplayed(driver, "Lưu thụ hưởng"));
+		 */
 	}
 }
