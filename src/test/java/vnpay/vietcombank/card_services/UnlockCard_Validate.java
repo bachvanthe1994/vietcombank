@@ -35,7 +35,7 @@ public class UnlockCard_Validate extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0974862668", pass, opt);
+		login.Global_login("0918679292", "aaaaa11111", opt);
 
 	}
 
