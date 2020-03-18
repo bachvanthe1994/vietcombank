@@ -826,6 +826,17 @@ public class AbstractPage {
 		}
 	}
 
+	
+	//Click vào button, text có class là textview, tham số truyền vào là text bỏ scroll
+		public void clickToDynamicButtonLinkOrLinkTextNotScroll(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+			boolean status = false;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
+			}
+		}
+
 	// Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkTextNotScrollDown(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
@@ -1143,7 +1154,7 @@ public class AbstractPage {
 		}
 	}
 
-	public void inputIntoEditTextByID(AppiumDriver<MobileElement> driver, String inputValue, String... dynamicID) {
+	public void inputIntoEditTextByID(AppiumDriver<MobileElement> driver, String inputValue, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 		if (status == true) {
@@ -1483,7 +1494,7 @@ public class AbstractPage {
 	}
 
 	// Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id
-	public boolean isDynamicSuggestedMoneyDisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	public boolean isDynamicSuggestedMoneyDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
 		if (status == true) {
@@ -1516,7 +1527,7 @@ public class AbstractPage {
 	// Kiểm tra hiển thị image, check chuyển khoản thành công
 	public boolean isDynamicImageSuccess(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CLOSE_ICON, dynamicTextValue);
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
 		if (status == true) {
 			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_SUCCESS_ICON, dynamicTextValue);
@@ -1931,6 +1942,18 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	//Lấy text theo index và ID
+		public String getTextInDynamicIndexAndID(AppiumDriver<MobileElement> driver, String ... dynamicID) {
+			boolean status = false;
+			String text = null;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
+			}
+			return text;
+
+		}
 
 	// Lấy toàn bộ số tiền được suggest ở ô số tiền và lưu vào array list
 
