@@ -165,6 +165,8 @@ public class Base {
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+//			cap.setCapability("appWaitPackage", "com.google.android.permissioncontroller");
+
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
 		}
@@ -609,8 +611,8 @@ public class Base {
 
 	public String getForwardMonthAndForwardDayFolowDate(String date, long months, long days) {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate now = LocalDate.parse(date, dateTimeFormatter);  
-		
+		LocalDate now = LocalDate.parse(date, dateTimeFormatter);
+
 		LocalDate dayLocal = now.plusDays(days);
 		LocalDate monthLocal = now.plusMonths(months);
 
@@ -643,7 +645,7 @@ public class Base {
 		return day1 + "/" + month1 + "/" + year1;
 
 	}
-	
+
 	public String getForwardYear(long years) {
 		LocalDate now = LocalDate.now();
 		LocalDate futureYear = now.plusYears(years);
@@ -945,37 +947,36 @@ public class Base {
 			return true;
 		}
 	}
-	
-	 public boolean checkDateLessThanNow(String date){
-		 boolean result = true;
-		 try {
-	         	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
-	         
-	         	Date date1 = formatDate.parse(date);
-	         	
-	         	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	         	Date now = new Date(); 
-	         	 
-	         	Date date2 = formatDate.parse(dateFormat.format(now).toString());
 
-	            if(date1.after(date2)){
-	            	result = false;
-	            }
+	public boolean checkDateLessThanNow(String date) {
+		boolean result = true;
+		try {
+			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
-	            if(date1.before(date2)){
-	            	result = true;
-	            }
+			Date date1 = formatDate.parse(date);
 
-	            if(date1.equals(date2)){
-	            	result = false;
-	            }
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			Date now = new Date();
 
-	        }
-	        catch(ParseException ex){
-	            ex.printStackTrace();
-	        }
-		 return result;
-	
-	    }
+			Date date2 = formatDate.parse(dateFormat.format(now).toString());
+
+			if (date1.after(date2)) {
+				result = false;
+			}
+
+			if (date1.before(date2)) {
+				result = true;
+			}
+
+			if (date1.equals(date2)) {
+				result = false;
+			}
+
+		} catch (ParseException ex) {
+			ex.printStackTrace();
+		}
+		return result;
+
+	}
 
 }

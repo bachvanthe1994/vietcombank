@@ -427,7 +427,7 @@ public class TransferIdentity_Validate_3 extends Base {
 		log.info("TC_59_Step_4: kiem tra maxlength");
 		String pass21 = trasferPage.getDynamicPopupPassword(driver, "Tiếp tục");
 		int coutnPass21 = pass21.length();
-		verifyEquals(coutnPass, 20);
+		verifyEquals(coutnPass21, 20);
 
 	}
 
