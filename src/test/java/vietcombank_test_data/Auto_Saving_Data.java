@@ -40,4 +40,9 @@ public class Auto_Saving_Data {
 		
 	}
 	
+	public class RATE {
+		public static final String USD_RATE = "1 USD ~ 23,087.00 VND";
+		public static final String EUR_RATE = "1 EUR ~ 23,997.76 VND";
+	}
+	
 }
