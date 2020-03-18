@@ -21,6 +21,8 @@ public class Flow_HotelBooking_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HotelBookingPageObject hotelBooking;
+	private String transferTime, transactionNumber, ticketCode;
+	private long surplus, availableBalance, actualAvailableBalance, fee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 
@@ -81,6 +83,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		log.info("TC_01_10_Chon tai khoan nguon");
 		hotelBooking.clickToDynamicDropDown("Tài khoản nguồn");
 		hotelBooking.clickToDynamicTextOrButtonLink(Account_Data.Valid_Account.ACCOUNT2);
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_11_Kiem tra thong tin hoa don");
 		hotelBooking.scrollDownToButton(driver, "Tiếp tục");
@@ -90,6 +93,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
 		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		hotelBooking.clickToDynamicTextOrButtonLink("SMS OTP");
 
 		log.info("TC_01_14_Click tiep tuc");
@@ -101,12 +105,25 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		log.info("TC_01_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
+		log.info("TC_01_24: Kiem tra man hinh thanh toan thanh cong");
+		verifyTrue(hotelBooking.isDynamicMessageAndLabelTextDisplayed("THANH TOÁN THÀNH CÔNG"));
+		transferTime = hotelBooking.getTransferTimeSuccess("THANH TOÁN THÀNH CÔNG");
+		transactionNumber = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
+		ticketCode = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã vé");
 		
+		log.info("TC_01_25_Kiem tra nut Thuc hien giao dich moi");
+		verifyTrue(hotelBooking.isDynamicButtonDisplayed("Thực hiện giao dịch mới"));
+		
+		log.info("TC_01_26_Click Thuc hien giao dich moi");
+		hotelBooking.clickToDynamicButton("Thực hiện giao dịch mới");
+		
+		log.info("TC_01_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
+//		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyOrFeeToLong(info.price), fee);
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
+//		closeApp();
 		service.stop();
 	}
 
