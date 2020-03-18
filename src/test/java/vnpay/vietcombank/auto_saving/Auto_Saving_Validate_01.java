@@ -217,7 +217,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
 		verifyTrue(autoSaving.isTextDisplayedInListTextElements(driver, sourceAccountMoney, "com.VCB:id/tvInfoBottomRight"));
 		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.VALIDATE.EXCHANGE_RATE_TITLE));
-		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, "1 USD ~ 23,087.00 VND"));
+		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.RATE.USD_RATE));
 	}
 
 	@Test
@@ -370,7 +370,7 @@ public class Auto_Saving_Validate_01 extends Base {
 
 		log.info("TC_13_Step_01: Xac nhan hien thi label ty gia quy doi");
 		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.VALIDATE.EXCHANGE_RATE_TITLE));
-		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, "1 USD ~ 23,087.00 VND"));
+		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.RATE.USD_RATE));
 		
 		log.info("TC_13_Step_02: Click vao drodown 'Tai khoan nguon");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
@@ -385,7 +385,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		
 		log.info("TC_13_Step_05: Xac nhan hien thi label ty gia quy doi");
 		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.VALIDATE.EXCHANGE_RATE_TITLE));
-		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, "1 EUR ~ 23,997.76 VND"));
+		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.RATE.EUR_RATE));
 
 	}
 
