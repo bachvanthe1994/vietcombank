@@ -266,6 +266,40 @@ public class AbstractPage {
 			}
 		}
 	}
+	
+	public void scrollDown_LongDistance(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.90);
+		int endY = (int) (size.getHeight() * 0.10);
+		TouchAction touch = new TouchAction(driver);
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> elementsOne = null;
+		for (int i = 0; i < 50; i++) {
+			boolean checkElementDisplayed = false;
+			overRideTimeOut(driver, 2);
+			try {
+				driver.getPageSource();
+				elementsOne = driver.findElements(By.xpath(locator));
+				checkElementDisplayed = elementsOne.get(0).isDisplayed();
+			} catch (Exception e) {
+				checkElementDisplayed = true;
+			}
+
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && checkElementDisplayed) {
+				break;
+			} else {
+				try {
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				} catch (Exception e) {
+
+					System.out.println(e.getMessage());
+					overRideTimeOut(driver, longTime);
+				}
+			}
+		}
+	}
 
 	public void clearText(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
@@ -798,7 +832,7 @@ public class AbstractPage {
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicRadioIndex(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		scrollDown_LongDistance(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
