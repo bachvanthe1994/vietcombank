@@ -171,10 +171,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_01_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_01_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-	verifyEquals(conten, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER);
-
 	log.info("TC_01_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyTrue(newDealConfirm.equals(TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS));
@@ -321,11 +317,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_02_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_02_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
-
 	log.info("TC_02_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyEquals(newDealConfirm, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
@@ -471,11 +462,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_03_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_03_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
-
 	log.info("TC_03_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyEquals(newDealConfirm, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
@@ -620,11 +606,6 @@ public class Transfer_Identity_And_Passport extends Base {
 
 	log.info("TC_04_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
-
-	log.info("TC_04_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 	log.info("TC_04_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -772,11 +753,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_05_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_05_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
-
 	log.info("TC_05_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyEquals(newDealConfirm, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
@@ -922,11 +898,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_06_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_06_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
-
 	log.info("TC_06_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyEquals(newDealConfirm, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
@@ -1064,10 +1035,6 @@ public class Transfer_Identity_And_Passport extends Base {
 
 	log.info("TC_07_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
-
-	log.info("TC_07_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-	verifyTrue(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER.equals(conten));
 
 	log.info("TC_07_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1213,10 +1180,6 @@ public class Transfer_Identity_And_Passport extends Base {
 
 	log.info("TC_08_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
-
-	log.info("TC_08_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 	log.info("TC_08_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1364,11 +1327,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_09_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_09_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
-
 	log.info("TC_09_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyEquals(newDealConfirm, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
@@ -1513,11 +1471,6 @@ public class Transfer_Identity_And_Passport extends Base {
 
 	log.info("TC_10_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
-
-	log.info("TC_10_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 	log.info("TC_10_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
@@ -1665,11 +1618,6 @@ public class Transfer_Identity_And_Passport extends Base {
 	log.info("TC_11_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
 
-	log.info("TC_11_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
-
 	log.info("TC_11_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
 	verifyEquals(newDealConfirm, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS);
@@ -1814,11 +1762,6 @@ public class Transfer_Identity_And_Passport extends Base {
 
 	log.info("TC_12_Step_33: ma giao dich");
 	transactionNumber = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.TRANSECTION_NUMBER);
-
-	log.info("TC_12_Step_34: noi dung giao dich");
-	String conten = trasferPage.getDynamicTextByLabel(driver, TransferIdentity_Data.textCheckElement.CONNTENT);
-
-	verifyEquals(TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, conten);
 
 	log.info("TC_12_Step_35: xac thuc thuc hien giao dich moi");
 	String newDealConfirm = trasferPage.getTextDynamicInSelectBox(driver, TransferIdentity_Data.textCheckElement.CONFIRM_TRANSFER_SUCCESS).trim();
