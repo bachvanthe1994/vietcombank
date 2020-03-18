@@ -51,9 +51,7 @@ public class AbstractPage {
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
+		sleep(driver, 3000);
 		String text = driver.getPageSource();
 		return text;
 
@@ -878,16 +876,16 @@ public class AbstractPage {
 		}
 	}
 
-	
-	//Click vào button, text có class là textview, tham số truyền vào là text bỏ scroll
-		public void clickToDynamicButtonLinkOrLinkTextNotScroll(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-			boolean status = false;
-			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-			if (status == true) {
-				clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+	// Click vào button, text có class là textview, tham số truyền vào là text bỏ
+	// scroll
+	public void clickToDynamicButtonLinkOrLinkTextNotScroll(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
-			}
 		}
+	}
 
 	// Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicButtonLinkOrLinkTextNotScrollDown(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -2052,18 +2050,18 @@ public class AbstractPage {
 		return text;
 
 	}
-	
-	//Lấy text theo index và ID
-		public String getTextInDynamicIndexAndID(AppiumDriver<MobileElement> driver, String ... dynamicID) {
-			boolean status = false;
-			String text = null;
-			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
-			if (status == true) {
-				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
-			}
-			return text;
 
+	// Lấy text theo index và ID
+	public String getTextInDynamicIndexAndID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
 		}
+		return text;
+
+	}
 
 	// Lấy toàn bộ số tiền được suggest ở ô số tiền và lưu vào array list
 
