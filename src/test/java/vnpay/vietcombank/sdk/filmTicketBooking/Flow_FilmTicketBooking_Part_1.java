@@ -19,7 +19,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 
 public class Flow_FilmTicketBooking_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -27,6 +26,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 	private FilmTicketBookingPageObject filmTicketBooking;
 	private String transferTime, transactionNumber, ticketCode;
 	private long surplus, availableBalance, actualAvailableBalance, fee;
+	String password = "";
 	
 	FilmTicketInfo info = new FilmTicketInfo();
 	
@@ -38,7 +38,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
+		password = pass;
 	}
 
 	@Test
@@ -130,9 +130,9 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
 
 		log.info("TC_01_18_Chon tai khoan nguon");
-		filmTicketBooking.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		filmTicketBooking.clickToDynamicDropDown("Tài khoản nguồn");
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Số dư khả dụng"));
 		
 		log.info("TC_01_19_Kiem tra man hinh Thong tin mua ve");
 		log.info("TC_01_19_01: Kiem tra ten phim");
@@ -174,7 +174,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Mật khẩu đăng nhập"));
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
 		
 		log.info("TC_01_22_01: Kiem tra so tien phi");
@@ -183,15 +183,15 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_01_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
-		filmTicketBooking.inputToDynamicPopupPasswordInput(LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		filmTicketBooking.inputToDynamicPopupPasswordInput(password, "Tiếp tục");
 
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
 		log.info("TC_01_24: Kiem tra man hinh thanh toan thanh cong");
 		verifyTrue(filmTicketBooking.isDynamicMessageAndLabelTextDisplayed("THANH TOÁN THÀNH CÔNG"));
 		transferTime = filmTicketBooking.getTransferTimeSuccess("THANH TOÁN THÀNH CÔNG");
-		transactionNumber = filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
-		ticketCode = filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mã vé");
+		transactionNumber = filmTicketBooking.getDynamicTextInTransactionDetail("Mã giao dịch");
+		ticketCode = filmTicketBooking.getDynamicTextInTransactionDetail("Mã vé");
 		
 		log.info("TC_01_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(filmTicketBooking.isDynamicButtonDisplayed("Thực hiện giao dịch mới"));
@@ -210,7 +210,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicBackIcon("Mua vé xem phim");
 
 		log.info("TC_02_2: Click vao More Icon");
-		filmTicketBooking.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/menu_5");
 
 		log.info("TC_02_3: Click Bao Cao giao Dich");
 		filmTicketBooking.clickToDynamicTextView("Báo cáo giao dịch");
@@ -225,7 +225,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
 		
 		log.info("TC_02_7: Lay so du kha dung luc sau");
-		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(Account_Data.Valid_Account.ACCOUNT2));
 		
 		log.info("TC_02_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
@@ -234,7 +234,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_02_10: Click Tim Kiem");
-		filmTicketBooking.clickToDynamicButton(driver, "Tìm kiếm");
+		filmTicketBooking.clickToDynamicButton("Tìm kiếm");
 
 		log.info("TC_02_11: Kiem tra ngay tao giao dich hien thi");
 		String reportTime1 = filmTicketBooking.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -247,36 +247,39 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		
 		log.info("TC_02_14: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = filmTicketBooking.getDynamicTextInTransactionDetail("Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_02_15: Kiem tra ma giao dich");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số lệnh giao dịch"), transactionNumber);
 		
 		log.info("TC_02_16: Kiem tra so tai khoan trich no");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 		
 		log.info("TC_02_17: Kiem tra ma ve");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mã vé"), ticketCode);
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Mã vé"), ticketCode);
 		
 		log.info("TC_02_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(info.price));
+		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền giao dịch").contains(info.price));
 		
-		log.info("TC_02_19: Kiem tra loai giao dich");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán vé xem phim");
+		log.info("TC_02_19: Kiem tra so tien phi");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền phí"), addCommasToLong(fee + "") + " VND");
 		
-		log.info("TC_02_20: Kiem tra noi dung giao dich");
+		log.info("TC_02_20: Kiem tra loai giao dich");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Loại giao dịch"), "Thanh toán vé xem phim");
+		
+		log.info("TC_02_21: Kiem tra noi dung giao dich");
 		String note = "MBVCB" + transactionNumber + ". thanh toan ve xem phim";
-		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(note));
+		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail("Nội dung giao dịch").contains(note));
 		
-		log.info("TC_02_21: Click  nut Back");
-		filmTicketBooking.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
-
 		log.info("TC_02_22: Click  nut Back");
-		filmTicketBooking.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
+		filmTicketBooking.clickToDynamicBackIcon("Chi tiết giao dịch");
 
-		log.info("TC_02_23: Click  nut Home");
-		filmTicketBooking.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		log.info("TC_02_23: Click  nut Back");
+		filmTicketBooking.clickToDynamicBackIcon("Báo cáo giao dịch");
+
+		log.info("TC_02_24: Click  nut Home");
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/menu_1");
 		
 	}
 	
@@ -365,9 +368,9 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
 
 		log.info("TC_03_18_Chon tai khoan nguon");
-		filmTicketBooking.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		filmTicketBooking.clickToDynamicDropDown("Tài khoản nguồn");
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Số dư khả dụng"));
 		
 		log.info("TC_03_19_Kiem tra man hinh Thong tin mua ve");
 		log.info("TC_03_19_01: Kiem tra ten phim");
@@ -409,7 +412,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		
 		log.info("TC_03_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Mật khẩu đăng nhập"));
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
 		
 		log.info("TC_03_22_01: Kiem tra so tien phi");
@@ -418,15 +421,15 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_03_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
-		filmTicketBooking.inputToDynamicPopupPasswordInput(LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		filmTicketBooking.inputToDynamicPopupPasswordInput(password, "Tiếp tục");
 
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
 		log.info("TC_03_24: Kiem tra man hinh thanh toan thanh cong");
 		verifyTrue(filmTicketBooking.isDynamicMessageAndLabelTextDisplayed("THANH TOÁN THÀNH CÔNG"));
 		transferTime = filmTicketBooking.getTransferTimeSuccess("THANH TOÁN THÀNH CÔNG");
-		transactionNumber = filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
-		ticketCode = filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mã vé");
+		transactionNumber = filmTicketBooking.getDynamicTextInTransactionDetail("Mã giao dịch");
+		ticketCode = filmTicketBooking.getDynamicTextInTransactionDetail("Mã vé");
 		
 		log.info("TC_03_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(filmTicketBooking.isDynamicButtonDisplayed("Thực hiện giao dịch mới"));
@@ -445,7 +448,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicBackIcon("Mua vé xem phim");
 
 		log.info("TC_04_2: Click vao More Icon");
-		filmTicketBooking.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/menu_5");
 
 		log.info("TC_04_3: Click Bao Cao giao Dich");
 		filmTicketBooking.clickToDynamicTextView("Báo cáo giao dịch");
@@ -460,7 +463,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
 		
 		log.info("TC_04_7: Lay so du kha dung luc sau");
-		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(Account_Data.Valid_Account.ACCOUNT2));
 		
 		log.info("TC_04_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
@@ -469,7 +472,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_10: Click Tim Kiem");
-		filmTicketBooking.clickToDynamicButton(driver, "Tìm kiếm");
+		filmTicketBooking.clickToDynamicButton("Tìm kiếm");
 
 		log.info("TC_04_11: Kiem tra ngay tao giao dich hien thi");
 		String reportTime1 = filmTicketBooking.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -482,27 +485,30 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		
 		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = filmTicketBooking.getDynamicTextInTransactionDetail("Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_04_15: Kiem tra ma giao dich");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số lệnh giao dịch"), transactionNumber);
 		
 		log.info("TC_04_16: Kiem tra so tai khoan trich no");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 		
 		log.info("TC_04_17: Kiem tra ma ve");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Mã vé"), ticketCode);
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Mã vé"), ticketCode);
 		
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(info.price));
+		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền giao dịch").contains(info.price));
 		
-		log.info("TC_04_19: Kiem tra loai giao dich");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán vé xem phim");
+		log.info("TC_04_19: Kiem tra so tien phi");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền phí"), addCommasToLong(fee + "") + " VND");
 		
-		log.info("TC_04_20: Kiem tra noi dung giao dich");
+		log.info("TC_04_20: Kiem tra loai giao dich");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Loại giao dịch"), "Thanh toán vé xem phim");
+		
+		log.info("TC_04_21: Kiem tra noi dung giao dich");
 		String note = "MBVCB" + transactionNumber + ". thanh toan ve xem phim";
-		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(note));
+		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail("Nội dung giao dịch").contains(note));
 		
 	}
 	

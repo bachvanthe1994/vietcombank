@@ -164,39 +164,39 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 	public void TC_02_BaoCaoChuyenTienNguoiChuyenTraPhiVNDOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
-		log.info("TC_Step_: Click back man hinh home");
+		log.info("TC_02: Click back man hinh home");
 		homePage.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");
 
-		log.info("TC_Step_: Click menu header");
+		log.info("TC_02: Click menu header");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("TC_Step_: Click bao cao giao dich");
+		log.info("TC_02: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
 
-		log.info("TC_Step_: chon loai bao cao giao dich");
+		log.info("TC_02: chon loai bao cao giao dich");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
-		log.info("TC_Step_: Chon so tai khoan");
+		log.info("TC_02: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
 
-		log.info("TC_Step_: Chon so tai khoan tra cuu");
+		log.info("TC_02: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
-		log.info("TC_Step_: verify thoi tim kiem tu ngay");
+		log.info("TC_02: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
 		String dateStartExpect = getBackwardDate(7);
 		verifyEquals(dateStartActual, dateStartExpect);
 
-		log.info("TC_Step_: verify thoi tim kiem tu ngay");
+		log.info("TC_02: verify thoi tim kiem tu ngay");
 		String dateEndActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate");
 		String dateEndtExpect = getForwardDate(0);
 		verifyEquals(dateEndActual, dateEndtExpect);
 
-		log.info("TC_Step_: Tim kiem");
+		log.info("TC_02: Tim kiem");
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
 
 		log.info("TC_02_: Lay ngay tao giao dich hien thi");
@@ -205,13 +205,13 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		log.info("TC_02: Kiem tra ngay tao giao dich hien thi");
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), transferTime);
 
-		log.info("TC_Step_: Check ghi chu");
+		log.info("TC_02: Check ghi chu");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
-		log.info("TC_Step_: Check so tien chuyen");
+		log.info("TC_02: Check so tien chuyen");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
 
-		log.info("TC_Step_: Click chi tiet giao dich");
+		log.info("TC_02: Click chi tiet giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02: Lay ngay tao giao dich hien thi");
@@ -220,40 +220,40 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		log.info("TC_02: Kiem tra ngay tao giao dich hien thi");
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport1), transferTime);
 
-		log.info("TC_Step_: Check so lenh giao dich");
+		log.info("TC_02: Check so lenh giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
-		log.info("TC_Step_: Check tao khoan ghi no");
+		log.info("TC_02: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
-		log.info("TC_Step_: Check tai khoan ghi co");
+		log.info("TC_02: Check tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
-		log.info("TC_Step_: Check so tien giao dich");
+		log.info("TC_02: Check so tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY) + " VND"));
 
-		log.info("TC_Step_: Check so nguoi huong");
+		log.info("TC_02: Check so nguoi huong");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_Step_: Check ngan hang huong");
+		log.info("TC_02: Check ngan hang huong");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
 
-		log.info("TC_Step_: Check phi giao dich");
+		log.info("TC_02: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
-		log.info("TC_Step_: Check loai giao dich");
+		log.info("TC_02: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
-		log.info("TC_Step_: Check noi dung giao dich");
+		log.info("TC_02: Check noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
-		log.info("TC_Step_: Chick chi tiet giao dich");
+		log.info("TC_02: Chick chi tiet giao dich");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 
-		log.info("TC_Step_: Chon button back");
+		log.info("TTC_02: Chon button back");
 		transferMoney.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
-		log.info("TC_01_Step_Click button home");
+		log.info("TC_02_Click button home");
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 

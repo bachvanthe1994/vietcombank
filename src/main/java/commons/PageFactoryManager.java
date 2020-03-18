@@ -6,6 +6,7 @@ import pageObjects.LockCardPageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
+import pageObjects.ChangePasswordPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -126,5 +127,9 @@ public class PageFactoryManager {
 	
 	public static VCBAutoDebitPageObject getVCBAutoDebitPageObject(AppiumDriver<MobileElement> driver) {
 		return new VCBAutoDebitPageObject(driver);
+	}
+	
+	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
+		return new ChangePasswordPageObject(driver);
 	}
 }
