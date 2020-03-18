@@ -9,11 +9,11 @@ public class TransferIdentity_Data {
 	public static final String PAGE_CONFIRM = "Xác nhận thông tin";
 	public static final String CONFIRM_PASSWORD = "com.VCB:id/pin";
 	public static final String CONFIRM_TRANSFER_SUCCESS = "CHUYỂN KHOẢN THÀNH CÔNG";
-	public static final String BENEFICIARY_NAME = "Tên người hưởng";
-	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
+	public static final String BENEFICIARY_NAME = "Tên người thụ hưởng";
+	public static final String DESTINATION_ACCOUNT = "Tài khoản thụ hưởng";
 	public static final String CONNTENT = "Nội dung";
 	public static final String TRANSECTION_NUMBER = "Mã giao dịch";
-	public static final String AMOUNT = "11000";
+	public static final String AMOUNT = "1100";
 	public static final String AMOUNT_USD = "1";
 	public static final String OTP_DATA = "12345";
 	public static final String OTP_FALSE = "654321";

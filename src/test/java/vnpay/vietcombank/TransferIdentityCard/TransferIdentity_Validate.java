@@ -26,19 +26,19 @@ public class TransferIdentity_Validate extends Base {
     private String transferTime;
     private String transactionNumber;
 
-
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
-		startServer();
-		log.info("Before class: Mo app ");
-		if (deviceType.contains("android")) {
-			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("ios")) {
-			driver = openIOSApp(deviceName, udid, url);
-		}
-		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
+    @Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+    @BeforeClass
+    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
+	    throws IOException, InterruptedException {
+	startServer();
+	log.info("Before class: Mo app ");
+	if (deviceType.contains("android")) {
+	    driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+	} else if (deviceType.contains("ios")) {
+	    driver = openIOSApp(deviceName, udid, url);
+	}
+	login = PageFactoryManager.getLoginPageObject(driver);
+	login.Global_login(phone, pass, opt);
 
 	homePage = PageFactoryManager.getHomePageObject(driver);
 	trasferPage = PageFactoryManager.getTransferIdentiryPageObject(driver);
@@ -73,7 +73,7 @@ public class TransferIdentity_Validate extends Base {
     }
 
     @Test
-    public void TC_03_KiemTraLoaiKiTuNhapVaGioiHanKyTuNhap() {
+    public void TC_03_KiemTraLoaiKiTuNhapVaGioiHanKyTuNhapTenNguoiThuHuong() {
 	log.info("TC_03_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -81,7 +81,7 @@ public class TransferIdentity_Validate extends Base {
 	trasferPage.inputToDynamicInputBox(TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER, "Tên người thụ hưởng");
 
 	log.info("TC_03_STEP_2: kiem ta hien thi ten nguoi thu huong vua nhap");
-	verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), TransferIdentity_Data.textDataInputForm.PASSPORT_NUMBER);
+	verifyEquals(trasferPage.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "2"), "Tên người thụ hưởng");
 
 	log.info("TC_03_STEP_4: nhap ten nguoi thu huong gom ki tu dac biet");
 	trasferPage.inputToDynamicInputBoxByHeader(driver, TransferIdentity_Data.textDataInputForm.SPECIAL_CHARACTERS, "Thông tin người hưởng", "2");
@@ -190,7 +190,7 @@ public class TransferIdentity_Validate extends Base {
     }
 
     @Test
-    public void TC_07_KiemTraMacDinhSo() {
+    public void TC_07_KiemTraMacDinhOSoCMT() {
 	log.info("TC_07_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -202,7 +202,7 @@ public class TransferIdentity_Validate extends Base {
     }
 
     @Test
-    public void TC_08_KiemTraNhapSo() {
+    public void TC_08_KiemTraNhapSoCMT() {
 	log.info("TC_08_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 
@@ -220,7 +220,7 @@ public class TransferIdentity_Validate extends Base {
     }
 
     @Test
-    public void TC_09_KiemTraMaxLengthSo() {
+    public void TC_09_KiemTraMaxLengthSoCMT() {
 	log.info("TC_09_STEP_0: chon chuyển tiền nhận bằng CMT");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhận bằng CMT");
 

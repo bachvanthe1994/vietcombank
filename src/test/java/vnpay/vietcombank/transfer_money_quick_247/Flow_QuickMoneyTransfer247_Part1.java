@@ -177,8 +177,8 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		log.info("TC_02: chon loai bao cao giao dich");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
-		log.info("TC_02: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh qua số tài khoản");
+		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_02: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
@@ -382,7 +382,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh qua số tài khoản");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_Step_: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
@@ -594,7 +594,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh qua số tài khoản");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_Step_: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
@@ -797,7 +797,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_Step_: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh qua số tài khoản");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_Step_: Chon so tai khoan");
 		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
