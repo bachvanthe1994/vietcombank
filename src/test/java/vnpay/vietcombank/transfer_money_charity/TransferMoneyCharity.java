@@ -32,7 +32,7 @@ public class TransferMoneyCharity extends Base {
 	private String transactionNumber;
 	long fee = 0;
 	double transferFeeCurrentcy = 0;
-	String currentcy = "";
+	String password, currentcy = "";
 
 	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	TransferCharity info1 = new TransferCharity(Account_Data.Valid_Account.EUR_ACCOUNT, TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
@@ -53,6 +53,8 @@ public class TransferMoneyCharity extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		
+		password = pass;
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
@@ -126,7 +128,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_01_11_Nhap mat khau");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -302,7 +304,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_03_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -836,7 +838,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_09_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 

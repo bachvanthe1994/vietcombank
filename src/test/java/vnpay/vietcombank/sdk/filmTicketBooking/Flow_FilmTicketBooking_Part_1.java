@@ -19,7 +19,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 
 public class Flow_FilmTicketBooking_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -27,6 +26,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 	private FilmTicketBookingPageObject filmTicketBooking;
 	private String transferTime, transactionNumber, ticketCode;
 	private long surplus, availableBalance, actualAvailableBalance, fee;
+	String password = "";
 	
 	FilmTicketInfo info = new FilmTicketInfo();
 	
@@ -38,7 +38,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
+		password = pass;
 	}
 
 	@Test
@@ -183,7 +183,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_01_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
-		filmTicketBooking.inputToDynamicPopupPasswordInput(LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		filmTicketBooking.inputToDynamicPopupPasswordInput(password, "Tiếp tục");
 
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
@@ -421,7 +421,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_03_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
-		filmTicketBooking.inputToDynamicPopupPasswordInput(LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		filmTicketBooking.inputToDynamicPopupPasswordInput(password, "Tiếp tục");
 
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 		
