@@ -1031,7 +1031,7 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_11_12_4_Kiem tra nut thuc hien giao dich");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
-		log.info("TC_11_12_5_Lay ma chuy tien");
+		log.info("TC_11_12_5_Lay ma chuyen tien");
 		transferTime = transferMoneyCharity.getDynamicTransferTimeAndMoney(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY, "4");
 		transactionNumber = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
