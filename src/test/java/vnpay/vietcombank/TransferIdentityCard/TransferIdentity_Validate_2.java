@@ -414,8 +414,8 @@ public class TransferIdentity_Validate_2 extends Base {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//	closeApp();
-//	service.stop();
+	closeApp();
+	service.stop();
     }
 
 }

@@ -35,7 +35,7 @@ public class LockCard_Validate extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0974862668", pass, opt);
+		login.Global_login("0918679292", "aaaaa11111", opt);
 
 	}
 
@@ -141,10 +141,10 @@ public class LockCard_Validate extends Base {
 	public void TC_07_KiemTraComboboxSoThe_KiemTraChonSoThe() {
 		
 		log.info("TC_07_Step_01: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.DEBIT_CARD02);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.DEBIT_CARD01);
 		
 		log.info("TC_07_Step_02: Xac nhan the hien thi la the vua chon");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.DEBIT_CARD02);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.DEBIT_CARD01);
 		
 		log.info("TC_07_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
@@ -156,6 +156,7 @@ public class LockCard_Validate extends Base {
 		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.DEBIT_CARD03);
 	}
 	
+	@Test
 	public void TC_08_KiemTraButtonTiepTuc() {
 		
 		log.info("TC_08_Step_01: Click vao nut 'Tiep tuc'");
@@ -165,7 +166,7 @@ public class LockCard_Validate extends Base {
 		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
 	}
 	
-	//@Test
+	@Test
 	public void TC_09_ManHinhXacNhanThongTin_KiemTraHienThiMacDinh() {
 		
 		log.info("TC_09_Step_01: Xac nhan hien thi man hinh xac nhan thong tin");
@@ -193,7 +194,7 @@ public class LockCard_Validate extends Base {
 		verifyTrue(lockCard.isDynamicButtonByIdEnable(driver, "com.VCB:id/btContinue"));
 	}
 	
-	//@Test
+	@Test
 	public void TC_10_ManHinhXacNhanThongTin_KiemTraAnButtonTiepTuc() {
 		
 		log.info("TC_10_Step_01: Click vao nut 'Tiep tuc'");
@@ -202,7 +203,7 @@ public class LockCard_Validate extends Base {
 		log.info("TC_10_Step_02: Xac nhan hien thi man hinh thanh cong");
 		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "KHÓA THẺ THÀNH CÔNG");
 	}
-	//@Test
+	@Test
 	public void TC_11_ManHinhKetQua_KiemTraManHinhHienThi() {
 		
 		log.info("TC_11_Step_01: Xac nhan hien thi man hinh thong bao giao dich thanh cong");
@@ -243,7 +244,7 @@ public class LockCard_Validate extends Base {
 	}
 	
 	@Parameters ({"otp"})
-	//@Test
+	@Test
 	public void TC_12_ManHinhKetQua_KiemTraNhanQuayVeManHinhMoKhoaThe(String otp){
 		
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -267,27 +268,20 @@ public class LockCard_Validate extends Base {
 		log.info("TC_12_Step_06: Chon So the");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD_03);
 		
-		log.info("TC_12_Step_07: Click vao checkbox");
-		lockCard.clickDynamicCheckBox(driver,  "com.VCB:id/checkBox");
+		log.info("TC_12_Step_07: Click vao nut 'Tiep tuc'");
+		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_12_Step_08: Click vao nut 'Tiep tuc'");
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
-		log.info("TC_12_Step_09: Click vao nut 'Tiep tuc'");
-		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		log.info("TC_12_Step_09: Xac nhan hien thi man hinh thong bao giao dich thanh cong");
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver,  "com.VCB:id/tvTitle"), "KHÓA THẺ THÀNH CÔNG");
 		
-		log.info("TC_12_Step_10: Nhap dung ma OTP roi click nut 'Tiep tuc'");
-		lockCard.inputToDynamicOtp(driver, otp, "Tiếp tục");
-		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
-		log.info("TC_12_Step_11: Xac nhan hien thi man hinh ket qua giao dich ");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver,  "com.VCB:id/tvTitleBar"), "GIAO DỊCH THÀNH CÔNG");
-		
-		log.info("TC_12_Step_12: An Button Thuc hien giao dich moi");
+		log.info("TC_12_Step_10: An Button Quay ve man hinh dich vu the");
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_12_Step_13: Xac nhan quay ve man hinh mo khoa the");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Lock_Card_Data.VALIDATE.UNLOCK_CARD_TILTE);
+		log.info("TC_12_Step_11: Xac nhan qua ve man hinh chinh");
+		verifyTrue(lockCard.isDynamicImageHomeDisplay(driver, "com.VCB:id/menu_1"));
 
 	}
 	
