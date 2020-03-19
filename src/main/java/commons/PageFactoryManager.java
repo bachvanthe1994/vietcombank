@@ -8,6 +8,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.HomePageObject;
+import pageObjects.InternetADSLPageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
@@ -17,6 +18,7 @@ import pageObjects.RegisterPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
+import pageObjects.TransferLimitPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyObject;
@@ -131,5 +133,13 @@ public class PageFactoryManager {
 	
 	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
 		return new ChangePasswordPageObject(driver);
+	}
+	
+	public static TransferLimitPageObject getTransferLimitPageObject(AppiumDriver<MobileElement> driver) {
+		return new TransferLimitPageObject(driver);
+	}
+	
+	public static InternetADSLPageObject getInternetADSLPageObject(AppiumDriver<MobileElement> driver) {
+		return new InternetADSLPageObject(driver);
 	}
 }

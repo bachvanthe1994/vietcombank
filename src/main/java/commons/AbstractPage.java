@@ -1289,6 +1289,16 @@ public class AbstractPage {
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
 	}
+	
+	//Input vào ô nhập smart otp 
+		public void inputToDynamicSmartOtp(AppiumDriver<MobileElement> driver, String inputValue, String dynamicID) {
+			boolean status = false;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+			if (status == true) {
+				clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+				sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, inputValue, dynamicID);
+			}
+		}
 
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
 
