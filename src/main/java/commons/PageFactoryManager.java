@@ -13,6 +13,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
 import pageObjects.OnlineTopupPageObject;
+import pageObjects.PostpaidMobileBillPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingTargetPageObject;
@@ -142,5 +143,9 @@ public class PageFactoryManager {
 
 	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
 		return new ChangePasswordPageObject(driver);
+	}
+	
+	public static PostpaidMobileBillPageObject getPostpaidMobileBillPageObject(AppiumDriver<MobileElement> driver) {
+		return new PostpaidMobileBillPageObject(driver);
 	}
 }

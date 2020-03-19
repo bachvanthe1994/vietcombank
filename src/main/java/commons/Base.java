@@ -887,10 +887,10 @@ public class Base {
 		return result;
 	}
 	
-	public String getInterestRate(String rate) {
+	public String getSplitStringIndex(String stringText,String splitText,int index) {
 		String result = "";
 		try {
-			result = rate.split("%")[0].replaceAll("[^\\.0123456789]", "");
+			result = stringText.split(splitText)[index].replaceAll("[^\\.0123456789]", "");
 		} catch (Exception e) {
 			result = "0";
 		}
