@@ -23,9 +23,7 @@ public class LandLinePhoneChargePageObject extends AbstractPage {
 			inputIntoEditTextByID(driver, phone, "com.VCB:id/code");
 			clickToDynamicButton(driver, "Tiếp tục");
 			
-			sleep(driver, 3000);
-			
-			overRideTimeOut(driver, 2);
+			overRideTimeOut(driver, 5);
 			String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Xác nhận thông tin");
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
 			
