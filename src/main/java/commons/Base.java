@@ -886,6 +886,16 @@ public class Base {
 		}
 		return result;
 	}
+	
+	public String getInterestRate(String rate) {
+		String result = "";
+		try {
+			result = rate.split("%")[0].replaceAll("[^\\.0123456789]", "");
+		} catch (Exception e) {
+			result = "0";
+		}
+		return result;
+	}
 
 	public String convertDateTimeIgnoreHHmmss(String stringDate) {
 		String result = "";

@@ -790,12 +790,20 @@ public class AbstractPage {
 		}
 	}
 
-//Click Icon by linerLayout
+//Click Icon by linerLayout ID
 	public void clickToDynamicLinerLayoutID(AppiumDriver<MobileElement> driver, String dynamicValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
+		}
+	}
+	//Click Icon by linerLayout index
+	public void clickToDynamicLinerLayoutIndex(AppiumDriver<MobileElement> driver, String dynamicIndex) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
 		}
 	}
 
@@ -1392,6 +1400,12 @@ public class AbstractPage {
 	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
 		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+	}
+	
+	// Xac dinh text co duoc Focus hay khong
+	public boolean isDynamicLinearlayoutIndexFocus(AppiumDriver<MobileElement> driver, String dynamicIndex) {
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
 	}
 
 	// Xac nhan hien thi text qua Text ID
@@ -2208,6 +2222,17 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		}
+		return text;
+
+	}
+	
+	public String getTextEditViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		}
 		return text;
 

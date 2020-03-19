@@ -7,12 +7,14 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
+import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
 import pageObjects.OnlineTopupPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.SavingTargetPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
@@ -126,5 +128,13 @@ public class PageFactoryManager {
 	
 	public static VCBAutoDebitPageObject getVCBAutoDebitPageObject(AppiumDriver<MobileElement> driver) {
 		return new VCBAutoDebitPageObject(driver);
+	}
+	
+	public static InterestRateCalculatePageObject getInterestRateCalculatePageObject(AppiumDriver<MobileElement> driver) {
+		return new InterestRateCalculatePageObject(driver);
+	}
+	
+	public static SavingTargetPageObject getSavingTargetPageObject(AppiumDriver<MobileElement> driver) {
+		return new SavingTargetPageObject(driver);
 	}
 }
