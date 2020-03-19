@@ -8,12 +8,9 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.HomePageObject;
-<<<<<<< HEAD
 import pageObjects.InternetADSLPageObject;
-=======
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.LandLinePhoneChargePageObject;
->>>>>>> release/release06
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
