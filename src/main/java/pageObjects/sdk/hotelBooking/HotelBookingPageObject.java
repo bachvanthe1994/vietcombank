@@ -399,6 +399,26 @@ public class HotelBookingPageObject extends AbstractPage {
 		}
 
 	}
+	
+	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
+	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		}
+
+	}
+	
+	// Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
+	public void clickToDynamicImageViewByID(String dynamicID) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+	}
 
 	public List<String> getServicesOfHotelByID(String... dynamicID) {
 		List<String> listService = new ArrayList<String>();
@@ -578,6 +598,15 @@ public class HotelBookingPageObject extends AbstractPage {
 		}
 	}
 
+	public void inputToDynamicPopupPasswordInput(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
+	}
+	
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);

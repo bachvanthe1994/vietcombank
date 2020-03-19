@@ -8,13 +8,19 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.HomePageObject;
+<<<<<<< HEAD
 import pageObjects.InternetADSLPageObject;
+=======
+import pageObjects.InterestRateCalculatePageObject;
+import pageObjects.LandLinePhoneChargePageObject;
+>>>>>>> release/release06
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
 import pageObjects.OnlineTopupPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.SavingTargetPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
@@ -131,6 +137,15 @@ public class PageFactoryManager {
 		return new VCBAutoDebitPageObject(driver);
 	}
 	
+	public static InterestRateCalculatePageObject getInterestRateCalculatePageObject(AppiumDriver<MobileElement> driver) {
+		return new InterestRateCalculatePageObject(driver);
+	}
+	
+	public static SavingTargetPageObject getSavingTargetPageObject(AppiumDriver<MobileElement> driver) {
+		return new SavingTargetPageObject(driver);
+		
+	}
+
 	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
 		return new ChangePasswordPageObject(driver);
 	}
@@ -142,4 +157,9 @@ public class PageFactoryManager {
 	public static InternetADSLPageObject getInternetADSLPageObject(AppiumDriver<MobileElement> driver) {
 		return new InternetADSLPageObject(driver);
 	}
+	
+	public static LandLinePhoneChargePageObject getLandLinePhoneChargePageObject(AppiumDriver<MobileElement> driver) {
+		return new LandLinePhoneChargePageObject(driver);
+	}
+	
 }

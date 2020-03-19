@@ -45,6 +45,7 @@ public class DynamicPageUIs {
 	// LINEAER LAYOUT
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_LINEAERLAYOUT_BY_INDEX = "//android.widget.LinearLayout[@index=%s]";
 
 	// TEXT BOX OR INPUT BOX
 	public static final String DYNAMIC_INPUT_BOX = "//android.widget.EditText[@text='%s']";
