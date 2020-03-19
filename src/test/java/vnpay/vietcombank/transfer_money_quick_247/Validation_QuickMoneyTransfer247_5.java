@@ -25,6 +25,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	List<String> listActual;
 	private String Note;
 	private String costTranferString;
+	private long fee=0;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -245,10 +246,11 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		
 		log.info("TC_01_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
 
 		log.info("TC_74_Step_Verify so tien phi");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_OTP_VND);
+		verifyEquals(costTranferString, fee +"");
 		
 		log.info("TC_74_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]));
@@ -272,7 +274,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC_75_Step_Verify so tien phi");
-		verifyEquals(costTranferString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_MK_VND);
+		verifyEquals(costTranferString, fee+"");
 
 		log.info("TC_75_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]));

@@ -24,6 +24,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	List<String> listExpect;
 	List<String> listActual;
 	private String amountTranferString;
+	private long fee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -90,7 +91,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO_LABEL));
 
 		log.info("TC_83_Step_: Tai khoan dich va ten nguoi huong");
-		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tài khoản đích/ VND"), Account_Data.Valid_Account.ACCOUNT_TO +"/" );
+		verifyEquals(transferMoney.getDynamicTextByLabel(driver, "Tài khoản đích/ VND"), Account_Data.Valid_Account.ACCOUNT_TO + "/");
 	}
 
 	@Test
@@ -112,13 +113,18 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
 
+		log.info("TC_01_Step_Chon phuong thuc xac thuc");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]));
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+
 		log.info("TC_85_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Thông tin giao dịch", "1");
 
 		log.info("TC_85_Lay so tien ty gia quy doi");
 		String[] a = transferMoney.getDynamicTextByLabel(driver, "Tỷ giá quy đổi tham khảo").split("~");
 		String getChangeVNDString1 = a[1].replaceAll(".00 VND", "");
-		String getChangeVNDString =	getChangeVNDString1.replaceAll("\\D+", "");
+		String getChangeVNDString = getChangeVNDString1.replaceAll("\\D+", "");
 		int getChangeVND = Integer.parseInt(getChangeVNDString);
 
 		log.info("TC_85_Step_Tiep tuc");
@@ -127,16 +133,16 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		log.info("TC_85_Step_Verify so tien chuyen USD");
 		amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replace(".00 USD", "");
 		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY_USD);
-		System.out.print(amountTranferString +"------------");
+		System.out.print(amountTranferString + "------------");
 		long amountAfter = Long.parseLong(amountTranferString);
 
 		log.info("TC_85_Step_Verify so tien chuyen VND sau quy doi");
 		String amountTranferUSDString = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvQuyDoi").replaceAll("\\D+", "");
 		long amountAfterUSD = Long.parseLong(amountTranferUSDString);
-		
-		System.out.print(amountTranferUSDString +"------------");
-		System.out.print(amountAfter * getChangeVND +"------------");
-		
+
+		System.out.print(amountTranferUSDString + "------------");
+		System.out.print(amountAfter * getChangeVND + "------------");
+
 		verifyEquals(amountAfterUSD, amountAfter * getChangeVND);
 	}
 
@@ -147,10 +153,10 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_86_Step_: Verify so tien phi");
 		String amountfeeString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(amountfeeString, TransferMoneyQuick_Data.TransferQuick.COST_AMOUNT_MK_VND);
+		verifyEquals(amountfeeString, fee + "");
 
 		log.info("TC_86_Step_: Verify loai phi");
-		verifyEquals(transferMoney.getTextDynamicFollowText(driver, "Số tiền phí","1","com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+		verifyEquals(transferMoney.getTextDynamicFollowText(driver, "Số tiền phí", "1", "com.VCB:id/tvContent"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 	}
 
 	@Test
@@ -278,7 +284,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_95_Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");
-		
+
 		log.info("TC_95_Nhap OTP khong ton tai");
 		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP_NUMBER_INVALID, "Tiếp tục");
 

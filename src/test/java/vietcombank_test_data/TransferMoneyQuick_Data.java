@@ -18,11 +18,6 @@ public class TransferMoneyQuick_Data {
 
 		public static final String COST_AMOUNT_USD_EUR_OTP = "0.33";
 		public static final String COST_AMOUNT_USD_EUR_MK = "0.02";
-
-		public static final String FEE_OTP_VND_CARD = "2200";
-		public static final String FEE_MK_VND_CARD = "550";
-		public static final String COST_AMOUNT_OTP_VND = "7700";
-		public static final String COST_AMOUNT_MK_VND = "550";
 		public static final String PASSWORD = "Nhập mật khẩu";
 
 		public static final String CARD_FROM = "0011000000863";

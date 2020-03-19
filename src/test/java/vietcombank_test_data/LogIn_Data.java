@@ -11,8 +11,9 @@ public class LogIn_Data {
 	public static final int OTP_INVALID_TIMES = 3;
 	public static final int PASSWORD_INVALID_TIMES = 3;
 	public static final String WRONG_PASSWORD = "aaaa1111";
-	public static final String NEW_PASSWORD = "aaaa1111@";
+	public static final String NEW_PASSWORD = "aaaa1111";
 	public static final String OTP = "123456";
+	public static final String Smart_OTP = "111222";
 	public static final String INVALID_PASSWORD = "123456a  @ABC";
 	public static final String NULL = "";
 	public static final String PASSWORD_GREATER_THAN_20 = "1ABC1111@11111111111111111";
