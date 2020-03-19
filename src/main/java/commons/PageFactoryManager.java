@@ -6,6 +6,7 @@ import pageObjects.LockCardPageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
+import pageObjects.ChangePasswordPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.LogInPageObject;
@@ -136,5 +137,10 @@ public class PageFactoryManager {
 	
 	public static SavingTargetPageObject getSavingTargetPageObject(AppiumDriver<MobileElement> driver) {
 		return new SavingTargetPageObject(driver);
+		
+	}
+
+	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
+		return new ChangePasswordPageObject(driver);
 	}
 }

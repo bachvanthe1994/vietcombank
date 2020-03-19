@@ -32,6 +32,7 @@ public class TransferMoneyRecurrent extends Base {
 	String expectAvailableBalance;
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
+	String password = "";
 
 	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
 	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Ngày", "", "", "10", "Người chuyển trả", "test", "SMS OTP");
@@ -52,6 +53,7 @@ public class TransferMoneyRecurrent extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		password = pass;
 	}
 
 	@Test
@@ -578,7 +580,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_09_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -804,7 +806,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_13_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1258,7 +1260,7 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_21_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
