@@ -9,6 +9,7 @@ import pageObjects.AutoSavingPageObject;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.InterestRateCalculatePageObject;
+import pageObjects.LandLinePhoneChargePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
@@ -143,4 +144,9 @@ public class PageFactoryManager {
 	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
 		return new ChangePasswordPageObject(driver);
 	}
+	
+	public static LandLinePhoneChargePageObject getLandLinePhoneChargePageObject(AppiumDriver<MobileElement> driver) {
+		return new LandLinePhoneChargePageObject(driver);
+	}
+	
 }
