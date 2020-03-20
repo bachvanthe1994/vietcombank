@@ -167,7 +167,7 @@ public class Base {
 			cap.setCapability("appActivity", appActivities);
 //			cap.setCapability("noReset", true); 
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
-			cap.setCapability("appWaitPackage", "com.google.android.permissioncontroller");
+//			cap.setCapability("appWaitPackage", "com.google.android.permissioncontroller");
 
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 

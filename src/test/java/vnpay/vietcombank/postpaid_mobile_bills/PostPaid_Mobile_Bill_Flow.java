@@ -38,7 +38,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0974862668", pass, opt);
+		login.Global_login(phone, pass, opt);
 
 	}
 
@@ -49,7 +49,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Click Cuoc di dong tra sau");
-		home.scrollDownToText(driver, "Cước di động trả sau");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
@@ -211,11 +210,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleRight");
 
 		log.info("TC_01_Step_42: Xac nhan hien thi danh sach hoa don vua duoc luu");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/title"),
+		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 				Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-						+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/descript"),
-				mobilePhone + "/" + mobilePhone);
+						+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+				"com.VCB:id/title"));
+
+		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
+				"com.VCB:id/descript"));
 
 		log.info("TC_01_Step_43: Click nut Dong tat danh sach hoa don duoc luu");
 		postpaidMobile.clickToTextID(driver, "com.VCB:id/cancel_button");
@@ -469,11 +470,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleRight");
 
 		log.info("TC_03_Step_43: Xac nhan hien thi danh sach hoa don vua duoc luu");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/title"),
+		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 				Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-						+ Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER);
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/descript"),
-				mobilePhone + "/" + mobilePhone);
+						+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+				"com.VCB:id/title"));
+
+		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
+				"com.VCB:id/descript"));
 
 		log.info("TC_03_Step_44: Click nut Dong tat danh sach hoa don duoc luu");
 		postpaidMobile.clickToTextID(driver, "com.VCB:id/cancel_button");
@@ -727,11 +730,12 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleRight");
 
 		log.info("TC_05_Step_44: Xac nhan hien thi danh sach hoa don vua duoc luu");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/title"),
+		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 				Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-						+ Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/descript"),
-				mobilePhone + "/" + mobilePhone);
+						+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+				"com.VCB:id/title"));
+		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
+				"com.VCB:id/descript"));
 
 		log.info("TC_05_Step_45: Click nut Dong tat danh sach hoa don duoc luu");
 		postpaidMobile.clickToTextID(driver, "com.VCB:id/cancel_button");
