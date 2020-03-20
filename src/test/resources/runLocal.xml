@@ -24,7 +24,10 @@
 		<parameter name="otp" value="123456" />
 		<classes>
 
+<!-- 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
 			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
+<!-- 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
+
 
 		</classes>
 	</test>
