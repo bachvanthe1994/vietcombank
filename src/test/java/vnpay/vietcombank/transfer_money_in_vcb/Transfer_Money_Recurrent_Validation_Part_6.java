@@ -25,6 +25,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 	private LogInPageObject login;
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private HomePageObject homePage;
+	String password = "";
 
 	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "Mật khẩu đăng nhập");
 
@@ -40,6 +41,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		password = pass;
 
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -227,7 +229,7 @@ public class Transfer_Money_Recurrent_Validation_Part_6 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_11_Nhap mat khau chinh xac");
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 
 		log.info("TC_07_11_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");

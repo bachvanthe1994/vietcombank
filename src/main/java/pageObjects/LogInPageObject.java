@@ -14,6 +14,7 @@ public class LogInPageObject extends AbstractPage {
 
 	public void Global_login(String phone, String pass, String otp) {
 		if (getDriverName(driver).contains("android")) {
+
 			clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 			inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
@@ -31,8 +32,9 @@ public class LogInPageObject extends AbstractPage {
 
 			inputToDynamicOtp(driver, otp, "Tiếp tục");
 			clickToDynamicButton(driver, "Tiếp tục");
-
 			clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+
+			clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 		} else if (getDriverName(driver).contains("ios")) {
 
 			inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");

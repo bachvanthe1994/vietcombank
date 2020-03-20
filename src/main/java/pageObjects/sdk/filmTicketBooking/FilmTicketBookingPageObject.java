@@ -1174,6 +1174,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public void chooseSeatsByLineEmptyLastSeat() {
 		String index = "0";
 		boolean check = false;
+		waitForTextViewDisplay("Thanh toán");
 		while (!check) {
 			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_LINEARLAYOUT_NAF_TRUE, index);
 			overRideTimeOut(driver, 2);
@@ -1195,6 +1196,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public void chooseSeatsByLineEmptyBetweenSeat() {
 		String index = "0";
 		boolean check = false;
+		waitForTextViewDisplay("Thanh toán");
 		while (!check) {
 			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_LINEARLAYOUT_NAF_TRUE, index);
 			overRideTimeOut(driver, 2);

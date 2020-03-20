@@ -35,7 +35,7 @@ public class UnlockCard_Validate extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0918679292", "aaaaa11111", opt);
+		login.Global_login("0974862668", pass, opt);
 
 	}
 
@@ -153,10 +153,11 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 		
 		log.info("TC_07_Step_04: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.DEBIT_CARD03);
+		Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01 = lockCard.getFirstOptionInDynamicListElements(driver, "com.VCB:id/tvContent");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
 		
 		log.info("TC_07_Step_05: Xac nhan the hien thi la the vua chon");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.DEBIT_CARD03);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
 	}
 	
 	@Test
@@ -214,7 +215,7 @@ public class UnlockCard_Validate extends Base {
 		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Loại thẻ"), Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
 		
 		log.info("TC_10_Step_05: Xac nhan hien thi so the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD03);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
 		
 		log.info("TC_10_Step_06: Xac nhan hien thi thuong hieu the");
 		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), "Thương hiệu thẻ");
@@ -328,7 +329,7 @@ public class UnlockCard_Validate extends Base {
 		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Loại thẻ"), Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
 		
 		log.info("TC_15_Step_06: Xac nhan hien thi so the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.DEBIT_CARD03);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
 		
 		log.info("TC_15_Step_07: Xac nhan hien thi ma giao dich");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "Mã giao dịch"));
@@ -372,7 +373,8 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 		
 		log.info("TC_16_Step_06: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD_03);
+		Lock_Card_Data.ACCOUNTS.CREDIT_CARD_01 = lockCard.getFirstOptionInDynamicListElements(driver, "com.VCB:id/tvContent");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.ACCOUNTS.CREDIT_CARD_01);
 		
 		log.info("TC_16_Step_07: Click vao checkbox");
 		lockCard.clickDynamicCheckBox(driver,  "com.VCB:id/checkBox");

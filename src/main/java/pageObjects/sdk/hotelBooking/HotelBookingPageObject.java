@@ -1,9 +1,12 @@
 package pageObjects.sdk.hotelBooking;
 
+import java.text.DateFormatSymbols;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -396,6 +399,26 @@ public class HotelBookingPageObject extends AbstractPage {
 		}
 
 	}
+	
+	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
+	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		}
+
+	}
+	
+	// Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
+	public void clickToDynamicImageViewByID(String dynamicID) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+	}
 
 	public List<String> getServicesOfHotelByID(String... dynamicID) {
 		List<String> listService = new ArrayList<String>();
@@ -575,6 +598,15 @@ public class HotelBookingPageObject extends AbstractPage {
 		}
 	}
 
+	public void inputToDynamicPopupPasswordInput(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
+	}
+	
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
@@ -705,6 +737,25 @@ public class HotelBookingPageObject extends AbstractPage {
 	public void scrollUpToText(AppiumDriver<MobileElement> driver, String dynamicText) {
 		scrollUp(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicText);
 
+	}
+	
+	public String getTransferTimeSuccess(String textSuccess) {
+		String transferTime = "";
+		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
+
+		if (transferTime.equals("") || transferTime == null) {
+			Locale locale = new Locale("en", "UK");
+			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
+			dateFormatSymbols.setWeekdays(new String[] { "Unused", "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", });
+
+			String pattern = "HH:mm EEEEE dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, dateFormatSymbols);
+			String date = simpleDateFormat.format(new Date());
+			transferTime = date;
+
+		}
+
+		return transferTime;
 	}
 	
 }
