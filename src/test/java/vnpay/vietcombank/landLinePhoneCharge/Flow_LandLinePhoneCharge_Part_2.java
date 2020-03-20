@@ -373,7 +373,6 @@ public class Flow_LandLinePhoneCharge_Part_2 extends Base {
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 	
-	@Test
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
