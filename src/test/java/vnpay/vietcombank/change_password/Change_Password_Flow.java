@@ -13,6 +13,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.LogInPageObject;
+import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.ChangePassword_Data;
 
 
@@ -47,6 +48,9 @@ public class Change_Password_Flow extends Base {
 		log.info("TC_01_Step: Click cai dat");
 		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 		
+		log.info("TC_01_Step: Scroll xuong phan doi mat khau");
+		changePassword.scrollDownToText(driver, "Tra cứu");
+		
 		log.info("TC_01_Step: Click doi mat khau");
 		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Đổi mật khẩu");
 		
@@ -63,7 +67,7 @@ public class Change_Password_Flow extends Base {
 		changePassword.clickToDynamicButton(driver, "Xác nhận");
 		
 		log.info("TC_01_Step: verrify message");
-		verifyEquals(ChangePassword_Data.Message.CHANGE_PASSWORD_SUCCESS, "Quý khách đổi mật khẩu thành công. Vui lòng đăng nhập lại để sử dụng dịch vụ");
+		verifyEquals(changePassword.getDynamicTextMessage(driver, "Đăng nhập"), ChangePassword_Data.Message.CHANGE_PASSWORD_SUCCESS);
 		
 		log.info("TC_01_Step: Click button dong message");
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");
@@ -84,6 +88,9 @@ public class Change_Password_Flow extends Base {
 		log.info("TC_02_Step: Click cai dat");
 		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 		
+		log.info("TC_02_Step: Scroll xuong phan doi mat khau");
+		changePassword.scrollDownToText(driver, "Tra cứu");
+		
 		log.info("TC_02_Step: Click doi mat khau");
 		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Đổi mật khẩu");
 		
@@ -100,7 +107,7 @@ public class Change_Password_Flow extends Base {
 		changePassword.clickToDynamicButton(driver, "Xác nhận");
 		
 		log.info("TC_02_Step: verrify message");
-		verifyEquals(ChangePassword_Data.Message.CHANGE_PASSWORD_SUCCESS, "Quý khách đổi mật khẩu thành công. Vui lòng đăng nhập lại để sử dụng dịch vụ");
+		verifyEquals(changePassword.getDynamicTextMessage(driver, "Đăng nhập"), ChangePassword_Data.Message.CHANGE_PASSWORD_SUCCESS);
 		
 		log.info("TC_02_Step: Click button dong message");
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");

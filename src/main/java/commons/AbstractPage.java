@@ -1912,6 +1912,20 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	//Get text message theo text button
+		public String getDynamicTextMessage(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+			boolean status = false;
+			String text = null;
+			scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BUTTON, dynamicTextValue);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BUTTON, dynamicTextValue);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BUTTON, dynamicTextValue);
+
+			}
+			return text;
+
+		}
 
 	// Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text
 	// phía bên tay trái
