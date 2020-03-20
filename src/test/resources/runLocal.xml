@@ -23,7 +23,17 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-		<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
+		<!-- Auto debit -->
+			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
+
+			<!-- vnpay.vietcombank.change_password -->
+			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
+
+			<!-- Nạp tiền VETC -->
+			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
+			
+			<!-- Tính toán lãi suất -->
+				<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
 
 
 		</classes>
