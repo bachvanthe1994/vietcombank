@@ -1,4 +1,4 @@
-package vnpay.vietcombank.auto_saving;
+package vnpay.vietcombank.search;
 
 import java.io.IOException;
 
@@ -20,6 +20,10 @@ import pageObjects.saving_online.SavingOnlinePageObject;
 public class Search_Interest_Rate_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
+	private HomePageObject home;
+	private AutoSavingPageObject autoSaving;
+	private TransactionReportPageObject transactionReport;
+	private SavingOnlinePageObject savingOnline;
 	
 	private String transactionID,savingAccount,tranferMoney,transactionDate,startDate,endDate,sourceAccountMoney;
 	private long transferFee;
@@ -41,11 +45,11 @@ public class Search_Interest_Rate_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_TaiKhoanNguon_VND(String otp) {
-
-	}
-
+	public void TC_01_MoTaiKhoanTietKiem_TaiKhoanNguon_VND (String otp) {
+		
 	
+		
+	}
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
