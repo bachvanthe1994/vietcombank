@@ -133,7 +133,6 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		
 	}
 	
-	@Test(dependsOnMethods = { "TC_01_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanMatKhauDangNhap" })
 	public void TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -209,7 +208,6 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test(dependsOnMethods = { "TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao" })
 	public void TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		landLinePhoneCharge = PageFactoryManager.getLandLinePhoneChargePageObject(driver);
@@ -295,7 +293,6 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		
 	}
 	
-	@Test(dependsOnMethods = { "TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP" })
 	public void TC_04_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
