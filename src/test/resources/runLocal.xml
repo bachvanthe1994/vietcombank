@@ -25,6 +25,7 @@
 		<classes>
 		<!-- Auto debit -->
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1"/>
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2"/>
 
 		
 
