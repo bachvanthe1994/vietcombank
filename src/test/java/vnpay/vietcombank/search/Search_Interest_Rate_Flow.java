@@ -59,9 +59,7 @@ public class Search_Interest_Rate_Flow extends Base {
 		
 		log.info("TC_01_Step: get time moi refresh la thoi gian hien tai");
 	//	System.out.print("Cập nhật lúc "+getCurrentDay());
-		getCurentFormathhmmssa();
-		
-		System.out.print(getCurentFormathhmmssa() +"-----------------------");
+	
 		//verifyEquals(search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvUpdateTime"), "Cập nhật lúc "+getCurrentDay());
 		
 		log.info("TC_01_Step: Click tab VND");
