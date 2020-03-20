@@ -165,13 +165,10 @@ public class Base {
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
-//			cap.setCapability("appWaitPackage", "com.google.android.permissioncontroller");
-
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
 
@@ -886,8 +883,8 @@ public class Base {
 		}
 		return result;
 	}
-	
-	public String getSplitStringIndex(String stringText,String splitText,int index) {
+
+	public String getSplitStringIndex(String stringText, String splitText, int index) {
 		String result = "";
 		try {
 			result = stringText.split(splitText)[index].replaceAll("[^\\.0123456789]", "");

@@ -10,7 +10,7 @@
 	<parameter name="appActivities" value="com.VCB.activities.AbotActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
-	<parameter name="runAfterFail" value="true" />
+
 
 
 
@@ -18,21 +18,14 @@
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="Galaxy S9" />
 		<parameter name="deviceUDID" value="8d7a4491" />
-		<!-- <parameter name="deviceType" value="ios" /> -->
-		<!-- <parameter name="deviceName" value="P Nghiệp vụ 502" /> -->
-		<!-- <parameter name="deviceUDID" value="aaa358ede2afe9cd223548b282d255553b5b1d66" /> -->
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
+		<parameter name="phone" value="0904797863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
 
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
+
 		</classes>
 	</test>
 
