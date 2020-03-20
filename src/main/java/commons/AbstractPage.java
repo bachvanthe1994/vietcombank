@@ -798,7 +798,8 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicValue);
 		}
 	}
-	//Click Icon by linerLayout index
+
+	// Click Icon by linerLayout index
 	public void clickToDynamicLinerLayoutIndex(AppiumDriver<MobileElement> driver, String dynamicIndex) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
@@ -827,7 +828,7 @@ public class AbstractPage {
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
-		if (driver.getPageSource().contains("Xin lỗi quý khách") | driver.getPageSource().contains("Không tìm thấy")) {
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không tìm thấy")) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
@@ -845,7 +846,7 @@ public class AbstractPage {
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
-		if (driver.getPageSource().contains("Xin lỗi quý khách") | driver.getPageSource().contains("Không tìm thấy")) {
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không tìm thấy")) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
@@ -1311,16 +1312,16 @@ public class AbstractPage {
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
 	}
-	
-	//Input vào ô nhập smart otp 
-		public void inputToDynamicSmartOtp(AppiumDriver<MobileElement> driver, String inputValue, String dynamicID) {
-			boolean status = false;
-			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
-			if (status == true) {
-				clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
-				sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, inputValue, dynamicID);
-			}
+
+	// Input vào ô nhập smart otp
+	public void inputToDynamicSmartOtp(AppiumDriver<MobileElement> driver, String inputValue, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, inputValue, dynamicID);
 		}
+	}
 
 //input vào pop-up nhập mật khẩu xác thực, tham số truyền vào là text của button tiếp tục
 
@@ -1436,7 +1437,7 @@ public class AbstractPage {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
 		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
 	}
-	
+
 	// Xac dinh text co duoc Focus hay khong
 	public boolean isDynamicLinearlayoutIndexFocus(AppiumDriver<MobileElement> driver, String dynamicIndex) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
@@ -1913,6 +1914,20 @@ public class AbstractPage {
 
 	}
 
+	// Get text message theo text button
+	public String getDynamicTextMessage(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BUTTON, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BUTTON, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BUTTON, dynamicTextValue);
+
+		}
+		return text;
+
+	}
+
 	// Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text
 	// phía bên tay trái
 	public String getDynamicTextInLine2DestinationAccount(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -2273,7 +2288,7 @@ public class AbstractPage {
 		return text;
 
 	}
-	
+
 	public String getTextEditViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;

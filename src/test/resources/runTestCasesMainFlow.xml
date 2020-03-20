@@ -73,9 +73,11 @@
 			<!-- Auto debit -->
 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
 
+			<!-- vnpay.vietcombank.change_password -->
+			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
 
-
-
+			<!-- Nạp tiền VETC -->
+			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
 
 		</classes>
 
