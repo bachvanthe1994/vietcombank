@@ -21,7 +21,8 @@ public class LogInPageObject extends AbstractPage {
 
 			clickToDynamicButton(driver, "Tiếp tục");
 
-			if (getPageSource(driver).contains("Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
+			if (getPageSource(driver).contains(
+					"Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
 
 				clickToDynamicButton(driver, "Đồng ý");
 			}
