@@ -196,6 +196,9 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[5], accountFee) + " VND");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+
+		log.info("TC_03_Step_12: Click back ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "phone" })
@@ -300,6 +303,9 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+
+		log.info("TC_01_Step_12: Click back ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "phone" })
@@ -404,6 +410,9 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[5], accountFee) + " VND");
 		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+
+		log.info("TC_01_Step_12: Click back ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "phone" })
