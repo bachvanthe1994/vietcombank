@@ -17,6 +17,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LandLinePhoneCharge_Data;
+import vietcombank_test_data.LogIn_Data;
 
 public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -257,8 +258,8 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_03_08_Click Tiep tuc");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_03_09_Nhap mat khau");
-		landLinePhoneCharge.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
+		log.info("TC_03_09_Nhap OTP");
+		landLinePhoneCharge.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_10_Kiem tra man hinh Chuyen khoan thanh cong");
