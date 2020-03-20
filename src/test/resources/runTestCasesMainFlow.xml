@@ -78,6 +78,9 @@
 
 			<!-- Nạp tiền VETC -->
 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
+			
+			<!-- Tính toán lãi suất -->
+				<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
 
 		</classes>
 
