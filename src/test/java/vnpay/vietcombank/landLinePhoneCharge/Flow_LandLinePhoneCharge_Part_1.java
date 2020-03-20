@@ -58,6 +58,8 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_01_02_Chon tai khoan nguon");
 		landLinePhoneCharge.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
@@ -218,6 +220,8 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_03_02_Chon tai khoan nguon");
 		landLinePhoneCharge.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
