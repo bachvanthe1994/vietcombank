@@ -45,7 +45,7 @@ public class InterestRate_Calculate extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Hỗ trợ");
 		
 		log.info("TC_01_Step_03: An vao phan Tinh toan lai suat");
-		home.scrollDownToText(driver, "Tính toán lãi suất");
+		home.scrollDownToText(driver, "Tra cứu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Tính toán lãi suất");
 		
 		log.info("TC_01_Step_04: Hien thi man hinh Tinh toan lai suat");

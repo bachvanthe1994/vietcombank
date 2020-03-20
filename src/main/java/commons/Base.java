@@ -164,10 +164,11 @@ public class Base {
 			cap.setCapability("uid", udid);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
-			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+			cap.setCapability("noReset", true); 
+//			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 //			cap.setCapability("appWaitPackage", "com.google.android.permissioncontroller");
 
-			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+//			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
@@ -859,6 +860,19 @@ public class Base {
 		String result = "";
 		try {
 			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy))) + " VND";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
+	
+	public String convertEURO_USDToVNDMoney(String money, String currency) {
+		String result = "";
+		try {
+			result = String.format("%,.2f", (Double.parseDouble(money) * Double.parseDouble(currency)));
+			if(result.contains(".00")) {
+				result = result.replace(".00", "");
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
