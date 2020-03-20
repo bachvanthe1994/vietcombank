@@ -19,6 +19,7 @@ import pageObjects.PostpaidMobileBillPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingTargetPageObject;
+import pageObjects.SearchPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
@@ -164,4 +165,9 @@ public class PageFactoryManager {
 		return new LandLinePhoneChargePageObject(driver);
 	}
 
+	
+	public static SearchPageObject getSearchPageObject(AppiumDriver<MobileElement> driver) {
+		return new SearchPageObject(driver);
+	}
+	
 }
