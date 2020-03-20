@@ -825,6 +825,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
+		sleep(driver, 1000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
@@ -843,6 +844,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
+		sleep(driver, 1000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
@@ -1428,26 +1430,40 @@ public class AbstractPage {
 
 	// Xac nhan Button Enable qua Button ID
 	public boolean isDynamicButtonByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		boolean isEnabled = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		if (status == true) {
+			isEnabled = isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		}
+		return isEnabled;
+
 	}
 
 	// Xac dinh text co duoc Focus hay khong
 	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
-		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		boolean isFocused = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		if (status == true) {
+			isFocused = isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		}
+		return isFocused;
 	}
 
 	// Xac dinh text co duoc Focus hay khong
 	public boolean isDynamicLinearlayoutIndexFocus(AppiumDriver<MobileElement> driver, String dynamicIndex) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
-		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		boolean isFocused = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		if (status == true) {
+			isFocused = isControlForcus(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		}
+		return isFocused;
 	}
 
 	// Xac nhan hien thi text qua Text ID
 	public boolean isDynamicTextByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
+
 	}
 
 // check button có hiển thị hay không, tham số truyền vào là text của button
