@@ -53,7 +53,7 @@ public class Saving_Target_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Hỗ trợ");
 		
 		log.info("TC_01_Step_03: An vao phan Dat muc tieu tiet kiem");
-		home.scrollDownToText(driver, "Đặt mục tiêu tiết kiệm");
+		home.scrollDownToText(driver, "Tra cứu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đặt mục tiêu tiết kiệm");
 		
 		log.info("TC_01_Step_04: Hien thi man hinh Muc tieu tiet kiem");
