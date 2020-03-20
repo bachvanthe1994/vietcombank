@@ -17,6 +17,7 @@ public class LandLinePhoneChargePageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
+	public static String phoneNumber = "";
 	public void inputPhoneNumberLandLinePhoneCharge(List<String> listPhone) {
 		boolean check = false;
 		for (String phone : listPhone) {
@@ -29,6 +30,7 @@ public class LandLinePhoneChargePageObject extends AbstractPage {
 			
 			if(elementsOne.size() > 0) {
 				check = true;
+				phoneNumber = phone;
 				break;
 			}
 			else{
