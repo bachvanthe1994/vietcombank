@@ -206,7 +206,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+	@Test(dependsOnMethods = { "TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao" })
 	public void TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		landLinePhoneCharge = PageFactoryManager.getLandLinePhoneChargePageObject(driver);

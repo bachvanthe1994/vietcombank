@@ -206,7 +206,7 @@ public class Flow_LandLinePhoneCharge_Part_2 extends Base {
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+	@Test(dependsOnMethods = { "TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao" })
 	public void TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		landLinePhoneCharge = PageFactoryManager.getLandLinePhoneChargePageObject(driver);
@@ -290,7 +290,7 @@ public class Flow_LandLinePhoneCharge_Part_2 extends Base {
 		
 	}
 	
-	@Test(dependsOnMethods = { "TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP" })
+	@Test(dependsOnMethods = { "TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP()" })
 	public void TC_04_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		landLinePhoneCharge.clickToDynamicBackIcon(driver, "Cước điện thoại cố định");
