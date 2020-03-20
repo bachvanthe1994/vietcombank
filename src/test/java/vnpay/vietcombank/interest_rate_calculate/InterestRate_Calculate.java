@@ -14,6 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.saving_online.SavingOnlinePageObject;
 import vietcombank_test_data.InterestRateCalculatePage_Data;
 
 public class InterestRate_Calculate extends Base {
@@ -21,8 +22,9 @@ public class InterestRate_Calculate extends Base {
 	private LogInPageObject login;
 	private HomePageObject home;
 	private InterestRateCalculatePageObject interestRate;
+	private SavingOnlinePageObject savingOnline;
 	
-	private double interestMoney, totalMoney;
+	private double interestMoney, totalMoney,monthlyMoney,remainMoney,sourceMoney;
 	private String rate;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -34,12 +36,11 @@ public class InterestRate_Calculate extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
-	}
-
-	@Test
-	public void TC_01_TinhLaiTietKiem_VND() {
-		
 		home = PageFactoryManager.getHomePageObject(driver);
+		
+		if(home.isDynamicMessageAndLabelTextDisplayed(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng") == true) {
+			home.clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
+		}
 		
 		log.info("TC_01_Step_01: Chon tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
@@ -55,6 +56,10 @@ public class InterestRate_Calculate extends Base {
 		interestRate = PageFactoryManager.getInterestRateCalculatePageObject(driver);
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), 
 				InterestRateCalculatePage_Data.VALIDATE.INTEREST_RATE_CALCULATE_TITLE);
+	}
+
+	@Test
+	public void TC_01_TinhLaiTietKiem_VND() {
 		
 		log.info("TC_01_Step_05: Xac nhan tab 'Tinh lai tiet kiem' dang duoc chon ");
 		verifyEquals(interestRate.isDynamicValuesFocus(driver, InterestRateCalculatePage_Data.VALIDATE.SAVING_INTEREST_RATE_TITLE), true);
@@ -122,22 +127,29 @@ public class InterestRate_Calculate extends Base {
 		
 		log.info("TC_01_Step_20: Xac nhan hien thi dung  tien lai");
 		interestMoney = (convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)
-				*convertAvailableBalanceCurrentcyToDouble(getInterestRate(rate)))/100;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tiền lãi"), addCommasToDouble(interestMoney+"")+" VND");
+				*convertAvailableBalanceCurrentcyToDouble(getSplitStringIndex(rate,"%",0)))/100;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tiền lãi"), 
+				addCommasToDouble(interestMoney+"").replace(".00", "")+" VND");
 		
 		log.info("TC_01_Step_21: Xac nhan hien thi dung tong tien");
 		totalMoney = convertAvailableBalanceCurrentcyOrFeeToLong(InterestRateCalculatePage_Data.DATA.VND_MONEY) + interestMoney ;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng tiền"), addCommasToDouble(totalMoney+"")+" VND");
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng tiền"), 
+				addCommasToDouble(totalMoney+"").replace(".00", "")+" VND");
 		
 		log.info("TC_01_Step_22: An nut 'Gui tiet kiem'");
 		verifyEquals(interestRate.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Gửi tiết kiệm");
 		interestRate.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
+		
+		if(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Xin lỗi quý khách, kết nối đến hệ thống tạm thời gián đoạn. Vui lòng thử lại sau.") == true) {
+			savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+			}
 		
 		log.info("TC_01_Step_23: Xac nhan hien thi man hinh 'Mo tai khoan tiet kiem'");
-		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
+		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
 		
 		log.info("TC_01_Step_24: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
-		interestRate.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), 
 				InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE);
 		
@@ -218,22 +230,29 @@ public class InterestRate_Calculate extends Base {
 		
 		log.info("TC_02_Step_19: Xac nhan hien thi dung  tien lai");
 		interestMoney = (convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.USD_MONEY)
-				*convertAvailableBalanceCurrentcyToDouble(getInterestRate(rate)))/100;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tiền lãi"), addCommasToDouble(interestMoney+"")+" USD");
+				*convertAvailableBalanceCurrentcyToDouble(getSplitStringIndex(rate,"%",0)))/100;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tiền lãi"), 
+				addCommasToDouble(interestMoney+"").replace(".00", "")+" USD");
 		
 		log.info("TC_02_Step_20: Xac nhan hien thi dung tong tien");
 		totalMoney = convertAvailableBalanceCurrentcyOrFeeToLong(InterestRateCalculatePage_Data.DATA.USD_MONEY) + interestMoney ;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng tiền"), addCommasToDouble(totalMoney+"")+" USD");
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng tiền"), 
+				addCommasToDouble(totalMoney+"").replace(".00", "")+ " USD");
 		
 		log.info("TC_02_Step_21: An nut 'Gui tiet kiem'");
 		verifyEquals(interestRate.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Gửi tiết kiệm");
-		interestRate.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		interestRate.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");	
+		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
+		
+		if(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Xin lỗi quý khách, kết nối đến hệ thống tạm thời gián đoạn. Vui lòng thử lại sau.") == true) {
+			savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+			}
 		
 		log.info("TC_02_Step_22: Xac nhan hien thi man hinh 'Mo tai khoan tiet kiem'");
-		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
+		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
 		
 		log.info("TC_02_Step_23: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
-		interestRate.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), 
 				InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE);
 	}
@@ -313,27 +332,34 @@ public class InterestRate_Calculate extends Base {
 		
 		log.info("TC_03_Step_19: Xac nhan hien thi dung  tien lai");
 		interestMoney = (convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.EUR_MONEY)
-				*convertAvailableBalanceCurrentcyToDouble(getInterestRate(rate)));
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tiền lãi"), addCommasToDouble(interestMoney+"")+" EUR");
+				*convertAvailableBalanceCurrentcyToDouble(getSplitStringIndex(rate,"%",0)))/100;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tiền lãi"), 
+				addCommasToDouble(interestMoney+"").replace(".00", "")+ " EUR");
 		
 		log.info("TC_03_Step_20: Xac nhan hien thi dung tong tien");
 		totalMoney = convertAvailableBalanceCurrentcyOrFeeToLong(InterestRateCalculatePage_Data.DATA.EUR_MONEY) + interestMoney ;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng tiền"), addCommasToDouble(totalMoney+"")+" EUR");
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng tiền"),
+				addCommasToDouble(totalMoney+"").replace(".00", "")+" EUR");
 		
 		log.info("TC_03_Step_21: An nut 'Gui tiet kiem'");
 		verifyEquals(interestRate.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Gửi tiết kiệm");
 		interestRate.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
+		
+		if(savingOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Xin lỗi quý khách, kết nối đến hệ thống tạm thời gián đoạn. Vui lòng thử lại sau.") == true) {
+			savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+			}
 		
 		log.info("TC_03_Step_22: Xac nhan hien thi man hinh 'Mo tai khoan tiet kiem'");
-		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
+		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
 		
 		log.info("TC_03_Step_23: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
-		interestRate.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), 
 				InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE);
 	}
 	
-	//@Test
+	@Test
 	public void TC_04_TinhLichTraNo() {
 		
 		log.info("TC_04_Step_01: Quay ve man hinh Tinh toan lai suat");
@@ -393,17 +419,14 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), 
 				InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE_HEAD);
 		
-		log.info("TC_04_Step_16: Xac nhan ky 0 duoc highlight");
-		verifyEquals(interestRate.isDynamicLinearlayoutIndexFocus(driver, "0"), true);
-		
-		log.info("TC_04_Step_17: Xac nhan hien thi dung ngay tra no");
+		log.info("TC_04_Step_16: Xac nhan hien thi dung ngay tra no");
 		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Ngày trả nợ"), getForwardDate(0));
 		
-		log.info("TC_04_Step_18: Xac nhan hien thi dung so goc con lai");
+		log.info("TC_04_Step_17: Xac nhan hien thi dung so goc con lai");
 		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),
 				addCommasToLong(InterestRateCalculatePage_Data.DATA.VND_MONEY) +" VND");
 		
-		log.info("TC_04_Step_19: Xac nhan hien thi dung so goc tra hang thang");
+		log.info("TC_04_Step_18: Xac nhan hien thi dung so goc tra hang thang");
 		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),"");
 		
 		log.info("TC_04_Step_20: Xac nhan hien thi dung Lai tra hang thang");
@@ -422,21 +445,22 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Ngày trả nợ"), getForwardMonthAndForwardDay(1,0));
 		
 		log.info("TC_04_Step_25: Xac nhan hien thi dung so goc con lai");
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),
-				addCommasToDouble((convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)*2/3)+"") +" VND");
+		sourceMoney = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY,"VND");
+		remainMoney = sourceMoney*2/3;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),addCommasToDouble((remainMoney+""))+" VND");
 		
 		log.info("TC_04_Step_26: Xac nhan hien thi dung so goc tra hang thang");
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),
-				addCommasToDouble((convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3)+"")+" VND");
+		monthlyMoney = sourceMoney/3;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),addCommasToDouble((monthlyMoney+""))+" VND");
 		
 		log.info("TC_04_Step_27: Xac nhan hien thi dung Lai tra hang thang");
-		interestMoney = convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)
-				*convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.RATE)/12/100;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Lãi trả hàng tháng"),addCommasToDouble(interestMoney+"")+" VND");
+		rate = convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.RATE)+"";
+		interestMoney = sourceMoney*Double.parseDouble(rate)/12/100;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Lãi trả hàng tháng"),addCommasToDouble(interestMoney+"").replace(".00", "")+" VND");
 		
 		log.info("TC_04_Step_28: Xac nhan hien thi dung tong tien tra hang thang");
-		totalMoney = convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3 + interestMoney;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng số tiền phải trả hàng tháng"),totalMoney);
+		totalMoney = monthlyMoney + interestMoney;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng số tiền phải trả hàng tháng"),addCommasToDouble(totalMoney+"")+" VND");
 		
 		log.info("TC_04_Step_29: Chon Ky 2");
 		interestRate.clickToDynamicLinerLayoutIndex(driver, "2");
@@ -448,25 +472,24 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Ngày trả nợ"), getForwardMonthAndForwardDay(2,0));
 		
 		log.info("TC_04_Step_32: Xac nhan hien thi dung so goc con lai");
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),
-				addCommasToDouble((convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3)+"") +" VND");
+		remainMoney = remainMoney - sourceMoney/3;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),addCommasToDouble(remainMoney+"")+" VND");
 		
 		log.info("TC_04_Step_33: Xac nhan hien thi dung so goc tra hang thang");
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),
-				addCommasToDouble((convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3)+"")+" VND");
+		monthlyMoney = sourceMoney/3;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),addCommasToDouble(monthlyMoney+"")+""+" VND");
 		
 		log.info("TC_04_Step_34: Xac nhan hien thi dung Lai tra hang thang");
-		interestMoney = (convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)*2/3)
-				*convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.RATE)/12/100;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Lãi trả hàng tháng"),addCommasToDouble(interestMoney+"")+" VND");
+		interestMoney = (sourceMoney*2/3)*Double.parseDouble(rate)/12/100;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Lãi trả hàng tháng"),addCommasToDouble(interestMoney+"").replace(".00", "")+" VND");
 		
 		
 		log.info("TC_04_Step_35: Xac nhan hien thi dung tong tien tra hang thang");
-		totalMoney = convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3 + interestMoney;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng số tiền phải trả hàng tháng"),totalMoney);
+		totalMoney = monthlyMoney + interestMoney;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng số tiền phải trả hàng tháng"),addCommasToDouble(totalMoney+"")+ " VND");
 		
 		log.info("TC_04_Step_36: Chon Ky 3");
-		interestRate.clickToDynamicLinerLayoutIndex(driver, "2");
+		interestRate.clickToDynamicLinerLayoutIndex(driver, "3");
 		
 		log.info("TC_04_Step_36: Xac nhan ky 3 duoc highlight");
 		verifyEquals(interestRate.isDynamicLinearlayoutIndexFocus(driver, "3"), true);
@@ -475,22 +498,19 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Ngày trả nợ"), getForwardMonthAndForwardDay(3,0));
 		
 		log.info("TC_04_Step_38: Xac nhan hien thi dung so goc con lai");
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),
-				addCommasToDouble((convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3)+"") +" VND");
+		remainMoney = 0;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Số gốc còn lại"),addCommasToDouble(remainMoney+"").replace(".00", "")+ " VND");
 		
 		log.info("TC_04_Step_39: Xac nhan hien thi dung so goc tra hang thang");
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),
-				addCommasToDouble((convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3)+"")+" VND");
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Gốc trả hàng tháng"),addCommasToDouble(monthlyMoney+"")+" VND");
 		
 		log.info("TC_04_Step_40: Xac nhan hien thi dung Lai tra hang thang");
-		interestMoney = (convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3)
-				*convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.RATE)/12/100;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Lãi trả hàng tháng"),addCommasToDouble(interestMoney+"")+" VND");
-		
+		interestMoney = sourceMoney/3*Double.parseDouble(rate)/12/100;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Lãi trả hàng tháng"),addCommasToDouble(interestMoney+"").replace(".00", "")+" VND");
 		
 		log.info("TC_04_Step_41: Xac nhan hien thi dung tong tien tra hang thang");
-		totalMoney = convertAvailableBalanceCurrentcyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY)/3 + interestMoney;
-		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng số tiền phải trả hàng tháng"),totalMoney);
+		totalMoney = monthlyMoney + interestMoney;
+		verifyEquals(interestRate.getDynamicTextByLabel(driver, "Tổng số tiền phải trả hàng tháng"),addCommasToDouble(totalMoney+"")+ " VND");
 	}
 
 	@AfterClass(alwaysRun = true)

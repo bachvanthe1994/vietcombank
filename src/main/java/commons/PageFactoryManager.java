@@ -15,6 +15,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
 import pageObjects.OnlineTopupPageObject;
+import pageObjects.PostpaidMobileBillPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingTargetPageObject;
@@ -148,6 +149,10 @@ public class PageFactoryManager {
 		return new ChangePasswordPageObject(driver);
 	}
 	
+	public static PostpaidMobileBillPageObject getPostpaidMobileBillPageObject(AppiumDriver<MobileElement> driver) {
+		return new PostpaidMobileBillPageObject(driver);
+	}
+
 	public static TransferLimitPageObject getTransferLimitPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferLimitPageObject(driver);
 	}
@@ -159,6 +164,7 @@ public class PageFactoryManager {
 	public static LandLinePhoneChargePageObject getLandLinePhoneChargePageObject(AppiumDriver<MobileElement> driver) {
 		return new LandLinePhoneChargePageObject(driver);
 	}
+
 	
 	public static SearchPageObject getSearchPageObject(AppiumDriver<MobileElement> driver) {
 		return new SearchPageObject(driver);
