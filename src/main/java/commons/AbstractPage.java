@@ -1159,6 +1159,16 @@ public class AbstractPage {
 		}
 
 	}
+	
+	//Click text theo text tren no
+	public void clickToDynamicTextFollowText(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
+		}
+
+	}
 
 	/* INPUT BOX METHOD */
 
