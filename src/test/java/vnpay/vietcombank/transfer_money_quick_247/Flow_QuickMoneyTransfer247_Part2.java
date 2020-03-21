@@ -53,7 +53,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		password = pass;
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
-	/*
+
 	@Test
 	public void TC_09_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_09_Step_Click Chuyen tien nhanh");
@@ -262,7 +262,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		log.info("TC_10_Step_Click button home");
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-*/
+
 	@Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
