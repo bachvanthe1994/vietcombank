@@ -13,7 +13,6 @@ import io.appium.java_client.MobileElement;
 import pageObjects.InternetADSLPageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Internet_ADSL_Data;
 import vietcombank_test_data.LogIn_Data;
