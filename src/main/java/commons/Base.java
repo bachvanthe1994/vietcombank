@@ -152,8 +152,7 @@ public class Base {
 
 	}
 
-	public AppiumDriver<MobileElement> openAndroidApp(String deviceType, String deviceName, String udid, String url,
-			String appActivities, String appPackage, String appName) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidApp(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 
 		if (deviceType.equalsIgnoreCase("androidVirtual")) {
@@ -180,8 +179,7 @@ public class Base {
 
 	}
 
-	public AppiumDriver<MobileElement> openIOSApp(String deviceName, String udid, String url)
-			throws MalformedURLException {
+	public AppiumDriver<MobileElement> openIOSApp(String deviceName, String udid, String url) throws MalformedURLException {
 		DesiredCapabilities caps = new DesiredCapabilities();
 
 		caps.setCapability("xcodeSigningId", "iPhone Developer");
@@ -198,8 +196,7 @@ public class Base {
 		return driver;
 	}
 
-	public AppiumDriver<MobileElement> openGlobalSetting(String deviceName, String udid, String url)
-			throws MalformedURLException {
+	public AppiumDriver<MobileElement> openGlobalSetting(String deviceName, String udid, String url) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
 		cap.setCapability("uid", udid);
@@ -217,8 +214,7 @@ public class Base {
 		driver.quit();
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser)
-			throws MalformedURLException {
+	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual ")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
@@ -226,8 +222,7 @@ public class Base {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 		}
 		cap.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
-		System.setProperty("webdriver.chrome.driver",
-				"E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
 		AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		return driver;
@@ -244,7 +239,12 @@ public class Base {
 			if (osName.toLowerCase().contains("window")) {
 				Runtime.getRuntime().exec("taskkill /F /IM node.exe");
 			} else if (osName.toLowerCase().contains("mac")) {
-				Runtime.getRuntime().exec("killall node");
+				try {
+					Runtime.getRuntime().exec("killall node");
+					System.out.println("Appium server stopped.");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			Thread.sleep(2000);
 			service = AppiumDriverLocalService.buildDefaultService();
@@ -861,8 +861,7 @@ public class Base {
 	public String convertEURO_USDToVNeseMoney(String money, String currentcy) {
 		String result = "";
 		try {
-			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy)))
-					+ " VND";
+			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy))) + " VND";
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
