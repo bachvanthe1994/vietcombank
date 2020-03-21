@@ -23,7 +23,7 @@ public class Saving_Target_Flow extends Base {
 	private HomePageObject home;
 	private SavingTargetPageObject savingTarget;
 
-	private double interestMoney, totalMoney;
+	private double interestMoney, totalMoney, termMoney, a, b;
 	private String rate;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone",
@@ -91,8 +91,11 @@ public class Saving_Target_Flow extends Base {
 				SavingTarget_Data.VALIDATE.SAVING_TARGET_RESULT_TITLE_HEAD));
 
 		log.info("TC_01_Step_12: Xac nhan hien thi dung so tien gui dinh ky");
+		a = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY, "VND");
+		b = convertMoneyToDouble(getSplitStringIndex(rate, "t", 0), "VND") / 12;
+		termMoney = a * b;
 		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Số tiền gửi định kỳ"),
-				addCommasToLong(SavingTarget_Data.DATA.SAVING_MONEY_VND) + " VND");
+				addCommasToDouble(termMoney + "") + " VND");
 
 		log.info("TC_01_Step_13: Xac nhan hien thi dung so tien gop hang thang");
 		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Số tiền góp hàng tháng"),
@@ -101,8 +104,8 @@ public class Saving_Target_Flow extends Base {
 						+ " VND");
 
 		log.info("TC_01_Step_14: Xac nhan hien thi dung  tien lai");
-		double a = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY, "VND");
-		double b = convertMoneyToDouble(getSplitStringIndex(rate, "/", 1), "VND") / 100;
+		a = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY, "VND");
+		b = convertMoneyToDouble(getSplitStringIndex(rate, "/", 1), "VND") / 100;
 		interestMoney = a * b;
 		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Tổng số tiền lãi"),
 				addCommasToDouble(interestMoney + "").replace(".00", "") + " VND");
