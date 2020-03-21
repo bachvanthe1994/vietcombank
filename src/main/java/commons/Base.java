@@ -230,26 +230,21 @@ public class Base {
 	}
 
 	public AppiumDriverLocalService startServer() throws IOException, InterruptedException {
-		boolean trueStatus = checkIfServerIsRunnning(4723);
-		if (!trueStatus) {
-			service = AppiumDriverLocalService.buildDefaultService();
-			service.start();
-		} else {
-			String osName = System.getProperty("os.name").toLowerCase();
-			if (osName.toLowerCase().contains("window")) {
-				Runtime.getRuntime().exec("taskkill /F /IM node.exe");
-			} else if (osName.toLowerCase().contains("mac")) {
-				try {
-					Runtime.getRuntime().exec("killall node");
-					System.out.println("Appium server stopped.");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		String osName = System.getProperty("os.name").toLowerCase();
+		if (osName.toLowerCase().contains("window")) {
+			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+		} else if (osName.toLowerCase().contains("mac")) {
+			try {
+				Runtime.getRuntime().exec("killall node");
+				System.out.println("Appium server stopped.");
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			Thread.sleep(2000);
-			service = AppiumDriverLocalService.buildDefaultService();
-			service.start();
 		}
+		Thread.sleep(2000);
+		service = AppiumDriverLocalService.buildDefaultService();
+		service.start();
+
 		return service;
 	}
 
