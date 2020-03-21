@@ -136,8 +136,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 	@Test
 	public void TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
-		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		landLinePhoneCharge.clickToBackIconOnLandLinePhoneChargeScreen("Cước điện thoại cố định");
 
 		log.info("TC_02_2: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -299,8 +298,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 	@Test
 	public void TC_04_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
-		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		landLinePhoneCharge.clickToBackIconOnLandLinePhoneChargeScreen("Cước điện thoại cố định");
 
 		log.info("TC_04_2: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");

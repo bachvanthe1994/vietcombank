@@ -9,6 +9,7 @@ import commons.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.saving_online.SavingOnlineUIs;
 
 public class LandLinePhoneChargePageObject extends AbstractPage {
 	public LandLinePhoneChargePageObject(AppiumDriver<MobileElement> mappingDriver) {
@@ -43,6 +44,23 @@ public class LandLinePhoneChargePageObject extends AbstractPage {
 		if (!check) {
 			throw new RuntimeException("Khong co hoa don nao de thanh toan");
 		}
+	}
+	
+	//Click vào dropdown list tham số truyển vào là label của ô dropdown list đó
+	public void clickToBackIconOnLandLinePhoneChargeScreen(String dymanicText) {
+		boolean status = false;
+		String locator = String.format(DynamicPageUIs.DYNAMIC_BACK_ICON, dymanicText);
+		status = waitForElementVisible(driver, locator);
+		if (status == true) {
+			overRideTimeOut(driver, 2);
+			clickToElement(driver, locator);
+			List<MobileElement> element = driver.findElements(By.xpath(locator));
+			if(element.size() > 0) {
+				clickToElement(driver, locator);
+			}
+			overRideTimeOut(driver, Constants.LONG_TIME);
+		}
+
 	}
 	
 }
