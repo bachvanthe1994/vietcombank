@@ -19,8 +19,8 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	private LogInPageObject login;
 	private RegisterOnlinePageObject registerOnline;
 	String phoneNumber = "";
-	String nameCustomer ="";
-	
+	String nameCustomer = "";
+
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
@@ -37,7 +37,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 	public void TC_01_DangKyPhatHanhTheGhiNo_ChonHangVangConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_1_Step: Click menu header");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-		
+
 		log.info("TC_01_Step: Lay ten user");
 		nameCustomer = registerOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
 
@@ -381,7 +381,6 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-
 	@Test
 	public void TC_07_DangKyPhatHanhTheGhiNo_ChonHangVangVCBCashBankTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_07_Step: Nhap thong tin man hinh dang ky");
@@ -625,7 +624,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_11_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_12_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_12_Step: Nhap thong tin man hinh dang ky");
@@ -640,7 +639,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_12_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
-		
+
 		log.info("TC_12_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
@@ -691,7 +690,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_12_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_13_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_13_Step: Nhap thong tin man hinh dang ky");
@@ -706,7 +705,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_13_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank MasterCard");
-		
+
 		log.info("TC_13_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
@@ -729,7 +728,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_13_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_14_DangKyPhatHanhTheGhiNo_ChonHangDacBietConnect24VISATrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_14_Step: Nhap thong tin man hinh dang ky");
@@ -744,7 +743,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_14_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank Connect24 Visa");
-		
+
 		log.info("TC_14_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
@@ -767,7 +766,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_14_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_15_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBUnionPayNopTienMatPhatHanhThePhu() {
 		log.info("TC_15_Step: Nhap thong tin man hinh dang ky");
@@ -782,7 +781,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_15_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank UnionPay");
-		
+
 		log.info("TC_15_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
@@ -833,7 +832,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_15_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
-	
+
 	@Test
 	public void TC_16_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnect24NopTienMatPhatHanhThePhu() {
 		log.info("TC_16_Step: Nhap thong tin man hinh dang ky");
@@ -845,7 +844,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_16_Step: Click hang the, chon hang the la dac biet");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
-		
+
 		log.info("TC_16_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
@@ -897,7 +896,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 
 	}
-	
+
 	@Test
 	public void TC_17_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBCardPlusTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_17_Step: Nhap thong tin man hinh dang ky");
@@ -909,10 +908,10 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_17_Step: Click hang the, chon hang the la dac biet");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
-		
+
 		log.info("TC_17_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank CardPlus American Express");
-		
+
 		log.info("TC_17_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
@@ -936,7 +935,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 
 	}
-	
+
 	@Test
 	public void TC_18_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBMasterCardTrichNoTuDongBoPhatHanhThePhu() {
 		log.info("TC_18_Step: Nhap thong tin man hinh dang ky");
@@ -948,10 +947,10 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		log.info("TC_18_Step: Click hang the, chon hang the la dac biet");
 		registerOnline.clickToTextViewDate(driver, "Hạng thẻ", "1");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.CARD_RANK[2]);
-		
+
 		log.info("TC_18_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank MasterCard");
-		
+
 		log.info("TC_18_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
@@ -975,7 +974,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 
 	}
-	
+
 	@Test
 	public void TC_19_DangKyPhatHanhTheGhiNo_ChonHangDacBietVCBConnectVISATrichNoTuDongPhatHanhThePhu() {
 		log.info("TC_19_Step: Nhap thong tin man hinh dang ky");
@@ -990,7 +989,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_19_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank Connect24 Visa");
-		
+
 		log.info("TC_19_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[0]);
@@ -1042,7 +1041,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 
 	}
-	
+
 	@Test
 	public void TC_20_DangKyPhatHanhTheGhiNo_ChonHangDacBietUnionPAYNopTienMatPhatHanhThePhu() {
 		log.info("TC_20_Step: Nhap thong tin man hinh dang ky");
@@ -1057,7 +1056,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 
 		log.info("TC_20_Step: Click loại the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Vietcombank UnionPay");
-		
+
 		log.info("TC_20_Step: Click chon loai thanh toan phi");
 		registerOnline.clickToTextViewDate(driver, "Thanh toán phí", "4");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.FEE_PAYMENT[1]);
@@ -1109,5 +1108,5 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 
 	}
-	
+
 }

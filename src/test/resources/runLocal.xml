@@ -23,10 +23,10 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-		<!-- Auto debit -->
-	<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+			<!-- Auto debit -->
+	<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" />
 
-		
+
 
 
 		</classes>

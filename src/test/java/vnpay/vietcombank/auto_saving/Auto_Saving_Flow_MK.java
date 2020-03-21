@@ -27,8 +27,8 @@ public class Auto_Saving_Flow_MK extends Base {
 	private AutoSavingPageObject autoSaving;
 	private TransactionReportPageObject transactionReport;
 	private SavingOnlinePageObject savingOnline;
-	
-	private String transactionID,savingAccount,tranferMoney,transactionDate,startDate,endDate,sourceAccountMoney;
+
+	private String transactionID, savingAccount, tranferMoney, transactionDate, startDate, endDate, sourceAccountMoney;
 	private long transferFee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -215,12 +215,12 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_02_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
+
 		log.info("TC_02_Step_25: Chon tai khoan nguon VND");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_VND);
 		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
-		
+
 		log.info("TC_02_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -284,7 +284,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_HuyTietKiemTuDong_TaiKhoanNguon_VND() {
 
 		log.info("TC_04_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -332,7 +332,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 
 		log.info("TC_05_Step_01: Mo tab Menu");
@@ -418,7 +418,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 
 	}
-	
+
 	@Parameters({ "otp" })
 	@Test
 	public void TC_07_MoTaiKhoanTietKiem_TaiKhoanNguon_USD(String otp) {
@@ -590,12 +590,12 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_08_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
+
 		log.info("TC_08_Step_25: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Data.ORIGIN_ACCOUNT.ACCOUNT_USD);
 		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
-		
+
 		log.info("TC_08_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -662,7 +662,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_MK() {
 
 		log.info("TC_10_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -707,7 +707,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_11_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 
 		log.info("TC_11_Step_01: Mo tab Menu");
@@ -788,7 +788,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_12_8_Click nut Home ve man hinh chinh");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 	}
-	
+
 	@Parameters({ "otp" })
 	@Test
 	public void TC_13_MoTaiKhoanTietKiem_TaiKhoanNguon_EUR(String otp) {
@@ -960,12 +960,12 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_14_Step_24: An thuc hien giao dich moi");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
+
 		log.info("TC_14_Step_25: Chon tai khoan nguon EUR");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
 		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
-		
+
 		log.info("TC_14_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -991,7 +991,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_15_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver,"0019961175");
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "0019961175");
 
 		log.info("TC_15_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -1032,7 +1032,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_16_HuyTietKiemTuDong_TaiKhoanNguon_EUR_MK() {
 
 		log.info("TC_16_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -1078,7 +1078,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_17_HuyTietKiemTuDong_TaiKhoanNguon_EUR_BaoCaoGiaoDich() {
 
 		log.info("TC_17_Step_01: Mo tab Menu");
@@ -1158,9 +1158,9 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_18_7_Click nut Home ve man hinh chinh");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
-		
+
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		service.stop();

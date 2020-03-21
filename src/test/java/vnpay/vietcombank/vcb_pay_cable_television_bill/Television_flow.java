@@ -1,4 +1,4 @@
-package vnpay.vietcombank.vcb_pay_bill_television;
+package vnpay.vietcombank.vcb_pay_cable_television_bill;
 
 import java.io.IOException;
 import java.text.ParseException;
