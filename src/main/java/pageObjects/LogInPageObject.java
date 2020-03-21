@@ -7,11 +7,11 @@ import vietcombankUI.DynamicPageUIs;
 
 public class LogInPageObject extends AbstractPage {
 
-	public LogInPageObject(AppiumDriver<MobileElement> mappingDriver) {
-		driver = mappingDriver;
-	}
+    public LogInPageObject(AppiumDriver<MobileElement> mappingDriver) {
+	driver = mappingDriver;
+    }
 
-	private AppiumDriver<MobileElement> driver;
+    private AppiumDriver<MobileElement> driver;
 
 	public void Global_login(String phone, String pass, String otp) {
 

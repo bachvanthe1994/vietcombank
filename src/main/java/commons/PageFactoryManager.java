@@ -16,6 +16,7 @@ import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
 import pageObjects.NotifyManagementPageObject;
 import pageObjects.OnlineTopupPageObject;
+import pageObjects.PayBillTelevisionPageObject;
 import pageObjects.PostpaidMobileBillPageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
@@ -182,5 +183,9 @@ public class PageFactoryManager {
 
 	public static InboxPageObject getInboxPageObject(AppiumDriver<MobileElement> driver) {
 		return new InboxPageObject(driver);
+	}
+
+	public static PayBillTelevisionPageObject getPayBillTelevisionPageObject(AppiumDriver<MobileElement> driver) {
+		return new PayBillTelevisionPageObject(driver);
 	}
 }

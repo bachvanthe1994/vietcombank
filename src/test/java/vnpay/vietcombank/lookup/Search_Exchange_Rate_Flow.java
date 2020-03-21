@@ -1,4 +1,4 @@
-package vnpay.vietcombank.search;
+package vnpay.vietcombank.lookup;
 
 import java.io.IOException;
 
