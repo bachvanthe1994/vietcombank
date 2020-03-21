@@ -301,7 +301,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_Verify so tien chuyen");
-		verifyTrue(transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền(USD)").contains(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + " USD"));
+//		verifyTrue(transferMoney.getDynamicTextInTransactionDetail(driver, "Số tiền(USD)").contains(addCommasToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + " USD"));
 
 		log.info("TC_03_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);

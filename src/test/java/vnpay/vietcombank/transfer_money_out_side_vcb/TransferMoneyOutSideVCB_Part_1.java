@@ -67,6 +67,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -159,6 +160,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
@@ -249,6 +251,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -341,6 +344,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info1.money), 0);
@@ -428,6 +432,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -470,12 +475,12 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info2.destinationBank);
 
 		log.info("TC_05_10_5_Kiem tra so tien quy doi");
-		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
+		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền");
 		String expectMoney = convertEURO_USDToVNeseMoney(info2.money, currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_05_10_6_Kiem tra so tien");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền(EUR)"), addCommasToDouble(info2.money) + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToDouble(info2.money) + " EUR");
 		log.info("TC_05_10_7_Kiem tra noi dung chuyen tien");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
 
@@ -526,6 +531,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info2.money), transferFeeCurrentcy);
@@ -619,6 +625,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -661,12 +668,12 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), info3.destinationBank);
 
 		log.info("TC_07_10_5_Kiem tra so tien quy doi");
-		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền(EUR)");
+		String actualMoney = transferMoneyOutSide.getDynamicTextInTextViewLine2(driver, "Số tiền");
 		String expectMoney = convertEURO_USDToVNeseMoney(info3.money, currentcy);
 		verifyEquals(actualMoney, expectMoney);
 
 		log.info("TC_07_10_6_Kiem tra so tien");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền(EUR)"), addCommasToDouble(info3.money) + " EUR");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToDouble(info3.money) + " EUR");
 
 		log.info("TC_07_10_7_Kiem tra noi dung chuyen tien");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
@@ -717,6 +724,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, Double.parseDouble(info3.money), 0);
@@ -810,6 +818,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -901,6 +910,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info4.money), transferFee);
@@ -991,6 +1001,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -1082,6 +1093,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
+		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info5.money), 0);
