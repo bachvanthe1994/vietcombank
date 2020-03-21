@@ -44,7 +44,7 @@ public class Internet_ADSL_Flow extends Base {
 		passLogin = pass;
 	}
 
-	//@Test
+	@Test
 	public void TC_01_ThanhToanCuocViettelXacThucMatKhau() {
 		log.info("TC_01_Step_Click cuoc ADSL");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
@@ -135,7 +135,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	//@Test
+	@Test
 	public void TC_02_Report_ThanhToanCuocViettelXacThucMatKhau() {
 		log.info("TC_02_Step: Click back man hinh home");
 		ADSL.clickImageBack( "Cước internet ADSL");
