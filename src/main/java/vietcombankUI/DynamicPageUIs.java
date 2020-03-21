@@ -62,6 +62,8 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_COMBOBOX = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.ImageView";
 	public static final String DYNAMIC_EDI_TEXT = "//android.widget.LinearLayout[@index='%s']//android.widget.EditText";
 	public static final String DYNAMIC_COMBOBOX_TEXT_ID = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";
+	public static final String DYNAMIC_TEXT_ID = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.TextView[@resource-id='%s']";
+	
 	// ICON
 	public static final String DYNAMIC_CLOSE_ICON = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout";

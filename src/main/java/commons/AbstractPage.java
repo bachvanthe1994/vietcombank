@@ -828,7 +828,7 @@ public class AbstractPage {
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không tìm thấy")) {
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
@@ -846,7 +846,7 @@ public class AbstractPage {
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không tìm thấy")) {
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
@@ -1159,6 +1159,16 @@ public class AbstractPage {
 		}
 
 	}
+	
+	//Click text theo text tren no
+	public void clickToDynamicTextFollowText(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
+		}
+
+	}
 
 	/* INPUT BOX METHOD */
 
@@ -1428,26 +1438,40 @@ public class AbstractPage {
 
 	// Xac nhan Button Enable qua Button ID
 	public boolean isDynamicButtonByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
-		return isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		boolean isEnabled = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		if (status == true) {
+			isEnabled = isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		}
+		return isEnabled;
+
 	}
 
 	// Xac dinh text co duoc Focus hay khong
 	public boolean isDynamicValuesFocus(AppiumDriver<MobileElement> driver, String dynamicValue) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
-		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		boolean isFocused = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		if (status == true) {
+			isFocused = isControlForcus(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicValue);
+		}
+		return isFocused;
 	}
 
 	// Xac dinh text co duoc Focus hay khong
 	public boolean isDynamicLinearlayoutIndexFocus(AppiumDriver<MobileElement> driver, String dynamicIndex) {
-		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
-		return isControlForcus(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		boolean isFocused = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		if (status == true) {
+			isFocused = isControlForcus(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_INDEX, dynamicIndex);
+		}
+		return isFocused;
 	}
 
 	// Xac nhan hien thi text qua Text ID
 	public boolean isDynamicTextByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicValue) {
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicValue);
+
 	}
 
 // check button có hiển thị hay không, tham số truyền vào là text của button
@@ -1856,6 +1880,19 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_COMBOBOX_TEXT_ID, dynamicIndex);
+
+		}
+		return text;
+
+	}
+
+	// get text theo text
+	public String getTextDynamicFollowTextId(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_ID, dynamicIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_ID, dynamicIndex);
 
 		}
 		return text;

@@ -17,6 +17,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LandLinePhoneCharge_Data;
+import vietcombank_test_data.LogIn_Data;
 
 public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -58,6 +59,8 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_01_02_Chon tai khoan nguon");
 		landLinePhoneCharge.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
@@ -130,10 +133,10 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		
 	}
 	
-	@Test(dependsOnMethods = { "TC_01_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanMatKhauDangNhap" })
+	@Test
 	public void TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
-		landLinePhoneCharge.clickToDynamicBackIcon(driver, "Cước điện thoại cố định");
+		landLinePhoneCharge.clickToBackIconOnLandLinePhoneChargeScreen("Cước điện thoại cố định");
 
 		log.info("TC_02_2: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -218,6 +221,8 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_03_02_Chon tai khoan nguon");
 		landLinePhoneCharge.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
@@ -253,8 +258,8 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_03_08_Click Tiep tuc");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
 		
-		log.info("TC_03_09_Nhap mat khau");
-		landLinePhoneCharge.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
+		log.info("TC_03_09_Nhap OTP");
+		landLinePhoneCharge.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_10_Kiem tra man hinh Chuyen khoan thanh cong");
@@ -290,10 +295,10 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		
 	}
 	
-	@Test(dependsOnMethods = { "TC_03_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP" })
+	@Test
 	public void TC_04_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
-		landLinePhoneCharge.clickToDynamicBackIcon(driver, "Cước điện thoại cố định");
+		landLinePhoneCharge.clickToBackIconOnLandLinePhoneChargeScreen("Cước điện thoại cố định");
 
 		log.info("TC_04_2: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");

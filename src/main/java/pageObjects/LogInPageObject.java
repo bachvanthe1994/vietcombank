@@ -3,6 +3,7 @@ package pageObjects;
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import vietcombankUI.DynamicPageUIs;
 
 public class LogInPageObject extends AbstractPage {
 
@@ -12,36 +13,37 @@ public class LogInPageObject extends AbstractPage {
 
     private AppiumDriver<MobileElement> driver;
 
-    public void Global_login(String phone, String pass, String otp) {
-	if (getDriverName(driver).contains("android")) {
+	public void Global_login(String phone, String pass, String otp) {
 
-	    clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
-	    inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
+		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
-	    clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicButton(driver, "Tiếp tục");
 
-	    if (getPageSource(driver).contains("Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
+		if (getPageSource(driver).contains("Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
 
-		clickToDynamicButton(driver, "Đồng ý");
-	    }
+			clickToDynamicButton(driver, "Đồng ý");
+		}
 
-	    inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
+		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
 
-	    clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicButton(driver, "Tiếp tục");
 
-	    inputToDynamicOtp(driver, otp, "Tiếp tục");
-	    clickToDynamicButton(driver, "Tiếp tục");
-	    clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		inputToDynamicOtp(driver, otp, "Tiếp tục");
+		clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
-	    clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
-	} else if (getDriverName(driver).contains("ios")) {
-
-	    inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
-
-	    clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 
 	}
-    }
 
+	public void clickToDynamicAcceptButton(String dynamicIDValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		}
+	}
 }

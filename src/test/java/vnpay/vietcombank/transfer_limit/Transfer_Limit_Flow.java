@@ -13,7 +13,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferLimitPageObject;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 
 
 public class Transfer_Limit_Flow extends Base {
@@ -97,10 +99,99 @@ public class Transfer_Limit_Flow extends Base {
 		
 		log.info("TC_01_Step: verify han muc hien tai la han muc vua moi cai dat");
 		verifyEquals(transferLimit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvCurrentLimit"), amountLimit);
+		
+		log.info("TC_01_Step: Click button quay lai");
+		transferLimit.clickToDynamicBackIcon(driver, "Cài đặt hạn mức chuyển tiền");
+		
+		log.info("TC_01_Step: Click menu home");
+		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
+		log.info("TC_01_Step_Click Chuyen tien nhanh");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
+
+		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+
+		log.info("TC_01_Step_Select tai khoan nguon");
+		transferLimit.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+
+		log.info("TC_01_Step_Nhap so tai khoan chuyen");
+		transferLimit.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+
+		log.info("TC_01_Step_Select ngan hang");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
+		
+		long amountConvert = convertAvailableBalanceCurrentcyOrFeeToLong(amountLimit);
+		log.info("TC_01_Step_Nhap so tien chuyen");
+		transferLimit.inputToDynamicInputBox(driver, amountConvert + 1 +"", "Số tiền");
+
+		log.info("TC_01_Step_Chon phi giao dich la nguoi chuyen tra");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+
+		log.info("TC_01_Step_Nhap noi dung");
+		transferLimit.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
+
+		log.info("TC_01_Step_Tiep tuc");
+		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_01_Verify message thanh cong");
+		verifyEquals(transferLimit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "+ amountLimit  +"/nhóm dich vụ chuyển tiền, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 1900545413 của Vietcombank để được trợ giúp.");
+	
+		log.info("TC_01_Step_click button dong");
+		transferLimit.clickToDynamicButton(driver, "Đóng");
+		
+		log.info("TC_01_Step: Click button quay lai");
+		transferLimit.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");
 	}
 	
 	@Test
 	public void TC_02_CaiHanMucThanhCongPhuongThucXacThucSmartOTP() {
+		log.info("TC_02_Step: Click menu header");
+		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		
+		log.info("TC_02_Step: Click cai dat");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+		
+		log.info("TC_02_Step: Click cai dat Smart OTP");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
+		
+		log.info("TC_02_Step: Click cai dat cho tai khoan");
+		transferLimit.clickToDynamicTextFollowText(driver, "Chưa kích hoạt");
+		
+		log.info("TC_02_Step: Click toi dong y");
+		transferLimit.clickToTextID(driver, "com.VCB:id/rule");
+		
+		log.info("TC_02_Step_click button dong y");
+		transferLimit.clickToDynamicButton(driver, "Đồng ý");
+		
+		log.info("TC_02_Step_Nhap mat khau");
+		transferLimit.inputToDynamicInputBox(driver, "111222","Nhập mật khẩu");
+		
+		log.info("TC_02_Step_Nhap lai mat khau");
+		transferLimit.inputToDynamicInputBox(driver, "111222","Nhập lại mật khẩu");
+		
+		log.info("TC_02_Step_click button tiep tuc");
+		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_02_Step_Nhap ma xac thuc");
+		transferLimit.inputToDynamicSmartOtp(driver, "666888", "com.VCB:id/otp");
+		
+		log.info("TC_02_Step_click button tiep tuc");
+		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_02_Step: Click button quay lai");
+		transferLimit.clickToDynamicBackIcon(driver, "Cài đặt VCB-Smart OTP");
+		
+		log.info("TC_02_Step: Scroll xuong phan doi mat khau");
+		transferLimit.scrollDownToText(driver, "Hỗ trợ");
+		
+		log.info("TC_02_Step: Click cai dat han muc chuyen tien");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt hạn mức chuyển tiền");
+		
 		log.info("TC_02_Step: Lay han muc hien tai");
 		String amountCurrent = transferLimit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvCurrentLimit");
 		
@@ -150,6 +241,53 @@ public class Transfer_Limit_Flow extends Base {
 		
 		log.info("TC_02_Step: verify han muc hien tai la han muc vua moi cai dat");
 		verifyEquals(transferLimit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvCurrentLimit"), amountLimit);
+		
+		log.info("TC_01_Step: Click button quay lai");
+		transferLimit.clickToDynamicBackIcon(driver, "Cài đặt hạn mức chuyển tiền");
+		
+		log.info("TC_01_Step: Click menu home");
+		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
+		log.info("TC_01_Step_Click Chuyen tien nhanh");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
+
+		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+
+		log.info("TC_01_Step_Select tai khoan nguon");
+		transferLimit.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+
+		log.info("TC_01_Step_Nhap so tai khoan chuyen");
+		transferLimit.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+
+		log.info("TC_01_Step_Select ngan hang");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
+		
+		long amountConvert = convertAvailableBalanceCurrentcyOrFeeToLong(amountLimit);
+		log.info("TC_01_Step_Nhap so tien chuyen");
+		transferLimit.inputToDynamicInputBox(driver, amountConvert + 1 +"", "Số tiền");
+
+		log.info("TC_01_Step_Chon phi giao dich la nguoi chuyen tra");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+
+		log.info("TC_01_Step_Nhap noi dung");
+		transferLimit.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
+
+		log.info("TC_01_Step_Tiep tuc");
+		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_01_Verify message thanh cong");
+		verifyEquals(transferLimit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "+ amountLimit  +"/nhóm dich vụ chuyển tiền, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 1900545413 của Vietcombank để được trợ giúp.");
+	
+		log.info("TC_01_Step_click button dong");
+		transferLimit.clickToDynamicButton(driver, "Đóng");
+		
+		log.info("TC_01_Step: Click button quay lai");
+		transferLimit.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");
 	}
 	
 
