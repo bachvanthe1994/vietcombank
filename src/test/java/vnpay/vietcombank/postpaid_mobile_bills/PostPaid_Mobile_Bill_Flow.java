@@ -43,7 +43,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test(priority = 1)
+	@Test
 	public void TC_01_CuocDiDongTraSau_Viettel_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -229,7 +229,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test(priority = 2)
+	@Test
 	public void TC_02_CuocDiDongTraSau_Viettel_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
@@ -305,7 +305,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test(priority = 9)
+	@Test
 	public void TC_03_CuocDiDongTraSau_Vinaphone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -493,7 +493,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test(priority = 10)
+	@Test
 	public void TC_04_CuocDiDongTraSau_Vinaphone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
@@ -569,7 +569,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test(priority = 3)
+	@Test
 	public void TC_05_CuocDiDongTraSau_Mobifone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -756,7 +756,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test(priority = 4)
+	@Test
 	public void TC_06_CuocDiDongTraSau_Mobifone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Mo tab Menu");
@@ -832,7 +832,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test(priority = 5)
+	@Test
 	public void TC_07_CuocDiDongTraSau_Viettel_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -1018,7 +1018,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test(priority = 6)
+	@Test
 	public void TC_08_CuocDiDongTraSau_Viettel_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_08_Step_01: Mo tab Menu");
@@ -1094,7 +1094,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test(priority = 11)
+	@Test
 	public void TC_09_CuocDiDongTraSau_Vinaphone_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -1282,7 +1282,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test(priority = 12)
+	@Test
 	public void TC_10_CuocDiDongTraSau_Vinaphone_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
@@ -1358,7 +1358,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test(priority = 7)
+	@Test
 	public void TC_11_CuocDiDongTraSau_Mobifone_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -1545,7 +1545,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test(priority = 8)
+	@Test
 	public void TC_12_CuocDiDongTraSau_Mobifone_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_12_Step_01: Mo tab Menu");
