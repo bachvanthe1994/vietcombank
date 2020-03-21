@@ -42,11 +42,12 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
+
 		password = pass;
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
+
 	@Test
 	public void TC_01_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanMatKhauDangNhap() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -55,47 +56,46 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_01_01_Click Cuoc dien thoai co dinh");
 		landLinePhoneCharge.scrollDownToText(driver, "Thanh toán tiền nước");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Cước điện thoại cố định");
-		
+
 		log.info("TC_01_02_Chon tai khoan nguon");
 		landLinePhoneCharge.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định có dây Viettel");
-		
+
 		log.info("TC_01_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(LandLinePhoneCharge_Data.LIST_LANDLINE_PHONE_LINE);
-		
+
 		money = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền thanh toán"));
 		log.info("TC_01_05_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_05_1_Kiem tra tai khoan nguon");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		log.info("TC_01_05_2_Kiem tra dich vu");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước điện thoại cố định");
-		
+
 		log.info("TC_01_05_3_Kiem tra nha cung cap");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), "Cố định có dây Viettel");
-		
+
 		log.info("TC_01_05_4_Kiem tra so dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), LandLinePhoneChargePageObject.phoneNumber);
-		
+
 		log.info("TC_01_06_Chon phuong thuc xac thuc");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		
+
 		log.info("TC_01_07_01_Kiem tra so tien phi");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_01_08_Click Tiep tuc");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_01_09_Nhap mat khau");
 		landLinePhoneCharge.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
@@ -106,13 +106,13 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 
 		log.info("TC_01_10_2_Kiem tra dich vu");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước điện thoại cố định");
-		
+
 		log.info("TC_01_10_3_Kiem tra nha cung cap");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), "Cố định có dây Viettel");
-		
+
 		log.info("TC_01_10_3_So dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), LandLinePhoneChargePageObject.phoneNumber);
-		
+
 		log.info("TC_01_10_4_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(landLinePhoneCharge.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
@@ -130,9 +130,9 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, money, fee);
 		verifyEquals(actualAvailableBalance, availableBalance);
-		
+
 	}
-	
+
 	@Test
 	public void TC_02_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
@@ -183,13 +183,13 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 
 		log.info("TC_02_15_Kiem tra dich vu");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước điện thoại cố định");
-		
+
 		log.info("TC_02_16_Kiem tra nha cung cap");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), "Cố định có dây Viettel");
-		
+
 		log.info("TC_02_17_So dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), LandLinePhoneChargePageObject.phoneNumber);
-		
+
 		log.info("TC_02_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(money + "") + " VND"));
 
@@ -218,47 +218,47 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_03_01_Click Cuoc dien thoai co dinh");
 		landLinePhoneCharge.scrollDownToText(driver, "Thanh toán tiền nước");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Cước điện thoại cố định");
-		
+
 		log.info("TC_03_02_Chon tai khoan nguon");
 		landLinePhoneCharge.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định có dây Viettel");
-		
+
 		log.info("TC_03_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(LandLinePhoneCharge_Data.LIST_LANDLINE_PHONE_LINE);
-		
+
 		money = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền thanh toán"));
 		log.info("TC_03_05_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_03_05_1_Kiem tra tai khoan nguon");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		log.info("TC_03_05_2_Kiem tra dich vu");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước điện thoại cố định");
-		
+
 		log.info("TC_03_05_3_Kiem tra nha cung cap");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), "Cố định có dây Viettel");
-		
+
 		log.info("TC_03_05_4_Kiem tra so dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), LandLinePhoneChargePageObject.phoneNumber);
-		
+
 		log.info("TC_03_06_Chon phuong thuc xac thuc");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
-		
+
 		log.info("TC_03_07_01_Kiem tra so tien phi");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_03_08_Click Tiep tuc");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_03_09_Nhap OTP");
 		landLinePhoneCharge.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
@@ -269,13 +269,13 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 
 		log.info("TC_03_10_2_Kiem tra dich vu");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước điện thoại cố định");
-		
+
 		log.info("TC_03_10_3_Kiem tra nha cung cap");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), "Cố định có dây Viettel");
-		
+
 		log.info("TC_03_10_3_So dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), LandLinePhoneChargePageObject.phoneNumber);
-		
+
 		log.info("TC_03_10_4_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(landLinePhoneCharge.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
@@ -293,9 +293,9 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 		availableBalance = canculateAvailableBalances(surplus, money, fee);
 		verifyEquals(actualAvailableBalance, availableBalance);
-		
+
 	}
-	
+
 	@Test
 	public void TC_04_ThanhToanCuocDienThoaiCoDinh_CoDinhKhongDay_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
@@ -346,13 +346,13 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 
 		log.info("TC_04_15_Kiem tra dich vu");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước điện thoại cố định");
-		
+
 		log.info("TC_04_16_Kiem tra nha cung cap");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), "Cố định có dây Viettel");
-		
+
 		log.info("TC_04_17_So dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số điện thoại"), LandLinePhoneChargePageObject.phoneNumber);
-		
+
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(addCommasToLong(money + "") + " VND"));
 
@@ -372,7 +372,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		log.info("TC_04_24: Click  nut Home");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
