@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -33,7 +33,7 @@ public class Television_flow extends Base {
     private String getPayments;
     private String getFee;
     private String account;
-    private String service;
+    private String getService;
     private String supplier;
     private String userCode;
     private String dealCode;
@@ -102,7 +102,7 @@ public class Television_flow extends Base {
 	payments = Double.parseDouble(paymentsSplit[0].replace(",", ""));
 
 	log.info("TC_01_STEP_6: lấy ra tên dịch vụ");
-	service = billTelevision.getMoneyByAccount(driver, "Dịch vụ");
+	getService = billTelevision.getMoneyByAccount(driver, "Dịch vụ");
 
 	log.info("TC_01_STEP_7: lấy nhà cung cấp");
 	supplier = billTelevision.getMoneyByAccount(driver, "Nhà cung cấp");
@@ -189,7 +189,7 @@ public class Television_flow extends Base {
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), userCode);
 
 	log.info("TC_02_12: Kiem tra dịch vụ");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), service);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), getService);
 
 	log.info("TC_02_13: Kiem tra so tai khoan trich no");
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), account);
@@ -261,7 +261,7 @@ public class Television_flow extends Base {
 	payments = Double.parseDouble(paymentsSplit[0].replace(",", ""));
 
 	log.info("TC_03_STEP_8: lấy ra tên dịch vụ");
-	service = billTelevision.getMoneyByAccount(driver, "Dịch vụ");
+	getService = billTelevision.getMoneyByAccount(driver, "Dịch vụ");
 
 	log.info("TC_03_STEP_9: lấy nhà cung cấp");
 	supplier = billTelevision.getMoneyByAccount(driver, "Nhà cung cấp");
@@ -348,7 +348,7 @@ public class Television_flow extends Base {
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), userCode);
 
 	log.info("TC_04_12: Kiem tra dịch vụ");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), service);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), getService);
 
 	log.info("TC_04_13: Kiem tra so tai khoan trich no");
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), account);
@@ -380,7 +380,7 @@ public class Television_flow extends Base {
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void afterClass() {
 	closeApp();
 	service.stop();
