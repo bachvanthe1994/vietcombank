@@ -864,7 +864,7 @@ public class Base {
 			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy)))
 					+ " VND";
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		return result;
 	}
@@ -877,7 +877,6 @@ public class Base {
 				result = result.replace(".00", "");
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return result;
 	}
@@ -889,7 +888,7 @@ public class Base {
 			double scale = Math.pow(10, 2);
 			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		return result;
 	}
@@ -899,7 +898,7 @@ public class Base {
 		try {
 			result = String.format("%,.2f", (Double.parseDouble(money) / Double.parseDouble(currency)));
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		return result;
 	}
@@ -918,6 +917,22 @@ public class Base {
 		String result = "";
 		try {
 			result = stringText.split(splitText)[index].replaceAll("[^\\.0123456789]", "");
+		} catch (Exception e) {
+			result = "0";
+		}
+		return result;
+	}
+
+	public String getCounterPlus(String stringText, int i) {
+		String result = "";
+		char first;
+		try {
+			first = stringText.charAt(0);
+			if (Character.compare(first, '0') == 0) {
+				stringText = stringText.replaceFirst("0", "");
+				result = "0" + (Integer.parseInt(stringText) + i);
+			}
+			result = (Integer.parseInt(stringText) + i) + "";
 		} catch (Exception e) {
 			result = "0";
 		}

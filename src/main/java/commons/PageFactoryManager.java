@@ -1,19 +1,20 @@
 package commons;
 
-
-
-import pageObjects.LockCardPageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.ChangePasswordPageObject;
+import pageObjects.ElectricBillPageObject;
 import pageObjects.HomePageObject;
-import pageObjects.InternetADSLPageObject;
+import pageObjects.InboxPageObject;
 import pageObjects.InterestRateCalculatePageObject;
+import pageObjects.InternetADSLPageObject;
 import pageObjects.LandLinePhoneChargePageObject;
+import pageObjects.LockCardPageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.MobileTopupPageObject;
+import pageObjects.NotifyManagementPageObject;
 import pageObjects.OnlineTopupPageObject;
 import pageObjects.PostpaidMobileBillPageObject;
 import pageObjects.RegisterOnlinePageObject;
@@ -63,7 +64,8 @@ public class PageFactoryManager {
 		return new TransferIdentiryPageObject(driver);
 	}
 
-	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AppiumDriver<MobileElement> driver) {
+	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(
+			AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyOutSideVCBPageObject(driver);
 	}
 
@@ -107,11 +109,11 @@ public class PageFactoryManager {
 	public static FilmTicketBookingPageObject getFilmTicketBookingPageObject(AppiumDriver<MobileElement> driver) {
 		return new FilmTicketBookingPageObject(driver);
 	}
-	
+
 	public static LockCardPageObject LockCardPageObject(AppiumDriver<MobileElement> driver) {
 		return new LockCardPageObject(driver);
 	}
-	
+
 	public static RegisterOnlinePageObject getRegisterOnlinePageObject(AppiumDriver<MobileElement> driver) {
 		return new RegisterOnlinePageObject(driver);
 	}
@@ -119,36 +121,37 @@ public class PageFactoryManager {
 	public static SavingOnlinePageObject getSavingOnlinePageObject(AppiumDriver<MobileElement> driver) {
 		return new SavingOnlinePageObject(driver);
 	}
-	
+
 	public static MobileTopupPageObject getMobileTopupPageObject(AppiumDriver<MobileElement> driver) {
 		return new MobileTopupPageObject(driver);
 	}
-	
+
 	public static OnlineTopupPageObject getOnlineTopupPageObject(AppiumDriver<MobileElement> driver) {
 		return new OnlineTopupPageObject(driver);
 	}
-	
+
 	public static AutoSavingPageObject getAutoSavingPageObject(AppiumDriver<MobileElement> driver) {
 		return new AutoSavingPageObject(driver);
 	}
-	
+
 	public static VCBAutoDebitPageObject getVCBAutoDebitPageObject(AppiumDriver<MobileElement> driver) {
 		return new VCBAutoDebitPageObject(driver);
 	}
-	
-	public static InterestRateCalculatePageObject getInterestRateCalculatePageObject(AppiumDriver<MobileElement> driver) {
+
+	public static InterestRateCalculatePageObject getInterestRateCalculatePageObject(
+			AppiumDriver<MobileElement> driver) {
 		return new InterestRateCalculatePageObject(driver);
 	}
-	
+
 	public static SavingTargetPageObject getSavingTargetPageObject(AppiumDriver<MobileElement> driver) {
 		return new SavingTargetPageObject(driver);
-		
+
 	}
 
 	public static ChangePasswordPageObject getChangePasswordPageObject(AppiumDriver<MobileElement> driver) {
 		return new ChangePasswordPageObject(driver);
 	}
-	
+
 	public static PostpaidMobileBillPageObject getPostpaidMobileBillPageObject(AppiumDriver<MobileElement> driver) {
 		return new PostpaidMobileBillPageObject(driver);
 	}
@@ -156,18 +159,28 @@ public class PageFactoryManager {
 	public static TransferLimitPageObject getTransferLimitPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferLimitPageObject(driver);
 	}
-	
+
 	public static InternetADSLPageObject getInternetADSLPageObject(AppiumDriver<MobileElement> driver) {
 		return new InternetADSLPageObject(driver);
 	}
-	
+
 	public static LandLinePhoneChargePageObject getLandLinePhoneChargePageObject(AppiumDriver<MobileElement> driver) {
 		return new LandLinePhoneChargePageObject(driver);
 	}
 
-	
 	public static SearchPageObject getSearchPageObject(AppiumDriver<MobileElement> driver) {
 		return new SearchPageObject(driver);
 	}
-	
+
+	public static ElectricBillPageObject getElectricBillPageObject(AppiumDriver<MobileElement> driver) {
+		return new ElectricBillPageObject(driver);
+	}
+
+	public static NotifyManagementPageObject getNotifyManagementPageObject(AppiumDriver<MobileElement> driver) {
+		return new NotifyManagementPageObject(driver);
+	}
+
+	public static InboxPageObject getInboxPageObject(AppiumDriver<MobileElement> driver) {
+		return new InboxPageObject(driver);
+	}
 }
