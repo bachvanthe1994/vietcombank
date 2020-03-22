@@ -24,8 +24,7 @@
 		<parameter name="otp" value="123456" />
 		<classes>
 			<!-- Auto debit -->
-	<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" />
-
+		<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
 
 
 
