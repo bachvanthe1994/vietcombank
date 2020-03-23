@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -207,7 +207,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_03_NGuoiNhanTrongVCBBangSTKXacThucBangMatKhau(String pass) {
 		log.info("TC_03_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -353,7 +353,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_05_NGuoiNhanNgoaiVCBSoTaiKhoanXacThucBangMK(String pass) {
 		log.info("TC_05_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -507,7 +507,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_07_NGuoiNhanTrongVCBBangSDTXacThucBangOTP(String otp) {
 		log.info("TC_07_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -664,7 +664,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_09_NGuoiNhanTrongVCBSoTaiKhoanXacThucBangOTP(String otp) {
 		log.info("TC_09_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -823,7 +823,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_11_NGuoiNhanNgoaiVCBSoTaiKhoanXacThucBangOTP(String otp) {
 		log.info("TC_11_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -988,7 +988,7 @@ public class LuckyGift extends Base {
 
 	}
 
-	@AfterMethod(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();
 		service.stop();
