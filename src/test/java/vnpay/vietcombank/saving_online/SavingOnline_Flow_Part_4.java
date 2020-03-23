@@ -265,7 +265,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		
 		log.info("TC_03_06_10_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
@@ -572,7 +572,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		
 		log.info("TC_07_06_10_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 

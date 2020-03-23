@@ -25,8 +25,7 @@ public class Internet_ADSL_Flow extends Base {
 	String passLogin = "";
 	String transferTime;
 	String transactionNumber;
-	long amount,fee, amountStart,feeView,amountView,amountAfter = 0;
-
+	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -44,9 +43,10 @@ public class Internet_ADSL_Flow extends Base {
 		passLogin = pass;
 	}
 
-	 @Test
+	@Test
 	public void TC_01_ThanhToanCuocViettelXacThucMatKhau() {
 		log.info("TC_01_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_01_Step_Select tai khoan nguon");
@@ -54,17 +54,14 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_01_Step_Get so du kha dung");
-		 amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
+		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_Step_Thong tin giao dich chon Viettel");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_01_Input ma khach hang");
-		ADSL.inputIntoEditTextByID(driver, Internet_ADSL_Data.Valid_Account.CODEVIETTEL[1], "com.VCB:id/code");
-
-		log.info("TC_01_Click Tiep tuc");
-		ADSL.clickToDynamicButton(driver, "Tiếp tục");
+		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_01_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_Kiem tra tai khoan nguon");
@@ -77,18 +74,18 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_01_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEVIETTEL[1].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_01_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền thanh toán"));
 
 		log.info("TC_01_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		 fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_01_verify so tien phi");
-		 feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
+		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 		verifyEquals(feeView, fee);
 
 		log.info("TC_01_Click Tiep tuc");
@@ -104,7 +101,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_01_Verify so tien thanh toan");
-		 amountView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"));
+		amountView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"));
 		verifyEquals(amountView, amount);
 
 		log.info("TC_01_get thoi gian giao dich thanh cong");
@@ -117,7 +114,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_01_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEVIETTEL[1].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
 
 		log.info("TC_01_Step_:Lay ma giao dich");
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
@@ -141,7 +138,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_02_Report_ThanhToanCuocViettelXacThucMatKhau() {
 		log.info("TC_02_Step: Click back man hinh home");
-		ADSL.clickToDynamicBackIcon(driver, "Cước internet ADSL");
+		ADSL.clickImageBack( "Cước internet ADSL");
 
 		log.info("TC_02_Step: Click menu header");
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -207,7 +204,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_02: Kiem tra ma khach hang");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEVIETTEL[1].toUpperCase());
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
 
 		log.info("TC_02: Check so tien giao dich");
 		verifyEquals(convertAvailableBalanceCurrentcyOrFeeToLong(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch")), amount);
@@ -225,9 +222,10 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	 @Test
+	@Test
 	public void TC_03_ThanhToanCuocViettelXacThucOTP() {
 		log.info("TC_03_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_03_Step_Select tai khoan nguon");
@@ -242,13 +240,9 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_03_Input ma khach hang");
-		ADSL.inputIntoEditTextByID(driver, Internet_ADSL_Data.Valid_Account.CODEVIETTEL[2], "com.VCB:id/code");
-
-		log.info("TC_03_Click Tiep tuc");
-		ADSL.clickToDynamicButton(driver, "Tiếp tục");
+		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_03_Kiem tra man hinh xac nhan thong tin");
-
 		log.info("TC_03_Kiem tra tai khoan nguon");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
@@ -259,7 +253,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_03_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEVIETTEL[2].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_03_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền thanh toán"));
@@ -299,7 +293,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_03_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEVIETTEL[2].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_03_Step_:Lay ma giao dich");
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
@@ -318,13 +312,12 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_03_Step_:Check so du kha dung sau khi chuyen tien");
 		verifyEquals(amountStart - amount - fee, amountAfter);
-		System.out.print(amount+"-+++++++");
 	}
 
 	@Test
 	public void TC_04_Report_ThanhToanCuocViettelXacThucOTP() {
 		log.info("TC_04_Step: Click back man hinh home");
-		ADSL.clickToDynamicBackIcon(driver, "Cước internet ADSL");
+		ADSL.clickImageBack( "Cước internet ADSL");
 
 		log.info("TC_04_Step: Click menu header");
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -390,7 +383,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_04: Kiem tra ma khach hang");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEVIETTEL[2].toUpperCase());
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_04: Check so tien giao dich");
 		verifyEquals(convertAvailableBalanceCurrentcyOrFeeToLong(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch")), amount);
@@ -408,9 +401,10 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	//@Test
+	 @Test
 	public void TC_05_ThanhToanCuocFPTXacThucMatKhau() {
 		log.info("TC_05_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_05_Step_Select tai khoan nguon");
@@ -425,10 +419,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_05_Input ma khach hang");
-		ADSL.inputIntoEditTextByID(driver, Internet_ADSL_Data.Valid_Account.CODEFPT[1], "com.VCB:id/code");
-
-		log.info("TC_05_Click Tiep tuc");
-		ADSL.clickToDynamicButton(driver, "Tiếp tục");
+		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEFPT);
 
 		log.info("TC_05_Kiem tra man hinh xac nhan thong tin");
 
@@ -442,7 +433,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_05_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEFPT[1].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_05_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền thanh toán"));
@@ -482,7 +473,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_05_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEFPT[1].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_05_Step_:Lay ma giao dich");
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
@@ -503,11 +494,11 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	//@Test
+ @Test
 	public void TC_06_Report_ThanhToanCuocFPTXacThucMatKhau() {
 		log.info("TC_06_Step: Click back man hinh home");
-		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		
+		ADSL.clickImageBack( "Cước internet ADSL");
+
 		log.info("TC_06_Step: Click menu header");
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
@@ -571,7 +562,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_06: Kiem tra ma khach hang");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEFPT[1].toUpperCase());
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_06: Check so tien giao dich");
 		verifyEquals(convertAvailableBalanceCurrentcyOrFeeToLong(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch")), amount);
@@ -590,9 +581,10 @@ public class Internet_ADSL_Flow extends Base {
 
 	}
 
-	//@Test
+	 @Test
 	public void TC_07_ThanhToanCuocFPTXacThucOTP() {
 		log.info("TC_07_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_07_Step_Select tai khoan nguon");
@@ -607,10 +599,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_07_Input ma khach hang");
-		ADSL.inputIntoEditTextByID(driver, Internet_ADSL_Data.Valid_Account.CODEFPT[1], "com.VCB:id/code");
-
-		log.info("TC_07_Click Tiep tuc");
-		ADSL.clickToDynamicButton(driver, "Tiếp tục");
+		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEFPT);
 
 		log.info("TC_07_Kiem tra man hinh xac nhan thong tin");
 
@@ -624,7 +613,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_07_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEFPT[1].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_07_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền thanh toán"));
@@ -664,7 +653,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_07_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEFPT[1].toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_07_Step_:Lay ma giao dich");
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
@@ -685,10 +674,10 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	//@Test
+	 @Test
 	public void TC_08_Report_ThanhToanCuocFPTXacThucOTP() {
 		log.info("TC_08_Step: Click back man hinh home");
-		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		ADSL.clickImageBack( "Cước internet ADSL");
 
 		log.info("TC_08_Step: Click menu header");
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -753,7 +742,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_08: Kiem tra ma khach hang");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), Internet_ADSL_Data.Valid_Account.CODEFPT[1].toUpperCase());
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_08: Check so tien giao dich");
 		verifyEquals(convertAvailableBalanceCurrentcyOrFeeToLong(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch")), amount);

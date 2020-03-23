@@ -258,9 +258,16 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		log.info("TC_03_06_9: Kiem tra tai khoan dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info.sourceAccount);
 
-		log.info("TC_03_06_10: Kiem tra so tien phi");
+		log.info("TC_03_07_Chon phuong thuc xac thuc");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
+		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		
+		log.info("TC_03_08_Kiem tra so tien phi");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
-		log.info("TC_03_7_Click nut Tiep tuc");
+		log.info("TC_03_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -557,9 +564,16 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		log.info("TC_07_06_9: Kiem tra tai khoan dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info1.sourceAccount);
 
-		log.info("TC_07_06_10: Kiem tra so tien phi");
+		log.info("TC_03_07_Chon phuong thuc xac thuc");
+		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
+		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		
+		log.info("TC_03_08_Kiem tra so tien phi");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
-		log.info("TC_07_7_Click nut Tiep tuc");
+		log.info("TC_03_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
@@ -568,10 +582,10 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
-		log.info("TC_07_8_Click Thuc hien giao dich moi");
+		log.info("TC_07_10_Click Thuc hien giao dich moi");
 		savingOnline.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_07_9_Chon tai khoan dich");
+		log.info("TC_07_11_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Chọn tài khoản đích");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 

@@ -4,8 +4,12 @@ public class DomesticAirTicketBooking_Data {
 
 	public static class output {
 		// 2 cot, 22 dong
-		public static final String PLACE[][] = { { "HAN", "Hà Nội" }, { "SGN", "TP Hồ Chí Minh" }, { "DAD", "Đà Nẵng" }, { "BMV", "Buôn Ma Thuột" }, { "CAH", "Cà Mau" }, { "VCA", "Cần Thơ" }, { "VCL", "Chu Lai" }, { "VCS", "Côn Đảo" }, { "DLI", "Đà Lạt" }, { "DIN", "Điện Biên" }, { "VDH", "Đồng Hới" }, { "HPH", "Hải Phòng" }, { "HUI", "Huế" }, { "CXR", "Nha Trang" }, { "PQC", "Phú Quốc" },
-				{ "PXU", "Pleiku" }, { "UIH", "Quy Nhơn" }, { "VKG", "Rạch Giá" }, { "THD", "Thanh Hóa" }, { "TBB", "Tuy Hòa" }, { "VDO", "Vân đồn" }, { "VII", "Vinh" } };
+		public static final String PLACE[][] = { { "HAN", "Hà Nội" }, { "SGN", "TP Hồ Chí Minh" }, { "DAD", "Đà Nẵng" },
+				{ "BMV", "Buôn Ma Thuột" }, { "CAH", "Cà Mau" }, { "VCA", "Cần Thơ" }, { "VCL", "Chu Lai" },
+				{ "VCS", "Côn Đảo" }, { "DLI", "Đà Lạt" }, { "DIN", "Điện Biên" }, { "VDH", "Đồng Hới" },
+				{ "HPH", "Hải Phòng" }, { "HUI", "Huế" }, { "CXR", "Nha Trang" }, { "PQC", "Phú Quốc" },
+				{ "PXU", "Pleiku" }, { "UIH", "Quy Nhơn" }, { "VKG", "Rạch Giá" }, { "THD", "Thanh Hóa" },
+				{ "TBB", "Tuy Hòa" }, { "VDO", "Vân đồn" }, { "VII", "Vinh" } };
 
 	}
 
@@ -19,7 +23,7 @@ public class DomesticAirTicketBooking_Data {
 		public static final String INVALID_NUMBER_OF_CHILDREN = "1 hành khách người lớn chỉ được phép đi kèm với 1 hành khách trẻ em và 1 hành khách em bé.";
 	}
 
-	public class validInput {
+	public static class validInput {
 		public static final String ADULT_NAME = "NGUOI LON";
 		public static final String ADULT_GENDER = "Nữ";
 		public static final String ADULT_EMAIL = "abcd@gmail.com";
@@ -38,6 +42,8 @@ public class DomesticAirTicketBooking_Data {
 		public static final String INTERNATIONAL_PLACE = "Singapore";
 		public static final String INTERNATIONAL_CODE = "SIN";
 		public static final String ACCOUNT2 = "0541001555240";
+
+		public static final String AIR_TICKET_DATA[] = { "", "" };
 
 	}
 

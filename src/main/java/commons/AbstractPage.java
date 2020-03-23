@@ -266,6 +266,19 @@ public class AbstractPage {
 		}
 	}
 
+	public void scrollIDownOneTime(AppiumDriver<MobileElement> driver) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.90);
+		int endY = (int) (size.getHeight() * 0.10);
+		TouchAction touch = new TouchAction(driver);
+		try {
+			touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+		} catch (Exception e) {
+		}
+
+	}
+
 	public void scrollDown_LongDistance(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
@@ -1159,8 +1172,8 @@ public class AbstractPage {
 		}
 
 	}
-	
-	//Click text theo text tren no
+
+	// Click text theo text tren no
 	public void clickToDynamicTextFollowText(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicText);
@@ -1442,6 +1455,17 @@ public class AbstractPage {
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
 		if (status == true) {
 			isEnabled = isControlEnabled(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicValue);
+		}
+		return isEnabled;
+
+	}
+
+	// Xac nhan Icon Enable qua Image ID
+	public boolean isDynamicImageByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
+		boolean isEnabled = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicValue);
+		if (status == true) {
+			isEnabled = isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicValue);
 		}
 		return isEnabled;
 
@@ -2147,6 +2171,16 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		}
+		return text;
+	}
+
+	public String getDynamicTextByEspeciallyText(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ESPECIALLY_TEXTVIEW, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_ESPECIALLY_TEXTVIEW, dynamicTextValue);
 		}
 		return text;
 	}

@@ -235,21 +235,21 @@ public class Base {
 	}
 
 	public AppiumDriverLocalService startServer() throws IOException, InterruptedException {
-		boolean trueStatus = checkIfServerIsRunnning(4723);
-		if (!trueStatus) {
-			service = AppiumDriverLocalService.buildDefaultService();
-			service.start();
-		} else {
-			String osName = System.getProperty("os.name").toLowerCase();
-			if (osName.toLowerCase().contains("window")) {
-				Runtime.getRuntime().exec("taskkill /F /IM node.exe");
-			} else if (osName.toLowerCase().contains("mac")) {
+		String osName = System.getProperty("os.name").toLowerCase();
+		if (osName.toLowerCase().contains("window")) {
+			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
+		} else if (osName.toLowerCase().contains("mac")) {
+			try {
 				Runtime.getRuntime().exec("killall node");
+				System.out.println("Appium server stopped.");
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			Thread.sleep(2000);
-			service = AppiumDriverLocalService.buildDefaultService();
-			service.start();
 		}
+		Thread.sleep(2000);
+		service = AppiumDriverLocalService.buildDefaultService();
+		service.start();
+
 		return service;
 	}
 
@@ -864,7 +864,7 @@ public class Base {
 			result = String.format("%,d", Math.round(Double.parseDouble(money) * Double.parseDouble(currentcy)))
 					+ " VND";
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		return result;
 	}
@@ -877,7 +877,6 @@ public class Base {
 				result = result.replace(".00", "");
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return result;
 	}
@@ -887,9 +886,9 @@ public class Base {
 		double result = 0;
 		try {
 			double scale = Math.pow(10, 2);
-			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
+			result = Math.floor((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		return result;
 	}
@@ -899,7 +898,7 @@ public class Base {
 		try {
 			result = String.format("%,.2f", (Double.parseDouble(money) / Double.parseDouble(currency)));
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		return result;
 	}
@@ -918,6 +917,22 @@ public class Base {
 		String result = "";
 		try {
 			result = stringText.split(splitText)[index].replaceAll("[^\\.0123456789]", "");
+		} catch (Exception e) {
+			result = "0";
+		}
+		return result;
+	}
+
+	public String getCounterPlus(String stringText, int i) {
+		String result = "";
+		int total = 0;
+		try {
+			total = (Integer.parseInt(stringText) + i);
+			if (total > 9) {
+				result = total + "";
+			} else {
+				result = "0" + total;
+			}
 		} catch (Exception e) {
 			result = "0";
 		}

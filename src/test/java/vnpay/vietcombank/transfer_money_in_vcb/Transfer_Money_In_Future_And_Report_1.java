@@ -51,6 +51,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 	}
 
@@ -59,8 +60,6 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
-
-		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_01_Step_02: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");

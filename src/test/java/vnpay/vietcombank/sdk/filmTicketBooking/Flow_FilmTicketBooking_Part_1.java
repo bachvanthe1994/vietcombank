@@ -19,6 +19,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombank_test_data.Account_Data;
+import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
 public class Flow_FilmTicketBooking_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -120,11 +121,11 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
 		
 		log.info("TC_01_16_02_Nhap sdt");
-		filmTicketBooking.inputToDynamicInputBoxByID("0363056625", "com.VCB:id/etPhoneNumber");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
 		
 		log.info("TC_01_16_03_Nhap email");
 		filmTicketBooking.scrollDownToText("Thanh toán");
-		filmTicketBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etEmail");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.EMAIL_BOOKING, "com.VCB:id/etEmail");
 		
 		log.info("TC_01_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
@@ -157,10 +158,10 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Tên khách hàng"), "Duc Do");
 		
 		log.info("TC_01_19_08: Kiem tra sdt");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số điện thoại nhận vé"), "0363056625");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số điện thoại nhận vé"), FilmTicketBooking_Data.PHONE_BOOKING);
 		
 		log.info("TC_01_19_09: Kiem tra email");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Email nhận vé"), "minhducdo2603@gmail.com");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Email nhận vé"), FilmTicketBooking_Data.EMAIL_BOOKING);
 		
 		log.info("TC_01_20: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
@@ -358,11 +359,11 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
 		
 		log.info("TC_03_16_02_Nhap sdt");
-		filmTicketBooking.inputToDynamicInputBoxByID("0363056625", "com.VCB:id/etPhoneNumber");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
 		
 		log.info("TC_03_16_03_Nhap email");
 		filmTicketBooking.scrollDownToText("Thanh toán");
-		filmTicketBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etEmail");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.EMAIL_BOOKING, "com.VCB:id/etEmail");
 		
 		log.info("TC_03_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
@@ -395,10 +396,10 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Tên khách hàng"), "Duc Do");
 		
 		log.info("TC_03_19_08: Kiem tra sdt");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số điện thoại nhận vé"), "0363056625");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số điện thoại nhận vé"), FilmTicketBooking_Data.PHONE_BOOKING);
 		
 		log.info("TC_03_19_09: Kiem tra email");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Email nhận vé"), "minhducdo2603@gmail.com");
+		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Email nhận vé"), FilmTicketBooking_Data.EMAIL_BOOKING);
 		
 		log.info("TC_03_20: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");

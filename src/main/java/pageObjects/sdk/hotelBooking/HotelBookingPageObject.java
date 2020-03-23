@@ -34,11 +34,13 @@ public class HotelBookingPageObject extends AbstractPage {
 	private AppiumDriver<MobileElement> driver;
 
 	public String getDayCheckIn() {
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+				"com.VCB:id/wdFromDay");
 		List<String> listText = new ArrayList<String>();
 		String day = "";
 		if (status) {
-			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdFromDay");
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+					"com.VCB:id/wdFromDay");
 			for (String text : listText) {
 				day = day + text;
 			}
@@ -49,11 +51,13 @@ public class HotelBookingPageObject extends AbstractPage {
 	}
 
 	public String getDayCheckOut() {
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+				"com.VCB:id/wdToDay");
 		List<String> listText = new ArrayList<String>();
 		String day = "";
 		if (status) {
-			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/wdToDay");
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+					"com.VCB:id/wdToDay");
 			for (String text : listText) {
 				day = day + text;
 			}
@@ -64,11 +68,13 @@ public class HotelBookingPageObject extends AbstractPage {
 	}
 
 	public String getPassengerAndRoom() {
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+				"com.VCB:id/llSelectPassengerAndRoom");
 		List<String> listText = new ArrayList<String>();
 		String passengerAndRoom = "";
 		if (status) {
-			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llSelectPassengerAndRoom");
+			listText = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+					"com.VCB:id/llSelectPassengerAndRoom");
 			for (String text : listText) {
 				passengerAndRoom = passengerAndRoom + text;
 			}
@@ -150,7 +156,8 @@ public class HotelBookingPageObject extends AbstractPage {
 	}
 
 	public boolean checkSelectedStarRate(int star) {
-		List<String> starList = getSelectedInListElements(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llStars");
+		List<String> starList = getSelectedInListElements(driver,
+				HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, "com.VCB:id/llStars");
 		return Boolean.parseBoolean(starList.get(star - 1));
 
 	}
@@ -171,7 +178,8 @@ public class HotelBookingPageObject extends AbstractPage {
 		int startPoint = (int) (size.width * startPercentage);
 		int endPoint = (int) (size.width * endPercentage);
 
-		new TouchAction(driver).longPress(PointOption.point(startPoint, anchor)).moveTo(PointOption.point(endPoint, anchor)).release().perform();
+		new TouchAction(driver).longPress(PointOption.point(startPoint, anchor))
+				.moveTo(PointOption.point(endPoint, anchor)).release().perform();
 	}
 
 	public void verticalSwipeByPercentage(double startPercentage, double endPercentage, double anchorPercentage) {
@@ -180,7 +188,8 @@ public class HotelBookingPageObject extends AbstractPage {
 		int startPoint = (int) (size.height * startPercentage);
 		int endPoint = (int) (size.height * endPercentage);
 
-		new TouchAction(driver).longPress(PointOption.point(anchor, startPoint)).moveTo(PointOption.point(anchor, endPoint)).release().perform();
+		new TouchAction(driver).longPress(PointOption.point(anchor, startPoint))
+				.moveTo(PointOption.point(anchor, endPoint)).release().perform();
 	}
 
 	public void swipeElementToElementByText(String textStart, String textEnd) {
@@ -197,7 +206,8 @@ public class HotelBookingPageObject extends AbstractPage {
 		int xEnd = elementEnd.getLocation().getX();
 		int yEnd = elementEnd.getLocation().getY();
 
-		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd)).release().perform();
+		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd))
+				.release().perform();
 	}
 
 	public List<HotelBookingInfo> getListHotelBookingHistory() {
@@ -215,17 +225,24 @@ public class HotelBookingPageObject extends AbstractPage {
 				try {
 					listPayCode.add(payCode);
 					String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_PAYCODE, payCode);
-					String hotelName = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelName")).getText();
-					String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvHotelAddress")).getText();
+					String hotelName = driver.findElement(By.xpath(locator))
+							.findElement(By.id("com.VCB:id/tvHotelName")).getText();
+					String hotelAddress = driver.findElement(By.xpath(locator))
+							.findElement(By.id("com.VCB:id/tvHotelAddress")).getText();
 
 					SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
 					SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
-					String createdDate = formatter2.format(formatter1.parse(driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCreatedDate")).getText()));
-					String checkinDate = formatter2.format(formatter1.parse(driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvCheckinDate")).getText()));
+					String createdDate = formatter2.format(formatter1.parse(driver.findElement(By.xpath(locator))
+							.findElement(By.id("com.VCB:id/tvCreatedDate")).getText()));
+					String checkinDate = formatter2.format(formatter1.parse(driver.findElement(By.xpath(locator))
+							.findElement(By.id("com.VCB:id/tvCheckinDate")).getText()));
 
-					String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvPrice")).getText();
-					String status = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvStatus")).getText();
-					HotelBookingInfo info = new HotelBookingInfo(payCode, hotelName, hotelAddress, createdDate, checkinDate, price, status);
+					String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvPrice"))
+							.getText();
+					String status = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvStatus"))
+							.getText();
+					HotelBookingInfo info = new HotelBookingInfo(payCode, hotelName, hotelAddress, createdDate,
+							checkinDate, price, status);
 					listHotelBookingInfo.add(info);
 
 				} catch (Exception e) {
@@ -250,10 +267,12 @@ public class HotelBookingPageObject extends AbstractPage {
 		actualList = actualListHotelBookingInfo;
 		List<HotelBookingInfo> expectListHotelBookingInfo = new ArrayList<HotelBookingInfo>();
 
-		listContainWaitingPay = (List<HotelBookingInfo>) actualListHotelBookingInfo.stream().filter(p -> p.status.equals("Chờ thanh toán")).collect(Collectors.toList());
+		listContainWaitingPay = (List<HotelBookingInfo>) actualListHotelBookingInfo.stream()
+				.filter(p -> p.status.equals("Chờ thanh toán")).collect(Collectors.toList());
 		listContainWaitingPay.sort((o1, o2) -> o2.createDate.compareTo(o1.createDate));
 
-		listNotContainWaitingPay = (List<HotelBookingInfo>) actualListHotelBookingInfo.stream().filter(p -> !p.status.equals("Chờ thanh toán")).collect(Collectors.toList());
+		listNotContainWaitingPay = (List<HotelBookingInfo>) actualListHotelBookingInfo.stream()
+				.filter(p -> !p.status.equals("Chờ thanh toán")).collect(Collectors.toList());
 		listNotContainWaitingPay.sort((o1, o2) -> o2.createDate.compareTo(o1.createDate));
 
 		for (HotelBookingInfo info : listNotContainWaitingPay) {
@@ -291,8 +310,10 @@ public class HotelBookingPageObject extends AbstractPage {
 				try {
 					listHotelName.add(hotelName);
 					String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_HOTEL_NAME, hotelName);
-					String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvAddress")).getText();
-					String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
+					String hotelAddress = driver.findElement(By.xpath(locator))
+							.findElement(By.id("com.VCB:id/tvAddress")).getText();
+					String price = driver.findElement(By.xpath(locator))
+							.findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
 
 					HotelBookingInfo info = new HotelBookingInfo("", hotelName, hotelAddress, "", "", price, "");
 					listHotelBookingInfo.add(info);
@@ -320,8 +341,10 @@ public class HotelBookingPageObject extends AbstractPage {
 			if (!listHotelName.contains(hotelName)) {
 				listHotelName.add(hotelName);
 				String locator = String.format(HotelBookingPageUIs.LINEARLAYOUT_HOTEL_BY_HOTEL_NAME, hotelName);
-				String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvAddress")).getText();
-				String price = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
+				String hotelAddress = driver.findElement(By.xpath(locator)).findElement(By.id("com.VCB:id/tvAddress"))
+						.getText();
+				String price = driver.findElement(By.xpath(locator))
+						.findElement(By.id("com.VCB:id/tvFinalPriceOneNight")).getText();
 
 				HotelBookingInfo info = new HotelBookingInfo("", hotelName, hotelAddress, "", "", price, "");
 				listHotelBookingInfo.add(info);
@@ -399,18 +422,20 @@ public class HotelBookingPageObject extends AbstractPage {
 		}
 
 	}
-	
+
 	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
 	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY,
+				dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		}
 
 	}
-	
-	// Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
+
+	// Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là
+	// resource id
 	public void clickToDynamicImageViewByID(String dynamicID) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
@@ -450,7 +475,10 @@ public class HotelBookingPageObject extends AbstractPage {
 
 	public boolean checkFilerHotelByPrice(List<HotelBookingInfo> listHotelInfo, String maxPrice, String minPrice) {
 		for (HotelBookingInfo info : listHotelInfo) {
-			if ((Integer.parseInt(info.price.replaceAll("\\D+", "")) < Integer.parseInt(minPrice.replaceAll("\\D+", ""))) || (Integer.parseInt(info.price.replaceAll("\\D+", "")) > Integer.parseInt(maxPrice.replaceAll("\\D+", "")))) {
+			if ((Integer.parseInt(info.price.replaceAll("\\D+", "")) < Integer
+					.parseInt(minPrice.replaceAll("\\D+", "")))
+					|| (Integer.parseInt(info.price.replaceAll("\\D+", "")) > Integer
+							.parseInt(maxPrice.replaceAll("\\D+", "")))) {
 				return false;
 			}
 		}
@@ -606,7 +634,7 @@ public class HotelBookingPageObject extends AbstractPage {
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
 		}
 	}
-	
+
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
@@ -617,11 +645,24 @@ public class HotelBookingPageObject extends AbstractPage {
 		return text;
 	}
 
+	public String getDynamicTextByLabel(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_LABEL_AMOUNT, dynamicTextValue);
+		}
+		return text;
+
+	}
+
 	public List<String> getListOfSuggestedMoneyOrListText(String dynamicID) {
 		List<String> listString = new ArrayList<String>();
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		boolean status = waitForElementVisible(driver,
+				HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		if (status) {
-			listString = getTextInListElements(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			listString = getTextInListElements(driver,
+					HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		}
 		return listString;
 	}
@@ -640,7 +681,8 @@ public class HotelBookingPageObject extends AbstractPage {
 	public String getTextTextViewByLinearLayoutID(String... dynamicID) {
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
+		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID,
+				dynamicID);
 		if (status) {
 			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		}
@@ -659,19 +701,24 @@ public class HotelBookingPageObject extends AbstractPage {
 	public String getTextInDynamicDropdownOrDateTimePicker(String dynamicID) {
 		String text = null;
 		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		boolean status = waitForElementVisible(driver,
+				HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
 		if (status) {
-			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY,
+					dynamicID);
 		}
 		return text;
 	}
 
 	public String getTextInDynamicPopup(String dynamicResourceID) {
 		String text = null;
-		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
-		boolean status = waitForElementVisible(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+		scrollIDown(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY,
+				dynamicResourceID);
+		boolean status = waitForElementVisible(driver,
+				HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
 		if (status) {
-			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+			text = getTextElement(driver, HotelBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY,
+					dynamicResourceID);
 		}
 		return text;
 
@@ -732,13 +779,13 @@ public class HotelBookingPageObject extends AbstractPage {
 		scrollIDown(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicText);
 
 	}
-	
+
 	/* SCROLL UP */
 	public void scrollUpToText(AppiumDriver<MobileElement> driver, String dynamicText) {
 		scrollUp(driver, HotelBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicText);
 
 	}
-	
+
 	public String getTransferTimeSuccess(String textSuccess) {
 		String transferTime = "";
 		transferTime = getDynamicTransferTimeAndMoney(driver, textSuccess, "4");
@@ -746,7 +793,8 @@ public class HotelBookingPageObject extends AbstractPage {
 		if (transferTime.equals("") || transferTime == null) {
 			Locale locale = new Locale("en", "UK");
 			DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
-			dateFormatSymbols.setWeekdays(new String[] { "Unused", "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", });
+			dateFormatSymbols.setWeekdays(new String[] { "Unused", "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm",
+					"Thứ Sáu", "Thứ Bảy", });
 
 			String pattern = "HH:mm EEEEE dd/MM/yyyy";
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, dateFormatSymbols);
@@ -757,5 +805,5 @@ public class HotelBookingPageObject extends AbstractPage {
 
 		return transferTime;
 	}
-	
+
 }
