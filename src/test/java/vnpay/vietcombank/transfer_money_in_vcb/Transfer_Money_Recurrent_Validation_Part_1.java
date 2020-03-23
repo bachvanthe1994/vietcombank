@@ -200,14 +200,14 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	public void TC_09_ChuyenTienDinhKy_TaiKhoanDich_KiemTraHienThiMacDinh() {
 		log.info("TC_09_01_Kiem tra hien thi mac dinh");
 		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
-		verifyEquals(actualDestinationAccount, "Nhập/chọn tài khoản nhận VND");
+		verifyEquals(actualDestinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 	}
 
 	@Test
 	public void TC_10_ChuyenTienDinhKy_TaiKhoanDich_KiemTraMaxLength() {
 		log.info("TC_10_01_Nhap gia tri tai khoan dich");
-		transferRecurrent.inputToDynamicInputBox(driver, "12345678999999", "Nhập/chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, "12345678999999", "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_10_01_Kiem tra do dai tai khoan dich");
 		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
@@ -256,7 +256,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 
 		log.info("TC_12_01_Kiem tra do dai tai khoan dich");
 		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
-		verifyEquals(actualDestinationAccount, "Nhập/chọn tài khoản nhận VND");
+		verifyEquals(actualDestinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 	}
 
 	@AfterClass(alwaysRun = true)

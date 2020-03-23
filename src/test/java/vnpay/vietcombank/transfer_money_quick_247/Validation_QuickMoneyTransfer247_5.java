@@ -25,7 +25,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	List<String> listActual;
 	private String Note;
 	private String costTranferString;
-	private long fee=0;
+	private long fee = 0;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -62,7 +62,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 	}
 
 	@Test
-	//Lỗi app, hiển thị text null chuyển tiền
+	// Lỗi app, hiển thị text null chuyển tiền
 	public void TC_65_KiemTraHienThiTextNoiDung() {
 		log.info("TC_65_Kiem tra label noi dung");
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "3"), "Nội dung");
@@ -182,7 +182,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_FOUR_NUMBER_USD_EUR, "Thông tin giao dịch", "1");
 
 		log.info("TC_71_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_71_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
@@ -243,15 +243,15 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 
 		log.info("TC_74_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		
+
 		log.info("TC_01_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
 
 		log.info("TC_74_Step_Verify so tien phi");
-		verifyEquals(costTranferString, fee +"");
-		
+		verifyEquals(costTranferString, fee + "");
+
 		log.info("TC_74_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]));
 	}
@@ -274,7 +274,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		log.info("TC_75_Step_Verify so tien phi");
-		verifyEquals(costTranferString, fee+"");
+		verifyEquals(costTranferString, fee + "");
 
 		log.info("TC_75_Step_Verify phi giao dich nguoi chuyen tra");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]));
@@ -348,7 +348,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-@Test
+	@Test
 	public void TC_79_ChonTaiKhoanDongChuSoHuu() {
 		log.info("TC_79_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -381,7 +381,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 
 		log.info("TC_80_Step_Nhap so tai khoan chuyen khong hop le");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.ACCOUNT_TO_INVALID, "Thông tin người hưởng", "1");
-		
+
 		log.info("TC_80_Step_Nhap noi dung");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 

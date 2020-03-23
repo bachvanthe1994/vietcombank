@@ -50,32 +50,40 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
-		/*log.info("TC_00_Step_: Click menu header");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_00Step_: Click cai dat");
-		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
-
-		log.info("TC_00_Step_: Click quan ly danh ba");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
-
-		log.info("TC_00_Step_: Click Danh bạ người hưởng");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ người hưởng");
-
-		log.info("TC_00_Step_: delete danh sach co tu truoc");
-		setupContact.deleteContactReceiver();
-		
-		log.info("TC_00_Step_: Add contact 1");
-		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[0], SetupContact_Data.UI.ACCOUNT[0]);
-
-		log.info("TC_00_Step_: Add contact 2");
-		setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3], Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1], SetupContact_Data.UI.ACCOUNT[1]);
-	log.info("TC_00_Step_: back lai man hinh danh ba");
-		setupContact.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-
-		log.info("TC_00_Step_: back lai man hinh home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");*/
+		/*
+		 * log.info("TC_00_Step_: Click menu header");
+		 * homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		 * 
+		 * log.info("TC_00Step_: Click cai dat"); setupContact =
+		 * PageFactoryManager.getSetupContactPageObject(driver);
+		 * setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+		 * 
+		 * log.info("TC_00_Step_: Click quan ly danh ba");
+		 * setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
+		 * 
+		 * log.info("TC_00_Step_: Click Danh bạ người hưởng");
+		 * setupContact.clickToDynamicButtonLinkOrLinkText(driver,
+		 * "Danh bạ người hưởng");
+		 * 
+		 * log.info("TC_00_Step_: delete danh sach co tu truoc");
+		 * setupContact.deleteContactReceiver();
+		 * 
+		 * log.info("TC_00_Step_: Add contact 1");
+		 * setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3],
+		 * Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[0],
+		 * SetupContact_Data.UI.ACCOUNT[0]);
+		 * 
+		 * log.info("TC_00_Step_: Add contact 2");
+		 * setupContact.addContactReceiver(SetupContact_Data.UI.TYPE_TRANFER[3],
+		 * Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1],
+		 * SetupContact_Data.UI.ACCOUNT[1]);
+		 * log.info("TC_00_Step_: back lai man hinh danh ba");
+		 * setupContact.clickToDynamicBottomMenuOrIcon(driver,
+		 * "com.VCB:id/ivTitleLeft");
+		 * 
+		 * log.info("TC_00_Step_: back lai man hinh home");
+		 * homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		 */
 	}
 
 	@Test
@@ -158,7 +166,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	}
 
 	@Test
-	//Lỗi app, hiển thị tài khoản nguồn mặc định sai
+	// Lỗi app, hiển thị tài khoản nguồn mặc định sai
 	public void TC_06_KiemTraHienThiTaiKhoanMacDinh() {
 		log.info("TC_06_01_Kiem tra hien thi tai khoan mac dinh");
 		actualDefaultAccount = transferMoney.getTextDynamicDefaultSourceAccount(driver, "Tài khoản nguồn");
@@ -229,7 +237,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_12_KiemTraHienThilabelChonTaiKhoanNhan() {
 		log.info("TC_12_Step_verify text");
-		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Nhập/chọn tài khoản nhận VND"));
+		verifyTrue(transferMoney.isDynamicTextInInputBoxDisPlayed(driver, "Nhập/ chọn tài khoản thụ hưởng"));
 	}
 
 	@Test
@@ -263,7 +271,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	public void TC_16_TaiKhoanNhanKhongTonTai() {
 		log.info("TC_16_Step_Invalid nhap so tai khoan nguoi nhan khong ton tai");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.INVALID_ACC_ACCEPT, "Thông tin người hưởng", "1");
-		
+
 		log.info("TC_24_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
 

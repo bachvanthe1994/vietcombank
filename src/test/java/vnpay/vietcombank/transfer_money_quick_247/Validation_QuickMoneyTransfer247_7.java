@@ -87,7 +87,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
 
 		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
@@ -235,7 +235,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/sem_title_default"), "Select");
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text1"), "Link Sharing");
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text2"), "Chia sẻ các file lớn lên đến 2 GB một ngày.");
-		
+
 		log.info("TC_02_Step_18: Click quay lai");
 		transferMoney.navigateBack(driver);
 
@@ -245,8 +245,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 	public void TC_107_KiemTraButtonLuuAnh() {
 		log.info("TC_01_Nhan button luu anh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Lưu ảnh");
-		
-		
+
 		log.info("TC_95_Step_verify message luu anh thanh cong");
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.SAVE_SUCCESS_MESSAGE));
 
@@ -254,7 +253,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-@Test
+	@Test
 	public void TC_108_LuuThongTinThuHuongSTKChuaCoTrongDanhBa() {
 		log.info("TC_01_Nhan button Lưu thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
