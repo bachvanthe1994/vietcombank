@@ -23,10 +23,10 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-	<!-- Tính toán lãi suất -->
-<!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> -->
-			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
-
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
 
 
 

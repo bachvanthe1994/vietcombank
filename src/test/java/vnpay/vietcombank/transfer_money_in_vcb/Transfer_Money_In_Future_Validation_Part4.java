@@ -59,7 +59,7 @@ public class Transfer_Money_In_Future_Validation_Part4 extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_01_Step_04: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/chọn tài khoản nhận VND");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_05: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
