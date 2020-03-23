@@ -40,5 +40,7 @@ public class HotelBooking_Data {
 	public static final String EMPTY_EMAIL = "Quý khách vui lòng nhập Email nhận hóa đơn.";
 	public static final String HOTEL_NAME_BOOKING = "CLASSY HOLIDAY HOTEL & SPA";
 	public static final String HOTEL_NAME_BOOKING_INPUT = "CLASSY HOLIDAY HOTEL";
+	public static final String PHONE_BOOKING = "0399764702";
+	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
 	
 }

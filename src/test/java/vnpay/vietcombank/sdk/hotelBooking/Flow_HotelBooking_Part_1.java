@@ -75,10 +75,10 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
 
 		log.info("TC_01_07_Nhap so dien thoai khach hang");
-		hotelBooking.inputToDynamicInputBoxByID("0363056625", "com.VCB:id/etCustomerPhone");
+		hotelBooking.inputToDynamicInputBoxByID(HotelBooking_Data.PHONE_BOOKING, "com.VCB:id/etCustomerPhone");
 
 		log.info("TC_01_08_Nhap email khach hang");
-		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
+		hotelBooking.inputToDynamicInputBoxByID(HotelBooking_Data.EMAIL_BOOKING, "com.VCB:id/etCustomerEmail");
 
 		log.info("TC_01_09_Click Thanh toan");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
