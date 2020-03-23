@@ -8,5 +8,7 @@ public class FilmTicketBooking_Data {
 	public static final List<String> LIST_CINEMA_HANOI = Arrays.asList("TT Chiếu phim Quốc gia");
 	public static final List<String> LIST_CINEMA_HCM = Arrays.asList("Cinestar", "Mega GS", "BHD Star Cineplex");
 	public static final String MAX_10_SEATS_PER_1_MESSAGE = "Quý khách chỉ có thể chọn tối đa 10 vé 1 lần";
+	public static final String PHONE_BOOKING = "0399764702";
+	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
 	
 }
