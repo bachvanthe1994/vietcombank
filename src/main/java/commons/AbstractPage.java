@@ -45,9 +45,9 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 
 public class AbstractPage {
-	int longTime = 40;
+	int longTime = 60;
 	int shortTime = 5;
-	long longTime1 = 40;
+	long longTime1 = 60;
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
@@ -378,7 +378,7 @@ public class AbstractPage {
 
 	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator) {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
@@ -403,7 +403,7 @@ public class AbstractPage {
 	}
 
 	public void waitForAllElementsVisible(AppiumDriver<MobileElement> driver, String locator) {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
@@ -465,7 +465,7 @@ public class AbstractPage {
 
 	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		WebDriverWait wait = new WebDriverWait(driver, 40);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
