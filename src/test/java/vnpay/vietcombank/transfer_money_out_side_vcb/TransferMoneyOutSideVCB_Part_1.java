@@ -76,10 +76,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người thụ hưởng");
 
 		log.info("TC_01_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
@@ -260,10 +260,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_03_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.name, "Tên người hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.name, "Tên người thụ hưởng");
 
 		log.info("TC_03_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info1.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info1.destinationBank);
 
@@ -441,10 +441,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_05_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.name, "Tên người hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.name, "Tên người thụ hưởng");
 
 		log.info("TC_05_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info2.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.destinationBank);
 
@@ -634,10 +634,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_07_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info3.name, "Tên người hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info3.name, "Tên người thụ hưởng");
 
 		log.info("TC_07_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info3.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.destinationBank);
 
@@ -827,10 +827,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_09_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.name, "Tên người hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.name, "Tên người thụ hưởng");
 
 		log.info("TC_09_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.destinationBank);
 
@@ -1010,10 +1010,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_11_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.name, "Tên người hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.name, "Tên người thụ hưởng");
 
 		log.info("TC_11_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.destinationBank, "Tìm kiếm");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.destinationBank);
 
