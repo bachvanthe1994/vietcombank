@@ -146,9 +146,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_01_Step_27: Hien thi Icon Luu anh");
 		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSavePhoto"));
 
-		log.info("TC_01_Step_28: Hien thi Icon Luu hoa don");
-		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSaveContact"));
-
 		log.info("TC_01_Step_29: An tiep button 'Thuc hien giao dich moi'");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"),
 				"Thực hiện giao dịch mới");
@@ -409,9 +406,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_03_Step_27: Hien thi Icon Luu anh");
 		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSavePhoto"));
-
-		log.info("TC_03_Step_28: Hien thi Icon Luu hoa don");
-		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSaveContact"));
 
 		log.info("TC_03_Step_29: An tiep button 'Thuc hien giao dich moi'");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"),
@@ -674,9 +668,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_05_Step_28: Hien thi Icon Luu anh");
 		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSavePhoto"));
 
-		log.info("TC_05_Step_29: Hien thi Icon Luu hoa don");
-		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSaveContact"));
-
 		log.info("TC_05_Step_30: An tiep button 'Thuc hien giao dich moi'");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"),
 				"Thực hiện giao dịch mới");
@@ -934,9 +925,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_07_Step_27: Hien thi Icon Luu anh");
 		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSavePhoto"));
-
-		log.info("TC_07_Step_28: Hien thi Icon Luu hoa don");
-		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSaveContact"));
 
 		log.info("TC_07_Step_29: An tiep button 'Thuc hien giao dich moi'");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"),
@@ -1199,9 +1187,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_09_Step_27: Hien thi Icon Luu anh");
 		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSavePhoto"));
 
-		log.info("TC_09_Step_28: Hien thi Icon Luu hoa don");
-		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSaveContact"));
-
 		log.info("TC_09_Step_29: An tiep button 'Thuc hien giao dich moi'");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"),
 				"Thực hiện giao dịch mới");
@@ -1462,9 +1447,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_11_Step_28: Hien thi Icon Luu anh");
 		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSavePhoto"));
-
-		log.info("TC_11_Step_29: Hien thi Icon Luu hoa don");
-		verifyTrue(postpaidMobile.isDynamicTextDetailByID(driver, "com.VCB:id/tvSaveContact"));
 
 		log.info("TC_11_Step_30: An tiep button 'Thuc hien giao dich moi'");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"),
