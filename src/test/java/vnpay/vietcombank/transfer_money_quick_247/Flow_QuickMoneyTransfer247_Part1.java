@@ -72,10 +72,10 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		amountStart = Long.parseLong(amountStartString);
 
 		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
@@ -238,7 +238,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_02: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_02: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -277,14 +277,14 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		double amountStart1 = convertMoneyToDouble(amountStartString, "USD");
 
 		log.info("TC_03_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_03_Step_:Lay so tien quy doi ra VND");
 		String exchange = transferMoney.getDynamicTextInTransactionDetail(driver, "Tỷ giá quy đổi tham khảo").split(" ~ ", 2)[1];
 		exchangeRate = exchange.replace(" VND", "");
 
 		log.info("TC_03_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_03_Step_Nhap so tien chuyen");
@@ -450,7 +450,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_04_Step: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_04_Step: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -494,10 +494,10 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		amountStart = Long.parseLong(amountStartString);
 
 		log.info("TC_05_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_05_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_05_Step_Nhap so tien chuyen");
@@ -525,7 +525,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_05_Step_Verify phi chuyen tien");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, fee);
+		verifyEquals(costTranferString, fee+"");
 		costTranfer = Long.parseLong(costTranferString);
 
 		log.info("TC_05_Step_Tiep tuc");
@@ -652,7 +652,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_06_Step_: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_06_Step_: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -691,10 +691,10 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		double amountStart1 = convertMoneyToDouble(amountStartString, "EUR");
 
 		log.info("TC_07_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/chọn tài khoản nhận VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_07_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_07_Step_Nhap so tien chuyen");
@@ -866,7 +866,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_08: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_08: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);

@@ -57,7 +57,7 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_00_04_Nhap tai khoan dich");
-		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_00_05_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -83,7 +83,7 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 
 		log.info("TC_00_11_Click Tiep tuc man hinh xac nhan thong tin");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_00_12_Nhap password");
 		transferRecurrent.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, "Tiếp tục");
 
@@ -92,52 +92,52 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 
 		log.info("TC_00_14_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
-		
+
 	}
 
 	@Test
 	public void TC_01_KiemTraButton_LuuAnh() {
 		log.info("TC_01_01_Click nut Luu anh");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Lưu ảnh");
-		
+
 		log.info("TC_01_02_Kiem tra message thong bao da luu anh");
 		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Ảnh đã lưu trong thư viện");
-		
+
 		log.info("TC_01_03_Kiem tra nut Dong");
 		verifyTrue(transferRecurrent.isDynamicButtonByTextDisplayed(driver, "Đóng"));
-		
+
 		log.info("TC_01_04_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
-		
+
 	}
-	
+
 	@Test
 	public void TC_02_KiemTraButton_LuuThuHuong() {
 		log.info("TC_02_01_Click nut Luu thu huong");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
-		
+
 		log.info("TC_02_02_Kiem tra man hinh Luu thu huong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Lưu thụ hưởng"));
-		
+
 		log.info("TC_02_03_Kiem tra loai chuyen tien");
 		verifyEquals(transferRecurrent.getDynamicTextInDropDownByHeader(driver, "Thông tin người chuyển", "2"), "Chuyển tiền trong Vietcombank");
-		
+
 		log.info("TC_02_04_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người chuyển", "2"), "NGUYEN NGOC TOAN");
-		
+
 		log.info("TC_02_05_Kiem tra so tai khoan");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, info.destinationAccount));
-		
+
 		log.info("TC_02_06_Click nut Back");
 		transferRecurrent.clickToDynamicBackIcon(driver, "Lưu thụ hưởng");
-		
+
 	}
-	
+
 	@Test
 	public void TC_03_KiemTraButton_ThucHienGiaoDichMoi() {
 		log.info("TC_03_01_Click Thuc hien giao dich moi");
 		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-		
+
 		log.info("TC_03_02_Kiem tra man hinh Chuyen tien trong VCB đã reset thong tin");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
@@ -170,9 +170,9 @@ public class Transfer_Money_Recurrent_Validation_Part_7 extends Base {
 
 		log.info("TC_03_11_Kiem tra button Tiep tuc");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Tiếp tục"));
-		
+
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();

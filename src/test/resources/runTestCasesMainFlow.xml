@@ -25,16 +25,16 @@
 		<classes>
 
 			<!-- Chuyển tiền trong vcb -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
 
 			<!-- chuyển tiền ngoài vcb -->
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" /> -->
 
 
 			<!-- Chuyển tiền 24/7 -->
@@ -81,9 +81,12 @@
 			<!-- Thanh toán cước điện thoại cố định -->
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
-			
+
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
+
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 
 			<!-- Tiết kiệm tự động -->
 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
@@ -104,6 +107,13 @@
 
 			<!-- Thanh toán hóa đơn truyền hình cáp -->
 			<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" />
+
+			<!-- Tra cứu -->
+			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
+			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
+
+
+
 
 
 

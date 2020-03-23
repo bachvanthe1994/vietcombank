@@ -45,9 +45,9 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 
 public class AbstractPage {
-	int longTime = 30;
+	int longTime = 60;
 	int shortTime = 5;
-	long longTime1 = 30;
+	long longTime1 = 60;
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
@@ -378,7 +378,7 @@ public class AbstractPage {
 
 	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator) {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
@@ -403,7 +403,7 @@ public class AbstractPage {
 	}
 
 	public void waitForAllElementsVisible(AppiumDriver<MobileElement> driver, String locator) {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
 	}
 
@@ -465,7 +465,7 @@ public class AbstractPage {
 
 	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
@@ -838,13 +838,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
-		}
+//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+//		}
 
 	}
 
@@ -856,13 +856,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+//		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
@@ -955,9 +955,9 @@ public class AbstractPage {
 // Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
 	public void clickToDynamicDropdownAndDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
 
 	}
@@ -1112,9 +1112,9 @@ public class AbstractPage {
 
 	public void clickToDynamicSuggestedMoney(AppiumDriver<MobileElement> driver, int index, String dynamicID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
-			clickToOneOfElement(driver, index, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			clickToOneOfElement(driver, index, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
 	}
 
@@ -1147,6 +1147,7 @@ public class AbstractPage {
 
 	public void clickToTextID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -1588,9 +1589,9 @@ public class AbstractPage {
 
 	public boolean isDynamicSuggestedMoneyUndisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean isDisplayed = false;
-		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
 		if (status == true) {
-			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
 		}
 		return isDisplayed;
 	}
@@ -1629,9 +1630,9 @@ public class AbstractPage {
 	// Kiểm tra gợi ý số tiền có hiển thị, tham số truyền vào là resource-id
 	public boolean isDynamicSuggestedMoneyDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicTextValue);
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
 		}
 		return isDisplayed;
 	}
@@ -2047,7 +2048,6 @@ public class AbstractPage {
 	public String getDynamicTextDetailByIDOrPopup(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -2059,7 +2059,6 @@ public class AbstractPage {
 	public String getDynamicTextButtonById(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
@@ -2143,9 +2142,9 @@ public class AbstractPage {
 	public String getTextInDynamicDropdownOrDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
-			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
 		return text;
 
@@ -2188,9 +2187,9 @@ public class AbstractPage {
 	public List<String> getListOfSuggestedMoneyOrListText(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		List<String> text = null;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
-			text = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			text = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
 		return text;
 
