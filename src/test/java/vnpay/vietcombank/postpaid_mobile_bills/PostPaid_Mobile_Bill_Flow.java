@@ -318,7 +318,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+	@Test(priority = 9)
 	public void TC_03_CuocDiDongTraSau_Vinaphone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -487,7 +487,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 			postpaidMobile.scrollDownToText(driver, mobilePhone + "/" + mobilePhone);
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 					Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-							+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+							+ Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER,
 					"com.VCB:id/title"));
 
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
@@ -517,7 +517,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		}
 	}
 
-//	@Test
+//	@Test (priority = 10)
 	public void TC_04_CuocDiDongTraSau_Vinaphone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
@@ -593,7 +593,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+	@Test(priority = 9)
 	public void TC_05_CuocDiDongTraSau_Mobifone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -762,7 +762,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 			postpaidMobile.scrollDownToText(driver, mobilePhone + "/" + mobilePhone);
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 					Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-							+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+							+ Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER,
 					"com.VCB:id/title"));
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
 					"com.VCB:id/descript"));
@@ -1138,7 +1138,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+	@Test(priority = 11)
 	public void TC_09_CuocDiDongTraSau_Vinaphone_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -1307,7 +1307,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 			postpaidMobile.scrollDownToText(driver, mobilePhone + "/" + mobilePhone);
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 					Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-							+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+							+ Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER,
 					"com.VCB:id/title"));
 
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
@@ -1337,7 +1337,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		}
 	}
 
-//	@Test
+//	@Test (Priority = 12)
 	public void TC_10_CuocDiDongTraSau_Vinaphone_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
@@ -1582,7 +1582,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 			postpaidMobile.scrollDownToText(driver, mobilePhone + "/" + mobilePhone);
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver,
 					Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE + " - "
-							+ Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER,
+							+ Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER,
 					"com.VCB:id/title"));
 			verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, mobilePhone + "/" + mobilePhone,
 					"com.VCB:id/descript"));
