@@ -880,7 +880,7 @@ public class Base {
 		double result = 0;
 		try {
 			double scale = Math.pow(10, 2);
-			result = Math.round((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
+			result = Math.floor((Double.parseDouble(money) / (Double.parseDouble(currentcy)) * scale)) / scale;
 		} catch (Exception e) {
 
 		}
