@@ -23,17 +23,7 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-			<!-- Auto debit -->
-			<!-- <class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" /> -->
-			<!-- <class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" /> -->
-
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
-
-<!-- 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" /> -->
-			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
+			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" />
 
 
 
