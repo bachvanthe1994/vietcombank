@@ -1223,6 +1223,7 @@ public class AbstractPage {
 		}
 	}
 
+	
 	// Click combobox
 	public void clickToTextViewDate(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
