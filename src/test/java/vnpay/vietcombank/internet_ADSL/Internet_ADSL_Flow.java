@@ -46,6 +46,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_01_ThanhToanCuocViettelXacThucMatKhau() {
 		log.info("TC_01_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_01_Step_Select tai khoan nguon");
@@ -224,6 +225,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_03_ThanhToanCuocViettelXacThucOTP() {
 		log.info("TC_03_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_03_Step_Select tai khoan nguon");
@@ -402,6 +404,7 @@ public class Internet_ADSL_Flow extends Base {
 	 @Test
 	public void TC_05_ThanhToanCuocFPTXacThucMatKhau() {
 		log.info("TC_05_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_05_Step_Select tai khoan nguon");
@@ -581,6 +584,7 @@ public class Internet_ADSL_Flow extends Base {
 	 @Test
 	public void TC_07_ThanhToanCuocFPTXacThucOTP() {
 		log.info("TC_07_Step_Click cuoc ADSL");
+		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_07_Step_Select tai khoan nguon");
