@@ -525,7 +525,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_05_Step_Verify phi chuyen tien");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, fee);
+		verifyEquals(costTranferString, fee+"");
 		costTranfer = Long.parseLong(costTranferString);
 
 		log.info("TC_05_Step_Tiep tuc");
