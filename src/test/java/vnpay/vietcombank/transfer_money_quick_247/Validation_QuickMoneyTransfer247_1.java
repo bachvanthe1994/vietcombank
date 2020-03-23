@@ -142,7 +142,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_05_TaiKhoanNhanTrong() {
 		log.info("TC_05_Step_verify message khi tai khoan nguoi nhan khong ton tai ");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_05_Step_Nhap so tien chuyen");

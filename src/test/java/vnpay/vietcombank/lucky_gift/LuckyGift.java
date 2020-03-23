@@ -156,7 +156,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
 		log.info("TC_02_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Quà tặng may mắn");
 
 		log.info("TC_02_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -302,7 +302,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
 		log.info("TC_04_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Quà tặng may mắn");
 
 		log.info("TC_04_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -458,7 +458,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
 		log.info("TC_06_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Quà tặng may mắn");
 
 		log.info("TC_06_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -613,7 +613,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
 		log.info("TC_08_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Quà tặng may mắn");
 
 		log.info("TC_08_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -769,7 +769,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
 		log.info("TC_10_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Quà tặng may mắn");
 
 		log.info("TC_10_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -935,7 +935,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.LuckyGift.TITLE_TRANSFER);
 
 		log.info("TC_12_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Quà tặng may mắn");
 
 		log.info("TC_12_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");

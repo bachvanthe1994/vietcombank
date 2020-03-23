@@ -185,7 +185,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_71_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_71_Step_Nhap so tien chuyen");

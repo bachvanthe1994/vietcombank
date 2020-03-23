@@ -238,7 +238,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_02: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_02: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -450,7 +450,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_04_Step: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_04_Step: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -652,7 +652,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_06_Step_: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_06_Step_: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
@@ -866,7 +866,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
 		log.info("TC_08: Check ngan hang huong");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng hưởng"), Account_Data.Valid_Account.BANK[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_08: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);

@@ -56,7 +56,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
@@ -316,7 +316,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1"), "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_97_Kiem tra text mac dinh truong ngan hang huong");
-		verifyEquals(transferMoney.getDynamicTextInDropDownByHeader(driver, "Thông tin người hưởng", "2"), "Ngân hàng hưởng");
+		verifyEquals(transferMoney.getDynamicTextInDropDownByHeader(driver, "Thông tin người hưởng", "2"), "Ngân hàng thụ hưởng");
 
 		log.info("TC_97_Kiem tra text mac dinh truong So tien");
 		verifyEquals(transferMoney.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), "Số tiền");
@@ -339,7 +339,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_98_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_98_Step_Nhap so tien chuyen");
