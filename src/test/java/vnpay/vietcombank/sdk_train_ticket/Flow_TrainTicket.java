@@ -51,13 +51,13 @@ public class Flow_TrainTicket extends Base {
 		trainTicket.clickDynamicPointStartAndEnd("ĐẶT VÉ TÀU", "com.VCB:id/tvTextPickUp");
 
 		log.info("TC_01_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
+		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
 
 		log.info("TC_01_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
 
 		log.info("TC_01_Nhap text ga den");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/linArival");
+		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
 
 		log.info("TC_01_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
@@ -173,19 +173,23 @@ public class Flow_TrainTicket extends Base {
 
 		log.info("TC_09_Click ga khoi hanh");
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tvTextPickUp");
-
+		
 		log.info("TC_01_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/linPickUp");
+		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
 
 		log.info("TC_01_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
 
+		log.info("TC_09_Click ga den");
+		trainTicket.clickToDynamicSelectDate("com.VCB:id/tvTextPickUp");
+		
 		log.info("TC_01_Nhap text ga den");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_CHANGE, "com.VCB:id/linArival");
+		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
 
-		log.info("TC_01_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_CHANGE);
+		log.info("TC_01_Nhap text ga khoi hanh");
+		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_CHANGE, "com.VCB:id/edtTextPickUp");
 
+	
 		log.info("TC_08_Vao man hinh chon ngay");
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
