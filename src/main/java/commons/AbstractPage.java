@@ -45,9 +45,9 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 
 public class AbstractPage {
-	int longTime = 30;
+	int longTime = 40;
 	int shortTime = 5;
-	long longTime1 = 30;
+	long longTime1 = 40;
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
@@ -465,7 +465,7 @@ public class AbstractPage {
 
 	public boolean waitForElementVisible(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 40);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
 		} catch (Exception e) {
@@ -838,13 +838,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
-		}
+//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+//		}
 
 	}
 
@@ -856,13 +856,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+//		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
@@ -2047,7 +2047,6 @@ public class AbstractPage {
 	public String getDynamicTextDetailByIDOrPopup(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -2059,7 +2058,6 @@ public class AbstractPage {
 	public String getDynamicTextButtonById(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
-//		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);

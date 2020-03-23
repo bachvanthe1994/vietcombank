@@ -51,13 +51,11 @@ public class Notify_Management_Flow extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login("0976878903", "aaaa1111", opt);
-
+		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+	// @Test
 	public void TC_01_TinOTTVeXemPhim_DaDangNhap() {
-
-		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Chon tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
@@ -208,7 +206,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(ticketCode));
 	}
 
-	@Test
+	// @Test
 	public void TC_02_TinOTTVeXemPhim_ChuaDangNhap() {
 
 		log.info("TC_01_Step_06: Back ve man hinh Home");
@@ -353,7 +351,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_02_2: Nhap mat khau va log in");
 		login.inputIntoEditTextByID(driver, "aaaa1111", "com.VCB:id/edtInput");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/btnNext");
+		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
 
 		log.info("TC_02_2: Hien thi man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -363,6 +361,12 @@ public class Notify_Management_Flow extends Base {
 	public void TC_03_TinOTTDatVeKhachSan_DaDangNhap() {
 
 		log.info("TC_01_01_Click Dat phong khach san");
+		status = home.isDynamicTextDetailByID(driver, "com.VCB:id/counter");
+		if (status == true) {
+			counter = home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter");
+		} else {
+			counter = "0";
+		}
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đặt phòng khách sạn");
 
 		log.info("TC_01_02_Click nut Dong y");
@@ -400,7 +404,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_01_10_Chon tai khoan nguon");
 		hotelBooking.clickToDynamicDropDown("Tài khoản nguồn");
-		hotelBooking.clickToDynamicTextOrButtonLink("0019966611");
+		hotelBooking.clickToDynamicTextOrButtonLink("0541001555240");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(
 				hotelBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
@@ -412,16 +416,16 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
-		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(
-				hotelBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
-		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+				hotelBooking.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		hotelBooking.clickToDynamicTextOrButtonLink("SMS OTP");
 
 		log.info("TC_01_14_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_15_Nhap ma OTP chinh xac");
-		hotelBooking.inputToDynamicPopupPasswordInput("aaaa1111", "Tiếp tục");
+		hotelBooking.inputToDynamicOtpOrPIN("123456", "Tiếp tục");
 
 		log.info("TC_01_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
@@ -434,11 +438,11 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.clickToDynamicButton("Thực hiện giao dịch mới");
 
 		log.info("TC_02_1: Click  nut Back");
-		hotelBooking.clickToDynamicBackIcon("ĐẶT PHÒNG\r\n" + "KHÁCH SẠN");
+		hotelBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_2: Click vao More Icon");
-		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
+		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), getCounterPlus(counter, 1));
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
@@ -514,16 +518,16 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
-		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(
-				hotelBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
-		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+				hotelBooking.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
+		hotelBooking.clickToDynamicTextOrButtonLink("SMS OTP");
 
 		log.info("TC_01_14_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_15_Nhap ma OTP chinh xac");
-		hotelBooking.inputToDynamicPopupPasswordInput("aaaa1111", "Tiếp tục");
+		hotelBooking.inputToDynamicOtpOrPIN("123456", "Tiếp tục");
 
 		log.info("TC_01_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
@@ -536,7 +540,7 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.clickToDynamicButton("Thực hiện giao dịch mới");
 
 		log.info("TC_02_1: Click  nut Back");
-		hotelBooking.clickToDynamicBackIcon("ĐẶT PHÒNG\r\n" + "KHÁCH SẠN");
+		hotelBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_2: Xac nhan hien thi icon notify");
@@ -560,18 +564,16 @@ public class Notify_Management_Flow extends Base {
 		log.info("TC_02_2: Click tab tat ca");
 		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
-		verifyTrue(inboxContent.contains(info.filmName));
-		verifyTrue(inboxContent.contains(info.time));
-		verifyTrue(inboxContent.contains(info.cinemaName));
-		verifyTrue(inboxContent.contains(ticketCode));
+		verifyTrue(inboxContent.contains(hotelName));
+		verifyTrue(inboxContent.contains(hotelAddress));
+		verifyTrue(inboxContent.contains(roomID));
 
 		log.info("TC_02_2: Click tab quang cao");
 		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
-		verifyTrue(inboxContent.contains(info.filmName));
-		verifyTrue(inboxContent.contains(info.time));
-		verifyTrue(inboxContent.contains(info.cinemaName));
-		verifyTrue(inboxContent.contains(ticketCode));
+		verifyTrue(inboxContent.contains(hotelName));
+		verifyTrue(inboxContent.contains(hotelAddress));
+		verifyTrue(inboxContent.contains(roomID));
 
 		log.info("TC_02_2: Click back ve Login");
 		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -579,7 +581,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_02_2: Nhap mat khau va log in");
 		login.inputIntoEditTextByID(driver, "aaaa1111", "com.VCB:id/edtInput");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/btnNext");
+		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
 
 		log.info("TC_02_2: Hien thi man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
