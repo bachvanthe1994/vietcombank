@@ -387,7 +387,7 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("0976878903", "com.VCB:id/etCustomerPhone");
 
 		log.info("TC_03_Step_08_Nhap email khach hang");
-		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
+		hotelBooking.inputToDynamicInputBoxByID("vnpay.automation.team@gmail.com", "com.VCB:id/etCustomerEmail");
 
 		log.info("TC_03_Step_09_Click Thanh toan");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
@@ -483,7 +483,7 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("0976878903", "com.VCB:id/etCustomerPhone");
 
 		log.info("TC_04_Step_08_Nhap email khach hang");
-		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
+		hotelBooking.inputToDynamicInputBoxByID("vnpay.automation.team@gmail.com", "com.VCB:id/etCustomerEmail");
 
 		log.info("TC_04_Step_09_Click Thanh toan");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
