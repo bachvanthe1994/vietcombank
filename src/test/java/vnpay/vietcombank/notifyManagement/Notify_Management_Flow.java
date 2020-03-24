@@ -81,7 +81,7 @@ public class Notify_Management_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Test
+	@Test
 	public void TC_01_TinOTTVeXemPhim_DaDangNhap() {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -209,7 +209,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(ticketCode));
 	}
 
-//	@Test
+	@Test
 	public void TC_02_TinOTTVeXemPhim_ChuaDangNhap() {
 
 		log.info("TC_02_Step_01: Back ve man hinh Home");
@@ -356,15 +356,8 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_03_TinOTTDatVeKhachSan_DaDangNhap() {
-
-		status = home.isDynamicTextDetailByID(driver, "com.VCB:id/counter");
-		if (status == true) {
-			counter = home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter");
-		} else {
-			counter = "0";
-		}
 
 		log.info("TC_03_Step_01_Click Dat phong khach san");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đặt phòng khách sạn");
@@ -394,7 +387,7 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("0976878903", "com.VCB:id/etCustomerPhone");
 
 		log.info("TC_03_Step_08_Nhap email khach hang");
-		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
+		hotelBooking.inputToDynamicInputBoxByID("vnpay.automation.team@gmail.com", "com.VCB:id/etCustomerEmail");
 
 		log.info("TC_03_Step_09_Click Thanh toan");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
@@ -455,7 +448,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(roomID));
 	}
 
-//	@Test
+	@Test
 	public void TC_04_TinOTTDatVeKhachSan_ChuaDangNhap() {
 
 		log.info("TC_04_Step_01: Back ve man hinh Home");
@@ -490,7 +483,7 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.inputToDynamicInputBoxByID("0976878903", "com.VCB:id/etCustomerPhone");
 
 		log.info("TC_04_Step_08_Nhap email khach hang");
-		hotelBooking.inputToDynamicInputBoxByID("minhducdo2603@gmail.com", "com.VCB:id/etCustomerEmail");
+		hotelBooking.inputToDynamicInputBoxByID("vnpay.automation.team@gmail.com", "com.VCB:id/etCustomerEmail");
 
 		log.info("TC_04_Step_09_Click Thanh toan");
 		hotelBooking.swipeElementToElementByText("Bạn có mã giảm giá?", "Đặt phòng");
@@ -578,13 +571,6 @@ public class Notify_Management_Flow extends Base {
 	@Parameters({ "otp" })
 	@Test
 	public void TC_05_TinOTTVeMayBay_DadangNhap(String otp) {
-
-		status = home.isDynamicTextDetailByID(driver, "com.VCB:id/counter");
-		if (status == true) {
-			counter = home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter");
-		} else {
-			counter = "0";
-		}
 
 		log.info("TC_05_Step_01: Click vao phan Dat ve may bay");
 		home.clickToDynamicIcon(driver, "Đặt vé máy bay");
@@ -698,7 +684,7 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_05_Step_31: Click vao More Icon");
-		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), getCounterPlus(counter, 1));
+		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
@@ -997,9 +983,10 @@ public class Notify_Management_Flow extends Base {
 		log.info("TC_07_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
+		home.sleep(driver, 5000);
 
 		log.info("TC_07_Step_34: Xac nhan hien thi icon notify");
-		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
+		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "02");
 
 		log.info("TC_07_Step_35: Chon tab inbox");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
@@ -1009,32 +996,23 @@ public class Notify_Management_Flow extends Base {
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
 		verifyTrue(inboxContent.contains("Mã thanh toán:" + payID));
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
-		verifyTrue(inboxContent.contains("Họ tên hành khách bay:"));
 
 		log.info("TC_07_Step_37: Click tab quang cao");
 		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
 		verifyTrue(inboxContent.contains("Mã thanh toán:" + payID));
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
-		verifyTrue(inboxContent.contains("Họ tên hành khách bay:"));
-
-		log.info("TC_07_Step_38: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		login = PageFactoryManager.getLoginPageObject(driver);
-
-		log.info("TC_07_Step_39: Nhap mat khau va log in");
-		login.inputIntoEditTextByID(driver, "aaaa1111", "com.VCB:id/edtInput");
-		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
-
-		log.info("TC_07_Step_40: Hien thi man hinh Home");
-		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
 	@Parameters({ "otp" })
 	@Test
 	public void TC_08_TinOTTVeMayBayThanhToanNgay_ChuadangNhap(String otp) {
 
-		log.info("TC_08_Step_01: Click vao phan Dat ve may bay");
+		log.info("TC_06_Step_01_1: Back ve man hinh Home");
+		home = PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+
+		log.info("TC_08_Step_01_2: Click vao phan Dat ve may bay");
 		home.clickToDynamicIcon(driver, "Đặt vé máy bay");
 		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
 
@@ -1164,9 +1142,10 @@ public class Notify_Management_Flow extends Base {
 		log.info("TC_08_Step_37: Chon dong y");
 		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		login = PageFactoryManager.getLoginPageObject(driver);
+		login.sleep(driver, 5000);
 
 		log.info("TC_08_Step_38: Click vao Inbox");
-		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
+		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "02");
 		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
@@ -1175,14 +1154,12 @@ public class Notify_Management_Flow extends Base {
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
 		verifyTrue(inboxContent.contains("Mã thanh toán:" + payID));
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
-		verifyTrue(inboxContent.contains("Họ tên hành khách bay:"));
 
 		log.info("TC_08_Step_40: Click tab quang cao");
 		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
 		verifyTrue(inboxContent.contains("Mã thanh toán:" + payID));
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
-		verifyTrue(inboxContent.contains("Họ tên hành khách bay:"));
 
 		log.info("TC_08_Step_41: Click back ve Login");
 		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
