@@ -45,9 +45,9 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 
 public class AbstractPage {
-	int longTime = 60;
+	int longTime = 40;
 	int shortTime = 5;
-	long longTime1 = 60;
+	long longTime1 = 40;
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
