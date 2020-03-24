@@ -838,6 +838,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
+		sleep(driver, 3000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
@@ -856,6 +857,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
+		sleep(driver, 3000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
