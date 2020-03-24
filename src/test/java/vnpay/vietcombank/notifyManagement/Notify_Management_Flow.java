@@ -152,7 +152,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_01_Step_16_03_Nhap email");
 		filmTicketBooking.scrollDownToText("Thanh toán");
-		filmTicketBooking.inputToDynamicInputBoxByID("trungnd@vnpay.vn", "com.VCB:id/etEmail");
+		filmTicketBooking.inputToDynamicInputBoxByID("vnpay.automation.team@gmail.com", "com.VCB:id/etEmail");
 
 		log.info("TC_01_Step_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
@@ -275,7 +275,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_02_Step_16_03_Nhap email");
 		filmTicketBooking.scrollDownToText("Thanh toán");
-		filmTicketBooking.inputToDynamicInputBoxByID("trungnd@vnpay.vn", "com.VCB:id/etEmail");
+		filmTicketBooking.inputToDynamicInputBoxByID("vnpay.automation.team@gmail.com", "com.VCB:id/etEmail");
 
 		log.info("TC_02_Step_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText("Thanh toán");
