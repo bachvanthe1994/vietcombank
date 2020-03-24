@@ -54,7 +54,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-//	@Test
+	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangMatKhau(String pass) {
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
