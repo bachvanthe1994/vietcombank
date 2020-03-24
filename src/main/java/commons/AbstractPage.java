@@ -838,13 +838,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
-//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-//		}
-//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
-//		}
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		}
 
 	}
 
@@ -856,13 +856,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-//		}
-//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-//		}
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Không có dữ liệu") | driver.getPageSource().contains("Lỗi trong kết nối tới server")) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
