@@ -463,7 +463,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		}
 	}
 
-//	@Test (priority = 10)
+	@Test(priority = 10)
 	public void TC_04_CuocDiDongTraSau_Vinaphone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");

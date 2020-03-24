@@ -29,6 +29,8 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 	private String payID;
 	private String transactionID;
 	private String fee;
+	private String domesticTicketType = "BL";
+	private String InternationalTicketType = "MI";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -46,19 +48,19 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		homePage.clickToDynamicIcon(driver, "Đặt vé máy bay");
 		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
 
-		log.info("Before class: Click dat ve may bay noi dia ");
-		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
-		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
-
-		log.info("Before class: Click Dong y ");
-		airTicket.clickToDynamicButton("Đồng ý");
-
-		log.info("Before class: Chon mot chieu ");
-		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
+//		log.info("Before class: Click dat ve may bay noi dia ");
+//		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
+//		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
+//
+//		log.info("Before class: Click Dong y ");
+//		airTicket.clickToDynamicButton("Đồng ý");
+//
+//		log.info("Before class: Chon mot chieu ");
+//		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_01_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanOTP(String otp) {
 
 		log.info("TC_01_Step_01: Chon diem khoi hanh");
@@ -78,7 +80,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_01_Step_05: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VJ");
+		airTicket.clickToDynamicFlight(0, domesticTicketType);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -155,7 +157,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_02_XacNhanDatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_TrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
@@ -213,7 +215,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_03_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanMK(String password) {
 
 		log.info("TC_03_Step_01: Click dat ve may bay ");
@@ -247,7 +249,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_03_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VJ");
+		airTicket.clickToDynamicFlight(0, domesticTicketType);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -324,7 +326,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_04_XacNhanDatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_TrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
@@ -416,7 +418,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_05_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "MI");
+		airTicket.clickToDynamicFlight(0, InternationalTicketType);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -582,7 +584,7 @@ public class DomesticAirTicketBooking_MainFlow extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_07_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "MI");
+		airTicket.clickToDynamicFlight(0, InternationalTicketType);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
