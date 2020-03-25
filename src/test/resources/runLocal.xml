@@ -23,9 +23,8 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-						<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
-			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
-
+			<!-- Chuyển tiên qua cmt -->
+			<class name="vnpay.vietcombank.login.testwwebview" />
 
 
 
