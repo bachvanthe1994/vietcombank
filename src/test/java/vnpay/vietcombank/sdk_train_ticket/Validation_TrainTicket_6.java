@@ -630,7 +630,7 @@ public class Validation_TrainTicket_6 extends Base {
 		trainTicket.clickToDynamicButton("ÁP DỤNG");
 
 		log.info("TC_18_Click chon mot chuyen di");
-		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
+		trainTicket.clickDynamicSelectTrain( "0","com.VCB:id/tv_ten_tau");
 
 		log.info("TC_18_Click button tiep tuc chon chieu ve");
 		trainTicket.clickToDynamicButton("TIẾP TỤC CHỌN CHIỀU VỀ");
@@ -667,7 +667,7 @@ public class Validation_TrainTicket_6 extends Base {
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
 
 		log.info("TC_18_Check hien thi ten tau");
-		verifyTrue(trainTicket.isDynamicNameTrainDisplay("com.VCB:id/tv_ten_tau", "0"));
+		verifyTrue(trainTicket.isDynamicNameTrainDisplay( "0","com.VCB:id/tv_ten_tau"));
 
 		log.info("TC_18_Check hien thi thoi gian bat dau chay");
 		verifyTrue(trainTicket.isDynamicDateTimeDisplay("com.VCB:id/tv_thoi_di"));
@@ -695,7 +695,7 @@ public class Validation_TrainTicket_6 extends Base {
 	@Test
 	public void TC_20_NhanIconHome() {
 		log.info("TC_20_Click chon mot chuyen di");
-		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
+		trainTicket.clickDynamicSelectTrain( "0","com.VCB:id/tv_ten_tau");
 
 		log.info("TC_20_Click button tiep tuc chon chieu ve");
 		trainTicket.clickToDynamicButton("TIẾP TỤC CHỌN CHIỀU VỀ");
