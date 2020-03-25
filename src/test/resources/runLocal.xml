@@ -19,11 +19,11 @@
 		<parameter name="deviceName" value="Galaxy S9" />
 		<parameter name="deviceUDID" value="8d7a4491" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797866" />
+		<parameter name="phone" value="0904797863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-		<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" />
+			<class name="vnpay.vietcombank.card_services.Card_Services" />
 
 
 
