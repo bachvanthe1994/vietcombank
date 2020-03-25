@@ -25,10 +25,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 	private DynamicAirTicketBookingObjects airTicket;
 	private String fifthDay = getForWardDay(5);
 	private String ninthDay = getForWardDay(9);
-	private String ticketPrice;
-	private String payID;
-	private String transactionID;
-	private String fee;
+	private String ticketPrice, payID, transactionID, fee, sourceDetail, source, destDetail, dest, time;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone",
 			"pass", "otp" })
@@ -46,18 +43,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
-//		homePage.clickToDynamicIcon(driver, "Đặt vé máy bay");
-//		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
-//
-//		log.info("Before class: Click dat ve may bay noi dia ");
-//		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
-//		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
-//
-//		log.info("Before class: Click Dong y ");
-//		airTicket.clickToDynamicButton("Đồng ý");
-//
-//		log.info("Before class: Chon mot chieu ");
-//		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
+		homePage.clickToDynamicIcon(driver, "Đặt vé máy bay");
+		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
+
+		log.info("Before class: Click dat ve may bay noi dia ");
+		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé máy bay Nội địa");
+
+		log.info("Before class: Click Dong y ");
+		airTicket.clickToDynamicButton("Đồng ý");
+
+		log.info("Before class: Chon mot chieu ");
+		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
 	}
 
 	@Parameters({ "otp" })
@@ -79,9 +76,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_01_Step_04: Tim chuyen bay");
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
+		sourceDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail");
+		source = airTicket.getDynamicTextByID("com.VCB:id/tv_source");
+		destDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail");
+		dest = airTicket.getDynamicTextByID("com.VCB:id/tv_Dest");
+		time = airTicket.getDynamicTextByID("com.VCB:id/tv_thu");
 
 		log.info("TC_01_Step_05: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VN");
+		airTicket.clickToDynamicFlight2WayCode("com.VCB:id/recycler_view_one",);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
