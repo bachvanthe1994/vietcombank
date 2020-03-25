@@ -137,16 +137,16 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
-	
-	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
-		public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
-			boolean status = false;
-			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-			if (status == true) {
-				clickToElement(driver, DynamicPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-			}
 
+	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
+	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
+
+	}
 
 	public void scrollIDownToText(String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();
@@ -186,7 +186,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
 		}
 	}
-	
+
 	public void swipeElementToElementByText(String textStart, String textEnd) {
 		Dimension size = driver.manage().window().getSize();
 		String locatorStart = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, textStart);
@@ -255,7 +255,8 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
-	//lấy thời gian tạo giao dịch ở màn hình xác thực giao dịch, tham số truyền vào là text và vị trí index của nó
+	// lấy thời gian tạo giao dịch ở màn hình xác thực giao dịch, tham số truyền vào
+	// là text và vị trí index của nó
 	public String getDynamicTransferTimeAndMoney(String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
@@ -267,7 +268,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		return text;
 
 	}
-	
+
 	public void clickToDynamicTextOrButtonLink(String dynamicValue) {
 		boolean status = false;
 		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicValue);
@@ -338,7 +339,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 		return text;
 	}
-	
+
 	public String getDynamicTextViewByViewGroupID(String... dynamicTextValue) {
 		String text = null;
 		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_BY_VIEW_GROUP_ID, dynamicTextValue);
@@ -351,9 +352,9 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	public List<String> getListOfSuggestedMoneyOrListText(String dynamicID) {
 		List<String> listString = new ArrayList<String>();
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		if (status) {
-			listString = getTextInListElements(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			listString = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		}
 		return listString;
 	}
@@ -390,20 +391,20 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	public String getTextInDynamicDropdownOrDateTimePicker(String dynamicID) {
 		String text = null;
-		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+		scrollIDown(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		if (status) {
-			text = getTextElement(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicID);
+			text = getTextElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		}
 		return text;
 	}
 
 	public String getTextInDynamicPopup(String dynamicResourceID) {
 		String text = null;
-		scrollIDown(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+		scrollIDown(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicResourceID);
+		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicResourceID);
 		if (status) {
-			text = getTextElement(driver, FilmTicketBookingPageUIs.DYNAMIC_DROP_DOWN_DATE_TIME_PICKER_WITH_ID_LIST_OF_MONEY, dynamicResourceID);
+			text = getTextElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicResourceID);
 		}
 		return text;
 
@@ -421,7 +422,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		return text;
 
 	}
-	
+
 	public void clickToDynamicInput(String dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUT_BOX_BY_TEXT, dynamicTextValue);
@@ -708,7 +709,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public void clickToChooseEachTypeASeate() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 		String locatorTypeOfSeats = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTypeName");
-		
+
 		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 		List<MobileElement> elementsPlus = null;
 		List<MobileElement> elementsTypeSeats = null;
@@ -724,11 +725,11 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 			if (typeSeats.contains("standard") || typeSeats.contains("deluxe") || typeSeats.contains("vip") || typeSeats.contains("couple")) {
 				element.click();
 			}
-			index ++;	
+			index++;
 		}
 
 	}
-	
+
 	public void clickToChangeNumberSeatSum10Tickets() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 
@@ -760,27 +761,27 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public void clickToChangeNumberSeatSum10Tickets_DeluxeVipStandardCouble_Only() {
 		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 		String locatorTypeOfSeats = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvTypeName");
-		
+
 		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvPlus");
 		List<MobileElement> elements = null;
 		List<MobileElement> elementsTypeSeats = null;
-		
+
 		if (status) {
 			elements = driver.findElements(By.xpath(locator));
 			elementsTypeSeats = driver.findElements(By.xpath(locatorTypeOfSeats));
-			
+
 			int countTypeSeat = elements.size();
-			
+
 			for (MobileElement elementsTypeSeat : elementsTypeSeats) {
 				String typeSeat = elementsTypeSeat.getText().toLowerCase();
 				if (!typeSeat.contains("standard") && !typeSeat.contains("deluxe") && !typeSeat.contains("vip") && !typeSeat.contains("couple")) {
 					countTypeSeat--;
 				}
 			}
-			
+
 			int numberClickAll = 10 / countTypeSeat;
 			int numberClickFirst = 10 % countTypeSeat;
-			
+
 			int index = 0;
 			int count = numberClickAll;
 			for (MobileElement elementsTypeSeat : elementsTypeSeats) {
@@ -797,11 +798,11 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 					numberClickAll = count;
 				}
 			}
-			
+
 		}
 
 	}
-	
+
 	public static String addCommasToLong(String number) {
 		long amount = Long.parseLong(number);
 		String m = String.format("%,d", amount);
@@ -868,7 +869,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		return expectList.containsAll(actualList);
 
 	}
-	
+
 	/* SCROLL UP */
 	public void scrollUpToText(String dynamicText) {
 		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT);
@@ -880,7 +881,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
-	
+
 	public int getRGBColor(Color c) {
 		return c.getRGB();
 	}
@@ -1050,15 +1051,15 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
-	
+
 	public void chooseMaxSeats(List<SeatType> listSeatType) {
 		for (SeatType seat : listSeatType) {
 			String type = seat.name;
 			String colorOfSeat = "";
 			int numberOfSeats = Integer.parseInt(seat.number);
-			
+
 			if (numberOfSeats > 0) {
-				
+
 				if (type.contains("Standard") || type.contains("Thường")) {
 					colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
 				}
@@ -1074,7 +1075,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 				else if (type.contains("Deluxe")) {
 					colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Deluxe");
 				}
-				
+
 				String locator = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
 				boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/llSeat");
 				if (status) {
@@ -1110,7 +1111,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 					}
 
 				}
-				
+
 			}
 
 		}
@@ -1119,23 +1120,20 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public String getTypeOfSeat(List<SeatType> listSeatType) {
 		String result = "";
 		listSeatType = listSeatType.stream().filter(o -> !o.number.equals("0")).collect(Collectors.toList());
-		String type = listSeatType.get(0).name.toLowerCase(); 
+		String type = listSeatType.get(0).name.toLowerCase();
 		if (type.contains("standard") || type.contains("thường")) {
 			result = "Standard";
-		}
-		else if (type.contains("vip")) {
+		} else if (type.contains("vip")) {
 			result = "Vip";
-		}
-		else if (type.contains("deluxe")) {
+		} else if (type.contains("deluxe")) {
 			result = "Deluxe";
-		}
-		else if (type.contains("couple")) {
+		} else if (type.contains("couple")) {
 			result = "Couple";
 		}
 		return result;
-		
+
 	}
-	
+
 	public void cancelAllChoosenSeats() {
 		String colorOfSeat = "";
 		colorOfSeat = getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Đang chọn");
@@ -1148,7 +1146,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 				try {
 					BufferedImage bufferedImage = ImageIO.read(imageFile);
 					imageFile.delete();
-	
+
 					int height = bufferedImage.getHeight();
 					int width = bufferedImage.getWidth();
 					int x = width / 2;
@@ -1158,19 +1156,18 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 					int green = (RGBA >> 8) & 255;
 					int blue = RGBA & 255;
 					String colorOfElement = "(" + red + "," + green + "," + blue + ")";
-	
+
 					if (colorOfSeat.equals(colorOfElement)) {
 						element.click();
 					}
-	
-				}
-				catch (Exception e) {
+
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
 			}
 		}
 	}
-	
+
 	public void chooseSeatsByLineEmptyLastSeat() {
 		String index = "0";
 		boolean check = false;
@@ -1179,13 +1176,12 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_LINEARLAYOUT_NAF_TRUE, index);
 			overRideTimeOut(driver, 2);
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
-			
+
 			int count = elements.size();
-			if	(count > 2) {
+			if (count > 2) {
 				elements.get(count - 2).click();
 				check = true;
-			}
-			else {
+			} else {
 				index = String.valueOf(Integer.parseInt(index) + 1);
 			}
 
@@ -1201,14 +1197,13 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 			String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_LINEARLAYOUT_NAF_TRUE, index);
 			overRideTimeOut(driver, 2);
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
-			
+
 			int count = elements.size();
-			if	(count > 5) {
+			if (count > 5) {
 				elements.get(count - 3).click();
 				elements.get(count - 5).click();
 				check = true;
-			}
-			else {
+			} else {
 				index = String.valueOf(Integer.parseInt(index) + 1);
 			}
 
@@ -1270,5 +1265,5 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 		return transferTime;
 	}
-	
+
 }

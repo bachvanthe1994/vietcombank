@@ -77,7 +77,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		amountStart = Long.parseLong(amountStartString);
 
 		log.info("TC_09_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ chuyển đến VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
 		log.info("TC_09_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
@@ -283,7 +283,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		double amountStart = convertMoneyToDouble(amountStartString, "USD");
 
 		log.info("TC_11_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ chuyển đến VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
 		log.info("TC_11_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Số tiền");
@@ -506,7 +506,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		amountStart = Long.parseLong(amountStartString);
 
 		log.info("TC_13_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ chuyển đến VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
 		log.info("TC_13_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
@@ -715,7 +715,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		double amountStart = convertMoneyToDouble(amountStartString, "USD");
 
 		log.info("TC_15_Step_Nhap so tai khoan chuyen");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ chuyển đến VND");
+		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
 		log.info("TC_15_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Số tiền");
