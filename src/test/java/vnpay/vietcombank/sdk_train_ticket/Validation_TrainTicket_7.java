@@ -100,7 +100,7 @@ public class Validation_TrainTicket_7 extends Base {
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
 
 		log.info("TC_10_Click chon mot chuyen di");
-		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
+		trainTicket.clickDynamicSelectTrain( "0","com.VCB:id/tv_ten_tau");
 
 		log.info("TC_12_Click button tiep tuc chon chieu ve");
 		trainTicket.clickToDynamicButton("TIẾP TỤC CHỌN CHIỀU VỀ");
@@ -177,7 +177,7 @@ public class Validation_TrainTicket_7 extends Base {
 	@Test
 	public void TC_06_KiemTraThaoTacChonMotChuyenDi() {
 		log.info("TC_06_Click chon mot chuyen di");
-		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
+		trainTicket.clickDynamicSelectTrain( "0","com.VCB:id/tv_ten_tau");
 
 		log.info("TC_06_Check hien thi button tiep tuc");
 		verifyTrue(trainTicket.isDynamicButtonDisplayed("TIẾP TỤC"));

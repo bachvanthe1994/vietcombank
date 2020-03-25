@@ -203,6 +203,20 @@
 <appender-ref ref="testng"/>
 </category>
 
+<category name = "vnpay.vietcombank.change_password">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+<category name = "vnpay.vietcombank.internet_ADSL">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
 <category name = "vnpay.vietcombank.lookup">
 <priority value ="all"/>
 <appender-ref ref="console"/>
@@ -217,7 +231,22 @@
 <appender-ref ref="testng"/>
 </category>
 
+<category name = "vnpay.vietcombank.transfer_limit">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
 <category name = "vnpay.vietcombank.notifyManagement">
+<priority value ="all"/>
+<appender-ref ref="console"/>
+<appender-ref ref="logfile"/>
+<appender-ref ref="testng"/>
+</category>
+
+
+<category name = "vnpay.vietcombank.register_online">
 <priority value ="all"/>
 <appender-ref ref="console"/>
 <appender-ref ref="logfile"/>
