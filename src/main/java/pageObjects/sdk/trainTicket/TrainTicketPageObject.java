@@ -1,5 +1,7 @@
 package pageObjects.sdk.trainTicket;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -8,11 +10,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.imageio.ImageIO;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
@@ -27,8 +36,12 @@ public class TrainTicketPageObject extends AbstractPage {
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 		return getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 	}
+	
+	public void navigateBack(AppiumDriver<MobileElement> driver) {
+		driver.navigate().back();
+	}
 
-	//Kiểm tra text nhập vào danh sách tiếng việt, không phân biệt hoa thường
+	// Kiểm tra text nhập vào danh sách tiếng việt, không phân biệt hoa thường
 	public boolean checkSuggestPoint(List<String> listSuggestPoint, String checkedValue) {
 		for (String point : listSuggestPoint) {
 			if (!convertVietNameseStringToString(point).toLowerCase().contains(checkedValue.toLowerCase())) {
@@ -38,7 +51,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return true;
 	}
 
-	//Sắp xếp thời gian giảm dần định dạng 6'30
+	// Sắp xếp thời gian giảm dần định dạng 6'30
 	public boolean orderSortIncrase(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
@@ -50,7 +63,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return false;
 	}
 
-	//Sắp xếp thời gian giảm dần định dạng 6'30
+	// Sắp xếp thời gian giảm dần định dạng 6'30
 	public boolean orderSortDecrase(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
@@ -62,7 +75,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return false;
 	}
 
-	//Sắp xếp thời gian tăng dần định dạng 06:30
+	// Sắp xếp thời gian tăng dần định dạng 06:30
 	public boolean orderSortIncraseFormat(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
@@ -74,7 +87,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return false;
 	}
 
-	//Sắp xếp thời gian giảm dần định dạng 06:30
+	// Sắp xếp thời gian giảm dần định dạng 06:30
 	public boolean orderSortDecraseFormat(List<String> listOrderSort) {
 		boolean result = true;
 		int count = listOrderSort.size();
@@ -87,7 +100,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return false;
 	}
 
-	//Chuyển định dạng giờ phút về dạng số theo đơn vị phút VD: 6'h30
+	// Chuyển định dạng giờ phút về dạng số theo đơn vị phút VD: 6'h30
 	public int canculateConvertTimehh(String duration) {
 		int result = 0;
 		String hour = "";
@@ -98,7 +111,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return result;
 	}
 
-	//Chuyển định dạng giờ phút về dạng số theo đơn vị phút VD: 06:30
+	// Chuyển định dạng giờ phút về dạng số theo đơn vị phút VD: 06:30
 	public int canculateConvertTime(String duration) {
 		int result = 0;
 		String hour = "";
@@ -132,21 +145,99 @@ public class TrainTicketPageObject extends AbstractPage {
 
 	}
 
-	//Chuyển tiếng việt có dấu
+	public String getColorOfElement(String locator, String... dynamicValue) {
+		String colorOfElement = "";
+		locator = String.format(locator, (Object[]) dynamicValue);
+		boolean status = waitForElementVisible(driver, locator);
+		if (status) {
+			MobileElement element = driver.findElement(By.xpath(locator));
+
+			File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+			try {
+				BufferedImage bufferedImage = ImageIO.read(imageFile);
+				imageFile.delete();
+
+				int height = bufferedImage.getHeight();
+				int width = bufferedImage.getWidth();
+				int x = width / 2;
+				int y = height / 4;
+				int RGBA = bufferedImage.getRGB(x, y);
+				int red = (RGBA >> 16) & 255;
+				int green = (RGBA >> 8) & 255;
+				int blue = RGBA & 255;
+				colorOfElement = "(" + red + "," + green + "," + blue + ")";
+
+			} catch (Exception e) {
+
+			}
+
+		}
+		return colorOfElement;
+
+	}
+
+	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
+		List<String> listSeat = new ArrayList<>();
+
+		String locator = String.format(TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/layoutRoot");
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/layoutRoot");
+		if (status) {
+			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			for (MobileElement element : elements) {
+				File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+				try {
+					BufferedImage bufferedImage = ImageIO.read(imageFile);
+					imageFile.delete();
+
+					int height = bufferedImage.getHeight();
+					int width = bufferedImage.getWidth();
+					int x = width / 2;
+					int y = height / 4;
+					int RGBA = bufferedImage.getRGB(x, y);
+					int red = (RGBA >> 16) & 255;
+					int green = (RGBA >> 8) & 255;
+					int blue = RGBA & 255;
+					String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+
+					if (colorOfSeat.equals(colorOfElement)) {
+						element.click();
+
+						clickToDynamicSelectDate("com.VCB:id/tvChoose");
+						String seat = getTextInDynamicPopup("com.VCB:id/tvGheToa");
+						listSeat.add(seat);
+						clickToElement(TrainTicketPageUIs.DYNAMIC_DATE, "com.VCB:id/btnDone");
+						numberOfSeats--;
+					}
+
+					if (numberOfSeats <= 0) {
+						break;
+					}
+
+				} catch (Exception e) {
+
+				}
+			}
+
+		}
+		return listSeat;
+
+	}
+
+	// Chuyển tiếng việt có dấu
 	public String convertVietNameseStringToString(String vietnameseString) {
 		String temp = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(temp).replaceAll("");
 	}
 
-	//Kiểm tra ngày hiện tại được check
+	// Kiểm tra ngày hiện tại được check
 	public boolean getSelectedAttributeOfDate(String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		MobileElement element = driver.findElement(By.xpath(locator));
 		return Boolean.parseBoolean(element.getAttribute("selected"));
 	}
 
-	//Lấy tháng năm hiện tại định dạng THÁNG 2 2020
+	// Lấy tháng năm hiện tại định dạng THÁNG 2 2020
 	public String getCurentMonthAndYear() {
 		LocalDate now = LocalDate.now();
 		int month = now.getMonthValue();
@@ -154,7 +245,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return "THÁNG" + " " + month + " " + year;
 	}
 
-	//Trả về tháng năm hiện tại định dạng T.2 2020
+	// Trả về tháng năm hiện tại định dạng T.2 2020
 	public String getMonthAndYearFORMAT() {
 		LocalDate now = LocalDate.now();
 		int month = now.getMonthValue();
@@ -162,7 +253,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return "T." + month + " " + year;
 	}
 
-	//Lấy ngày đi là ngày đã chọn
+	// Lấy ngày đi là ngày đã chọn
 	public String getDayPickUp() {
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECT, "com.VCB:id/lnNgayDi");
 		List<String> listText = new ArrayList<String>();
@@ -178,7 +269,7 @@ public class TrainTicketPageObject extends AbstractPage {
 
 	}
 
-	//Lấy ngày về là ngày đã chọn
+	// Lấy ngày về là ngày đã chọn
 	public String getDayArrival() {
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECT, "com.VCB:id/lnNgayVe");
 		List<String> listText = new ArrayList<String>();
@@ -193,7 +284,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return day;
 	}
 
-	//Lấy tháng và năm cho ngày tương lai, định dạng THÁNG 2 2020
+	// Lấy tháng và năm cho ngày tương lai, định dạng THÁNG 2 2020
 	public String getMonthAndYearPlusDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.plusDays(days);
@@ -202,7 +293,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return "THÁNG" + " " + month + " " + year;
 	}
 
-	//Lấy tháng và năm cho ngày quá khứ, định dạng THÁNG 2 2020
+	// Lấy tháng và năm cho ngày quá khứ, định dạng THÁNG 2 2020
 	public String getMonthAndYearMinusDay(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.minusDays(days);
@@ -211,8 +302,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		return "THÁNG" + " " + month + " " + year;
 	}
 
-
-	//Lấy tháng và năm cho ngày tương lai, định dạng T.2 2020
+	// Lấy tháng và năm cho ngày tương lai, định dạng T.2 2020
 	public String getMonthAndYearPlusFORMAT(long days) {
 		LocalDate now = LocalDate.now();
 		LocalDate date = now.plusDays(days);
@@ -231,6 +321,12 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 	}
 
+	public void clickToElement(String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebElement element = driver.findElement(By.xpath(locator));
+		element.click();
+	}
+
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicButton(String dynamicTextValue) {
 		boolean status = false;
@@ -241,7 +337,17 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 	}
 
-	//Click link
+	// Click vao 1 button sử dụng contain tìm kiếm 1 phần text button
+	public void clickToDynamicButtonContains(String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_BUTTON_CONTAIN, dynamicTextValue);
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_BUTTON_CONTAIN, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_BUTTON_CONTAIN, dynamicTextValue);
+		}
+	}
+
+	// Click link
 	public void clickToDynamicLink(String... dynamicTextValue) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
@@ -260,7 +366,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 	}
 
-	//Click lựa chọn điểm đi và điểm đến
+	// Click lựa chọn điểm đi và điểm đến
 	public void clickDynamicPointStartAndEnd(String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicID);
@@ -272,7 +378,7 @@ public class TrainTicketPageObject extends AbstractPage {
 	// Click button cancel
 	public void clickDynamicCancelIcon(String dynamicTextValue) {
 		boolean status = false;
-		status = 	waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
 		}
@@ -302,6 +408,15 @@ public class TrainTicketPageObject extends AbstractPage {
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicTextID);
 		if (status == true) {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicTextID);
+		}
+	}
+
+	// Click Chọn toa
+	public void clickDynamicSelectLocation(String... dynamicTextID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_LOCATION, dynamicTextID);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_LOCATION, dynamicTextID);
 		}
 	}
 
@@ -353,9 +468,18 @@ public class TrainTicketPageObject extends AbstractPage {
 	// Click image follow resource ID
 	public void clickDynamicImageResourceID(String dynamicID) {
 		boolean status = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		if (status == true) {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+	}
+
+	public void clickDynamicEditResourceID(String... dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
 		}
 	}
 
@@ -370,6 +494,16 @@ public class TrainTicketPageObject extends AbstractPage {
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
 		if (status == true) {
 			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
+		}
+		return text;
+	}
+
+	// Lay ten tau hien thi
+	public String getDynamicTextViewIndex(String... dynamicIndex) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicIndex);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_NAME_TRAIN, dynamicIndex);
 		}
 		return text;
 	}
@@ -504,6 +638,15 @@ public class TrainTicketPageObject extends AbstractPage {
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicResourceID);
 		if (status == true) {
 			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicResourceID);
+		}
+		return text;
+	}
+	
+	public String getTextTotal(String ... dynamicResourceID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_TOTAL, dynamicResourceID);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_TOTAL, dynamicResourceID);
 		}
 		return text;
 	}
@@ -738,230 +881,259 @@ public class TrainTicketPageObject extends AbstractPage {
 
 	// Nhập địa điểm tìm kiếm
 	public void inputToDynamicTextPoint(String inputValue, String dynamicID) {
-		clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 		boolean status = false;
-		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 		if (status == true) {
+			clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicID);
 			sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicID);
 		}
 	}
+
+	// Nhập thông tin khách hàng, dựa vào linearlayout ID
+	public void inputToDynamicText(String inputValue, String... dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
+		if (status == true) {
+			clearText(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
+			sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, inputValue, dynamicID);
+		}
+	}
 	
+	// Nhập thông tin khách hàng, dựa vào linearlayout ID
+		public void inputToDynamicTextHeader(String inputValue, String ... dynamicID) {
+			boolean status = false;
+			status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, dynamicID);
+			if (status == true) {
+				clearText(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, dynamicID);
+				sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, inputValue, dynamicID);
+			}
+		}
 
-    // Click icon change
-    public void clickToDynamicIconChange(AppiumDriver<MobileElement> driver, String dynamicText) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
-	if (status == true) {
-	    clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
+	// Click icon change
+	public void clickToDynamicIconChange(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicText);
+		}
 	}
-    }
 
-    // Click select date
-    public void clickToDynamicSelectDate(AppiumDriver<MobileElement> driver, String dynamicID) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
-	if (status == true) {
-	    clickToElement(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+	// Click select date
+	public void clickToDynamicSelectDate(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+		}
 	}
-    }
 
-    // Click chọn ngày trong lịch calendar
-    public void clickDynamicDateStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean status = false;
-	scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
-	if (status == true) {
-	    clickToElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+	// Click chọn ngày trong lịch calendar
+	public void clickDynamicDateStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+		}
 	}
-    }
 
-    public void clickToDynamicLink(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
-	if (status == true) {
-	    clickToElement(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	public void clickToDynamicLink(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		}
 	}
-    }
 
-    // Click button cancel
-    public void clickDynamicCancelIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
-	if (status == true) {
-	    clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+	// Click button cancel
+	public void clickDynamicCancelIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_CANCEL_ICON, dynamicTextValue);
+		}
 	}
-    }
 
-    public void clickDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
-	if (status == true) {
-	    clickToElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+	public void clickDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		}
 	}
-    }
 
 // Nhập địa điểm tìm kiếm
-    public void inputToDynamicTextPoint(AppiumDriver<MobileElement> driver, String inputValue, String dynamicIndexValue) {
-	boolean status = false;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
-	if (status == true) {
-	    clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
-	    sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
+	public void inputToDynamicTextPoint(AppiumDriver<MobileElement> driver, String inputValue, String dynamicIndexValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		if (status == true) {
+			clearText(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+			sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, inputValue, dynamicIndexValue);
+		}
 	}
-    }
 
 // Lấy text ngày đặt vé
-    public String getTextInDynamicDateTicket(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+	public String getTextInDynamicDateTicket(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE_SELECTED, dynamicTextValue);
+		}
+		return text;
 	}
-	return text;
-    }
 
-  // Lấy text tìm hiếm điểm khởi hành và điểm đến
-    public String getDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+	// Lấy text tìm hiếm điểm khởi hành và điểm đến
+	public String getDynamicPointStartAndEnd(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_START_AND_END_TEXT, dynamicTextValue);
+		}
+		return text;
+
 	}
-	return text;
 
-    }
+	// Lấy text tìm hiếm điểm khởi hành và điểm đến
+	public String getDynamicTextEdit(String... dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
+		}
+		return text;
 
-    // Lấy giá trị tìm kiếm trong danh sách
-    public String getDynamicInputPoint(AppiumDriver<MobileElement> driver, String dynamicIndexValue) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
 	}
-	return text;
 
-    }
+	// Lấy giá trị tìm kiếm trong danh sách
+	public String getDynamicInputPoint(AppiumDriver<MobileElement> driver, String dynamicIndexValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_INPUT_POINT, dynamicIndexValue);
+		}
+		return text;
 
-    public String getDynamicTextPointStart(AppiumDriver<MobileElement> driver, String dynamicID) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
 	}
-	return text;
-    }
+
+	public String getDynamicTextPointStart(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_VIEW_TEXT_START, dynamicID);
+		}
+		return text;
+	}
 
 // Hiển thị time ngay book
-    public String getDynamicDateTime(AppiumDriver<MobileElement> driver, String dynamicID) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+	public String getDynamicDateTime(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_DATE, dynamicID);
+		}
+		return text;
+
 	}
-	return text;
 
-    }
+	public String getDynamicTitleSelectDate(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
+		}
+		return text;
 
-    public String getDynamicTitleSelectDate(AppiumDriver<MobileElement> driver, String dynamicText) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_DATE, dynamicText);
 	}
-	return text;
-
-    }
 
 //Lay thu trong tuan
-    public String getDynamicTitleWeek(AppiumDriver<MobileElement> driver, String... dynamicText) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
+	public String getDynamicTitleWeek(AppiumDriver<MobileElement> driver, String... dynamicText) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TITLE_SELECT_WEEK, dynamicText);
+		}
+		return text;
 	}
-	return text;
-    }
 
-    public String getDynamicTextOld(AppiumDriver<MobileElement> driver, String... dynamicText) {
+	public String getDynamicTextOld(AppiumDriver<MobileElement> driver, String... dynamicText) {
 
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicText);
+		}
+		return text;
 	}
-	return text;
-    }
 
-
-public boolean isDynamicHistoryIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
-	if (status == true) {
-	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+	public boolean isDynamicHistoryIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_HISTORY_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
 	}
-	return isDisplayed;
-    }
 
-    // Check hiển thị button chuyển đổi
-    public boolean isDynamicChangeIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
-	if (status == true) {
-	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+	// Check hiển thị button chuyển đổi
+	public boolean isDynamicChangeIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_CHANGE_ICON, dynamicTextValue);
+		}
+		return isDisplayed;
 	}
-	return isDisplayed;
-    }
 
-    // Check hiển thị icon combobox
-    public boolean isDynamicComboboxDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
-	if (status == true) {
-	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+	// Check hiển thị icon combobox
+	public boolean isDynamicComboboxDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_COMBOBOX, dynamicTextValue);
+		}
+		return isDisplayed;
 	}
-	return isDisplayed;
-    }
 
-  // hiển thị icon trường số lượng hành khách
-    public boolean isDynamicIconChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
-	if (status == true) {
-	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
-	}
-	return isDisplayed;
-
-    }
-
-    // hiển thị text trường số lượng hành khách
-    public boolean isDynamicTextChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-	boolean isDisplayed = false;
-	boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
-	if (status == true) {
-	    isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
-	}
-	return isDisplayed;
-
-    }
-
-public String getTextInDynamicNote(AppiumDriver<MobileElement> driver, String dynamicIndex) {
-	boolean status = false;
-	String text = null;
-	status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
-	if (status == true) {
-	    text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
+	// hiển thị icon trường số lượng hành khách
+	public boolean isDynamicIconChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_ICON_CHANGE_NUMBER, dynamicTextValue);
+		}
+		return isDisplayed;
 
 	}
-	return text;
-    }
 
+	// hiển thị text trường số lượng hành khách
+	public boolean isDynamicTextChangeNumber(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, TrainTicketPageUIs.DYNAMIC_TEXT_CHANGE_NUMBER, dynamicTextValue);
+		}
+		return isDisplayed;
+
+	}
+
+	public String getTextInDynamicNote(AppiumDriver<MobileElement> driver, String dynamicIndex) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
+		if (status == true) {
+			text = getTextElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndex);
+
+		}
+		return text;
+	}
 
 }

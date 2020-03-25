@@ -333,7 +333,7 @@ public class Validation_TrainTicket_3 extends Base {
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
 
 		log.info("TC_12_Check hien thi ten tau");
-		verifyTrue(trainTicket.isDynamicNameTrainDisplay("com.VCB:id/tv_ten_tau", "0"));
+		verifyTrue(trainTicket.isDynamicNameTrainDisplay( "0","com.VCB:id/tv_ten_tau"));
 
 		log.info("TC_12_Check hien thi thoi gian bat dau chay");
 		verifyTrue(trainTicket.isDynamicDateTimeDisplay("com.VCB:id/tv_thoi_di"));

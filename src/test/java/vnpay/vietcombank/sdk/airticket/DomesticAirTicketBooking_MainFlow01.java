@@ -83,7 +83,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		time = airTicket.getDynamicTextByID("com.VCB:id/tv_thu");
 
 		log.info("TC_01_Step_05: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight2WayCode("com.VCB:id/recycler_view_one",);
+//		airTicket.clickToDynamicFlight2WayCode("com.VCB:id/recycler_view_one",);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
