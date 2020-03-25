@@ -104,8 +104,8 @@
 
 
 			<!-- Chuyển tiên qua cmt -->
-			<!-- <class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Citizen_And_Military_Identification" /> -->
-			<!-- <class name="vnpay.vietcombank.TransferIdentityCard.Transfer_Identity_And_Passport" /> -->
+			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
+			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
 
 			<!-- Dịch vụ thẻ -->
 			<class name="vnpay.vietcombank.card_services.Card_Services" />
