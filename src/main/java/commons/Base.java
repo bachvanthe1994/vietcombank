@@ -923,6 +923,16 @@ public class Base {
 		return result;
 	}
 
+	public String getRawSplitStringIndex(String stringText, String splitText, int index) {
+		String result = "";
+		try {
+			result = stringText.split(splitText)[index];
+		} catch (Exception e) {
+			result = "0";
+		}
+		return result;
+	}
+
 	public String getCounterPlus(String stringText, int i) {
 		String result = "";
 		int total = 0;

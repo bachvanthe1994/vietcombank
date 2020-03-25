@@ -117,11 +117,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_18: Hien thi man hinh giao dich thanh cong");
-		status = postpaidMobile.isTextDisplayedInPageSource(driver, "Tham gia khảo sát ngay");
-		if (status = true) {
-			postpaidMobile.clickToTextID(driver, "com.VCB:id/btCancel");
-			postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		}
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"),
+				"GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_01_Step_19: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), mobileBill);
@@ -346,11 +343,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_03_Step_18: Hien thi man hinh giao dich thanh cong");
-		status = postpaidMobile.isTextDisplayedInPageSource(driver, "Tham gia khảo sát ngay");
-		if (status = true) {
-			postpaidMobile.clickToTextID(driver, "com.VCB:id/btCancel");
-			postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		}
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"),
+				"GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_03_Step_19: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), mobileBill);
@@ -424,7 +418,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_CuocDiDongTraSau_Vinaphone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
@@ -575,11 +569,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_05_Step_18: Hien thi man hinh giao dich thanh cong");
-		status = postpaidMobile.isTextDisplayedInPageSource(driver, "Tham gia khảo sát ngay");
-		if (status = true) {
-			postpaidMobile.clickToTextID(driver, "com.VCB:id/btCancel");
-			postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		}
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"),
+				"GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_05_Step_19: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), mobileBill);
@@ -802,11 +793,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_07_Step_18: Hien thi man hinh giao dich thanh cong");
-		status = postpaidMobile.isTextDisplayedInPageSource(driver, "Tham gia khảo sát ngay");
-		if (status = true) {
-			postpaidMobile.clickToTextID(driver, "com.VCB:id/btCancel");
-			postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		}
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"),
+				"GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_07_Step_19: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), mobileBill);
@@ -1031,11 +1019,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_09_Step_18: Hien thi man hinh giao dich thanh cong");
-		status = postpaidMobile.isTextDisplayedInPageSource(driver, "Tham gia khảo sát ngay");
-		if (status = true) {
-			postpaidMobile.clickToTextID(driver, "com.VCB:id/btCancel");
-			postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		}
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"),
+				"GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_09_Step_19: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), mobileBill);
@@ -1260,11 +1245,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_11_Step_18: Hien thi man hinh giao dich thanh cong");
-		status = postpaidMobile.isTextDisplayedInPageSource(driver, "Tham gia khảo sát ngay");
-		if (status = true) {
-			postpaidMobile.clickToTextID(driver, "com.VCB:id/btCancel");
-			postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		}
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"),
+				"GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_11_Step_19: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), mobileBill);
