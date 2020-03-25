@@ -171,7 +171,7 @@ public class Validation_TrainTicket_4 extends Base {
 	@Test
 	public void TC_06_KiemTraThaoTacChonMotChuyenDi() {
 		log.info("TC_06_Click chon mot chuyen di");
-		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
+		trainTicket.clickDynamicSelectTrain( "0","com.VCB:id/tv_ten_tau", "0");
 
 		log.info("TC_06_Check hien thi button tiep tuc chon chieu ve");
 		verifyTrue(trainTicket.isDynamicButtonDisplayed("TIẾP TỤC CHỌN CHIỀU VỀ"));
