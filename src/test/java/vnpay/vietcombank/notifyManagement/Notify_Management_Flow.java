@@ -886,7 +886,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_07_Step_06: Chon diem den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
-		airTicket.clickToDynamicTextOrButtonLink("Đà Nẵng");
+		airTicket.clickToDynamicTextOrButtonLink("TP Hồ Chí Minh");
 
 		log.info("TC_07_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -897,7 +897,7 @@ public class Notify_Management_Flow extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_07_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VJ");
+		airTicket.clickToDynamicFlight(0, "BL");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -983,7 +983,7 @@ public class Notify_Management_Flow extends Base {
 		log.info("TC_07_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.sleep(driver, 5000);
+		home.sleep(driver, 10000);
 
 		log.info("TC_07_Step_34: Xac nhan hien thi icon notify");
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "02");
@@ -992,13 +992,18 @@ public class Notify_Management_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
 
 		log.info("TC_07_Step_36: Click tab tat ca");
+		inbox = PageFactoryManager.getInboxPageObject(driver);
 		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
+		home.sleep(driver, 5000);
+
+		log.info("TC_07_Step_37: Click tab quang cao");
+		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
 		verifyTrue(inboxContent.contains("Mã thanh toán:" + payID));
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 
-		log.info("TC_07_Step_37: Click tab quang cao");
-		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
+		log.info("TC_07_Step_38: Click tab tat ca");
+		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
 		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
 		verifyTrue(inboxContent.contains("Mã thanh toán:" + payID));
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
@@ -1032,7 +1037,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_08_Step_06: Chon diem den");
 		airTicket.clickToDynamicTextOrButtonLink("Điểm đến");
-		airTicket.clickToDynamicTextOrButtonLink("Đà Nẵng");
+		airTicket.clickToDynamicTextOrButtonLink("TP Hồ Chí Minh");
 
 		log.info("TC_08_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
@@ -1043,7 +1048,7 @@ public class Notify_Management_Flow extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_08_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VJ");
+		airTicket.clickToDynamicFlight(0, "BL");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -1129,9 +1134,10 @@ public class Notify_Management_Flow extends Base {
 		log.info("TC_08_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
+		home.sleep(driver, 10000);
 
 		log.info("TC_08_Step_34: Xac nhan hien thi icon notify");
-		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
+		counter = home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter");
 
 		log.info("TC_08_Step_35: Chon tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
@@ -1145,7 +1151,7 @@ public class Notify_Management_Flow extends Base {
 		login.sleep(driver, 5000);
 
 		log.info("TC_08_Step_38: Click vao Inbox");
-		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "02");
+		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), counter);
 		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
