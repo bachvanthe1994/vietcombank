@@ -32,7 +32,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		phoneNumber = phone;
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 	}
-
 	@Test
 	public void TC_01_GiaoDichNopTienThanhCong() {
 		log.info("TC_01_Step: Click menu header");
@@ -174,7 +173,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-	@Test
+	 @Test
 	public void TC_03_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMat() {
 		log.info("TC_03_Step: Click giao dich Gui/rut tiết kiệm");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi/rút tiết kiệm");
@@ -190,7 +189,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_03_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Thông tin khách hàng", "5");
 
 		log.info("TC_03_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -204,32 +203,29 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_03_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_03_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
-
 		log.info("TC_03_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Thông tin khách hàng", "8");
 
 		log.info("TC_03_Step: Chon hinh thuc gui tien co ky han");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "10");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[0]);
 
 		log.info("TC_03_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicCloseIcon(driver, "Kỳ hạn");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
 
 		log.info("TC_03_Step: Nhap so tien gui");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "14");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "13");
 
 		log.info("TC_03_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "15");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "14");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_03_Step: Tien mat mac dinh chon, verify text 'Tien mat' hien thi");
 		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_03_Step: Nhap so tien nop");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "17");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
 
 		log.info("TC_03_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
@@ -263,7 +259,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_04_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Thông tin khách hàng", "5");
 
 		log.info("TC_04_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -277,32 +273,29 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_04_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_04_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
-
 		log.info("TC_04_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Thông tin khách hàng", "8");
 
 		log.info("TC_04_Step: Chon hinh thuc gui tien co ky han");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "10");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[2]);
 
 		log.info("TC_04_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "12");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[0]);
 
 		log.info("TC_04_Step: Nhap so tien gui");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "13");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "12");
 
 		log.info("TC_04_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "15");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "14");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[1]);
 
 		log.info("TC_04_Step: Tien mat mac dinh chon, verify text 'Tien mat' hien thi");
 		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_04_Step: Nhap so tien nop");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "15");
 
 		log.info("TC_04_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
@@ -336,7 +329,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_05_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
 		log.info("TC_05_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -350,25 +343,22 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_05_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_05_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
-
 		log.info("TC_05_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Thông tin khách hàng", "8");
 
 		log.info("TC_05_Step: Chon hinh thuc gui tien co ky han");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "10");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[0]);
 
 		log.info("TC_05_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "12");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
 
 		log.info("TC_05_Step: Nhap so tien gui");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "14");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "13");
 
 		log.info("TC_05_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "15");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "14");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_05_Step: Click chon chuyen khoan");
@@ -405,9 +395,8 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-	@Test
+@Test
 	public void TC_06_MoTheTietKiem_TheTietKiemCoKyHanChuyenKhoanVaTienMatNhanGoc() {
-
 		log.info("TC_06_Step: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
@@ -419,7 +408,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_06_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
 		log.info("TC_06_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -433,32 +422,29 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_06_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_06_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
-
 		log.info("TC_06_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Thông tin khách hàng", "8");
 
 		log.info("TC_06_Step: Chon hinh thuc gui tien co ky han");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "10");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[0]);
 
 		log.info("TC_06_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "12");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
 
 		log.info("TC_06_Step: Nhap so tien gui");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT_OPEN_CARD, "Thông tin giao dịch", "14");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT_OPEN_CARD, "Thông tin giao dịch", "13");
 
 		log.info("TC_06_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "15");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "14");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[2]);
 
 		log.info("TC_06_Step: Click chon chuyen khoan");
 		registerOnline.clickToImageRadio(driver, "Chuyển khoản");
 
 		log.info("TC_06_Step: Nhap so tai khoan nhan lai");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin giao dịch", "16");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.ACCOUNT_TAKE[0], "Thông tin giao dịch", "15");
 
 		log.info("TC_06_Step: check text mac dinh chon la tien mat");
 		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
@@ -508,7 +494,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_07_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
 		log.info("TC_07_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -522,32 +508,29 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_07_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_07_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
-
 		log.info("TC_07_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Thông tin khách hàng", "8");
 
 		log.info("TC_07_Step: Chon hinh thuc gui tien khong ky han");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "10");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[2]);
 
 		log.info("TC_07_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "12");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
 
 		log.info("TC_07_Step: Nhap so tien gui");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "13");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "12");
 
 		log.info("TC_07_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "14");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "13");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_07_Step: check text mac dinh chon la tien mat");
 		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_07_Step: Nhap so tien nop");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "15");
 
 		log.info("TC_07_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
@@ -566,11 +549,10 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_07_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
-
 	}
 
 	@Test
-	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc()  {
+	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc()  {	
 		log.info("TC_08_Step: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
@@ -582,7 +564,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_08_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
 		log.info("TC_08_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -596,32 +578,29 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_08_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_08_Step: Nhap noi cap");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.LOCATION[1], "Giấy tờ tùy thân", "8");
-
 		log.info("TC_08_Step: Nhap email");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "9");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "8");
 
 		log.info("TC_08_Step: Chon hinh thuc gui tien khong ky han");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "10");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[2]);
 
 		log.info("TC_08_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "12");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "11");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
 
 		log.info("TC_08_Step: Nhap so tien gui");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "13");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "12");
 
 		log.info("TC_08_Step: Chon ky han thoi gian");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "14");
+		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "13");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.INTEREST_RECEPT_TYPE[0]);
 
 		log.info("TC_08_Step: check text mac dinh chon la tien mat");
 		verifyEquals(registerOnline.getTextDynamicFollowLayout(driver, "com.VCB:id/llTienMat"), "Tiền mặt");
 
 		log.info("TC_08_Step: Nhap so tien nop");
-		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "16");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT, "Thông tin giao dịch", "15");
 
 		log.info("TC_08_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
@@ -640,7 +619,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_08_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
-
 	}
 
 	@Test
@@ -656,7 +634,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_09_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
 		log.info("TC_09_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
@@ -713,7 +691,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 	@Test
 	public void TC_10_RutSoTietKiem_RutGocPhuongThucChuyenKhoanVaTienMat()  {
-
 		log.info("TC_10_Step: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
 
@@ -725,9 +702,9 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_10_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
-		log.info("TC_10_Step: Click ngay cap");
+		log.info("TC_10_Step: Click ngay cap");	
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
 
 		log.info("TC_10_Step: Click nam");
@@ -808,7 +785,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
 		log.info("TC_11_Step: Input so ho chieu");
-		registerOnline.inputToDynamicInputText(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "6");
+		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "6");
 
 		log.info("TC_11_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "7");

@@ -99,7 +99,7 @@ public class Validation_TrainTicket_8 extends Base {
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
 
 		log.info("TC_10_Click chon mot chuyen di");
-		trainTicket.clickDynamicSelectTrain("com.VCB:id/tv_ten_tau", "0");
+		trainTicket.clickDynamicSelectTrain( "0","com.VCB:id/tv_ten_tau");
 
 		log.info("TC_12_Click button tiep tuc chon chieu ve");
 		trainTicket.clickToDynamicButton("TIẾP TỤC CHỌN CHIỀU VỀ");
