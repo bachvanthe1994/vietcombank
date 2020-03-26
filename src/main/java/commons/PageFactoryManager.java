@@ -10,6 +10,7 @@ import pageObjects.InboxPageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.InternetADSLPageObject;
 import pageObjects.LandLinePhoneChargePageObject;
+import pageObjects.LocationQRCodePageObject;
 import pageObjects.LockCardPageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
@@ -37,6 +38,7 @@ import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
+import pageObjects.shopping_online.ShoppingOnlinePageObject;
 import vehicalPageObject.VehicalPageObject;
 
 public class PageFactoryManager {
@@ -187,5 +189,13 @@ public class PageFactoryManager {
 
 	public static PayBillTelevisionPageObject getPayBillTelevisionPageObject(AppiumDriver<MobileElement> driver) {
 		return new PayBillTelevisionPageObject(driver);
+	}
+	
+	public static ShoppingOnlinePageObject getShoppingOnlinePageObject(AppiumDriver<MobileElement> driver) {
+		return new ShoppingOnlinePageObject(driver);
+	}
+	
+	public static LocationQRCodePageObject getLocationQRCodePageObject(AppiumDriver<MobileElement> driver) {
+		return new LocationQRCodePageObject(driver);
 	}
 }

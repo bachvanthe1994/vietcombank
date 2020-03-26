@@ -158,7 +158,7 @@ public class Validation_TrainTicket_4 extends Base {
 	public void TC_04_KiemTraKetHopLonHon1TieuChiSapXep() {
 		log.info("TC_04_Lay danh sach gio chay");
 		List<String> listSuggestIncrase = trainTicket.getListOfSuggestedMoneyOrListText("com.VCB:id/tv_tong_thoi_gian");
-
+		
 		log.info("TC_04_Verify gio chay khong sap xep theo thu tu tang dan hoac giam dan");
 		verifyFailure(trainTicket.orderSortIncrase(listSuggestIncrase));
 

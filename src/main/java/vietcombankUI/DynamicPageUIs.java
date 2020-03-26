@@ -77,16 +77,21 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_VIEW_BY_ID = "//android.view.View[@resource-id = '%s']/android.view.View";
 	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@resource-id='%s']//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
-
+	public static final String DYNAMIC_VIEWGROUP_TEXT = "//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//following-sibling::android.widget.HorizontalScrollView//android.view.ViewGroup//android.view.ViewGroup";
+	public static final String DYNAMIC_SCROLL_TEXT ="//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//following-sibling::android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup//android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
+	public static final String DYNAMIC_VIEWGROUP_TEXTVIEW ="//android.widget.TextView[@text='%s']//ancestor::android.view.ViewGroup/following-sibling::android.view.ViewGroup//android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
+	public static final String DYNAMIC_TEXT_PRECEDING ="//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//preceding-sibling::android.view.ViewGroup[@index='%s']//android.widget.TextView";
+	
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
 
 	// CHECK BOX
 	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";
 
 //    Bắt expath với class bị mã hóa chỉ có id
 	public static final String DYNAMIC_ESPECIALLY = "//*[@resource-id=\"%s\"]";
-	public static final String DYNAMIC_ESPECIALLY_TEXTVIEW = "//*[@resource-id=\"%s\"]//android.widget.LinearLayout[@ndex='%s']//android.widget.TextView[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_ESPECIALLY_TEXTVIEW = "//*[@resource-id=\"%s\"]//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 //DATE PICKER
 	public static final String DYNAMIC_DATE_PICKER_BY_ID = "//android.widget.DatePicker[@resource-id=\"%s\"]";
 }
