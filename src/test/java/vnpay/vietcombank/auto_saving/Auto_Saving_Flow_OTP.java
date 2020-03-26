@@ -602,7 +602,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_08_Step_25: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
-		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccount02);
+		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney02);
 
 		log.info("TC_08_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");

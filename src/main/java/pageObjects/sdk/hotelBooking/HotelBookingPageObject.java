@@ -770,4 +770,14 @@ public class HotelBookingPageObject extends AbstractPage {
 		return transferTime;
 	}
 
+	//Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
+	public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
+		}
+	}
+	
 }

@@ -19,12 +19,12 @@ public class Postpaid_Mobile_Bill_Data {
 		public static final String VIETTEL_SUPPLIER = "Viettel";
 		public static final String VINAPHONE_SUPPLIER = "Vinaphone";
 		public static final String MOBIFONE_SUPPLIER = "Mobifone";
-		public static final List<String> LIST_VIETTEL_MOBILE = Arrays.asList("0988781905", "0989735001", "0980080904",
-				"0860080906", "0980080905", "0860080907", "0980080906", "0860080908", "0980080999", "0860080905");
+		public static final List<String> LIST_VIETTEL_MOBILE = Arrays.asList("0989735009", "0989735010", "0989735011",
+				"0989735012", "0989735013", "0989735014", "0989735015", "0989735016", "0989735017", "0989735018");
 		public static final List<String> LIST_VINAPHONE_MOBILE = Arrays.asList("0835482310", "0836520145", "0836502014",
 				"0830123651", "0835412014", "0838540123", "0836523014", "0836013234", "0830120365", "0830123012");
-		public static final List<String> LIST_MOBIFONE_MOBILE = Arrays.asList("0908893194", "0901234566", "0901234567",
-				"0901234563", "0901234564", "0901234565", "0902247838", "0904383266", "0904900001", "0904900002");
+		public static final List<String> LIST_MOBIFONE_MOBILE = Arrays.asList("0904900002", "0904383266", "0904900001",
+				"0904329876", "0904333562", "0904567895", "0931265456", "0905235625", "0904900001", "0904900061");
 
 	}
 }

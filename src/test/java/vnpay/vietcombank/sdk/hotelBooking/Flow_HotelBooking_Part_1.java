@@ -14,6 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.LogIn_Data;
 import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
 
 public class Flow_HotelBooking_Part_1 extends Base {
@@ -260,7 +261,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_03_15_Nhap ma OTP chinh xac");
-		hotelBooking.inputToDynamicPopupPasswordInput(password, "Tiếp tục");
+		hotelBooking.inputToDynamicOtp(LogIn_Data.Login_Account.OTP, "Tiếp tục");
 		
 		log.info("TC_03_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");

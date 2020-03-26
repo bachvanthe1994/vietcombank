@@ -24,7 +24,11 @@
 		<parameter name="otp" value="123456" />
 		<classes>
 			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.login.testwwebview" />
+			<!-- Thanh toán vé máy bay -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" /> -->
+			<!-- Đặt vé xem phim -->
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1"/>
 
 
 
