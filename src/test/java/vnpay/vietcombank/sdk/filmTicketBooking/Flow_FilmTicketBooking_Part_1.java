@@ -82,16 +82,18 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		info.time = filmTicketBooking.getDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
-		log.info("TC_01_11_Chon moi loai 1 ghe");
-		filmTicketBooking.clickToChooseEachTypeASeate();
+		log.info("TC_01_11_Chon 1 ghe");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
 
 		List<SeatType> listSeatType = filmTicketBooking.getListSeatType();
+		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
 
 		log.info("TC_01_12_Click chon cho ngoi");
 		filmTicketBooking.clickToTextViewByText("Chọn chỗ ngồi");
 
 		log.info("TC_01_13_Chon cho ngoi nhu da dang ky");
-		filmTicketBooking.chooseMaxSeats(listSeatType);
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
+		filmTicketBooking.chooseSeats(1, colorOfSeat);
 
 		info.cinemaName = filmTicketBooking.getTextViewByID("com.VCB:id/tvTitle");
 		info.price = filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince");
@@ -284,7 +286,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_DatVeXemPhim_Rap_CineStar() {
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
 
@@ -443,7 +445,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_DatVeXemPhim_Rap_CineStar_BaoCaoGiaoDich() {
 		log.info("TC_04_1: Click  nut Back");
 		filmTicketBooking.clickToDynamicBackIcon("Mua vé xem phim");

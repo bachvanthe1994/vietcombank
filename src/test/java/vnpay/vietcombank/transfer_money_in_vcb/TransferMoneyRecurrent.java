@@ -163,6 +163,9 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_02_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
 
+		log.info("TC_03_1: Click  nut Back");
+		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+
 	}
 
 	@Test
@@ -172,10 +175,9 @@ public class TransferMoneyRecurrent extends Base {
 
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 
-		log.info("TC_03_1: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 		log.info("TC_03_2: Click Trang thai lenh chuyen tien");
+		transferRecurrent.scrollDownToText(driver, "Nạp tiền/ Thanh toán hoá đơn");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_03_3: Chon loai giao dich");

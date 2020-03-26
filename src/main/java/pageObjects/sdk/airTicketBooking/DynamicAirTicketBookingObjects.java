@@ -270,6 +270,27 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		return text;
 	}
 
+	// Lấy text của thông tin chuyen bay bằng id
+	public String getDynamicFlightData(String... dynamicTextIndexId) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DATA,
+				dynamicTextIndexId);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DATA, dynamicTextIndexId);
+		}
+		return text;
+	}
+
+	// Lấy text của thông tin chuyen bay bằng id
+	public String getDynamicDepartureArrivalData(String... dynamicID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicID);
+		}
+		return text;
+	}
+
 //lấy thông tin vé may bay 1 chiều sử dụng text và id
 	public String getAirTicketPriceInfo1Way(String... textAndId) {
 		String text = null;
@@ -416,6 +437,19 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);
 		if (status == true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);
+
+		}
+		return text;
+	}
+
+	// Lấy thong tin theo index linearlayout
+	public String getDynamicConfirmInfoByIndex(String... dynamicIdText) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CONFIRM_INFO, dynamicIdText);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CONFIRM_INFO, dynamicIdText);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_CONFIRM_INFO, dynamicIdText);
 
 		}
 		return text;
