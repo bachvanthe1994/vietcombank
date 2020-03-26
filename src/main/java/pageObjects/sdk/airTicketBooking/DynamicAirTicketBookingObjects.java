@@ -57,12 +57,10 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public void inputToDynamicInputBoxByLabelAndIndex(String inputValue, String... dynamicTextAndID) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, dynamicTextAndID);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER,
-				dynamicTextAndID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, dynamicTextAndID);
 		if (status == true) {
 			clearText(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, dynamicTextAndID);
-			sendKeyToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, inputValue,
-					dynamicTextAndID);
+			sendKeyToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, inputValue, dynamicTextAndID);
 		}
 	}
 
@@ -99,8 +97,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public void checkToDynamicTextOrDropDownByLabel(String... dynamicTextAndID) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, dynamicTextAndID);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL,
-				dynamicTextAndID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, dynamicTextAndID);
 		if (status == true) {
 			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL, dynamicTextAndID);
 		}
@@ -110,11 +107,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public void clickToDynamicTextOrDropDownByLabelAndIndex(String... dynamicIDIndexIdAndId) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, dynamicIDIndexIdAndId);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER,
-				dynamicIDIndexIdAndId);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, dynamicIDIndexIdAndId);
 		if (status == true) {
-			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER,
-					dynamicIDIndexIdAndId);
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, dynamicIDIndexIdAndId);
 		}
 	}
 
@@ -123,8 +118,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicTextAndID);
 		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicTextAndID);
-		if (status == true && isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL,
-				dynamicTextAndID) == true) {
+		if (status == true && isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicTextAndID) == true) {
 			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_CHECK_BOX_BY_LABEL, dynamicTextAndID);
 		}
 	}
@@ -133,8 +127,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public void clickToDynamicTextOrButtonLink(String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicTextValue);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP,
-				dynamicTextValue);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP, dynamicTextValue);
 		}
@@ -146,6 +139,14 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		if (status == true) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+		sleep(driver, 3000);
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Thông báo") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Dịch vụ không thực hiện được trong lúc này")) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, "Đồng ý");
 			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 	}
@@ -171,8 +172,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 //Click nut tang giam ơ man hinh dat ve may bay, tham số là text và icon cần click
 	public void clickToDynamicPlusAndMinusIcon(String... textAndIcon) {
 		boolean status = false;
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON,
-				textAndIcon);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndIcon);
 		if (status == true) {
 			clickToOneOfElement(driver, 0, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndIcon);
 		}
@@ -182,8 +182,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public void clickToDynamicFirstFlightShiftByFlightCode(String... resourceIDAndtext) {
 		boolean status = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_BY_FLIGHT_CODE, resourceIDAndtext);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_BY_FLIGHT_CODE,
-				resourceIDAndtext);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_BY_FLIGHT_CODE, resourceIDAndtext);
 		if (status == true) {
 			clickToOneOfElement(driver, 0, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_BY_FLIGHT_CODE, resourceIDAndtext);
 		}
@@ -228,11 +227,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	// Chon chieu di / chieu ve bang index linearlayout
 	public void clickToDynamicFlight2WayCode(String... idAndIndex) {
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
-		boolean status = waitForElementVisible(driver,
-				AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
 		if (status == true) {
-			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY,
-					idAndIndex);
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DEPARTURE_RETURN_FLIGHT_CODE_2_WAY, idAndIndex);
 		}
 	}
 
@@ -270,6 +267,26 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		return text;
 	}
 
+	// Lấy text của thông tin chuyen bay bằng id
+	public String getDynamicFlightData(String... dynamicTextIndexId) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DATA, dynamicTextIndexId);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_DATA, dynamicTextIndexId);
+		}
+		return text;
+	}
+
+	// Lấy text của thông tin chuyen bay bằng id
+	public String getDynamicDepartureArrivalData(String... dynamicID) {
+		String text = null;
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicID);
+		}
+		return text;
+	}
+
 //lấy thông tin vé may bay 1 chiều sử dụng text và id
 	public String getAirTicketPriceInfo1Way(String... textAndId) {
 		String text = null;
@@ -285,11 +302,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public String getAirTicketInfoByFlightCode2Way(String... IDAndFlightcodeID) {
 		String text = null;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
-		boolean status = waitForElementVisible(driver,
-				AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
 		if (status == true) {
-			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY,
-					IDAndFlightcodeID);
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_2_WAY, IDAndFlightcodeID);
 		}
 		return text;
 	}
@@ -297,11 +312,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	public String getAirTicketInfoByFlightCode1Way(String... IDAndFlightcodeID) {
 		String text = null;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
-		boolean status = waitForElementVisible(driver,
-				AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
 		if (status == true) {
-			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY,
-					IDAndFlightcodeID);
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_FLIGHT_SHIFT_INFO_BY_FLIGHT_CODE_1_WAY, IDAndFlightcodeID);
 		}
 		return text;
 	}
@@ -364,8 +377,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexID);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER,
-				IdIndexID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexID);
 		if (status == true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexID);
 		}
@@ -388,11 +400,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexIDAndID);
-		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER,
-				IdIndexIDAndID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexIDAndID);
 		if (status == true) {
-			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER,
-					IdIndexIDAndID);
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_VIEW_AIR_TICKET_INFO_OF_CUSTOMER, IdIndexIDAndID);
 		}
 		return text;
 	}
@@ -416,6 +426,19 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);
 		if (status == true) {
 			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);
+
+		}
+		return text;
+	}
+
+	// Lấy thong tin theo index linearlayout
+	public String getDynamicConfirmInfoByIndex(String... dynamicIdText) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CONFIRM_INFO, dynamicIdText);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CONFIRM_INFO, dynamicIdText);
+		if (status == true) {
+			text = getTextElement(driver, AirTicketBookingUIs.DYNAMIC_CONFIRM_INFO, dynamicIdText);
 
 		}
 		return text;
@@ -496,11 +519,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 //Kiểm tra radioButton  bằng checkbox có được check khong
 	public boolean isDynamicRadioButtonByLabelChecked(String... textAndText) {
 		boolean isChecked = false;
-		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX,
-				textAndText);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndText);
 		if (status == true) {
-			isChecked = isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX,
-					textAndText);
+			isChecked = isControlSelected(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndText);
 		}
 		return isChecked;
 	}
@@ -510,11 +531,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean isDisplayed = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndText);
 
-		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON,
-				textAndText);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndText);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON,
-					textAndText);
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, textAndText);
 		}
 		return isDisplayed;
 	}
@@ -522,11 +541,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 //Kiểm tra dropdown có hiene thị không
 	public boolean isDynamicDropdownByLabelDisplayed(String... text) {
 		boolean isDisplayed = false;
-		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON,
-				text);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, text);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON,
-					text);
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_DEFAULT_INCREASE_OR_DECREASE_ICON, text);
 		}
 		return isDisplayed;
 	}
@@ -536,11 +553,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean isDisplayed = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
 
-		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME,
-				textAndText);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME,
-					textAndText);
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME, textAndText);
 		}
 		return isDisplayed;
 	}
@@ -562,11 +577,9 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		boolean isDisplayed = false;
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndtext);
 
-		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX,
-				textAndtext);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndtext);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX,
-					textAndtext);
+			isDisplayed = isControlDisplayed(driver, AirTicketBookingUIs.DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX, textAndtext);
 		}
 		return isDisplayed;
 	}

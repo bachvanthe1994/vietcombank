@@ -26,9 +26,14 @@ public class TrainTicket_Data {
 		public static final String POINT_VIETNAM_VALID ="Chon ga khoi hanh";
 		public static final String POINT_START_END_VALID ="Biên Hòa";
 		public static final String POINT_EDIT_SEARCH ="Hà Nội";
-		public static final String POINT_EDIT_SEARCH_END ="Vinh";
+		public static final String POINT_EDIT_SEARCH_END ="Huế";
 		public static final String POINT_SERACH_THE_SAME ="hai";
-		public static final String POINT_EDIT_CHANGE ="Đà Nẵng";
+		public static final String POINT_EDIT_CHANGE ="Vinh";
+		public static final String CUSTOMER_NAME ="Phan Thi Hiep";
+		public static final String CARD_NO ="123456789";
+		public static final String TELEPHONE_NO ="0973441417";
+		public static final String email ="HiepPT@vnpay.vn";
+		
 	}
 	}
 	

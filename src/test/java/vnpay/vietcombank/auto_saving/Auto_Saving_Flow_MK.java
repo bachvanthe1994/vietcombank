@@ -29,7 +29,7 @@ public class Auto_Saving_Flow_MK extends Base {
 	private TransactionReportPageObject transactionReport;
 	private SavingOnlinePageObject savingOnline;
 
-	private String transactionID, savingAccount, tranferMoney, transactionDate, startDate, endDate, sourceAccountMoney, sourceAccount;
+	private String transactionID, savingAccount, tranferMoney, transactionDate, startDate, endDate, sourceAccountMoney, sourceAccountMoney02, sourceAccount, sourceAccount02;
 	private long transferFee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -285,7 +285,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_HuyTietKiemTuDong_TaiKhoanNguon_VND() {
 
 		log.info("TC_04_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -333,7 +333,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 
 		log.info("TC_05_Step_01: Mo tab Menu");
@@ -520,7 +520,8 @@ public class Auto_Saving_Flow_MK extends Base {
 			sourceAccount = Account_Data.Valid_Account.LIST_ACCOUNT_FROM[4];
 			autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		}
-
+		sourceAccount02 = autoSaving.getDynamicTextInDropDownByHeader(driver, "Tài khoản nguồn", "1");
+		sourceAccountMoney02 = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		log.info("TC_08_Step_03: Chon tai khoan tiet kiem");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Tài khoản tiết kiệm");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
@@ -549,7 +550,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo");
 
 		log.info("TC_08_Step_10: Hien thi tai khoan nguon");
-		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản nguồn"), sourceAccount);
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản nguồn"), sourceAccount02);
 
 		log.info("TC_08_Step_11: Hien thi tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
@@ -602,7 +603,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_08_Step_25: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
-		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney);
+		verifyEquals(autoSaving.getMoneyByAccount(driver, "Số dư khả dụng"), sourceAccountMoney02);
 
 		log.info("TC_08_Step_26: Click back ve man hinh chinh");
 		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -670,7 +671,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_MK() {
 
 		log.info("TC_10_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -715,7 +716,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_11_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 
 		log.info("TC_11_Step_01: Mo tab Menu");

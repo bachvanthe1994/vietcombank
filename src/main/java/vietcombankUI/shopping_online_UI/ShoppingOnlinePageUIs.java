@@ -1,11 +1,11 @@
-package vietcombankUI.sdk.trainTicket;
+package vietcombankUI.shopping_online_UI;
 
-public class TrainTicketPageUIs {
+public class ShoppingOnlinePageUIs {
 	// Text
 	public static final String DYNAMIC_START_AND_END_TEXT = "//android.widget.TextView[@text='%s']//following::android.widget.ScrollView//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_VIEW_TEXT_START = "//android.widget.LinearLayout/android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
-	public static final String DYNAMIC_DATE = "//android.widget.TextView[@resource-id='%s']";
+	public static final String DYNAMIC_TEXT_BY_ID = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_DATE_SELECTED = "//android.widget.TextView[@text='%s']//following-sibling::android.view.ViewGroup//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TITLE_SELECT_DATE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout/android.widget.TextView";
 	public static final String DYNAMIC_TITLE_SELECT_WEEK = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout//android.widget.TextView[@resource-id='%s']";
@@ -25,7 +25,8 @@ public class TrainTicketPageUIs {
 	public static final String DYNAMIC_TEXT_LOCATION = "//android.widget.LinearLayout[@index ='%s']/android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_TO_TEXT = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following::android.widget.FrameLayout//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_TOTAL = "//android.widget.LinearLayout[@resource-id='com.VCB:id/rootView'][@index ='%s']//android.widget.TextView[@resource-id='%s']";
-
+	public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
+	public static final String DYNAMIC_LABEL_MONEY_BY_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
 	
 	// Image-icon
 	public static final String DYNAMIC_HISTORY_ICON = "//android.widget.TextView[@text='%s']/following::android.widget.ImageView";
@@ -38,7 +39,7 @@ public class TrainTicketPageUIs {
 	public static final String DYNAMIC_ICON_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.ImageView[@resource-id='%s']";
 	public static final String DYNAMIC_BOTTOM_MENU_CLOSE_ICON = "//android.widget.ImageView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_ICON_CHECK = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView[@resource-id='%s']";
-	public static final String IMAGE_BY_TEXT = "//android.widget.TextView[@text='Chỗ trống']/preceding-sibling::android.widget.ImageView";
+	public static final String IMAGE_BY_TEXT = "//android.widget.TextView[@text='%s']/preceding-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.ImageView[@clickable = 'true']";
 
 	// Input
@@ -53,4 +54,9 @@ public class TrainTicketPageUIs {
 	// LinearLayout
 	public static final String DYNAMIC_TEXT_NAME_TRAIN = "//android.widget.LinearLayout[@index='%s']/android.widget.FrameLayout//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
+	// View
+	public static final String DYNAMIC_VIEW_LIST = "//android.view.View[@text='%s']/following-sibling::android.view.View/android.view.View";
+	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
+	public static final String DYNAMIC_CART = "//android.view.View[@index='%s']//android.view.View[@index='%s']";
+	public static final String DYNAMIC_TOTAL_MONEY = "//android.view.View[@text='%s']//preceding-sibling::android.view.View";
 }
