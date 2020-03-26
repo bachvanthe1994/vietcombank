@@ -41,8 +41,9 @@ public class TrainTicketPageUIs {
     // button
     public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
     public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
-
-    // LinearLayout
+	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.ImageView[@clickable = 'true']";
+	public static final String DYNAMIC_TEXT_LOCATION = "//android.widget.LinearLayout[@index ='%s']/android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
+	// LinearLayout
     public static final String DYNAMIC_TEXT_NAME_TRAIN = "//android.widget.TextView[@resource-id='%s']//ancestor::android.widget.LinearLayout[@index='%s']";
     public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
 }

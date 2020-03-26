@@ -857,14 +857,14 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		sleep(driver, 3000);
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+//		sleep(driver, 3000);
+//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+//		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
@@ -1926,6 +1926,8 @@ public class AbstractPage {
 
 	}
 
+	
+
 	// get text theolayout
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
@@ -2283,6 +2285,8 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+
 
 	// Chuyen tu Array sang List
 	public List<String> arrayToArrayList(String[] arr) {

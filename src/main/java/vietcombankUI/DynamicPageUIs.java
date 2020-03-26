@@ -27,6 +27,8 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_LABEL_MONEY_BY_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_INPUT_LABEL_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
+	public static final String DYNAMIC_TEXT= "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
+	
 
 	public static final String DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.EditText";
 	public static final String DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID = "//android.widget.RelativeLayout[@resource-id=\"%s\"]//android.widget.TextView";
@@ -40,6 +42,8 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_TEXT = "//android.widget.ImageView//following-sibling::android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_ACCOUNT_OUT_VCB = "//android.widget.TextView[@text ='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//descendant::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
+	
+
 
 	// LINEAER LAYOUT
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
