@@ -380,8 +380,8 @@ public class Television_flow extends Base {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterClass() throws IOException {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }
