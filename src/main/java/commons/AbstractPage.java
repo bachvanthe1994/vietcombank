@@ -1936,7 +1936,7 @@ public class AbstractPage {
 		public String getDynamicTextScrollText(AppiumDriver<MobileElement> driver, String ... dynamicTextAndIndex) {
 			boolean status = false;
 			String text = null;
-			scrollIDown(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
+		//	scrollIDown(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
 			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
 			if (status == true) {
 				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
