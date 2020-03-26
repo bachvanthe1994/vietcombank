@@ -95,7 +95,6 @@ public class AbstractPage {
 
 	public void navigatForward(AppiumDriver<MobileElement> driver) {
 		driver.navigate().forward();
-		;
 	}
 
 	public void LongPressToElement(AppiumDriver<MobileElement> driver, String locator) {
@@ -687,6 +686,7 @@ public class AbstractPage {
 
 	}
 
+
 	public void clickToOneOfElement(AppiumDriver<MobileElement> driver, int elementIndex, String locator,
 			String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
@@ -922,6 +922,17 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
 		}
+	}
+	
+	public List<String> clickListLocator(AppiumDriver<MobileElement> driver, String dynamicTextValue)
+	{
+		List<String> listLocator = new ArrayList<>();
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXT, dynamicTextValue);			
+	}
+		return listLocator;
 	}
 
 	// Click vào button, text có class là textview, tham số truyền vào là text bỏ
@@ -1204,6 +1215,16 @@ public class AbstractPage {
 		}
 
 	}
+	
+	//Click image dựa theo Edit text
+	public void clickToDynamicImageEdit(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDIT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDIT, dynamicText);
+		}
+
+	}
 
 	// Click text theo text tren no
 	public void clickToDynamicTextFollowText(AppiumDriver<MobileElement> driver, String dynamicText) {
@@ -1236,6 +1257,24 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
 	}
+	
+		public void clickToTextGroupView(AppiumDriver<MobileElement> driver, String... dynamicText) {
+			boolean status = false;
+			scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXTVIEW, dynamicText);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXTVIEW, dynamicText);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXTVIEW, dynamicText);
+			}
+		}
+		
+		public void clickToTextGroupLike(AppiumDriver<MobileElement> driver, String... dynamicText) {
+			boolean status = false;
+			scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING, dynamicText);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING, dynamicText);
+			if (status == true) {
+				clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING, dynamicText);
+			}
+		}
 
 	// Click combobox
 	public void clickToTextViewDate(AppiumDriver<MobileElement> driver, String... dynamicText) {
@@ -1892,6 +1931,46 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	
+		public String getDynamicTextScrollText(AppiumDriver<MobileElement> driver, String ... dynamicTextAndIndex) {
+			boolean status = false;
+			String text = null;
+		//	scrollIDown(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_SCROLL_TEXT, dynamicTextAndIndex);
+
+			}
+			return text;
+
+		}
+		
+		public String getDynamicTextGroupView(AppiumDriver<MobileElement> driver, String ... dynamicTextAndIndex) {
+			boolean status = false;
+			String text = null;
+			scrollIDown(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXTVIEW, dynamicTextAndIndex);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXTVIEW, dynamicTextAndIndex);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXTVIEW, dynamicTextAndIndex);
+
+			}
+			return text;
+
+		}
+		
+		public String getDynamicTextLike(AppiumDriver<MobileElement> driver, String ... dynamicTextAndIndex) {
+			boolean status = false;
+			String text = null;
+			scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING, dynamicTextAndIndex);
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING, dynamicTextAndIndex);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING, dynamicTextAndIndex);
+
+			}
+			return text;
+
+		}
 
 //lấy tài khoản nguồn mặc định bằng label của nó, tham số truyền vào là text và index 
 	public String getTextDynamicDefaultSourceAccount(AppiumDriver<MobileElement> driver,
@@ -2257,6 +2336,17 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+		}
+		return text;
+
+	}
+	
+	public List<String> getListOfLocator(AppiumDriver<MobileElement> driver, String dynamictext) {
+		boolean status = false;
+		List<String> text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXT, dynamictext);
+		if (status == true) {
+			text = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_VIEWGROUP_TEXT, dynamictext);
 		}
 		return text;
 
