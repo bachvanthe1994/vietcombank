@@ -42,7 +42,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_01_KiemTraTaiKhoanNguonMacDinh() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -51,11 +51,11 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_Step_02: Kiem tra tai khoan mac dinh");
-		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_KiemTraDinhDangSoDuKhiChonTaiKhoanVND() {
 
 		log.info("TC_02_Step_02:Click tai khoan nguon");
@@ -73,7 +73,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KiemTraDinhDangSoDuKhiChonTaiKhoanUSD() {
 
 		log.info("TC_03_Step_01:Click tai khoan nguon");
@@ -91,7 +91,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraDinhDangSoDuKhiChonTaiKhoanEUR() {
 
 		log.info("TC_04_Step_01:Click tai khoan nguon");
@@ -109,7 +109,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_05_KiemTraComboboxHinhThucChuyenTien() {
 
 		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
@@ -139,7 +139,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_06_KiemTraMaxTaiKhoanDich() {
 		log.info("TC_06_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -158,7 +158,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_07_KiemTraTaiKhoanDichNho10KyTu() {
 		log.info("TC_07_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -186,7 +186,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_08_KiemTraTaiKhoanDichNhoHon13KyTuLonHon10KyTu() {
 		log.info("TC_08_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -213,7 +213,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_09_KiemTraKhiNhapKyTuDacBietVaoTaiKhoanDich() {
 		log.info("TC_09_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -229,7 +229,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_10_KiemTraLinkHanMuc() {
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -250,7 +250,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_11_KiemTraTiGiaQuyDoi() {
 		log.info("TC_11_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -285,7 +285,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_12_KiemTraMaxlengthSoTien() {
 		log.info("TC_12_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -304,7 +304,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_13_KiemTraMaxlengthSoTienTaiKHoanNgoaiTe() {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -329,7 +329,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 	}
 
-	@Test
+//	@Test
 	public void TC_14_KiemTraKyTuChoNhap() {
 		log.info("TC_14_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -363,7 +363,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_15_KiemTraHienThiGoiYNhanhVoiTaiKhoanVND() {
 		log.info("TC_15_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -381,7 +381,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_16_KiemTraHienThiGoiYNhanhVoiTaiKhoanEUR() {
 		log.info("TC_16_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -406,7 +406,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_17_KiemTraDongDanhSachGoiYSauKhiNhanNutDong() {
 		log.info("TC_17_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -435,7 +435,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_18_KiemTraDongDanhSachGoiYSauKhiFocusRaBenNgoai() {
 		log.info("TC_18_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
@@ -492,10 +492,10 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		log.info("TC_19_Step_07: Kiem tra suggest list hien thi");
 		verifyFailure(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
-		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
-
-		log.info("TC_19_Step_08: Click quay lai");
-		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
+//		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
+//
+//		log.info("TC_19_Step_08: Click quay lai");
+//		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
 	}
 
