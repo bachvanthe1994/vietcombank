@@ -2063,6 +2063,8 @@ public class AbstractPage {
 
 	}
 
+	
+
 	// get text theolayout
 	public String getTextDynamicFollowLayout(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
 		boolean status = false;
@@ -2438,6 +2440,8 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+
 
 	// Chuyen tu Array sang List
 	public List<String> arrayToArrayList(String[] arr) {

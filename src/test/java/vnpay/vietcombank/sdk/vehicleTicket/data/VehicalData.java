@@ -30,6 +30,16 @@ public class VehicalData {
 	public static final String CHAIR_EMPTY = "Ghế trống";
 	public static final String CHAIR_SOLD = "Ghế đã bán";
 	public static final String CHAIR_SELECTED = "Đang chọn";
+	public static final String BOOK_SEAT = "Đặt chỗ";
+	public static final String EMAIL = "trangvt2@vnpay.vn";
+	public static final String PASSWORD_LOGIN = "aaaa1111";
+	public static final String TITLE_REPORT = "Báo cáo giao dịch";
+	public static final String BUTTON_SEARCH= "Tìm kiếm";
+
+
+	
+	
+
     }
 
     public static class NOTIFICATION {
