@@ -23,10 +23,7 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
-
+	<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
 
 		</classes>
 	</test>

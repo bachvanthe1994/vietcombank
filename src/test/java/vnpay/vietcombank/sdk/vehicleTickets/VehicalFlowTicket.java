@@ -2,7 +2,6 @@ package vnpay.vietcombank.sdk.vehicleTickets;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,17 +23,12 @@ public class VehicalFlowTicket extends Base {
 	private VehicalPageObject vehicalTicket;
 	String amountFee = "- ";
 	LocalDate now = LocalDate.now();
-	String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/"
-			+ getCurrenMonth() + "/" + getCurrentYear();
-	String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1
-			+ "/" + getCurrenMonth() + "/" + getCurrentYear();
+	String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+	String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1 + "/" + getCurrenMonth() + "/" + getCurrentYear();
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone",
-			"pass", "otp" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities,
-			String appPackage, String appName, String phone, String pass, String opt)
-			throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -45,8 +39,12 @@ public class VehicalFlowTicket extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		login.scrollDownToText(driver, "Đặt vé xe");
+		login.scrollIDownOneTime(driver);
 
-		vehicalTicket.Vehical_login();
+		vehicalTicket.clickToDynamicText("Đặt vé xe");
+
+		vehicalTicket.clickToDynamicButton("Đồng ý");
 	}
 
 	@Test
@@ -94,7 +92,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText("Chọn ghế");
 		String colorSeat = "(255,255,255)";
 		System.out.println(colorSeat);
-        vehicalTicket.chooseSeats(1, colorSeat);
+		vehicalTicket.chooseSeats(1, colorSeat);
 
 		log.info("TC_01_Step_16 đặt chuyế đi ");
 		vehicalTicket.clickToDynamicText("Đặt chỗ");
@@ -155,12 +153,10 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText("Lịch sử đặt vé");
 
 		log.info("TC_02_Step_04_Verify mã thanh toán");
-		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Mã thanh toán"),
-				maThanhToan);
+		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Mã thanh toán"), maThanhToan);
 
 		log.info("TC_02_Step_04_Verify số tiền");
-		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Tổng tiền"),
-				replaceAmount);
+		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Tổng tiền"), replaceAmount);
 	}
 
 	@Test
@@ -187,10 +183,10 @@ public class VehicalFlowTicket extends Base {
 		verifyEquals(fee, amountFee);
 
 	}
-	
+
 	@Test
 	public void TC_04_truyVanTaiKhoan() {
-		
+
 		log.info("TC_04_Step_01: Click chọn mục Tiền ra ");
 		vehicalTicket.clickToDynamicText("Tiền ra");
 		log.info("TC_04_Step_02: Kiểm tra thông tin giao dịch số tiền đã mua mục Tiền ra ");
