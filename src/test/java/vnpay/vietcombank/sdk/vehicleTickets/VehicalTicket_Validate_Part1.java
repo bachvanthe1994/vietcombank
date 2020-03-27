@@ -103,7 +103,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		vehicalTicket.clickToDynamicButtonBack("Đặt vé xe");
 
 		log.info("TC_04_Step_2: kiểm tra hiển thị thoát màn hình chính");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
 
 		log.info("TC_04_Step_3: click chọn đặt vé xe");
 		vehicalTicket.clickToDynamicText("Đặt vé xe");
