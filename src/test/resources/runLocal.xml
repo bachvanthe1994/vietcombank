@@ -23,11 +23,9 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-		
-			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
 
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
 
 
 		</classes>
