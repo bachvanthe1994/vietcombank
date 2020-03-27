@@ -50,13 +50,13 @@ public class VehicalFlowTicket extends Base {
 	@Test
 	public void TC_01_DatVeXeThanhCong() {
 		log.info("TC_01_Step_1: kiểm tra hiển thị title màn hình");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
 
 		log.info("TC_01_Step_4: kiểm tra hiển thị chọn điểm đi");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.FROMT);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.FROMT));
 
 		log.info("TC_01_Step_5: kiểm tra hiển thị chọn điểm đến");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.TO);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TO));
 
 		log.info("TC_01_Step_7: kiểm tra hiển thị thơi gian khởi hành");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
@@ -71,7 +71,7 @@ public class VehicalFlowTicket extends Base {
 		verifyEquals(tomorrow, VehicalData.DATA_ORDER_TICKET.TOMORROW);
 
 		log.info("TC_01_Step_10: kiểm tra hiển thị button tìm kiếm chuyến đi");
-		verifyTrue(vehicalTicket.isDynamicButtonDisplayed(driver, VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP));
+		verifyTrue(vehicalTicket.isDynamicButtonDisplayed(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP));
 
 		log.info("TC_01_Step_11: Chọn và nhập điểm đi");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
@@ -80,8 +80,8 @@ public class VehicalFlowTicket extends Base {
 
 		log.info("TC_01_Step_12: Chọn và nhập điểm đến");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_4, "Điểm đến");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_4);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, "Điểm đến");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 		log.info("TC_01_Step_13: Chọn ngày muốn đi");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -98,16 +98,16 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText("Đặt chỗ");
 
 		log.info("TC_01_Step_17 Chọn bến điểm đi ");
-		vehicalTicket.clickToElement(driver, CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		vehicalTicket.clickToElement( CommonPageUIs.DYNAMIC_POINT_ARRVAL);
 
 		log.info("TC_01_Step_18 Chọn bến điểm đến ");
-		vehicalTicket.clickToElement(driver, CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		vehicalTicket.clickToElement( CommonPageUIs.DYNAMIC_POINT_ARRVAL);
 
 		log.info("TC_01_Step_19 Click chọn Tiếp tục");
 		vehicalTicket.clickToDynamicText("Tiếp tục");
 
 		log.info("TC_01_Step_19 Click chọn Cho Phép");
-		vehicalTicket.clickToDynamicButton("Cho phép");
+		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("TC_01_Step_20 Input email");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, "Nhập thông tin");
@@ -166,13 +166,13 @@ public class VehicalFlowTicket extends Base {
 		log.info("TC_03_Step_02_Click btn back");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 		log.info("TC_03_Step_03_Chuyển sang màn hình Đặt vé ");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		log.info("TC_03_Step_04_Click btn menu");
-		vehicalTicket.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
 		log.info("TC_03_Step_05_Click chọn phần Báo cáo giao dịch");
 		vehicalTicket.clickToDynamicText("Báo cáo giao dịch");
 		log.info("TC_03_Step_06_Kiểm tra hiển thị màn hình báo cáo giao dịch ");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
+		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
 
 		log.info("TC_03_Step_17: Chọn Tìm kiếm chuyến đi");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_SEARCH);

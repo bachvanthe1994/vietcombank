@@ -132,6 +132,15 @@ public class VehicalPageObject extends AbstractPage {
 		}
 		return isDisplayed;
 	}
+	//Click dynamic buttonByID
+	public void clickToDynamicBottomMenuOrIcon(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+
+		}
+	}
 
 //    click chọn áp dụng trong màn hình nhập, chỉnh sửa điểm đi điểm đến
 	public void clickToDynamicButtonForID(String dynamicID) {
@@ -565,5 +574,13 @@ public class VehicalPageObject extends AbstractPage {
 		}
 		return text;
 
+	}
+	public void clickToDynamicAcceptButton(String dynamicIDValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		}
 	}
 }
