@@ -23,12 +23,11 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-		
-			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
-
-
+<!-- 	<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" /> -->
+	<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
+<!-- 	<class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
+	
+	
 
 		</classes>
 	</test>

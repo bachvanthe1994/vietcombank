@@ -2,13 +2,13 @@ package vietcombank_test_data;
 
 public class Lock_Card_Data {
 
-	public static final String DEBIT_CARD01 = "970436...285";
-	public static final String DEBIT_CARD02 = "970436...083";
-	public static final String DEBIT_CARD03 = "970436...013";
-	public static final String CREDIT_CARD01 = "403277...000";
-	public static final String CREDIT_CARD02 = "403277...361";
-	public static final String CREDIT_CARD03 = "403277...854";
-	public static final String CREDIT_CARD04 = "403277...955";
+	public static final String DEBIT_CARD01 = "970436...441";
+	public static final String DEBIT_CARD02 = "970436...053";
+	public static final String DEBIT_CARD03 = "526418...189";
+	public static final String CREDIT_CARD01 = "377159...206";
+	public static final String CREDIT_CARD02 = "412976...176";
+	public static final String CREDIT_CARD03 = "970436...206";
+	public static final String CREDIT_CARD04 = "970436...458";
 
 	public class VALIDATE {
 

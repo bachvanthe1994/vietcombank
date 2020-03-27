@@ -36,23 +36,27 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		login.scrollDownToText(driver, "Đặt vé xe");
+		login.scrollIDownOneTime(driver);
 
-		vehicalTicket.Vehical_login();
+		vehicalTicket.clickToDynamicText("Đặt vé xe");
+
+		vehicalTicket.clickToDynamicButton("Đồng ý");
 	}
 
 	@Test
 	public void TC_02_KiemTraManHinhTimKiemChuyenDi() {
 		log.info("TC_02_Step_1: kiểm tra hiển thị title màn hình");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
 
 		log.info("TC_02_Step_2: kiểm tra hiển thị icon back");
-		vehicalTicket.isDynamicIconBackDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		verifyTrue(vehicalTicket.isDynamicIconBackDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
 
 		log.info("TC_02_Step_3: kiểm tra hiển thị lịch sử đặt vé");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.HISTORY_TICKET);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.HISTORY_TICKET));
 
 		log.info("TC_02_Step_4: kiểm tra hiển thị chọn điểm đi");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.FROMT);
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.FROMT));
 
 		log.info("TC_02_Step_5: kiểm tra hiển thị chọn điểm đến");
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.TO);
@@ -102,7 +106,9 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 
 		log.info("TC_04_Step_3: click chọn đặt vé xe");
-		vehicalTicket.Vehical_login();
+		vehicalTicket.clickToDynamicText("Đặt vé xe");
+
+		vehicalTicket.clickToDynamicButton("Đồng ý");
 	}
 
 	@Test
