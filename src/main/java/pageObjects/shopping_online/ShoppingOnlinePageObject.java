@@ -20,38 +20,58 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	private AppiumDriver<MobileElement> driver;
 
 	public List<String> clickChooseOrrder(int numberOrder, String textOrder) {
-			List<String> listOrder = new ArrayList<>();
+		List<String> listOrder = new ArrayList<>();
 
-			String locator = String.format(ShoppingOnlinePageUIs.DYNAMIC_VIEW_LIST,textOrder );
-			boolean status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_VIEW_LIST,textOrder);
-			if (status) {
-				List<MobileElement> elements = driver.findElements(By.xpath(locator));
-				for (MobileElement element : elements) {
-					//File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
-					try {
-						
-							element.click();
+		String locator = String.format(ShoppingOnlinePageUIs.DYNAMIC_VIEW_LIST, textOrder);
+		boolean status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_VIEW_LIST, textOrder);
+		if (status) {
+			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			for (MobileElement element : elements) {
+				// File imageFile = ((TakesScreenshot)
+				// element).getScreenshotAs(OutputType.FILE);
+				try {
 
-						
-							numberOrder--;
-						
+					element.click();
 
-						if (numberOrder <= 0) {
-							break;
-						}
+					numberOrder--;
 
-					} catch (Exception e) {
-
+					if (numberOrder <= 0) {
+						break;
 					}
-				
+
+				} catch (Exception e) {
+
 				}
-			}
-			return listOrder;
 
 			}
-	
-	//Click vao 1 button sử dụng  tham số là text
-	public void clickToDynamicButton(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		}
+		return listOrder;
+
+	}
+
+	// Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
+	public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
+		}
+	}
+	// input vào ô input với tham số truyền vào là inputbox
+
+	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
+		}
+	}
+
+	// Click vao 1 button sử dụng tham số là text
+	public void clickToDynamicButton(String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON, dynamicTextValue);
@@ -60,41 +80,36 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		sleep(driver, 3000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver,
-					"//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND")
-				| driver.getPageSource().contains("Lỗi trong kết nối tới server")
-				| driver.getPageSource().contains("Không tìm thấy")) {
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON, "Đóng");
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 	}
-	
+
 	// Kiểm tra text trong nội dung link thông báo
-		public boolean isDynamicTextInfoDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-			boolean isDisplayed = false;
-			boolean status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT,
-					dynamicTextValue);
-			if (status == true) {
-				isDisplayed = isControlDisplayed(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT,
-						dynamicTextValue);
-			}
-			return isDisplayed;
+	public boolean isDynamicTextInfoDisplayed(String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlDisplayed(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		}
-		
+		return isDisplayed;
+	}
+
 	// Click vào ngày trong giỏ hàng
-	public void clickToDynamicCart(AppiumDriver<MobileElement> driver, String... dynamicIndex) {
+	public void clickToDynamicCart(String... dynamicIndex) {
 		boolean status = false;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_CART, dynamicIndex);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_CART, dynamicIndex);
 		}
-	
+
 	}
-	
+
 	// Click vào ngày trong date time picker , tham số truyền vào là text
-	public void clickToDynamicDateInDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicText) {
+	public void clickToDynamicDateInDateTimePicker(String dynamicText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		if (status == true) {
@@ -102,9 +117,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 
 	}
-	
+
 //	lấy ra tổng số tiền cần thanh toán ở màn hình xác nhận thanh toán
-	public String getDynamicTextView(AppiumDriver<MobileElement> driver, String dynamicText) {
+	public String getDynamicTextView(String dynamicText) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY, dynamicText);
@@ -113,9 +128,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return text;
 	}
-	
+
 //	lấy ra giá trị text, giá trị truyền vào là text
-	public String getDynamicTextInPopUp(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
+	public String getDynamicTextInPopUp(String... dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -124,9 +139,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return text;
 	}
-	
+
 //	get text giá trị truyền vào là id
-	public String getDynamicTextDetailByIDOrPopup(AppiumDriver<MobileElement> driver, String dynamicID) {
+	public String getDynamicTextDetailByIDOrPopup(String dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -136,9 +151,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return text;
 	}
-	
+
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
-	public String getDynamicTextInTransactionDetail(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_CONFIRM_INFO, dynamicTextValue);
@@ -150,9 +165,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 
 	}
-	
+
 	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
-	public void clickToDynamicDropdownAndDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
+	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
@@ -160,9 +175,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 
 	}
-	
-	//Click vào button, text có class là textview, tham số truyền vào là text
-	public void clickToDynamicButtonLinkOrLinkText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+
+	// Click vào button, text có class là textview, tham số truyền vào là text
+	public void clickToDynamicButtonLinkOrLinkText(String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -171,8 +186,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 
 		}
 	}
-	
-	public String getMoneyByAccount(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+
+	public String getMoneyByAccount(String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_LABEL_MONEY_BY_ACCOUNT, dynamicTextValue);
