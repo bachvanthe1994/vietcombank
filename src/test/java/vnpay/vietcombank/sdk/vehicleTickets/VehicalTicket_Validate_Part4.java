@@ -37,7 +37,12 @@ public class VehicalTicket_Validate_Part4 extends Base {
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
-		vehicalTicket.Vehical_login();
+		login.scrollDownToText(driver, "Đặt vé xe");
+		login.scrollIDownOneTime(driver);
+
+		vehicalTicket.clickToDynamicText("Đặt vé xe");
+
+		vehicalTicket.clickToDynamicButton("Đồng ý");
 	}
 
 	@Test

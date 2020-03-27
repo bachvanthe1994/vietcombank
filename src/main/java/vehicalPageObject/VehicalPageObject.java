@@ -27,13 +27,6 @@ public class VehicalPageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
-	public void Vehical_login() {
-
-		clickToDynamicText("Đặt vé xe");
-
-		clickToDynamicButton(driver, "Đồng ý");
-	}
-
 	// input vào ô textbox
 	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
 		boolean status = false;
@@ -194,15 +187,15 @@ public class VehicalPageObject extends AbstractPage {
 			clickToElement(driver, CommonPageUIs.DYNAMIC_ICON_BACK, dynamicTextValue);
 		}
 	}
-	
+
 	// Click vao 1 button back tham số truyền vào là text
-		public void clickToDynamicButtonBackByID(String dynamicID) {
-			boolean status = false;
-			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
-			if (status) {
-				clickToElement(driver, CommonPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
-			}
+	public void clickToDynamicButtonBackByID(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
+		if (status) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
 		}
+	}
 
 	// Click chọn ngày
 	public void clickToDynamicButtonChoiseDate(String dynamicTextValue) {
@@ -256,7 +249,7 @@ public class VehicalPageObject extends AbstractPage {
 		return text;
 
 	}
-	
+
 	public String getTextViewByID(String dynamicID) {
 		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		return getTextElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
@@ -483,10 +476,8 @@ public class VehicalPageObject extends AbstractPage {
 	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
 		List<String> listSeat = new ArrayList<>();
 
-		String locator = String.format(TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE,
-				"com.VCB:id/lnSeat");
-		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE,
-				"com.VCB:id/lnSeat");
+		String locator = String.format(TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/lnSeat");
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/lnSeat");
 		if (status) {
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
 			for (MobileElement element : elements) {
@@ -510,7 +501,7 @@ public class VehicalPageObject extends AbstractPage {
 						element.click();
 						count++;
 					}
-					if (count==1)
+					if (count == 1)
 						break;
 					if (numberOfSeats <= 0) {
 						break;
@@ -525,7 +516,7 @@ public class VehicalPageObject extends AbstractPage {
 		return listSeat;
 
 	}
-	
+
 // Click select date
 	public void clickToDynamicSelectDate(String dynamicID) {
 		boolean status = false;
@@ -549,7 +540,7 @@ public class VehicalPageObject extends AbstractPage {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 	}
-	
+
 	// get text theo text value table
 	public String getTextDynamicFollowTextTable(String locator, String dymaicText) {
 		boolean status = false;
@@ -562,17 +553,17 @@ public class VehicalPageObject extends AbstractPage {
 		return text;
 
 	}
-	
-	// get Amount dynamic by ID
-		public String getTextDynamicAmount(String locator, String dymaicID) {
-			boolean status = false;
-			String text = null;
-			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_AMOUNT, dymaicID);
-			if (status == true) {
-				text = getTextElement(driver, CommonPageUIs.DYNAMIC_AMOUNT, dymaicID);
 
-			}
-			return text;
+	// get Amount dynamic by ID
+	public String getTextDynamicAmount(String locator, String dymaicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_AMOUNT, dymaicID);
+		if (status == true) {
+			text = getTextElement(driver, CommonPageUIs.DYNAMIC_AMOUNT, dymaicID);
 
 		}
+		return text;
+
+	}
 }
