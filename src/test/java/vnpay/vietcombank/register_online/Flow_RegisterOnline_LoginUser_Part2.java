@@ -120,7 +120,7 @@ public void TC_02_DangKyDichVuNganHangDienTu_ManHinhDangKyDichVuDienTu() {
 	registerOnline.clickToDynamicRadioIndex(driver, "agreement","3");
 
 	log.info("TC_02_Step: Click dong y");
-	registerOnline.clickToDynamicButton(driver, "Đồng ý");
+	registerOnline.clickToDynamicDateInDateTimePicker(driver, "Đồng ý");
 
 	log.info("TC_02_Step: verify man hinh dang ky thanh cong");
 	verifyEquals(registerOnline.getTextDynamicFollowImageIndex(driver, "1", "2"), "ĐĂNG KÝ THÀNH CÔNG");

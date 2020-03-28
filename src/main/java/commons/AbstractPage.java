@@ -1003,6 +1003,7 @@ public class AbstractPage {
 
 // Click vào ngày trong date time picker , tham số truyền vào là text
 	public void clickToDynamicDateInDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		if (status == true) {
