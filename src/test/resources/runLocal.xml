@@ -23,36 +23,8 @@
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-			<!-- Tiết kiệm trực tuyến -->
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_3" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_4" />
-
-			<!-- Đăng ký trực tuyến -->
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" />
-			
-			<!-- Auto debit -->
-			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
-
-			<!-- vnpay.vietcombank.change_password -->
-			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
-
-			<!-- Nạp tiền VETC -->
-			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
-
-			<!-- Tính toán lãi suất -->
-			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
-
-			<!-- Đặt mục tiêu tiết kiệm -->
-			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
-
-			<!-- Cài đặt hạn mức chuyển tiền -->
-			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" />
-
+		<!-- Điểm thanh toán QR code -->
+			<class name="vnpay.vietcombank.location_QR_Code.Location_QRCode_Flow" />
 
 
 		</classes>
