@@ -943,6 +943,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_14_Step: Nhap email");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "11");
+		registerOnline.hideKeyBoard(driver);
 
 		log.info("TC_14_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
