@@ -14,6 +14,7 @@ public class Account_Data {
 	public static final String DIFFERENT_OWNER_NAME = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 	public static final String USD_ACCOUNT = "0019961177";
 	public static final String USD_ACCOUNT_2 = "0019965492";
+	public static final String USD_ACCOUNT_3 = "0019967806";
 	public static final String EUR_ACCOUNT = "0019961178";
 	public static final String EUR_ACCOUN_2 = "0011140313982";
 	public static final String ACCOUNT_TO = "0129837294";

@@ -80,9 +80,6 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
 
-		log.info("TC_01_STEP_8: lay so du kha dung");
-		String surplus = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/tvInfoBottomRight");
-
 		log.info("TC_01_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
 		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
@@ -108,10 +105,6 @@ public class Shopping_Online_Flow extends Base {
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
-
-		log.info("TC_01_STEP_15: lay ra phi");
-		String getFeeConfirm = shopping.getMoneyByAccount("Số tiền phí").replace(",", "");
-		String[] moneyFeeConfirm = getFeeConfirm.split(" ");
 
 		log.info("TC_01_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -160,8 +153,6 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
 
-		log.info("TC_02_STEP_8: lay so du kha dung");
-		String surplus = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/tvInfoBottomRight");
 
 		log.info("TC_02_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
@@ -189,9 +180,6 @@ public class Shopping_Online_Flow extends Base {
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-		log.info("TC_02_STEP_16: lay ra phi");
-		String getFeeConfirm = shopping.getMoneyByAccount("Số tiền phí").replace(",", "");
-		String[] moneyFeeConfirm = getFeeConfirm.split(" ");
 
 		log.info("TC_02_STEP_17: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -239,8 +227,6 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
 
-		log.info("TC_03_STEP_8: lay so du kha dung");
-		String surplus = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/tvInfoBottomRight");
 
 		log.info("TC_03_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
@@ -268,9 +254,6 @@ public class Shopping_Online_Flow extends Base {
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-		log.info("TC_03_STEP_15: lay ra phi");
-		String getFeeConfirm = shopping.getMoneyByAccount("Số tiền phí").replace(",", "");
-		String[] moneyFeeConfirm = getFeeConfirm.split(" ");
 
 		log.info("TC_03_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -319,8 +302,6 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
 
-		log.info("TC_04_STEP_8: lay so du kha dung");
-		String surplus = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/tvInfoBottomRight");
 
 		log.info("TC_04_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
@@ -348,9 +329,6 @@ public class Shopping_Online_Flow extends Base {
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-		log.info("TC_04_STEP_15: lay ra phi");
-		String getFeeConfirm = shopping.getMoneyByAccount("Số tiền phí").replace(",", "");
-		String[] moneyFeeConfirm = getFeeConfirm.split(" ");
 
 		log.info("TC_04_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
