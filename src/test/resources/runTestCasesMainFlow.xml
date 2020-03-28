@@ -49,20 +49,20 @@
 			<!-- <class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
 
 			<!-- Quản lý danh bạ -->
-			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+<!-- 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" /> -->
 
 
 			<!-- Nạp tiền điện thoại -->
 			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 
 			<!-- Tiết kiệm trực tuyến -->
-			<!-- <class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" /> -->
 			<!-- <class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" /> -->
 			<!-- <class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_3" /> -->
 			<!-- <class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_4" /> -->
 
 			<!-- Đăng ký trực tuyến -->
-			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" /> -->
+			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
 			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" /> -->
 			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" /> -->
 			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" /> -->

@@ -129,7 +129,7 @@ public class SetupContactManagement_Flow extends Base {
 //		transferInVCB.clickToDynamicButton(driver, "Đóng");
 	}
 
-//	@Test
+	@Test
 	public void TC_02_TaoDanhBaNguoiHuong() {
 
 		log.info("TC_02_Step_05: Tao moi 'Thong tin nguoi thu huong' ");
@@ -159,7 +159,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.CARD_FAST_TRANSACTION);
 	}
 
-//	@Test
+	@Test
 	public void TC_03_SuaDanhBaNguoiHuong() {
 
 		log.info("TC_03_Step_01: An nut ba cham ben canh thong tin nguoi huong");
@@ -193,7 +193,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.CARD_ACCOUNT_TRANSACTION));
 	}
 
-//	@Test
+	@Test
 	public void TC_04_XoaDanhBaNguoiHuong() {
 
 		log.info("TC_04_Step_01: An nut ba cham ben canh thong tin nguoi huong");
@@ -213,7 +213,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, Contact.CARD_ACCOUNT_TRANSACTION)));
 	}
 
-//	@Test
+	@Test
 	public void TC_05_TaoDanhBaHoaDon() {
 
 		log.info("TC_05_Step_01: Click ve 'Trang chu'");
@@ -250,7 +250,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.ADSL_SERVICE);
 	}
 
-//	@Test
+	@Test
 	public void TC_06_SuaDanhBaHoaDon() {
 
 		log.info("TC_06_Step_01: An nut ba cham ben canh thong tin nguoi huong");
@@ -341,7 +341,7 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_08_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_02);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), Contact.CONTACT_CARD_NUMBER_02);
-		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền MoMo");
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền điện tử vào ví");
 	}
 
 	@Test
@@ -383,6 +383,7 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_09_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), Contact.CONTACT_CARD_NUMBER_01);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền điện tử vào ví");
 	}
 
 	@Test
