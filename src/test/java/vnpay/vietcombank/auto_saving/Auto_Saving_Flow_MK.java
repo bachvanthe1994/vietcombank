@@ -285,7 +285,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_HuyTietKiemTuDong_TaiKhoanNguon_VND() {
 
 		log.info("TC_04_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -333,7 +333,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 
 		log.info("TC_05_Step_01: Mo tab Menu");
@@ -671,7 +671,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_MK() {
 
 		log.info("TC_10_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -716,7 +716,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_11_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 
 		log.info("TC_11_Step_01: Mo tab Menu");
