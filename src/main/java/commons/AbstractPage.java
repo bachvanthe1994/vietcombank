@@ -270,6 +270,8 @@ public class AbstractPage {
 			}
 		}
 	}
+	
+	
 
 	public void scrollIDownOneTime(AppiumDriver<MobileElement> driver) {
 		Dimension size = driver.manage().window().getSize();
@@ -353,7 +355,7 @@ public class AbstractPage {
 		element.clear();
 		element.sendKeys(value);
 	}
-
+	
 //waits
 	public void implicitWaitLongTime(AppiumDriver<MobileElement> driver) {
 
