@@ -15,10 +15,13 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
-		<parameter name="deviceName" value="Galaxy Note+" />
+		<parameter name="deviceName" value="HUAWEI nova 3i" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
+
+<!-- 		<parameter name="deviceName" value="Galaxy A20s" /> -->
+<!-- 		<parameter name="deviceUDID" value="R9AMC1PYPCJ" /> -->
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
+		<parameter name="phone" value="0904797863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
@@ -45,6 +48,9 @@
 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
 
+			<!-- Quà tặng may mắn -->
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+
 			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
@@ -68,10 +74,11 @@
 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
 
 			<!-- vnpay.vietcombank.change_password -->
-			<!-- <class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
+			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
 
 			<!-- Nạp tiền VETC -->
 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
+
 
 			<!-- Tính toán lãi suất -->
 			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
@@ -95,13 +102,19 @@
 			<!-- Thanh toán vé máy bay -->
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
-			
+
 
 			<!-- Đặt vé xem phim -->
 			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Flow_FilmTicketBooking_Part_1" />
 
 			<!-- Đặt vé khách sạn -->
 			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
+
+			<!-- Mua sắm trực tuyến -->
+			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
+
+			<!-- Đặt vé xe -->
+			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
 
 			<!-- Tiết kiệm tự động -->
 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
@@ -110,11 +123,6 @@
 			<!-- Tra cứu -->
 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
 			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
-
-
-			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
 
 			<!-- Dịch vụ thẻ -->
 			<class name="vnpay.vietcombank.card_services.Card_Services" />
@@ -126,6 +134,10 @@
 			<!-- Tra cứu -->
 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
 			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
+
+			<!-- Điểm thanh toán QR code -->
+			<class name="vnpay.vietcombank.location_QR_Code.Location_QRCode_Flow" />
+
 
 
 
