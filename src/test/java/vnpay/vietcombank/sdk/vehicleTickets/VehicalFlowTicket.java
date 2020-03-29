@@ -15,13 +15,28 @@ import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import vehicalPageObject.VehicalPageObject;
 import vehicalTicketBookingUI.CommonPageUIs;
+import vietcombankUI.DynamicPageUIs;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
 public class VehicalFlowTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private VehicalPageObject vehicalTicket;
-	String amountFee = "- ";
+	public String amountFee = "- ";
+	public String nameTyped = "";
+	public String phoneTyped = "";
+	public String emailTyped = "";
+	public String diemDi = "";
+	public String diemDen = "";
+	public String hangXe = "";
+	public String soGhe = "";
+	public String soLuongVe = "";
+	public String tongTien = "";
+	public String taiKhoanNguon = "";
+	public String maThanhToan = "";
+	public String maGiaodich = "";
+	public String maVe = "";
+
 	LocalDate now = LocalDate.now();
 	String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1 + "/" + getCurrenMonth() + "/" + getCurrentYear();
@@ -39,12 +54,12 @@ public class VehicalFlowTicket extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		login.scrollDownToText(driver, "Đặt vé xe");
+		login.scrollDownToText(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		login.scrollIDownOneTime(driver);
 
-		vehicalTicket.clickToDynamicText("Đặt vé xe");
-
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
+
 	}
 
 	@Test
@@ -66,36 +81,39 @@ public class VehicalFlowTicket extends Base {
 
 		log.info("TC_01_Step_05: Chọn và nhập điểm đi");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, "Điểm đi");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
 		log.info("TC_01_Step_06: Chọn và nhập điểm đến");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, "Điểm đến");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
 		log.info("TC_01_Step_07: Chọn ngày muốn đi");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
+
 		log.info("TC_01_Step_8: Chọn Tìm kiếm chuyến đi");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
 
 		log.info("TC_01_Step_09: Chọn ghế");
-		vehicalTicket.clickToDynamicText("Chọn ghế");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
 		String colorSeat = "(255,255,255)";
 		System.out.println(colorSeat);
 		vehicalTicket.chooseSeats(1, colorSeat);
 
 		log.info("TC_01_Step_10 đặt chuyế đi ");
-		vehicalTicket.clickToDynamicText("Đặt chỗ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
 
 		log.info("TC_01_Step_11 Chọn bến điểm đi ");
-		vehicalTicket.clickToElement( CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
 
 		log.info("TC_01_Step_12 Chọn bến điểm đến ");
-		vehicalTicket.clickToElement( CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
 
 		log.info("TC_01_Step_13 Click chọn Tiếp tục");
-		vehicalTicket.clickToDynamicText("Tiếp tục");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_01_Step_14 Click chọn Cho Phép");
 		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
@@ -103,98 +121,226 @@ public class VehicalFlowTicket extends Base {
 		log.info("TC_01_Step_15 Input email");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, "Nhập thông tin");
 
-		log.info("TC_01_Step_16 Click btn Tiếp tục");
-		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		log.info("------TC_01_Step_16 Lấy thông tin cá nhân-------------");
+		
+		log.info("------TC_01_Step_17 Lấy Họ và tên -------------");
+		nameTyped = vehicalTicket.getDynamicEditText("com.VCB:id/full_name");
 
-		log.info("TC_01_Step_17 Click btn Thanh toán");
+		log.info("------TC_01_Step_18 Số diện thoại -------------");
+		phoneTyped = vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone");
+
+		log.info("------TC_01_Step_19 Email -------------");
+		emailTyped = vehicalTicket.getDynamicEditText("com.VCB:id/email");
+
+		log.info("------TC_01_Step_20 Thông tin điểm xuất phát -------------");
+		diemDi = vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom");
+
+		log.info("------TC_01_Step_21 Thông tin điểm đến -------------");
+		diemDen = vehicalTicket.getDynamicTextView("com.VCB:id/tvTo");
+
+		log.info("------TC_01_Step_22 hãng xe -------------");
+		hangXe = vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe");
+
+		log.info("------TC_01_Step_23 Số ghế -------------");
+		soGhe = vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat");
+
+		log.info("------TC_01_Step_24 Số lượng ghế ngồi -------------");
+		soLuongVe = vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber");
+
+		log.info("------TC_01_Step_25 Số lượng ghế ngồi -------------");
+		tongTien = vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount");
+
+		log.info("TC_01_Step_27 Click btn Tiếp tục");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_01_Step_28 Verify hiển thị màn hình thông tin khách hàng");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
+		
+		log.info("TC_01_Step_29 Lấy thông tin khách hàng hiển thị");
+		verifyEquals(nameTyped, vehicalTicket.getDynamicEditText("com.VCB:id/full_name"));
+		verifyEquals(phoneTyped, vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone"));
+		verifyEquals(emailTyped, vehicalTicket.getDynamicEditText("com.VCB:id/email"));
+		verifyEquals(diemDi, vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom"));
+		verifyEquals(diemDen, vehicalTicket.getDynamicTextView("com.VCB:id/tvTo"));
+		verifyEquals(hangXe, vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe"));
+		verifyEquals(soGhe, vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat"));
+		verifyEquals(soLuongVe, vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber"));
+
+		log.info("TC_01_Step_30 Verify tong tien 1");
+		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount"));
+
+		log.info("TC_01_Step_31 Click btn Thanh toán");
 		vehicalTicket.clickToDynamicButton("Thanh toán");
 
-		log.info("TC_01_Step_18 Click btn Tiếp tục");
-		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		log.info("TC_01_Step_32 Verify hiển thị màn hình thông tin Vé Xe");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
-		log.info("TC_01_Step_19 Click btn Tiếp tục");
-		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		vehicalTicket.scrollUpToText(VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT);
 
-		log.info("TC_01_Step_20 Xác minh màn hình xác nhận thông tin");
+		taiKhoanNguon = vehicalTicket.getDynamicTextView("com.VCB:id/number_account");
+		verifyEquals(nameTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Họ tên"));
+
+		verifyEquals(phoneTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Số điện thoại"));
+
+		verifyEquals(emailTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Email"));
+		vehicalTicket.scrollIDownOneTime(driver);
+
+		verifyEquals(diemDi, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.DESTINATION));
+		verifyEquals(diemDen, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ARRIVAL));
+		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Hãng xe"));
+		verifyEquals(soGhe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Số ghế"));
+		verifyEquals(soLuongVe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Số lượng vé"));
+
+		log.info("TC_01_Step_33 Verify tong tien 2");
+		tongTien = tongTien.replace("đ", "VND");
+		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_TT));
+
+		log.info("TC_01_Step_34 Click btn Tiếp tục");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_01_Step_35 Xác minh thông tin tài khoản nguồn");
+
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT));
+		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
+
+		log.info("TC_01_Step_36 Click btn Tiếp tục");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_01_Step_37 Nhập mật khẩu của tài khoản");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, "Nhập mật khẩu");
 
-		log.info("TC_01_Step_21 Click btn Tiếp tục");
-		vehicalTicket.clickToDynamicButton("Tiếp tục");
-		log.info("TC_01_Step_22 Xác Minh giao dịch thành công");
-		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed("THANH TOÁN THÀNH CÔNG"));
+		log.info("TC_01_Step_38 Click btn Tiếp tục");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_01_Step_39 Xác Minh giao dịch thành công");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
+
+		log.info("TC-O1_Step_40 Verify thông tin mã thanh toán");
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+
+		log.info("TC-O1_Step_41 Lấy thông tin mã giao dịch");
+		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
+
+		log.info("TC-O1_Step_42 Verify số tiền thanh toán");
+		tongTien = tongTien.replace("đ", "VND");
+		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvAmount"));
 	}
 
 	@Test
 	public void TC_02_KiemTraDichSuGiaoDich() {
-		log.info("TC_02_Step_01_Lấy mã thanh toán");
-		String maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Mã thanh toán");
-		
-		log.info("TC_02_Step_03_Lấy số tiền giao dịch");
-		String amount = vehicalTicket.getTextDynamicAmount(CommonPageUIs.DYNAMIC_AMOUNT, "com.VCB:id/tvAmount");
-		
-		amountFee += amount;
-		String replaceAmount = amount.replace("VND", "đ");
-		System.out.println(replaceAmount);
 
 		log.info("TC_02_Step_03_Click thực hiện giao dịch mới");
 		vehicalTicket.clickToDynamicButton("Thực hiện giao dịch mới");
 
 		log.info("TC_02_Step_04_Hiển thị màn hình đặt vé xe và click lịch sử giao dịch");
-		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed("Đặt vé xe"));
-		
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
+
 		log.info("TC_02_Step_05_Click lịch sử đặt vé");
-		vehicalTicket.clickToDynamicText("Lịch sử đặt vé");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.HISTORY_TICKET);
 
 		log.info("TC_02_Step_06_Verify mã thanh toán");
-		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Mã thanh toán"), maThanhToan);
+		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT), maThanhToan);
+
+		log.info("TC_02_Step_06_Lấy thông tin mã vé");
+		maVe = vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, VehicalData.DATA_ORDER_TICKET.CODE_TICKET);
+
+		log.info("TC_02_Step_06_Verify hãng xe");
+		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, "Hãng xe"));
+
+		log.info("TC_02_Step_06_Verify htổng tiên");
+		tongTien = tongTien.replace("VND", "đ");
 
 		log.info("TC_02_Step_07_Verify số tiền");
-		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Tổng tiền"), replaceAmount);
+		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, "Tổng tiền"));
+
 	}
 
 	@Test
 	public void TC_03_truyVanTaiKhoan() {
-		log.info("TC_03_Step_01_Click btn back lan 1");
+		log.info("TC_03_Step_01_Click btn back lần 1");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
-		
-		log.info("TC_03_Step_02_Click btn back");
+
+		log.info("TC_03_Step_02_Click btn back lần 2");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
-		
+
 		log.info("TC_03_Step_03_Chuyển sang màn hình Đặt vé ");
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
-		
+
 		log.info("TC_03_Step_04_Click btn menu");
 		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
-		
+
 		log.info("TC_03_Step_05_Click chọn phần Báo cáo giao dịch");
-		vehicalTicket.clickToDynamicText("Báo cáo giao dịch");
-		
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
+
 		log.info("TC_03_Step_06_Kiểm tra hiển thị màn hình báo cáo giao dịch ");
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
 
+		log.info("TC_03_Step_06_Kiểm tra hiển thị thông tin tài khoản nguồn ");
+		verifyEquals(taiKhoanNguon, vehicalTicket.getDynamicTextView("com.VCB:id/tvSelectAcc"));
+
 		log.info("TC_03_Step_17: Chọn Tìm kiếm chuyến đi");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_SEARCH);
-		
-		log.info("TC_03_Step_18: Kiểm tra thông tin giao dịch số tiền đã mua mục TOÀN BỘ ");
-		String fee = vehicalTicket.getTextDynamicAmount(CommonPageUIs.DYNAMIC_AMOUNT, "com.VCB:id/tvMoney");
-		
-		System.out.println(fee);
-		System.out.println(amountFee);
-		verifyEquals(fee, amountFee);
 
+		log.info("TC_03_Step_17: Verify dynamic bản ghi thanh toán");
+		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llRoot");
+
+		log.info("TC_03_Step_18: Kiểm tra hiển thị màn hình chi tiết giao dịch ");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.DETAIL_GD));
+
+		log.info("TC_03_Step_19: Kiểm tra tìa khoản trích nợ ");
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ACCOUNT));
+
+		log.info("TC_03_Step_19: Kiểm tra mã thanh toán ");
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+
+		log.info("TC_03_Step_19: Kiểm tra số lệnh giao dịch ");
+		verifyEquals(maGiaodich, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NUMBER_ORDER));
+
+		tongTien = tongTien.replace("đ", "VND");
+
+		log.info("TC_03_Step_19: Kiểm tra số tiền giao dịch ");
+
+		String tienSo = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT);
+		int indexTien = tienSo.indexOf("(");
+		String subTienSo = tienSo.substring(0, indexTien - 1);
+		verifyEquals(tongTien, subTienSo);
 	}
 
 	@Test
 	public void TC_04_truyVanTaiKhoan() {
-		log.info("TC_04_Step_01: Click chọn mục Tiền ra ");
+
+		log.info("TC_04_Step_01_Click btn back ");
+		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_04_Step_02: Click chọn mục Tiền ra ");
 		vehicalTicket.clickToDynamicText("Tiền ra");
-		
-		log.info("TC_04_Step_02: Kiểm tra thông tin giao dịch số tiền đã mua mục Tiền ra ");
-		String fee = vehicalTicket.getTextDynamicAmount(CommonPageUIs.DYNAMIC_AMOUNT, "com.VCB:id/tvMoney");
-		
-		System.out.println(fee);
-		System.out.println(amountFee);
-		verifyEquals(fee, amountFee);
+
+		log.info("TC_04_Step_03_Kiểm tra hiển thị thông tin tài khoản nguồn ");
+		verifyEquals(taiKhoanNguon, vehicalTicket.getDynamicTextView("com.VCB:id/tvSelectAcc"));
+
+		log.info("TC_04_Step_04: Verify dynamic bản ghi thanh toán");
+		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llRoot");
+
+		log.info("TC_04_Step_05: Kiểm tra hiển thị màn hình chi tiết giao dịch ");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.DETAIL_GD));
+
+		log.info("TC_04_Step_06: Kiểm tra tìa khoản trích nợ ");
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ACCOUNT));
+
+		log.info("TC_04_Step_07: Kiểm tra mã thanh toán ");
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+
+		log.info("TC_04_Step_08: Kiểm tra số lệnh giao dịch ");
+		verifyEquals(maGiaodich, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NUMBER_ORDER));
+
+		tongTien = tongTien.replace("đ", "VND");
+
+		log.info("TC_04_Step_09: Kiểm tra số tiền giao dịch ");
+		String tienSo = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT);
+		int indexTien = tienSo.indexOf("(");
+		String subTienSo = tienSo.substring(0, indexTien - 1);
+		verifyEquals(tongTien, subTienSo);
+
 	}
 
 	@AfterClass(alwaysRun = true)
