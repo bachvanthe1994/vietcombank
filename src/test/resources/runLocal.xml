@@ -17,14 +17,13 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="Galaxy S9" />
-		<parameter name="deviceUDID" value="8d7a4491" />
-		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub"/>
+		<parameter name="phone" value="0904797866" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-		<!-- Điểm thanh toán QR code -->
-			<class name="vnpay.vietcombank.location_QR_Code.Location_QRCode_Flow" />
+			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
 
 
 		</classes>

@@ -37,7 +37,7 @@ public class VehicalTicket_Validate_Part5 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		login.scrollDownToText(driver, "Đặt vé xe");
+		login.scrollDownToText(driver, "© 2019 Vietcombank");
 		login.scrollIDownOneTime(driver);
 
 		vehicalTicket.clickToDynamicText("Đặt vé xe");

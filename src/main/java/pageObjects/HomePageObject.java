@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -76,9 +75,8 @@ public class HomePageObject extends AbstractPage {
 		int y = elementFind.getLocation().y;
 		int startX = (int) (size.getWidth() * 0.30);
 		int endX = (int) (size.getWidth() * 0.80);
-		TouchAction touch = new TouchAction(driver);	
+		TouchAction touch = new TouchAction(driver);
 		touch.longPress(PointOption.point(startX, y)).moveTo(PointOption.point(endX, y)).release().perform();
-
 
 	}
 
@@ -87,12 +85,6 @@ public class HomePageObject extends AbstractPage {
 		scrollRightLeft(HomePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
-
-//	/* SCROLL LeftToTexT */
-//	public void scrollRightToText(String dynamicText) {
-//		scrollLeftToRight(HomePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
-//
-//	}
 
 	// Click dynamic text View
 	public void clickToDynamicTextViewByText(String dynamicText) {
@@ -198,9 +190,9 @@ public class HomePageObject extends AbstractPage {
 		scrollUp(driver, HomePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
-	
+
 	// get text theo text
-	public String getTextDynamicByID( String... dynamicID) {
+	public String getTextDynamicByID(String... dynamicID) {
 		boolean status = false;
 		String text = null;
 		status = waitForElementVisible(driver, HomePageUIs.DYNAMIC_LIST_ICON, dynamicID);
@@ -211,6 +203,5 @@ public class HomePageObject extends AbstractPage {
 		return text;
 
 	}
-
 
 }
