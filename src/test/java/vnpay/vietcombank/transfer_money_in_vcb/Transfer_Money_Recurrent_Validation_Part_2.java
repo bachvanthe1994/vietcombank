@@ -389,7 +389,6 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_19_05_Chon Ngay Ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
 
-		endDate = getForwardYear(1);
 		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 2;
 		log.info("TC_19_06_Kiem tra khong cho phep chon");
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
