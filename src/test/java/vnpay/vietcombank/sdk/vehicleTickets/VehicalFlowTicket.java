@@ -63,284 +63,471 @@ public class VehicalFlowTicket extends Base {
 	}
 
 	@Test
-	public void TC_01_DatVeXeThanhCong() {
-		log.info("TC_01_Step_01: kiểm tra hiển thị thơi gian khởi hành");
+	public void TC_01_MuaVeXeBangPassword() {
+		log.info("============TC_01_Step_01: Kiem tra hien thi thoi gian khoi hanh");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
 		verifyEquals(DayStart, today);
 
-		log.info("TC_01_Step_02: kiểm tra hiển thị ngày hôm nay");
+		log.info("=========TC_01_Step_02: Kiem tra hien thi ngay hom nay");
 		String today = vehicalTicket.getDynamicDayStart("com.VCB:id/tvHomnay");
 		verifyEquals(today, VehicalData.DATA_ORDER_TICKET.TODAY);
 
-		log.info("TC_01_Step_03: kiểm tra hiển thị ngày mai");
+		log.info("===========TC_01_Step_03: Kiem tra hien thi ngay mai");
 		String tomorrow = vehicalTicket.getDynamicDayStart("com.VCB:id/tvNgayMai");
 		verifyEquals(tomorrow, VehicalData.DATA_ORDER_TICKET.TOMORROW);
 
-		log.info("TC_01_Step_04: kiểm tra hiển thị button tìm kiếm chuyến đi");
+		log.info("=======TC_01_Step_04: Kiem tra hien thi button tim kiem chuyen di");
 		verifyTrue(vehicalTicket.isDynamicButtonDisplayed(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP));
 
-		log.info("TC_01_Step_05: Chọn và nhập điểm đi");
+		log.info("==========TC_01_Step_05: Chon va nhap diem di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
-		log.info("TC_01_Step_06: Chọn và nhập điểm đến");
+		log.info("========TC_01_Step_06: Chon va nhap diem den");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
-		log.info("TC_01_Step_07: Chọn ngày muốn đi");
+		log.info("=====TC_01_Step_07: Chon ngay muon di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
 
-		log.info("TC_01_Step_8: Chọn Tìm kiếm chuyến đi");
+		log.info("TC_01_Step_8: Tim kiem chuyen di");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
 
-		log.info("TC_01_Step_09: Chọn ghế");
+		log.info("TC_01_Step_09: Chon ghe: ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
 		String colorSeat = "(255,255,255)";
-		System.out.println(colorSeat);
 		vehicalTicket.chooseSeats(1, colorSeat);
 
-		log.info("TC_01_Step_10 đặt chuyế đi ");
+		log.info("TC_01_Step_10 : Dat chuyen di: ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
 
-		log.info("TC_01_Step_11 Chọn bến điểm đi ");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
-		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		log.info("TC_01_Step_11: Chon ben diem di: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
-		log.info("TC_01_Step_12 Chọn bến điểm đến ");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
-		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL);
+		log.info("TC_01_Step_12 Chon ben diem den: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
-		log.info("TC_01_Step_13 Click chọn Tiếp tục");
+		log.info("TC_01_Step_13 Click chon tiep tuc ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		log.info("TC_01_Step_14 Click chọn Cho Phép");
+		log.info("TC_01_Step_14 Click chọn Cho phep");
 		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("TC_01_Step_15 Input email");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, "Nhập thông tin");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
-		log.info("------TC_01_Step_16 Lấy thông tin cá nhân-------------");
-		
-		log.info("------TC_01_Step_17 Lấy Họ và tên -------------");
+		log.info("------TC_01_Step_16 Lay thong tin ca nhan-------------");
+
+		log.info("------TC_01_Step_17 ho va ten-------------");
 		nameTyped = vehicalTicket.getDynamicEditText("com.VCB:id/full_name");
 
-		log.info("------TC_01_Step_18 Số diện thoại -------------");
+		log.info("------TC_01_Step_18 So dien thoai -------------");
 		phoneTyped = vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone");
 
-		log.info("------TC_01_Step_19 Email -------------");
+		log.info("------TC_01_Step_19 Email-------------");
 		emailTyped = vehicalTicket.getDynamicEditText("com.VCB:id/email");
 
-		log.info("------TC_01_Step_20 Thông tin điểm xuất phát -------------");
+		log.info("------TC_01_Step_20 thon tin diem xuat phat-------------");
 		diemDi = vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom");
 
-		log.info("------TC_01_Step_21 Thông tin điểm đến -------------");
+		log.info("------TC_01_Step_21 Thong tin diem den-------------");
 		diemDen = vehicalTicket.getDynamicTextView("com.VCB:id/tvTo");
 
-		log.info("------TC_01_Step_22 hãng xe -------------");
+		log.info("------TC_01_Step_22 Hang xe -------------");
 		hangXe = vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe");
 
-		log.info("------TC_01_Step_23 Số ghế -------------");
+		log.info("------TC_01_Step_23  So ghe-------------");
 		soGhe = vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat");
 
-		log.info("------TC_01_Step_24 Số lượng ghế ngồi -------------");
+		log.info("------TC_01_Step_24 So luong ghe ngoi-------------");
 		soLuongVe = vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber");
 
-		log.info("------TC_01_Step_25 Số lượng ghế ngồi -------------");
+		log.info("------TC_01_Step_25 Tong so tien can thanh toan -------------");
 		tongTien = vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount");
 
-		log.info("TC_01_Step_27 Click btn Tiếp tục");
+		log.info("TC_01_Step_26 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		log.info("TC_01_Step_28 Verify hiển thị màn hình thông tin khách hàng");
+		log.info("TC_01_Step_27 Verify hien thi man hinh thong tin khach hang");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
-		
-		log.info("TC_01_Step_29 Lấy thông tin khách hàng hiển thị");
+
+		log.info("--------TC_01_Step_28 Verify ho va ten khach hang------------------");
 		verifyEquals(nameTyped, vehicalTicket.getDynamicEditText("com.VCB:id/full_name"));
+
+		log.info("--------TC_01_Step_30 Verify So dien thoai ------------------");
 		verifyEquals(phoneTyped, vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone"));
+
+		log.info("--------TC_01_Step_31 Verify Email------------------");
 		verifyEquals(emailTyped, vehicalTicket.getDynamicEditText("com.VCB:id/email"));
+
+		log.info("--------TC_01_Step_32 Verify diem di------------------");
 		verifyEquals(diemDi, vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom"));
+
+		log.info("--------TC_01_Step_33 Verify diem den-----------------");
 		verifyEquals(diemDen, vehicalTicket.getDynamicTextView("com.VCB:id/tvTo"));
+
+		log.info("--------TC_01_Step_34 Verify hhang Xe-----------------");
 		verifyEquals(hangXe, vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe"));
+
+		log.info("--------TC_01_Step_35 Verify So ghe ngoi------------------");
 		verifyEquals(soGhe, vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat"));
+
+		log.info("--------TC_01_Step_36 Verify tong so ve-----------------");
 		verifyEquals(soLuongVe, vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber"));
 
-		log.info("TC_01_Step_30 Verify tong tien 1");
+		log.info("TC_01_Step_37 Verify tong tien ");
 		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount"));
 
-		log.info("TC_01_Step_31 Click btn Thanh toán");
-		vehicalTicket.clickToDynamicButton("Thanh toán");
+		log.info("TC_01_Step_38 Click btutton Thanh toan");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
 
-		log.info("TC_01_Step_32 Verify hiển thị màn hình thông tin Vé Xe");
+		log.info("TC_01_Step_39 Verify hien thi man hinh thong tin ve xe");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
+		log.info("TC_01_Step_40 Lay thong tin tai khoan nguon");
 		vehicalTicket.scrollUpToText(VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT);
-
 		taiKhoanNguon = vehicalTicket.getDynamicTextView("com.VCB:id/number_account");
-		verifyEquals(nameTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Họ tên"));
 
-		verifyEquals(phoneTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Số điện thoại"));
+		log.info("--------TC_01_Step_41 Verify ho va ten khach hang------------------");
+		verifyEquals(nameTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NAME));
 
-		verifyEquals(emailTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Email"));
+		log.info("--------TC_01_Step_42 Verify ho va ten khach hang------------------");
+		verifyEquals(phoneTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.PHONE_NUMBER));
+
+		log.info("--------TC_01_Step_42 Verify Email------------------");
+		verifyEquals(emailTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS));
 		vehicalTicket.scrollIDownOneTime(driver);
 
+		log.info("--------TC_01_Step_44 Verify diem di ------------------");
 		verifyEquals(diemDi, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.DESTINATION));
-		verifyEquals(diemDen, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ARRIVAL));
-		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Hãng xe"));
-		verifyEquals(soGhe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Số ghế"));
-		verifyEquals(soLuongVe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, "Số lượng vé"));
 
-		log.info("TC_01_Step_33 Verify tong tien 2");
+		log.info("--------TC_01_Step_45 Verify diem den ------------------");
+		verifyEquals(diemDen, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ARRIVAL));
+
+		log.info("--------TC_01_Step_46 Verify hang xe------------------");
+		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.BRAND));
+
+		log.info("--------TC_01_Step_47 Verify So ghe------------------");
+		verifyEquals(soGhe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.SEAT_NUMBER));
+
+		log.info("--------TC_01_Step_48_Verify So luong ve-----------------");
+		verifyEquals(soLuongVe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.TOTAL_TICKET));
+
+		log.info("-----------TC_01_Step_49 Verify tong tien");
 		tongTien = tongTien.replace("đ", "VND");
 		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_TT));
 
-		log.info("TC_01_Step_34 Click btn Tiếp tục");
+		log.info("------------TC_01_Step_50 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		log.info("TC_01_Step_35 Xác minh thông tin tài khoản nguồn");
+		log.info("-------TC_01_Step_51 Xac nhan hien thi man hinh xac nhan thong tin");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_CONFIRM));
 
+		log.info("--------TC_01_Step_52 Verrify tai khoan nguon-----");
 		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT));
 		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
 
-		log.info("TC_01_Step_36 Click btn Tiếp tục");
+		log.info("-------TC_01_Step_53_ Click chon phuong thuc xac thuc");
+		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llptxt");
+
+		log.info("-------TC_01_Step_54_ Verify hien thi man hinh cac phuong thuc xac minh");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_SELECT));
+
+		log.info("-------TC_01_Step_55 Chon hinh thuc xac thuc là mat khau");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PASS);
+
+		log.info("-------TC_01_Step_56 Click button Tiep tuc");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		log.info("TC_01_Step_37 Nhập mật khẩu của tài khoản");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, "Nhập mật khẩu");
+		log.info("-------TC_01_Step_57 Nhap mat khau cua tai khoan");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
 
-		log.info("TC_01_Step_38 Click btn Tiếp tục");
+		log.info("TC_01_Step_58 Click btn Tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		log.info("TC_01_Step_39 Xác Minh giao dịch thành công");
+		log.info("----------TC_01_Step_59 Verify hien thi man hinh giao dich thanh cong");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
 
-		log.info("TC-O1_Step_40 Verify thông tin mã thanh toán");
+		log.info("----------TC-O1_Step_60 Verify thông tin ma thanh toan");
 		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
 
-		log.info("TC-O1_Step_41 Lấy thông tin mã giao dịch");
+		log.info("---------------TC-O1_Step_61 Lấy thông tin mã giao dịch");
 		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
 
-		log.info("TC-O1_Step_42 Verify số tiền thanh toán");
+		log.info("--------------TC-O1_Step_62 Verify số tiền thanh toán");
 		tongTien = tongTien.replace("đ", "VND");
 		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvAmount"));
 	}
 
 	@Test
-	public void TC_02_KiemTraDichSuGiaoDich() {
+	public void TC_02_MuaVeXeBangOTP() {
+		
+		log.info("--------TC_02_Step_01_Click Thuc hien giao dich moi");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BTN_CONTINUE);
+		
 
-		log.info("TC_02_Step_03_Click thực hiện giao dịch mới");
-		vehicalTicket.clickToDynamicButton("Thực hiện giao dịch mới");
+		log.info("==========TC_02_Step_02: Chon va nhap diem di");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
-		log.info("TC_02_Step_04_Hiển thị màn hình đặt vé xe và click lịch sử giao dịch");
+		log.info("========TC_02_Step_03: Chon va nhap diem den");
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+
+		log.info("=====TC_02_Step_04: Chon ngay muon di");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
+
+		log.info("TC_02_Step_05: Tim kiem chuyen di");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
+
+		log.info("TC_02_Step_06: Chon ghe: ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
+		String colorSeat = "(255,255,255)";
+		vehicalTicket.chooseSeats(1, colorSeat);
+
+		log.info("TC_02_Step_07 : Dat chuyen di: ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
+		
+		log.info("-----------TC_02_Step_08: Chon ben diem di: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL,"com.VCB:id/tvAddress");
+
+		log.info("-----------TC_02_Step_9 Chon ben diem den: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL,"com.VCB:id/tvAddress");
+
+		log.info("---------------TC_02_Step_10 Click chon tiep tuc ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("------------TC_02_Step_11___Input email");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+
+		log.info("------TC_02_Step_12 Lay thong tin ca nhan-------------");
+
+		log.info("------TC_02_Step_13 ho va ten-------------");
+		nameTyped = vehicalTicket.getDynamicEditText("com.VCB:id/full_name");
+
+		log.info("------TC_02_Step_14 So dien thoai -------------");
+		phoneTyped = vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone");
+
+		log.info("------TC_02_Step_15Email-------------");
+		emailTyped = vehicalTicket.getDynamicEditText("com.VCB:id/email");
+
+		log.info("------TC_02_Step_16 thon tin diem xuat phat-------------");
+		diemDi = vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom");
+
+		log.info("------TC_02_Step_17 Thong tin diem den-------------");
+		diemDen = vehicalTicket.getDynamicTextView("com.VCB:id/tvTo");
+
+		log.info("------TC_02_Step_18 Hang xe -------------");
+		hangXe = vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe");
+
+		log.info("------TC_02_Step_19  So ghe-------------");
+		soGhe = vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat");
+
+		log.info("------TC_02_Step_20 So luong ghe ngoi-------------");
+		soLuongVe = vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber");
+
+		log.info("------TC_02_Step_21 Tong so tien can thanh toan -------------");
+		tongTien = vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount");
+
+		log.info("-------TC_02_Step_22 Click button tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("-------TC_02_Step_23Verify hien thi man hinh thong tin khach hang");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
+
+		log.info("--------TC_02_Step_24 Verify ho va ten khach hang------------------");
+		verifyEquals(nameTyped, vehicalTicket.getDynamicEditText("com.VCB:id/full_name"));
+
+		log.info("--------TC_02_Step_25 Verify So dien thoai ------------------");
+		verifyEquals(phoneTyped, vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone"));
+
+		log.info("--------TC_02_Step_26 Verify Email------------------");
+		verifyEquals(emailTyped, vehicalTicket.getDynamicEditText("com.VCB:id/email"));
+
+		log.info("--------TC_02_Step_27 Verify diem di------------------");
+		verifyEquals(diemDi, vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom"));
+
+		log.info("--------TC_02_Step_28 Verify diem den-----------------");
+		verifyEquals(diemDen, vehicalTicket.getDynamicTextView("com.VCB:id/tvTo"));
+
+		log.info("--------TC_02_Step_30 Verify hhang Xe-----------------");
+		verifyEquals(hangXe, vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe"));
+
+		log.info("--------TC_02_Step_31 Verify So ghe ngoi------------------");
+		verifyEquals(soGhe, vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat"));
+
+		log.info("--------TC_02_Step_32 Verify tong so ve-----------------");
+		verifyEquals(soLuongVe, vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber"));
+
+		log.info("------------TC_02_Step_33 Verify tong tien ");
+		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount"));
+
+		log.info("-------TC_02_Step_34 Click btutton Thanh toan");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
+
+		log.info("---------TC_02_Step_35 Verify hien thi man hinh thong tin ve xe");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
+
+		log.info("----------TC_02_Step_36 Lay thong tin tai khoan nguon");
+		vehicalTicket.scrollUpToText(VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT);
+		taiKhoanNguon = vehicalTicket.getDynamicTextView("com.VCB:id/number_account");
+
+		log.info("--------TC_02_Step_37 Verify ho va ten khach hang------------------");
+		verifyEquals(nameTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NAME));
+
+		log.info("--------TC_02_Step_38 Verify ho va ten khach hang------------------");
+		verifyEquals(phoneTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.PHONE_NUMBER));
+
+		log.info("--------TC_02_Step_39 Verify Email------------------");
+		verifyEquals(emailTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS));
+		vehicalTicket.scrollIDownOneTime(driver);
+
+		log.info("--------TC_02_Step_40 Verify diem di ------------------");
+		verifyEquals(diemDi, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.DESTINATION));
+
+		log.info("--------TC_02_Step_41 Verify diem den ------------------");
+		verifyEquals(diemDen, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ARRIVAL));
+
+		log.info("--------TC_02_Step_42 Verify hang xe------------------");
+		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.BRAND));
+
+		log.info("--------TC_02_Step_43 Verify So ghe------------------");
+		verifyEquals(soGhe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.SEAT_NUMBER));
+
+		log.info("--------TC_02_Step_44 Verify So luong ve-----------------");
+		verifyEquals(soLuongVe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.TOTAL_TICKET));
+
+		log.info("-----------TC_02_Step_45 Verify tong tien");
+		tongTien = tongTien.replace("đ", "VND");
+		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_TT));
+
+		log.info("------------TC_02_Step_46 Click button tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("-------TC_02_Step_47 Xac nhan hien thi man hinh xac nhan thong tin");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_CONFIRM));
+
+		log.info("--------TC_02_Step_48 Verrify tai khoan nguon-----");
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT));
+		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
+
+		log.info("-------TC_02_Step_49 Click chon phuong thuc xac thuc");
+		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llptxt");
+
+		log.info("-------TC_02_Step_50- Verify hien thi man hinh cac phuong thuc xac minh");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_SELECT));
+
+		log.info("-------TC_02_Step_51- Chon hinh thuc xac thuc là mat khau");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.OTP);
+
+		log.info("-------TC_02_Step_52 Click button Tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		
+		log.info("-------TC_02_Step_53Nhap ma OTP");
+		vehicalTicket.inputToDynamicOtp(VehicalData.DATA_ORDER_TICKET.NUMBER_OTP, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		
+		log.info("TC_02_Step_54 Click btn Tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("----------TC_02_Step_55 Verify hien thi man hinh giao dich thanh cong");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
+
+		log.info("----------TC-O2_Step_56Verify thông tin ma thanh toan");
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+
+		log.info("---------------TC-O2_Step_57 Lấy thông tin mã giao dịch");
+		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
+
+		log.info("--------------TC-O2_Step_58 Verify số tiền thanh toán");
+		tongTien = tongTien.replace("đ", "VND");
+		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvAmount"));
+
+	}
+
+	@Test
+	public void TC_03_KiemTraLichSuGiaoDich() {
+
+		log.info("--------TC_03_Step_01_Click Thuc hien giao dich moi");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BTN_CONTINUE);
+
+		log.info("-----------TC_03_Step_02_Hien thi man hinh dat ve ");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
 
-		log.info("TC_02_Step_05_Click lịch sử đặt vé");
+		log.info("----------TC_03_Step_03_Click lich su dat ve");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.HISTORY_TICKET);
 
-		log.info("TC_02_Step_06_Verify mã thanh toán");
+		log.info("-------------TC_03_Step_04_Verify ma thanh toan");
 		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT), maThanhToan);
 
-		log.info("TC_02_Step_06_Lấy thông tin mã vé");
+		log.info("------------TC_03_Step_05_lay thong tin ma ve");
 		maVe = vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, VehicalData.DATA_ORDER_TICKET.CODE_TICKET);
 
-		log.info("TC_02_Step_06_Verify hãng xe");
-		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, "Hãng xe"));
+		log.info("---------TC_03_Step_06_Verify Brand of car");
+		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, VehicalData.DATA_ORDER_TICKET.BRAND));
 
-		log.info("TC_02_Step_06_Verify htổng tiên");
+		log.info("--------TC_03_Step_07_Verify Tong tien");
 		tongTien = tongTien.replace("VND", "đ");
-
-		log.info("TC_02_Step_07_Verify số tiền");
-		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, "Tổng tiền"));
+		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, VehicalData.DATA_ORDER_TICKET.TOTAL_AMOUNT));
 
 	}
 
 	@Test
-	public void TC_03_truyVanTaiKhoan() {
-		log.info("TC_03_Step_01_Click btn back lần 1");
+	public void TC_04_KiemTraBaocaogaodich() {
+		log.info("-----------TC_04_Step_01_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 
-		log.info("TC_03_Step_02_Click btn back lần 2");
+		log.info("-----------------TC_04_Step_02_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 
-		log.info("TC_03_Step_03_Chuyển sang màn hình Đặt vé ");
+		log.info("-------------TC_04_Step_03_Chuyen sang man hinh dat ve ");
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 
-		log.info("TC_03_Step_04_Click btn menu");
+		log.info("------------TC_04_Step_04_Click btn menu");
 		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
 
-		log.info("TC_03_Step_05_Click chọn phần Báo cáo giao dịch");
+		log.info("---------TC_04_Step_05_Click Chon muc bao cao giao dich");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
 
-		log.info("TC_03_Step_06_Kiểm tra hiển thị màn hình báo cáo giao dịch ");
+		log.info("----------TC_04_Step_06_Verify hien thi man hinh bao cao giao dich ");
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
 
-		log.info("TC_03_Step_06_Kiểm tra hiển thị thông tin tài khoản nguồn ");
+		log.info("----------TC_04_Step_06_Verify thong tin tai khoan nguon ");
 		verifyEquals(taiKhoanNguon, vehicalTicket.getDynamicTextView("com.VCB:id/tvSelectAcc"));
 
-		log.info("TC_03_Step_17: Chọn Tìm kiếm chuyến đi");
+		log.info("------------TC_04_Step_17: Chon tin kiem chuyen di");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_SEARCH);
 
-		log.info("TC_03_Step_17: Verify dynamic bản ghi thanh toán");
+		log.info("----------TC_04_Step_17: Verify ban ghi Thanh toan ");
 		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llRoot");
 
-		log.info("TC_03_Step_18: Kiểm tra hiển thị màn hình chi tiết giao dịch ");
+		log.info("-----------TC_04_Step_18: Verofy hien thi man hinh chi tiet bao cao giao dich ");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.DETAIL_GD));
 
-		log.info("TC_03_Step_19: Kiểm tra tìa khoản trích nợ ");
+		log.info("---------TC_04_Step_19: Verify tai khoan trich no");
 		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ACCOUNT));
 
-		log.info("TC_03_Step_19: Kiểm tra mã thanh toán ");
+		log.info("---------TC_04_Step_19: Verify ma thanh toan ");
 		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
 
-		log.info("TC_03_Step_19: Kiểm tra số lệnh giao dịch ");
+		log.info("TC_04_Step_19: Verify so lenh giao dich");
 		verifyEquals(maGiaodich, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NUMBER_ORDER));
 
+
+		log.info("---------TC_04_Step_19: Verify so tien giao dich ");
 		tongTien = tongTien.replace("đ", "VND");
-
-		log.info("TC_03_Step_19: Kiểm tra số tiền giao dịch ");
-
 		String tienSo = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT);
 		int indexTien = tienSo.indexOf("(");
 		String subTienSo = tienSo.substring(0, indexTien - 1);
 		verifyEquals(tongTien, subTienSo);
-	}
-
-	@Test
-	public void TC_04_truyVanTaiKhoan() {
-
-		log.info("TC_04_Step_01_Click btn back ");
-		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
-		
-		log.info("TC_04_Step_02: Click chọn mục Tiền ra ");
-		vehicalTicket.clickToDynamicText("Tiền ra");
-
-		log.info("TC_04_Step_03_Kiểm tra hiển thị thông tin tài khoản nguồn ");
-		verifyEquals(taiKhoanNguon, vehicalTicket.getDynamicTextView("com.VCB:id/tvSelectAcc"));
-
-		log.info("TC_04_Step_04: Verify dynamic bản ghi thanh toán");
-		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llRoot");
-
-		log.info("TC_04_Step_05: Kiểm tra hiển thị màn hình chi tiết giao dịch ");
-		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.DETAIL_GD));
-
-		log.info("TC_04_Step_06: Kiểm tra tìa khoản trích nợ ");
-		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ACCOUNT));
-
-		log.info("TC_04_Step_07: Kiểm tra mã thanh toán ");
-		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
-
-		log.info("TC_04_Step_08: Kiểm tra số lệnh giao dịch ");
-		verifyEquals(maGiaodich, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NUMBER_ORDER));
-
-		tongTien = tongTien.replace("đ", "VND");
-
-		log.info("TC_04_Step_09: Kiểm tra số tiền giao dịch ");
-		String tienSo = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT);
-		int indexTien = tienSo.indexOf("(");
-		String subTienSo = tienSo.substring(0, indexTien - 1);
-		verifyEquals(tongTien, subTienSo);
-
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -52,7 +52,25 @@ public class VehicalData {
 	public static final String DETAIL_GD= "Chi tiết giao dịch";
 	
 	public static final String ACCOUNT= "Tài khoản/thẻ trích nợ";
+	public static final String THANHTOAN= "Thanh toán";
+	public static final String INPUT_PASSWORD="Nhập mật khẩu";
+	public static final String NAME="Họ tên";
+	public static final String PHONE_NUMBER="Số điện thoại";
+	public static final String EMAIL_ADDRESS="Email";
+	public static final String BRAND="Hãng xe";
+	public static final String SEAT_NUMBER="Số ghế";
+	public static final String TOTAL_TICKET="Số lượng vé";
+	public static final String INPUT_INFO="Nhập thông tin";
 
+	public static final String TOTAL_AMOUNT="Tổng tiền";
+	public static final String BTN_CONTINUE="Thực hiện giao dịch mới";
+	public static final String TITILE_CONFIRM="Xác nhận thông tin";
+	public static final String TITILE_SELECT="Chọn phương thức xác thực";
+
+	public static final String OTP="SMS OTP";
+	public static final String PASS="Mật khẩu đăng nhập";
+
+	public static final String NUMBER_OTP="123456";
 
 
 	
