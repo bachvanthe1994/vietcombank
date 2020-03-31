@@ -274,6 +274,10 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_24_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
+		
+		log.info("TC_24_Step_Chon ngan hang thu huong");
+		transferMoney.clickToDynamicComboboxText(driver, "Thông tin người hưởng", "2");
+		transferMoney.clickToDynamicLinerLayoutIndex(driver, "6");
 
 		log.info("TC_16_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");

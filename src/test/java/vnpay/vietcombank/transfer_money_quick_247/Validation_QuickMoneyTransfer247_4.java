@@ -194,7 +194,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.inputToDynamicInputBoxByHeader(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Thông tin người hưởng", "1");
 
 		log.info("TC_57_chon ngan hang huong");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
+		transferMoney.clickToDynamicComboboxText(driver, "Thông tin người hưởng", "2");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_57_Step_Chon phi giao dich la nguoi chuyen tra");
@@ -272,7 +272,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_61_Step_verify message khi so tien chuyen lon hon han muc toi da ");
-		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 5,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp."), TransferMoneyQuick_Data.MessageTransferMoney.MESSAGE_EXCEED_MAX_TRANSFER_ONE_DAY_VND);
+		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/nhóm dich vụ chuyển tiền, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 1900545413 của Vietcombank để được trợ giúp."), TransferMoneyQuick_Data.MessageTransferMoney.MESSAGE_EXCEED_MAX_TRANSFER_ONE_DAY_VND);
 
 		log.info("Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");

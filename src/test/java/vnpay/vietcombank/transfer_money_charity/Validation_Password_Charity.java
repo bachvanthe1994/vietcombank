@@ -132,7 +132,7 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, "123456789", "Tiếp tục");
 
 		log.info("TC_47_Step_02: Kiem tra do dai mat khau");
-		verifyEquals(transferMoneyCharity.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 8);
+		verifyEquals(transferMoneyCharity.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 9);
 
 	}
 
