@@ -105,7 +105,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-	@Test
+@Test
 	public void TC_02_GiaoDichRutTienVNDThanhCong() {
 		log.info("TC_02_Step: Click rut tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
