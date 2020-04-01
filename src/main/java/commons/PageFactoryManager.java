@@ -33,6 +33,7 @@ import pageObjects.TransferMoneyObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import pageObjects.VCBAutoDebitPageObject;
+import pageObjects.VCBCreditCardPaymentObject;
 import pageObjects.saving_online.SavingOnlinePageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
@@ -197,5 +198,9 @@ public class PageFactoryManager {
 	
 	public static LocationQRCodePageObject getLocationQRCodePageObject(AppiumDriver<MobileElement> driver) {
 		return new LocationQRCodePageObject(driver);
+	}
+	
+	public static VCBCreditCardPaymentObject getVCBCreditCardPaymentPageObject(AppiumDriver<MobileElement> driver) {
+		return new VCBCreditCardPaymentObject(driver);
 	}
 }

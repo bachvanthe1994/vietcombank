@@ -8,13 +8,22 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 import commons.AbstractPage;
+import commons.Constants;
+import commons.VerificationFailures;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
@@ -26,6 +35,7 @@ public class VehicalPageObject extends AbstractPage {
 	}
 
 	private AppiumDriver<MobileElement> driver;
+	int longTime = 40;
 
 	// input vào ô textbox
 	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
@@ -131,6 +141,16 @@ public class VehicalPageObject extends AbstractPage {
 			isDisplayed = isControlDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 		}
 		return isDisplayed;
+	}
+
+	// Click dynamic buttonByID
+	public void clickToDynamicBottomMenuOrIcon(String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+
+		}
 	}
 
 //    click chọn áp dụng trong màn hình nhập, chỉnh sửa điểm đi điểm đến
@@ -566,4 +586,96 @@ public class VehicalPageObject extends AbstractPage {
 		return text;
 
 	}
+
+	public void clickToDynamicAcceptButton(String dynamicIDValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+		}
+	}
+
+	// wait
+
+	public boolean waitForElementVisible(String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		WebDriverWait wait = new WebDriverWait(driver, longTime);
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		} catch (Exception e) {
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+			System.out.println(e.getMessage());
+			String nameofCurrMethod = new Throwable().getStackTrace()[2].getMethodName();
+			System.out.println(nameofCurrMethod);
+			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
+				Assert.assertTrue(false);
+			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
+			return false;
+
+		}
+		return true;
+
+	}
+
+	// lấy text trong ô input, tham số truyền vào là text
+	public String getDynamicTextInInputBox(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
+
+		}
+		return text;
+	}
+
+	// lấy text thong điên điểm đi và điểm đến
+	public String getDynamicTextView(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_VIEW, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_VIEW, dynamicTextValue);
+
+		}
+		return text;
+	}
+
+	// lấy text thong điên điểm đi và điểm đến
+	public void scrollIDownOneTime() {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.90);
+		int endY = (int) (size.getHeight() * 0.10);
+		TouchAction touch = new TouchAction(driver);
+		try {
+			touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+		} catch (Exception e) {
+		}
+
+	}
+	
+	//Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
+		public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
+			boolean status = false;
+			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+			if (status == true) {
+				clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+				sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
+			}
+		}
+
+	/* SCROLL UP To Tai khoản nguông */
+	public void scrollUpToText(String dynamicText) {
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
 }

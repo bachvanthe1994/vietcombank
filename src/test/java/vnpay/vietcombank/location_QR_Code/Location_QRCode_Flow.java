@@ -10,10 +10,8 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import pageObjects.InternetADSLPageObject;
 import pageObjects.LocationQRCodePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Shopping_Online;
 
 public class Location_QRCode_Flow extends Base {
@@ -37,12 +35,12 @@ public class Location_QRCode_Flow extends Base {
 		} else if (deviceType.contains("ios")) {
 			driver = openIOSApp(deviceName, udid, url);
 		}
-		QRCode = PageFactoryManager.getLocationQRCodePageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		passLogin = pass;
 	
-		
+		QRCode = PageFactoryManager.getLocationQRCodePageObject(driver);
+
 	}
 
 	@Test
