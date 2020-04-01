@@ -24,8 +24,9 @@
 		<parameter name="otp" value="123456" />
 		<classes>
 
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_3" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_4" />
+	<!-- Dịch vụ thẻ -->
+			<class name="vnpay.vietcombank.card_services.Card_Services" />
+
 		</classes>
 	</test>
 
