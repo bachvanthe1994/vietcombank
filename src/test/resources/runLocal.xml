@@ -25,7 +25,7 @@
 		<classes>
 
 	<!-- Dịch vụ thẻ -->
-			<class name="vnpay.vietcombank.card_services.Card_Services" />
+			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
 
 		</classes>
 	</test>
