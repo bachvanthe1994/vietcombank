@@ -47,6 +47,8 @@ public class Validation_Continue_Button_Charity extends Base {
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		log.info("TC_01_1_Click Chuyen tien tu thien");
+		homePage.scrollDownToText(driver, "Chuyển tiền từ thiện");
+		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
