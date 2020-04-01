@@ -33,6 +33,7 @@ public class LogInPageObject extends AbstractPage {
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
 
 		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 
