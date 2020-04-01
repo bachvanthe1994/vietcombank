@@ -68,7 +68,7 @@ public class Location_QRCode_Flow extends Base {
 		verifyEquals(QRCode.getDynamicTextLike(driver, "Đang mở cửa", "4","1"), likeNumberExpect+"");
 
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
-		QRCode.clickToDynamicButtonBackByContainText(driver,"Hà Nội");
+		QRCode.navigateBack(driver);
 
 		log.info("TC_01_Step: Click text tim kiem de den tab xem gan day");
 		QRCode.scrollUpToText(driver, "Nổi bật");
@@ -102,8 +102,8 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToDynamicImageEdit(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH);
 		
 		log.info("TC_02_Step: Click quay lai man hinh trang chu");
-		QRCode.clickToDynamicButtonBackByContainText(driver,"Hà Nội");
-		QRCode.clickToDynamicButtonBackByContainText(driver,"Hà Nội");
+		QRCode.navigateBack(driver);
+		QRCode.navigateBack(driver);
 		
 		log.info("TC_02_Step: Click text tim kiem de den tab xem gan day");
 		QRCode.scrollUpToText(driver, "Nổi bật");
