@@ -886,6 +886,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicRadioIndex(driver, "agreement", "3");
 
 		log.info("TC_13_Step: Click dong y");
+		registerOnline.scrollIDownOneTime(driver);
 		registerOnline.clickToDynamicDateInDateTimePicker(driver, "Đồng ý");
 
 		log.info("TC_13_Step: verify man hinh dang ky thanh cong");
