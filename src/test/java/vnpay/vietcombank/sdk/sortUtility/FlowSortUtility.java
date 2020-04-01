@@ -174,6 +174,8 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_03_Step_8: Lay ra danh sach icon noi bat o man hinh home");
 		listIconNoiBatHome = homePage.getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
+		listIconNoiBatHome.remove(listIconNoiBatHome.size() - 1);
+
 
 		log.info("TC_03_Step_09: Verify icon da chon lam noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -209,6 +211,8 @@ public class FlowSortUtility extends Base {
 		log.info("TC_04_Step_8: Lay ra danh sach icon noi bat o man hinh home ");
 		homePage.scrollLeftToRight(DynamicPageUIs.DYNAMIC_QUICK_MENU);
 		listIconNoiBatHome = homePage.getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
+		listIconNoiBatHome.remove(listIconNoiBatHome.size() - 1);
+
 
 		log.info("TC_04_Step_9: Verify icon noi bat da chon ");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
