@@ -10,10 +10,8 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import pageObjects.InternetADSLPageObject;
 import pageObjects.LocationQRCodePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Shopping_Online;
 
 public class Location_QRCode_Flow extends Base {
@@ -37,12 +35,12 @@ public class Location_QRCode_Flow extends Base {
 		} else if (deviceType.contains("ios")) {
 			driver = openIOSApp(deviceName, udid, url);
 		}
-		QRCode = PageFactoryManager.getLocationQRCodePageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		passLogin = pass;
 	
-		
+		QRCode = PageFactoryManager.getLocationQRCodePageObject(driver);
+
 	}
 
 	@Test
@@ -70,7 +68,7 @@ public class Location_QRCode_Flow extends Base {
 		verifyEquals(QRCode.getDynamicTextLike(driver, "Đang mở cửa", "4","1"), likeNumberExpect+"");
 
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
-		QRCode.navigateBack(driver);
+		QRCode.clickToDynamicButtonBackByContainText(driver,"Hà Nội");
 
 		log.info("TC_01_Step: Click text tim kiem de den tab xem gan day");
 		QRCode.scrollUpToText(driver, "Nổi bật");
@@ -104,8 +102,8 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToDynamicImageEdit(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH);
 		
 		log.info("TC_02_Step: Click quay lai man hinh trang chu");
-		QRCode.navigateBack(driver);
-		QRCode.navigateBack(driver);
+		QRCode.clickToDynamicButtonBackByContainText(driver,"Hà Nội");
+		QRCode.clickToDynamicButtonBackByContainText(driver,"Hà Nội");
 		
 		log.info("TC_02_Step: Click text tim kiem de den tab xem gan day");
 		QRCode.scrollUpToText(driver, "Nổi bật");

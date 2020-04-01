@@ -54,8 +54,7 @@ public class VehicalFlowTicket extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		login.scrollDownToText(driver, VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
-		login.scrollIDownOneTime(driver);
+		login.scrollDownToText(driver, "© 2019 Vietcombank");
 
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
@@ -123,6 +122,9 @@ public class VehicalFlowTicket extends Base {
 		log.info("------TC_01_Step_16 Lay thong tin ca nhan-------------");
 
 		log.info("------TC_01_Step_17 ho va ten-------------");
+		log.info("------TC_01_Step_16 Lấy thông tin cá nhân-------------");
+
+		log.info("------TC_01_Step_17 Lấy Họ và tên -------------");
 		nameTyped = vehicalTicket.getDynamicEditText("com.VCB:id/full_name");
 
 		log.info("------TC_01_Step_18 So dien thoai -------------");
@@ -156,6 +158,8 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
 
 		log.info("--------TC_01_Step_28 Verify ho va ten khach hang------------------");
+		
+		log.info("TC_01_Step_29 Lấy thông tin khách hàng hiển thị");
 		verifyEquals(nameTyped, vehicalTicket.getDynamicEditText("com.VCB:id/full_name"));
 
 		log.info("--------TC_01_Step_30 Verify So dien thoai ------------------");
@@ -487,6 +491,10 @@ public class VehicalFlowTicket extends Base {
 
 		log.info("-----------------TC_04_Step_02_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
+
+		log.info("TC_04_Step_02: Click chọn mục Tiền ra ");
+		vehicalTicket.clickToDynamicText("Tiền ra");
+
 
 		log.info("-------------TC_04_Step_03_Chuyen sang man hinh dat ve ");
 		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
