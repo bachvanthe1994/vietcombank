@@ -157,8 +157,8 @@ public class VehicalFlowTicket extends Base {
 		log.info("TC_01_Step_27 Verify hien thi man hinh thong tin khach hang");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
 
+
 		log.info("--------TC_01_Step_28 Verify ho va ten khach hang------------------");
-		
 		log.info("TC_01_Step_29 Lấy thông tin khách hàng hiển thị");
 		verifyEquals(nameTyped, vehicalTicket.getDynamicEditText("com.VCB:id/full_name"));
 
