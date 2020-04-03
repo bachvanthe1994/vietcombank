@@ -53,7 +53,7 @@ public class TransferMoneyCharity extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
+
 		password = pass;
 	}
 
@@ -64,7 +64,6 @@ public class TransferMoneyCharity extends Base {
 	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
-
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
@@ -119,6 +118,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info.status);
 
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
+		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
@@ -296,6 +296,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info1.status);
 
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
+		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
@@ -471,6 +472,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info2.status);
 
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
+		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod));
@@ -647,6 +649,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info3.status);
 
 		log.info("TC_07_10_Chon phuong thuc xac thuc");
+		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
@@ -827,6 +830,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info4.status);
 
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
+		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
@@ -1005,6 +1009,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Hoàn cảnh ủng hộ"), info5.status);
 
 		log.info("TC_11_10_Chon phuong thuc xac thuc");
+		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);

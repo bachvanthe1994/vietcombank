@@ -37,8 +37,8 @@ public class Online_Topup_Flow extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0963220894", pass, opt);
-
+		login.Global_login(phone, pass, opt);
+		login.scrollDownToText(driver, "Tiết kiệm");
 	}
 
 	@Parameters({ "otp" })
@@ -382,7 +382,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Biển số xe/Mã khách hàng"), Online_Topup_Data.VETC.VETC_DATA_01);
 		customerID = onlineTopup.getDynamicTextByLabel(driver, "Tên khách hàng");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Số tiền nạp"), addCommasToLong(Online_Topup_Data.VETC.VETC_MONEY) + " VND");
-		transactionDay = onlineTopup.getDynamicTextByLabel(driver, "Ngày nạp tiền");
+//		transactionDay = onlineTopup.getDynamicTextByLabel(driver, "Ngày nạp tiền");
 
 		log.info("TC_05_Step_11: Chon phuong thuc xac thuc mat khau");
 		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
@@ -451,7 +451,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
 
 		log.info("TC_06_Step_11: Xac nhan hien thi thoi gian giao dich");
-		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDay), "com.VCB:id/tvContent"));
+//		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDay), "com.VCB:id/tvContent"));
 
 		log.info("TC_06_Step_12: Xac nhan hien thi dung ma giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số lệnh giao dịch"), transactionID);
@@ -535,7 +535,7 @@ public class Online_Topup_Flow extends Base {
 
 		log.info("TC_07_Step_10:Kiem tra hien thi So tien nap");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Số tiền nạp"), addCommasToLong(Online_Topup_Data.VETC.VETC_MONEY) + " VND");
-		transactionDay = onlineTopup.getDynamicTextByLabel(driver, "Ngày nạp tiền");
+//		transactionDay = onlineTopup.getDynamicTextByLabel(driver, "Ngày nạp tiền");
 
 		log.info("TC_07_Step_11: Chon phuong thuc xac thuc OTP");
 		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
@@ -602,7 +602,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
 
 		log.info("TC_08_Step_11: Xac nhan hien thi thoi gian giao dich");
-		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDay), "com.VCB:id/tvContent"));
+//		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDay), "com.VCB:id/tvContent"));
 
 		log.info("TC_08_Step_12: Xac nhan hien thi dung ma giao dich");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số lệnh giao dịch"), transactionID);

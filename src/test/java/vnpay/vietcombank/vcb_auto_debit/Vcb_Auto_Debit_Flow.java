@@ -32,7 +32,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0335059860", pass, opt);
+		login.Global_login(phone, pass, opt);
 
 	}
 
@@ -41,7 +41,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	public void TC_01_DangKyDichVu_HoaDonTienDien_XacThucOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
-
+		home.scrollDownToText(driver, "Nạp tiền điện tử");
 		log.info("TC_01_Step_01: Click vao VCB-Auto Debit");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "VCB-Auto Debit");
 

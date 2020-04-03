@@ -31,10 +31,46 @@ public class VehicalData {
 	public static final String CHAIR_SOLD = "Ghế đã bán";
 	public static final String CHAIR_SELECTED = "Đang chọn";
 	public static final String BOOK_SEAT = "Đặt chỗ";
-	public static final String EMAIL = "trangvt2@vnpay.vn";
+	public static final String EMAIL = "lanman@mailinator.com";
 	public static final String PASSWORD_LOGIN = "aaaa1111";
 	public static final String TITLE_REPORT = "Báo cáo giao dịch";
 	public static final String BUTTON_SEARCH= "Tìm kiếm";
+	public static final String AMOUNT= "Số tiền giao dịch";
+	public static final String AMOUNT_TT= "Số tiền thanh toán";
+
+	public static final String CODE_TT="Mã thanh toán";
+	public static final String CODE_GD="Mã giao dịch";
+	public static final String CODE_TICKET="Mã vé";
+
+
+	public static final String NUMBER_ORDER="Số lệnh giao dịch";
+	public static final String BUTTON_TIEPTUC="Tiếp tục";
+
+	public static final String INFO_CUSTOMER="Thông tin khách hàng";
+	public static final String INFO_TICKET="Thông tin vé";
+	public static final String AMOUNT_ROOT= "Tài khoản nguồn";
+	public static final String DETAIL_GD= "Chi tiết giao dịch";
+	
+	public static final String ACCOUNT= "Tài khoản/thẻ trích nợ";
+	public static final String THANHTOAN= "Thanh toán";
+	public static final String INPUT_PASSWORD="Nhập mật khẩu";
+	public static final String NAME="Họ tên";
+	public static final String PHONE_NUMBER="Số điện thoại";
+	public static final String EMAIL_ADDRESS="Email";
+	public static final String BRAND="Hãng xe";
+	public static final String SEAT_NUMBER="Số ghế";
+	public static final String TOTAL_TICKET="Số lượng vé";
+	public static final String INPUT_INFO="Nhập thông tin";
+
+	public static final String TOTAL_AMOUNT="Tổng tiền";
+	public static final String BTN_CONTINUE="Thực hiện giao dịch mới";
+	public static final String TITILE_CONFIRM="Xác nhận thông tin";
+	public static final String TITILE_SELECT="Chọn phương thức xác thực";
+
+	public static final String OTP="SMS OTP";
+	public static final String PASS="Mật khẩu đăng nhập";
+
+	public static final String NUMBER_OTP="123456";
 
 
 	
@@ -49,5 +85,8 @@ public class VehicalData {
 	public static final String LIST_TRIP = "Danh sách chuyến xe";
 	public static final String NULL_DATA_FIND_TICKET = "Không có dữ liệu phù hợp.";
 	public static final String NULL_DATA_FITER_TRIP = "Không có xe nào tương ứng với kết quả lọc. Quý khách vui lòng kiểm tra lại.";
+    
+	public static final String NOTI_SUCCESS = "THANH TOÁN THÀNH CÔNG";
+
     }
 }

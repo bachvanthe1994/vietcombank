@@ -252,8 +252,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 
 	@Test
 	public void TC_14_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraChonNgayBatDau_LaNgayQuaKhu() {
-		String startDate;
-		startDate = getForwardDate(1);
+		String startDate = getForwardDate(1);
 
 		log.info("TC_14_01_Click Huy");
 		login.clickToDynamicAcceptButton(driver, "android:id/button2");
@@ -275,8 +274,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_14_06_Chon Ngay bat dau");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, startDate);
 
-		startDate = getForwardYear(1);
-		int chooseDate = Integer.parseInt(startDate.split("/")[0]) - 2;
+		int chooseDate = Integer.parseInt(startDate.split("/")[0]) - 3;
 		log.info("TC_14_07_Kiem tra khong cho phep chon");
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 
@@ -361,8 +359,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_18_06_Chon Ngay ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
 
-		endDate = getForwardYear(1);
-		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 2;
+		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 3;
 		log.info("TC_18_07_Kiem tra khong cho phep chon");
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 
@@ -392,8 +389,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 		log.info("TC_19_05_Chon Ngay Ket thuc");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, endDate);
 
-		endDate = getForwardYear(1);
-		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 1;
+		int chooseDate = Integer.parseInt(endDate.split("/")[0]) - 2;
 		log.info("TC_19_06_Kiem tra khong cho phep chon");
 		verifyFailure(transferRecurrent.checkDateNextYearEnable("android:id/month_view", chooseDate));
 	}
