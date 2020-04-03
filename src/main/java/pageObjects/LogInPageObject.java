@@ -13,7 +13,7 @@ public class LogInPageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
-	public void Global_login1(String phone, String pass, String otp) {
+	public void Global_login(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
@@ -39,7 +39,7 @@ public class LogInPageObject extends AbstractPage {
 
 	}
 
-	public void Global_login(String phone, String pass, String otp) {
+	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
