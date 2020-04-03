@@ -48,6 +48,7 @@ public class Validation_OTP_Charity extends Base {
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		log.info("TC_00_1_Click Chuyen tien tu thien");
+		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_00_2_Chon tai khoan nguon");
