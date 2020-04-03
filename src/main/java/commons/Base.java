@@ -166,9 +166,11 @@ public class Base {
 			cap.setCapability("appActivity", appActivities);
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+			cap.setCapability("appWaitDuration", 30000);
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+		cap.setCapability("", "uiautomator2");
 
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);

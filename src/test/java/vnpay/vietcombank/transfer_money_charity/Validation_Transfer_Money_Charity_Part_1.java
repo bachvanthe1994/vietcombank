@@ -48,6 +48,7 @@ public class Validation_Transfer_Money_Charity_Part_1 extends Base {
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		log.info("TC_01_1_Click Chuyen tien tu thien");
+		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		String actualName = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "2");

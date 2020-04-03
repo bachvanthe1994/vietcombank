@@ -17,15 +17,14 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="Galaxy S9" />
-		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0335059860" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-			
-		
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
 
 		</classes>
 	</test>

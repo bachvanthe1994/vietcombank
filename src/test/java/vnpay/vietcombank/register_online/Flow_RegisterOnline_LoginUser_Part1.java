@@ -32,6 +32,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		phoneNumber = phone;
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 	}
+
 	@Test
 	public void TC_01_GiaoDichNopTienThanhCong() {
 		log.info("TC_01_Step: Click menu header");
@@ -72,6 +73,11 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_01_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
+
+		log.info("TC_01_Step: Click noi cap");
+		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
+		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
 
 		log.info("TC_01_Step: Nhap email");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
@@ -134,6 +140,11 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_02_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
 
+		log.info("TC_01_Step: Click noi cap");
+		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
+		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
+
 		log.info("TC_02_Step: Nhap email");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.EMAIL, "Giấy tờ tùy thân", "4");
 
@@ -173,7 +184,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-	 @Test
+	@Test
 	public void TC_03_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMat() {
 		log.info("TC_03_Step: Click giao dich Gui/rut tiết kiệm");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi/rút tiết kiệm");
@@ -395,7 +406,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-@Test
+	@Test
 	public void TC_06_MoTheTietKiem_TheTietKiemCoKyHanChuyenKhoanVaTienMatNhanGoc() {
 		log.info("TC_06_Step: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
@@ -552,7 +563,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc()  {	
+	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc() {
 		log.info("TC_08_Step: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
@@ -622,7 +633,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_09_RutSoTietKiem_RutLaiPhuongThucTienMat()  {
+	public void TC_09_RutSoTietKiem_RutLaiPhuongThucTienMat() {
 		log.info("TC_09_Step: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
 
@@ -690,7 +701,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_10_RutSoTietKiem_RutGocPhuongThucChuyenKhoanVaTienMat()  {
+	public void TC_10_RutSoTietKiem_RutGocPhuongThucChuyenKhoanVaTienMat() {
 		log.info("TC_10_Step: Click rut tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiết kiệm");
 
@@ -704,7 +715,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("TC_10_Step: Input so ho chieu");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "Giấy tờ tùy thân", "5");
 
-		log.info("TC_10_Step: Click ngay cap");	
+		log.info("TC_10_Step: Click ngay cap");
 		registerOnline.clickToTextViewDate(driver, "Giấy tờ tùy thân", "6");
 
 		log.info("TC_10_Step: Click nam");
@@ -773,7 +784,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_11_MoTaiKhoanThanhToan_ManHinhThongTinKhachHang()  {
+	public void TC_11_MoTaiKhoanThanhToan_ManHinhThongTinKhachHang() {
 		log.info("TC_11_Step: Click giao dich mo tai khoan thanh toan");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản thanh toán");
 
@@ -812,7 +823,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_12_MoTaiKhoanThanhToan_ManHinhDangKyDichVuDienTu()  {
+	public void TC_12_MoTaiKhoanThanhToan_ManHinhDangKyDichVuDienTu() {
 		log.info("TC_12_Step: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
 
@@ -838,7 +849,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_13_MoTaiKhoanThanhToan_ManHinhConnect24_ChonMotThePhu()  {
+	public void TC_13_MoTaiKhoanThanhToan_ManHinhConnect24_ChonMotThePhu() {
 		log.info("TC_13_Step: Verify text man hinh dang ky phat hanh the connect24");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký phát hành thẻ Connect24");
 
@@ -1064,7 +1075,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TC_14_Step: Click button thuc hien giao dich khác");
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
-		
+
 	}
-	
+
 }

@@ -45,7 +45,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("ios")) {
+		} else if (deviceType.contains("")) {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -54,7 +54,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_09_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_09_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -163,8 +163,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountStart - amountTranfer, amountAfter);
 	}
 
-	@Test
-
+	//@Test
 	public void TC_10_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -261,7 +260,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+	//@Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		log.info("TC_11_Step_Click Chuyen tien nhanh");
@@ -376,7 +375,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountAtual, amountExpect);
 	}
 
-	@Test
+	//@Test
 	public void TC_12_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 

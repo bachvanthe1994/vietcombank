@@ -598,8 +598,8 @@ public class VehicalPageObject extends AbstractPage {
 
 	// wait
 
-	public boolean waitForElementVisible(String locator) {
-
+	public boolean waitForElementVisible(String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
@@ -612,6 +612,11 @@ public class VehicalPageObject extends AbstractPage {
 			if (nameofCurrMethod.equalsIgnoreCase("beforeClass")) {
 				Assert.assertTrue(false);
 			}
+
+			if (!Constants.RUN_CONTINUE_AFTER_STEP_FAIL) {
+				Assert.assertTrue(false);
+			}
+
 			return false;
 
 		}
@@ -656,13 +661,21 @@ public class VehicalPageObject extends AbstractPage {
 		}
 
 	}
+	
+	//Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
+		public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
+			boolean status = false;
+			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+			if (status == true) {
+				clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+				sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
+			}
+		}
 
 	/* SCROLL UP To Tai khoản nguông */
 	public void scrollUpToText(String dynamicText) {
 		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
 
 	}
-
-	
 
 }
