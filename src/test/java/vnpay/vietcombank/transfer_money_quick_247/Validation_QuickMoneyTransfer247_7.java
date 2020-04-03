@@ -236,7 +236,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 
 		log.info("TC_01_verify select share");
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/sem_title_default"), "Select");
-		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text1"), "Link Sharing");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text1"), "Smart View");
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text2"), "Phát nội dung trên thiết bị khác.");
 
 		log.info("TC_02_Step_18: Click quay lai");
@@ -256,7 +256,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-//	@Test
+	@Test
 	public void TC_108_LuuThongTinThuHuongSTKChuaCoTrongDanhBa() {
 		log.info("TC_01_Nhan button Lưu thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");

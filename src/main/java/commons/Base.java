@@ -161,7 +161,7 @@ public class Base {
 			cap.setCapability("appActivity", appActivities);
 		} else if (deviceType.equalsIgnoreCase("androidReal")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-			cap.setCapability(MobileCapabilityType.UDID, udid);
+			cap.setCapability("udid", udid);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
