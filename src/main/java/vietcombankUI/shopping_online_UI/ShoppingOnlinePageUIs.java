@@ -56,7 +56,9 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
 	// View
 	public static final String DYNAMIC_VIEW_LIST = "//android.view.View[@text='%s']/following-sibling::android.view.View/android.view.View";
+	public static final String DYNAMIC_DISCOUNT = "//android.view.View[@text='%s']/following-sibling::android.view.View/android.view.View/android.view.View[@index='%s']";
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_CART = "//android.view.View[@index='%s']//android.view.View[@index='%s']";
-	public static final String DYNAMIC_TOTAL_MONEY = "//android.view.View[@text='%s']//preceding-sibling::android.view.View";
+	public static final String DYNAMIC_TOTAL_MONEY = "//android.view.View[@text='%s']//following-sibling::android.view.View[@index='%s']";
+	public static final String DYNAMIC_TOTAL_MONEY_1 = "//android.view.View[@index='%s']";
 }

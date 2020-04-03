@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -312,6 +313,12 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 
 		log.info("Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");
+	}
+	
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		closeApp();
+		service.stop();
 	}
 
 }

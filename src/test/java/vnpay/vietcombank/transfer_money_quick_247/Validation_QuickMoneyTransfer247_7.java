@@ -90,8 +90,8 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
+		transferMoney.clickToDynamicComboboxText(driver, "Thông tin người hưởng", "2");
+		transferMoney.clickToDynamicLinerLayoutIndex(driver, "6");
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Thông tin giao dịch", "1");
@@ -230,11 +230,14 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 	public void TC_106_KiemTraButtonChiaSe() {
 		log.info("TC_01_Nhan button chia se");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chia sẻ");
+		
+		log.info("TC_01_Nhan button cho phep");
+		transferMoney.clickToDynamicButton(driver, "Cho phép");
 
 		log.info("TC_01_verify select share");
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/sem_title_default"), "Select");
 		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text1"), "Link Sharing");
-		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text2"), "Chia sẻ các file lớn lên đến 2 GB một ngày.");
+		verifyEquals(transferMoney.getTextInDynamicDropdownOrDateTimePicker(driver, "android:id/text2"), "Phát nội dung trên thiết bị khác.");
 
 		log.info("TC_02_Step_18: Click quay lai");
 		transferMoney.navigateBack(driver);
@@ -253,7 +256,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_108_LuuThongTinThuHuongSTKChuaCoTrongDanhBa() {
 		log.info("TC_01_Nhan button Lưu thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
@@ -283,7 +286,7 @@ public class Validation_QuickMoneyTransfer247_7 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_109_LuuThongTinThuHuongSTKDaCoTrongDanhBa() {
 		/*
 		 * log.info("TC_01_Verify hien thi button luu thu huong");

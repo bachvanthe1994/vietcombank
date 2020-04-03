@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -256,7 +257,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]));
 	}
 
-	@Test
+//	@Test
 	public void TC_75_ChonPhiGiaoDichNguoiNhanVaKiemTraPhiChuyen() {
 		log.info("TC_75_Quay lai man hinh chuyen tien nhanh 24/7");
 		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -280,7 +281,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]));
 	}
 
-	@Test
+//	@Test
 	public void TC_76_ChonTaiKhoanNguonKhongDuSoDuVND() {
 		log.info("TC_76_Quay lai man hinh chuyen tien nhanh 24/7");
 		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -302,7 +303,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_77_ChonTaiKhoanNguonKhongDuSoDuEUR() {
 		log.info("TC_77_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -325,7 +326,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_78_ChonTaiKhoanNguonKhongDuSoDuUSD() {
 		log.info("TC_78_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -348,7 +349,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_79_ChonTaiKhoanDongChuSoHuu() {
 		log.info("TC_79_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -370,7 +371,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_80_ChonTaiKhoanHuongKhongHopLe() {
 		log.info("TC_80_Chon tai khoan nguon VND");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -395,7 +396,7 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
 
-	@Test
+//	@Test
 	public void TC_81_NhapHopLeThongTinChuyenTienNhanh() {
 		log.info("TC_81_Step_Nhap so tai khoan chuyen dong chu so huu voi tai khoan nguon");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Thông tin người hưởng", "1");
@@ -407,4 +408,9 @@ public class Validation_QuickMoneyTransfer247_5 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin"));
 	}
 
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+//		closeApp();
+//		service.stop();
+	}
 }

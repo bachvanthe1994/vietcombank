@@ -97,10 +97,22 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return isDisplayed;
 	}
+	
+	//Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
+		public boolean isDynamicMessageAndLabelTextUndisplayed(String dynamicTextValue) {
+			boolean isDisplayed = false;
+			boolean status = waitForElementInvisible(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT,
+					dynamicTextValue);
+			if (status == true) {
+				isDisplayed = isControlUnDisplayed(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
+			}
+			return isDisplayed;
+		}
 
 	// Click vào ngày trong giỏ hàng
 	public void clickToDynamicCart(String... dynamicIndex) {
 		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_CART, dynamicIndex);
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_CART, dynamicIndex);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_CART, dynamicIndex);
@@ -119,12 +131,12 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	}
 
 //	lấy ra tổng số tiền cần thanh toán ở màn hình xác nhận thanh toán
-	public String getDynamicTextView(String dynamicText) {
+	public String getDynamicTextView(String... dynamicTextIndex) {
 		boolean status = false;
 		String text = null;
-		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY, dynamicText);
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY, dynamicTextIndex);
 		if (status == true) {
-			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY, dynamicText);
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY, dynamicTextIndex);
 		}
 		return text;
 	}
@@ -165,6 +177,17 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 
 	}
+	
+//	lấy ra tổng số tiền cần thanh toán ở màn hình thêm sản phẩm vào giỏ hàng
+	public String getDynamicTextViewTotalMoney(String index) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY_1, index);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY_1, index);
+		}
+		return text;
+	}
 
 	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
 	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
@@ -183,6 +206,17 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
+		}
+	}
+	
+	// Click vào button, text có class là textview, tham số truyền vào là text
+	public void clickToDynamicDisCount(String... dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_DISCOUNT, dynamicTextValue);
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_DISCOUNT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_DISCOUNT, dynamicTextValue);
 
 		}
 	}

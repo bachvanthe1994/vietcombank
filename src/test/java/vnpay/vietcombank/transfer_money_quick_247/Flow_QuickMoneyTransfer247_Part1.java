@@ -2,6 +2,7 @@ package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -888,6 +889,12 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_08_Step_Click button home");
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+	}
+	
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		closeApp();
+		service.stop();
 	}
 
 }

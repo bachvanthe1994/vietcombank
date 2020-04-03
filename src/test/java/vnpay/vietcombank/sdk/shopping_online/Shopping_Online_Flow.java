@@ -53,18 +53,18 @@ public class Shopping_Online_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_01_ChonMuaMotSanPhamThanhToanOTP(String otp) {
+	public void TC_01_ChonMuaMotSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
 		log.info("TC_01_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
 
 		log.info("TC_01_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
+		
 		log.info("TC_01_STEP_3: click icon gio hang");
 		shopping.clickToDynamicCart("1", "1");
 
 		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
-		String tottalMoneyCartString = shopping.getDynamicTextView("Chi tiết").replace("₫", "");
+		String tottalMoneyCartString = shopping.getDynamicTextView("VNPAY Shop", "3").replace("₫", "");
 		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 
 		log.info("TC_01_STEP_4: click dat hang");
@@ -72,6 +72,12 @@ public class Shopping_Online_Flow extends Base {
 
 		log.info("TC_01_STEP_5: click thanh toán");
 		shopping.clickToDynamicButton("Thanh toán");
+		
+		if (shopping.isDynamicMessageAndLabelTextUndisplayed("Thông báo")) {
+			System.out.print("a");
+		} else {
+			System.out.print("b");
+		}
 
 		log.info("TC_01_STEP_6: click thanh toan");
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
@@ -124,14 +130,17 @@ public class Shopping_Online_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
-	public void TC_02_ChonMuaNhieuSanPhamThanhToanOTP(String otp) {
+//	@Test
+	public void TC_02_ChonMuaNhieuSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
 		log.info("TC_02_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
-
+	
 		log.info("TC_02_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		
+		log.info("TC_01_STEP_1: khong chon khuyen mai");
+		shopping.clickToDynamicDisCount("Chọn thêm 1 trong những khuyến mại sau", "0");
 
 		log.info("TC_02_STEP_3: click icon gio hang");
 		shopping.clickToDynamicCart("1", "1");
@@ -199,13 +208,16 @@ public class Shopping_Online_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
-	public void TC_03_ChonMuaMotSanPhamThanhToanMK(String pass) {
+//	@Test
+	public void TC_03_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("TC_03_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
-
+		
 		log.info("TC_03_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		
+		log.info("TC_01_STEP_1: khong chon khuyen mai");
+		shopping.clickToDynamicDisCount("Chọn thêm 1 trong những khuyến mại sau", "0");
 
 		log.info("TC_03_STEP_3: click icon gio hang");
 		shopping.clickToDynamicCart("1", "1");
@@ -273,14 +285,17 @@ public class Shopping_Online_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
-	public void TC_04_ChonMuaNhieuSanPhamThanhToanMK(String pass) {
+//	@Test
+	public void TC_04_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("TC_04_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
 
 		log.info("TC_04_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		
+		log.info("TC_01_STEP_1: khong chon khuyen mai");
+		shopping.clickToDynamicDisCount("Chọn thêm 1 trong những khuyến mại sau", "0");
 
 		log.info("TC_04_STEP_3: click icon gio hang");
 		shopping.clickToDynamicCart("1", "1");
@@ -347,10 +362,81 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
 
+	@Parameters({ "otp" })
+//	@Test
+	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP(String otp) {
+		log.info("TC_01_STEP_1: Lay danh sach gia tri loai chuyen tien");
+		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
+		
+		log.info("TC_01_STEP_2: Them vao gio hang");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+		log.info("TC_01_STEP_3: click icon gio hang");
+		shopping.clickToDynamicCart("1", "1");
+
+		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
+		String tottalMoneyCartString = shopping.getDynamicTextView("Chi tiết").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+		log.info("TC_01_STEP_4: click dat hang");
+		shopping.clickToDynamicButton("Đặt hàng");
+
+		log.info("TC_01_STEP_5: click thanh toán");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		log.info("TC_01_STEP_6: click thanh toan");
+		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+
+		log.info("TC_01_STEP_7: click chon tai khoan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
+		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
+
+		log.info("TC_01_STEP_9: lay ra phi giao hang");
+		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
+		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
+
+		log.info("TC_01_STEP_10: giam gia");
+		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
+		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
+
+		log.info("TC_01_STEP_11: tong tien");
+		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
+		double totalMoney = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
+		double calulatorMoney = canculateAvailableBalances((long) tottalMoneyCart, (long) fee, (long) sale);
+		verifyEquals(calulatorMoney, totalMoney);
+
+		log.info("TC_01_STEP_12: Chon thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		log.info("TC_01_STEP_13: Kiem tra tai khoan nguon");
+		String account = shopping.getMoneyByAccount("Tài khoản nguồn");
+		verifyEquals(account, Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
+
+		log.info("TC_01_STEP_14: Kiem tra so tien thanh toan");
+		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
+		double moneyConfirm = Double.parseDouble(money[0]);
+		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
+
+		log.info("TC_01_STEP_16: Chon phuong thuc thanh toan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
+		shopping.clickToDynamicButtonLinkOrLinkText("SMS OTP");
+
+		log.info("TC_01_STEP_17: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_01_STEP_18: dien otp");
+		shopping.inputToDynamicOtp(otp, "Tiếp tục");
+
+		log.info("TC_01_STEP_19: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_01_STEP_20: thuc hien giao dich moi");
+		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
+	}
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }
