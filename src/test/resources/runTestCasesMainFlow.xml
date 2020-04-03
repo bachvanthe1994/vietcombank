@@ -7,7 +7,7 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
-	<parameter name="appActivities" value="com.VCB.activities.AbotActivity" />
+	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 

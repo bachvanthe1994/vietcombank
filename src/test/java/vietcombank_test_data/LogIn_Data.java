@@ -8,9 +8,9 @@ public class LogIn_Data {
 	public static final String PHONE = "0981790798";
 	public static final String PHONE_INVALID = "0904797863";
 	public static final String PHONE_HIDDEN = PHONE.substring(0, 3) + "*****" + PHONE.substring(PHONE.length() - 2);
-	public static final int OTP_INVALID_TIMES = 3;
+	public static final int OTP_INVALID_TIMES = 5;
 	public static final int PASSWORD_INVALID_TIMES = 5;
-	public static final String WRONG_PASSWORD = "abcd1234";
+	public static final String WRONG_PASSWORD = "aaaa1111";
 	public static final String NEW_PASSWORD = "aaaa1111";
 	public static final String OTP = "123456";
 	public static final String Smart_OTP = "111222";
