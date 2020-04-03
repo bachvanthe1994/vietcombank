@@ -51,6 +51,7 @@ public class Validation_Transfer_Money_Charity_Part_2 extends Base {
 
 		defaultAccount = homePage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvDefaultAcc");
 		log.info("TC_01_01_Click Chuyen tien tu thien");
+		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_02_Kiem tra hien thi so du mac dinh la VND");

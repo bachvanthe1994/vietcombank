@@ -46,6 +46,7 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		log.info("TC_00_1_Click Chuyen tien tu thien");
+		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_00_2_Chon tai khoan nguon");
@@ -78,6 +79,8 @@ public class Validation_Password_Charity extends Base {
 
 		log.info("TC_05_10_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+		
+		
 	}
 
 	@Test
@@ -88,8 +91,10 @@ public class Validation_Password_Charity extends Base {
 		log.info("TC_01_02_Kiem tra text Vui long nhap mat khau dang nhap ...");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.PASSWORD_NOTIFICATION));
 
+		
 		log.info("TC_01_03_Kiem tra button Tiep tuc");
 		verifyTrue(transferMoneyCharity.isDynamicButtonDisplayed(driver, "Tiếp tục"));
+		
 
 	}
 
@@ -132,7 +137,7 @@ public class Validation_Password_Charity extends Base {
 		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, "123456789", "Tiếp tục");
 
 		log.info("TC_47_Step_02: Kiem tra do dai mat khau");
-		verifyEquals(transferMoneyCharity.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 8);
+		verifyEquals(transferMoneyCharity.getTextInDynamicPasswordInput(driver, "com.VCB:id/pin").length(), 9);
 
 	}
 

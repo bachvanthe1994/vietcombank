@@ -3,6 +3,8 @@ package vnpay.vietcombank.transfer_money_charity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.Keys;
@@ -51,6 +53,7 @@ public class Validation_Amount_Charity extends Base {
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 
 		log.info("TC_01_1_Click Chuyen tien tu thien");
+		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		String actualAmountMoney = transferMoneyCharity.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1");
@@ -181,8 +184,8 @@ public class Validation_Amount_Charity extends Base {
 
 		listActualAmountMoney = transferMoneyCharity.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
 
-		listExpectAmountMoney.add("100 EUR ~ 2,399,776 VND");
-		listExpectAmountMoney.add("1,000 EUR ~ 23,997,760 VND");
+		listExpectAmountMoney.add("100 EUR ~ 239,977,600 VND");
+		listExpectAmountMoney.add("1,000 EUR ~ 2,399,776,000 VND");
 
 		log.info("TC_07_3_Kiem tra so tien goi y");
 		verifyEquals(listActualAmountMoney, listExpectAmountMoney);
