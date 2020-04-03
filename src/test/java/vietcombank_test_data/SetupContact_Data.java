@@ -21,7 +21,7 @@ public class SetupContact_Data {
 		public static final String CONTACT_CARD_NUMBER_01 = "0989789878";
 		public static final String CONTACT_NAME_02 = "Nguyen Thi B";
 		public static final String CONTACT_CARD_NUMBER_02 = "0980998990";
-		public static final String ADSL_SERVICE = "Cước internet ADSL";
+		public static final String ADSL_SERVICE = "Cước Internet ADSL";
 		public static final String VNPT_SERVICE = "Hóa đơn VNPT Media";
 		public static final String FPT_SUPPLIER_NAME = "FPT Telecom";
 		public static final String VNPT_SUPPLIER_NAME = "VNPT TP Hồ Chí Minh";
