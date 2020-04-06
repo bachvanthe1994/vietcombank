@@ -24,8 +24,7 @@
 		<parameter name="otp" value="123456" />
 		<classes>
 
-	<!-- Dịch vụ thẻ -->
-			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
 
 		</classes>
 	</test>

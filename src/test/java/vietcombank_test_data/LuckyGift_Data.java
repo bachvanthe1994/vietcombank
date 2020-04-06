@@ -8,7 +8,8 @@ public class LuckyGift_Data {
 		public static final String WISHES_OPTION = "Gửi lời chúc Ngày phụ nữ hạnh phúc tới người đã đánh cắp trái tim tôi!";
 		public static final String MONEY = "12000";
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
-		public static final String MOBI_ACCEPT = "0976878903";
+//		public static final String MOBI_ACCEPT = "0976878903";
+		public static final String MOBI_ACCEPT = "0923253032";
 		public static final String NAME_ACCEPT = "NGO TRI NAM";
 		public static final String ACCOUNT_ACCEPT_IN_VCB = "0019967190";
 		public static final String ACCOUNT_ACCEPT_OUT_VCB = "0129837294";
