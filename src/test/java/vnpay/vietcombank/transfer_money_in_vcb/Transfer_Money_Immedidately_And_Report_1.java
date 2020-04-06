@@ -49,7 +49,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -182,7 +182,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
 		log.info("TC_02_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -326,7 +326,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_03_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 
 		log.info("TC_03_Step_01: Click Chuyen tien trong VCB");
@@ -463,7 +463,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 
 		log.info("TC_04_Step_01:Click  nut Back");
@@ -634,6 +634,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		log.info("TC05_Step 07: Lay so du tai khoan USD");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double beforeBalanceAmountOfAccount1 = convertMoneyToDouble(beforeBalanceOfAccount1, "USD");
+		System.out.println("Account 1" + beforeBalanceAmountOfAccount1);
 
 		log.info("TC05_Step 08: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "Nhập/ chọn tài khoản thụ hưởng");
@@ -684,8 +685,8 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
 
 		log.info("TC05_Step 24: Lay tien phi chuyen USD");
-//		double usdTransferFee = convertVNeseMoneyToEUROOrUSD(fee + "", exchangeRate + "");
-		double usdTransferFee = convertMoneyToDouble(TransferMoneyInVCB_Data.InputDataInVCB.USD_PAYMENT_BY_OTP_FEE, "USD");
+		double usdTransferFee = convertVNeseMoneyToEUROOrUSD(fee + "", exchangeRate + "");
+		System.out.println("phi chuyen USD" + usdTransferFee);
 
 		log.info("TC05_Step 25: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -728,6 +729,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		log.info("TC05_Step 37: Lay so du kha dung tai khoan USD");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double afterBalanceAmountOfAccount1 = convertMoneyToDouble(afterBalanceOfAccount1, "USD");
+		System.out.println("After 1" + afterBalanceAmountOfAccount1);
 
 		log.info("TC05_Step 38: Convert so tien chuyen");
 		double transferMoney = convertMoneyToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER, "USD");
@@ -744,9 +746,12 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		log.info("TC05_Step 41: Lay so du kha dung tai khoan chuyen den");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double afterBalanceAmountOfAccount2 = convertMoneyToDouble(afterBalanceOfAccount2, "VND");
+		System.out.println("After 2" + afterBalanceAmountOfAccount2);
+
+		String vietTransferMoney = convertEURO_USDToVNeseMoney(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER, exchangeRate + "");
 
 		log.info("TC05_Step 43: Kiem tra so du tai khoan duoc chuyen den");
-		verifyEquals(beforeBalanceAmountOfAccount2 + Double.parseDouble(TransferMoneyInVCB_Data.InputDataInVCB.USD_CHANGED_MONEY), afterBalanceAmountOfAccount2);
+		verifyEquals(beforeBalanceAmountOfAccount2 + convertMoneyToDouble(vietTransferMoney, "USD"), afterBalanceAmountOfAccount2);
 
 	}
 
@@ -1041,7 +1046,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		double afterBalanceAmountOfAccount2 = convertMoneyToDouble(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"), "VND");
 
 		log.info("TC_07_Step 43: Kiem tra so du tai khoan duoc chuyen den");
-		verifyEquals(beforeBalanceAmountOfAccount2 + convertAvailableBalanceCurrentcyToDouble(vietTransferMoney) - Double.parseDouble(fee + ""), afterBalanceAmountOfAccount2);
+		verifyEquals(beforeBalanceAmountOfAccount2 + convertAvailableBalanceCurrentcyToDouble(vietTransferMoney) - convertMoneyToDouble(fee + "", "VND"), afterBalanceAmountOfAccount2);
 
 	}
 
