@@ -164,19 +164,19 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		log.info("TC_02_Step_01: Click icon home ");
 		vcbACreditCardPayment.clickToDynamicImageViewByID(driver, "com.VCB:id/ivHome");
 
-		log.info("------------TC_02_Step_02_Click btn menu");
+		log.info("TC_02_Step_02_Click btn menu");
 		vcbACreditCardPayment.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
-		log.info("---------TC_02_Step_03_Click Chon muc bao cao giao dich");
+		log.info("TC_02_Step_03_Click Chon muc bao cao giao dich");
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, creaditCardPaymentUI.BAO_CAO_GD);
 
-		log.info("---------TC_02_Step_04_Click Chon cac loai giao dich");
+		log.info("TC_02_Step_04_Click Chon cac loai giao dich");
 		vcbACreditCardPayment.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llSelectTransType");
 
-		log.info("---------TC_02_Step_05_Scroll to thanh toan the tin dung");
+		log.info("TC_02_Step_05_Scroll to thanh toan the tin dung");
 		vcbACreditCardPayment.scrollDownToText(driver, creaditCardPaymentUI.TT_THE_TD);
 
-		log.info("---------TC_02_Step_06_Scroll to thanh toan the tin dung");
+		log.info("TC_02_Step_06_Scroll to thanh toan the tin dung");
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, creaditCardPaymentUI.TT_THE_TD);
 
 		log.info("TC_02_Step_07: Verrify tai khoan nguon ");
@@ -188,22 +188,22 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		log.info("TC_02_Step_09: Xac minh so tin thanh toan ");
 		verifyEquals(soTienThanhToan, vcbACreditCardPayment.getDynamicTextView("com.VCB:id/tvMoney").replace("- ", ""));
 
-		log.info("----------TC_02_Step_10: Verify ban ghi Thanh toan ");
+		log.info("TC_02_Step_10: Verify ban ghi Thanh toan ");
 		vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llRoot");
 
-		log.info("-----------TC_02_Step_11: Verofy hien thi man hinh chi tiet bao cao giao dich ");
+		log.info("TC_02_Step_11: Verofy hien thi man hinh chi tiet bao cao giao dich ");
 		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, creaditCardPaymentUI.CHI_TIET_GD));
 
-		log.info("---------TC_02_Step_12: Verify ma thanh toan ");
+		log.info("TC_02_Step_12: Verify ma thanh toan ");
 		verifyEquals(maGiaoDich, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.SO_LENH_GD));
 
-		log.info("---------TC_02_Step_13: Verify tai khoan trich no");
+		log.info("TC_02_Step_13: Verify tai khoan trich no");
 		verifyEquals(soTaiKhoan, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.TK_THE_TRICH_NO));
 
-		log.info("---------TC_02_Step_14: Verify ma thanh toan ");
+		log.info("TC_02_Step_14: Verify ma thanh toan ");
 		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.SO_THE));
 
-		log.info("---------TC_02_Step_15: Verify ma thanh toan ");
+		log.info("TC_02_Step_15: Verify ma thanh toan ");
 		verifyEquals(soTaiKhoanThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.SO_TK_THE));
 
 		log.info("TC_02_Step_16: Verify so tien giao dich");
