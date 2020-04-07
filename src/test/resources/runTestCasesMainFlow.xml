@@ -114,7 +114,7 @@
 
 			<!-- Tiết kiệm tự động -->
 <!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> -->
-			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
+<!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> -->
 
 			<!-- Tra cứu -->
 <!-- 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" /> -->
