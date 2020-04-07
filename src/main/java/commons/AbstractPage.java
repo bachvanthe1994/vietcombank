@@ -991,6 +991,10 @@ public class AbstractPage {
 
 	}
 
+	
+	
+		
+	
 // Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
 	public void clickToDynamicDropdownAndDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
@@ -1199,6 +1203,8 @@ public class AbstractPage {
 
 	// Click vào giao dịch trong báo cáo giao dịch tham số truyền vào là index và
 	// resource-id
+	
+	
 	public void clickToDynamicTextIndex(AppiumDriver<MobileElement> driver, String... dynamicIndexAndText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX, dynamicIndexAndText);
@@ -1214,6 +1220,15 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicText);
 		}
 
+	}
+	
+	public void clickTextDynamicFollowLayoutByID(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_LAYOUT, dynamicID);
+		}
 	}
 	
 	//Click image dựa theo Edit text
@@ -1313,6 +1328,17 @@ public class AbstractPage {
 		if (status == true) {
 			clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, dynamicID);
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BOX_WITH_ID, inputValue, dynamicID);
+		}
+
+	}
+
+	
+	public void inputIntoLayoutByID(AppiumDriver<MobileElement> driver, String inputValue, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicID);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, dynamicID);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LINEAERLAYOUT_BY_ID, inputValue, dynamicID);
 		}
 
 	}
@@ -1932,6 +1958,8 @@ public class AbstractPage {
 
 	}
 	
+
+	
 	
 		public String getDynamicTextScrollText(AppiumDriver<MobileElement> driver, String ... dynamicTextAndIndex) {
 			boolean status = false;
@@ -2078,6 +2106,8 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	
 
 	// Xac dinh lay so luong element dang duoc Focus
 	public int getNumberOfDynamicElementsFocus(AppiumDriver<MobileElement> driver, String... dynamicValue) {

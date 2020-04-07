@@ -52,6 +52,9 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_INDEX = "//android.widget.LinearLayout[@index=%s]";
+	
+
+
 
 	// TEXT BOX OR INPUT BOX
 	public static final String DYNAMIC_INPUT_BOX = "//android.widget.EditText[@text='%s']";
@@ -60,7 +63,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.TextView";
 	public static final String DYNAMIC_PASSWORD_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
 	public static final String DYNAMIC_INPUT_IN_LOGIN = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.EditText";
-	public static final String DYNAMIC_TEXT_BOX_WITH_ID = "//android.widget.EditText[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_TEXT_BOX_WITH_ID = "//android.widget.EditText[@resource-id='%s']";
 	public static final String DYNAMIC_LABEL_LIST_ACCEPT = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.FrameLayout//android.widget.EditText";
 	public static final String DYNAMIC_LABEL_SEARCH_BANK = "//android.widget.TextView[@text = '%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.EditText";
 	public static final String DYNAMIC_EDIT_FOLLOW_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.LinearLayout[@index='%s']//android.widget.EditText";
