@@ -58,8 +58,8 @@
 			<!-- Tiết kiệm trực tuyến -->
 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_3" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_4" />
+<!-- 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_3" /> -->
+<!-- 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_4" /> -->
 
 			<!-- Đăng ký trực tuyến -->
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
