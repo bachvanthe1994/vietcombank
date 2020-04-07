@@ -32,8 +32,8 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "3 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "1 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "3 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -262,7 +262,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
-		
+
 		log.info("TC_03_08_Kiem tra so tien phi");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
@@ -567,7 +567,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
-		
+
 		log.info("TC_07_08_Kiem tra so tien phi");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 

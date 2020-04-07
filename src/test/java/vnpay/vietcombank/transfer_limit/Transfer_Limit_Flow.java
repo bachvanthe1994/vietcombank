@@ -119,7 +119,7 @@ public class Transfer_Limit_Flow extends Base {
 		transferLimit.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		long amountConvert = convertAvailableBalanceCurrentcyOrFeeToLong(amountLimit);
@@ -261,7 +261,7 @@ public class Transfer_Limit_Flow extends Base {
 		transferLimit.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		long amountConvert = convertAvailableBalanceCurrentcyOrFeeToLong(amountLimit);
