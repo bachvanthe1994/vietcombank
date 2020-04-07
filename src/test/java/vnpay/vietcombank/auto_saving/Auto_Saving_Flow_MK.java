@@ -421,7 +421,7 @@ public class Auto_Saving_Flow_MK extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_07_MoTaiKhoanTietKiem_TaiKhoanNguon_USD(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -499,7 +499,7 @@ public class Auto_Saving_Flow_MK extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_08_TietKiemTuDong_TaiKhoanNguon_USD_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -610,7 +610,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_09_TietKiemTuDong_TaiKhoanNguon_USD_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_09_Step_01: Mo tab Menu");
@@ -671,7 +671,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_MK() {
 
 		log.info("TC_10_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -716,7 +716,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_11_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 
 		log.info("TC_11_Step_01: Mo tab Menu");
@@ -767,7 +767,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_12_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 
 		log.info("TC_12_1_Click Tat toan tai khoan tiet kiem");
