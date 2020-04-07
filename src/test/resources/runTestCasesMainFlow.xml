@@ -77,13 +77,13 @@
 
 
 			<!-- Tính toán lãi suất -->
-			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
+<!-- 			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" /> -->
 
 			<!-- Đặt mục tiêu tiết kiệm -->
 <!-- 			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" /> -->
 
 			<!-- Cài đặt hạn mức chuyển tiền -->
-			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" />
+<!-- 			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" /> -->
 
 			<!-- Thanh toán cước điện thoại cố định -->
 <!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" /> -->
