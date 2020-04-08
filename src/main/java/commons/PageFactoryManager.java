@@ -35,6 +35,7 @@ import pageObjects.TransferMoneyOutSideVCBPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import pageObjects.VCBAutoDebitPageObject;
 import pageObjects.VCBCreditCardPaymentObject;
+import pageObjects.WaterBillPageObject;
 import pageObjects.saving_online.SavingOnlinePageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
@@ -69,8 +70,7 @@ public class PageFactoryManager {
 		return new TransferIdentiryPageObject(driver);
 	}
 
-	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(
-			AppiumDriver<MobileElement> driver) {
+	public static TransferMoneyOutSideVCBPageObject getTransferMoneyOutSideVCBPageObject(AppiumDriver<MobileElement> driver) {
 		return new TransferMoneyOutSideVCBPageObject(driver);
 	}
 
@@ -143,8 +143,7 @@ public class PageFactoryManager {
 		return new VCBAutoDebitPageObject(driver);
 	}
 
-	public static InterestRateCalculatePageObject getInterestRateCalculatePageObject(
-			AppiumDriver<MobileElement> driver) {
+	public static InterestRateCalculatePageObject getInterestRateCalculatePageObject(AppiumDriver<MobileElement> driver) {
 		return new InterestRateCalculatePageObject(driver);
 	}
 
@@ -192,23 +191,25 @@ public class PageFactoryManager {
 	public static PayBillTelevisionPageObject getPayBillTelevisionPageObject(AppiumDriver<MobileElement> driver) {
 		return new PayBillTelevisionPageObject(driver);
 	}
-	
+
 	public static ShoppingOnlinePageObject getShoppingOnlinePageObject(AppiumDriver<MobileElement> driver) {
 		return new ShoppingOnlinePageObject(driver);
 	}
-	
+
 	public static LocationQRCodePageObject getLocationQRCodePageObject(AppiumDriver<MobileElement> driver) {
 		return new LocationQRCodePageObject(driver);
 	}
-	
+
 	public static VCBCreditCardPaymentObject getVCBCreditCardPaymentPageObject(AppiumDriver<MobileElement> driver) {
 		return new VCBCreditCardPaymentObject(driver);
 	}
-	
+
 	public static SettingVCBSmartOTPPageObject getLocationSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
 		return new SettingVCBSmartOTPPageObject(driver);
 	}
-	
-	
-	
+
+	public static WaterBillPageObject getWaterBillPageObject(AppiumDriver<MobileElement> driver) {
+		return new WaterBillPageObject(driver);
+	}
+
 }
