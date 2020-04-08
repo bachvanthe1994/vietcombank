@@ -23,6 +23,7 @@ import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingTargetPageObject;
 import pageObjects.SearchPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
@@ -207,5 +208,9 @@ public class PageFactoryManager {
 	
 	public static CheckOnlineObject getCheckOnlineObject(AppiumDriver<MobileElement> driver) {
 		return new CheckOnlineObject(driver);
+	}
+
+	public static SettingVCBSmartOTPPageObject getLocationSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
+		return new SettingVCBSmartOTPPageObject(driver);
 	}
 }
