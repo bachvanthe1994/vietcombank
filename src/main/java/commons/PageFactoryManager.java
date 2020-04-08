@@ -23,6 +23,7 @@ import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingTargetPageObject;
 import pageObjects.SearchPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.SetupContactPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
@@ -203,4 +204,11 @@ public class PageFactoryManager {
 	public static VCBCreditCardPaymentObject getVCBCreditCardPaymentPageObject(AppiumDriver<MobileElement> driver) {
 		return new VCBCreditCardPaymentObject(driver);
 	}
+	
+	public static SettingVCBSmartOTPPageObject getLocationSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
+		return new SettingVCBSmartOTPPageObject(driver);
+	}
+	
+	
+	
 }
