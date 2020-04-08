@@ -65,8 +65,13 @@ public class TransferIdentity_Data {
 	public static final String MONEY_0 = "0100000";
 	public static final String MIN_TRANSFER = "1";
 	public static final String MAX_TRANSFER = "1000000000";
-	public static final String CONFIRM_MIN_TRANSFER = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7 theo số 1900545413 để được trợ giúp.";
-	public static final String CONFIRM_MAX_TRANSFER = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7 theo số 1900545413 để được trợ giúp.";
+	public static final String MAX_TRANSFER_DAY = "6000000000";
+	public static final String MAX_TRANSFER_DAY_SERVICE_PACK = "1500000000";
+	public static final String CONFIRM_MIN_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 5,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String CONFIRM_MAX_TRANSFER = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String CONFIRM_MAX_SERVICE_PACK = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 90,000,000 VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String CONFIRM_MAX_SERVICE_GROUP = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String CONFIRM_INSUFFICIENT_BALANCE = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 	public static final String INVALID_MONEY = "123456789012";
 	public static final String MAX_LENGTH_13_MONEY = "11234567890.11";
 	public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("10,000,000 VND", "100,000,000 VND", "1,000,000,000 VND");

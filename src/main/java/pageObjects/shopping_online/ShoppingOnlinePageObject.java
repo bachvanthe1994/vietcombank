@@ -58,8 +58,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
 	}
+	
 	// input vào ô input với tham số truyền vào là inputbox
-
 	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
@@ -69,6 +69,16 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, inputValue, dynamicTextValue);
 		}
 	}
+	
+	// Input vào thông tin người mua hàng
+		public void inputToDynamicUser(String inputValue, String... dynamicTextValueIndex ) {
+			boolean status = false;
+			status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_CUSTOMER, dynamicTextValueIndex);
+			if (status == true) {
+				clearText(driver, ShoppingOnlinePageUIs.DYNAMIC_CUSTOMER, dynamicTextValueIndex);
+				sendKeyToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_CUSTOMER, inputValue, dynamicTextValueIndex);
+			}
+		}
 
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicButton(String dynamicTextValue) {
@@ -129,7 +139,27 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 
 	}
+	
+	// Click vào thông tin người dùng , tham số truyền vào là text
+		public void clickToDynamicCustomer(String dynamicText) {
+			boolean status = false;
+			status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_INFOMATION_CUSTOMER, dynamicText);
+			if (status == true) {
+				clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_INFOMATION_CUSTOMER, dynamicText);
+			}
 
+		}
+		
+	// Click vào thông tin người dùng , tham số truyền vào là text
+		public void clickToDynamicListProvince(String dynamicText) {
+			boolean status = false;
+			status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_CHECKED, dynamicText);
+			if (status == true) {
+				clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_CHECKED, dynamicText);
+			}
+
+		}
+		
 //	lấy ra tổng số tiền cần thanh toán ở màn hình xác nhận thanh toán
 	public String getDynamicTextView(String... dynamicTextIndex) {
 		boolean status = false;

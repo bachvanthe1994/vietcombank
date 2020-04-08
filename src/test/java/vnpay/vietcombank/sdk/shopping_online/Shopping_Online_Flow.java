@@ -22,7 +22,6 @@ public class Shopping_Online_Flow extends Base {
 	private LogInPageObject login;
 	private ShoppingOnlinePageObject shopping;
 	private HomePageObject homePage;
-	String passLogin = "";
 	String transferTime;
 	String transactionNumber;
 	List<String> listActual;
@@ -41,8 +40,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
-		passLogin = pass;
+		login.Global_login1(phone, pass, opt);
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, "© 2019 Vietcombank");
@@ -73,10 +71,34 @@ public class Shopping_Online_Flow extends Base {
 		log.info("TC_01_STEP_5: click thanh toán");
 		shopping.clickToDynamicButton("Thanh toán");
 		
-		if (shopping.isDynamicMessageAndLabelTextUndisplayed("Thông báo")) {
-			System.out.print("a");
-		} else {
-			System.out.print("b");
+		if (shopping.isDynamicTextInfoDisplayed("Thông báo") == true) {
+			log.info("TC_01_STEP_4_1: click the moi");
+			shopping.clickToDynamicButton("Thêm mới");
+			
+			log.info("TC_01_STEP_4_2: nhap ten");
+			shopping.clickToDynamicDateInDateTimePicker("Họ tên người nhận");
+			shopping.inputToDynamicUser("Họ tên người nhận", "Họ tên người nhận", "0");
+			
+			log.info("TC_01_STEP_4_2: nhap so dien thoai");
+			shopping.inputToDynamicUser("Ngyen Van A", "Số điện thoại người nhận");
+			
+			log.info("TC_01_STEP_4_3: chon tinh thanh pho");
+			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
+			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
+			
+			log.info("TC_01_STEP_4_3: chon tinh quan huyen");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Quận Ba Đình");
+			
+			log.info("TC_01_STEP_4_3: chon tinh xa phuong");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Phường Biên Giang");
+			
+			log.info("TC_01_STEP_4_3: dia chi cu the");
+			shopping.inputToDynamicUser("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+			
+			log.info("TC_01_STEP_4_3: chon hoan tat");
+			shopping.clickToDynamicButton("Hoàn tất");
 		}
 
 		log.info("TC_01_STEP_6: click thanh toan");

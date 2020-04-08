@@ -60,5 +60,12 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_CART = "//android.view.View[@index='%s']//android.view.View[@index='%s']";
 	public static final String DYNAMIC_TOTAL_MONEY = "//android.view.View[@text='%s']//following-sibling::android.view.View[@index='%s']";
+	public static final String DYNAMIC_CUSTOMER = "//android.view.View[@text='%s']//following-sibling::android.view.View//android.view.View[@index='%s']";
 	public static final String DYNAMIC_TOTAL_MONEY_1 = "//android.view.View[@index='%s']";
+	
+	// spinner
+	public static final String DYNAMIC_INFOMATION_CUSTOMER= "//android.view.View[@text='%s']//following-sibling::android.widget.Spinner";
+	
+	//checked
+	public static final String DYNAMIC_CHECKED= "//android.widget.CheckedTextView[@text='%s']";
 }
