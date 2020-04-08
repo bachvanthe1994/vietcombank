@@ -174,7 +174,7 @@ public class Base {
 
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
-
+		System.out.println(((HasSettings) driver).getSettings());
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 
 		return driver;

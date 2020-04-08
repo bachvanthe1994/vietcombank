@@ -82,6 +82,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_01_Step_11: Hien thi loai dich vu");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Dịch vụ"), VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
 
+		log.info("TC_01_Step_12: Hien thi don vi truc thuoc");
+		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Đơn vị trực thuộc"), VCBAuto_Debit_Data.TEXT.BELONGING_UNIT);
+
 		log.info("TC_01_Step_12: Hien thi nha cung cap");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Nhà cung cấp"), VCBAuto_Debit_Data.TEXT.EVN_MIEN_TRUNG);
 
