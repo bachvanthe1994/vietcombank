@@ -53,8 +53,8 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_TEXT_INVALID_VND = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_VND = "50000";
 		public static final String MONEY_LESS_MIN_LIMIT_VND = "4500";
-		public static final String MONEY_EXCEED_MAX_LIMIT_VND = "100000001";
-		public static final String MONEY_EXCEED_MAX_TRANSFER_ONE_DAY_VND = "1000000000";
+		public static final String MONEY_EXCEED_MAX_LIMIT_VND = "1500000000";
+		public static final String MONEY_EXCEED_MAX_TRANSFER_ONE_DAY_VND = "5500000000";
 		public static final String MONEY_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "8000001";
 		public static final String MONEY_EXCEED_MAX_TRANSFER_PACKAGE_ONE_DAY_VND = "6000001";
 		public static final String MONEY_ALLOW_VND = "4900000";
@@ -88,8 +88,8 @@ public class TransferMoneyQuick_Data {
 		public static final String BANK_BLANK = "Quý khách vui lòng chọn ngân hàng hưởng";
 		public static final String AMOUNT_BLANK = "Quý khách vui lòng nhập số tiền chuyển khoản";
 		public static final String NOTE_BLANK = "Quý khách vui lòng nhập nội dung giao dịch";
-		public static final String MESSAGE_LESS_MIN_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
-		public static final String MESSAGE_EXCEED_MAX_LIMIT_VND = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/nhóm dich vụ chuyển tiền, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 1900545413 của Vietcombank để được trợ giúp.";
+		public static final String MESSAGE_LESS_MIN_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 4,900 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String MESSAGE_EXCEED_MAX_LIMIT_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String MESSAGE_EXCEED_MAX_TRANSFER_TYPE_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 8,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String MESSAGE_EXCEED_MAX_TRANSFER_PACKAGE_ONE_DAY_VND = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 9,000,000 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String MESSAGE_EXCEED_MAX_TRANSFER_ONE_DAY_VND = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/nhóm dich vụ chuyển tiền, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 1900545413 của Vietcombank để được trợ giúp.";
