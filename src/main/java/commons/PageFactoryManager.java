@@ -43,6 +43,7 @@ import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
 import vehicalPageObject.VehicalPageObject;
+import pageObjects.CheckOnlineObject;
 
 public class PageFactoryManager {
 
@@ -203,10 +204,15 @@ public class PageFactoryManager {
 	public static VCBCreditCardPaymentObject getVCBCreditCardPaymentPageObject(AppiumDriver<MobileElement> driver) {
 		return new VCBCreditCardPaymentObject(driver);
 	}
+	
+	public static CheckOnlineObject getCheckOnlineObject(AppiumDriver<MobileElement> driver) {
+		return new CheckOnlineObject(driver);
+	}
 
 	public static SettingVCBSmartOTPPageObject getLocationSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
 		return new SettingVCBSmartOTPPageObject(driver);
 	}
+
 
 	public static WaterBillPageObject getWaterBillPageObject(AppiumDriver<MobileElement> driver) {
 		return new WaterBillPageObject(driver);
