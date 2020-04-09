@@ -511,12 +511,12 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 		log.info("TC_08_Step_02: Chon tai khoan nguon USD");
 		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-		sourceAccount = Account_Data.Valid_Account.USD_ACCOUNT;
+		sourceAccount = Account_Data.Valid_Account.LIST_ACCOUNT_FROM[6];
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		if (sourceAccountMoney.contains("VND")) {
 			autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
-			sourceAccount = Account_Data.Valid_Account.LIST_ACCOUNT_FROM[4];
+			sourceAccount = Account_Data.Valid_Account.USD_ACCOUNT;
 			autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		}
 		sourceAccount02 = autoSaving.getDynamicTextInDropDownByHeader(driver, "Tài khoản nguồn", "1");
