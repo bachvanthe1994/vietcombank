@@ -32,7 +32,5 @@ public class LuckyGift_Data {
 		public static final String TITLE_CHOISE_ACCOUNT = "Số điện thoại/tài khoản nhận";
 		public static final String TITLE_AMOUNT_MONEY = "Số tiền";
 		
-		
-		
 	}
 }
