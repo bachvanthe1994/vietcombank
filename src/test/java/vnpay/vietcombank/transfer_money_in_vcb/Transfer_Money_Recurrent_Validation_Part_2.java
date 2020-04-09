@@ -335,7 +335,7 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_18_ChuyenTienDinhKy_ComboNgayKetThuc_KiemTraChonNgayKetThuc_LaNgayQuaKhu() {
+	public void TC_18_ChuyenTienDinhKy_ComboNgayBatDau_KiemTraKhongChonNgayKetThuc_LaNgayQuaKhu() {
 		String endDate;
 		endDate = getForwardDate(2);
 
@@ -396,8 +396,8 @@ public class Transfer_Money_Recurrent_Validation_Part_2 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }

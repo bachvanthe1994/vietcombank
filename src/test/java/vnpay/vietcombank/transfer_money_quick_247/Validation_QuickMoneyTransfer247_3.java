@@ -44,7 +44,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_30_KiemTraLabelSoTienVND() {
 		log.info("TC_30_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
@@ -56,7 +56,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "VND"));
 	}
 
-	@Test
+//	@Test
 	public void TC_31_NhapNhoHon10KyTuVaKiemTraDauPhayVND() {
 		log.info("TC_31_Input so tien co 9 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_NINE_NUMBER_VND, "Thông tin giao dịch", "1");
@@ -75,7 +75,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyEquals(amountStartString, amountExpectString);
 	}
 
-	@Test
+//	@Test
 	public void TC_32_Nhap10KyTuVaKiemTraDauPhayVND() {
 		log.info("TC_32_Input so tien co 10 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_TEN_NUMBER_VND, "Thông tin giao dịch", "1");
@@ -94,7 +94,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyEquals(amountStartString, amountExpectString);
 	}
 
-	@Test
+//	@Test
 	public void TC_33_NhapLonHon10KyTuVaKiemTraDauPhayVND() {
 		log.info("TC_33_Input so tien lon hon 10 ky tu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_ELEVEN_NUMBER_VND, "Thông tin giao dịch", "1");
@@ -106,7 +106,7 @@ public class Validation_QuickMoneyTransfer247_3 extends Base {
 		verifyEquals(amountStartString, "Số tiền");
 	}
 
-	@Test
+//	@Test
 	public void TC_34_NhapKyTuChuVaKiemTraDauPhayVND() {
 		log.info("TC_34_Input ky tu chu");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_TEXT_INVALID_VND, "Thông tin giao dịch", "1");
