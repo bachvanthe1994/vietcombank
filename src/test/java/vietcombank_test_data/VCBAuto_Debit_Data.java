@@ -6,6 +6,7 @@ public class VCBAuto_Debit_Data {
 
 		public static final String ELECTRIC_BILL_TEXT = "Hóa đơn tiền điện";
 		public static final String EVN_MIEN_TRUNG = "EVN Miền Trung";
+		public static final String BELONGING_UNIT = "EVN Mang Yang - Gia Lai";
 		public static final String CUSTOMER_ID_01 = "PC10MM0967449";
 		public static final String REGISTER_SUCCESS_TITLE = "ĐĂNG KÝ VCB-AUTO DEBIT THÀNH CÔNG";
 		public static final String REGISTED_MESSAGE = "Mã khách hàng đã đăng ký dịch vụ thanh toán tự động";

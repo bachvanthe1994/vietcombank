@@ -9,6 +9,7 @@ public class Register_Online_data {
 		public static final String NO_IDENTIFICATION = "0339783058";
 		public static final String TYPE_RETURN_MONEY[] = {"Rút lãi","Rút gốc"};
 		public static final String EMAIL = "hieppt@vnpay.vn";
+		public static final String ADDRESS = "123 Truc Bach Ha Noi";
 		public static final String CARD_RANK[] = {"Chuẩn","Vàng","Đặc biệt"};
 		public static final String FEE_PAYMENT[] = {"Trích nợ tự động từ TK","Nộp tiền mặt"};
 		public static final String TYPE_AMOUNT[] = {"VND","EUR","USD"};
