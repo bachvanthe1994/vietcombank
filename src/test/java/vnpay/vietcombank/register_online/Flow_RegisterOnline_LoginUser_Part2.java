@@ -37,14 +37,15 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		
 		log.info("Before class: Lay ten user");
 		nameCustomer = registerOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
+		
+		log.info("TC_01_Step: Click chuc nang dang ky truc tuyen");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
 	}
 
-//	@Test
+	@Test
 	public void TC_01_DangKyDichVuNganHangDienTu_ManHinhDangKyDVNHDT() {
 
 
-		log.info("TC_01_Step: Click chuc nang dang ky truc tuyen");
-		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký trực tuyến");
 
 		log.info("TC_01_Step: Click giao dich tien mat/chuyen tien");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký dịch vụ ngân hàng điện tử/Đăng ký phát hành thẻ ghi nợ");
@@ -94,7 +95,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 	}
 
-//	@Test
+	@Test
 	public void TC_02_DangKyDichVuNganHangDienTu_ManHinhDangKyDichVuDienTu() {
 		log.info("TC_02_Step: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
@@ -358,6 +359,8 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
+	
+	
 	@Test
 	public void TC_07_DangKyPhatHanhTheGhiNo_ChonHangChuanVCBConnect24VISATrichNoTuDongTuTK() {
 		log.info("TC_07_Step: Nhap thong tin man hinh dang ky");
