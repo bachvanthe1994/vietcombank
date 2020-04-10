@@ -30,7 +30,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		phoneNumber = phone;
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);		
 		
@@ -91,7 +91,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 
 		log.info("TTC_01_Step: Nhap so tien chuyen");
 		registerOnline.scrollIDownOneTime(driver);
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.AMOUNT, "com.VCB:id/edtContent2");
+		registerOnline.inputToDynamicInputBox(driver, Register_Online_data.Valid_Account.AMOUNT, "Số tiền");
 
 		log.info("TC_01_Step: Nhap noi dung");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NOTE, "com.VCB:id/edtContent");

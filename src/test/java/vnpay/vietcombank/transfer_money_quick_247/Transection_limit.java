@@ -208,26 +208,72 @@ public class Transection_limit extends Base {
 
 	}
 	
-	@Test
+//	@Test
 	public void TC_06_SoTienNhoHonHanMucToiThieuTrenMotLanGiaoDich_The() {
-		log.info("TC_01_Step_Click Chuyen tien nhanh");
+		log.info("TC_06_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
+		log.info("TC_06_Step_Select Chuyen tien nhanh qua tai khoan");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_01_Step_nhap so the");
-		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0], "Nhập/chọn số thẻ");
+		log.info("TC_06_Step_nhap so the");
+		transferMoney.inputToDynamicInputBox(driver, "9704060129837294", "Nhập/chọn số thẻ");
 		
-		log.info("TC_01_Step_Nhap so tien chuyen");
-		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_LESS_MIN_LIMIT_VND, "Số tiền");
+		log.info("TC_06_Step_Nhap so tien chuyen");
+		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.USD_PAYMENT_BY_PASSWORD_FEE, "Số tiền");
 		
-//		log.info("TC_01_Step_Tiep tuc");
-//		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
-//		
-//		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-//		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.MESSAGE_LESS_MIN_LIMIT_VND));
+		log.info("TC_06_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_06_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.MESSAGE_LESS_MIN_LIMIT_USD));
+
+	}
+	
+//	@Test
+	public void TC_07_SoTienLonHonHanMucToiThieuTrenMotLanGiaoDich_The() {
+		log.info("TC_07_Step_Click Chuyen tien nhanh");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
+
+		log.info("TC_07_Step_Select Chuyen tien nhanh qua tai khoan");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
+
+		log.info("TC_07_Step_nhap so the");
+		transferMoney.inputToDynamicInputBox(driver, "9704060129837294", "Nhập/chọn số thẻ");
+		
+		log.info("TC_07_Step_Nhap so tien chuyen");
+		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.USD_MAX_TRANSECTION, "Số tiền");
+		
+		log.info("TC_07_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_07_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.MESSAGE_LESS_MAX_LIMIT_USD));
+
+	}
+	
+	@Test
+	public void TC_08_SoTienLonHonHanMucToiThieuTrenNgayGiaoDich_The() {
+		log.info("TC_07_Step_Click Chuyen tien nhanh");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
+
+		log.info("TC_07_Step_Select Chuyen tien nhanh qua tai khoan");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
+
+		log.info("TC_07_Step_nhap so the");
+		transferMoney.inputToDynamicInputBox(driver, "9704060129837294", "Nhập/chọn số thẻ");
+		
+		log.info("TC_07_Step_Nhap so tien chuyen");
+		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.USD_MAX_TRANSECTION, "Số tiền");
+		
+		log.info("TC_07_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_07_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.MessageTransferMoney.MESSAGE_LESS_MAX_LIMIT_USD));
 
 	}
 
