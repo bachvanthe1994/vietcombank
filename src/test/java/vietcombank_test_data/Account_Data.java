@@ -6,7 +6,7 @@ public class Account_Data {
 		public static final String ACCOUNT2 = "0121000667333";
 		public static final String ACCOUNT3 = "0451001458259";
 		public static final String ACCOUNT_LIMIT = "0019967190";
-		public static final String DEFAULT_ACCOUNT3 = "0019961177";
+		public static final String DEFAULT_ACCOUNT3 = "0019967190";
 		public static final String LIST_CARD_FROM[] = { "970436...053", "970436...083" };
 		public static final String LIST_DEBIT_ACCOUNT[] = { "0011379351651", "0011379351651" };
 		public static final String CARD_TO = "9704060129837294";
