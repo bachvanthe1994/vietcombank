@@ -52,7 +52,7 @@ public class Limit_LuckyGift extends Base {
 	@Parameters({ "pass" })
 	@Test
 	public void TC_01_ChuyenTienQuaThapHonHanMucToiThieu(String pass) {
-		
+
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
@@ -80,7 +80,7 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
 		log.info("TC_01_Step_6: Nhap so tien chuyen");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.Limit_Money_Gift.MIN_MONEY_A_TRANSACTION, TitleLuckyGift.TITLE_AMOUNT_MONEY);
+//		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.Limit_Money_Gift.MIN_MONEY_A_TRANSACTION, TitleLuckyGift.TITLE_AMOUNT_MONEY);
 
 		log.info("TC_01_Step_7: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
@@ -90,7 +90,6 @@ public class Limit_LuckyGift extends Base {
 		log.info("TC_01_Step_8: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
-		
 		log.info("TC_01_Step_13: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
@@ -113,7 +112,6 @@ public class Limit_LuckyGift extends Base {
 		log.info("TC_01_Step_17: Click giao dịch mới");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Giao dịch mới");
 
-	
 		log.info("TC_01_Step_22 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
 
