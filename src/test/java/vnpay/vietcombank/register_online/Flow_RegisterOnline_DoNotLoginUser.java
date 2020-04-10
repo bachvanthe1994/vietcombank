@@ -311,11 +311,8 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.CUSTOMER_NAME_ACCEPT, "Thông tin tài khoản ghi nợ", "4");
 
 		log.info("TC_04_Step: Chon loai tien la USD");
-		registerOnline.clickToDynamicImageCombobox(driver, "Thông tin giao dịch", "7");
+		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivContent3");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "USD");
-
-		log.info("TC_04_Step: Verify loai tien la USD");
-		verifyEquals(registerOnline.getDynamicTextInDropDownByHeader(driver, "Thông tin giao dịch", "7"), "USD");
 
 		log.info("TC_04_Step: Nhap so tien chuyen");
 		registerOnline.inputToDynamicInputBoxByHeader(driver, Register_Online_data.Valid_Account.AMOUNT_USD_EUR, "Thông tin giao dịch", "7");
