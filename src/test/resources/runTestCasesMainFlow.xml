@@ -61,9 +61,9 @@
 <!-- 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" /> -->
 
 			<!-- Đăng ký trực tuyến -->
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" />
+<!-- 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" /> -->
+<!-- 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" /> -->
+<!-- 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" /> -->
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" />
 
 			<!-- Auto debit -->
