@@ -51,7 +51,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_01_Step_02: Kiem tra tai khoan mac dinh");
-		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transferInVCB.getDynamicTextInDropDownByLable(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 	}
 
@@ -490,7 +490,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_19_Step_07: Kiem tra suggest list hien thi");
-		verifyFailure(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
+		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
 		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
 
@@ -516,16 +516,11 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
 		log.info("TC_20_Step_05: Click so tien goi y");
-		List<String> suggestedMoney = transferInVCB.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvAmount");
-
-		log.info("TC_20_Step_06: Click dong suggest list");
-		transferInVCB.clickToDynamicSuggestedMoney(driver, 0, "com.VCB:id/tvAmount");
+		transferInVCB.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_20_Step_07: Kiem tra suggest list khong hien thi");
 		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
-
-		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), suggestedMoney.get(0).replaceAll(" VND", ""));
-
+		
 		log.info("TC_20_Step_08: Click quay lai");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 

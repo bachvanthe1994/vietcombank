@@ -40,6 +40,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.offset.PointOption;
 import model.TransferInVCBRecurrent;
+import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.TransferMoneyInVCBPageUIs;
 
@@ -1654,7 +1655,7 @@ public class AbstractPage {
 //Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
 	public boolean isDynamicMessageAndLabelTextUndisplayed(AppiumDriver<MobileElement> driver,
 			String dynamicTextValue) {
-		boolean isDisplayed = true;
+		boolean isDisplayed = false;
 		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,
 				dynamicTextValue);
 		if (status == true) {
@@ -1665,7 +1666,7 @@ public class AbstractPage {
 
 //Kiểm  tra text trong ô input có hiển thị hay không, tham số truyền vào là text
 	public boolean isDynamicTextInInputBoxDisPlayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		boolean isDisplayed = false;
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);
 		if (status == true) {
@@ -1695,14 +1696,15 @@ public class AbstractPage {
 		}
 		return isDisplayed;
 	}
-
+	
 	public boolean isDynamicSuggestedMoneyUndisplayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
-		boolean isDisplayed = false;
-		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+		boolean isUnDisplayed = true;
+		boolean status = waitForElementInvisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 		if (status == true) {
-			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+			isUnDisplayed = isControlUnDisplayed(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
 		}
-		return isDisplayed;
+		return isUnDisplayed;
+
 	}
 
 	public boolean isDynamicBackIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {

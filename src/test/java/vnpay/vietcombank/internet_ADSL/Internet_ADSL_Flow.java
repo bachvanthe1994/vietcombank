@@ -10,19 +10,19 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import pageObjects.HomePageObject;
 import pageObjects.InternetADSLPageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Internet_ADSL_Data;
-import vietcombank_test_data.LogIn_Data;
 
 public class Internet_ADSL_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private InternetADSLPageObject ADSL;
+	private HomePageObject homePage;
 	private TransactionReportPageObject transReport;
-	String passLogin = "";
 	String transferTime;
 	String transactionNumber;
 	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
@@ -32,22 +32,18 @@ public class Internet_ADSL_Flow extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		if (deviceType.contains("android")) {
-			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("ios")) {
-			driver = openIOSApp(deviceName, udid, url);
-		}
-		ADSL = PageFactoryManager.getInternetADSLPageObject(driver);
+		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
-		passLogin = pass;
+		login.Global_login1(phone, pass, opt);
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		ADSL = PageFactoryManager.getInternetADSLPageObject(driver);
 	}
 
+	@Parameters({ "pass" })
 	@Test
-	public void TC_01_ThanhToanCuocViettelXacThucMatKhau() {
+	public void TC_01_ThanhToanCuocViettelXacThucMatKhau(String pass) {
 		log.info("TC_01_Step_Click cuoc ADSL");
-		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
@@ -92,7 +88,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicPopupPasswordInput(driver, passLogin, "Tiếp tục");
+		ADSL.inputToDynamicPopupPasswordInput(driver, pass, "Tiếp tục");
 
 		log.info("TC_01_Step_Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -222,8 +218,9 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
+	@Parameters({ "otp" })
 	@Test
-	public void TC_03_ThanhToanCuocViettelXacThucOTP() {
+	public void TC_03_ThanhToanCuocViettelXacThucOTP(String otp) {
 		log.info("TC_03_Step_Click cuoc ADSL");
 		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
@@ -271,7 +268,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		ADSL.inputToDynamicOtp(driver, otp, "Tiếp tục");
 
 		log.info("TC_03_Step_Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -401,8 +398,9 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
+	@Parameters({ "pass" })
 	@Test
-	public void TC_05_ThanhToanCuocFPTXacThucMatKhau() {
+	public void TC_05_ThanhToanCuocFPTXacThucMatKhau(String pass) {
 		log.info("TC_05_Step_Click cuoc ADSL");
 		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
@@ -451,7 +449,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicPopupPasswordInput(driver, passLogin, "Tiếp tục");
+		ADSL.inputToDynamicPopupPasswordInput(driver, pass, "Tiếp tục");
 
 		log.info("TC_05_Step_Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -581,8 +579,9 @@ public class Internet_ADSL_Flow extends Base {
 
 	}
 
+	@Parameters({ "otp" })
 	@Test
-	public void TC_07_ThanhToanCuocFPTXacThucOTP() {
+	public void TC_07_ThanhToanCuocFPTXacThucOTP(String otp) {
 		log.info("TC_07_Step_Click cuoc ADSL");
 		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
@@ -631,7 +630,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		ADSL.inputToDynamicOtp(driver, otp, "Tiếp tục");
 
 		log.info("TC_07_Step_Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
