@@ -78,8 +78,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 			if (vcbACreditCardPayment.isTextDisplayedInPageSource("Quý khách không còn dư nợ")) {
 				log.info("TC_01_Step_07: Click btn Dong y:");
 				vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+
 				log.info("TC_01_Step_08: Click chon so tai khoan the :");
 				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
+
 				continue;
 			} else {
 				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
