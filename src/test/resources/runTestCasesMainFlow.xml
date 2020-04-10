@@ -16,7 +16,7 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
+		<parameter name="deviceUDID" value="22232b98150c7ece" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0335059860" />
 		<parameter name="pass" value="aaaa1111" />
@@ -29,8 +29,8 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
 
 			<!-- chuyển tiền ngoài vcb -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" /> -->
@@ -62,9 +62,9 @@
 			<!-- <class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_4" /> -->
 
 			<!-- Đăng ký trực tuyến -->
-			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" /> -->
+			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
 			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" /> -->
-			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" /> -->
+<!-- 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" /> -->
 			<!-- <class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" /> -->
 
 			<!-- Auto debit -->
