@@ -331,7 +331,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Nhà cung cấp");
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.MOMO_EWALLET);
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Loại dịch vụ");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền MoMo");
+		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền vào ví cá nhân Momo B");
 		setupContact.inputToDynamicInputBox(driver, Contact.CONTACT_NAME_02, "Tên gợi nhớ");
 		setupContact.inputToDynamicInputBox(driver, Contact.CONTACT_CARD_NUMBER_02, "Số thẻ/Mã khách hàng");
 
@@ -359,7 +359,7 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"), Contact.E_WALLET_CHARGE);
 		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.MOMO_EWALLET));
-		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, "Nạp tiền MoMo"));
+		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, "Nạp tiền vào ví cá nhân Momo B"));
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, Contact.CONTACT_NAME_02));
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, Contact.CONTACT_CARD_NUMBER_02));
 
@@ -406,7 +406,7 @@ public class SetupContactManagement_Flow extends Base {
 
 		log.info("TC_10_Step_05: Xac nhan danh ba da bi xoa khoi danh sach");
 		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, Contact.CONTACT_NAME_01)));
-		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, "Nạp tiền MoMo")));
+		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, "Nạp tiền điện tử vào ví")));
 	}
 
 	@AfterClass(alwaysRun = true)

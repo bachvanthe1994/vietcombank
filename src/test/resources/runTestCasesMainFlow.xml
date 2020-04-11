@@ -39,14 +39,14 @@
 
 			<!-- Chuyển tiền 24/7 -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" /> -->
-			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" /> -->
 
 			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
+<!-- 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" /> -->
+<!-- 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" /> -->
 
 			<!-- Quà tặng may mắn -->
-			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+<!-- 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
 
 			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
