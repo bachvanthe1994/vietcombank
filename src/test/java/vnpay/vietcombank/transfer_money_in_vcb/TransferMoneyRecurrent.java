@@ -54,14 +54,14 @@ public class TransferMoneyRecurrent extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		password = pass;
-	}
-
-	@Test
-	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
 		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
+	}
+
+	@Test
+	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 
 		log.info("TC_01_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
@@ -174,7 +174,6 @@ public class TransferMoneyRecurrent extends Base {
 		String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));
 
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-
 
 		log.info("TC_03_2: Click Trang thai lenh chuyen tien");
 		transferRecurrent.scrollDownToText(driver, "Nạp tiền/ Thanh toán hoá đơn");

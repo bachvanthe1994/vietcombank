@@ -114,9 +114,10 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_02_GiaoDichRutTienVNDThanhCong() {
+	public void TC_15_GiaoDichRutTienVNDThanhCong() {
 
 		log.info("TC_02_Step: Click rut tien");
+		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Giao dịch tiền mặt/chuyển tiền");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Rút tiền");
 
 		log.info("TC_02_Step: verify ten khach hang, defaul fill ten khach hang");
@@ -184,7 +185,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 	}
 
 	@Test
-	public void TC_03_GuiTietKiem_TaiKhoanTienGuiCoKyHanTienMat() {
+	public void TC_16_GuiTietKiem_TaiKhoanTienGuiCoKyHanTienMat() {
 
 		log.info("TC_03_Step: Click gui tiet kiem");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
