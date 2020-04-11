@@ -317,7 +317,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.AMOUNT_USD_EUR, "com.VCB:id/layoutSoTien");
 
 		log.info("TC_04_Step: Nhap noi dung chuyen");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.NOTE, "com.VCB:id/layoutNoiDungNops");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.NOTE, "com.VCB:id/layoutNoiDungNop");
 
 		log.info("TC_04_Step: Click button xac nhan");
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
