@@ -490,7 +490,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		log.info("TC_05_Step 10: Kiem tra thoi gian tao dao dich");
 
 		log.info("TC_05_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_1);
+		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_05_Step 12: Kiem tra trang thai giao dich");
 		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
