@@ -16,6 +16,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Internet_ADSL_Data;
+import vietcombank_test_data.LogIn_Data;
 
 public class Internet_ADSL_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -23,7 +24,7 @@ public class Internet_ADSL_Flow extends Base {
 	private InternetADSLPageObject ADSL;
 	private HomePageObject homePage;
 	private TransactionReportPageObject transReport;
-	String transferTime;
+	String transferTime,pass;
 	String transactionNumber;
 	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
 
@@ -808,7 +809,7 @@ public class Internet_ADSL_Flow extends Base {
 			ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 			log.info("TC_01_Step_Nhap ma xac thuc");
-			ADSL.inputToDynamicPopupPasswordInput(driver, passLogin, "Tiếp tục");
+			ADSL.inputToDynamicPopupPasswordInput(driver, pass, "Tiếp tục");
 
 			log.info("TC_01_Step_Tiep tuc");
 			ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -987,7 +988,7 @@ public class Internet_ADSL_Flow extends Base {
 			ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 			log.info("TC_03_Step_Nhap ma xac thuc");
-			ADSL.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+			ADSL.inputToDynamicOtp(driver,LogIn_Data.Login_Account.OTP , "Tiếp tục");
 
 			log.info("TC_03_Step_Tiep tuc");
 			ADSL.clickToDynamicButton(driver, "Tiếp tục");

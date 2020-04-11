@@ -3,7 +3,8 @@ package pageObjects;
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import vietcombank_test_data.Register_Online_data;
+
+
 
 public class RegisterOnlinePageObject extends AbstractPage {
 
