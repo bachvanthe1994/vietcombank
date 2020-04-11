@@ -18,7 +18,7 @@ import pageObjects.saving_online.SavingOnlinePageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.SavingOnline_Data;
 
-public class Transection_limit extends Base {
+public class Transection_limit_account_saving_money extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
