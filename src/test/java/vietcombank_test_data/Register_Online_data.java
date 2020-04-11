@@ -13,7 +13,7 @@ public class Register_Online_data {
 		public static final String CARD_RANK[] = { "Chuẩn", "Vàng", "Đặc biệt" };
 		public static final String FEE_PAYMENT[] = { "Trích nợ tự động từ TK", "Nộp tiền mặt" };
 		public static final String TYPE_AMOUNT[] = { "VND", "EUR", "USD" };
-		public static final String ACCOUNT_TAKE[] = { Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.ACCOUNT2 };
+		public static final String ACCOUNT_TAKE[] = { Account_Data.Valid_Account.DEFAULT_ACCOUNT3, Account_Data.Valid_Account.ACCOUNT2 };
 		public static final String AMOUNT = "100000";
 		public static final String AMOUNT_OPEN_CARD = "200000";
 		public static final String AMOUNT_USD_EUR = "10";
