@@ -1157,6 +1157,14 @@ public class AbstractPage {
 		}
 	}
 
+	public void clickToTextViewBy2LinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_2_LAYOUT, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOW_2_LAYOUT, dynamicID);
+		}
+	}
+
 	public void clickToTextID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -1333,13 +1341,24 @@ public class AbstractPage {
 	}
 
 	// input vào ô input với xpath là DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID
-	public void inputToDynamicEditviewByLinearlayoutId(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
+	public void inputToDynamicEditviewByLinearlayoutId(AppiumDriver<MobileElement> driver, String inputValue, String... dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID, dynamicTextValue);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID, dynamicTextValue);
 		if (status == true) {
 			clearText(driver, DynamicPageUIs.DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID, dynamicTextValue);
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID, inputValue, dynamicTextValue);
+		}
+	}
+
+	// input vào ô input với xpath là DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID
+	public void inputToDynamicEditviewBy2LinearlayoutId(AppiumDriver<MobileElement> driver, String inputValue, String... dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_BY_2_LAYOUT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_BY_2_LAYOUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_BY_2_LAYOUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_BY_2_LAYOUT, inputValue, dynamicTextValue);
 		}
 	}
 
