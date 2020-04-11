@@ -12,7 +12,7 @@ public class Register_Online_data {
 		public static final String CARD_RANK[] = {"Chuẩn","Vàng","Đặc biệt"};
 		public static final String FEE_PAYMENT[] = {"Trích nợ tự động từ TK","Nộp tiền mặt"};
 		public static final String TYPE_AMOUNT[] = {"VND","EUR","USD"};
-		public static final String ACCOUNT_TAKE[] ={"0019967190","0121000667333"};
+		public static final String ACCOUNT_TAKE[] ={"0019967190","0121000667333","0019961181"};
 		public static final String AMOUNT = "100000";
 		public static final String AMOUNT_OPEN_CARD = "200000";
 		public static final String AMOUNT_USD_EUR = "10";
@@ -22,6 +22,8 @@ public class Register_Online_data {
 		public static final String LIST_SEND_MONEY[] = {"Tài khoản tiền gửi có kỳ hạn","Thẻ tiết kiệm không kỳ hạn","Thẻ tiết kiệm có kỳ hạn"};
 		public static final String LIST_PERIOD[] = {"14 ngày","1 tháng","3 tháng","6 tháng","9 tháng","12 tháng","24 tháng"};
 		public static final String INTEREST_RECEPT_TYPE[] = {"Nhập gốc","Tiền mặt","Chuyển khoản"};
+		public static final String NOI_CAP = "THANH PHO CAN THO";
+
 	}
 
 	public class Message {
