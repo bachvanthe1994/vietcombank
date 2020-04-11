@@ -3,7 +3,6 @@ package pageObjects;
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import vietcombank_test_data.Register_Online_data;
 
 public class RegisterOnlinePageObject extends AbstractPage {
 
@@ -13,7 +12,7 @@ public class RegisterOnlinePageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
-	public void DangKyPhatHanhTheGhiNo(String TYPE_IDENTIFICATION, String NO_IDENTIFICATION,String Plusyear, String LOCATION,String ADDRESS,  String EMAIL) {
+	public void DangKyPhatHanhTheGhiNo(String TYPE_IDENTIFICATION, String NO_IDENTIFICATION, String Plusyear, String LOCATION, String ADDRESS, String EMAIL) {
 		clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký phát hành thẻ ghi nợ");
 
 		clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgaySinh");
@@ -33,10 +32,9 @@ public class RegisterOnlinePageObject extends AbstractPage {
 		clickToDynamicButton(driver, "OK");
 
 		inputToDynamicEditviewByLinearlayoutId(driver, LOCATION, "com.VCB:id/layoutNoiCap2");
-		inputToDynamicEditviewByLinearlayoutId(driver,ADDRESS,"com.VCB:id/layoutDiaChiHienTai");
-	
-		inputToDynamicEditviewByLinearlayoutId(driver, EMAIL,"com.VCB:id/layoutDiaChiEmail");
+		inputToDynamicEditviewByLinearlayoutId(driver, ADDRESS, "com.VCB:id/layoutDiaChiHienTai");
 
+		inputToDynamicEditviewByLinearlayoutId(driver, EMAIL, "com.VCB:id/layoutDiaChiEmail");
 
 		clickToDynamicButton(driver, "Xác nhận");
 	}
