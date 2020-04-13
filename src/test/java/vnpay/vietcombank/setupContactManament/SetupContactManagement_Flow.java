@@ -133,7 +133,7 @@ public class SetupContactManagement_Flow extends Base {
 	public void TC_02_TaoDanhBaNguoiHuong() {
 
 		log.info("TC_02_Step_05: Tao moi 'Thong tin nguoi thu huong' ");
-		setupContact.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/btnAddContact");
+		setupContact.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
 		log.info("TC_02_Step_06: Mo DropdownList 'Chuyen Tien' ");
 		setupContact.clickToDynamicDropdownByHeader(driver, "Thông tin người thụ hưởng", "1");

@@ -115,7 +115,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 		originAcc = mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/number_account");
 
 		log.info("TC_03_Step_03: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_03_Step_04: Xac nhan tai khoan mac dinh hien thi la tai khoan dau tien trong danh sach ");
 		verifyEquals(mobileTopup.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/title"), originAcc);
@@ -128,7 +128,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 		originAccMoney = mobileTopup.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/descript");
 
 		log.info("TC_04_Step_02: Tat Dropdowlist di");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 
 		log.info("TC_04_Step_03: Xac nhan so du kha dung hien thi dung voi so du mac dinh");
 		verifyTrue(mobileTopup.isDynamicMessageAndLabelTextDisplayed(driver, originAccMoney));
@@ -138,7 +138,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 	public void TC_05_KiemTraNhanComboBoxTaiKhoanNguon_CoTruyVanTaiKhoanNguon() {
 
 		log.info("TC_05_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_05_Step_02: Xac nhan hien thi Tai khoan");
 		verifyTrue(mobileTopup.isDynamicTextByIdDisplayed(driver, "com.VCB:id/title"));
@@ -148,14 +148,14 @@ public class Mobile_Topup_Validate_01 extends Base {
 		verifyTrue(mobileTopup.isTextDisplayedInListTextElements(driver, "VND", "com.VCB:id/descript"));
 
 		log.info("TC_05_Step_04: Tat Dropdownlist");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
 	@Test
 	public void TC_06_KiemTraChon1TKTuDanhSach() {
 
 		log.info("TC_06_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_06_Step_02: Click vao tai khoan nguon bat ki trong Droddownlist");
 		originAccMoney = mobileTopup.getMoneyByAccount(driver, Account_Data.Valid_Account.ACCOUNT2);

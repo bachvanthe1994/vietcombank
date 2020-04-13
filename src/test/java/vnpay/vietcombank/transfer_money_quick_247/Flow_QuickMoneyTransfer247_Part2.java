@@ -184,7 +184,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
 
 		log.info("TC_10: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_10: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, accountStart);
@@ -396,7 +396,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
 
 		log.info("TC_12: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_12: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, accountStart);
@@ -615,7 +615,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
 
 		log.info("TC_14: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_14: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, accountStart);
@@ -826,7 +826,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
 
 		log.info("TC_16: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_16: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, accountStart);

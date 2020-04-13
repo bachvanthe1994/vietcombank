@@ -184,7 +184,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_02: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
@@ -385,7 +385,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_04_Step: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step: Chon so tai khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
@@ -598,7 +598,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_06_Step_: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step_: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
@@ -801,7 +801,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_08: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08: Chon so tai khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[2]);

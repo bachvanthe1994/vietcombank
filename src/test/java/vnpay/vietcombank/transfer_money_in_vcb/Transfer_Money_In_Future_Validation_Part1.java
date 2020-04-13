@@ -165,7 +165,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropdownByHeader(driver, "Ngày hiệu lực", "1");
 
 		log.info("TC_06_Step_02: Click chon nam");
-		transferInVCB.clickToDynamicDropdownAndDateTimePicker(driver, "android:id/date_picker_header_year");
+		transferInVCB.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_06_Step_03: Chon 2021");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Integer.parseInt(getCurrentYear()) + 1 + "");

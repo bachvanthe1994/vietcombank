@@ -516,7 +516,7 @@ public class Transfer_Money_Immedidately_Validation_Part1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
 
 		log.info("TC_20_Step_05: Click so tien goi y");
-		transferInVCB.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvAmount");
+		transferInVCB.clickToTextID(driver, "com.VCB:id/tvAmount");
 
 		log.info("TC_20_Step_07: Kiem tra suggest list khong hien thi");
 		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));

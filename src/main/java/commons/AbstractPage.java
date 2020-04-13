@@ -964,16 +964,6 @@ public class AbstractPage {
 
 	}
 
-// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
-	public void clickToDynamicDropdownAndDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicID) {
-		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-		}
-
-	}
-
 // Click vào ngày trong date time picker , tham số truyền vào là text
 	public void clickToDynamicDateInDateTimePicker(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
@@ -1234,16 +1224,6 @@ public class AbstractPage {
 			if (i < time - 1) {
 				clickToDynamicButton(driver, "Đóng");
 			}
-		}
-	}
-
-	// Click combobox
-	public void clickToTextViewCombobox(AppiumDriver<MobileElement> driver, String... dynamicID) {
-		boolean status = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		}
 	}
 
