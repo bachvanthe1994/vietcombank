@@ -400,7 +400,7 @@ public class Internet_ADSL_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_05_ThanhToanCuocFPTXacThucMatKhau(String pass) {
 		log.info("TC_05_Step_Click cuoc ADSL");
 		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
@@ -493,7 +493,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	@Test
+//	@Test
 	public void TC_06_Report_ThanhToanCuocFPTXacThucMatKhau() {
 		log.info("TC_06_Step: Click back man hinh home");
 		ADSL.clickImageBack("Cước Internet ADSL");
@@ -581,7 +581,7 @@ public class Internet_ADSL_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_07_ThanhToanCuocFPTXacThucOTP(String otp) {
 		log.info("TC_07_Step_Click cuoc ADSL");
 		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
@@ -674,7 +674,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	@Test
+//	@Test
 	public void TC_08_Report_ThanhToanCuocFPTXacThucOTP() {
 		log.info("TC_08_Step: Click back man hinh home");
 		ADSL.clickImageBack("Cước Internet ADSL");
