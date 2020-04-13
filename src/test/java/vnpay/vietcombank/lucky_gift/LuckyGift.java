@@ -159,7 +159,7 @@ public class LuckyGift extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() {
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -327,7 +327,7 @@ public class LuckyGift extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_BaoCaoTienQuaTangMayManTrongVCBBangSTKVaXacThucBangMK() {
 		log.info("TC_04_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -502,7 +502,7 @@ public class LuckyGift extends Base {
 		date = new Date();
 	}
 
-//	@Test
+	@Test
 	public void TC_06_BaoCaoGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangMK() {
 		log.info("TC_06_Step_01 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
@@ -1105,11 +1105,8 @@ public class LuckyGift extends Base {
 		log.info("TC_12_Step_19: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 
-		log.info("TC_12_Step_20: Click quay lai");
-		transReport.navigateBack(driver);
-
-		log.info("TC_02_Step_21: Click vao More Icon");
-		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		log.info("TC_12_Step_21: Click vao More Icon");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
 
