@@ -10,8 +10,8 @@ public class LuckyGift_Data {
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
 		public static final String MIN_MONEY_A_TRANSACTION = "100";
 //		public static final String MOBI_ACCEPT = "0976878903";
-		public static final String MOBI_ACCEPT = "0923253032";
-		public static final String NAME_ACCEPT = "NGO TRI NAM";
+		public static final String MOBI_ACCEPT = "0528391120";
+		public static final String NAME_ACCEPT = "NGUY H NH";
 		public static final String ACCOUNT_ACCEPT_IN_VCB = "0019967190";
 		public static final String ACCOUNT_ACCEPT_OUT_VCB = "0129837294";
 		public static final String ACCOUNT_FORM = "0019961175";
@@ -32,6 +32,6 @@ public class LuckyGift_Data {
 		public static final String TITLE_GIFT = "QUÀ TẶNG";
 		public static final String TITLE_CHOISE_ACCOUNT = "Số điện thoại/tài khoản nhận";
 		public static final String TITLE_AMOUNT_MONEY = "Số tiền";
-		
+
 	}
 }

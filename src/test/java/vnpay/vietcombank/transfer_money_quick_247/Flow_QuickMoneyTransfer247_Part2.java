@@ -163,7 +163,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountStart - amountTranfer, amountAfter);
 	}
 
-	//@Test
+	// @Test
 	public void TC_10_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -260,7 +260,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	//@Test
+	// @Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		log.info("TC_11_Step_Click Chuyen tien nhanh");
@@ -272,7 +272,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 		log.info("TC_11_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
 		log.info("TC_11_Step_Get so tai khoan nguon");
 		accountStart = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
@@ -360,7 +360,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 		log.info("TC_11_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
 		log.info("TC_11: Lay so du kha dung the");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -375,7 +375,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountAtual, amountExpect);
 	}
 
-	//@Test
+	// @Test
 	public void TC_12_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -439,7 +439,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_12: So the chuyen di");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số thẻ chuyển đi"), Account_Data.Valid_Account.LIST_CARD_FROM[1]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số thẻ chuyển đi"), Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
 		log.info("TC_12: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), accountStart);
@@ -704,7 +704,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 		log.info("TC_15_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
 		log.info("TC_15_Step_Get so tai khoan nguon");
 		accountStart = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
@@ -790,7 +790,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 		log.info("TC_15_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[1]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
 		log.info("TC_15: Lay so du kha dung the");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
@@ -869,7 +869,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_16: So the chuyen di");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số thẻ chuyển đi"), Account_Data.Valid_Account.LIST_CARD_FROM[1]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số thẻ chuyển đi"), Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
 		log.info("TC_16: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), accountStart);
