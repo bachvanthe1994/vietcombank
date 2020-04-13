@@ -52,7 +52,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangMatKhau(String pass) {
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -159,7 +159,7 @@ public class LuckyGift extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() {
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -228,7 +228,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_03_NGuoiNhanTrongVCBBangSTKXacThucBangMatKhau(String pass) {
 		log.info("TC_03_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -327,7 +327,7 @@ public class LuckyGift extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_BaoCaoTienQuaTangMayManTrongVCBBangSTKVaXacThucBangMK() {
 		log.info("TC_04_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -394,7 +394,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_05_NGuoiNhanNgoaiVCBSoTaiKhoanXacThucBangMK(String pass) {
 		log.info("TC_05_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -502,7 +502,7 @@ public class LuckyGift extends Base {
 		date = new Date();
 	}
 
-	@Test
+//	@Test
 	public void TC_06_BaoCaoGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangMK() {
 		log.info("TC_06_Step_01 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
@@ -619,7 +619,7 @@ public class LuckyGift extends Base {
 		log.info("TC_07_Step_13: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0]);
+		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
 		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -797,7 +797,7 @@ public class LuckyGift extends Base {
 		log.info("TC_09_Step_14: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0]);
+		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
 		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
