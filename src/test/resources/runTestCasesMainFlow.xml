@@ -89,8 +89,8 @@
 <!-- 			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" /> -->
 
 			<!-- Thanh toán cước điện thoại cố định -->
-			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
-			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
+<!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" /> -->
 
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
