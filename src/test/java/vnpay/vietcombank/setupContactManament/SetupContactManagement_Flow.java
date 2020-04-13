@@ -403,7 +403,7 @@ public class SetupContactManagement_Flow extends Base {
 
 		log.info("TC_10_Step_05: Xac nhan danh ba da bi xoa khoi danh sach");
 		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, Contact.CONTACT_NAME_01)));
-		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, "Nạp tiền điện tử vào ví")));
+		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, "Nạp tiền điện tử vào thẻ")));
 	}
 
 	@AfterClass(alwaysRun = true)
