@@ -49,7 +49,7 @@
 <!-- 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
 
 			<!-- Quản lý danh bạ -->
-<!-- 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" /> -->
+			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
 
 			<!-- Nạp tiền điện thoại -->
