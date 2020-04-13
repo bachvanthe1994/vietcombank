@@ -93,7 +93,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Xác nhận");
 	}
 
-//	@Test
+	@Test
 	public void TC_02_DangKyDichVuNganHangDienTu_ManHinhDangKyDichVuDienTu() {
 		log.info("TC_02_Step: Verify text man hinh dang ky dich vu ngan hang dien tu");
 		verifyEquals(registerOnline.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvTitleBar"), "Đăng ký dịch vụ ngân hàng điện tử");
@@ -145,7 +145,7 @@ public class Flow_RegisterOnline_LoginUser_Part2 extends Base {
 		registerOnline.clickToDynamicButton(driver, "Thực hiện đăng ký khác");
 	}
 
-//	@Test
+	@Test
 	public void TC_03_DangKyPhatHanhTheGhiNo_ManHinhThongTinKhachHang() {
 		log.info("TC_03_Step: Click phat hanh the ghi no");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký phát hành thẻ ghi nợ");
