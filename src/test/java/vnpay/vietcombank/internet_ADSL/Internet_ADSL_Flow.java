@@ -151,7 +151,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_02_Step: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_Step: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
@@ -331,7 +331,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_04_Step: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
@@ -512,7 +512,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_06_Step: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
@@ -693,7 +693,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_08_Step: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_Step: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
@@ -871,7 +871,7 @@ public class Internet_ADSL_Flow extends Base {
 			transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 			log.info("TC_02_Step: Chon so tai khoan");
-			transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+			transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 			log.info("TC_02_Step: Chon so tai khoan tra cuu");
 			transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
@@ -1050,7 +1050,7 @@ public class Internet_ADSL_Flow extends Base {
 			transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 			log.info("TC_04_Step: Chon so tai khoan");
-			transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+			transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 			log.info("TC_04_Step: Chon so tai khoan tra cuu");
 			transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);

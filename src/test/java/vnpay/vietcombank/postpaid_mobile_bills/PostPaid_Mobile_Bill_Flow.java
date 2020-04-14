@@ -184,13 +184,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_02_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_02_Step_04: Chon 'Thanh toan hoa don'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_02_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -387,13 +387,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_04_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_04_Step_04: Chon 'Thanh toan hoa don'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_04_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -590,13 +590,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_06_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_06_Step_04: Chon 'Thanh toan hoa don'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_06_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -792,13 +792,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_08_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_08_Step_04: Chon 'Thanh toan hoa don'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_08_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -995,13 +995,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_10_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_10_Step_04: Chon 'Thanh toan hoa don'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_10_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_10_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -1198,13 +1198,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_12_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_12_Step_04: Chon 'Thanh toan hoa don'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_12_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_12_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);

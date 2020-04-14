@@ -78,7 +78,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_1_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_1_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -221,7 +221,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_04_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_04_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -288,7 +288,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_05_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_05_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -351,7 +351,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_06_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_06_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -493,7 +493,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_09_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_09_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -595,7 +595,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_11_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_11_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -661,7 +661,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_12_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_12_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -803,7 +803,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_15_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_15_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -866,7 +866,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_16_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_16_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -1011,7 +1011,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_19_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_19_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
@@ -1078,7 +1078,7 @@ public class Flow_RegisterOnline_LoginUser_Part3 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
 		log.info("TC_20_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_20_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(2));
