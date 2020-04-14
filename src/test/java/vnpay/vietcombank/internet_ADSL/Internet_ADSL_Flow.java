@@ -36,7 +36,7 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		ADSL = PageFactoryManager.getInternetADSLPageObject(driver);
 	}
