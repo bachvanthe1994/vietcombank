@@ -40,7 +40,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, "© 2019 Vietcombank");
@@ -57,7 +57,7 @@ public class Shopping_Online_Flow extends Base {
 
 		log.info("TC_01_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-		
+
 		log.info("TC_01_STEP_3: click icon gio hang");
 		shopping.clickToDynamicCart("1", "1");
 
@@ -70,33 +70,33 @@ public class Shopping_Online_Flow extends Base {
 
 		log.info("TC_01_STEP_5: click thanh toán");
 		shopping.clickToDynamicButton("Thanh toán");
-		
+
 		if (shopping.isDynamicTextInfoDisplayed("Thông báo") == true) {
 			log.info("TC_01_STEP_4_1: click the moi");
 			shopping.clickToDynamicButton("Thêm mới");
-			
+
 			log.info("TC_01_STEP_4_2: nhap ten");
 			shopping.clickToDynamicDateInDateTimePicker("Họ tên người nhận");
 			shopping.inputToDynamicUser("Họ tên người nhận", "Họ tên người nhận", "0");
-			
+
 			log.info("TC_01_STEP_4_2: nhap so dien thoai");
 			shopping.inputToDynamicUser("Ngyen Van A", "Số điện thoại người nhận");
-			
+
 			log.info("TC_01_STEP_4_3: chon tinh thanh pho");
 			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
 			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
-			
+
 			log.info("TC_01_STEP_4_3: chon tinh quan huyen");
 			shopping.clickToDynamicCustomer("Quận/Huyện");
 			shopping.clickToDynamicListProvince("Quận Ba Đình");
-			
+
 			log.info("TC_01_STEP_4_3: chon tinh xa phuong");
 			shopping.clickToDynamicCustomer("Quận/Huyện");
 			shopping.clickToDynamicListProvince("Phường Biên Giang");
-			
+
 			log.info("TC_01_STEP_4_3: dia chi cu the");
 			shopping.inputToDynamicUser("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
-			
+
 			log.info("TC_01_STEP_4_3: chon hoan tat");
 			shopping.clickToDynamicButton("Hoàn tất");
 		}
@@ -156,11 +156,11 @@ public class Shopping_Online_Flow extends Base {
 	public void TC_02_ChonMuaNhieuSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
 		log.info("TC_02_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
-	
+
 		log.info("TC_02_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-		
+
 		log.info("TC_01_STEP_1: khong chon khuyen mai");
 		shopping.clickToDynamicDisCount("Chọn thêm 1 trong những khuyến mại sau", "0");
 
@@ -183,7 +183,6 @@ public class Shopping_Online_Flow extends Base {
 		log.info("TC_02_STEP_7: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
-
 
 		log.info("TC_02_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
@@ -211,7 +210,6 @@ public class Shopping_Online_Flow extends Base {
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-
 		log.info("TC_02_STEP_17: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
 		shopping.clickToDynamicButtonLinkOrLinkText("SMS OTP");
@@ -234,10 +232,10 @@ public class Shopping_Online_Flow extends Base {
 	public void TC_03_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("TC_03_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
-		
+
 		log.info("TC_03_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-		
+
 		log.info("TC_01_STEP_1: khong chon khuyen mai");
 		shopping.clickToDynamicDisCount("Chọn thêm 1 trong những khuyến mại sau", "0");
 
@@ -260,7 +258,6 @@ public class Shopping_Online_Flow extends Base {
 		log.info("TC_03_STEP_7: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
-
 
 		log.info("TC_03_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
@@ -288,7 +285,6 @@ public class Shopping_Online_Flow extends Base {
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-
 		log.info("TC_03_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
 		shopping.clickToDynamicButtonLinkOrLinkText("Mật khẩu đăng nhập");
@@ -315,7 +311,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("TC_04_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-		
+
 		log.info("TC_01_STEP_1: khong chon khuyen mai");
 		shopping.clickToDynamicDisCount("Chọn thêm 1 trong những khuyến mại sau", "0");
 
@@ -338,7 +334,6 @@ public class Shopping_Online_Flow extends Base {
 		log.info("TC_04_STEP_7: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
-
 
 		log.info("TC_04_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
@@ -366,7 +361,6 @@ public class Shopping_Online_Flow extends Base {
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-
 		log.info("TC_04_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
 		shopping.clickToDynamicButtonLinkOrLinkText("Mật khẩu đăng nhập");
@@ -389,7 +383,7 @@ public class Shopping_Online_Flow extends Base {
 	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP(String otp) {
 		log.info("TC_01_STEP_1: Lay danh sach gia tri loai chuyen tien");
 		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
-		
+
 		log.info("TC_01_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
@@ -455,6 +449,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("TC_01_STEP_20: thuc hien giao dich moi");
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
