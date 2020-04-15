@@ -15,7 +15,6 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
-import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
 import vietcombank_test_data.Account_Data.Valid_Account;
 
 public class Shopping_Online_Flow extends Base {
