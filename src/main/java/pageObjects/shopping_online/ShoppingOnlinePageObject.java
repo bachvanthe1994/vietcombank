@@ -59,6 +59,15 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 	}
 	
+	public void inputToDynamicInfo(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT, inputValue, dynamicTextValue);
+		}
+	}
+	
 	// input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
 		boolean status = false;
@@ -97,6 +106,25 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
 	}
+	
+	
+	
+	// Click vao 1 button sử dụng tham số là text
+		public void clickToDynamicCategories(String dynamicText) {
+			boolean status = false;
+			scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+			status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+			if (status == true) {
+				clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+			}
+			if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+				waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+			}
+			if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+				clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, "Đóng");
+				clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+			}
+		}
 
 	// Kiểm tra text trong nội dung link thông báo
 	public boolean isDynamicTextInfoDisplayed(String dynamicTextValue) {
@@ -189,6 +217,19 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
+
+		}
+		return text;
+	}
+	
+	
+//	get text giá trị truyền vào là text
+	public String getDynamicTextPricesByText(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY_BY_TEXT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY_BY_TEXT, dynamicTextValue);
 
 		}
 		return text;

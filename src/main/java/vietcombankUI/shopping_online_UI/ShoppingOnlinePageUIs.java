@@ -62,6 +62,11 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_TOTAL_MONEY = "//android.view.View[@text='%s']//following-sibling::android.view.View[@index='%s']";
 	public static final String DYNAMIC_CUSTOMER = "//android.view.View[@text='%s']//following-sibling::android.view.View//android.view.View[@index='%s']";
 	public static final String DYNAMIC_TOTAL_MONEY_1 = "//android.view.View[@index='%s']";
+//	public static final String DYNAMIC_CATEGORIES_BY_ID = "//android.view.View[@resource-id='%s']";
+	
+	public static final String DYNAMIC_TOTAL_MONEY_BY_TEXT = "//android.view.View[@text='%s']/parent::android.view.View/preceding::android.view.View[contains(@text,'₫')]";
+	public static final String PRODUCT_BY_CONTAIN_TEXT = "//android.view.View[contains(@text,'%s')]";
+
 	
 	// spinner
 	public static final String DYNAMIC_INFOMATION_CUSTOMER= "//android.view.View[@text='%s']//following-sibling::android.widget.Spinner";
