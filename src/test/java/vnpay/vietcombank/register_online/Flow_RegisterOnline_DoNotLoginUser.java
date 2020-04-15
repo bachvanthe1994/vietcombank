@@ -43,7 +43,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
 		log.info("TC_01_Step: Click chon giay to tuy than");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
 
 		log.info("TC_01_Step: Click chon CMT");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
@@ -52,10 +52,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_01_Step: Click ngay cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentDate");
 
 		log.info("TC_01_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_01_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
@@ -64,7 +64,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_1_Step: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
+		registerOnline.clickToTextID(driver, "com.VCB:id/edtIssuePlace");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
@@ -117,7 +117,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
 		log.info("TC_02_Step: Click chon giay to tuy than");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
 
 		log.info("TC_02_Step: Click chon CMT");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
@@ -126,10 +126,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_02_Step: Click ngay cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentDate");
 
 		log.info("TC_02_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_02_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
@@ -138,7 +138,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_02_Step: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
+		registerOnline.clickToTextID(driver, "com.VCB:id/edtIssuePlace");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
@@ -199,7 +199,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
 		log.info("TC_03_Step: Click chon giay to tuy than");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
 
 		log.info("TC_03_Step: Click chon CMT");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
@@ -208,10 +208,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_03_Step: Click ngay cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentDate");
 
 		log.info("TC_03_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_03_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
@@ -220,7 +220,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_03_Step: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
+		registerOnline.clickToTextID(driver, "com.VCB:id/edtIssuePlace");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
@@ -275,7 +275,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.ACC_NAME, "com.VCB:id/edtFullName");
 
 		log.info("TC_04_Step: Click chon giay to tuy than");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentConfirm");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
 
 		log.info("TC_04_Step: Click chon CMT");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
@@ -284,10 +284,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/edtIDPp");
 
 		log.info("TC_04_Step: Click ngay cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/tvContentDate");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentDate");
 
 		log.info("TC_04_Step: Click nam");
-		registerOnline.clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_04_Step: Chon nam cap");
 		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(5));
@@ -296,7 +296,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_04_Step: Click noi cap");
-		registerOnline.clickToTextViewCombobox(driver, "com.VCB:id/edtIssuePlace");
+		registerOnline.clickToTextID(driver, "com.VCB:id/edtIssuePlace");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Valid_Account.LOCATION[0], "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LOCATION[0]);
 
