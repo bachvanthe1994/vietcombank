@@ -32,8 +32,8 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "1 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "3 tháng", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "1 tháng - 4.5%/Năm", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "3 tháng - 4.6%/Năm", "2000000", "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -88,10 +88,10 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info.sourceAccount);
 
 		log.info("TC_01_8_2_Kiem tra ky han gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), info.term);
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), SavingOnline_Data.ONE_MONTH);
 
 		log.info("TC_01_8_3_Kiem tra lai suat");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "4.5%/Năm");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), SavingOnline_Data.ONE_MONTH_INTEREST);
 
 		log.info("TC_01_8_4_Kiem tra so tien gui");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền gửi"), addCommasToLong(info.money) + " VND");
@@ -190,7 +190,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Mở tài khoản tiết kiệm");
 
 		log.info("TC_02_17: Kiem tra noi dung giao dich");
-		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + info.sourceAccount + ", SO TIEN " + addCommasToLong(info.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(info.term);
+		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + info.sourceAccount + ", SO TIEN " + addCommasToLong(info.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
 
 		log.info("TC_02_18: Click  nut Back");
@@ -236,7 +236,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_03_06_2: Kiem tra ten tai khoan tiet kiem");
 
 		log.info("TC_03_06_3: Kiem tra ky han gui");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info.term.toLowerCase());
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), SavingOnline_Data.ONE_MONTH.toLowerCase());
 
 		log.info("TC_03_06_4: Kiem tra lai suat");
 
@@ -345,7 +345,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_04_17: Kiem tra noi dung giao dich");
-		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(info.term);
+		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
 
 		log.info("TC_04_18: Click  nut Back");
@@ -393,10 +393,10 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info1.sourceAccount);
 
 		log.info("TC_05_8_2_Kiem tra ky han gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), info1.term);
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), SavingOnline_Data.THREE_MONTH);
 
 		log.info("TC_05_8_3_Kiem tra lai suat");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "4.6%/Năm");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), SavingOnline_Data.THREE_MONTH_INTEREST);
 
 		log.info("TC_05_8_4_Kiem tra so tien gui");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền gửi"), addCommasToLong(info1.money) + " VND");
@@ -495,7 +495,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Mở tài khoản tiết kiệm");
 
 		log.info("TC_06_17: Kiem tra noi dung giao dich");
-		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + info1.sourceAccount + ", SO TIEN " + addCommasToLong(info1.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(info1.term);
+		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + info1.sourceAccount + ", SO TIEN " + addCommasToLong(info1.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
 
 		log.info("TC_06_18: Click  nut Back");
@@ -541,7 +541,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_07_06_2: Kiem tra ten tai khoan tiet kiem");
 
 		log.info("TC_07_06_3: Kiem tra ky han gui");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), info1.term.toLowerCase());
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi").toLowerCase(), SavingOnline_Data.THREE_MONTH.toLowerCase());
 
 		log.info("TC_07_06_4: Kiem tra lai suat");
 
@@ -650,7 +650,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_08_17: Kiem tra noi dung giao dich");
-		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(info1.term);
+		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
 
 		log.info("TC_08_18: Click  nut Back");
