@@ -9,7 +9,7 @@ public class Auto_Saving_Data {
 	
 	public class TEXT {
 		
-		public static final String TERM = "1 tháng";
+		public static final String TERM = "1 tháng - 4.5%/Năm";
 		public static final String FORM_OF_PAYMENT = "Lãi nhập gốc";
 		public static final String INPUT_VND = "2000000";
 		public static final String INPUT_USD = "100";

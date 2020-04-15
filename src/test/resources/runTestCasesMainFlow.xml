@@ -18,7 +18,7 @@
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
 		<parameter name="deviceUDID" value="22232b98150c7ece" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
+		<parameter name="phone" value="0904797863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
@@ -29,7 +29,7 @@
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
 
 			<!-- chuyển tiền ngoài vcb -->
@@ -116,8 +116,8 @@
 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
 
 			<!-- Tiết kiệm tự động -->
-<!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> -->
-<!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> -->
+			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
+			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
 
 			<!-- Tra cứu -->
 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
