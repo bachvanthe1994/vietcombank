@@ -124,6 +124,25 @@ public class VehicalPageObject extends AbstractPage {
 		}
 	}
 
+	// Click vao 1 button hoac link text su dung text
+	public void clickToDynamicTextOrButtonLink(String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		}
+	}
+
+	// Chọn text bang id
+	public void clickToDynamicTextByID(String id) {
+		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		if (status == true) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		}
+	}
+
 	// Click vao 1 button ngay mai
 	public void clickToDynamicTomorrow(String dynamicTextValue) {
 		boolean status = false;
@@ -661,16 +680,16 @@ public class VehicalPageObject extends AbstractPage {
 		}
 
 	}
-	
-	//Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
-		public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
-			boolean status = false;
-			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
-			if (status == true) {
-				clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
-				sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
-			}
+
+	// Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
+	public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
+	}
 
 	/* SCROLL UP To Tai khoản nguông */
 	public void scrollUpToText(String dynamicText) {

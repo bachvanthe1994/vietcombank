@@ -27,7 +27,7 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_TEXT_TOTAL = "//android.widget.LinearLayout[@resource-id='com.VCB:id/rootView'][@index ='%s']//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_CONFIRM_INFO = "//android.widget.LinearLayout/android.widget.TextView[@text = '%s']/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_LABEL_MONEY_BY_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
-	
+
 	// Image-icon
 	public static final String DYNAMIC_HISTORY_ICON = "//android.widget.TextView[@text='%s']/following::android.widget.ImageView";
 	public static final String DYNAMIC_COMBOBOX = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.ImageView";
@@ -49,12 +49,15 @@ public class ShoppingOnlinePageUIs {
 	// button
 	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
+
 	public static final String DYNAMIC_BUTTON_CONTAIN = "//android.widget.Button[contains(@text,'%s')]";
 
 	// LinearLayout
 	public static final String DYNAMIC_TEXT_NAME_TRAIN = "//android.widget.LinearLayout[@index='%s']/android.widget.FrameLayout//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
+
 	// View
+	public static final String DYNAMIC_VIEW_CONTENT = "android.view.View[contains(@text,'%s')]";
 	public static final String DYNAMIC_VIEW_LIST = "//android.view.View[@text='%s']/following-sibling::android.view.View/android.view.View";
 	public static final String DYNAMIC_DISCOUNT = "//android.view.View[@text='%s']/following-sibling::android.view.View/android.view.View/android.view.View[@index='%s']";
 	public static final String DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT = "//android.view.View[@text='%s']";
@@ -62,10 +65,10 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_TOTAL_MONEY = "//android.view.View[@text='%s']//following-sibling::android.view.View[@index='%s']";
 	public static final String DYNAMIC_CUSTOMER = "//android.view.View[@text='%s']//following-sibling::android.view.View//android.view.View[@index='%s']";
 	public static final String DYNAMIC_TOTAL_MONEY_1 = "//android.view.View[@index='%s']";
-	
+
 	// spinner
-	public static final String DYNAMIC_INFOMATION_CUSTOMER= "//android.view.View[@text='%s']//following-sibling::android.widget.Spinner";
-	
-	//checked
-	public static final String DYNAMIC_CHECKED= "//android.widget.CheckedTextView[@text='%s']";
+	public static final String DYNAMIC_INFOMATION_CUSTOMER = "//android.view.View[@text='%s']//following-sibling::android.widget.Spinner";
+
+	// checked
+	public static final String DYNAMIC_CHECKED = "//android.widget.CheckedTextView[@text='%s']";
 }
