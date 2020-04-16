@@ -1157,35 +1157,34 @@ public class Notify_Management_Flow extends Base {
 		home.scrollDownToText(driver, "© 2019 Vietcombank");
 		home.scrollIDownOneTime(driver);
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
-		home.waitForElementInvisible(driver, "android.widget.Image[@text='VNShop']");
-
-		log.info("TC_09_Step_01: Lay danh sach gia tri loai chuyen tien");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
-		shopping.clickToDynamicProductName("Khăn ướt Mamamy");
+		shopping.sleep(driver, 5000);
 
 		log.info("TC_09_Step_02: Them vao gio hang");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicCategories("đ");
 
 		log.info("TC_09_Step_03: click icon gio hang");
-		shopping.clickToDynamicCart("1", "1");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicCart("1", "0");
 
 		log.info("TC_09_Step_04: click dat hang");
+		shopping.clickToDynamicDateInDateTimePicker("1");
 		shopping.clickToDynamicButton("Đặt hàng");
 
 		log.info("TC_09_Step_05: click thanh toán");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isDynamicTextInfoDisplayed("Thông báo") == true) {
+		if (shopping.isTextDisplayedInPageSource(driver, "Thông báo") == true) {
 
 			log.info("TC_09_Step_04_1: click the moi");
 			shopping.clickToDynamicButton("Thêm mới");
 
 			log.info("TC_09_Step_04_2: nhap ten");
-			shopping.clickToDynamicDateInDateTimePicker("Họ tên người nhận");
-			shopping.inputToDynamicUser("Họ tên người nhận", "Họ tên người nhận", "0");
+			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
 
 			log.info("TC_09_Step_04_2: nhap so dien thoai");
-			shopping.inputToDynamicUser("Ngyen Van A", "Số điện thoại người nhận");
+			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
 
 			log.info("TC_09_Step_04_3: chon tinh thanh pho");
 			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
@@ -1200,14 +1199,16 @@ public class Notify_Management_Flow extends Base {
 			shopping.clickToDynamicListProvince("Phường Biên Giang");
 
 			log.info("TC_09_Step_04_3: dia chi cu the");
-			shopping.inputToDynamicUser("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
 
 			log.info("TC_09_Step_04_3: chon hoan tat");
 			shopping.clickToDynamicButton("Hoàn tất");
+			shopping.clickToDynamicButton("Thanh toán");
 		}
 
 		log.info("TC_09_Step_06: click thanh toan");
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_09_Step_07: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
@@ -1240,7 +1241,7 @@ public class Notify_Management_Flow extends Base {
 		shopping.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_09_Step_16: Chon ve man hinh home");
-		shopping.clickToDynamicBottomMenuOrIcon("com.VCB:id/ivHome");
+		shopping.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_09_Step_17: Click vao Inbox Icon");
@@ -1268,36 +1269,37 @@ public class Notify_Management_Flow extends Base {
 	@Test
 	public void TC_10_TinOTT_VNShop_ChuaDangNhap(String otp) {
 
+		home.scrollDownToText(driver, "© 2019 Vietcombank");
+		home.scrollIDownOneTime(driver);
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
-		home.waitForElementInvisible(driver, "android.widget.Image[@text='VNShop']");
-
-		log.info("TC_10_Step_01: Lay danh sach gia tri loai chuyen tien");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
-		shopping.clickChooseOrrder(1, "Bán chạy trong tháng");
+		shopping.sleep(driver, 5000);
 
 		log.info("TC_10_Step_02: Them vao gio hang");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicCategories("đ");
 
 		log.info("TC_10_Step_03: click icon gio hang");
-		shopping.clickToDynamicCart("1", "1");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicCart("1", "0");
 
 		log.info("TC_10_Step_04: click dat hang");
+		shopping.clickToDynamicDateInDateTimePicker("1");
 		shopping.clickToDynamicButton("Đặt hàng");
 
 		log.info("TC_10_Step_05: click thanh toán");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isDynamicTextInfoDisplayed("Thông báo") == true) {
+		if (shopping.isTextDisplayedInPageSource(driver, "Thông báo") == true) {
 
 			log.info("TC_10_Step_04_1: click the moi");
 			shopping.clickToDynamicButton("Thêm mới");
 
 			log.info("TC_10_Step_04_2: nhap ten");
-			shopping.clickToDynamicDateInDateTimePicker("Họ tên người nhận");
-			shopping.inputToDynamicUser("Họ tên người nhận", "Họ tên người nhận", "0");
+			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
 
 			log.info("TC_10_Step_04_2: nhap so dien thoai");
-			shopping.inputToDynamicUser("Ngyen Van A", "Số điện thoại người nhận");
+			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
 
 			log.info("TC_10_Step_04_3: chon tinh thanh pho");
 			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
@@ -1312,14 +1314,16 @@ public class Notify_Management_Flow extends Base {
 			shopping.clickToDynamicListProvince("Phường Biên Giang");
 
 			log.info("TC_10_Step_04_3: dia chi cu the");
-			shopping.inputToDynamicUser("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
 
 			log.info("TC_10_Step_04_3: chon hoan tat");
 			shopping.clickToDynamicButton("Hoàn tất");
+			shopping.clickToDynamicButton("Thanh toán");
 		}
 
 		log.info("TC_10_Step_06: click thanh toan");
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_10_Step_07: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
@@ -1352,7 +1356,7 @@ public class Notify_Management_Flow extends Base {
 		shopping.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_10_Step_16: Chon ve man hinh home");
-		shopping.clickToDynamicBottomMenuOrIcon("com.VCB:id/ivHome");
+		shopping.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_10_Step_17: Chon tab Menu");

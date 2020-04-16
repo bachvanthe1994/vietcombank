@@ -59,6 +59,15 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 	}
 
+	public void inputToDynamicInfo(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT, inputValue, dynamicTextValue);
+		}
+	}
+
 	// input vào ô input với tham số truyền vào là inputbox
 	public void inputToDynamicInputBox(String inputValue, String dynamicTextValue) {
 		boolean status = false;
@@ -98,6 +107,23 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 	}
 
+	// Click vao 1 button sử dụng tham số là text
+	public void clickToDynamicCategories(String dynamicText) {
+		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+		}
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, "Đóng");
+			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+		}
+	}
+
 	// Kiểm tra text trong nội dung link thông báo
 	public boolean isDynamicTextInfoDisplayed(String dynamicTextValue) {
 		boolean isDisplayed = false;
@@ -106,16 +132,6 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			isDisplayed = isControlDisplayed(driver, ShoppingOnlinePageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicTextValue);
 		}
 		return isDisplayed;
-	}
-
-	// Click dynamic buttonByID
-	public void clickToDynamicBottomMenuOrIcon(String dynamicID) {
-		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-
-		}
 	}
 
 	// Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
@@ -203,6 +219,18 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 	}
 
+//	get text giá trị truyền vào là text
+	public String getDynamicTextPricesByText(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY_BY_TEXT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_TOTAL_MONEY_BY_TEXT, dynamicTextValue);
+
+		}
+		return text;
+	}
+
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
 		boolean status = false;
@@ -256,17 +284,6 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_DISCOUNT, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_DISCOUNT, dynamicTextValue);
-
-		}
-	}
-
-	// Click vào button, text có class là view, tham số truyền vào là text
-	public void clickToDynamicProductName(String... dynamicTextValue) {
-		boolean status = false;
-		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_VIEW_CONTENT, dynamicTextValue);
-		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_VIEW_CONTENT, dynamicTextValue);
-		if (status == true) {
-			clickToElement(driver, ShoppingOnlinePageUIs.DYNAMIC_VIEW_CONTENT, dynamicTextValue);
 
 		}
 	}
