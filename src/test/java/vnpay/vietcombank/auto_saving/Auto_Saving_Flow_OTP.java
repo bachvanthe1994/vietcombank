@@ -85,7 +85,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_8_2_Kiem tra ky han gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), Auto_Saving_Data.TEXT.TERM);
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), "1 tháng");
 
 		log.info("TC_01_8_3_Kiem tra lai suat");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "4.5%/Năm");
@@ -145,7 +145,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
 
 		log.info("TC_02_Step_04: Xac nhan Ky han va so du TK tiet kiem");
-		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn"), capitalizeString("1 tháng"));
 		startDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayBatDau");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Số dư hiện tại"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
 
@@ -174,7 +174,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
 
 		log.info("TC_02_Step_12: Hien thi ky han gui");
-		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString("1 tháng"));
 
 		log.info("TC_02_Step_13: Hien thi ngay den han");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày đến hạn"), endDate);
@@ -285,7 +285,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_HuyTietKiemTuDong_TaiKhoanNguon_VND() {
 
 		log.info("TC_04_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -333,7 +333,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 
 		log.info("TC_05_Step_01: Mo tab Menu");
@@ -388,7 +388,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_06_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 
 		log.info("TC_06_1_Click Tat toan tai khoan tiet kiem");
@@ -670,7 +670,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_OTP() {
 
 		log.info("TC_10_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -716,7 +716,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_11_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 
 		log.info("TC_11_Step_01: Mo tab Menu");
