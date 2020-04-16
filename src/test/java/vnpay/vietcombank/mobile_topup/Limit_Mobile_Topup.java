@@ -46,7 +46,7 @@ public class Limit_Mobile_Topup extends Base {
 		
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+//		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -69,7 +69,7 @@ public class Limit_Mobile_Topup extends Base {
 		
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+//		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -93,7 +93,7 @@ public void TC_03_NapTienCaoHonHanMucToiDaGiaoDichTrongNgay() {
 		
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+//		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -117,7 +117,7 @@ public void TC_03_NapTienCaoHonHanMucToiDaGiaoDichTrongNgay() {
 		
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+//		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -142,7 +142,7 @@ public void TC_03_NapTienCaoHonHanMucToiDaGiaoDichTrongNgay() {
 		
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+//		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
 		
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);

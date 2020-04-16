@@ -64,7 +64,6 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
-		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định có dây Viettel");
 
 		log.info("TC_01_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
@@ -152,7 +151,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_02_6: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_7: Chon tai Khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -225,7 +224,6 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
-		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định có dây Viettel");
 
 		log.info("TC_03_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
@@ -314,7 +312,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_04_6: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_7: Chon tai Khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);

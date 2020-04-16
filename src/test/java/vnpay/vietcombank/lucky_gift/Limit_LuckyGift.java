@@ -42,9 +42,11 @@ public class Limit_LuckyGift extends Base {
 	}
 
 	@Test
+
 	public void TC_01_ChuyenTienQuaThapHonHanMucToiThieu() {
 
 		log.info("----------------------------TC_01_Step_1: Chọn quà tặng may mắn");
+
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
 		log.info("-------------------------TC_01_Step_2: chọn tài khoản nguồn");
@@ -68,6 +70,7 @@ public class Limit_LuckyGift extends Base {
 		log.info("------------------------------TC_01_Step_7: Nhap so tien chuyen");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.Limit_Money_Gift.LOWER_MIN_MONEY_A_TRANSACTION, TitleLuckyGift.TITLE_AMOUNT_MONEY);
 
+
 		log.info("--------------------------------------TC_01_Step_8: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
@@ -78,6 +81,7 @@ public class Limit_LuckyGift extends Base {
 
 		log.info("-------------------------------------TC_01_Step_10: Verify hien thi man hinh thong bao loi");
 		luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.Messege_Limit.MESSEGE_ERROR_LOWER_MIN_TRAN);
+
 
 		log.info("-----------------------TC_01_Step_11: Click btn Dong");
 		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");

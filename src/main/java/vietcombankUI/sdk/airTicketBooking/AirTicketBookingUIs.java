@@ -12,6 +12,7 @@ public class AirTicketBookingUIs {
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP = "//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_DATE_SELECTED = "//android.widget.TextView[@text='%s']//following-sibling::android.view.ViewGroup//android.widget.TextView[@text='%s']";
 	public static final String LIST_FLIGHT = "//*[@resource-id='com.VCB:id/recycler_view_one']//android.widget.TextView[@resource-id='com.VCB:id/tv_flightNo'and contains(@text,'%s')]";
+	public static final String LIST_FLIGHT2WAYS = "//*[@resource-id='%s']//android.widget.TextView[@resource-id='%s'and contains(@text,'%s')]";
 	public static final String DYNAMIC_1_WAY_FLIGHT = "//*[@resource-id='com.VCB:id/recycler_view_one']//android.widget.LinearLayout[@index='%s']//android.widget.LinearLayout[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_BY_ID = "//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_BUTTON_OR_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id=\"%s\"]";

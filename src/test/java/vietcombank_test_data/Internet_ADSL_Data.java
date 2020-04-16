@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Internet_ADSL_Data {
 
+
 	public static class Valid_Account {
 		public static final String ACCOUNT1 = "0019961175";
 		public static final String NETWORK[] = { "Viettel", "FPT Telecom","Viettel ADSL" };
@@ -13,6 +14,7 @@ public class Internet_ADSL_Data {
 				"adslvtgdb68", "adslvtgdb69", "adslvtgdb73", "adslvtgdb74", "adslvtgdb75", "adslvtgdb76", "adslvtgdb77", "adslvtgdb78");
 
 	}
+
 
 	public class Invalid_Account {
 

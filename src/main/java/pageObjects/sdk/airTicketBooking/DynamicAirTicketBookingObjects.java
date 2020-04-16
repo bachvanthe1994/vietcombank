@@ -206,6 +206,16 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		}
 	}
 
+	// Click vao chuyen bay hai chiều sử dụng theo mã code của chuyến bay và thứ thự
+	// của chuyến bay
+	public void clickToDynamicFlightTwoWays(int index, String... dynamicText) {
+		scrollIDown(driver, AirTicketBookingUIs.LIST_FLIGHT2WAYS, dynamicText);
+		boolean status = waitForElementVisible(driver, AirTicketBookingUIs.LIST_FLIGHT2WAYS, dynamicText);
+		if (status == true) {
+			clickToOneOfElement(driver, index, AirTicketBookingUIs.LIST_FLIGHT2WAYS, dynamicText);
+		}
+	}
+
 	// Chọn các gói hành lý
 	public void clickToDynamicPackage(int index, String id) {
 		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BY_ID, id);

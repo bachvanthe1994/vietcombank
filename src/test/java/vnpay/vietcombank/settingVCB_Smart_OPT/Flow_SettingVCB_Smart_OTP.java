@@ -80,7 +80,7 @@ public class Flow_SettingVCB_Smart_OTP extends Base {
 		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Điều khoản, điều kiện");
 
 		log.info("----------------TC_01_Step_06: Click radio btn dong y dien khoan------------------");
-		smartOTP.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/rule");
+		smartOTP.clickToTextID(driver, "com.VCB:id/rule");
 
 		log.info("----------------TC_01_Step_07: Click btn Dong y------------------");
 		smartOTP.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");

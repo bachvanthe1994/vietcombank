@@ -26,7 +26,7 @@ public class Shopping_Online_Flow extends Base {
 	String transactionNumber;
 	List<String> listActual;
 
-	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
+	long amount, amountStart, feeView, amountView, amountAfter = 0;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -107,6 +107,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_4_3: chon hoan tat---------------------------");
 			shopping.clickToDynamicButton("Hoàn tất");
 
+
 			log.info("---------------------------TC_01_STEP_6: click thanh toan---------------------------");
 			shopping.clickToDynamicButton("Thanh toán");
 		}
@@ -115,6 +116,17 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 		
+
+
+			log.info("---------------------------TC_01_STEP_6: click thanh toan---------------------------");
+			shopping.clickToDynamicButton("Thanh toán");
+		}
+
+		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
+		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+		shopping.clickToDynamicButton("Đồng ý");
+
+>>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
@@ -245,8 +257,13 @@ public class Shopping_Online_Flow extends Base {
 
 	}
 
+<<<<<<< HEAD
 //	@Parameters({ "pass" })
 //	@Test
+=======
+	@Parameters({ "pass" })
+	@Test
+>>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 	public void TC_03_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_03_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("Xem tất cả");
@@ -327,18 +344,30 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
 
+<<<<<<< HEAD
 //	@Parameters({ "pass" })
 //	@Test
+=======
+	@Parameters({ "pass" })
+	@Test
+>>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 	public void TC_04_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_04_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("Xem tất cả");
 		shopping.clickToDynamicCategories("đ");
 
 		log.info("---------------------------TC_04_STEP_3: lay tong tien can thanh toan");
+<<<<<<< HEAD
 
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("Miễn phí giao hàng cho đơn từ ").replace("₫", "");
 		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 
+=======
+
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("Miễn phí giao hàng cho đơn từ ").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+>>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 		log.info("---------------------------TC_04_STEP_4: click dat hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
@@ -406,7 +435,10 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_04 thuc hien giao dich moi");
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 	}
 
 	@Parameters({ "otp" })
@@ -465,7 +497,11 @@ public class Shopping_Online_Flow extends Base {
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 		log.info("---------------------------TC_05__STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
 		shopping.clickToDynamicButtonLinkOrLinkText("SMS OTP");

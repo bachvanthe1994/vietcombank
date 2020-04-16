@@ -86,7 +86,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_15_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 	log.info("TC_15_Step_10: noi dung");
@@ -166,7 +166,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_16_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_16_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.EUR_ACCOUNT);
@@ -246,7 +246,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_17_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 	log.info("TC_17_Step_10: noi dung");
@@ -325,7 +325,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_18_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_18_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT1);
@@ -405,7 +405,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_19_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 	log.info("TC_19_Step_10: noi dung");
@@ -484,7 +484,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_20_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_20_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
@@ -564,7 +564,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_21_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 	log.info("TC_21_Step_10: noi dung");
@@ -643,7 +643,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_22_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_22_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT1);
@@ -723,7 +723,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_23_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 	log.info("TC_23_Step_10: noi dung");
@@ -802,7 +802,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_24_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_24_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.EUR_ACCOUNT);
@@ -879,7 +879,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_25_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 	log.info("TC_25_Step_10: noi dung");
@@ -958,7 +958,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_26_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_26_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT1);
@@ -1035,7 +1035,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_27_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 	log.info("TC_27_Step_10: noi dung");
@@ -1114,7 +1114,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_28_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_28_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
@@ -1191,7 +1191,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_29_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
 
 	log.info("TC_29_Step_10: noi dung");
@@ -1270,7 +1270,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_30_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_30_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
@@ -1347,7 +1347,7 @@ public class TransferIdentity_flow2 extends Base {
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
 	log.info("TC_31_STEP_9: chọn người trả phí");
-	trasferPage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvContent3");
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
 
 	log.info("TC_31_Step_10: noi dung");
@@ -1426,7 +1426,7 @@ public class TransferIdentity_flow2 extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
 
 	log.info("TC_32_5: Click Chon Tai Khoan");
-	transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 	log.info("TC_32_6: Chon tai Khoan chuyen");
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT1);
