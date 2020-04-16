@@ -1,9 +1,9 @@
 package vnpay.vietcombank.notifyManagement;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
-import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -19,29 +19,36 @@ import model.SeatType;
 import pageObjects.HomePageObject;
 import pageObjects.InboxPageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.NotifyManagementPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
-import pageObjects.sdk.trainTicket.TrainTicketPageObject;
+import pageObjects.shopping_online.ShoppingOnlinePageObject;
+import vehicalPageObject.VehicalPageObject;
+import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
+import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.Notify_Management_Data;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
+import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
 public class Notify_Management_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject home;
-	private NotifyManagementPageObject notifyManage;
 	private FilmTicketBookingPageObject filmTicketBooking;
 	private InboxPageObject inbox;
 	private HotelBookingPageObject hotelBooking;
 	private DynamicAirTicketBookingObjects airTicket;
-	private TrainTicketPageObject trainTicket;
+	private ShoppingOnlinePageObject shopping;
+	private VehicalPageObject vehicalTicket;
+
 	private String tomorrowDay = getForWardDay(4);
 
-	private String cinemaName, inboxContent, ticketCode, counter, hotelName, hotelAddress, transactionID, roomID, ticketPrice, payID;
+	LocalDate now = LocalDate.now();
+	String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
+	String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1 + "/" + getCurrenMonth() + "/" + getCurrentYear();
+	private String cinemaName, inboxContent, ticketCode, counter, hotelName, hotelAddress, roomID, ticketPrice, payID, maThanhToan, maVe;
 	private boolean status;
 	FilmTicketInfo info = new FilmTicketInfo();
 
@@ -52,37 +59,35 @@ public class Notify_Management_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0976878903", "aaaa1111", opt);
+		login.Global_login(phone, pass, opt);
 		home = PageFactoryManager.getHomePageObject(driver);
 
-		log.info("Before Class 01: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
-
-		log.info("Before Class 02: Mo sub-menu Cai dat");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
-
-		log.info(" Before Class 03: An vao phan Quan ly thong bao");
-		home.scrollDownToText(driver, "Tra cứu");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý thông báo");
-
-		log.info("Before Class 05: Xac nhan hien thi nhan thong bao tu ngan hang la ON");
-		notifyManage = PageFactoryManager.getNotifyManagementPageObject(driver);
-		status = notifyManage.isDynamicImageByIdEnable(driver, "com.VCB:id/ic_switch");
-		if (status = false) {
-			throw new SkipException("");
-		}
-		log.info("TC_01_Step_01: Back ve man hinh Home");
-		notifyManage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-
-		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
-		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
+//		log.info("Before Class 01: Chon tab Menu");
+//		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+//
+//		log.info("Before Class 02: Mo sub-menu Cai dat");
+//		home.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+//
+//		log.info(" Before Class 03: An vao phan Quan ly thong bao");
+//		home.scrollDownToText(driver, "Tra cứu");
+//		home.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý thông báo");
+//
+//		log.info("Before Class 05: Xac nhan hien thi nhan thong bao tu ngan hang la ON");
+//		notifyManage = PageFactoryManager.getNotifyManagementPageObject(driver);
+//		status = notifyManage.isDynamicImageByIdEnable(driver, "com.VCB:id/ic_switch");
+//		if (status = false) {
+//			throw new SkipException("");
+//		}
+//		log.info("TC_01_Step_01: Back ve man hinh Home");
+//		notifyManage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+//
+//		home = PageFactoryManager.getHomePageObject(driver);
+//		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
 //	@Test
 	public void TC_01_TinOTTVeXemPhim_DaDangNhap() {
 
-		home = PageFactoryManager.getHomePageObject(driver);
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 		status = home.isDynamicTextDetailByID(driver, "com.VCB:id/counter");
 		if (status == true) {
@@ -394,7 +399,6 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_02);
 
 		log.info("TC_03_Step_11_Kiem tra thong tin hoa don");
-		transactionID = hotelBooking.getDynamicTextByLabel("Mã giao dịch");
 		hotelBooking.scrollDownToButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_12_Click Tiep tuc");
@@ -490,7 +494,6 @@ public class Notify_Management_Flow extends Base {
 		hotelBooking.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_02);
 
 		log.info("TC_04_Step_11_Kiem tra thong tin hoa don");
-		transactionID = hotelBooking.getDynamicTextByLabel("Mã giao dịch");
 		hotelBooking.scrollDownToButton(driver, "Tiếp tục");
 
 		log.info("TC_04_Step_12_Click Tiep tuc");
@@ -564,7 +567,7 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Parameters({ "otp" })
+//	@Parameters({ "otp" })
 //	@Test
 	public void TC_05_TinOTTVeMayBay_DadangNhap(String otp) {
 
@@ -667,7 +670,6 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_05_Step_29: Xac nhan hien thi man hinh thanh toan thanh cong");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Mã thanh toán", "com.VCB:id/tvContent"), payID);
-		transactionID = airTicket.getAirTicketPriceInfo1Way("Mã giao dịch", "com.VCB:id/tvContent");
 
 		log.info("TC_05_Step_30: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
@@ -691,7 +693,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 	}
 
-	@Parameters({ "otp" })
+//	@Parameters({ "otp" })
 //	@Test
 	public void TC_06_TinOTTVeMayBay_ChuadangNhap(String otp) {
 
@@ -798,7 +800,6 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_06_Step_29: Xac nhan hien thi man hinh thanh toan thanh cong");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Mã thanh toán", "com.VCB:id/tvContent"), payID);
-		transactionID = airTicket.getAirTicketPriceInfo1Way("Mã giao dịch", "com.VCB:id/tvContent");
 
 		log.info("TC_06_Step_30: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
@@ -846,8 +847,8 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Parameters({ "otp" })
-	@Test
+//	@Parameters({ "otp" })
+//	@Test
 	public void TC_07_TinOTTVeMayBayThanhToanNgay_DadangNhap(String otp) {
 
 		log.info("TC_07_Step_01: Click vao phan Dat ve may bay");
@@ -956,7 +957,6 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_07_Step_32: Xac nhan hien thi man hinh thanh toan thanh cong");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Mã thanh toán", "com.VCB:id/tvContent"), payID);
-		transactionID = airTicket.getAirTicketPriceInfo1Way("Mã giao dịch", "com.VCB:id/tvContent");
 
 		log.info("TC_07_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
@@ -987,11 +987,11 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 	}
 
-	@Parameters({ "otp" })
-	@Test
+//	@Parameters({ "otp" })
+//	@Test
 	public void TC_08_TinOTTVeMayBayThanhToanNgay_ChuadangNhap(String otp) {
 
-		log.info("TC_06_Step_01_1: Back ve man hinh Home");
+		log.info("TC_08_Step_01_1: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 
@@ -1101,7 +1101,6 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_08_Step_32: Xac nhan hien thi man hinh thanh toan thanh cong");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Mã thanh toán", "com.VCB:id/tvContent"), payID);
-		transactionID = airTicket.getAirTicketPriceInfo1Way("Mã giao dịch", "com.VCB:id/tvContent");
 
 		log.info("TC_08_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
@@ -1148,6 +1147,492 @@ public class Notify_Management_Flow extends Base {
 		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
 
 		log.info("TC_08_Step_43: Hien thi man hinh Home");
+		home = PageFactoryManager.getHomePageObject(driver);
+	}
+
+	@Parameters({ "otp" })
+	@Test
+	public void TC_09_TinOTT_VNShop_DaDangNhap(String otp) {
+
+		home.scrollDownToText(driver, "© 2019 Vietcombank");
+		home.scrollIDownOneTime(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
+		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
+		shopping.sleep(driver, 5000);
+
+		log.info("TC_09_Step_02: Them vao gio hang");
+		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicCategories("đ");
+
+		log.info("TC_09_Step_03: click icon gio hang");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicCart("1", "0");
+
+		log.info("TC_09_Step_04: click dat hang");
+		shopping.clickToDynamicDateInDateTimePicker("1");
+		shopping.clickToDynamicButton("Đặt hàng");
+
+		log.info("TC_09_Step_05: click thanh toán");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		if (shopping.isTextDisplayedInPageSource(driver, "Thông báo") == true) {
+
+			log.info("TC_09_Step_04_1: click the moi");
+			shopping.clickToDynamicButton("Thêm mới");
+
+			log.info("TC_09_Step_04_2: nhap ten");
+			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
+
+			log.info("TC_09_Step_04_2: nhap so dien thoai");
+			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
+
+			log.info("TC_09_Step_04_3: chon tinh thanh pho");
+			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
+			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
+
+			log.info("TC_09_Step_04_3: chon tinh quan huyen");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Quận Ba Đình");
+
+			log.info("TC_09_Step_04_3: chon tinh xa phuong");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Phường Biên Giang");
+
+			log.info("TC_09_Step_04_3: dia chi cu the");
+			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+
+			log.info("TC_09_Step_04_3: chon hoan tat");
+			shopping.clickToDynamicButton("Hoàn tất");
+			shopping.clickToDynamicButton("Thanh toán");
+		}
+
+		log.info("TC_09_Step_06: click thanh toan");
+		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+		shopping.clickToDynamicButton("Đồng ý");
+
+		log.info("TC_09_Step_07: click chon tai khoan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
+		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
+
+		log.info("TC_09_Step_08: lay ra ma don hang");
+		String PayIDString = shopping.getDynamicTextInTransactionDetail("Mã đơn hàng");
+
+		log.info("TC_09_Step_09: tong tien");
+		String totalMoneyBill = shopping.getDynamicTextInTransactionDetail("Tổng tiền:");
+
+		log.info("TC_09_Step_10: Chon thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		log.info("TC_09_Step_11: Kiem tra tai khoan nguon");
+		String account = shopping.getMoneyByAccount("Tài khoản nguồn");
+		verifyEquals(account, Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
+
+		log.info("TC_09_Step_12: Chon phuong thuc thanh toan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
+		shopping.clickToDynamicButtonLinkOrLinkText("SMS OTP");
+
+		log.info("TC_09_Step_13: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_09_Step_14: dien otp");
+		shopping.inputToDynamicOtp(otp, "Tiếp tục");
+
+		log.info("TC_09_Step_15: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_09_Step_16: Chon ve man hinh home");
+		shopping.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_09_Step_17: Click vao Inbox Icon");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		inbox = PageFactoryManager.getInboxPageObject(driver);
+
+		log.info("TC_09_Step_18: Click tab tat ca");
+		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(PayIDString));
+		verifyTrue(inboxContent.contains(totalMoneyBill.replace("D", "Đ")));
+
+		log.info("TC_09_Step_19: Click tab quang cao");
+		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(PayIDString));
+		verifyTrue(inboxContent.contains(totalMoneyBill.replace("D", "Đ")));
+
+		log.info("TC_09_Step_20: Back ve man hinh Home");
+		home = PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+	}
+
+	@Parameters({ "otp" })
+	@Test
+	public void TC_10_TinOTT_VNShop_ChuaDangNhap(String otp) {
+
+		home.scrollDownToText(driver, "© 2019 Vietcombank");
+		home.scrollIDownOneTime(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
+		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
+		shopping.sleep(driver, 5000);
+
+		log.info("TC_10_Step_02: Them vao gio hang");
+		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicCategories("đ");
+
+		log.info("TC_10_Step_03: click icon gio hang");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicCart("1", "0");
+
+		log.info("TC_10_Step_04: click dat hang");
+		shopping.clickToDynamicDateInDateTimePicker("1");
+		shopping.clickToDynamicButton("Đặt hàng");
+
+		log.info("TC_10_Step_05: click thanh toán");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		if (shopping.isTextDisplayedInPageSource(driver, "Thông báo") == true) {
+
+			log.info("TC_10_Step_04_1: click the moi");
+			shopping.clickToDynamicButton("Thêm mới");
+
+			log.info("TC_10_Step_04_2: nhap ten");
+			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
+
+			log.info("TC_10_Step_04_2: nhap so dien thoai");
+			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
+
+			log.info("TC_10_Step_04_3: chon tinh thanh pho");
+			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
+			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
+
+			log.info("TC_10_Step_04_3: chon tinh quan huyen");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Quận Ba Đình");
+
+			log.info("TC_10_Step_04_3: chon tinh xa phuong");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Phường Biên Giang");
+
+			log.info("TC_10_Step_04_3: dia chi cu the");
+			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+
+			log.info("TC_10_Step_04_3: chon hoan tat");
+			shopping.clickToDynamicButton("Hoàn tất");
+			shopping.clickToDynamicButton("Thanh toán");
+		}
+
+		log.info("TC_10_Step_06: click thanh toan");
+		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+		shopping.clickToDynamicButton("Đồng ý");
+
+		log.info("TC_10_Step_07: click chon tai khoan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
+		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
+
+		log.info("TC_10_Step_08: lay ra ma don hang");
+		String PayIDString = shopping.getDynamicTextInTransactionDetail("Mã đơn hàng");
+
+		log.info("TC_10_Step_09: tong tien");
+		String totalMoneyBill = shopping.getDynamicTextInTransactionDetail("Tổng tiền:");
+
+		log.info("TC_10_Step_10: Chon thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		log.info("TC_10_Step_11: Kiem tra tai khoan nguon");
+		String account = shopping.getMoneyByAccount("Tài khoản nguồn");
+		verifyEquals(account, Valid_Account.DIFFERENT_OWNER_ACCOUNT_2);
+
+		log.info("TC_10_Step_12: Chon phuong thuc thanh toan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
+		shopping.clickToDynamicButtonLinkOrLinkText("SMS OTP");
+
+		log.info("TC_10_Step_13: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_10_Step_14: dien otp");
+		shopping.inputToDynamicOtp(otp, "Tiếp tục");
+
+		log.info("TC_10_Step_15: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_10_Step_16: Chon ve man hinh home");
+		shopping.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_10_Step_17: Chon tab Menu");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_10_Step_18: An vao Thoat ung dung");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
+
+		log.info("TC_10_Step_19: Chon dong y");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		login = PageFactoryManager.getLoginPageObject(driver);
+		login.sleep(driver, 5000);
+
+		log.info("TC_10_Step_20: Click vao Inbox");
+		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		inbox = PageFactoryManager.getInboxPageObject(driver);
+
+		log.info("TC_10_Step_21: Click tab tat ca");
+		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(PayIDString));
+		verifyTrue(inboxContent.contains(totalMoneyBill.replace("D", "Đ")));
+
+		log.info("TC_10_Step_22: Click tab quang cao");
+		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(PayIDString));
+		verifyTrue(inboxContent.contains(totalMoneyBill.replace("D", "Đ")));
+
+		log.info("TC_10_Step_23: Click back ve Login");
+		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		login = PageFactoryManager.getLoginPageObject(driver);
+
+		log.info("TC_10_Step_24: Nhap mat khau va log in");
+		login.inputIntoEditTextByID(driver, "aaaa1111", "com.VCB:id/edtInput");
+		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+
+		log.info("TC_10_Step_25: Hien thi man hinh Home");
+		home = PageFactoryManager.getHomePageObject(driver);
+	}
+
+//	@Test
+	public void TC_11_TinOTT_VeXe_DaDangNhap() {
+
+		home.scrollDownToText(driver, "© 2019 Vietcombank");
+
+		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		vehicalTicket.clickToDynamicButton("Đồng ý");
+
+		log.info("TC_11_Step_01: Chon va nhap diem di");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
+
+		log.info("TC_11_Step_02: Chon va nhap diem den");
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+
+		log.info("TC_11_Step_03: Chon ngay muon di");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
+
+		log.info("TC_11_Step_04: Tim kiem chuyen di");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
+
+		log.info("TC_11_Step_05: Chon ghe: ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
+		String colorSeat = "(255,255,255)";
+		vehicalTicket.chooseSeats(1, colorSeat);
+
+		log.info("TC_11_Step_06 : Dat chuyen di: ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
+
+		log.info("TC_11_Step_07: Chon ben diem di: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+
+		log.info("TC_11_Step_08: Chon ben diem den: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+
+		log.info("TC_11_Step_09: Click chon tiep tuc ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_11_Step_10: Click chọn Cho phep");
+		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+
+		log.info("TC_11_Step_11: Input email");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+
+		log.info("TC_11_Step_14: Click button tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_11_Step_14: Click btutton Thanh toan");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
+
+		log.info("TC_11_Step_15: Chon thong tin tai khoan nguon");
+		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
+		vehicalTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
+
+		log.info("TC_11_Step_16: Click button tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_11_Step_17: Lay ma thanh toan-----");
+		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
+
+		log.info("TC_11_Step_18: Click chon phuong thuc xac thuc");
+		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llptxt");
+
+		log.info("TC_11_Step_19: Verify hien thi man hinh cac phuong thuc xac minh");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_SELECT));
+
+		log.info("TC_11_Step_20: Chon hinh thuc xac thuc là mat khau");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PASS);
+
+		log.info("TC_11_Step_21: Click button Tiep tuc");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_11_Step_22: Nhap mat khau cua tai khoan");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
+
+		log.info("TC_11_Step_23: Click btn Tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_11_Step_24: Chon ve man hinh home");
+		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/ivHome");
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_11_Step_25: Click vao Inbox Icon");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		inbox = PageFactoryManager.getInboxPageObject(driver);
+
+		log.info("TC_11_Step_26: Click tab tat ca");
+		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(maVe));
+		verifyTrue(inboxContent.contains(maThanhToan));
+
+		log.info("TC_11_Step_27: Click tab quang cao");
+		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(maVe));
+		verifyTrue(inboxContent.contains(maThanhToan));
+
+		log.info("TC_11_Step_28: Back ve man hinh Home");
+		home = PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+	}
+
+//	@Test
+	public void TC_12_TinOTT_VeXe_ChuaDangNhap() {
+
+		home.scrollDownToText(driver, "© 2019 Vietcombank");
+
+		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
+		vehicalTicket.clickToDynamicButton("Đồng ý");
+
+		log.info("TC_12_Step_01: Chon va nhap diem di");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
+
+		log.info("TC_12_Step_02: Chon va nhap diem den");
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+
+		log.info("TC_12_Step_03: Chon ngay muon di");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
+
+		log.info("TC_12_Step_04: Tim kiem chuyen di");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_FIND_TRIP);
+
+		log.info("TC_12_Step_05: Chon ghe: ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
+		String colorSeat = "(255,255,255)";
+		vehicalTicket.chooseSeats(1, colorSeat);
+
+		log.info("TC_12_Step_06 : Dat chuyen di: ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
+
+		log.info("TC_12_Step_07: Chon ben diem di: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+
+		log.info("TC_12_Step_08: Chon ben diem den: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+
+		log.info("TC_12_Step_09: Click chon tiep tuc ");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_12_Step_10: Click chọn Cho phep");
+		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+
+		log.info("TC_12_Step_11: Input email");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+
+		log.info("TC_12_Step_14: Click button tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_12_Step_14: Click btutton Thanh toan");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
+
+		log.info("TC_12_Step_15: Chon thong tin tai khoan nguon");
+		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
+		vehicalTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
+
+		log.info("TC_12_Step_16: Click button tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_12_Step_17: Lay ma thanh toan-----");
+		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
+
+		log.info("TC_12_Step_18: Click chon phuong thuc xac thuc");
+		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llptxt");
+
+		log.info("TC_12_Step_19: Verify hien thi man hinh cac phuong thuc xac minh");
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_SELECT));
+
+		log.info("TC_12_Step_20: Chon hinh thuc xac thuc là mat khau");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PASS);
+
+		log.info("TC_12_Step_21: Click button Tiep tuc");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_12_Step_22: Nhap mat khau cua tai khoan");
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
+
+		log.info("TC_12_Step_23: Click btn Tiep tuc");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+
+		log.info("TC_12_Step_24: Chon ve man hinh home");
+		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/ivHome");
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_12_Step_25: Chon tab Menu");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_12_Step_26: An vao Thoat ung dung");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
+
+		log.info("TC_12_Step_27: Chon dong y");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		login = PageFactoryManager.getLoginPageObject(driver);
+		login.sleep(driver, 5000);
+
+		log.info("TC_12_Step_28: Click vao Inbox");
+		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		inbox = PageFactoryManager.getInboxPageObject(driver);
+
+		log.info("TC_12_Step_29: Click tab tat ca");
+		inbox.clickToTextID(driver, "com.VCB:id/radioAll");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(maVe));
+		verifyTrue(inboxContent.contains(maThanhToan));
+
+		log.info("TC_12_Step_30: Click tab quang cao");
+		inbox.clickToTextID(driver, "com.VCB:id/radioOther");
+		inboxContent = inbox.getTextInDynamicIndexAndID(driver, "0", "com.VCB:id/content");
+		verifyTrue(inboxContent.contains(maVe));
+		verifyTrue(inboxContent.contains(maThanhToan));
+
+		log.info("TC_12_Step_31: Click back ve Login");
+		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		login = PageFactoryManager.getLoginPageObject(driver);
+
+		log.info("TC_12_Step_32: Nhap mat khau va log in");
+		login.inputIntoEditTextByID(driver, "aaaa1111", "com.VCB:id/edtInput");
+		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+
+		log.info("TC_12_Step_33: Hien thi man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
