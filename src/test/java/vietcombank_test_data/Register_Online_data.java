@@ -9,20 +9,28 @@ public class Register_Online_data {
 		public static final String NO_IDENTIFICATION = "0339783058";
 		public static final String TYPE_RETURN_MONEY[] = { "Rút lãi", "Rút gốc" };
 		public static final String EMAIL = "hieppt@vnpay.vn";
+
 		public static final String ADDRESS = "123 Truc Bach Ha Noi";
 		public static final String CARD_RANK[] = { "Chuẩn", "Vàng", "Đặc biệt" };
 		public static final String FEE_PAYMENT[] = { "Trích nợ tự động từ TK", "Nộp tiền mặt" };
 		public static final String TYPE_AMOUNT[] = { "VND", "EUR", "USD" };
 		public static final String ACCOUNT_TAKE[] = { Account_Data.Valid_Account.DEFAULT_ACCOUNT3, Account_Data.Valid_Account.ACCOUNT2 };
+
 		public static final String AMOUNT = "100000";
 		public static final String AMOUNT_OPEN_CARD = "200000";
 		public static final String AMOUNT_USD_EUR = "10";
 		public static final String NOTE = "test";
 		public static final String CUSTOMER_NAME_ACCEPT = "NGUYEN VAN A";
 		public static final String BANK_NAME = "NHTMCP Cong thuong VN";
+
+		
+		public static final String NOI_CAP = "THANH PHO CAN THO";
+
+
 		public static final String LIST_SEND_MONEY[] = { "Tài khoản tiền gửi có kỳ hạn", "Thẻ tiết kiệm không kỳ hạn", "Thẻ tiết kiệm có kỳ hạn" };
 		public static final String LIST_PERIOD[] = { "14 ngày - 6.5%/Năm", "1 tháng - 4.5%/Năm", "3 tháng - 4.6%/Năm", "2 ngày - 0.3%/Năm", "9 tháng - 5.5%/Năm", "12 tháng - 6.5%/Năm", "24 tháng - 0.1%/Năm" };
 		public static final String INTEREST_RECEPT_TYPE[] = { "Nhập gốc", "Tiền mặt", "Chuyển khoản" };
+
 	}
 
 	public class Message {

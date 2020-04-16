@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
+import javax.swing.JSpinner.ListEditor;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -635,6 +636,16 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 		return listSchedule;
 
+	}
+
+	public void clickFilmScheduleNotToday(int indexs) {
+		List<String> listElements = new ArrayList<String>();
+		for (int i = 0; i <= 6; i = i + 2) {
+			String locators = String.format(FilmTicketBookingPageUIs.DYNAMIC_TEXT_VIEW_LINEAR_LAYOUT_BY_LINEAER_LAYOUT_ID, "com.VCB:id/llDate", String.valueOf(i));
+			listElements.add(locators);
+		}
+
+		clickToElement(driver, listElements.get(indexs));
 	}
 
 	public List<SeatType> getListSeatType() {

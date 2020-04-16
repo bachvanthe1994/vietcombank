@@ -20,6 +20,8 @@ import org.openqa.selenium.WebElement;
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
@@ -34,7 +36,7 @@ public class TrainTicketPageObject extends AbstractPage {
 		waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 		return getTextInListElements(driver, TrainTicketPageUIs.DYNAMIC_STARUS, dynamicIndex);
 	}
-
+	
 	public void navigateBack(AppiumDriver<MobileElement> driver) {
 		driver.navigate().back();
 	}
@@ -639,8 +641,8 @@ public class TrainTicketPageObject extends AbstractPage {
 		}
 		return text;
 	}
-
-	public String getTextTotal(String... dynamicResourceID) {
+	
+	public String getTextTotal(String ... dynamicResourceID) {
 		String text = null;
 		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_TOTAL, dynamicResourceID);
 		if (status == true) {
@@ -896,16 +898,16 @@ public class TrainTicketPageObject extends AbstractPage {
 			sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, inputValue, dynamicID);
 		}
 	}
-
+	
 	// Nhập thông tin khách hàng, dựa vào linearlayout ID
-	public void inputToDynamicTextHeader(String inputValue, String... dynamicID) {
-		boolean status = false;
-		status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, dynamicID);
-		if (status == true) {
-			clearText(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, dynamicID);
-			sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, inputValue, dynamicID);
+		public void inputToDynamicTextHeader(String inputValue, String ... dynamicID) {
+			boolean status = false;
+			status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, dynamicID);
+			if (status == true) {
+				clearText(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, dynamicID);
+				sendKeyToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_HEADER, inputValue, dynamicID);
+			}
 		}
-	}
 
 	// Click icon change
 	public void clickToDynamicIconChange(AppiumDriver<MobileElement> driver, String dynamicText) {

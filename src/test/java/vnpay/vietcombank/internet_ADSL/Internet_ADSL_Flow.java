@@ -778,7 +778,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_01_Input ma khach hang");
-		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODE_VIETTEL_ADSL);
+		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_01_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_Kiem tra tai khoan nguon");
@@ -957,7 +957,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_03_Input ma khach hang");
-		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODE_VIETTEL_ADSL);
+		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_03_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_03_Kiem tra tai khoan nguon");
