@@ -112,21 +112,13 @@ public class Shopping_Online_Flow extends Base {
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 		
-		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
-		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
-		shopping.clickToDynamicButton("Đồng ý");
-		
 
-
-			log.info("---------------------------TC_01_STEP_6: click thanh toan---------------------------");
-			shopping.clickToDynamicButton("Thanh toán");
-		}
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
->>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
+
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
 		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
@@ -421,6 +413,7 @@ public class Shopping_Online_Flow extends Base {
 
 		log.info("---------------------------TC_04 thuc hien giao dich moi");
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
+	}
 
 @Test
 	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP(String otp) {
