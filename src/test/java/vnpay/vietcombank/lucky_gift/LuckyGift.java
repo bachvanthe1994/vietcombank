@@ -52,7 +52,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-//	@Test
+	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangMatKhau(String pass) {
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -228,7 +228,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-//	@Test
+	@Test
 	public void TC_03_NGuoiNhanTrongVCBBangSTKXacThucBangMatKhau(String pass) {
 		log.info("TC_03_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -394,7 +394,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-//	@Test
+	@Test
 	public void TC_05_NGuoiNhanNgoaiVCBSoTaiKhoanXacThucBangMK(String pass) {
 		log.info("TC_05_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);

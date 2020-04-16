@@ -25,7 +25,7 @@ public class RegisterOnlinePageObject extends AbstractPage {
 
 		clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
 
-		clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
+		clickToTextID(driver, "android:id/date_picker_header_year");
 
 		clickToTextListview(driver, "android:id/date_picker_year_picker", Plusyear);
 

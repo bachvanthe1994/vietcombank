@@ -81,7 +81,7 @@ public class FlowSortUtility extends Base {
 		}
 
 		log.info("TC_01_Step_4: Click chon cap nhat ");
-		homePage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/btnAddContact");
+		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
 		log.info("TC_01_Step_5: Click chon dong y");
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -125,7 +125,7 @@ public class FlowSortUtility extends Base {
 		listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
 
 		log.info("TC_02_Step_7: Click button cap nhat ");
-		homePage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/btnAddContact");
+		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
 		log.info("TC_02_Step_8: Click button dong y ");
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -161,7 +161,7 @@ public class FlowSortUtility extends Base {
 		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
 
 		log.info("TC_03_Step_4: Click btn cap nhat");
-		homePage.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/btnAddContact");
+		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
 		log.info("TC_03_Step_5: Click btn Dong y ");
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");

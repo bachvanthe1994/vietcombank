@@ -50,7 +50,7 @@ public class Mobile_Topup_Validate_03 extends Base {
 
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -250,7 +250,7 @@ public class Mobile_Topup_Validate_03 extends Base {
 	public void TC_14_ManHinhXacNhanThongTin_KiemTraManHinhHienThi(String phone) {
 
 		log.info("TC_14_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_14_Step_02: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);

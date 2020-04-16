@@ -446,7 +446,7 @@ public class Flow_TrainTicket extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán vé tàu");
 
 		log.info("TC_02: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);

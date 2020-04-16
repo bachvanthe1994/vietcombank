@@ -138,7 +138,7 @@ public class Auto_Saving_Validate_03 extends Base {
 		autoSaving = PageFactoryManager.getAutoSavingPageObject(driver);
 
 		log.info("TC_01_Step_02: Chon tai khoan nguon VND");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 
@@ -168,7 +168,7 @@ public class Auto_Saving_Validate_03 extends Base {
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
 
 		log.info("TC_01_Step_09: Chon phương thuc xac thuc");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvptxt");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_01_Step_10: An nut 'Tiep tuc'");
