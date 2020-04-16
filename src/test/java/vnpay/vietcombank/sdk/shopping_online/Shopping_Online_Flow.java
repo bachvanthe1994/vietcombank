@@ -245,8 +245,8 @@ public class Shopping_Online_Flow extends Base {
 
 	}
 
-	@Parameters({ "pass" })
-	@Test
+//	@Parameters({ "pass" })
+//	@Test
 	public void TC_03_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_03_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("Xem tất cả");
@@ -327,8 +327,8 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
 
-	@Parameters({ "pass" })
-	@Test
+//	@Parameters({ "pass" })
+//	@Test
 	public void TC_04_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_04_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("Xem tất cả");
