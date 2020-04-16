@@ -169,7 +169,9 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_21: Kiem tra man hinh xac nhan thong tin");
+		
 		log.info("TC_01_21_01: Kiem tra tai khoan nguon");
+		filmTicketBooking.scrollUpToText("Tài khoản nguồn");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_21_02: Kiem tra so tien");
@@ -271,8 +273,8 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_02_20: Kiem tra loai giao dich");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Loại giao dịch"), "Thanh toán vé xem phim");
 
-		log.info("TC_02_21: Kiem tra noi dung giao dich");
-		String note = "MBVCB" + transactionNumber + ". thanh toan ve xem phim";
+		log.info("------------------------------------TC_02_21: Kiem tra noi dung giao dich------------------------------------");
+		String note = "VCBMB" + transactionNumber + ". thanh toan ve xem phim";
 		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail("Nội dung giao dịch").contains(note));
 
 		log.info("TC_02_22: Click  nut Back");
