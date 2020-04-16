@@ -257,13 +257,8 @@ public class Shopping_Online_Flow extends Base {
 
 	}
 
-<<<<<<< HEAD
 //	@Parameters({ "pass" })
 //	@Test
-=======
-	@Parameters({ "pass" })
-	@Test
->>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 	public void TC_03_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_03_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("Xem tất cả");
@@ -344,30 +339,22 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
 
-<<<<<<< HEAD
+
 //	@Parameters({ "pass" })
 //	@Test
-=======
-	@Parameters({ "pass" })
-	@Test
->>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
+
 	public void TC_04_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_04_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("Xem tất cả");
 		shopping.clickToDynamicCategories("đ");
 
 		log.info("---------------------------TC_04_STEP_3: lay tong tien can thanh toan");
-<<<<<<< HEAD
+
 
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("Miễn phí giao hàng cho đơn từ ").replace("₫", "");
 		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 
-=======
 
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("Miễn phí giao hàng cho đơn từ ").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
->>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 		log.info("---------------------------TC_04_STEP_4: click dat hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
@@ -435,13 +422,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_04 thuc hien giao dich moi");
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
-	}
-
-	@Parameters({ "otp" })
+@Test
 	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP(String otp) {
 		log.info("---------------------------TC_05_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("%");
@@ -497,11 +478,7 @@ public class Shopping_Online_Flow extends Base {
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> dc514800982e21895c5de40901a7449a19dfb27b
 		log.info("---------------------------TC_05__STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
 		shopping.clickToDynamicButtonLinkOrLinkText("SMS OTP");
