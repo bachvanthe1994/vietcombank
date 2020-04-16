@@ -91,6 +91,17 @@ public class VehicalPageObject extends AbstractPage {
 		}
 
 	}
+	
+	// Click vào button, text có class là textview, tham số truyền vào là text
+		public void clickToDynamicText1(String... dynamicTextValue) {
+			scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+			boolean status = false;
+			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, dynamicTextValue);
+			if (status) {
+				clickToElement(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, dynamicTextValue);
+			}
+
+		}
 
 	// Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicTextScollUP(String dynamicTextValue) {
@@ -121,6 +132,25 @@ public class VehicalPageObject extends AbstractPage {
 		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		if (status) {
 			clickToElement(driver, CommonPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
+	}
+
+	// Click vao 1 button hoac link text su dung text
+	public void clickToDynamicTextOrButtonLink(String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		}
+	}
+
+	// Chọn text bang id
+	public void clickToDynamicTextByID(String id) {
+		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		if (status == true) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
 		}
 	}
 
@@ -496,8 +526,8 @@ public class VehicalPageObject extends AbstractPage {
 	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
 		List<String> listSeat = new ArrayList<>();
 
-		String locator = String.format(TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/lnSeat");
-		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/lnSeat");
+		String locator = String.format(TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "2", "1");
+		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "2", "1");
 		if (status) {
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
 			for (MobileElement element : elements) {
@@ -514,8 +544,8 @@ public class VehicalPageObject extends AbstractPage {
 					int RGBA = bufferedImage.getRGB(x, y);
 					int red = (RGBA >> 16) & 255;
 					int green = (RGBA >> 8) & 255;
-					int blue = RGBA & 255;
-					String colorOfElement = "(" + red + "," + green + "," + blue + ")";
+					int white = RGBA & 255;
+					String colorOfElement = "(" + red + "," + green + "," + white + ")";
 
 					if (colorOfSeat.equals(colorOfElement)) {
 						element.click();
@@ -536,7 +566,7 @@ public class VehicalPageObject extends AbstractPage {
 		return listSeat;
 
 	}
-
+	
 // Click select date
 	public void clickToDynamicSelectDate(String dynamicID) {
 		boolean status = false;
@@ -661,16 +691,16 @@ public class VehicalPageObject extends AbstractPage {
 		}
 
 	}
-	
-	//Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
-		public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
-			boolean status = false;
-			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
-			if (status == true) {
-				clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
-				sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
-			}
+
+	// Input vào ô nhập otp , tham số truyền vào là text của button tiếp tục
+	public void inputToDynamicOtp(String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
+	}
 
 	/* SCROLL UP To Tai khoản nguông */
 	public void scrollUpToText(String dynamicText) {

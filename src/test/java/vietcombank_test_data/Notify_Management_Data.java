@@ -7,6 +7,7 @@ public class Notify_Management_Data {
 		public static final String ACCOUNT_02 = "0019965487";
 		public static final String ACCOUNT_03 = "0019966611";
 		public static final String ACCOUNT_04 = "0541001555240";
+		public static final String ACCOUNT_05 = "0121000667333";
 	}
 
 }

@@ -43,7 +43,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_01_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
+	public void TC_05_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -104,7 +104,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Số tiền"), addCommasToLong(Online_Topup_Data.MOMO.MOMO_MONEY) + " VND");
 
 		log.info("TC_01_Step_13: Chon phuong thuc xac thuc OTP");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		feeValue = onlineTopup.getDynamicTextByLabel(driver, "Số tiền phí");
@@ -126,13 +126,13 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_18: Xac nhan so tien o tai khoan nguon bi tru dung");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, originAccount), (onlineTopup.getStringNumberAfterCaculate(originMoney, Online_Topup_Data.MOMO.MOMO_MONEY, feeValue) + " VND"));
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
 	@Test
-	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -146,13 +146,13 @@ public class Online_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_02_Step_04: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_02_Step_05: Chon 'Nap tien dien tu vao vi'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_SERVICE);
 
 		log.info("TC_02_Step_06: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_Step_07: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, originAccount);
@@ -203,7 +203,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_03_NapTienDienTuVaoViMOMO_ThanhToanMK() {
+	public void TC_07_NapTienDienTuVaoViMOMO_ThanhToanMK() {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -263,7 +263,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Số tiền"), addCommasToLong(Online_Topup_Data.MOMO.MOMO_MONEY) + " VND");
 
 		log.info("TC_03_Step_13: Chon phuong thuc xac thuc MK");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		feeValue = onlineTopup.getDynamicTextByLabel(driver, "Số tiền phí");
@@ -287,13 +287,13 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_03_Step_19: Xac nhan so tien o tai khoan nguon bi tru dung");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, originAccount), (onlineTopup.getStringNumberAfterCaculate(originMoney, Online_Topup_Data.MOMO.MOMO_MONEY, feeValue) + " VND"));
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
 	@Test
-	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_08_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -307,13 +307,13 @@ public class Online_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_04_Step_04: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_04_Step_05: Chon 'Nap tien dien tu vao vi'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_SERVICE);
 
 		log.info("TC_04_Step_06: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step_07: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, originAccount);
@@ -364,7 +364,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_05_NapTienDienTuVaoVETC_ThanhToanMK() {
+	public void TC_01_NapTienDienTuVaoVETC_ThanhToanMK() {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -408,7 +408,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Số tiền nạp"), addCommasToLong(Online_Topup_Data.VETC.VETC_MONEY) + " VND");
 
 		log.info("TC_05_Step_11: Chon phuong thuc xac thuc mat khau");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		feeValue = onlineTopup.getDynamicTextByLabel(driver, "Số tiền phí");
 
@@ -433,13 +433,13 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_05_Step_17: Xac nhan so tien o tai khoan nguon bi tru dung");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, originAccount), (onlineTopup.getStringNumberAfterCaculate(originMoney, Online_Topup_Data.VETC.VETC_MONEY, feeValue) + " VND"));
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
 	@Test
-	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -453,13 +453,13 @@ public class Online_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_06_Step_04: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_06_Step_05: Chon 'Nap tien tai khoan VETC'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.VETC.VETC_SERVICE);
 
 		log.info("TC_06_Step_06: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step_07: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, originAccount);
@@ -508,7 +508,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_07_NapTienDienTuVaoVETC_ThanhToanOTP(String otp) {
+	public void TC_03_NapTienDienTuVaoVETC_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -562,7 +562,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Số tiền nạp"), addCommasToLong(Online_Topup_Data.VETC.VETC_MONEY) + " VND");
 
 		log.info("TC_07_Step_11: Chon phuong thuc xac thuc OTP");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 		feeValue = onlineTopup.getDynamicTextByLabel(driver, "Số tiền phí");
 
@@ -585,13 +585,13 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_07_Step_16: Xac nhan so tien o tai khoan nguon bi tru dung");
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, originAccount), (onlineTopup.getStringNumberAfterCaculate(originMoney, Online_Topup_Data.VETC.VETC_MONEY, feeValue) + " VND"));
-		onlineTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
 	@Test
-	public void TC_08_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_08_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -605,13 +605,13 @@ public class Online_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_08_Step_04: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_08_Step_05: Chon 'Nap tien tai khoan VETC'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.VETC.VETC_SERVICE);
 
 		log.info("TC_08_Step_06: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_Step_07: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, originAccount);

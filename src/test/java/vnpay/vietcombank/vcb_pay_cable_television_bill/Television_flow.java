@@ -91,7 +91,7 @@ public class Television_flow extends Base {
 		}
 
 		log.info("TC_01_STEP_4: chọn phương thức xác thực");
-		billTelevision.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvptxt");
+		billTelevision.clickToTextID(driver, "com.VCB:id/tvptxt");
 		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_01_STEP_5: lấy ra số tiền thanh toán ");
@@ -157,7 +157,7 @@ public class Television_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_02_5: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT2);
 
 		log.info("TC_02_7: Click Tim Kiem");
@@ -210,7 +210,7 @@ public class Television_flow extends Base {
 		verifyEquals(surplusInt, canculateAvailable);
 
 		log.info("TC_02_18: Click Đóng");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/cancel_button");
+		transReport.clickToTextID(driver, "com.VCB:id/cancel_button");
 
 		log.info("TC_02_19: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
@@ -250,7 +250,7 @@ public class Television_flow extends Base {
 		}
 
 		log.info("TC_03_STEP_6: chọn phương thức xác thực");
-		billTelevision.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvptxt");
+		billTelevision.clickToTextID(driver, "com.VCB:id/tvptxt");
 		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_03_STEP_7: lấy ra số tiền thanh toán ");
@@ -316,7 +316,7 @@ public class Television_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán hóa đơn");
 
 		log.info("TC_04_5: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_7: Click Tim Kiem");
@@ -369,7 +369,7 @@ public class Television_flow extends Base {
 		verifyEquals(surplusInt, canculateAvailable);
 
 		log.info("TC_04_18: Click Đóng");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/cancel_button");
+		transReport.clickToTextID(driver, "com.VCB:id/cancel_button");
 
 		log.info("TC_04_19: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");

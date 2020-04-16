@@ -259,7 +259,7 @@ public class Transection_limit extends Base {
 		
 		log.info("TC_06_STEP_1: chon tai khoan nguon");
 		trasferPage.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT_LIMIT);
+//		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT_LIMIT[0]);
 		
 		log.info("TC_01_STEP_3: lấy ra số dư");
 		trasferPage.scrollUpToText(driver, "Tài khoản nguồn");

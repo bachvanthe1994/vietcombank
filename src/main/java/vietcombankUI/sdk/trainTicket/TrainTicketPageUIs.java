@@ -25,8 +25,8 @@ public class TrainTicketPageUIs {
 	public static final String DYNAMIC_TEXT_LOCATION = "//android.widget.LinearLayout[@index ='%s']/android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_TO_TEXT = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following::android.widget.FrameLayout//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_TOTAL = "//android.widget.LinearLayout[@resource-id='com.VCB:id/rootView'][@index ='%s']//android.widget.TextView[@resource-id='%s']";
+	public static final String DYNAMIC_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
 
-	
 	// Image-icon
 	public static final String DYNAMIC_HISTORY_ICON = "//android.widget.TextView[@text='%s']/following::android.widget.ImageView";
 	public static final String DYNAMIC_COMBOBOX = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.ImageView";

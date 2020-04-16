@@ -50,7 +50,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit = PageFactoryManager.getVCBAutoDebitPageObject(driver);
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvContent");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_03: Chon loai dich vu 'Hoa don tien dien'");
@@ -98,7 +98,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		address = vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ");
 
 		log.info("TC_01_Step_16: Chon phương thuc xac thuc");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvptxt");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_Step_17: An nut 'Tiep tuc'");
@@ -135,7 +135,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_28: Chon tai khoan nguon");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvContent");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_29: Chon loai dich vu 'Hoa don tien dien'");
@@ -232,7 +232,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ"), address);
 
 		log.info("TC_02_Step_20: Chon phương thuc xac thuc");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvptxt");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_02_Step_21: An nut 'Tiep tuc'");
@@ -391,7 +391,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit = PageFactoryManager.getVCBAutoDebitPageObject(driver);
 
 		log.info("TC_04_Step_03: Chon tai khoan nguon");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvContent");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_Step_03: Chon loai dich vu 'Hoa don tien nuoc'");
@@ -436,7 +436,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		address = vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ");
 
 		log.info("TC_04_Step_16: Chon phương thuc xac thuc");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvptxt");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_04_Step_17: An nut 'Tiep tuc'");
@@ -473,7 +473,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_04_Step_28: Chon tai khoan nguon");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvContent");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_Step_29: Chon loai dich vu 'Hoa don tien dien'");
@@ -570,7 +570,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ"), address);
 
 		log.info("TC_05_Step_20: Chon phương thuc xac thuc");
-		vcbAutoDebit.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvptxt");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_05_Step_21: An nut 'Tiep tuc'");
