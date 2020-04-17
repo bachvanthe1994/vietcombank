@@ -217,7 +217,6 @@ public class Flow_LandLinePhoneCharge_Part_2 extends Base {
 		landLinePhoneCharge = PageFactoryManager.getLandLinePhoneChargePageObject(driver);
 
 		log.info("TC_03_01_Click Cuoc dien thoai co dinh");
-		landLinePhoneCharge.scrollDownToText(driver, "Thanh toán tiền nước");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Cước điện thoại cố định");
 
 		log.info("TC_03_02_Chon tai khoan nguon");

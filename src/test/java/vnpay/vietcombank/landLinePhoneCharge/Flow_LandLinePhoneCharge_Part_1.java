@@ -65,6 +65,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định có dây Viettel");
 
 		log.info("TC_01_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(LandLinePhoneCharge_Data.LIST_LANDLINE_PHONE_LINE);
@@ -214,7 +215,6 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		landLinePhoneCharge = PageFactoryManager.getLandLinePhoneChargePageObject(driver);
 
 		log.info("TC_03_01_Click Cuoc dien thoai co dinh");
-		landLinePhoneCharge.scrollDownToText(driver, "Thanh toán tiền nước");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Cước điện thoại cố định");
 
 		log.info("TC_03_02_Chon tai khoan nguon");
@@ -225,6 +225,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định có dây Viettel");
 
 		log.info("TC_03_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(LandLinePhoneCharge_Data.LIST_LANDLINE_PHONE_LINE);
