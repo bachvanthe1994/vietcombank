@@ -491,6 +491,15 @@ public class VehicalPageObject extends AbstractPage {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_LOCATION, dynamicTextID);
 		}
 	}
+	
+	// Click Chọn edit text
+	public void clickDynamicEditText(String dynamicTextID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicTextID);
+		if (status == true) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicTextID);
+		}
+	}
 
 	public String getColorOfElement(String locator, String... dynamicValue) {
 		String colorOfElement = "";
@@ -525,9 +534,9 @@ public class VehicalPageObject extends AbstractPage {
 
 	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
 		List<String> listSeat = new ArrayList<>();
-
-		String locator = String.format(TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "2", "1");
-		boolean status = waitForElementVisible(driver, TrainTicketPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "2", "1");
+		for (int i = 0; i < 3; i++) {
+		String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, numberOfSeats, i);
+		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "" + numberOfSeats + "", "" + i + "");
 		if (status) {
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
 			for (MobileElement element : elements) {
@@ -561,7 +570,7 @@ public class VehicalPageObject extends AbstractPage {
 
 				}
 			}
-
+		}
 		}
 		return listSeat;
 
@@ -700,6 +709,17 @@ public class VehicalPageObject extends AbstractPage {
 			clearText(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, dynamicTextValue);
 			sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
+	}
+	
+	// Input vào ô edit text
+	public void inputIntoEditTextByID(String inputValue, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicID);
+		if (status == true) {
+			clearText(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, dynamicID);
+			sendKeyToElement(driver, CommonPageUIs.DYNAMIC_EDIT_TEXT, inputValue, dynamicID);
+		}
+
 	}
 
 	/* SCROLL UP To Tai khoản nguông */

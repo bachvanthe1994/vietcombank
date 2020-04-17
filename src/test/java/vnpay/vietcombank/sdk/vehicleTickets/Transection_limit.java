@@ -52,7 +52,7 @@ public class Transection_limit extends Base {
 	}
 
 	@Test
-	public void TC_79_KiemTraNhanChonNgayQuaKhu() {
+	public void TC_79_LonHonHanMucToiDaTrenMotGiaoDich() {
 		log.info("TC_79_Step_1: Chọn và nhập điểm đi");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
@@ -71,12 +71,28 @@ public class Transection_limit extends Base {
 
 		log.info("TC_90_Step_1: click chọn ghê");
 		vehicalTicket.clickToDynamicText("Chọn ghế");
-		
-		log.info("TC_12_get lay mau o cho trong");
-		String colorOfSeat = vehicalTicket.getColorOfElement(vehicalTicketBookingUI.CommonPageUIs.IMAGE_BY_TEXT, "Ghế trống", "Ghế đã bán", "Đang chọn");
 
 		log.info("TC_12_Click chon cho trong");
-		listActual = vehicalTicket.chooseSeats(1, colorOfSeat);
+		for (int i = 2; i < 4; i++) {
+			listActual = vehicalTicket.chooseSeats(i, "(255,255,255)");
+		}
+		
+		log.info("TC_90_Step_1: click dat cho");
+		vehicalTicket.clickToDynamicText("Đặt chỗ");
+		
+		log.info("TC_90_Step_1: click dat cho");
+		vehicalTicket.clickToDynamicText("Tiếp tục");
+		
+		log.info("TC_90_Step_1: click tu choi");
+		vehicalTicket.clickToDynamicButton("Từ chối");
+		
+		log.info("TC_90_Step_1: nhap email");
+		vehicalTicket.clickDynamicEditText("com.VCB:id/email");
+		vehicalTicket.clickToDynamicTextOrButtonLink("nghiepvutest502@gmail.com");
+		vehicalTicket.clickToDynamicTextByID("com.VCB:id/tvWarning");
+		
+		log.info("TC_90_Step_1: click dat cho");
+		vehicalTicket.clickToDynamicText("Tiếp tục");
 	}
 
 	@AfterClass(alwaysRun = true)
