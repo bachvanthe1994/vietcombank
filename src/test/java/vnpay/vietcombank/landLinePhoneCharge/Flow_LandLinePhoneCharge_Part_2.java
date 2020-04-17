@@ -64,8 +64,10 @@ public class Flow_LandLinePhoneCharge_Part_2 extends Base {
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
-		landLinePhoneCharge.clickToTextID(driver, "com.VCB:id/content");
+
+		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
+		
 
 		log.info("TC_01_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(LandLinePhoneCharge_Data.LIST_LANDLINE_PHONE_NOLINE);
@@ -226,8 +228,10 @@ public class Flow_LandLinePhoneCharge_Part_2 extends Base {
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
-		landLinePhoneCharge.clickToTextID(driver, "com.VCB:id/content");
+
+		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Cố định không dây Viettel");
+		
 
 		log.info("TC_03_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(LandLinePhoneCharge_Data.LIST_LANDLINE_PHONE_NOLINE);

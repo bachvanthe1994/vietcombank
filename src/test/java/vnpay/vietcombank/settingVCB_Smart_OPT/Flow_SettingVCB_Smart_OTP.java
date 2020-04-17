@@ -121,7 +121,9 @@ public class Flow_SettingVCB_Smart_OTP extends Base {
 	}
 
 	@Test
-	public void TC_02_ChuyenTienTrongVCB() {
+	// Chuyen tien Trong VCB 
+	//----------------------Chuyen tien ngay gia tri hien tai---------------------------------
+	public void TC_02_ChuyenTienTrongVCBNgayGiaTriHienTai() {
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
 		transferRecurrent.scrollDownToText(driver, "Chuyển tiền tới ngân hàng khác");
@@ -215,6 +217,13 @@ public class Flow_SettingVCB_Smart_OTP extends Base {
 	}
 
 	@Test
+	// Chuyen tien Trong VCB 
+	//----------------------Chuyen tien dinh ky---------------------------------
+	
+	public void TC_03_ChuyenTienTrongVCBDinhKy() {
+		
+		
+	}
 	public void TC_03_ChuyenTienNhanh_24_7() {
 
 	}

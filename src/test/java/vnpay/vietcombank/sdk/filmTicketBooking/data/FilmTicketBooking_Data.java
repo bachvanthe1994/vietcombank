@@ -11,4 +11,24 @@ public class FilmTicketBooking_Data {
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
 	
+	
+	
+	// MESSEGE ERROR LIMIT
+	
+	public static final String MESSEGE_ERROR_LOWER_MIN_LIMIT_A_TRAN = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 40,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
+	public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT_A_TRAN = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 250,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
+	public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT_A_DAY = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 260,000 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
+	public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT_GROUP = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 50,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
+	public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT_PACKAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 50,000 VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
+	
+	// MESSEGE ERROR LIMIT 1 ngày của gói dịch vụ
+
+	public static final String AMOUNT_MAX_LIMIT_A_TRAN = "200000";
+	public static final String AMOUNT_MIN_LIMIT_A_TRAN = "40000";
+	public static final String AMOUNT_HIGHER_MAX_LIMIT_A_DAY = "240000";
+	public static final String AMOUNT_HIGHER_MAX_LIMIT_A_GROUP = "40000";
+	public static final String AMOUNT_HIGHER_MAX_LIMIT_A_PACKAGE  = "40000";
+
+
 }
+

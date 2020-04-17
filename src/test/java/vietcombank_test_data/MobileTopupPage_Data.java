@@ -26,4 +26,23 @@ public class MobileTopupPage_Data {
 		public static final String PASSWORD_METHOD_ERROR_MESSAGE = "Mật khẩu không chính xác. Quý khách lưu ý, dịch vụ VCB-Mobile B@nking sẽ bị tạm khóa và dịch vụ VCBPAY sẽ bị hủy nếu Quý khách nhập sai mật khẩu quá 3 lần.";
 		public static final String MOBILE_TOPUP_TRANSACTION_SUCCEED_TITLE = "GIAO DỊCH THÀNH CÔNG";
 	}
+	
+	public static class Values_Limit {
+		public static final String LOWER_LIMIT_A_TRAN = "49999";
+		public static final String HIGHER_LIMIT_A_TRAN = "100001";
+
+
+	}
+	
+	public static class MESSEGE_ERROR_Limit {
+		public static final String MESSEGE_LOWER_LIMIT_A_TRAN = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 49,999 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String MESSEGE_HIGHER_LIMIT_A_TRAN = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+
+		public static final String MESSEGE_HIGHER_LIMIT_A_DAY = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 400,000 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String MESSEGE_HIGHER_LIMIT_GROUP = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 200,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String MESSEGE_HIGHER_LIMIT_PACKAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 200,000 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+
+		
+		
+	}
 }
