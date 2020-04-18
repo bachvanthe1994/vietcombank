@@ -38,9 +38,8 @@ public class Card_Services extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_01_KhoaTheGhiNo() {
-
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, "Mua sắm");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Dịch vụ thẻ");
@@ -112,7 +111,7 @@ public class Card_Services extends Base {
 		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.DEBIT_CARD01, "com.VCB:id/tvContent"));
 	}
 
-	@Test
+//	@Test
 	public void TC_02_MoKhoaTheGhiNoQuaOTP() {
 
 		log.info("TC_02_Step_01: An chon the bat ki trong Dropdown");
@@ -195,7 +194,7 @@ public class Card_Services extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KhoaTheTinDung() {
 
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Dich vu the'");
@@ -281,7 +280,7 @@ public class Card_Services extends Base {
 		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.CREDIT_CARD01, "com.VCB:id/tvContent"));
 	}
 
-	@Test
+//	@Test
 	public void TC_04_MoKhoaTheTinDungQuaOTP() {
 
 		log.info("TC_04_Step_06: An chon the bat ki trong Dropdown");
