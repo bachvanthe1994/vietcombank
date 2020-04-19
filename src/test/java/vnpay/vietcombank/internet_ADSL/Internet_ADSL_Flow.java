@@ -44,6 +44,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_01_ThanhToanCuocViettelXacThucMatKhau(String pass) {
 		log.info("TC_01_Step_Click cuoc ADSL");
+		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_01_Step_Select tai khoan nguon");
@@ -54,7 +55,7 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_01_Input ma khach hang");
@@ -223,7 +224,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_03_ThanhToanCuocViettelXacThucOTP(String otp) {
 		log.info("TC_03_Step_Click cuoc ADSL");
-		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
+		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_03_Step_Select tai khoan nguon");
@@ -234,7 +235,7 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
 
 		log.info("TC_03_Input ma khach hang");
@@ -403,7 +404,7 @@ public class Internet_ADSL_Flow extends Base {
 //	@Test
 	public void TC_05_ThanhToanCuocFPTXacThucMatKhau(String pass) {
 		log.info("TC_05_Step_Click cuoc ADSL");
-		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
+		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_05_Step_Select tai khoan nguon");
@@ -414,7 +415,7 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_05_Step_Thong tin giao dich chon FPT");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
 
 		log.info("TC_05_Input ma khach hang");
@@ -584,7 +585,7 @@ public class Internet_ADSL_Flow extends Base {
 //	@Test
 	public void TC_07_ThanhToanCuocFPTXacThucOTP(String otp) {
 		log.info("TC_07_Step_Click cuoc ADSL");
-		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
+		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_07_Step_Select tai khoan nguon");
@@ -595,7 +596,7 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_07_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
 
 		log.info("TC_07_Input ma khach hang");
@@ -763,7 +764,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_09_ThanhToanCuocViettelADSLXacThucMatKhau() {
 		log.info("TC_01_Step_Click cuoc ADSL");
-		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
+		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_01_Step_Select tai khoan nguon");
@@ -774,7 +775,7 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_01_Input ma khach hang");
@@ -942,7 +943,7 @@ public class Internet_ADSL_Flow extends Base {
 	@Test
 	public void TC_11_ThanhToanCuocViettelADSLXacThucOTP() {
 		log.info("TC_03_Step_Click cuoc ADSL");
-		ADSL.scrollDownToText(driver, "Thanh toán tiền nước");
+		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
 
 		log.info("TC_03_Step_Select tai khoan nguon");
@@ -953,7 +954,7 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_03_Input ma khach hang");
