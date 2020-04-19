@@ -60,8 +60,8 @@
 <!-- 			<class name="vnpay.vietcombank.card_services.Card_Services" /> -->
 
 			<!-- Tiết kiệm trực tuyến -->
-<!-- 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" /> -->
+			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
+			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" />
 
 
 			<!-- Đăng ký trực tuyến -->
