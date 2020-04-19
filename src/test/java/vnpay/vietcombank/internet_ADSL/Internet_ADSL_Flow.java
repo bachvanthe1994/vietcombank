@@ -69,7 +69,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
 
 		log.info("TC_01_Kiem tra nha cung cap");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[1]);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
 
 		log.info("TC_01_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
