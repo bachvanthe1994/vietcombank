@@ -293,9 +293,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
 
-//		log.info("TC_04_Step: Nhap noi cap");
-//		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, "THANH PHO CAN THO", "com.VCB:id/layoutNoiCap2");
-
 		log.info("TC_04_Step: Nhap email");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/layoutEmail");
 
@@ -363,9 +360,7 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_05_Step: Chon nam cap");
-		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker",
-
-				getBackWardYear(1));
+		registerOnline.clickToTextListview(driver, "android:id/date_picker_year_picker", getBackWardYear(1));
 
 		log.info("TC_05_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, "OK");
@@ -374,9 +369,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNoiCap");
 		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
-
-//		log.info("TC_05_Step: Nhap noi cap");
-//		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, "THANH PHO CAN THO", "com.VCB:id/layoutNoiCap2");
 
 		log.info("TC_05_Step: Nhap email");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/layoutEmail");
@@ -464,9 +456,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNoiCap");
 		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
-
-//		log.info("TC_06_Step: Nhap noi cap");
-//		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, "THANH PHO CAN THO", "com.VCB:id/layoutNoiCap2");
 
 		log.info("TC_06_Step: Nhap email");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/layoutEmail");
@@ -562,9 +551,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
 
-//		log.info("TC_07_Step: Nhap noi cap");
-//		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, "THANH PHO CAN THO", "com.VCB:id/layoutNoiCap2");
-
 		log.info("TC_07_Step: Nhap email");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/layoutEmail");
 
@@ -641,9 +627,6 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNoiCap");
 		registerOnline.inputIntoEditTextByID(driver, "THANH PHO CAN THO", "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, "THANH PHO CAN THO");
-
-//		log.info("TC_08_Step: Nhap noi cap");
-//		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, "THANH PHO CAN THO", "com.VCB:id/layoutNoiCap2");
 
 		log.info("TC_08_Step: Nhap email");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/layoutEmail");
@@ -958,8 +941,8 @@ public class Flow_RegisterOnline_LoginUser_Part1 extends Base {
 		registerOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[0]);
 
-//		log.info("TC_13_Step: Input so ho chieu");
-//		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/layoutCMTND");
+		log.info("TC_13_Step: Input so ho chieu");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/layoutCMTND");
 
 		log.info("TC_13_Step: Click ngay cap");
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
