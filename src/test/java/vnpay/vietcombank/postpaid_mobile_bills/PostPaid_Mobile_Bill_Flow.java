@@ -47,6 +47,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Click Cuoc di dong tra sau");
+		home.scrollDownToText(driver, "Cước viễn thông VNPT");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
@@ -249,7 +250,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_03_Step_01: Click Cuoc di dong tra sau");
-		home.scrollDownToText(driver, "Cước di động trả sau");
+		home.scrollDownToText(driver, "Cước viễn thông VNPT");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
@@ -452,7 +453,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_05_Step_01: Click Cuoc di dong tra sau");
-		home.scrollDownToText(driver, "Cước di động trả sau");
+		home.scrollDownToText(driver, "Cước viễn thông VNPT");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
@@ -655,6 +656,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_07_Step_01: Click Cuoc di dong tra sau");
+		home.scrollDownToText(driver, "Cước viễn thông VNPT");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
@@ -857,7 +859,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_09_Step_01: Click Cuoc di dong tra sau");
-		home.scrollDownToText(driver, "Cước di động trả sau");
+		home.scrollDownToText(driver, "Cước viễn thông VNPT");
+		;
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
@@ -1060,7 +1063,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_11_Step_01: Click Cuoc di dong tra sau");
-		home.scrollDownToText(driver, "Cước di động trả sau");
+		home.scrollDownToText(driver, "Cước viễn thông VNPT");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước di động trả sau");
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
