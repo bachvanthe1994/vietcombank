@@ -40,7 +40,6 @@ public class Card_Services extends Base {
 
 	@Test
 	public void TC_01_KhoaTheGhiNo() {
-
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, "Mua sắm");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Dịch vụ thẻ");

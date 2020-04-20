@@ -7,7 +7,7 @@ public class TransferMoneyQuick_Data {
 		public static final String ACCOUNT_TO_INVALID = "01298372945";
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
-		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
+		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" ,"VCB - Smart OTP"};
 
 		public static final String BANK_INVALID = "Ngân hàng Test";
 		public static final String MONEY = "100000";

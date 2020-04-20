@@ -874,6 +874,16 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		}
+	}
+
+	public void clickToDynamicContinue(AppiumDriver<MobileElement> driver, String dynamicID) throws InterruptedException {
+		Thread.sleep(5000);
+		boolean status = false;
+		scrollDown_LongDistance(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		}
 
 	}
 
@@ -1109,6 +1119,14 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
+		}
+	}
+
+	public void clickToDynamicImageViewID(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
 		}
 	}
 
@@ -1433,6 +1451,15 @@ public class AbstractPage {
 		if (status == true) {
 			clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
+		}
+	}
+
+	public void inputToDynamicSmartOTP(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, inputValue, dynamicTextValue);
 		}
 	}
 

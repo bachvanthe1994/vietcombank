@@ -285,7 +285,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_HuyTietKiemTuDong_TaiKhoanNguon_VND() {
 
 		log.info("TC_04_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -333,7 +333,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 
 		log.info("TC_05_Step_01: Mo tab Menu");
@@ -388,7 +388,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 
 		log.info("TC_06_1_Click Tat toan tai khoan tiet kiem");
@@ -421,7 +421,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_07_MoTaiKhoanTietKiem_TaiKhoanNguon_USD(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -499,7 +499,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_08_TietKiemTuDong_TaiKhoanNguon_USD_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -609,7 +609,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_09_TietKiemTuDong_TaiKhoanNguon_USD_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_09_Step_01: Mo tab Menu");
@@ -767,7 +767,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-	@Test
+//	@Test
 	public void TC_12_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 
 		log.info("TC_12_1_Click Tat toan tai khoan tiet kiem");
