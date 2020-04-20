@@ -9,7 +9,7 @@
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
 	<parameter name="appActivities"
-		value="com.VCB.activities.AbotActivity" />
+		value="com.VCB.activities.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 
@@ -19,9 +19,8 @@
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
-		<parameter name="hubURL"
-			value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0904797866" />
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
@@ -72,7 +71,15 @@
 			<!-- <class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" /> -->
 
 
-			<class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" />
+		<!--	<class
+				name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" />-->
+			<!--Thanh toán cước truyền hình cap
+			Thanh toán cước ADSL Viettel
+			SDK mua sắm trực tuyến-->
+			
+			<!--Thanh toán cước điện thoại cố định-->
+            <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" />
+
 
 		</classes>
 
