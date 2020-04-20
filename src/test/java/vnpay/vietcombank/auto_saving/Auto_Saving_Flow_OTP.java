@@ -388,7 +388,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 
 		log.info("TC_06_1_Click Tat toan tai khoan tiet kiem");
@@ -670,7 +670,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_HuyTietKiemTuDong_TaiKhoanNguon_USD_OTP() {
 
 		log.info("TC_10_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
@@ -716,7 +716,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_11_HuyTietKiemTuDong_TaiKhoanNguon_USD_BaoCaoGiaoDich() {
 
 		log.info("TC_11_Step_01: Mo tab Menu");
