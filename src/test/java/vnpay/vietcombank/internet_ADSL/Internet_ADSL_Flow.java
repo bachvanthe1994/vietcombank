@@ -16,7 +16,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Internet_ADSL_Data;
-import vietcombank_test_data.LogIn_Data;
 
 public class Internet_ADSL_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -24,7 +23,7 @@ public class Internet_ADSL_Flow extends Base {
 	private InternetADSLPageObject ADSL;
 	private HomePageObject homePage;
 	private TransactionReportPageObject transReport;
-	String transferTime, pass;
+	String transferTime, password;
 	String transactionNumber;
 	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
 
@@ -34,6 +33,7 @@ public class Internet_ADSL_Flow extends Base {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		password = pass;
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -118,6 +118,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_: Chon thuc hien giao dich");
+//		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_01_Step_: Chon tai khoan chuyen");
@@ -298,6 +299,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_03_Step_: Chon thuc hien giao dich");
+//		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_03_Step_: Chon tai khoan chuyen");
@@ -479,6 +481,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_05_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_05_Step_: Chon tai khoan chuyen");
@@ -660,6 +663,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_07_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_07_Step_: Chon tai khoan chuyen");
@@ -761,8 +765,9 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
+	@Parameters({ "pass" })
 	@Test
-	public void TC_09_ThanhToanCuocViettelADSLXacThucMatKhau() {
+	public void TC_09_ThanhToanCuocViettelADSLXacThucMatKhau(String pass) {
 		log.info("TC_08_Step_Click cuoc ADSL");
 		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
@@ -838,6 +843,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_08_Step_: Chon thuc hien giao dich");
+//		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_08_Step_: Chon tai khoan chuyen");
@@ -940,8 +946,9 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
+	@Parameters({ "otp" })
 	@Test
-	public void TC_11_ThanhToanCuocViettelADSLXacThucOTP() {
+	public void TC_11_ThanhToanCuocViettelADSLXacThucOTP(String otp) {
 		log.info("TC_11_Step_Click cuoc ADSL");
 		homePage.scrollDownToText(driver, "VCB-Auto Debit");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet ADSL");
@@ -989,7 +996,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_11_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		ADSL.inputToDynamicOtp(driver, otp, "Tiếp tục");
 
 		log.info("TC_11_Step_Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -1017,6 +1024,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_11_Step_: Chon thuc hien giao dich");
+//		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_11_Step_: Chon tai khoan chuyen");
