@@ -49,7 +49,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_Get so du kha dung");
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
@@ -63,7 +63,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_01_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Kiem tra dich vu");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -124,7 +124,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_01_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_:Check so du kha dung sau khi chuyen tien");
 		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -155,7 +155,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_Step: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_02_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -193,7 +193,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_02: Kiem tra dich vu");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -229,7 +229,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_03_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_03_Step_Get so du kha dung");
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
@@ -243,7 +243,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_03_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_03_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_03_Kiem tra dich vu");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -304,7 +304,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_03_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_03_Step_:Check so du kha dung sau khi chuyen tien");
 		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -335,7 +335,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -373,7 +373,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_04: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04: Kiem tra dich vu");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -409,7 +409,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_05_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_05_Step_Get so du kha dung");
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
@@ -424,7 +424,7 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_05_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_05_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_05_Kiem tra dich vu");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -485,7 +485,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_05_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_05_Step_:Check so du kha dung sau khi chuyen tien");
 		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -516,7 +516,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_06_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -553,7 +553,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_06: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_06: Kiem tra dich vu");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -590,7 +590,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_07_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_07_Step_Get so du kha dung");
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
@@ -605,7 +605,7 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_07_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_07_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_07_Kiem tra dich vu");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -666,7 +666,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_07_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_07_Step_:Check so du kha dung sau khi chuyen tien");
 		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -697,7 +697,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_Step: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -734,7 +734,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_08: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08: Kiem tra dich vu");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
@@ -769,7 +769,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_08_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Step_Get so du kha dung");
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
@@ -783,7 +783,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_08_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_08_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Kiem tra dich vu");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước internet ADSL");
@@ -844,7 +844,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_08_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Step_:Check so du kha dung sau khi chuyen tien");
 		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -875,7 +875,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_10_Step: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_10_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -913,7 +913,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_10: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_10: Kiem tra dich vu");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước internet ADSL");
@@ -948,7 +948,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_11_Step_Select tai khoan nguon");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_11_Step_Get so du kha dung");
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
@@ -962,7 +962,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_11_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_11_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_11_Kiem tra dich vu");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước internet ADSL");
@@ -1023,7 +1023,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
 		log.info("TC_11_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_11_Step_:Check so du kha dung sau khi chuyen tien");
 		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -1054,7 +1054,7 @@ public class Internet_ADSL_Flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_12_Step: Chon so tai khoan tra cuu");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_12_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -1091,7 +1091,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_12: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_12: Kiem tra dich vu");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước internet ADSL");

@@ -54,7 +54,7 @@
 
 
 			<!-- Nạp tiền điện thoại -->
-<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
 
 			<!-- Dịch vụ thẻ -->
 <!-- 			<class name="vnpay.vietcombank.card_services.Card_Services" /> -->
@@ -77,7 +77,7 @@
 <!-- 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
 
 			<!-- Nạp tiền VETC -->
-<!-- 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
+			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
 
 
 			<!-- Tính toán lãi suất -->
@@ -87,11 +87,11 @@
 <!-- 			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" /> -->
 
 			<!-- Cài đặt hạn mức chuyển tiền -->
-<!-- 			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" /> -->
+			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" />
 
 			<!-- Thanh toán cước điện thoại cố định -->
-<!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" /> -->
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
 
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
