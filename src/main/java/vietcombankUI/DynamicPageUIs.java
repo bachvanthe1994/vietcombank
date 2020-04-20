@@ -87,14 +87,12 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_VIEW_VIEW_BY_INDEX = "//android.view.View[@resource-id='%s']//following-sibling::android.view.View[@index='%s']/android.view.View/android.view.View";
 	public static final String DYNAMIC_VIEWGROUP_TEXT = "//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//following-sibling::android.widget.HorizontalScrollView//android.view.ViewGroup//android.view.ViewGroup";
 
-	public static final String DYNAMIC_SCROLL_TEXT ="//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//following-sibling::android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup//android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
-	public static final String DYNAMIC_VIEWGROUP_TEXTVIEW ="//android.widget.TextView[@text='%s']//ancestor::android.view.ViewGroup/following-sibling::android.view.ViewGroup//android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
-	public static final String DYNAMIC_TEXT_PRECEDING ="//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//preceding-sibling::android.view.ViewGroup[@index='%s']//android.widget.TextView";
-	public static final String DYNAMIC_TEXT_VIEW= "//android.widget.TextView[@resource-id='%s']";
+	public static final String DYNAMIC_SCROLL_TEXT = "//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//following-sibling::android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup//android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
+	public static final String DYNAMIC_VIEWGROUP_TEXTVIEW = "//android.widget.TextView[@text='%s']//ancestor::android.view.ViewGroup/following-sibling::android.view.ViewGroup//android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
+	public static final String DYNAMIC_TEXT_PRECEDING = "//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//preceding-sibling::android.view.ViewGroup[@index='%s']//android.widget.TextView";
+	public static final String DYNAMIC_TEXT_VIEW = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT = "//android.view.View[@text='%s']//following::android.view.View//child::android.widget.EditText";
 	public static final String DYNAMIC_IMAGE_VIEW_ID = "//android.widget.ImageView[@resource-id='%s']";
-
-
 
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id='%s']";
@@ -108,4 +106,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_ESPECIALLY_TEXTVIEW = "//*[@resource-id=\"%s\"]//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 //DATE PICKER
 	public static final String DYNAMIC_DATE_PICKER_BY_ID = "//android.widget.DatePicker[@resource-id=\"%s\"]";
+
+	// WAIT
+	public static final String WAIT_BAR = "//android.widget.ProgressBar[@resource-id='com.VCB:id/progressBar']";
 }
