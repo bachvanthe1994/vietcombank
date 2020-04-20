@@ -118,6 +118,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_01_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_01_Step_: Chon tai khoan chuyen");
@@ -298,6 +299,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_03_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_03_Step_: Chon tai khoan chuyen");
@@ -479,6 +481,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_05_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_05_Step_: Chon tai khoan chuyen");
@@ -660,6 +663,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_07_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_07_Step_: Chon tai khoan chuyen");
@@ -838,6 +842,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_08_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_08_Step_: Chon tai khoan chuyen");
@@ -1017,6 +1022,7 @@ public class Internet_ADSL_Flow extends Base {
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_11_Step_: Chon thuc hien giao dich");
+		ADSL.waitForWaitingBarUndisplay();
 		ADSL.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_11_Step_: Chon tai khoan chuyen");
