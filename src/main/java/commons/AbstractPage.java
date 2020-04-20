@@ -837,7 +837,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
-		sleep(driver, 3000);
+		sleep(driver, 4000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
@@ -856,7 +856,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		sleep(driver, 3000);
+		sleep(driver, 4000);
 		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
@@ -873,6 +873,16 @@ public class AbstractPage {
 		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_VIEW_VIEW_BY_INDEX, dynamicTextAndIndex);
+		}
+	}
+
+	public void clickToDynamicContinue(AppiumDriver<MobileElement> driver, String dynamicID) throws InterruptedException {
+		Thread.sleep(5000);
+		boolean status = false;
+		scrollDown_LongDistance(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
 		}
 
 	}
@@ -1112,6 +1122,14 @@ public class AbstractPage {
 		}
 	}
 
+	public void clickToDynamicImageViewID(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW_ID, dynamicID);
+		}
+	}
+
 	public void clickToDynamicSuggestedMoney(AppiumDriver<MobileElement> driver, int index, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -1265,6 +1283,9 @@ public class AbstractPage {
 		}
 
 	}
+//	public void waitForWaitingBarUndisplay(AppiumDriver<MobileElement> driver, String... dynamicID) {
+//		waitForElementInvisible(driver, DynamicPageUIs.WAIT_BAR,dynamicID);
+//	}
 
 	public void inputPasswordInvalidBy_N_Times(AppiumDriver<MobileElement> driver, int time) {
 		for (int i = 0; i < time; i++) {
@@ -1433,6 +1454,15 @@ public class AbstractPage {
 		if (status == true) {
 			clearText(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, dynamicTextValue);
 			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_LABEL_SEARCH_BANK, inputValue, dynamicTextValue);
+		}
+	}
+
+	public void inputToDynamicSmartOTP(AppiumDriver<MobileElement> driver, String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, inputValue, dynamicTextValue);
 		}
 	}
 

@@ -18,7 +18,7 @@ public class Account_Data {
 		public static final String USD_ACCOUNT_3 = "0019961181";
 		public static final String EUR_ACCOUNT = "0019961178";
 		public static final String EUR_ACCOUN_2 = "0011140313982";
-		public static final String ACCOUNT_TO = "0129837294";
+		public static final String ACCOUNT_TO = "0011000450391";
 		public static final String[] BANK = { "Ngân hàng DAB", "Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu", "Ngân hàng TMCP Kỹ thương Việt Nam" };
 		public static final String VND_ACCOUNT = "0351000771996";
 		public static final String DIFFERENT_OWNER_ACCOUNT_2 = "0019961175";
