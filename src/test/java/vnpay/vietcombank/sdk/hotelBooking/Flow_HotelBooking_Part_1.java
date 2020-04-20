@@ -43,6 +43,8 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		password = pass;
 		
+		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
+		
 	}
 
 	String paycode = "";
@@ -50,8 +52,6 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 	@Test
 	public void TC_01_DatPhongKhachSan() {
-		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
-
 		log.info("TC_01_01_Click Dat phong khach san");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
 
@@ -97,7 +97,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 		
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
-		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		hotelBooking.clickToDynamicDropDown("Chọn phương thức xác thực");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
 
@@ -253,7 +253,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 		
 		log.info("TC_03_13_Chon phuong thuc xac thuc");
-		hotelBooking.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		hotelBooking.clickToDynamicDropDown("Chọn phương thức xác thực");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		hotelBooking.clickToDynamicTextOrButtonLink("SMS OTP");
 
