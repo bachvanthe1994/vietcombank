@@ -2,8 +2,8 @@ package vietcombank_test_data;
 
 public class Account_Data {
 	public static class Valid_Account {
-		public static final String ACCOUNT1 = "0019961175";
-		public static final String ACCOUNT2 = "0121000667333";
+		public static final String ACCOUNT1 = "0011002929257";
+		public static final String ACCOUNT2 = "0451001458259";
 		public static final String ACCOUNT3 = "0451001458259";
 		public static final String ACCOUNT_LIMIT = "0019967190";
 		public static final String DEFAULT_ACCOUNT3 = "0019967190";
