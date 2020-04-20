@@ -178,7 +178,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền"), info.price);
 
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
-		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Mật khẩu đăng nhập"));
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
 
