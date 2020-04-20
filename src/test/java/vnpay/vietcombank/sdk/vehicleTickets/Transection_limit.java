@@ -17,6 +17,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import vehicalPageObject.VehicalPageObject;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
+import vietcombank_test_data.TransferIdentity_Data;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
 public class Transection_limit extends Base {
@@ -52,47 +53,109 @@ public class Transection_limit extends Base {
 	}
 
 	@Test
-	public void TC_79_LonHonHanMucToiDaTrenMotGiaoDich() {
-		log.info("TC_79_Step_1: Chọn và nhập điểm đi");
+	public void TC_01_NhoHonHanMucToiThieuTrenMotGiaoDich() {
+		log.info("TC_01_Step_1: Chọn và nhập điểm đi");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
-		log.info("TC_79_Step_2: Chọn và nhập điểm đến");
+		log.info("TC_01_Step_2: Chọn và nhập điểm đến");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_2, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
 
-		log.info("TC_89_Step_4: Chọn ngày mai");
+		log.info("TC_01_Step_3: Chọn ngày mai");
 		vehicalTicket.clickToDynamicTomorrowAndFilterTrip("com.VCB:id/lnNextday");
 
-		log.info("TC_79_Step_3: click button tìm kiếm chuyến đi");
+		log.info("TC_01_Step_4: click button tìm kiếm chuyến đi");
 		vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
 
-		log.info("TC_90_Step_1: click chọn ghê");
+		log.info("TC_01_Step_5: click chọn ghê");
 		vehicalTicket.clickToDynamicText("Chọn ghế");
 
-		log.info("TC_12_Click chon cho trong");
+		log.info("TC_01_Step_6: Click chon cho trong");
 		for (int i = 2; i < 4; i++) {
 			listActual = vehicalTicket.chooseSeats(i, "(255,255,255)");
 		}
 		
-		log.info("TC_90_Step_1: click dat cho");
+		log.info("TC_01_Step_7: click dat cho");
 		vehicalTicket.clickToDynamicText("Đặt chỗ");
 		
-		log.info("TC_90_Step_1: click dat cho");
+		log.info("TC_01_Step_8: click dat cho");
 		vehicalTicket.clickToDynamicText("Tiếp tục");
 		
-		log.info("TC_90_Step_1: click tu choi");
+		log.info("TC_01_Step_9: click tu choi");
 		vehicalTicket.clickToDynamicButton("Từ chối");
 		
-		log.info("TC_90_Step_1: nhap email");
+		log.info("TC_01_Step_10: nhap email");
 		vehicalTicket.clickDynamicEditText("com.VCB:id/email");
 		vehicalTicket.clickToDynamicTextOrButtonLink("nghiepvutest502@gmail.com");
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/tvWarning");
 		
-		log.info("TC_90_Step_1: click dat cho");
+		log.info("TC_01_Step_11: click dat cho");
+		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		
+		log.info("TC_01_Step_12: click dat cho");
+		vehicalTicket.clickToDynamicButton("Thanh toán");
+		
+		log.info("TC_01_Step_13: click dat cho");
+		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		
+		log.info("TC_01_STEP_14: kiem tra thong bao khi nhap so tien nho hơn han muc nho nhat cua 1 lan giao dich");
+		verifyEquals(vehicalTicket.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VehicalData.NOTIFICATION.NOTI_MIN_TRANSECTION);
+	}
+	
+	@Test
+	public void TC_02_LonHonHanMucToiDaTrenMotGiaoDich() {
+		log.info("TC_01_Step_1: Chọn và nhập điểm đi");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
+
+		log.info("TC_01_Step_2: Chọn và nhập điểm đến");
+		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_2, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_2);
+
+		log.info("TC_01_Step_3: Chọn ngày mai");
+		vehicalTicket.clickToDynamicTomorrowAndFilterTrip("com.VCB:id/lnNextday");
+
+		log.info("TC_01_Step_4: click button tìm kiếm chuyến đi");
+		vehicalTicket.clickToDynamicButton("Tìm kiếm chuyến đi");
+
+		log.info("TC_01_Step_5: click chọn ghê");
+		vehicalTicket.clickToDynamicText("Chọn ghế");
+
+		log.info("TC_01_Step_6: Click chon cho trong");
+		for (int i = 2; i < 4; i++) {
+			listActual = vehicalTicket.chooseSeats(i, "(255,255,255)");
+		}
+		
+		log.info("TC_01_Step_7: click dat cho");
+		vehicalTicket.clickToDynamicText("Đặt chỗ");
+		
+		log.info("TC_01_Step_8: click dat cho");
 		vehicalTicket.clickToDynamicText("Tiếp tục");
+		
+		log.info("TC_01_Step_9: click tu choi");
+		vehicalTicket.clickToDynamicButton("Từ chối");
+		
+		log.info("TC_01_Step_10: nhap email");
+		vehicalTicket.clickDynamicEditText("com.VCB:id/email");
+		vehicalTicket.clickToDynamicTextOrButtonLink("nghiepvutest502@gmail.com");
+		vehicalTicket.clickToDynamicTextByID("com.VCB:id/tvWarning");
+		
+		log.info("TC_01_Step_11: click dat cho");
+		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		
+		log.info("TC_01_Step_12: click dat cho");
+		vehicalTicket.clickToDynamicButton("Thanh toán");
+		
+		log.info("TC_01_Step_13: click dat cho");
+		vehicalTicket.clickToDynamicButton("Tiếp tục");
+		
+		log.info("TC_01_STEP_14: kiem tra thong bao khi nhap so tien nho hơn han muc nho nhat cua 1 lan giao dich");
+		verifyEquals(vehicalTicket.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VehicalData.NOTIFICATION.NOTI_MAX_TRANSECTION);
 	}
 
 	@AfterClass(alwaysRun = true)
