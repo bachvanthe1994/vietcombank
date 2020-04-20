@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.ChangePasswordPageObject;
+import pageObjects.CheckOnlineObject;
+import pageObjects.ConfirmMethodObject;
 import pageObjects.ElectricBillPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.InboxPageObject;
@@ -43,7 +45,6 @@ import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
 import vehicalPageObject.VehicalPageObject;
-import pageObjects.CheckOnlineObject;
 
 public class PageFactoryManager {
 
@@ -217,5 +218,12 @@ public class PageFactoryManager {
 	public static WaterBillPageObject getWaterBillPageObject(AppiumDriver<MobileElement> driver) {
 		return new WaterBillPageObject(driver);
 	}
+	
+	public static ConfirmMethodObject getConfirmMethodObject(AppiumDriver<MobileElement> driver) {
+		return new ConfirmMethodObject(driver);
+	}
+	
+	
+	
 
 }
