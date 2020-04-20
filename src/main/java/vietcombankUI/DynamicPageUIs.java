@@ -2,7 +2,7 @@ package vietcombankUI;
 
 public class DynamicPageUIs {
 	// BUTTON
-	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id= '%s']";
 	public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
 
 	// TEXT VIEW android.widget.TextView
@@ -92,10 +92,12 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_PRECEDING ="//android.widget.TextView[@text='%s']//parent::android.view.ViewGroup//preceding-sibling::android.view.ViewGroup[@index='%s']//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_VIEW= "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT = "//android.view.View[@text='%s']//following::android.view.View//child::android.widget.EditText";
+	public static final String DYNAMIC_IMAGE_VIEW_ID = "//android.widget.ImageView[@resource-id='%s']";
+
 
 
 	// IMAGE BUTTON
-	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id='%s']";
 	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
 
 	// CHECK BOX
