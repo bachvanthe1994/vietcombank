@@ -82,7 +82,7 @@
 			SDK mua sắm trực tuyến-->
 			
 			<!--Thanh toán cước điện thoại cố định-->
-            <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" />
+            <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
 
 
 		</classes>

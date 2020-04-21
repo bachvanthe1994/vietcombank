@@ -164,6 +164,9 @@
 
 								<suiteXmlFiles>
 									<suiteXMLfile>src/test/resources/runTestCasesMainFlow.xml</suiteXMLfile>
+									<suiteXMLfile>src/test/resources/runTestCasesMainFlowPart1.xml</suiteXMLfile>
+									<suiteXMLfile>src/test/resources/runTestCasesMainFlowPart2.xml</suiteXMLfile>
+									<suiteXMLfile>src/test/resources/runTestCasesMainFlowPart3.xml</suiteXMLfile>
 								</suiteXmlFiles>
 
 							</configuration>
