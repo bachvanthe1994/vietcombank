@@ -11,8 +11,8 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
-		public static final String RECEIVER_NAME_ACCOUNT_2 = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
-		public static final String RECEIVER_NAME_ACCOUNT_1 = "NGUYEN NGOC TOAN";
+		public static final String RECEIVER_NAME_ACCOUNT_2 = "NGUYEN NGOC TOAN";
+		public static final String RECEIVER_NAME_ACCOUNT_1 = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
 
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
