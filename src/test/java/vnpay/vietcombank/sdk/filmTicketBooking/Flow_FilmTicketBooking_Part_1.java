@@ -286,7 +286,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_03_DatVeXemPhim_Rap_CineStar() {
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
 
@@ -445,7 +445,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_DatVeXemPhim_Rap_CineStar_BaoCaoGiaoDich() {
 		log.info("TC_04_1: Click  nut Back");
 		filmTicketBooking.clickToDynamicBackIcon("Mua vé xem phim");
