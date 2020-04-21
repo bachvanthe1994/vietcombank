@@ -22,8 +22,8 @@ public class Account_Data {
 		public static final String[] BANK = { "Ngân hàng DAB", "Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu", "Ngân hàng TMCP Kỹ thương Việt Nam" };
 		public static final String VND_ACCOUNT = "0351000771996";
 		public static final String DIFFERENT_OWNER_ACCOUNT_2 = "0019961175";
+		public static final String DIFFERENT_OWNER_ACCOUNT_3 = "0011004428587";
 	}
-
 
 	public class Invalid_Account {
 		public static final String SAME_OWNER_ACCOUNT_1 = "0010000123770";
