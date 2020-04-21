@@ -100,15 +100,15 @@
 <!-- 			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" /> -->
 
 			<!-- Thanh toán vé máy bay -->
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
-			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" /> -->
 
 
 			<!-- Đặt vé xem phim -->
 <!-- 			<class name="vnpay.vietcombank.sdk.filmTicketBooking.Flow_FilmTicketBooking_Part_1" /> -->
 
 			<!-- Đặt vé khách sạn -->
-<!-- 			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" /> -->
+			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
 
 			<!-- Mua sắm trực tuyến -->
 <!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" /> -->
