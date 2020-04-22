@@ -1294,6 +1294,9 @@ public class AbstractPage {
 		}
 
 	}
+//	public void waitForWaitingBarUndisplay(AppiumDriver<MobileElement> driver, String... dynamicID) {
+//		waitForElementInvisible(driver, DynamicPageUIs.WAIT_BAR,dynamicID);
+//	}
 
 	public void inputPasswordInvalidBy_N_Times(AppiumDriver<MobileElement> driver, int time) {
 		for (int i = 0; i < time; i++) {

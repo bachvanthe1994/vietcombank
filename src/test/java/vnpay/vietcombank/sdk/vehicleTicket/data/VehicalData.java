@@ -85,8 +85,8 @@ public class VehicalData {
 	public static final String LIST_TRIP = "Danh sách chuyến xe";
 	public static final String NULL_DATA_FIND_TICKET = "Không có dữ liệu phù hợp.";
 	public static final String NULL_DATA_FITER_TRIP = "Không có xe nào tương ứng với kết quả lọc. Quý khách vui lòng kiểm tra lại.";
-    
 	public static final String NOTI_SUCCESS = "THANH TOÁN THÀNH CÔNG";
-
+	public static final String NOTI_MAX_TRANSECTION = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 500,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String NOTI_MIN_TRANSECTION = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 700,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
     }
 }

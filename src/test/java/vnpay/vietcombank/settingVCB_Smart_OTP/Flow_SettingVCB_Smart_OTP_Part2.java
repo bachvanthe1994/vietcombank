@@ -149,7 +149,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 
 		log.info("TC_01_Step_Thong tin giao dich chon Viettel");
 		ADSL.clickToTextID(driver, "com.VCB:id/content");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("TC_01_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
@@ -162,7 +162,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
 
 		log.info("TC_01_Kiem tra nha cung cap");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("TC_01_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
@@ -203,7 +203,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
 
 		log.info("TC_01_Kiem tra nha cung cap");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("TC_01_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());

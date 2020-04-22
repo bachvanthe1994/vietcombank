@@ -37,7 +37,6 @@ import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
@@ -93,7 +92,7 @@ public class Base {
 		}
 	}
 
-	@AfterSuite
+//	@AfterSuite
 	public void sendEmail() throws IOException {
 		String SMTP_SERVER = "smtp.gmail.com";
 		String PASSWORD = "Abc12345@";
@@ -174,7 +173,7 @@ public class Base {
 
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
-
+		System.out.println(((HasSettings) driver).getSettings());
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 
 		return driver;

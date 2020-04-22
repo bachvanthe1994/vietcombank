@@ -29,6 +29,7 @@ public class TransferMoneyQuick_Data {
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.11";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.18";
 		public static final String USD_MAX_TRANSECTION = "21000";
+		public static final String USD_MAX_TRANSECTION_GROUP = "10000";
 
 
 		public static final String TRANSFER_MONEY_LABEL = "Chuyển tiền nhanh 24/7";
@@ -72,7 +73,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_TEXT_INVALID_USD_EUR = "abc@12345";
 		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
 
-		public static final String NOTE = "Test";
+		public static final String NOTE = "Thanh toan ve tau";
 		public static final String NOTE_1_CHAR_VIETNAM = "a";
 		public static final String NOTE_2_CHAR = "ab";
 		public static final String NOTE_140_CHAR = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
@@ -116,6 +117,8 @@ public class TransferMoneyQuick_Data {
 		
 		public static final String MESSAGE_LESS_MIN_LIMIT_USD = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 5,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String MESSAGE_LESS_MAX_LIMIT_USD = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 400,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSAGE_MAX_LIMIT_USD_GROUP = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 200,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSAGE_MAX_LIMIT_USD_PACKAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 	}
 
 }

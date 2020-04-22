@@ -30,7 +30,11 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
@@ -187,7 +191,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01 + " - " + hostContact);
 
 		log.info("TC_02_Step_06: Xac nhan hien thi dung chu hop dong");
-		vcbAutoDebit.scrollDownToText(driver, "Tiếp tục");
+		vcbAutoDebit.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
 
 		log.info("TC_02_Step_07: Xac nhan hien thi dung dia chi");
@@ -314,7 +318,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.CUSTOMER_ID_01 + " - " + hostContact);
 
 		log.info("TC_03_Step_06: Xac nhan hien thi dung chu hop dong");
-		vcbAutoDebit.scrollDownToText(driver, "Tiếp tục");
+		vcbAutoDebit.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
 
 		log.info("TC_03_Step_07: Xac nhan hien thi dung dia chi");

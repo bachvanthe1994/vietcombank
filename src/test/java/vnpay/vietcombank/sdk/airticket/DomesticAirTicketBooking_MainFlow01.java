@@ -38,7 +38,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
+		login.Global_login1(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.clickToDynamicIcon(driver, "Đặt vé máy bay");
 		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);

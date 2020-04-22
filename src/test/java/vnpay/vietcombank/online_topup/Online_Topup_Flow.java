@@ -37,12 +37,12 @@ public class Online_Topup_Flow extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(Online_Topup_Data.MOMO.MOMO_DATA_01, "qqqq1111", opt);
+		login.Global_login(phone, pass, opt);
 		login.scrollDownToText(driver, "Tiết kiệm");
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_05_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -131,7 +131,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
-	@Test
+//	@Test
 	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
@@ -363,8 +363,9 @@ public class Online_Topup_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
+	@Parameters({"pass"})
 	@Test
-	public void TC_01_NapTienDienTuVaoVETC_ThanhToanMK() {
+	public void TC_01_NapTienDienTuVaoVETC_ThanhToanMK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -416,7 +417,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_05_Step_13: Nhap ki tu vao o nhap mat khau");
-		onlineTopup.inputIntoEditTextByID(driver, "qqqq1111", "com.VCB:id/pin");
+		onlineTopup.inputIntoEditTextByID(driver, pass, "com.VCB:id/pin");
 
 		log.info("TC_05_Step_14: An tiep button 'Tiep tuc'");
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");

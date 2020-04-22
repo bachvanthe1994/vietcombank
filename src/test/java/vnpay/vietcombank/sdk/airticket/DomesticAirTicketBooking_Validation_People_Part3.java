@@ -14,6 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
+import vietcombankUI.sdk.airTicketBooking.AirTicketBookingUIs;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
@@ -399,7 +400,7 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 
 	@Test
 	public void TC_09_KiemTraDanhSachChuyenBay1ChieuDaChon() {
-		airTicket.clickToDynamicFlight(0, "VJ");
+		airTicket.clickToDynamicFlight(0, "VN");
 
 		String flightCode = airTicket.getAirTicketInfo(0, "com.VCB:id/tv_flightNo");
 		String depTime = airTicket.getAirTicketInfo(0, "com.VCB:id/tv_time_deptTime");
@@ -427,7 +428,7 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tv_viewDetail_one_way"), "Xem chi tiết giá");
 
 		log.info("TC_09_Step 8: Kiem tra button dat ve hien thi");
-		verifyTrue(airTicket.isDynamicButtonDisplayed("Đặt vé"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("Đặt vé"));
 	}
 
 	@Test
@@ -586,17 +587,17 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 	@Test
 	public void TC_13_KiemTraDanhSachGiaoDienChuyenBay2ChieuDaChon() {
 		log.info("TC_13_Step 1: Chon ve may bay chieu di");
-		airTicket.clickToDynamicFirstFlightShiftByFlightCode("com.VCB:id/recy_chieudi", "VJ");
+		airTicket.clickToDynamicFirstFlightShiftByFlightCode("com.VCB:id/recy_chieudi", "BL");
 
 		log.info("TC_13_Step 2: Chon ve may bay chieu ve");
-		airTicket.clickToDynamicFirstFlightShiftByFlightCode("com.VCB:id/recy_chieuve", "VJ");
+		airTicket.clickToDynamicFirstFlightShiftByFlightCode("com.VCB:id/recy_chieuve", "BL");
 
-		String firstTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_flightcode_internal");
-		String firstTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
-		String firstTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
-		String secondTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_flightcode_internal");
-		String secondTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal");
-		String secondTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "VJ", "com.VCB:id/tv_time_roundtrip_internal_arrival");
+		String firstTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "BL", "com.VCB:id/tv_flightcode_internal");
+		String firstTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "BL", "com.VCB:id/tv_time_roundtrip_internal");
+		String firstTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieudi", "BL", "com.VCB:id/tv_time_roundtrip_internal_arrival");
+		String secondTurnCode = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "BL", "com.VCB:id/tv_flightcode_internal");
+		String secondTurnDepartureTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "BL", "com.VCB:id/tv_time_roundtrip_internal");
+		String secondTurnArrivalTime = airTicket.getAirTicketInfoByFlightCode2Way("com.VCB:id/recy_chieuve", "BL", "com.VCB:id/tv_time_roundtrip_internal_arrival");
 
 		log.info("TC_13_Step 3: Kiem tra logo hang bay hien thi");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/iv_flight_internal_chieudi"));
@@ -643,25 +644,25 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Chiều đi", "com.VCB:id/tv_sumAmount_chieudi"), addCommasToLong(haftOfPrice + "") + " VND");
 
 		log.info("TC_14_Step 04: Kiem tra title gia ve co ban ");
-		verifyTrue(airTicket.isDynamicTextByLabel("Chiều đi", "GIÁ VÉ CƠ BẢN"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("GIÁ VÉ CƠ BẢN"));
 
 		log.info("TC_14_Step 05: Kiem tra title Thue Phi ");
-		verifyTrue(airTicket.isDynamicTextByLabel("Chiều đi", "THUẾ & PHÍ"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("THUẾ & PHÍ"));
 
 		log.info("TC_14_Step 06: Kiem tra title dai ly ban ve ");
-		verifyTrue(airTicket.isDynamicTextByLabel("Chiều đi", "PHÍ ĐẠI LÝ BÁN VÉ"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("PHÍ ĐẠI LÝ BÁN VÉ"));
 
 		log.info("TC_14_Step 07: Kiem tra tong so tien ");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Chiều về", "com.VCB:id/tv_sumAmount_chieuve"), addCommasToLong(haftOfPrice + "") + " VND");
 
 		log.info("TC_14_Step 08: Kiem tra title gia ve co ban ");
-		verifyTrue(airTicket.isDynamicTextByLabel("Chiều về", "GIÁ VÉ CƠ BẢN"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("GIÁ VÉ CƠ BẢN"));
 
 		log.info("TC_14_Step 09: Kiem tra title Thue Phi ");
-		verifyTrue(airTicket.isDynamicTextByLabel("Chiều về", "THUẾ & PHÍ"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("THUẾ & PHÍ"));
 
 		log.info("TC_14_Step 10: Kiem tra title dai ly ban ve ");
-		verifyTrue(airTicket.isDynamicTextByLabel("Chiều về", "PHÍ ĐẠI LÝ BÁN VÉ"));
+		verifyTrue(airTicket.isDynamicTextDisplayed("PHÍ ĐẠI LÝ BÁN VÉ"));
 
 		log.info("TC_14_Step 11: kiem tra tong so tien ");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Tổng cộng", "com.VCB:id/tv_sum"), totalPrice);
@@ -681,8 +682,8 @@ public class DomesticAirTicketBooking_Validation_People_Part3 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }
