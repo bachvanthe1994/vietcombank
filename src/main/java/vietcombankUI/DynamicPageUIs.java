@@ -96,6 +96,7 @@ public class DynamicPageUIs {
 
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id='%s']";
+	public static final String DYNAMIC_IMAGE_VIEW = "//android.widget.ImageView[@resource-id='%s']";
 	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
 
 	// CHECK BOX

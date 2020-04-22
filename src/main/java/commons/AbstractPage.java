@@ -1023,6 +1023,17 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		}
 	}
+	
+	public void clickToDynamicImageView(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		}
+	}
+	
+	
 
 // click vào icon trong trang thai lenh chuyen tien
 	public void clickToDynamicIconInOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIDAndTextValue) {
