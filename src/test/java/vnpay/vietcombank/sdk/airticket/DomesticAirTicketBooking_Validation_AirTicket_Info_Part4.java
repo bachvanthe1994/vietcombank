@@ -88,10 +88,10 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 		airTicket.sleep(driver, 10000);
 
 		log.info("TC_01_Step 13: Click Chon Viet Jet ");
-		airTicket.clickToDynamicFlight(0, "VJ");
+		airTicket.clickToDynamicFlight(0, "");
 
 		log.info("TC_01_Step 14: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_01_Step 15: Kiem tra title Danh sach chuyen bay");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle1"), "Thông tin đặt vé");
@@ -141,9 +141,6 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 		log.info("TC_01_Step 30: Kiem tra text box ho ten");
 		verifyEquals(airTicket.getTextInDynamicTextBoxAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/edt_hoten"), "Họ Đệm và Tên (ví dụ: NGUYEN VAN A)");
 
-		log.info("TC_01_Step 31: Kiem tra text hanh ly chieu di");
-		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "0", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price"), "Hành lý chiều đi");
-
 		log.info("TC_01_Step 32: Kiem tra so luong tre em");
 		verifyEquals(airTicket.getTextInDynamicHeaderViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/tv_header_nguoi"), "Trẻ em 1");
 
@@ -158,9 +155,6 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 
 		log.info("TC_01_Step 36: Kiem tra text ngay sinh");
 		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price"), "Ngày sinh");
-
-		log.info("TC_01_Step 37: Kiem tra text hanh ly chieu di");
-		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "1", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price"), "Hành lý chiều đi");
 
 		log.info("TC_01_Step 38: Kiem tra so luong em be");
 		verifyEquals(airTicket.getTextInDynamicHeaderViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "2", "com.VCB:id/tv_header_nguoi"), "Em bé 1");
@@ -190,7 +184,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 		airTicket.clickToDynamicFlight(0, "BL");
 
 		log.info("TC_02_Step 14: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_02_Step 16: Kiem tra Dack icon");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleLeft"));
@@ -287,7 +281,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 		airTicket.clickToDynamicFlight(0, "VN");
 
 		log.info("TC_03_Step 14: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_03_Step 16: Kiem tra Dack icon");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleLeft"));
@@ -384,7 +378,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 		airTicket.clickToDynamicFlight(0, "QH");
 
 		log.info("TC_04_Step 14: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_04_Step 16: Kiem tra Dack icon");
 		verifyTrue(airTicket.isDynamicIconDisplayed("com.VCB:id/ivTitleLeft"));
@@ -467,7 +461,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Part4 extends Ba
 		log.info("TC_04_Step 42: Kiem tra text so luong nguoi");
 		verifyEquals(airTicket.getTextInDynamicTextViewAirTicketInfoOfCustomer("com.VCB:id/recy_info_book", "2", "com.VCB:id/birthday_child", "com.VCB:id/tv_content_price"), "Ngày sinh");
 
-		log.info("TC_14_Step 43: Kiem tra text ngay sinh");
+		log.info("TC_04_Step 43: Kiem tra text ngay sinh");
 		verifyTrue(airTicket.isDynamicButtonDisplayed("Tiếp tục"));
 
 	}

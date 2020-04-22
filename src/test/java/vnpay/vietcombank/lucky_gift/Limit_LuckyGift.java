@@ -70,7 +70,6 @@ public class Limit_LuckyGift extends Base {
 		log.info("------------------------------TC_01_Step_7: Nhap so tien chuyen");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.Limit_Money_Gift.LOWER_MIN_MONEY_A_TRANSACTION, TitleLuckyGift.TITLE_AMOUNT_MONEY);
 
-
 		log.info("--------------------------------------TC_01_Step_8: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
