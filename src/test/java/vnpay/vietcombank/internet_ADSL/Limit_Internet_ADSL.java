@@ -52,7 +52,7 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("------------------------------TC_01_Step_Thong tin giao dich chon Viettel------------------------------");
 		ADSL.clickToTextViewByLinearLayoutID(driver,"com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
 
 		log.info("------------------------------TC_01_Input ma khach hang------------------------------");
 		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
@@ -82,7 +82,7 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("------------------------------TC_02_Step_Thong tin giao dich chon Viettel------------------------------");
 		ADSL.clickToTextViewByLinearLayoutID(driver,"com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 		
 		log.info("------------------------------TC_02_Input ma khach hang------------------------------");
 		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[17],"com.VCB:id/code");
@@ -112,7 +112,7 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("------------------------------TC_03_Step_Thong tin giao dich chon Viettel");
 		ADSL.clickToTextViewByLinearLayoutID(driver,"com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[3]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_03_Input ma khach hang");
 		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[19],"com.VCB:id/code");
@@ -141,7 +141,7 @@ public class Limit_Internet_ADSL extends Base {
 		
 		log.info("------------------------------TC_03_Step_Thong tin giao dich chon Viettel");
 		ADSL.clickToTextViewByLinearLayoutID(driver,"com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[3]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_03_Input ma khach hang");
 		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
@@ -169,7 +169,7 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("------------------------------TC_04_Step_Thong tin giao dich chon Viettel------------------------------");
 		ADSL.clickToTextViewByLinearLayoutID(driver,"com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_04_Input ma khach hang------------------------------");
 		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
@@ -201,7 +201,7 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("------------------------------TC_05_Step_Thong tin giao dich chon Viettel------------------------------");
 		ADSL.clickToTextViewByLinearLayoutID(driver,"com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_05_Input ma khach hang------------------------------");
 		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
