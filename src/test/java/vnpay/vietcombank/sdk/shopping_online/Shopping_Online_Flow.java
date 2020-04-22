@@ -3,6 +3,8 @@ package vnpay.vietcombank.sdk.shopping_online;
 import java.io.IOException;
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -15,6 +17,8 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
+import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
+import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
 import vietcombank_test_data.Account_Data.Valid_Account;
 
 public class Shopping_Online_Flow extends Base {
@@ -43,10 +47,10 @@ public class Shopping_Online_Flow extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, "© 2019 Vietcombank");
 		homePage.scrollIDownOneTime(driver);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
-
 	}
 
 	@Parameters({ "otp" })
@@ -55,7 +59,17 @@ public class Shopping_Online_Flow extends Base {
 
 		log.info("---------------------------TC_01_STEP_2: Them vao gio hang--------------------------------------");
 		shopping.clickToDynamicCategories("Xem tất cả");
-		shopping.clickToDynamicCategories("đ");
+		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
+		for (int i = 0; i < listProduct.size(); i++) {
+			shopping.clickToDynamicTextContains(listProduct.get(i));
+			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
+				shopping.clickToDynamicCart("1", "0");
+				continue;
+			}else {
+				break;
+			}
+		}
 
 		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("Miễn phí giao hàng cho đơn từ ").replace("₫", "");
@@ -64,14 +78,12 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
-		log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
-		shopping.clickToDynamicCart("1", "0");
-
 		log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
 
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
+
 
 		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 		shopping.clickToDynamicButton("Thanh toán");
@@ -107,17 +119,13 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_4_3: chon hoan tat---------------------------");
 			shopping.clickToDynamicButton("Hoàn tất");
 
-
 			log.info("---------------------------TC_01_STEP_6: click thanh toan---------------------------");
 			shopping.clickToDynamicButton("Thanh toán");
 		}
-		
-
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
-
 
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
@@ -331,7 +339,6 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
 
-
 //	@Parameters({ "pass" })
 //	@Test
 
@@ -342,10 +349,8 @@ public class Shopping_Online_Flow extends Base {
 
 		log.info("---------------------------TC_04_STEP_3: lay tong tien can thanh toan");
 
-
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("Miễn phí giao hàng cho đơn từ ").replace("₫", "");
 		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
 
 		log.info("---------------------------TC_04_STEP_4: click dat hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
@@ -415,7 +420,7 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 	}
 
-@Test
+	@Test
 	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP(String otp) {
 		log.info("---------------------------TC_05_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicCategories("%");

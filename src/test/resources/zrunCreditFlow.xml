@@ -2,12 +2,14 @@
 <suite name="Vietcombank" parallel="false">
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener
+			class-name="org.uncommons.reportng.JUnitXMLReporter" />
 		<listener class-name="reportConfig.ExtentReportListener" />
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
-	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
+	<parameter name="appActivities"
+		value="com.VCB.activities.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 
@@ -18,13 +20,15 @@
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="Galaxy S9" />
 		<parameter name="deviceUDID" value="K3VDU18C04001409" />
-		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
+		<parameter name="hubURL"
+			value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0904797866" />
-		<parameter name="pass" value="aaaa1111" />
+		<parameter name="pass" value="qqqq1111" />
 		<parameter name="otp" value="123456" />
 		<classes>
-<!-- 	<class name="vnpay.vietcombank.card_services.Card_Services" /> -->
-<class name="vnpay.vietcombank.lucky_gif.Limit_LuckyGift" />
+			<!-- <class name="vnpay.vietcombank.card_services.Card_Services" /> -->
+			<class
+				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
 
 
 
