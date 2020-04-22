@@ -41,7 +41,7 @@ public class Internet_ADSL_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-	@Test
+//	@Test
 	public void TC_01_ThanhToanCuocViettelXacThucMatKhau(String pass) {
 		log.info("TC_01_Step_Click cuoc ADSL");
 		homePage.scrollDownToText(driver, "VCB-Auto Debit");
@@ -55,8 +55,10 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_01_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+
+		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/icon");
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
+
 
 		log.info("TC_01_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
@@ -134,7 +136,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	@Test
+//	@Test
 	public void TC_02_Report_ThanhToanCuocViettelXacThucMatKhau() {
 		log.info("TC_02_Step: Click back man hinh home");
 		ADSL.clickImageBack("Cước Internet ADSL");
@@ -222,7 +224,7 @@ public class Internet_ADSL_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_03_ThanhToanCuocViettelXacThucOTP(String otp) {
 		log.info("TC_03_Step_Click cuoc ADSL");
 		homePage.scrollDownToText(driver, "VCB-Auto Debit");
@@ -236,8 +238,10 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_03_Step_Thong tin giao dich chon Viettel");
+
 		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[0]);
+
 
 		log.info("TC_03_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
@@ -315,7 +319,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	@Test
+//	@Test
 	public void TC_04_Report_ThanhToanCuocViettelXacThucOTP() {
 		log.info("TC_04_Step: Click back man hinh home");
 		ADSL.clickImageBack("Cước Internet ADSL");
@@ -403,7 +407,7 @@ public class Internet_ADSL_Flow extends Base {
 	}
 
 	@Parameters({ "pass" })
-//	@Test
+	@Test
 	public void TC_05_ThanhToanCuocFPTXacThucMatKhau(String pass) {
 		log.info("TC_05_Step_Click cuoc ADSL");
 		homePage.scrollDownToText(driver, "VCB-Auto Debit");
@@ -417,8 +421,9 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_05_Step_Thong tin giao dich chon FPT");
-		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
+
+		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/icon");
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
 
 		log.info("TC_05_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEFPT);
@@ -497,7 +502,7 @@ public class Internet_ADSL_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-//	@Test
+	@Test
 	public void TC_06_Report_ThanhToanCuocFPTXacThucMatKhau() {
 		log.info("TC_06_Step: Click back man hinh home");
 		ADSL.clickImageBack("Cước Internet ADSL");
@@ -599,8 +604,10 @@ public class Internet_ADSL_Flow extends Base {
 		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, "Số dư khả dụng"));
 
 		log.info("TC_07_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[1]);
+
+		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/icon");
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.NETWORK[2]);
+
 
 		log.info("TC_07_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEFPT);
@@ -786,8 +793,9 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_08_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
-		log.info("TC_08_Kiem tra man hinh xac nhan thong tin");
-		log.info("TC_08_Kiem tra tai khoan nguon");
+		log.info("TC_01_Kiem tra man hinh xac nhan thong tin");
+		log.info("TC_01_Kiem tra tai khoan nguon");
+
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Kiem tra dich vu");
@@ -849,7 +857,9 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_08_Step_: Chon tai khoan chuyen");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
+
 		log.info("TC_08_Step_: Chon tai khoan chuyen");
+
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Step_:Check so du kha dung sau khi chuyen tien");
@@ -880,7 +890,8 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_10_Step: Chon so tai khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
-		log.info("TC_10_Step: Chon so tai khoan tra cuu");
+		log.info("TC_02_Step: Chon so tai khoan tra cuu");
+
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_10_Step: verify thoi tim kiem tu ngay");
@@ -918,7 +929,9 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_10: Check so lenh giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
-		log.info("TC_10: Check tao khoan ghi no");
+
+		log.info("TC_02: Check tao khoan ghi no");
+
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_10: Kiem tra dich vu");
@@ -967,8 +980,10 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_11_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
-		log.info("TC_11_Kiem tra man hinh xac nhan thong tin");
-		log.info("TC_11_Kiem tra tai khoan nguon");
+
+		log.info("TC_03_Kiem tra man hinh xac nhan thong tin");
+		log.info("TC_03_Kiem tra tai khoan nguon");
+
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_11_Kiem tra dich vu");
@@ -1030,7 +1045,9 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_11_Step_: Chon tai khoan chuyen");
 		ADSL.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 
-		log.info("TC_11_Step_: Chon tai khoan chuyen");
+
+		log.info("TC_03_Step_: Chon tai khoan chuyen");
+
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_11_Step_:Check so du kha dung sau khi chuyen tien");
@@ -1061,7 +1078,9 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_12_Step: Chon so tai khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
-		log.info("TC_12_Step: Chon so tai khoan tra cuu");
+
+		log.info("TC_04_Step: Chon so tai khoan tra cuu");
+
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_12_Step: verify thoi tim kiem tu ngay");
@@ -1098,7 +1117,8 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_12: Check so lenh giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
-		log.info("TC_12: Check tao khoan ghi no");
+		log.info("TC_04: Check tao khoan ghi no");
+
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_12: Kiem tra dich vu");

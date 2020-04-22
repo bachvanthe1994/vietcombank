@@ -4,10 +4,8 @@ public class Account_Data {
 	public static class Valid_Account {
 		public static final String ACCOUNT1 = "0019961175";
 		public static final String ACCOUNT2 = "0121000667333";
-		public static final String ACCOUNT3 = "0451001458259";
-		public static final String ACCOUNT_LIMIT[] = {"0019967190", "000019991268", "000019967191"};
-		public static final String DEFAULT_ACCOUNT3 = "0019961177";
-		public static final String LIST_CARD_FROM[] = { "970436...053", "970436...083" };
+		public static final String DEFAULT_ACCOUNT3 = "0019967190";
+		public static final String LIST_CARD_FROM[] = { "428310...760", "970436...083" };
 		public static final String LIST_DEBIT_ACCOUNT[] = { "0011379351651", "0011379351651" };
 		public static final String CARD_TO = "9704060129837294";
 		public static final String LIST_ACCOUNT_FROM[] = { "0019961175", "0019961177", "0019961178", "0121000667333", "0019967190", "0019967806" };
@@ -18,13 +16,12 @@ public class Account_Data {
 		public static final String USD_ACCOUNT_3 = "0019961181";
 		public static final String EUR_ACCOUNT = "0019961178";
 		public static final String EUR_ACCOUN_2 = "0011140313982";
-		public static final String ACCOUNT_TO = "0129837294";
+		public static final String ACCOUNT_TO = "0011000450391";
 		public static final String[] BANK = { "Ngân hàng DAB", "Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu", "Ngân hàng TMCP Kỹ thương Việt Nam" };
 		public static final String VND_ACCOUNT = "0351000771996";
 		public static final String DIFFERENT_OWNER_ACCOUNT_2 = "0019961175";
-		public static final String DIFFERENT_ACCOUNT_settlement = "00001996";
+		public static final String DIFFERENT_OWNER_ACCOUNT_3 = "0011004428587";
 	}
-
 
 	public class Invalid_Account {
 		public static final String SAME_OWNER_ACCOUNT_1 = "0010000123770";

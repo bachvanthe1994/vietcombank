@@ -87,9 +87,7 @@ public class Location_QRCode_Flow extends Base {
 		verifyEquals(locatorActual, locatorExpect);
 		
 		log.info("TC_01_Step: verify so luong luot like");
-		
-		System.out.print(likeNumberActual +"----------------");
-		System.out.print(likeNumberExpect+1 +"----------------");
+
 		verifyEquals(likeNumberActual, likeNumberExpect +"");
 	}
 	
@@ -101,8 +99,6 @@ public class Location_QRCode_Flow extends Base {
 		log.info("TC_02_Step:nhan tim kiem");
 		QRCode.clickToDynamicImageEdit(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH);
 		
-		log.info("TC_02_Step: Click quay lai man hinh trang chu");
-		QRCode.navigateBack(driver);
 		QRCode.navigateBack(driver);
 		
 		log.info("TC_02_Step: Click text tim kiem de den tab xem gan day");
@@ -113,6 +109,7 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, "Đã tìm");
 		
 		log.info("TC_02_Step: verify text da tim kiem");
+		System.out.println(QRCode.getDynamicTextScrollText(driver, "Yêu thích","0","0"));
 		verifyEquals(QRCode.getDynamicTextScrollText(driver, "Yêu thích","0","0"), Shopping_Online.Valid_Account.LOCATOR_SEARCH);
 	}
 	

@@ -29,10 +29,10 @@ public class TrainTicket_Data {
 		public static final String POINT_EDIT_SEARCH_END ="Huế";
 		public static final String POINT_SERACH_THE_SAME ="hai";
 		public static final String POINT_EDIT_CHANGE ="Vinh";
-		public static final String CUSTOMER_NAME ="Phan Thi Hiep";
-		public static final String CARD_NO ="123456789";
-		public static final String TELEPHONE_NO ="0973441417";
-		public static final String email ="HiepPT@vnpay.vn";
+		public static final String CUSTOMER_NAME ="Phan Thi Hiep1";
+		public static final String CARD_NO ="012345678";
+		public static final String TELEPHONE_NO ="0904797866";
+		public static final String email ="HiepPT1@vnpay.vn";
 		
 	}
 	}

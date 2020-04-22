@@ -42,7 +42,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_05_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -131,7 +131,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
-	@Test
+//	@Test
 	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
