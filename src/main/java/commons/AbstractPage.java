@@ -1985,6 +1985,12 @@ public class AbstractPage {
 		}
 		return text;
 	}
+//Get list danh sach element Image
+	public List<MobileElement> getListElementImageButton( AppiumDriver<MobileElement> driver ,String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
+		return listElements;
+	}
 
 //lấy thời gian tạo giao dịch ở màn hình xác thực giao dịch, tham số truyền vào là text và vị trí index của nó
 	public String getDynamicTransferTimeAndMoney(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
