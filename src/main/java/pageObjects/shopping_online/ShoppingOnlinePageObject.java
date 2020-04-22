@@ -112,7 +112,6 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicCategories(String dynamicText) {
 		boolean status = false;
-		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
@@ -124,6 +123,33 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, "Đóng");
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
 		}
+	}
+	
+	// Click vao 1 button sử dụng tham số là text
+
+	public void clickToDynamicTextContains(String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+		}
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "Đóng");
+			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+		}
+	}
+	
+	public List<String> getTextInListElementsProduct( String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listProduct = new ArrayList<String>();
+		for (MobileElement element : listElements) {
+			listProduct.add(element.getText());
+		}
+		return listProduct;
 	}
 
 	// Kiểm tra text trong nội dung link thông báo
@@ -146,7 +172,7 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return isDisplayed;
 	}
 
-	// Click vào ngày trong giỏ hàng
+	// Click vào ngày trong back
 	public void clickToDynamicCart(String... dynamicIndex) {
 		boolean status = false;
 		scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_CART, dynamicIndex);
