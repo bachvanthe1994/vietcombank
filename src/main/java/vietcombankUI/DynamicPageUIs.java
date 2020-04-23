@@ -17,6 +17,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_LINE_2_BY_LINEARLAYOUT = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id = 'com.VCB:id/tvContent']";
 	public static final String DYNAMIC_CONFIRM_SECOND_LINE_INFO = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout/following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_DEFAULT_SOURCE_ACCOUNT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.LinearLayout/android.widget.TextView";
+	public static final String DYNAMIC_IMAGE_VIEW = "//android.widget.ImageView[@resource-id='%s']";
 	public static final String DYNAMIC_LABEL_AMOUNT = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_CURRENTCY_IN_MONEY_TEXTBOX = "//android.widget.EditText[@text='%s']//following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_DROPDOWN_BY_LABEL = "//android.widget.TextView[@text = '%s']/following-sibling::android.widget.LinearLayout//android.widget.TextView";
@@ -95,8 +96,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT = "//android.view.View[@text='%s']//following::android.view.View//child::android.widget.EditText";
 	public static final String DYNAMIC_IMAGE_VIEW_ID = "//android.widget.ImageView[@resource-id='%s']";
 	
-	
-	public static final String DYNAMIC_BACK = "//android.view.ViewGroup[@index='%s']//android.view.ViewGroup[@index='%s']//android.widget.ImageView[@index='%s']";
+	public static final String DYNAMIC_BACK = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
 
 
 	// IMAGE BUTTON
