@@ -321,6 +321,10 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_02: Click Back ve Home");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 		transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
+		
+		log.info("TC_02: Click  nut Home");
+		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
 	}
 	
 	@Test
