@@ -19,10 +19,10 @@
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
 
-		<parameter name="deviceUDID" value="K3VDU18C04001409" />
-		<parameter name="phone" value="0904797866" />
+		<parameter name="deviceUDID" value="52006cfef4cfb4a3" />
+		<parameter name="phone" value="0981790798" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="pass" value="aaaa1111" />
+		<parameter name="pass" value="aaaa1111@" />
 
 		<parameter name="otp" value="123456" />
 
@@ -48,14 +48,14 @@
 
 
 			<!-- Tiết kiệm tự động -->
-			 <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> 
-			 <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> 
+			 <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" /> 
+<!-- 			 <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />  -->
 
 			<!-- Tra cứu -->
 			<!-- <class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" 
 				/> -->
 
-			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" /> 
+<!-- 			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />  -->
 
 			 <!-- Thanh toán thẻ tín dụng -->
 			<!-- <class name="vnpay.vietcombank.creditCardPayment.Vcb_Flow_Credit_Card_Payment" 

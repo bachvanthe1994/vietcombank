@@ -128,6 +128,8 @@ public class Flow_TrainTicket extends Base {
 	public void TC_02_KiemTraThongTinHanhTrinhDanhSachChonChuyenDi() {
 		LocalDate now = LocalDate.now();
 		LocalDate date3 = now.plusDays(3);
+		LocalDate date12 = now.plusDays(12);
+	
 
 		log.info("--------------------------------TC_02_Hien thi button back");
 		verifyTrue(trainTicket.isDynamicRadioDisplayed("com.VCB:id/ivTitleLeft"));
@@ -144,9 +146,9 @@ public class Flow_TrainTicket extends Base {
 		log.info("--------------------------------TC_02_Verify button sua");
 		verifyTrue(trainTicket.isDynamicButtonEditDisplay("com.VCB:id/btnEdit"));
 
-		String weekPickup = convertDayOfWeekVietNamese(getCurrentDayOfWeek(now));
-		String weekArrival = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date3));
-		String expectDay = weekPickup + " " + getForwardDate(0) + " - " + weekArrival + " " + getForwardDate(3);
+		String weekPickup = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date3));
+		String weekArrival = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date12));
+		String expectDay = weekPickup + " " + getForwardDate(3) + " - " + weekArrival + " " + getForwardDate(12);
 
 		log.info("--------------------------------TC_02_verify thoi gian khu hoi");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_date_title"), expectDay);
