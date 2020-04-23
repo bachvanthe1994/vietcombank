@@ -78,23 +78,6 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_01_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_8_Kiem tra man hinh xac nhan thong tin");
-
-		log.info("TC_01_8_1_Kiem tra tai khoan nguon");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
-
-		log.info("TC_01_8_2_Kiem tra ky han gui");
-//		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), Auto_Saving_Data.TEXT.TERM);
-
-		log.info("TC_01_8_3_Kiem tra lai suat");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "1 tháng");
-
-		log.info("TC_01_8_4_Kiem tra so tien gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền gửi"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
-
-		log.info("TC_01_8_5_Kiem tra hinh thuc tra lai");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), Auto_Saving_Data.TEXT.FORM_OF_PAYMENT);
-
 		log.info("TC_01_9_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToTextID(driver, "com.VCB:id/tvptxt");
@@ -170,9 +153,6 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_02_Step_11: Hien thi tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
-
-		log.info("TC_02_Step_12: Hien thi ky han gui");
-		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString(Auto_Saving_Data.TEXT.TERM));
 
 		log.info("TC_02_Step_13: Hien thi ngay den han");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày đến hạn"), endDate);
@@ -520,7 +500,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		if (sourceAccountMoney.contains("VND")) {
 			autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = Account_Data.Valid_Account.USD_ACCOUNT;
+			sourceAccount = Account_Data.Valid_Account.USD_ACCOUNT;
 
 			autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		}
