@@ -15,7 +15,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
-import vietcombank_test_data.Notify_Management_Data;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_MainFlow01 extends Base {
@@ -38,8 +37,17 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
+
+	}
+
+	// Lỗi ở phần thanh toán , hiển thị thông báo Dịch vụ không thực hiện được trong
+	// lúc này
+	@Parameters({ "otp" })
+	@Test
+	public void TC_01_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanOTP(String otp) {
+
 		homePage.clickToDynamicIcon(driver, "Đặt vé máy bay");
 		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
 
@@ -52,11 +60,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("Before class: Chon mot chieu ");
 		airTicket.clickToDynamicTextOrButtonLink("Một chiều");
-	}
-
-	@Parameters({ "otp" })
-	@Test
-	public void TC_01_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanOTP(String otp) {
 
 		log.info("TC_01_Step_01: Chon diem khoi hanh");
 		airTicket.clickToDynamicTextOrButtonLink("Khởi hành");
@@ -992,7 +995,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_09_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1166,7 +1169,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_11_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_11_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1337,7 +1340,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_13_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1505,7 +1508,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_15_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");

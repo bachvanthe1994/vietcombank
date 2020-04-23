@@ -14,7 +14,7 @@ public class VCBAuto_Debit_Data {
 		public static final String CANCELED_SUCCESS_TITLE = "HỦY ĐĂNG KÝ THÀNH CÔNG";
 
 		public static final String WATER_BILL_TEXT = "Hóa đơn tiền nước";
-		public static final String WATER_DAWACO = "Dawaco Đà Nẵng";
+		public static final String WATER_DAWACO = "Cấp nước Đà Nẵng";
 		public static final String WATER_CUSTOMER_01 = "001100064";
 
 	}
