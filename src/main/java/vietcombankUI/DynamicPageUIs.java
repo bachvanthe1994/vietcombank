@@ -93,6 +93,10 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_VIEW = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT = "//android.view.View[@text='%s']//following::android.view.View//child::android.widget.EditText";
 	public static final String DYNAMIC_IMAGE_VIEW_ID = "//android.widget.ImageView[@resource-id='%s']";
+	
+	
+	public static final String DYNAMIC_BACK = "//android.view.ViewGroup[@index='%s']//android.view.ViewGroup[@index='%s']//android.widget.ImageView[@index='%s']";
+
 
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id='%s']";
