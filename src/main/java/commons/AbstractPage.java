@@ -908,6 +908,16 @@ public class AbstractPage {
 
 		}
 	}
+	
+	public void clickToDynamicTextContains(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+
+		}
+	}
 
 	public List<String> clickListLocator(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		List<String> listLocator = new ArrayList<>();

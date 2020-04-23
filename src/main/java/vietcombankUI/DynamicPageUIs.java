@@ -7,6 +7,7 @@ public class DynamicPageUIs {
 
 	// TEXT VIEW android.widget.TextView
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
+	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS = "//android.widget.TextView[contains(@text, '%s')]";
 	public static final String DYNAMIC_TEXT_BY_ID = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_IMAGE = "//android.widget.ImageView[@resource-id='%s']//following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_IMAGE_BY_FOLLOWING_IMAGE_ID = "//android.widget.ImageView[@resource-id='%s']//following-sibling::android.widget.ImageView";
