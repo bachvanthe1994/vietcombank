@@ -80,9 +80,13 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 		LocalDate now = LocalDate.now();
 		String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 		String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1 + "/" + getCurrenMonth() + "/" + getCurrentYear();
+		log.info("TC_02_Step: Click menu header");
+		Thread.sleep(30000);
+		listActual = vehicalTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/layout");
+		vehicalTicket.clickToElement(driver, listActual.get(1));
 	}
 
-	@Test
+	//@Test
 	public void TC_01_CaiDatPhuongThucXacThucOTP() {
 		log.info("TC_02_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -404,7 +408,7 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 
 	// Thanh toán vé máy bay
 	@Parameters({ "otp" })
-	@Test
+	//@Test
 	public void TC_03_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanSmartOTP(String otp) throws InterruptedException {
 		airTicket.clickToDynamicIcon(driver, "Đặt vé máy bay");
 
@@ -515,7 +519,7 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 
 		log.info("TC_01_Step_18_1: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
+		airTicket.clickToDynamicTextOrButtonLink(Account_Data.Valid_Account.ACCOUNT2);
 		payID = airTicket.getAirTicketPriceInfo1Way("Mã thanh toán", "com.VCB:id/tvContent");
 
 		log.info("TC_01_Step_18_2: Xac nhan chieu di ");
@@ -534,7 +538,7 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 		airTicket.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_Step_21: Xac nhan giao dich");
-		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Từ tài khoản", "com.VCB:id/tvTu_tai_khoan"), DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Từ tài khoản", "com.VCB:id/tvTu_tai_khoan"), Account_Data.Valid_Account.ACCOUNT2);
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Mã thanh toán", "com.VCB:id/tvBooking_number"), payID);
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way("Số tiền", "com.VCB:id/tvAmount"), ticketPrice);
 
@@ -729,7 +733,7 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 	}
 
 	// Vé khách sạn
-	@Test
+	//@Test
 	public void TC_05_DatPhongKhachSan_ThanhToanSmartOTP() throws InterruptedException {
 		log.info("TC_03_01_Click Dat phong khach san");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
@@ -803,7 +807,7 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 		hotelBooking.clickToDynamicButton("Thực hiện giao dịch mới");
 		
 		log.info("TC_01_Step_26: Clich nut Home");
-		hotelBooking.clickToDynamicIcon(driver,"com.VCB:id/ivHome");
+		hotelBooking.clickToDynamicImageViewID(driver,"com.VCB:id/ivBack");
 	}
 
 // Vé xe
@@ -811,9 +815,6 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 	public void TC_06_MuaVeXeBangSmartOTP() throws InterruptedException {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
-
-		log.info("--------TC_02_Step_01_Click Thuc hien giao dich moi");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BTN_CONTINUE);
 
 		log.info("==========TC_02_Step_02: Chon va nhap diem di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
@@ -833,18 +834,17 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 
 		log.info("TC_02_Step_06: Chon ghe: ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
-		String colorSeat = "(255,255,255)";
-		vehicalTicket.chooseSeats(1, colorSeat);
+	//	trainTicket.chooseSeats(1, "255,255,255");
 
 		log.info("TC_02_Step_07 : Dat chuyen di: ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
 
 		log.info("-----------TC_02_Step_08: Chon ben diem di: ");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
+		listActual = vehicalTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/layout");
+		vehicalTicket.clickToElement(driver, listActual.get(1));
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
 		log.info("-----------TC_02_Step_9 Chon ben diem den: ");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
 		log.info("---------------TC_02_Step_10 Click chon tiep tuc ");
@@ -1000,10 +1000,11 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 		vehicalTicket.clickToDynamicButton("Thực hiện giao dịch mới");
 		
 		log.info("TC_01_Step_26: Clich nut Home");
-		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
+		vehicalTicket.clickToDynamicImageViewID(driver,"com.VCB:id/ivTitleLeft");
 
 	}
 	
+	//Mua sắm trực tuyến
 	@Parameters({ "otp" })
 	@Test
 	public void TC_07_ChonMuaMotSanPhamThanhToanSmartOTPKhongChonKhuyenMai(String otp) throws InterruptedException {
@@ -1122,7 +1123,7 @@ public class Flow_SettingVCB_Smart_OTP_Part3 extends Base {
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 		
 		log.info("TC_01_Step_26: Clich nut Home");
-		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
+		shopping.clickToDynamicImageViewID(driver,"com.VCB:id/ivTitleLeft");
 
 	}
 

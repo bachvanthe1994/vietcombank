@@ -599,6 +599,17 @@ public class VehicalPageObject extends AbstractPage {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 	}
+	
+	public List<String> getListOfSuggestedMoneyOrListText(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		List<String> text = null;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_POINT_LIST, dynamicID);
+		if (status == true) {
+			text = getTextInListElements(driver, CommonPageUIs.DYNAMIC_POINT_LIST, dynamicID);
+		}
+		return text;
+
+	}
 
 	// get text theo text value table
 	public String getTextDynamicFollowTextTable(String locator, String dymaicText) {

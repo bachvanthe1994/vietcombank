@@ -22,6 +22,8 @@ public class CommonPageUIs {
     public static final String DYNAMIC_BOOKING_CHAIR = "//android.widget.LinearLayout[@resource-id='com.VCB:id/lnSeat']//ancestor::android.widget.LinearLayout[@index='%s']//android.widget.ImageView[@index='%s']";
     public static final String DYNAMIC_VALUE = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView";
     public static final String DYNAMIC_POINT_ARRVAL = "//android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
+    
+    public static final String DYNAMIC_POINT_LIST = "//android.widget.ExpandableListView//android.widget.LinearLayout[@resource-id='%s']";
     public static final String DYNAMIC_AMOUNT = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.TextView";
 	public static final String IMAGE_BY_TEXT = "//android.widget.TextView[@text='Ghế trống']/preceding-sibling::android.widget.ImageView";

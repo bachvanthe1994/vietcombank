@@ -63,23 +63,23 @@ public class LocationQRCodePageObject extends AbstractPage {
 
 	}
 	
-//	public int getNumberLike() {
-//	int numberLikeStart = Integer.parseInt(getToDynamicTextOther(driver, "Đơn vị chấp nhận thanh toán", "1"));
-//
-//	clickToDynamicTextLike(driver, "Đơn vị chấp nhận thanh toán", "1");
-//	int numberLikeEnd = Integer.parseInt(getToDynamicTextOther(driver, "Đơn vị chấp nhận thanh toán", "1"));
-//	if (numberLikeStart < numberLikeEnd)
-//	{
-//		numberLikeEnd = numberLikeStart + 1;
-//	}
-//	
-//	else if (numberLikeStart > numberLikeEnd)
-//	{
-//		numberLikeEnd = numberLikeStart - 1;
-//	}
-//	return numberLikeEnd;
-//}
-//
-//}
+	public int getNumberLike() {
+	int numberLikeStart = Integer.parseInt(getToDynamicTextOther(driver, "Đơn vị chấp nhận thanh toán", "4"));
+
+	clickToDynamicTextLike(driver, "Đơn vị chấp nhận thanh toán", "4");
+	int numberLikeEnd = Integer.parseInt(getToDynamicTextOther(driver, "Đơn vị chấp nhận thanh toán", "4"));
+	if (numberLikeStart < numberLikeEnd)
+	{
+		numberLikeEnd = numberLikeStart + 1;
+	}
+	
+	else if (numberLikeStart > numberLikeEnd)
+	{
+		numberLikeEnd = numberLikeStart - 1;
+	}
+	return numberLikeEnd;
+}
+
+
 	
 }

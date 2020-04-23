@@ -617,7 +617,7 @@ public class Flow_SettingVCB_Smart_OTP_Part4 extends Base {
 
 		}
 
-	// Chuyển tiền từ thiện
+	// Chuyển tiền từ thiện --Da chuyen
 @Test
 public void TC_03_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
 	log.info("TC_03_1_Click Chuyen tien tu thien");
@@ -715,107 +715,106 @@ public void TC_03_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
 	verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 }
 
-	//Chuyển tiền chứng minh thư
+	//Chuyển tiền chứng minh thư  --Da chuyen
+@Parameters({ "pass" })
 	@Test
 	//Lỗi app không cập nhật số dưtài khoản sau khi chuyển
-	@Parameters({ "pass" })
-	public void TC_07_ChuyenTienVNDChoNguoNhanTaiQuayBangCMT_NguoiChuyenTraPhi_XacThucSmartOTP(String pass) throws InterruptedException {
-		log.info("TC_01_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
-		trasferPage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
+	   public void TC_03_ChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi(String pass) {
+		log.info("TC_03_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
+		homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
 
-		log.info("TC_01_STEP_2: chon tài khoản");
+		log.info("TC_03_STEP_2: chon tài khoản");
+
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.ACCOUNT2);
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, Valid_Account.USD_ACCOUNT);
 
-		log.info("TC_01_STEP_3: lấy ra số dư");
+		log.info("TC_03_Step_3: nhap ten nguoi thu huong");
+		trasferPage.inputToDynamicInputBox(TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người thụ hưởng");
+
+		log.info("TC_03_STEP_4: lấy ra số dư");
 		trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 		String getToltalMoney = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvInfoBottomRight");
 		String[] toltal_money = getToltalMoney.split(" ");
-		toltalMoney = Integer.parseInt(toltal_money[0].replace(",", ""));
+		toltalMoney = Double.parseDouble(toltal_money[0].replace(",", ""));
 
-		log.info("TC_01_Step_4: nhap ten nguoi thu huong");
-		trasferPage.inputToDynamicInputBox(TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người thụ hưởng");
-
-		log.info("TC_01_Step_5: chon giay to tuy than");
+		log.info("TC_03_Step_5: chon giay to tuy than");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Chứng minh nhân dân");
 
-		log.info("TC_01_Step_6: so CMT");
+		log.info("TC_03_Step_6: so CMT");
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER, "Số");
 
-		log.info("TC_01_Step_7: ngay cap");
+		log.info("TC_03_Step_7: ngay cap");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Ngày cấp");
 		trasferPage.clickToDynamicButton(driver, "OK");
 
-		log.info("TC_01_Step_8: noi cap");
+		log.info("TC_03_Step_8: noi cap");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Nơi cấp");
 		trasferPage.clickToDynamicTextIndex(driver, "0", TransferIdentity_Data.textDataInputForm.ISSUED);
 
-		log.info("TC_01_STEP_9: nhap so tien bat dau la khong");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_VND, "Số tiền");
+		log.info("TC_03_STEP_9: nhap so tien bat dau la khong");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textCheckElement.AMOUNT_USD, "Số tiền");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
 
-		log.info("TC_01_Step_10: noi dung");
+		log.info("TC_03_STEP_9: chọn người trả phí");
+		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent3");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Người nhận trả");
+
+		log.info("TC_03_Step_10: noi dung");
 		trasferPage.inputToDynamicInputBoxContent(driver, TransferIdentity_Data.textDataInputForm.CONTENT_TRANSFER, "3");
 
-		log.info("TC_01_STEP_11: chon tiep tuc");
+		log.info("TC_03_STEP_11: chon tiep tuc");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_05_STEP_12: chon phương thức xác thực");
-		trasferPage.clickToTextID("com.VCB:id/tvptxt");
-		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
-
-		log.info("TC_01_STEP_12: lấy nội dung giao dịch");
+		log.info("TC_03_STEP_20: lấy nội dung giao dịch");
 		content = trasferPage.getMoneyByAccount(driver, "Nội dung");
 
-		log.info("TC_01_STEP_21: lấy ra phí giao dịch");
-		String getFee = trasferPage.getMoneyByAccount(driver, "Số tiền phí");
+		log.info("TC_04_15: lấy ra phí giao dịch");
+		String getFee = transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		String[] feeSplit = getFee.split(" ");
 		fee = Integer.parseInt(feeSplit[0].replace(",", ""));
 
-		log.info("TC_01_STEP_13: chon tiep tuc");
+		log.info("TC_03_STEP_12: chon tiep tuc");
 		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_Step_Nhap ma xac thuc");
-		trasferPage.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
+		log.info("TC_03_STEP_13: điền mật khẩu");
+		trasferPage.inputToDynamicInputBox(driver, pass, "Nhập mật khẩu");
 
-		log.info("TC_01_Step_Tiep tuc");
-		trasferPage.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		trasferPage.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
+		log.info("TC_03_STEP_14: chon tiep tuc");
+		trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_STEP_16: lấy tra số tiền chuyển đi");
+		log.info("TC_03_STEP_15: lấy tra số tiền chuyển đi");
 		moneyTransfer = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount");
 		String[] getMoneyTransfer = moneyTransfer.split(" ");
-		money_transferred = Integer.parseInt(getMoneyTransfer[0].replace(",", ""));
+		money_transferred = Double.parseDouble(getMoneyTransfer[0].replace(",", ""));
 
-		log.info("TC_01_STEP_17: lấy ra time chuyển");
+		log.info("TC_03_STEP_16: lấy ra time chuyển");
 		String getDate = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 		transferDate = getDate.split(" ");
 
-		log.info("TC_01_STEP_18: lấy tên người hưởng");
+		log.info("TC_03_STEP_17: lấy tên người hưởng");
 		user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-		log.info("TC_01_STEP_19: lấy số CMT");
+		log.info("TC_03_STEP_18: lấy số CMT");
 		user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
-		log.info("TC_01_STEP_20: lấy mã giao dịch");
+		log.info("TC_03_STEP_19: lấy mã giao dịch");
 		code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
-		log.info("TC_01_STEP_23: chọn thực hiện giao dịch mới");
+		log.info("TC_03_STEP_21: chọn thực hiện giao dịch mới");
 		trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_02_STEP_22: kiểm tra số dư");
+		log.info("TC_04_17: kiểm tra số dư");
 		trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
-		String surplus = trasferPage.getMoneyByAccount(driver, "Số dư khả dụng");
+		String surplus = transReport.getMoneyByAccount(driver, "Số dư khả dụng");
 		String[] surplusSplit = surplus.split(" ");
-		double surplusInt = Integer.parseInt(surplusSplit[0].replace(",", ""));
-		double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
-		//Lỗi app không cập nhật lại số dư tài khoản sau khi chuyển
+		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
+		double canculateAvailable = canculateAvailableBalancesCurrentcy(toltalMoney, fee, money_transferred);
 		verifyEquals(surplusInt, canculateAvailable);
 
-		log.info("TC_02: Click back man hinh home");
-		trasferPage.clickToDynamicImageViewID(driver, "com.VCB:id/ivTitleLeft");
-	}
+		log.info("TC_03_STEP_22: chọn back");
+		trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+	    }
 	
 	//Chuyển tiền ngoài VCB--da 
 @Test
@@ -933,119 +932,6 @@ public void TC_05_ChuyenTienLienNganHangNgoaite_EUR_CoPhiGiaoDichNguoiChuyenTraX
 	verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 
 }
-
-	//Quà tặng may mắn
-	//@Test
-	@Parameters({ "pass" })
-	public void TC_09_NGuoiNhanTrongVCBBangSDTXacThucBangSmartOTP(String pass) throws InterruptedException {
-		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
-
-		log.info("TC_01_Step_2: chọn tài khoản nguồn");
-		luckyGift.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
-
-		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
-		String[] moneySurplusSplit = moneySurplus.split(" ");
-		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
-
-		log.info("TC_01_Step_3: Thêm người nhận");
-		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
-
-		log.info("TC_01_Step_4: Click tiep tuc popup");
-		luckyGift.waitUntilPopUpDisplay("Hướng dẫn");
-		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_5: chọn hình thức nhận");
-		luckyGift.clickToTextID(driver, "com.VCB:id/tvHinhThucNhan");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Số điện thoại");
-
-		log.info("TC_01_Step_6: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
-
-		log.info("TC_01_Step_7: Nhap so tien chuyen");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, TitleLuckyGift.TITLE_AMOUNT_MONEY);
-
-		log.info("TC_01_Step_8: Chon loi chuc");
-		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
-		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
-
-		log.info("TC_01_Step_9: Click tiep tuc popup");
-		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_10: lấy ra tài khoản nguồn");
-		source_account = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAccSource");
-
-		log.info("TC_01_Step_11: lấy ra lời chúc");
-		wishes = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvLoichuc");
-
-		log.info("TC_01_Step_12: lấy ra ten nguoi nhan");
-		String userName = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvReceiver");
-		getName = userName.split("/");
-
-		log.info("TC_01_Step_13: lấy ra số tiền chuyển");
-		money = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSumAmount");
-
-		log.info("TC_01_Step_14: lấy ra phí chuyển");
-		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
-		surplusString = String.valueOf(surplusTotal);
-
-		log.info("TC_07_Step_14: chọn phương thức xác thực");
-		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
-
-		log.info("TC_07_Step_15: Click tiep tuc popup");
-		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_Nhap ma xac thuc");
-		luckyGift.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
-		log.info("TC_01_Step_Tiep tuc");
-		luckyGift.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		luckyGift.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_01_Step_18: kiem tra loi chuc");
-		String getWish = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/content");
-		verifyEquals(wishes, getWish);
-
-		log.info("TC_01_Step_19: lấy ra tên người thụ hưởng");
-		beneficiary_account = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/info_receiver");
-		verifyEquals(beneficiary_account, getName[1]);
-
-		log.info("TC_01_Step_20: kiem tra so tien chuyen di");
-		String getMoney = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/amount");
-		verifyEquals(money, getMoney);
-
-		log.info("TC_01_Step_21: kiem tra so tai khoan nguoi nhan");
-		String getAccount = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAcc");
-		verifyEquals(getName[0], getAccount);
-
-		log.info("TC_01_Step_22: Click giao dịch mới");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Giao dịch mới");
-
-		log.info("TC_01_Step_23: chọn tai khoản");
-		luckyGift.clickToTextID(driver, "com.VCB:id/number_account");
-
-		log.info("TC_01_Step_24: kiểm tra số dư");
-		String moneyTransfer = luckyGift.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT1);
-		String[] moneyTransferSplit = moneyTransfer.split(" ");
-		String moneyTransferReplace = moneyTransferSplit[0].replace(",", "");
-		verifyEquals(moneyTransferReplace, surplusString);
-
-		log.info("TC_07_Step_25: chọn đóng");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
-
-		log.info("TC_01_Step_26: Lấy thời gian thực hiện giao dịch");
-		date = new Date();
-
-		log.info("TC_01_Step_27 : Click home");
-		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
-	}
 
 
 

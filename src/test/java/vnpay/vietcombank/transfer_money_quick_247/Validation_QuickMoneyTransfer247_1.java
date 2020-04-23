@@ -121,7 +121,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_03_Lay danh sach gia tri loai chuyen tien");
 		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
-
+	
 		log.info("TC_03_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER);
 
