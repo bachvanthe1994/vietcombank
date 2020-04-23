@@ -285,7 +285,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
 
 		log.info("TC_02_Step_35: Xac nhan hien thi dung dia chi");
-		vcbAutoDebit.scrollDownToText(driver, "Tiếp tục");
+		vcbAutoDebit.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ"), address);
 
 		log.info("TC_02_Step_36: Xac nhan hien thi dung so tai khoan");

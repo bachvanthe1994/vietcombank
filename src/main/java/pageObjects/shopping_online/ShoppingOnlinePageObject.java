@@ -259,6 +259,17 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return text;
 	}
+//	get text giá trị truyền vào là text
+	public String getDynamicTextFeeShipping(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
+			
+		}
+		return text;
+	}
 
 
 
@@ -330,4 +341,17 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return text;
 	}
+	
+	//Kiểm tra text có hiển thị hay không, tham số truyền vào là text 
+		public boolean isDynamicMessageAndLabelTextDisplayed(String dynamicTextValue) {
+			boolean isDisplayed = false;
+			scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+			boolean status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+			if (status == true) {
+				isDisplayed = isControlDisplayed(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+			}
+			return isDisplayed;
+
+		}
+	
 }

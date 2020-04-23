@@ -32,8 +32,8 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "1 tháng - 4.5%/Năm", "2000000", "Lãi nhập gốc");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, "3 tháng - 4.6%/Năm", "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.ONE_MONTH, "2000000", "Lãi nhập gốc");
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.THREE_MONTH, "2000000", "Lãi nhập gốc");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -67,7 +67,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 		log.info("TC_01_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.term);
+		savingOnline.clickToDynamicTextContains(driver, info.term);
 
 		log.info("TC_01_4_Nhap so tien gui");
 		savingOnline.inputToDynamicInputBoxByHeader(driver, info.money, "Thông tin giao dịch", "2");
@@ -263,8 +263,8 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
-//		log.info("TC_03_08_Kiem tra so tien phi");
-//		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		log.info("TC_03_08_Kiem tra so tien phi");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
 		log.info("TC_03_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -372,7 +372,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 		log.info("TC_05_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, "Thông tin giao dịch", "1");
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.term);
+		savingOnline.clickToDynamicTextContains(driver, info1.term);
 
 		log.info("TC_05_4_Nhap so tien gui");
 		savingOnline.inputToDynamicInputBoxByHeader(driver, info1.money, "Thông tin giao dịch", "2");
@@ -410,8 +410,8 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
-//		log.info("TC_05_10_Kiem tra so tien phi");
-//		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		log.info("TC_05_10_Kiem tra so tien phi");
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
 		log.info("TC_05_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -562,16 +562,16 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		log.info("TC_07_06_9: Kiem tra tai khoan dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản đích"), info1.sourceAccount);
 
-		log.info("TC_03_07_Chon phuong thuc xac thuc");
+		log.info("TC_07_07_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
-//		log.info("TC_03_08_Kiem tra so tien phi");
+//		log.info("TC_07_08_Kiem tra so tien phi");
 //		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
-		log.info("TC_03_09_Click nut Tiep tuc");
+		log.info("TC_07_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
 		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
