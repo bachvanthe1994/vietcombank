@@ -380,9 +380,8 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	// Chưa có data test
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_04_DangKyDichVu_HoaDonTienNuoc_XacThucOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -505,8 +504,8 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_05_ThayDoiThongTin_HoaDonTienDien_XacThucOTP(String otp) {
 
 		log.info("TC_05_Step_01: Click vao VCB-Auto Debit");
@@ -529,7 +528,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.WATER_CUSTOMER_01 + " - " + hostContact);
 
 		log.info("TC_05_Step_06: Xac nhan hien thi dung chu hop dong");
-		vcbAutoDebit.scrollDownToText(driver, "Tiếp tục");
+		vcbAutoDebit.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
 
 		log.info("TC_05_Step_07: Xac nhan hien thi dung dia chi");
@@ -623,7 +622,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
 
 		log.info("TC_05_Step_35: Xac nhan hien thi dung dia chi");
-		vcbAutoDebit.scrollDownToText(driver, "Tiếp tục");
+		vcbAutoDebit.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Địa chỉ"), address);
 
 		log.info("TC_05_Step_36: Xac nhan hien thi dung so tai khoan");
@@ -633,7 +632,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-//	@Test
+	@Test
 	public void TC_06_HuyDangKy_HoaDonTienDien_XacThucOTP() {
 
 		log.info("TC_06_Step_01: Click vao VCB-Auto Debit");
@@ -656,7 +655,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.WATER_CUSTOMER_01 + " - " + hostContact);
 
 		log.info("TC_06_Step_06: Xac nhan hien thi dung chu hop dong");
-		vcbAutoDebit.scrollDownToText(driver, "Tiếp tục");
+		vcbAutoDebit.scrollDownToButton(driver, "Tiếp tục");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, "Chủ hợp đồng"), hostContact);
 
 		log.info("TC_06_Step_07: Xac nhan hien thi dung dia chi");
