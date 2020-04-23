@@ -31,8 +31,6 @@ public class Flow_TrainTicket_part2 extends Base {
 	List<String> listActual;
 	String phoneNumber = "";
 	String taiKhoanNguon = "";
-	String hoTen = "";
-	String SDT = "";
 	String email = "";
 	String hoChieu = "";
 	String tongTienThanhToan = "";
@@ -208,15 +206,6 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_01_lay Tai khoan nguon");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
-		
-		log.info("TC_01_lay ho va ten");
-		hoTen = trainTicket.getDynamicTextOld(driver, "Họ tên");
-		
-		log.info("TC_01_veriFy ho ten");
-		verifyEquals("NGUYEN NGOC TOAN", hoTen);
-		
-		log.info("TC_01_veriFy So Dien Thoai");
-		SDT = trainTicket.getDynamicTextOld(driver, "Số điện thoại");
 
 		log.info("TC_01_veriFy Email");
 		email = trainTicket.getDynamicTextOld(driver, "Email");
@@ -479,15 +468,6 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_lay Tai khoan nguon");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
-		
-		log.info("TC_03_lay ho va ten");
-		hoTen = trainTicket.getDynamicTextOld(driver, "Họ tên");
-		
-		log.info("TC_03_veriFy ho ten");
-		verifyEquals("NGUYEN NGOC TOAN", hoTen);
-		
-		log.info("TC_03_veriFy So Dien Thoai");
-		SDT = trainTicket.getDynamicTextOld(driver, "Số điện thoại");
 
 		log.info("TC_03_veriFy Email");
 		email = trainTicket.getDynamicTextOld(driver, "Email");
