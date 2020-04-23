@@ -171,9 +171,6 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_01_Nhap so CMT");
 		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CARD_NO, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
 
-		log.info("TC_01_Verify ten user login");
-		verifyEquals(trainTicket.getDynamicTextEdit("Thông tin liên hệ", "com.VCB:id/tvHoTen").toUpperCase(), "NGUYEN NGOC TOAN");
-
 		log.info("TC_01_Nhap so CMT");
 		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO, "Thông tin liên hệ", "com.VCB:id/tvCMND");
 
@@ -432,9 +429,6 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_Nhap so CMT");
 		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CARD_NO, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
-
-		log.info("TC_03_Verify ten user login");
-		verifyEquals(trainTicket.getDynamicTextEdit("Thông tin liên hệ", "com.VCB:id/tvHoTen").toUpperCase(), "NGUYEN NGOC TOAN");
 
 		log.info("TC_03_Nhap so CMT");
 		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO, "Thông tin liên hệ", "com.VCB:id/tvCMND");
