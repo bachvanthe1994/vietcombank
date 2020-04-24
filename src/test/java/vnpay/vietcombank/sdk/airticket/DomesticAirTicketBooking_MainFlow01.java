@@ -15,6 +15,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
+import vietcombank_test_data.Notify_Management_Data;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_MainFlow01 extends Base {
