@@ -24,13 +24,8 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			<!-- Nạp tiền VETC -->
-			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
-
-
-
-			<!-- Đặt vé khách sạn -->
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 
 			<!-- Chuyển tiền trong vcb -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
@@ -83,7 +78,7 @@
 			<!-- vnpay.vietcombank.change_password -->
 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
 
-			<!-- Nạp tiền VETC -->
+			<!-- Nạp tiền VETC, MOMO dùng tài khoản khác -->
 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
 
 
@@ -103,6 +98,8 @@
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
 
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 
 			<!-- Thanh toán vé máy bay -->
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
