@@ -1,9 +1,10 @@
 package vnpay.vietcombank.settingVCB_Smart_OTP;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -12,47 +13,35 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import model.FilmInfo;
+import model.FilmTicketInfo;
+import model.SeatType;
 import pageObjects.ConfirmMethodObject;
-import pageObjects.ElectricBillPageObject;
-import pageObjects.InternetADSLPageObject;
-import pageObjects.LandLinePhoneChargePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.MobileTopupPageObject;
-import pageObjects.PayBillTelevisionPageObject;
-import pageObjects.PostpaidMobileBillPageObject;
-import pageObjects.VCBCreditCardPaymentObject;
-import pageObjects.WaterBillPageObject;
+import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
+import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
+import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
+import pageObjects.sdk.trainTicket.TrainTicketPageObject;
+import pageObjects.shopping_online.ShoppingOnlinePageObject;
+import vehicalPageObject.VehicalPageObject;
+import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
-<<<<<<< HEAD:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_Part3.java
-=======
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
->>>>>>> f7338ceedabae51b1558fe1f693d1a2731554a9f:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_SDK_Part3.java
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.Creadit_Card_Payment_Data;
-import vietcombank_test_data.Electric_Bills_Data;
-import vietcombank_test_data.Internet_ADSL_Data;
-import vietcombank_test_data.LandLinePhoneCharge_Data;
 import vietcombank_test_data.LogIn_Data;
-import vietcombank_test_data.MobileTopupPage_Data.UIs;
-import vietcombank_test_data.PayBillTelevison_Data;
-import vietcombank_test_data.Postpaid_Mobile_Bill_Data;
 import vietcombank_test_data.SettingVCBSmartOTP_Data;
-import vietcombank_test_data.Water_Bills_Data;
-
+import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
+import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
+import vnpay.vietcombank.sdk.hotelBooking.data.HotelBooking_Data;
+import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
+import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
 public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private ConfirmMethodObject smartOTP;
-<<<<<<< HEAD:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_Part3.java
-	
-	
-
-	
-	
-=======
 	private TrainTicketPageObject trainTicket;
 	private DynamicAirTicketBookingObjects airTicket;
 	private FilmTicketBookingPageObject filmTicketBooking;
@@ -69,9 +58,9 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	private String transferTime, transactionNumber, ticketCode;
 	private long surplus, availableBalance, actualAvailableBalance, money, fee1, amountTranfer, costTranfer;
 	int indexHang = 0;
->>>>>>> f7338ceedabae51b1558fe1f693d1a2731554a9f:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_SDK_Part3.java
 
-	private long amountTranfer, costTranfer;
+	public String amountFee = "- ";
+	public String nameTyped, phoneTyped, emailTyped, diemDi, diemDen, hangXe, soGhe, soLuongVe, tongTien, taiKhoanNguon, maThanhToan, maGiaodich, maVe, tongTienThanhToan, soTienPhi = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -81,9 +70,13 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		smartOTP = PageFactoryManager.getConfirmMethodObject(driver);
+		trainTicket = PageFactoryManager.getTrainTicketPageObject(driver);
+		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
+		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
+		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
+		password = pass;
 		
-<<<<<<< HEAD:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_Part3.java
-=======
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
 
@@ -91,9 +84,8 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 		String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1 + "/" + getCurrenMonth() + "/" + getCurrentYear();
 		
->>>>>>> f7338ceedabae51b1558fe1f693d1a2731554a9f:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_SDK_Part3.java
 	}
-	
+
 	@Test
 	public void TC_01_CaiDatPhuongThucXacThucOTP() {
 		log.info("TC_02_Step: Click menu header");
@@ -140,11 +132,6 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-<<<<<<< HEAD:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_Part3.java
-	// Thanh Toan ADSL
-	@Test
-
-=======
 	// Thanh Toan vé tàu
 	@Test
 	public void TC_02_DatVeMotChieuSoLuongNguoiNhoNhatVaXacThucBangSmartOTP() throws InterruptedException {
@@ -1237,7 +1224,6 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		shopping.clickToDynamicImageViewID(driver,"com.VCB:id/ivTitleLeft");
 
 	}
->>>>>>> f7338ceedabae51b1558fe1f693d1a2731554a9f:src/test/java/vnpay/vietcombank/settingVCB_Smart_OTP/Flow_SettingVCB_Smart_OTP_SDK_Part3.java
 
 	public void TC_111_HuyKichHoatVCBSmartOPT() {
 

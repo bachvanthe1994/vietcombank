@@ -102,6 +102,7 @@ public class DynamicPageUIs {
 
 	public static final String DYNAMIC_BACK = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
 	public static final String DYNAMIC_BACK_TEXT = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[@index='%s']//android.view.ViewGroup[@index='%s']/android.widget.TextView";
+	public static final String DYNAMIC_IMAGE_VIEW = "//android.widget.ImageView[@resource-id='%s']";
 
 
 	// IMAGE BUTTON
