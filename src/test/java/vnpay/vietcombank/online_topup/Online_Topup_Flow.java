@@ -42,8 +42,9 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-//	@Test
-	public void TC_05_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
+
+	@Test
+	public void TC_01_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -131,8 +132,10 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
-//	@Test
-	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+
+	@Test
+	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -203,7 +206,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_07_NapTienDienTuVaoViMOMO_ThanhToanMK() {
+	public void TC_03_NapTienDienTuVaoViMOMO_ThanhToanMK() {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -293,7 +296,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_08_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -365,7 +368,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({"pass"})
 	@Test
-	public void TC_01_NapTienDienTuVaoVETC_ThanhToanMK(String pass) {
+	public void TC_05_NapTienDienTuVaoVETC_ThanhToanMK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -440,7 +443,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -509,7 +512,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_03_NapTienDienTuVaoVETC_ThanhToanOTP(String otp) {
+	public void TC_07_NapTienDienTuVaoVETC_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -592,7 +595,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_08_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_08_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
