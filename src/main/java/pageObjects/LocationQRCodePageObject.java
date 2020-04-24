@@ -61,6 +61,7 @@ public class LocationQRCodePageObject extends AbstractPage {
 
 	}
 	
+
 	public int getNumberLike() {
 	int numberLikeStart = Integer.parseInt(getToDynamicTextOther(driver, "Đơn vị chấp nhận thanh toán", "4"));
 
@@ -70,16 +71,13 @@ public class LocationQRCodePageObject extends AbstractPage {
 	{
 		numberLikeEnd = numberLikeStart + 1;
 	}
+	
 	else if (numberLikeStart > numberLikeEnd)
 	{
 		numberLikeEnd = numberLikeStart - 1;
 	}
 	return numberLikeEnd;
-}
-
-
-
-
+	}
 	public String getToDynamicTextOther (AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
 		String text = null;

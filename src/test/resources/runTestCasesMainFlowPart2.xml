@@ -50,7 +50,7 @@
 <!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" /> -->
 
 			<!-- Thanh toán cước Internet ADSL -->
-			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
+<!-- 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" /> -->
 
 			<!-- Thanh toán hóa đơn di động trả sau -->
 			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />

@@ -15,7 +15,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
-import vietcombank_test_data.Notify_Management_Data;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_MainFlow02 extends Base {
@@ -1153,7 +1152,7 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 
 		log.info("TC_09_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_09_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1330,7 +1329,7 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 
 		log.info("TC_11_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_11_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1502,7 +1501,7 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 
 		log.info("TC_13_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_13_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1674,7 +1673,7 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 
 		log.info("TC_15_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_04);
+		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
 
 		log.info("TC_15_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");

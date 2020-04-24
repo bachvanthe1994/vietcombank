@@ -224,8 +224,10 @@ public class PageFactoryManager {
 		return new ConfirmMethodObject(driver);
 	}
 	
+
 	public static InvestigationOnlinePageObject getInvestigationOnline(AppiumDriver<MobileElement> driver) {
 		return new InvestigationOnlinePageObject(driver);
+
 	}
 	
 

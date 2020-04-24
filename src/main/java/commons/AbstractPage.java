@@ -910,8 +910,6 @@ public class AbstractPage {
 	}
 
 
-
-
 	public List<String> clickListLocator(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		List<String> listLocator = new ArrayList<>();
 		boolean status = false;
@@ -1024,6 +1022,16 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
+		}
+	}
+
+
+	public void clickToDynamicImageView(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
 		}
 	}
 
@@ -1161,6 +1169,16 @@ public class AbstractPage {
 		}
 	}
 
+	public void clickToDynamicTextContains(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+
+		}
+	}
+	
 	public void clickToTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
