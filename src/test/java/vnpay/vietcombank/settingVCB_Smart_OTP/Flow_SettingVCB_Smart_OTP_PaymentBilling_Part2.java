@@ -36,7 +36,7 @@ import vietcombank_test_data.SettingVCBSmartOTP_Data;
 import vietcombank_test_data.Water_Bills_Data;
 
 
-public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
+public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private ConfirmMethodObject smartOTP;
