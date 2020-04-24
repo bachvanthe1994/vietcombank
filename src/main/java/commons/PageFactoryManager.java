@@ -11,6 +11,7 @@ import pageObjects.HomePageObject;
 import pageObjects.InboxPageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.InternetADSLPageObject;
+import pageObjects.InvestigationOnlinePageObject;
 import pageObjects.LandLinePhoneChargePageObject;
 import pageObjects.LocationQRCodePageObject;
 import pageObjects.LockCardPageObject;
@@ -223,7 +224,9 @@ public class PageFactoryManager {
 		return new ConfirmMethodObject(driver);
 	}
 	
-	
+	public static InvestigationOnlinePageObject getInvestigationOnline(AppiumDriver<MobileElement> driver) {
+		return new InvestigationOnlinePageObject(driver);
+	}
 	
 
 }

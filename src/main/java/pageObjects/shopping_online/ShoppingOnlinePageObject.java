@@ -247,6 +247,11 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 	}
 	
+	public void scrollDownToConatainText( String dynamicText) {
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+
+	}
+	
 	
 //	get text giá trị truyền vào là text
 	public String getDynamicTextPricesByText(String dynamicTextValue) {

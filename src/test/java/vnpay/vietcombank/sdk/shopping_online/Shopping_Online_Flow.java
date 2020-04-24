@@ -974,7 +974,7 @@ public class Shopping_Online_Flow extends Base {
 	@Test
 	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP(String otp) {
 		log.info("---------------------------TC_05_STEP_2: Them vao gio hang");
-		shopping.scrollDownToText(driver, "%");
+		shopping.scrollDownToConatainText("₫");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "₫");
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
