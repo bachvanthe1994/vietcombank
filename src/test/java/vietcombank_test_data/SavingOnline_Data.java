@@ -11,8 +11,8 @@ public class SavingOnline_Data {
 	public static final String CONFIRM_TRANSECTION_LIMIT_MAX_SETTLEMENT = "Tất toán không thành công. Số tiền giao dịch lớn hơn hạn mức 20,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 	public static final String ONE_MONTH = "1 tháng";
 	public static final String THREE_MONTH = "3 tháng";
-	public static final String ONE_MONTH_INTEREST = "4.5%/Năm";
-	public static final String THREE_MONTH_INTEREST = "4.6%/Năm";
+	public static final String ONE_MONTH_INTEREST = "4.1%/Năm";
+	public static final String THREE_MONTH_INTEREST = "4.5%/Năm";
 }
 	
 

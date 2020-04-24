@@ -149,7 +149,9 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 
 		log.info("TC_01_Step_Thong tin giao dich chon Viettel");
 		ADSL.clickToTextID(driver, "com.VCB:id/content");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FPT);
+
+		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
+
 
 		log.info("TC_01_Input ma khach hang");
 		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
@@ -162,7 +164,9 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
 
 		log.info("TC_01_Kiem tra nha cung cap");
+
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
+
 
 		log.info("TC_01_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
@@ -203,7 +207,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Dịch vụ"), "Cước Internet ADSL");
 
 		log.info("TC_01_Kiem tra nha cung cap");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL);
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
 
 		log.info("TC_01_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
@@ -346,7 +350,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 	}
 	
 	//Thanh toan truyền hình cab
-	//@Test
+	@Test
 	@Parameters({ "pass" })
 	public void TC_04_PhuongThucThanhToan_SmartOTP(String pass) throws InterruptedException {
 		log.info("TC_01_STEP_0: chọn cước truyền hình cap");
@@ -435,7 +439,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 	}
 	
 	//Thanh toán tiền điện
-	//@Test
+	//@Test --Không có mã
 	@Parameters({ "otp" })
 	public void TC_05_ThanhToanTienDien_SmartOTP(String otp) throws InterruptedException {
 		log.info("TC_01_Step_01: Hoa don tien dien");
@@ -447,7 +451,7 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 		sourceAccountMoney = electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_01_Step_03: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
+		electricBill.clickToDynamicImageView(driver, "com.VCB:id/icon");
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
@@ -770,8 +774,8 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 
 	}
 
-	//Nạp thẻ điện thoại
-	@Test
+	//Nạp thẻ điện thoại   ---OK
+	//@Test
 	@Parameters({ "pass","phone" })
 	public void TC_08_NapTheDienThoai_GiaTriMin_QuaMK(String pass, String phone) throws InterruptedException {
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
@@ -820,11 +824,11 @@ public class Flow_SettingVCB_Smart_OTP_Part2 extends Base {
 	}
 	
 	//Thanh toán thẻ tín dụng
-	@Test
+	//@Test 
+	//Lỗi app thanh toán bằng PTXT smart OTP, báo kết nối gián đoạn
 	public void TC_09_ThanhToanTheTinDung() throws InterruptedException {
 		vcbACreditCardPayment.scrollDownToText(driver, vietcombank_test_data.HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, vietcombank_test_data.HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
-		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
 		log.info("TC_01_Step_01: Lay thong tin tai so tai khoan");
 		soTaiKhoan = vcbACreditCardPayment.getDynamicTextInDropDownByLable(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
 

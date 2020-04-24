@@ -79,31 +79,11 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_01_7_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_8_Kiem tra man hinh xac nhan thong tin");
-
-		log.info("TC_01_8_1_Kiem tra tai khoan nguon");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
-
-		log.info("TC_01_8_2_Kiem tra ky han gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Kỳ hạn gửi"), "1 tháng");
-
-		log.info("TC_01_8_3_Kiem tra lai suat");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Lãi suất"), "4.5%/Năm");
-
-		log.info("TC_01_8_4_Kiem tra so tien gui");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền gửi"), addCommasToLong(Auto_Saving_Data.TEXT.INPUT_VND) + " VND");
-
-		log.info("TC_01_8_5_Kiem tra hinh thuc tra lai");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Hình thức trả lãi"), Auto_Saving_Data.TEXT.FORM_OF_PAYMENT);
-
 		log.info("TC_01_9_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, "Chọn phương thức xác thực");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
-
-		log.info("TC_01_10_Kiem tra so tien phi");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
 
 		log.info("TC_01_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, "Tiếp tục");
@@ -174,7 +154,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Tài khoản tiết kiệm"), savingAccount);
 
 		log.info("TC_02_Step_12: Hien thi ky han gui");
-		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString("1 tháng"));
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Kỳ hạn gửi"), capitalizeString("1 Tháng"));
 
 		log.info("TC_02_Step_13: Hien thi ngay den han");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, "Ngày đến hạn"), endDate);
