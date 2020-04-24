@@ -15,6 +15,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
+import vietcombank_test_data.Notify_Management_Data;
 import vnpay.vietcombank.sdk.airticket.data.DomesticAirTicketBooking_Data;
 
 public class DomesticAirTicketBooking_MainFlow01 extends Base {
@@ -36,6 +37,8 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		} else if (deviceType.contains("ios")) {
 			driver = openIOSApp(deviceName, udid, url);
 		}
+
+		log.info("Before class: Dang nhap ");
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -938,7 +941,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_09_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VN");
+		airTicket.clickToDynamicFlight(0, "BL");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -995,7 +998,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
+		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
 
 		log.info("TC_09_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1017,7 +1020,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		homePage = PageFactoryManager.getHomePageObject(driver);
+		
 	}
 
 	@Test
@@ -1112,7 +1115,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_11_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VN");
+		airTicket.clickToDynamicFlight(0, "BL");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -1169,7 +1172,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_11_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
+		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
 
 		log.info("TC_11_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1286,7 +1289,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
 
 		log.info("TC_13_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, "VN");
+		airTicket.clickToDynamicFlight(0, "VJ");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -1340,7 +1343,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
+		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
 
 		log.info("TC_13_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1455,6 +1458,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_08: Tim chuyen bay va dat ve");
 		airTicket.clickToDynamicButton("Tìm chuyến bay");
+		airTicket.clickToDynamicIcon("com.VCB:id/iv_imgflight");
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -1508,7 +1512,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_27: Chọn tai khoan nguon");
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
-		airTicket.clickToDynamicTextOrButtonLink(DomesticAirTicketBooking_Data.validInput.ACCOUNT2);
+		airTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
 
 		log.info("TC_15_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1533,7 +1537,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Test
+//	@Test
 	public void TC_16_DatVeMayBayQuocTeMotChieu_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_16_Step_01: Mo tab Menu");
@@ -1592,7 +1596,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		service.stop();
+//		service.stop();
 	}
 
 }
