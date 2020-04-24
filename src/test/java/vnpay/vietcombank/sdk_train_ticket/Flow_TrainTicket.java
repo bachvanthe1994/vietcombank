@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -16,7 +17,6 @@ import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
-import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
@@ -278,8 +278,9 @@ public class Flow_TrainTicket extends Base {
 
 	}
 
+	@Parameters("phone")
 	@Test
-	public void TC_05_DatVeMotChieuSoLuongNguoiNhoNhatVaXacThucBangSMSOTP() {
+	public void TC_05_DatVeMotChieuSoLuongNguoiNhoNhatVaXacThucBangSMSOTP(String phone) {
 		log.info("--------------------------------TC_05_Click button sua");
 		trainTicket.clickToDynamicButton("Sửa");
 
@@ -392,19 +393,31 @@ public class Flow_TrainTicket extends Base {
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), "Thông tin hành khách");
 
 		log.info("--------------------------------TC_05_Nhap ho ten khách hang");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CUSTOMER_NAME, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvHoTen");
+		String customerName=TrainTicket_Data.inputText.CUSTOMER_NAME+trainTicket.getNumberRandom();
+		trainTicket.inputToDynamicTextHeader(customerName, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvHoTen");
 
 		log.info("--------------------------------TC_05_Nhap so CMT");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CARD_NO, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
+		String SoCMT=TrainTicket_Data.inputText.CARD_NO_SHORT+trainTicket.getNumberRandom();
+		trainTicket.inputToDynamicTextHeader(SoCMT, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
 
 		log.info("--------------------------------TC_05_Verify ten user login");
 		verifyEquals(trainTicket.getDynamicTextEdit("Thông tin liên hệ", "com.VCB:id/tvHoTen").toUpperCase(), "NGUYEN NGOC TOAN");
 
 		log.info("--------------------------------TC_05_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO, "Thông tin liên hệ", "com.VCB:id/tvCMND");
+		trainTicket.inputToDynamicText(SoCMT, "Thông tin liên hệ", "com.VCB:id/tvCMND");
+		
+		log.info("--------------------------------TC_05_Nhap SDT");
+		String phoneNubmers=TrainTicket_Data.inputText.TELEPHONE_NO_SHORT+trainTicket.getNumberRandom();
+
+		trainTicket.inputToDynamicText(phoneNubmers, "Thông tin liên hệ", "com.VCB:id/tvSDT");
 
 		log.info("--------------------------------TC_05_Nhap email");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.email, "Thông tin liên hệ", "com.VCB:id/tvEmail");
+		String emailAdress=TrainTicket_Data.inputText.emailName+trainTicket.getNumberRandom()+"@gmail.com";
+		trainTicket.inputToDynamicText(emailAdress, "Thông tin liên hệ", "com.VCB:id/tvEmail");
+		
+		log.info("--------------------------------TC_05_Nhap so CMT");
+		trainTicket.inputToDynamicTextHeader(SoCMT, "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
+
 
 		log.info("--------------------------------TC_05_Click radio khong xuat hoa don");
 		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivNoXuatHoaDon");
@@ -416,7 +429,7 @@ public class Flow_TrainTicket extends Base {
 		trainTicket.clickToDynamicButtonContains("Đ");
 
 		log.info("--------------------------------TC_05_Verify man hinh thong tin dat ve");
-		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), "Thông tin hành khách");
+		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), "Thông tin đặt vé");
 
 		log.info("--------------------------------TC_05_Get tong tien chieu di");
 		trainTicket.getTextTotal("0", "com.VCB:id/tvTotalAmount");
@@ -444,16 +457,16 @@ public class Flow_TrainTicket extends Base {
 		
 		log.info("--------------------------------TC_05_veriFy So Dien Thoai");
 		SDT = trainTicket.getDynamicTextOld(driver, "Số điện thoại");
-		verifyEquals(TrainTicket_Data.inputText.TELEPHONE_NO, SDT);
+		verifyEquals(phoneNubmers, SDT);
 
 		log.info("--------------------------------TC_05_veriFy Email");
 		email = trainTicket.getDynamicTextOld(driver, "Email");
-		verifyEquals(TrainTicket_Data.inputText.email, email);		
+		verifyEquals(emailAdress, email);		
 		
 		log.info("--------------------------------TC_05_veriFy Thong tin ho chieu");
 		hoChieu = trainTicket.getDynamicTextOld(driver, "CMND/CCCD/Hộ chiếu");
 		
-		verifyEquals(TrainTicket_Data.inputText.CARD_NO, hoChieu);
+		verifyEquals(SoCMT, hoChieu);
 		trainTicket.scrollDownToText(driver, "Tổng tiền thanh toán");
 
 		log.info("--------------------------------TC_05_Verify tong tien thanh toan-------");
@@ -556,5 +569,10 @@ public class Flow_TrainTicket extends Base {
 		log.info("--------------------------------TC_06: Chick chi tiet giao dich");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 
+	}
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+//		closeApp();
+//		service.stop();
 	}
 }
