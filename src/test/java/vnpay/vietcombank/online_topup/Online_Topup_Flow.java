@@ -43,7 +43,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_05_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
+	public void TC_01_NapTienDienTuVaoViMOMO_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -69,7 +69,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, "Loại dịch vụ");
 
 		log.info("TC_01_Step_07: Chon 'Nap tien MOMO B'");
-		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_TYPE_D);
+		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_TYPE_B);
 
 		log.info("TC_01_Step_08: Nhap ma khach hang");
 		onlineTopup.scrollDownToButton(driver, "Tiếp tục");
@@ -95,7 +95,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Nhà cung cấp"), Online_Topup_Data.MOMO.MOMO_NAME);
 
 		log.info("TC_01_Step_12_4:Hien thi dung loai dich vu");
-		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Loại dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_D);
+		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Loại dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_B);
 
 		log.info("TC_01_Step_12_5:Lay ma khach hang");
 		customerID = onlineTopup.getDynamicTextByLabel(driver, "Mã khách hàng");
@@ -132,7 +132,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -173,7 +173,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), originAccount);
 
 		log.info("TC_02_Step_13: Xac nhan hien thi Ten Dich vu");
-		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_D);
+		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_B);
 
 		log.info("TC_02_Step_14: Xac nhan hien thi Nha cung cap");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Nhà cung cấp"), Online_Topup_Data.MOMO.MOMO_NAME);
@@ -203,7 +203,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_07_NapTienDienTuVaoViMOMO_ThanhToanMK() {
+	public void TC_03_NapTienDienTuVaoViMOMO_ThanhToanMK() {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -229,7 +229,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/serviceType");
 
 		log.info("TC_03_Step_07: Chon 'Nap tien MOMO'");
-		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_TYPE_D);
+		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_TYPE_B);
 
 		log.info("TC_03_Step_08: Nhap ma khach hang");
 		onlineTopup.scrollDownToButton(driver, "Tiếp tục");
@@ -254,7 +254,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Nhà cung cấp"), Online_Topup_Data.MOMO.MOMO_NAME);
 
 		log.info("TC_03_Step_12_4:Hien thi dung loai dich vu");
-		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Loại dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_D);
+		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Loại dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_B);
 
 		log.info("TC_03_Step_12_5:Lay ma khach hang");
 		customerID = onlineTopup.getDynamicTextByLabel(driver, "Mã khách hàng");
@@ -293,7 +293,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_08_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -334,7 +334,7 @@ public class Online_Topup_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), originAccount);
 
 		log.info("TC_04_Step_13: Xac nhan hien thi Ten Dich vu");
-		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_D);
+		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Dịch vụ"), Online_Topup_Data.MOMO.MOMO_TYPE_B);
 
 		log.info("TC_04_Step_14: Xac nhan hien thi Nha cung cap");
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, "Nhà cung cấp"), Online_Topup_Data.MOMO.MOMO_NAME);
@@ -365,7 +365,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({ "pass" })
 	@Test
-	public void TC_01_NapTienDienTuVaoVETC_ThanhToanMK(String pass) {
+	public void TC_05_NapTienDienTuVaoVETC_ThanhToanMK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -440,7 +440,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_06_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -509,7 +509,7 @@ public class Online_Topup_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_03_NapTienDienTuVaoVETC_ThanhToanOTP(String otp) {
+	public void TC_07_NapTienDienTuVaoVETC_ThanhToanOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -592,7 +592,7 @@ public class Online_Topup_Flow extends Base {
 	}
 
 	@Test
-	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
+	public void TC_08_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_08_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");

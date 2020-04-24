@@ -24,18 +24,20 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 
 			<!-- Chuyển tiền trong vcb -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
 
 			<!-- chuyển tiền ngoài vcb -->
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" /> -->
 
 
 			<!-- Chuyển tiền 24/7 -->
@@ -49,7 +51,7 @@
 			<!-- Quà tặng may mắn -->
 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
 
-<!-- 			Quản lý danh bạ -->
+			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
 
@@ -76,11 +78,11 @@
 			<!-- vnpay.vietcombank.change_password -->
 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
 
-			<!-- Nạp tiền VETC -->
+			<!-- Nạp tiền VETC, MOMO dùng tài khoản khác -->
 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
 
 
-<!-- 			Tính toán lãi suất -->
+			<!-- Tính toán lãi suất -->
 			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
 
 			<!-- Đặt mục tiêu tiết kiệm -->
@@ -96,10 +98,16 @@
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
 
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 
 			<!-- Thanh toán vé máy bay -->
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
+
+			<!-- Thanh toán vé tàu -->
+			<class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket_part2" />
+			<class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" />
 
 
 			<!-- Đặt vé xem phim -->

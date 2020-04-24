@@ -51,7 +51,7 @@ public class AbstractPage {
 	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
-		sleep(driver, 3000);
+		sleep(driver, 4000);
 		String text = driver.getPageSource();
 		return text;
 
@@ -908,7 +908,7 @@ public class AbstractPage {
 
 		}
 	}
-	
+
 	public void clickToDynamicTextContains(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
@@ -1033,7 +1033,7 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ICON, dynamicTextValue);
 		}
 	}
-	
+
 	public void clickToDynamicImageView(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
@@ -1042,8 +1042,6 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
 		}
 	}
-	
-	
 
 // click vào icon trong trang thai lenh chuyen tien
 	public void clickToDynamicIconInOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIDAndTextValue) {
@@ -2117,8 +2115,9 @@ public class AbstractPage {
 		}
 		return text;
 	}
+
 //Get list danh sach element Image
-	public List<MobileElement> getListElementImageButton( AppiumDriver<MobileElement> driver ,String locator, String... dynamicValue) {
+	public List<MobileElement> getListElementImageButton(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		return listElements;
