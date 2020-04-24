@@ -535,7 +535,7 @@ public class VehicalPageObject extends AbstractPage {
 	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
 		List<String> listSeat = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
-		String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, numberOfSeats, i);
+		String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, '0', i);
 		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "" + numberOfSeats + "", "" + i + "");
 		if (status) {
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
