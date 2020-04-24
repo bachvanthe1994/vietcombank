@@ -36,7 +36,7 @@ import vietcombank_test_data.TransferMoneyCharity_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
-public class Flow_SettingVCB_Smart_OTP_Part1 extends Base {
+public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;

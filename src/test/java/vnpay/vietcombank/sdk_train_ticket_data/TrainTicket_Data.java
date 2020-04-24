@@ -31,6 +31,7 @@ public class TrainTicket_Data {
 		public static final String POINT_EDIT_SEARCH_END ="Huế";
 		public static final String POINT_SERACH_THE_SAME ="hai";
 		public static final String POINT_EDIT_CHANGE ="Vinh";
+
 		public static final String CUSTOMER_NAME ="Phan Thi Hiep";
 		public static final String CARD_NO ="0123456789";
 		public static final String TELEPHONE_NO ="090409098";
@@ -38,6 +39,7 @@ public class TrainTicket_Data {
 		public static final String TELEPHONE_NO_SHORT ="0904";
 		public static final String emailName ="HiepPT";
 		public static final String email ="HiepPT@gmail.com";
+
 
 		
 	}

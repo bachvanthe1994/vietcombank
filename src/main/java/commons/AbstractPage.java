@@ -1168,6 +1168,15 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);
 		}
 	}
+	
+	public void clickToDynamicBack(AppiumDriver<MobileElement> driver, String ... dynamicIndex ) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BACK, dynamicIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK, dynamicIndex);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BACK, dynamicIndex);
+		}
+	}
 
 	public void clickToTextViewBy2LinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
@@ -1276,7 +1285,16 @@ public class AbstractPage {
 		}
 
 	}
+	
+	public void clickToDynamicTextLike(AppiumDriver<MobileElement> driver, String... dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_VIEWGROUP, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_VIEWGROUP, dynamicText);
+		}
 
+	}
+	
 	// Click select năm, sử dụng scroll up
 	public void clickToTextListview(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;
@@ -1287,6 +1305,29 @@ public class AbstractPage {
 		}
 
 	}
+	
+	public void clickToTextImageView(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXTVEW, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXTVEW, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_TEXTVEW, dynamicText);
+		}
+
+	}
+	
+	public void clickToTextEditText(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDITTEXT, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDITTEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDITTEXT, dynamicText);
+		}
+
+	}
+	
+	
+	
 //	public void waitForWaitingBarUndisplay(AppiumDriver<MobileElement> driver, String... dynamicID) {
 //		waitForElementInvisible(driver, DynamicPageUIs.WAIT_BAR,dynamicID);
 //	}
@@ -1936,6 +1977,48 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	
+	public String getToDynamicTextOther (AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_VIEWGROUP, dynamicTextAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_VIEWGROUP, dynamicTextAndIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_VIEWGROUP, dynamicTextAndIndex);
+
+		}
+		return text;
+
+	}
+	
+	
+	public String getDynamicTextPrecedingText (AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING_TEXT, dynamicTextAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING_TEXT, dynamicTextAndIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_PRECEDING_TEXT, dynamicTextAndIndex);
+
+		}
+		return text;
+
+	}
+	
+	
+	public String getDynamicTextFollowingText (AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_TEXT, dynamicTextAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_TEXT, dynamicTextAndIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_TEXT, dynamicTextAndIndex);
+
+		}
+		return text;
+
+	}
 
 	public String getDynamicTextScrollText(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
@@ -1963,6 +2046,34 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	public String getDynamicTextBack(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BACK, dynamicTextAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK, dynamicTextAndIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_BACK, dynamicTextAndIndex);
+
+		}
+		return text;
+
+	}
+	
+	public String getDynamicTextViewBack(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BACK_TEXT, dynamicTextAndIndex);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BACK_TEXT, dynamicTextAndIndex);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_BACK_TEXT, dynamicTextAndIndex);
+
+		}
+		return text;
+
+	}
+	
+	
 
 	public String getDynamicTextLike(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
@@ -1996,6 +2107,8 @@ public class AbstractPage {
 		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		return listElements;
 	}
+	
+	
 
 //lấy thời gian tạo giao dịch ở màn hình xác thực giao dịch, tham số truyền vào là text và vị trí index của nó
 	public String getDynamicTransferTimeAndMoney(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {

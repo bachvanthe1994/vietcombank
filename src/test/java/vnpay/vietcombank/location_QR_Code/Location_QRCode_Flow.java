@@ -44,6 +44,7 @@ public class Location_QRCode_Flow extends Base {
 	}
 	
 @Test
+
 public void TC_01_CheckTabXemGanDay() throws InterruptedException {
 	log.info("TC_01: Click menu header");
 	QRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -108,5 +109,7 @@ public void TC_02_CheckTabDaTimKiem() {
 
 	log.info("TC_02_Step: verify text da tim kiem");
 	verifyEquals(QRCode.getDynamicTextScrollText(driver, "Yêu thích", "0", "0"), Shopping_Online.Valid_Account.LOCATOR_SEARCH);
-}	
+
+}
+
 }

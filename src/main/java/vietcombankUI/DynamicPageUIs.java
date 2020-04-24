@@ -44,6 +44,10 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_TEXT = "//android.widget.ImageView//following-sibling::android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_ACCOUNT_OUT_VCB = "//android.widget.TextView[@text ='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//descendant::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
+	public static final String DYNAMIC_TEXT_PRECEDING_TEXT = "//android.widget.TextView[@text = '%s']//preceding-sibling::android.widget.TextView[@index ='%s']";
+	public static final String DYNAMIC_TEXT_FOLLOWING_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.TextView[@index ='%s']";
+
+	
 
 	public static final String DYNAMIC_BTN_BACK = "//android.view.ViewGroup//android.widget.TextView[contains(text(),'%s')]//preceding::android.widget.ImageView";
 	public static final String DYNAMIC_TEXT_FOLLOWING_VIEWGROUP = "//android.widget.TextView[@text = '%s']//following-sibling::android.view.ViewGroup[@index ='%s']/android.widget.TextView";
@@ -95,20 +99,19 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_VIEW = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_EDIT_TEXT_VIEW_BY_TEXT = "//android.view.View[@text='%s']//following::android.view.View//child::android.widget.EditText";
 	public static final String DYNAMIC_IMAGE_VIEW_ID = "//android.widget.ImageView[@resource-id='%s']";
-	
-	
+
 	public static final String DYNAMIC_BACK = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[@index='%s']//android.widget.TextView[@index='%s']";
-	public static final String DYNAMIC_IMAGE_TEXTVEW = "//android.widget.TextView[@text='%s']/preceding-sibling::android.view.ViewGroup/android.widget.ImageView";
-	public static final String DYNAMIC_TEXT_PRECEDING_TEXT = "//android.widget.TextView[@text = '%s']//preceding-sibling::android.widget.TextView[@index ='%s']";
-	public static final String DYNAMIC_TEXT_FOLLOWING_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.TextView[@index ='%s']";
-	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS = "//android.widget.TextView[contains(@text, '%s')]";
 	public static final String DYNAMIC_BACK_TEXT = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[@index='%s']//android.view.ViewGroup[@index='%s']/android.widget.TextView";
-	public static final String DYNAMIC_IMAGE_EDITTEXT  = "//android.widget.EditText[@text='%s']//ancestor::android.view.ViewGroup/preceding-sibling::android.view.ViewGroup/android.widget.ImageView";
+
 
 	// IMAGE BUTTON
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id='%s']";
 	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
+	public static final String DYNAMIC_IMAGE_TEXTVEW = "//android.widget.TextView[@text='%s']/preceding-sibling::android.view.ViewGroup/android.widget.ImageView";
+	
+	public static final String DYNAMIC_IMAGE_EDITTEXT  = "//android.widget.EditText[@text='%s']//ancestor::android.view.ViewGroup/preceding-sibling::android.view.ViewGroup/android.widget.ImageView";
 
+	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS = "//android.widget.TextView[contains(@text, '%s')]";
 	// CHECK BOX
 	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";
 
