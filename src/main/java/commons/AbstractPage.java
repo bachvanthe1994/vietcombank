@@ -1333,6 +1333,17 @@ public class AbstractPage {
 
 	}
 	
+	public void clickToTextEditText(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDITTEXT, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDITTEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_EDITTEXT, dynamicText);
+		}
+
+	}
+	
+	
 	
 //	public void waitForWaitingBarUndisplay(AppiumDriver<MobileElement> driver, String... dynamicID) {
 //		waitForElementInvisible(driver, DynamicPageUIs.WAIT_BAR,dynamicID);

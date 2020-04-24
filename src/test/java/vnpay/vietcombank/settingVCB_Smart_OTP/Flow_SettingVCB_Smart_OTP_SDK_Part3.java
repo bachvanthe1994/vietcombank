@@ -28,6 +28,7 @@ import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
+import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SettingVCBSmartOTP_Data;
@@ -82,8 +83,6 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		LocalDate now = LocalDate.now();
 		String today = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 		String tomorow = convertDayOfWeekVietNamese2(getCurrentDayOfWeek(now)) + " " + Integer.valueOf(getCurrentDay()) + 1 + "/" + getCurrenMonth() + "/" + getCurrentYear();
-		log.info("TC_02_Step: Click menu header");
-		Thread.sleep(30000);
 		
 	}
 
@@ -134,14 +133,11 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	}
 
 	// Thanh Toan vé tàu
-	//@Test
+	@Test
 	public void TC_02_DatVeMotChieuSoLuongNguoiNhoNhatVaXacThucBangSmartOTP() throws InterruptedException {
-		String startDay = getForWardDay(2);
-		String EndDay = getForWardDay(7);
+		String startDay = getForWardDay(3);
+		String EndDay = getForWardDay(5);
 
-		LocalDate now = LocalDate.now();
-		LocalDate date2 = now.plusDays(2);
-		LocalDate date7 = now.plusDays(7);
 		log.info("TC_01_Step_Click dat ve tau");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Đặt vé tàu");
 
@@ -170,22 +166,13 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
 
 		log.info("TC_08_Chon ngay di la ngay tuong lai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(2), startDay);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(3), startDay);
 
 		log.info("TC_08_Chon ngay ve la ngay tuong lai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(7), EndDay);
+		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(5), EndDay);
 
 		log.info("TC_12_Click button tiep tuc");
-		trainTicket.clickToDynamicButton("Tiếp tục");
-
-		String weekPickup = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date2));
-		String weekArrival = convertDayOfWeekVietNamese(getCurrentDayOfWeek(date7));
-		String expectDay = weekPickup + " " + getForwardDate(2) + " - " + weekArrival + " " + getForwardDate(7);
-
-		log.info("TC_12_verify thoi gian khu hoi");
-		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_date_title"), expectDay);
-		log.info("TC_12_Click button tiep tuc");
-		trainTicket.clickToDynamicButton("Tiếp tục");
+		trainTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_17_Click button hanh khach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Hành khách");
@@ -349,12 +336,6 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		log.info("TC_05_lay Tai khoan nguon");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 
-		log.info("TC_05_lay ho va ten");
-		hoTen = trainTicket.getDynamicTextOld(driver, "Họ tên");
-
-		log.info("TC_05_veriFy ho ten");
-		verifyEquals("NGUYEN NGOC TOAN", hoTen);
-
 		log.info("TC_05_veriFy So Dien Thoai");
 		SDT = trainTicket.getDynamicTextOld(driver, "Số điện thoại");
 		verifyEquals(TrainTicket_Data.inputText.TELEPHONE_NO, SDT);
@@ -409,7 +390,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 
 	// Thanh toán vé máy bay
 	@Parameters({ "otp" })
-	//@Test
+	@Test
 	public void TC_03_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanSmartOTP(String otp) throws InterruptedException {
 		airTicket.clickToDynamicIcon(driver, "Đặt vé máy bay");
 
@@ -567,7 +548,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	}
 
 	// Vé xem phim
-//	@Test
+	@Test
 	public void TC_04_DatVeXemPhim_Rap_MegaGS_BHDCineplex_SmartOTP() throws InterruptedException {
 		log.info("TC_01_01_Click Dat ve xem phim");
 		filmTicketBooking.clickToDynamicTextOrButtonLink("Đặt vé xem phim");
@@ -734,7 +715,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	}
 
 	// Vé khách sạn
-	//@Test
+	@Test
 	public void TC_05_DatPhongKhachSan_ThanhToanSmartOTP() throws InterruptedException {
 		log.info("TC_03_01_Click Dat phong khach san");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
@@ -812,7 +793,8 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	}
 
 // Vé xe
-//	@Test
+	//Không hiển thị phương thức xác thực smart OTP
+	@Test
 	public void TC_06_MuaVeXeBangSmartOTP() throws InterruptedException {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
@@ -835,24 +817,24 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 
 		log.info("TC_02_Step_06: Chon ghe: ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_CHOISE_CHAIR);
-	//	trainTicket.chooseSeats(1, "255,255,255");
+		String colorSeat = "(255,255,255)";
+		vehicalTicket.chooseSeats(1, colorSeat);
 
-		log.info("TC_02_Step_07 : Dat chuyen di: ");
+		log.info("TC_01_Step_10 : Dat chuyen di: ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BOOK_SEAT);
 
-		log.info("----TC_02_Step_08: Chon ben diem di: ");
-		listActual = vehicalTicket.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/layout");
-		vehicalTicket.clickToElement(driver, listActual.get(1));
-	
+		log.info("TC_01_Step_11: Chon ben diem di: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
-		log.info("----TC_02_Step_9 Chon ben diem den: ");
+		log.info("TC_01_Step_12 Chon ben diem den: ");
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
 		log.info("-TC_02_Step_10 Click chon tiep tuc ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		log.info("-----TC_02_Step_11___Input email");
+		log.info("-TC_02_Step_11___Input email");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("TC_02_Step_12 Lay thong tin ca nhan");
@@ -890,16 +872,16 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		log.info("TC_02_Step_23Verify hien thi man hinh thong tin khach hang");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
 
-		log.info("-TC_02_Step_24 Verify ho va ten khach hang----");
+		log.info("-TC_02_Step_24 Verify ho va ten khach hang");
 		verifyEquals(nameTyped, vehicalTicket.getDynamicEditText("com.VCB:id/full_name"));
 
-		log.info("-TC_02_Step_25 Verify So dien thoai ----");
+		log.info("-TC_02_Step_25 Verify So dien thoai ");
 		verifyEquals(phoneTyped, vehicalTicket.getDynamicEditText("com.VCB:id/autoCompletePhone"));
 
-		log.info("-TC_02_Step_26 Verify Email----");
+		log.info("-TC_02_Step_26 Verify Email");
 		verifyEquals(emailTyped, vehicalTicket.getDynamicEditText("com.VCB:id/email"));
 
-		log.info("-TC_02_Step_27 Verify diem di----");
+		log.info("-TC_02_Step_27 Verify diem di");
 		verifyEquals(diemDi, vehicalTicket.getDynamicTextView("com.VCB:id/tvFrom"));
 
 		log.info("-TC_02_Step_28 Verify diem den---");
@@ -908,13 +890,13 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		log.info("-TC_02_Step_30 Verify hhang Xe---");
 		verifyEquals(hangXe, vehicalTicket.getDynamicTextView("com.VCB:id/tv_hang_xe"));
 
-		log.info("-TC_02_Step_31 Verify So ghe ngoi----");
+		log.info("-TC_02_Step_31 Verify So ghe ngoi");
 		verifyEquals(soGhe, vehicalTicket.getDynamicTextView("com.VCB:id/tvAllSeat"));
 
 		log.info("-TC_02_Step_32 Verify tong so ve---");
 		verifyEquals(soLuongVe, vehicalTicket.getDynamicTextView("com.VCB:id/tvTicketNumber"));
 
-		log.info("-----TC_02_Step_33 Verify tong tien ");
+		log.info("-TC_02_Step_33 Verify tong tien ");
 		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount"));
 
 		log.info("TC_02_Step_34 Click btutton Thanh toan");
@@ -927,42 +909,42 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		vehicalTicket.scrollUpToText(VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT);
 		taiKhoanNguon = vehicalTicket.getDynamicTextView("com.VCB:id/number_account");
 
-		log.info("-TC_02_Step_37 Verify ho va ten khach hang----");
+		log.info("-TC_02_Step_37 Verify ho va ten khach hang");
 		verifyEquals(nameTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NAME));
 
-		log.info("-TC_02_Step_38 Verify ho va ten khach hang----");
+		log.info("-TC_02_Step_38 Verify ho va ten khach hang");
 		verifyEquals(phoneTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.PHONE_NUMBER));
 
-		log.info("-TC_02_Step_39 Verify Email----");
+		log.info("-TC_02_Step_39 Verify Email");
 		verifyEquals(emailTyped, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS));
 		vehicalTicket.scrollIDownOneTime(driver);
 
-		log.info("-TC_02_Step_40 Verify diem di ----");
+		log.info("-TC_02_Step_40 Verify diem di ");
 		verifyEquals(diemDi, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.DESTINATION));
 
-		log.info("-TC_02_Step_41 Verify diem den ----");
+		log.info("-TC_02_Step_41 Verify diem den ");
 		verifyEquals(diemDen, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ARRIVAL));
 
-		log.info("-TC_02_Step_42 Verify hang xe----");
+		log.info("-TC_02_Step_42 Verify hang xe");
 		verifyEquals(hangXe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.BRAND));
 
-		log.info("-TC_02_Step_43 Verify So ghe----");
+		log.info("-TC_02_Step_43 Verify So ghe");
 		verifyEquals(soGhe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.SEAT_NUMBER));
 
 		log.info("-TC_02_Step_44 Verify So luong ve---");
 		verifyEquals(soLuongVe, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.TOTAL_TICKET));
 
-		log.info("----TC_02_Step_45 Verify tong tien");
+		log.info("TC_02_Step_45 Verify tong tien");
 		tongTien = tongTien.replace("đ", "VND");
 		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_TT));
 
-		log.info("-----TC_02_Step_46 Click button tiep tuc");
+		log.info("-TC_02_Step_46 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_02_Step_47 Xac nhan hien thi man hinh xac nhan thong tin");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_CONFIRM));
 
-		log.info("-TC_02_Step_48 Verrify tai khoan nguon-----");
+		log.info("-TC_02_Step_48 Verrify tai khoan nguon-");
 		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT));
 		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
 
@@ -1008,16 +990,20 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	
 	//Mua sắm trực tuyến
 	@Parameters({ "otp" })
-	@Test
+//LỗiPTXT SmartOTP, lỗi server
+	//@Test
 	public void TC_07_ChonMuaMotSanPhamThanhToanSmartOTPKhongChonKhuyenMai(String otp) throws InterruptedException {
-		log.info("---------------------------TC_01_STEP_2: Them vao gio hang--------------------------------------");
+		shopping.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
+		shopping.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
+		
+		log.info("TC_01_STEP_2: Them vao gio hang---");
 		shopping.clickToDynamicCategories("Xem tất cả");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
-				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
+				log.info("TC_01_STEP_5: click Back");
 				shopping.clickToDynamicCart("1", "0");
 				continue;
 			} else {
@@ -1025,16 +1011,16 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 			}
 		}
 
-		log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
+		log.info("TC_01_STEP_4: click dat hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
-		log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
+		log.info("TC_01_STEP_4: click Vao gio hang");
 		shopping.clickToDynamicDateInDateTimePicker("1");
 
-		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
+		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
 		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
+		log.info("TC_01_STEP_5: click dat hang");
 		shopping.clickToDynamicButton("Đặt hàng");
 
 		shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
@@ -1051,42 +1037,42 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		}
 		double totalMoney = tottalMoneyCart + feeShippingD;
 
-		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
+		log.info("TC_01_STEP_5: click thanh toan");
 		shopping.clickToDynamicButton("Thanh toán");
 
 		if (shopping.isTextDisplayedInPageSource(driver, "Bạn chưa có địa chỉ nhận hàng.")) {
 
-			log.info("---------------------------TC_01_STEP_4_1: click the moi---------------------------");
+			log.info("TC_01_STEP_4_1: click the moi");
 			shopping.clickToDynamicButton("Thêm mới");
 
-			log.info("---------------------------TC_01_STEP_4_1: Hien thi man hinh them moi dia chi---------------------------");
+			log.info("TC_01_STEP_4_1: Hien thi man hinh them moi dia chi");
 			shopping.isDynamicTextInfoDisplayed("Thêm mới địa chỉ");
 
-			log.info("---------------------------TC_01_STEP_4_2: nhap ten");
+			log.info("TC_01_STEP_4_2: nhap ten");
 			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
 
-			log.info("---------------------------TC_01_STEP_4_2: nhap so dien thoai---------------------------");
+			log.info("TC_01_STEP_4_2: nhap so dien thoai");
 			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
 
-			log.info("---------------------------TC_01_STEP_4_3: chon tinh thanh pho---------------------------");
+			log.info("TC_01_STEP_4_3: chon tinh thanh pho");
 			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
 			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
 
-			log.info("---------------------------TC_01_STEP_4_3: chon tinh quan huyen---------------------------");
+			log.info("TC_01_STEP_4_3: chon tinh quan huyen");
 			shopping.clickToDynamicCustomer("Quận/Huyện");
 			shopping.clickToDynamicListProvince("Quận Ba Đình");
 
-			log.info("---------------------------TC_01_STEP_4_3: chon tinh xa phuong---------------------------");
+			log.info("TC_01_STEP_4_3: chon tinh xa phuong");
 			shopping.clickToDynamicCustomer("Phường/Xã");
 			shopping.clickToDynamicListProvince("Phường Cống Vị");
 
-			log.info("---------------------------TC_01_STEP_4_3: dia chi cu the---------------------------");
+			log.info("TC_01_STEP_4_3: dia chi cu the");
 			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
 
-			log.info("---------------------------TC_01_STEP_4_3: chon hoan tat---------------------------");
+			log.info("TC_01_STEP_4_3: chon hoan tat");
 			shopping.clickToDynamicButton("Hoàn tất");
 
-			log.info("---------------------------TC_01_STEP_6: click thanh toan---------------------------");
+			log.info("TC_01_STEP_6: click thanh toan");
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 
@@ -1101,23 +1087,23 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
 				if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
-					log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
+					log.info("TC_01_STEP_5: click Back");
 					shopping.clickToDynamicCart("1", "0");
 					continue;
 				} else {
 					break;
 				}
 			}
-			log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
+			log.info("TC_01_STEP_4: click dat hang");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
-			log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
+			log.info("TC_01_STEP_4: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
 
-			log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
+			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
 			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
+			log.info("TC_01_STEP_5: click dat hang");
 			shopping.clickToDynamicButton("Đặt hàng");
 
 			shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
@@ -1134,75 +1120,75 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 			}
 			totalMoney = tottalMoneyCart + feeShippingD;
 
-			log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
+			log.info("TC_01_STEP_5: click thanh toan");
 			shopping.clickToDynamicButton("Thanh toán");
 
-			log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
+			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
 			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 
-			log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
+			log.info("TC_01_STEP_4: click dat hang");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
-			log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
+			log.info("TC_01_STEP_4: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
 
-			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
+			log.info("TC_01_STEP_5: click dat hang");
 			shopping.clickToDynamicButton("Đặt hàng");
 
 		}
 
-		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
+		log.info("TC_01_STEP_6: click thanh toan ngay");
 		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
-		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
+		log.info("TC_01_STEP_7: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
-		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
+		shopping.clickToDynamicButtonLinkOrLinkText(vietcombank_test_data.Account_Data.Valid_Account.ACCOUNT2);
 
-		log.info("---------------------------TC_02_STEP_7: Lay so du tai khoan ");
+		log.info("TC_02_STEP_7: Lay so du tai khoan ");
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextFeeShipping("Số dư khả dụng").replace("VND", "").replace(",", ""));
 
-		log.info("---------------------------TC_02_STEP_7: lay thong tin ma don hang");
+		log.info("TC_02_STEP_7: lay thong tin ma don hang");
 		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
 
-		log.info("---------------------------TC_01_STEP_9: lay ra phi giao hang---------------------------");
+		log.info("TC_01_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
 		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
 
-		log.info("---------------------------TC_01_STEP_9: verify fee Ship---------------------------");
+		log.info("TC_01_STEP_9: verify fee Ship");
 		verifyEquals(feeShippingD, fee);
 
-		log.info("---------------------------TC_01_STEP_10: giam gia---------------------------");
+		log.info("TC_01_STEP_10: giam gia");
 		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
 		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
 
 		// tong tien can thanh toan
-		log.info("---------------------------TC_01_STEP_11: tong tien---------------------------");
+		log.info("TC_01_STEP_11: tong tien");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
 		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
 		verifyEquals(calulatorMoney, totalMoneyBill);
 
-		log.info("---------------------------TC_01_STEP_12: Chon thanh toan---------------------------");
+		log.info("TC_01_STEP_12: Chon thanh toan");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		log.info("---------------------------TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin---------------------------");
+		log.info("TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin");
 		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Mã đơn hàng"), codeBill);
 		verifyTrue(shopping.getDynamicTextFeeShipping("Số tiền thanh toán").contains(totalMoneyBillString[1]));
 
-		log.info("---------------------------TC_01_STEP_13: Kiem tra tai khoan nguon---------------------------");
+		log.info("TC_01_STEP_13: Kiem tra tai khoan nguon");
 		String account = shopping.getMoneyByAccount("Tài khoản nguồn");
-		verifyEquals(account, Valid_Account.ACCOUNT2);
+		verifyEquals(account, vietcombank_test_data.Account_Data.Valid_Account.ACCOUNT2);
 
-		log.info("---------------------------TC_01_STEP_14: Kiem tra so tien thanh toan---------------------------");
+		log.info("TC_01_STEP_14: Kiem tra so tien thanh toan");
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
 		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
 
-		log.info("---------------------------TC_01_STEP_16: Chon phuong thuc thanh toan---------------------------");
+		log.info("TC_01_STEP_16: Chon phuong thuc thanh toan");
 		log.info("TC_01_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
 		shopping.clickToDynamicButtonLinkOrLinkText("VCB - Smart OTP");
@@ -1222,7 +1208,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 
 		soDuThuc = soDuTK - moneyConfirm;
 
-		log.info("---------------------------TC_01_STEP_19: Xac nhan thong tin ---------------------------");
+		log.info("TC_01_STEP_19: Xac nhan thong tin ");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Nhà cung cấp"), "VNSHOP");
 
@@ -1230,7 +1216,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 
 		maGiaodich = shopping.getDynamicTextFeeShipping("Mã giao dịch");
 
-		log.info("---------------------------TC_01_STEP_20: thuc hien giao dich moi---------------------------");
+		log.info("TC_01_STEP_20: thuc hien giao dich moi");
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 
 		
@@ -1254,7 +1240,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		log.info("---TC_01_Step_04: Verify man hinh cai dat VCB Smart OTP---");
 		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Cài đặt VCB-Smart OTP");
 
-		log.info("-TC_02_Step_01: Click btn Huy Cai dat----");
+		log.info("-TC_02_Step_01: Click btn Huy Cai dat");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
 
 		log.info("TC_02_Step_02: Verify hien thi popup xac nhan huy cai dat OTP--");
@@ -1266,7 +1252,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 //		log.info("---TC_02_Step_04: Verify xac nhan huy Smart OTP thanh cong--");
 //		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CANCEL_SMART_OTP);
 
-		log.info("-----TC_02_Step_05: verify Trang thai dã kich hoat Smart OTP");
+		log.info("-TC_02_Step_05: verify Trang thai dã kich hoat Smart OTP");
 		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
 		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Chưa kích hoạt");
 	}

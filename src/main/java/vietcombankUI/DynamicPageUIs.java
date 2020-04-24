@@ -108,6 +108,9 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_BUTTON = "//android.widget.ImageButton[@resource-id='%s']";
 	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
 	public static final String DYNAMIC_IMAGE_TEXTVEW = "//android.widget.TextView[@text='%s']/preceding-sibling::android.view.ViewGroup/android.widget.ImageView";
+	
+	public static final String DYNAMIC_IMAGE_EDITTEXT  = "//android.widget.EditText[@text='%s']//ancestor::android.view.ViewGroup/preceding-sibling::android.view.ViewGroup/android.widget.ImageView";
+
 
 	// CHECK BOX
 	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";

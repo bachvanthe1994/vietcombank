@@ -9,8 +9,6 @@ import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
-import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
 
 
 

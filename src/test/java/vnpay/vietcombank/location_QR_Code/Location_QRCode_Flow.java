@@ -1,11 +1,7 @@
 package vnpay.vietcombank.location_QR_Code;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.sound.midi.Soundbank;
-
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -16,8 +12,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.LocationQRCodePageObject;
 import pageObjects.LogInPageObject;
-import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
 import vietcombank_test_data.Shopping_Online;
 
 public class Location_QRCode_Flow extends Base {
@@ -50,7 +44,7 @@ public class Location_QRCode_Flow extends Base {
 	}
 	
 @Test
-	public void TC_01_CheckTabXemGanDay1() throws InterruptedException {
+	public void TC_01_CheckTabXemGanDay() throws InterruptedException {
 		log.info("TC_01: Click menu header");
 		QRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
@@ -72,7 +66,7 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToTextImageView(driver, "Nhà hàng");
 		
 		log.info("TC_01_Step: Click tim kiem thong tin");
-		QRCode.scrollUpToText(driver, "Tìm kiếm địa điểm...");
+		QRCode.scrollUpToText(driver, "Nổi bật");
 		QRCode.clickToDynamicTextContains(driver, "Tìm kiếm địa điểm");
 		
 		log.info("TC_01_Step: Click tab xem gan day");
@@ -103,7 +97,7 @@ public class Location_QRCode_Flow extends Base {
 		
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
 		QRCode.clickToTextImageView(driver, "Chi tiết");
-		QRCode.clickToTextImageView(driver, "Nhà hàng");
+		QRCode.clickToTextEditText(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH);
 		
 		log.info("TC_02_Step: Click text tim kiem de den tab xem gan day");
 		QRCode.scrollUpToText(driver, "Nổi bật");
