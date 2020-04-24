@@ -41,7 +41,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-//	@Test
+	@Test
 	public void TC_01_CuocDiDongTraSau_Viettel_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -174,7 +174,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_02_CuocDiDongTraSau_Viettel_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
@@ -244,7 +244,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	}
 
 	@Parameters({ "otp" })
-//	@Test
+	@Test
 	public void TC_03_CuocDiDongTraSau_Vinaphone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);

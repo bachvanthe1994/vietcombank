@@ -9,7 +9,7 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_DATE_SELECTED = "//android.widget.TextView[@text='%s']//following-sibling::android.view.ViewGroup//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TITLE_SELECT_DATE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout/android.widget.TextView";
 	public static final String DYNAMIC_TITLE_SELECT_WEEK = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout//android.widget.TextView[@resource-id='%s']";
-	public static final String DYNAMIC_NUMBER_CUSTOMER = "//android.widget.TextView[@text='%s']/following::android.widget.TextView";
+	public static final String DYNAMIC_NUMBER_CUSTOMER = "//android.widget.TextView[@text='%s']//following::android.widget.TextView";
 	public static final String DYNAMIC_TEXT_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_INDEX = "//android.widget.TextView[@index ='%s']";
 	public static final String DYNAMIC_DATE_SELECT = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
@@ -64,7 +64,7 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_TOTAL_MONEY_1 = "//android.view.View[@index='%s']";
 
 	
-	public static final String DYNAMIC_TOTAL_MONEY_BY_TEXT = "//android.widget.TextView[@text='%s']//android.view.View[contains(@text,'₫')]";
+	public static final String DYNAMIC_TOTAL_MONEY_BY_TEXT = "//android.view.View[contains(@text,'%s')]//following-sibling::android.view.View";
 	public static final String PRODUCT_BY_CONTAIN_TEXT = "//android.widget.TextView[contains(@text,'%s')]";
 	public static final String PRODUCT_VIEW_BY_CONTAIN_TEXT = "//android.view.View[contains(@text,'%s')]";
 
