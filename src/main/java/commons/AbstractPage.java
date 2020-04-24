@@ -909,15 +909,6 @@ public class AbstractPage {
 		}
 	}
 
-	public void clickToDynamicTextContains(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
-		boolean status = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
-
-		}
-	}
 
 	public List<String> clickListLocator(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		List<String> listLocator = new ArrayList<>();
@@ -1034,6 +1025,7 @@ public class AbstractPage {
 		}
 	}
 
+
 	public void clickToDynamicImageView(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
@@ -1042,6 +1034,7 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
 		}
 	}
+
 
 // click vào icon trong trang thai lenh chuyen tien
 	public void clickToDynamicIconInOrderStatus(AppiumDriver<MobileElement> driver, String... dynamicIDAndTextValue) {
@@ -1176,6 +1169,16 @@ public class AbstractPage {
 		}
 	}
 
+	public void clickToDynamicTextContains(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicTextValue);
+
+		}
+	}
+	
 	public void clickToTextViewByLinearLayoutID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID, dynamicID);

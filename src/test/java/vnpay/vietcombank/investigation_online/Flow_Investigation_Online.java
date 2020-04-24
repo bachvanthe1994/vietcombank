@@ -12,15 +12,19 @@ import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
-import pageObjects.InvestigationPageObject;
+
 import pageObjects.LogInPageObject;
+
+import pageObjects.InvestigationOnlinePageObject;
+
 import vietcombank_test_data.Register_Online_data;
 
 public class Flow_Investigation_Online extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
-	private InvestigationPageObject investigationOnline;
-	private HomePageObject homPageObject;
+
+	private HomePageObject homePageObject;
+	private InvestigationOnlinePageObject investigationOnline;
 
 	String phoneNumber = "";
 	String nameCustomer = "";
@@ -34,16 +38,17 @@ public class Flow_Investigation_Online extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		phoneNumber = phone;
-		homPageObject=PageFactoryManager.getHomePageObject(driver);
-		homPageObject.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+
+		homePageObject=PageFactoryManager.getHomePageObject(driver);
+		homePageObject.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 		
 	}
 
 	@Test
 	public void TC_01_TraSoatLapYeuCauTraSoat() {
-		homPageObject.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-        homPageObject.clickToDynamicButtonLinkOrLinkText(driver, "Tra soát trực tuyến");
-		investigationOnline = PageFactoryManager.getInvestigationObject(driver);
+		homePageObject.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		homePageObject.clickToDynamicButtonLinkOrLinkText(driver, "Tra soát trực tuyến");
+		investigationOnline = PageFactoryManager.getInvestigationOnline(driver);
 		investigationOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Loại yêu cầu tra soát");
         investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Lập yêu cầu tra soát");
 
@@ -191,9 +196,19 @@ public class Flow_Investigation_Online extends Base {
 		
 	}
 
-	@Test
-	public void TC_14_MoTaiKhoanThanhToan_ManHinhConnect24_ChonHaiThePhu() {
+
 		
+
+
+	@Test
+	public void TC_01_GiaoDichNopTienThanhCong() {
+
+		investigationOnline = PageFactoryManager.getInvestigationOnline(driver);
+		investigationOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Loại yêu cầu tra soát");
+		
+		log.info("TC_01_Step: Click giao dich tien mat/chuyen tien");
+		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Lập yêu cầu tra soát");
+
 	}
 
 	@AfterClass(alwaysRun = true)

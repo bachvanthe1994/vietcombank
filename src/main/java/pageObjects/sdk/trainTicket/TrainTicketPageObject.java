@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -1141,6 +1142,12 @@ public class TrainTicketPageObject extends AbstractPage {
 
 		}
 		return text;
+	}
+	
+	public String getNumberRandom() {
+        int rand = (int)(Math.random() * (999999-100000)+1) + 100000; 
+		String number = Integer.toString(rand);
+		return number;
 	}
 
 }

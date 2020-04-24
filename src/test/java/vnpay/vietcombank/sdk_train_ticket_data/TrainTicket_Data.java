@@ -1,5 +1,7 @@
 package vnpay.vietcombank.sdk_train_ticket_data;
 
+import model.Train_Ticket_Object;
+
 public class TrainTicket_Data {
 	
 	public static class textDefault {
@@ -29,10 +31,14 @@ public class TrainTicket_Data {
 		public static final String POINT_EDIT_SEARCH_END ="Huế";
 		public static final String POINT_SERACH_THE_SAME ="hai";
 		public static final String POINT_EDIT_CHANGE ="Vinh";
-		public static final String CUSTOMER_NAME ="Phan Thi Hiep1";
-		public static final String CARD_NO ="012345678";
-		public static final String TELEPHONE_NO ="0904797866";
-		public static final String email ="HiepPT1@vnpay.vn";
+		public static final String CUSTOMER_NAME ="Phan Thi Hiep";
+		public static final String CARD_NO ="0123456789";
+		public static final String TELEPHONE_NO ="090409098";
+		public static final String CARD_NO_SHORT ="0123";
+		public static final String TELEPHONE_NO_SHORT ="0904";
+		public static final String emailName ="HiepPT";
+		public static final String email ="HiepPT@gmail.com";
+
 		
 	}
 	}
