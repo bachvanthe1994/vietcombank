@@ -11,11 +11,11 @@ import org.testng.annotations.Test;
 
 import commons.Base;
 import commons.PageFactoryManager;
-import creaditCardPaymentUI.creaditCardPaymentUI;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.VCBCreditCardPaymentObject;
+import vietcombankUI.creaditCardPaymentUI;
 import vietcombank_test_data.Creadit_Card_Payment_Data;
 import vietcombank_test_data.HomePage_Data;
 
