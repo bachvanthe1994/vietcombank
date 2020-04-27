@@ -358,5 +358,20 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			return isDisplayed;
 
 		}
+		
+
+		// Kiem tra text co trong PageSource hay khong
+		public boolean isTextDisplayedInPageSource( String dynamicText) {
+			if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+				waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+			}
+			return driver.getPageSource().contains(dynamicText);
+		}
+		/* SCROLL DOWN */
+		public void scrollDownToText( String dynamicText) {
+			scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+		}
+
 	
 }

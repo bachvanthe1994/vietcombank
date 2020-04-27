@@ -3,8 +3,6 @@ package vnpay.vietcombank.sdk.shopping_online;
 import java.io.IOException;
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -17,9 +15,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
-import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
-import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.Account_Data.Valid_Account;
 
 public class Shopping_Online_Flow extends Base {
@@ -66,7 +62,7 @@ public class Shopping_Online_Flow extends Base {
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
 				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 				shopping.clickToDynamicCart("1", "0");
 				continue;
@@ -87,7 +83,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -104,7 +100,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Bạn chưa có địa chỉ nhận hàng.")) {
+		if (shopping.isTextDisplayedInPageSource("Bạn chưa có địa chỉ nhận hàng.")) {
 
 			log.info("---------------------------TC_01_STEP_4_1: click the moi---------------------------");
 			shopping.clickToDynamicButton("Thêm mới");
@@ -140,7 +136,7 @@ public class Shopping_Online_Flow extends Base {
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Sản phẩm không còn")) {
+		if (shopping.isTextDisplayedInPageSource("Sản phẩm không còn")) {
 			shopping.clickToDynamicButton("Quay về giỏ hàng");
 
 			shopping.clickToDynamicCart("2", "0");
@@ -150,7 +146,7 @@ public class Shopping_Online_Flow extends Base {
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
 					log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 					shopping.clickToDynamicCart("1", "0");
 					continue;
@@ -170,7 +166,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToText("Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -238,7 +234,7 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thanh toán");
 
 		log.info("---------------------------TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin---------------------------");
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Mã đơn hàng"), codeBill);
 		verifyTrue(shopping.getDynamicTextFeeShipping("Số tiền thanh toán").contains(totalMoneyBillString[1]));
@@ -265,7 +261,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_19: Chon tiep tuc---------------------------");
 		shopping.clickToDynamicButton("Tiếp tục");
 
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "GIAO DỊCH THÀNH CÔNG");
+		shopping.isDynamicMessageAndLabelTextDisplayed("GIAO DỊCH THÀNH CÔNG");
 
 		soDuThuc = soDuTK - moneyConfirm;
 
@@ -291,7 +287,7 @@ public class Shopping_Online_Flow extends Base {
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+			if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 				shopping.clickToDynamicCart("1", "0");
 				continue;
@@ -314,7 +310,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToText("Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -331,7 +327,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Bạn chưa có địa chỉ nhận hàng.")) {
+		if (shopping.isTextDisplayedInPageSource( "Bạn chưa có địa chỉ nhận hàng.")) {
 
 			log.info("---------------------------TC_01_STEP_4_1: click the moi---------------------------");
 			shopping.clickToDynamicButton("Thêm mới");
@@ -367,7 +363,7 @@ public class Shopping_Online_Flow extends Base {
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Sản phẩm không còn")) {
+		if (shopping.isTextDisplayedInPageSource( "Sản phẩm không còn")) {
 			shopping.clickToDynamicButton("Quay về giỏ hàng");
 
 			shopping.clickToDynamicCart("2", "0");
@@ -377,7 +373,7 @@ public class Shopping_Online_Flow extends Base {
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+				if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 					log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 					shopping.clickToDynamicCart("1", "0");
 					continue;
@@ -400,7 +396,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -468,7 +464,7 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thanh toán");
 
 		log.info("---------------------------TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin---------------------------");
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "Xác nhận thông tin");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Mã đơn hàng"), codeBill);
 		verifyTrue(shopping.getDynamicTextFeeShipping("Số tiền thanh toán").contains(totalMoneyBillString[1]));
@@ -495,7 +491,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_19: Chon tiep tuc---------------------------");
 		shopping.clickToDynamicButton("Tiếp tục");
 
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "GIAO DỊCH THÀNH CÔNG");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "GIAO DỊCH THÀNH CÔNG");
 
 		soDuThuc = soDuTK - moneyConfirm;
 
@@ -522,7 +518,7 @@ public class Shopping_Online_Flow extends Base {
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+			if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 				shopping.clickToDynamicCart("1", "0");
 				continue;
@@ -543,7 +539,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToText("Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -560,7 +556,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Bạn chưa có địa chỉ nhận hàng.")) {
+		if (shopping.isTextDisplayedInPageSource( "Bạn chưa có địa chỉ nhận hàng.")) {
 
 			log.info("---------------------------TC_01_STEP_4_1: click the moi---------------------------");
 			shopping.clickToDynamicButton("Thêm mới");
@@ -596,7 +592,7 @@ public class Shopping_Online_Flow extends Base {
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Sản phẩm không còn")) {
+		if (shopping.isTextDisplayedInPageSource("Sản phẩm không còn")) {
 			shopping.clickToDynamicButton("Quay về giỏ hàng");
 
 			shopping.clickToDynamicCart("2", "0");
@@ -606,7 +602,7 @@ public class Shopping_Online_Flow extends Base {
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
 					log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 					shopping.clickToDynamicCart("1", "0");
 					continue;
@@ -626,7 +622,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToText("Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -694,7 +690,7 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thanh toán");
 
 		log.info("---------------------------TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin---------------------------");
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "Xác nhận thông tin");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Mã đơn hàng"), codeBill);
 		verifyTrue(shopping.getDynamicTextFeeShipping("Số tiền thanh toán").contains(totalMoneyBillString[1]));
@@ -721,7 +717,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_19: Chon tiep tuc---------------------------");
 		shopping.clickToDynamicButton("Tiếp tục");
 
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "GIAO DỊCH THÀNH CÔNG");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "GIAO DỊCH THÀNH CÔNG");
 
 		soDuThuc = soDuTK - moneyConfirm;
 
@@ -748,7 +744,7 @@ public class Shopping_Online_Flow extends Base {
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+			if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 				shopping.clickToDynamicCart("1", "0");
 				continue;
@@ -771,7 +767,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToText("Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -788,7 +784,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Bạn chưa có địa chỉ nhận hàng.")) {
+		if (shopping.isTextDisplayedInPageSource("Bạn chưa có địa chỉ nhận hàng.")) {
 
 			log.info("---------------------------TC_01_STEP_4_1: click the moi---------------------------");
 			shopping.clickToDynamicButton("Thêm mới");
@@ -824,7 +820,7 @@ public class Shopping_Online_Flow extends Base {
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Sản phẩm không còn")) {
+		if (shopping.isTextDisplayedInPageSource( "Sản phẩm không còn")) {
 			shopping.clickToDynamicButton("Quay về giỏ hàng");
 
 			shopping.clickToDynamicCart("2", "0");
@@ -834,7 +830,7 @@ public class Shopping_Online_Flow extends Base {
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+				if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 					log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 					shopping.clickToDynamicCart("1", "0");
 					continue;
@@ -857,7 +853,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToText("Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -925,7 +921,7 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thanh toán");
 
 		log.info("---------------------------TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin---------------------------");
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "Xác nhận thông tin");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Mã đơn hàng"), codeBill);
 		verifyTrue(shopping.getDynamicTextFeeShipping("Số tiền thanh toán").contains(totalMoneyBillString[1]));
@@ -952,7 +948,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_19: Chon tiep tuc---------------------------");
 		shopping.clickToDynamicButton("Tiếp tục");
 
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "GIAO DỊCH THÀNH CÔNG");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "GIAO DỊCH THÀNH CÔNG");
 
 		soDuThuc = soDuTK - moneyConfirm;
 
@@ -979,7 +975,7 @@ public class Shopping_Online_Flow extends Base {
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+			if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 				log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 				shopping.clickToDynamicCart("1", "0");
 				continue;
@@ -1000,7 +996,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -1017,7 +1013,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 		shopping.clickToDynamicButton("Thanh toán");
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Bạn chưa có địa chỉ nhận hàng.")) {
+		if (shopping.isTextDisplayedInPageSource( "Bạn chưa có địa chỉ nhận hàng.")) {
 
 			log.info("---------------------------TC_01_STEP_4_1: click the moi---------------------------");
 			shopping.clickToDynamicButton("Thêm mới");
@@ -1053,7 +1049,7 @@ public class Shopping_Online_Flow extends Base {
 			shopping.clickToDynamicButton("Thanh toán");
 		}
 
-		if (shopping.isTextDisplayedInPageSource(driver, "Sản phẩm không còn")) {
+		if (shopping.isTextDisplayedInPageSource( "Sản phẩm không còn")) {
 			shopping.clickToDynamicButton("Quay về giỏ hàng");
 
 			shopping.clickToDynamicCart("2", "0");
@@ -1063,7 +1059,7 @@ public class Shopping_Online_Flow extends Base {
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource(driver, "Tạm hết hàng")) {
+				if (shopping.isTextDisplayedInPageSource( "Tạm hết hàng")) {
 					log.info("---------------------------TC_01_STEP_5: click Back---------------------------");
 					shopping.clickToDynamicCart("1", "0");
 					continue;
@@ -1083,7 +1079,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText(driver, "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -1151,7 +1147,7 @@ public class Shopping_Online_Flow extends Base {
 		shopping.clickToDynamicButton("Thanh toán");
 
 		log.info("---------------------------TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin---------------------------");
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "Xác nhận thông tin");
 
 		verifyEquals(shopping.getDynamicTextFeeShipping("Mã đơn hàng"), codeBill);
 		verifyTrue(shopping.getDynamicTextFeeShipping("Số tiền thanh toán").contains(totalMoneyBillString[1]));
@@ -1178,7 +1174,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_19: Chon tiep tuc---------------------------");
 		shopping.clickToDynamicButton("Tiếp tục");
 
-		shopping.isDynamicMessageAndLabelTextDisplayed(driver, "GIAO DỊCH THÀNH CÔNG");
+		shopping.isDynamicMessageAndLabelTextDisplayed( "GIAO DỊCH THÀNH CÔNG");
 
 		soDuThuc = soDuTK - moneyConfirm;
 
