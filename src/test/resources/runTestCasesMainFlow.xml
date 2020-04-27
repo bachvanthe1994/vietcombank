@@ -26,7 +26,7 @@
 		<classes>
 			
 			<!-- Chuyển tiền trong vcb -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
@@ -36,6 +36,9 @@
 			<!-- chuyển tiền ngoài vcb -->
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+
+
+
 
 
 			<!-- Chuyển tiền 24/7 -->
@@ -52,12 +55,16 @@
 			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
-
 			<!-- Nạp tiền điện thoại -->
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
 
 			<!-- Dịch vụ thẻ -->
 			<class name="vnpay.vietcombank.card_services.Card_Services" />
+			
+			
+			
+			
+			
 
 			<!-- Tiết kiệm trực tuyến -->
 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
@@ -69,6 +76,11 @@
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" />
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" />
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" />
+			
+			
+			
+			
+			
 
 			<!-- Auto debit -->
 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
@@ -92,6 +104,9 @@
 			<!-- Thanh toán cước điện thoại cố định -->
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
+			
+			
+			
 
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
@@ -113,6 +128,10 @@
 
 			<!-- Đặt vé khách sạn -->
 			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
+
+
+
+
 
 			<!-- Mua sắm trực tuyến -->
 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
