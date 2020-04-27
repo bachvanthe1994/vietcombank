@@ -7,12 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 
 import commons.AbstractPage;
-import creaditCardPaymentUI.creaditCardPaymentUI;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.creaditCardPaymentUI;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 
 

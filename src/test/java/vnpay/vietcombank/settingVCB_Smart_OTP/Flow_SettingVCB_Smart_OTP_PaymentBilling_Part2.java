@@ -864,29 +864,29 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 				soThe = vcbACreditCardPayment.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
 
 				log.info("TC_01_Step_09: Lay thong tin so tai khoan the");
-				soTaiKhoanThe = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_TK_THE);
+				soTaiKhoanThe = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TK_THE);
 
 				log.info("TC_01_Step_10: Lay thong tin tinh trang the");
-				tinhTrangThe = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.TINH_TRANG_THE);
+				tinhTrangThe = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.TINH_TRANG_THE);
 
 				log.info("TC_01_Step_11: Lay thong tin so tien thanh toan trong ky sao ke: ");
-				tongSoDaTTTrongKySaoKe = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.TONG_SO_TT_SAO_KE);
+				tongSoDaTTTrongKySaoKe = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.TONG_SO_TT_SAO_KE);
 
 				log.info("TC_01_Step_12: So tien toi thieu phai thanh toan ");
-				soTienToiThieuPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_TIEN_TOI_THIEU_TT);
+				soTienToiThieuPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_TOI_THIEU_TT);
 
 				log.info("TC_01_Step_13: So tien thanh toan ");
 				vcbACreditCardPayment.scrollDownToText(driver, "Số tiền thanh toán");
-				soTienSaoKeConTT = vcbACreditCardPayment.getDynamicTextByLabel(driver,creaditCardPaymentUI.creaditCardPaymentUI.SO_TIEN_SK_TT);
+				soTienSaoKeConTT = vcbACreditCardPayment.getDynamicTextByLabel(driver,vietcombankUI.creaditCardPaymentUI.SO_TIEN_SK_TT);
 
 				log.info("TC_01_Step_14: So tien du no phai thanh toan ");
-				soTienDuNoConPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_TIEN_DU_NO_TT);
+				soTienDuNoConPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_DU_NO_TT);
 
 				log.info("TC_01_Step_15: So tien thanh toan ");
-				soTienThanhToan = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_TIEN_TT);
+				soTienThanhToan = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_TT);
 
 				if (soTienThanhToan.equals("0 VND")) {
-					vcbACreditCardPayment.scrollUpToText(driver, creaditCardPaymentUI.creaditCardPaymentUI.TT_GIAO_DICH);
+					vcbACreditCardPayment.scrollUpToText(driver, vietcombankUI.creaditCardPaymentUI.TT_GIAO_DICH);
 
 					log.info("TC_01_Step_16: Chon so the ");
 					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
@@ -907,22 +907,22 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_01_Step_18: Verify hien thi man hinh Xac nhan thong tin ");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, creaditCardPaymentUI.creaditCardPaymentUI.XAC_NHAN_TT));
+		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, vietcombankUI.creaditCardPaymentUI.XAC_NHAN_TT));
 
 		log.info("TC_01_Step_19: Xac minh tai khoan nguon: ");
-		verifyEquals(soTaiKhoan, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.TK_NGUON));
+		verifyEquals(soTaiKhoan, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.TK_NGUON));
 
 		log.info("TC_01_Step_20: Verify so the ");
-		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_THE));
+		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_THE));
 		log.info("TC_01_Step_21: Verify so tien thanh toan ");
 
-		verifyEquals(soTienDuNoConPhaiTT, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_TIEN_TT));
+		verifyEquals(soTienDuNoConPhaiTT, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_TT));
 
 		log.info("TC_01_Step_22: Click btn Tiep tuc ");
 		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_23: Xac minh man hinh  Xac thuc giao dich ");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, creaditCardPaymentUI.creaditCardPaymentUI.XAC_THUC_GD));
+		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, vietcombankUI.creaditCardPaymentUI.XAC_THUC_GD));
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
 		vcbACreditCardPayment.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
@@ -932,13 +932,13 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_26: Xac minh man hinh thong bao giao dich thanh cong");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, creaditCardPaymentUI.creaditCardPaymentUI.GD_THANH_CONG));
+		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, vietcombankUI.creaditCardPaymentUI.GD_THANH_CONG));
 
 		log.info("TC_01_Step_27: Xac minh thong tin so the ");
-		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.SO_THE));
+		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_THE));
 
 		log.info("TC_01_Step_05: Lay thong tin ma giao dich ");
-		maGiaoDich = vcbACreditCardPayment.getDynamicTextByLabel(driver, creaditCardPaymentUI.creaditCardPaymentUI.MA_GIAO_DICH);
+		maGiaoDich = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.MA_GIAO_DICH);
 	}
 
 
