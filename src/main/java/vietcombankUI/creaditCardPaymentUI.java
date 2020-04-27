@@ -1,4 +1,4 @@
-package creaditCardPaymentUI;
+package vietcombankUI;
 
 public class creaditCardPaymentUI {
 

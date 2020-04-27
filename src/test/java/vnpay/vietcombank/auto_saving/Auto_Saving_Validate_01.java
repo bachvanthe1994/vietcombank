@@ -15,7 +15,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.saving_online.SavingOnlinePageObject;
+import pageObjects.SavingOnlinePageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Auto_Saving_Data;
 import vietcombank_test_data.LogIn_Data;
