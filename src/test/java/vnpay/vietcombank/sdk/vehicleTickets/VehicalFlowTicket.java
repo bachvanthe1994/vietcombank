@@ -60,9 +60,9 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicButton("Đồng ý");
 
 	}
-
+	@Parameters({ "pass"})
 	@Test
-	public void TC_01_MuaVeXeBangPassword() {
+	public void TC_01_MuaVeXeBangPassword(String pass) {
 		log.info("============TC_01_Step_01: Kiem tra hien thi thoi gian khoi hanh");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
 		verifyEquals(DayStart, today);
@@ -249,7 +249,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("-------TC_01_Step_57 Nhap mat khau cua tai khoan");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
+		vehicalTicket.inputToDynamicInputBox(pass, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
 
 		log.info("TC_01_Step_58 Click btn Tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);

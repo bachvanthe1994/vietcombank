@@ -199,7 +199,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
-		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
@@ -429,7 +429,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
-		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
@@ -655,7 +655,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
-		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
@@ -886,7 +886,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
-		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");
@@ -1112,7 +1112,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_6: click thanh toan ngay---------------------------");
-		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("---------------------------TC_01_STEP_7: click chon tai khoan---------------------------");

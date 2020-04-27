@@ -20,7 +20,7 @@
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
 
 
-		<parameter name="deviceUDID" value="R9AMC1PZHMJ" />
+		<parameter name="deviceUDID" value="K3VDU18C04001409" />
 		<parameter name="phone" value="0904797866" />
 		<parameter name="hubURL"
 			value="http://127.0.0.1:4723/wd/hub" />
@@ -30,19 +30,6 @@
 
 		<classes>
 
-			<!-- Đặt vé xem phim -->
-
-<<<<<<< HEAD
-			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Flow_FilmTicketBooking_Part_1" 
-				/> -->
-=======
-			 <class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_SDK_Part3"/>
->>>>>>> f7338ceedabae51b1558fe1f693d1a2731554a9f
-
-
-			<!-- Đặt vé khách sạn -->
-			<!-- <class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" 
-				/> -->
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" 
 				/> -->
@@ -51,23 +38,15 @@
 			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" 
 				/> -->
 
-
 			<!-- Tiết kiệm tự động -->
-<<<<<<< HEAD
-
-			<!-- <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> 
-				<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> -->
-
-=======
-<!-- 			 <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" />  -->
-<!-- 			 <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />  -->
->>>>>>> f7338ceedabae51b1558fe1f693d1a2731554a9f
+			<!-- <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> -->
+			<!--<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> -->
 
 			<!-- Tra cứu -->
 			<!-- <class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" 
 				/> -->
-
-
+			<!-- <class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" 
+				/> -->
 
 			<!-- Thanh toán thẻ tín dụng -->
 			<!-- <class name="vnpay.vietcombank.creditCardPayment.Vcb_Flow_Credit_Card_Payment" 
@@ -82,19 +61,12 @@
 				/> -->
 
 			<!-- Chỉnh sửa điểm nổi bật -->
-			<!-- <class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" /> -->
 
+			<!-- Nạp tiề điện thoại -->
+			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 
-			 <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket" 
-				/> 
-			<!--Thanh toán cước truyền hình cap Thanh toán cước ADSL Viettel SDK mua 
-				sắm trực tuyến -->
-
-			<!--Thanh toán cước điện thoại cố định -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" 
-				/> -->
-			<!-- <class name="npay.vietcombank.sdk_train_ticket.Flow_TrainTicket" 
-				/> -->
+			<class
+				name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
 
 		</classes>
