@@ -14,7 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.saving_online.SavingOnlinePageObject;
+import pageObjects.SavingOnlinePageObject;
 import vietcombank_test_data.InterestRateCalculatePage_Data;
 
 public class InterestRate_Calculate extends Base {

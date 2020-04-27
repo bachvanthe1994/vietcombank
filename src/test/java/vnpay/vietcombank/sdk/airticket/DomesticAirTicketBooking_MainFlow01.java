@@ -1006,6 +1006,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_09_Step_29: Chon phuong thuc xac thuc SMS OTP");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink("SMS OTP");
+		fee = airTicket.getAirTicketPriceInfo1Way("Phí giao dịch", "com.VCB:id/tvPhiGiaoDich");
 
 		log.info("TC_09_Step_30: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1020,7 +1021,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
@@ -1180,6 +1181,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_11_Step_29: Chon phuong thuc xac thuc MK");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		fee = airTicket.getAirTicketPriceInfo1Way("Phí giao dịch", "com.VCB:id/tvPhiGiaoDich");
 
 		log.info("TC_11_Step_30: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1351,6 +1353,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_13_Step_29: Chon phuong thuc xac thuc SMS OTP");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink("SMS OTP");
+		fee = airTicket.getAirTicketPriceInfo1Way("Phí giao dịch", "com.VCB:id/tvPhiGiaoDich");
 
 		log.info("TC_13_Step_30: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1520,6 +1523,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_15_Step_29: Chon phuong thuc xac thuc Mat khau");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink("Mật khẩu đăng nhập");
+		fee = airTicket.getAirTicketPriceInfo1Way("Phí giao dịch", "com.VCB:id/tvPhiGiaoDich");
 
 		log.info("TC_15_Step_30: Click Tiep Tuc");
 		airTicket.clickToDynamicButton("Tiếp tục");
@@ -1537,7 +1541,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_16_DatVeMayBayQuocTeMotChieu_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_16_Step_01: Mo tab Menu");
@@ -1596,7 +1600,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		service.stop();
+		service.stop();
 	}
 
 }
