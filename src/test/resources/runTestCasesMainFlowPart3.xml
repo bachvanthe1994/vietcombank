@@ -61,15 +61,17 @@
 				/> -->
 
 			<!-- Chỉnh sửa điểm nổi bật -->
-			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
-			
-				<!-- Nạp tiề điện thoại -->
+			<!-- <class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" /> -->
+
+
+			<!-- Nạp tiề điện thoại -->
 			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 
 			<!-- <class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" 
 				/> -->
 
-
+			<class
+				name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
 		</classes>
 
 
