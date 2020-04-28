@@ -17,10 +17,10 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
-		<parameter name="deviceName" value="HUAWEI nova 3i" />
+		<parameter name="deviceName" value="Vivo V9" />
 
 
-		<parameter name="deviceUDID" value="K3VDU18C04001409" />
+		<parameter name="deviceUDID" value="585ed457" />
 		<parameter name="phone" value="0904797866" />
 		<parameter name="hubURL"
 			value="http://127.0.0.1:4723/wd/hub" />
@@ -61,12 +61,13 @@
 				/> -->
 
 			<!-- Chỉnh sửa điểm nổi bật -->
-
-			<!-- Nạp tiề điện thoại -->
+			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
+			
+				<!-- Nạp tiề điện thoại -->
 			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 
-			<class
-				name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+			<!-- <class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" 
+				/> -->
 
 
 		</classes>
