@@ -246,7 +246,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_01_Step_03: Chon nha cung cap");
 		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
 		customerID = waterBill.inputCustomerId(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
@@ -261,7 +261,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_01_Step_08: Hien thi Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_09: Hien thi ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
@@ -302,7 +302,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_01_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_21: Hien thi dung ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), moneyBill);
@@ -327,7 +327,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_07_Step_27: Chon nha cung cap");
 		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_28: Nhap ma khach hang");
 		waterBill.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/llCode");
