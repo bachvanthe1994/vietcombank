@@ -258,9 +258,6 @@ public class Television_flow extends Base {
 		String[] paymentsSplit = getPayments.split(" ");
 		payments = Double.parseDouble(paymentsSplit[0].replace(",", ""));
 
-		log.info("TC_03_STEP_8: lấy ra tên dịch vụ");
-		getService = billTelevision.getMoneyByAccount(driver, "Dịch vụ");
-
 		log.info("TC_03_STEP_9: lấy nhà cung cấp");
 		supplier = billTelevision.getMoneyByAccount(driver, "Nhà cung cấp");
 
@@ -277,12 +274,15 @@ public class Television_flow extends Base {
 
 		log.info("TC_03_STEP_13: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, "Tiếp tục");
-
+		
 		log.info("TC_03_STEP_14: điền otp");
 		billTelevision.inputToDynamicOtp(driver, otp, "Tiếp tục");
 
 		log.info("TC_03_STEP_15: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, "Tiếp tục");
+		
+		log.info("TC_01_STEP_6: lấy ra tên dịch vụ");
+		getService = billTelevision.getMoneyByAccount(driver, "Dịch vụ");
 
 		log.info("TC_03_STEP_15: lấy mã hóa đơn");
 		dealCode = billTelevision.getMoneyByAccount(driver, "Mã giao dịch");
