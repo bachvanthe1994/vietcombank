@@ -47,7 +47,7 @@ public class Water_Bills_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Hoa don tien dien");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Hoá đơn tiền nước");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán tiền nước");
 		waterBill = PageFactoryManager.getWaterBillPageObject(driver);
 
 		log.info("TC_01_Step_02: Chon tai khoan nguon");
@@ -56,8 +56,8 @@ public class Water_Bills_Flow extends Base {
 		sourceAccountMoney = waterBill.getDynamicTextByLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_01_Step_03: Chon nha cung cap");
-		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
 		customerID = waterBill.inputCustomerId(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
@@ -72,7 +72,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_01_Step_08: Hien thi Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_09: Hien thi ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
@@ -113,7 +113,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_01_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_21: Hien thi dung ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), moneyBill);
@@ -137,8 +137,8 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Số dư khả dụng"), addCommasToLong(sourceAccountMoney) + " VND");
 
 		log.info("TC_07_Step_27: Chon nha cung cap");
-		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_28: Nhap ma khach hang");
 		waterBill.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/llCode");
@@ -148,7 +148,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_30: Hien thi thong bao Ma khach hang khong con no truoc");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Electric_Bills_Data.VALIDATE.ELECTRIC_BILL_MESSAGE);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Water_Bills_Data.DATA.BILL_MESSAGE);
 
 		log.info("TC_01_Step_31: Click nut Dong tat pop-up");
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -204,7 +204,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_02_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_02_Step_15: Hien thi dung Ma khach hang");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
@@ -236,7 +236,7 @@ public class Water_Bills_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_03_Step_01: Hoa don tien dien");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Hoá đơn tiền nước");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán tiền nước");
 		waterBill = PageFactoryManager.getWaterBillPageObject(driver);
 
 		log.info("TC_03_Step_02: Chon tai khoan nguon");
@@ -245,8 +245,8 @@ public class Water_Bills_Flow extends Base {
 		sourceAccountMoney = waterBill.getDynamicTextByLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_03_Step_03: Chon nha cung cap");
-		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_03_Step_04: Nhap ma khach hang va an tiep tuc");
 		customerID = waterBill.inputCustomerId(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
@@ -261,7 +261,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_03_Step_08: Hien thi Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_03_Step_09: Hien thi ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
@@ -302,10 +302,10 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_03_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_03_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), moneyBill);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
 
 		log.info("TC_03_Step_22: Hien thi ma giao dich");
 		transactionID = waterBill.getDynamicTextByLabel(driver, "Mã giao dịch");
@@ -326,8 +326,8 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Số dư khả dụng"), addCommasToLong(sourceAccountMoney) + " VND");
 
 		log.info("TC_03_Step_27: Chon nha cung cap");
-		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_03_Step_28: Nhap ma khach hang");
 		waterBill.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/llCode");
@@ -337,7 +337,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_03_Step_30: Hien thi thong bao Ma khach hang khong con no truoc");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Electric_Bills_Data.VALIDATE.ELECTRIC_BILL_MESSAGE);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Water_Bills_Data.DATA.BILL_MESSAGE);
 
 		log.info("TC_03_Step_31: Click nut Dong tat pop-up");
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -393,7 +393,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
 
 		log.info("TC_04_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_04_Step_15: Hien thi dung Ma khach hang");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
