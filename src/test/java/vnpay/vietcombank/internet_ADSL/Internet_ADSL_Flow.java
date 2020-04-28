@@ -588,7 +588,7 @@ public class Internet_ADSL_Flow extends Base {
 
 	}
 
-	@Parameters({ "otp" })
+//	@Parameters({ "otp" })
 //	@Test
 	public void TC_07_ThanhToanCuocFPTXacThucOTP(String otp) {
 		log.info("TC_07_Step_Click cuoc ADSL");

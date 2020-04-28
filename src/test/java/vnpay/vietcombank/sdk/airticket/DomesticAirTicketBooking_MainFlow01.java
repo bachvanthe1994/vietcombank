@@ -24,7 +24,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 	private HomePageObject homePage;
 	private TransactionReportPageObject transactionReport;
 	private DynamicAirTicketBookingObjects airTicket;
-	private String fifthDay = getForWardDay(5);
+	private String fifthDay = getForWardDay(6);
 	private String ticketPrice, payID, transactionID, fee, sourceDetail, source, destDetail, dest, time, flightCode, departureTime, arrivalTime, duration;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -45,8 +45,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 	}
 
-	// Lỗi ở phần thanh toán , hiển thị thông báo Dịch vụ không thực hiện được trong
-	// lúc này
 	@Parameters({ "otp" })
 	@Test
 	public void TC_01_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanOTP(String otp) {
