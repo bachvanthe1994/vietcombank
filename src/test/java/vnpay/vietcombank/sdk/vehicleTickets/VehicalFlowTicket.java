@@ -492,13 +492,6 @@ public class VehicalFlowTicket extends Base {
 		log.info("-----------------TC_04_Step_02_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 
-		log.info("TC_04_Step_02: Click chọn mục Tiền ra ");
-		vehicalTicket.clickToDynamicText("Tiền ra");
-
-
-		log.info("-------------TC_04_Step_03_Chuyen sang man hinh dat ve ");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
-
 		log.info("------------TC_04_Step_04_Click btn menu");
 		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
 

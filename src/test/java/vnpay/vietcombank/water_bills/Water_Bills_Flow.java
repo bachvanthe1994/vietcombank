@@ -116,7 +116,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), moneyBill);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
 
 		log.info("TC_01_Step_22: Hien thi ma giao dich");
 		transactionID = waterBill.getDynamicTextByLabel(driver, "Mã giao dịch");

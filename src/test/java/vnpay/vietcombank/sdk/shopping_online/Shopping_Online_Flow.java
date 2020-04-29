@@ -57,7 +57,7 @@ public class Shopping_Online_Flow extends Base {
 	@Test
 	public void TC_01_ChonMuaMotSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
 		log.info("---------------------------TC_01_STEP_2: Them vao gio hang--------------------------------------");
-		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicTextContains("Xem tất cả");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
@@ -72,7 +72,7 @@ public class Shopping_Online_Flow extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
 
 		log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
@@ -83,7 +83,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -166,7 +166,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -282,7 +282,7 @@ public class Shopping_Online_Flow extends Base {
 	@Test
 	public void TC_02_ChonMuaNhieuSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
 		log.info("---------------------------TC_01_STEP_2: Them vao gio hang--------------------------------------");
-		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicTextContains("Xem tất cả");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
@@ -310,7 +310,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -396,7 +396,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -513,7 +513,7 @@ public class Shopping_Online_Flow extends Base {
 //	@Test
 	public void TC_03_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_01_STEP_2: Them vao gio hang--------------------------------------");
-		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicTextContains("Xem tất cả");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
@@ -539,7 +539,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -622,7 +622,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -739,7 +739,7 @@ public class Shopping_Online_Flow extends Base {
 
 	public void TC_04_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		log.info("---------------------------TC_01_STEP_2: Them vao gio hang--------------------------------------");
-		shopping.clickToDynamicCategories("Xem tất cả");
+		shopping.clickToDynamicTextContains("Xem tất cả");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
@@ -767,7 +767,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -853,7 +853,7 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
@@ -996,7 +996,7 @@ public class Shopping_Online_Flow extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
+		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
 		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
@@ -1079,14 +1079,13 @@ public class Shopping_Online_Flow extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToText( "Giao hàng tiêu chuẩn");
+			shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
 			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
 				feeShipping = feeShipping.replace("Miễn phí", "0");
 				feeShippingD = 0;
 
-			} else {
 				feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
 				feeShippingD = Double.parseDouble(feeShipping);
 
