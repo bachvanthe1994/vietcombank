@@ -31,47 +31,42 @@
 		<classes>
 
 			<!-- Mua sắm trực tuyến -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" 
-				/> -->
+		<!--	<class
+				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" /> -->
 
 			<!-- Đặt vé xe -->
-			<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" 
-				/> -->
-
+		<!-- <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" 
+				/>  -->
 			<!-- Tiết kiệm tự động -->
-			<!-- <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> -->
-			<!--<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> -->
+		<!-- <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />-->
+		<!--	 <class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" 
+				/>-->
+
 
 			<!-- Tra cứu -->
-			<!-- <class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" 
+				<!-- <class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" 
 				/> -->
 			<!-- <class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" 
 				/> -->
 
 			<!-- Thanh toán thẻ tín dụng -->
-			<!-- <class name="vnpay.vietcombank.creditCardPayment.Vcb_Flow_Credit_Card_Payment" 
-				/> -->
-
-			<!-- Thanh toán hóa đơn truyền hình cáp -->
-			<!-- <class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" 
-				/> -->
+			<!--	 <class name="vnpay.vietcombank.creditCardPayment.Vcb_Flow_Credit_Card_Payment" /> -->
 
 			<!-- Điểm thanh toán QR code -->
-			<!-- <class name="vnpay.vietcombank.location_QR_Code.Location_QRCode_Flow" 
-				/> -->
+		<!-- <class name="vnpay.vietcombank.location_QR_Code.Location_QRCode_Flow" /> -->
 
 			<!-- Chỉnh sửa điểm nổi bật -->
-			<!-- <class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" /> -->
+		<!--	<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" /> -->
+			
+         <!-- Thanh toán tiền nước -->
+			 <!--<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
 
-
-			<!-- Nạp tiề điện thoại -->
-			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
-
-			<!-- <class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" 
+         <!-- Thanh toán tiền điện -->
+          <!--    <class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" /> -->
+              
+              <!-- Thanh toán hóa đơn truyền hình cáp -->
+		<!--	<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" 
 				/> -->
-
-			<class
-				name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
 		</classes>
 
 
