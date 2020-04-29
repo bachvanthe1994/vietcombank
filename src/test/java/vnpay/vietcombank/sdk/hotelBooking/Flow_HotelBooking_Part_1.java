@@ -24,7 +24,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 	private String transferTime, transactionNumber, ticketCode;
 	private long surplus, availableBalance, actualAvailableBalance, fee, money;
 	String password = "";
-	
+
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 
 	@BeforeClass
@@ -42,15 +42,15 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		login.Global_login(phone, pass, opt);
 
 		password = pass;
-		
+
 		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
-		
+
 	}
 
 	String paycode = "";
 	String totalPrice = "";
 
-	@Test
+//	@Test
 	public void TC_01_DatPhongKhachSan() {
 		log.info("TC_01_01_Click Dat phong khach san");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
@@ -71,7 +71,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicTextView("ĐẶT PHÒNG");
 
 		money = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getTextViewByID("com.VCB:id/tvTotalPrice"));
-		
+
 		log.info("TC_01_06_Nhap ten khach hang");
 		hotelBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
 
@@ -92,10 +92,10 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_01_11_Kiem tra thong tin hoa don");
 		hotelBooking.scrollDownToButton(driver, "Tiếp tục");
-	
+
 		log.info("TC_01_12_Click Tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
-		
+
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
 		hotelBooking.clickToDynamicDropDown("Chọn phương thức xác thực");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
@@ -106,7 +106,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_01_15_Nhap ma OTP chinh xac");
 		hotelBooking.inputToDynamicPopupPasswordInput(password, "Tiếp tục");
-		
+
 		log.info("TC_01_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
@@ -115,18 +115,18 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		transferTime = hotelBooking.getTransferTimeSuccess("THANH TOÁN THÀNH CÔNG");
 		transactionNumber = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		ticketCode = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã nhận phòng");
-		
+
 		log.info("TC_01_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(hotelBooking.isDynamicButtonDisplayed("Thực hiện giao dịch mới"));
-		
+
 		log.info("TC_01_26_Click Thuc hien giao dich moi");
 		hotelBooking.clickToDynamicButton("Thực hiện giao dịch mới");
-		
+
 		log.info("TC_01_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
 		availableBalance = canculateAvailableBalances(surplus, money, fee);
 	}
-	
-	@Test
+
+//	@Test
 	public void TC_02_DatPhongKhachSan_BaoCaoGiaoDich() {
 		log.info("TC_02_1: Click  nut Back");
 		hotelBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
@@ -145,13 +145,13 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_02_6: Click Chon Tai Khoan");
 		hotelBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
-		
+
 		log.info("TC_02_7: Lay so du kha dung luc sau");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
-		
+
 		log.info("TC_02_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
-		
+
 		log.info("TC_02_9: Chon tai Khoan chuyen");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
@@ -161,38 +161,38 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		log.info("TC_02_11: Kiem tra ngay tao giao dich hien thi");
 		String reportTime1 = hotelBooking.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
-		
+
 		log.info("TC_02_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(hotelBooking.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(money + "") + " VND"));
-		
+
 		log.info("TC_02_13: Click vao giao dich");
 		hotelBooking.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		
+
 		log.info("TC_02_14: Kiem tra thoi gian tao giao dich hien thi");
 		String reportTime2 = hotelBooking.getDynamicTextInTransactionDetail("Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_02_15: Kiem tra ma giao dich");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Số lệnh giao dịch"), transactionNumber);
-		
+
 		log.info("TC_02_16: Kiem tra so tai khoan trich no");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		log.info("TC_02_17: Kiem tra ma nhan phong");
-		
+
 		log.info("TC_02_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(hotelBooking.getDynamicTextInTransactionDetail("Số tiền giao dịch").contains(addCommasToLong(money + "") + " VND"));
-		
+
 		log.info("TC_02_19: Kiem tra so tien phi");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Số tiền phí"), addCommasToLong(fee + "") + " VND");
-		
+
 		log.info("TC_02_20: Kiem tra loai giao dich");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Loại giao dịch"), "Thanh toán đặt phòng khách sạn");
-		
+
 		log.info("TC_02_21: Kiem tra noi dung giao dich");
 		String note = "MBVCB" + transactionNumber + ". thanh toan phong khach san VNP";
 		verifyTrue(hotelBooking.getDynamicTextInTransactionDetail("Nội dung giao dịch").contains(note));
-		
+
 		log.info("TC_02_22: Click  nut Back");
 		hotelBooking.clickToDynamicBackIcon("Chi tiết giao dịch");
 
@@ -201,9 +201,9 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_02_24: Click  nut Home");
 		hotelBooking.clickToDynamicImageViewByID("com.VCB:id/menu_1");
-		
+
 	}
-	
+
 	@Test
 	public void TC_03_DatPhongKhachSan_ThanhToanOTP() {
 		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
@@ -227,7 +227,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicTextView("ĐẶT PHÒNG");
 
 		money = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getTextViewByID("com.VCB:id/tvTotalPrice"));
-		
+
 		log.info("TC_03_06_Nhap ten khach hang");
 		hotelBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
 
@@ -248,10 +248,10 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_03_11_Kiem tra thong tin hoa don");
 		hotelBooking.scrollDownToButton(driver, "Tiếp tục");
-	
+
 		log.info("TC_03_12_Click Tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
-		
+
 		log.info("TC_03_13_Chon phuong thuc xac thuc");
 		hotelBooking.clickToDynamicDropDown("Chọn phương thức xác thực");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
@@ -262,7 +262,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_03_15_Nhap ma OTP chinh xac");
 		hotelBooking.inputToDynamicOtp(LogIn_Data.Login_Account.OTP, "Tiếp tục");
-		
+
 		log.info("TC_03_16_Click tiep tuc");
 		hotelBooking.clickToDynamicButton("Tiếp tục");
 
@@ -271,17 +271,17 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		transferTime = hotelBooking.getTransferTimeSuccess("THANH TOÁN THÀNH CÔNG");
 		transactionNumber = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 		ticketCode = hotelBooking.getDynamicTextInTransactionDetail(driver, "Mã nhận phòng");
-		
+
 		log.info("TC_03_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(hotelBooking.isDynamicButtonDisplayed("Thực hiện giao dịch mới"));
-		
+
 		log.info("TC_03_26_Click Thuc hien giao dich moi");
 		hotelBooking.clickToDynamicButton("Thực hiện giao dịch mới");
-		
+
 		log.info("TC_03_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
 		availableBalance = canculateAvailableBalances(surplus, money, fee);
 	}
-	
+
 	@Test
 	public void TC_04_DatPhongKhachSan_ThanhToanOTP_BaoCaoGiaoDich() {
 		log.info("TC_04_1: Click  nut Back");
@@ -301,13 +301,13 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_04_6: Click Chon Tai Khoan");
 		hotelBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
-		
+
 		log.info("TC_04_7: Lay so du kha dung luc sau");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2));
-		
+
 		log.info("TC_04_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
-		
+
 		log.info("TC_04_9: Chon tai Khoan chuyen");
 		hotelBooking.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
@@ -317,38 +317,38 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		log.info("TC_04_11: Kiem tra ngay tao giao dich hien thi");
 		String reportTime1 = hotelBooking.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
-		
+
 		log.info("TC_04_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(hotelBooking.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(money + "") + " VND"));
-		
+
 		log.info("TC_04_13: Click vao giao dich");
 		hotelBooking.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		
+
 		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
 		String reportTime2 = hotelBooking.getDynamicTextInTransactionDetail("Thời gian giao dịch");
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_04_15: Kiem tra ma giao dich");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Số lệnh giao dịch"), transactionNumber);
-		
+
 		log.info("TC_04_16: Kiem tra so tai khoan trich no");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
-		
+
 		log.info("TC_04_17: Kiem tra ma nhan phong");
-		
+
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(hotelBooking.getDynamicTextInTransactionDetail("Số tiền giao dịch").contains(addCommasToLong(money + "") + " VND"));
-		
+
 		log.info("TC_04_19: Kiem tra so tien phi");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Số tiền phí"), addCommasToLong(fee + "") + " VND");
-		
+
 		log.info("TC_04_20: Kiem tra loai giao dich");
 		verifyEquals(hotelBooking.getDynamicTextInTransactionDetail("Loại giao dịch"), "Thanh toán đặt phòng khách sạn");
-		
+
 		log.info("TC_04_21: Kiem tra noi dung giao dich");
 		String note = "MBVCB" + transactionNumber + ". thanh toan phong khach san VNP";
 		verifyTrue(hotelBooking.getDynamicTextInTransactionDetail("Nội dung giao dịch").contains(note));
-		
+
 		log.info("TC_04_22: Click  nut Back");
 		hotelBooking.clickToDynamicBackIcon("Chi tiết giao dịch");
 
@@ -357,9 +357,8 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_04_24: Click  nut Home");
 		hotelBooking.clickToDynamicImageViewByID("com.VCB:id/menu_1");
-		
-	}
 
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {

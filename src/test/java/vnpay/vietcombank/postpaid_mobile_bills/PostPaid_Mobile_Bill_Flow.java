@@ -446,8 +446,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-	@Parameters({ "otp" })
-	@Test
+//	@Parameters({ "otp" })
+//	@Test
 	public void TC_05_CuocDiDongTraSau_Mobifone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -470,7 +470,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
 
 		log.info("TC_03_Step_05: Nhap so dien thoai va an tiep tuc");
-		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_VINAPHONE_MOBILE);
+		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_MOBIFONE_MOBILE);
 
 		log.info("TC_05_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
@@ -580,7 +580,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_06_CuocDiDongTraSau_Mobifone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Mo tab Menu");
@@ -852,8 +852,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-	@Parameters({ "pass" })
-	@Test
+//	@Parameters({ "pass" })
+//	@Test
 	public void TC_09_CuocDiDongTraSau_Vinaphone_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -987,7 +987,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_10_CuocDiDongTraSau_Vinaphone_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
