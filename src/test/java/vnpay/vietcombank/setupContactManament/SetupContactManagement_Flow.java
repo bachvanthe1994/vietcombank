@@ -85,17 +85,14 @@ public class SetupContactManagement_Flow extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_13: Click button chia se");
-		transferInVCB.clickToDynamicIcon(driver, "Lưu thụ hưởng");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		transferInVCB.clickToTextID(driver, "com.VCB:id/tvSaveContact");
+		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
 
 		log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Lưu vào thư viện ảnh thành công");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
 
 		log.info("TC_01_Step_16: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
-
-		log.info("TC_01_Step_16: Click thực hiện giao dịch mới");
-		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_01_Step_17: Quay lai man home");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
