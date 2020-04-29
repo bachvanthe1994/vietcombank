@@ -268,9 +268,9 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	public String getDynamicTextFeeShipping(String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
-		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER_VIEW, dynamicTextValue);
 		if (status == true) {
-			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER_VIEW, dynamicTextValue);
 			
 		}
 		return text;
@@ -368,8 +368,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			return driver.getPageSource().contains(dynamicText);
 		}
 		/* SCROLL DOWN */
-		public void scrollDownToText( String dynamicText) {
-			scrollIDown(driver, ShoppingOnlinePageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+		public void scrollDownToViewText( String dynamicText) {
+			scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
 
 		}
 
