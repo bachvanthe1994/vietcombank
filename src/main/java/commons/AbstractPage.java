@@ -2692,45 +2692,5 @@ public class AbstractPage {
 		}
 		return text;
 	}
-	
-//	public void chooseSourceAccount(AppiumDriver<MobileElement> driver, long expVal, String... dynamicValue) {
-//		String valueCurrent = "";
-//		List<String> listSoduCurrent = new ArrayList<String>();
-//		List<String> tempList1 = new ArrayList<String>();
-//		List<String> tempList2 = new ArrayList<String>();
-//		boolean check = true;
-//		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_AVAILABLE_BALANCE, dynamicValue);
-//		if (status) {
-//			tempList1 = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_AVAILABLE_BALANCE, dynamicValue);
-//			tempList2 = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_AVAILABLE_BALANCE, dynamicValue);
-//			while (check) {
-//				for (int i = 0; i < tempList1.size(); i++) {
-//					if (!listSoduCurrent.contains(tempList1.get(i))) {
-//						listSoduCurrent.add((tempList1.get(i).replaceAll(",", "")));
-//					}
-//
-//				}
-////				swipeElementToElement(driver, DynamicPageUIs.DYNAMIC_TEXT, DynamicPageUIs.DYNAMIC_TEXT,
-////						tempList1.get(tempList1.size() - 1), "Số dư");
-//				tempList1 = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_AVAILABLE_BALANCE, dynamicValue);
-//				if (tempList1.equals(tempList2)) {
-//					break;
-//				} else {
-//					tempList2 = tempList1;
-//				}
-//			}
-//		}
-//		for (int i = 0; i < listSoduCurrent.size(); i++) {
-//			if (Long.parseLong(listSoduCurrent.get(i)) > expVal) {
-//				valueCurrent = listSoduCurrent.get(i);
-//				valueCurrent = Base.addCommasToLong(valueCurrent);
-//				break;
-//			} else {
-//				continue;
-//			}
-//		}
-//		clickToDynamicTSextViewByText(driver, valueCurrent);
-//
-//	}
 
 }
