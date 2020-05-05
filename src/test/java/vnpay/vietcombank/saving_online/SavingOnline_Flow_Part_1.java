@@ -54,7 +54,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 	private long surplus, availableBalance, actualAvailableBalance;
 
-	@Test
+//	@Test
 	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
@@ -136,7 +136,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Mở tài khoản tiết kiệm");
@@ -204,7 +204,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 		String savingDate = "";
 		String expiredDate = "";
@@ -288,7 +288,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, "Tất toán tài khoản tiết kiệm");

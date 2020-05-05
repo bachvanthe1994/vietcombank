@@ -16,8 +16,8 @@ import io.appium.java_client.MobileElement;
 import model.FilmInfo;
 import model.FilmTicketInfo;
 import model.SeatType;
-import pageObjects.ConfirmMethodObject;
 import pageObjects.LogInPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
@@ -41,7 +41,7 @@ import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
-	private ConfirmMethodObject smartOTP;
+	private SettingVCBSmartOTPPageObject smartOTP;
 	private TrainTicketPageObject trainTicket;
 	private DynamicAirTicketBookingObjects airTicket;
 	private FilmTicketBookingPageObject filmTicketBooking;
@@ -69,7 +69,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		smartOTP = PageFactoryManager.getConfirmMethodObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		trainTicket = PageFactoryManager.getTrainTicketPageObject(driver);
 		airTicket = PageFactoryManager.getDynamicAirTicketBooking(driver);
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);

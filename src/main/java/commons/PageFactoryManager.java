@@ -210,7 +210,7 @@ public class PageFactoryManager {
 		return new CheckOnlineObject(driver);
 	}
 
-	public static SettingVCBSmartOTPPageObject getLocationSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
+	public static SettingVCBSmartOTPPageObject getSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
 		return new SettingVCBSmartOTPPageObject(driver);
 	}
 
@@ -219,9 +219,6 @@ public class PageFactoryManager {
 		return new WaterBillPageObject(driver);
 	}
 	
-	public static ConfirmMethodObject getConfirmMethodObject(AppiumDriver<MobileElement> driver) {
-		return new ConfirmMethodObject(driver);
-	}
 	
 	
 	

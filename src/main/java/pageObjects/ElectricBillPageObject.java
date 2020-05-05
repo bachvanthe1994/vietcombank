@@ -47,5 +47,34 @@ public class ElectricBillPageObject extends AbstractPage {
 		}
 		return customerID;
 	}
+	
+	public String inputCustomerIdtoUpperCase(List<String> listCustomer) {
+
+		String customerID = "";
+		boolean check = false;
+		for (String customer : listCustomer) {
+			inputToDynamicEditviewByLinearlayoutId(driver, customer.toUpperCase(), "com.VCB:id/llCode");
+			clickToDynamicButton(driver, "Tiếp tục");
+
+			overRideTimeOut(driver, 5);
+			String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Xác nhận thông tin");
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+
+			customerID = customer;
+			if (elementsOne.size() > 0) {
+				check = true;
+				break;
+			} else {
+				clickToDynamicButton(driver, "Đóng");
+				continue;
+			}
+
+		}
+		overRideTimeOut(driver, Constants.LONG_TIME);
+		if (!check) {
+			throw new SkipException("Khong co hoa don nao de thanh toan");
+		}
+		return customerID;
+	}
 
 }
