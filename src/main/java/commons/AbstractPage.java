@@ -2692,5 +2692,30 @@ public class AbstractPage {
 		}
 		return text;
 	}
+	
+	// lấy text thông báo chọn tài khoản mạc định thành công
+		public String getDynamicTextView(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+			boolean status = false;
+			String text = null;
+			status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_VIEW, dynamicTextValue);
+			if (status == true) {
+				text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_VIEW, dynamicTextValue);
+
+			}
+			return text;
+		}
+		
+		
+	// lấy số tài khoản ngoài màn hinh chính
+			public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID) {
+				boolean status = false;
+				String text = null;
+				status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
+				if (status == true) {
+					text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
+
+				}
+				return text;
+			}
 
 }
