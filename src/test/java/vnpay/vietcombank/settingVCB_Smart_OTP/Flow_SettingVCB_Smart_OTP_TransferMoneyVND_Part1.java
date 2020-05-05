@@ -14,10 +14,10 @@ import io.appium.java_client.MobileElement;
 import model.TransferCharity;
 import model.TransferInVCBRecurrent;
 import model.TransferOutSideVCB_Info;
-import pageObjects.ConfirmMethodObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferMoneyCharityPageObject;
@@ -40,7 +40,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
-	private ConfirmMethodObject smartOTP;
+	private SettingVCBSmartOTPPageObject smartOTP;
 	private TransferMoneyObject transferMoney;
 	private TransferMoneyInVcbPageObject transferInVCB;
 	private TransferMoneyInVcbPageObject transferRecurrent;
@@ -76,7 +76,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 
-		smartOTP = PageFactoryManager.getConfirmMethodObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);

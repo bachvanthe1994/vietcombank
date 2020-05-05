@@ -50,5 +50,35 @@ public class PostpaidMobileBillPageObject extends AbstractPage {
 		}
 		return phoneNumber;
 	}
+	
+public String inputPhoneNumberPostPaidMobiletoUpperCase(List<String> listPhone) {
+		
+		String phoneNumber="";
+		boolean check = false;
+		for (String phone : listPhone) {
+			inputToDynamicEditviewByLinearlayoutId(driver, phone.toUpperCase(), "com.VCB:id/llCode");
+			clickToDynamicButton(driver, "Tiếp tục");
+			
+			overRideTimeOut(driver, 5);
+			String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Xác nhận thông tin");
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+			
+			phoneNumber = phone;
+			if(elementsOne.size() > 0) {
+				check = true;
+				break;
+			}
+			else{
+				clickToDynamicButton(driver, "Đóng");
+				continue;
+			}
+			
+		}
+		overRideTimeOut(driver, Constants.LONG_TIME);
+		if (!check) {
+			throw new SkipException("Khong co hoa don nao de thanh toan");
+		}
+		return phoneNumber;
+	}
 
 }

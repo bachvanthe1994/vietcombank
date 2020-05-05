@@ -48,6 +48,35 @@ public class InternetADSLPageObject extends AbstractPage {
 		}
 
 	}
+	
+	public void inputCustomerCodeToUpperCase(List<String> codeCustomer) {
+		boolean check = false;
+		for (String code : codeCustomer) {
+			inputIntoEditTextByID(driver, code.toUpperCase(), "com.VCB:id/code");
+			clickToDynamicButton(driver, "Tiếp tục");
+
+			overRideTimeOut(driver, 5);
+			String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Xác nhận thông tin");
+			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
+
+			if (elementsOne.size() > 0) {
+				check = true;
+				codeADSL = code;
+				break;
+			}
+
+			else {
+				clickToDynamicButton(driver, "Đóng");
+				continue;
+			}
+
+		}
+		overRideTimeOut(driver, Constants.LONG_TIME);
+		if (!check) {
+			throw new RuntimeException("Khong co hoa don nao de thanh toan");
+		}
+
+	}
 
 	// Click image back, trong trường hợp auto click 1 lần không được
 	public void clickImageBack(String dymanicText) {
