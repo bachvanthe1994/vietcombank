@@ -48,7 +48,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
 	public static final String DYNAMIC_TEXT_PRECEDING_TEXT = "//android.widget.TextView[@text = '%s']//preceding-sibling::android.widget.TextView[@index ='%s']";
 	public static final String DYNAMIC_TEXT_FOLLOWING_TEXT = "//android.widget.TextView[@text = '%s']//following-sibling::android.widget.TextView[@index ='%s']";
-
+	public static final String DYNAMIC_TEXT_AVAILABLE_BALANCE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.TextView[@index='0']";
 	
 
 	public static final String DYNAMIC_BTN_BACK = "//android.view.ViewGroup//android.widget.TextView[contains(text(),'%s')]//preceding::android.widget.ImageView";
