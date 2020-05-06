@@ -129,9 +129,6 @@ public class TransferIdentity_flow2 extends Base {
 	log.info("TC_15_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_15_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_15_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -287,9 +284,6 @@ public class TransferIdentity_flow2 extends Base {
 
 	log.info("TC_17_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_17_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_17_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
@@ -447,9 +441,6 @@ public class TransferIdentity_flow2 extends Base {
 	log.info("TC_19_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_19_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_19_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -605,9 +596,6 @@ public class TransferIdentity_flow2 extends Base {
 
 	log.info("TC_21_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_21_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_21_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
@@ -765,9 +753,6 @@ public class TransferIdentity_flow2 extends Base {
 	log.info("TC_23_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_23_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_23_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -920,10 +905,7 @@ public class TransferIdentity_flow2 extends Base {
 
 	log.info("TC_25_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_25_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
+	
 	log.info("TC_25_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -1076,9 +1058,6 @@ public class TransferIdentity_flow2 extends Base {
 
 	log.info("TC_27_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_27_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_27_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
@@ -1233,9 +1212,6 @@ public class TransferIdentity_flow2 extends Base {
 	log.info("TC_29_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_29_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_29_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -1389,8 +1365,6 @@ public class TransferIdentity_flow2 extends Base {
 	log.info("TC_31_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_31_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_31_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");

@@ -54,7 +54,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-//    @Test
+    @Test
     public void TC_01_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiChuyenTraPhi(String pass) {
 	log.info("TC_01_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -144,7 +144,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-//    @Test
+    @Test
     public void TC_02_BaoCaoChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMK() {
 	log.info("TC_02_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -201,7 +201,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-//    @Test
+    @Test
     public void TC_03_ChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi(String pass) {
 	log.info("TC_03_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -296,7 +296,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-//    @Test
+    @Test
     public void TC_04_BaoCaoChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi() {
 	log.info("TC_04_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -355,7 +355,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "otp" })
-//    @Test
+    @Test
     public void TC_05_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangOTPNguoiChuyenTraPhi(String otp) {
 	log.info("TC_05_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -428,8 +428,8 @@ public class TransferIdentity_flow extends Base {
 	String getDate = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 	transferDate = getDate.split(" ");
 
-	log.info("TC_01_STEP_19: lấy mã giao dịch");
-	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
+	log.info("TC_05_STEP_18: lấy tên người hưởng");
+	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
 	log.info("TC_05_STEP_22: chọn thực hiện giao dịch mới");
 	trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");

@@ -21,6 +21,7 @@ import pageObjects.NotifyManagementPageObject;
 import pageObjects.OnlineTopupPageObject;
 import pageObjects.PayBillTelevisionPageObject;
 import pageObjects.PostpaidMobileBillPageObject;
+import pageObjects.QRCodePageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingOnlinePageObject;
@@ -210,7 +211,7 @@ public class PageFactoryManager {
 		return new CheckOnlineObject(driver);
 	}
 
-	public static SettingVCBSmartOTPPageObject getLocationSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
+	public static SettingVCBSmartOTPPageObject getSettingVCBSmartOTPPageObject(AppiumDriver<MobileElement> driver) {
 		return new SettingVCBSmartOTPPageObject(driver);
 	}
 
@@ -219,10 +220,9 @@ public class PageFactoryManager {
 		return new WaterBillPageObject(driver);
 	}
 	
-	public static ConfirmMethodObject getConfirmMethodObject(AppiumDriver<MobileElement> driver) {
-		return new ConfirmMethodObject(driver);
+	public static QRCodePageObject getQRCodePageObject(AppiumDriver<MobileElement> driver) {
+		return new QRCodePageObject(driver);
 	}
-	
 	
 	
 

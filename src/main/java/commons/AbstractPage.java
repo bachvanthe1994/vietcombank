@@ -908,6 +908,16 @@ public class AbstractPage {
 
 		}
 	}
+	
+	public void clickToDynamicImageButtonByContentDesc(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON_BY_CONTENT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON_BY_CONTENT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON_BY_CONTENT, dynamicTextValue);
+
+		}
+	}
 
 	public void clickToDynamicTextContains(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;

@@ -36,7 +36,7 @@ import vietcombank_test_data.SettingVCBSmartOTP_Data;
 import vietcombank_test_data.Water_Bills_Data;
 
 
-public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
+public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private SettingVCBSmartOTPPageObject smartOTP;
@@ -135,7 +135,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 	// Thanh Toan ADSL
 	//Lỗi app không hiển thị PTXT smart OTP
-	//@Test
+	@Test
 	@Parameters({ "pass" })
 	public void TC_02_ThanhToanCuocViettelXacThucSmartOTP(String pass) throws InterruptedException {
 		log.info("TC_01_Step_Click cuoc ADSL");
@@ -155,7 +155,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 
 		log.info("TC_01_Input ma khach hang");
-		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
+		ADSL.inputCustomerCodeToUpperCase(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_01_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_Kiem tra tai khoan nguon");
@@ -211,7 +211,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
 
 		log.info("TC_01_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
+		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_01_Step_:Lay ma giao dich");
 		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
@@ -234,7 +234,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 	//Thanh toan tien nước
 	@Parameters("otp")
-	//@Test
+	@Test
 	public void TC_03_ThanhToanTienNuoc_SmartOTP(String otp) throws InterruptedException {
 		log.info("TC_01_Step_01: Hoa don tien dien");
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán tiền nước");
@@ -250,7 +250,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
-		customerID = waterBill.inputCustomerId(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
+		customerID = waterBill.inputCustomerIdToUpperCase(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
 
 		log.info("TC_01_Step_05: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
@@ -366,7 +366,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		List<String> data = PayBillTelevison_Data.inputData.CODE_CUSTOMER;
 		for (int i = 0; i < data.size(); i++) {
 			log.info("TC_01_STEP_2: điền mã khách hàng");
-			billTelevision.inputIntoEditTextByID(driver, data.get(i), "com.VCB:id/code");
+			billTelevision.inputIntoEditTextByID(driver, data.get(i).toUpperCase(), "com.VCB:id/code");
 
 			log.info("TC_01_STEP_3: chọn tiếp tục");
 			billTelevision.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
@@ -440,7 +440,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	}
 	
 	//Thanh toán tiền điện
-	//@Test --Không có mã
+	//@Test Không có mã
 	@Parameters({ "otp" })
 	public void TC_05_ThanhToanTienDien_SmartOTP(String otp) throws InterruptedException {
 		log.info("TC_01_Step_01: Hoa don tien dien");
@@ -456,7 +456,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
-		customerID = electricBill.inputCustomerId(Electric_Bills_Data.DATA.LIST_CUSTOMER_ID);
+		customerID = electricBill.inputCustomerIdtoUpperCase(Electric_Bills_Data.DATA.LIST_CUSTOMER_ID);
 
 		log.info("TC_01_Step_05: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
@@ -578,7 +578,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
 
 		log.info("TC_01_Step_05: Nhap so dien thoai va an tiep tuc");
-		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_VIETTEL_MOBILE);
+		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobiletoUpperCase(Postpaid_Mobile_Bill_Data.DATA.LIST_VIETTEL_MOBILE);
 
 		log.info("TC_01_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
@@ -774,206 +774,36 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		verifyEquals(actualAvailableBalance, availableBalance);
 
 	}
-
-	//Nạp thẻ điện thoại   ---OK
-	//@Test
-	@Parameters({ "pass","phone" })
-	public void TC_08_NapTheDienThoai_GiaTriMin_QuaMK(String pass, String phone) throws InterruptedException {
-		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
 	
-		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
-
-		log.info("TC_01_Step_03: Chon tai khoan nguon");
-		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-
-		log.info("TC_01_Step_04: Click vao menh gia 30,000");
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[0]);
-
-		log.info("TC_01_Step_05: An nut 'Tiep tuc'");
-		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-
-		log.info("TC_01_Step_06: Chon phuong thuc xac thuc SMS OTP");
-		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
-		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
-
-		log.info("TC_01_Step_07: An nut 'Tiep tuc'");
-		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_01_Step_Nhap ma xac thuc");
-		mobileTopup.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
-		log.info("TC_01_Step_Tiep tuc");
-		mobileTopup.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		mobileTopup.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_01_Step_10: Lay ma giao dich roi an nut tiep tuc");
-		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
-		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_01_Step_11: Xac nhan so tien o tai khoan nguon bi tru dung");
-		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
-		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
-		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
-
-		log.info("TC_01_Step_12: Click back ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	}
-	
-	//Thanh toán thẻ tín dụng
-	//@Test 
-	//Lỗi app thanh toán bằng PTXT smart OTP, báo kết nối gián đoạn
-	public void TC_09_ThanhToanTheTinDung() throws InterruptedException {
-		vcbACreditCardPayment.scrollDownToText(driver, vietcombank_test_data.HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
-		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, vietcombank_test_data.HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
-		log.info("TC_01_Step_01: Lay thong tin tai so tai khoan");
-		soTaiKhoan = vcbACreditCardPayment.getDynamicTextInDropDownByLable(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
-
-		log.info("TC_01_Step_02: Lay thong tin so du tai khoan");
-		soDuKhaDung = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TEXT_SDKD);
-
-		log.info("TC_01_Step_03: Chon so the");
-		vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
-
-		log.info("TC_01_Step_04: verify hien thi man hinh chon so the");
-		vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, Creadit_Card_Payment_Data.Tittle.SELECT_CARD);
-
-		log.info("TC_01_Step_05: get list tai khoan tin dung");
-		List<String> listAccount = vcbACreditCardPayment.getListAccount();
-
-		vcbACreditCardPayment.scrollUpToText(driver, listAccount.get(0));
-
-		for (String account : listAccount) {
-			vcbACreditCardPayment.scrollDownToText(driver, account);
-			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
-			vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, account);
-			if (vcbACreditCardPayment.isTextDisplayedInPageSource("Quý khách không còn dư nợ")) {
-				log.info("TC_01_Step_07: Click btn Dong y:");
-				vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-
-				log.info("TC_01_Step_08: Click chon so tai khoan the :");
-				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
-
-				continue;
-			} else {
-				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
-				log.info("TC_01_Step_08: Lay thong tin so The");
-				soThe = vcbACreditCardPayment.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
-
-				log.info("TC_01_Step_09: Lay thong tin so tai khoan the");
-				soTaiKhoanThe = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TK_THE);
-
-				log.info("TC_01_Step_10: Lay thong tin tinh trang the");
-				tinhTrangThe = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.TINH_TRANG_THE);
-
-				log.info("TC_01_Step_11: Lay thong tin so tien thanh toan trong ky sao ke: ");
-				tongSoDaTTTrongKySaoKe = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.TONG_SO_TT_SAO_KE);
-
-				log.info("TC_01_Step_12: So tien toi thieu phai thanh toan ");
-				soTienToiThieuPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_TOI_THIEU_TT);
-
-				log.info("TC_01_Step_13: So tien thanh toan ");
-				vcbACreditCardPayment.scrollDownToText(driver, "Số tiền thanh toán");
-				soTienSaoKeConTT = vcbACreditCardPayment.getDynamicTextByLabel(driver,vietcombankUI.creaditCardPaymentUI.SO_TIEN_SK_TT);
-
-				log.info("TC_01_Step_14: So tien du no phai thanh toan ");
-				soTienDuNoConPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_DU_NO_TT);
-
-				log.info("TC_01_Step_15: So tien thanh toan ");
-				soTienThanhToan = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_TT);
-
-				if (soTienThanhToan.equals("0 VND")) {
-					vcbACreditCardPayment.scrollUpToText(driver, vietcombankUI.creaditCardPaymentUI.TT_GIAO_DICH);
-
-					log.info("TC_01_Step_16: Chon so the ");
-					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
-					continue;
-				} else {
-					break;
-				}
-			}
-
-		}
-
-		log.info("TC_01_Step_17: Click btn tiep tuc");
-		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
-		log.info("TC_01_06_Chon phuong thuc xac thuc");
-		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
-		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
-
-		log.info("TC_01_Step_18: Verify hien thi man hinh Xac nhan thong tin ");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, vietcombankUI.creaditCardPaymentUI.XAC_NHAN_TT));
-
-		log.info("TC_01_Step_19: Xac minh tai khoan nguon: ");
-		verifyEquals(soTaiKhoan, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.TK_NGUON));
-
-		log.info("TC_01_Step_20: Verify so the ");
-		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_THE));
-		log.info("TC_01_Step_21: Verify so tien thanh toan ");
-
-		verifyEquals(soTienDuNoConPhaiTT, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_TT));
-
-		log.info("TC_01_Step_22: Click btn Tiep tuc ");
-		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_01_Step_23: Xac minh man hinh  Xac thuc giao dich ");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, vietcombankUI.creaditCardPaymentUI.XAC_THUC_GD));
-
-		log.info("TC_01_Step_Nhap ma xac thuc");
-		vcbACreditCardPayment.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
-		log.info("TC_01_Step_Tiep tuc");
-		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_01_Step_26: Xac minh man hinh thong bao giao dich thanh cong");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, vietcombankUI.creaditCardPaymentUI.GD_THANH_CONG));
-
-		log.info("TC_01_Step_27: Xac minh thong tin so the ");
-		verifyEquals(soThe, vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_THE));
-
-		log.info("TC_01_Step_05: Lay thong tin ma giao dich ");
-		maGiaoDich = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.MA_GIAO_DICH);
-	}
-
-
-
 	
 
+	
+	@Test
 	public void TC_111_HuyKichHoatVCBSmartOPT() {
 
-		log.info("------------------------TC_01_Step_01: Click menu header-------------------------------");
+		log.info("TC_01_Step_01: Click menu header-");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("-----------------------TC_01_Step_02: Click thanh Cai dat VCB-Smart OTP------------------------");
+		log.info("-TC_01_Step_02: Click thanh Cai dat VCB-Smart OTP");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 
-		log.info("---------------------------TC_01_Step_03: Click Cai dat VCB Smart OTP---------------------");
+		log.info("-TC_01_Step_03: Click Cai dat VCB Smart OTP-");
 		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
 
-		log.info("-------------------------------TC_01_Step_04: Verify man hinh cai dat VCB Smart OTP------------------------");
+		log.info("-TC_01_Step_04: Verify man hinh cai dat VCB Smart OTP");
 		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Cài đặt VCB-Smart OTP");
 
-		log.info("---------------------------------TC_02_Step_01: Click btn Huy Cai dat-------------------------");
+		log.info("-TC_02_Step_01: Click btn Huy Cai dat-");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
 
-		log.info("----------------------------TC_02_Step_02: Verify hien thi popup xac nhan huy cai dat OTP----------------");
+		log.info("TC_02_Step_02: Verify hien thi popup xac nhan huy cai dat OTP");
 		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CONFIRM_CANCEL);
 
-		log.info("---------------------------TC_02_Step_03: Verify hien thi popup xac nhan huy cai dat OTP----------------");
+		log.info("-TC_02_Step_03: Verify hien thi popup xac nhan huy cai dat OTP");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
 
-//		log.info("-------------------------------TC_02_Step_04: Verify xac nhan huy Smart OTP thanh cong----------------");
-//		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CANCEL_SMART_OTP);
-
-		log.info("--------------------------TC_02_Step_05: verify Trang thai dã kich hoat Smart OTP--------------------");
+		log.info("TC_02_Step_05: verify Trang thai dã kich hoat Smart OTP");
 		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
 		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Chưa kích hoạt");
 	}
