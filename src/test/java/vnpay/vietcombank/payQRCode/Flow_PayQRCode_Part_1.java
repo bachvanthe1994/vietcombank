@@ -498,14 +498,13 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_05_ThanhToanHoaDon_Type2_QRCode() {
+	public void TC_05_ThanhToanHoaDon_Type2_QRCode() {
 		log.info("TC_05_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
 		payQRCode.scrollUpToText(driver, "QR Pay");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "QR Pay");
 
 		log.info("TC_05_2_Click mo Thu vien anh");
-		payQRCode.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 
 		log.info("TC_05_3_Click chon Tat ca anh");
@@ -677,7 +676,6 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "QR Pay");
 
 		log.info("TC_07_2_Click mo Thu vien anh");
-		payQRCode.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 
 		log.info("TC_07_3_Click chon Tat ca anh");

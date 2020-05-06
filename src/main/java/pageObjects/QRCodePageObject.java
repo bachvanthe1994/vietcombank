@@ -65,7 +65,7 @@ public class QRCodePageObject extends AbstractPage {
 		}
 
 		else {
-			inputToDynamicInputBox(driver, "Duc Do", "Họ và tên");
+			inputToDynamicInputBox(driver, "Duc Do", "Họ tên người nhận");
 			inputToDynamicInputBox(driver, "0363056625", "Số điện thoại");
 			inputToDynamicInputBox(driver, "Test", "Địa chỉ");
 			clickToDynamicButtonLinkOrLinkText(driver, "Tỉnh/ Thành phố");
