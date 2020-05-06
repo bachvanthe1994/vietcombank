@@ -49,7 +49,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0904797864", pass, opt);
+		login.Global_login("0335059863", pass, opt);
 		password = pass;
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}

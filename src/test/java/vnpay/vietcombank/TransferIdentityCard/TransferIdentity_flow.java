@@ -39,7 +39,12 @@ public class TransferIdentity_flow extends Base {
     public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
 	    throws IOException, InterruptedException {
 	startServer();
-	driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+	log.info("Before class: Mo app ");
+	if (deviceType.contains("android")) {
+		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+	} else if (deviceType.contains("ios")) {
+		driver = openIOSApp(deviceName, udid, url);
+	}
 	login = PageFactoryManager.getLoginPageObject(driver);
 	login.Global_login(phone, pass, opt);
 
@@ -49,7 +54,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-    @Test
+//    @Test
     public void TC_01_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiChuyenTraPhi(String pass) {
 	log.info("TC_01_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -121,9 +126,6 @@ public class TransferIdentity_flow extends Base {
 	log.info("TC_01_STEP_18: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_01_STEP_19: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_01_STEP_20: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -142,7 +144,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-    @Test
+//    @Test
     public void TC_02_BaoCaoChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMK() {
 	log.info("TC_02_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -199,7 +201,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-    @Test
+//    @Test
     public void TC_03_ChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi(String pass) {
 	log.info("TC_03_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -276,9 +278,6 @@ public class TransferIdentity_flow extends Base {
 	log.info("TC_03_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_03_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_03_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -297,7 +296,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-    @Test
+//    @Test
     public void TC_04_BaoCaoChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi() {
 	log.info("TC_04_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -356,7 +355,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "otp" })
-    @Test
+//    @Test
     public void TC_05_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangOTPNguoiChuyenTraPhi(String otp) {
 	log.info("TC_05_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -429,12 +428,6 @@ public class TransferIdentity_flow extends Base {
 	String getDate = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 	transferDate = getDate.split(" ");
 
-	log.info("TC_05_STEP_18: lấy tên người hưởng");
-	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_05_STEP_19: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_01_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -453,7 +446,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-    @Test
+//    @Test
     public void TC_06_BaoCaoChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangOTPNguoiChuyenTraPhi() {
 	log.info("TC_06_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -591,9 +584,6 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_07_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_07_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_07_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
@@ -742,9 +732,6 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_09_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_09_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_09_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
@@ -903,9 +890,6 @@ public class TransferIdentity_flow extends Base {
 	log.info("TC_11_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
 
-	log.info("TC_11_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
-
 	log.info("TC_11_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
@@ -1061,9 +1045,6 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_13_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
-
-	log.info("TC_13_STEP_18: lấy số CMT");
-	user = trasferPage.getMoneyByAccount(driver, "Tài khoản thụ hưởng");
 
 	log.info("TC_13_STEP_19: lấy mã giao dịch");
 	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
