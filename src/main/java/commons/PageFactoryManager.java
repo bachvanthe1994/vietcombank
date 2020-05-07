@@ -29,6 +29,7 @@ import pageObjects.SavingTargetPageObject;
 import pageObjects.SearchPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.SetupContactPageObject;
+import pageObjects.TelecommunicationFeeVNPTPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferLimitPageObject;
@@ -230,5 +231,8 @@ public class PageFactoryManager {
 
 	}
 	
+	public static TelecommunicationFeeVNPTPageObject getTelecommunicationFeeVNPT(AppiumDriver<MobileElement> driver) {
+		return new TelecommunicationFeeVNPTPageObject(driver);
 
+	}
 }

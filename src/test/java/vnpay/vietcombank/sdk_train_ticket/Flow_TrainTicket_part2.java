@@ -202,6 +202,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
 
 		log.info("TC_01_lay Tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 
 		log.info("TC_01_veriFy Email");
@@ -292,8 +293,6 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_02:: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), taiKhoanNguon);
 
-		log.info("TC_02:: Check tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_02:So tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(tongTienThanhToan));
@@ -481,7 +480,9 @@ public class Flow_TrainTicket_part2 extends Base {
 		
 		log.info("TC_03_Verify hien thi man hinh xac nhan thong tin");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin"));
+		
 		log.info("TC_03_Verify tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		verifyEquals(taiKhoanNguon, trainTicket.getDynamicTextOld("Tài khoản nguồn"));
 
 		log.info("TC_03_Verify rong so tien thanh toan");
@@ -550,9 +551,6 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyEquals(transferTimeInReport,transferTimeInReport1);
 		log.info("TC_04:: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), taiKhoanNguon);
-
-		log.info("TC_04:: Check tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_04:So tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(tongTienThanhToan));
