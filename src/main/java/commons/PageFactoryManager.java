@@ -21,6 +21,7 @@ import pageObjects.NotifyManagementPageObject;
 import pageObjects.OnlineTopupPageObject;
 import pageObjects.PayBillTelevisionPageObject;
 import pageObjects.PostpaidMobileBillPageObject;
+import pageObjects.QRCodePageObject;
 import pageObjects.RegisterOnlinePageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SavingOnlinePageObject;
@@ -219,7 +220,9 @@ public class PageFactoryManager {
 		return new WaterBillPageObject(driver);
 	}
 	
-	
+	public static QRCodePageObject getQRCodePageObject(AppiumDriver<MobileElement> driver) {
+		return new QRCodePageObject(driver);
+	}
 	
 	
 
