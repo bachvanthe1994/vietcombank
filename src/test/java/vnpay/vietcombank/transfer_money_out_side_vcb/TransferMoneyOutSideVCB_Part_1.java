@@ -63,6 +63,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 	public void TC_01_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		clickPopupAfter15h30();
 
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -156,6 +157,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_01_13_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -340,6 +342,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_03_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_03_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -527,6 +530,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_05_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_05_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -720,6 +724,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_07_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_07_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -906,6 +911,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_09_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_09_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -1089,6 +1095,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_11_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_11_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -1181,5 +1188,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		closeApp();
 		service.stop();
 	}
-
+public void clickPopupAfter15h30(){
+	if(transferMoneyOutSide.getPageSource(driver).contains("15h30")){
+		transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
+	}
+	
+}
 }
