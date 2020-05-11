@@ -20,6 +20,11 @@ public class QRCodePageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
+	public void waitForTextViewDisplay(String textView) {
+		waitForElementVisible(driver, QRCodePageUIs.DYNAMIC_IMAGE_BY_TEXT, textView);
+
+	}
+	
 	public String clickToImageByIndex(int index) {
 		boolean status = false;
 		String text = "";
@@ -35,16 +40,36 @@ public class QRCodePageObject extends AbstractPage {
 		return text;
 	}
 	
-	public void clickToOtherElementByValue(String dynamicTextValue) {
+	public void clickToDynamicSpinner(String dynamicTextValue) {
 		boolean status = false;
-		scrollIDown(driver, QRCodePageUIs.OTHER_ELEMENT_BY_VALUE, dynamicTextValue);
-		status = waitForElementVisible(driver, QRCodePageUIs.OTHER_ELEMENT_BY_VALUE, dynamicTextValue);
+		scrollIDown(driver, QRCodePageUIs.DYNAMIC_SPINNER, dynamicTextValue);
+		status = waitForElementVisible(driver, QRCodePageUIs.DYNAMIC_SPINNER, dynamicTextValue);
 		if (status == true) {
-			clickToElement(driver, QRCodePageUIs.OTHER_ELEMENT_BY_VALUE, dynamicTextValue);
+			clickToElement(driver, QRCodePageUIs.DYNAMIC_SPINNER, dynamicTextValue);
+		}
+
+	}
+	
+	public void clickToDynamicCheckedTextView(String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, QRCodePageUIs.DYNAMIC_CHECKED_TEXT_VIEW, dynamicTextValue);
+		status = waitForElementVisible(driver, QRCodePageUIs.DYNAMIC_CHECKED_TEXT_VIEW, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, QRCodePageUIs.DYNAMIC_CHECKED_TEXT_VIEW, dynamicTextValue);
 		}
 
 	}
 
+	public void clickToDynamicViewByText(String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, QRCodePageUIs.DYNAMIC_VIEW_BY_TEXT, dynamicTextValue);
+		status = waitForElementVisible(driver, QRCodePageUIs.DYNAMIC_VIEW_BY_TEXT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, QRCodePageUIs.DYNAMIC_VIEW_BY_TEXT, dynamicTextValue);
+		}
+
+	}
+	
 	public int getNumberOfImageInLibrary() {
 		int count = 0;
 		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LINEAR_LAYOUT_BY_RECYCLER);
@@ -55,6 +80,23 @@ public class QRCodePageObject extends AbstractPage {
 		return count;
 	}
 
+	public void clickToCombobox(String dymanicText) {
+		boolean status = false;
+		String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dymanicText);
+		status = waitForElementVisible(driver, locator);
+		if (status == true) {
+			overRideTimeOut(driver, 2);
+			String locator_1 = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Đóng");
+			clickToElement(driver, locator);
+			List<MobileElement> element = driver.findElements(By.xpath(locator_1));
+			if (element.size() == 0) {
+				clickToElement(driver, locator);
+			}
+			overRideTimeOut(driver, Constants.LONG_TIME);
+		}
+
+	}
+	
 	public void inputContactInfomation() {
 		overRideTimeOut(driver, 10);
 		String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON, "Thêm mới");
@@ -68,12 +110,12 @@ public class QRCodePageObject extends AbstractPage {
 			inputToDynamicInputBox(driver, "Duc Do", "Họ tên người nhận");
 			inputToDynamicInputBox(driver, "0363056625", "Số điện thoại");
 			inputToDynamicInputBox(driver, "Test", "Địa chỉ");
-			clickToDynamicButtonLinkOrLinkText(driver, "Tỉnh/ Thành phố");
+			clickToCombobox("Tỉnh/ Thành phố");
 			clickToDynamicButtonLinkOrLinkText(driver, "Hà Nội");
-			clickToDynamicButtonLinkOrLinkText(driver, "Quận/ Huyện");
+			clickToCombobox("Quận/ Huyện");
 			clickToDynamicButtonLinkOrLinkText(driver, "Quận Đống Đa");
 			inputToDynamicInputBox(driver, "minhducdo2603@gmail.com", "Email");
-			clickToDynamicButton(driver, "Tiếp tục");
+			clickToDynamicButton(driver, "Xác nhận");
 		}
 
 		overRideTimeOut(driver, Constants.LONG_TIME);
@@ -86,14 +128,6 @@ public class QRCodePageObject extends AbstractPage {
 			clearText(driver, QRCodePageUIs.DYNAMIC_INPUT_BOX_BY_HEADER_SAFARI, dynamicTextValue);
 			sendKeyToElement(driver, QRCodePageUIs.DYNAMIC_INPUT_BOX_BY_HEADER_SAFARI, inputValue, dynamicTextValue);
 		}
-	}
-	
-	public void inputToDynamicTextIntoTypePicker(String inputValue) {
-//		boolean status = false;
-//		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_TYPE_PICKER);
-//		if (status == true) {
-//			sendKeyToPickeWheel(driver, ShoppingOnlinePageUIs.DYNAMIC_TYPE_PICKER, inputValue);
-//		}
 	}
 
 	public void chooseQRCode(int number) {

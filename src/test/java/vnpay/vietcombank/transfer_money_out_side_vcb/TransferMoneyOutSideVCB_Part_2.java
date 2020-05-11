@@ -63,6 +63,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	public void TC_13_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraNgoaiTe_EUR_XacThucBangMatKhau() {
 		log.info("TC_13_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		clickPopupAfter15h30();
 
 		log.info("TC_13_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -162,6 +163,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_13_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		clickPopupAfter15h30();
 
 		log.info("TC_13_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -349,6 +351,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		clickPopupAfter15h30();
 
 		log.info("TC_15_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -543,6 +546,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		clickPopupAfter15h30();
 
 		log.info("TC_17_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -642,6 +646,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	public void TC_19_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraNgoaiTe_USD_XacThucBangMatKhau() {
 		log.info("TC_19_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		clickPopupAfter15h30();
 
 		log.info("TC_19_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
@@ -928,6 +933,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		clickPopupAfter15h30();
 
 		log.info("TC_21_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -1121,6 +1127,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		clickPopupAfter15h30();
 
 		log.info("TC_23_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -1225,4 +1232,10 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		service.stop();
 	}
 
+	public void clickPopupAfter15h30(){
+		if(transferMoneyOutSide.getPageSource(driver).contains("15h30")){
+			transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
+		}
+		}
+		
 }
