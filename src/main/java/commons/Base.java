@@ -40,6 +40,8 @@ import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
+import com.google.common.collect.ImmutableMap;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.HasSettings;
 import io.appium.java_client.MobileElement;
@@ -215,16 +217,19 @@ public class Base {
 		driver.quit();
 	}
 
-	public AndroidDriver<AndroidElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
-		if (device.equalsIgnoreCase("virtual ")) {
+		if (device.equalsIgnoreCase("virtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
 		} else if (device.equalsIgnoreCase("real")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
+			cap.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
+			cap.setCapability("platformName", "Android");
+			cap.setCapability("platformVersion", "9.0");
 		}
-		cap.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
-		System.setProperty("webdriver.chrome.driver", "E:\\Software\\Copy of eclipse-java-photon-R-win32-x86_64\\Workspace\\APPIUM_DEMO\\lib\\chromedriver.exe");
-		AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+		cap.setCapability("appPackage", "com.android.chrome");
+		cap.setCapability("appActivity", "com.google.android.apps.chrome.Main");
+		AppiumDriver<MobileElement> driver = new AppiumDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		return driver;
 
