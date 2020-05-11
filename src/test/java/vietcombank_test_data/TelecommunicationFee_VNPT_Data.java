@@ -8,6 +8,7 @@ public class TelecommunicationFee_VNPT_Data {
 	public static class DATA {
 
 		public static final String VNPT_KIEN_GIANG = "VNPTMEDIA Kiên giang";
+		public static final String VNPT_DONG_NAI = "VNPT Đồng Nai";
 
 		public static final String VNPT_BILL_TEXT = "Hóa đơn VNPT Media";
 

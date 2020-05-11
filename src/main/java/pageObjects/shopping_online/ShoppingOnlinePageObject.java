@@ -275,6 +275,16 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		}
 		return text;
 	}
+	public String getDynamicTextTableByTextView(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
+			
+		}
+		return text;
+	}
 
 
 
