@@ -3,6 +3,7 @@ package vnpay.vietcombank.settingVCB_Smart_OTP;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -51,7 +52,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_EUR_Part5 extends Base {
 	long transferFee ,fee= 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
-
+	private String nameCustomer;
 	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy, toltalMoney, money_transferred,exchangeRate1;
 
 	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "VCB - Smart OTP");
@@ -929,34 +930,32 @@ public void TC_08_ChuyenTienLienNganHangNgoaite_EUR_CoPhiGiaoDichNguoiChuyenTraX
 
 }
 
-
 @Test
-	public void TC_09_HuyKichHoatVCBSmartOPT() {
-		log.info("TC_01_Step_01: Click menu header");
-		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+public void TC_09_HuyKichHoatVCBSmartOPT() {
+	log.info("TC_09_Step_01: Click menu header");
+	smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("TC_01_Step_02: Click thanh Cai dat VCB-Smart OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+	log.info("TC_09_Step_02: Click thanh Cai dat VCB-Smart OTP");
+	smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 
-		log.info("TC_01_Step_03: Click Cai dat VCB Smart OTP");
-		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
+	log.info("TC_09_Step_03: Click Cai dat VCB Smart OTP");
+	smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
+	smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
 
-		log.info("TC_01_Step_04: Verify man hinh cai dat VCB Smart OTP");
-		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Cài đặt VCB-Smart OTP");
+	log.info("TC_09_Step_04: Click btn Huy Cai dat");
+	smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
 
-		log.info("TC_02_Step_01: Click btn Huy Cai dat");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
+	log.info("TC_09_Step_05: Verify hien thi popup xac nhan huy cai dat OTP");
+	smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CONFIRM_CANCEL);
 
-		log.info("TC_02_Step_02: Verify hien thi popup xac nhan huy cai dat OTP");
-		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CONFIRM_CANCEL);
+	log.info("TC_09_Step_06: Verify hien thi popup xac nhan huy cai dat OTP");
+	smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
+}
 
-		log.info("TC_02_Step_03: Verify hien thi popup xac nhan huy cai dat OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
+@AfterClass(alwaysRun = true)
 
-		log.info("TC_02_Step_05: verify Trang thai dã kich hoat Smart OTP");
-		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
-		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, "Chưa kích hoạt");
-	}
-
+public void afterClass() {
+	closeApp();
+	service.stop();
+}
 }
