@@ -24,8 +24,10 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			
-			
+			<!-- Quản lý danh bạ -->
+			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+
+
 			<!-- Chuyển tiền trong vcb -->
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
@@ -52,14 +54,16 @@
 
 			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
-			
-			
-			
-			
-			
-			
-			
-			
+
+			<!-- Thanh toan tien dien -->
+			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
+
+
+			<!-- Thanh toan tien nuoc -->
+			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" />
+
+			<!-- Thong bao -->
+			<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" />
 
 			<!-- Nạp tiền điện thoại -->
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
@@ -77,7 +81,7 @@
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" />
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" />
 			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" />
-			
+
 			<!-- Auto debit -->
 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
 
@@ -90,7 +94,7 @@
 
 			<!-- Tính toán lãi suất -->
 			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
-	
+
 			<!-- Đặt mục tiêu tiết kiệm -->
 			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
 
@@ -100,12 +104,8 @@
 			<!-- Thanh toán cước điện thoại cố định -->
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
-			
-			
-			
-			
-			
-			
+
+
 			<!-- Thanh toán cước Internet ADSL -->
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
 
@@ -135,7 +135,7 @@
 			<!-- Tiết kiệm tự động -->
 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
-			
+
 			<!-- Tra cứu -->
 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
 			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
@@ -152,13 +152,22 @@
 			<!-- Chỉnh sửa điểm nổi bật -->
 			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
 
+			<!-- VCB smartOTp -->
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_QuickMoneyTransfer247_SmartOTP" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_Part4" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_SDK_Part3" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoney_EUR_Part5" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4" />
 
+			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1" />
 
 
 
