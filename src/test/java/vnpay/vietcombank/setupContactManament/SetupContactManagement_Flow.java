@@ -85,7 +85,7 @@ public class SetupContactManagement_Flow extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_13: Click button chia se");
-		transferInVCB.clickToTextID(driver, "com.VCB:id/tvSaveContact");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
 
 		log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
