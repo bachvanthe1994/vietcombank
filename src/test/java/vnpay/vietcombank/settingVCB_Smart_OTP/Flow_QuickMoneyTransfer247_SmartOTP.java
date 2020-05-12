@@ -18,6 +18,7 @@ import pageObjects.TransferMoneyObject;
 import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.SettingVCBSmartOTP_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
@@ -38,7 +39,7 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	private long fee;
 	private String exchangeRate;
 	private String password = "";
-
+	private String nameCustomer;
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String pass, String opt) throws IOException, InterruptedException {
@@ -57,49 +58,51 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	}
 	
 	@Parameters({ "pass" })
-@Test
-	public void TC_01_CaiDatPhuongThucXacThucSmartOTP() {
-		log.info("TC_02_Step: Click menu header");
+	public void TC_01_CaiDatPhuongThucXacThucOTP() {
+		log.info("TC_01_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("TC_02_Step: Click cai dat");
+		log.info("Before class: Lay ten user");
+		nameCustomer = smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
+
+		log.info("TC_01_Step: Click cai dat");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 
-		log.info("TC_02_Step: Click cai dat Smart OTP");
+		log.info("TC_01_Step: Click cai dat Smart OTP");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
 
-		log.info("TC_02_Step: Click cai dat cho tai khoan");
+		log.info("TC_01_Step: Click cai dat cho tai khoan");
 		smartOTP.clickToDynamicTextFollowText(driver, "Chưa kích hoạt");
 
-		log.info("TC_02_Step: Click toi dong y");
+		log.info("TC_01_Step: Click toi dong y");
 		smartOTP.clickToTextID(driver, "com.VCB:id/rule");
 
-		log.info("TC_02_Step_click button dong y");
+		log.info("TC_01_Step_click button dong y");
 		smartOTP.clickToDynamicButton(driver, "Đồng ý");
 
-		log.info("TC_02_Step_Nhap mat khau");
+		log.info("TC_01_Step_Nhap mat khau");
 		smartOTP.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.Smart_OTP, "Nhập mật khẩu");
 
-		log.info("TC_02_Step_Nhap lai mat khau");
+		log.info("TC_01_Step_Nhap lai mat khau");
 		smartOTP.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.Smart_OTP, "Nhập lại mật khẩu");
 
-		log.info("TC_02_Step_click button tiep tuc");
+		log.info("TC_01_Step_click button tiep tuc");
 		smartOTP.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_02_Step_Nhap ma xac thuc");
+		log.info("TC_01_Step_Nhap ma xac thuc");
 		smartOTP.inputToDynamicSmartOtp(driver, "666888", "com.VCB:id/otp");
 
-		log.info("TC_02_Step_click button tiep tuc");
+		log.info("TC_01_Step_click button tiep tuc");
 		smartOTP.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_02_Step_Verify cai dat thanh cong");
+		log.info("TC_01_Step_Verify cai dat thanh cong");
 		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
 		verifyEquals(smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/state_vnpay"), "Đã kích hoạt");
 
-		log.info("TC_02_Step_click button quay lai cai dat");
+		log.info("TC_01_Step_click button quay lai cai dat");
 		smartOTP.clickToDynamicImageViewID(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_02_Click button home");
+		log.info("TC_01_Click button home");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
@@ -107,110 +110,110 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	@Test
 	//Lỗi app với PTXT smart OTP, khi chọn smart OTP hệ thống báo lỗi kết nối gián đoạn
 	public void TC_02_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangSmartOTP() throws InterruptedException {
-		log.info("TC_09_Step_Click Chuyen tien nhanh");
+		log.info("TC_02_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-		log.info("TC_09_Step_Select Chuyen tien nhanh qua the");
+		log.info("TC_02_Step_Select Chuyen tien nhanh qua the");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_09_Step_Select tai khoan nguon");
+		log.info("TC_02_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
-		log.info("TC_09_Step_Get so tai khoan nguon");
+		log.info("TC_02_Step_Get so tai khoan nguon");
 		accountStart = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
 
-		log.info("TC_09_Step_Get so du kha dung");
+		log.info("TC_02_Step_Get so du kha dung");
 		amountStartString = transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng").replaceAll("\\D+", "");
 
-		log.info("TC_09_Step_Doi kieu du lieu");
+		log.info("TC_02_Step_Doi kieu du lieu");
 		amountStart = Long.parseLong(amountStartString);
 
-		log.info("TC_09_Step_Nhap so tai khoan chuyen");
+		log.info("TC_02_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
-		log.info("TC_09_Step_Nhap so tien chuyen");
+		log.info("TC_02_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
 
-		log.info("TC_09_Step_Chon phi giao dich la nguoi nhan tra");
+		log.info("TC_02_Step_Chon phi giao dich la nguoi nhan tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
 
-		log.info("TC_09_Step_Nhap noi dung");
+		log.info("TC_02_Step_Nhap noi dung");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
-		log.info("TC_09_Step_Tiep tuc");
+		log.info("TC_02_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_09_Step_Chon phuong thuc xac thuc");
+		log.info("TC_02_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]);
 
-		log.info("TC_09_Step_Lay gia tri so tien chuyen");
+		log.info("TC_02_Step_Lay gia tri so tien chuyen");
 		amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replaceAll("\\D+", "");
 
-		log.info("TC_09_Step_Verify so tien chuyen");
+		log.info("TC_02_Step_Verify so tien chuyen");
 		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
 
-		log.info("TC_09_Step_doi kieu du lieu string -> long");
+		log.info("TC_02_Step_doi kieu du lieu string -> long");
 		amountTranfer = Long.parseLong(amountTranferString);
 
-		log.info("TC_09_Step_Lay gia tri so tien phí chuyen");
+		log.info("TC_02_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
-		log.info("TC_09_Step_Verify so tien phi");
+		log.info("TC_02_Step_Verify so tien phi");
 		verifyEquals(costTranferString, fee + "");
 
-		log.info("TC_09_Step_doi kieu du lieu string -> long");
+		log.info("TC_02_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
 
-		log.info("TC_09_Step_Tiep tuc");
+		log.info("TC_02_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_Step_Nhap ma xac thuc");
+		log.info("TC_02_Step_Nhap ma xac thuc");
 		transferMoney.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
-		log.info("TC_01_Step_Tiep tuc");
+		log.info("TC_02_Step_Tiep tuc");
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/submit");
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_09_Verify message thanh cong");
+		log.info("TC_02_Verify message thanh cong");
 		verifyEquals(transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
-		log.info("TC_09_get thoi gian giao dich thanh cong");
+		log.info("TC_02_get thoi gian giao dich thanh cong");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4").split(" ")[3];
 
-		log.info("TC_09_Step_: Get ma giao dich");
+		log.info("TC_02_Step_: Get ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
-		log.info("TC_09_Step_:Ten nguoi thu huong");
+		log.info("TC_02_Step_:Ten nguoi thu huong");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_09_Step_: Tai khoan dich");
+		log.info("TC_02_Step_: Tai khoan dich");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Account_Data.Valid_Account.CARD_TO);
 
-		log.info("TC_09_Step_: Noi dung");
+		log.info("TC_02_Step_: Noi dung");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
-		log.info("TC_09_Step_: Thuc hien giao dich moi");
+		log.info("TC_02_Step_: Thuc hien giao dich moi");
 		transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_09_Step_Select Chuyen tien nhanh qua the");
+		log.info("TC_02_Step_Select Chuyen tien nhanh qua the");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_09_Step_Select tai khoan nguon");
+		log.info("TC_02_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
-		log.info("TC_09_Step_:Check so du kha dung sau khi chuyen tien");
+		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng").replaceAll("\\D+", "");
 
 		long amountAfter = Long.parseLong(amountAfterString);
 
-		log.info("TC_09_Step_:Check so du kha dung sau khi chuyen tien");
+		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
 		verifyEquals(amountStart - amountTranfer, amountAfter);
 	}
 
@@ -219,115 +222,115 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	//Lỗi app với PTXT smart OTP, khi chọn smart OTP hệ thống báo lỗi kết nối gián đoạn
 //Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_03_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangSmartOTP() throws InterruptedException {
-		log.info("TC_11_Step_Click Chuyen tien nhanh");
+		log.info("TC_03_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-		log.info("TC_11_Step_Select Chuyen tien nhanh qua the");
+		log.info("TC_03_Step_Select Chuyen tien nhanh qua the");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_11_Step_Select tai khoan nguon");
+		log.info("TC_03_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
-		log.info("TC_11_Step_Get so tai khoan nguon");
+		log.info("TC_03_Step_Get so tai khoan nguon");
 		accountStart = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
 
-		log.info("TC_04_Step_Get so du kha dung");
+		log.info("TC_03_Step_Get so du kha dung");
 		amountStartString = transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng");
 		double amountStart = convertMoneyToDouble(amountStartString, "USD");
 
-		log.info("TC_11_Step_Nhap so tai khoan chuyen");
+		log.info("TC_03_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
-		log.info("TC_11_Step_Nhap so tien chuyen");
+		log.info("TC_03_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Số tiền");
 
-		log.info("TC_11_Step_:Lay so tien quy doi ra VND");
+		log.info("TC_03_Step_:Lay so tien quy doi ra VND");
 		String exchange = transferMoney.getDynamicTextInTransactionDetail(driver, "Tỷ giá quy đổi tham khảo").split(" ~ ", 2)[1];
 		exchangeRate = exchange.replace(" VND", "");
 
-		log.info("TC_11_Step_Chon phi giao dich la nguoi nhan tra");
+		log.info("TC_03_Step_Chon phi giao dich la nguoi nhan tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
 
-		log.info("TC_11_Step_Nhap noi dung");
+		log.info("TC_03_Step_Nhap noi dung");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
-		log.info("TC_11_Step_Tiep tuc");
+		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_11_Step_Lay gia tri so tien chuyen");
+		log.info("TC_03_Step_Lay gia tri so tien chuyen");
 		amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replaceAll(".00 USD", "");
 
-		log.info("TC_11_Step_Verify so tien chuyen");
+		log.info("TC_03_Step_Verify so tien chuyen");
 		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY_USD);
 
-		log.info("TC_11_Step_doi kieu du lieu string -> long");
+		log.info("TC_03_Step_doi kieu du lieu string -> long");
 		amountTranfer = Long.parseLong(amountTranferString);
 
-		log.info("TC_11_Step_Chon phuong thuc xac thuc");
+		log.info("TC_03_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]);
 
-		log.info("TC_11_Step_Lay gia tri so tien phí chuyen");
+		log.info("TC_03_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
-		log.info("TC_11_Step_Verify so tien phi");
+		log.info("TC_03_Step_Verify so tien phi");
 		verifyEquals(costTranferString, fee + "");
 
-		log.info("TC_11_Step_doi kieu du lieu string -> long");
+		log.info("TC_03_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
 
-		log.info("TC_11_Step_Tiep tuc");
+		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_Step_Nhap ma xac thuc");
+		log.info("TC_03_Step_Nhap ma xac thuc");
 		transferMoney.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
-		log.info("TC_01_Step_Tiep tuc");
+		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/submit");
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_11_Verify message thanh cong");
+		log.info("TC_03_Verify message thanh cong");
 		verifyEquals(transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
-		log.info("TC_11_get thoi gian giao dich thanh cong");
+		log.info("TC_03_get thoi gian giao dich thanh cong");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4").split(" ")[3];
 
-		log.info("TC_11_Step_: Get ma giao dich");
+		log.info("TC_03_Step_: Get ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
-		log.info("TC_11_Step_:Ten nguoi thu huong");
+		log.info("TC_03_Step_:Ten nguoi thu huong");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_11_Step_: Tai khoan dich");
+		log.info("TC_03_Step_: Tai khoan dich");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Account_Data.Valid_Account.CARD_TO);
 
-		log.info("TC_11_Step_: Noi dung");
+		log.info("TC_03_Step_: Noi dung");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
-		log.info("TC_11_Step_: Thuc hien giao dich moi");
+		log.info("TC_03_Step_: Thuc hien giao dich moi");
 		transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_11_Step_Select Chuyen tien nhanh qua the");
+		log.info("TC_03_Step_Select Chuyen tien nhanh qua the");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_11_Step_Select tai khoan nguon");
+		log.info("TC_03_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
-		log.info("TC_11: Lay so du kha dung the");
+		log.info("TC_03: Lay so du kha dung the");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double amountAfter = convertMoneyToDouble(amountAfterString, "USD");
 		double amountExpect = Math.round((amountAfter) * 100) / 100;
 
-		log.info("TC_11: Convert so tien chuyen");
+		log.info("TC_03: Convert so tien chuyen");
 		double transferMoney = convertMoneyToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_USD, " USD");
 
-		log.info("TC_11: Kiem tra so du tai khoan USD sau khi chuyen tien");
+		log.info("TC_03: Kiem tra so du tai khoan USD sau khi chuyen tien");
 		double amountAtual = Math.round((amountStart - transferMoney) * 100) / 100;
 		verifyEquals(amountAtual, amountExpect);
 	}
@@ -339,117 +342,138 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	// Lỗi app, số tiền bị bỏ đơn vị USD
 	//Lỗi app với PTXT smart OTP, khi chọn smart OTP hệ thống báo lỗi kết nối gián đoạn
 	public void TC_04_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangSmartOTP() throws InterruptedException {
-		log.info("TC_15_Step_Click Chuyen tien nhanh");
+		log.info("TC_04_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
-		log.info("TC_15_Step_Select Chuyen tien nhanh qua the");
+		log.info("TC_04_Step_Select Chuyen tien nhanh qua the");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_15_Step_Select tai khoan nguon");
+		log.info("TC_04_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
-		log.info("TC_15_Step_Get so tai khoan nguon");
+		log.info("TC_04_Step_Get so tai khoan nguon");
 		accountStart = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
 
-		log.info("TC_15_Step_Get so du kha dung");
+		log.info("TC_04_Step_Get so du kha dung");
 		amountStartString = transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng");
 		double amountStart = convertMoneyToDouble(amountStartString, "EUR");
 
-		log.info("TC_15_Step_Nhap so tai khoan chuyen");
+		log.info("TC_04_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.CARD_TO, "Nhập/chọn số thẻ");
 
-		log.info("TC_15_Step_Nhap so tien chuyen");
+		log.info("TC_04_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_EUR , "Số tiền");
 
-		log.info("TC_15_Step_Chon phi giao dich la nguoi nhan tra");
+		log.info("TC_04_Step_Chon phi giao dich la nguoi nhan tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
 
-		log.info("TC_15_Step_Nhap noi dung");
+		log.info("TC_04_Step_Nhap noi dung");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
 
-		log.info("TC_15_Step_Tiep tuc");
+		log.info("TC_04_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_15_Step_Lay gia tri so tien chuyen");// Loi app, số tiền bỏ đơn vị EUR
+		log.info("TC_04_Step_Lay gia tri so tien chuyen");// Loi app, số tiền bỏ đơn vị EUR
 		amountTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền").replaceAll(".00 EUR", "");
 
-		log.info("TC_15_Step_Verify so tien chuyen");
+		log.info("TC_04_Step_Verify so tien chuyen");
 		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY_EUR);
 
-		log.info("TC_15_Step_doi kieu du lieu string -> long");
+		log.info("TC_04_Step_doi kieu du lieu string -> long");
 		amountTranfer = Long.parseLong(amountTranferString);
 
-		log.info("TC_15_Step_Chon phuong thuc xac thuc");
+		log.info("TC_04_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]);
 
-		log.info("TC_15_Step_Lay gia tri so tien phí chuyen");
+		log.info("TC_04_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
 
 		double EURTransferFee = convertMoneyToDouble(fee + "", "VND") / convertMoneyToDouble(exchangeRate, "VND");
 
-		log.info("TC_15_Step_Verify so tien phi");
+		log.info("TC_04_Step_Verify so tien phi");
 		verifyEquals(costTranferString, fee);
 
-		log.info("TC_15_Step_doi kieu du lieu string -> long");
+		log.info("TC_04_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
 
-		log.info("TC_15_Step_Tiep tuc");
+		log.info("TC_04_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_Step_Nhap ma xac thuc");
+		log.info("TC_04_Step_Nhap ma xac thuc");
 		transferMoney.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
-		log.info("TC_01_Step_Tiep tuc");
+		log.info("TC_04_Step_Tiep tuc");
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/submit");
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_15_Verify message thanh cong");
+		log.info("TC_04_Verify message thanh cong");
 		verifyEquals(transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 
-		log.info("TC_15_get thoi gian giao dich thanh cong");
+		log.info("TC_04_get thoi gian giao dich thanh cong");
 		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY, "4").split(" ")[3];
 
-		log.info("TC_15_Step_: Get ma giao dich");
+		log.info("TC_04_Step_: Get ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
-		log.info("TC_15_Step_:Ten nguoi thu huong");
+		log.info("TC_04_Step_:Ten nguoi thu huong");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
 
-		log.info("TC_15_Step_: Tai khoan dich");
+		log.info("TC_04_Step_: Tai khoan dich");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Account_Data.Valid_Account.CARD_TO);
 
-		log.info("TC_15_Step_: Noi dung");
+		log.info("TC_04_Step_: Noi dung");
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
-		log.info("TC_15_Step_: Thuc hien giao dich moi");
+		log.info("TC_04_Step_: Thuc hien giao dich moi");
 		transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
-		log.info("TC_15_Step_Select Chuyen tien nhanh qua the");
+		log.info("TC_04_Step_Select Chuyen tien nhanh qua the");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_15_Step_Select tai khoan nguon");
+		log.info("TC_04_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, "Số thẻ chuyển đi");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
 
-		log.info("TC_15: Lay so du kha dung the");
+		log.info("TC_04: Lay so du kha dung the");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 		double amountAfter = convertMoneyToDouble(amountAfterString, "EUR");
 		double amountExpect = Math.round((amountAfter) * 100) / 100;
 
-		log.info("TC_15: Convert so tien chuyen");
+		log.info("TC_04: Convert so tien chuyen");
 		double transferMoney = convertMoneyToDouble(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR, " EUR");
 
-		log.info("TC_15: Kiem tra so du tai khoan EUR sau khi chuyen tien");
+		log.info("TC_04: Kiem tra so du tai khoan EUR sau khi chuyen tien");
 		double amountAtual = Math.round((amountStart - transferMoney) * 100) / 100;
 		verifyEquals(amountAtual, amountExpect);
 	}
 
+	@Test
+	public void TC_05_HuyKichHoatVCBSmartOPT() {
+		log.info("TC_05_Step_01: Click menu header");
+		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_05_Step_02: Click thanh Cai dat VCB-Smart OTP");
+		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+
+		log.info("TC_05_Step_03: Click Cai dat VCB Smart OTP");
+		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
+		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
+
+		log.info("TC_05_Step_04: Click btn Huy Cai dat");
+		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
+
+		log.info("TC_05_Step_05: Verify hien thi popup xac nhan huy cai dat OTP");
+		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CONFIRM_CANCEL);
+
+		log.info("TC_05_Step_06: Verify hien thi popup xac nhan huy cai dat OTP");
+		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
+	}
 
 	@AfterClass(alwaysRun = true)
 

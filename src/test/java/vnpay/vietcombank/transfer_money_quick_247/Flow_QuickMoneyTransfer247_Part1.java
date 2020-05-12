@@ -133,17 +133,17 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		log.info("TC_01_Step_: Get ma giao dich");
 		transactionNumber = transferMoney.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
-//		log.info("TC_01_Step_:Ten nguoi thu huong");
-//		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
-//
-//		log.info("TC_01_Step_: Tai khoan dich");
-//		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT_TO);
-//
-//		log.info("TC_01_Step_: ngan hang thu huong");
-//		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
-//
-//		log.info("TC_01_Step_: Noi dung");
-//		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
+		log.info("TC_01_Step_:Ten nguoi thu huong");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyQuick_Data.TransferQuick.RECEIVER_NAME);
+
+		log.info("TC_01_Step_: Tai khoan dich");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT_TO);
+
+		log.info("TC_01_Step_: ngan hang thu huong");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Ngân hàng thụ hưởng"), Account_Data.Valid_Account.BANK[0]);
+
+		log.info("TC_01_Step_: Noi dung");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 		log.info("TC_01_Step_: Thuc hien giao dich moi");
 		transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
