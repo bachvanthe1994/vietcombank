@@ -33,7 +33,7 @@
 <!-- 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
 
 			<!-- Nạp tiền VETC -->
-<!-- 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
+			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
 
 
 			<!-- Tính toán lãi suất -->
