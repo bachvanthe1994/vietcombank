@@ -24,10 +24,7 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			<!-- Quản lý danh bạ -->
-			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
-
-
+	
 			<!-- Chuyển tiền trong vcb -->
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
