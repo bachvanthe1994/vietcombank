@@ -51,7 +51,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 	}
 
 	// Set up BE han muc nho nhat 10.000vnd
-    // Muc cao nhat 100.000.000vnd
+	// Muc cao nhat 100.000.000vnd
 	// Han Muc cao nhan trong ngay là 400.000.000vnd
 	@Test
 	public void TC_01_ChuyenTienTuongLaiThapHonHanMucToiThieu() {
@@ -72,7 +72,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_06: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_01_Step_07: Kiem tra Ngay hieu luc mac dinh");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));
@@ -116,7 +116,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_02_Step_06: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_02_Step_07: Kiem tra Ngay hieu luc mac dinh");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));
@@ -160,7 +160,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 			log.info("TC_03_Step_07: Nhap tai khoan nhan");
-			transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
+			transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản nhận VND");
 
 			log.info("TC_03_Step_08: Kiem tra Ngay hieu luc mac dinh");
 			verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));
@@ -215,7 +215,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_03_Step_24: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_03_Step_25: Kiem tra Ngay hieu luc mac dinh");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));
@@ -256,7 +256,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_04_Step_06: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_04_Step_07: Kiem tra Ngay hieu luc mac dinh");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));
@@ -297,7 +297,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_05_Step_06: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_05_Step_07: Kiem tra Ngay hieu luc mac dinh");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, tommorrowDate));

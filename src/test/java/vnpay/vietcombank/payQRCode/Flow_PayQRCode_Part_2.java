@@ -280,13 +280,13 @@ public class Flow_PayQRCode_Part_2 extends Base {
 		payQRCode.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_13: Kiem  tra giao dich thanh cong");
-		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, "THANH TOÁN THÀNH CÔNG"));
+		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, "GIAO DỊCH THÀNH CÔNG"));
 
 		log.info("TC_03_14: Kiem  tra so tien giao dich");
 		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_03_15: Lay thoi gian tao giao dich");
-		transferTime = payQRCode.getTransferTimeSuccess(driver, "THANH TOÁN THÀNH CÔNG");
+		transferTime = payQRCode.getTransferTimeSuccess(driver, "GIAO DỊCH THÀNH CÔNG");
 
 		log.info("TC_03_16: Lay ma giao dich");
 		transactionNumber = payQRCode.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");

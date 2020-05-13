@@ -52,6 +52,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 	private long surplus, availableBalance, actualAvailableBalance;
 	String codeOrder = "";
+
 	@Test
 	public void TC_03_ThanhToanHoaDon_Type1_QRCode() {
 		log.info("TC_03_1_Click QR Pay");
@@ -67,7 +68,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Type 1");
-		
+
 		log.info("TC_03_4_Lay so luong anh");
 		int numberOfImage = payQRCode.getNumberOfImageInLibrary();
 
@@ -205,7 +206,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_04_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán QR Code");
 
-		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder; 
+		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder;
 		log.info("TC_04_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(note));
 
@@ -217,7 +218,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_04_26: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-		
+
 	}
 
 	@Test
@@ -376,7 +377,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_06_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán QR Code");
 
-		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder; 
+		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder;
 		log.info("TC_06_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(note));
 
@@ -388,9 +389,9 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_06_26: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-		
+
 	}
-	
+
 	@Test
 	public void TC_07_ThanhToanHoaDon_Type3_QRCode() {
 		log.info("TC_07_1_Click QR Pay");
@@ -416,7 +417,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_07_7_Lay so du");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(qrCode.surplus);
-		
+
 		log.info("TC_07_8_Nhap thong tin lien he");
 		payQRCode.inputContactInfomation();
 
@@ -428,7 +429,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_07_09_2_Kiem tra thanh toan cho");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, "Thanh toán cho"), destinationPlace);
-		
+
 		log.info("TC_07_09_3_Kiem tra ten diem ban");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, "Điểm bán"), namePlace);
 
@@ -545,7 +546,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_08_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán QR Code");
 
-		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder; 
+		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder;
 		log.info("TC_08_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(note));
 
@@ -557,7 +558,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_08_26: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-		
+
 	}
 
 	@AfterClass(alwaysRun = true)
