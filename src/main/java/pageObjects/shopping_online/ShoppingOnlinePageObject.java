@@ -112,6 +112,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicCategories(String dynamicText) {
 		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
@@ -129,6 +131,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 
 	public void clickToDynamicTextContains(String dynamicText) {
 		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);

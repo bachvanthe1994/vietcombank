@@ -26,7 +26,7 @@ public class Flow_Investigation_Online extends Base {
 	private HomePageObject homePageObject;
 	private InvestigationOnlinePageObject investigationOnline;
 
-	String phoneNumber = "";
+	String accountNubmer = "";
 	String nameCustomer = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -37,21 +37,22 @@ public class Flow_Investigation_Online extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		phoneNumber = phone;
 
-		homePageObject=PageFactoryManager.getHomePageObject(driver);
+		homePageObject = PageFactoryManager.getHomePageObject(driver);
 		homePageObject.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-		
+		homePageObject.clickToDynamicButtonLinkOrLinkText(driver, "Tra soát trực tuyến");
+
 	}
 
 	@Test
 	public void TC_01_TraSoatLapYeuCauTraSoat() {
-		homePageObject.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-		homePageObject.clickToDynamicButtonLinkOrLinkText(driver, "Tra soát trực tuyến");
 		investigationOnline = PageFactoryManager.getInvestigationOnline(driver);
-		investigationOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Loại yêu cầu tra soát");
-        investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Lập yêu cầu tra soát");
-
+		verifyEquals(investigationOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "Loại yêu cầu tra soát");
+		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Lập yêu cầu tra soát");
+		verifyEquals(investigationOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Lập yêu cầu tra soát");
+		accountNubmer = investigationOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSelectAcc");
+		investigationOnline.clickToDynamicButton(driver, "Tra cứu");
+		investigationOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llRoot");
 		
 
 	}
@@ -59,7 +60,6 @@ public class Flow_Investigation_Online extends Base {
 	@Test
 	public void TC_02_TraSoatTraCuuYeuCauTraSoat() {
 
-	
 	}
 
 	@Test
@@ -142,32 +142,26 @@ public class Flow_Investigation_Online extends Base {
 	@Test
 	public void TC_04_GuiTietKiem_TaiKhoanTienGuiKhongKyHan() {
 
-		
 	}
 
 	@Test
 	public void TC_05_GuiTietKiem_TaiKhoanTienGuiCoKyHanChuyenKhoan() {
 
-		
 	}
 
 	@Test
 	public void TC_06_GuiTietKiem_TheTietKiemCoKyHanChuyenKhoanVaTienMatNhanGoc() {
-
-		
 
 	}
 
 	@Test
 	public void TC_07_MoTheTietKiem_TheTietKiemKhongKyHanTienMatNhanGoc() {
 
-	
 	}
 
 	@Test
 	public void TC_08_MoTheTietKiem_TaiKhoanTienGuiCoKyHanTienMatNhanGoc() {
 
-		
 	}
 
 	@Test
@@ -183,29 +177,24 @@ public class Flow_Investigation_Online extends Base {
 	@Test
 	public void TC_11_MoTaiKhoanThanhToan_ManHinhThongTinKhachHang() {
 
-		
 	}
 
 	@Test
 	public void TC_12_MoTaiKhoanThanhToan_ManHinhDangKyDichVuDienTu() {
-		
+
 	}
 
 	@Test
 	public void TC_13_MoTaiKhoanThanhToan_ManHinhConnect24_ChonMotThePhu() {
-		
+
 	}
-
-
-		
-
 
 	@Test
 	public void TC_01_GiaoDichNopTienThanhCong() {
 
 		investigationOnline = PageFactoryManager.getInvestigationOnline(driver);
 		investigationOnline.isDynamicMessageAndLabelTextDisplayed(driver, "Loại yêu cầu tra soát");
-		
+
 		log.info("TC_01_Step: Click giao dich tien mat/chuyen tien");
 		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Lập yêu cầu tra soát");
 
