@@ -74,7 +74,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_13_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_13_4_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.name, "Tên người thụ hưởng");
@@ -212,7 +212,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info6.note));
 
 		log.info("TC_14_11: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info6.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info6.money + " EUR"));
 
 		log.info("TC_14_12: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -269,7 +269,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_15_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_15_4_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.name, "Tên người thụ hưởng");
@@ -407,7 +407,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info7.note));
 
 		log.info("TC_16_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info7.money) + " EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info7.money + " EUR"));
 
 		log.info("TC_16_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -463,7 +463,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_17_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_17_4_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.name, "Tên người thụ hưởng");
@@ -602,7 +602,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info8.note));
 
 		log.info("TC_18_11: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info8.money) + " USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info8.money + " USD"));
 
 		log.info("TC_18_12: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -657,7 +657,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_19_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_19_4_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.name, "Tên người thụ hưởng");
@@ -794,7 +794,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info9.note));
 
 		log.info("TC_20_11: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info9.money) + " USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info9.money + " USD"));
 
 		log.info("TC_20_12: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -850,7 +850,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_21_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_21_4_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.name, "Tên người thụ hưởng");
@@ -989,7 +989,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info10.note));
 
 		log.info("TC_22_11: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info10.money) + " USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info10.money + " USD"));
 
 		log.info("TC_22_12: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1045,7 +1045,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		surplusCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
 
 		log.info("TC_23_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_23_4_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.name, "Tên người thụ hưởng");
@@ -1183,7 +1183,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info11.note));
 
 		log.info("TC_24_11: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToDouble(info11.money) + " USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info11.money + " USD"));
 
 		log.info("TC_24_12: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1232,10 +1232,10 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		service.stop();
 	}
 
-	public void clickPopupAfter15h30(){
-		if(transferMoneyOutSide.getPageSource(driver).contains("15h30")){
+	public void clickPopupAfter15h30() {
+		if (transferMoneyOutSide.getPageSource(driver).contains("15h30")) {
 			transferMoneyOutSide.clickToDynamicButton(driver, "Tiếp tục");
 		}
-		}
-		
+	}
+
 }
