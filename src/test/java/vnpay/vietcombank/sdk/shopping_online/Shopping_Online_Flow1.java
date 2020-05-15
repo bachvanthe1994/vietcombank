@@ -72,7 +72,7 @@ public class Shopping_Online_Flow1 extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
@@ -83,8 +83,8 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToTextView( "Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
 			feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -166,8 +166,8 @@ public class Shopping_Online_Flow1 extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToTextView("Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
 				feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -221,7 +221,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		log.info("---------------------------TC_01_STEP_10: giam gia---------------------------");
 		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
+		double sale = Double.parseDouble(getSaleString[0].replace(",", "").replace("-", ""));
 
 		// tong tien can thanh toan
 		log.info("---------------------------TC_01_STEP_11: tong tien---------------------------");
@@ -298,9 +298,9 @@ public class Shopping_Online_Flow1 extends Base {
 		}
 
 		log.info("---------------------------TestCase_02: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------TestCase_02: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("3");
@@ -311,8 +311,8 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToTextView( "Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
 			feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -394,8 +394,8 @@ public class Shopping_Online_Flow1 extends Base {
 			log.info("---------------------------TestCase_02: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToTextView("Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
 				feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -527,7 +527,7 @@ public class Shopping_Online_Flow1 extends Base {
 		}
 
 		log.info("---------------------------Testcase_03: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------Testcase_03: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
@@ -538,8 +538,8 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("---------------------------Testcase_03: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToTextView( "Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
 			feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -621,8 +621,8 @@ public class Shopping_Online_Flow1 extends Base {
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToTextView("Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
 				feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -753,9 +753,9 @@ public class Shopping_Online_Flow1 extends Base {
 		}
 
 		log.info("---------------------------Testcase_04: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------Testcase_04: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("3");
@@ -766,8 +766,8 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("---------------------------Testcase_04: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToTextView( "Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
 			feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -851,8 +851,8 @@ public class Shopping_Online_Flow1 extends Base {
 			log.info("---------------------------Testcase_04: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToTextView("Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
 				feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -995,8 +995,8 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("---------------------------TC_05_STEP: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
 
-		shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+		shopping.scrollDownToTextView( "Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 		double feeShippingD = 0;
 		if (feeShipping.equals("Miễn phí")) {
 			feeShipping = feeShipping.replace("Miễn phí", "0");
@@ -1078,8 +1078,8 @@ public class Shopping_Online_Flow1 extends Base {
 			log.info("---------------------------TC_05_STEP: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
-			shopping.scrollDownToViewText( "Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+			shopping.scrollDownToTextView( "Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
 			feeShippingD = 0;
 			if (feeShipping.equals("Miễn phí")) {
 				feeShipping = feeShipping.replace("Miễn phí", "0");

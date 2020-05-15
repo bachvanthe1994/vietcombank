@@ -386,6 +386,10 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
 
 		}
+		public void scrollDownToTextView( String dynamicText) {
+			scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+			
+		}
 
 	
 }

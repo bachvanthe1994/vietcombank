@@ -54,7 +54,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		password = pass;
 	}
 	
-	@Test
+//	@Test
 	public void TC_01_DatVe_MotChieu_SoLuongNguoiNhoNhat_XacThucBang_MatKhauDangNhap() {
 		log.info("TC_01_Step_Click dat ve tau");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Đặt vé tàu");
@@ -250,7 +250,7 @@ public class Flow_TrainTicket_part2 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_BaoCao_DatVe_MotChieu_SoLuongNguoiNhoNhat_XacThucBang_MatKhauDangNhap() {
 		log.info("TC_02: Click menu header");
 		trainTicket.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -460,6 +460,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
 
 		log.info("TC_03_lay Tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 
 		log.info("TC_03_veriFy Email");
