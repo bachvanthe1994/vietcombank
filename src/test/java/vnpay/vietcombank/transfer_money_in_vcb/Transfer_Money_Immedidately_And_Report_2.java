@@ -51,8 +51,8 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 	}
 
-//	@Parameters({ "pass" })
-//	@Test
+	@Parameters({ "pass" })
+	@Test
 	public void TC_13_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKhau(String pass) {
 
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
@@ -183,7 +183,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_14_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangMatKhau() {
 		log.info("TC_14_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -328,8 +328,8 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 	}
 
-//	@Parameters({ "pass" })
-//	@Test
+	@Parameters({ "pass" })
+	@Test
 	public void TC_15_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangMatKhau(String pass) {
 
 		log.info("TC_15_Step_01: Click Chuyen tien trong VCB");
@@ -466,7 +466,7 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_16_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraVNDVaXacThucMatKhau() {
 
 		log.info("TC_16_Step_01:Click  nut Back");
