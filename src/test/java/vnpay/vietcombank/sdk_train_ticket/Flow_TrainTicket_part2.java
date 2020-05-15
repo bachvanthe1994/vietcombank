@@ -17,6 +17,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.sdk.trainTicket.TrainTicketPageObject;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
+import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vnpay.vietcombank.sdk_train_ticket_data.TrainTicket_Data;
 
@@ -25,7 +26,7 @@ public class Flow_TrainTicket_part2 extends Base {
 	private TransactionReportPageObject transReport;
 	private LogInPageObject login;
 	private TrainTicketPageObject trainTicket;
-
+	
 	List<String> listExpect;
 	List<String> listActual;
 	String phoneNumber = "";
@@ -52,8 +53,8 @@ public class Flow_TrainTicket_part2 extends Base {
 		trainTicket = PageFactoryManager.getTrainTicketPageObject(driver);
 		password = pass;
 	}
-
-	@Test
+	
+//	@Test
 	public void TC_01_DatVe_MotChieu_SoLuongNguoiNhoNhat_XacThucBang_MatKhauDangNhap() {
 		log.info("TC_01_Step_Click dat ve tau");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Đặt vé tàu");
@@ -75,10 +76,10 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_01_Nhap text ga den");
 		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
-
+		
 		log.info("TC_01_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
+		
 		log.info("TC_01_Chon Mot chieu");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Một chiều");
 
@@ -122,10 +123,10 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_01_Verify lo trinh diem den");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
+		
 		log.info("TC_01_Click chon gio khoi hanh");
 		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivBgItem");
-
+		
 		log.info("TC_01_Click TIEP TUC");
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
 
@@ -193,23 +194,24 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_01_click button Thanh toan");
 		trainTicket.clickToDynamicButtonContains("THANH TOÁN");
-
+		
 		log.info("TC_01_click button Khong");
 		trainTicket.clickToDynamicButton("Không");
-
+		
 		log.info("TC_01_verify hien thi Thong tin ve Tau");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
 
 		log.info("TC_01_lay Tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 
 		log.info("TC_01_veriFy Email");
 		email = trainTicket.getDynamicTextOld(driver, "Email");
-		verifyEquals(TrainTicket_Data.inputText.email, email);
-
+		verifyEquals(TrainTicket_Data.inputText.email, email);		
+		
 		log.info("TC_01_veriFy Thong tin ho chieu");
 		hoChieu = trainTicket.getDynamicTextOld(driver, "CMND/CCCD/Hộ chiếu");
-
+		
 		verifyEquals(TrainTicket_Data.inputText.CARD_NO, hoChieu);
 		trainTicket.scrollDownToText(driver, "Tổng tiền thanh toán");
 
@@ -218,7 +220,7 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_01_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains("Tiếp tục");
-
+		
 		log.info("TC_01_Verify hien thi man hinh xac nhan thong tin");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin"));
 		log.info("TC_01_Verify tai khoan nguon");
@@ -248,7 +250,7 @@ public class Flow_TrainTicket_part2 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_BaoCao_DatVe_MotChieu_SoLuongNguoiNhoNhat_XacThucBang_MatKhauDangNhap() {
 		log.info("TC_02: Click menu header");
 		trainTicket.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -279,18 +281,18 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_02:: Lay ngay tao giao dich hien thi");
 		String transferTimeInReport = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
+
 		log.info("TC_02:: Click chi tiet giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02:: Lay ngay tao giao dich hien thi");
 		String transferTimeInReport1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent");
 
-		verifyEquals(transferTimeInReport, transferTimeInReport1);
+		
+		verifyEquals(transferTimeInReport,transferTimeInReport1);
 		log.info("TC_02:: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), taiKhoanNguon);
 
-//		log.info("TC_02:: Check tai khoan ghi co");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_02:So tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(tongTienThanhToan));
@@ -304,12 +306,12 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_02: Click Back ve Home");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 		transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
-
+		
 		log.info("TC_02: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-
+		
 	}
-
+	
 	@Test
 	public void TC_03_DatVe_MotChieu_SoLuongNguoiNhoNhat_XacThucBang_SMSOTP() {
 		log.info("TC_03_Step_Click dat ve tau");
@@ -332,10 +334,10 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_Nhap text ga den");
 		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
-
+		
 		log.info("TC_03_Chon gia tri trong danh sach");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
+		
 		log.info("TC_03_Chon Mot chieu");
 		trainTicket.clickToDynamicButtonLinkOrLinkText("Một chiều");
 
@@ -379,10 +381,10 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_Verify lo trinh diem den");
 		verifyEquals(trainTicket.getDynamicDateTime("com.VCB:id/tv_to"), TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
+		
 		log.info("TC_03_Click chon gio khoi hanh");
 		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivBgItem");
-
+		
 		log.info("TC_03_Click TIEP TUC");
 		trainTicket.clickToDynamicButton("TIẾP TỤC");
 
@@ -450,23 +452,24 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_click button Thanh toan");
 		trainTicket.clickToDynamicButtonContains("THANH TOÁN");
-
+		
 		log.info("TC_03_click button Khong");
 		trainTicket.clickToDynamicButton("Không");
-
+		
 		log.info("TC_03_verify hien thi Thong tin ve Tau");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
 
 		log.info("TC_03_lay Tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 
 		log.info("TC_03_veriFy Email");
 		email = trainTicket.getDynamicTextOld(driver, "Email");
-		verifyEquals(TrainTicket_Data.inputText.email, email);
-
+		verifyEquals(TrainTicket_Data.inputText.email, email);		
+		
 		log.info("TC_03_veriFy Thong tin ho chieu");
 		hoChieu = trainTicket.getDynamicTextOld(driver, "CMND/CCCD/Hộ chiếu");
-
+		
 		verifyEquals(TrainTicket_Data.inputText.CARD_NO, hoChieu);
 		trainTicket.scrollDownToText(driver, "Tổng tiền thanh toán");
 
@@ -475,10 +478,12 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains("Tiếp tục");
-
+		
 		log.info("TC_03_Verify hien thi man hinh xac nhan thong tin");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin"));
+		
 		log.info("TC_03_Verify tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		verifyEquals(taiKhoanNguon, trainTicket.getDynamicTextOld("Tài khoản nguồn"));
 
 		log.info("TC_03_Verify rong so tien thanh toan");
@@ -536,18 +541,17 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_04:: Lay ngay tao giao dich hien thi");
 		String transferTimeInReport = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
+
 		log.info("TC_04:: Click chi tiet giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04:: Lay ngay tao giao dich hien thi");
 		String transferTimeInReport1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent");
 
-		verifyEquals(transferTimeInReport, transferTimeInReport1);
+		
+		verifyEquals(transferTimeInReport,transferTimeInReport1);
 		log.info("TC_04:: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), taiKhoanNguon);
-
-//		log.info("TC_04:: Check tai khoan ghi co");
-//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_04:So tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(tongTienThanhToan));
@@ -562,10 +566,10 @@ public class Flow_TrainTicket_part2 extends Base {
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
 		transReport.clickToDynamicBackIcon(driver, "Báo cáo giao dịch");
 	}
-
+	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		service.stop();
 	}
-
+	
 }

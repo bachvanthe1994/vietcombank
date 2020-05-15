@@ -159,15 +159,11 @@
 			<!-- Chỉnh sửa điểm nổi bật -->
 			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
 
-
-
-
-
-
-
-
-
-
+			<!-- Thanh toán tiền nước -->
+            <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> 
+            
+			<!-- Thanh toán tiền điện -->
+            <class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" /> 
 
 		</classes>
 

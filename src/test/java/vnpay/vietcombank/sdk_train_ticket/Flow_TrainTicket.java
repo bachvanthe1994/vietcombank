@@ -457,6 +457,7 @@ public class Flow_TrainTicket extends Base {
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
 
 		log.info("TC_05_lay Tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 		
 		log.info("TC_05_lay ho va ten");
@@ -488,17 +489,19 @@ public class Flow_TrainTicket extends Base {
 		log.info("TC_05_Verify hien thi man hinh xac nhan thong tin");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin"));
 		log.info("TC_05_Verify tai khoan nguon");
+		trainTicket.scrollUpToText("Tài khoản nguồn");
 		verifyEquals(taiKhoanNguon, trainTicket.getDynamicTextOld("Tài khoản nguồn"));
 
 		log.info("TC_05_Verify rong so tien thanh toan");
 		verifyTrue(trainTicket.getDynamicTextOld("Số tiền").contains(tongTienThanhToan));
 
-		log.info("TC_05_Verify Phi giao dich");
-		soTienPhi = trainTicket.getDynamicTextOld("Số tiền phí");
-
 		log.info("TC_05_Step_06: Chon phuong thuc xac thuc SMS OTP");
 		trainTicket.clickToTextID(driver, "com.VCB:id/tvptxt");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		
+		
+		log.info("TC_05_Verify Phi giao dich");
+		soTienPhi = trainTicket.getDynamicTextOld("Số tiền phí");
 
 		log.info("TC_05_Step_07: An nut 'Tiep tuc'");
 		trainTicket.clickToDynamicButtonContains("Tiếp tục");
@@ -559,9 +562,6 @@ public class Flow_TrainTicket extends Base {
 		verifyEquals(transferTimeInReport,transferTimeInReport1);
 		log.info("TC_06:: Check tao khoan ghi no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), taiKhoanNguon);
-
-		log.info("TC_06:: Check tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT_TO);
 
 		log.info("TC_06:So tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền giao dịch").contains(tongTienThanhToan));

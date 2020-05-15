@@ -54,7 +54,7 @@ public class Search_Exchange_Rate_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Tra cứu");
 
 		log.info("TC_01_Step_03: An vao phan Ty gia");
-		home.scrollDownToText(driver, "Tỷ giá");
+		home.scrollIDownOneTime(driver);
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Tỷ giá");
 
 		log.info("TC_01_Step_04: Hien thi man hinh Tra Cuu ty gia ngoai te");
