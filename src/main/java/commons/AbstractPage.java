@@ -1957,6 +1957,8 @@ public class AbstractPage {
 
 	}
 
+
+	
 // lay loại tiền tệ trong ô text box số tiền bằng text
 	public String getDynamicCurrencyInMoneyTextbox(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		boolean status = false;

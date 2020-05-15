@@ -7,7 +7,7 @@ public class Lock_Card_Data {
 	public static final String DEBIT_CARD03 = "526418...189";
 	public static final String CREDIT_CARD01 = "377159...206";
 	public static final String CREDIT_CARD02 = "469174...497";
-	public static final String CREDIT_CARD03 = "970436...361";
+	public static final String CREDIT_CARD03 = "970436...010";
 	public static final String CREDIT_CARD04 = "970436...817";
 
 	public class VALIDATE {
