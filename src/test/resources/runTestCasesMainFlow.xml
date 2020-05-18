@@ -155,6 +155,7 @@
 			<!-- Chỉnh sửa điểm nổi bật -->
 			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
 
+<<<<<<< HEAD
 			<!-- VCB smartOTp -->
 			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_QuickMoneyTransfer247_SmartOTP" />
 
@@ -173,6 +174,13 @@
 			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1" />
 
 
+=======
+			<!-- Thanh toán tiền nước -->
+            <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> 
+            
+			<!-- Thanh toán tiền điện -->
+            <class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" /> 
+>>>>>>> TrangVT/release06_local
 
 		</classes>
 
