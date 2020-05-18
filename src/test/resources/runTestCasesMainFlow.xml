@@ -19,7 +19,7 @@
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
 		<parameter name="deviceUDID" value="22232b98150c7ece" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
+		<parameter name="phone" value="0904797863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
@@ -45,15 +45,15 @@
 
 
 			<!-- Chuyển tiền 24/7 -->
-			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" />
-			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" /> -->
 
 			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
+<!-- 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" /> -->
+<!-- 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" /> -->
 
 			<!-- Quà tặng may mắn -->
-			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+<!-- 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
 
 			<!-- Quản lý danh bạ -->
 <!-- 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" /> -->
@@ -68,7 +68,7 @@
 			<!-- Thong bao -->
 <!-- 			<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" /> -->
 
-			<!-- Nạp tiền điện thoại -->
+<!-- 			Nạp tiền điện thoại -->
 <!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 
 			<!-- Dịch vụ thẻ -->
@@ -88,8 +88,8 @@
 			<!-- Auto debit -->
 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
 
-			<!-- vnpay.vietcombank.change_password -->
-<!-- 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
+<!-- 			vnpay.vietcombank.change_password -->
+			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
 
 			<!-- Nạp tiền VETC, MOMO dùng tài khoản khác -->
 <!-- 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->

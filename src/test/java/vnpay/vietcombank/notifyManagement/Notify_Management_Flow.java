@@ -19,6 +19,7 @@ import model.SeatType;
 import pageObjects.HomePageObject;
 import pageObjects.InboxPageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.NotifyManagementPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
@@ -42,6 +43,7 @@ public class Notify_Management_Flow extends Base {
 	private DynamicAirTicketBookingObjects airTicket;
 	private ShoppingOnlinePageObject shopping;
 	private VehicalPageObject vehicalTicket;
+	private NotifyManagementPageObject notifyManage;
 
 	private String tomorrowDay = getForWardDay(4);
 
@@ -85,7 +87,7 @@ public class Notify_Management_Flow extends Base {
 //		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Test
+	@Test
 	public void TC_01_TinOTTVeXemPhim_DaDangNhap() {
 
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
@@ -210,7 +212,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(ticketCode));
 	}
 
-//	@Test
+	@Test
 	public void TC_02_TinOTTVeXemPhim_ChuaDangNhap() {
 
 		log.info("TC_02_Step_01: Back ve man hinh Home");
@@ -357,7 +359,7 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_03_TinOTTDatVeKhachSan_DaDangNhap() {
 
 		log.info("TC_03_Step_01_Click Dat phong khach san");
@@ -448,7 +450,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(roomID));
 	}
 
-//	@Test
+	@Test
 	public void TC_04_TinOTTDatVeKhachSan_ChuaDangNhap() {
 
 		log.info("TC_04_Step_01: Back ve man hinh Home");
@@ -567,8 +569,8 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_05_TinOTTVeMayBay_DadangNhap(String otp) {
 
 		log.info("TC_05_Step_01: Click vao phan Dat ve may bay");
@@ -693,8 +695,8 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_06_TinOTTVeMayBay_ChuadangNhap(String otp) {
 
 		log.info("TC_06_Step_01: Back ve man hinh Home");
@@ -847,8 +849,8 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_07_TinOTTVeMayBayThanhToanNgay_DadangNhap(String otp) {
 
 		log.info("TC_07_Step_01: Click vao phan Dat ve may bay");
@@ -987,8 +989,8 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_08_TinOTTVeMayBayThanhToanNgay_ChuadangNhap(String otp) {
 
 		log.info("TC_08_Step_01_1: Back ve man hinh Home");
@@ -1156,7 +1158,7 @@ public class Notify_Management_Flow extends Base {
 
 		home.scrollDownToText(driver, "© 2019 Vietcombank");
 		home.scrollIDownOneTime(driver);
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
 
@@ -1271,7 +1273,7 @@ public class Notify_Management_Flow extends Base {
 
 		home.scrollDownToText(driver, "© 2019 Vietcombank");
 		home.scrollIDownOneTime(driver);
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
 
@@ -1398,7 +1400,7 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_11_TinOTT_VeXe_DaDangNhap() {
 
 		home.scrollDownToText(driver, "© 2019 Vietcombank");
@@ -1508,7 +1510,7 @@ public class Notify_Management_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Test
+	@Test
 	public void TC_12_TinOTT_VeXe_ChuaDangNhap() {
 
 		home.scrollDownToText(driver, "© 2019 Vietcombank");
