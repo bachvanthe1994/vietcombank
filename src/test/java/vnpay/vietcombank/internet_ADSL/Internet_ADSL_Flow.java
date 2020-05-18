@@ -162,7 +162,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_02_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_02: Step: verify thoi tim kiem den ngay");
@@ -344,7 +344,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_04_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_04: Step: verify thoi tim kiem den ngay");
@@ -527,7 +527,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_06_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_06: Step: verify thoi tim kiem den ngay");
@@ -710,7 +710,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_08_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_08: Step: verify thoi tim kiem den ngay");
@@ -893,7 +893,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_10_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_10: Step: verify thoi tim kiem den ngay");
@@ -1078,7 +1078,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_12_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_12: Step: verify thoi tim kiem den ngay");
