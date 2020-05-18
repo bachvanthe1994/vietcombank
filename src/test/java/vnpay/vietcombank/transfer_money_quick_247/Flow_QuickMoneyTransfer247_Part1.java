@@ -191,7 +191,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_02: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_02: verify thoi tim kiem tu ngay");
@@ -392,7 +392,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_04_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_04_Step: verify thoi tim kiem tu ngay");
@@ -413,7 +413,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 		log.info("TC_04_Step: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + ".00 USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + TransferMoneyQuick_Data.TransferQuick.MONEY_USD + " USD"));
 
 		log.info("TC_04_Step: Click chi tiet giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -605,7 +605,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_06_Step_: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_06_Step_: verify thoi tim kiem tu ngay");
@@ -808,7 +808,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_08: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
-		String dateStartExpect = getBackwardDate(7);
+		String dateStartExpect = getBackwardDate(6);
 		verifyEquals(dateStartActual, dateStartExpect);
 
 		log.info("TC_08: verify thoi tim kiem tu ngay");
@@ -829,7 +829,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 		log.info("TC_08: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_EUR) + ".00 EUR"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + TransferMoneyQuick_Data.TransferQuick.MONEY_EUR + " EUR"));
 
 		log.info("TC_08: Click chi tiet giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -890,7 +890,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		log.info("TC_08_Step_Click button home");
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();
