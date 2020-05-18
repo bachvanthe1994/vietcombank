@@ -8,18 +8,24 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
+import commons.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
+import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
 public class TrainTicketPageObject extends AbstractPage {
@@ -1141,6 +1147,52 @@ public class TrainTicketPageObject extends AbstractPage {
 
 		}
 		return text;
+	}
+	
+	public String getNumberRandom() {
+        int rand = (int)(Math.random() * (999999-100000)+1) + 100000; 
+		String number = Integer.toString(rand);
+		return number;
+	}
+	
+	/* SCROLL UP */
+	public void scrollUpToText( String dynamicText) {
+		scrollUp(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+	public void scrollUp( String locator, String... dynamicValue) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.30);
+		int endY = (int) (size.getHeight() * 0.80);
+		TouchAction touch = new TouchAction(driver);
+		List<MobileElement> elementsOne = null;
+		try {
+			locator = String.format(locator, (Object[]) dynamicValue);
+		} catch (Exception e) {
+		}
+		for (int i = 0; i < 20; i++) {
+			boolean checkElementDisplayed = false;
+			overRideTimeOut(driver, 2);
+			try {
+				driver.getPageSource();
+				elementsOne = driver.findElements(By.xpath(locator));
+				checkElementDisplayed = elementsOne.get(0).isDisplayed();
+			} catch (Exception e) {
+				checkElementDisplayed = true;
+			}
+
+			overRideTimeOut(driver, Constants.LONG_TIME);
+			if (elementsOne.size() > 0 && checkElementDisplayed) {
+				break;
+			} else {
+				try {
+					touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+				} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+			}
+		}
 	}
 
 }

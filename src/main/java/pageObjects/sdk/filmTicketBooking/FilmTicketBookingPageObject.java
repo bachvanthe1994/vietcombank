@@ -287,6 +287,15 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 			clickToElement(driver, FilmTicketBookingPageUIs.DYNAMIC_BUTTON, dynamicValue);
 		}
 	}
+	
+	public void clickToDynamicImageView(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_IMAGE_VIEW, dynamicTextValue);
+		}
+	}
 
 	public boolean isDynamicMessageAndLabelTextDisplayed(String text) {
 		boolean isDisplayed = false;
