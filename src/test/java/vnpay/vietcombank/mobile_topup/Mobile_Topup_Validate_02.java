@@ -61,7 +61,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 	public void TC_02_KiemTraBoTrongSoDienThoaiMacDinh(String phone) {
 
 		log.info("TC_02_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_02_Step_02: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -160,7 +160,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 	public void TC_09_SoTienGiaoDichLonHonSoDuTKNguon(String phone) {
 
 		log.info("TC_09_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		dynamicValue = mobileTopup.getStringNumber(500000, "com.VCB:id/descript");
 		if (dynamicValue != "0") {
 
@@ -182,7 +182,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 
 		} else {
 			log.info("TC_09_Step_02: Tat Dropdownlist");
-			mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+			mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 			throw new SkipException("These Tests shouldn't be run in Production");
 		}
 
@@ -193,7 +193,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 	public void TC_10_KhoiTaoGiaoDichHopLe(String phone) {
 
 		log.info("TC_10_Step_01: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_10_Step_02: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);

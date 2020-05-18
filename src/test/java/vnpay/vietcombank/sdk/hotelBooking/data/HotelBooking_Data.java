@@ -38,8 +38,10 @@ public class HotelBooking_Data {
 	public static final String EMPTY_TAX_CODE = "Quý khách vui lòng nhập Mã số thuế.";
 	public static final String EMPTY_HOTEL_ADDRESS = "Quý khách vui lòng nhập Địa chỉ công ty.";
 	public static final String EMPTY_EMAIL = "Quý khách vui lòng nhập Email nhận hóa đơn.";
-	public static final String HOTEL_NAME_BOOKING = "Impressive Boutique Hotel";
-	public static final String HOTEL_NAME_BOOKING_INPUT = "Impressive Boutique";
+
+	public static final String HOTEL_NAME_BOOKING = "Khách sạn Imperial Nha Trang";
+	public static final String HOTEL_NAME_BOOKING_INPUT = "Imperial Nha Trang";
+
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
 	

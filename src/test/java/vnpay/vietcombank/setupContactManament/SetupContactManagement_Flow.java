@@ -39,6 +39,7 @@ public class SetupContactManagement_Flow extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		login.clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 		home = PageFactoryManager.getHomePageObject(driver);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
@@ -84,16 +85,17 @@ public class SetupContactManagement_Flow extends Base {
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_13: Click button chia se");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
-
-		log.info("TC_01_Step_14: Click Dong");
-		transferInVCB.clickToDynamicButton(driver, "Hoàn thành");
+		transferInVCB.clickToDynamicIcon(driver, "Lưu thụ hưởng");
+		transferInVCB.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
+		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Lưu vào thư viện ảnh thành công");
 
 		log.info("TC_01_Step_16: Click Dong");
 		transferInVCB.clickToDynamicButton(driver, "Đóng");
+
+		log.info("TC_01_Step_16: Click thực hiện giao dịch mới");
+		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_01_Step_17: Quay lai man home");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
@@ -135,7 +137,7 @@ public class SetupContactManagement_Flow extends Base {
 	public void TC_02_TaoDanhBaNguoiHuong() {
 
 		log.info("TC_02_Step_05: Tao moi 'Thong tin nguoi thu huong' ");
-		setupContact.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/btnAddContact");
+		setupContact.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
 		log.info("TC_02_Step_06: Mo DropdownList 'Chuyen Tien' ");
 		setupContact.clickToDynamicDropdownByHeader(driver, "Thông tin người thụ hưởng", "1");
@@ -318,7 +320,7 @@ public class SetupContactManagement_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
 
 		log.info("TC_08_Step_03: Chon 'Danh ba the/vi dien tu'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ thẻ/ví điện tử");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ thẻ/ ví điện tử");
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 
 		log.info("TC_08_Step_04: Tao moi 'Danh ba the/vi dien tu'");
@@ -330,7 +332,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Nhà cung cấp");
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.MOMO_EWALLET);
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Loại dịch vụ");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền MoMo");
+		setupContact.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền vào ví cá nhân Momo B");
 		setupContact.inputToDynamicInputBox(driver, Contact.CONTACT_NAME_02, "Tên gợi nhớ");
 		setupContact.inputToDynamicInputBox(driver, Contact.CONTACT_CARD_NUMBER_02, "Số thẻ/Mã khách hàng");
 
@@ -343,7 +345,7 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_08_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_02);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), Contact.CONTACT_CARD_NUMBER_02);
-		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền MoMo");
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền điện tử vào ví");
 	}
 
 	@Test
@@ -358,7 +360,7 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"), Contact.E_WALLET_CHARGE);
 		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.MOMO_EWALLET));
-		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, "Nạp tiền MoMo"));
+		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, "Nạp tiền vào ví cá nhân Momo B"));
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, Contact.CONTACT_NAME_02));
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, Contact.CONTACT_CARD_NUMBER_02));
 
@@ -385,6 +387,7 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_09_Step_08: Xac nhan tạo thong tin nguoi huong thanh cong");
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), Contact.CONTACT_CARD_NUMBER_01);
+		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), "Nạp tiền điện tử vào thẻ");
 	}
 
 	@Test
@@ -404,7 +407,7 @@ public class SetupContactManagement_Flow extends Base {
 
 		log.info("TC_10_Step_05: Xac nhan danh ba da bi xoa khoi danh sach");
 		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, Contact.CONTACT_NAME_01)));
-		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, "Nạp tiền MoMo")));
+		verifyTrue((setupContact.isDynamicMessageAndLabelTextUndisplayed(driver, "Nạp tiền điện tử vào thẻ")));
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -55,7 +55,7 @@ public class Mobile_Topup_Flow extends Base {
 
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -67,30 +67,39 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_01_Step_05: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_01_Step_06: Chon phuong thuc xac thuc SMS OTP");
+		log.info("TC_01_Step_06: Xac nhan tai khoan nguon");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_01_Step_07: Xac nhan so dien thoai duoc nap");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
+
+		log.info("TC_01_Step_08: Xac nhan menh gia the");
+		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, "Mệnh giá thẻ").contains(UIs.LIST_UNIT_VALUE[0] + " VND"));
+
+		log.info("TC_01_Step_09: Chon phuong thuc xac thuc SMS OTP");
 		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		log.info("TC_01_Step_07: An nut 'Tiep tuc'");
+		log.info("TC_01_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_01_Step_08: Nhap ki tu vao o nhap mat khau");
+		log.info("TC_01_Step_11: Nhap ki tu vao o nhap mat khau");
 		mobileTopup.inputIntoEditTextByID(driver, pass, "com.VCB:id/pin");
 
-		log.info("TC_01_Step_09: An tiep button 'Tiep tuc'");
+		log.info("TC_01_Step_12: An tiep button 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_01_Step_10: Lay ma giao dich roi an nut tiep tuc");
+		log.info("TC_01_Step_13: Lay ma giao dich roi an nut tiep tuc");
 		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_01_Step_11: Xac nhan so tien o tai khoan nguon bi tru dung");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		log.info("TC_01_Step_14: Xac nhan so tien o tai khoan nguon bi tru dung");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 
-		log.info("TC_01_Step_12: Click back ve man hinh chinh");
+		log.info("TC_01_Step_15: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -108,13 +117,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_02_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_02_Step_04: Chon 'Nap tien dien thoai'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_02_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -162,7 +171,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 
 		log.info("TC_03_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_03_Step_03: Chon tai khoan nguon");
 		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -174,30 +183,39 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_03_Step_05: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_03_Step_06: Chon phuong thuc xac thuc SMS OTP");
+		log.info("TC_03_Step_06: Xac nhan tai khoan nguon");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_03_Step_07: Xac nhan so dien thoai duoc nap");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
+
+		log.info("TC_03_Step_08: Xac nhan menh gia the");
+		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, "Mệnh giá thẻ").contains(UIs.LIST_UNIT_VALUE[5] + " VND"));
+
+		log.info("TC_03_Step_09: Chon phuong thuc xac thuc SMS OTP");
 		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
-		log.info("TC_03_Step_07: An nut 'Tiep tuc'");
+		log.info("TC_03_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_03_Step_08: Nhap ki tu vao o nhap mat khau");
+		log.info("TC_03_Step_11: Nhap ki tu vao o nhap mat khau");
 		mobileTopup.inputIntoEditTextByID(driver, pass, "com.VCB:id/pin");
 
-		log.info("TC_03_Step_09: An tiep button 'Tiep tuc'");
+		log.info("TC_03_Step_12: An tiep button 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_03_Step_10: Lay ma giao dich roi an nut tiep tuc");
+		log.info("TC_03_Step_13: Lay ma giao dich roi an nut tiep tuc");
 		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_03_Step_11: Xac nhan so tien o tai khoan nguon bi tru dung");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		log.info("TC_03_Step_14: Xac nhan so tien o tai khoan nguon bi tru dung");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[5], accountFee) + " VND");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 
-		log.info("TC_03_Step_12: Click back ve man hinh chinh");
+		log.info("TC_03_Step_15: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -215,13 +233,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_04_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_04_Step_04: Chon 'Nap tien dien thoai'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_04_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -269,7 +287,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 
 		log.info("TC_05_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_05_Step_03: Chon tai khoan nguon");
 		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -281,30 +299,39 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_05_Step_05: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_05_Step_06: Chon phuong thuc xac thuc SMS OTP");
+		log.info("TC_05_Step_06: Xac nhan tai khoan nguon");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_05_Step_07: Xac nhan so dien thoai duoc nap");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
+
+		log.info("TC_05_Step_08: Xac nhan menh gia the");
+		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, "Mệnh giá thẻ").contains(UIs.LIST_UNIT_VALUE[0] + " VND"));
+
+		log.info("TC_05_Step_09: Chon phuong thuc xac thuc SMS OTP");
 		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
-		log.info("TC_05_Step_07: An nut 'Tiep tuc'");
+		log.info("TC_05_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_05_Step_08: Nhap du ki tu vao o nhap OTP");
+		log.info("TC_05_Step_11: Nhap du ki tu vao o nhap OTP");
 		mobileTopup.inputToDynamicOtp(driver, otp, "Tiếp tục");
 
-		log.info("TC_05_Step_09: An tiep button 'Tiep tuc'");
+		log.info("TC_05_Step_12: An tiep button 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_05_Step_10: Lay ma giao dich roi an nut tiep tuc");
+		log.info("TC_05_Step_13: Lay ma giao dich roi an nut tiep tuc");
 		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_05_Step_11: Xac nhan so tien o tai khoan nguon bi tru dung");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		log.info("TC_05_Step_14: Xac nhan so tien o tai khoan nguon bi tru dung");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[0], accountFee) + " VND");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 
-		log.info("TC_05_Step_12: Click back ve man hinh chinh");
+		log.info("TC_05_Step_15: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -322,13 +349,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_06_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_06_Step_04: Chon 'Nap tien dien thoai'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_06_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -376,7 +403,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 
 		log.info("TC_07_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_07_Step_03: Chon tai khoan nguon");
 		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -388,30 +415,39 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_07_Step_05: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
-		log.info("TC_07_Step_06: Chon phuong thuc xac thuc SMS OTP");
+		log.info("TC_07_Step_06: Xac nhan tai khoan nguon");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_07_Step_07: Xac nhan so dien thoai duoc nap");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), phone);
+
+		log.info("TC_07_Step_08: Xac nhan menh gia the");
+		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, "Mệnh giá thẻ").contains(UIs.LIST_UNIT_VALUE[5] + " VND"));
+
+		log.info("TC_07_Step_09: Chon phuong thuc xac thuc SMS OTP");
 		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
-		log.info("TC_07_Step_07: An nut 'Tiep tuc'");
+		log.info("TC_07_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_07_Step_08: Nhap du ki tu vao o nhap OTP");
+		log.info("TC_07_Step_11: Nhap du ki tu vao o nhap OTP");
 		mobileTopup.inputToDynamicOtp(driver, otp, "Tiếp tục");
 
-		log.info("TC_07_Step_09: An tiep button 'Tiep tuc'");
+		log.info("TC_07_Step_12: An tiep button 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_07_Step_10: Lay ma giao dich roi an nut tiep tuc");
+		log.info("TC_07_Step_13: Lay ma giao dich roi an nut tiep tuc");
 		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_07_Step_11: Xac nhan so tien o tai khoan nguon bi tru dung");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		log.info("TC_07_Step_14: Xac nhan so tien o tai khoan nguon bi tru dung");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.LIST_UNIT_VALUE[5], accountFee) + " VND");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 
-		log.info("TC_07_Step_12: Click back ve man hinh chinh");
+		log.info("TC_07_Step_15: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -429,13 +465,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_08_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectTransType");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_08_Step_04: Chon 'Nap tien dien thoai'");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_08_Step_05: An vao Dropdown 'Chon tai khoan/the");
-		transactionReport.clickToTextViewCombobox(driver, "com.VCB:id/tvSelectAcc");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_Step_06: Chon tai khoan vua thuc hien giao dich");
 		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -469,6 +505,232 @@ public class Mobile_Topup_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_08_Step_16: Mo tab Home");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+	}
+
+	@Parameters({ "pass" })
+	@Test
+	public void TC_09_NapTheDienThoai_QuaSoDienThoaiKhac_QuaMK(String pass) {
+
+		log.info("TC_09_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
+		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
+
+		log.info("TC_09_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
+
+		log.info("TC_09_Step_03: Chon tai khoan nguon");
+		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_09_Step_04: Nhap so dien thoai");
+		mobileTopup.inputIntoEditTextByID(driver, UIs.OTHER_PHONE_NUMBER, "com.VCB:id/mobile");
+
+		log.info("TC_09_Step_05: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+
+		log.info("TC_09_Step_06: Xac nhan tai khoan nguon");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_09_Step_07: Xac nhan so dien thoai duoc nap");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), UIs.OTHER_PHONE_NUMBER);
+
+		log.info("TC_09_Step_08: Xac nhan menh gia the");
+		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, "Mệnh giá thẻ").contains(UIs.DEFAULT_UNIT_VALUE + " VND"));
+
+		log.info("TC_09_Step_09: Chon phuong thuc xac thuc SMS OTP");
+		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+
+		log.info("TC_09_Step_10: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_09_Step_11: Nhap ki tu vao o nhap mat khau");
+		mobileTopup.inputIntoEditTextByID(driver, pass, "com.VCB:id/pin");
+
+		log.info("TC_09_Step_12: An tiep button 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_09_Step_13: Lay ma giao dich roi an nut tiep tuc");
+		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_09_Step_14: Xac nhan so tien o tai khoan nguon bi tru dung");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.DEFAULT_UNIT_VALUE, accountFee) + " VND");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
+
+		log.info("TC_09_Step_15: Click back ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+	}
+
+	@Test
+	public void TC_10_NapTheDienThoai_QuaSoDienThoaiKhac_BaoCaoGiaoDich() {
+
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_10_Step_01: Mo tab Menu");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_10_Step_02: Mo sub-menu 'Bao cao giao dich");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
+
+		log.info("TC_10_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
+
+		log.info("TC_10_Step_04: Chon 'Nap tien dien thoai'");
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+
+		log.info("TC_10_Step_05: An vao Dropdown 'Chon tai khoan/the");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
+
+		log.info("TC_10_Step_06: Chon tai khoan vua thuc hien giao dich");
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_10_Step_07: An nut Tim kiem");
+		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
+
+		log.info("TC_10_Step_08: An vao giao dich dau tien");
+		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
+
+		log.info("TC_10_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
+
+		log.info("TC_10_Step_10: Xac nhan hien thi dung ma giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số lệnh giao dịch"), transactionID);
+
+		log.info("TC_10_Step_11: Xac nhan hien thi so tai khoan giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_10_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), UIs.OTHER_PHONE_NUMBER);
+
+		log.info("TC_10_Step_13: Xac nhan hien thi loại giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), UIs.MOBILE_TOPUP_TITLE);
+
+		log.info("TC_10_Step_14: An nut back ve man hinh bao cao giao dich");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
+		log.info("TC_10_Step_15: An nut back ve man hinh menu");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_10_Step_16: Mo tab Home");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+	}
+
+	@Parameters({ "otp" })
+	@Test
+	public void TC_11_NapTheDienThoai_QuaSoDienThoaiKhac_QuaOTP(String otp) {
+
+		log.info("TC_11_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
+		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
+
+		log.info("TC_11_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
+
+		log.info("TC_11_Step_03: Chon tai khoan nguon");
+		accountMoneyBefore = mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2);
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_11_Step_04: Nhap so dien thoai");
+		mobileTopup.inputIntoEditTextByID(driver, UIs.OTHER_PHONE_NUMBER, "com.VCB:id/mobile");
+
+		log.info("TC_11_Step_05: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+
+		log.info("TC_11_Step_06: Xac nhan tai khoan nguon");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_11_Step_07: Xac nhan so dien thoai duoc nap");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), UIs.OTHER_PHONE_NUMBER);
+
+		log.info("TC_11_Step_08: Xac nhan menh gia the");
+		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, "Mệnh giá thẻ").contains(UIs.DEFAULT_UNIT_VALUE + " VND"));
+
+		log.info("TC_11_Step_09: Chon phuong thuc xac thuc SMS OTP");
+		accountFee = mobileTopup.getDynamicTextByLabel(driver, "Số tiền phí");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+
+		log.info("TC_11_Step_10: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_11_Step_11: Nhap ki tu vao o nhap OTP");
+		mobileTopup.inputToDynamicOtp(driver, otp, "Tiếp tục");
+
+		log.info("TC_11_Step_12: An tiep button 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_11_Step_13: Lay ma giao dich roi an nut tiep tuc");
+		transactionID = mobileTopup.getDynamicTextByLabel(driver, "Mã giao dịch");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_11_Step_14: Xac nhan so tien o tai khoan nguon bi tru dung");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Account_Data.Valid_Account.ACCOUNT2), mobileTopup.getStringNumberAfterCaculate(accountMoneyBefore, UIs.DEFAULT_UNIT_VALUE, accountFee) + " VND");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
+
+		log.info("TC_11_Step_15: Click back ve man hinh chinh");
+		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+	}
+
+	@Test
+	public void TC_12_NapTheDienThoai_QuaSoDienThoaiKhac_BaoCaoGiaoDich() {
+
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_12_Step_01: Mo tab Menu");
+		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_12_Step_02: Mo sub-menu 'Bao cao giao dich");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
+
+		log.info("TC_12_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
+
+		log.info("TC_12_Step_04: Chon 'Nap tien dien thoai'");
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+
+		log.info("TC_12_Step_05: An vao Dropdown 'Chon tai khoan/the");
+		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
+
+		log.info("TC_12_Step_06: Chon tai khoan vua thuc hien giao dich");
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_12_Step_07: An nut Tim kiem");
+		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
+
+		log.info("TC_12_Step_08: An vao giao dich dau tien");
+		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
+
+		log.info("TC_12_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Chi tiết giao dịch");
+
+		log.info("TC_12_Step_10: Xac nhan hien thi dung ma giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số lệnh giao dịch"), transactionID);
+
+		log.info("TC_12_Step_11: Xac nhan hien thi so tai khoan giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
+
+		log.info("TC_12_Step_12: Xac nhan hien thi so dien thoai duoc nap");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Số điện thoại được nạp"), UIs.OTHER_PHONE_NUMBER);
+
+		log.info("TC_12_Step_13: Xac nhan hien thi loại giao dich");
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), UIs.MOBILE_TOPUP_TITLE);
+
+		log.info("TC_12_Step_14: An nut back ve man hinh bao cao giao dich");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
+		log.info("TC_12_Step_15: An nut back ve man hinh menu");
+		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		home = PageFactoryManager.getHomePageObject(driver);
+
+		log.info("TC_12_Step_16: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 

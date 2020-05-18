@@ -51,7 +51,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -63,7 +63,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_06: Chon phuong thuc xac thuc SMS OTP");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_Step_07: An nut 'Tiep tuc'");
@@ -102,7 +102,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 	public void TC_03_XacThucGiaoDichBangSMSOTP_KiemTraBoTrongOTP(String phone) {
 
 		log.info("TC_03_Step_01: Chon phuong thuc xac thuc SMS OTP");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/tvptxt");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_03_Step_02: An nut 'Tiep tuc'");
@@ -226,7 +226,7 @@ public class Mobile_Topup_Validate_04 extends Base {
 
 		log.info("TC_10_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		originAccount = mobileTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/number_account");
-		mobileTopup.clickToTextViewCombobox(driver, "com.VCB:id/number_account");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_10_Step_03: Chon tai khoan nguon");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);

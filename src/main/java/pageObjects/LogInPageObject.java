@@ -7,13 +7,13 @@ import vietcombankUI.DynamicPageUIs;
 
 public class LogInPageObject extends AbstractPage {
 
-    public LogInPageObject(AppiumDriver<MobileElement> mappingDriver) {
-	driver = mappingDriver;
-    }
+	public LogInPageObject(AppiumDriver<MobileElement> mappingDriver) {
+		driver = mappingDriver;
+	}
 
-    private AppiumDriver<MobileElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
-	public void Global_login(String phone, String pass, String otp) {
+	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
@@ -33,9 +33,32 @@ public class LogInPageObject extends AbstractPage {
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
 
 		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 
+	}
+
+	public void Global_login(String phone, String pass, String otp) {
+
+		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+
+		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
+
+		clickToDynamicButton(driver, "Tiếp tục");
+
+		if (getPageSource(driver).contains("đã đăng nhập trên thiết bị khác")) {
+
+			clickToDynamicButton(driver, "Đồng ý");
+		}
+
+		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
+
+		clickToDynamicButton(driver, "Tiếp tục");
+
+		inputToDynamicOtp(driver, otp, "Tiếp tục");
+		clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 	}
 
 	public void clickToDynamicAcceptButton(String dynamicIDValue) {

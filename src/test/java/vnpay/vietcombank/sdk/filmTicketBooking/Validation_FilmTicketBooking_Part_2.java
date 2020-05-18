@@ -52,17 +52,16 @@ public class Validation_FilmTicketBooking_Part_2 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
 
 		log.info("TC_00_04_Tim kiem thanh pho");
-		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");
-		;
+		filmTicketBooking.inputIntoEditTextByID("Hà Nội", "com.VCB:id/edtSearch");
 
 		log.info("TC_00_05_Click chon thanh pho");
-		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
+		filmTicketBooking.clickToDynamicTextView("Hà Nội");
 	}
 
 	@Test
-	public void TC_01_ChonTheoRap_ChonSuatChieu_ChonSuatChieuThanhCongVoiRap_MegaGS() {
-		log.info("TC_01_02_Click chon cum rap Mega GS");
-		filmTicketBooking.clickToDynamicTextView("Mega GS");
+	public void TC_01_ChonTheoRap_ChonSuatChieu_ChonSuatChieuThanhCongVoiRap_TTChieuPhimQuocGia() {
+		log.info("TC_01_02_Click chon cum rap TT chieu phim quoc gia");
+		filmTicketBooking.clickToDynamicTextView("TT Chiếu Phim Quốc Gia");
 
 		log.info("TC_01_02_Click chon rap phim");
 		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");

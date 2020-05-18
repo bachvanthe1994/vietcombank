@@ -94,7 +94,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6 e
 		airTicket.clickToDynamicFlight(0, "VJ");
 
 		log.info("TC_01_Step 13: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_01_Step 15: Dien  Ten  Nguoi Lien He");
 		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");
@@ -199,7 +199,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6 e
 		airTicket.clickToDynamicFlight(0, "VJ");
 
 		log.info("TC_01_Step 13: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_01_Step 14: Click hanh ly chieu di");
 		airTicket.clickToDynamicTextOrDropDownByLabelAndIndex("com.VCB:id/recy_info_book", "0", "com.VCB:id/hanhlychieudi", "com.VCB:id/tv_content_price");
@@ -245,7 +245,7 @@ public class DomesticAirTicketBooking_Validation_AirTicket_Info_Details_Part_6 e
 		airTicket.clickToDynamicFlight(0, "VN");
 
 		log.info("TC_09_Step 02: Click Dat ve ");
-		airTicket.clickToDynamicButton("Đặt vé");
+		airTicket.clickToDynamicTextOrButtonLink("Đặt vé");
 
 		log.info("TC_09_Step 03: Dien  Ten nguoi lien he ");
 		airTicket.inputToDynamicInputBoxByLabel(DomesticAirTicketBooking_Data.validInput.ADULT_NAME, "THÔNG TIN LIÊN HỆ", "com.VCB:id/edt_hoten");

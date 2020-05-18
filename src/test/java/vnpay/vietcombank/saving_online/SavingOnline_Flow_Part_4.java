@@ -14,8 +14,8 @@ import io.appium.java_client.MobileElement;
 import model.SavingOnlineInfo;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.SavingOnlinePageObject;
 import pageObjects.TransactionReportPageObject;
-import pageObjects.saving_online.SavingOnlinePageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
@@ -160,7 +160,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
 		log.info("TC_02_6: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_7: Chon tai Khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
@@ -313,7 +313,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_04_6: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_7: Chon tai Khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -467,7 +467,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
 
 		log.info("TC_06_6: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_7: Chon tai Khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
@@ -620,7 +620,7 @@ public class SavingOnline_Flow_Part_4 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất toán tài khoản tiết kiệm");
 
 		log.info("TC_08_6: Click Chon Tai Khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_7: Chon tai Khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT3);

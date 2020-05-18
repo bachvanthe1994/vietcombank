@@ -169,14 +169,16 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_01_21: Kiem tra man hinh xac nhan thong tin");
+		
 		log.info("TC_01_21_01: Kiem tra tai khoan nguon");
+		filmTicketBooking.scrollUpToText("Tài khoản nguồn");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_21_02: Kiem tra so tien");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền"), info.price);
 
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
-		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Mật khẩu đăng nhập"));
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
 
@@ -271,8 +273,8 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_02_20: Kiem tra loai giao dich");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Loại giao dịch"), "Thanh toán vé xem phim");
 
-		log.info("TC_02_21: Kiem tra noi dung giao dich");
-		String note = "MBVCB" + transactionNumber + ". thanh toan ve xem phim";
+		log.info("------------------------------------TC_02_21: Kiem tra noi dung giao dich------------------------------------");
+		String note = "VCBMB" + transactionNumber + ". thanh toan ve xem phim";
 		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail("Nội dung giao dịch").contains(note));
 
 		log.info("TC_02_22: Click  nut Back");
@@ -286,7 +288,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_03_DatVeXemPhim_Rap_CineStar() {
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
 
@@ -445,7 +447,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_DatVeXemPhim_Rap_CineStar_BaoCaoGiaoDich() {
 		log.info("TC_04_1: Click  nut Back");
 		filmTicketBooking.clickToDynamicBackIcon("Mua vé xem phim");

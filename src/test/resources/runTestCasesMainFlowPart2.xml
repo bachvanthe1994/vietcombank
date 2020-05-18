@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Vietcombank" parallel="false">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<!-- <listener class-name="reportConfig.ExtentReportListener" /> -->
+		<listener class-name="reportConfig.ReportNGListener" />
+		<!-- <listener class-name="reportConfig.RetryListener" /> -->
+	</listeners>
+	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
+	<parameter name="appPackage" value="com.VCB" />
+	<parameter name="appName" value="vcbtnewdesign.apk" />
+
+
+
+	<test name="Run test case on Android 9">
+		<parameter name="deviceType" value="androidReal" />
+		<parameter name="deviceName" value="HUAWEI nova 3i" />
+		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
+		<parameter name="phone" value="0904797863" />
+		<parameter name="pass" value="aaaa1111" />
+		<parameter name="otp" value="123456" />
+
+		<classes>
+
+		
+
+			<!-- Auto debit -->
+<!-- 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" /> -->
+
+			<!-- vnpay.vietcombank.change_password -->
+<!-- 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
+
+			<!-- Nạp tiền VETC -->
+<!-- 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
+
+
+			<!-- Tính toán lãi suất -->
+<!-- 			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" /> -->
+
+			<!-- Đặt mục tiêu tiết kiệm -->
+<!-- 			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" /> -->
+
+			<!-- Cài đặt hạn mức chuyển tiền -->
+<!-- 			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" /> -->
+
+			<!-- Thanh toán cước điện thoại cố định -->
+<!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" /> -->
+
+			<!-- Thanh toán cước Internet ADSL -->
+<!-- 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" /> -->
+
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
+
+			<!-- Thanh toán vé máy bay -->
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
+
+
+		</classes>
+
+
+
+	</test>
+
+
+
+
+
+</suite> 
+
+

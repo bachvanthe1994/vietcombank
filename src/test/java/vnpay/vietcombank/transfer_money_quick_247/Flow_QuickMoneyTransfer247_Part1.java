@@ -2,6 +2,7 @@ package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -75,7 +76,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_01_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
@@ -183,7 +184,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_02: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
@@ -284,7 +285,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		exchangeRate = exchange.replace(" VND", "");
 
 		log.info("TC_03_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_03_Step_Nhap so tien chuyen");
@@ -384,7 +385,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_04_Step: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step: Chon so tai khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
@@ -497,7 +498,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_05_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_05_Step_Nhap so tien chuyen");
@@ -525,7 +526,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_05_Step_Verify phi chuyen tien");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-		verifyEquals(costTranferString, fee+"");
+		verifyEquals(costTranferString, fee + "");
 		costTranfer = Long.parseLong(costTranferString);
 
 		log.info("TC_05_Step_Tiep tuc");
@@ -597,7 +598,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_06_Step_: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step_: Chon so tai khoan tra cuu");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
@@ -694,7 +695,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
 
 		log.info("TC_07_Step_Select ngan hang");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Tên người thụ hưởng");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
 
 		log.info("TC_07_Step_Nhap so tien chuyen");
@@ -800,7 +801,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số tài khoản");
 
 		log.info("TC_08: Chon so tai khoan");
-		transReport.clickToDynamicDropdownAndDateTimePicker(driver, "com.VCB:id/tvSelectAcc");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08: Chon so tai khoan chuyen");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[2]);
@@ -888,6 +889,12 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_08_Step_Click button home");
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+	}
+	
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		closeApp();
+		service.stop();
 	}
 
 }

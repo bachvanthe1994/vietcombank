@@ -12,27 +12,29 @@ public class RegisterOnlinePageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
-	public void DangKyPhatHanhTheGhiNo(String TYPE_IDENTIFICATION, String NO_IDENTIFICATION,String Plusyear, String LOCATION, String EMAIL) {
+	public void DangKyPhatHanhTheGhiNo(String TYPE_IDENTIFICATION, String NO_IDENTIFICATION, String Plusyear, String LOCATION, String ADDRESS, String EMAIL) {
 		clickToDynamicButtonLinkOrLinkText(driver, "Đăng ký phát hành thẻ ghi nợ");
 
-		clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
-	clickToDynamicButtonLinkOrLinkText(driver, TYPE_IDENTIFICATION);
+		clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgaySinh");
+		clickToDynamicButton(driver, "OK");
 
-		inputToDynamicInputText(driver, NO_IDENTIFICATION, "Giấy tờ tùy thân", "6");
+		clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutLoaiXacNhan");
+		clickToDynamicButtonLinkOrLinkText(driver, TYPE_IDENTIFICATION);
 
-		clickToTextViewDate(driver, "Giấy tờ tùy thân", "7");
+		inputToDynamicEditviewByLinearlayoutId(driver, NO_IDENTIFICATION, "com.VCB:id/layoutCMTND");
 
-		clickToTextViewCombobox(driver, "android:id/date_picker_header_year");
-	
+		clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
+
+		clickToTextID(driver, "android:id/date_picker_header_year");
+
 		clickToTextListview(driver, "android:id/date_picker_year_picker", Plusyear);
-		
-
 
 		clickToDynamicButton(driver, "OK");
 
-		inputToDynamicInputText(driver, LOCATION, "Giấy tờ tùy thân", "8");
+		inputToDynamicEditviewByLinearlayoutId(driver, LOCATION, "com.VCB:id/layoutNoiCap2");
+		inputToDynamicEditviewByLinearlayoutId(driver, ADDRESS, "com.VCB:id/layoutDiaChiHienTai");
 
-		inputToDynamicInputText(driver, EMAIL, "Giấy tờ tùy thân", "11");
+		inputToDynamicEditviewByLinearlayoutId(driver, EMAIL, "com.VCB:id/layoutDiaChiEmail");
 
 		clickToDynamicButton(driver, "Xác nhận");
 	}

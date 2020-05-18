@@ -15,7 +15,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.saving_online.SavingOnlinePageObject;
+import pageObjects.SavingOnlinePageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.Auto_Saving_Data;
 import vietcombank_test_data.LogIn_Data;
@@ -175,11 +175,11 @@ public class Auto_Saving_Validate_01 extends Base {
 
 		log.info("TC_02_Step_01: Click vao drodown 'Tai khoan nguon");
 		sourceAccount = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_02_Step_02: Xac nhan 'Tai khoan nguon' dang hien thi la TK dau tien");
 		verifyEquals(autoSaving.getFirstOptionInList("com.VCB:id/tvContent1"), sourceAccount);
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/cancel_button");
+		autoSaving.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
 	@Test
@@ -200,7 +200,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_04_TietKiemTuDong_Chon1TKNguon_VND() {
 
 		log.info("TC_04_Step_01: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_04_Step_02: Click vao tai khoan nguon VND ");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -217,14 +217,14 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_05_TietKiemTuDong_Chon1TKNguon_USD() {
 
 		log.info("TC_05_Step_01: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_05_Step_02: Click vao tai khoan nguon USD");
 		sourceAccount = Account_Data.Valid_Account.USD_ACCOUNT;
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		if (sourceAccountMoney.contains("VND")) {
-			autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+			autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 			sourceAccount = Account_Data.Valid_Account.LIST_ACCOUNT_FROM[4];
 			autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		}
@@ -252,7 +252,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_07_TietKiemTuDong_KiemTraHienThiThongTinTKDich() {
 
 		log.info("TC_07_Step_01: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_07_Step_02: Chon tai khoan nguon");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -292,7 +292,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		autoSaving = PageFactoryManager.getAutoSavingPageObject(driver);
 
 		log.info("TC_07_Step_12: Chon tai khoan nguon USD/EUR");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");
 
 		log.info("TC_07_Step_13: Chon tai khoan dich ");
@@ -308,7 +308,7 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_08_TietKiemTuDong_ChonLaiTKDich() {
 
 		log.info("TC_08_Step_01: Chon tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_08_Step_02: Chon tai khoan dich ");
@@ -351,14 +351,14 @@ public class Auto_Saving_Validate_01 extends Base {
 	public void TC_12_TietKiemTuDong_NhapSoThapPhan() {
 
 		log.info("TC_12_Step_01: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_12_Step_02: Click vao tai khoan nguon VND dau tien tim duoc");
 		sourceAccount = Account_Data.Valid_Account.USD_ACCOUNT;
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		sourceAccountMoney = autoSaving.getMoneyByAccount(driver, "Số dư khả dụng");
 		if (sourceAccountMoney.contains("VND")) {
-			autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+			autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 			sourceAccount = Account_Data.Valid_Account.LIST_ACCOUNT_FROM[4];
 			autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
 		}
@@ -375,7 +375,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		verifyEquals(autoSaving.getTextInEditTextFieldByID(driver, "com.VCB:id/edtContent2"), "Số tiền chuyển");
 
 		log.info("TC_12_Step_06: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_12_Step_07: Click vao tai khoan nguon USD");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
@@ -402,7 +402,7 @@ public class Auto_Saving_Validate_01 extends Base {
 		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Data.RATE.USD_RATE));
 
 		log.info("TC_13_Step_02: Click vao drodown 'Tai khoan nguon");
-		autoSaving.clickToTextViewCombobox(driver, "com.VCB:id/tvContent");
+		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 
 		log.info("TC_13_Step_03: Click vao tai khoan nguon EUR");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, "0019967190");

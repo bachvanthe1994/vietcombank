@@ -165,7 +165,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.clickToDynamicDropdownByHeader(driver, "Ngày hiệu lực", "1");
 
 		log.info("TC_06_Step_02: Click chon nam");
-		transferInVCB.clickToDynamicDropdownAndDateTimePicker(driver, "android:id/date_picker_header_year");
+		transferInVCB.clickToTextID(driver, "android:id/date_picker_header_year");
 
 		log.info("TC_06_Step_03: Chon 2021");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Integer.parseInt(getCurrentYear()) + 1 + "");
@@ -525,7 +525,7 @@ public class Transfer_Money_In_Future_Validation_Part1 extends Base {
 		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_18_Step_08: Kiem tra suggest list hien thi");
-		verifyFailure(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
+		verifyTrue(transferInVCB.isDynamicSuggestedMoneyUndisplayed(driver, "com.VCB:id/tvAmount"));
 
 		verifyEquals(transferInVCB.getDynamicTextInInputBoxByHeader(driver, "Thông tin giao dịch", "1"), TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER);
 

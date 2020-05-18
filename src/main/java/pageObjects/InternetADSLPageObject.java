@@ -1,6 +1,5 @@
 package pageObjects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -26,7 +25,7 @@ public class InternetADSLPageObject extends AbstractPage {
 		for (String code : codeCustomer) {
 			inputIntoEditTextByID(driver, code, "com.VCB:id/code");
 			clickToDynamicButton(driver, "Tiếp tục");
-			
+
 			overRideTimeOut(driver, 5);
 			String locator = String.format(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Xác nhận thông tin");
 			List<MobileElement> elementsOne = driver.findElements(By.xpath(locator));
@@ -35,8 +34,8 @@ public class InternetADSLPageObject extends AbstractPage {
 				check = true;
 				codeADSL = code;
 				break;
-			} 
-			
+			}
+
 			else {
 				clickToDynamicButton(driver, "Đóng");
 				continue;
@@ -49,26 +48,22 @@ public class InternetADSLPageObject extends AbstractPage {
 		}
 
 	}
-	
-	//Click image back, trong trường hợp auto click 1 lần không được
-	public void clickImageBack(String dymanicText){
+
+	// Click image back, trong trường hợp auto click 1 lần không được
+	public void clickImageBack(String dymanicText) {
 		boolean status = false;
 		String locator = String.format(DynamicPageUIs.DYNAMIC_BACK_ICON, dymanicText);
 		status = waitForElementVisible(driver, locator);
 		if (status == true) {
 			clickToElement(driver, locator);
 			List<MobileElement> element = driver.findElements(By.xpath(locator));
-			if(element.size() > 0) {
+			if (element.size() > 0) {
 				clickToElement(driver, locator);
 			}
 		}
 	}
-	
+
+	public void waitForWaitingBarUndisplay() {
+		waitForElementInvisible(driver, DynamicPageUIs.WAIT_BAR);
+	}
 }
-	
-	
-	
-	
-	
-	
-	

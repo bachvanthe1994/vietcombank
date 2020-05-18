@@ -37,7 +37,6 @@ import org.joda.time.DateTimeZone;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
@@ -93,7 +92,7 @@ public class Base {
 		}
 	}
 
-	@AfterSuite
+//	@AfterSuite
 	public void sendEmail() throws IOException {
 		String SMTP_SERVER = "smtp.gmail.com";
 		String PASSWORD = "Abc12345@";
@@ -161,18 +160,20 @@ public class Base {
 			cap.setCapability("appActivity", appActivities);
 		} else if (deviceType.equalsIgnoreCase("androidReal")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-			cap.setCapability("uid", udid);
+			cap.setCapability("udid", udid);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
 			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+			cap.setCapability("appWaitDuration", 30000);
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+		cap.setCapability("", "uiautomator2");
 
 		driver = new AndroidDriver<>(new URL(url), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
-
+		System.out.println(((HasSettings) driver).getSettings());
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
 
 		return driver;
