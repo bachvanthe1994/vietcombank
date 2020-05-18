@@ -233,15 +233,18 @@ public class PageFactoryManager {
 
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public static TelecommunicationFeeVNPTPageObject getTelecommunicationFeeVNPT(AppiumDriver<MobileElement> driver) {
 		return new TelecommunicationFeeVNPTPageObject(driver);
->>>>>>> TrangVT/release06_local
+
 
 	}
 	
 	public static SettingLoginPageObject getSettingLoginPageObject(AppiumDriver<MobileElement> driver) {
 		return new SettingLoginPageObject(driver);
 	}
+	public static ConfirmMethodObject getConfirmMethodObject(AppiumDriver<MobileElement> driver) {
+		return new ConfirmMethodObject(driver);
+	}
+	
 }
