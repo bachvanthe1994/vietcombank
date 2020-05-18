@@ -405,7 +405,7 @@ public class Internet_ADSL_Flow extends Base {
 		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "pass" })
+	@Parameters({ "pass" })
 //	@Test
 	public void TC_05_ThanhToanCuocFPTXacThucMatKhau(String pass) {
 		log.info("TC_05_Step_Click cuoc ADSL");
