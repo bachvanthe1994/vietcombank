@@ -11,7 +11,7 @@ public class ChangePassword_Data {
 		public static final String WELCOME_MESSAGE = "Chào mừng Quý khách đến với ứng dụng" + "\n" + "VCB-Mobile B@nking của Vietcombank";
 		public static final String CHANGE_PASSWORD_SUCCESS = "Quý khách đổi mật khẩu thành công. Vui lòng đăng nhập lại để sử dụng dịch vụ";
 	}
-	
+
 	public class UI {
 		public static final String RETURN_BUTTON = "Quay lại";
 		public static final String CHANGE_PASSWORD_NOFICATION = "Quý khách vui lòng đổi mật khẩu mặc định được cung cấp khi đăng ký sử dụng dịch vụ";
