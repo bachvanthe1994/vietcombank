@@ -16,6 +16,7 @@ public class LogInPageObject extends AbstractPage {
 	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
@@ -42,6 +43,7 @@ public class LogInPageObject extends AbstractPage {
 	public void Global_login(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
@@ -60,11 +62,11 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButton(driver, "Tiếp tục");
 		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 	}
-	
+
 	public void Global_login_After(String phone, String pass, String otp) {
 		inputToDynamicInputBox(driver, pass, "Mật khẩu");
 		clickToDynamicButton(driver, "Đăng nhập");
-		
+
 	}
 
 	public void clickToDynamicAcceptButton(String dynamicIDValue) {
