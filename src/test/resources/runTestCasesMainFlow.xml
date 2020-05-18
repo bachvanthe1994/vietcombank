@@ -92,7 +92,7 @@
 <!-- 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" /> -->
 
 			<!-- Nạp tiền VETC, MOMO dùng tài khoản khác -->
-<!-- 			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
+			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
 
 
 			<!-- Tính toán lãi suất -->
@@ -130,7 +130,8 @@
 			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
 
 			<!-- Mua sắm trực tuyến -->
-			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
+			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" />
+			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" />
 
 			<!-- Đặt vé xe -->
 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
