@@ -11,6 +11,7 @@ import pageObjects.HomePageObject;
 import pageObjects.InboxPageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.InternetADSLPageObject;
+import pageObjects.InvestigationOnlinePageObject;
 import pageObjects.LandLinePhoneChargePageObject;
 import pageObjects.LocationQRCodePageObject;
 import pageObjects.LockCardPageObject;
@@ -27,8 +28,10 @@ import pageObjects.RegisterPageObject;
 import pageObjects.SavingOnlinePageObject;
 import pageObjects.SavingTargetPageObject;
 import pageObjects.SearchPageObject;
+import pageObjects.SettingLoginPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.SetupContactPageObject;
+import pageObjects.TelecommunicationFeeVNPTPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.TransferLimitPageObject;
@@ -224,6 +227,21 @@ public class PageFactoryManager {
 		return new QRCodePageObject(driver);
 	}
 	
-	
 
+	public static InvestigationOnlinePageObject getInvestigationOnline(AppiumDriver<MobileElement> driver) {
+		return new InvestigationOnlinePageObject(driver);
+
+	}
+	
+<<<<<<< HEAD
+=======
+	public static TelecommunicationFeeVNPTPageObject getTelecommunicationFeeVNPT(AppiumDriver<MobileElement> driver) {
+		return new TelecommunicationFeeVNPTPageObject(driver);
+>>>>>>> TrangVT/release06_local
+
+	}
+	
+	public static SettingLoginPageObject getSettingLoginPageObject(AppiumDriver<MobileElement> driver) {
+		return new SettingLoginPageObject(driver);
+	}
 }

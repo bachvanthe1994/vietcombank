@@ -3,13 +3,15 @@ package vietcombank_test_data;
 import java.util.Arrays;
 import java.util.List;
 
-public class Water_Bills_Data {
+public class TelecommunicationFee_VNPT_Data {
 
 	public static class DATA {
 
-		public static final String WATER_DANANG = "Cấp nước Đà Nẵng";
+		public static final String VNPT_KIEN_GIANG = "VNPTMEDIA Kiên giang";
+		public static final String VNPT_DONG_NAI = "VNPT Đồng Nai";
 
-		public static final String WATER_BILL_TEXT = "Hóa đơn tiền nước";
+		public static final String VNPT_BILL_TEXT = "Hóa đơn VNPT Media";
+
 		public static final String BILL_MESSAGE = "Hóa đơn không còn nợ cước. Quý khách vui lòng kiểm tra lại!";
 
 		public static final List<String> LIST_CUSTOMER_ID = Arrays.asList("000069682", "000405041", "000415475","000063984","001108647","000813204","000078807","001053794",
