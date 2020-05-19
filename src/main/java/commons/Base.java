@@ -165,8 +165,8 @@ public class Base {
 			cap.setCapability("udid", udid);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
-			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
-			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+//			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+//			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
 			cap.setCapability("appWaitDuration", 60000);
 
 		}
