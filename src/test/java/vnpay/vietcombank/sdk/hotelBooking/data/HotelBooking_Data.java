@@ -6,7 +6,7 @@ import java.util.List;
 import vietcombank_test_data.LogIn_Data;
 
 public class HotelBooking_Data {
-	public static final String FAMOUS_LOCATION[] = {"Hà Nội", "TP Hồ Chí Minh"};
+	public static final String FAMOUS_LOCATION[] = { "Hà Nội", "TP Hồ Chí Minh" };
 	public static final String GREATER_200_SPECIAL_VIETNAMESE_CHARACTERS = "!@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn !@#$^&*()Đặt Phòng Khách Sạn";
 	public static final String CURRENT_LOCATION = "Đống Đa, Hà Nội";
 	public static final List<String> STATUS_HOTEL_BOOKING_LIST = Arrays.asList("Tất cả", "Chờ thanh toán", "Đặt phòng thành công", "Đặt phòng thất bại", "Đã huỷ", "Hết hạn thanh toán", "Chờ xử lý");
@@ -39,10 +39,10 @@ public class HotelBooking_Data {
 	public static final String EMPTY_HOTEL_ADDRESS = "Quý khách vui lòng nhập Địa chỉ công ty.";
 	public static final String EMPTY_EMAIL = "Quý khách vui lòng nhập Email nhận hóa đơn.";
 
-	public static final String HOTEL_NAME_BOOKING = "Khách sạn Imperial Nha Trang";
+	public static final String HOTEL_NAME_BOOKING = "Khách sạn Imperial Nha trang (Imperial Nha Trang Hotel)";
 	public static final String HOTEL_NAME_BOOKING_INPUT = "Imperial Nha Trang";
 
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
-	
+
 }
