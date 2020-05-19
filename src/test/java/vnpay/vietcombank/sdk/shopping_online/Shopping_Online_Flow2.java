@@ -72,14 +72,11 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
 
-		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		
 		log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
@@ -87,6 +84,11 @@ public class Shopping_Online_Flow2 extends Base {
 		
 		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 		shopping.clickToDynamicTextContains("Áp dụng");
+		
+		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+		
 		
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
@@ -168,15 +170,16 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_01_STEP_4: click Vao gio hang---------------------------");
 			shopping.clickToDynamicDateInDateTimePicker("1");
 
-			log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 			
 			log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
 			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
 			
 			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
+			
+			log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 			
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
@@ -198,10 +201,7 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_01_STEP_5: click thanh toan---------------------------");
 			shopping.clickToDynamicButton("Thanh toán");
 
-			log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
+			
 			log.info("---------------------------TC_01_STEP_4: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
@@ -214,6 +214,10 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
 			
+			log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
 			
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
@@ -249,7 +253,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_01_STEP_11: tong tien---------------------------");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
 		verifyEquals(calulatorMoney, totalMoneyBill);
 
 		log.info("---------------------------TC_01_STEP_12: Chon thanh toan---------------------------");
@@ -268,7 +272,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_01_STEP_14: Kiem tra so tien thanh toan---------------------------");
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
-		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
+		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
 
 		log.info("---------------------------TC_01_STEP_16: Chon phuong thuc thanh toan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -320,16 +324,14 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("---------------------------TestCase_02: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------TestCase_02: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("3");
 
-		log.info("---------------------------TestCase_02: lay tong tien can thanh toan---------------------------");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+	
 		
 		
 		log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
@@ -338,6 +340,9 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 		shopping.clickToDynamicTextContains("Áp dụng");
 		
+		log.info("---------------------------TestCase_02: lay tong tien can thanh toan---------------------------");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
@@ -419,9 +424,7 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TestCase_02: click Vao gio hang---------------------------");
 			shopping.clickToDynamicDateInDateTimePicker("1");
 
-			log.info("---------------------------TestCase_02: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+			
 			log.info("---------------------------TestCase_02: click dat hang---------------------------");
 			
 			log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
@@ -430,6 +433,9 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
 			
+			log.info("---------------------------TestCase_02: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 			
 			shopping.clickToDynamicButton("Đặt hàng");
 
@@ -450,10 +456,7 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TestCase_02: click thanh toan---------------------------");
 			shopping.clickToDynamicButton("Thanh toán");
 
-			log.info("---------------------------TestCase_02: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
+			
 			log.info("---------------------------TestCase_02: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
@@ -468,6 +471,11 @@ public class Shopping_Online_Flow2 extends Base {
 			
 			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
+			
+			log.info("---------------------------TestCase_02: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
 			
 			log.info("---------------------------TestCase_02: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
@@ -503,7 +511,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TestCase_02: tong tien---------------------------");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
 		verifyEquals(calulatorMoney, totalMoneyBill);
 
 		log.info("---------------------------TestCase_02: Chon thanh toan---------------------------");
@@ -522,7 +530,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TestCase_02: Kiem tra so tien thanh toan---------------------------");
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
-		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
+		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
 
 		log.info("---------------------------TestCase_02: Chon phuong thuc thanh toan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -573,14 +581,11 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("---------------------------Testcase_03: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------Testcase_03: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
 
-		log.info("---------------------------Testcase_03: lay tong tien can thanh toan---------------------------");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		
 		log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
@@ -588,6 +593,10 @@ public class Shopping_Online_Flow2 extends Base {
 		
 		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 		shopping.clickToDynamicTextContains("Áp dụng");
+		
+		log.info("---------------------------Testcase_03: lay tong tien can thanh toan---------------------------");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		log.info("---------------------------Testcase_03: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
@@ -744,7 +753,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------Testcase_03: tong tien---------------------------");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
 		verifyEquals(calulatorMoney, totalMoneyBill);
 
 		log.info("---------------------------Testcase_03: Chon thanh toan---------------------------");
@@ -763,7 +772,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------Testcase_03: Kiem tra so tien thanh toan---------------------------");
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
-		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
+		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
 
 		log.info("---------------------------Testcase_03: Chon phuong thuc thanh toan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -815,16 +824,14 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("---------------------------Testcase_04: click dat hang---------------------------");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng ");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
 		log.info("---------------------------Testcase_04: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("3");
 
-		log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+		
 		
 		
 		log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
@@ -832,6 +839,10 @@ public class Shopping_Online_Flow2 extends Base {
 		
 		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 		shopping.clickToDynamicTextContains("Áp dụng");
+		
+		log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		log.info("---------------------------Testcase_04: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
@@ -915,9 +926,7 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------Testcase_04: click Vao gio hang---------------------------");
 			shopping.clickToDynamicDateInDateTimePicker("3");
 
-			log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+			
 			
 			
 			log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
@@ -925,6 +934,11 @@ public class Shopping_Online_Flow2 extends Base {
 			
 			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
+			
+			
+			log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 			
 			log.info("---------------------------Testcase_04: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
@@ -946,10 +960,7 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------Testcase_04: click thanh toan---------------------------");
 			shopping.clickToDynamicButton("Thanh toán");
 
-			log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
+			
 			log.info("---------------------------Testcase_04: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
@@ -963,6 +974,10 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
 			
+			log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
 
 			log.info("---------------------------Testcase_04: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
@@ -998,7 +1013,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------Testcase_04: tong tien---------------------------");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
 		verifyEquals(calulatorMoney, totalMoneyBill);
 
 		log.info("---------------------------Testcase_04: Chon thanh toan---------------------------");
@@ -1017,7 +1032,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------Testcase_04: Kiem tra so tien thanh toan---------------------------");
 		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
 		double moneyConfirm = Double.parseDouble(money[0]);
-		verifyEquals(moneyConfirm + " VND", calulatorMoney + " VND");
+		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
 
 		log.info("---------------------------Testcase_04: Chon phuong thuc thanh toan---------------------------");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
@@ -1052,8 +1067,8 @@ public class Shopping_Online_Flow2 extends Base {
   	@Test
   	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP_NhapMaKhuyenMai(String otp) {
   		log.info("---------------------------TC_05_STEP_2: Them vao gio hang");
-  		shopping.scrollDownToConatainText("₫");
-  		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "₫");
+  		shopping.scrollDownToConatainText("%");
+  		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "%");
   		for (int i = 0; i < listProduct.size(); i++) {
   			shopping.clickToDynamicTextContains(listProduct.get(i));
   			indexHang = i;
@@ -1072,16 +1087,17 @@ public class Shopping_Online_Flow2 extends Base {
   		log.info("---------------------------TC_05_STEP: click Vao gio hang---------------------------");
   		shopping.clickToDynamicDateInDateTimePicker("1");
 
-  		log.info("---------------------------TC_05_STEP: lay tong tien can thanh toan---------------------------");
-  		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-  		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-  		
+  	
   		
   		log.info("---------------------------TC_01_STEP: Chon ma giam gia--------------------------");
   		shopping.clickToDynamicTextContains("Chọn mã giảm giá");
   		
   		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
   		shopping.clickToDynamicTextContains("Áp dụng");
+  		
+  		log.info("---------------------------TC_05_STEP: lay tong tien can thanh toan---------------------------");
+  		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+  		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
   		
   		log.info("---------------------------TC_05_STEP: click dat hang---------------------------");
   		shopping.clickToDynamicButton("Đặt hàng");
@@ -1185,9 +1201,7 @@ public class Shopping_Online_Flow2 extends Base {
   			log.info("---------------------------TC_05_STEP: click thanh toan---------------------------");
   			shopping.clickToDynamicButton("Thanh toán");
 
-  			log.info("---------------------------TC_05_STEP: lay tong tien can thanh toan---------------------------");
-  			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-  			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+  			
 
   			log.info("---------------------------TC_05_STEP: click dat hang---------------------------");
   			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
@@ -1200,6 +1214,11 @@ public class Shopping_Online_Flow2 extends Base {
   			
   			log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
   			shopping.clickToDynamicTextContains("Áp dụng");
+  			
+  			
+  			log.info("---------------------------TC_05_STEP: lay tong tien can thanh toan---------------------------");
+  			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+  			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
   			
   			log.info("---------------------------TC_05_STEP: click dat hang---------------------------");
   			shopping.clickToDynamicButton("Đặt hàng");
@@ -1235,7 +1254,7 @@ public class Shopping_Online_Flow2 extends Base {
   		log.info("---------------------------TC_05_STEP: tong tien---------------------------");
   		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
   		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-  		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
+  		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
   		verifyEquals(calulatorMoney, totalMoneyBill);
 
   		log.info("---------------------------TC_05_STEP: Chon thanh toan---------------------------");
@@ -1313,9 +1332,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_06_STEP_: click Vao gio hang---------------------------");
 		shopping.clickToDynamicDateInDateTimePicker("1");
 
-		log.info("---------------------------TC_06_STEP_: lay tong tien can thanh toan---------------------------");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		
 		log.info("---------------------------TC_06_STEP_: Chon ma giam gia--------------------------");
@@ -1323,6 +1339,11 @@ public class Shopping_Online_Flow2 extends Base {
 		
 		log.info("---------------------------TC_06_STEP_: Click ap dung--------------------------");
 		shopping.clickToDynamicTextContains("Áp dụng");
+		
+		
+		log.info("---------------------------TC_06_STEP_: lay tong tien can thanh toan---------------------------");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
 		
 		log.info("---------------------------TC_06_STEP_: click dat hang---------------------------");
 		shopping.clickToDynamicButton("Đặt hàng");
@@ -1426,10 +1447,7 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_06_STEP_: click thanh toan---------------------------");
 			shopping.clickToDynamicButton("Thanh toán");
 
-			log.info("---------------------------TC_06_STEP_: lay tong tien can thanh toan---------------------------");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
+			
 			log.info("---------------------------TC_06_STEP_: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
@@ -1442,6 +1460,11 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_06_STEP_: Click ap dung--------------------------");
 			shopping.clickToDynamicTextContains("Áp dụng");
 			
+			
+			log.info("---------------------------TC_06_STEP_: lay tong tien can thanh toan---------------------------");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
 			log.info("---------------------------TC_06_STEP_: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
@@ -1476,7 +1499,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_06_STEP_: tong tien---------------------------");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, (long) sale);
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
 		verifyEquals(calulatorMoney, totalMoneyBill);
 
 		log.info("---------------------------TC_06_STEP_: Chon thanh toan---------------------------");
