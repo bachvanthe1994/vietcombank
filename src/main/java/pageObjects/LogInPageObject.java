@@ -16,7 +16,6 @@ public class LogInPageObject extends AbstractPage {
 	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicButton(driver, "Cho phép");
-		clickToDynamicButton(driver, "Đóng");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
@@ -44,7 +43,6 @@ public class LogInPageObject extends AbstractPage {
 	public void Global_login(String phone, String pass, String otp) {
 
 		clickToDynamicButton(driver, "Cho phép");
-		clickToDynamicButton(driver, "Đóng");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
