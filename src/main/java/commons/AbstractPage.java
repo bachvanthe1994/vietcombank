@@ -616,7 +616,7 @@ public class AbstractPage {
 	}
 
 	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		overRideTimeOut(driver, shortTime);
+		overRideTimeOut(driver, longTime);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
@@ -782,6 +782,11 @@ public class AbstractPage {
 	/* SCROLL DOWN */
 	public void scrollDownToText(AppiumDriver<MobileElement> driver, String dynamicText) {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+
+	public void scrollDownToTextContain(AppiumDriver<MobileElement> driver, String dynamicText) {
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_CONTAINS, dynamicText);
 
 	}
 

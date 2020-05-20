@@ -17,10 +17,10 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="52006cfef4cfb4a3" />
+		<parameter name="deviceUDID" value="R9AMC1PZHEJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0335059860" />
-		<parameter name="pass" value="aaaa1111@@" />
+		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
 		<classes>
@@ -53,10 +53,10 @@
 <!-- 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" /> -->
 
 			<!-- Quà tặng may mắn -->
-			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+<!-- 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
 
 			<!-- Quản lý danh bạ -->
-			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+<!-- 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" /> -->
 
 			<!-- Thanh toan tien dien -->
 <!-- 			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" /> -->
@@ -66,13 +66,13 @@
 <!-- 			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
 
 			<!-- Thong bao -->
-			<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" />
+<!-- 			<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" /> -->
 
 <!-- 			Nạp tiền điện thoại -->
-			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 
 			<!-- Dịch vụ thẻ -->
-			<class name="vnpay.vietcombank.card_services.Card_Services" />
+			<class name="vnpay.vietcombank.card_services.Card_Services2" />
 
 			<!-- Tiết kiệm trực tuyến -->
 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
