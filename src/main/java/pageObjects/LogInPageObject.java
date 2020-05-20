@@ -13,7 +13,7 @@ public class LogInPageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
-	public void Global_login1(String phone, String pass, String otp) {
+	public void Global_login(String phone, String pass, String otp) {
 
 		clickToDynamicButton(driver, "Cho phép");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
@@ -34,13 +34,11 @@ public class LogInPageObject extends AbstractPage {
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
 		clickToDynamicButton(driver, "Cho phép");
-		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
-
 		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 
 	}
 
-	public void Global_login(String phone, String pass, String otp) {
+	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicButton(driver, "Cho phép");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
