@@ -39,7 +39,6 @@ public class SetupContactManagement_Flow extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		login.clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 		home = PageFactoryManager.getHomePageObject(driver);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);

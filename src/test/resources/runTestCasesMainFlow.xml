@@ -19,7 +19,7 @@
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
 		<parameter name="deviceUDID" value="52006cfef4cfb4a3" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0335059860" />
 		<parameter name="pass" value="aaaa1111@@" />
 		<parameter name="otp" value="123456" />
 
@@ -142,7 +142,7 @@
 
 			<!-- Tra cứu -->
 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
-<!-- 			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" /> -->
+			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
 
 			<!-- Thanh toán thẻ tín dụng -->
 			<class name="vnpay.vietcombank.creditCardPayment.Vcb_Flow_Credit_Card_Payment" />
