@@ -20,7 +20,8 @@ public class Card_Services extends Base {
 	private LogInPageObject login;
 	private HomePageObject home;
 	private LockCardPageObject lockCard;
-	String numberCard = "";
+	private String numberCard = "";
+	private String otpNumber;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -34,6 +35,7 @@ public class Card_Services extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login("0974862666", "aaaa1111", opt);
+		otpNumber = opt;
 		home = PageFactoryManager.getHomePageObject(driver);
 
 	}
@@ -140,7 +142,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_08: Nhap Ma OTP");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_02_Step_09: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -297,7 +299,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_08: Nhap Ma OTP");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_02_Step_09: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -454,7 +456,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_08: Nhap Ma OTP");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_02_Step_09: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -611,7 +613,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_08: Nhap Ma OTP");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_02_Step_09: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");

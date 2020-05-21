@@ -24,9 +24,9 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-				<!-- Mua sắm trực tuyến -->
-			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" />
-			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" />
+			<!-- Dịch vụ thẻ -->
+			<class name="vnpay.vietcombank.card_services.Card_Services3" />
+			
 			<!-- Thanh toán QR code -->
 <!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1"/> -->
 <!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_2" /> -->
