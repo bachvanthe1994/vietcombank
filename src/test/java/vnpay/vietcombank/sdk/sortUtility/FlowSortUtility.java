@@ -233,8 +233,8 @@ public class FlowSortUtility extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 
 	}
 

@@ -12,10 +12,10 @@ public class LogInPageObject extends AbstractPage {
 	}
 
 	private AppiumDriver<MobileElement> driver;
+//Android9
+	public void Global_login1(String phone, String pass, String otp) {
 
-	public void Global_login(String phone, String pass, String otp) {
-
-		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
+		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
@@ -33,10 +33,33 @@ public class LogInPageObject extends AbstractPage {
 
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
-		clickToDynamicButton(driver, "Bắt đầu sử dụng");
-		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
+		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 
+	}
+//Andoid 10
+	public void Global_login(String phone, String pass, String otp) {
+
+		clickToDynamicButton(driver, "Cho phép");
+		clickToTextID(driver, "com.VCB:id/tvSkip");
+
+		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
+
+		clickToDynamicButton(driver, "Tiếp tục");
+
+		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
+
+			clickToDynamicButton(driver, "Đồng ý");
+		}
+
+		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
+
+		clickToDynamicButton(driver, "Tiếp tục");
+
+		inputToDynamicOtp(driver, otp, "Tiếp tục");
+		clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicButton(driver, "Luôn cho phép");
+		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 	}
 
 	public void Global_login_After(String phone, String pass, String otp) {

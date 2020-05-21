@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Vietcombank" parallel="false">
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
@@ -7,7 +8,7 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
-	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
+	<parameter name="appActivities" value="com.VCB.activities.home.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 
@@ -15,13 +16,11 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
-		<parameter name="deviceName" value="HUAWEI nova 3i" />
-
-		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="deviceName" value="Samsung Galaxy S8" />
+		<parameter name="deviceUDID" value="ce0817181a5818ed0c" />
+		<parameter name="phone" value="0904797866" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="pass" value="aaaa1111" />
-
+		<parameter name="pass" value="qqqq1111" />
 		<parameter name="otp" value="123456" />
 
 		<classes>
@@ -68,7 +67,9 @@
 			<!--Thanh toán cước truyền hình cap Thanh toán cước ADSL Viettel SDK mua sắm trực tuyến -->
 
 			<!--Thanh toán cước điện thoại cố định -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" /> -->
+			 <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" />
+			<!--Thanh toán cước điện thoại cố định -->
+			<!-- <class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket_part2" />-->
 
 
 		</classes>

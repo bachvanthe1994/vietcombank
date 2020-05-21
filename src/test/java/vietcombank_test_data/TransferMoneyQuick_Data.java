@@ -74,6 +74,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_FOUR_NUMBER_USD_EUR = "5000.20";
 
 		public static final String NOTE = "Phan Thi Hiep chuyen";
+		public static final String NOI_DUNG = "Thanh toan ve tau";
 		public static final String NOTE_1_CHAR_VIETNAM = "a";
 		public static final String NOTE_2_CHAR = "ab";
 		public static final String NOTE_140_CHAR = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";

@@ -2045,6 +2045,7 @@ public class AbstractPage {
 
 	}
 
+
 	public String getDynamicTextFollowingText(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;
 		String text = null;
