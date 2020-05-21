@@ -857,6 +857,15 @@ public class AbstractPage {
 
 	}
 
+	public void clickToDynamicAcceptButtonContainOR(AppiumDriver<MobileElement> driver, String... dynamicIDValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON_CONTAIN_OR, dynamicIDValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON_CONTAIN_OR, dynamicIDValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON_CONTAIN_OR, dynamicIDValue);
+		}
+	}
+
 //Click vao 1 button sử dụng  tham số là text
 	public void clickToDynamicButton(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
