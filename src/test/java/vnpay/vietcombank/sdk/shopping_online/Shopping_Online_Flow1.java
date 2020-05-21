@@ -48,7 +48,7 @@ public class Shopping_Online_Flow1 extends Base {
 		homePage.scrollDownToText(driver, "© 2019 Vietcombank");
 		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
-		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
 	}

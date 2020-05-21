@@ -42,8 +42,6 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-//	@Parameters({ "otp" })
-//	@Test
 	public void TC_01_DangKyDichVu_HoaDonTienDien_XacThucOTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
