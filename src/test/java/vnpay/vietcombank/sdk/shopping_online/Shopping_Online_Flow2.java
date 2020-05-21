@@ -43,9 +43,8 @@ public class Shopping_Online_Flow2 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
-//		homePage.clickToDynamicButton(driver, "Bắt đầu sử dụng");
 		homePage.scrollDownToText(driver, "© 2019 Vietcombank");
 		homePage.scrollIDownOneTime(driver);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
@@ -88,7 +87,6 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.TabtoElementByPoint(842, 1202);
 
 //		shopping.clickToDynamicTextContains("Áp dụng");
-		
 
 		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -226,7 +224,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
-			
+
 			shopping.clickToDynamicButton("Thanh toán");
 
 		}
@@ -346,7 +344,6 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.TabtoElementByPoint(842, 1202);
 
 //		shopping.clickToDynamicTextContains("Áp dụng");
-		
 
 		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -488,7 +485,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("---------------------------TC_02_STEP: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
-			
+
 			shopping.clickToDynamicButton("Thanh toán");
 
 		}
@@ -571,7 +568,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_02_STEP: thuc hien giao dich moi---------------------------");
 		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
 
-
 	}
 
 //	@Parameters({ "pass" })
@@ -604,7 +600,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 //		shopping.clickToDynamicTextContains("Áp dụng");
 		shopping.TabtoElementByPoint(842, 1202);
-
 
 		log.info("---------------------------Testcase_03: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -730,7 +725,6 @@ public class Shopping_Online_Flow2 extends Base {
 //			shopping.clickToDynamicTextContains("Áp dụng");
 			shopping.TabtoElementByPoint(842, 1202);
 
-
 			log.info("---------------------------Testcase_03: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
 
@@ -849,7 +843,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_01_STEP: Click ap dung--------------------------");
 //		shopping.clickToDynamicTextContains("Áp dụng");
 		shopping.TabtoElementByPoint(842, 1202);
-
 
 		log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -981,7 +974,6 @@ public class Shopping_Online_Flow2 extends Base {
 //			shopping.clickToDynamicTextContains("Áp dụng");
 			shopping.TabtoElementByPoint(842, 1202);
 
-
 			log.info("---------------------------Testcase_04: lay tong tien can thanh toan---------------------------");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
 			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
@@ -1077,7 +1069,7 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.scrollIDownOneTime(driver);
 		shopping.scrollDownToTextView("%");
 		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, "%");
-		
+
 		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicCategories(listProduct.get(i));
 			indexHang = i;
@@ -1103,7 +1095,6 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.TabtoElementByPoint(842, 1202);
 
 //		shopping.clickToDynamicTextContains("Áp dụng");
-		
 
 		log.info("---------------------------TC_01_STEP_3: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1241,7 +1232,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("---------------------------TC_01_STEP_5: click dat hang---------------------------");
 			shopping.clickToDynamicButton("Đặt hàng");
-			
+
 			shopping.clickToDynamicButton("Thanh toán");
 
 		}
@@ -1357,7 +1348,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("---------------------------TC_06_STEP_: Click ap dung--------------------------");
 //		shopping.clickToDynamicTextContains("Áp dụng");
 		shopping.TabtoElementByPoint(842, 939);
-
 
 		log.info("---------------------------TC_06_STEP_: lay tong tien can thanh toan---------------------------");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1477,7 +1467,6 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("---------------------------TC_06_STEP_: Click ap dung--------------------------");
 //			shopping.clickToDynamicTextContains("Áp dụng");
 			shopping.TabtoElementByPoint(842, 939);
-
 
 			log.info("---------------------------TC_06_STEP_: lay tong tien can thanh toan---------------------------");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
