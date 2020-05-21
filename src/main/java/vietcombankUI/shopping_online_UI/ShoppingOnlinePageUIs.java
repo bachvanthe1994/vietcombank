@@ -68,6 +68,8 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_TOTAL_MONEY_BY_TEXT = "//android.view.View[contains(@text,'%s')]//following-sibling::android.view.View";
 	public static final String PRODUCT_BY_CONTAIN_TEXT = "//android.widget.TextView[contains(@text,'%s')]";
 	public static final String PRODUCT_VIEW_BY_CONTAIN_TEXT = "//android.view.View[contains(@text,'%s')]";
+	public static final String VIEW_BY_CONTAIN_TEXT = "//android.view.View[@text='%s']";
+//	public static final String VIEW_BY_CONTAIN_TEXT = "//android.view.View[@text='%s']/following::android.view.View[@index='2']";
 
 
 	

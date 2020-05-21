@@ -12,8 +12,8 @@ public class LogInPageObject extends AbstractPage {
 	}
 
 	private AppiumDriver<MobileElement> driver;
-
-	public void Global_login(String phone, String pass, String otp) {
+//Android9
+	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
@@ -37,8 +37,8 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 
 	}
-
-	public void Global_login1(String phone, String pass, String otp) {
+//Andoid 10
+	public void Global_login(String phone, String pass, String otp) {
 
 		clickToDynamicButton(driver, "Cho phép");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
