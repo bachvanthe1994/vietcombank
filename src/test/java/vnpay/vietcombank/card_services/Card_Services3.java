@@ -34,7 +34,7 @@ public class Card_Services3 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0974862666", "aaaa1111", opt);
+		login.Global_login1("0974862666", "aaaa1111", opt);
 		otpNumber = opt;
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -54,7 +54,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "1");
 
 		log.info("TC_01_Step_04: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicTextContains(driver, "4032");
+		lockCard.clickToDynamicTextContains(driver, "37");
 		numberCard = lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent");
 
 		log.info("TC_01_Step_05: An chon checkbox Xac Nhan Dieu Khoan");

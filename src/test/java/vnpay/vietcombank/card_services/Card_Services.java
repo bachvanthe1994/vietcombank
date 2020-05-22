@@ -34,7 +34,7 @@ public class Card_Services extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0974862666", "aaaa1111", opt);
+		login.Global_login1("0974862666", "aaaa1111", opt);
 		otpNumber = opt;
 		home = PageFactoryManager.getHomePageObject(driver);
 
