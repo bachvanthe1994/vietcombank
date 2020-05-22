@@ -532,7 +532,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_01_Step_06: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicTextContains(driver, "3771");
+		lockCard.clickToDynamicTextContains(driver, "97");
 		numberCard = lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1");
 
 		log.info("TC_01_Step_07: An button 'Tiep tục'");
