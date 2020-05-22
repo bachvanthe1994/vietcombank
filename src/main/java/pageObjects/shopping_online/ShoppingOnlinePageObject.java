@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.swing.text.Element;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -141,6 +143,14 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
 		}
 	}
+	public void clickToDynamicView(String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT, dynamicText);
+		scrollIDown(driver, ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT, dynamicText);
+		}
+	}
 	
 	public void TabtoElementByPoint(int x, int y) {
 			TouchAction touch = new TouchAction(driver);
@@ -179,8 +189,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 	}
 	
-	public List<String> getTextInListElementsProduct( String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
+	public List<String> getTextInListElementsProduct( String... dynamicValue) {
+		String locator = String.format(ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT,(Object[]) dynamicValue);
 		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		List<String> listProduct = new ArrayList<String>();
 		for (MobileElement element : listElements) {
@@ -323,7 +333,14 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 	}
 
-
+	public void inputToDynamicPopupPasswordInput( String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
+	}
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
