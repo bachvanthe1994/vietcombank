@@ -51,17 +51,16 @@ public class Shopping_Online_Flow2 extends Base {
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
-//		shopping.TabtoElementByPoint("Chọn mã giảm giá");
 
 	}
 
-	@Parameters({ "otp" })
-	@Test
+//	@Parameters({ "otp" })
+//	@Test
 	public void TC_01_ChonMuaMotSanPhamThanhToanOTPKhongChonKhuyenMai_NhapMAGG(String otp) {
 		log.info("TC_01_STEP_2: Them vao gio hang");
 
-		shopping.clickToDynamicCategories("Xem tất cả");
-		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
+		shopping.clickToDynamicTextContains("Xem tất cả");
+		List<String> listProduct = shopping.getTextInListElementsProduct( "đ");
 		for (int i = 4; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
@@ -84,9 +83,8 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.clickToDynamicCategories("Chọn mã giảm giá");
 
 		log.info("TC_01_STEP: Click ap dung");
-		shopping.TabtoElementByPoint(842, 1202);
+		shopping.TabtoElementByPoint(832, 1332);
 
-//		shopping.clickToDynamicTextContains("Áp dụng");
 
 		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -154,7 +152,7 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.TabtoElementByPoint(1002, 924);
 			shopping.clickToDynamicButton("Mua sắm ngay");
 
-			shopping.clickToDynamicCategories("Xem tất cả");
+			shopping.clickToDynamicTextContains("Xem tất cả");
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
@@ -176,9 +174,8 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.clickToDynamicCategories("Chọn mã giảm giá");
 
 			log.info("TC_01_STEP: Click ap dung");
-			shopping.TabtoElementByPoint(842, 1202);
+			shopping.TabtoElementByPoint(832, 1332);
 
-//			shopping.clickToDynamicTextContains("Áp dụng");
 
 			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -210,13 +207,9 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("TC_01_STEP_4: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
 
-//			log.info("TC_01_STEP: Chon ma giam gia");
-//			shopping.clickToDynamicCategories("Chọn mã giảm giá");
-
 			log.info("TC_01_STEP: Click ap dung");
-			shopping.TabtoElementByPoint(842, 1202);
+			shopping.TabtoElementByPoint(832, 1332);
 
-//			shopping.clickToDynamicTextContains("Áp dụng");
 
 			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -230,7 +223,6 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("TC_01_STEP_6: click thanh toan ngay");
-//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_01_STEP_7: click chon tai khoan");
@@ -254,7 +246,6 @@ public class Shopping_Online_Flow2 extends Base {
 		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
 		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
 
-		// tong tien can thanh toan
 		log.info("TC_01_STEP_11: tong tien");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
@@ -309,14 +300,14 @@ public class Shopping_Online_Flow2 extends Base {
 
 	}
 
-	@Parameters({ "otp" })
-	@Test
+//	@Parameters({ "otp" })
+//	@Test
 	public void TC_02_ChonMuaNhieuSanPhamThanhToanOTPNhap_Ma_Khuyen_Mai(String otp) {
 
 		log.info("TC_02_STEP: Them vao gio hang");
 
-		shopping.clickToDynamicCategories("Xem tất cả");
-		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
+		shopping.clickToDynamicTextContains("Xem tất cả");
+		List<String> listProduct = shopping.getTextInListElementsProduct( "đ");
 		for (int i = 4; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
@@ -341,9 +332,8 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.clickToDynamicCategories("Chọn mã giảm giá");
 
 		log.info("TC_02_STEP: Click ap dung");
-		shopping.TabtoElementByPoint(842, 1202);
+		shopping.TabtoElementByPoint(832, 1332);
 
-//		shopping.clickToDynamicTextContains("Áp dụng");
 
 		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -411,7 +401,7 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.TabtoElementByPoint(1002, 924);
 			shopping.clickToDynamicButton("Mua sắm ngay");
 
-			shopping.clickToDynamicCategories("Xem tất cả");
+			shopping.clickToDynamicTextContains("Xem tất cả");
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
@@ -435,9 +425,7 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.clickToDynamicCategories("Chọn mã giảm giá");
 
 			log.info("TC_02_STEP: Click ap dung");
-			shopping.TabtoElementByPoint(842, 1202);
-
-//			shopping.clickToDynamicTextContains("Áp dụng");
+			shopping.TabtoElementByPoint(832, 1332);
 
 			log.info("TC_02_STEP: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -471,13 +459,8 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("TC_02_STEP: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("3");
 
-//			log.info("TC_01_STEP: Chon ma giam gia");
-//			shopping.clickToDynamicCategories("Chọn mã giảm giá");
-
 			log.info("TC_02_STEP: Click ap dung");
-			shopping.TabtoElementByPoint(842, 1202);
-
-//			shopping.clickToDynamicTextContains("Áp dụng");
+			shopping.TabtoElementByPoint(832, 1332);
 
 			log.info("TC_02_STEP: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -491,7 +474,6 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("TC_02_STEP: click thanh toan ngay");
-//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_02_STEP: click chon tai khoan");
@@ -570,508 +552,16 @@ public class Shopping_Online_Flow2 extends Base {
 
 	}
 
-	@Parameters({ "pass" })
-	@Test
+//	@Parameters({ "pass" })
+//	@Test
 	public void TC_03_ChonMuaMotSanPhamThanhToa_Nhap_MaKhuyenMai(String pass) {
-		log.info("Testcase_03: Them vao gio hang");
+
+		log.info("TC_01_STEP_2: Them vao gio hang");
+
 		shopping.clickToDynamicTextContains("Xem tất cả");
-		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
-		for (int i = 0; i < listProduct.size(); i++) {
+		List<String> listProduct = shopping.getTextInListElementsProduct( "đ");
+		for (int i = 4; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
-			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
-				log.info("Testcase_03: click Back");
-				shopping.clickToDynamicCart("1", "0");
-				continue;
-			} else {
-				break;
-			}
-		}
-
-		log.info("Testcase_03: click dat hang");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
-		log.info("Testcase_03: click Vao gio hang");
-		shopping.clickToDynamicDateInDateTimePicker("1");
-
-		log.info("TC_01_STEP: Chon ma giam gia");
-		shopping.clickToDynamicTextContains("Chọn mã giảm giá");
-
-		log.info("TC_01_STEP: Click ap dung");
-//		shopping.clickToDynamicTextContains("Áp dụng");
-		shopping.TabtoElementByPoint(842, 1202);
-
-		log.info("Testcase_03: lay tong tien can thanh toan");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
-		log.info("Testcase_03: click dat hang");
-		shopping.clickToDynamicButton("Đặt hàng");
-
-		shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
-		double feeShippingD = 0;
-		if (feeShipping.equals("Miễn phí")) {
-			feeShipping = feeShipping.replace("Miễn phí", "0");
-			feeShippingD = 0;
-
-		} else {
-			feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
-			feeShippingD = Double.parseDouble(feeShipping);
-
-		}
-		double totalMoney = tottalMoneyCart + feeShippingD;
-
-		log.info("Testcase_03: click thanh toan");
-		shopping.clickToDynamicButton("Thanh toán");
-
-		if (shopping.isTextDisplayedInPageSource("Bạn chưa có địa chỉ nhận hàng.")) {
-
-			log.info("Testcase_03: click the moi");
-			shopping.clickToDynamicButton("Thêm mới");
-
-			log.info("Testcase_03: Hien thi man hinh them moi dia chi");
-			shopping.isDynamicTextInfoDisplayed("Thêm mới địa chỉ");
-
-			log.info("Testcase_03: nhap ten");
-			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
-
-			log.info("Testcase_03: nhap so dien thoai");
-			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
-
-			log.info("Testcase_03: chon tinh thanh pho");
-			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
-			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
-
-			log.info("Testcase_03: chon tinh quan huyen");
-			shopping.clickToDynamicCustomer("Quận/Huyện");
-			shopping.clickToDynamicListProvince("Quận Ba Đình");
-
-			log.info("Testcase_03: chon tinh xa phuong");
-			shopping.clickToDynamicCustomer("Phường/Xã");
-			shopping.clickToDynamicListProvince("Phường Cống Vị");
-
-			log.info("Testcase_03: dia chi cu the");
-			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
-
-			log.info("Testcase_03: chon hoan tat");
-			shopping.clickToDynamicButton("Hoàn tất");
-
-			log.info("Testcase_03: click thanh toan");
-			shopping.clickToDynamicButton("Thanh toán");
-		}
-
-		if (shopping.isTextDisplayedInPageSource("Sản phẩm không còn")) {
-			shopping.clickToDynamicButton("Quay về giỏ hàng");
-
-			shopping.clickToDynamicCart("2", "0");
-			shopping.clickToDynamicButton("Mua sắm ngay");
-
-			shopping.clickToDynamicCategories("Xem tất cả");
-
-			for (int j = indexHang + 1; j < listProduct.size(); j++) {
-				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
-					log.info("TC_01_STEP_5: click Back");
-					shopping.clickToDynamicCart("1", "0");
-					continue;
-				} else {
-					break;
-				}
-			}
-			log.info("Testcase_03: click dat hang");
-			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
-			log.info("Testcase_03: click Vao gio hang");
-			shopping.clickToDynamicDateInDateTimePicker("1");
-
-			log.info("Testcase_03: lay tong tien can thanh toan");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-			log.info("TC_01_STEP_5: click dat hang");
-			shopping.clickToDynamicButton("Đặt hàng");
-
-			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
-			feeShippingD = 0;
-			if (feeShipping.equals("Miễn phí")) {
-				feeShipping = feeShipping.replace("Miễn phí", "0");
-				feeShippingD = 0;
-
-			} else {
-				feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
-				feeShippingD = Double.parseDouble(feeShipping);
-
-			}
-			totalMoney = tottalMoneyCart + feeShippingD;
-
-			log.info("Testcase_03: click thanh toan");
-			shopping.clickToDynamicButton("Thanh toán");
-
-			log.info("Testcase_03: lay tong tien can thanh toan");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
-			log.info("Testcase_03: click dat hang");
-			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
-			log.info("Testcase_03: click Vao gio hang");
-			shopping.clickToDynamicDateInDateTimePicker("1");
-
-			log.info("TC_01_STEP: Chon ma giam gia");
-			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
-
-			log.info("TC_01_STEP: Click ap dung");
-//			shopping.clickToDynamicTextContains("Áp dụng");
-			shopping.TabtoElementByPoint(842, 1202);
-
-			log.info("Testcase_03: click dat hang");
-			shopping.clickToDynamicButton("Đặt hàng");
-
-		}
-
-		log.info("Testcase_03: click thanh toan ngay");
-//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
-		shopping.clickToDynamicButton("Đồng ý");
-
-		log.info("Testcase_03: click chon tai khoan");
-		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
-		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
-
-		log.info("Testcase_03: Lay so du tai khoan ");
-		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView("Số dư khả dụng").replace("VND", "").replace(",", ""));
-
-		log.info("Testcase_03: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
-
-		log.info("Testcase_03: lay ra phi giao hang");
-		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
-		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
-
-		log.info("Testcase_03: verify fee Ship");
-		verifyEquals(feeShippingD, fee);
-
-		log.info("Testcase_03: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
-
-		// tong tien can thanh toan
-		log.info("Testcase_03: tong tien");
-		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
-		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
-		verifyEquals(calulatorMoney, totalMoneyBill);
-
-		log.info("Testcase_03: Chon thanh toan");
-		shopping.clickToDynamicButton("Thanh toán");
-
-		log.info("Testcase_03: Xac minh hien thi man hinh xac nhan thong tin");
-		shopping.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin");
-
-		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
-		verifyTrue(shopping.getDynamicTextTableByTextView("Số tiền thanh toán").contains(totalMoneyBillString[1]));
-
-		log.info("Testcase_03: Kiem tra tai khoan nguon");
-		String account = shopping.getDynamicTextTableByTextView("Tài khoản nguồn");
-		verifyEquals(account, Valid_Account.ACCOUNT2);
-
-		log.info("Testcase_03: Kiem tra so tien thanh toan");
-		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
-		double moneyConfirm = Double.parseDouble(money[0]);
-		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
-
-		log.info("Testcase_03: Chon phuong thuc thanh toan");
-		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
-		shopping.clickToDynamicButtonLinkOrLinkText("Mật khẩu");
-
-		log.info("Testcase_03: Chon tiep tuc");
-		shopping.clickToDynamicButton("Tiếp tục");
-
-		log.info("Testcase_03: dien pass");
-		shopping.inputToDynamicOtp(pass, "Tiếp tục");
-
-		log.info("Testcase_03: Chon tiep tuc");
-		shopping.clickToDynamicButton("Tiếp tục");
-
-		shopping.isDynamicMessageAndLabelTextDisplayed("GIAO DỊCH THÀNH CÔNG");
-
-		soDuThuc = soDuTK - moneyConfirm;
-
-		log.info("Testcase_03: Xac nhan thong tin ");
-
-		verifyEquals(shopping.getDynamicTextTableByTextView("Nhà cung cấp"), "VNSHOP");
-
-		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
-
-		maGiaodich = shopping.getDynamicTextTableByTextView("Mã giao dịch");
-
-		log.info("Testcase_03: thuc hien giao dich moi");
-		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
-
-	}
-
-	@Parameters({ "pass" })
-	@Test
-
-	public void TC_04_ChonMuaNhieuSanPhamThanhToa_Nhap_MaKhuyenMai_Pass(String pass) {
-		log.info("Testcase_04: Them vao gio hang");
-		shopping.clickToDynamicTextContains("Xem tất cả");
-		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "đ");
-		for (int i = 0; i < listProduct.size(); i++) {
-			shopping.clickToDynamicTextContains(listProduct.get(i));
-			indexHang = i;
-			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
-				log.info("Testcase_03: click Back");
-				shopping.clickToDynamicCart("1", "0");
-				continue;
-			} else {
-				break;
-			}
-		}
-
-		log.info("Testcase_04: click dat hang");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
-		log.info("Testcase_04: click Vao gio hang");
-		shopping.clickToDynamicDateInDateTimePicker("3");
-
-		log.info("TC_01_STEP: Chon ma giam gia");
-		shopping.clickToDynamicTextContains("Chọn mã giảm giá");
-
-		log.info("TC_01_STEP: Click ap dung");
-//		shopping.clickToDynamicTextContains("Áp dụng");
-		shopping.TabtoElementByPoint(842, 1202);
-
-		log.info("Testcase_04: lay tong tien can thanh toan");
-		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
-		log.info("Testcase_04: click dat hang");
-		shopping.clickToDynamicButton("Đặt hàng");
-
-		shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
-		double feeShippingD = 0;
-		if (feeShipping.equals("Miễn phí")) {
-			feeShipping = feeShipping.replace("Miễn phí", "0");
-			feeShippingD = 0;
-
-		} else {
-			feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
-			feeShippingD = Double.parseDouble(feeShipping);
-
-		}
-		double totalMoney = tottalMoneyCart + feeShippingD;
-
-		log.info("Testcase_04: click thanh toan");
-		shopping.clickToDynamicButton("Thanh toán");
-
-		if (shopping.isTextDisplayedInPageSource("Bạn chưa có địa chỉ nhận hàng.")) {
-
-			log.info("Testcase_04: click the moi");
-			shopping.clickToDynamicButton("Thêm mới");
-
-			log.info("Testcase_04: Hien thi man hinh them moi dia chi");
-			shopping.isDynamicTextInfoDisplayed("Thêm mới địa chỉ");
-
-			log.info("Testcase_04: nhap ten");
-			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
-
-			log.info("Testcase_04: nhap so dien thoai");
-			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
-
-			log.info("Testcase_04: chon tinh thanh pho");
-			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
-			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
-
-			log.info("Testcase_04: chon tinh quan huyen");
-			shopping.clickToDynamicCustomer("Quận/Huyện");
-			shopping.clickToDynamicListProvince("Quận Ba Đình");
-
-			log.info("Testcase_04: chon tinh xa phuong");
-			shopping.clickToDynamicCustomer("Phường/Xã");
-			shopping.clickToDynamicListProvince("Phường Cống Vị");
-
-			log.info("Testcase_04: dia chi cu the");
-			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
-
-			log.info("Testcase_04: chon hoan tat");
-			shopping.clickToDynamicButton("Hoàn tất");
-
-			log.info("Testcase_04: click thanh toan");
-			shopping.clickToDynamicButton("Thanh toán");
-		}
-
-		if (shopping.isTextDisplayedInPageSource("Sản phẩm không còn")) {
-			shopping.clickToDynamicButton("Quay về giỏ hàng");
-
-			shopping.clickToDynamicCart("2", "0");
-			shopping.clickToDynamicButton("Mua sắm ngay");
-
-			shopping.clickToDynamicCategories("Xem tất cả");
-
-			for (int j = indexHang + 1; j < listProduct.size(); j++) {
-				shopping.clickToDynamicTextContains(listProduct.get(j));
-				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
-					log.info("Testcase_04: click Back");
-					shopping.clickToDynamicCart("1", "0");
-					continue;
-				} else {
-					break;
-				}
-			}
-			log.info("Testcase_04: click dat hang");
-			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
-			log.info("Testcase_04: click Vao gio hang");
-			shopping.clickToDynamicDateInDateTimePicker("3");
-
-			log.info("TC_01_STEP: Chon ma giam gia");
-			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
-
-			log.info("TC_01_STEP: Click ap dung");
-//			shopping.clickToDynamicTextContains("Áp dụng");
-			shopping.TabtoElementByPoint(842, 939);
-
-			log.info("Testcase_04: lay tong tien can thanh toan");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
-			log.info("Testcase_04: click dat hang");
-			shopping.clickToDynamicButton("Đặt hàng");
-
-			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
-			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
-			feeShippingD = 0;
-			if (feeShipping.equals("Miễn phí")) {
-				feeShipping = feeShipping.replace("Miễn phí", "0");
-				feeShippingD = 0;
-
-			} else {
-				feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
-				feeShippingD = Double.parseDouble(feeShipping);
-
-			}
-			totalMoney = tottalMoneyCart + feeShippingD;
-
-			log.info("Testcase_04: click thanh toan");
-			shopping.clickToDynamicButton("Thanh toán");
-
-			log.info("Testcase_04: click dat hang");
-			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
-
-			log.info("Testcase_04: click Vao gio hang");
-			shopping.clickToDynamicDateInDateTimePicker("1");
-
-			log.info("TC_01_STEP: Chon ma giam gia");
-			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
-
-			log.info("TC_01_STEP: Click ap dung");
-//			shopping.clickToDynamicTextContains("Áp dụng");
-			shopping.TabtoElementByPoint(842, 1202);
-
-			log.info("Testcase_04: lay tong tien can thanh toan");
-			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
-			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
-
-			log.info("Testcase_04: click dat hang");
-			shopping.clickToDynamicButton("Đặt hàng");
-
-		}
-
-		log.info("Testcase_04: click thanh toan ngay");
-//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
-		shopping.clickToDynamicButton("Đồng ý");
-
-		log.info("Testcase_04: click chon tai khoan");
-		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
-		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
-
-		log.info("Testcase_04: Lay so du tai khoan ");
-		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView("Số dư khả dụng").replace("VND", "").replace(",", ""));
-
-		log.info("Testcase_04: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
-
-		log.info("Testcase_04: lay ra phi giao hang");
-		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
-		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
-
-		log.info("Testcase_04: verify fee Ship");
-		verifyEquals(feeShippingD, fee);
-
-		log.info("Testcase_04: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
-
-		// tong tien can thanh toan
-		log.info("Testcase_04: tong tien");
-		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
-		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
-		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
-		verifyEquals(calulatorMoney, totalMoneyBill);
-
-		log.info("Testcase_04: Chon thanh toan");
-		shopping.clickToDynamicButton("Thanh toán");
-
-		log.info("Testcase_04: Xac minh hien thi man hinh xac nhan thong tin");
-		shopping.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin");
-
-		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
-		verifyTrue(shopping.getDynamicTextTableByTextView("Số tiền thanh toán").contains(totalMoneyBillString[1]));
-
-		log.info("Testcase_04: Kiem tra tai khoan nguon");
-		String account = shopping.getDynamicTextTableByTextView("Tài khoản nguồn");
-		verifyEquals(account, Valid_Account.ACCOUNT2);
-
-		log.info("Testcase_04: Kiem tra so tien thanh toan");
-		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
-		double moneyConfirm = Double.parseDouble(money[0]);
-		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
-
-		log.info("Testcase_04: Chon phuong thuc thanh toan");
-		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
-		shopping.clickToDynamicButtonLinkOrLinkText("Mật khẩu");
-
-		log.info("Testcase_04: Chon tiep tuc");
-		shopping.clickToDynamicButton("Tiếp tục");
-
-		log.info("Testcase_04: dien pass");
-		shopping.inputToDynamicOtp(pass, "Tiếp tục");
-
-		log.info("Testcase_04: Chon tiep tuc");
-		shopping.clickToDynamicButton("Tiếp tục");
-
-		shopping.isDynamicMessageAndLabelTextDisplayed("GIAO DỊCH THÀNH CÔNG");
-
-		soDuThuc = soDuTK - moneyConfirm;
-
-		log.info("Testcase_04: Xac nhan thong tin ");
-
-		verifyEquals(shopping.getDynamicTextTableByTextView("Nhà cung cấp"), "VNSHOP");
-
-		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
-
-		maGiaodich = shopping.getDynamicTextTableByTextView("Mã giao dịch");
-
-		log.info("Testcase_04: thuc hien giao dich moi");
-		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
-	}
-
-	@Parameters({ "otp" })
-	@Test
-	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP_NhapMaKhuyenMai(String otp) {
-		log.info("TC_05_STEP_2: Them vao gio hang");
-		shopping.scrollIDownOneTime(driver);
-		shopping.scrollDownToTextView("%");
-		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, "%");
-
-		for (int i = 0; i < listProduct.size(); i++) {
-			shopping.clickToDynamicCategories(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
 				log.info("TC_01_STEP_5: click Back");
@@ -1092,9 +582,8 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.clickToDynamicCategories("Chọn mã giảm giá");
 
 		log.info("TC_01_STEP: Click ap dung");
-		shopping.TabtoElementByPoint(842, 1202);
+		shopping.TabtoElementByPoint(832, 1332);
 
-//		shopping.clickToDynamicTextContains("Áp dụng");
 
 		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1162,7 +651,7 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.TabtoElementByPoint(1002, 924);
 			shopping.clickToDynamicButton("Mua sắm ngay");
 
-			shopping.clickToDynamicCategories("Xem tất cả");
+			shopping.clickToDynamicTextContains("Xem tất cả");
 
 			for (int j = indexHang + 1; j < listProduct.size(); j++) {
 				shopping.clickToDynamicTextContains(listProduct.get(j));
@@ -1184,9 +673,8 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.clickToDynamicCategories("Chọn mã giảm giá");
 
 			log.info("TC_01_STEP: Click ap dung");
-			shopping.TabtoElementByPoint(842, 1202);
+			shopping.TabtoElementByPoint(832, 1332);
 
-//			shopping.clickToDynamicTextContains("Áp dụng");
 
 			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1218,13 +706,9 @@ public class Shopping_Online_Flow2 extends Base {
 			log.info("TC_01_STEP_4: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
 
-//			log.info("TC_01_STEP: Chon ma giam gia");
-//			shopping.clickToDynamicCategories("Chọn mã giảm giá");
-
 			log.info("TC_01_STEP: Click ap dung");
-			shopping.TabtoElementByPoint(842, 1202);
+			shopping.TabtoElementByPoint(832, 1332);
 
-//			shopping.clickToDynamicTextContains("Áp dụng");
 
 			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1238,7 +722,501 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("TC_01_STEP_6: click thanh toan ngay");
-//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
+		shopping.clickToDynamicButton("Đồng ý");
+
+		log.info("TC_01_STEP_7: click chon tai khoan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
+		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
+
+		log.info("TC_02_STEP_7: Lay so du tai khoan ");
+		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView("Số dư khả dụng").replace("VND", "").replace(",", ""));
+
+		log.info("TC_02_STEP_7: lay thong tin ma don hang");
+		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+
+		log.info("TC_01_STEP_9: lay ra phi giao hang");
+		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
+		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
+
+		log.info("TC_01_STEP_9: verify fee Ship");
+		verifyEquals(feeShippingD, fee);
+
+		log.info("TC_01_STEP_10: giam gia");
+		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
+		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
+
+		log.info("TC_01_STEP_11: tong tien");
+		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
+		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
+		verifyEquals(calulatorMoney, totalMoneyBill);
+
+		log.info("TC_01_STEP_12: Chon thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		log.info("TC_01_STEP_12: Xac minh hien thi man hinh xac nhan thong tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin");
+
+		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
+		verifyTrue(shopping.getDynamicTextTableByTextView("Số tiền thanh toán").contains(totalMoneyBillString[1]));
+
+		log.info("TC_01_STEP_13: Kiem tra tai khoan nguon");
+		String account = shopping.getDynamicTextTableByTextView("Tài khoản nguồn");
+		verifyEquals(account, Valid_Account.ACCOUNT2);
+
+		log.info("TC_01_STEP_14: Kiem tra so tien thanh toan");
+		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
+		double moneyConfirm = Double.parseDouble(money[0]);
+		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
+
+		log.info("TC_01_STEP_16: Chon phuong thuc thanh toan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
+		shopping.clickToDynamicButtonLinkOrLinkText("Mật khẩu đăng nhập");
+
+		log.info("TC_01_STEP_17: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("TC_01_STEP_18: dien otp");
+		shopping.inputToDynamicPopupPasswordInput(pass, "Tiếp tục");
+
+		log.info("TC_01_STEP_19: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		shopping.isDynamicMessageAndLabelTextDisplayed("GIAO DỊCH THÀNH CÔNG");
+
+		soDuThuc = soDuTK - moneyConfirm;
+
+		log.info("TC_01_STEP_19: Xac nhan thong tin ");
+
+		verifyEquals(shopping.getDynamicTextTableByTextView("Nhà cung cấp"), "VNSHOP");
+
+		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
+
+		maGiaodich = shopping.getDynamicTextTableByTextView("Mã giao dịch");
+
+		log.info("TC_01_STEP_20: thuc hien giao dich moi");
+		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
+
+	
+
+	}
+
+//	@Parameters({ "pass" })
+//	@Test
+
+	public void TC_04_ChonMuaNhieuSanPhamThanhToa_Nhap_MaKhuyenMai_Pass(String pass) {
+		log.info("Testcase_04: Them vao gio hang");
+		shopping.clickToDynamicTextContains("Xem tất cả");
+		List<String> listProduct = shopping.getTextInListElementsProduct( "đ");
+		for (int i = 4; i < listProduct.size(); i++) {
+			shopping.clickToDynamicTextContains(listProduct.get(i));
+			indexHang = i;
+			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
+				log.info("Testcase_03: click Back");
+				shopping.clickToDynamicCart("1", "0");
+				continue;
+			} else {
+				break;
+			}
+		}
+
+		log.info("Testcase_04: click dat hang");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+		log.info("Testcase_04: click Vao gio hang");
+		shopping.clickToDynamicDateInDateTimePicker("3");
+
+		log.info("TC_01_STEP: Chon ma giam gia");
+		shopping.clickToDynamicTextContains("Chọn mã giảm giá");
+
+		log.info("TC_01_STEP: Click ap dung");
+		shopping.TabtoElementByPoint(832, 1332);
+
+		log.info("Testcase_04: lay tong tien can thanh toan");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+		log.info("Testcase_04: click dat hang");
+		shopping.clickToDynamicButton("Đặt hàng");
+
+		shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+		double feeShippingD = 0;
+		if (feeShipping.equals("Miễn phí")) {
+			feeShipping = feeShipping.replace("Miễn phí", "0");
+			feeShippingD = 0;
+
+		} else {
+			feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
+			feeShippingD = Double.parseDouble(feeShipping);
+
+		}
+		double totalMoney = tottalMoneyCart + feeShippingD;
+
+		log.info("Testcase_04: click thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		if (shopping.isTextDisplayedInPageSource("Bạn chưa có địa chỉ nhận hàng.")) {
+
+			log.info("Testcase_04: click the moi");
+			shopping.clickToDynamicButton("Thêm mới");
+
+			log.info("Testcase_04: Hien thi man hinh them moi dia chi");
+			shopping.isDynamicTextInfoDisplayed("Thêm mới địa chỉ");
+
+			log.info("Testcase_04: nhap ten");
+			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
+
+			log.info("Testcase_04: nhap so dien thoai");
+			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
+
+			log.info("Testcase_04: chon tinh thanh pho");
+			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
+			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
+
+			log.info("Testcase_04: chon tinh quan huyen");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Quận Ba Đình");
+
+			log.info("Testcase_04: chon tinh xa phuong");
+			shopping.clickToDynamicCustomer("Phường/Xã");
+			shopping.clickToDynamicListProvince("Phường Cống Vị");
+
+			log.info("Testcase_04: dia chi cu the");
+			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+
+			log.info("Testcase_04: chon hoan tat");
+			shopping.clickToDynamicButton("Hoàn tất");
+
+			log.info("Testcase_04: click thanh toan");
+			shopping.clickToDynamicButton("Thanh toán");
+		}
+
+		if (shopping.isTextDisplayedInPageSource("Sản phẩm không còn")) {
+			shopping.clickToDynamicButton("Quay về giỏ hàng");
+
+			shopping.clickToDynamicCart("2", "0");
+			shopping.clickToDynamicButton("Mua sắm ngay");
+
+			shopping.clickToDynamicTextContains("Xem tất cả");
+
+			for (int j = indexHang + 1; j < listProduct.size(); j++) {
+				shopping.clickToDynamicTextContains(listProduct.get(j));
+				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
+					log.info("Testcase_04: click Back");
+					shopping.clickToDynamicCart("1", "0");
+					continue;
+				} else {
+					break;
+				}
+			}
+			log.info("Testcase_04: click dat hang");
+			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+			log.info("Testcase_04: click Vao gio hang");
+			shopping.clickToDynamicDateInDateTimePicker("3");
+
+			log.info("TC_01_STEP: Chon ma giam gia");
+			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
+
+			log.info("TC_01_STEP: Click ap dung");
+			shopping.TabtoElementByPoint(842, 939);
+
+			log.info("Testcase_04: lay tong tien can thanh toan");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+			log.info("Testcase_04: click dat hang");
+			shopping.clickToDynamicButton("Đặt hàng");
+
+			shopping.scrollDownToViewText("Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextFeeShipping("Giao hàng tiêu chuẩn");
+			feeShippingD = 0;
+			if (feeShipping.equals("Miễn phí")) {
+				feeShipping = feeShipping.replace("Miễn phí", "0");
+				feeShippingD = 0;
+
+			} else {
+				feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
+				feeShippingD = Double.parseDouble(feeShipping);
+
+			}
+			totalMoney = tottalMoneyCart + feeShippingD;
+
+			log.info("Testcase_04: click thanh toan");
+			shopping.clickToDynamicButton("Thanh toán");
+
+			log.info("Testcase_04: click dat hang");
+			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+			log.info("Testcase_04: click Vao gio hang");
+			shopping.clickToDynamicDateInDateTimePicker("1");
+
+			log.info("TC_01_STEP: Chon ma giam gia");
+			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
+
+			log.info("TC_01_STEP: Click ap dung");
+			shopping.TabtoElementByPoint(842, 1202);
+
+			log.info("Testcase_04: lay tong tien can thanh toan");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+			log.info("Testcase_04: click dat hang");
+			shopping.clickToDynamicButton("Đặt hàng");
+
+		}
+
+		log.info("Testcase_04: click thanh toan ngay");
+		shopping.clickToDynamicButton("Đồng ý");
+
+		log.info("Testcase_04: click chon tai khoan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
+		shopping.clickToDynamicButtonLinkOrLinkText(Valid_Account.ACCOUNT2);
+
+		log.info("Testcase_04: Lay so du tai khoan ");
+		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView("Số dư khả dụng").replace("VND", "").replace(",", ""));
+
+		log.info("Testcase_04: lay thong tin ma don hang");
+		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+
+		log.info("Testcase_04: lay ra phi giao hang");
+		String[] getfeeString = shopping.getDynamicTextInTransactionDetail("Phí giao hàng:").split(" ");
+		double fee = Double.parseDouble(getfeeString[0].replace(",", ""));
+
+		log.info("Testcase_04: verify fee Ship");
+		verifyEquals(feeShippingD, fee);
+
+		log.info("Testcase_04: giam gia");
+		String[] getSaleString = shopping.getDynamicTextInTransactionDetail("Giảm giá").split(" ");
+		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
+
+		// tong tien can thanh toan
+		log.info("Testcase_04: tong tien");
+		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail("Tổng tiền:").split(" ");
+		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));
+		double calulatorMoney = canculateAvailableBalances((long) totalMoney, (long) fee, 0);
+		verifyEquals(calulatorMoney, totalMoneyBill);
+
+		log.info("Testcase_04: Chon thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		log.info("Testcase_04: Xac minh hien thi man hinh xac nhan thong tin");
+		shopping.isDynamicMessageAndLabelTextDisplayed("Xác nhận thông tin");
+
+		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
+		verifyTrue(shopping.getDynamicTextTableByTextView("Số tiền thanh toán").contains(totalMoneyBillString[1]));
+
+		log.info("Testcase_04: Kiem tra tai khoan nguon");
+		String account = shopping.getDynamicTextTableByTextView("Tài khoản nguồn");
+		verifyEquals(account, Valid_Account.ACCOUNT2);
+
+		log.info("Testcase_04: Kiem tra so tien thanh toan");
+		String[] money = (shopping.getMoneyByAccount("Số tiền thanh toán").replace(",", "")).split(" ");
+		double moneyConfirm = Double.parseDouble(money[0]);
+		verifyEquals(moneyConfirm + " VND", totalMoneyBill + " VND");
+
+		log.info("Testcase_04: Chon phuong thuc thanh toan");
+		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
+		shopping.clickToDynamicButtonLinkOrLinkText("Mật khẩu đăng nhập");
+
+		log.info("Testcase_04: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		log.info("Testcase_04: dien pass");
+		shopping.inputToDynamicPopupPasswordInput(pass, "Tiếp tục");
+
+		log.info("Testcase_04: Chon tiep tuc");
+		shopping.clickToDynamicButton("Tiếp tục");
+
+		shopping.isDynamicMessageAndLabelTextDisplayed("GIAO DỊCH THÀNH CÔNG");
+
+		soDuThuc = soDuTK - moneyConfirm;
+
+		log.info("Testcase_04: Xac nhan thong tin ");
+
+		verifyEquals(shopping.getDynamicTextTableByTextView("Nhà cung cấp"), "VNSHOP");
+
+		verifyEquals(shopping.getDynamicTextTableByTextView("Mã đơn hàng"), codeBill);
+
+		maGiaodich = shopping.getDynamicTextTableByTextView("Mã giao dịch");
+
+		log.info("Testcase_04: thuc hien giao dich moi");
+		shopping.clickToDynamicButton("Thực hiện giao dịch mới");
+	}
+
+//	@Parameters({ "otp" })
+//	@Test
+	public void TC_05_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP_NhapMaKhuyenMai(String otp) {
+		log.info("TC_05_STEP_2: Them vao gio hang");
+		shopping.scrollIDownOneTime(driver);
+		shopping.scrollDownToTextView("%");
+		List<String> listProduct = shopping.getTextInListElementsProduct( "%");
+
+		for (int i = 0; i < listProduct.size(); i++) {
+			shopping.clickToDynamicCategories(listProduct.get(i));
+			indexHang = i;
+			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
+				log.info("TC_01_STEP_5: click Back");
+				shopping.clickToDynamicCart("1", "0");
+				continue;
+			} else {
+				break;
+			}
+		}
+
+		log.info("TC_01_STEP_4: click dat hang");
+		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+		log.info("TC_01_STEP_4: click Vao gio hang");
+		shopping.clickToDynamicDateInDateTimePicker("1");
+
+		log.info("TC_01_STEP: Chon ma giam gia");
+		shopping.clickToDynamicCategories("Chọn mã giảm giá");
+
+		log.info("TC_01_STEP: Click ap dung");
+		shopping.TabtoElementByPoint(832, 1332);
+
+		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
+		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+		log.info("TC_01_STEP_5: click dat hang");
+		shopping.clickToDynamicButton("Đặt hàng");
+
+		shopping.scrollDownToTextView("Giao hàng tiêu chuẩn");
+		String feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
+		double feeShippingD = 0;
+		if (feeShipping.equals("Miễn phí")) {
+			feeShipping = feeShipping.replace("Miễn phí", "0");
+			feeShippingD = 0;
+
+		} else {
+			feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
+			feeShippingD = Double.parseDouble(feeShipping);
+
+		}
+		double totalMoney = tottalMoneyCart + feeShippingD;
+
+		log.info("TC_01_STEP_5: click thanh toan");
+		shopping.clickToDynamicButton("Thanh toán");
+
+		if (shopping.isTextDisplayedInPageSource("Bạn chưa có địa chỉ nhận hàng.")) {
+
+			log.info("TC_01_STEP_4_1: click the moi");
+			shopping.clickToDynamicButton("Thêm mới");
+
+			log.info("TC_01_STEP_4_1: Hien thi man hinh them moi dia chi");
+			shopping.isDynamicTextInfoDisplayed("Thêm mới địa chỉ");
+
+			log.info("TC_01_STEP_4_2: nhap ten");
+			shopping.inputToDynamicInfo("Ngyen Van A", "Họ tên người nhận");
+
+			log.info("TC_01_STEP_4_2: nhap so dien thoai");
+			shopping.inputToDynamicInfo("0904797866", "Số điện thoại người nhận");
+
+			log.info("TC_01_STEP_4_3: chon tinh thanh pho");
+			shopping.clickToDynamicCustomer("Tỉnh/Thành phố");
+			shopping.clickToDynamicListProvince("Thành phố Hà Nội");
+
+			log.info("TC_01_STEP_4_3: chon tinh quan huyen");
+			shopping.clickToDynamicCustomer("Quận/Huyện");
+			shopping.clickToDynamicListProvince("Quận Ba Đình");
+
+			log.info("TC_01_STEP_4_3: chon tinh xa phuong");
+			shopping.clickToDynamicCustomer("Phường/Xã");
+			shopping.clickToDynamicListProvince("Phường Cống Vị");
+
+			log.info("TC_01_STEP_4_3: dia chi cu the");
+			shopping.inputToDynamicInfo("22 abc", "Địa chỉ cụ thể (Số nhà, tên đường...)");
+
+			log.info("TC_01_STEP_4_3: chon hoan tat");
+			shopping.clickToDynamicButton("Hoàn tất");
+
+			log.info("TC_01_STEP_6: click thanh toan");
+			shopping.clickToDynamicButton("Thanh toán");
+		}
+
+		while (shopping.isTextDisplayedInPageSource("Sản phẩm không còn")) {
+			shopping.clickToDynamicButton("Quay về giỏ hàng");
+
+			shopping.TabtoElementByPoint(1002, 924);
+			shopping.clickToDynamicButton("Mua sắm ngay");
+
+			shopping.clickToDynamicTextContains("Xem tất cả");
+
+			for (int j = indexHang + 1; j < listProduct.size(); j++) {
+				shopping.clickToDynamicTextContains(listProduct.get(j));
+				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
+					log.info("TC_01_STEP_5: click Back");
+					shopping.clickToDynamicCart("1", "0");
+					continue;
+				} else {
+					break;
+				}
+			}
+			log.info("TC_01_STEP_4: click dat hang");
+			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+			log.info("TC_01_STEP_4: click Vao gio hang");
+			shopping.clickToDynamicDateInDateTimePicker("1");
+
+			log.info("TC_01_STEP: Chon ma giam gia");
+			shopping.clickToDynamicCategories("Chọn mã giảm giá");
+
+			log.info("TC_01_STEP: Click ap dung");
+			shopping.TabtoElementByPoint(832, 1332);
+
+			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+			log.info("TC_01_STEP_5: click dat hang");
+			shopping.clickToDynamicButton("Đặt hàng");
+
+			shopping.scrollDownToTextView("Giao hàng tiêu chuẩn");
+			feeShipping = shopping.getDynamicTextTableByTextView("Giao hàng tiêu chuẩn");
+			feeShippingD = 0;
+			if (feeShipping.equals("Miễn phí")) {
+				feeShipping = feeShipping.replace("Miễn phí", "0");
+				feeShippingD = 0;
+
+			} else {
+				feeShipping = feeShipping.replace("₫", "").replace("+", "").replace(".", "");
+				feeShippingD = Double.parseDouble(feeShipping);
+
+			}
+			totalMoney = tottalMoneyCart + feeShippingD;
+
+			log.info("TC_01_STEP_5: click thanh toan");
+			shopping.clickToDynamicButton("Thanh toán");
+
+			log.info("TC_01_STEP_4: click dat hang");
+			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
+
+			log.info("TC_01_STEP_4: click Vao gio hang");
+			shopping.clickToDynamicDateInDateTimePicker("1");
+
+
+			log.info("TC_01_STEP: Click ap dung");
+			shopping.TabtoElementByPoint(842, 1202);
+
+			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
+			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
+			tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
+
+			log.info("TC_01_STEP_5: click dat hang");
+			shopping.clickToDynamicButton("Đặt hàng");
+
+			shopping.clickToDynamicButton("Thanh toán");
+
+		}
+
+		log.info("TC_01_STEP_6: click thanh toan ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_01_STEP_7: click chon tai khoan");
@@ -1320,21 +1298,17 @@ public class Shopping_Online_Flow2 extends Base {
 	@Test
 	public void TC_06_ChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP_NhapMaKhuyenMai_GiaTriLonHonMatHang(String otp) {
 		log.info("TC_06_STEP_: Them vao gio hang");
+		shopping.clickToDynamicTextContains("Xem tất cả");
 		shopping.scrollIDownOneTime(driver);
-		shopping.scrollDownToConatainText("%");
-		shopping.scrollIDownOneTime(driver);
-		List<String> listProduct = shopping.getTextInListElementsProduct(ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "%");
-		for (int i = 0; i < listProduct.size(); i++) {
-			shopping.clickToDynamicTextContains(listProduct.get(2));
-			indexHang = i;
+
+			shopping.clickToDynamicTextContains("XUC XICH");
+		
 			if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
 				log.info("TC_06_STEP_: click Back");
 				shopping.clickToDynamicCart("1", "0");
-				continue;
-			} else {
-				break;
+			
 			}
-		}
+		
 
 		log.info("TC_06_STEP_: click dat hang");
 		shopping.clickToDynamicButton("Thêm vào giỏ hàng");
@@ -1346,8 +1320,7 @@ public class Shopping_Online_Flow2 extends Base {
 		shopping.clickToDynamicTextContains("Chọn mã giảm giá");
 
 		log.info("TC_06_STEP_: Click ap dung");
-//		shopping.clickToDynamicTextContains("Áp dụng");
-		shopping.TabtoElementByPoint(842, 939);
+		shopping.TabtoElementByPoint(832, 1332);
 
 		log.info("TC_06_STEP_: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1415,18 +1388,16 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.clickToDynamicCart("2", "0");
 			shopping.clickToDynamicButton("Mua sắm ngay");
 
-			shopping.clickToDynamicCategories("Xem tất cả");
+			shopping.clickToDynamicTextContains("Xem tất cả");
 
-			for (int j = indexHang + 1; j < listProduct.size(); j++) {
-				shopping.clickToDynamicTextContains(listProduct.get(j));
+			
+				shopping.clickToDynamicTextContains("XUC XICH");
 				if (shopping.isTextDisplayedInPageSource("Tạm hết hàng")) {
 					log.info("TC_01_STEP_5: click Back");
 					shopping.clickToDynamicCart("1", "0");
-					continue;
-				} else {
-					break;
+				
 				}
-			}
+			
 			log.info("TC_06_STEP_: click dat hang");
 			shopping.clickToDynamicButton("Thêm vào giỏ hàng");
 
@@ -1465,8 +1436,7 @@ public class Shopping_Online_Flow2 extends Base {
 			shopping.clickToDynamicTextContains("Chọn mã giảm giá");
 
 			log.info("TC_06_STEP_: Click ap dung");
-//			shopping.clickToDynamicTextContains("Áp dụng");
-			shopping.TabtoElementByPoint(842, 939);
+			shopping.TabtoElementByPoint(832, 1332);
 
 			log.info("TC_06_STEP_: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText("sản phẩm").replace("₫", "");
@@ -1478,7 +1448,6 @@ public class Shopping_Online_Flow2 extends Base {
 		}
 
 		log.info("TC_06_STEP_: click thanh toan ngay");
-//		shopping.clickToDynamicDateInDateTimePicker("Thanh toán ngay");
 		shopping.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_06_STEP_: click chon tai khoan");
