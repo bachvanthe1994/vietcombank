@@ -17,15 +17,15 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="R9AMC1PZHMJ" />
+		<parameter name="deviceUDID" value="R9AMC1PZHEJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
+		<parameter name="phone" value="0335059863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			<!-- Dịch vụ thẻ -->
-			<class name="vnpay.vietcombank.card_services.Card_Services3" />
+<!-- 				Nạp tiền điện thoại -->
+				<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 			
 			<!-- Thanh toán QR code -->
 <!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1"/> -->
