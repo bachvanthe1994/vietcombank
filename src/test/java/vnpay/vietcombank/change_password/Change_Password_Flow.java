@@ -74,7 +74,7 @@ public class Change_Password_Flow extends Base {
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");
 		log.info("TC_01_Step: Click button trang chủ");
 
-		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
+//		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
 
 		log.info("TC_01_Step: verrify dang nhap thanh cong");
 		verifyEquals(changePassword.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvLabel"), "TÀI KHOẢN THANH TOÁN");
