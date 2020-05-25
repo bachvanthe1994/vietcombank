@@ -24,9 +24,9 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			
-			<!-- Thanh toán cước Internet ADSL -->
-			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
+		<!-- Mua sắm trực tuyến -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
 			
 			<!-- Thanh toán QR code -->
 <!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1"/> -->
@@ -37,10 +37,10 @@
 			<!-- Chuyển tiền trong vcb -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
 <!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 
 			<!-- chuyển tiền ngoài vcb -->
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
