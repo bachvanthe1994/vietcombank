@@ -36,7 +36,7 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
 		clickToDynamicButton(driver, "Bắt đầu sử dụng");
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
-		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
+//		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
 
 	}
 
@@ -62,7 +62,7 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButton(driver, "Tiếp tục");
 		clickToDynamicButton(driver, "Bắt đầu sử dụng");
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
-		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
+//		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
 
 	}
 

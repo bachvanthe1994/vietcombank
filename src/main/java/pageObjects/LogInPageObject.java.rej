@@ -1,9 +1,0 @@
-diff a/src/main/java/pageObjects/LogInPageObject.java b/src/main/java/pageObjects/LogInPageObject.java	(rejected hunks)
-@@ -15,7 +15,6 @@
- 
- 	public void Global_login(String phone, String pass, String otp) {
- 
--		clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
- 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
- 		clickToTextID(driver, "com.VCB:id/tvSkip");
- 
