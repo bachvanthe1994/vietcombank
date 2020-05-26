@@ -193,7 +193,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_14_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới NH khác qua TK");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngoài VCB");
 
 		log.info("TC_14_6: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -388,7 +388,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_16_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới NH khác qua TK");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngoài VCB");
 
 		log.info("TC_16_6: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -583,7 +583,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_18_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới NH khác qua TK");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngoài VCB");
 
 		log.info("TC_18_6: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -775,7 +775,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_20_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới NH khác qua TK");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngoài VCB");
 
 		log.info("TC_20_6: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -970,7 +970,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_22_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới NH khác qua TK");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngoài VCB");
 
 		log.info("TC_22_6: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1164,7 +1164,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_24_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới NH khác qua TK");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngoài VCB");
 
 		log.info("TC_24_6: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");

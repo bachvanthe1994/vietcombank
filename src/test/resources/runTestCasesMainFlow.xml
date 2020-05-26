@@ -35,11 +35,11 @@
 
 		
 			<!-- Chuyển tiền trong vcb -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 
 			<!-- chuyển tiền ngoài vcb -->
@@ -76,6 +76,8 @@
 
 			<!-- Dịch vụ thẻ -->
 			<class name="vnpay.vietcombank.card_services.Card_Services" />
+			<class name="vnpay.vietcombank.card_services.Card_Services2" />
+			<class name="vnpay.vietcombank.card_services.Card_Services3" />
 
 			<!-- Tiết kiệm trực tuyến -->
 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />

@@ -217,6 +217,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_02_Step_04: Chon Chuyen Tien Trong VCB");
 		transStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
 
+
 		log.info("TC_02_Step_05: Kiem tra from date hien thi");
 		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 

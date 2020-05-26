@@ -152,7 +152,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_02_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_02_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -304,7 +304,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_04_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_04_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -457,7 +457,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_06_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_06_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -614,7 +614,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_08_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_08_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -762,7 +762,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_10_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_10_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -919,7 +919,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_12_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_12_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1075,7 +1075,7 @@ public class TransferIdentity_flow extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_14_4: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền mặt");
 
 		log.info("TC_14_5: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
