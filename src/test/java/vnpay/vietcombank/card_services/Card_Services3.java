@@ -54,7 +54,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "1");
 
 		log.info("TC_01_Step_04: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicTextContains(driver, "37");
+		lockCard.clickToDynamicTextContains(driver, "4032");
 		numberCard = lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent");
 
 		log.info("TC_01_Step_05: An chon checkbox Xac Nhan Dieu Khoan");
@@ -77,7 +77,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_11: Nhap 'SMS OTP'");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_01_Step_12: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -129,7 +129,8 @@ public class Card_Services3 extends Base {
 	public void TC_02_HuyDangKySuDungTheTrenInternetVCB() {
 
 		log.info("TC_02_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicImageViewID(driver, numberCard);
+		
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 
 		log.info("TC_02_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -229,7 +230,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_03_Step_11: Nhap 'SMS OTP'");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_03_Step_12: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -281,7 +282,7 @@ public class Card_Services3 extends Base {
 	public void TC_04_HuyDangKySuDungTheTrenInternet() {
 
 		log.info("TC_04_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicImageViewID(driver, numberCard);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 
 		log.info("TC_04_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -381,7 +382,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_05_Step_11: Nhap 'SMS OTP'");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver,otpNumber, "Tiếp tục");
 
 		log.info("TC_05_Step_12: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -433,7 +434,7 @@ public class Card_Services3 extends Base {
 	public void TC_06_HuyDangKySuDungTheTrenInternetMasterCard() {
 
 		log.info("TC_06_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicImageViewID(driver, numberCard);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 
 		log.info("TC_06_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -533,7 +534,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_07_Step_11: Nhap 'SMS OTP'");
-		lockCard.inputToDynamicOtp(driver, "123456", "Tiếp tục");
+		lockCard.inputToDynamicOtp(driver, otpNumber, "Tiếp tục");
 
 		log.info("TC_07_Step_12: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
@@ -585,7 +586,7 @@ public class Card_Services3 extends Base {
 	public void TC_08_HuyDangKySuDungTheTrenInternet() {
 
 		log.info("TC_08_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicImageViewID(driver, numberCard);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 
 		log.info("TC_08_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, "Tiếp tục");
