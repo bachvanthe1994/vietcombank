@@ -140,7 +140,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_13_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_13_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		transferMoneyOutSide.scrollUpToText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
+		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS));
 
 		log.info("TC_13_13_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info6.name);
@@ -158,7 +159,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_13_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_13_14_Click Thuc hien giao dich moi");
@@ -335,7 +336,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_15_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		transferMoneyOutSide.scrollUpToText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
+		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS));
 
 		log.info("TC_15_13_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info7.name);
@@ -354,7 +356,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		clickPopupAfter15h30();
 
 		log.info("TC_15_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_15_14_Click Thuc hien giao dich moi");
@@ -530,7 +532,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_17_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		transferMoneyOutSide.scrollUpToText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
+		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS));
 
 		log.info("TC_17_13_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info8.name);
@@ -549,7 +552,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		clickPopupAfter15h30();
 
 		log.info("TC_17_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_17_14_Click Thuc hien giao dich moi");
@@ -723,7 +726,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_19_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_19_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		transferMoneyOutSide.scrollUpToText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
+		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS));
 
 		log.info("TC_19_13_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info9.name);
@@ -741,7 +745,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
 
 		log.info("TC_19_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_19_14_Click Thuc hien giao dich moi");
@@ -917,7 +921,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_21_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		transferMoneyOutSide.scrollUpToText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
+		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS));
 
 		log.info("TC_21_13_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info10.name);
@@ -936,7 +941,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		clickPopupAfter15h30();
 
 		log.info("TC_21_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_21_14_Click Thuc hien giao dich moi");
@@ -1111,7 +1116,8 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_13_Kiem tra man hinh Chuyen khoan thanh cong");
 		log.info("TC_23_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY));
+		transferMoneyOutSide.scrollUpToText(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
+		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS));
 
 		log.info("TC_23_13_2_Kiem tra ten nguoi thu huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), info11.name);
@@ -1130,7 +1136,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		clickPopupAfter15h30();
 
 		log.info("TC_23_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
+		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_IN_PROGRESS);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 		log.info("TC_23_14_Click Thuc hien giao dich moi");

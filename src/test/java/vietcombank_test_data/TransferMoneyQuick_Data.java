@@ -15,6 +15,7 @@ public class TransferMoneyQuick_Data {
 		public static final String MONEY_EUR = "10";
 		public static final String RECEIVER_NAME = "NGUYEN VAN NAPAS TEST ONLINE IBFT 247 VN";
 		public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
+		public static final String SUCCESS_IN_PROGRESS = "GIAO DỊCH ĐƯỢC XỬ LÝ THÀNH CÔNG TẠI VIETCOMBANK";
 
 		public static final String COST_AMOUNT_USD_EUR_OTP = "0.33";
 		public static final String COST_AMOUNT_USD_EUR_MK = "0.02";
