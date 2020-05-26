@@ -83,16 +83,20 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_01_Step_12: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_Step_13: Click button chia se");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
+		log.info("TC_01_Step_25: Kiem  tra giao dich thanh cong");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
 
-		log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
+		if (transferInVCB.getPageSource(driver).contains("Lưu thụ hưởng")) {
+			log.info("TC_01_Step_13: Click button chia se");
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
+			transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
 
-		log.info("TC_01_Step_16: Click Dong");
-		transferInVCB.clickToDynamicButton(driver, "Đóng");
+			log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
+			verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
 
+			log.info("TC_01_Step_16: Click Dong");
+			transferInVCB.clickToDynamicButton(driver, "Đóng");
+		}
 		log.info("TC_01_Step_17: Quay lai man home");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
