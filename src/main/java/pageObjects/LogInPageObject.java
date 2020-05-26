@@ -22,7 +22,7 @@ public class LogInPageObject extends AbstractPage {
 
 		clickToDynamicButton(driver, "Tiếp tục");
 
-		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
+		if (getPageSource(driver).contains("kích hoạt")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
@@ -48,7 +48,7 @@ public class LogInPageObject extends AbstractPage {
 
 		clickToDynamicButton(driver, "Tiếp tục");
 
-		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
+		if (getPageSource(driver).contains("kích hoạt")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}

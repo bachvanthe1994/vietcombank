@@ -120,11 +120,11 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
-
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
-
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		
+		
 		log.info("TC_01_11_Nhap mat khau");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -298,9 +298,11 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		 transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
+
 
 		log.info("TC_03_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -474,14 +476,13 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod));
-
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 
 		log.info("TC_05_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		
 		log.info("TC_05_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -651,13 +652,14 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_07_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 
 		log.info("TC_07_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		 transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
+		 
 		log.info("TC_07_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -832,13 +834,14 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
 
 		log.info("TC_09_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		 transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
+		 
 		log.info("TC_09_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1011,13 +1014,14 @@ public class TransferMoneyCharity extends Base {
 		log.info("TC_11_10_Chon phuong thuc xac thuc");
 		transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
-		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
 
 		log.info("TC_11_10_01_Kiem tra so tien phi");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
 
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		 transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
+		 
 		log.info("TC_11_11_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
 
