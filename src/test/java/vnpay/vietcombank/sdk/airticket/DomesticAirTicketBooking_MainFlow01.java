@@ -24,7 +24,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 	private HomePageObject homePage;
 	private TransactionReportPageObject transactionReport;
 	private DynamicAirTicketBookingObjects airTicket;
-	private String fifthDay = getForWardDay(6);
+	private String fifthDay = getForWardDay(3);
 	private String ticketPrice, payID, transactionID, fee, sourceDetail, source, destDetail, dest, time, flightCode, departureTime, arrivalTime, duration;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -72,7 +72,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_01_Step_03: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_01_Step_04: Tim chuyen bay");
@@ -289,7 +289,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_03_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_03_Step_08: Tim chuyen bay");
@@ -506,7 +506,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_05_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_05_Step_08: Tim chuyen bay");
@@ -719,7 +719,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_07_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_07_Step_08: Tim chuyen bay");
@@ -932,7 +932,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_09_Step_08: Tim chuyen bay");
@@ -1107,7 +1107,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_11_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_11_Step_08: Tim chuyen bay");
@@ -1282,7 +1282,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_13_Step_08: Tim chuyen bay");
@@ -1454,7 +1454,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink("Ngày đi");
-		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(5), fifthDay);
+		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton("Xác nhận");
 
 		log.info("TC_15_Step_08: Tim chuyen bay va dat ve");

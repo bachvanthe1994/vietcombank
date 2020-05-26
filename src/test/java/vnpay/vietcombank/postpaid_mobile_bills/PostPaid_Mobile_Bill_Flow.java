@@ -171,6 +171,9 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -372,7 +375,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_03_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_01_Step_39: Click nut Back ve man hinh chinh");
+		log.info("TC_03_Step_39: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_03_Step_40: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
@@ -446,8 +452,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_05_CuocDiDongTraSau_Mobifone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -575,12 +581,15 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_05_Step_39: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_01_Step_40: Click nut Back ve man hinh chinh");
+		log.info("TC_05_Step_40: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_05_Step_41: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_CuocDiDongTraSau_Mobifone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Mo tab Menu");
@@ -780,6 +789,9 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_07_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_07_Step_39: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -852,8 +864,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "pass" })
-//	@Test
+	@Parameters({ "pass" })
+	@Test
 	public void TC_09_CuocDiDongTraSau_Vinaphone_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -984,10 +996,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_09_Step_39: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_09_Step_40: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_CuocDiDongTraSau_Vinaphone_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
@@ -1186,6 +1201,9 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_11_Step_44: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_11_Step_45: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
