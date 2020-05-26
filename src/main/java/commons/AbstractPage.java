@@ -1154,6 +1154,7 @@ public class AbstractPage {
 
 	public void clickToDynamicBottomMenuOrIcon(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
@@ -2044,7 +2045,6 @@ public class AbstractPage {
 		return text;
 
 	}
-
 
 	public String getDynamicTextFollowingText(AppiumDriver<MobileElement> driver, String... dynamicTextAndIndex) {
 		boolean status = false;

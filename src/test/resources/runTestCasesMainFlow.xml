@@ -24,9 +24,8 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			<!-- Tính toán lãi suất -->
-			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
-
+			<!-- Auto debit -->
+			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
