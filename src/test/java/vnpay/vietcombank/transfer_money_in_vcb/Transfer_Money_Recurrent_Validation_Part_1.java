@@ -51,13 +51,13 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		defaultAccount = homePage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvDefaultAcc");
-		
+
 		log.info("TC_04_Step_01: click chon menu");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-		
+
 		log.info("TC_04_Step_02: lay ten nguoi dung");
 		String fullName = transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname").toLowerCase();
-		
+
 		log.info("TC_04_Step_03: lay menu home");
 		transferRecurrent.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
@@ -96,7 +96,7 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, "Phí giao dịch người chuyển trả"));
 
 		log.info("TC_01_14_Kiem tra textbox Noi dung");
-		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver,fullName + " chuyen tien"));
+		verifyTrue(transferRecurrent.isDynamicTextInInputBoxDisPlayed(driver, fullName + " chuyen tien"));
 
 		log.info("TC_01_15_Kiem tra button Tiep tuc");
 		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Tiếp tục"));
@@ -209,14 +209,14 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 	public void TC_09_ChuyenTienDinhKy_TaiKhoanDich_KiemTraHienThiMacDinh() {
 		log.info("TC_09_01_Kiem tra hien thi mac dinh");
 		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
-		verifyEquals(actualDestinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		verifyEquals(actualDestinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 	}
 
 //	@Test
 	public void TC_10_ChuyenTienDinhKy_TaiKhoanDich_KiemTraMaxLength() {
 		log.info("TC_10_01_Nhap gia tri tai khoan dich");
-		transferRecurrent.inputToDynamicInputBox(driver, "12345678999999", "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, "12345678999999", "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_10_01_Kiem tra do dai tai khoan dich");
 		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
@@ -265,13 +265,13 @@ public class Transfer_Money_Recurrent_Validation_Part_1 extends Base {
 
 		log.info("TC_12_01_Kiem tra do dai tai khoan dich");
 		String actualDestinationAccount = transferRecurrent.getDynamicTextInInputBoxByHeader(driver, "Thông tin người hưởng", "1");
-		verifyEquals(actualDestinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		verifyEquals(actualDestinationAccount, "Nhập/ chọn tài khoản nhận VND");
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 }

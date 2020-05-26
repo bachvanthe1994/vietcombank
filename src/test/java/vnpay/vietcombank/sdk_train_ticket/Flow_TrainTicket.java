@@ -416,7 +416,7 @@ public class Flow_TrainTicket extends Base {
 		trainTicket.clickToDynamicButtonContains("Đ");
 
 		log.info("TC_05_Verify man hinh thong tin dat ve");
-		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), "Thông tin hành khách");
+		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), "Thông tin đặt vé");
 
 		log.info("TC_05_Get tong tien chieu di");
 		trainTicket.getTextTotal("0", "com.VCB:id/tvTotalAmount");

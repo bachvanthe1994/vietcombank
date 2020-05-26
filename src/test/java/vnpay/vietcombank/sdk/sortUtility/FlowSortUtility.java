@@ -45,8 +45,9 @@ public class FlowSortUtility extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		homePage = PageFactoryManager.getHomePageObject(driver);
 		login.Global_login(phone, pass, opt);
+		homePage = PageFactoryManager.getHomePageObject(driver);
+
 
 	}
 
@@ -76,10 +77,11 @@ public class FlowSortUtility extends Base {
 
 		List<String> listIconNoiBat = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
 
+		listIconNoiBatDaChon.add("QR Pay");
 		for (int i = 0; i < listIconNoiBat.size(); i++) {
 			listIconNoiBatDaChon.add(listIconNoiBat.get(i));
 		}
-
+		
 		log.info("TC_01_Step_4: Click chon cap nhat ");
 		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
@@ -92,9 +94,11 @@ public class FlowSortUtility extends Base {
 		homePage.scrollLeftToRight(DynamicPageUIs.DYNAMIC_QUICK_MENU);
 
 		log.info("TC_01_Step_11: Get toan bo danh sang cac icon noi bat o man hinh home ");
-		listIconNoiBatHome = homePage.getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
-        listIconNoiBatHome.remove(listIconNoiBatHome.size()-1);
-        
+		listIconNoiBatHome = homePage.getListIcon();
+	
+		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove("Chuyển tiền");
+		
 		log.info("TC_01_Step_12: Xac minh cac tinh nang noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
 
@@ -109,7 +113,7 @@ public class FlowSortUtility extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
 
 		listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
-
+		
 		log.info("TC_02_Step_4: Click bo chon noi bat ");
 		for (int i = 0; i < listIconNoiBatDaChon.size(); i++) {
 			homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.SELECTED);
@@ -122,7 +126,10 @@ public class FlowSortUtility extends Base {
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_02_Step_6: Lay ra toan bo danh sach icon da chon ");
-		listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
+		List<String> listIconNoiBatDaChon = new ArrayList<>();
+		listIconNoiBatDaChon.add("QR Pay");
+		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
+
 
 		log.info("TC_02_Step_7: Click button cap nhat ");
 		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
@@ -134,9 +141,9 @@ public class FlowSortUtility extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_10: Lay ra danh sach icon noi bat o man hinh home ");
-		listIconNoiBatHome = homePage.getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
-		listIconNoiBatHome.remove(listIconNoiBatHome.size() - 1);
-		listIconNoiBatHome.remove(listIconNoiBatHome.size() - 1);
+		listIconNoiBatHome = homePage.getListIcon();
+		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove("Chuyển tiền");
 
 		log.info("TC_02_Step_11: Verify list cac icon noi bat da duoc cap nhat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -167,16 +174,18 @@ public class FlowSortUtility extends Base {
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_6: Lay ra danh sach noi bat da chon ");
-		List<String> listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
+		List<String> listIconNoiBatDaChon = new ArrayList<>();
+		listIconNoiBatDaChon.add("QR Pay");
+		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
+
 
 		log.info("TC_03_Step_7: Click them noi bat");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_8: Lay ra danh sach icon noi bat o man hinh home");
-		listIconNoiBatHome = homePage.getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
-		listIconNoiBatHome.remove(listIconNoiBatHome.size() - 1);
-
-
+		listIconNoiBatHome = homePage.getListIcon();
+		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove("Chuyển tiền");
 		log.info("TC_03_Step_09: Verify icon da chon lam noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
 
@@ -203,16 +212,19 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_04_Step_6: Lay ra danh sach icon da chon noi bat ");
 		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
-		List<String> listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
+		List<String> listIconNoiBatDaChon = new ArrayList<>();
+		listIconNoiBatDaChon.add("QR Pay");
+		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
+
 
 		log.info("TC_04_Step_7: Click button back");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_8: Lay ra danh sach icon noi bat o man hinh home ");
 		homePage.scrollLeftToRight(DynamicPageUIs.DYNAMIC_QUICK_MENU);
-		listIconNoiBatHome = homePage.getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
-		listIconNoiBatHome.remove(listIconNoiBatHome.size() - 1);
-
+		listIconNoiBatHome = homePage.getListIcon();
+		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove("Chuyển tiền");
 
 		log.info("TC_04_Step_9: Verify icon noi bat da chon ");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -221,8 +233,8 @@ public class FlowSortUtility extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 
 	}
 

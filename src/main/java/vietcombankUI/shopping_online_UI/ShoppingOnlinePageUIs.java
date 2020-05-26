@@ -9,7 +9,8 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_DATE_SELECTED = "//android.widget.TextView[@text='%s']//following-sibling::android.view.ViewGroup//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TITLE_SELECT_DATE = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout/android.widget.TextView";
 	public static final String DYNAMIC_TITLE_SELECT_WEEK = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.FrameLayout//android.widget.TextView[@resource-id='%s']";
-	public static final String DYNAMIC_NUMBER_CUSTOMER = "//android.widget.TextView[@text='%s']//following::android.widget.TextView";
+	public static final String DYNAMIC_NUMBER_CUSTOMER = "//*[@text='%s']//following-sibling::*";
+	public static final String DYNAMIC_NUMBER_CUSTOMER_VIEW = "//android.view.View[@text='%s']//following::android.view.View";
 	public static final String DYNAMIC_TEXT_CHANGE_NUMBER = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_INDEX = "//android.widget.TextView[@index ='%s']";
 	public static final String DYNAMIC_DATE_SELECT = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
@@ -48,7 +49,7 @@ public class ShoppingOnlinePageUIs {
 	public static final String DYNAMIC_TEXT_EDIT = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@resource-id='%s']//android.widget.EditText";
 	// button
 	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id=\"%s\"]";
-	public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
+	public static final String DYNAMIC_BUTTON = "//android.widget.Button[contains(@text,'%s')]";
 	public static final String DYNAMIC_BUTTON_CONTAIN = "//android.widget.Button[contains(@text,'%s')]";
 
 	// LinearLayout
@@ -65,8 +66,11 @@ public class ShoppingOnlinePageUIs {
 
 	
 	public static final String DYNAMIC_TOTAL_MONEY_BY_TEXT = "//android.view.View[contains(@text,'%s')]//following-sibling::android.view.View";
-	public static final String PRODUCT_BY_CONTAIN_TEXT = "//android.widget.TextView[contains(@text,'%s')]";
-	public static final String PRODUCT_VIEW_BY_CONTAIN_TEXT = "//android.view.View[contains(@text,'%s')]";
+	public static final String PRODUCT_BY_CONTAIN_TEXT = "//*[contains(@text,'%s')]";
+	public static final String PRODUCT_VIEW_BY_CONTAIN_TEXT = "//*[@text='%s']";
+	public static final String VIEW_BY_CONTAIN_TEXT = "//android.view.View[@text='%s']";
+	public static final String VIEW_CONTAIN_TEXT = "//android.view.View[contains(@text,'%s')]";
+	public static final String LIST_PRODUCT = "//android.view.View[@text='%s']//following-sibling::android.view.View/android.view.View";
 
 
 	

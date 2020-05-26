@@ -26,6 +26,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 
 		registerOnline.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		registerOnline.clickToTextID(driver, "com.VCB:id/tvSkip");
 	}
 
 	@Test

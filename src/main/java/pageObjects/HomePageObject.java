@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -12,6 +13,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import vietcombankUI.DynamicPageUIs;
+import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 
 public class HomePageObject extends AbstractPage {
 	private AppiumDriver<MobileElement> driver;
@@ -80,6 +82,37 @@ public class HomePageObject extends AbstractPage {
 	/* SCROLL LeftToTexT */
 	public void scrollLeftToText(String dynamicText) {
 		scrollRightLeft(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+
+	}
+	
+	public List<String> getListIcon() {
+		List<String> listIcon = new ArrayList<String>();
+		List<String> tempList1 = new ArrayList<String>();
+		List<String> tempList2 = new ArrayList<String>();
+		boolean check = true;
+
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
+		if (status) {
+			tempList1 = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
+			tempList2 = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/title");
+			while (check) {
+				for (String text : tempList1) {
+					if (!listIcon.contains(text)) {
+						listIcon.add(text);
+					}
+
+				}
+				scrollRightLeft(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt nổi bật");
+				tempList1 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/title");
+				if (tempList1.equals(tempList2)) {
+					break;
+				} else {
+					tempList2 = tempList1;
+				}
+			}
+		}
+
+		return listIcon;
 
 	}
 
