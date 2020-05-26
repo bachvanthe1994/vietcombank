@@ -4,7 +4,7 @@ public class Register_Online_data {
 
 	public static class Valid_Account {
 		public static final String ACC_NAME = "PHAN THI HIEP";
-		public static final String TYPE_IDENTIFICATION[] = { "So CMND", "Ho Chieu", "The CCCD" };
+		public static final String TYPE_IDENTIFICATION[] = { "CMND", "Ho Chieu", "The CCCD" };
 		public static final String LOCATION[] = { "THANH PHO HA NOI ", "Cuc QLHC ve TTXH", "THANH PHO HO CHI MINH" };
 		public static final String NO_IDENTIFICATION = "0339783058";
 		public static final String TYPE_RETURN_MONEY[] = { "Rút lãi", "Rút gốc" };
