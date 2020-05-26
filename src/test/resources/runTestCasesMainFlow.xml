@@ -27,9 +27,11 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-		<!-- Thanh toán hóa đơn di động trả sau -->
+		<class
+				name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
 			<class
-				name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
+				name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
+		
 			
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" 
