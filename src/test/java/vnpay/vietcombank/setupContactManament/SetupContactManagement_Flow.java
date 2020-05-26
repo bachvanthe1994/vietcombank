@@ -161,6 +161,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), Contact.CONTACT_CARD_NUMBER_01);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.CARD_FAST_TRANSACTION);
+
 	}
 
 	@Test
@@ -228,7 +229,7 @@ public class SetupContactManagement_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
 
 		log.info("TC_05_Step_03: Chon 'Danh ba hoa don'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ hóa đơn");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet");
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 
 		log.info("TC_05_Step_04: Tao moi 'Danh ba hoa don'");
