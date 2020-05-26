@@ -17,10 +17,10 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="deviceUDID" value="R9AMC1PZHEJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
-		<parameter name="pass" value="aaaa1111" />
+		<parameter name="phone" value="0904797863" />
+		<parameter name="pass" value="aaaa1111@@" />
 		<parameter name="otp" value="123456" />
 
 		<classes>
