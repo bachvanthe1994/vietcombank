@@ -27,10 +27,9 @@
 		<parameter name="otp" value="123456" />
 
 		<classes>
-		
-			<!-- vnpay.vietcombank.change_password -->
+		<!-- Thanh toán hóa đơn di động trả sau -->
 			<class
-				name="vnpay.vietcombank.change_password.Change_Password_Flow" />
+				name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 			
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" 
