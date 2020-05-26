@@ -48,7 +48,7 @@ public class TransferIdentity_flow2 extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+//	@Test
 	public void TC_15_ChuyenTienERUChoNguoNhanTaiQuayBangHCXacThucBangOTPNguoiNhanTraPhi(String otp) {
 		log.info("TC_15_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 		homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
@@ -146,7 +146,7 @@ public class TransferIdentity_flow2 extends Base {
 		trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-	@Test
+//	@Test
 	public void TC_16_BaoCaoChuyenTienEURChoNguoNhanTaiQuayBangHCXacThucBangOTPNguoiNhanTraPhi() {
 		log.info("TC_16_1: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -294,7 +294,7 @@ public class TransferIdentity_flow2 extends Base {
 		trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 		String surplus = transReport.getMoneyByAccount(driver, "Số dư khả dụng");
 		String[] surplusSplit = surplus.split(" ");
-		double surplusInt = Integer.parseInt(surplusSplit[0].replace(",", ""));
+		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
 		double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 		verifyEquals(surplusInt, canculateAvailable);
 
@@ -606,7 +606,7 @@ public class TransferIdentity_flow2 extends Base {
 		trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 		String surplus = transReport.getMoneyByAccount(driver, "Số dư khả dụng");
 		String[] surplusSplit = surplus.split(" ");
-		double surplusInt = Integer.parseInt(surplusSplit[0].replace(",", ""));
+		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
 		double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 		verifyEquals(surplusInt, canculateAvailable);
 

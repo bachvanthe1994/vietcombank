@@ -31,6 +31,7 @@ public class TransferIdentity_Data {
 	public static final String TRANSACTION_FEE = "Số tiền phí";
 	public static final String MONEY = "Số tiền";
 	public static final String PASSWORD = "aaaa1111";
+	public static final String TEXT_REPORT = "Chuyển tiền mặt";
     }
 
     public static class textDataInputForm {
