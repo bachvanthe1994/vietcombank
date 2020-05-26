@@ -35,6 +35,7 @@ public class InterestRate_Calculate extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		home.clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN\r\n" + "nhanh đến các nhóm chức năng");
 
 		home = PageFactoryManager.getHomePageObject(driver);
 
