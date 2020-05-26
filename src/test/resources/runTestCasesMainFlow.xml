@@ -25,8 +25,8 @@
 
 		<classes>
 
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" />
+			<!-- Nạp tiền điện thoại -->
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
