@@ -35,7 +35,6 @@ public class InterestRate_Calculate extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Chon tab Menu");
@@ -137,7 +136,7 @@ public class InterestRate_Calculate extends Base {
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 
 		log.info("TC_01_Step_27: Xac nhan hien thi man hinh 'Mo tai khoan tiet kiem'");
-		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
+		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tiết kiệm");
 
 		log.info("TC_01_Step_28: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -235,7 +234,7 @@ public class InterestRate_Calculate extends Base {
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 
 		log.info("TC_02_Step_25: Xac nhan hien thi man hinh 'Mo tai khoan tiet kiem'");
-		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
+		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tiết kiệm");
 
 		log.info("TC_02_Step_26: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -332,7 +331,7 @@ public class InterestRate_Calculate extends Base {
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 
 		log.info("TC_03_Step_23: Xac nhan hien thi man hinh 'Mo tai khoan tiet kiem'");
-		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tài khoản tiết kiệm");
+		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Mở tiết kiệm");
 
 		log.info("TC_03_Step_24: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
 		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");

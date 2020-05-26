@@ -115,12 +115,11 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_13_Step_21: Chon SMS OTP");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_13_Step_16: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_13_Step_22: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -398,12 +397,11 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_15_Step_23: Chon Mat khau dang nhap");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_15_Step_18: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_15_Step_24: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -684,12 +682,11 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_17_Step 22: Chon Mat khau dang nhap");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_17_Step 23: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_17_Step 24: Lay tien phi chuyen ");
 		double usdTransferFee = convertVNeseMoneyToEUROOrUSD(fee + "", exchangeRate + "");
@@ -979,12 +976,11 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_19_Step 22: Chon Mât khau dang nhap");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_19_Step 23: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_19_Step 25: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1253,12 +1249,11 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_21_Step_18: Chon Mật khẩu đăng nhập");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_21_Step_13: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_21_Step_19: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -1451,12 +1446,11 @@ public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_23_Step_18: Chon Mat khau dang nhap");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_23_Step_13: Kiem tra so tien phi hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí").contains(addCommasToLong(fee + "") + " VND"));
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_23_Step_19: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
