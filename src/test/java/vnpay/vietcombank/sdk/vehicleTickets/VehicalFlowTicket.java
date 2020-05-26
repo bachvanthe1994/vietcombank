@@ -114,10 +114,10 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_01_Step_14 Click chọn Cho phep");
-		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		vehicalTicket.clickToDynamicAcceptButton("com.android.permissioncontroller:id/permission_allow_button");
 
 		log.info("TC_01_Step_15 Input email");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS+randomNumber()+"@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("------TC_01_Step_16 Lay thong tin ca nhan-------------");
 
@@ -311,7 +311,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("------------TC_02_Step_11___Input email");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS+randomNumber()+"@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("------TC_02_Step_12 Lay thong tin ca nhan-------------");
 
