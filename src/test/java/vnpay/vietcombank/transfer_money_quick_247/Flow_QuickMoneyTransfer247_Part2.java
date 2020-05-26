@@ -181,7 +181,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_10: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh 24/7 số thẻ");
 
 		log.info("TC_10: Chon so tai khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -393,7 +393,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_12: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
+			transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh 24/7 số thẻ");
 
 		log.info("TC_12: Chon so tai khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -612,7 +612,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_14: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
+			transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh 24/7 số thẻ");
 
 		log.info("TC_14: Chon so tai khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -823,7 +823,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 		log.info("TC_16: Chon option chuyen tien nhanh qua tai khoan");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh qua số thẻ");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển nhanh 24/7 số thẻ");
 
 		log.info("TC_16: Chon so tai khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");

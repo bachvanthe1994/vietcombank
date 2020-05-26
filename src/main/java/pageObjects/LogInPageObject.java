@@ -13,41 +13,16 @@ public class LogInPageObject extends AbstractPage {
 
 	private AppiumDriver<MobileElement> driver;
 
-	public void Global_login1(String phone, String pass, String otp) {
-
-		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
-
-		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
-
-		clickToDynamicButton(driver, "Tiếp tục");
-
-		if (getPageSource(driver).contains("Tài khoản của Quý khách đã đăng nhập trên thiết bị khác. Quý khách vui lòng đăng nhập lại.")) {
-
-			clickToDynamicButton(driver, "Đồng ý");
-		}
-
-		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
-
-		clickToDynamicButton(driver, "Tiếp tục");
-
-		inputToDynamicOtp(driver, otp, "Tiếp tục");
-		clickToDynamicButton(driver, "Tiếp tục");
-		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
-		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
-
-		clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
-
-	}
-
 	public void Global_login(String phone, String pass, String otp) {
 
-		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
+		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
 		clickToDynamicButton(driver, "Tiếp tục");
 
-		if (getPageSource(driver).contains("đã đăng nhập trên thiết bị khác")) {
+		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
@@ -58,13 +33,43 @@ public class LogInPageObject extends AbstractPage {
 
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
-		clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
+		clickToDynamicButton(driver, "Bắt đầu sử dụng");
+		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
+//		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
+
 	}
-	
+
+	public void Global_login1(String phone, String pass, String otp) {
+
+		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
+		clickToTextID(driver, "com.VCB:id/tvSkip");
+
+		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
+
+		clickToDynamicButton(driver, "Tiếp tục");
+
+		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
+
+			clickToDynamicButton(driver, "Đồng ý");
+		}
+
+		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
+
+		clickToDynamicButton(driver, "Tiếp tục");
+
+		inputToDynamicOtp(driver, otp, "Tiếp tục");
+		clickToDynamicButton(driver, "Tiếp tục");
+		clickToDynamicButton(driver, "Bắt đầu sử dụng");
+		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
+//		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
+
+	}
+
 	public void Global_login_After(String phone, String pass, String otp) {
 		inputToDynamicInputBox(driver, pass, "Mật khẩu");
 		clickToDynamicButton(driver, "Đăng nhập");
-		
+
 	}
 
 	public void clickToDynamicAcceptButton(String dynamicIDValue) {

@@ -8,7 +8,7 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
-	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
+	<parameter name="appActivities" value="com.VCB.activities.home.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 
@@ -17,17 +17,23 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
+		<parameter name="deviceUDID" value="22232b98150c7ece" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0335059860" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 
 		<classes>
-			<!-- Quản lý danh bạ -->
-			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+		<!-- Mua sắm trực tuyến -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
+			
+			<!-- Thanh toán QR code -->
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1"/> -->
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_2" /> -->
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_3" /> -->
 
-
+		
 			<!-- Chuyển tiền trong vcb -->
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
@@ -56,20 +62,22 @@
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
 			<!-- Thanh toan tien dien -->
-			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
+<!-- 			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" /> -->
 
 
 			<!-- Thanh toan tien nuoc -->
-			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" />
+<!-- 			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
 
 			<!-- Thong bao -->
 			<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" />
 
-			<!-- Nạp tiền điện thoại -->
+<!-- 			Nạp tiền điện thoại -->
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
 
 			<!-- Dịch vụ thẻ -->
 			<class name="vnpay.vietcombank.card_services.Card_Services" />
+			<class name="vnpay.vietcombank.card_services.Card_Services2" />
+			<class name="vnpay.vietcombank.card_services.Card_Services3" />
 
 			<!-- Tiết kiệm trực tuyến -->
 			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
@@ -85,7 +93,7 @@
 			<!-- Auto debit -->
 			<class name="vnpay.vietcombank.vcb_auto_debit.Vcb_Auto_Debit_Flow" />
 
-			<!-- vnpay.vietcombank.change_password -->
+<!-- 			vnpay.vietcombank.change_password -->
 			<class name="vnpay.vietcombank.change_password.Change_Password_Flow" />
 
 			<!-- Nạp tiền VETC, MOMO dùng tài khoản khác -->
@@ -127,14 +135,15 @@
 			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
 
 			<!-- Mua sắm trực tuyến -->
-			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow" />
+			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" />
+			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" />
 
 			<!-- Đặt vé xe -->
 			<class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
 
 			<!-- Tiết kiệm tự động -->
-			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" />
-			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" />
+<!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_MK" /> -->
+<!-- 			<class name="vnpay.vietcombank.auto_saving.Auto_Saving_Flow_OTP" /> -->
 
 			<!-- Tra cứu -->
 			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />

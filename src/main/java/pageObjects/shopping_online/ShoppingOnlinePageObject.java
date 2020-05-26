@@ -2,12 +2,18 @@ package pageObjects.shopping_online;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import javax.swing.text.Element;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
 
@@ -112,6 +118,8 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicCategories(String dynamicText) {
 		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
@@ -130,20 +138,59 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	public void clickToDynamicTextContains(String dynamicText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
 		if (status == true) {
 			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
 		}
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
-			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, "Đóng");
-			clickToElement(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+	}
+	public void clickToDynamicView(String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT, dynamicText);
+		scrollIDown(driver, ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT, dynamicText);
 		}
 	}
 	
-	public List<String> getTextInListElementsProduct( String locator, String... dynamicValue) {
-		locator = String.format(locator, (Object[]) dynamicValue);
+	public void TabtoElementByPoint(int x, int y) {
+			TouchAction touch = new TouchAction(driver);
+			touch.tap(PointOption.point(x, y)).perform();
+		
+
+	}
+	
+	
+	public void clickToDynamicViewTextIndex(String dynamicText) {
+		boolean status = false;
+		scrollIDown(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicText);
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicText);
+		}
+	}
+	
+//	public void click(String dynamicText) {
+//		
+//		scrollIDown(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicText);
+//	
+//			clickToElement(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicText);
+//		
+//	}
+//	
+//	get text giá trị truyền vào là id
+	public String getDynamicTextVoucher(String dynamicID) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.VIEW_BY_CONTAIN_TEXT, dynamicID);
+
+		}
+		return text;
+	}
+	
+	public List<String> getTextInListElementsProduct( String... dynamicValue) {
+		String locator = String.format(ShoppingOnlinePageUIs.VIEW_CONTAIN_TEXT,(Object[]) dynamicValue);
 		List<MobileElement> listElements = driver.findElements(By.xpath(locator));
 		List<String> listProduct = new ArrayList<String>();
 		for (MobileElement element : listElements) {
@@ -247,6 +294,11 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 	}
 	
+	public void scrollDownToConatainText( String dynamicText) {
+		scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+
+	}
+	
 	
 //	get text giá trị truyền vào là text
 	public String getDynamicTextPricesByText(String dynamicTextValue) {
@@ -263,6 +315,16 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	public String getDynamicTextFeeShipping(String dynamicTextValue) {
 		boolean status = false;
 		String text = null;
+		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER_VIEW, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER_VIEW, dynamicTextValue);
+			
+		}
+		return text;
+	}
+	public String getDynamicTextTableByTextView(String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
 		status = waitForElementVisible(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
 		if (status == true) {
 			text = getTextElement(driver, ShoppingOnlinePageUIs.DYNAMIC_NUMBER_CUSTOMER, dynamicTextValue);
@@ -271,7 +333,14 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 		return text;
 	}
 
-
+	public void inputToDynamicPopupPasswordInput( String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_PASSWORD_INPUT, inputValue, dynamicTextValue);
+		}
+	}
 
 //Get thông tin được tạo trong chi tiết giao dich , tham số truyền vào là text phía bên tay trái
 	public String getDynamicTextInTransactionDetail(String dynamicTextValue) {
@@ -353,5 +422,24 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 			return isDisplayed;
 
 		}
+		
+
+		// Kiem tra text co trong PageSource hay khong
+		public boolean isTextDisplayedInPageSource( String dynamicText) {
+			if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+				waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+			}
+			return driver.getPageSource().contains(dynamicText);
+		}
+		/* SCROLL DOWN */
+		public void scrollDownToViewText( String dynamicText) {
+			scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_VIEW_BY_CONTAIN_TEXT, dynamicText);
+
+		}
+		public void scrollDownToTextView( String dynamicText) {
+			scrollIDown(driver, ShoppingOnlinePageUIs.PRODUCT_BY_CONTAIN_TEXT, dynamicText);
+			
+		}
+
 	
 }

@@ -47,7 +47,6 @@ import io.appium.java_client.HasSettings;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.Setting;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -61,6 +60,7 @@ public class Base {
 	private String workingDir = System.getProperty("user.dir");
 	public AppiumDriverLocalService service;
 	private String arriveDay;
+	private URL serviceURl;
 
 	protected Base() {
 		log = Logger.getLogger(getClass());
@@ -165,15 +165,14 @@ public class Base {
 			cap.setCapability("udid", udid);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
-			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
-			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
-			cap.setCapability("appWaitDuration", 30000);
+//			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+//			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+			cap.setCapability("appWaitDuration", 60000);
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-		cap.setCapability("", "uiautomator2");
 
-		driver = new AndroidDriver<>(new URL(url), cap);
+		driver = new AndroidDriver<>(new URL(service.getUrl().toString()), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
 		System.out.println(((HasSettings) driver).getSettings());
 		driver.manage().timeouts().implicitlyWait(Constants.LONG_TIME, TimeUnit.SECONDS);
@@ -250,6 +249,7 @@ public class Base {
 		Thread.sleep(2000);
 		service = AppiumDriverLocalService.buildDefaultService();
 		service.start();
+		System.out.println("Server" + service.getUrl());
 
 		return service;
 	}

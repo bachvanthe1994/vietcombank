@@ -35,7 +35,7 @@ public class Electric_Bills_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0918679292", "aaaa1111", opt);
+		login.Global_login(phone, pass, opt);
 
 	}
 
@@ -55,7 +55,7 @@ public class Electric_Bills_Flow extends Base {
 		sourceAccountMoney = electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_01_Step_03: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
+		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
@@ -115,7 +115,7 @@ public class Electric_Bills_Flow extends Base {
 		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_01_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Mã khách hàng"), electricBills);
+		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
 
 		log.info("TC_01_Step_22: Hien thi ma giao dich");
 		transactionID = electricBill.getDynamicTextByLabel(driver, "Mã giao dịch");
@@ -136,7 +136,7 @@ public class Electric_Bills_Flow extends Base {
 		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng"), addCommasToLong(sourceAccountMoney) + " VND");
 
 		log.info("TC_07_Step_27: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
+		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_01_Step_28: Nhap ma khach hang");
@@ -214,9 +214,6 @@ public class Electric_Bills_Flow extends Base {
 		log.info("TC_02_Step_17: Xac nhan hien thi so tien phi");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
-		log.info("TC_02_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), "Thanh toán hóa đơn");
-
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -244,7 +241,7 @@ public class Electric_Bills_Flow extends Base {
 		sourceAccountMoney = electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng");
 
 		log.info("TC_03_Step_03: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
+		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_03_Step_04: Nhap ma khach hang va an tiep tuc");
@@ -304,7 +301,7 @@ public class Electric_Bills_Flow extends Base {
 		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_03_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Mã khách hàng"), electricBills);
+		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
 
 		log.info("TC_03_Step_22: Hien thi ma giao dich");
 		transactionID = electricBill.getDynamicTextByLabel(driver, "Mã giao dịch");
@@ -325,7 +322,7 @@ public class Electric_Bills_Flow extends Base {
 		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng"), addCommasToLong(sourceAccountMoney) + " VND");
 
 		log.info("TC_03_Step_27: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
+		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
 
 		log.info("TC_03_Step_28: Nhap ma khach hang");
@@ -402,9 +399,6 @@ public class Electric_Bills_Flow extends Base {
 
 		log.info("TC_04_Step_17: Xac nhan hien thi so tien phi");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
-
-		log.info("TC_04_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), "Thanh toán hóa đơn");
 
 		log.info("TC_04_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
