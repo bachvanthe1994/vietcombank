@@ -56,7 +56,8 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_01_Step_1: Scroll tu trai sang phai");
 		homePage.scrollLeftToText(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
-
+		
+		
 		log.info("TC_01_Step_2: Click chon button tinh nang cai dat");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
 
@@ -77,7 +78,7 @@ public class FlowSortUtility extends Base {
 
 		List<String> listIconNoiBat = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
 
-		listIconNoiBatDaChon.add("QR Pay");
+//		listIconNoiBatDaChon.add("QR Pay");
 		for (int i = 0; i < listIconNoiBat.size(); i++) {
 			listIconNoiBatDaChon.add(listIconNoiBat.get(i));
 		}
@@ -127,7 +128,7 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_02_Step_6: Lay ra toan bo danh sach icon da chon ");
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-		listIconNoiBatDaChon.add("QR Pay");
+//		listIconNoiBatDaChon.add("QR Pay");
 		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
 
 
@@ -175,7 +176,7 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_03_Step_6: Lay ra danh sach noi bat da chon ");
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-		listIconNoiBatDaChon.add("QR Pay");
+//		listIconNoiBatDaChon.add("QR Pay");
 		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
 
 
@@ -213,7 +214,7 @@ public class FlowSortUtility extends Base {
 		log.info("TC_04_Step_6: Lay ra danh sach icon da chon noi bat ");
 		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-		listIconNoiBatDaChon.add("QR Pay");
+//		listIconNoiBatDaChon.add("QR Pay");
 		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
 
 
