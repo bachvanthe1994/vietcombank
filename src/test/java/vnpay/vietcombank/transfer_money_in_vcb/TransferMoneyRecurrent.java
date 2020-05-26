@@ -74,7 +74,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
-		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_01_4_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -303,7 +303,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
-		transferRecurrent.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_05_4_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -530,7 +530,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
-		transferRecurrent.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_09_04_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -757,7 +757,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
-		transferRecurrent.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_13_04_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -983,7 +983,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
-		transferRecurrent.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_17_4_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
@@ -1210,7 +1210,7 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
 		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
 
-		transferRecurrent.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/ chọn tài khoản thụ hưởng");
+		transferRecurrent.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_21_04_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");

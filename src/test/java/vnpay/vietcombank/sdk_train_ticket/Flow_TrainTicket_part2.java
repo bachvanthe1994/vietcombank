@@ -200,6 +200,8 @@ public class Flow_TrainTicket_part2 extends Base {
 		log.info("TC_01_verify hien thi Thong tin ve Tau");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
 
+		
+		trainTicket.scrollUpToText("Thông tin người chuyển");
 		log.info("TC_01_lay Tai khoan nguon");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
 
@@ -299,7 +301,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán vé tàu");
 
 		log.info("TC_02:: Check noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOI_DUNG));
 
 		log.info("TC_02: Click Back ve Home");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
@@ -456,6 +458,8 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		log.info("TC_03_verify hien thi Thong tin ve Tau");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed("Thông tin vé tàu"));
+		
+		trainTicket.scrollUpToText("Thông tin người chuyển");
 
 		log.info("TC_03_lay Tai khoan nguon");
 		taiKhoanNguon = trainTicket.getDynamicDateTime("com.VCB:id/number_account");
@@ -556,7 +560,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Loại giao dịch"), "Thanh toán vé tàu");
 
 		log.info("TC_04:: Check noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(TransferMoneyQuick_Data.TransferQuick.NOI_DUNG));
 
 		log.info("TC_04: Click Back ve Home");
 		transReport.clickToDynamicBackIcon(driver, "Chi tiết giao dịch");
