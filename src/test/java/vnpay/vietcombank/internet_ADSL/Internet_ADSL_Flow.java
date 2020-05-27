@@ -81,12 +81,11 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_01_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_01_verify so tien phi");
 		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
+	
 
 		log.info("TC_01_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -263,12 +262,10 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_03_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_03_verify so tien phi");
 		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
 
 		log.info("TC_03_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -446,12 +443,11 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_05_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_05_verify so tien phi");
 		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
+		
 
 		log.info("TC_05_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -629,12 +625,10 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_07_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_07_verify so tien phi");
 		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
 
 		log.info("TC_07_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -810,12 +804,10 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_08_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_08_verify so tien phi");
 		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
 
 		log.info("TC_08_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -995,13 +987,11 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_11_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_11_verify so tien phi");
 		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
-
+	
 		log.info("TC_11_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 

@@ -67,7 +67,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 	String getToltalMoney = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvInfoBottomRight");
 	String[] toltal_money = getToltalMoney.split(" ");
-	toltalMoney = Integer.parseInt(toltal_money[0].replace(",", ""));
+	toltalMoney = Double.parseDouble(toltal_money[0].replace(",", ""));
 
 	log.info("TC_01_Step_4: nhap ten nguoi thu huong");
 	trasferPage.inputToDynamicInputBox(TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người thụ hưởng");
@@ -136,7 +136,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 	String surplus = transReport.getMoneyByAccount(driver, "Số dư khả dụng");
 	String[] surplusSplit = surplus.split(" ");
-	double surplusInt = Integer.parseInt(surplusSplit[0].replace(",", ""));
+	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
 	double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
 
@@ -157,7 +157,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_02_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_02_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -309,7 +309,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_04_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_04_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -328,7 +328,9 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), content);
 
 	log.info("TC_04_10: Kiem tra so tien chuyen hien thi");
-	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney"), ("- " + moneyTransfer));
+	String getMoney  = transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney");
+	String[] checkMoneyTransfe = getMoney.split(" ");
+	verifyEquals("- " + checkMoneyTransfe[1] + ".00 USD", ("- " + moneyTransfer));
 
 	log.info("TC_04_11: Click vao giao dich");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -371,7 +373,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 	String getToltalMoney = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvInfoBottomRight");
 	String[] toltal_money = getToltalMoney.split(" ");
-	toltalMoney = Integer.parseInt(toltal_money[0].replace(",", ""));
+	toltalMoney = Double.parseDouble(toltal_money[0].replace(",", ""));
 
 	log.info("TC_05_Step_5: chon giay to tuy than");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Giấy tờ tùy thân");
@@ -430,6 +432,9 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_05_STEP_18: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
+	
+	log.info("TC_03_STEP_19: lấy mã giao dịch");
+	code = trasferPage.getMoneyByAccount(driver, "Mã giao dịch");
 
 	log.info("TC_05_STEP_22: chọn thực hiện giao dịch mới");
 	trasferPage.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -438,7 +443,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 	String surplus = transReport.getMoneyByAccount(driver, "Số dư khả dụng");
 	String[] surplusSplit = surplus.split(" ");
-	double surplusInt = Integer.parseInt(surplusSplit[0].replace(",", ""));
+	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
 	double canculateAvailable = canculateAvailableBalancesCurrentcy(toltalMoney, fee, money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
 
@@ -446,7 +451,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-//    @Test
+    @Test
     public void TC_06_BaoCaoChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangOTPNguoiChuyenTraPhi() {
 	log.info("TC_06_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -459,7 +464,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_06_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_06_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -558,7 +563,7 @@ public class TransferIdentity_flow extends Base {
 	log.info("TC_08_15: lấy ra phí giao dịch");
 	String getFee = transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 	String[] feeSplit = getFee.split("\\ ");
-	fee = Integer.parseInt(feeSplit[0].replace(",", ""));
+	fee = Double.parseDouble(feeSplit[0].replace(",", ""));
 
 	log.info("TC_07_STEP_12: chon phương thức xác thực");
 	trasferPage.clickToTextID("com.VCB:id/tvptxt");
@@ -616,7 +621,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_08_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_08_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -635,7 +640,8 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), content);
 
 	log.info("TC_08_10: Kiem tra so tien chuyen hien thi");
-	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney"), ("- " + moneyTransfer));
+	String[] moneyTransfer1 = moneyTransfer.split("\\.");
+	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney") , ("- " + moneyTransfer1[0] + " EUR"));
 
 	log.info("TC_08_11: Click vao giao dich");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -764,7 +770,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_10_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_10_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -921,7 +927,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_12_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_12_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -940,7 +946,9 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), content);
 
 	log.info("TC_12_10: Kiem tra so tien chuyen hien thi");
-	verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney"), ("- " + moneyTransfer));
+	String getMoneyTrasfer = transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney");
+	String[] moneyTransfer1 = moneyTransfer.split("\\.");
+	verifyEquals(getMoneyTrasfer, ("- " + moneyTransfer1[0] + " USD"));
 
 	log.info("TC_12_11: Click vao giao dich");
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1077,7 +1085,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Tất cả các loại giao dịch");
 
 	log.info("TC_14_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền cho người nhận tại quầy");
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferIdentity_Data.textCheckElement.TEXT_REPORT);
 
 	log.info("TC_14_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1124,8 +1132,8 @@ public class TransferIdentity_flow extends Base {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//	closeApp();
-//	service.stop();
+	closeApp();
+	service.stop();
     }
 
 }

@@ -46,8 +46,8 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Dịch vụ Thanh toán tự động Auto Debit");
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_01_DangKyDichVu_HoaDonTienDien_XacThucOTP(String otp) {
 
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Ngừng dịch vụ");
@@ -200,8 +200,8 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_02_ThayDoiThongTin_HoaDonTienDien_XacThucOTP(String otp) {
 
 		log.info("TC_02_Step_02: Chon thay doi thong tin");
@@ -324,7 +324,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
-//	@Test
+	@Test
 	public void TC_03_HuyDangKy_HoaDonTienDien_XacThucOTP() {
 
 		log.info("TC_03_Step_02: Chon huy dang ky");
@@ -407,7 +407,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_04_DangKyDichVu_HoaDonTienNuoc_XacThucOTP(String otp) {
+	public void TC_07_DangKyDichVu_HoaDonTienNuoc_XacThucOTP(String otp) {
 
 		log.info("TC_04_Step_02: Chon huy dang ky");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Ngừng dịch vụ");
@@ -564,7 +564,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_05_ThayDoiThongTin_HoaDonTienNuoc_XacThucOTP(String otp) {
+	public void TC_08_ThayDoiThongTin_HoaDonTienNuoc_XacThucOTP(String otp) {
 
 		log.info("TC_05_Step_02: Chon thay doi thong tin");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đổi tài khoản trích nợ");
@@ -689,7 +689,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	}
 
 	@Test
-	public void TC_06_HuyDangKy_HoaDonTienNuoc_XacThucOTP() {
+	public void TC_09_HuyDangKy_HoaDonTienNuoc_XacThucOTP() {
 
 		log.info("TC_06_Step_02: Chon huy dang ky");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Ngừng dịch vụ");
@@ -772,7 +772,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_07_DangKyDichVu_HoaDonVNPT_XacThucOTP(String otp) {
+	public void TC_04_DangKyDichVu_HoaDonVNPT_XacThucOTP(String otp) {
 
 		log.info("TC_07_Step_02: Chon huy dang ky");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Ngừng dịch vụ");
@@ -804,7 +804,6 @@ public class Vcb_Auto_Debit_Flow extends Base {
 			vcbAutoDebit.clickToDynamicButton(driver, "Đóng");
 		}
 		log.info("TC_07_Step_24: Dong dropdown va back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicButton(driver, "Đóng");
 		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_07_Step_02: Chon Dang ki dich vu");
@@ -923,7 +922,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_08_ThayDoiThongTin_HoaDonVNPT_XacThucOTP(String otp) {
+	public void TC_05_ThayDoiThongTin_HoaDonVNPT_XacThucOTP(String otp) {
 
 		log.info("TC_08_Step_02: Chon thay doi thong tin");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đổi tài khoản trích nợ");
@@ -1047,7 +1046,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	}
 
 	@Test
-	public void TC_09_HuyDangKy_VNPT_XacThucOTP() {
+	public void TC_06_HuyDangKy_VNPT_XacThucOTP() {
 
 		log.info("TC_09_Step_02: Chon huy dang ky");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Ngừng dịch vụ");
