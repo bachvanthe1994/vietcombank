@@ -67,7 +67,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.scrollUpToText(driver, "Tài khoản nguồn");
 	String getToltalMoney = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvInfoBottomRight");
 	String[] toltal_money = getToltalMoney.split(" ");
-	toltalMoney = Integer.parseInt(toltal_money[0].replace(",", ""));
+	toltalMoney = Long.parseLong(toltal_money[0].replace(",", ""));
 
 	log.info("TC_01_Step_4: nhap ten nguoi thu huong");
 	trasferPage.inputToDynamicInputBox(TransferIdentity_Data.textDataInputForm.USER_NAME, "Tên người thụ hưởng");

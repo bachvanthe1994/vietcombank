@@ -21,8 +21,8 @@ public class LogInPageObject extends AbstractPage {
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
 		clickToDynamicButton(driver, "Tiếp tục");
-
-		if (getPageSource(driver).contains("kích hoạt")) {
+		sleep(driver, 5000);
+		if (getPageSource(driver).contains("đã được kích hoạt")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
@@ -47,8 +47,8 @@ public class LogInPageObject extends AbstractPage {
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
 		clickToDynamicButton(driver, "Tiếp tục");
-
-		if (getPageSource(driver).contains("kích hoạt")) {
+		sleep(driver, 5000);
+		if (getPageSource(driver).contains("đã được kích hoạt")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
