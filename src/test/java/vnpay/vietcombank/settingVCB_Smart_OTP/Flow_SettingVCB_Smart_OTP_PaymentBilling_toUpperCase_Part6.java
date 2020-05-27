@@ -152,9 +152,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 		log.info("TC_02_Step_Thong tin giao dich chon Viettel");
 		ADSL.clickToTextID(driver, "com.VCB:id/content");
-
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
-
 
 		log.info("TC_02_Input ma khach hang");
 		ADSL.inputCustomerCodeToUpperCase(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
@@ -179,12 +177,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 		log.info("TC_02_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_02_verify so tien phi");
-		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_02_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -275,11 +271,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		log.info("TC_03_Step_11: Chon phuong thuc xac thuc");
 		waterBill.scrollDownToText(driver, "Chọn phương thức xác thực");
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_03_Step_12: Kiem tra so tien phi");
-		verifyEquals(waterBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_03_Step_13: An nut Tiep Tuc");
 		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -381,7 +376,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 				log.info("TC_04_STEP_3: chọn đóng");
 				billTelevision.clickToDynamicButton(driver, "Đóng");
 			}
-
 		}
 
 		log.info("TC_04_STEP_4: chọn phương thức xác thực");
@@ -482,11 +476,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		log.info("TC_05_Step_11: Chon phuong thuc xac thuc");
 		electricBill.scrollDownToText(driver, "Chọn phương thức xác thực");
 		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(electricBill.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_05_Step_12: Kiem tra so tien phi");
-		verifyEquals(electricBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(electricBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_05_Step_13: An nut Tiep Tuc");
 		verifyEquals(electricBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -607,11 +600,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		log.info("TC_06_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_06_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_06_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -728,12 +720,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 		log.info("TC_07_06_Chon phuong thuc xac thuc");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
-
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_07_07_01_Kiem tra so tien phi");
-		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_07_08_Click Tiep tuc");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");

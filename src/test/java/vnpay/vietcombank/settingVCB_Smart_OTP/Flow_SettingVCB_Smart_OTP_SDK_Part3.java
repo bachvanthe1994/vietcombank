@@ -685,11 +685,11 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 
 		log.info("TC_04_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView("Mật khẩu đăng nhập");
-		fee1 = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("VCB - Smart OTP"));
+	
 		filmTicketBooking.clickToDynamicTextView("VCB - Smart OTP");
 
 		log.info("TC_04_22_01: Kiem tra so tien phi");
-		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền phí"), addCommasToLong(fee1 + "") + " VND");
+		fee1 = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Số tiền phí"));
 
 		log.info("TC_04_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton("Tiếp tục");
@@ -767,7 +767,6 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 
 		log.info("TC_05_13_Chon phuong thuc xac thuc");
 		hotelBooking.clickToDynamicDropDown("Chọn phương thức xác thực");
-		fee1 = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		hotelBooking.clickToDynamicTextOrButtonLink("VCB - Smart OTP");
 
 		log.info("TC_05_14_Click tiep tuc");
@@ -995,7 +994,7 @@ public class Flow_SettingVCB_Smart_OTP_SDK_Part3 extends Base {
 	//Mua sắm trực tuyến
 	@Parameters({ "otp" })
 //LỗiPTXT SmartOTP, lỗi server
-	//@Test
+	@Test
 	public void TC_07_ChonMuaMotSanPhamThanhToanSmartOTPKhongChonKhuyenMai(String otp) throws InterruptedException {
 		shopping.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
 		shopping.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");

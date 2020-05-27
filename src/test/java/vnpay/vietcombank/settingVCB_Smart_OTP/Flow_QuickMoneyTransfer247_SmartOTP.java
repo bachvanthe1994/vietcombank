@@ -36,20 +36,15 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	private String costTranferString;
 	private long costTranfer;
 	private String accountStart;
-	private long fee;
 	private String exchangeRate;
 	private String password = "";
 	private String nameCustomer;
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "pass", "otp" })
+	
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName",  "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName,  String pass, String opt) throws IOException, InterruptedException {
 		startServer();
-		log.info("Before class: Mo app ");
-		if (deviceType.contains("android")) {
-			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("")) {
-			driver = openIOSApp(deviceName, udid, url);
-		}
+		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login("0904797864", pass, opt);
 		password = pass;
@@ -57,7 +52,8 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 	}
 	
-	@Parameters({ "pass" })
+
+	@Test
 	public void TC_01_CaiDatPhuongThucXacThucOTP() {
 		log.info("TC_01_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -140,15 +136,12 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
 
-		log.info("TC_02_Step_Nhap noi dung");
-		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, "Thông tin giao dịch", "3");
-
 		log.info("TC_02_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]));
+
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]);
 
 		log.info("TC_02_Step_Lay gia tri so tien chuyen");
@@ -162,9 +155,6 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 
 		log.info("TC_02_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-
-		log.info("TC_02_Step_Verify so tien phi");
-		verifyEquals(costTranferString, fee + "");
 
 		log.info("TC_02_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
@@ -195,7 +185,7 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Số thẻ"), Account_Data.Valid_Account.CARD_TO);
 
 		log.info("TC_02_Step_: Noi dung");
-		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
+//verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, "Nội dung"), TransferMoneyQuick_Data.TransferQuick.NOTE);
 
 		log.info("TC_02_Step_: Thuc hien giao dich moi");
 		transferMoney.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
@@ -271,14 +261,10 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 
 		log.info("TC_03_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]);
 
 		log.info("TC_03_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-
-		log.info("TC_03_Step_Verify so tien phi");
-		verifyEquals(costTranferString, fee + "");
 
 		log.info("TC_03_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
@@ -387,16 +373,10 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 
 		log.info("TC_04_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]));
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[2]);
 
 		log.info("TC_04_Step_Lay gia tri so tien phí chuyen");
 		costTranferString = transferMoney.getDynamicTextByLabel(driver, "Số tiền phí").replaceAll("\\D+", "");
-
-		double EURTransferFee = convertMoneyToDouble(fee + "", "VND") / convertMoneyToDouble(exchangeRate, "VND");
-
-		log.info("TC_04_Step_Verify so tien phi");
-		verifyEquals(costTranferString, fee);
 
 		log.info("TC_04_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
@@ -475,10 +455,7 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
 	}
 
-	@AfterClass(alwaysRun = true)
+	
 
-	public void afterClass() {
-		closeApp();
-		service.stop();
-	}
+	
 }
