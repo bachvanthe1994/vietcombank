@@ -65,9 +65,6 @@ public class Flow_PayQRCode_Part_3 extends Base {
 		payQRCode.scrollIDownOneTime(driver);
 		payQRCode.clickToDynamicViewByText("VCB Mobile-B@anking");
 		
-		login.Global_login_After(phone, pass, opt);
-		
-
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
