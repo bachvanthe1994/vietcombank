@@ -216,7 +216,7 @@ public class Base {
 		driver.quit();
 	}
 
-	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser, String platformVersion) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
@@ -224,7 +224,8 @@ public class Base {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 			cap.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 			cap.setCapability("platformName", "Android");
-			cap.setCapability("platformVersion", "9.0");
+			cap.setCapability("platformVersion", platformVersion);
+			cap.setCapability("noReset", "true");
 		}
 		cap.setCapability("appPackage", "com.android.chrome");
 		cap.setCapability("appActivity", "com.google.android.apps.chrome.Main");

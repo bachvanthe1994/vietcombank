@@ -25,7 +25,7 @@
 			value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="pass" value="aaaa1111@" />
 		<parameter name="otp" value="123456" />
-
+		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
 			<!-- Đặt vé xem phim -->

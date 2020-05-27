@@ -30,9 +30,9 @@ public class Flow_PayQRCode_Part_3 extends Base {
 	long transferFee = 0;
 	String password, device, id, urlServer, phoneNumber, otpNumber = "";
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "platformVersion"})
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String platformVersion) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -50,7 +50,7 @@ public class Flow_PayQRCode_Part_3 extends Base {
 		otpNumber = opt;
 		
 		log.info("TC_00_1_Tao ma QR code type 4");
-		driver = openAndroidBrowser("real", "chrome");
+		driver = openAndroidBrowser("real", "chrome", platformVersion);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		payQRCode = PageFactoryManager.getQRCodePageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -115,11 +115,10 @@ public class Flow_PayQRCode_Part_3 extends Base {
 		log.info("TC_01_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, "Chọn phương thức xác thực");
 		payQRCode.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_12_01_Kiem tra so tien phi");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_01_13_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, "Tiếp tục");
