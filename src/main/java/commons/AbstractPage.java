@@ -80,6 +80,16 @@ public class AbstractPage {
 
 	}
 
+	public void swipeElementToElement(AppiumDriver<MobileElement> driver, MobileElement elementStart, MobileElement elementEnd) {
+
+		int xStart = elementStart.getLocation().getX();
+		int yStart = elementStart.getLocation().getY();
+
+		int xEnd = elementEnd.getLocation().getX();
+		int yEnd = elementEnd.getLocation().getY();
+		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd)).release().perform();
+	}
+
 	public boolean isControlForcus(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -1609,22 +1619,36 @@ public class AbstractPage {
 	// Kiem tra text co trong List Element Text hay khong
 	public boolean isTextDisplayedInListTextElements(AppiumDriver<MobileElement> driver, String expTextVal, String... dynamicValue) {
 
+		boolean result = false;
+		ArrayList<String> allTextElement = new ArrayList<String>();
 		String locator = "";
 		locator = String.format(DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, (Object[]) dynamicValue);
-
-		waitForElementVisible(driver, locator);
-		boolean result = false;
-		List<MobileElement> elements = driver.findElementsByXPath(locator);
-		ArrayList<String> allTextElement = new ArrayList<String>();
-		for (MobileElement element : elements) {
-			allTextElement.add(element.getText());
-		}
-		for (String textElement : allTextElement) {
-			if (textElement.contains(expTextVal)) {
-				result = true;
+		for (int i = 0; i < 5; i++) {
+			waitForElementVisible(driver, locator);
+			List<MobileElement> elements = driver.findElementsByXPath(locator);
+			ArrayList<String> arrayText = new ArrayList<String>();
+			for (MobileElement element : elements) {
+				String text = element.getText();
+				arrayText.add(text);
+				if (text.contains(expTextVal)) {
+					result = true;
+					break;
+				}
 			}
+			if (result == true) {
+				break;
+			} else if (result == false && !allTextElement.contains(arrayText.get(0))) {
+				allTextElement.addAll(arrayText);
+				try {
+					swipeElementToElement(driver, elements.get(0), elements.get(elements.size() - 1));
+				} catch (Exception e) {
+
+				}
+			}
+
 		}
 		return result;
+
 	}
 
 	// Xac nhan Button Enable qua Button ID

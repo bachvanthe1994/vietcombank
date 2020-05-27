@@ -90,8 +90,8 @@ public class Card_Services extends Base {
 		log.info("TC_01_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
-//		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
-//		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
+		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 
 		log.info("TC_01_Step_15: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
@@ -248,8 +248,8 @@ public class Card_Services extends Base {
 		log.info("TC_01_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
-//		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
-//		verifyTrue(lockCard.isDynamicMessageAndLabelTextUndisplayed(driver, numberCard));
+		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 
 		log.info("TC_01_Step_15: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
@@ -405,8 +405,8 @@ public class Card_Services extends Base {
 		log.info("TC_01_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
-//		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
-//		verifyTrue(lockCard.isDynamicMessageAndLabelTextUndisplayed(driver, numberCard));
+		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 
 		log.info("TC_01_Step_15: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
@@ -426,7 +426,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
 		log.info("TC_01_Step_20: Xac nhan the vua bi khoa hien thi trong danh sach");
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
+		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, numberCard));
 	}
 
 	@Test
@@ -562,8 +562,8 @@ public class Card_Services extends Base {
 		log.info("TC_01_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 
-//		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
-//		verifyTrue(lockCard.isDynamicMessageAndLabelTextUndisplayed(driver, numberCard));
+		log.info("TC_01_Step_14: Xac nhan the vua bi khoa bi xoa khoi danh sach");
+		verifyFailure(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 
 		log.info("TC_01_Step_15: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
