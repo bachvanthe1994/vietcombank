@@ -118,11 +118,11 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info.authenticationMethod));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 
 		log.info("TC_01_11_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 
 		log.info("TC_01_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -345,12 +345,12 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
 		log.info("TC_05_11_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
 		log.info("TC_05_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -572,12 +572,12 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info2.authenticationMethod));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 
 		log.info("TC_09_11_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
 		log.info("TC_09_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -798,12 +798,12 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_13_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info3.authenticationMethod));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 
 		log.info("TC_13_11_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
 		log.info("TC_13_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1025,12 +1025,12 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_17_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info4.authenticationMethod));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
 
 		log.info("TC_17_11_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
 		log.info("TC_17_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
@@ -1252,12 +1252,12 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_21_10_Chon phuong thuc xac thuc");
 		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info5.authenticationMethod));
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
 
 		log.info("TC_21_11_Kiem tra so tien phi");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
 		log.info("TC_21_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 

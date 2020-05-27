@@ -14,11 +14,9 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
-import pageObjects.TransferMoneyStatusPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
-import vietcombank_test_data.TransferMoneyStatus_Data;
 
 public class Transfer_Periodic_Money extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -42,7 +40,7 @@ public class Transfer_Periodic_Money extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -198,7 +196,6 @@ public class Transfer_Periodic_Money extends Base {
 		log.info("TC_02_Step_05: Chon tai khoan dich");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
-
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
 
@@ -291,7 +288,6 @@ public class Transfer_Periodic_Money extends Base {
 
 		log.info("TC_01_Step_10: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
-
 
 		log.info("TC_05_Step_11: Verify hien thi man hinh thong bao loi");
 		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES);

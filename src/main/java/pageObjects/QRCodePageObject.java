@@ -186,7 +186,7 @@ public class QRCodePageObject extends AbstractPage {
 				clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 				clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 				clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-				clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+				clickToDynamicTextContains(driver, "tải xuống");
 				clickToDynamicButtonLinkOrLinkText(driver, "Type 1");
 				continue;
 			}
@@ -229,7 +229,7 @@ public class QRCodePageObject extends AbstractPage {
 				clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 				clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 				clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-				clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+				clickToDynamicTextContains(driver, "tải xuống");
 				clickToDynamicButtonLinkOrLinkText(driver, "Type 2");
 				continue;
 			}
@@ -273,7 +273,7 @@ public class QRCodePageObject extends AbstractPage {
 				clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 				clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 				clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-				clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+				clickToDynamicTextContains(driver, "tải xuống");
 				clickToDynamicButtonLinkOrLinkText(driver, "Type 3");
 				continue;
 			}

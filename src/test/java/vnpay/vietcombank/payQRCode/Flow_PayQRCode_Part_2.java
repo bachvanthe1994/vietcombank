@@ -60,12 +60,12 @@ public class Flow_PayQRCode_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "QR Pay");
 
 		log.info("TC_01_2_Click mo Thu vien anh");
-		payQRCode.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 
 		log.info("TC_01_3_Click chon Tat ca anh");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+		payQRCode.clickToDynamicTextContains(driver, "tải xuống");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "VCB_Type 1");
 
 		log.info("TC_01_4_Lay so luong anh");
@@ -103,11 +103,10 @@ public class Flow_PayQRCode_Part_2 extends Base {
 		log.info("TC_01_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, "Chọn phương thức xác thực");
 		payQRCode.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_12_01_Kiem tra so tien phi");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_01_13_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, "Tiếp tục");
@@ -232,7 +231,7 @@ public class Flow_PayQRCode_Part_2 extends Base {
 
 		log.info("TC_03_3_Click chon Tat ca anh");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+		payQRCode.clickToDynamicTextContains(driver, "tải xuống");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Type 3");
 
 		log.info("TC_03_4_Lay so luong anh");
@@ -266,11 +265,10 @@ public class Flow_PayQRCode_Part_2 extends Base {
 		log.info("TC_03_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, "Chọn phương thức xác thực");
 		payQRCode.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_03_11_Kiem tra so tien phi");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_03_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, "Tiếp tục");

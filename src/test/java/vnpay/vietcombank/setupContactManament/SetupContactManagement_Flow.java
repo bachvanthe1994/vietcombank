@@ -39,7 +39,6 @@ public class SetupContactManagement_Flow extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		login.clickToDynamicButtonLinkOrLinkText(driver, "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng");
 		home = PageFactoryManager.getHomePageObject(driver);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
@@ -58,7 +57,7 @@ public class SetupContactManagement_Flow extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_01_Step_04: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT2, "Nhập/ chọn tài khoản nhận VND");
 
 		log.info("TC_01_Step_05: Nhap so tien chuyen");
 		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, "Số tiền");
@@ -84,16 +83,24 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_01_Step_12: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
 
-		log.info("TC_01_Step_13: Click button chia se");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
+		log.info("TC_01_Step_25: Kiem  tra giao dich thanh cong");
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
 
-		log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
-		verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
+		if (transferInVCB.getPageSource(driver).contains("Lưu thụ hưởng")) {
+			log.info("TC_01_Step_13: Click button chia se");
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Lưu thụ hưởng");
+			transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
 
-		log.info("TC_01_Step_16: Click Dong");
-		transferInVCB.clickToDynamicButton(driver, "Đóng");
+			log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
+			verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Lưu thành công");
 
+			log.info("TC_01_Step_16: Click Dong");
+			transferInVCB.clickToDynamicButton(driver, "Đóng");
+		}
+		
+		log.info("TC_01_Step_16: Click thuc hien giao dich ");
+		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		
 		log.info("TC_01_Step_17: Quay lai man home");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 
@@ -158,6 +165,7 @@ public class SetupContactManagement_Flow extends Base {
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), Contact.CONTACT_NAME_01);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), Contact.CONTACT_CARD_NUMBER_01);
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvValue"), Contact.CARD_FAST_TRANSACTION);
+
 	}
 
 	@Test
@@ -225,7 +233,7 @@ public class SetupContactManagement_Flow extends Base {
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Quản lý danh bạ");
 
 		log.info("TC_05_Step_03: Chon 'Danh ba hoa don'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Danh bạ hóa đơn");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Cước Internet");
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
 
 		log.info("TC_05_Step_04: Tao moi 'Danh ba hoa don'");

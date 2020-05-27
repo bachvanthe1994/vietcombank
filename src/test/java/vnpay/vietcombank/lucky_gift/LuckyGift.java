@@ -38,21 +38,27 @@ public class LuckyGift extends Base {
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+    @BeforeClass
+    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
+	    throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
-		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		luckyGift = PageFactoryManager.getLuckyGiftPageObject(driver);
+		luckyGift.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 	}
-
+	
 	@Parameters({ "pass" })
-	//@Test
+	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangMatKhau(String pass) {
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -64,13 +70,13 @@ public class LuckyGift extends Base {
 		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
 		String[] moneySurplusSplit = moneySurplus.split(" ");
 		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
+		long surplus = Long.parseLong(moneySurplusReplace);
 
 		log.info("TC_01_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_01_Step_4: Click tiep tuc popup");
-		luckyGift.waitUntilPopUpDisplay("Hướng dẫn");
+		luckyGift.waitUntilPopUpDisplay("Khi chọn gửi quà may mắn cho nhiều người, Quý khách có thể chọn thiết lập số tiền giống nhau cho toàn bộ danh sách người nhận hoặc tự nhập cho từng người nhận riêng biệt.");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_5: chọn hình thức nhận");
@@ -86,7 +92,7 @@ public class LuckyGift extends Base {
 		log.info("TC_01_Step_8: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
+		luckyGift.hideKeyBoard(driver);
 
 		log.info("TC_01_Step_9: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -107,8 +113,8 @@ public class LuckyGift extends Base {
 		log.info("TC_01_Step_14: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
+		long sumFeeInt = Long.parseLong(sumFee[0].replace(",", ""));
+		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
 		log.info("TC_01_Step_15: Click tiep tuc popup");
@@ -159,7 +165,7 @@ public class LuckyGift extends Base {
 
 	}
 
-	//@Test
+	@Test
 	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() {
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -228,7 +234,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-	//@Test
+	@Test
 	public void TC_03_NGuoiNhanTrongVCBBangSTKXacThucBangMatKhau(String pass) {
 		log.info("TC_03_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -240,7 +246,7 @@ public class LuckyGift extends Base {
 		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
 		String[] moneySurplusSplit = moneySurplus.split(" ");
 		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
+		long surplus = Long.parseLong(moneySurplusReplace);
 
 		log.info("TC_03_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
@@ -254,7 +260,7 @@ public class LuckyGift extends Base {
 		log.info("TC_03_Step_6: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
+		luckyGift.hideKeyBoard(driver);
 
 		log.info("TC_03_Step_7: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -275,8 +281,8 @@ public class LuckyGift extends Base {
 		log.info("TC_03_Step_12: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
+		long sumFeeInt = Long.parseLong(sumFee[0].replace(",", ""));
+		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
 		log.info("TC_03_Step_13: Click tiep tuc popup");
@@ -327,7 +333,7 @@ public class LuckyGift extends Base {
 
 	}
 
-	//@Test
+	@Test
 	public void TC_04_BaoCaoTienQuaTangMayManTrongVCBBangSTKVaXacThucBangMK() {
 		log.info("TC_04_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -406,7 +412,7 @@ public class LuckyGift extends Base {
 		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
 		String[] moneySurplusSplit = moneySurplus.split(" ");
 		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
+		long surplus = Long.parseLong(moneySurplusReplace);
 
 		log.info("TC_05_Step_3: chọn hình thức gửi quà");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvHinhThuc");
@@ -428,7 +434,7 @@ public class LuckyGift extends Base {
 		log.info("TC_05_Step_8: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
+		luckyGift.hideKeyBoard(driver);
 
 		log.info("TC_05_Step_9: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -454,8 +460,8 @@ public class LuckyGift extends Base {
 		log.info("TC_05_Step_15: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
+		long sumFeeInt = Long.parseLong(sumFee[0].replace(",", ""));
+		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
 		log.info("TC_05_Step_16: Click tiep tuc popup");
@@ -580,7 +586,7 @@ public class LuckyGift extends Base {
 		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
 		String[] moneySurplusSplit = moneySurplus.split(" ");
 		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
+		long surplus = Long.parseLong(moneySurplusReplace);
 
 		log.info("TC_07_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
@@ -598,7 +604,7 @@ public class LuckyGift extends Base {
 		log.info("TC_07_Step_7: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
+		luckyGift.hideKeyBoard(driver);
 
 		log.info("TC_07_Step_8: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -619,8 +625,8 @@ public class LuckyGift extends Base {
 		log.info("TC_07_Step_13: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
+		long sumFeeInt = Long.parseLong(sumFee[0].replace(",", ""));
+		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
 		log.info("TC_07_Step_14: chọn phương thức xác thực");
@@ -757,7 +763,7 @@ public class LuckyGift extends Base {
 		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
 		String[] moneySurplusSplit = moneySurplus.split(" ");
 		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
+		long surplus = Long.parseLong(moneySurplusReplace);
 
 		log.info("TC_09_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
@@ -771,7 +777,7 @@ public class LuckyGift extends Base {
 		log.info("TC_09_Step_7: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
+		luckyGift.hideKeyBoard(driver);
 
 		log.info("TC_09_Step_8: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -797,8 +803,8 @@ public class LuckyGift extends Base {
 		log.info("TC_09_Step_14: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
+		long sumFeeInt = Long.parseLong(sumFee[0].replace(",", ""));
+		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
 		log.info("TC_09_Step_15: chọn phương thức xác thực OTP");
@@ -936,7 +942,7 @@ public class LuckyGift extends Base {
 		String moneySurplus = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/available_balance");
 		String[] moneySurplusSplit = moneySurplus.split(" ");
 		String moneySurplusReplace = moneySurplusSplit[0].replace(",", "");
-		int surplus = Integer.parseInt(moneySurplusReplace);
+		long surplus = Long.parseLong(moneySurplusReplace);
 
 		log.info("TC_11_Step_3: chọn hình thức gửi quà");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvHinhThuc");
@@ -958,7 +964,7 @@ public class LuckyGift extends Base {
 		log.info("TC_11_Step_8: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, "Nhập/chọn lời chúc");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
+		luckyGift.hideKeyBoard(driver);
 
 		log.info("TC_11_Step_9: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
@@ -984,8 +990,8 @@ public class LuckyGift extends Base {
 		log.info("TC_11_Step_15: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
 		String[] sumFee = moneyFee.split(" ");
-		int sumFeeInt = Integer.parseInt(sumFee[0].replace(",", ""));
-		int surplusTotal = surplus - Integer.parseInt(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
+		long sumFeeInt = Long.parseLong(sumFee[0].replace(",", ""));
+		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
 		log.info("TC_11_Step_16: chọn phương thức xác thực OTP");
@@ -1112,8 +1118,8 @@ public class LuckyGift extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }

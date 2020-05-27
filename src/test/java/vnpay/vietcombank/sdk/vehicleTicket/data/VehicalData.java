@@ -32,7 +32,7 @@ public class VehicalData {
 	public static final String CHAIR_SELECTED = "Đang chọn";
 	public static final String BOOK_SEAT = "Đặt chỗ";
 	public static final String EMAIL = "lanman@mailinator.com";
-	public static final String PASSWORD_LOGIN = "aaaa1111";
+	public static final String PASSWORD_LOGIN = "qqqq1111";
 	public static final String TITLE_REPORT = "Báo cáo giao dịch";
 	public static final String BUTTON_SEARCH= "Tìm kiếm";
 	public static final String AMOUNT= "Số tiền giao dịch";

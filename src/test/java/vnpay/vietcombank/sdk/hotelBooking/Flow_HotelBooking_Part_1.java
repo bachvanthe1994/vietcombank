@@ -50,7 +50,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 	String paycode = "";
 	String totalPrice = "";
 
-//	@Test
+	@Test
 	public void TC_01_DatPhongKhachSan() {
 		log.info("TC_01_01_Click Dat phong khach san");
 		hotelBooking.clickToDynamicTextOrButtonLink("Đặt phòng khách sạn");
@@ -86,6 +86,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicTextView("THANH TOÁN");
 
 		log.info("TC_01_10_Chon tai khoan nguon");
+		hotelBooking.scrollUpToText(driver, "Tài khoản nguồn");
 		hotelBooking.clickToDynamicDropDown("Tài khoản nguồn");
 		hotelBooking.clickToDynamicTextOrButtonLink(Account_Data.Valid_Account.ACCOUNT2);
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));
@@ -126,7 +127,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		availableBalance = canculateAvailableBalances(surplus, money, fee);
 	}
 
-//	@Test
+	@Test
 	public void TC_02_DatPhongKhachSan_BaoCaoGiaoDich() {
 		log.info("TC_02_1: Click  nut Back");
 		hotelBooking.clickToDynamicImageViewByID("com.VCB:id/ivBack");
@@ -242,6 +243,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicTextView("THANH TOÁN");
 
 		log.info("TC_03_10_Chon tai khoan nguon");
+		hotelBooking.scrollUpToText(driver, "Tài khoản nguồn");
 		hotelBooking.clickToDynamicDropDown("Tài khoản nguồn");
 		hotelBooking.clickToDynamicTextOrButtonLink(Account_Data.Valid_Account.ACCOUNT2);
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, "Số dư khả dụng"));

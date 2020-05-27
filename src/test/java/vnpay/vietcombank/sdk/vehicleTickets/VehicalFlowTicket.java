@@ -60,9 +60,9 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicButton("Đồng ý");
 
 	}
-
+	@Parameters({ "pass"})
 	@Test
-	public void TC_01_MuaVeXeBangPassword() {
+	public void TC_01_MuaVeXeBangPassword(String pass) {
 		log.info("============TC_01_Step_01: Kiem tra hien thi thoi gian khoi hanh");
 		String DayStart = vehicalTicket.getDynamicDayStart("com.VCB:id/tvMonth");
 		verifyEquals(DayStart, today);
@@ -114,10 +114,10 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_01_Step_14 Click chọn Cho phep");
-		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
+		vehicalTicket.clickToDynamicAcceptButton("com.android.permissioncontroller:id/permission_allow_button");
 
 		log.info("TC_01_Step_15 Input email");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS+randomNumber()+"@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("------TC_01_Step_16 Lay thong tin ca nhan-------------");
 
@@ -249,7 +249,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("-------TC_01_Step_57 Nhap mat khau cua tai khoan");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
+		vehicalTicket.inputToDynamicInputBox(pass, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
 
 		log.info("TC_01_Step_58 Click btn Tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
@@ -311,7 +311,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("------------TC_02_Step_11___Input email");
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS+randomNumber()+"@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("------TC_02_Step_12 Lay thong tin ca nhan-------------");
 
@@ -492,13 +492,6 @@ public class VehicalFlowTicket extends Base {
 		log.info("-----------------TC_04_Step_02_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 
-		log.info("TC_04_Step_02: Click chọn mục Tiền ra ");
-		vehicalTicket.clickToDynamicText("Tiền ra");
-
-
-		log.info("-------------TC_04_Step_03_Chuyen sang man hinh dat ve ");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
-
 		log.info("------------TC_04_Step_04_Click btn menu");
 		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
 
@@ -540,8 +533,8 @@ public class VehicalFlowTicket extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 
 	}
 

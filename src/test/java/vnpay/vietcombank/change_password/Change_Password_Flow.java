@@ -69,9 +69,12 @@ public class Change_Password_Flow extends Base {
 		log.info("TC_01_Step: Click button dong message");
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");
 
-		changePassword.inputIntoEditTextByID(driver, ChangePassword_Data.Password.PASS_NEW, "com.VCB:id/edtInput");
+		changePassword.inputIntoEditTextByID(driver, ChangePassword_Data.Password.PASS_NEW, "com.VCB:id/edtInputPass");
 
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");
+		log.info("TC_01_Step: Click button trang chủ");
+
+//		changePassword.clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
 
 		log.info("TC_01_Step: verrify dang nhap thanh cong");
 		verifyEquals(changePassword.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvLabel"), "TÀI KHOẢN THANH TOÁN");
@@ -110,7 +113,7 @@ public class Change_Password_Flow extends Base {
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");
 
 		log.info("TC_02_Step: Click button dong message");
-		changePassword.inputIntoEditTextByID(driver, passLogin, "com.VCB:id/edtInput");
+		changePassword.inputIntoEditTextByID(driver, passLogin, "com.VCB:id/edtInputPass");
 
 		changePassword.clickToDynamicButton(driver, "Đăng nhập");
 

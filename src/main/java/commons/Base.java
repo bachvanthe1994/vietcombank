@@ -165,13 +165,12 @@ public class Base {
 			cap.setCapability("udid", udid);
 			cap.setCapability("appPackage", appPackage);
 			cap.setCapability("appActivity", appActivities);
-			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
-			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
-			cap.setCapability("appWaitDuration", 30000);
+//			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
+//			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
+			cap.setCapability("appWaitDuration", 60000);
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-		cap.setCapability("", "uiautomator2");
 
 		driver = new AndroidDriver<>(new URL(service.getUrl().toString()), cap);
 		((HasSettings) driver).setSetting(Setting.NORMALIZE_TAG_NAMES, true);
@@ -217,7 +216,7 @@ public class Base {
 		driver.quit();
 	}
 
-	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser, String platformVersion) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
@@ -225,7 +224,8 @@ public class Base {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 			cap.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 			cap.setCapability("platformName", "Android");
-			cap.setCapability("platformVersion", "9.0");
+			cap.setCapability("platformVersion", platformVersion);
+			cap.setCapability("noReset", "true");
 		}
 		cap.setCapability("appPackage", "com.android.chrome");
 		cap.setCapability("appActivity", "com.google.android.apps.chrome.Main");

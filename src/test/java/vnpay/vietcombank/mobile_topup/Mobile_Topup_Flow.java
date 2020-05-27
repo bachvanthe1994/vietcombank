@@ -54,7 +54,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		mobileTopup.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
