@@ -61,12 +61,12 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "QR Pay");
 
 		log.info("TC_03_2_Click mo Thu vien anh");
-		payQRCode.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 
 		log.info("TC_03_3_Click chon Tat ca anh");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+		payQRCode.clickToDynamicTextContains(driver, "tải xuống");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Type 1");
 
 		log.info("TC_03_4_Lay so luong anh");
@@ -233,7 +233,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_05_3_Click chon Tat ca anh");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+		payQRCode.clickToDynamicTextContains(driver, "tải xuống");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Type 2");
 
 		log.info("TC_05_4_Lay so luong anh");
@@ -404,7 +404,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_07_3_Click chon Tat ca anh");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Bản tải xuống");
+		payQRCode.clickToDynamicTextContains(driver, "tải xuống");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Type 3");
 
 		log.info("TC_07_4_Lay so luong anh");

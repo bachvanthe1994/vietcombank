@@ -60,7 +60,7 @@ public class Flow_PayQRCode_Part_2 extends Base {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "QR Pay");
 
 		log.info("TC_01_2_Click mo Thu vien anh");
-		payQRCode.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 
 		log.info("TC_01_3_Click chon Tat ca anh");
