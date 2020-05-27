@@ -22,7 +22,7 @@
 		<parameter name="phone" value="0904797863" />
 		<parameter name="pass" value="aaaa1111@@" />
 		<parameter name="otp" value="123456" />
-
+		<parameter name="platformVersion" value="10.0" />
 		<classes>
 		
 			<!-- Mua sắm trực tuyến -->
