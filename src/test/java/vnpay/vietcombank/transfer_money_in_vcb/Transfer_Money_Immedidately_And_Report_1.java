@@ -1163,7 +1163,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 		log.info("TC_08_Step 41: Kiem tra so tien quy doi hien thi ");
 
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(addCommasToLong(changedMoney) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền quy đổi").contains(transferMoneyInVND));
 
 		log.info("TC_08_Step 42: Kiem tra ten nguoi huong hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tên người hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
@@ -1172,9 +1172,8 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Phí giao dịch"), TransferMoneyInVCB_Data.InputDataInVCB.COST[1]);
 
 		log.info("TC_08_Step 44:Kiem tra so tien phi hien thi");
-		if (fee > 0) {
-			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
-		}
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+
 		log.info("TC_08_Step 45:Kiem tra noi dung giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch").contains(TransferMoneyInVCB_Data.InputDataInVCB.NOTE));
 

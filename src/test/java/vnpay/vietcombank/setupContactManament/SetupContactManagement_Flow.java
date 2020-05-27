@@ -97,6 +97,10 @@ public class SetupContactManagement_Flow extends Base {
 			log.info("TC_01_Step_16: Click Dong");
 			transferInVCB.clickToDynamicButton(driver, "Đóng");
 		}
+		
+		log.info("TC_01_Step_16: Click thuc hien giao dich ");
+		transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		
 		log.info("TC_01_Step_17: Quay lai man home");
 		transferInVCB.clickToDynamicBackIcon(driver, "Chuyển tiền trong Vietcombank");
 

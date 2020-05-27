@@ -83,12 +83,10 @@ public class Telecommunication_Fee_VNPT extends Base {
 		log.info("TC_01_Step_11: Chon phuong thuc xac thuc");
 		telecomFeeVNPT.scrollDownToText(driver, "Chọn phương thức xác thực");
 		telecomFeeVNPT.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		telecomFeeVNPT.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_Step_12: Kiem tra so tien phi");
-		verifyEquals(telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+	
 		log.info("TC_01_Step_13: An nut Tiep Tuc");
 		verifyEquals(telecomFeeVNPT.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
 		telecomFeeVNPT.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -272,12 +270,12 @@ public class Telecommunication_Fee_VNPT extends Base {
 		log.info("TC_03_Step_11: Chon phuong thuc xac thuc");
 		telecomFeeVNPT.scrollDownToText(driver, "Chọn phương thức xác thực");
 		telecomFeeVNPT.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		telecomFeeVNPT.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_03_Step_12: Kiem tra so tien phi");
-		verifyEquals(telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
-
+		String fee =telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
 		log.info("TC_03_Step_13: An nut Tiep Tuc");
 		verifyEquals(telecomFeeVNPT.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
 		telecomFeeVNPT.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");

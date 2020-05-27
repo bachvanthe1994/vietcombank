@@ -201,7 +201,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-//    @Test
+    @Test
     public void TC_03_ChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi(String pass) {
 	log.info("TC_03_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, "Chuyển tiền nhận bằng tiền mặt");
