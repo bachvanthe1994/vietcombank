@@ -32,6 +32,12 @@ public class TransferIdentity_Data {
 	public static final String MONEY = "Số tiền";
 	public static final String PASSWORD = "aaaa1111";
 	public static final String TEXT_REPORT = "Chuyển tiền mặt";
+	public static final String PASSPORT = "Hộ chiếu";
+	public static final String NEXT = "Tiếp tục";
+	public static final String OTP_SMS = "SMS OTP";
+	public static final String RECEIVER_PAYER = "Người nhận trả";
+	public static final String PASSWORD_TITLE = "Mật khẩu đăng nhập";
+	public static final String SURPLUS = "Số dư khả dụng";
     }
 
     public static class textDataInputForm {
