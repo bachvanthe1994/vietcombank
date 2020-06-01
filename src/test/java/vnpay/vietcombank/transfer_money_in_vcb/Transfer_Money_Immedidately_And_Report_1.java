@@ -233,7 +233,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02_Step_17: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 
 		log.info("TC_02_Step_18: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT2);
@@ -294,7 +294,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_02_Step_27: Kiem tra tai khoan trich no hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 
 		log.info("TC_02_Step_28: Kiem tra tai khoan ghi co hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.ACCOUNT2);
@@ -514,7 +514,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_04_Step_17: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_Step_18: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -573,7 +573,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_04_Step_37: Kiem tra tai khoan trich no hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_04_Step_38: Kiem tra tai khoan ghi co hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -802,7 +802,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC06_Step 17: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.USD_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.USD_ACCOUNT);
 
 		log.info("TC06_Step 18: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -864,7 +864,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC06_Step 38:Kiem tra tai khoan trich no hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.USD_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.USD_ACCOUNT);
 
 		log.info("TC06_Step 39: Kiem tra tai khoan ghi co hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -1091,7 +1091,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_08_Step 17: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.EUR_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_08_Step 18: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -1153,7 +1153,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_08_Step 38:Kiem tra tai khoan trich no hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.EUR_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.EUR_ACCOUNT);
 
 		log.info("TC_08_Step 39: Kiem tra tai khoan ghi co hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -1345,7 +1345,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_10_Step_17: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 
 		log.info("TC_10_Step_18: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DIFFERENT_OWNER_ACCOUNT);
@@ -1539,7 +1539,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Số lệnh giao dịch"), transactionNumber);
 
 		log.info("TC_12_Step_17: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản trích nợ"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
 
 		log.info("TC_12_Step_18: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Tài khoản ghi có"), Account_Data.Valid_Account.DIFFERENT_OWNER_ACCOUNT);

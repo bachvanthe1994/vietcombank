@@ -427,12 +427,11 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
 
 		log.info("TC_04_Step_23: Chon VCB - Smart OTP");
-		String transferFee = transferInVCB.getDynamicTextByLabel(driver, "VCB - Smart OTP");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_04_Step_24: Kiem tra so tien phi hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 
 		log.info("TC_04_Step_25: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
@@ -545,11 +544,10 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 			log.info("TC_05_10_Chon phuong thuc xac thuc");
 			transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
 			transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-			transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
 			transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
 			log.info("TC_05_11_Kiem tra so tien phi");
-			verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+			transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 			log.info("TC_05_12_Click Tiep tuc");
 			transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
@@ -646,9 +644,10 @@ public void TC_06_ChuyenTienTuThienBangNgoaiTeSmartOTP() throws InterruptedExcep
 	log.info("TC_06_10_Chon phuong thuc xac thuc");
 	transferMoneyCharity.scrollDownToText(driver, "Mật khẩu đăng nhập");
 	transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-	fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, info1.authenticationMethod));
-	transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 	transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
+	
+	fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
+	transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 
 	log.info("TC_06_11_Click Tiep tuc");
 	transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");

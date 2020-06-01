@@ -92,7 +92,7 @@ public class SetupContactManagement_Flow extends Base {
 			transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
 
 			log.info("TC_01_Step_15: Kiem tra user khong duoc cap quyen");
-			verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Quý khách đã lưu danh bạ thụ hưởng thành công");
+			verifyEquals(transferInVCB.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), "Lưu thành công");
 
 			log.info("TC_01_Step_16: Click Dong");
 			transferInVCB.clickToDynamicButton(driver, "Đóng");
