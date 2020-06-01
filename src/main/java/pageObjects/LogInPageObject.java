@@ -18,11 +18,12 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
+
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
 		clickToDynamicButton(driver, "Tiếp tục");
-
-		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
+		sleep(driver, 5000);
+		if (getPageSource(driver).contains("đã được kích hoạt")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
@@ -36,20 +37,19 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
 		clickToDynamicButton(driver, "Bắt đầu sử dụng");
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
-//		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
 
 	}
-
 	public void Global_login1(String phone, String pass, String otp) {
 
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
+
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 
 		clickToDynamicButton(driver, "Tiếp tục");
-
-		if (getPageSource(driver).contains("kích hoạt trên thiết bị khác")) {
+		sleep(driver, 5000);
+		if (getPageSource(driver).contains("đã được kích hoạt")) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
@@ -62,7 +62,6 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButton(driver, "Tiếp tục");
 		clickToDynamicButton(driver, "Bắt đầu sử dụng");
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
-//		clickToDynamicButtonLinkOrLinkText(driver, "NHẤN và GIỮ để DI CHUYỂN nhanh đến các nhóm chức năng");
 
 	}
 

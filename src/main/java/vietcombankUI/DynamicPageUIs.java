@@ -48,7 +48,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
 
 	public static final String DYNAMIC_TEXT_FOLLOWING_VIEWGROUP = "//android.widget.TextView[@text = '%s']//following-sibling::android.view.ViewGroup[@index ='%s']/android.widget.TextView";
-	public static final String DYNAMIC_LINEAR_LAYOUT_BY_RECYCLER = "//android.support.v7.widget.RecyclerView/android.widget.LinearLayout";
+	public static final String DYNAMIC_LINEAR_LAYOUT_BY_RECYCLER = "(//android.support.v7.widget.RecyclerView)|(//androidx.recyclerview.widget.RecyclerView)/android.widget.LinearLayout";
 	public static final String DYNAMIC_IMAGE_BUTTON_BY_CONTENT = "//android.widget.ImageButton[@content-desc='%s']";
 
 	// LINEAER LAYOUT
@@ -120,4 +120,8 @@ public class DynamicPageUIs {
 
 	// WAIT
 	public static final String WAIT_BAR = "//android.widget.ProgressBar[@resource-id='com.VCB:id/progressBar']";
+	
+	public static final String DYNAMIC_LISTVIEW_LAYOUT = "//*[@resource-id = '%s']/android.widget.LinearLayout";
+	public static final String DYNAMIC_TEXT_NON = "//android.widget.TextView";
+	
 }

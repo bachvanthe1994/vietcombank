@@ -90,11 +90,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_01_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_01_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -169,6 +168,9 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_01_Step_37: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
+		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
 		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -293,11 +295,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_03_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_03_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_03_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -372,7 +373,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_03_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_01_Step_39: Click nut Back ve man hinh chinh");
+		log.info("TC_03_Step_39: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_03_Step_40: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
@@ -446,8 +450,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_05_CuocDiDongTraSau_Mobifone_OTP(String otp) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -496,11 +500,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_05_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "SMS OTP"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_05_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_05_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -575,12 +578,15 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_05_Step_39: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_01_Step_40: Click nut Back ve man hinh chinh");
+		log.info("TC_05_Step_40: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_05_Step_41: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_CuocDiDongTraSau_Mobifone_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Mo tab Menu");
@@ -699,11 +705,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_07_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_07_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_07_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -780,6 +785,9 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_07_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_07_Step_39: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -852,8 +860,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "pass" })
-//	@Test
+	@Parameters({ "pass" })
+	@Test
 	public void TC_09_CuocDiDongTraSau_Vinaphone_MK(String pass) {
 
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -903,11 +911,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_09_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_09_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_09_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -984,10 +991,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_09_Step_39: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_09_Step_40: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
-//	@Test
+	@Test
 	public void TC_10_CuocDiDongTraSau_Vinaphone_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
@@ -1106,11 +1116,10 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_11_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Mật khẩu đăng nhập"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_11_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_11_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -1186,6 +1195,9 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_11_Step_44: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_11_Step_45: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}

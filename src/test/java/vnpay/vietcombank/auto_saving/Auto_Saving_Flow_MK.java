@@ -54,7 +54,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		home.scrollDownToText(driver, "Tín dụng");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tiết kiệm");
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 
 		log.info("TC_01_2_Chon so tai khoan");
@@ -408,7 +408,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_07_1_Click Mo tai khoan tiet kiem");
 		home.scrollDownToText(driver, "Tín dụng");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tài khoản tiết kiệm");
+		home.clickToDynamicButtonLinkOrLinkText(driver, "Mở tiết kiệm");
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 
 		log.info("TC_07_2_Chon so tai khoan");

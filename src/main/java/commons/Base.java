@@ -2,9 +2,12 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.security.GeneralSecurityException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.Normalizer;
@@ -13,7 +16,9 @@ import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -40,6 +45,17 @@ import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.sheets.v4.model.ValueRange;
 import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumDriver;
@@ -61,6 +77,10 @@ public class Base {
 	public AppiumDriverLocalService service;
 	private String arriveDay;
 	private URL serviceURl;
+
+	private static Sheets sheetService;
+	private static String APPICATION_LINK = "Google sheet";
+	private static String SPREADSHEET_ID = "KHjEPUiG5zQtwr_VXrsbI7ezNztcqYaHXx7lLgeI";
 
 	protected Base() {
 		log = Logger.getLogger(getClass());
@@ -216,7 +236,7 @@ public class Base {
 		driver.quit();
 	}
 
-	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser) throws MalformedURLException {
+	public AppiumDriver<MobileElement> openAndroidBrowser(String device, String browser, String platformVersion) throws MalformedURLException {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (device.equalsIgnoreCase("virtual")) {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "AndroidPixel2");
@@ -224,7 +244,8 @@ public class Base {
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 			cap.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 			cap.setCapability("platformName", "Android");
-			cap.setCapability("platformVersion", "9.0");
+			cap.setCapability("platformVersion", platformVersion);
+			cap.setCapability("noReset", "true");
 		}
 		cap.setCapability("appPackage", "com.android.chrome");
 		cap.setCapability("appActivity", "com.google.android.apps.chrome.Main");
@@ -1039,6 +1060,46 @@ public class Base {
 			ex.printStackTrace();
 		}
 		return result;
+
+	}
+
+	public static Credential authorize() throws GeneralSecurityException, IOException {
+
+		InputStream in = Base.class.getResourceAsStream("/credentials.json");
+		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
+		List<String> scope = Arrays.asList(SheetsScopes.SPREADSHEETS);
+
+		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(GoogleNetHttpTransport.newTrustedTransport(), JacksonFactory.getDefaultInstance(), clientSecrets, scope).setDataStoreFactory(new FileDataStoreFactory(new java.io.File("tokens"))).setAccessType("offline").build();
+
+		Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+
+		return credential;
+
+	}
+
+	public static Sheets getSheetService() throws GeneralSecurityException, IOException {
+		Credential credential = authorize();
+		return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(), JacksonFactory.getDefaultInstance(), credential).setApplicationName(APPICATION_LINK).build();
+
+	}
+
+	public static String getDataInCell(int rowNumberOfData) throws GeneralSecurityException, IOException {
+		String a = null;
+		sheetService = getSheetService();
+		String range = "DEV_ENVI!C5:D67";
+		ValueRange response = sheetService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
+		List<List<Object>> values = response.getValues();
+		if (values == null || values.isEmpty()) {
+			System.out.println("No data found");
+		} else {
+			// Số dòng trên bảng
+			List row = values.get(rowNumberOfData);
+			String[] array = row.toString().trim().replace("]", "").split(",");
+			// Vị trí của item trên từng row ( column)
+			a = array[1].trim();
+
+		}
+		return a;
 
 	}
 

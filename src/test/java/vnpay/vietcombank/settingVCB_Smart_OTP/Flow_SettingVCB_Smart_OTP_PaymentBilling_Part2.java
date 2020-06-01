@@ -180,12 +180,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_02_Chon phuong thuc xac thuc");
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_02_verify so tien phi");
-		feeView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-		verifyEquals(feeView, fee);
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_02_Click Tiep tuc");
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
@@ -276,11 +274,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		log.info("TC_03_Step_11: Chon phuong thuc xac thuc");
 		waterBill.scrollDownToText(driver, "Chọn phương thức xác thực");
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_03_Step_12: Kiem tra so tien phi");
-		verifyEquals(waterBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_03_Step_13: An nut Tiep Tuc");
 		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -482,11 +479,11 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		log.info("TC_05_Step_11: Chon phuong thuc xac thuc");
 		electricBill.scrollDownToText(driver, "Chọn phương thức xác thực");
 		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(electricBill.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		electricBill.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_05_Step_12: Kiem tra so tien phi");
-		verifyEquals(electricBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(electricBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_05_Step_13: An nut Tiep Tuc");
 		verifyEquals(electricBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -561,7 +558,8 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	}
 
 	//Thanh toán cước di động trả sau
-	//@Test Check lai không có phương thức smart OTP
+	@Test 
+	//Check lai không có phương thức smart OTP
 	@Parameters({ "otp" })
 	public void TC_06_CuocDiDongTraSau_Viettel_OTP(String otp) throws InterruptedException {
 		log.info("TC_06_Step_01: Click Cuoc di dong tra sau");
@@ -607,11 +605,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		log.info("TC_06_Step_13: Chon phuong thuc xac thuc");
 		postpaidMobile.scrollDownToText(driver, "Chọn phương thức xác thực");
 		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_06_Step_14: Kiem tra so tien phi");
-		verifyEquals(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(transferFee + "") + " VND");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(postpaidMobile.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_06_Step_15: An nut Tiep Tuc");
 		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
@@ -689,8 +686,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_06_Step_38: Click nut Back ve man hinh chinh");
 		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-
-
 	}
 	
 	//Thanh toán cước điện thoại cố định
@@ -729,12 +724,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_07_06_Chon phuong thuc xac thuc");
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "VCB - Smart OTP"));
-
 		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_07_07_01_Kiem tra so tien phi");
-		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền phí"), addCommasToLong(fee + "") + " VND");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
 
 		log.info("TC_07_08_Click Tiep tuc");
 		landLinePhoneCharge.clickToDynamicButton(driver, "Tiếp tục");
@@ -780,7 +773,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	}
 
 	//Nạp thẻ điện thoại   ---OK
-	//@Test
+@Test
 	@Parameters({ "pass","phone" })
 	public void TC_08_NapTheDienThoai_GiaTriMin_QuaMK(String pass, String phone) throws InterruptedException {
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
@@ -908,7 +901,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		
 		log.info("TC_01_06_Chon phuong thuc xac thuc");
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
-
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_01_Step_18: Verify hien thi man hinh Xac nhan thong tin ");
@@ -946,9 +938,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		maGiaoDich = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.MA_GIAO_DICH);
 	}
 
-
-
-	
 	@Test
 	public void TC_10_HuyKichHoatVCBSmartOPT() {
 		log.info("TC_09_Step_01: Click menu header");
