@@ -2812,7 +2812,7 @@ public class AbstractPage {
 							
 						}
 
-						double expectedMoney = Double.parseDouble(sourceAccount.balance.replaceAll("[^\\.0123456789]", ""));
+						double expectedMoney = Double.parseDouble(sourceAccount.balance.replaceAll("[^\\-.0123456789]", ""));
 
 						if (expectedMoney >= money && sourceAccount.currentcy.equals(currentcy)) {
 							clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
