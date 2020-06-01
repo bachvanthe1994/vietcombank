@@ -120,4 +120,8 @@ public class DynamicPageUIs {
 
 	// WAIT
 	public static final String WAIT_BAR = "//android.widget.ProgressBar[@resource-id='com.VCB:id/progressBar']";
+	
+	public static final String DYNAMIC_LISTVIEW_LAYOUT = "//*[@resource-id = '%s']/android.widget.LinearLayout";
+	public static final String DYNAMIC_TEXT_NON = "//android.widget.TextView";
+	
 }
