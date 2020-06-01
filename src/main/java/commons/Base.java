@@ -77,7 +77,7 @@ public class Base {
 	public AppiumDriverLocalService service;
 	private String arriveDay;
 	private URL serviceURl;
-	
+
 	private static Sheets sheetService;
 	private static String APPICATION_LINK = "Google sheet";
 	private static String SPREADSHEET_ID = "KHjEPUiG5zQtwr_VXrsbI7ezNztcqYaHXx7lLgeI";
@@ -1062,7 +1062,7 @@ public class Base {
 		return result;
 
 	}
-	
+
 	public static Credential authorize() throws GeneralSecurityException, IOException {
 
 		InputStream in = Base.class.getResourceAsStream("/credentials.json");
@@ -1086,7 +1086,7 @@ public class Base {
 	public static String getDataInCell(int rowNumberOfData) throws GeneralSecurityException, IOException {
 		String a = null;
 		sheetService = getSheetService();
-		String range = "DATA_DEV!C5:D60";
+		String range = "DEV_ENVI!C5:D67";
 		ValueRange response = sheetService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
 		List<List<Object>> values = response.getValues();
 		if (values == null || values.isEmpty()) {
