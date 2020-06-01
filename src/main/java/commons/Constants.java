@@ -5,6 +5,9 @@ import org.testng.annotations.Parameters;
 public class Constants {
 	public static final Long LONG_TIME = (long) 45;
 	public static final Long SHORT_TIME = (long) 5;
+	public static final String VND_CURRENCY = "VND";
+	public static final String USD_CURRENCY = "USD";
+	public static final String EUR_CURRENCY = "EUR";
 
 	// RUN_CONTINUE_AFTER_STEP_FAIL = true --> testcase still runs next steps after
 	// current step is failed
