@@ -14,6 +14,10 @@ public class Constants {
 	public static final String MONEY_TRANSFER_USD = "10";
 	public static final String MONEY_TRANSFER_EUR = "10";
 
+	public static final String VND_CURRENCY = "VND";
+	public static final String USD_CURRENCY = "USD";
+	public static final String EUR_CURRENCY = "EUR";
+
 	// RUN_CONTINUE_AFTER_STEP_FAIL = true --> testcase still runs next steps after
 	// current step is failed
 	// RUN_CONTINUE_AFTER_STEP_FAIL = false --> testcase will stop at current step

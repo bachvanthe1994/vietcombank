@@ -1,7 +1,7 @@
 package vietcombankUI.sdk.trainTicket;
 
 public class TrainTicketPageUIs {
-	// Text
+	// Tex
 	public static final String DYNAMIC_START_AND_END_TEXT = "//android.widget.TextView[@text='%s']//following::android.widget.ScrollView//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_VIEW_TEXT_START = "//android.widget.LinearLayout/android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT = "//android.widget.TextView[@text='%s']";
