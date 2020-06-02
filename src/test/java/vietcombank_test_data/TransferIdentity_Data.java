@@ -40,7 +40,7 @@ public class TransferIdentity_Data {
 	public static final String IDENTITY_CARD = "Chứng minh nhân dân";
 	public static final String TRANSFER_PERSON = "Người chuyển trả";
 	public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
-	public static final String TRANSFER_MONEY = "Chuyển tiền nhận bằng tiền mặt";
+	public static final String TRANSFER_MONEY = "Chuyển tiền mặt";
 	public static final String INPUT_PASSWORD = "Nhập mật khẩu";
 	public static final String CITIZEN_IDENTITY_CARD = "Thẻ căn cước công dân";
 	public static final String ARMY_IDENTITY_CARD = "CMT Quân đội";

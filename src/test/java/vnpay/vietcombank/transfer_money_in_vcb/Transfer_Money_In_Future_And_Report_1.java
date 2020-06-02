@@ -13,6 +13,7 @@ import commons.Constants;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
@@ -37,7 +38,9 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	String[] exchangeRateUSD;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(1);
-	String account2, account3, name_receiver = "";
+	String account2,account3, name_receiver = "";
+	SourceAccountModel sourceAccount= new SourceAccountModel();
+	
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -57,7 +60,6 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.scrollDownToText(driver, TittleData.STATUS_TRANSFER);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		account2 = getDataInCell(2);
-		account3 = getDataInCell(3);
 		name_receiver = getDataInCell(4);
 
 	}
@@ -89,7 +91,9 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_01_Step_08: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+       sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
+       account3= sourceAccount.account;
+       
 		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_01_Step_09: Lay so du tai khoan chuyen");
@@ -181,7 +185,11 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_01_Step_38: Chon tai ngoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
+		sourceAccount = transferInVCB.chooseSourceAccount(driver,Constants.AMOUNT_VND , Constants.VND_CURRENCY);
+		
+		
+		
 		transferInVCB.sleep(driver, 1000);
 
 		log.info("TC_01_Step_39: Lay so du tai khoan chuyen");
@@ -326,7 +334,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_04_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_04_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -446,7 +454,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_04_Step_43: Chon tai khoan nguoi nhan");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_04_Step_44: Lay so du kha dung tai khoan nhan");
 		String afterBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -1071,7 +1079,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_13_Step_05: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_13_Step_06: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -1152,7 +1160,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_13_Step_31: Chon tai ngoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_13_Step_32: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -1281,7 +1289,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_16_Step_05: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_16_Step_06: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -1368,7 +1376,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_16_Step_31: Chon tai ngoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, account3);
+		 sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_16_Step_32: Lay so du tai khoan chuyen");
 		String afterBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
