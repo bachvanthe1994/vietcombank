@@ -19,6 +19,9 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data;
 
@@ -34,12 +37,12 @@ public class TransferMoneyRecurrent extends Base {
 	double transferFeeCurrentcy = 0;
 	String password = "";
 
-	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Ngày", "", "", "10", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Tháng", "", "", "500000", "Người nhận trả", "test", "Mật khẩu đăng nhập");
-	TransferInVCBRecurrent info3 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Tháng", "", "", "10", "Người nhận trả", "test", "Mật khẩu đăng nhập");
-	TransferInVCBRecurrent info4 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Ngày", "", "", "10", "Người chuyển trả", "test", "SMS OTP");
-	TransferInVCBRecurrent info5 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Ngày", "", "", "10", "Người nhận trả", "test", "Mật khẩu đăng nhập");
+	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", InputText_MoneyRecurrent.DAY_TEXT, "", "", "500000", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", InputText_MoneyRecurrent.DAY_TEXT, "", "", "10", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info2 = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Tháng", "", "", "500000", "Người nhận trả", "test", InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
+	TransferInVCBRecurrent info3 = new TransferInVCBRecurrent(Account_Data.Valid_Account.EUR_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", "Tháng", "", "", "10", "Người nhận trả", "test", InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
+	TransferInVCBRecurrent info4 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", InputText_MoneyRecurrent.DAY_TEXT, "", "", "10", "Người chuyển trả", "test", "SMS OTP");
+	TransferInVCBRecurrent info5 = new TransferInVCBRecurrent(Account_Data.Valid_Account.USD_ACCOUNT, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "2", InputText_MoneyRecurrent.DAY_TEXT, "", "", "10", "Người nhận trả", "test", InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -64,72 +67,72 @@ public class TransferMoneyRecurrent extends Base {
 	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 
 		log.info("TC_01_2_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_01_3_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
-		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
+		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
-		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info.destinationAccount, InputText_MoneyRecurrent.INPUT_RECEIVED_ACCOUNT_TEXT);
 
 		log.info("TC_01_4_Chon tan suat");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.DAY_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.frequencyCategory);
 		transferRecurrent.inputFrequencyNumber(info.frequencyNumber);
 
 		log.info("TC_01_5_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBox(driver, info.money, InputText_MoneyRecurrent.MONEY_TEXT);
 
 		log.info("TC_01_6_Chon nguoi tra phi giao dich");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_PAY_FEE_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.fee);
 
 		log.info("TC_01_7_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info.note, InputText_MoneyRecurrent.TRANSACTION_INFO_TEXT, "3");
 
 		log.info("TC_01_8_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_01_9_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_01_9_1_Kiem tra hinh thuc chuyen tien");
-		transferRecurrent.scrollUpToText(driver, "Hình thức chuyển tiền");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT), InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_01_9_2_Kiem tra tai khoan nguon");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info.sourceAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT), info.sourceAccount);
 
 		log.info("TC_01_9_3_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(info.destinationAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEVED_ACCOUNT_TEXT).contains(info.destinationAccount));
 
 		log.info("TC_01_9_4_Kiem tra so tien");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền").contains(addCommasToLong(info.money)));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT).contains(addCommasToLong(info.money)));
 
 		log.info("TC_01_9_5_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info.frequencyNumber + " " + info.frequencyCategory + "/ lần");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info.frequencyNumber + " " + info.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
 
 		log.info("TC_01_9_7_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info.note);
 
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferRecurrent.scrollDownToText(driver, InputText_MoneyRecurrent.CHOOSE_AUTHEN_METHOD_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 
 		log.info("TC_01_11_Kiem tra so tien phi");
-		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_MONEY_TEXT);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 
 		log.info("TC_01_12_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_01_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
@@ -137,28 +140,28 @@ public class TransferMoneyRecurrent extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_01_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_NAME_TEXT), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_01_13_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info.destinationAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_ACCOUNT_TEXT), info.destinationAccount);
 
 		log.info("TC_01_13_3_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info.note);
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info.note);
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT));
 
 		log.info("TC_01_14_Click Thuc hien giao dich moi");
-		login.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		login.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT);
 	}
 
 	@Test
 	public void TC_02_ChuyenTien_VND_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra() {
 		log.info("TC_02_01_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		log.info("TC_02_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
 		log.info("TC_02_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
@@ -180,8 +183,8 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_03_3: Chon loai giao dich");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_03_04: Kiem tra from date hien thi");
 		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
@@ -219,10 +222,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_03_15: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info.money) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info.money) + " VND");
 
 		log.info("TC_03_16: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info.frequencyNumber + " " + info.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info.frequencyNumber + " " + info.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_03_17: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -265,10 +268,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_04_09: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info.money) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info.money) + " VND");
 
 		log.info("TC_04_10: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info.frequencyNumber + " " + info.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info.frequencyNumber + " " + info.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_04_11: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -293,70 +296,70 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_05_2_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_05_3_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
-		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
+		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
-		transferRecurrent.inputToDynamicInputBox(driver, info1.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info1.destinationAccount, InputText_MoneyRecurrent.INPUT_RECEIVED_ACCOUNT_TEXT);
 
 		log.info("TC_05_4_Chon tan suat");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.DAY_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.frequencyCategory);
 		transferRecurrent.inputFrequencyNumber(info1.frequencyNumber);
 
 		log.info("TC_05_5_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info1.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBox(driver, info1.money, InputText_MoneyRecurrent.MONEY_TEXT);
 
 		log.info("TC_05_6_Chon nguoi tra phi giao dich");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_PAY_FEE_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.fee);
 
 		log.info("TC_05_7_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.note, "Thông tin giao dịch", "3");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.note, InputText_MoneyRecurrent.TRANSACTION_INFO_TEXT, "3");
 
 		log.info("TC_05_8_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_05_9_Kiem tra man hinh xac nhan thong tin");
-		transferRecurrent.scrollUpToText(driver, "Hình thức chuyển tiền");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT), InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_05_9_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info1.sourceAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT), info1.sourceAccount);
 
 		log.info("TC_05_9_2_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(info1.destinationAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEVED_ACCOUNT_TEXT).contains(info1.destinationAccount));
 
 		log.info("TC_05_9_3_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info1.frequencyNumber + " " + info1.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_05_9_4_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
 
 		log.info("TC_05_9_5_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info1.note);
 
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferRecurrent.scrollDownToText(driver, InputText_MoneyRecurrent.CHOOSE_AUTHEN_METHOD_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 
 		log.info("TC_05_11_Kiem tra so tien phi");
-		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_MONEY_TEXT);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		
 		log.info("TC_05_12_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_05_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
@@ -364,31 +367,31 @@ public class TransferMoneyRecurrent extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_05_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_NAME_TEXT), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_05_13_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info1.destinationAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_ACCOUNT_TEXT), info1.destinationAccount);
 
 		log.info("TC_05_13_3_Kiem tra ten noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info1.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info1.note);
 
 		log.info("TC_05_13_4_Kiem tra nut thuc hien giao dich moi");
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT));
 
 		log.info("TC_05_14_Click Thuc hien giao dich moi");
-		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT);
 
 	}
 
 	@Test
 	public void TC_06_ChuyenTien_EUR_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra() {
 		log.info("TC_06_01_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		log.info("TC_06_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
 		log.info("TC_06_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
@@ -407,8 +410,8 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_07_03: Chon loai giao dich");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_07_04: Kiem tra from date hien thi");
 		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
@@ -446,10 +449,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_07_16: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), info1.money + " EUR");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), info1.money + " EUR");
 
 		log.info("TC_07_17: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info1.frequencyNumber + " " + info1.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_07_18: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -492,10 +495,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_08_09: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info1.money) + " EUR");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info1.money) + " EUR");
 
 		log.info("TC_08_10: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info1.frequencyNumber + " " + info1.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info1.frequencyNumber + " " + info1.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_08_11: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -520,70 +523,70 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_09_02_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_09_03_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
-		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
+		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
-		transferRecurrent.inputToDynamicInputBox(driver, info2.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info2.destinationAccount, InputText_MoneyRecurrent.INPUT_RECEIVED_ACCOUNT_TEXT);
 
 		log.info("TC_09_04_Chon tan suat");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.DAY_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.frequencyCategory);
 		transferRecurrent.inputFrequencyNumber(info2.frequencyNumber);
 
 		log.info("TC_09_05_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info2.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBox(driver, info2.money, InputText_MoneyRecurrent.MONEY_TEXT);
 
 		log.info("TC_09_06_Chon nguoi tra phi giao dich");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_PAY_FEE_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.fee);
 
 		log.info("TC_09_07_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info2.note, "Thông tin giao dịch", "3");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info2.note, InputText_MoneyRecurrent.TRANSACTION_INFO_TEXT, "3");
 
 		log.info("TC_09_08_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_09_09_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_09_09_1_Kiem tra hinh thuc chuyen tien");
-		transferRecurrent.scrollUpToText(driver, "Hình thức chuyển tiền");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT), InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_09_09_2_Kiem tra tai khoan nguon");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info2.sourceAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT), info2.sourceAccount);
 
 		log.info("TC_09_09_3_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(info2.destinationAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEVED_ACCOUNT_TEXT).contains(info2.destinationAccount));
 
 		log.info("TC_09_09_4_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info2.frequencyNumber + " " + info2.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
 
 		log.info("TC_09_9_5_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info2.note);
 
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferRecurrent.scrollDownToText(driver, InputText_MoneyRecurrent.CHOOSE_AUTHEN_METHOD_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.authenticationMethod);
 
 		log.info("TC_09_11_Kiem tra so tien phi");
-		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_MONEY_TEXT);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		
 		log.info("TC_09_12_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_09_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
@@ -591,31 +594,31 @@ public class TransferMoneyRecurrent extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_09_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_NAME_TEXT), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_09_13_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info2.destinationAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_ACCOUNT_TEXT), info2.destinationAccount);
 
 		log.info("TC_09_13_3_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info2.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info2.note);
 
 		log.info("TC_09_13_4_Kiem tra nut Thuc hien giao dich moi");
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT));
 
 		log.info("TC_09_14_Click Thuc hien giao dich moi");
-		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT);
 
 	}
 
 	@Test
 	public void TC_10_ChuyenTien_VND_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiNhanTra() {
 		log.info("TC_10_01_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		log.info("TC_10_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
 		log.info("TC_10_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
@@ -634,8 +637,8 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_11_03: Chon loai giao dich");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_11_04: Kiem tra from date hien thi");
 		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
@@ -673,10 +676,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_11_15: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info2.money) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info2.money) + " VND");
 
 		log.info("TC_11_16: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info2.frequencyNumber + " " + info2.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_11_17: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -719,10 +722,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_12_09: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info2.money) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info2.money) + " VND");
 
 		log.info("TC_12_10: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info2.frequencyNumber + " " + info2.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info2.frequencyNumber + " " + info2.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_12_11: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -747,69 +750,69 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_13_02_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_13_03_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
-		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
+		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
-		transferRecurrent.inputToDynamicInputBox(driver, info3.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info3.destinationAccount, InputText_MoneyRecurrent.INPUT_RECEIVED_ACCOUNT_TEXT);
 
 		log.info("TC_13_04_Chon tan suat");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.DAY_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.frequencyCategory);
 		transferRecurrent.inputFrequencyNumber(info3.frequencyNumber);
 
 		log.info("TC_13_05_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info3.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBox(driver, info3.money, InputText_MoneyRecurrent.MONEY_TEXT);
 
 		log.info("TC_13_06_Chon nguoi tra phi giao dich");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_PAY_FEE_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.fee);
 
 		log.info("TC_13_07_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info3.note, "Thông tin giao dịch", "3");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info3.note, InputText_MoneyRecurrent.TRANSACTION_INFO_TEXT, "3");
 
 		log.info("TC_13_08_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_13_09_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_13_09_1_Kiem tra hinh thuc chuyen tien");
-		transferRecurrent.scrollUpToText(driver, "Hình thức chuyển tiền");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT), InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_13_09_2_Kiem tra tai khoan nguon");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info3.sourceAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT), info3.sourceAccount);
 
 		log.info("TC_13_09_3_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(info3.destinationAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEVED_ACCOUNT_TEXT).contains(info3.destinationAccount));
 
 		log.info("TC_13_09_4_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info3.frequencyNumber + " " + info3.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
 
 		log.info("TC_13_09_5_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info3.note);
 
 		log.info("TC_13_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferRecurrent.scrollDownToText(driver, InputText_MoneyRecurrent.CHOOSE_AUTHEN_METHOD_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.authenticationMethod);
 
 		log.info("TC_13_11_Kiem tra so tien phi");
-		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_MONEY_TEXT);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		
 		log.info("TC_13_12_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_13_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
@@ -817,31 +820,31 @@ public class TransferMoneyRecurrent extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_13_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_NAME_TEXT), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_13_123_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info3.destinationAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_ACCOUNT_TEXT), info3.destinationAccount);
 
 		log.info("TC_13_13_3_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info3.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info3.note);
 
 		log.info("TC_13_13_4_Kiem tra nut thuc hien giao dich moi");
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT));
 
 		log.info("TC_13_14_Click Thuc hien giao dich moi");
-		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT);
 
 	}
 
 	@Test
 	public void TC_14_ChuyenTien_EUR_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiNhanTra() {
 		log.info("TC_14_01_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		log.info("TC_14_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
 		log.info("TC_14_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
@@ -860,8 +863,8 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_15_03: Chon loai giao dich");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_15_04: Kiem tra from date hien thi");
 		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
@@ -899,10 +902,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_15_15: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), info3.money + " EUR");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), info3.money + " EUR");
 
 		log.info("TC_15_16: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info3.frequencyNumber + " " + info3.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_15_17: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -945,10 +948,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_16_09: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info3.money) + " EUR");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info3.money) + " EUR");
 
 		log.info("TC_16_10: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info3.frequencyNumber + " " + info3.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info3.frequencyNumber + " " + info3.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_16_11: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -973,70 +976,70 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_17_2_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_17_3_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
-		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
+		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
-		transferRecurrent.inputToDynamicInputBox(driver, info4.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info4.destinationAccount, InputText_MoneyRecurrent.INPUT_RECEIVED_ACCOUNT_TEXT);
 
 		log.info("TC_17_4_Chon tan suat");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.DAY_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.frequencyCategory);
 		transferRecurrent.inputFrequencyNumber(info4.frequencyNumber);
 
 		log.info("TC_17_5_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info4.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBox(driver, info4.money, InputText_MoneyRecurrent.MONEY_TEXT);
 
 		log.info("TC_17_6_Chon nguoi tra phi giao dich");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_PAY_FEE_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.fee);
 
 		log.info("TC_17_7_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info4.note, "Thông tin giao dịch", "3");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info4.note, InputText_MoneyRecurrent.TRANSACTION_INFO_TEXT, "3");
 
 		log.info("TC_17_8_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_17_9_Kiem tra man hinh xac nhan thong tin");
-		transferRecurrent.scrollUpToText(driver, "Hình thức chuyển tiền");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT), InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_17_9_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info4.sourceAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT), info4.sourceAccount);
 
 		log.info("TC_17_9_2_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(info4.destinationAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEVED_ACCOUNT_TEXT).contains(info4.destinationAccount));
 
 		log.info("TC_17_9_3_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info4.frequencyNumber + " " + info4.frequencyCategory + "/ lần");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info4.frequencyNumber + " " + info4.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_17_9_4_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
 
 		log.info("TC_17_9_5_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info4.note);
 
 		log.info("TC_17_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferRecurrent.scrollDownToText(driver, InputText_MoneyRecurrent.CHOOSE_AUTHEN_METHOD_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
 
 		log.info("TC_17_11_Kiem tra so tien phi");
-		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_MONEY_TEXT);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		
 		log.info("TC_17_12_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_17_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
@@ -1044,31 +1047,31 @@ public class TransferMoneyRecurrent extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_17_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_NAME_TEXT), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_17_13_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info4.destinationAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_ACCOUNT_TEXT), info4.destinationAccount);
 
 		log.info("TC_17_13_3_Kiem tra ten noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info4.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info4.note);
 
 		log.info("TC_17_13_4_Kiem tra nut thuc hien giao dich moi");
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT));
 
 		log.info("TC_17_14_Click Thuc hien giao dich moi");
-		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT);
 
 	}
 
 	@Test
 	public void TC_18_ChuyenTien_USD_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra() {
 		log.info("TC_18_01_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info4.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		log.info("TC_18_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
 		log.info("TC_18_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
@@ -1087,8 +1090,8 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_19_03: Chon loai giao dich");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_19_04: Kiem tra from date hien thi");
 		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
@@ -1126,10 +1129,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_19_15: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), info4.money + " USD");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), info4.money + " USD");
 
 		log.info("TC_19_16: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info4.frequencyNumber + " " + info4.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info4.frequencyNumber + " " + info4.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_19_17: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -1172,10 +1175,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_20_09: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info4.money) + " USD");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info4.money) + " USD");
 
 		log.info("TC_20_10: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info4.frequencyNumber + " " + info4.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info4.frequencyNumber + " " + info4.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_20_11: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -1200,70 +1203,70 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền trong VCB");
 
 		log.info("TC_21_02_Chon phuong thuc chuyen tien");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_21_03_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
-		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
+		expectAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
-		transferRecurrent.inputToDynamicInputBox(driver, info5.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferRecurrent.inputToDynamicInputBox(driver, info5.destinationAccount, InputText_MoneyRecurrent.INPUT_RECEIVED_ACCOUNT_TEXT);
 
 		log.info("TC_21_04_Chon tan suat");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.DAY_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.frequencyCategory);
 		transferRecurrent.inputFrequencyNumber(info5.frequencyNumber);
 
 		log.info("TC_21_05_Nhap so tien");
-		transferRecurrent.inputToDynamicInputBox(driver, info5.money, "Số tiền");
+		transferRecurrent.inputToDynamicInputBox(driver, info5.money, InputText_MoneyRecurrent.MONEY_TEXT);
 
 		log.info("TC_21_06_Chon nguoi tra phi giao dich");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_PAY_FEE_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.fee);
 
 		log.info("TC_21_07_Nhap noi dung");
-		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info5.note, "Thông tin giao dịch", "3");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info5.note, InputText_MoneyRecurrent.TRANSACTION_INFO_TEXT, "3");
 
 		log.info("TC_21_08_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_21_09_Kiem tra man hinh xac nhan thong tin");
-		transferRecurrent.scrollUpToText(driver, "Hình thức chuyển tiền");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Hình thức chuyển tiền"), "Chuyển tiền định kỳ");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_TYPE_TEXT), InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_21_09_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn"), info5.sourceAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT), info5.sourceAccount);
 
 		log.info("TC_21_09_2_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND").contains(info5.destinationAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEVED_ACCOUNT_TEXT).contains(info5.destinationAccount));
 
 		log.info("TC_21_09_3_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tần suất chuyển"), info5.frequencyNumber + " " + info5.frequencyCategory + "/ lần");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info5.frequencyNumber + " " + info5.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_21_09_4_Kiem tra tan suat");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số lần giao dịch"), "2");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
 
 		log.info("TC_21_09_5_Kiem tra noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info5.note);
 
 		log.info("TC_21_10_Chon phuong thuc xac thuc");
-		transferRecurrent.scrollDownToText(driver, "Chọn phương thức xác thực");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		transferRecurrent.scrollDownToText(driver, InputText_MoneyRecurrent.CHOOSE_AUTHEN_METHOD_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.PASSWORD_AUTHEN_DATA);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
 
 		log.info("TC_21_11_Kiem tra so tien phi");
-		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_MONEY_TEXT);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		
 		log.info("TC_21_12_Click Tiep tuc");
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, "Tiếp tục");
+		transferRecurrent.inputToDynamicPopupPasswordInput(driver, password, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
-		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_21_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
@@ -1271,31 +1274,31 @@ public class TransferMoneyRecurrent extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_21_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_NAME_TEXT), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_21_13_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info5.destinationAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.RECEIVED_ACCOUNT_TEXT), info5.destinationAccount);
 
 		log.info("TC_21_13_3_Kiem tra ten noi dung");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Nội dung"), info5.note);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.CONTENT_TEXT), info5.note);
 
 		log.info("TC_21_13_4_Kiem tra nut thuc hien giao dich moi");
-		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, "Thực hiện giao dịch mới"));
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT));
 
 		log.info("TC_21_13_Click Thuc hien giao dich moi");
-		transferRecurrent.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+		transferRecurrent.clickToDynamicButton(driver, InputText_MoneyRecurrent.BUTTON_NEW_TRANSACTION_TEXT);
 
 	}
 
 	@Test
 	public void TC_22_ChuyenTien_USD_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiNhanTra() {
 		log.info("TC_22_01_Chon tai khoan nguon");
-		transferRecurrent.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferRecurrent.clickToDynamicDropDown(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info5.sourceAccount);
 
-		transferRecurrent.scrollUpToText(driver, "Tài khoản nguồn");
+		transferRecurrent.scrollUpToText(driver, InputText_MoneyRecurrent.SOURCE_ACCOUNT_TEXT);
 		log.info("TC_22_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, "Số dư khả dụng");
+		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, InputText_MoneyRecurrent.SURPLUS_TEXT);
 
 		log.info("TC_22_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance);
@@ -1314,8 +1317,8 @@ public class TransferMoneyRecurrent extends Base {
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, "Trạng thái lệnh chuyển tiền");
 
 		log.info("TC_23_03: Chon loai giao dich");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
-		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_23_04: Kiem tra from date hien thi");
 		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
@@ -1353,10 +1356,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_23_15: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), info5.money + " USD");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), info5.money + " USD");
 
 		log.info("TC_23_16: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info5.frequencyNumber + " " + info5.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info5.frequencyNumber + " " + info5.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_23_17: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
@@ -1399,10 +1402,10 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tên người nhận"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
 
 		log.info("TC_24_09: Kiem tra so tien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Số tiền"), addCommasToLong(info5.money) + " USD");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.MONEY_TEXT), addCommasToLong(info5.money) + " USD");
 
 		log.info("TC_24_10: Kiem tra tan suat");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info5.frequencyNumber + " " + info5.frequencyCategory + "/ lần");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Tần suất"), info5.frequencyNumber + " " + info5.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
 
 		log.info("TC_24_11: Kiem ngay bat dau");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, "Ngày bắt đầu"), startDate);
