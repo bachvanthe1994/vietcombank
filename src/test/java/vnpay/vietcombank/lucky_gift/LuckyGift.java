@@ -82,7 +82,7 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_01_Step_4: Click tiep tuc popup");
-		luckyGift.waitUntilPopUpDisplay("Khi chọn gửi quà may mắn cho nhiều người, Quý khách có thể chọn thiết lập số tiền giống nhau cho toàn bộ danh sách người nhận hoặc tự nhập cho từng người nhận riêng biệt.");
+		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.CONFIRM);
 		luckyGift.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_5: chọn hình thức nhận");
