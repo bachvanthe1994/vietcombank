@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -59,7 +60,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_15_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_EUR, "EUR");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, "EUR");
 		account = sourceAccount.account;
 
 		log.info("TC_15_Step_3: nhap ten nguoi thu huong");
@@ -83,7 +84,7 @@ public class TransferIdentity_flow2 extends Base {
 		trasferPage.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_15_Step_8: noi cap");
-		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.ISSUED, "Nơi cấp");
+		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.ISSUED, textCheckElement.ISSUED);
 
 		log.info("TC_15_STEP_9: nhap so tien bat dau la khong");
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.MONEY_TRANSFER_EUR, textCheckElement.MONEY);
@@ -214,7 +215,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_17_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_VND, "VND");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
 		log.info("TC_17_Step_3: nhap ten nguoi thu huong");
@@ -368,7 +369,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_19_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_USD, "USD");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, "USD");
 		account = sourceAccount.account;
 
 		log.info("TC_19_Step_3: nhap ten nguoi thu huong");
@@ -522,7 +523,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_21_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_VND, "VND");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
 		log.info("TC_21_Step_3: nhap ten nguoi thu huong");
@@ -676,7 +677,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_23_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_EUR, "EUR");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, "EUR");
 		account = sourceAccount.account;
 
 		log.info("TC_23_Step_3: nhap ten nguoi thu huong");
@@ -830,7 +831,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_25_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_VND, "VND");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
 		log.info("TC_25_Step_3: nhap ten nguoi thu huong");
@@ -981,7 +982,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_27_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_USD, "USD");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, "USD");
 		account = sourceAccount.account;
 
 		log.info("TC_27_Step_3: nhap ten nguoi thu huong");
@@ -1132,7 +1133,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_29_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_USD, "USD");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, "USD");
 		account = sourceAccount.account;
 
 		log.info("TC_29_Step_3: nhap ten nguoi thu huong");
@@ -1283,7 +1284,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_31_STEP_2: chon tài khoản");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
-		sourceAccount = trasferPage.chooseSourceAccount(driver, textDataInputForm.MONEY_CHECK_VND, "VND");
+		sourceAccount = trasferPage.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
 		log.info("TC_31_Step_3: nhap ten nguoi thu huong");

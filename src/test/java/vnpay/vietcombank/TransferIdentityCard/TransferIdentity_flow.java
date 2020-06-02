@@ -60,7 +60,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-    @Test
+//    @Test
     public void TC_01_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiChuyenTraPhi(String pass) throws GeneralSecurityException, IOException {
 	log.info("TC_01_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, textCheckElement.TRANSFER_MONEY);
@@ -88,7 +88,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_01_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_01_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
@@ -149,7 +149,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-    @Test
+//    @Test
     public void TC_02_BaoCaoChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMK() throws GeneralSecurityException, IOException {
 	log.info("TC_02_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -190,7 +190,7 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.CODE_TRANSFER), code);
 
 	log.info("TC_02_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), getDataInCell(2));
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 	log.info("TC_02_14: Kiem tra so tien giao dich hien thi");
 	verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.MONEY_TRANSFER).contains(addCommasToLong(textDataInputForm.MONEY_TRANSFER_VND) + " VND"));
@@ -234,7 +234,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_03_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_03_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
@@ -387,7 +387,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_05_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_05_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
@@ -492,7 +492,7 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.CODE_TRANSFER), code);
 
 	log.info("TC_06_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), getDataInCell(2));
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 	log.info("TC_06_14: Kiem tra so tien giao dich hien thi");
 	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, ReportTite.MONEY_TRANSFER).replace(",", "");
@@ -538,7 +538,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_07_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_07_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
@@ -694,7 +694,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_09_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_09_Step_8: noi cap");
 	trasferPage.inputToDynamicInputBox(driver, textDataInputForm.ISSUED, textCheckElement.ISSUED);
@@ -794,7 +794,7 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.CODE_TRANSFER), code);
 
 	log.info("TC_10_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), getDataInCell(2));
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 	log.info("TC_10_14: Kiem tra so tien giao dich hien thi");
 	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, ReportTite.MONEY_TRANSFER).replace(",", "");
@@ -839,7 +839,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_11_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_11_Step_8: noi cap");
 	trasferPage.inputToDynamicInputBox(driver, textDataInputForm.ISSUED, textCheckElement.ISSUED);
@@ -996,7 +996,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_13_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
-	trasferPage.clickToDynamicButton(driver, "OK");
+	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
 
 	log.info("TC_13_Step_8: noi cap");
 	trasferPage.inputToDynamicInputBox(driver, textDataInputForm.ISSUED, textCheckElement.ISSUED);
