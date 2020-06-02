@@ -16,7 +16,7 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="SamsungA20s" />
-		<parameter name="deviceUDID" value="R9AMC1PZHEJ" />
+		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0335059863" />
 		<parameter name="pass" value="aaaa1111" />
@@ -38,7 +38,7 @@
 <!--             <class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
             
             <!-- Quà tặng may mắn -->
-            <class name="vnpay.vietcombank.config_account_default.ConfigAccountDefault" />
+            <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
 
 
 		</classes>
