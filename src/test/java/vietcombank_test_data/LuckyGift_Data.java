@@ -10,15 +10,6 @@ public class LuckyGift_Data {
 		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
 
 		public static final String MIN_MONEY_A_TRANSACTION = "100";
-//		public static final String MOBI_ACCEPT = "0976878903";
-		public static final String MOBI_ACCEPT = "0528391120";
-		public static final String NAME_ACCEPT = "NGUY H NH";
-
-		public static final String ACCOUNT_ACCEPT_IN_VCB = "0019967190";
-		public static final String ACCOUNT_ACCEPT_OUT_VCB = "0129837294";
-		public static final String ACCOUNT_FORM = "0019961175";
-		public static final String ACCOUNT_USD_FORM = "0011370000886";
-		public static final String ACCOUNT_EUR_FORM = "0011140000553";
 		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
 		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String BANK_DBA = "Ngân hàng DAB";
@@ -43,6 +34,12 @@ public class LuckyGift_Data {
 		public static final String ACCOUNT_CREDITED = "Tài khoản ghi có";
 		public static final String TRANSACTION_FEE = "Số tiền phí";
 		public static final String TRANSACTION_DETAIL = "Chi tiết giao dịch";
+		public static final String CONFIRM = "Khi chọn gửi quà may mắn cho nhiều người, Quý khách có thể chọn thiết lập số tiền giống nhau cho toàn bộ danh sách người nhận hoặc tự nhập cho từng người nhận riêng biệt.";
+		public static final String NEXT = "Tiếp tục";
+		public static final String INPUT_PASSWORD = "Nhập mật khẩu";
+		public static final String NEW_TRANSFER = "Giao dịch mới";
+		public static final String CLOSE = "Đóng";
+		public static final String FIND = "Tìm kiếm";
 	}
 	
 	public static class Limit_Money_Gift {
@@ -50,10 +47,6 @@ public class LuckyGift_Data {
 		public static final String HIGHER_MAX_MONEY_A_TRANSACTION = "100000001";
 		public static final String MAX_MONEY_A_TRANSACTION = "100000000";
 		public static final String MIN_MONEY_A_TRANSACTION = "1";
-
-
-
-
 	}
 	
 	public static class Messege_Limit {
