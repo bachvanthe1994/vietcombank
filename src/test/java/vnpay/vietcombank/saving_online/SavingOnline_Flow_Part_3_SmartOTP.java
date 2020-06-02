@@ -217,6 +217,159 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 
 	}
 	
+	@Test
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+		String savingDate = "";
+		String expiredDate = "";
+
+		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
+
+		log.info("TC_03_2_Chon so tai khoan tiet kiem");
+		savingOnline.clickToDynamicDropDownInSavingOnline(SavingOnline_Data.SAVING_NUMBER_ACCOUNT);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, savingAccount);
+
+		log.info("TC_03_3_Chon tai khoan dich");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.CHOOSE_DESTINATION_ACCOUNT);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline(SavingOnline_Data.AVAILABLE_BALANCE));
+
+		log.info("TC_03_4_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_03_5_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_03_06_Kiem tra man hinh xac thuc thong tin");
+		log.info("TC_03_06_1: Kiem tra tai khoan tiet kiem");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.SAVING_NUMBER_ACCOUNT), savingAccount);
+
+		log.info("TC_03_06_2: Kiem tra ten tai khoan tiet kiem");
+
+		log.info("TC_03_06_3: Kiem tra ky han gui");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.IN_TERM).toLowerCase(), SavingOnline_Data.ONE_MONTH.toLowerCase());
+
+		log.info("TC_03_06_4: Kiem tra lai suat");
+
+		log.info("TC_03_06_5: Kiem tra ngay gui tien");
+		savingDate = transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.SAVING_DATE);
+		verifyTrue(checkDateLessThanNow(savingDate));
+
+		log.info("TC_03_06_6: Kiem tra ngay den han");
+		expiredDate = getForwardMonthAndForwardDayFolowDate(savingDate, 1, 0);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.EXPIRE_DATE), expiredDate);
+
+		log.info("TC_03_06_7: Kiem tra so tien gui goc");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.ORIGINAL_MONEY), addCommasToLong(info.money) + " VND");
+
+		log.info("TC_03_06_8: Kiem tra so tien thuc huong");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.REAL_MONEY), addCommasToLong(info.money) + " VND");
+
+		log.info("TC_03_06_9: Kiem tra tai khoan dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.DESTINATION_ACCOUNT), account);
+
+		log.info("TC_03_07_Chon phuong thuc xac thuc");
+		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.VCB_SMART_OTP);
+
+		log.info("TC_03_08_Kiem tra so tien phi");
+		transferFee = 0;
+
+		log.info("TC_03_09_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.TRANSACTION_CODE);
+
+		log.info("TC_03_10_Click Thuc hien giao dich moi");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.NEW_TRANSACTION_PERFORM);
+
+		log.info("TC_03_11_Chon tai khoan dich");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.CHOOSE_DESTINATION_ACCOUNT);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline(SavingOnline_Data.AVAILABLE_BALANCE));
+		availableBalance = canculateAvailableBalances(surplus, -Long.parseLong(info.money), transferFee);
+		verifyEquals(actualAvailableBalance, availableBalance);
+
+	}
+
+	@Test
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+		log.info("TC_04_1: Click  nut Back");
+		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
+
+		log.info("TC_04_2: Click vao More Icon");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+
+		log.info("TC_04_3: Click Bao Cao giao Dich");
+		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+
+		log.info("TC_04_4: Click Tat Ca Cac Loai Giao Dich");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+
+		log.info("TC_04_5: Chon Chuyen Tien Trong VCB");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
+
+		log.info("TC_04_6: Click Chon Tai Khoan");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
+
+		log.info("TC_04_7: Chon tai Khoan chuyen");
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		log.info("TC_04_8: Click Tim Kiem");
+		transReport.clickToDynamicButton(driver, SavingOnline_Data.SEARCH_BUTTON);
+
+		log.info("TC_04_9: Kiem tra ngay tao giao dich hien thi");
+		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
+
+		log.info("TC_04_10: Kiem tra so tien tat toan");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("+ " + addCommasToLong(info.money) + " VND"));
+
+		log.info("TC_04_11: Click vao giao dich");
+		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+
+		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
+
+		log.info("TC_04_13: Kiem tra so lenh giao dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+
+		log.info("TC_04_14: Kiem tra tai khoan/the trich no");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), savingAccount);
+
+		log.info("TC_04_14: Kiem tra so tai khoan ghi co");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), account);
+
+		log.info("TC_04_15: Kiem tra so tien giao dich hien thi");
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
+
+		log.info("TC_04_16: Kiem tra loai giao dich");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
+
+		log.info("TC_04_17: Kiem tra noi dung giao dich");
+		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
+
+		log.info("TC_04_18: Click  nut Back");
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+
+		log.info("TC_04_19: Click  nut Back");
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+
+		log.info("TC_04_20: Click  nut Home");
+		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();
