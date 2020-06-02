@@ -979,7 +979,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Số điện thoại");
 
 		log.info("TC_09_Step_6: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
+//		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
 		log.info("TC_09_Step_7: Nhap so tien chuyen");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, TitleLuckyGift.TITLE_AMOUNT_MONEY);

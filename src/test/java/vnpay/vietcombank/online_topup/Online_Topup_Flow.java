@@ -37,7 +37,8 @@ public class Online_Topup_Flow extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0963220894", "qqqq1111", opt);
+		//login.Global_login("0963220894", "qqqq1111", opt);
+		login.Global_login(phone,pass, opt);
 		login.scrollDownToText(driver, "Tiết kiệm");
 	}
 

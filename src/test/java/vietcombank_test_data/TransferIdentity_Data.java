@@ -31,16 +31,26 @@ public class TransferIdentity_Data {
 	public static final String TRANSACTION_FEE = "Số tiền phí";
 	public static final String MONEY = "Số tiền";
 	public static final String PASSWORD = "aaaa1111";
-	public static final String TEXT_REPORT = "Chuyển tiền mặt";
+	public static final String PASSPORT = "Hộ chiếu";
+	public static final String NEXT = "Tiếp tục";
+	public static final String OTP_SMS = "SMS OTP";
+	public static final String RECEIVER_PAYER = "Người nhận trả";
+	public static final String PASSWORD_TITLE = "Mật khẩu đăng nhập";
+	public static final String SURPLUS = "Số dư khả dụng";
+	public static final String IDENTITY_CARD = "Chứng minh nhân dân";
+	public static final String TRANSFER_PERSON = "Người chuyển trả";
+	public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
+	public static final String TRANSFER_MONEY = "Chuyển tiền mặt";
+	public static final String INPUT_PASSWORD = "Nhập mật khẩu";
+	public static final String CITIZEN_IDENTITY_CARD = "Thẻ căn cước công dân";
+	public static final String ARMY_IDENTITY_CARD = "CMT Quân đội";
+	public static final String OK = "OK";
     }
 
     public static class textDataInputForm {
 	public static final String USER_NAME = "Hoangkm";
 	public static final String IDENTITY_NUMBER = "123456789";
 	public static final String PASSPORT_NUMBER = "abc12345678";
-	public static final String ACCOUNT_VND = "0010000123771";
-	public static final String ACCOUNT_USD = "0011370000646";
-	public static final String ACCOUNT_EUR = "0011140000647";
 	public static final String MONEY_TRANSFER_VND = "100000";
 	public static final String MONEY_TRANSFER_USD = "10";
 	public static final String MONEY_TRANSFER_EUR = "10";

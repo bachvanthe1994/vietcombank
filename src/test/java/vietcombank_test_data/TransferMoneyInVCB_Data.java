@@ -11,6 +11,8 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
+		public static final String RECEIVER_ACCOUNT_3 = "0451001458259";
+		public static final String RECEIVER_NAME_ACCOUNT_3 = "TR QUA H";
 		public static final String RECEIVER_NAME_ACCOUNT_2 = "NGUYEN NGOC TOAN";
 		public static final String RECEIVER_NAME_ACCOUNT_1 = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
@@ -34,7 +36,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.04";
 		public static final String USD_PAYMENT_BY_OTP_FEE = "0.24";
 
-		public static final String TRANSFER_TYPE = "Chuyển tiền trong Vietcombank";
+		public static final String TRANSFER_TYPE = "Chuyển tiền trong VCB";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,087.00 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 23,997.76 VND";
 		public static final String USD_CHANGED_MONEY = "45974";
@@ -156,6 +158,67 @@ public class TransferMoneyInVCB_Data {
 		public static final String OTP_WITH_LESS_THAN_6_CHARACTERS = "12345";
 		public static final String WRONG_OTP = "111111";
 		public static final String MORE_THAN_21_CHARACTERS = "123456789012345678901234";
+
+	}
+	
+	public static class InputData_MoneyRecurrent {
+		
+		public static final String UNSUCCESS_MESSAGE = "Không thành công";
+		public static final String DAY_TEXT = "Ngày";
+		public static final String MONTH_TEXT = "Tháng";
+		public static final String VND_AMOUNT = "500000"; 
+		public static final String USD_EUR_AMOUNT = "10";
+		public static final String RECEIVED_PAY = "Người nhận trả";
+		public static final String TRANSFER_PAY = "Người chuyển trả";
+		public static final String CONTENT = "test";
+		
+	}
+	
+	public static class InputText_MoneyRecurrent {
+		
+		public static final String TRANSFER_TO_DIFFERENT_BANK_TEXT = "Chuyển tiền tới ngân hàng khác";
+		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
+		public static final String BILLS_PAYMENT_TEXT = "Nạp tiền/ Thanh toán hoá đơn";
+		public static final String TRANSFER_FREQUENCY_TEXT = "Tần suất chuyển";
+		public static final String TRANSACTION_TIMES_TEXT = "Số lần giao dịch";
+		public static final String TRANSFER_PER_TIMES_TEXT = "/ lần";
+		public static final String FREQUENCY_TEXT = "Tần suất";
+		public static final String START_DATE_TEXT = "Ngày bắt đầu";
+		public static final String END_DATE_TEXT = "Ngày kết thúc";
+		public static final String FEE_PER_TIMES_TEXT = "Số tiền phí/lần";
+	}
+
+	public static class TittleData {
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String SURPLUS = "Số dư khả dụng";
+		public static final String INPUT_ACCOUNT_BENEFICI = "Nhập/ chọn tài khoản nhận VND";
+		public static final String TRANSFER_INFO = "Thông tin giao dịch";
+		public static final String AMOUNT = "Số tiền";
+		public static final String CONTINUE_BTN = "Tiếp tục";
+		public static final String FORM_TRANSFER = "Hình thức chuyển tiền";
+		public static final String SOURCE_ACCOUNT_VND = "Tài khoản đích/ VND";
+		public static final String EFFECTIVE_DATE = "Ngày hiệu lực";
+		public static final String CONTENT = "Nội dung";
+		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
+		public static final String SMS_OTP = "SMS OTP";
+		public static final String FEE_AMOUNT = "Số tiền phí";
+		public static final String CODE_TRANSFER = "Mã giao dịch";
+		public static final String NAME_BENEFICI = "Tên người thụ hưởng";
+		public static final String ACCOUNT_BENEFICI = "Tài khoản thụ hưởng";
+		public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
+		public static final String STATUS_TRANSFER = "Trạng thái lệnh chuyển tiền";
+		public static final String CREAT_DATE = "Ngày lập lệnh";
+		public static final String NAME_RECEIPTER = "Tên người nhận";
+		public static final String  NOTE= "Ghi chú";
+		public static final String  STATUS= "Trạng thái";
+		public static final String  DETAIL_TRANSFER= "Chi tiết lệnh chuyển tiền";
+		public static final String  SUCCESS= "Thành công";
+		public static final String  FEE_TRANSFER_SOURCE_ACCOUNT_PAY= "Phí giao dịch người chuyển trả";
+		public static final String  BENEFICI_PAY= "Người nhận trả";
+		public static final String  CLOSE="Đóng";
+		public static final String  ACCEPT="Đồng ý";
+		public static final String  SEARCH="Tìm kiếm";
+		public static final String  TRANSFER_IN_VCB="Chuyển tiền trong Vietcombank";
 
 	}
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Vietcombank" parallel="false">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="reportConfig.ExtentReportListener" />
+		<listener class-name="reportConfig.ReportNGListener" />
+		<!-- <listener class-name="reportConfig.RetryListener" /> -->
+	</listeners>
+	<parameter name="appActivities" value="com.VCB.activities.home.SplashActivity" />
+	<parameter name="appPackage" value="com.VCB" />
+	<parameter name="appName" value="vcbtnewdesign.apk" />
+
+
+
+
+	<test name="Run test case on Android 9">
+		<parameter name="deviceType" value="androidReal" />
+		<parameter name="deviceName" value="Galaxy S9" />
+		<parameter name="deviceUDID" value="K3VDU18C04001409" />
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
+		<parameter name="phone" value="0974862669" />
+		<parameter name="pass" value="aaaaa11111" />
+		<parameter name="otp" value="123456" />
+		<classes>
+
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
+
+		</classes>
+	</test>
+
+
+
+</suite> 
+
+
