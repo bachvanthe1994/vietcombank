@@ -12,6 +12,7 @@ public class TransactionReport_Data {
 		public static final String CASH_TRANS = "Chuyển tiền mặt";
 		public static final String DESTINATION_ACCOUNT_CARD = "Tài khoản ghi có";
 		public static final String TRANSACTION_TYPE = "Loại giao dịch";
+		public static final String TRANSACTION_CONTENT = "Nội dung giao dịch";
 		
 	}
 

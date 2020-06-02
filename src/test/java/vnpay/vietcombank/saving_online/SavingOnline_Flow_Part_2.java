@@ -8,10 +8,12 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SavingOnlineInfo;
+import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SavingOnlinePageObject;
@@ -32,9 +34,11 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	private String transferTime;
 	private String savingAccount;
 	private String transactionNumber;
-
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.ONE_MONTH, SavingOnline_Data.MONEY, "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.THREE_MONTH, SavingOnline_Data.MONEY, "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi");
+	SourceAccountModel sourceAccount = new SourceAccountModel();
+	String account, balance, currentcy = "";
+	
+	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.ONE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_02);
+	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.THREE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_02);
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -62,7 +66,8 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_01_2_Chon so tai khoan");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		sourceAccount = savingOnline.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		account = sourceAccount.account;
 
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.AVAILABLE_BALANCE));
 
@@ -86,7 +91,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_01_8_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_01_8_1_Kiem tra tai khoan nguon");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.SOURCE_ACCOUNT), info.sourceAccount);
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_01_8_2_Kiem tra ky han gui");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.IN_TERM), SavingOnline_Data.ONE_MONTH);
@@ -129,7 +134,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_01_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.AVAILABLE_BALANCE));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
@@ -158,7 +163,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -181,7 +186,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_02_14: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), info.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_02_15: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
@@ -190,8 +195,8 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
 		log.info("TC_02_17: Kiem tra noi dung giao dich");
-		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + info.sourceAccount + ", SO TIEN " + addCommasToLong(info.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
+		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + account + ", SO TIEN " + addCommasToLong(info.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_02_18: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
@@ -219,7 +224,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_03_3_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.CHOOSE_DESTINATION_ACCOUNT);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline(SavingOnline_Data.AVAILABLE_BALANCE));
 
@@ -255,7 +260,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.REAL_MONEY), addCommasToLong(info.money) + " VND");
 
 		log.info("TC_03_06_9: Kiem tra tai khoan dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.DESTINATION_ACCOUNT), info.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.DESTINATION_ACCOUNT), account);
 
 		log.info("TC_03_07_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
@@ -279,7 +284,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_03_11_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.CHOOSE_DESTINATION_ACCOUNT);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline(SavingOnline_Data.AVAILABLE_BALANCE));
 		availableBalance = canculateAvailableBalances(surplus, -Long.parseLong(info.money), transferFee);
@@ -309,7 +314,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_04_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -335,7 +340,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), savingAccount);
 
 		log.info("TC_04_14: Kiem tra so tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), info.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), account);
 
 		log.info("TC_04_15: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
@@ -345,7 +350,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_04_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_04_18: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
@@ -365,7 +370,8 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_05_2_Chon so tai khoan");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		sourceAccount = savingOnline.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		account = sourceAccount.account;
 
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.AVAILABLE_BALANCE));
 
@@ -389,7 +395,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_05_8_Kiem tra man hinh xac nhan thong tin");
 
 		log.info("TC_05_8_1_Kiem tra tai khoan nguon");
-		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.SOURCE_ACCOUNT), info1.sourceAccount);
+		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_05_8_2_Kiem tra ky han gui");
 		verifyEquals(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.IN_TERM), SavingOnline_Data.THREE_MONTH);
@@ -432,7 +438,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_05_14_Kiem tra so du kha dung luc sau");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.AVAILABLE_BALANCE));
 		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info1.money), transferFee);
 		verifyEquals(actualAvailableBalance, availableBalance);
@@ -461,7 +467,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_06_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -484,7 +490,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_06_14: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), info1.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_06_15: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info1.money) + " VND"));
@@ -493,8 +499,8 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
 		log.info("TC_06_17: Kiem tra noi dung giao dich");
-		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + info1.sourceAccount + ", SO TIEN " + addCommasToLong(info1.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
+		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + account + ", SO TIEN " + addCommasToLong(info1.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_06_18: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
@@ -522,7 +528,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_07_3_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.CHOOSE_DESTINATION_ACCOUNT);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline(SavingOnline_Data.AVAILABLE_BALANCE));
 
@@ -558,7 +564,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.REAL_MONEY), addCommasToLong(info1.money) + " VND");
 
 		log.info("TC_07_06_9: Kiem tra tai khoan dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.DESTINATION_ACCOUNT), info1.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.DESTINATION_ACCOUNT), account);
 
 		log.info("TC_07_07_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
@@ -582,7 +588,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_07_11_Chon tai khoan dich");
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.CHOOSE_DESTINATION_ACCOUNT);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextAvailableBalanceInSavingOnline(SavingOnline_Data.AVAILABLE_BALANCE));
 		availableBalance = canculateAvailableBalances(surplus, -Long.parseLong(info1.money), transferFee);
@@ -612,7 +618,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info1.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_08_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, "Tìm kiếm");
@@ -638,7 +644,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), savingAccount);
 
 		log.info("TC_08_14: Kiem tra so tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), info1.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), account);
 
 		log.info("TC_08_15: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info1.money) + " VND"));
@@ -648,7 +654,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 		log.info("TC_08_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, "Nội dung giao dịch"), expectContent);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_08_18: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
@@ -663,7 +669,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

@@ -37,6 +37,8 @@ public class SavingOnline_Data {
 	public static final String ORIGINAL_MONEY = "Số tiền gửi gốc";
 	public static final String REAL_MONEY = "Số tiền thực hưởng";
 	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
+	public static final String PAY_INTEREST_METHOD_01 = "Lãi nhập gốc";
+	public static final String PAY_INTEREST_METHOD_02 = "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi";
 	
 }
 	
