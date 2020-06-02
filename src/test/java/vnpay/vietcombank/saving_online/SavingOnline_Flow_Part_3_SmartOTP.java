@@ -19,7 +19,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.SavingOnlinePageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
@@ -64,55 +63,6 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 
 	private long surplus, availableBalance, actualAvailableBalance;
 
-	@Parameters({ "pass" })
-	public void TC_01_CaiDatPhuongThucXacThucOTP() {
-		log.info("TC_01_Step: Click menu header");
-		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("Before class: Lay ten user");
-		nameCustomer = smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
-
-		log.info("TC_01_Step: Click cai dat");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
-
-		log.info("TC_01_Step: Click cai dat Smart OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
-
-		log.info("TC_01_Step: Click cai dat cho tai khoan");
-		smartOTP.clickToDynamicTextFollowText(driver, "Chưa kích hoạt");
-
-		log.info("TC_01_Step: Click toi dong y");
-		smartOTP.clickToTextID(driver, "com.VCB:id/rule");
-
-		log.info("TC_01_Step_click button dong y");
-		smartOTP.clickToDynamicButton(driver, "Đồng ý");
-
-		log.info("TC_01_Step_Nhap mat khau");
-		smartOTP.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.Smart_OTP, "Nhập mật khẩu");
-
-		log.info("TC_01_Step_Nhap lai mat khau");
-		smartOTP.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.Smart_OTP, "Nhập lại mật khẩu");
-
-		log.info("TC_01_Step_click button tiep tuc");
-		smartOTP.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_Nhap ma xac thuc");
-		smartOTP.inputToDynamicSmartOtp(driver, "666888", "com.VCB:id/otp");
-
-		log.info("TC_01_Step_click button tiep tuc");
-		smartOTP.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_Verify cai dat thanh cong");
-		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
-		verifyEquals(smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/state_vnpay"), "Đã kích hoạt");
-
-		log.info("TC_01_Step_click button quay lai cai dat");
-		smartOTP.clickToDynamicImageViewID(driver, "com.VCB:id/ivTitleLeft");
-
-		log.info("TC_01_Click button home");
-		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}
-	
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
