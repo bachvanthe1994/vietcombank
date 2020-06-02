@@ -215,7 +215,6 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		String expiredDate = "";
 
 		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
-		homePage.scrollDownToText(driver, "Tín dụng");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
 		log.info("TC_03_2_Chon so tai khoan tiet kiem");
@@ -519,7 +518,6 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		String expiredDate = "";
 
 		log.info("TC_07_1_Click Tat toan tai khoan tiet kiem");
-		homePage.scrollDownToText(driver, "Tín dụng");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
 		log.info("TC_07_2_Chon so tai khoan tiet kiem");
