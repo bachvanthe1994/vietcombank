@@ -8,6 +8,7 @@ public class Constants {
 	public static final String VND_CURRENCY = "VND";
 	public static final String USD_CURRENCY = "USD";
 	public static final String EUR_CURRENCY = "EUR";
+	public static final double AMOUNT_VND = 100000000;
 
 	// RUN_CONTINUE_AFTER_STEP_FAIL = true --> testcase still runs next steps after
 	// current step is failed
