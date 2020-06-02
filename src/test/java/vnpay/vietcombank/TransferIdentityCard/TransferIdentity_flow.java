@@ -288,9 +288,11 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_04_17: kiểm tra số dư");
 	trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
+	trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 	String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 	String[] surplusSplit = surplus.split(" ");
-	long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
+	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
 	double canculateAvailable = canculateAvailableBalancesCurrentcy(toltalMoney, fee, money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
 
@@ -341,7 +343,7 @@ public class TransferIdentity_flow extends Base {
 	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.CODE_TRANSFER), code);
 
 	log.info("TC_04_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), getDataInCell(4));
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 	log.info("TC_04_14: Kiem tra so tien giao dich hien thi");
 	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, ReportTite.MONEY_TRANSFER);
@@ -1123,8 +1125,8 @@ public class TransferIdentity_flow extends Base {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-	closeApp();
-	service.stop();
+//	closeApp();
+//	service.stop();
     }
 
 }
