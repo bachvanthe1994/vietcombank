@@ -158,4 +158,35 @@ public class TransferMoneyInVCB_Data {
 		public static final String MORE_THAN_21_CHARACTERS = "123456789012345678901234";
 
 	}
+	
+	public static class InputData_MoneyRecurrent {
+		
+		public static final String PASSWORD_AUTHEN_DATA = "Mật khẩu đăng nhập";
+		
+	}
+	
+	public static class InputText_MoneyRecurrent {
+		
+		public static final String SOURCE_ACCOUNT_TEXT = "Tài khoản nguồn";
+		public static final String SURPLUS_TEXT = "Số dư khả dụng";
+		public static final String INPUT_RECEIVED_ACCOUNT_TEXT = "Nhập/ chọn tài khoản nhận VND";
+		public static final String DAY_TEXT = "Ngày";
+		public static final String MONEY_TEXT = "Số tiền";
+		public static final String TRANSFER_PAY_FEE_TEXT = "Phí giao dịch người chuyển trả";
+		public static final String TRANSACTION_INFO_TEXT = "Thông tin giao dịch";
+		public static final String TRANSFER_TYPE_TEXT = "Hình thức chuyển tiền";
+		public static final String RECEVED_ACCOUNT_TEXT = "Tài khoản đích/ VND";
+		public static final String TRANSFER_FREQUENCY_TEXT = "Tần suất chuyển";
+		public static final String TRANSACTION_TIMES_TEXT = "Số lần giao dịch";
+		public static final String CONTENT_TEXT = "Nội dung";
+		public static final String TRANSFER_PER_TIMES_TEXT = "/ lần";
+		public static final String FEE_MONEY_TEXT = "Số tiền phí";
+		public static final String RECEIVED_NAME_TEXT = "Tên người thụ hưởng";
+		public static final String RECEIVED_ACCOUNT_TEXT = "Tài khoản thụ hưởng";
+		
+		public static final String CHOOSE_AUTHEN_METHOD_TEXT = "Chọn phương thức xác thực";
+		
+		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
+		public static final String BUTTON_NEW_TRANSACTION_TEXT = "Thực hiện giao dịch mới";
+	}
 }
