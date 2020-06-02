@@ -11,6 +11,8 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
+		public static final String RECEIVER_ACCOUNT_3 = "0451001458259";
+		public static final String RECEIVER_NAME_ACCOUNT_3 = "TR QUA H";
 		public static final String RECEIVER_NAME_ACCOUNT_2 = "NGUYEN NGOC TOAN";
 		public static final String RECEIVER_NAME_ACCOUNT_1 = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
@@ -161,33 +163,29 @@ public class TransferMoneyInVCB_Data {
 	
 	public static class InputData_MoneyRecurrent {
 		
-		public static final String PASSWORD_AUTHEN_DATA = "Mật khẩu đăng nhập";
+		public static final String UNSUCCESS_MESSAGE = "Không thành công";
+		public static final String DAY_TEXT = "Ngày";
+		public static final String MONTH_TEXT = "Tháng";
+		public static final String VND_AMOUNT = "500000"; 
+		public static final String USD_EUR_AMOUNT = "10";
+		public static final String RECEIVED_PAY = "Người nhận trả";
+		public static final String TRANSFER_PAY = "Người chuyển trả";
+		public static final String CONTENT = "test";
 		
 	}
 	
 	public static class InputText_MoneyRecurrent {
 		
-		public static final String SOURCE_ACCOUNT_TEXT = "Tài khoản nguồn";
-		public static final String SURPLUS_TEXT = "Số dư khả dụng";
-		public static final String INPUT_RECEIVED_ACCOUNT_TEXT = "Nhập/ chọn tài khoản nhận VND";
-		public static final String DAY_TEXT = "Ngày";
-		public static final String MONEY_TEXT = "Số tiền";
-		public static final String TRANSFER_PAY_FEE_TEXT = "Phí giao dịch người chuyển trả";
-		public static final String TRANSACTION_INFO_TEXT = "Thông tin giao dịch";
-		public static final String TRANSFER_TYPE_TEXT = "Hình thức chuyển tiền";
-		public static final String RECEVED_ACCOUNT_TEXT = "Tài khoản đích/ VND";
+		public static final String TRANSFER_TO_DIFFERENT_BANK_TEXT = "Chuyển tiền tới ngân hàng khác";
+		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
+		public static final String BILLS_PAYMENT_TEXT = "Nạp tiền/ Thanh toán hoá đơn";
 		public static final String TRANSFER_FREQUENCY_TEXT = "Tần suất chuyển";
 		public static final String TRANSACTION_TIMES_TEXT = "Số lần giao dịch";
-		public static final String CONTENT_TEXT = "Nội dung";
 		public static final String TRANSFER_PER_TIMES_TEXT = "/ lần";
-		public static final String FEE_MONEY_TEXT = "Số tiền phí";
-		public static final String RECEIVED_NAME_TEXT = "Tên người thụ hưởng";
-		public static final String RECEIVED_ACCOUNT_TEXT = "Tài khoản thụ hưởng";
-		
-		public static final String CHOOSE_AUTHEN_METHOD_TEXT = "Chọn phương thức xác thực";
-		
-		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
-		public static final String BUTTON_NEW_TRANSACTION_TEXT = "Thực hiện giao dịch mới";
+		public static final String FREQUENCY_TEXT = "Tần suất";
+		public static final String START_DATE_TEXT = "Ngày bắt đầu";
+		public static final String END_DATE_TEXT = "Ngày kết thúc";
+		public static final String FEE_PER_TIMES_TEXT = "Số tiền phí/lần";
 	}
 
 	public static class TittleData {
