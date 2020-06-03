@@ -59,7 +59,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -141,7 +141,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao_PTXT_OTP() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -209,7 +209,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -291,7 +291,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao_PTXT_OTP() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
@@ -362,7 +362,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP() {
 		log.info("TC_05_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -444,7 +444,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao_PTXT_OTP() {
 		log.info("TC_06_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -512,7 +512,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -594,7 +594,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao_PTXT_OTP() {
 		log.info("TC_08_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
