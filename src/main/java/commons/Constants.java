@@ -9,10 +9,6 @@ public class Constants {
 	public static final int MONEY_CHECK_VND = 1000000;
 	public static final int MONEY_CHECK_USD = 10;
 	public static final int MONEY_CHECK_EUR = 10;
-	
-	public static final String MONEY_TRANSFER_VND = "100000";
-	public static final String MONEY_TRANSFER_USD = "10";
-	public static final String MONEY_TRANSFER_EUR = "10";
 
 	public static final String VND_CURRENCY = "VND";
 	public static final String USD_CURRENCY = "USD";

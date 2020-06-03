@@ -44,18 +44,13 @@ public class TransferIdentity_Data {
 	public static final String INPUT_PASSWORD = "Nhập mật khẩu";
 	public static final String CITIZEN_IDENTITY_CARD = "Thẻ căn cước công dân";
 	public static final String ARMY_IDENTITY_CARD = "CMT Quân đội";
+	public static final String OK = "OK";
     }
 
     public static class textDataInputForm {
 	public static final String USER_NAME = "Hoangkm";
 	public static final String IDENTITY_NUMBER = "123456789";
 	public static final String PASSPORT_NUMBER = "abc12345678";
-	public static final String ACCOUNT_VND = "0010000123771";
-	public static final String ACCOUNT_USD = "0011370000646";
-	public static final String ACCOUNT_EUR = "0011140000647";
-	public static final int MONEY_CHECK_VND = 1000000;
-	public static final int MONEY_CHECK_USD = 10;
-	public static final int MONEY_CHECK_EUR = 10;
 	public static final String MONEY_TRANSFER_VND = "100000";
 	public static final String MONEY_TRANSFER_USD = "10";
 	public static final String MONEY_TRANSFER_EUR = "10";

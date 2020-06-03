@@ -1,6 +1,7 @@
 package vnpay.vietcombank.lucky_gift;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -43,7 +44,7 @@ public class Limit_LuckyGift extends Base {
 
 	@Test
 
-	public void TC_01_ChuyenTienQuaThapHonHanMucToiThieu() {
+	public void TC_01_ChuyenTienQuaThapHonHanMucToiThieu() throws GeneralSecurityException, IOException {
 
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
 
@@ -65,7 +66,7 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Số điện thoại");
 
 		log.info("TC_01_Step_6: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
+		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
 		log.info("TC_01_Step_7: Nhap so tien chuyen");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.Limit_Money_Gift.LOWER_MIN_MONEY_A_TRANSACTION, TitleLuckyGift.TITLE_AMOUNT_MONEY);
@@ -106,7 +107,7 @@ public class Limit_LuckyGift extends Base {
 
 	// Set BE goi han nhom dich vu la 100 trieu
 
-	public void TC_03_ChuyenTienQuaCaoHonHanMucToiDaNhomDichVu() {
+	public void TC_03_ChuyenTienQuaCaoHonHanMucToiDaNhomDichVu() throws GeneralSecurityException, IOException {
 
 		log.info("-TC_03_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -127,7 +128,7 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Số điện thoại");
 
 		log.info("TC_03_Step_5: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
+		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
 		log.info("TC_03_Step_6: Nhap so tien chuyen");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.HIGHER_MAX_MONEY_A_TRANSACTION, "com.VCB:id/amount");
@@ -149,7 +150,7 @@ public class Limit_LuckyGift extends Base {
 	}
 
 	// Set BE goi han goi dich vu la 100 trieu
-	public void TC_04_ChuyenTienQuaCaoHonHanMucToiDaGoiDichVu() {
+	public void TC_04_ChuyenTienQuaCaoHonHanMucToiDaGoiDichVu() throws GeneralSecurityException, IOException {
 
 		log.info("TC_04_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -170,7 +171,7 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Số điện thoại");
 
 		log.info("TC_04_Step_5: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
+		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
 		log.info("-TC_04_Step_6: Nhap so tien chuyen");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.HIGHER_MAX_MONEY_A_TRANSACTION, "com.VCB:id/amount");
@@ -195,7 +196,7 @@ public class Limit_LuckyGift extends Base {
 	@Parameters  ({"pass"})
 	@Test
 	// Set BE goi han goi dich vu la 100 000 001
-	public void TC_05_ChuyenTienQuaCaoHonHanMucToiDaTrongNgay(String pass) {
+	public void TC_05_ChuyenTienQuaCaoHonHanMucToiDaTrongNgay(String pass) throws GeneralSecurityException, IOException {
 
 		log.info("TC_05_Step_01: Nhap so tien chuyen");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.MAX_MONEY_A_TRANSACTION, "com.VCB:id/amount");
@@ -227,7 +228,7 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Số điện thoại");
 
 		log.info("TC_05_Step_11: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MOBI_ACCEPT, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
+		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
 
 		log.info("TC_05_Step_12: Nhap so tien chuyen");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.MIN_MONEY_A_TRANSACTION, "com.VCB:id/amount");
