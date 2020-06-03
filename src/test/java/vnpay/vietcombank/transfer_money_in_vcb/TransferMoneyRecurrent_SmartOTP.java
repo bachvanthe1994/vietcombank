@@ -24,6 +24,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
+import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data;
 
@@ -68,7 +69,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		log.info("Before Class 01: Cat dat Smart OTP");
-		smartOTP.setupSmartOTP(password, smartOtpPass);
+		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, smartOtpPass);
 		
 		log.info("Before Class 02: Click Chuyen tien trong ngan hang");
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -140,7 +141,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		log.info("TC_01_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		transferRecurrent.inputToDynamicSmartOTP(driver, smartOtpPass, "com.VCB:id/otp");
+		transferRecurrent.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -367,7 +368,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		log.info("TC_05_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		transferRecurrent.inputToDynamicSmartOTP(driver, smartOtpPass, "com.VCB:id/otp");
+		transferRecurrent.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -596,7 +597,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		log.info("TC_09_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		transferRecurrent.inputToDynamicSmartOTP(driver, smartOtpPass, "com.VCB:id/otp");
+		transferRecurrent.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
