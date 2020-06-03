@@ -91,7 +91,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		long beforeBalanceAmountOfAccount1 = convertMoneyToLong(beforeBalanceOfAccount1, Constants.VND_CURRENCY);
 
 		log.info("TC_01_Step_10: Nhap tai khoan nhan");
-		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
+		distanceAccount.account = transferInVCB.getReceiverAccount(driver, sourceAccount.account, listDistanceAccount);
 		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_Step_11: Kiem tra Ngay hieu luc mac dinh");
