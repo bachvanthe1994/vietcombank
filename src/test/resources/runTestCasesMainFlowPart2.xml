@@ -7,7 +7,7 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
-	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
+	<parameter name="appActivities" value="com.VCB.activities.home.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 
@@ -19,7 +19,7 @@
 		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0335059863" />
-		<parameter name="pass" value="aaaa1111" />
+		<parameter name="pass" value="aaaa1111@" />
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>

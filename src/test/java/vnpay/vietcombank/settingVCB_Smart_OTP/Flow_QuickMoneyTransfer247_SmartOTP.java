@@ -1,6 +1,7 @@
 package vnpay.vietcombank.settingVCB_Smart_OTP;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -46,7 +47,7 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 		startServer();
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login("0904797864", pass, opt);
+		//login.Global_login("0904797864", pass, opt);
 		password = pass;
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
@@ -54,52 +55,8 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 	
 
 	@Test
-	public void TC_01_CaiDatPhuongThucXacThucOTP() {
-		log.info("TC_01_Step: Click menu header");
-		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("Before class: Lay ten user");
-		nameCustomer = smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
-
-		log.info("TC_01_Step: Click cai dat");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
-
-		log.info("TC_01_Step: Click cai dat Smart OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
-
-		log.info("TC_01_Step: Click cai dat cho tai khoan");
-		smartOTP.clickToDynamicTextFollowText(driver, "Chưa kích hoạt");
-
-		log.info("TC_01_Step: Click toi dong y");
-		smartOTP.clickToTextID(driver, "com.VCB:id/rule");
-
-		log.info("TC_01_Step_click button dong y");
-		smartOTP.clickToDynamicButton(driver, "Đồng ý");
-
-		log.info("TC_01_Step_Nhap mat khau");
-		smartOTP.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.Smart_OTP, "Nhập mật khẩu");
-
-		log.info("TC_01_Step_Nhap lai mat khau");
-		smartOTP.inputToDynamicInputBox(driver, LogIn_Data.Login_Account.Smart_OTP, "Nhập lại mật khẩu");
-
-		log.info("TC_01_Step_click button tiep tuc");
-		smartOTP.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_Nhap ma xac thuc");
-		smartOTP.inputToDynamicSmartOtp(driver, "666888", "com.VCB:id/otp");
-
-		log.info("TC_01_Step_click button tiep tuc");
-		smartOTP.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_01_Step_Verify cai dat thanh cong");
-		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
-		verifyEquals(smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/state_vnpay"), "Đã kích hoạt");
-
-		log.info("TC_01_Step_click button quay lai cai dat");
-		smartOTP.clickToDynamicImageViewID(driver, "com.VCB:id/ivTitleLeft");
-
-		log.info("TC_01_Click button home");
-		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+	public void TC_01_CaiDatPhuongThucXacThucOTP() throws GeneralSecurityException, IOException  {
+		smartOTP.setupSmartOTP("111222", getDataInCell(6));
 	}
 
 
@@ -435,24 +392,7 @@ public class Flow_QuickMoneyTransfer247_SmartOTP extends Base {
 
 	@Test
 	public void TC_05_HuyKichHoatVCBSmartOPT() {
-		log.info("TC_05_Step_01: Click menu header");
-		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_05_Step_02: Click thanh Cai dat VCB-Smart OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
-
-		log.info("TC_05_Step_03: Click Cai dat VCB Smart OTP");
-		smartOTP.waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, "Cài đặt VCB-Smart OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
-
-		log.info("TC_05_Step_04: Click btn Huy Cai dat");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
-
-		log.info("TC_05_Step_05: Verify hien thi popup xac nhan huy cai dat OTP");
-		smartOTP.isDynamicMessageAndLabelTextDisplayed(driver, SettingVCBSmartOTP_Data.MESSEGE_CONFIRM_CANCEL);
-
-		log.info("TC_05_Step_06: Verify hien thi popup xac nhan huy cai dat OTP");
-		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
+		smartOTP.cancelSetupSmartOTP();
 	}
 
 	

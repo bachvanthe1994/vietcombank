@@ -70,14 +70,14 @@ public class Flow_Investigation_Online extends Base {
 		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Gửi tiết kiệm");
 
 		log.info("TC_03_Step: Nhap dia chi lien he");
-		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.ADDRESS, "com.VCB:id/layoutDiaChiLH");
+		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ADDRESS, "com.VCB:id/layoutDiaChiLH");
 
 		log.info("TC_03_Step: Click giay to tuy than");
 		investigationOnline.clickToDynamicDropDown(driver, "Giấy tờ tùy thân");
-		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.TYPE_IDENTIFICATION[1]);
+		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Register_Onl_Data.TYPE_IDENTIFICATION[1]);
 
 		log.info("TC_03_Step: Input so ho chieu");
-		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.NO_IDENTIFICATION, "com.VCB:id/layoutCMTND");
+		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.NO_IDENTIFICATION, "com.VCB:id/layoutCMTND");
 
 		log.info("TC_03_Step: Click ngay cap");
 		investigationOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayCap");
@@ -92,22 +92,22 @@ public class Flow_Investigation_Online extends Base {
 		investigationOnline.clickToDynamicButton(driver, "OK");
 
 		log.info("TC_03_Step: Input noi cap");
-		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.LOCATION[1], "com.VCB:id/layoutNoiCap2");
+		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.LOCATION[1], "com.VCB:id/layoutNoiCap2");
 
 		log.info("TC_03_Step: Nhap email");
-		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.EMAIL, "com.VCB:id/layoutEmail");
+		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.EMAIL, "com.VCB:id/layoutEmail");
 
 		log.info("TC_03_Step: Chon hinh thuc gui tien co ky han");
 		investigationOnline.scrollDownToText(driver, "Tiền mặt");
 		investigationOnline.clickToDynamicLinerLayoutID(driver, "com.VCB:id/layoutHinhThucGuiTien");
-		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_SEND_MONEY[0]);
+		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Register_Onl_Data.LIST_SEND_MONEY[0]);
 
 		log.info("TC_03_Step: Chon ky han thoi gian");
 		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, "Kỳ hạn");
-		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Valid_Account.LIST_PERIOD[1]);
+		investigationOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Register_Onl_Data.LIST_PERIOD[1]);
 
 		log.info("TC_03_Step: Nhap so tien gui");
-		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.AMOUNT, "com.VCB:id/layoutAmount1");
+		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.AMOUNT, "com.VCB:id/layoutAmount1");
 
 		log.info("TC_03_Step: Chon ky han thoi gian");
 		investigationOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivContent3");
@@ -118,7 +118,7 @@ public class Flow_Investigation_Online extends Base {
 
 		log.info("TC_03_Step: Nhap so tien nop");
 		investigationOnline.scrollDownToButton(driver, "Xác nhận");
-		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Valid_Account.AMOUNT, "com.VCB:id/layoutAmount2");
+		investigationOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.AMOUNT, "com.VCB:id/layoutAmount2");
 
 		log.info("TC_03_Step: Click button xac nhan");
 		investigationOnline.clickToDynamicButton(driver, "Xác nhận");

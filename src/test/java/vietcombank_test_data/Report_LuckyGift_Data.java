@@ -2,7 +2,7 @@ package vietcombank_test_data;
 
 public class Report_LuckyGift_Data {
 
-	public static class RepostData {
+	public static class ReportTittte {
 		public static final String TRANSFER_REPORT = "Báo cáo giao dịch";
 		public static final String TITLE_TRANSFER = "Tất cả các loại giao dịch";
 		public static final String TITLE = "Quà tặng";
