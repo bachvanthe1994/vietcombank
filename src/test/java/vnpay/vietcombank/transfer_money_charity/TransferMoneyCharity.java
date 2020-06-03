@@ -208,7 +208,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_02_14: Kiem tra ma giao dich");
@@ -385,7 +385,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_04_15: Kiem tra thoi gian tao giao dich hien thi");
@@ -564,7 +564,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_06_14: Kiem tra thoi gian tao giao dich hien thi");
@@ -743,7 +743,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_08_14: Kiem tra thoi gian tao giao dich hien thi");
@@ -923,7 +923,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_10_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_10_14: Kiem tra ma giao dich");
@@ -1105,7 +1105,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_12_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_12_14: Kiem tra ma giao dich");

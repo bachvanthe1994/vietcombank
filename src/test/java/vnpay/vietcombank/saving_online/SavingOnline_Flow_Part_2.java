@@ -178,7 +178,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_13: Kiem tra so lenh giao dich");
@@ -328,7 +328,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_13: Kiem tra so lenh giao dich");
@@ -481,7 +481,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_06_13: Kiem tra so lenh giao dich");
@@ -631,7 +631,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_08_13: Kiem tra so lenh giao dich");
