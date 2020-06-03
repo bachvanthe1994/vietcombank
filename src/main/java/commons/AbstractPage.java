@@ -2761,7 +2761,7 @@ public class AbstractPage {
 		}
 		return text;
 	}
-	
+
 	public void swipeElementToElement(AppiumDriver<MobileElement> driver, String locatorStart, String locatorEnd, String dynamicValueStart, String dynamicValueEnd) {
 		driver.manage().window().getSize();
 		locatorStart = String.format(locatorStart, dynamicValueStart);
@@ -2779,7 +2779,6 @@ public class AbstractPage {
 		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd)).release().perform();
 	}
 
-	
 	public SourceAccountModel chooseSourceAccount(AppiumDriver<MobileElement> driver, double money, String currentcy) {
 
 		boolean status = false;
@@ -2806,10 +2805,10 @@ public class AbstractPage {
 							availableBalance = listTextElement.get(1).getText();
 							sourceAccount.balance = availableBalance.split(" ")[0];
 							sourceAccount.currentcy = availableBalance.split(" ")[1];
-							
+
 						} catch (Exception e) {
 							continue;
-							
+
 						}
 
 						double expectedMoney = Double.parseDouble(sourceAccount.balance.replaceAll("[^\\-.0123456789]", ""));
@@ -2840,7 +2839,48 @@ public class AbstractPage {
 		}
 		overRideTimeOut(driver, Constants.LONG_TIME);
 		return sourceAccount;
-		
+
+	}
+
+	public List<SourceAccountModel> getListSourceAccount(AppiumDriver<MobileElement> driver, String currentcY) {
+		boolean status = false;
+		SourceAccountModel sourceAccount = new SourceAccountModel();
+		List<SourceAccountModel> accountList = new ArrayList<SourceAccountModel>();
+		String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
+		waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
+		String availableBalance = "";
+		for (MobileElement element : elements) {
+			String locator_text = String.format(DynamicPageUIs.DYNAMIC_TEXT_NON);
+			overRideTimeOut(driver, 2);
+			List<MobileElement> listTextElement = element.findElements(By.xpath(locator_text));
+			sourceAccount = new SourceAccountModel();
+			status = listTextElement.size() > 0;
+			if (status) {
+				sourceAccount.account = listTextElement.get(0).getText();
+				availableBalance = listTextElement.get(1).getText();
+				sourceAccount.balance = availableBalance.split(" ")[0];
+				sourceAccount.currentcy = availableBalance.split(" ")[1];
+
+			}
+			if (sourceAccount.currentcy.equals(currentcY)) {
+				accountList.add(sourceAccount);
+			}
+		}
+
+		return accountList;
+	}
+
+	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<SourceAccountModel> listAccount) {
+		SourceAccountModel distanceAccount = new SourceAccountModel();
+		for (int i = 0; i < listAccount.size(); i++) {
+			if (!listAccount.get(i).account.equals(sourceAccount)) {
+				distanceAccount = listAccount.get(i);
+				break;
+			}
+		}
+		return distanceAccount.account;
+
 	}
 
 }

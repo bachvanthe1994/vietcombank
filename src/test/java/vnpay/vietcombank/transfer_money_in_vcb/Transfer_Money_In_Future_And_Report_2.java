@@ -51,12 +51,12 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
+		login.Global_login1(phone, pass, opt);
 		account2 = getDataInCell(2);
 		name_receiver = getDataInCell(4);
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollDownToText(driver, TittleData.STATUS_TRANSFER);
+		homePage.scrollDownToText(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
@@ -213,7 +213,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSFER);
+		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_02_Step_03: Click Tat Ca Cac Loai Giao Dich");
 		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
@@ -304,7 +304,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_03_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSFER);
+		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
@@ -468,7 +468,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_05_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSFER);
+		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_05_Step_03: Click Tat Ca Cac Loai Giao Dich");
 		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
@@ -560,7 +560,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_06_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSFER);
+		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
@@ -719,7 +719,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_08_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSFER);
+		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_08_Step_03: Click Tat Ca Cac Loai Giao Dich");
 		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
@@ -811,7 +811,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_09_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSFER);
+		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
@@ -976,7 +976,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_11_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSFER);
+		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_11_Step_03: Click Tat Ca Cac Loai Giao Dich");
 		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
@@ -1068,7 +1068,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_12_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSFER);
+		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
@@ -1190,7 +1190,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_14_Step_02: Click vao Trang Thai lenh chuyen Tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSFER);
+		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_14_Step_03: Click Tat Ca Cac Loai Giao Dich");
 		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
@@ -1282,7 +1282,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_15_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSFER);
+		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
@@ -1410,7 +1410,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_17_Step_02: Click vao Trang Thai lenh chuyen Tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSFER);
+		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_17_Step_03: Click Tat Ca Cac Loai Giao Dich");
 		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
@@ -1502,7 +1502,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_18_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSFER);
+		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
