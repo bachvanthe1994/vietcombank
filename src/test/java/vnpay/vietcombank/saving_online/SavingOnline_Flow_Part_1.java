@@ -18,7 +18,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SavingOnlinePageObject;
 import pageObjects.TransactionReportPageObject;
-import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.TransactionReport_Data;
@@ -37,8 +36,8 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String account, balance, currentcy = "";
 
-	SavingOnlineInfo info = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.ONE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_01);
-	SavingOnlineInfo info1 = new SavingOnlineInfo(Account_Data.Valid_Account.ACCOUNT2, SavingOnline_Data.THREE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_01);
+	SavingOnlineInfo info = new SavingOnlineInfo("", SavingOnline_Data.ONE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_01);
+	SavingOnlineInfo info1 = new SavingOnlineInfo("", SavingOnline_Data.THREE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_01);
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -215,7 +214,6 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		String expiredDate = "";
 
 		log.info("TC_03_1_Click Tat toan tai khoan tiet kiem");
-		homePage.scrollDownToText(driver, "Tín dụng");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
 		log.info("TC_03_2_Chon so tai khoan tiet kiem");
@@ -517,7 +515,6 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		String expiredDate = "";
 
 		log.info("TC_07_1_Click Tat toan tai khoan tiet kiem");
-		homePage.scrollDownToText(driver, "Tín dụng");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
 		log.info("TC_07_2_Chon so tai khoan tiet kiem");
