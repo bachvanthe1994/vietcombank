@@ -76,7 +76,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_CungChuTK_XacThucBangSmartOTP() {
+	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangSmartOTP() {
 
 		log.info("TC_01_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -165,7 +165,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_02_ChuyenTien_VND_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra_CungChuTK() {
+	public void TC_02_ChuyenTien_VND_KiemTraSoDuSauGiaoDich_PhiGiaoDich_NguoiChuyenTra() {
 		
 		log.info("TC_02_01_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
@@ -184,7 +184,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_03_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_CungChuTK_XacThucBangSmartOTP() {
+	public void TC_03_TrangThaiGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangSmartOTP() {
 		
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));
@@ -250,7 +250,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_04_HuyGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_CungChuTK_XacThucBangSmartOTP() {
+	public void TC_04_HuyGiaoDich_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangSmartOTP() {
 		
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info.frequencyNumber));

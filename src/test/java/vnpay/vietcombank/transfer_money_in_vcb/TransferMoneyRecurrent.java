@@ -2,6 +2,7 @@ package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -33,12 +34,13 @@ public class TransferMoneyRecurrent extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private TransferMoneyStatusPageObject transferStatus;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
-	private String transferTime, expectAvailableBalance,receivedAccount,receivedName;
+	private String transferTime, expectAvailableBalance,receivedAccount,receivedName,sameOwnerName;
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
+	SourceAccountModel distanceAccount = new SourceAccountModel();
 	
 	TransferInVCBRecurrent info = new TransferInVCBRecurrent("","", "1", InputData_MoneyRecurrent.DAY_TEXT, "", "", InputData_MoneyRecurrent.VND_AMOUNT, InputData_MoneyRecurrent.TRANSFER_PAY, InputData_MoneyRecurrent.CONTENT, InputDataInVCB.PAYMENT_OPTIONS[1]);
 	TransferInVCBRecurrent info1 = new TransferInVCBRecurrent("","", "2", InputData_MoneyRecurrent.DAY_TEXT, "", "", InputData_MoneyRecurrent.USD_EUR_AMOUNT, InputData_MoneyRecurrent.TRANSFER_PAY, InputData_MoneyRecurrent.CONTENT, InputDataInVCB.PAYMENT_OPTIONS[1]);
@@ -75,16 +77,19 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_01_ChuyenTien_VND_DinhKy_1Ngay_CoPhiGiaoDichNguoiChuyenTra_CungChuTK_XacThucBangOTP() {
 
-		log.info("TC_01_2_Chon phuong thuc chuyen tien");
+		log.info("TC_01_1_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
-		log.info("TC_01_3_Chon tai khoan nguon");
+		log.info("TC_01_2_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<SourceAccountModel> listDistanceAccount = transferRecurrent.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		expectAvailableBalance = sourceAccount.balance;
 		
-		transferRecurrent.inputToDynamicInputBox(driver, receivedAccount, TittleData.INPUT_ACCOUNT_BENEFICI);
+		log.info("TC_01_3_Nhap tai khoan nhan");
+		distanceAccount.account = transferRecurrent.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
+		transferRecurrent.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_4_Chon tan suat");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
@@ -113,7 +118,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
 
 		log.info("TC_01_9_3_Kiem tra tai khoan dich");
-		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(receivedAccount));
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account));
 
 		log.info("TC_01_9_4_Kiem tra so tien");
 		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT).contains(addCommasToLong(info.money)));
@@ -146,11 +151,11 @@ public class TransferMoneyRecurrent extends Base {
 
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
-		log.info("TC_01_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI), receivedName);
+		log.info("TC_01_13_1_Lay ten nguoi huong thu");
+		sameOwnerName = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI);
 
 		log.info("TC_01_13_2_Kiem tra tai khoan dich");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_BENEFICI), receivedAccount);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_BENEFICI), distanceAccount.account);
 
 		log.info("TC_01_13_3_Kiem tra noi dung");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CONTENT), info.note);
@@ -210,7 +215,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_03_9: Kiem tra nguoi nhan");
-		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), receivedName);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), sameOwnerName);
 
 		log.info("TC_03_10: Kiem tra trang thai giao dich");
 		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
@@ -226,7 +231,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_03_14: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.NAME_RECEIPTER), receivedName);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.NAME_RECEIPTER), sameOwnerName);
 
 		log.info("TC_03_15: Kiem tra so tien thi");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.AMOUNT), addCommasToLong(info.money) + " VND");
@@ -273,7 +278,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyTrue(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.CREAT_DATE).contains(convertTransferTimeToReportDateTime(transferTime)));
 
 		log.info("TC_04_08: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.NAME_RECEIPTER), receivedName);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.NAME_RECEIPTER), sameOwnerName);
 
 		log.info("TC_04_09: Kiem tra so tien thi");
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.AMOUNT), addCommasToLong(info.money) + " VND");
