@@ -2842,7 +2842,7 @@ public class AbstractPage {
 
 	}
 
-	public List<SourceAccountModel> getListSourceAccount(AppiumDriver<MobileElement> driver, String currentcY) {
+	public List<SourceAccountModel> getListSourceAccount_Code(AppiumDriver<MobileElement> driver, String currentcY) {
 		boolean status = false;
 		SourceAccountModel sourceAccount = new SourceAccountModel();
 		List<SourceAccountModel> accountList = new ArrayList<SourceAccountModel>();
@@ -2871,7 +2871,7 @@ public class AbstractPage {
 		return accountList;
 	}
 
-	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<SourceAccountModel> listAccount) {
+	public String getDistanceAccount_Code(AppiumDriver<MobileElement> driver, String sourceAccount, List<SourceAccountModel> listAccount) {
 		SourceAccountModel distanceAccount = new SourceAccountModel();
 		for (int i = 0; i < listAccount.size(); i++) {
 			if (!listAccount.get(i).account.equals(sourceAccount)) {
@@ -2880,6 +2880,29 @@ public class AbstractPage {
 			}
 		}
 		return distanceAccount.account;
+
+	}
+
+	public List<String> getListSourceAccount(AppiumDriver<MobileElement> driver, String currentcY) {
+		boolean status = false;
+		List<String> listText = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_CONTAIN_PRE, currentcY);
+		if (status == true) {
+			listText = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_CONTAIN_PRE, currentcY);
+		}
+
+		return listText;
+	}
+
+	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<String> listAccount) {
+		String distanAccount = "";
+		for (String account : listAccount) {
+			if (!account.equals(sourceAccount)) {
+				distanAccount = account;
+				break;
+			}
+		}
+		return distanAccount;
 
 	}
 
