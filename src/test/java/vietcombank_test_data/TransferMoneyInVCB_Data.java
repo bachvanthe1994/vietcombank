@@ -9,7 +9,7 @@ public class TransferMoneyInVCB_Data {
 
 	public static class InputDataInVCB {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai" };
-		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
+		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" ,"VCB - Smart OTP"};
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
