@@ -123,5 +123,6 @@ public class DynamicPageUIs {
 	
 	public static final String DYNAMIC_LISTVIEW_LAYOUT = "//*[@resource-id = '%s']/android.widget.LinearLayout";
 	public static final String DYNAMIC_TEXT_NON = "//android.widget.TextView";
+	public static final String DYNAMIC_TEXT_CONTAIN = "//android.widget.TextView[contains(@text, '%s')]";
 	
 }
