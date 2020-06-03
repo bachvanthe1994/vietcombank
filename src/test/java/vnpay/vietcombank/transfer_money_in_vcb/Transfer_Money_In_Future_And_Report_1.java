@@ -91,8 +91,8 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_01_Step_08: Chon tai khoan chuyen");
-       sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
-       account3= sourceAccount.account;
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
+		account3= sourceAccount.account;
        
 		transferInVCB.sleep(driver, 1000);
 

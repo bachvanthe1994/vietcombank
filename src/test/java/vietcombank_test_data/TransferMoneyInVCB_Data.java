@@ -7,7 +7,7 @@ public class TransferMoneyInVCB_Data {
 
 	public static class InputDataInVCB {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai" };
-		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP" };
+		public static final String[] PAYMENT_OPTIONS = { "Mật khẩu đăng nhập", "SMS OTP","VCB - Smart OTP" };
 
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
@@ -163,7 +163,6 @@ public class TransferMoneyInVCB_Data {
 	
 	public static class InputData_MoneyRecurrent {
 		
-		public static final String UNSUCCESS_MESSAGE = "Không thành công";
 		public static final String DAY_TEXT = "Ngày";
 		public static final String MONTH_TEXT = "Tháng";
 		public static final String VND_AMOUNT = "500000"; 
@@ -176,15 +175,12 @@ public class TransferMoneyInVCB_Data {
 	
 	public static class InputText_MoneyRecurrent {
 		
-		public static final String TRANSFER_TO_DIFFERENT_BANK_TEXT = "Chuyển tiền tới ngân hàng khác";
 		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
 		public static final String BILLS_PAYMENT_TEXT = "Nạp tiền/ Thanh toán hoá đơn";
 		public static final String TRANSFER_FREQUENCY_TEXT = "Tần suất chuyển";
 		public static final String TRANSACTION_TIMES_TEXT = "Số lần giao dịch";
 		public static final String TRANSFER_PER_TIMES_TEXT = "/ lần";
 		public static final String FREQUENCY_TEXT = "Tần suất";
-		public static final String START_DATE_TEXT = "Ngày bắt đầu";
-		public static final String END_DATE_TEXT = "Ngày kết thúc";
 		public static final String FEE_PER_TIMES_TEXT = "Số tiền phí/lần";
 	}
 
