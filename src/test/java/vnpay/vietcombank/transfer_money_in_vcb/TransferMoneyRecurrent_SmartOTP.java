@@ -19,7 +19,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
-import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
@@ -88,6 +87,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		expectAvailableBalance = sourceAccount.balance;
 		
+		log.info("TC_01_3_1_Nhap tai khoan nhan");
 		transferRecurrent.inputToDynamicInputBox(driver, receivedAccount, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_4_Chon tan suat");
@@ -141,14 +141,15 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		log.info("TC_01_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
+		log.info("TC_01_12_1_Nhap OTP va click Tiep tuc");
 		transferRecurrent.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
+		log.info("TC_01_13_0_Lay thoi gian giao dich");
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_01_13_1_Kiem tra ten nguoi huong thu");
@@ -172,10 +173,10 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
-		transferRecurrent.scrollUpToText(driver, TittleData.SOURCE_ACCOUNT);
 		log.info("TC_02_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, TittleData.SURPLUS);
-
+		transferRecurrent.scrollUpToText(driver, TittleData.SOURCE_ACCOUNT);
+		String actualAvailableBalance = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
+		
 		log.info("TC_02_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance+" "+sourceAccount.currentcy);
 
@@ -211,7 +212,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus.clickToDynamicButton(driver, TransferMoneyStatus_Data.Text.SEARCH);
 
 		log.info("TC_03_8: Kiem tra ngay tao giao dich hien thi");
-		String reportTime1 = transferRecurrent.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		String reportTime1 = transferStatus.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_03_9: Kiem tra nguoi nhan");
@@ -227,7 +228,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_03_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CREAT_DATE);
+		String reportTime2 = transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.CREAT_DATE);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_03_14: Kiem tra ten nguoi huong hien thi");
@@ -317,6 +318,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, Constants.EUR_CURRENCY);
 		expectAvailableBalance = sourceAccount.balance;
 
+		log.info("TC_05_3_1_Nhap tai khoan nhan");
 		transferRecurrent.inputToDynamicInputBox(driver, receivedAccount, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_05_4_Chon tan suat");
@@ -368,14 +370,15 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		log.info("TC_05_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
+		log.info("TC_05_12_1_Nhap OTP va click Tiep tuc");
 		transferRecurrent.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_05_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
+		log.info("TC_05_13_0_Lay thoi gian giao dich");
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_05_13_1_Kiem tra ten nguoi huong thu");
@@ -402,10 +405,10 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
-		transferRecurrent.scrollUpToText(driver, TittleData.SOURCE_ACCOUNT);
 		log.info("TC_06_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, TittleData.SURPLUS);
-
+		transferRecurrent.scrollUpToText(driver, TittleData.SOURCE_ACCOUNT);
+		String actualAvailableBalance = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
+		
 		log.info("TC_06_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance+" "+sourceAccount.currentcy);
 
@@ -440,7 +443,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus.clickToDynamicButton(driver, TransferMoneyStatus_Data.Text.SEARCH);
 
 		log.info("TC_07_8: Kiem tra ngay tao giao dich hien thi");
-		String reportTime1 = transferRecurrent.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		String reportTime1 = transferStatus.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_07_9: Kiem tra nguoi nhan");
@@ -456,7 +459,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_07_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CREAT_DATE);
+		String reportTime2 = transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.CREAT_DATE);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_07_15: Kiem tra ten nguoi huong hien thi");
@@ -475,7 +478,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.END_DATE_TEXT), endDate);
 
 		log.info("TC_07_20: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, TransferMoneyStatus_Data.Text.DETAIL_TRANSFER);
 
 	}
 
@@ -546,6 +549,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, Constants.USD_CURRENCY);
 		expectAvailableBalance = sourceAccount.balance;
 
+		log.info("TC_09_3_1_Nhap tai khoan nhan");
 		transferRecurrent.inputToDynamicInputBox(driver, receivedAccount, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_09_4_Chon tan suat");
@@ -597,14 +601,15 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		log.info("TC_09_12_Click Tiep tuc");
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
+		log.info("TC_09_12_1_Nhap OTP va click Tiep tuc");
 		transferRecurrent.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_09_13_Kiem tra man hinh Lap lenh thanh cong");
 		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
 
+		log.info("TC_09_13_0_Lay thoi gian giao dich");
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_09_13_1_Kiem tra ten nguoi huong thu");
@@ -631,10 +636,10 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
-		transferRecurrent.scrollUpToText(driver, TittleData.SOURCE_ACCOUNT);
 		log.info("TC_10_02_Lay so du");
-		String actualAvailableBalance = transferRecurrent.getTextElement(driver, DynamicPageUIs.DYNAMIC_CONFIRM_INFO, TittleData.SURPLUS);
-
+		transferRecurrent.scrollUpToText(driver, TittleData.SOURCE_ACCOUNT);
+		String actualAvailableBalance = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
+		
 		log.info("TC_10_03_Kiem tra so du khong thay doi khi chua den han");
 		verifyEquals(actualAvailableBalance, expectAvailableBalance+" "+sourceAccount.currentcy);
 
@@ -669,7 +674,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus.clickToDynamicButton(driver, TransferMoneyStatus_Data.Text.SEARCH);
 
 		log.info("TC_11_08: Kiem tra ngay tao giao dich hien thi");
-		String reportTime1 = transferRecurrent.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
+		String reportTime1 = transferStatus.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_11_09: Kiem tra nguoi nhan");
@@ -685,7 +690,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_11_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CREAT_DATE);
+		String reportTime2 = transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.CREAT_DATE);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_11_14: Kiem tra ten nguoi huong hien thi");
@@ -704,7 +709,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TransferMoneyStatus_Data.Text.END_DATE_TEXT), endDate);
 
 		log.info("TC_11_19: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, TransferMoneyStatus_Data.Text.DETAIL_TRANSFER);
 
 	}
 

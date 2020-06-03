@@ -2871,7 +2871,9 @@ public class AbstractPage {
 		return accountList;
 	}
 
+
 	public String getDistanceAccount_Code(AppiumDriver<MobileElement> driver, String sourceAccount, List<SourceAccountModel> listAccount) {
+
 		SourceAccountModel distanceAccount = new SourceAccountModel();
 		for (int i = 0; i < listAccount.size(); i++) {
 			if (!listAccount.get(i).account.equals(sourceAccount)) {

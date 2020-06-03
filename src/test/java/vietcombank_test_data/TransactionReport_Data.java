@@ -17,6 +17,9 @@ public class TransactionReport_Data {
 		public static final String FEE_MONEY = "Số tiền phí";
 		public static final String TIME_TRANSACTION = "Thời gian giao dịch";
 		
+		public static final String AUTO_SAVING_TEXT = "Tiết kiệm tự động";
+		public static final String CANCEL_AUTO_SAVING_TEXT = "Hủy tiết kiệm tự động";
+		
 	}
 
 }
