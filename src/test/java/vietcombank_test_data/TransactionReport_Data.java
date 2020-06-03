@@ -13,6 +13,8 @@ public class TransactionReport_Data {
 		public static final String DESTINATION_ACCOUNT_CARD = "Tài khoản ghi có";
 		public static final String TRANSACTION_TYPE = "Loại giao dịch";
 		public static final String TRANSACTION_CONTENT = "Nội dung giao dịch";
+		public static final String CHANGE_MONEY = "Số tiền quy đổi";
+		public static final String FEE_MONEY = "Số tiền phí";
 		
 	}
 

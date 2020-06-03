@@ -165,7 +165,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, SavingOnline_Data.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver,  TransactionReport_Data.ReportTite.SEARCH_BUTTON);
 
 		log.info("TC_02_9: Kiem tra ngay tao giao dich hien thi");
 		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
