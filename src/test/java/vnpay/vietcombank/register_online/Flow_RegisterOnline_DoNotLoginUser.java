@@ -1,6 +1,7 @@
 package vnpay.vietcombank.register_online;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,15 +20,22 @@ import vietcombank_test_data.Register_Online_data.Register_Text;
 public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 	AppiumDriver<MobileElement> driver;
 	private RegisterOnlinePageObject registerOnline;
+	
+	private String sourceAccount01,accountName01,sourceAccount02,accountName02;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		registerOnline = PageFactoryManager.getRegisterOnlinePageObject(driver);
 
+		sourceAccount01 = getDataInCell(0).trim();
+		accountName01 = getDataInCell(1).trim();
+		sourceAccount02 = getDataInCell(7).trim();
+		accountName02 = getDataInCell(3).trim();
+		
 		registerOnline.clickToTextID(driver, "com.VCB:id/tvSkip");
 	}
 
@@ -44,7 +52,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Text.TRANSFER_MONEY_TEXT);
 
 		log.info("TC_01_Step: Nhap thong tin khach hang");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/edtFullName");
+		registerOnline.inputIntoEditTextByID(driver, accountName01, "com.VCB:id/edtFullName");
 
 		log.info("TC_01_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
@@ -76,16 +84,16 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.EMAIL, "com.VCB:id/edtEmail");
 
 		log.info("TC_01_Step: Nhap so tai khoan nhan");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACCOUNT_TAKE[0], "com.VCB:id/layoutSoTk3");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, sourceAccount01, "com.VCB:id/layoutSoTk3");
 
 		log.info("TC_01_Step: Nhap ten chu tai khoan");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/layoutTenChuTk2");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName01, "com.VCB:id/layoutTenChuTk2");
 
 		log.info("TC_01_Step: Nhap so tai khoan phan ghi co");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACCOUNT_TAKE[1], "com.VCB:id/layoutSoTk1");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, sourceAccount02, "com.VCB:id/layoutSoTk1");
 
 		log.info("TC_01_Step: Nhap ten tai khoan phan ghi co");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.CUSTOMER_NAME_ACCEPT, "com.VCB:id/layoutTenChuTk");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName02, "com.VCB:id/layoutTenChuTk");
 
 		log.info("TC_01_Step: Nhap so tien chuyen");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.AMOUNT, "com.VCB:id/layoutSoTien");
@@ -119,7 +127,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Text.TRANSFER_MONEY_TEXT);
 
 		log.info("TC_02_Step: Nhap thong tin khach hang");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/edtFullName");
+		registerOnline.inputIntoEditTextByID(driver, accountName01, "com.VCB:id/edtFullName");
 
 		log.info("TC_02_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
@@ -151,19 +159,19 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.EMAIL, "com.VCB:id/edtEmail");
 
 		log.info("TC_02_Step: Nhap so tai khoan nhan");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACCOUNT_TAKE[0], "com.VCB:id/layoutSoTk3");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, sourceAccount01, "com.VCB:id/layoutSoTk3");
 
 		log.info("TC_02_Step: Nhap ten chu tai khoan");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/layoutTenChuTk2");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName01, "com.VCB:id/layoutTenChuTk2");
 
 		log.info("TC_02_Step: Click tab ngoai he thong VCB");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Text.OUTSIDE_VCB_TEXT);
 
 		log.info("TC_02_Step: Nhap so tai khoan phan ghi co");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACCOUNT_TAKE[1], "com.VCB:id/layoutSoTk1");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, sourceAccount02, "com.VCB:id/layoutSoTk1");
 
 		log.info("TC_02_Step: Nhap ten tai khoan phan ghi co");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.CUSTOMER_NAME_ACCEPT, "com.VCB:id/layoutTenChuTk");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName02, "com.VCB:id/layoutTenChuTk");
 
 		log.info("TC_02_Step: Chon ngan hang");
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutBank");
@@ -202,7 +210,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Text.PAYMENT_TEXT);
 
 		log.info("TC_03_Step: Nhap thong tin khach hang");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/edtFullName");
+		registerOnline.inputIntoEditTextByID(driver, accountName01, "com.VCB:id/edtFullName");
 
 		log.info("TC_03_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
@@ -234,10 +242,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.EMAIL, "com.VCB:id/edtEmail");
 
 		log.info("TC_03_Step: Nhap so tai khoan phan ghi co");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACCOUNT_TAKE[0], "com.VCB:id/layoutSoTk1");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, sourceAccount01, "com.VCB:id/layoutSoTk1");
 
 		log.info("TC_03_Step: Nhap ten tai khoan phan ghi co");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.CUSTOMER_NAME_ACCEPT, "com.VCB:id/layoutTenChuTk");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName02, "com.VCB:id/layoutTenChuTk");
 
 		log.info("TC_03_Step: Chon ngan hang");
 		registerOnline.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutBank");
@@ -247,7 +255,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.AMOUNT, "com.VCB:id/layoutSoTien");
 
 		log.info("TC_03_Step: Nhap nguoi nop tien");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/layoutNguoiNopTien");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName01, "com.VCB:id/layoutNguoiNopTien");
 
 		log.info("TC_03_Step: Nhap noi dung chuyen");
 		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.NOTE, "com.VCB:id/layoutNoiDungNop");
@@ -279,7 +287,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Text.CASH_OUT_TEXT);
 
 		log.info("TC_04_Step: Nhap thong tin khach hang");
-		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.ACC_NAME, "com.VCB:id/edtFullName");
+		registerOnline.inputIntoEditTextByID(driver, accountName01, "com.VCB:id/edtFullName");
 
 		log.info("TC_04_Step: Click chon giay to tuy than");
 		registerOnline.clickToTextID(driver, "com.VCB:id/tvContentConfirm");
@@ -311,10 +319,10 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.EMAIL, "com.VCB:id/edtEmail");
 
 		log.info("TC_04_Step: Nhap so tai khoan phan ghi nợ");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.ACCOUNT_TAKE[1], "com.VCB:id/layoutSoTk1");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, sourceAccount02, "com.VCB:id/layoutSoTk1");
 
 		log.info("TC_04_Step: Nhap ten tai khoan phan ghi nợ");
-		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, Register_Online_data.Register_Onl_Data.CUSTOMER_NAME_ACCEPT, "com.VCB:id/layoutTenChuTk");
+		registerOnline.inputToDynamicEditviewByLinearlayoutId(driver, accountName02, "com.VCB:id/layoutTenChuTk");
 
 		log.info("TC_04_Step: Chon loai tien la USD");
 		registerOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivContent3");
