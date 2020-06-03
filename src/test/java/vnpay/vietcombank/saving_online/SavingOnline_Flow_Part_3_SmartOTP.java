@@ -64,7 +64,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() throws GeneralSecurityException, IOException {
+	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_PTXT_SmartOTP() throws GeneralSecurityException, IOException {
 		log.info("TC_01_0_Setup smart OTP");
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, getDataInCell(6));
 		
@@ -151,7 +151,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao_PTXT_SmartOTP() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -187,7 +187,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_13: Kiem tra so lenh giao dich");
@@ -218,7 +218,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 	}
 	
 	@Test
-	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai() {
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_SmartOTP() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -300,7 +300,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao() {
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_BaoCao_PTXT_SmartOTP() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
@@ -337,7 +337,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_13: Kiem tra so lenh giao dich");

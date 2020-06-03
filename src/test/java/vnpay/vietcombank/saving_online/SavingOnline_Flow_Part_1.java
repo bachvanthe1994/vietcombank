@@ -60,7 +60,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_PTXT_OTP() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -142,7 +142,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_02_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao_PTXT_OTP() {
 		log.info("TC_02_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -165,7 +165,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, SavingOnline_Data.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver,  TransactionReport_Data.ReportTite.SEARCH_BUTTON);
 
 		log.info("TC_02_9: Kiem tra ngay tao giao dich hien thi");
 		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -178,7 +178,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_13: Kiem tra so lenh giao dich");
@@ -209,7 +209,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc() {
+	public void TC_03_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_PTXT_OTP() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -291,7 +291,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao() {
+	public void TC_04_TatToanTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_BaoCao_PTXT_OTP() {
 		log.info("TC_04_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
@@ -327,7 +327,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_13: Kiem tra so lenh giao dich");
@@ -361,7 +361,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+	public void TC_05_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP() {
 		log.info("TC_05_1_Click Mo tai khoan tiet kiem");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -443,7 +443,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
+	public void TC_06_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao_PTXT_OTP() {
 		log.info("TC_06_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -479,7 +479,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_06_13: Kiem tra so lenh giao dich");
@@ -510,7 +510,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc() {
+	public void TC_07_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP() {
 		String savingDate = "";
 		String expiredDate = "";
 
@@ -592,7 +592,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao() {
+	public void TC_08_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_BaoCao_PTXT_OTP() {
 		log.info("TC_08_1: Click  nut Back");
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
@@ -628,7 +628,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, "Thời gian giao dịch");
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_08_13: Kiem tra so lenh giao dich");
