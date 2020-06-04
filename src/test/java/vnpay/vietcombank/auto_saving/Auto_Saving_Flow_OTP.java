@@ -20,7 +20,6 @@ import pageObjects.SavingOnlinePageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Auto_Saving_Data;
 import vietcombank_test_data.Auto_Saving_Data.Auto_Saving_Text;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTite;
 
@@ -56,8 +55,9 @@ public class Auto_Saving_Flow_OTP extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
+	@Parameters ({"otp"})
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
 		
 		log.info("TC_01_01_Click Mo tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
@@ -95,7 +95,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_01_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputToDynamicOtp(driver, otp, SavingOnline_Data.CONTINUE_BUTTON);
 
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
@@ -360,9 +360,9 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	}
 
-
+	@Parameters ({"otp"})
 	@Test
-	public void TC_06_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP() {
+	public void TC_06_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
 
 		log.info("TC_06_01_Click Tat toan tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
@@ -389,7 +389,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 		log.info("TC_06_07_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputToDynamicOtp(driver, otp, SavingOnline_Data.CONTINUE_BUTTON);
 
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 

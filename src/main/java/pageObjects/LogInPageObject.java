@@ -49,7 +49,7 @@ public class LogInPageObject extends AbstractPage {
 	
 	public void Global_login1(String phone, String pass, String otp) {
 
-		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
+		//clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
 

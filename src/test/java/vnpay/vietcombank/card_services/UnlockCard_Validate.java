@@ -14,7 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LockCardPageObject;
 import pageObjects.LogInPageObject;
-import vietcombank_test_data.Lock_Card_Data;
+import vietcombank_test_data.Card_Services_Data;
 
 public class UnlockCard_Validate extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -52,13 +52,13 @@ public class UnlockCard_Validate extends Base {
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
 
 		log.info("TC_01_Step_03: Xac nhan hien thi title 'Mo khoa the' ");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Lock_Card_Data.VALIDATE.UNLOCK_CARD_TILTE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Card_Services_Data.VALIDATE.UNLOCK_CARD_TILTE);
 		
 		log.info("TC_01_Step_04: Xac nhan hien thi Icon Back ");
 		verifyTrue(lockCard.isDynamicImageHomeDisplay(driver, "com.VCB:id/ivTitleLeft"));
 		
 		log.info("TC_01_Step_05: Xac nhan hien thi Combobox Loai The ");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT);
 		
 		log.info("TC_01_Step_06: Xac nhan hien thi Combobox so the ");
 		verifyTrue(lockCard.isDynamicTextViewByLinearLayoutIdDisplayed(driver, "com.VCB:id/layout1"));
@@ -94,7 +94,7 @@ public class UnlockCard_Validate extends Base {
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
 		
 		log.info("TC_03_Step_03: Xac nhan hien thi Combobox Loai The mac dinh");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT);
 	}
 
 	@Test
@@ -105,25 +105,25 @@ public class UnlockCard_Validate extends Base {
 		
 		log.info("TC_04_Step_02: Xac nhan chi hien thi 2 loai the");
 		verifyEquals(lockCard.getCountNumberOfDynamicListElements(driver, "com.VCB:id/tvContent"), 2);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.VALIDATE.CREDIT_CARD_TEXT, "com.VCB:id/tvContent"));
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT, "com.VCB:id/tvContent"));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Card_Services_Data.VALIDATE.CREDIT_CARD_TEXT, "com.VCB:id/tvContent"));
+		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_05_KiemTraComboboxLoaiThe_KiemTraChonLoaiThe() {
 		
 		log.info("TC_05_Step_01: Chon the Tin dung");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.VALIDATE.CREDIT_CARD_TEXT);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.VALIDATE.CREDIT_CARD_TEXT);
 		
 		log.info("TC_05_Step_02: Xac nhan hien thi dung the da chon o combobox");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Lock_Card_Data.VALIDATE.CREDIT_CARD_TEXT);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Card_Services_Data.VALIDATE.CREDIT_CARD_TEXT);
 		
 		log.info("TC_05_Step_03: Chon the Ghi no");
 		lockCard.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layout0");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT);
 		
 		log.info("TC_05_Step_04: Xac nhan hien thi dung the da chon o combobox");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout0"),Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT);
 	}
 
 	@Test
@@ -144,20 +144,20 @@ public class UnlockCard_Validate extends Base {
 	public void TC_07_KiemTraComboboxSoThe_KiemTraChonSoThe() {
 		
 		log.info("TC_07_Step_01: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.DEBIT_CARD02);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.DEBIT_CARD02);
 		
 		log.info("TC_07_Step_02: Xac nhan the hien thi la the vua chon");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.DEBIT_CARD02);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Card_Services_Data.DEBIT_CARD02);
 		
 		log.info("TC_07_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 		
 		log.info("TC_07_Step_04: Chon So the");
-		Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01 = lockCard.getFirstOptionInDynamicListElements(driver, "com.VCB:id/tvContent");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
+		Card_Services_Data.ACCOUNTS.DEBIT_CARD_01 = lockCard.getFirstOptionInDynamicListElements(driver, "com.VCB:id/tvContent");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.ACCOUNTS.DEBIT_CARD_01);
 		
 		log.info("TC_07_Step_05: Xac nhan the hien thi la the vua chon");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layout1"), Card_Services_Data.ACCOUNTS.DEBIT_CARD_01);
 	}
 	
 	@Test
@@ -186,7 +186,7 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_09_Step_02: Xac nhan hien thi pop-up thong bao");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Lock_Card_Data.VALIDATE.CHECKBOX_UNCHECK_MESSAGE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Card_Services_Data.VALIDATE.CHECKBOX_UNCHECK_MESSAGE);
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_09_Step_03: Click vao checkbox");
@@ -209,13 +209,13 @@ public class UnlockCard_Validate extends Base {
 		verifyTrue(lockCard.isDynamicImageHomeDisplay(driver, "com.VCB:id/ivTitleLeft"));
 		
 		log.info("TC_10_Step_03: Xac nhan hien thi thong bao kiem tra thong tin");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Lock_Card_Data.VALIDATE.UNLOCK_VERIFY_TITLE_HEAD_MESSAGE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Card_Services_Data.VALIDATE.UNLOCK_VERIFY_TITLE_HEAD_MESSAGE);
 		
 		log.info("TC_10_Step_04: Xac nhan hien thi loai the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Loại thẻ"), Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Loại thẻ"), Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT);
 		
 		log.info("TC_10_Step_05: Xac nhan hien thi so the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Card_Services_Data.ACCOUNTS.DEBIT_CARD_01);
 		
 		log.info("TC_10_Step_06: Xac nhan hien thi thuong hieu the");
 		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), "Thương hiệu thẻ");
@@ -251,7 +251,7 @@ public class UnlockCard_Validate extends Base {
 		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblTitle"), "Xác thực");
 		
 		log.info("TC_12_Step_02: Xac nhan hien thi noi dung pop-up");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), Lock_Card_Data.VALIDATE.OTP_METHOD_DESCRIPTION + " " + phone.substring(0, 3) + "*****" + phone.substring(8, 10));
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/lblMessage"), Card_Services_Data.VALIDATE.OTP_METHOD_DESCRIPTION + " " + phone.substring(0, 3) + "*****" + phone.substring(8, 10));
 		
 		log.info("TC_12_Step_03: Xac nhan hien thi phan nhap ma OTP");
 		verifyTrue(lockCard.isDynamicTextDetailByID(driver, "com.VCB:id/otp"));
@@ -277,7 +277,7 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_13_Step_05: Xac nhan hien thi thong bao bat nhap ma OTP");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Lock_Card_Data.VALIDATE.OTP_METHOD_EMPTY_MESSAGE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Card_Services_Data.VALIDATE.OTP_METHOD_EMPTY_MESSAGE);
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}
 	
@@ -290,7 +290,7 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_14_Step_02: Xac nhan hien thi thong bao bat nhap du 6 ki tu ");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Lock_Card_Data.VALIDATE.OTP_METHOD_LESS_THAN_6_CHARACTER_MESSAGE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Card_Services_Data.VALIDATE.OTP_METHOD_LESS_THAN_6_CHARACTER_MESSAGE);
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_14_Step_03: Nhap sai ma OTP roi click nut 'Tiep tuc'");
@@ -298,7 +298,7 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 		
 		log.info("TC_14_Step_04: Xac nhan hien thi thong bao nhap sai ma OTP ");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Lock_Card_Data.VALIDATE.OTP_METHOD_ERROR_MESSAGE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Card_Services_Data.VALIDATE.OTP_METHOD_ERROR_MESSAGE);
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		
 		log.info("TC_14_Step_05: Nhap dung ma OTP roi click nut 'Tiep tuc'");
@@ -326,10 +326,10 @@ public class UnlockCard_Validate extends Base {
 		verifyTrue(lockCard.isDynamicTextDetailByID(driver, "com.VCB:id/tvTime"));
 		
 		log.info("TC_15_Step_05: Xac nhan hien thi loai the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Loại thẻ"), Lock_Card_Data.VALIDATE.DEBIT_CARD_TEXT);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Loại thẻ"), Card_Services_Data.VALIDATE.DEBIT_CARD_TEXT);
 		
 		log.info("TC_15_Step_06: Xac nhan hien thi so the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.ACCOUNTS.DEBIT_CARD_01);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Card_Services_Data.ACCOUNTS.DEBIT_CARD_01);
 		
 		log.info("TC_15_Step_07: Xac nhan hien thi ma giao dich");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "Mã giao dịch"));
@@ -367,14 +367,14 @@ public class UnlockCard_Validate extends Base {
 		lockCard.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layout0");
 		
 		log.info("TC_16_Step_04: Chon the Tin dung");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.VALIDATE.CREDIT_CARD_TEXT);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.VALIDATE.CREDIT_CARD_TEXT);
 		
 		log.info("TC_16_Step_05: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, "Thông tin thẻ", "2");
 		
 		log.info("TC_16_Step_06: Chon So the");
-		Lock_Card_Data.ACCOUNTS.CREDIT_CARD_01 = lockCard.getFirstOptionInDynamicListElements(driver, "com.VCB:id/tvContent");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.ACCOUNTS.CREDIT_CARD_01);
+		Card_Services_Data.ACCOUNTS.CREDIT_CARD_01 = lockCard.getFirstOptionInDynamicListElements(driver, "com.VCB:id/tvContent");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.ACCOUNTS.CREDIT_CARD_01);
 		
 		log.info("TC_16_Step_07: Click vao checkbox");
 		lockCard.clickDynamicCheckBox(driver,  "com.VCB:id/checkBox");
