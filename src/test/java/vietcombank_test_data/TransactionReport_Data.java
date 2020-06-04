@@ -1,7 +1,7 @@
 package vietcombank_test_data;
 
 public class TransactionReport_Data {
-	public class ReportTite {
+	public class ReportTitle {
 		public static final String TRANSACTION_REPORT = "Báo cáo giao dịch";
 		public static final String TRANSACTION_NUMBER = "Số lệnh giao dịch";
 		public static final String ACCOUNT_CARD = "Tài khoản trích nợ";

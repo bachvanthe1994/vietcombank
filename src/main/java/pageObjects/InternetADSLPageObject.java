@@ -81,7 +81,7 @@ public class InternetADSLPageObject extends AbstractPage {
 	// Click image back, trong trường hợp auto click 1 lần không được
 	public void clickImageBack(String dymanicText) {
 		boolean status = false;
-		String locator = String.format(DynamicPageUIs.DYNAMIC_BACK_ICON, dymanicText);
+		String locator = String.format(DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dymanicText);
 		status = waitForElementVisible(driver, locator);
 		if (status == true) {
 			clickToElement(driver, locator);
