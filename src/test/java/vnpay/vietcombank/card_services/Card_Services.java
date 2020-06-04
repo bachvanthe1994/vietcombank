@@ -167,7 +167,7 @@ public class Card_Services extends Base {
 		log.info("TC_02_Step_15: Xac nhan the vua mo khoa hien thị trong danh sach");
 		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 
-		log.info("TC_2_Step_16: Click vào nút 'Dong'");
+		log.info("TC_02_Step_16: Click vào nút 'Dong'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_17: Click ve 'Trang chu'");
