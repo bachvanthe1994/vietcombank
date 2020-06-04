@@ -2440,6 +2440,16 @@ public class AbstractPage {
 		return text;
 
 	}
+	public String getDynamicTextFollowingText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_FOLLOW_TEXT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_FOLLOW_TEXT, dynamicTextValue);
+		}
+		return text;
+		
+	}
 
 	public String getDynamicAmountLabelList(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
@@ -2779,6 +2789,8 @@ public class AbstractPage {
 		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd)).release().perform();
 	}
 
+	
+
 	public SourceAccountModel chooseSourceAccount(AppiumDriver<MobileElement> driver, double money, String currentcy) {
 
 		boolean status = false;
@@ -2787,8 +2799,8 @@ public class AbstractPage {
 		boolean check = true;
 		int count = 0;
 		while (check && count <= 5) {
-			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
-			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
+			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent","com.VCB:id/list_item");
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent","com.VCB:id/list_item");
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
 			status = elements.size() > 0;
 
@@ -2842,6 +2854,8 @@ public class AbstractPage {
 
 	}
 
+	
+	
 	public List<SourceAccountModel> getListSourceAccount_Code(AppiumDriver<MobileElement> driver, String currentcY) {
 		boolean status = false;
 		SourceAccountModel sourceAccount = new SourceAccountModel();
@@ -2899,7 +2913,7 @@ public class AbstractPage {
 	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<String> listAccount) {
 		String distanAccount = "";
 		for (String account : listAccount) {
-			if (!account.equals(sourceAccount)) {
+			if (!account.equals(sourceAccount)&&account!="0019961180") {
 				distanAccount = account;
 				break;
 			}
