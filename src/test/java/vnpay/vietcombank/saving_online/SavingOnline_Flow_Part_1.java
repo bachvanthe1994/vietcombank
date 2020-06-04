@@ -150,10 +150,10 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_3: Click Bao Cao giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_02_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
@@ -165,7 +165,7 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver,  TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver,  TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_02_9: Kiem tra ngay tao giao dich hien thi");
 		String reportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -178,30 +178,30 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_13: Kiem tra so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_02_14: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_02_15: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_02_16: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
 		log.info("TC_02_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + account + ", SO TIEN " + addCommasToLong(info.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_02_18: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_02_19: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_20: Click  nut Home");
 		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -299,10 +299,10 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_3: Click Bao Cao giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_04_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_04_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
@@ -327,33 +327,33 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_13: Kiem tra so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_04_14: Kiem tra tai khoan/the trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), savingAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), savingAccount);
 
 		log.info("TC_04_14: Kiem tra so tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.DESTINATION_ACCOUNT_CARD), account);
 
 		log.info("TC_04_15: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_04_16: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
 		log.info("TC_04_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.ONE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_04_18: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_04_19: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_04_20: Click  nut Home");
 		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -451,10 +451,10 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_3: Click Bao Cao giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_06_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_06_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
@@ -479,30 +479,30 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_06_13: Kiem tra so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_06_14: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_06_15: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info1.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info1.money) + " VND"));
 
 		log.info("TC_06_16: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
 		log.info("TC_06_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".FDONLINE FROM ACT " + account + ", SO TIEN " + addCommasToLong(info1.money) + ", LOAI TIEN VND, KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_06_18: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_06_19: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_06_20: Click  nut Home");
 		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -600,10 +600,10 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_3: Click Bao Cao giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_08_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
@@ -628,33 +628,33 @@ public class SavingOnline_Flow_Part_1 extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_12: Kiem tra thoi gian tao giao dich hien thi");
-		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		reportTime = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_08_13: Kiem tra so lenh giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_08_14: Kiem tra tai khoan/the trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), savingAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), savingAccount);
 
 		log.info("TC_08_14: Kiem tra so tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.DESTINATION_ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.DESTINATION_ACCOUNT_CARD), account);
 
 		log.info("TC_08_15: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info1.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info1.money) + " VND"));
 
 		log.info("TC_08_16: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
 
 		log.info("TC_08_17: Kiem tra noi dung giao dich");
 		String expectContent = "MBVCB." + transactionNumber + ".Tat toan TK FD, SO TK " + savingAccount + ", KY HAN " + convertVietNameseStringToString(SavingOnline_Data.THREE_MONTH);
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT), expectContent);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT), expectContent);
 
 		log.info("TC_08_18: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_08_19: Click  nut Back");
-		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		savingOnline.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_20: Click  nut Home");
 		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
