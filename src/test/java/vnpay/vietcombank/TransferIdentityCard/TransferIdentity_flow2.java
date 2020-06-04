@@ -52,7 +52,7 @@ public class TransferIdentity_flow2 extends Base {
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 	}
 
-	@Parameters({ "otp" })
+	/*@Parameters({ "otp" })
 	@Test
 	public void TC_15_ChuyenTienERUChoNguoNhanTaiQuayBangHCXacThucBangOTPNguoiNhanTraPhi(String otp) {
 		log.info("TC_15_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
@@ -139,6 +139,8 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_16_17: kiểm tra số dư");
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
+		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -190,7 +192,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_16_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.EUR_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_16_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
@@ -344,7 +346,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_18_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_18_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
@@ -447,6 +449,8 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_20_17: kiểm tra số dư");
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
+		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -498,7 +502,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_20_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.USD_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_20_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
@@ -603,8 +607,8 @@ public class TransferIdentity_flow2 extends Base {
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
-		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
-		double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
+		long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
+		long canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 		verifyEquals(surplusInt, canculateAvailable);
 
 		log.info("TC_21_STEP_22: chọn back");
@@ -652,7 +656,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_22_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_22_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
@@ -757,7 +761,7 @@ public class TransferIdentity_flow2 extends Base {
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
-		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
+		long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
 		double canculateAvailable = canculateAvailableBalancesCurrentcy((long) toltalMoney, (long) fee, (long) money_transferred);
 		verifyEquals(surplusInt, canculateAvailable);
 
@@ -806,7 +810,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_24_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.EUR_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_24_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
@@ -957,7 +961,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_26_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_26_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
@@ -1057,6 +1061,8 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_28_17: kiểm tra số dư");
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
+		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -1108,7 +1114,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_28_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.USD_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_28_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
@@ -1123,7 +1129,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_28_20: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}
+	}*/
 
 	@Parameters({ "otp" })
 	@Test
@@ -1208,6 +1214,8 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_30_17: kiểm tra số dư");
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
+		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -1259,7 +1267,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_30_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.USD_ACCOUNT);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_30_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
@@ -1359,6 +1367,8 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_32_17: kiểm tra số dư");
 		trasferPage.scrollUpToText(driver, textCheckElement.ACCOUNT);
+		trasferPage.clickToTextID(driver, "com.VCB:id/tvContent");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 		String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -1410,7 +1420,7 @@ public class TransferIdentity_flow2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
 
 		log.info("TC_32_13: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), Valid_Account.DEFAULT_ACCOUNT3);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
 
 		log.info("TC_32_14: Kiem tra so tien giao dich hien thi");
 		String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
