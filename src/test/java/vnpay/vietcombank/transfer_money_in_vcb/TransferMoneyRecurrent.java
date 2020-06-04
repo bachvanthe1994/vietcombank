@@ -1449,6 +1449,218 @@ public class TransferMoneyRecurrent extends Base {
 		log.info("TC_24_15: Click  nut Back");
 		transferStatus.clickToDynamicBackIcon(driver, TransferMoneyStatus_Data.Text.TRANSFER_MONEY_STATUS_TEXT);
 	}
+	
+	@Test
+	public void TC_25_ChuyenTien_VND_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP_LuuDanhBaThuHuong() {
+		
+		log.info("TC_25_1_Click Chuyen tien trong ngan hang");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+
+		log.info("TC_25_2_Chon phuong thuc chuyen tien");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+
+		log.info("TC_25_3_Chon tai khoan nguon");
+		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		expectAvailableBalance = sourceAccount.balance;
+
+		log.info("TC_25_3_1_Nhan tai khoan nhan");
+		transferRecurrent.inputToDynamicInputBox(driver, receivedAccount, TittleData.INPUT_ACCOUNT_BENEFICI);
+
+		log.info("TC_25_4_Chon tan suat");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.frequencyCategory);
+		transferRecurrent.inputFrequencyNumber(info1.frequencyNumber);
+
+		log.info("TC_25_5_Nhap so tien");
+		transferRecurrent.inputToDynamicInputBox(driver, info1.money, TittleData.AMOUNT);
+
+		log.info("TC_25_6_Chon nguoi tra phi giao dich");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, TittleData.FEE_TRANSFER_SOURCE_ACCOUNT_PAY);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.fee);
+
+		log.info("TC_25_7_Nhap noi dung");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.note, TittleData.TRANSFER_INFO, "3");
+
+		log.info("TC_25_8_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_25_9_Kiem tra man hinh xac nhan thong tin");
+		transferRecurrent.scrollUpToText(driver, TittleData.FORM_TRANSFER);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), InputDataInVCB.OPTION_TRANSFER[1]);
+
+		log.info("TC_25_9_1_Kiem tra tai khoan nguon");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
+
+		log.info("TC_25_9_2_Kiem tra tai khoan dich");
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(receivedAccount));
+
+		log.info("TC_25_9_3_Kiem tra tan suat");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info1.frequencyNumber + " " + info1.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
+
+		log.info("TC_25_9_4_Kiem tra tan suat");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
+
+		log.info("TC_25_9_5_Kiem tra noi dung");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CONTENT), info1.note);
+
+		log.info("TC_25_10_Chon phuong thuc xac thuc");
+		transferRecurrent.scrollDownToText(driver, TittleData.METHOD_VALIDATE);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.PAYMENT_OPTIONS[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
+
+		log.info("TC_25_11_Kiem tra so tien phi");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_PER_TIMES_TEXT);
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
+		log.info("TC_25_12_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_25_12_1_Nhap OTP va click Tiep tuc");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, TittleData.CONTINUE_BTN);
+		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_25_13_Kiem tra man hinh Lap lenh thanh cong");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		
+		log.info("TC_25_13_0_Lay thoi gian giao dich");
+		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+
+		log.info("TC_25_13_1_Kiem tra ten nguoi huong thu");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI), receivedName);
+
+		log.info("TC_25_13_2_Kiem tra tai khoan dich");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_BENEFICI), receivedAccount);
+
+		log.info("TC_25_13_3_Kiem tra ten noi dung");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CONTENT), info1.note);
+
+		log.info("TC_25_13_4_Kiem tra nut thuc hien giao dich moi");
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, TittleData.NEW_TRANSFER));
+		
+		if (transferRecurrent.getPageSource(driver).contains(InputText_MoneyRecurrent.SAVE_RECEIVED_ACCOUNT_TEXT)) {
+			log.info("TC_25_14_01_Click button chia se");
+			transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.SAVE_RECEIVED_ACCOUNT_TEXT);
+			
+			log.info("TC_25_14_02_Xac nhan hien thi dung loai dich vu");
+			verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvType"), TittleData.TRANSFER_IN_VCB);
+			
+			log.info("TC_25_14_03_Xac nhan hien thi dung ten chu tai khoan");
+			verifyEquals(transferRecurrent.getTextInEditTextFieldByID(driver, "com.VCB:id/edtCusName"), receivedName);
+			
+			log.info("TC_25_14_04_Xac nhan hien thi dung so tai khoan");
+			verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), receivedAccount);
+			
+			log.info("TC_25_14_05_Click button Hoan thanh");
+			transferRecurrent.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
+
+			log.info("TC_25_14_06_Kiem tra luu thanh cong");
+			verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), InputText_MoneyRecurrent.SAVE_CONTACT_SUCCESS_MESSAGE);
+
+			log.info("TC_25_14_07_Click Dong");
+			transferRecurrent.clickToDynamicButton(driver, TittleData.CLOSE);
+		}
+
+		log.info("TC_25_15_Click Thuc hien giao dich moi");
+		transferRecurrent.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
+
+	}
+	
+	@Test
+	public void TC_26_ChuyenTien_VND_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP_LayDanhBaThuHuong() {
+		
+		log.info("TC_26_1_Click Chuyen tien trong ngan hang");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+
+		log.info("TC_26_2_Chon phuong thuc chuyen tien");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+
+		log.info("TC_26_3_Chon tai khoan nguon");
+		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		expectAvailableBalance = sourceAccount.balance;
+
+		log.info("TC_26_3_1_Nhan tai khoan nhan");
+		transferRecurrent.clickToDynamicIconByText(driver, TittleData.INPUT_ACCOUNT_BENEFICI);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, receivedAccount);
+
+		log.info("TC_26_4_Chon tan suat");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.frequencyCategory);
+		transferRecurrent.inputFrequencyNumber(info1.frequencyNumber);
+
+		log.info("TC_26_5_Nhap so tien");
+		transferRecurrent.inputToDynamicInputBox(driver, info1.money, TittleData.AMOUNT);
+
+		log.info("TC_26_6_Chon nguoi tra phi giao dich");
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, TittleData.FEE_TRANSFER_SOURCE_ACCOUNT_PAY);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.fee);
+
+		log.info("TC_26_7_Nhap noi dung");
+		transferRecurrent.inputToDynamicInputBoxByHeader(driver, info1.note, TittleData.TRANSFER_INFO, "3");
+
+		log.info("TC_26_8_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_26_9_Kiem tra man hinh xac nhan thong tin");
+		transferRecurrent.scrollUpToText(driver, TittleData.FORM_TRANSFER);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), InputDataInVCB.OPTION_TRANSFER[1]);
+
+		log.info("TC_26_9_1_Kiem tra tai khoan nguon");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
+
+		log.info("TC_26_9_2_Kiem tra tai khoan dich");
+		verifyTrue(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(receivedAccount));
+
+		log.info("TC_26_9_3_Kiem tra tan suat");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSFER_FREQUENCY_TEXT), info1.frequencyNumber + " " + info1.frequencyCategory + InputText_MoneyRecurrent.TRANSFER_PER_TIMES_TEXT);
+
+		log.info("TC_26_9_4_Kiem tra tan suat");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.TRANSACTION_TIMES_TEXT), "2");
+
+		log.info("TC_26_9_5_Kiem tra noi dung");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CONTENT), info1.note);
+
+		log.info("TC_26_10_Chon phuong thuc xac thuc");
+		transferRecurrent.scrollDownToText(driver, TittleData.METHOD_VALIDATE);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.PAYMENT_OPTIONS[0]);
+		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
+
+		log.info("TC_26_11_Kiem tra so tien phi");
+		String fee= transferRecurrent.getDynamicTextInTransactionDetail(driver, InputText_MoneyRecurrent.FEE_PER_TIMES_TEXT);
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
+		
+		log.info("TC_26_12_Click Tiep tuc");
+		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_26_12_1_Nhap OTP va click Tiep tuc");
+		transferRecurrent.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, TittleData.CONTINUE_BTN);
+		transferRecurrent.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_26_13_Kiem tra man hinh Lap lenh thanh cong");
+		verifyTrue(transferRecurrent.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT));
+		
+		log.info("TC_26_13_0_Lay thoi gian giao dich");
+		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
+
+		log.info("TC_26_13_1_Kiem tra ten nguoi huong thu");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI), receivedName);
+
+		log.info("TC_26_13_2_Kiem tra tai khoan dich");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_BENEFICI), receivedAccount);
+
+		log.info("TC_26_13_3_Kiem tra ten noi dung");
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, TittleData.CONTENT), info1.note);
+
+		log.info("TC_26_13_4_Kiem tra nut thuc hien giao dich moi");
+		verifyTrue(transferRecurrent.isDynamicButtonDisplayed(driver, TittleData.NEW_TRANSFER));
+
+		log.info("TC_26_15_Click Thuc hien giao dich moi");
+		transferRecurrent.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
+
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
