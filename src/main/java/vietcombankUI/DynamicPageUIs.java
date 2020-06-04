@@ -31,6 +31,8 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_INPUT_LABEL_BY_HEADER = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView";
 	public static final String DYNAMIC_TEXT = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
+	public static final String DYNAMIC_FOLLOW_TEXT = "//android.widget.TextView[@text='%s']//following::android.widget.TextView";
+	public static final String DYNAMIC_TEXT_CONTAIN_PRE = "//android.widget.TextView[contains(@text, '%s')]//preceding-sibling::android.widget.TextView";
 	public static final String DYNAMIC_QUICK_MENU = "//android.widget.LinearLayout[@resource-id='com.VCB:id/layoutRoot']//android.widget.ImageView[@resource-id='com.VCB:id/icon']";
 
 	public static final String DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.EditText";
@@ -53,6 +55,7 @@ public class DynamicPageUIs {
 
 	// LINEAER LAYOUT
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
+	public static final String DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT  = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.LinearLayout";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_INDEX = "//android.widget.LinearLayout[@index=%s]";
 
@@ -121,7 +124,8 @@ public class DynamicPageUIs {
 	// WAIT
 	public static final String WAIT_BAR = "//android.widget.ProgressBar[@resource-id='com.VCB:id/progressBar']";
 	
-	public static final String DYNAMIC_LISTVIEW_LAYOUT = "//*[@resource-id = '%s']/android.widget.LinearLayout";
+	public static final String DYNAMIC_LISTVIEW_LAYOUT = "//*[@resource-id = '%s' or @resource-id = '%s']/android.widget.LinearLayout";
 	public static final String DYNAMIC_TEXT_NON = "//android.widget.TextView";
+	public static final String DYNAMIC_TEXT_CONTAIN = "//android.widget.TextView[contains(@text, '%s')]";
 	
 }

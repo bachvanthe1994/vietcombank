@@ -20,7 +20,7 @@ import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.TransactionReport_Data;
-import vietcombank_test_data.TransactionReport_Data.ReportTite;
+import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferIdentity_Data.textCheckElement;
 import vietcombank_test_data.TransferIdentity_Data.textDataInputForm;
 
@@ -157,13 +157,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_02_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_02_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_02_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_02_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -172,7 +172,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_02_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_02_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -188,19 +188,19 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_02_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_02_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_02_14: Kiem tra so tien giao dich hien thi");
-	verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(textDataInputForm.MONEY_TRANSFER_VND) + " VND"));
+	verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(textDataInputForm.MONEY_TRANSFER_VND) + " VND"));
 
 	log.info("TC_02_15: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_02_17: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_02_18: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -308,13 +308,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_04_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_04_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_04_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_04_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -323,7 +323,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_04_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_04_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -341,22 +341,22 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_04_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_04_13: Kiem tra so tai khoan trich no");
-	trasferPage.scrollUpToText(driver, ReportTite.ACCOUNT_CARD);
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	trasferPage.scrollUpToText(driver, ReportTitle.ACCOUNT_CARD);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_04_14: Kiem tra so tien giao dich hien thi");
-	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
+	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY);
 	String[] getMoneyTransfer = get_money_transf.split("\\.");
 	verifyEquals(getMoneyTransfer[0], textCheckElement.AMOUNT_USD);
 
 	log.info("TC_04_16: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_04_19: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_04_20: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -464,13 +464,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_06_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_06_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_06_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_06_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -479,7 +479,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_06_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_06_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -495,21 +495,21 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_06_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_06_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_06_14: Kiem tra so tien giao dich hien thi");
-	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
+	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).replace(",", "");
 	String[] getMoneyTransfer = get_money_transf.split(" ");
 	verifyEquals(getMoneyTransfer[0], textDataInputForm.MONEY_TRANSFER_VND);
 
 	log.info("TC_06_16: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_06_19: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_06_20: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -621,13 +621,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_08_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_08_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_08_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_08_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -636,7 +636,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_08_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_08_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -653,21 +653,21 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_08_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_08_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_08_14: Kiem tra so tien giao dich hien thi");
-	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
+	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY);
 	String[] getMoneyTransfer = get_money_transf.split("\\.");
 	verifyEquals(getMoneyTransfer[0], textCheckElement.AMOUNT_USD);
 
 	log.info("TC_08_16: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_08_19: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_08_20: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -770,13 +770,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_10_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_10_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_10_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_10_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -785,7 +785,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_10_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_10_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -801,21 +801,21 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_10_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_10_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_10_14: Kiem tra so tien giao dich hien thi");
-	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
+	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).replace(",", "");
 	String[] getMoneyTransfer = get_money_transf.split(" ");
 	verifyEquals(getMoneyTransfer[0], textDataInputForm.MONEY_TRANSFER_VND);
 
 	log.info("TC_10_16: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_10_19: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_10_20: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -926,13 +926,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_12_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_12_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_12_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_12_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -941,7 +941,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_12_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_12_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -959,21 +959,21 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_12_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_12_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_12_14: Kiem tra so tien giao dich hien thi");
-	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY);
+	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY);
 	String[] getMoneyTransfer = get_money_transf.split("\\.");
 	verifyEquals(getMoneyTransfer[0], textCheckElement.AMOUNT_USD);
 
 	log.info("TC_12_16: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_12_19: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_12_20: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -1084,13 +1084,13 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_14_2: Click Bao Cao giao Dich");
 	transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_14_3: Click Tat Ca Cac Loai Giao Dich");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 	log.info("TC_14_4: Chon Chuyen Tien Trong VCB");
-	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.CASH_TRANS);
+	transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.CASH_TRANS);
 
 	log.info("TC_14_5: Click Chon Tai Khoan");
 	transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1099,7 +1099,7 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 	log.info("TC_14_7: Click Tim Kiem");
-	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+	transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 	log.info("TC_14_8: Kiem tra ngay tao giao dich hien thi");
 	String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1115,21 +1115,21 @@ public class TransferIdentity_flow extends Base {
 	transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 	log.info("TC_14_12: Kiem tra mã giao dịch");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), code);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), code);
 
 	log.info("TC_14_13: Kiem tra so tai khoan trich no");
-	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTite.ACCOUNT_CARD), account);
+	verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 	log.info("TC_14_14: Kiem tra so tien giao dich hien thi");
-	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).replace(",", "");
+	String get_money_transf = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).replace(",", "");
 	String[] getMoneyTransfer = get_money_transf.split(" ");
 	verifyEquals(getMoneyTransfer[0], textDataInputForm.MONEY_TRANSFER_VND);
 
 	log.info("TC_14_16: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 	log.info("TC_14_19: Click  nut Back");
-	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+	transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 	log.info("TC_14_20: Click  nut Home");
 	transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");

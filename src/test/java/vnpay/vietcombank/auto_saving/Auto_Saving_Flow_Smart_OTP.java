@@ -1,6 +1,7 @@
 package vnpay.vietcombank.auto_saving;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,19 +18,22 @@ import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SavingOnlinePageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Auto_Saving_Data;
 import vietcombank_test_data.Auto_Saving_Data.Auto_Saving_Text;
+import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 
-public class Auto_Saving_Flow_OTP extends Base {
+public class Auto_Saving_Flow_Smart_OTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject home;
 	private AutoSavingPageObject autoSaving;
 	private TransactionReportPageObject transactionReport;
 	private SavingOnlinePageObject savingOnline;
+	private SettingVCBSmartOTPPageObject smartOTP;
 
 	private String transactionID, savingAccount, transactionDate, startDate, endDate, sourceAccountMoney, sourceAccount,savingTerm;
 	private long savingMoney;
@@ -38,7 +42,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -52,6 +56,9 @@ public class Auto_Saving_Flow_OTP extends Base {
 		autoSaving = PageFactoryManager.getAutoSavingPageObject(driver);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, getDataInCell(6));
+		
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
@@ -108,9 +115,8 @@ public class Auto_Saving_Flow_OTP extends Base {
 		
 	}
 
-	@Parameters({ "otp" })
 	@Test
-	public void TC_02_TietKiemTuDong_TaiKhoanNguon_VND_OTP(String otp) {
+	public void TC_02_TietKiemTuDong_TaiKhoanNguon_VND_SmartOTP() {
 
 		log.info("TC_02_Step_01: Keo xuong va click vao phan 'Tiet kiem tu dong'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.AUTO_SAVING_TEXT);
@@ -176,15 +182,16 @@ public class Auto_Saving_Flow_OTP extends Base {
 		
 		log.info("TC_02_Step_19: Chon phương thuc xac thuc");
 		autoSaving.clickToTextID(driver, "com.VCB:id/tvptxt");
-		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.SMS_OTP_AUTHEN_TEXT);
+		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.SMART_OTP_AUTHEN_TEXT);
 
 		log.info("TC_02_Step_20: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_02_Step_21: Nhap du ki tu vao o nhap OTP");
-		autoSaving.inputToDynamicOtp(driver, otp, Auto_Saving_Text.BUTTON_CONTINUE_TEXT);
+		autoSaving.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
 		log.info("TC_02_Step_22: An tiep button 'Tiep tuc'");
+		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_02_Step_23: Hien thi man hinh thong bao giao dich thanh cong");
@@ -208,7 +215,7 @@ public class Auto_Saving_Flow_OTP extends Base {
 	}
 
 	@Test
-	public void TC_03_TietKiemTuDong_TaiKhoanNguon_VND_OTP_BaoCaoGiaoDich() {
+	public void TC_03_TietKiemTuDong_TaiKhoanNguon_VND_SmartOTP_BaoCaoGiaoDich() {
 
 		log.info("TC_03_Step_01: Mo tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");

@@ -33,4 +33,23 @@ public class TransferMoneyCharity_Data {
 	public static final String CONFIRM_MAX_TRANSECTION_LIMIT_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 320,000 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.”";
 	public static final String CONFIRM_MAX_TRANSECTION_LIMIT_DAY_GROUP = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 350,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 	public static final String CONFIRM_MAX_TRANSECTION_LIMIT_DAY_PACKAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 300,000,000 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	public static final String STATUS_TRANSFER_MONEY = "Trạng thái chuyển tiền";
+	public static final String TRANSFER_CHARITY = "Chuyển tiền từ thiện";
+	public static final String AVAILABLE_BALANCE = "Số dư khả dụng";
+	public static final String ORGANIRATION_CHARITY = "Quỹ/ Tổ chức từ thiện";
+	public static final String MONEY_CHARITY = "Số tiền ủng hộ";
+	public static final String NAME_CHARITY = "Tên người ủng hộ";
+	public static final String ADDRESS_CHARITY = "Địa chỉ người ủng hộ";
+	public static final String STATUS_CHARITY = "Hoàn cảnh ủng hộ";
+	public static final String CONTINUE_BUTTON = "Tiếp tục";
+	public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
+	public static final String ACCURACY_METHOD = "Chọn phương thức xác thực";
+	public static final String RECIEVED_NAME = "Tên người thụ hưởng";
+	public static final String RECIEVED_ACCOUNT = "Tài khoản thụ hưởng";
+	public static final String TRANSACTION_CODE = "Mã giao dịch";
+	public static final String NEW_TRANSACTION_PERFORM = "Thực hiện giao dịch mới";
+	public static final String ORGANIRATION_CHARITY_NAME = "Tên Quỹ/Tổ chức từ thiện";
+	
+	
 }
