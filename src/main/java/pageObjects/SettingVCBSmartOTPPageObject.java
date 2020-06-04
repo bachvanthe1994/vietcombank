@@ -57,10 +57,9 @@ public class SettingVCBSmartOTPPageObject extends AbstractPage {
 		// Click btn Huy Cai dat");
 		clickToDynamicButtonLinkOrLinkText(driver, "Hủy");
 
-		// Verify hien thi popup xac nhan huy cai dat OTP");
+		// Verify hien thi popup xac nhan huy cai dat OTP
 		isDynamicMessageAndLabelTextDisplayed(driver, "Quý khách có chắc chắn muốn hủy phương thức xác thực bằng VCB-Smart OTP không?");
-
-		// Verify hien thi popup xac nhan huy cai dat OTP");
+		
 		clickToDynamicButtonLinkOrLinkText(driver, "Có");
 	}
 
