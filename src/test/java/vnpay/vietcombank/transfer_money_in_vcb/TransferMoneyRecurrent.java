@@ -82,12 +82,14 @@ public class TransferMoneyRecurrent extends Base {
 
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferRecurrent.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		List<SourceAccountModel> listReceiverAccount = transferRecurrent.getListSourceAccount(driver, Constants.VND_CURRENCY);
+
+		List<String> listDistanceAccount = transferRecurrent.getListSourceAccount(driver, Constants.VND_CURRENCY);
+
 		sourceAccount = transferRecurrent.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		expectAvailableBalance = sourceAccount.balance;
 		
 		log.info("TC_01_3_Nhap tai khoan nhan");
-		receiverAccount.account = transferRecurrent.getReceiverAccount(driver, sourceAccount.account, listReceiverAccount);
+		receiverAccount.account = transferRecurrent.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
 		transferRecurrent.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_4_Chon tan suat");
