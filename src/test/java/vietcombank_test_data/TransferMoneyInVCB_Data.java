@@ -185,6 +185,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String TRANSFER_PER_TIMES_TEXT = "/ lần";
 		public static final String FREQUENCY_TEXT = "Tần suất";
 		public static final String FEE_PER_TIMES_TEXT = "Số tiền phí/lần";
+		public static final String SAVE_RECEIVED_ACCOUNT_TEXT = "Lưu thụ hưởng";
+		public static final String SAVE_CONTACT_SUCCESS_MESSAGE = "Lưu thành công";
 	}
 
 	public static class TittleData {

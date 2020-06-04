@@ -80,7 +80,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_01_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		List<SourceAccountModel> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_01_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 		
@@ -331,7 +331,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_04_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		List<SourceAccountModel> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_04_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
 		
@@ -586,7 +586,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_07_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		List<SourceAccountModel> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_07_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, Constants.USD_CURRENCY);
 		
@@ -603,7 +603,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_07_Step_08: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_07_Step_09: Lay so du tai khoan chuyen");
@@ -841,7 +841,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		
 		log.info("TC_10_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		List<SourceAccountModel> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_10_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, Constants.EUR_CURRENCY);
 		
@@ -857,7 +857,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_10_Step_08: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_10_Step_09: Lay so du tai khoan chuyen");
