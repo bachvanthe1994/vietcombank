@@ -19,6 +19,7 @@ import pageObjects.PostpaidMobileBillPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Postpaid_Mobile_Bill_Data;
 import vietcombank_test_data.Postpaid_Mobile_Bill_Data.Title;
+import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 
 public class PostPaid_Mobile_Bill_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -186,13 +187,13 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_02_Step_04: Chon 'Thanh toan hoa don'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Title.PAY_BILL);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_02_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -213,19 +214,19 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 
 		log.info("TC_02_Step_11: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.NUMBER_TRANSFER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_02_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.ACCOUNT_DEBIT_CARD), account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_02_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SERVICE), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_02_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SUPPLIER), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER_NAME_TEXT), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
 
 		log.info("TC_02_Step_15: Hien thi dung So dien thoai");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.PHONE_NUMBER), mobilePhone);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TITLE_PHONE_NUMBER), mobilePhone);
 
 		log.info("TC_02_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
@@ -234,7 +235,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
 		log.info("TC_02_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.TYPE_TRANSFER), Title.PAY_BILL);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -390,14 +391,14 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_04_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_04_Step_04: Chon 'Thanh toan hoa don'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Title.PAY_BILL);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_04_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -418,19 +419,19 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 
 		log.info("TC_04_Step_11: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.NUMBER_TRANSFER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_04_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.ACCOUNT_DEBIT_CARD), account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_04_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SERVICE), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_04_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SUPPLIER), Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER_NAME_TEXT), Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER);
 
 		log.info("TC_04_Step_15: Hien thi dung So dien thoai");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.PHONE_NUMBER), mobilePhone);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TITLE_PHONE_NUMBER), mobilePhone);
 
 		log.info("TC_04_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
@@ -439,7 +440,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
 		log.info("TC_04_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.TYPE_TRANSFER), Title.PAY_BILL);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_04_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -595,14 +596,14 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_Step_02: Mo sub-menu 'Bao cao giao dich");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_06_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_06_Step_04: Chon 'Thanh toan hoa don'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Title.PAY_BILL);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_06_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -623,19 +624,19 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 
 		log.info("TC_06_Step_11: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.NUMBER_TRANSFER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_06_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.ACCOUNT_DEBIT_CARD), account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_06_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SERVICE), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_06_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SUPPLIER), Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER_NAME_TEXT), Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
 
 		log.info("TC_06_Step_15: Hien thi dung So dien thoai");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.PHONE_NUMBER), mobilePhone);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TITLE_PHONE_NUMBER), mobilePhone);
 
 		log.info("TC_06_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
@@ -644,7 +645,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
 		log.info("TC_06_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.TYPE_TRANSFER), Title.PAY_BILL);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_06_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -800,14 +801,14 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_Step_02: Mo sub-menu 'Bao cao giao dich");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_08_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_08_Step_04: Chon 'Thanh toan hoa don'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Title.PAY_BILL);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_08_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -828,19 +829,19 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 
 		log.info("TC_08_Step_11: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.NUMBER_TRANSFER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_08_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.ACCOUNT_DEBIT_CARD), account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_08_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SERVICE), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_08_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SUPPLIER), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER_NAME_TEXT), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
 
 		log.info("TC_08_Step_15: Hien thi dung So dien thoai");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.PHONE_NUMBER), mobilePhone);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TITLE_PHONE_NUMBER), mobilePhone);
 
 		log.info("TC_08_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
@@ -849,7 +850,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
 		log.info("TC_08_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.TYPE_TRANSFER), Title.PAY_BILL);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_08_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -1006,14 +1007,14 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_10_Step_02: Mo sub-menu 'Bao cao giao dich");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_10_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_10_Step_04: Chon 'Thanh toan hoa don'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Title.PAY_BILL);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_10_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1034,19 +1035,19 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 
 		log.info("TC_10_Step_11: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.NUMBER_TRANSFER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_10_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.ACCOUNT_DEBIT_CARD), account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_10_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SERVICE), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_10_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SUPPLIER), Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER_NAME_TEXT), Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER);
 
 		log.info("TC_10_Step_15: Hien thi dung So dien thoai");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.PHONE_NUMBER), mobilePhone);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TITLE_PHONE_NUMBER), mobilePhone);
 
 		log.info("TC_10_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
@@ -1055,7 +1056,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
 		log.info("TC_10_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.TYPE_TRANSFER), Title.PAY_BILL);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_10_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -1208,14 +1209,14 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_12_Step_02: Mo sub-menu 'Bao cao giao dich");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
+		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
 		log.info("TC_12_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_12_Step_04: Chon 'Thanh toan hoa don'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, Title.PAY_BILL);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_12_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1236,19 +1237,19 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, convertDateTimeIgnoreHHmmss(transactionDate), "com.VCB:id/tvContent"));
 
 		log.info("TC_12_Step_11: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.NUMBER_TRANSFER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_12_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Title.ACCOUNT_DEBIT_CARD), account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_12_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SERVICE), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_12_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.SUPPLIER), Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER_NAME_TEXT), Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
 
 		log.info("TC_12_Step_15: Hien thi dung So dien thoai");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.PHONE_NUMBER), mobilePhone);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TITLE_PHONE_NUMBER), mobilePhone);
 
 		log.info("TC_12_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
@@ -1257,7 +1258,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, transferFee + "", "com.VCB:id/tvContent"));
 
 		log.info("TC_12_Step_18: Hien thi dung Loai giao dich");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.TYPE_TRANSFER), Title.PAY_BILL);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_12_Step_19: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
