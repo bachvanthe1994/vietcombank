@@ -17,6 +17,7 @@ import pageObjects.OnlineTopupPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.Online_Topup_Data;
+import vietcombank_test_data.Online_Topup_Data.Online_Topup_Text;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 
 public class Limit_Online_Topup extends Base {
@@ -50,7 +51,7 @@ public class Limit_Online_Topup extends Base {
 	public void TC_01_NapTienDienTuVaoVETCThapHonHanMucToiThieu() {
 
 		log.info("---------------------------TC_01_Step_01: An mo dropdownlist Ten Dich Vu---------------------------");
-		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_SERVICE);
+		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.E_WALLET_TOPUP_TEXT);
 
 		log.info("---------------------------TC_01_Step_03: Chon 'Nap tien tai khoan VETC---------------------------");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.VETC.VETC_SERVICE);
@@ -132,7 +133,7 @@ public class Limit_Online_Topup extends Base {
 		onlineTopup.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 		
 		log.info("---------------TC_03_Step_11:Click dropdownlist Ten Dich Vu----------------");
-		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_SERVICE);
+		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.E_WALLET_TOPUP_TEXT);
 
 		
 		log.info("---------------TC_03_Step_12:Chon 'Nap tien tai khoan VETC'----------------");
@@ -170,7 +171,7 @@ public class Limit_Online_Topup extends Base {
 	public void TC_04_NapTienDienTuVaoVETCCaoHonHanMucToiDaNhomDichVu() {
 
 		log.info("---------------------------TC_04_Step_01: An mo dropdownlist Ten Dich Vu---------------------------");
-		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_SERVICE);
+		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.E_WALLET_TOPUP_TEXT);
 
 		log.info("---------------------------TC_04_Step_02: Chon 'Nap tien tai khoan VETC'---------------------------");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.VETC.VETC_SERVICE);
@@ -206,7 +207,7 @@ public class Limit_Online_Topup extends Base {
 	public void TC_05_NapTienDienTuVaoVETCCaoHonHanMucToiDaGoiDichVu() {
 		
 		log.info("---------------------------TC_05_Step_02: An mo dropdownlist Ten Dich Vu---------------------------");
-		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.MOMO.MOMO_SERVICE);
+		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.E_WALLET_TOPUP_TEXT);
 		
 		log.info("---------------------------TC_05_Step_03: Chon 'Nap tien tai khoan VETC'---------------------------");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Data.VETC.VETC_SERVICE);

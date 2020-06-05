@@ -127,7 +127,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, TransferMoneyCharity_Data.ACCURACY_METHOD);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 		
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		
 		
@@ -177,10 +177,10 @@ public class TransferMoneyCharity extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_3: Click Bao Cao giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_02_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -192,7 +192,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_02_9: Kiem tra ngay tao giao dich hien thi");
 		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -208,37 +208,37 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_02_14: Kiem tra ma giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_02_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_02_16: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_02_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_02_18: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info.organization);
 
 		log.info("TC_02_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_02_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
 		log.info("TC_02_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT).contains(info.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(info.status));
 
 		log.info("TC_02_22: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_02_23: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_24: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -306,7 +306,7 @@ public class TransferMoneyCharity extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, TransferMoneyCharity_Data.ACCURACY_METHOD);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 		
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 
@@ -354,10 +354,10 @@ public class TransferMoneyCharity extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_3: Click Bao Cao giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_04_5: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_04_6: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -369,7 +369,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_04_9: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_04_10: Kiem tra thoi gian tao giao dich");
 		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -385,41 +385,41 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_04_15: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_04_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_04_17: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToDouble(info1.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToDouble(info1.money) + " EUR"));
 
 		log.info("TC_04_19: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_04_20: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info1.organization);
 
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_22: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
 		log.info("TC_04_23: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT).contains(info1.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(info1.status));
 
 		log.info("TC_04_24: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_04_25: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_04_26: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -487,7 +487,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_05_10_01_Kiem tra so tien phi");
 
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		
 		log.info("TC_05_11_Click Tiep tuc");
@@ -533,10 +533,10 @@ public class TransferMoneyCharity extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_3: Click Bao cao giao dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_06_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_06_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -548,7 +548,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_06_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_06_09: Kiem tra thoi gian tao dao dich");
 		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -564,35 +564,35 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_06_14: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_06_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_06_16: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToLong(info2.money) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info2.money) + " VND"));
 
 		log.info("TC_06_17: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info2.organization);
 
 		log.info("TC_06_18: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_06_19: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
 		log.info("TC_06_20: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT).contains(info2.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(info2.status));
 
 		log.info("TC_06_21: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_06_22: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_06_23: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -663,7 +663,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_07_10_01_Kiem tra so tien phi");
 
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		 
@@ -712,10 +712,10 @@ public class TransferMoneyCharity extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_3: Click Bao cao giao dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_08_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -727,7 +727,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_08_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_08_09: Kiem tra thoi gian tao dao dich");
 		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -743,38 +743,38 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_08_14: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_08_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_08_16: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToDouble(info3.money) + " EUR"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToDouble(info3.money) + " EUR"));
 
 		log.info("TC_08_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_08_18: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info3.organization);
 
 		log.info("TC_08_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_08_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
 		log.info("TC_08_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT).contains(info3.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(info3.status));
 
 		log.info("TC_08_22: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_08_23: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_24: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -845,7 +845,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_09_10_01_Kiem tra so tien phi");
 
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		 
@@ -892,10 +892,10 @@ public class TransferMoneyCharity extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_10_3: Click Bao cao giao dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_10_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_10_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -907,7 +907,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_10_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_10_09: Kiem tra thoi gian tao dao dich");
 		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -923,38 +923,38 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_10_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_10_14: Kiem tra ma giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_10_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_10_16: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToDouble(info4.money) + " USD"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToDouble(info4.money) + " USD"));
 
 		log.info("TC_10_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info4.money, currentcy)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info4.money, currentcy)));
 
 		log.info("TC_10_18: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info4.organization);
 
 		log.info("TC_10_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_10_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
 		log.info("TC_10_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT).contains(info4.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(info4.status));
 
 		log.info("TC_10_22: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_10_23: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_10_24: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -1025,7 +1025,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_11_10_01_Kiem tra so tien phi");
 
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		 
@@ -1074,10 +1074,10 @@ public class TransferMoneyCharity extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_12_3: Click Bao cao giao dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_12_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTite.ALL_TYPE_TRANSACTION);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_12_5: Chon Chuyen Tien Trong VCB");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -1089,7 +1089,7 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_12_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTite.SEARCH_BUTTON);
+		transReport.clickToDynamicButton(driver, TransactionReport_Data.ReportTitle.SEARCH_BUTTON);
 
 		log.info("TC_12_09: Kiem tra thoi gian tao giao dich");
 		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1105,40 +1105,40 @@ public class TransferMoneyCharity extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_12_13: Kiem tra thoi gian tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TIME_TRANSACTION);
+		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime2, reportTime1);
 
 		log.info("TC_12_14: Kiem tra ma giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_NUMBER), transactionNumber);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_12_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.ACCOUNT_CARD), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_12_16: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_12_17: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_MONEY).contains(addCommasToDouble(info5.money) + " USD"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToDouble(info5.money) + " USD"));
 
 		log.info("TC_12_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_12_19: Kiem tra ten quy, to chuc tu thien");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info5.organization);
 
 		log.info("TC_12_20: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_12_21: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
 		log.info("TC_12_22: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTite.TRANSACTION_CONTENT).contains(info5.status));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(info5.status));
 
 		log.info("TC_12_23: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_DETAIL);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_12_24: Click  nut Back");
-		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTite.TRANSACTION_REPORT);
+		transferMoneyCharity.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_12_25: Click  nut Home");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");

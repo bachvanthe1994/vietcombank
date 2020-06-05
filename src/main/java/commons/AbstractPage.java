@@ -937,7 +937,17 @@ public class AbstractPage {
 
 		}
 	}
+	
+	public void clickToDynamicTextFollowingLinearlayout (AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT, dynamicTextValue);
 
+		}
+	}
+	
 	public void clickToDynamicImageButtonByContentDesc(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON_BY_CONTENT, dynamicTextValue);
@@ -2440,6 +2450,16 @@ public class AbstractPage {
 		return text;
 
 	}
+	public String getDynamicTextFollowingText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_FOLLOW_TEXT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_FOLLOW_TEXT, dynamicTextValue);
+		}
+		return text;
+		
+	}
 
 	public String getDynamicAmountLabelList(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		boolean status = false;
@@ -2779,6 +2799,8 @@ public class AbstractPage {
 		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd)).release().perform();
 	}
 
+	
+
 	public SourceAccountModel chooseSourceAccount(AppiumDriver<MobileElement> driver, double money, String currentcy) {
 
 		boolean status = false;
@@ -2787,8 +2809,71 @@ public class AbstractPage {
 		boolean check = true;
 		int count = 0;
 		while (check && count <= 5) {
-			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
-			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
+			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent","com.VCB:id/list_item");
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent","com.VCB:id/list_item");
+			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			status = elements.size() > 0;
+
+			if (status) {
+				String availableBalance = "";
+				for (MobileElement element : elements) {
+					String locator_text = String.format(DynamicPageUIs.DYNAMIC_TEXT_NON);
+					overRideTimeOut(driver, 2);
+					List<MobileElement> listTextElement = element.findElements(By.xpath(locator_text));
+					status = listTextElement.size() > 0;
+					if (status) {
+						try {
+							sourceAccount.account = listTextElement.get(0).getText();
+							availableBalance = listTextElement.get(1).getText();
+							sourceAccount.balance = availableBalance.split(" ")[0];
+							sourceAccount.currentcy = availableBalance.split(" ")[1];
+
+						} catch (Exception e) {
+							continue;
+
+						}
+
+						double expectedMoney = Double.parseDouble(sourceAccount.balance.replaceAll("[^\\-.0123456789]", ""));
+
+						if (expectedMoney >= money && sourceAccount.currentcy.equals(currentcy)) {
+							clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+							return sourceAccount;
+						}
+
+						if (accountList.contains(sourceAccount.account)) {
+							check = false;
+							continue;
+						} else {
+							accountList.add(sourceAccount.account);
+						}
+					}
+
+				}
+				swipeElementToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, availableBalance, "Chọn tài khoản nguồn");
+				count++;
+			} else {
+				throw new RuntimeException("Khong hien thi duoc danh sach tai khoan");
+			}
+
+		}
+		if (check == false || count >= 5) {
+			throw new RuntimeException("Khong co tai khoan nao thoa man dieu kien");
+		}
+		overRideTimeOut(driver, Constants.LONG_TIME);
+		return sourceAccount;
+
+	}
+	
+	public SourceAccountModel chooseSourceAccountADSL(AppiumDriver<MobileElement> driver, double money, String currentcy) {
+
+		boolean status = false;
+		SourceAccountModel sourceAccount = new SourceAccountModel();
+		List<String> accountList = new ArrayList<String>();
+		boolean check = true;
+		int count = 0;
+		while (check && count <= 5) {
+			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/list_item");
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/list_item");
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
 			status = elements.size() > 0;
 
@@ -2842,6 +2927,9 @@ public class AbstractPage {
 
 	}
 
+
+	
+	
 	public List<SourceAccountModel> getListSourceAccount_Code(AppiumDriver<MobileElement> driver, String currentcY) {
 		boolean status = false;
 		SourceAccountModel sourceAccount = new SourceAccountModel();
@@ -2899,7 +2987,7 @@ public class AbstractPage {
 	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<String> listAccount) {
 		String distanAccount = "";
 		for (String account : listAccount) {
-			if (!account.equals(sourceAccount)) {
+			if (!account.equals(sourceAccount)&&account!="0019961180") {
 				distanAccount = account;
 				break;
 			}

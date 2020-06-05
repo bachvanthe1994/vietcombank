@@ -23,7 +23,7 @@ import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LuckyGift_Data;
 import vietcombank_test_data.LuckyGift_Data.TitleLuckyGift;
-import vietcombank_test_data.Report_LuckyGift_Data.ReportTittte;
+import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 
 public class LuckyGift extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -178,13 +178,13 @@ public class LuckyGift extends Base {
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_03: Click Bao Cao Dao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_Step_04: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TITLE_TRANSFER);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_02_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.LUCKY_GIFT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.LUCKY_GIFT);
 
 		log.info("TC_02_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -214,15 +214,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TIME_TRANSFER);
+		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSFER);
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_02_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_TRANSFER), source_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), source_account);
 
 		log.info("TC_02_Step_15: Kiem tra tên người thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.BENEFICIARY_NAME), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.BENEFICIARY_NAME), beneficiary_account);
 
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
@@ -234,7 +234,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
 
 		log.info("TC_02_Step_19: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_Step_20: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -348,13 +348,13 @@ public class LuckyGift extends Base {
 
 		log.info("TC_04_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_04_Step_04: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TITLE_TRANSFER);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_04_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.LUCKY_GIFT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.LUCKY_GIFT);
 
 		log.info("TC_04_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -384,12 +384,12 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_04_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TIME_TRANSFER);
+		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSFER);
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_04_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_TRANSFER), source_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), source_account);
 
 		log.info("TC_04_Step_15: Kiem tra tài khoản thụ hưởng");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
@@ -401,7 +401,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
 
 		log.info("TC_04_Step_18: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_04_Step_19: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -528,13 +528,13 @@ public class LuckyGift extends Base {
 
 		log.info("TC_06_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_06_Step_04: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TITLE_TRANSFER);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_06_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.LUCKY_GIFT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.LUCKY_GIFT);
 
 		log.info("TC_06_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -561,12 +561,12 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TIME_TRANSFER);
+		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSFER);
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_06_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_TRANSFER), source_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), source_account);
 
 		log.info("TC_06_Step_15: Kiem tra tài khoản thụ hưởng");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
@@ -575,7 +575,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
 
 		log.info("TC_06_Step_17: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02_Step_19: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -698,13 +698,13 @@ public class LuckyGift extends Base {
 
 		log.info("TC_08_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_Step_04: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TITLE_TRANSFER);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_08_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.LUCKY_GIFT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.LUCKY_GIFT);
 
 		log.info("TC_08_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -735,15 +735,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TIME_TRANSFER);
+		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSFER);
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_08_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_TRANSFER), source_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), source_account);
 
 		log.info("TC_08_Step_15: Kiem tra tên người thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.BENEFICIARY_NAME), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.BENEFICIARY_NAME), beneficiary_account);
 
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
@@ -755,7 +755,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
 
 		log.info("TC_08_Step_19: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_Step_20: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -879,13 +879,13 @@ public class LuckyGift extends Base {
 
 		log.info("TC_10_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_10_Step_04: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TITLE_TRANSFER);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_10_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.LUCKY_GIFT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.LUCKY_GIFT);
 
 		log.info("TC_10_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -914,15 +914,15 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_10_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TIME_TRANSFER);
+		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSFER);
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_10_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_TRANSFER), Account_Data.Valid_Account.ACCOUNT1);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_10_Step_16: Kiem tra tài khoản thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.BENEFICIARY_NAME), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.BENEFICIARY_NAME), beneficiary_account);
 
 		log.info("TC_02_Step_17: Kiem tra tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
@@ -934,7 +934,7 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
 
 		log.info("TC_10_Step_20: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_10_Step_21: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
@@ -1066,13 +1066,13 @@ public class LuckyGift extends Base {
 
 		log.info("TC_12_Step_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_12_Step_04: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.TITLE_TRANSFER);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
 
 		log.info("TC_12_Step_05: Chon quà tặng may mắn");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTittte.LUCKY_GIFT);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.LUCKY_GIFT);
 
 		log.info("TC_12_Step_06: click chọn tài khoản");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1101,27 +1101,27 @@ public class LuckyGift extends Base {
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_12_Step_13: Kiem tra ngày giao dịch");
-		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TIME_TRANSFER);
+		String getDate = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSFER);
 		String[] dateDeal = getDate.split(" ");
 		verifyEquals(dateDeal[0], formatter.format(date));
 
 		log.info("TC_12_Step_14: Kiem tra tài khoản nguồn");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_TRANSFER), source_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), source_account);
 
 		log.info("TC_12_Step_15: Kiem tra tài khoản thụ hưởng");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.BENEFICIARY_NAME), beneficiary_account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.BENEFICIARY_NAME), beneficiary_account);
 
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.ACCOUNT_CREDITED), getName[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTittte.TRANSACTION_FEE), moneyFee);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_FEE), moneyFee);
 
 		log.info("TC_12_Step_18: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSACTION_DETAIL);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TC_12_Step_19: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTittte.TRANSFER_REPORT);
+		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_12_Step_21: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");

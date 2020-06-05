@@ -50,7 +50,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
 		log.info("TC_01_Step_02: Hien thi man hinh Cuoc di dong tra sau");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 		postpaidMobile.clickToDynamicDropdownByHeader(driver, "Tài khoản nguồn", "1");
@@ -68,13 +68,13 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
 
 		log.info("TC_01_Step_07: Hien thi thông tin xac nhan");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Postpaid_Mobile_Bill_Data.VALIDATE.VERIFY_INFO_TITLE_HEAD);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Postpaid_Mobile_Bill_Data.Title.VERIFY_INFO_TITLE_HEAD);
 
 		log.info("TC_01_Step_08: Hien thi tai khoan nguon");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_09: Hien thi ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_01_Step_10: Hien thi Nha cung cap");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Nhà cung cấp"), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
@@ -115,7 +115,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, getForWardDay(0), "com.VCB:id/tvTime"));
 
 		log.info("TC_01_Step_21: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_01_Step_22: Hien thi dung Nha cung cap");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Nhà cung cấp"), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
@@ -137,7 +137,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_30: Hien thi man hinh Cuoc di dong tra sau");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_01_Step_31: Chon tai khoan nguon");
 		postpaidMobile.clickToDynamicDropdownByHeader(driver, "Tài khoản nguồn", "1");
@@ -159,7 +159,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_35: Hien thi thong bao So dien thoai khong con no truoc");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_MESSAGE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_MESSAGE);
 
 		log.info("TC_01_Step_36: Click nut Dong tat pop-up");
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -213,7 +213,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Tài khoản/thẻ trích nợ"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_02_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_02_Step_14: Hien thi dung Nha cung cap");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Nhà cung cấp"), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
