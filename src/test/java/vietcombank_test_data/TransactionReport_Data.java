@@ -38,7 +38,9 @@ public class TransactionReport_Data {
 		public static final String AUTO_SAVING_TEXT = "Tiết kiệm tự động";
 		public static final String CANCEL_AUTO_SAVING_TEXT = "Hủy tiết kiệm tự động";
 		public static final String E_WALLET_TOPUP_TEXT = "Nạp tiền điện tử vào ví";
-		
+		public static final String OUTSIDE_VCB_FROM_ACCOUNT = "Chuyển tiền tới NH khác qua TK";
+		public static final String TRANSFER_OUTSIDE_VCB = "Chuyển tiền ngoài VCB";
+		public static final String FEE = "Phí giao dịch";
 	}
 
 }

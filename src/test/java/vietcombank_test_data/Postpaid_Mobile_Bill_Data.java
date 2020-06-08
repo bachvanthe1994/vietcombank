@@ -17,9 +17,6 @@ public class Postpaid_Mobile_Bill_Data {
 		public static final String SERVICE = "Dịch vụ";
 		public static final String SUPPLIER = "Nhà cung cấp";
 		public static final String PHONE_NUMBER = "Số điện thoại";
-		public static final String PAY_BILL = "Thanh toán hóa đơn";
-		public static final String TYPE_TRANSFER = "Loại giao dịch";
-		public static final String NUMBER_TRANSFER = "Số lệnh giao dịch";
 		public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
 		public static final String NEXT = "Tiếp tục";
 		public static final String CODE_TRANSFER = "Mã giao dịch";
@@ -28,7 +25,6 @@ public class Postpaid_Mobile_Bill_Data {
 		public static final String CONFIRM_INFOMATION = "Xác nhận thông tin";
 		public static final String MONEY_FEE = "Số tiền thanh toán";
 		public static final String PASS_WORD = "Mật khẩu đăng nhập";
-		public static final String ACCOUNT_DEBIT_CARD = "Tài khoản/thẻ trích nợ";
 		public static final String DETAIL_TRANSFER = "Chi tiết giao dịch";
 	}
 
