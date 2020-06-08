@@ -24,7 +24,7 @@
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-		<!-- Nạp tiền điện thoại -->
+			<!-- Nạp tiền điện thoại -->
 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
 
 			<!-- Mua sắm trực tuyến -->
@@ -40,14 +40,24 @@
 			<!-- Chuyển tiền trong vcb -->
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" />
+
+
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_3_Smart_OTP" />
+
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent_SmartOTP" />
+
 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" />
+
 
 			<!-- chuyển tiền ngoài vcb -->
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
 			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+
 
 
 			<!-- Chuyển tiền 24/7 -->
@@ -57,6 +67,7 @@
 			<!-- Chuyển tiên qua cmt -->
 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
 			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
+			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow_SmartOTP" />
 
 			<!-- Quà tặng may mắn -->
 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
