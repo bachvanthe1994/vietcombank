@@ -20,6 +20,25 @@ public class VCBAuto_Debit_Data {
 		public static final String VNPT_BILL_TEXT = "Hóa đơn VNPT Media";
 		public static final String VNPT_KIEN_GIANG = "VNPTMEDIA Kiên Giang";
 		public static final String VNPT_CUSTOMER = "HPG-00-721067";
+		public static final String OWNER_CONTRACT = "Chủ hợp đồng";
+		public static final String CUSTOMER_CODE = "Mã khách hàng";
+		public static final String ACCOUNT_NUMBER = "Số tài khoản";
+		public static final String ADDRESS = "Địa chỉ";
+		public static final String SUPPLIER = "Nhà cung cấp";
+		public static final String SERVICE = "Dịch vụ";
+		public static final String CONTINUE = "Tiếp tục";
+		public static final String SMS_OTP = "SMS OTP";
+		public static final String CONFIRM_INFO = "Xác nhận thông tin";
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String UNIT = "Đơn vị trực thuộc";
+		public static final String CLOSE = "Đóng";
+		public static final String TYPE_SERVICE = "Loại dịch vụ";
+		public static final String CHANGE_ACCOUNT = "Tài khoản thay đổi";
+		public static final String NO_SERVICE = "chưa đăng ký";
+		public static final String CHANGE_SOURCE_ACCOUNT= "Đổi tài khoản trích nợ";
+		public static final String REGISTER_SERVICE = "Đăng ký dịch vụ";
+		public static final String CUSTOMER_PLEASE_INFO = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
+		public static final String CUSTOMER_PLEASE_CHANGE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã thay đổi.";
 
 	}
 

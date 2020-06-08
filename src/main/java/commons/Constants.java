@@ -14,6 +14,12 @@ public class Constants {
 	public static final String USD_CURRENCY = "USD";
 	public static final String EUR_CURRENCY = "EUR";
 	public static final double AMOUNT_VND = 100000000;
+	
+	public static final String LOWER_MIN_TRANSFER = "9999";
+	public static final String HIGHER_MAX_TRANSFER = "100000001";
+	public static final String MIN_TRANSFER = "10000";
+	public static final String MAX_TRANSFER = "100000000";
+	public static final String MAX_TRANSFER_OF_DAY = "100000001";
 
 	// RUN_CONTINUE_AFTER_STEP_FAIL = true --> testcase still runs next steps after
 	// current step is failed

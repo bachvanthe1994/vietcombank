@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -18,6 +19,7 @@ import pageObjects.TransferMoneyOutSideVCBPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyOutVCB_Data;
+import vietcombank_test_data.TransferMoneyOutVCB_Data.TitleOutVCB;
 
 public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -29,7 +31,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	double transferFeeCurrentcy = 0;
 	String password, currentcy = "";
 
-	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(Account_Data.Valid_Account.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50000", "Phí giao dịch người chuyển trả", "test", "SMS OTP");
+	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(Account_Data.Valid_Account.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50000", TitleOutVCB.TRANSACTION_FEE_SENDE, "test", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -54,33 +56,33 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	public void TC_01_ChuyenTienToiTaiKhoanKhacNhoHonDinhMucToiThieu() {
 
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_01_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, TitleOutVCB.ACCOUT_TO);
 
 		log.info("TC_01_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
 
 		log.info("TC_01_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, "Tìm kiếm");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, TitleOutVCB.SEARCH_BUTTON);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
 		log.info("TC_01_6_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, TransferMoneyOutVCB_Data.InputDataAmountOutVCB.LOWER_MIN_TRANSFER, "Số tiền");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, Constants.LOWER_MIN_TRANSFER, TitleOutVCB.MONEY);
 
 		log.info("TC_01_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_01_7_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
 
 		log.info("TC_01_8_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -97,7 +99,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	public void TC_02_ChuyenTienToiTaiKhoanKhacCaoHonMucToiDa() {
 
 		log.info("---------------------TC_02_1_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, TransferMoneyOutVCB_Data.InputDataAmountOutVCB.HIGHER_MAX_TRANSFER, "Thông tin giao dịch", "1");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, Constants.HIGHER_MAX_TRANSFER, TitleOutVCB.TRANSACTION_INFOMATION, "1");
 
 		log.info("-------------------TC_02_2_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -114,7 +116,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	public void TC_03_ChuyenTienToiTaiKhoanKhacCaoHonMucToiDaTrongNgay() {
 
 		log.info("----------------------TC_03_1_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, TransferMoneyOutVCB_Data.InputDataAmountOutVCB.MAX_TRANSFER, "Thông tin giao dịch", "1");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, Constants.MAX_TRANSFER, TitleOutVCB.TRANSACTION_INFOMATION, "1");
 
 		log.info("-------------------------TC_03_2_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -134,30 +136,30 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		transferMoneyOutSide.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
 
 		log.info("TC_03_6_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_03_7_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, TitleOutVCB.ACCOUT_TO);
 
 		log.info("TC_03_8_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
 
 		log.info("TC_03_9_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, "Tìm kiếm");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, TitleOutVCB.SEARCH_BUTTON);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
 		log.info("TC_03_10_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, TransferMoneyOutVCB_Data.InputDataAmountOutVCB.MIN_TRANSFER, "Thông tin giao dịch", "1");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, Constants.MIN_TRANSFER, TitleOutVCB.TRANSACTION_INFOMATION, "1");
 
 		log.info("TC_03_11_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_03_12_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
 
 		log.info("TC_03_13_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -172,33 +174,33 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	public void TC_04_ChuyenTienToiTaiKhoanKhacNhom() {
 
 		log.info("TC_04_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 
 		log.info("TC_04_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_04_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, TitleOutVCB.ACCOUT_TO);
 
 		log.info("TC_04_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
 
 		log.info("TC_04_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, "Tìm kiếm");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, TitleOutVCB.SEARCH_BUTTON);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
 		log.info("TC_04_6_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, TransferMoneyOutVCB_Data.InputDataAmountOutVCB.HIGHER_MAX_TRANSFER, "Số tiền");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, Constants.HIGHER_MAX_TRANSFER, TitleOutVCB.MONEY);
 
 		log.info("TC_04_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_04_7_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
 
 		log.info("TC_04_8_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -214,33 +216,33 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	public void TC_05_ChuyenTienToiTaiKhoanKhacGoi() {
 
 		log.info("TC_05_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền tới ngân hàng khác");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 
 		log.info("TC_05_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, "Tài khoản nguồn");
-		transferMoneyOutSide.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
 
 		log.info("TC_05_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, "Nhập/ chọn tài khoản nhận VND");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationAccount, TitleOutVCB.ACCOUT_TO);
 
 		log.info("TC_05_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, "Tên người thụ hưởng");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
 
 		log.info("TC_05_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, "Tìm kiếm");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
+		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, TitleOutVCB.SEARCH_BUTTON);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
 		log.info("TC_05_6_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, TransferMoneyOutVCB_Data.InputDataAmountOutVCB.HIGHER_MAX_TRANSFER, "Số tiền");
+		transferMoneyOutSide.inputToDynamicInputBox(driver, Constants.HIGHER_MAX_TRANSFER, TitleOutVCB.MONEY);
 
 		log.info("TC_05_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Phí giao dịch người chuyển trả");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, "Người chuyển trả");
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_05_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, "Thông tin giao dịch", "3");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
 
 		log.info("TC_05_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
