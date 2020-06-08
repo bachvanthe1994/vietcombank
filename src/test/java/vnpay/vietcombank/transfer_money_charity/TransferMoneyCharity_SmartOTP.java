@@ -131,7 +131,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, TransferMoneyCharity_Data.ACCURACY_METHOD);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
 		
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		
 		
@@ -232,7 +232,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info.organization);
 
 		log.info("TC_02_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_02_20: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -312,7 +312,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		transferMoneyCharity.clickToDynamicDropDown(driver, TransferMoneyCharity_Data.ACCURACY_METHOD);
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.authenticationMethod);
 		
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 
@@ -403,7 +403,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_04_17: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToDouble(info1.money) + " EUR"));
@@ -415,7 +415,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info1.organization);
 
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -496,7 +496,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 
 		log.info("TC_05_10_01_Kiem tra so tien phi");
 
-		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY);
+		String transferFee = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(fee), currentcy);
 		
@@ -591,7 +591,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info2.organization);
 
 		log.info("TC_06_18: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.FEE_MONEY), addCommasToLong(fee + "") + " VND");
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_06_19: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), TransferMoneyCharity_Data.TRANSFER_CHARITY);

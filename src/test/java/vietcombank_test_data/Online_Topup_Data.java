@@ -2,6 +2,7 @@ package vietcombank_test_data;
 
 public class Online_Topup_Data {
 	public class VETC {
+		
 		public static final String VETC_SERVICE = "Nạp tiền tài khoản VETC";
 		public static final String VETC_NAME = "VETC";
 		public static final String VETC_DATA_01 = "E0100065030";
@@ -20,6 +21,7 @@ public class Online_Topup_Data {
 	}
 
 	public class AMOUNT_VETC {
+		
 		public static final String AMOUNT_OVER_MAX_LIMIT_A_TRAN = "10000001";
 		public static final String AMOUNT_LOWER_MIN_LIMIT_A_TRAN = "9999";
 		public static final String AMOUNT_MIN_LIMIT_A_TRAN = "10000";
@@ -27,22 +29,55 @@ public class Online_Topup_Data {
 
 	}
 
-	public class TEXT {
+	public class Online_Topup_Text {
 
 		public static final String TERM = "1 tháng";
 		public static final String FORM_OF_PAYMENT = "Lãi nhập gốc";
 		public static final String INPUT_VND = "2000000";
 		public static final String INPUT_USD = "100";
 		public static final String INPUT_EUR = "100";
+		
+		public static final String SAVING_TEXT = "Tiết kiệm";
+		public static final String ONLINE_TOPUP_TEXT = "Nạp tiền điện tử";
+		public static final String E_WALLET_TOPUP_TEXT = "Nạp tiền điện tử vào ví";
+		public static final String SURPLUS_TEXT = "Số dư khả dụng";
+		public static final String SERVICE_TYPE_TEXT = "Loại dịch vụ";
+		public static final String SOURCE_ACCOUNT_TEXT = "Tài khoản nguồn";
+		public static final String TYPE_TEXT = "Loại hình";
+		public static final String SUPPLIER_NAME_TEXT = "Nhà cung cấp";
+		public static final String CUSTOMER_CODE_TEXT = "Mã khách hàng";
+		public static final String CUSTOMER_NAME_TEXT= "Tên khách hàng";
+		public static final String LICENSE_OR_CUSTOMER_CODE_TEXT = "Biển số xe/Mã khách hàng";
+		public static final String MONEY_AMOUNT_TEXT = "Số tiền";
+		public static final String RECHARGE_MONEY_TEXT = "Số tiền nạp";
+		public static final String FEE_AMOUNT_TEXT = "Số tiền phí";
+		public static final String SERVICE_TEXT = "Dịch vụ";
+		public static final String TRANSACTION_ID_TEXT = "Mã giao dịch";
+		
+		public static final String SMS_OTP_TEXT = "SMS OTP";
+		public static final String SMART_OTP_TEXT = "VCB - Smart OTP";
+		public static final String PASSWORD_TEXT = "Mật khẩu đăng nhập";
+		
+		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
+		
+		public static final String TRANSACTION_SUCCESS_MESSAGE = "GIAO DỊCH THÀNH CÔNG";
 	}
 
 	public class MOMO {
 
-		public static final String MOMO_SERVICE = "Nạp tiền điện tử vào ví";
 		public static final String MOMO_NAME = "Ví điện tử MOMO";
 		public static final String MOMO_TYPE_B = "Nạp tiền MoMo B";
 		public static final String MOMO_TYPE_D = "Nạp tiền MoMo D";
 		public static final String MOMO_MONEY = "50000";
 		public static final String MOMO_DATA_01 = "0963220894";
+	}
+	
+	public class EPAY {
+
+		public static final String EPAY_NAME = "Ví điện tử EPAY";
+		public static final String EPAY_TYPE_B = "Nạp tiền EPAY B";
+		public static final String EPAY_TYPE_D = "Nạp tiền EPAY D";
+		public static final String EPAY_MONEY = "50000";
+		public static final String EPAY_DATA_01 = "0963220894";
 	}
 }

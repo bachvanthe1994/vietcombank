@@ -45,6 +45,7 @@ public class TransferIdentity_Data {
 	public static final String CITIZEN_IDENTITY_CARD = "Thẻ căn cước công dân";
 	public static final String ARMY_IDENTITY_CARD = "CMT Quân đội";
 	public static final String OK = "OK";
+	public static final String SMART_OTP = "VCB - Smart OTP";
     }
 
     public static class textDataInputForm {
