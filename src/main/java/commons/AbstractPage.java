@@ -938,6 +938,16 @@ public class AbstractPage {
 		}
 	}
 	
+	public void clickToDynamicIconContact(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+			
+		}
+	}
+	
 	public void clickToDynamicTextFollowingLinearlayout (AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT, dynamicTextValue);

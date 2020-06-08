@@ -202,6 +202,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String CONTENT = "Nội dung";
 		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
 		public static final String SMS_OTP = "SMS OTP";
+		public static final String PASSWORD = "Mật khẩu đăng nhập";
 		public static final String FEE_AMOUNT = "Số tiền phí";
 		public static final String CODE_TRANSFER = "Mã giao dịch";
 		public static final String NAME_BENEFICI = "Tên người thụ hưởng";
@@ -223,7 +224,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String NAME_OF_BENEFICI = "Tên người hưởng";
 		public static final String AMOUNT_TRANSFER = "Số tiền giao dịch";
 		public static final String AMOUNT_SURPLUS = "Tài khoản ghi có";
-		public static final String ACCOUNT_SOURCE = "Tài khoản trích nợ";
+		public static final String ACCOUNT_SOURCE = "Tài khoản/thẻ trích nợ";
 		public static final String NUMBER_TRANSFER = "Số lệnh giao dịch";
 		public static final String TIME_TRANSFER = "Thời gian giao dịch";
 		public static final String ALL_TYPE_TRANSFER = "Tất cả các loại giao dịch";
