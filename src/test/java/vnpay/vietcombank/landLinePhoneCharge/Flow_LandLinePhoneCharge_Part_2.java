@@ -7,8 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.google.gdata.data.docs.ExportFormat.Source;
-
 import commons.Base;
 import commons.Constants;
 import commons.PageFactoryManager;
@@ -19,7 +17,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LandLinePhoneChargePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
-import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LandLinePhoneCharge_Data;
 import vietcombank_test_data.LandLinePhoneCharge_Data.Text_Data;
 import vietcombank_test_data.LogIn_Data;
