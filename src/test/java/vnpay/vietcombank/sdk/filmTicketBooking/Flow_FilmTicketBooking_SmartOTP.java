@@ -1,6 +1,7 @@
 package vnpay.vietcombank.sdk.filmTicketBooking;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.testng.annotations.AfterClass;
@@ -18,26 +19,29 @@ import model.FilmTicketInfo;
 import model.SeatType;
 import model.SourceAccountModel;
 import pageObjects.LogInPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
-public class Flow_FilmTicketBooking_Part_1 extends Base {
+public class Flow_FilmTicketBooking_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private FilmTicketBookingPageObject filmTicketBooking;
 	private String transferTime, transactionNumber, ticketCode;
 	private long surplus, availableBalance, actualAvailableBalance, fee;
+	private SettingVCBSmartOTPPageObject smartOTP;
 	String password = "";
 	String account;
+	String passSmartOTP  = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	FilmTicketInfo info = new FilmTicketInfo();
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -45,6 +49,8 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		login.Global_login(phone, pass, opt);
 		password = pass;
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
 
 	@Test
@@ -184,7 +190,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
-		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
+		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.SMART_OTP);
 
 		log.info("TC_01_22_01: Kiem tra so tien phi");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE), addCommasToLong(fee + "") + " VND");
@@ -192,7 +198,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		log.info("TC_01_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
-		filmTicketBooking.inputToDynamicPopupPasswordInput(password, FilmTicketBooking_Data.NEXT);
+		filmTicketBooking.inputToDynamicPopupPasswordInput(passSmartOTP, FilmTicketBooking_Data.NEXT);
 
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
@@ -420,8 +426,8 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 		log.info("TC_03_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.PASSWORD));
-		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
+		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.SMART_OTP);
 
 		log.info("TC_03_22_01: Kiem tra so tien phi");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE), addCommasToLong(fee + "") + " VND");
@@ -522,7 +528,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
+		closeApp();
 		service.stop();
 	}
 

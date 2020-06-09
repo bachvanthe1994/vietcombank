@@ -62,7 +62,7 @@ public class LuckyGift extends Base {
 
 	}
 	
-	/*@Parameters({ "pass" })
+	@Parameters({ "pass" })
 	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangMatKhau(String pass) throws GeneralSecurityException, IOException {
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
@@ -402,7 +402,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_04_Step_19: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}*/
+	}
 
 	@Parameters({ "pass" })
 	@Test
@@ -1124,8 +1124,8 @@ public class LuckyGift extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 }

@@ -16,6 +16,7 @@ import pageObjects.LogInPageObject;
 import vehicalPageObject.VehicalPageObject;
 import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
+import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
 public class VehicalFlowTicket extends Base {
@@ -114,7 +115,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_01_Step_14 Click chọn Cho phep");
-		vehicalTicket.clickToDynamicAcceptButton("com.android.permissioncontroller:id/permission_allow_button");
+		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
 
 		log.info("TC_01_Step_15 Input email");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS+randomNumber()+"@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
@@ -193,7 +194,7 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
 		log.info("TC_01_Step_40 Lay thong tin tai khoan nguon");
-		vehicalTicket.scrollUpToText(VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT);
+		vehicalTicket.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
 		taiKhoanNguon = vehicalTicket.getDynamicTextView("com.VCB:id/number_account");
 
 		log.info("--------TC_01_Step_41 Verify ho va ten khach hang------------------");
@@ -232,8 +233,8 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_CONFIRM));
 
 		log.info("--------TC_01_Step_52 Verrify tai khoan nguon-----");
-		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT));
-		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.SOURCE_ACCOUNT));
+		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER);
 
 		log.info("-------TC_01_Step_53_ Click chon phuong thuc xac thuc");
 		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llptxt");
@@ -258,7 +259,7 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
 
 		log.info("----------TC-O1_Step_60 Verify thông tin ma thanh toan");
-		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER));
 
 		log.info("---------------TC-O1_Step_61 Lấy thông tin mã giao dịch");
 		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
@@ -382,7 +383,7 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
 		log.info("----------TC_02_Step_36 Lay thong tin tai khoan nguon");
-		vehicalTicket.scrollUpToText(VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT);
+		vehicalTicket.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
 		taiKhoanNguon = vehicalTicket.getDynamicTextView("com.VCB:id/number_account");
 
 		log.info("--------TC_02_Step_37 Verify ho va ten khach hang------------------");
@@ -421,8 +422,8 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_CONFIRM));
 
 		log.info("--------TC_02_Step_48 Verrify tai khoan nguon-----");
-		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_ROOT));
-		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.SOURCE_ACCOUNT));
+		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER);
 
 		log.info("-------TC_02_Step_49 Click chon phuong thuc xac thuc");
 		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llptxt");
@@ -446,7 +447,7 @@ public class VehicalFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
 
 		log.info("----------TC-O2_Step_56Verify thông tin ma thanh toan");
-		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER));
 
 		log.info("---------------TC-O2_Step_57 Lấy thông tin mã giao dịch");
 		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
@@ -457,7 +458,7 @@ public class VehicalFlowTicket extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KiemTraLichSuGiaoDich() {
 
 		log.info("--------TC_03_Step_01_Click Thuc hien giao dich moi");
@@ -470,7 +471,7 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.HISTORY_TICKET);
 
 		log.info("-------------TC_03_Step_04_Verify ma thanh toan");
-		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT), maThanhToan);
+		verifyEquals(vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER), maThanhToan);
 
 		log.info("------------TC_03_Step_05_lay thong tin ma ve");
 		maVe = vehicalTicket.getTextDynamicFollowTextTable(DynamicPageUIs.DYNAMIC_TEXT, VehicalData.DATA_ORDER_TICKET.CODE_TICKET);
@@ -484,7 +485,7 @@ public class VehicalFlowTicket extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraBaocaogaodich() {
 		log.info("-----------TC_04_Step_01_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
@@ -496,36 +497,36 @@ public class VehicalFlowTicket extends Base {
 		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
 
 		log.info("---------TC_04_Step_05_Click Chon muc bao cao giao dich");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
+		vehicalTicket.clickToDynamicText(ReportTitle.TRANSACTION_REPORT);
 
 		log.info("----------TC_04_Step_06_Verify hien thi man hinh bao cao giao dich ");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITLE_REPORT);
+		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(ReportTitle.TRANSACTION_REPORT);
 
 		log.info("----------TC_04_Step_06_Verify thong tin tai khoan nguon ");
 		verifyEquals(taiKhoanNguon, vehicalTicket.getDynamicTextView("com.VCB:id/tvSelectAcc"));
 
 		log.info("------------TC_04_Step_17: Chon tin kiem chuyen di");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_SEARCH);
+		vehicalTicket.clickToDynamicButton(ReportTitle.SEARCH_BUTTON);
 
 		log.info("----------TC_04_Step_17: Verify ban ghi Thanh toan ");
 		vehicalTicket.clickToDynamicTomorrow("com.VCB:id/llRoot");
 
 		log.info("-----------TC_04_Step_18: Verofy hien thi man hinh chi tiet bao cao giao dich ");
-		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.DETAIL_GD));
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(ReportTitle.DETAIL_TRANSFER));
 
 		log.info("---------TC_04_Step_19: Verify tai khoan trich no");
-		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.ACCOUNT));
+		verifyEquals(taiKhoanNguon, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.ACCOUNT_CARD_SOURCE));
 
 		log.info("---------TC_04_Step_19: Verify ma thanh toan ");
-		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT));
+		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER));
 
 		log.info("TC_04_Step_19: Verify so lenh giao dich");
-		verifyEquals(maGiaodich, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.NUMBER_ORDER));
+		verifyEquals(maGiaodich, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.TRANSACTION_NUMBER));
 
 
 		log.info("---------TC_04_Step_19: Verify so tien giao dich ");
 		tongTien = tongTien.replace("đ", "VND");
-		String tienSo = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT);
+		String tienSo = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.AMOUNT_TRANSFER);
 		int indexTien = tienSo.indexOf("(");
 		String subTienSo = tienSo.substring(0, indexTien - 1);
 		verifyEquals(tongTien, subTienSo);
