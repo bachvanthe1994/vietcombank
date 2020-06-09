@@ -35,8 +35,10 @@ public class VehicalData {
 	public static final String PASSWORD_LOGIN = "qqqq1111";
 	public static final String TITLE_REPORT = "Báo cáo giao dịch";
 	public static final String BUTTON_SEARCH= "Tìm kiếm";
+	public static final String AMOUNT= "Số tiền giao dịch";
 	public static final String AMOUNT_TT= "Số tiền thanh toán";
 
+	public static final String CODE_TT="Mã thanh toán";
 	public static final String CODE_GD="Mã giao dịch";
 	public static final String CODE_TICKET="Mã vé";
 
@@ -45,6 +47,7 @@ public class VehicalData {
 
 	public static final String INFO_CUSTOMER="Thông tin khách hàng";
 	public static final String INFO_TICKET="Thông tin vé";
+	public static final String AMOUNT_ROOT= "Tài khoản nguồn";
 	public static final String DETAIL_GD= "Chi tiết giao dịch";
 	
 	public static final String THANHTOAN= "Thanh toán";
