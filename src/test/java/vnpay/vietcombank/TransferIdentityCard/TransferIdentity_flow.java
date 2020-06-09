@@ -18,7 +18,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
-import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.TransactionReport_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferIdentity_Data.textCheckElement;
@@ -755,8 +754,8 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 	String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 	String[] surplusSplit = surplus.split(" ");
-	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
-	double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
+	long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
+	long canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
 
 	log.info("TC_09_STEP_22: chọn back");
@@ -911,8 +910,8 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 	String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 	String[] surplusSplit = surplus.split(" ");
-	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
-	double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
+	long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
+	long canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
 
 	log.info("TC_11_STEP_22: chọn back");
@@ -1069,8 +1068,8 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 	String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 	String[] surplusSplit = surplus.split("\\ ");
-	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
-	double canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
+	long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
+	long canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
 
 	log.info("TC_13_STEP_22: chọn back");

@@ -19,12 +19,10 @@ import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferIdentiryPageObject;
-import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.TransactionReport_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferIdentity_Data.textCheckElement;
 import vietcombank_test_data.TransferIdentity_Data.textDataInputForm;
-import pageObjects.SettingVCBSmartOTPPageObject;
 
 
 public class TransferIdentity_flow_SmartOTP extends Base {
