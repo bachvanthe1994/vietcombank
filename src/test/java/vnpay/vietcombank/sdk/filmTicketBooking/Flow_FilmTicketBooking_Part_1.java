@@ -59,10 +59,10 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
 
 		log.info("TC_01_04_Tim kiem thanh pho");
-		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");
+		filmTicketBooking.inputIntoEditTextByID(FilmTicketBooking_Data.CITY, "com.VCB:id/edtSearch");
 
 		log.info("TC_01_05_Click chon thanh pho");
-		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
+		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.CITY);
 
 		log.info("TC_01_06_Click chon cum rap Mega GS");
 		filmTicketBooking.clickToDynamicTextView("BHD Star Cineplex");
@@ -304,10 +304,10 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
 
 		log.info("TC_03_04_Tim kiem thanh pho");
-		filmTicketBooking.inputIntoEditTextByID("Hồ Chí Minh", "com.VCB:id/edtSearch");
+		filmTicketBooking.inputIntoEditTextByID(FilmTicketBooking_Data.CITY, "com.VCB:id/edtSearch");
 
 		log.info("TC_03_05_Click chon thanh pho");
-		filmTicketBooking.clickToDynamicTextView("Hồ Chí Minh");
+		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.CITY);
 
 		log.info("TC_03_06_Click chon cum rap Cinestar");
 		filmTicketBooking.clickToDynamicTextView("Cinestar");

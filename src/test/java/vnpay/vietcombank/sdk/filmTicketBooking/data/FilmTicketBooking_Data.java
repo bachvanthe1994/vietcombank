@@ -52,5 +52,6 @@ public class FilmTicketBooking_Data {
 	public static final String CODE_TICKET = "Mã vé";
 	public static final String BUY_TICKET_FILM = "Mua vé xem phim";
 	public static final String SMART_OTP = "VCB - Smart OTP";
+	public static final String CITY = "Hồ Chí Minh";
 }
 
