@@ -19,6 +19,12 @@ public class ChangePassword_Data {
 		public static final String NEW_PASSWORD_TEXT_VIEW = "Nhập mật khẩu mới";
 		public static final String CONFIRM_PASSWORD_TEXT_VIEW = "Nhập lại mật khẩu mới";
 		public static final String FORGOT_PASSWORD = "Quên mật khẩu?";
+		public static final String SETTING = "Cài đặt";
+		public static final String CHANGE_PASSWORD = "Đổi mật khẩu";
+		public static final String SEARCHING = "Tra cứu";
+		public static final String CONFIRM = "Xác nhận";
+		public static final String LOGIN_TEXT = "Đăng nhập";
+		public static final String ACCOUNT_PAYMENT = "TÀI KHOẢN THANH TOÁN";
 
 	}
 }
