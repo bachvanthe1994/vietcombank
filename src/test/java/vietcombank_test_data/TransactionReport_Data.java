@@ -41,6 +41,8 @@ public class TransactionReport_Data {
 		public static final String OUTSIDE_VCB_FROM_ACCOUNT = "Chuyển tiền tới NH khác qua TK";
 		public static final String TRANSFER_OUTSIDE_VCB = "Chuyển tiền ngoài VCB";
 		public static final String FEE = "Phí giao dịch";
+		public static final String PAY_FILM_TICKET = "Thanh toán vé xem phim";
+		public static final String CODE_TICKET = "Mã vé";
 	}
 
 }
