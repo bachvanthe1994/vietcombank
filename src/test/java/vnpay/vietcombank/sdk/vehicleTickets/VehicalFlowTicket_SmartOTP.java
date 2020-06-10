@@ -21,7 +21,7 @@ import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
-public class VehicalFlowTicket extends Base {
+public class VehicalFlowTicket_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private VehicalPageObject vehicalTicket;
@@ -250,31 +250,31 @@ public class VehicalFlowTicket extends Base {
 		log.info("-------TC_01_Step_55 Chon hinh thuc xac thuc là mat khau");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PASS);
 
-		log.info("-------TC_01_Step_56 Click button Tiep tuc");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-
-		log.info("-------TC_01_Step_57 Nhap mat khau cua tai khoan");
-		vehicalTicket.inputToDynamicInputBox(pass, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
-
-		log.info("TC_01_Step_58 Click btn Tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-
-		log.info("----------TC_01_Step_59 Verify hien thi man hinh giao dich thanh cong");
-		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
-
-		log.info("----------TC-O1_Step_60 Verify thông tin ma thanh toan");
-		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER));
-
-		log.info("---------------TC-O1_Step_61 Lấy thông tin mã giao dịch");
-		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
-
-		log.info("--------------TC-O1_Step_62 Verify số tiền thanh toán");
-		tongTien = tongTien.replace("đ", "VND");
-		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvAmount"));
+//		log.info("-------TC_01_Step_56 Click button Tiep tuc");
+//		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+//		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+//
+//		log.info("-------TC_01_Step_57 Nhap mat khau cua tai khoan");
+//		vehicalTicket.inputToDynamicInputBox(pass, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
+//
+//		log.info("TC_01_Step_58 Click btn Tiep tuc");
+//		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+//
+//		log.info("----------TC_01_Step_59 Verify hien thi man hinh giao dich thanh cong");
+//		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));
+//
+//		log.info("----------TC-O1_Step_60 Verify thông tin ma thanh toan");
+//		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER));
+//
+//		log.info("---------------TC-O1_Step_61 Lấy thông tin mã giao dịch");
+//		maGiaodich = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_GD);
+//
+//		log.info("--------------TC-O1_Step_62 Verify số tiền thanh toán");
+//		tongTien = tongTien.replace("đ", "VND");
+//		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvAmount"));
 	}
 
-	@Test
+//	@Test
 	public void TC_02_MuaVeXeBangOTP() {
 		
 		log.info("--------TC_02_Step_01_Click Thuc hien giao dich moi");
@@ -465,7 +465,7 @@ public class VehicalFlowTicket extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_KiemTraLichSuGiaoDich() {
 
 		log.info("--------TC_03_Step_01_Click Thuc hien giao dich moi");
@@ -492,7 +492,7 @@ public class VehicalFlowTicket extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_KiemTraBaocaogaodich() {
 		log.info("-----------TC_04_Step_01_Click btn back ");
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
@@ -541,8 +541,8 @@ public class VehicalFlowTicket extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 
 	}
 

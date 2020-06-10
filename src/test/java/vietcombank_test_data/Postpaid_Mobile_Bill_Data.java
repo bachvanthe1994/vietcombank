@@ -26,6 +26,8 @@ public class Postpaid_Mobile_Bill_Data {
 		public static final String MONEY_FEE = "Số tiền thanh toán";
 		public static final String PASS_WORD = "Mật khẩu đăng nhập";
 		public static final String DETAIL_TRANSFER = "Chi tiết giao dịch";
+		public static final String SMS_OTP = "SMS OTP";
+		public static final String SMART_OTP = "VCB - Smart OTP";
 	}
 
 	public static class DATA {
