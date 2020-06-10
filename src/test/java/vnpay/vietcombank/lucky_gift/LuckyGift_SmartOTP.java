@@ -72,7 +72,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
 		log.info("TC_01_Step_2: chọn tài khoản nguồn");
-		luckyGift.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		luckyGift.clickToDynamicDropDown(driver, TitleLuckyGift.SOURCE_ACCOUNT);
 		sourceAccount = luckyGift.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
@@ -103,7 +103,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_01_Step_9: lấy ra tài khoản nguồn");
-		source_account = luckyGift.getDynamicTextInTransactionDetail(driver, "Tài khoản nguồn");
+		source_account = luckyGift.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.SOURCE_ACCOUNT);
 
 		log.info("TC_01_Step_10: lấy ra lời chúc");
 		wishes = luckyGift.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvLoichuc");
@@ -123,7 +123,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_01_Step_14: chọn phương thức xác thực");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.OTP);
 
 		log.info("TC_01_Step_15: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -249,7 +249,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
 		log.info("TC_03_Step_2: chọn tài khoản nguồn");
-		luckyGift.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		luckyGift.clickToDynamicDropDown(driver, TitleLuckyGift.SOURCE_ACCOUNT);
 		sourceAccount = luckyGift.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
@@ -301,7 +301,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_03_Step_15: chọn phương thức xác thực OTP");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.OTP);
 
 		log.info("TC_03_Step_16: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -427,7 +427,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
 		log.info("TC_05_Step_2: chọn tài khoản nguồn");
-		luckyGift.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		luckyGift.clickToDynamicDropDown(driver, TitleLuckyGift.SOURCE_ACCOUNT);
 		sourceAccount = luckyGift.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
@@ -487,7 +487,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_05_Step_16: chọn phương thức xác thực OTP");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.OTP);
 
 		log.info("TC_05_Step_17: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
