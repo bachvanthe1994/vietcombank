@@ -13,9 +13,6 @@ public class TransferMoneyInVCB_Data {
 		public static final String DIFFERENT_OWNER_NAME = "NGUY H NH";
 
 		public static final String RECEIVER_ACCOUNT_3 = "0451001458259";
-		public static final String RECEIVER_NAME_ACCOUNT_3 = "TR QUA H";
-		public static final String RECEIVER_NAME_ACCOUNT_2 = "NGUYEN NGOC TOAN";
-		public static final String RECEIVER_NAME_ACCOUNT_1 = "NGUYEN NGOC TOAN-NGUYEN NGOC TOAN-NGUYEN";
 		public static final String[] COST = { "Người chuyển trả", "Người nhận trả" };
 
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "2";
@@ -25,22 +22,15 @@ public class TransferMoneyInVCB_Data {
 		public static final List<String> SUGGESTED_VND_MONEY = Arrays.asList("2,000 VND", "20,000 VND", "200,000 VND");
 
 		public static final String NOTE = "Test";
-		public static final String TRANSFER_OTP_FEE_TO_OTHER_ACCOUNT_OWNER = "1,100";
-		public static final String TRANSFER_PASSWORD_FEE_TO_OTHER_ACCOUNT_OWNER = "2,200";
 
-		public static final String PAYMENT_BY_PASSWORD_FEE = "1,100";
-		public static final String PAYMENT_BY_OTP_FEE = "2,200";
 
 		public static final String EUR_PAYMENT_BY_PASSWORD_FEE = "0.05";
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
 
-		public static final String USD_PAYMENT_BY_PASSWORD_FEE = "0.04";
-		public static final String USD_PAYMENT_BY_OTP_FEE = "0.24";
 
 		public static final String TRANSFER_TYPE = "Chuyển tiền trong VCB";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,087.00 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 23,997.76 VND";
-		public static final String USD_CHANGED_MONEY = "45974";
 		public static final String EUR_CHANGED_MONEY = "47996";
 
 		public static final String NUMBER_TRANSACTION = "Số lần giao dịch";
@@ -59,7 +49,6 @@ public class TransferMoneyInVCB_Data {
 	public static class Output {
 		public static final String SUCESSFULL_CREATED_ORDER = "LẬP LỆNH THÀNH CÔNG";
 		public static final String TRANSFER_SUCESS_MESSAGE = "CHUYỂN KHOẢN THÀNH CÔNG";
-		public static final String CONFIRMATION_MESSAGE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
 		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER = "Tài khoản đích không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_RECEIVE_ACCOUNT = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_RECEIVE_ACCOUNT_EUR = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
@@ -71,10 +60,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String DUPLICATED_ACCOUNT_MESSAGE = "Tài khoản nguồn và tài khoản đích không được giống nhau, Quý khách vui lòng kiểm tra lại";
 		public static final String SAME_ACCOUNT_OWNER_MESSAGE = "Tài khoản nguồn không hợp lệ do là tài khoản đồng chủ sở hữu.";
 		public static final String INEXISTED_ACCOUNT_OWNER_MESSAGE = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
-		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE_1 = "Số tài khoản người nhận không đúng. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản đích không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE_2 = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
-		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE_3 = "Tài khoản hưởng không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_FUTURE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
@@ -119,7 +106,6 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class InputDataInFutureForOTP {
-		public static final String OTP_FEE = "2,200";
 		public static final String TRANSFER_AMOUNT = "20000";
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "1";
 		public static final String USD_SMS_OTP_FEE = "0.1";
@@ -135,7 +121,6 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class InputDataInFutureForPassword {
-		public static final String PASSWORD_FEE = "500";
 		public static final String TRANSFER_AMOUNT = "20000";
 		public static final String AMOUNT_OF_EUR_OR_USD_TRANSFER = "1";
 		public static final String USD_PASSWORD_FEE = "0.02";
