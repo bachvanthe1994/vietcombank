@@ -37,7 +37,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel distanceAccount = new SourceAccountModel();
 
-	String account_other_owner, name_other_owner, nameReceived, otpSmart;
+	String account_other_owner, name_other_owner, nameReceived, otpSmart, newOTP;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -60,14 +60,12 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		account_other_owner = getDataInCell(0);
 		name_other_owner = getDataInCell(1);
 		otpSmart = getDataInCell(6);
+		newOTP = "111222";
+		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 	}
 
-	
 	@Test
 	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBang_Smart_OTP() {
-
-		log.info("TC_01_0_Setup smart OTP");
-		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, InputDataInVCB.TRANSFER_TYPE);
@@ -90,7 +88,6 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
 
 		log.info("TC_01_Step_07: Lay so du tai khoan chuyen");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -141,7 +138,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_23: Nhap OTP");
-		transferInVCB.inputToDynamicSmartOTP(driver, "111222", "com.VCB:id/otp");
+		transferInVCB.inputToDynamicSmartOTP(driver, newOTP, "com.VCB:id/otp");
 
 		log.info("TC_01_Step_24: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -192,13 +189,11 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 	}
 
-
 	@Test
 	public void TC_02_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBang_Smart_OTP() {
 		log.info("TC_02_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
-		
-		
+
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, InputDataInVCB.TRANSFER_TYPE);
 
@@ -208,13 +203,13 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		log.info("TC_01_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
-		
+
 		log.info("TC_01_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, Constants.USD_CURRENCY);
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
-		
+
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
 		log.info("TC_01_Step_04: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -222,7 +217,6 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
 
 		log.info("TC_02_Step 07: Lay so du tai khoan USD");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -285,7 +279,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_02_Step 26: Dien OTP");
-		transferInVCB.inputToDynamicSmartOTP(driver, "111222", "com.VCB:id/otp");
+		transferInVCB.inputToDynamicSmartOTP(driver, newOTP, "com.VCB:id/otp");
 
 		log.info("TC_02_Step 27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -339,10 +333,9 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 	}
 
-
 	@Test
 	public void TC_03_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_Smart_OTP() {
-		
+
 		log.info("TC_02_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
 
@@ -356,7 +349,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_01_Step_05: Chon tai khoan dich");
-		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR , Constants.EUR_CURRENCY);
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, Constants.EUR_CURRENCY);
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
@@ -367,7 +360,6 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
 
 		log.info("TC_03_Step 07: Lay so du tai khoan USD");
 		String beforeBalanceOfAccount1 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -425,12 +417,12 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_03_Step 26: Dien OTP");
-		transferInVCB.inputToDynamicSmartOTP(driver, "111222", "com.VCB:id/otp");
+		transferInVCB.inputToDynamicSmartOTP(driver, newOTP, "com.VCB:id/otp");
 
 		log.info("TC_03_Step 27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-		
+
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
 
 		log.info("TC_03_Step 29: Kiem tra so tien chuyen hien thi");

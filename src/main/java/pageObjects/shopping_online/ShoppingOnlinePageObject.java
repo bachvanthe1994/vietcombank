@@ -114,6 +114,15 @@ public class ShoppingOnlinePageObject extends AbstractPage {
 	}
 	
 	
+	public void inputToDynamicSmartOTP( String inputValue, String dynamicTextValue) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+		if (status == true) {
+			clearText(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicTextValue);
+			sendKeyToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, inputValue, dynamicTextValue);
+		}
+	}
+	
 
 	// Click vao 1 button sử dụng tham số là text
 	public void clickToDynamicCategories(String dynamicText) {
