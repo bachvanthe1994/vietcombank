@@ -60,6 +60,7 @@ public class TransactionReport_Data {
 		public static final String PAY_FILM_TICKET = "Thanh toán vé xem phim";
 		public static final String CODE_TICKET = "Mã vé";
 		public static final String CODE_TRANSFER = "Mã thanh toán";
+		public static final String PAYMENT_HOTEL ="Thanh toán đặt phòng khách sạn";
 	}
 
 }

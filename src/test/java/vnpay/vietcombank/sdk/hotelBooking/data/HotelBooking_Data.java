@@ -41,6 +41,23 @@ public class HotelBooking_Data {
 
 	public static final String HOTEL_NAME_BOOKING = "Khách sạn Apus Nha Trang";
 	public static final String HOTEL_NAME_BOOKING_INPUT = "Khách sạn Apus Nha Trang";
+	public static final String NAME_HOTEL_OR_PLACE = "Tên khách sạn hoặc điểm đến";
+	public static final String ARE_YOU_HAVE_VOUCHER = "Bạn có mã giảm giá?";
+	public static final String PAYMENT = "THANH TOÁN";
+	public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+	public static final String CONTINUE_TEXT = "Tiếp tục";
+	public static final String SUCCESS_TRANSFER = "THANH TOÁN THÀNH CÔNG";
+	public static final String CODE_TRANSFER = "Mã giao dịch";
+	public static final String CODE_ROOM = "Mã nhận phòng";
+	public static final String BOOKING_HOTEL = "Đặt phòng khách sạn";
+	public static final String BOOKING = "ĐẶT PHÒNG";
+	public static final String ACCEPT = "Đồng ý";
+	public static final String CHOICE_METHOD_VERIFY = "Chọn phương thức xác thực";
+	public static final String NEW_PERFORM_TRANSFER= "Thực hiện giao dịch mới";
+	public static final String PASSWORD= "Mật khẩu đăng nhập";
+	public static final String SMART_OTP= "VCB - Smart OTP";
+	public static final String SMS_OTP= "SMS OTP";
+	public static final String AVAILIBLE_BALANCES= "Số dư khả dụng";
 
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";

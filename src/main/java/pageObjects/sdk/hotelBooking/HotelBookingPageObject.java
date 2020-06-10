@@ -400,15 +400,7 @@ public class HotelBookingPageObject extends AbstractPage {
 
 	}
 
-	// Click vào ô dropdown, và ô date time , tham số truyền vào là resource id
-	public void clickToDynamicDropdownAndDateTimePicker(String dynamicID) {
-		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
-		}
 
-	}
 
 	// Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là
 	// resource id

@@ -57,6 +57,7 @@ public class MobileTopupPage_Data {
 		public static final String CODE_TRANSFER = "Mã giao dịch";
 		public static final String DETAIL_TRANSFER = "Chi tiết giao dịch";
 		public static final String SMS_OTP = "SMS OTP";
+		public static final String SMART_OTP = "VCB - Smart OTP";
 		public static final String COUTINUE = "Tiếp tục";
 		public static final String SUCCESS_TRANSFER = "GIAO DỊCH THÀNH CÔNG";
 
