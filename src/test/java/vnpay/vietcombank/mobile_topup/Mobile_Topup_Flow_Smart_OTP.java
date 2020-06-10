@@ -93,9 +93,9 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		log.info("TC_01_Step_08: Xac nhan menh gia the");
 		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, Text.PRICE_CARD).contains(UIs.LIST_UNIT_VALUE[0] + " VND"));
 
-		log.info("TC_01_Step_09: Chon phuong thuc xac thuc SMS OTP");
+		log.info("TC_01_Step_09: Chon phuong thuc xac thuc Smart OTP");
 		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.PASSWORD);
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.SMART_OTP);
 
 		log.info("TC_01_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -147,7 +147,7 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, Text.PRICE_CARD).contains(UIs.LIST_UNIT_VALUE[5] + " VND"));
 
 		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.PASSWORD);
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.SMART_OTP);
 
 		log.info("TC_02_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -195,9 +195,9 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		log.info("TC_03_Step_08: Xac nhan menh gia the");
 		verifyTrue(mobileTopup.getDynamicTextByLabel(driver, Text.PRICE_CARD).contains(UIs.DEFAULT_UNIT_VALUE + " VND"));
 
-		log.info("TC_03_Step_09: Chon phuong thuc xac thuc SMS OTP");
+		log.info("TC_03_Step_09: Chon phuong thuc xac thuc Smart OTP");
 		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
-		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.PASSWORD);
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.SMART_OTP);
 
 		log.info("TC_03_Step_10: An nut 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");

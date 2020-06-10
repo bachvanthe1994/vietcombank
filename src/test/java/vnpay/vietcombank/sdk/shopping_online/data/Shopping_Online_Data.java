@@ -20,6 +20,7 @@ public class Shopping_Online_Data {
 	public static String NEW_TRANSFER = "Thực hiện giao dịch mới";
 	public static String VNSHOP = "VNSHOP";
 	public static String SMS_OTP = "SMS OTP";
+	public static String SMART_OTP = "VCB - Smart OTP";
 	public static String ADD_NEW = "Thêm mới";
 	public static String PHONE_NUMBER = "0904797866";
 	public static String RECIPT_PHONE_NUMBER = "Số điện thoại người nhận";

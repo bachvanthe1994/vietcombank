@@ -38,7 +38,7 @@
 <!--             <class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
             
             <!-- Quà tặng may mắn -->
-            <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
+            <class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_SmartOTP" />
 
 
 		</classes>

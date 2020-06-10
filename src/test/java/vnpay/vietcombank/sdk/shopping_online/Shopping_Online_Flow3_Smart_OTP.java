@@ -264,7 +264,7 @@ public class Shopping_Online_Flow3_Smart_OTP extends Base {
 
 		log.info("TC_01_STEP_16: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
-		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.SMS_OTP);
+		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.SMART_OTP);
 
 		log.info("TC_01_STEP_17: Chon tiep tuc");
 		shopping.clickToDynamicButton(Shopping_Online_Data.CONTINUE);
@@ -497,7 +497,7 @@ public class Shopping_Online_Flow3_Smart_OTP extends Base {
 
 		log.info("TC_02_STEP_: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
-		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.SMS_OTP);
+		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.SMART_OTP);
 
 		log.info("TC_02_STEP_: Chon tiep tuc");
 		shopping.clickToDynamicButton(Shopping_Online_Data.CONTINUE);

@@ -2,6 +2,7 @@ package vnpay.vietcombank.settingVCB_Smart_OTP;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -45,14 +46,13 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 	private String transferTime, transactionNumber, amountStartString,  exchangeRate, currentcy;
 	private TransactionReportPageObject transReport;
 	private TransferMoneyOutSideVCBPageObject transferMoneyOutSide;
-	private String[] transferDate;
 	String tommorrowDate = getForwardDate(1);
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String expectAvailableBalance, moneyTransfer, account, user, content, code,source_account,beneficiary_account,money,wishes,surplusString, moneyFee;
 	long transferFee ,fee= 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
-	private String nameCustomer;
+	private String name_User;
 
 	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy, toltalMoney, money_transferred,exchangeRate1;
 
@@ -63,7 +63,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -77,15 +77,13 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 		trasferPage = PageFactoryManager.getTransferIdentiryPageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
+		name_User = getDataInCell(3);
 	}
 
 	@Parameters({ "pass" })
 	public void TC_01_CaiDatPhuongThucXacThucOTP() {
 		log.info("TC_01_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("Before class: Lay ten user");
-		nameCustomer = smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
 
 		log.info("TC_01_Step: Click cai dat");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
@@ -325,7 +323,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 		verifyEquals(transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE, "3"), addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " USD");
 
 		log.info("TC_03_Step 30: Kiem tra ten nguoi thu huong hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), name_User);
 
 		log.info("TC_03_Step 31: Kiem tra tai khoan dich hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.DEFAULT_ACCOUNT3);
@@ -565,7 +563,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4 extends Base {
 			transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 			log.info("TC_05_13_1_Kiem tra ten nguoi huong thu");
-			verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+			verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), name_User);
 
 			log.info("TC_05_13_2_Kiem tra tai khoan dich");
 			verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info.destinationAccount);
@@ -774,7 +772,6 @@ public void TC_06_ChuyenTienTuThienBangNgoaiTeSmartOTP() throws InterruptedExcep
 
 	log.info("TC_07_STEP_16: lấy ra time chuyển");
 	String getDate = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
-	transferDate = getDate.split(" ");
 
 	log.info("TC_07_STEP_17: lấy tên người hưởng");
 	user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
