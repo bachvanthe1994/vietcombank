@@ -17,7 +17,6 @@ import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
-import vietcombank_test_data.Account_Data.Valid_Account;
 import vnpay.vietcombank.sdk.shopping_online.data.Shopping_Online_Data;
 
 public class Shopping_Online_Flow2 extends Base {
@@ -493,8 +492,6 @@ public class Shopping_Online_Flow2 extends Base {
 		verifyEquals(feeShippingD, fee);
 
 		log.info("TC_02_STEP: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.DISCOUNT).split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
 
 		// tong tien can thanh toan
 		log.info("TC_02_STEP: tong tien");
@@ -738,8 +735,6 @@ public class Shopping_Online_Flow2 extends Base {
 		verifyEquals(feeShippingD, fee);
 
 		log.info("TC_03_STEP_: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.DISCOUNT).split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
 
 		log.info("TC_03_STEP_: tong tien");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.TOTAL).split(" ");
@@ -985,10 +980,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("Testcase_04: verify fee Ship");
 		verifyEquals(feeShippingD, fee);
 
-		log.info("Testcase_04: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.DISCOUNT).split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
-
 		// tong tien can thanh toan
 		log.info("Testcase_04: tong tien");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.TOTAL).split(" ");
@@ -1229,10 +1220,6 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("TC_05_STEP_: verify fee Ship");
 		verifyEquals(feeShippingD, fee);
 
-		log.info("TC_05_STEP_: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.DISCOUNT).split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
-
 		// tong tien can thanh toan
 		log.info("TC_05_STEP_: tong tien");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.TOTAL).split(" ");
@@ -1457,10 +1444,6 @@ public class Shopping_Online_Flow2 extends Base {
 
 		log.info("TC_06_STEP_: verify fee Ship");
 		verifyEquals(feeShippingD, fee);
-
-		log.info("TC_06_STEP_: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.DISCOUNT).split(" ");
-		double sale = Double.parseDouble(getSaleString[0].replace(",", ""));
 
 		// tong tien can thanh toan
 		log.info("TC_06_STEP_: tong tien");

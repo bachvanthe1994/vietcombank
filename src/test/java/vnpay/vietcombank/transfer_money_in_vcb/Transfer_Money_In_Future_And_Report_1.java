@@ -21,6 +21,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.TransferMoneyStatus_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data.Input;
@@ -41,7 +42,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel distanceAccount = new SourceAccountModel();
-	String account_other_owner, name_other_owner,name_receiver;
+	String account_other_owner, name_other_owner, name_receiver;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -61,12 +62,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, TittleData.STATUS_TRANSACTION);
-		
+
 	}
 
-
-	
-	@Parameters({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_01_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP(String otp) {
 
@@ -86,12 +85,11 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_01_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
-		
+
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
 
-		
 		log.info("TC_01_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
 		long beforeBalanceAmountOfAccount2 = convertMoneyToLong(beforeBalanceOfAccount2, Constants.VND_CURRENCY);
@@ -155,7 +153,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver, otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -317,7 +315,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-	@Parameters({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_04_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP(String otp) {
 
@@ -337,7 +335,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_04_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
-		
+
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
@@ -404,12 +402,12 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_04_Step_25: Chon otp");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_OPTIONS[1]);
-		
+
 		log.info("TC_04_Step_27: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_04_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver, otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_04_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -569,8 +567,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-	
-	@Parameters({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_07_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP(String otp) {
 
@@ -590,11 +587,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_07_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, Constants.USD_CURRENCY);
-		
+
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
-
 
 		log.info("TC_07_Step_06: Lay so du tai khoan dich");
 		String beforeBalanceOfAccount2 = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SURPLUS);
@@ -658,7 +654,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_07_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver,otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_07_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -779,7 +775,6 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_08_Step 19: Kiem tra ngay hieu luc");
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
-	
 		log.info("TC_08_Step 21: Kiem tra trang thai hieu luc");
 		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
@@ -820,8 +815,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-	
-	@Parameters({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP(String otp) {
 
@@ -835,13 +829,13 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_10_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
-		
+
 		log.info("TC_10_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_10_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, Constants.EUR_CURRENCY);
-		
+
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
@@ -914,7 +908,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_10_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver, otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_10_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -1076,7 +1070,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-	@Parameters({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_13_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP(String otp) {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
@@ -1136,12 +1130,11 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_13_Step_18: Chon SMS OTP");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_OPTIONS[1]);
 
-
 		log.info("TC_13_Step_20: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_13_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver,otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_13_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -1284,8 +1277,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 	}
 
-	
-	@Parameters({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_16_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP(String otp) {
 		log.info("TC_16_Step_01: Click Chuyen tien trong VCB");
@@ -1355,7 +1347,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_16_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver, otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_16_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -1495,10 +1487,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
-	
-	@Parameters({"otp"})
+
+	@Parameters({ "otp" })
 	@Test
-	public void TC_19_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP(String otp) {
+	public void TC_19_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP_LuuDanhBa(String otp) {
 
 		log.info("TC_19_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
@@ -1515,11 +1507,11 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		log.info("TC_19_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
-		
+
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
-		
+
 		log.info("TC_19_Step_07:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
@@ -1549,31 +1541,28 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_19_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver, otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_19_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-		
+
 		log.info("TC_19_Step_27: Click luu danh ba");
 		transferInVCB.clickToTextID(driver, "com.VCB:id/tvSaveContact");
-	
-		
+
 		log.info("TC_19_Step_27: Get thong tin tai khoan da luu");
 		distanceAccount.account = transferInVCB.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent");
-		
-		
-		log.info("TC_19_Step_27: Click btn hoan thanh");
-		transferInVCB.clickToDynamicButton(driver, "com.VCB:id/btSave");
-		
+
+		if (transferInVCB.getPageSource(driver).contains(InputText_MoneyRecurrent.SAVE_RECEIVED_ACCOUNT_TEXT)) {
+			log.info("TC_19_Step_27: Click btn hoan thanh");
+			transferInVCB.clickToDynamicButton(driver, "com.VCB:id/btSave");
+		}
+
 		log.info("TC_19_Step_36: Click thuc hien giao dich moi");
 		transferInVCB.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
-		
-		
 
-		
 	}
-	
-	@Parameters({"otp"})
+
+	@Parameters({ "otp" })
 	@Test
 	public void TC_20_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP_BangTKDaLuu(String otp) {
 
@@ -1589,11 +1578,10 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_20_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		
+
 		log.info("TC_20_Step_05: Chon tai khoan dich");
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
-		
-	
+
 		log.info("TC_20_Step_07:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
@@ -1602,7 +1590,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_20_Step_10: Nhap tai khoan nhan");
 		transferInVCB.clickToDynamicIconContact(driver, TittleData.INPUT_ACCOUNT_BENEFICI);
-		
+
 		log.info("TC_20_Step_10: Nhap tai khoan nhan da luu");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
 
@@ -1625,29 +1613,26 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_20_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicOtp(driver, otp , TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
 
 		log.info("TC_20_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-		
+
 		log.info("TC_20_Step_27: Click luu danh ba");
 		transferInVCB.clickToTextID(driver, "com.VCB:id/tvSaveContact");
-	
-		
+
 		log.info("TC_20_Step_27: Get thong tin tai khoan da luu");
 		distanceAccount.account = transferInVCB.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent");
-		
-		
-		log.info("TC_20_Step_27: Click btn hoan thanh");
-		transferInVCB.clickToDynamicButton(driver, "com.VCB:id/btSave");
-		
+
+		if (transferInVCB.getPageSource(driver).contains(InputText_MoneyRecurrent.SAVE_RECEIVED_ACCOUNT_TEXT)) {
+			log.info("TC_19_Step_27: Click btn hoan thanh");
+			transferInVCB.clickToDynamicButton(driver, "com.VCB:id/btSave");
+		}
 		log.info("TC_20_Step_36: Click thuc hien giao dich moi");
 		transferInVCB.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
-		
-		
 
-		
 	}
+
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
