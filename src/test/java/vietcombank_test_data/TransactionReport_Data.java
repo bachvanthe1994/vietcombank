@@ -22,7 +22,7 @@ public class TransactionReport_Data {
 		public static final String TITLE_WISHES = "Nhập/chọn lời chúc";
 		public static final String USER_OUTVCB = "Người nhận khác VCB";
 		public static final String TIME_TRANSFER = "Thời gian giao dịch";
-		public static final String ACCOUNT_TRANSFER = "Tài khoản/thẻ trích nợ";
+		public static final String ACCOUNT_TRANSFER = "Tài khoản trích nợ";
 		public static final String BENEFICIARY_NAME = "Tên người hưởng";
 		public static final String ACCOUNT_CREDITED = "Tài khoản ghi có";
 		public static final String TRANSACTION_FEE = "Số tiền phí";
@@ -60,6 +60,7 @@ public class TransactionReport_Data {
 		public static final String PAY_FILM_TICKET = "Thanh toán vé xem phim";
 		public static final String CODE_TICKET = "Mã vé";
 		public static final String CODE_TRANSFER = "Mã thanh toán";
+		public static final String TRAIN_TICKET = "Thanh toán vé tàu";
 	}
 
 }

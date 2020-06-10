@@ -142,45 +142,45 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_30: Hien thi man hinh Cuoc di dong tra sau");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.Title.MOBILE_TITLE);
 
-//		log.info("TC_01_Step_31: Chon tai khoan nguon");
-//		postpaidMobile.clickToDynamicDropdownByHeader(driver, Title.SOURCE_ACCOUNT, "1");
-//		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, account);
-//
-//		log.info("TC_01_Step_31: Xac nhan so du TK nguon da bi tru thanh cong");
-//		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(mobileBill) - transferFee) + "";
-//		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.AVAILABLE_BALANCES), addCommasToLong(sourceAccountMoney) + " VND");
-//
-//		log.info("TC_01_Step_32: Chon nha cung cap Viettel");
-//		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-//		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
-//
-//		log.info("TC_01_Step_33: Nhap so dien thoai");
-//		postpaidMobile.inputToDynamicEditviewByLinearlayoutId(driver, mobilePhone, "com.VCB:id/llCode");
-//
-//		log.info("TC_01_Step_34: An nut Tiep Tuc");
-//		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btn_submit"), Title.NEXT);
-//		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-//
-//		log.info("TC_01_Step_35: Hien thi thong bao So dien thoai khong con no truoc");
-//		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_MESSAGE);
-//
-//		log.info("TC_01_Step_36: Click nut Dong tat pop-up");
-//		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-//
-//		log.info("TC_01_Step_37: Click nut Back ve man hinh chinh");
-//		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-//
-//		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
-//		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-//		
-//		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
-//		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		log.info("TC_01_Step_31: Chon tai khoan nguon");
+		postpaidMobile.clickToDynamicDropdownByHeader(driver, Title.SOURCE_ACCOUNT, "1");
+		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		log.info("TC_01_Step_31: Xac nhan so du TK nguon da bi tru thanh cong");
+		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(mobileBill) - transferFee) + "";
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, Title.AVAILABLE_BALANCES), addCommasToLong(sourceAccountMoney) + " VND");
+
+		log.info("TC_01_Step_32: Chon nha cung cap Viettel");
+		postpaidMobile.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
+
+		log.info("TC_01_Step_33: Nhap so dien thoai");
+		postpaidMobile.inputToDynamicEditviewByLinearlayoutId(driver, mobilePhone, "com.VCB:id/llCode");
+
+		log.info("TC_01_Step_34: An nut Tiep Tuc");
+		verifyEquals(postpaidMobile.getDynamicTextButtonById(driver, "com.VCB:id/btn_submit"), Title.NEXT);
+		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+
+		log.info("TC_01_Step_35: Hien thi thong bao So dien thoai khong con no truoc");
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_MESSAGE);
+
+		log.info("TC_01_Step_36: Click nut Dong tat pop-up");
+		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+
+		log.info("TC_01_Step_37: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+
+		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		
+		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
+		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
-	/*@Test
+	@Test
 	public void TC_02_CuocDiDongTraSau_Viettel_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
@@ -1261,7 +1261,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_12_Step_21: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
-	}*/
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {

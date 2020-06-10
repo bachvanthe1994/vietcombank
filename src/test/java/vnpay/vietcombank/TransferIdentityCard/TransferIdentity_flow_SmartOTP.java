@@ -124,7 +124,7 @@ public class TransferIdentity_flow_SmartOTP extends Base {
 	trasferPage.clickToDynamicButton(driver, textCheckElement.NEXT);
 
 	log.info("TC_01_STEP_14: điền mật khẩu");
-	trasferPage.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+	trasferPage.inputToDynamicSmartOtp(driver, passSmartOTP, "com.VCB:id/otp");
 
 	log.info("TC_01_STEP_15: chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, textCheckElement.NEXT);

@@ -129,7 +129,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_01_Step_16: điền otp");
-		luckyGift.inputToDynamicOtp(driver, passSmartOTP, TitleLuckyGift.NEXT);
+		luckyGift.inputToDynamicSmartOtp(driver, passSmartOTP, "2");
 
 		log.info("TC_01_Step_17: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -307,7 +307,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_03_Step_17: điền OTP");
-		luckyGift.inputToDynamicOtp(driver, passSmartOTP, TitleLuckyGift.NEXT);
+		luckyGift.inputToDynamicSmartOtp(driver, passSmartOTP, "2");
 
 		log.info("TC_03_Step_18: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
