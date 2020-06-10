@@ -12,7 +12,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.LocationQRCodePageObject;
 import pageObjects.LogInPageObject;
-import vietcombank_test_data.Shopping_Online;
+import vietcombank_test_data.Location_QRCode_Data;
 
 public class Location_QRCode_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -49,28 +49,28 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step: Click diem chap nhan thanh toan QRCode");
-		QRCode.clickToDynamicButtonLinkOrLinkText(driver, "Điểm chấp nhận thanh toán QRCode");
+		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.LOCATOR_PAYMENT_QR);
 
 		log.info("TC_01_Step: Click cua hang");
-		QRCode.clickToDynamicButtonLinkOrLinkText(driver, "Nhà hàng");
+		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.RESTAURANT);
 		QRCode.clickToDynamicBack(driver, "0","2");
 
 		log.info("TC_01_Step: get thong tin cua hang"); 
-		shopName = QRCode.getDynamicTextPrecedingText(driver, "Đơn vị chấp nhận thanh toán", "0");
-		typeShop = QRCode.getDynamicTextPrecedingText(driver, "Đơn vị chấp nhận thanh toán", "1");
-		location = QRCode.getDynamicTextFollowingText(driver, "Đơn vị chấp nhận thanh toán", "10");
+		shopName = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "0");
+		typeShop = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "1");
+		location = QRCode.getDynamicTextFollowingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "10");
 		int likeNumberExpect = QRCode.getNumberLike();
 		
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
-		QRCode.clickToTextImageView(driver, "Chi tiết");
-		QRCode.clickToTextImageView(driver, "Nhà hàng");
+		QRCode.clickToTextImageView(driver, Location_QRCode_Data.DETAIL);
+		QRCode.clickToTextImageView(driver, Location_QRCode_Data.RESTAURANT);
 		
 		log.info("TC_01_Step: Click tim kiem thong tin");
-		QRCode.scrollUpToText(driver, "Nổi bật");
-		QRCode.clickToDynamicTextContains(driver, "Tìm kiếm địa điểm");
+		QRCode.scrollUpToText(driver, Location_QRCode_Data.HIGH_LIGHT);
+		QRCode.clickToDynamicTextContains(driver, Location_QRCode_Data.SEACHING_LOCATION);
 		
 		log.info("TC_01_Step: Click tab xem gan day");
-		QRCode.clickToDynamicTextContains(driver, "Xem gần");
+		QRCode.clickToDynamicTextContains(driver, Location_QRCode_Data.VIEW_TEXT);
 		
 		log.info("TC_01_Step: verify loai cua hang");
 		verifyEquals(QRCode.getDynamicTextBack(driver, "0","2"), typeShop);
@@ -87,26 +87,26 @@ public class Location_QRCode_Flow extends Base {
 @Test
 	public void TC_02_CheckTabDaTimKiem() {
 		log.info("TC_02_Step:Nhap dia chi tim kiem");
-		QRCode.inputToDynamicInputBox(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH, "Tìm kiếm địa điểm...");
+		QRCode.inputToDynamicInputBox(driver, Location_QRCode_Data.LOCATOR_SEARCH, Location_QRCode_Data.SEARCH_ADDRESS);
 
 		log.info("TC_02_Step:nhan tim kiem");
-		QRCode.clickToDynamicImageEdit(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH);
+		QRCode.clickToDynamicImageEdit(driver, Location_QRCode_Data.LOCATOR_SEARCH);
 
 		log.info("TC_02_Step: Click chon mot cua hang");
 		QRCode.clickToDynamicBack(driver, "0","2");
 		
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
-		QRCode.clickToTextImageView(driver, "Chi tiết");
-		QRCode.clickToTextEditText(driver, Shopping_Online.Valid_Account.LOCATOR_SEARCH);
+		QRCode.clickToTextImageView(driver, Location_QRCode_Data.DETAIL);
+		QRCode.clickToTextEditText(driver, Location_QRCode_Data.LOCATOR_SEARCH);
 		
 		log.info("TC_02_Step: Click text tim kiem de den tab xem gan day");
-		QRCode.scrollUpToText(driver, "Nổi bật");
-		QRCode.clickToDynamicButtonLinkOrLinkText(driver, "Tìm kiếm địa điểm...");
+		QRCode.scrollUpToText(driver, Location_QRCode_Data.HIGH_LIGHT);
+		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.SEARCH_ADDRESS);
 
 		log.info("TC_02_Step: Click tab da tim");
-		QRCode.clickToDynamicButtonLinkOrLinkText(driver, "Đã tìm");
+		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.SEACHED);
 
 		log.info("TC_02_Step: verify text da tim kiem");
-		verifyEquals(QRCode.getDynamicTextScrollText(driver, "Yêu thích", "0", "0"), Shopping_Online.Valid_Account.LOCATOR_SEARCH);
+		verifyEquals(QRCode.getDynamicTextScrollText(driver, Location_QRCode_Data.LOVE, "0", "0"), Location_QRCode_Data.LOCATOR_SEARCH);
 	}	
 }

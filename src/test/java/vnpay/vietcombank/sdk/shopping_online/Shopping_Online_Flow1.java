@@ -17,8 +17,6 @@ import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
-import vietcombankUI.shopping_online_UI.ShoppingOnlinePageUIs;
-import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vnpay.vietcombank.sdk.shopping_online.data.Shopping_Online_Data;
