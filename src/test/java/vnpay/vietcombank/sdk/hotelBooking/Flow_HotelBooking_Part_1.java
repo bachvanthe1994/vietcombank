@@ -28,7 +28,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 	private String transferTime, transactionNumber;
 	private long surplus, availableBalance, actualAvailableBalance, fee, money;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String password, customer_name,customer_phone;
+	String password, customer_name, customer_phone;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 
@@ -44,7 +44,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 
 		password = pass;
 
@@ -199,7 +199,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		log.info("TC_02_21: Kiem tra noi dung giao dich");
 		String note = "MBVCB." + transactionNumber + ". thanh toan phong khach san VNP";
-		String realNote= reportPage.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER);
+		String realNote = reportPage.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER);
 		verifyTrue(realNote.contains(note));
 
 		log.info("TC_02_22: Click  nut Back");
@@ -255,7 +255,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.SOURCE_ACCOUNT);
 
 		sourceAccount = hotelBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		
+
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.AVAILIBLE_BALANCES));
 
 		log.info("TC_03_11_Kiem tra thong tin hoa don");
