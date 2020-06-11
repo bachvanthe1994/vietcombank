@@ -25,11 +25,14 @@
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 			<!-- Nạp tiền điện thoại -->
-			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
+<!-- 			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
+			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow_Smart_OTP" />
+
 
 			<!-- Mua sắm trực tuyến -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" /> -->
 
 			<!-- Thanh toán QR code -->
 			<!-- <class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1"/> -->
@@ -175,22 +178,7 @@
 			<!-- Chỉnh sửa điểm nổi bật -->
 			<class name="vnpay.vietcombank.sdk.sortUtility.FlowSortUtility" />
 
-			<!-- VCB smartOTp -->
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_QuickMoneyTransfer247_SmartOTP" />
 
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_Part4" />
-
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2" />
-
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6" />
-
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_SDK_Part3" />
-
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoney_EUR_Part5" />
-
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoney_USD_Part4" />
-
-			<class name="vnpay.vietcombank.settingVCB_Smart_OTP.Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1" />
 
 
 
