@@ -29,6 +29,8 @@ public class Flow_HotelBooking_Part_1 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance, fee, money;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String password, customer_name, customer_phone;
+	String paycode = "";
+	String totalPrice = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 
@@ -54,8 +56,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		customer_phone = getDataInCell(8);
 	}
 
-	String paycode = "";
-	String totalPrice = "";
+
 
 	@Test
 	public void TC_01_DatPhongKhachSan() {
@@ -105,12 +106,15 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		log.info("TC_01_12_Click Tiep tuc");
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
 
-		log.info("TC_01_13_Chon phuong thuc xac thuc");
 		
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.FEE_AMOUNT));
-
+		log.info("TC_01_12_Chon phuong thuc xac thuc");
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.CHOICE_METHOD_VERIFY);
+		
+		log.info("TC_01_12_Chon nhap mat khau");
 		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.PASSWORD);
+
+		log.info("TC_01_13_get lay phi");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.FEE_AMOUNT));
 
 		log.info("TC_01_14_Click tiep tuc");
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
@@ -267,9 +271,11 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
 
 		log.info("TC_03_13_Chon phuong thuc xac thuc");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.FEE_AMOUNT));
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.CHOICE_METHOD_VERIFY);
 		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.SMS_OTP);
+
+		
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.FEE_AMOUNT));
 
 		log.info("TC_03_14_Click tiep tuc");
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
