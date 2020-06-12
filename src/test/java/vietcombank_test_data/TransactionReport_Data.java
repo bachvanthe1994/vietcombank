@@ -65,6 +65,9 @@ public class TransactionReport_Data {
 		
 		
 		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
+		
+		public static final String MOBILE_TOPUP_TITLE = "Nạp tiền điện thoại";
+
 
 	}
 
