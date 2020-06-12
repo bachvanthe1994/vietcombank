@@ -50,6 +50,7 @@ public class Electric_Bills_Data {
 		
 		public static final String SMS_OTP_TEXT = "SMS OTP";
 		public static final String PASSWORD_TEXT = "Mật khẩu đăng nhập";
+		public static final String SMART_OTP_TEXT = "VCB - Smart OTP";
 		
 		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
 		public static final String BUTTON_NEW_TRANSACTION_TEXT = "Thực hiện giao dịch mới";
