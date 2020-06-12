@@ -20,4 +20,17 @@ public class SavingTarget_Data {
 		public static final String TERM_RATE_12_MONTHS = "12 tháng/ 6.8 %";
 		public static final String ACCUMULATION_TIME_12_MONTHS = "12 tháng";
 	}
+	
+public class TITLE {
+		
+		public static final String RESULT = "Kết quả";
+		public static final String RECURRING_DEPOSITS = "Số tiền gửi định kỳ";
+		public static final String AMOUNT_MONTHLY = "Số tiền góp hàng tháng";
+		public static final String TOTAL_INTEREST = "Tổng số tiền lãi";
+		public static final String TOTAL_AMOUNT_RECEIVED = "Tổng số tiền nhận được";
+		public static final String SET_NEW_GOALS = "Đặt mục tiêu mới";
+		public static final String GOALS_SAVING = "Đặt mục tiêu tiết kiệm";
+		public static final String SEARCH = "Tra cứu";
+		public static final String SUPPOSRT = "Hỗ trợ";
+	}
 }

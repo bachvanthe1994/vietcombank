@@ -1265,8 +1265,8 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 }

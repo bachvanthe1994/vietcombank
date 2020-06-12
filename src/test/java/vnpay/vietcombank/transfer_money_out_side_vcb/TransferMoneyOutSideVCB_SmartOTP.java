@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_money_out_side_vcb;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,6 +17,7 @@ import model.SourceAccountModel;
 import model.TransferOutSideVCB_Info;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
 import vietcombank_test_data.LogIn_Data;
@@ -23,18 +25,20 @@ import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferMoneyOutVCB_Data.TitleOutVCB;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
-public class TransferMoneyOutSideVCB_Part_1 extends Base {
+public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyOutSideVCBPageObject transferMoneyOutSide;
 	private TransactionReportPageObject transReport;
+	 private SettingVCBSmartOTPPageObject smartOTP;
 	private String transferTime;
 	private String transactionNumber;
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String password, currentcy = "";
 	String account;
+	String passSmartOTP  = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 
 	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(account, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50000", TitleOutVCB.TRANSACTION_FEE_SENDE, "test", "SMS OTP");
@@ -46,7 +50,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -59,13 +63,15 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
 		password = pass;
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
 	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy;
 
 	@Test
-	public void TC_01_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
+	public void TC_01_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangSmartOTP() {
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
@@ -124,7 +130,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.PASSWORD_TITLE);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.authenticationMethod);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.SMART_OTP);
 
 		log.info("TC_01_10_01_Kiem tra so tien phi");
 		String fee= transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
@@ -133,7 +139,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_01_11_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
-		transferMoneyOutSide.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, TitleOutVCB.NEXT);
+		transferMoneyOutSide.inputToDynamicOtp(driver, passSmartOTP, TitleOutVCB.NEXT);
 
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -177,7 +183,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 	}
 
 	@Test
-	public void TC_02_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP_BaoCao() {
+	public void TC_02_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangSmartOTP_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		homePage.clickToDynamicBackIcon(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 
@@ -476,7 +482,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_05_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_05_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info2.sourceAccount);
 
 		log.info("TC_05_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info2.destinationAccount + "/");
@@ -546,7 +552,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_05_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, account);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
@@ -577,7 +583,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, info2.sourceAccount);
 
 		log.info("TC_06_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
@@ -603,7 +609,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_06_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info2.sourceAccount);
 
 		log.info("TC_06_16: Kiem tra so tai khoan ghi co");
 
@@ -641,7 +647,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_07_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, "EUR");
+		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -674,7 +680,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_07_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_07_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info3.sourceAccount);
 
 		log.info("TC_07_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info3.destinationAccount + "/");
@@ -742,7 +748,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_07_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, account);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 		transferMoneyOutSide.sleep(driver, 1000);
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
@@ -773,7 +779,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, info3.sourceAccount);
 
 		log.info("TC_08_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
@@ -799,7 +805,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_08_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info3.sourceAccount);
 
 		log.info("TC_08_17: Kiem tra so tai khoan ghi co");
 
@@ -825,378 +831,6 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferMoneyOutSide.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_08_25: Click  nut Home");
-		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}
-
-	@Test
-	public void TC_09_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangMatKhau() {
-		log.info("TC_09_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-		clickPopupAfter15h30();
-		
-		log.info("TC_09_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
-		account = sourceAccount.account;
-		transferMoneyOutSide.sleep(driver, 1000);
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
-
-		log.info("TC_09_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.destinationAccount, TitleOutVCB.ACCOUT_TO);
-
-		log.info("TC_09_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.name, TitleOutVCB.BENEFICIARY_NAME);
-
-		log.info("TC_09_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.destinationBank, ReportTitle.SEARCH_BUTTON);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.destinationBank);
-
-		log.info("TC_09_6_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info4.money, TitleOutVCB.MONEY);
-
-		log.info("TC_09_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
-
-		log.info("TC_09_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info4.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
-
-		log.info("TC_09_9_Click Tiep tuc");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
-
-		log.info("TC_09_10_Kiem tra man hinh xac nhan thong tin");
-		log.info("TC_09_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
-
-		log.info("TC_09_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info4.destinationAccount + "/");
-
-		log.info("TC_09_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info4.name.toUpperCase());
-
-		log.info("TC_09_10_4_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info4.destinationBank);
-
-		log.info("TC_09_10_5_Kiem tra so tien");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.MONEY), addCommasToLong(info4.money) + " VND");
-
-		log.info("TC_09_10_6_Kiem tra noi dung");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.CONTENT), info4.note);
-
-		log.info("TC_09_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.PASSWORD_TITLE);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info4.authenticationMethod);
-
-		log.info("TC_09_11_01_Kiem tra so tien phi");
-		String fee= transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
-		
-		log.info("TC_09_12_Click Tiep tuc");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
-
-		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, password, TitleOutVCB.NEXT);
-
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
-
-		log.info("TC_09_13_Kiem tra man hinh Chuyen khoan thanh cong");
-		log.info("TC_09_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
-
-		log.info("TC_09_13_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.BENEFICIARY_NAME), info4.name);
-
-		log.info("TC_09_13_3_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT), info4.destinationAccount);
-
-		log.info("TC_09_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info4.destinationBank);
-
-		log.info("TC_09_13_5_Kiem tra noi dung");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.CONTENT), info4.note);
-
-		log.info("TC_09_13_5_Kiem tra nut Thuc hien giao dich moi");
-		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, TitleOutVCB.NEW_TRANSFER));
-
-		log.info("TC_09_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
-		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSECTION_NUMBER);
-
-		log.info("TC_09_14_Click Thuc hien giao dich moi");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
-		clickPopupAfter15h30();
-
-		log.info("TC_09_14_Kiem tra so du kha dung luc sau");
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, account);
-		transferMoneyOutSide.sleep(driver, 1000);
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
-		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info4.money), transferFee);
-		verifyEquals(actualAvailableBalance, availableBalance);
-
-	}
-
-	@Test
-	public void TC_10_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangMatKhau_BaoCao() {
-		log.info("TC_10_1: Click  nut Back");
-		homePage.clickToDynamicBackIcon(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-
-		log.info("TC_10_2: Click vao More Icon");
-		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_10_3: Click Bao cao giao dich");
-		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-
-		log.info("TC_10_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
-
-		log.info("TC_10_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSFER_OUTSIDE_VCB);
-
-		log.info("TC_10_6: Click Chon Tai Khoan");
-		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
-
-		log.info("TC_10_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
-
-		log.info("TC_10_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
-
-		log.info("TC_10_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
-
-		log.info("TC_10_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info4.note));
-
-		log.info("TC_10_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(info4.money) + " VND"));
-
-		log.info("TC_10_13: Click vao giao dich");
-		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-
-		log.info("TC_10_14: Kiem tra ngay tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSACTION);
-		verifyEquals(reportTime2, reportTime1);
-
-		log.info("TC_10_15: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
-
-		log.info("TC_10_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
-
-		log.info("TC_10_17: Kiem tra so tai khoan ghi co");
-
-		log.info("TC_10_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info4.money) + " VND"));
-
-		log.info("TC_10_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.FEE), TitleOutVCB.TRANSFER_PERSON);
-
-		log.info("TC_10_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_TYPE), TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-
-		log.info("TC_10_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_CONTENT).contains(info4.note));
-
-		log.info("TC_10_22: Click  nut Back");
-		transferMoneyOutSide.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_DETAIL);
-
-		log.info("TC_10_23: Click  nut Back");
-		transferMoneyOutSide.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
-
-		log.info("TC_10_24: Click  nut Home");
-		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}
-
-	@Test
-	public void TC_11_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiNhanTraXacThucBangMatKhau() {
-		log.info("TC_11_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-		clickPopupAfter15h30();
-		
-		log.info("TC_11_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
-		account = sourceAccount.account;
-		transferMoneyOutSide.sleep(driver, 1000);
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
-
-		log.info("TC_11_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.destinationAccount, TitleOutVCB.ACCOUT_TO);
-
-		log.info("TC_11_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.name, TitleOutVCB.BENEFICIARY_NAME);
-
-		log.info("TC_11_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.destinationBank, ReportTitle.SEARCH_BUTTON);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.destinationBank);
-
-		log.info("TC_11_6_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.money, TitleOutVCB.MONEY);
-
-		log.info("TC_11_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.RECEIVER_PAYER);
-
-		log.info("TC_11_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info5.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
-
-		log.info("TC_11_9_Click Tiep tuc");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
-
-		log.info("TC_11_10_Kiem tra man hinh xac nhan thong tin");
-		log.info("TC_11_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
-
-		log.info("TC_11_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info5.destinationAccount + "/");
-
-		log.info("TC_11_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info5.name.toUpperCase());
-
-		log.info("TC_11_10_4_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info5.destinationBank);
-
-		log.info("TC_11_10_5_Kiem tra so tien");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.MONEY), addCommasToLong(info5.money) + " VND");
-
-		log.info("TC_11_10_6_Kiem tra noi dung chuyen tien");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.CONTENT), info5.note);
-
-		log.info("TC_11_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.PASSWORD_TITLE);
-		transferFee = 0;
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.authenticationMethod);
-
-		log.info("TC_11_11_01_Kiem tra so tien phi");
-		verifyTrue(transferMoneyOutSide.isDynamicMessageAndLabelTextDisplayed(driver, TitleOutVCB.RECEIVER_PAYER));
-
-		log.info("TC_11_12_Click Tiep tuc");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
-
-		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, password, TitleOutVCB.NEXT);
-
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
-
-		log.info("TC_11_13_Kiem tra man hinh Chuyen khoan thanh cong");
-		log.info("TC_11_13_1_Kiem tra Chuyen khoan thanh cong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
-
-		log.info("TC_11_13_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.BENEFICIARY_NAME), info5.name);
-
-		log.info("TC_11_13_3_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT), info5.destinationAccount);
-
-		log.info("TC_11_13_3_Kiem tra ngan hang huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info5.destinationBank);
-
-		log.info("TC_11_13_5_Kiem tra noi dung");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.CONTENT), info5.note);
-
-		log.info("TC_11_13_5_Kiem tra nut Thuc hien giao dich moi");
-		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, TitleOutVCB.NEW_TRANSFER));
-
-		log.info("TC_11_13_6_Lay ma giao dich");
-		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
-		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSECTION_NUMBER);
-
-		log.info("TC_11_14_Click Thuc hien giao dich moi");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
-		clickPopupAfter15h30();
-
-		log.info("TC_11_14_Kiem tra so du kha dung luc sau");
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, account);
-		transferMoneyOutSide.sleep(driver, 1000);
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
-		availableBalance = canculateAvailableBalances(surplus, Long.parseLong(info5.money), 0);
-		verifyEquals(actualAvailableBalance, availableBalance);
-
-	}
-
-	@Test
-	public void TC_12_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiNhanTraXacThucBangMatKhau_BaoCao() {
-		log.info("TC_12_1: Click  nut Back");
-		homePage.clickToDynamicBackIcon(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-
-		log.info("TC_12_2: Click vao More Icon");
-		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
-
-		log.info("TC_12_3: Click Bao Cao Dao Dich");
-		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-
-		log.info("TC_12_4: Click Tat Ca Cac Loai Giao Dich");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.ALL_TYPE_TRANSACTION);
-
-		log.info("TC_12_5: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSFER_OUTSIDE_VCB);
-
-		log.info("TC_12_6: Click Chon Tai Khoan");
-		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
-
-		log.info("TC_12_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
-
-		log.info("TC_12_8: Click Tim Kiem");
-		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
-
-		log.info("TC_12_9: Kiem tra ngay tao giao dich hien thi");
-		String reportTime1 = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
-
-		log.info("TC_12_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(info5.note));
-
-		log.info("TC_12_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(info5.money) + " VND"));
-
-		log.info("TC_12_13: Click vao giao dich");
-		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
-
-		log.info("TC_12_14: Kiem tra ngay tao giao dich hien thi");
-		String reportTime2 = transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TIME_TRANSACTION);
-		verifyEquals(reportTime2, reportTime1);
-
-		log.info("TC_12_15: Kiem tra thoi gian tao giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
-
-		log.info("TC_12_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
-
-		log.info("TC_12_17: Kiem tra so tai khoan ghi co");
-
-		log.info("TC_12_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info5.money) + " VND"));
-
-		log.info("TC_12_19: Kiem tra phi giao dich hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.FEE), TitleOutVCB.RECEIVER_PAYER);
-
-		log.info("TC_12_20: Kiem tra loai giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_TYPE), TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-
-		log.info("TC_12_21: Kiem Tra noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_CONTENT).contains(info5.note));
-
-		log.info("TC_12_22: Click  nut Back");
-		transferMoneyOutSide.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_DETAIL);
-
-		log.info("TC_12_23: Click  nut Back");
-		transferMoneyOutSide.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
-
-		log.info("TC_12_24: Click  nut Home");
 		transferMoneyOutSide.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 

@@ -16,6 +16,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.SavingTargetPageObject;
 import vietcombank_test_data.InterestRateCalculatePage_Data;
 import vietcombank_test_data.SavingTarget_Data;
+import vietcombank_test_data.SavingTarget_Data.TITLE;
 
 public class Saving_Target_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -39,18 +40,16 @@ public class Saving_Target_Flow extends Base {
 
 	@Test
 	public void TC_01_MucTieuTietKiem_Flow() {
-
 		home = PageFactoryManager.getHomePageObject(driver);
-
 		log.info("TC_01_Step_01: Chon tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step_02: Mo sub-menu Ho tro");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Hỗ trợ");
-		home.scrollDownToText(driver, "Tra cứu");
+		home.clickToDynamicButtonLinkOrLinkText(driver, TITLE.SUPPOSRT);
+		home.scrollDownToText(driver, TITLE.SEARCH);
 
 		log.info("TC_01_Step_03: An vao phan Dat muc tieu tiet kiem");
-		home.clickToDynamicButtonLinkOrLinkText(driver, "Đặt mục tiêu tiết kiệm");
+		home.clickToDynamicButtonLinkOrLinkText(driver, TITLE.GOALS_SAVING);
 
 		log.info("TC_01_Step_04: Hien thi man hinh Muc tieu tiet kiem");
 		savingTarget = PageFactoryManager.getSavingTargetPageObject(driver);
@@ -73,7 +72,7 @@ public class Saving_Target_Flow extends Base {
 		savingTarget.clickToDynamicButtonLinkOrLinkText(driver, SavingTarget_Data.DATA.ACCUMULATION_TIME_12_MONTHS);
 
 		log.info("TC_01_Step_09: An button Ket qua");
-		verifyEquals(savingTarget.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Kết quả");
+		verifyEquals(savingTarget.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), TITLE.RESULT);
 		savingTarget.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_10: Xac nhan hien thi man hinh Ket Qua");
@@ -86,23 +85,23 @@ public class Saving_Target_Flow extends Base {
 		a = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY, "VND");
 		b = convertMoneyToDouble(getSplitStringIndex(rate, "t", 0), "VND") / 12;
 		termMoney = a * b;
-		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Số tiền gửi định kỳ"), addCommasToDouble(termMoney + "") + " VND");
+		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.RECURRING_DEPOSITS ), addCommasToDouble(termMoney + "") + " VND");
 
 		log.info("TC_01_Step_13: Xac nhan hien thi dung so tien gop hang thang");
-		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Số tiền góp hàng tháng"), addCommasToDouble(convertAvailableBalanceCurrentcyToDouble(SavingTarget_Data.DATA.SAVING_MONEY_VND) / 12 + "") + " VND");
+		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.AMOUNT_MONTHLY), addCommasToDouble(convertAvailableBalanceCurrentcyToDouble(SavingTarget_Data.DATA.SAVING_MONEY_VND) / 12 + "") + " VND");
 
 		log.info("TC_01_Step_14: Xac nhan hien thi dung  tien lai");
 		a = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY, "VND");
 		b = convertMoneyToDouble(getSplitStringIndex(rate, "/", 1), "VND") / 100;
 		interestMoney = a * b;
-		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Tổng số tiền lãi"), addCommasToDouble(interestMoney + "").replace(".00", "") + " VND");
+		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.TOTAL_INTEREST), addCommasToDouble(interestMoney + "").replace(".00", "") + " VND");
 
 		log.info("TC_01_Step_15: Xac nhan hien thi dung tong tien");
 		totalMoney = convertAvailableBalanceCurrentcyOrFeeToLong(InterestRateCalculatePage_Data.DATA.VND_MONEY) + interestMoney;
-		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "Tổng số tiền nhận được"), addCommasToDouble(totalMoney + "").replace(".00", "") + " VND");
+		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "TITLE.TOTAL_AMOUNT_RECEIVED"), addCommasToDouble(totalMoney + "").replace(".00", "") + " VND");
 
 		log.info("TC_01_Step_16: An button Dat muc tieu moi");
-		verifyEquals(savingTarget.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Đặt mục tiêu mới");
+		verifyEquals(savingTarget.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), TITLE.SET_NEW_GOALS);
 		savingTarget.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_17: Xac nhan hien thi man hinh Muc tieu tiet kiem");

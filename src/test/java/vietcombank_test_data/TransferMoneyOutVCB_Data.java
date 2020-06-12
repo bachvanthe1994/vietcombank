@@ -16,6 +16,7 @@ public class TransferMoneyOutVCB_Data {
 		public static final String DESTINATION_ACCOUNT = "Tài khoản thụ hưởng";
 		public static final String DESTINATION_BANK = "Ngân hàng thụ hưởng";
 		public static final String PASSWORD_TITLE = "Mật khẩu đăng nhập";
+		public static final String TITLE_OTP = "SMS OTP";
 		public static final String RECEIVER_PAYER = "Người nhận trả";
 		public static final String MONEY = "Số tiền";
 		public static final String DESTINATION_ACCOUNT_VND = "Tài khoản đích/ VND";
@@ -23,6 +24,9 @@ public class TransferMoneyOutVCB_Data {
 		public static final String TRANSACTION_INFOMATION = "Thông tin giao dịch";
 		public static final String SEARCH_BUTTON = "Tìm kiếm";
 		public static final String TRANSFER_PERSON = "Người chuyển trả";
+		public static final String TRANSACTION_FEE = "Số tiền phí";
+		public static final String SMART_OTP = "VCB - Smart OTP";
+		public static final String Choose_methor_ = "Chọn phương thức xác thực";
 	}
 	public static class MESSEGE_ERROR {
 		public static final String LOWER_MIN_AMOUNT_A_TRAN = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
