@@ -251,9 +251,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_02_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
-		log.info("TC_02_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
-
 		log.info("TC_02_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -464,9 +461,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_04_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
-		log.info("TC_04_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
-
 		log.info("TC_04_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -672,9 +666,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_06_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
-
-		log.info("TC_06_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
 
 		log.info("TC_06_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -882,9 +873,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_08_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
-		log.info("TC_08_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
-
 		log.info("TC_08_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -1052,9 +1040,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_10_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
-
-		log.info("TC_10_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
 
 		log.info("TC_10_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -1224,9 +1209,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_12_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
-		log.info("TC_12_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
-
 		log.info("TC_12_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -1392,9 +1374,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_14_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
-		log.info("TC_14_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
-
 		log.info("TC_14_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
@@ -1557,9 +1536,6 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_16_Step_13: Xac nhan hien thi So tien phi");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
-
-		log.info("TC_16_Step_14: Xac nhan hien thi Loai giao dich");
-//		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.AIR_TICKET);
 
 		log.info("TC_16_Step_15: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");

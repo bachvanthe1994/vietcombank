@@ -158,7 +158,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 
 		log.info("TC_02_Input ma khach hang");
-		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
+//		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_02_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_02_Kiem tra tai khoan nguon");

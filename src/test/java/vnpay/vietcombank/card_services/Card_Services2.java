@@ -24,7 +24,7 @@ public class Card_Services2 extends Base {
 	private HomePageObject home;
 	private LockCardPageObject lockCard;
 	String numberCard = "";
-	private String otpNumber,phone,pass;
+	private String otpNumber;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -108,29 +108,26 @@ public class Card_Services2 extends Base {
 		log.info("TC_01_Step_18: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_01_Step_19: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
-		log.info("TC_01_Step_20: An vao tab 'Mo khoa the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
-		log.info("TC_01_Step_21: Mo DropdownList 'Loai The'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
-
-		log.info("TC_01_Step_22: Chon 'The tin dung'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
-
-		log.info("TC_01_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
-
-		log.info("TC_01_Step_24: Xac nhan the bi khoa hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_02_MoKhoaTheTinDungQuaOTP() {
+		
+		log.info("TC_02_Step_01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
+		log.info("TC_02_Step_02: An vao tab 'Mo khoa the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
+	
+		log.info("TC_02_Step_03: Mo DropdownList 'Loai The'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
+
+		log.info("TC_02_Step_04: Chon 'The tin dung'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
+
+		log.info("TC_02_Step_05: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
+	
 		log.info("TC_02_Step_06: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
 
@@ -281,29 +278,26 @@ public class Card_Services2 extends Base {
 		log.info("TC_03_Step_18: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_03_Step_19: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
-		log.info("TC_03_Step_20: An vao tab 'Mo khoa the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
-		log.info("TC_03_Step_21: Mo DropdownList 'Loai The'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
-
-		log.info("TC_03_Step_22: Chon 'The tin dung'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
-
-		log.info("TC_03_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
-
-		log.info("TC_03_Step_24: Xac nhan the bi khoa hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_04_MoKhoaTheTinDungQuaOTP() {
 
+		log.info("TC_04_Step_01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("TC_04_Step_02: An vao tab 'Mo khoa the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
+	
+		log.info("TC_04_Step_03: Mo DropdownList 'Loai The'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
+
+		log.info("TC_04_Step_04: Chon 'The tin dung'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
+
+		log.info("TC_04_Step_05: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
+		
 		log.info("TC_04_Step_06: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
 
@@ -453,30 +447,27 @@ public class Card_Services2 extends Base {
 
 		log.info("TC_05_Step_18: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
-		log.info("TC_05_Step_19: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
-		log.info("TC_05_Step_20: An vao tab 'Mo khoa the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
-		log.info("TC_05_Step_21: Mo DropdownList 'Loai The'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
-
-		log.info("TC_05_Step_22: Chon 'The tin dung'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
-
-		log.info("TC_05_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
-
-		log.info("TC_05_Step_24: Xac nhan the bi khoa hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_06_MoKhoaTheTinDungQuaOTPJCB() {
 
+		log.info("TC_06_Step_01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("TC_06_Step_02: An vao tab 'Mo khoa the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
+	
+		log.info("TC_06_Step_03: Mo DropdownList 'Loai The'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
+
+		log.info("TC_06_Step_04: Chon 'The tin dung'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
+
+		log.info("TC_06_Step_05: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
+		
 		log.info("TC_06_Step_06: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
 
@@ -627,29 +618,26 @@ public class Card_Services2 extends Base {
 		log.info("TC_07_Step_18: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_07_Step_19: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
-		log.info("TC_07_Step_20: An vao tab 'Mo khoa the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
-		log.info("TC_07_Step_21: Mo DropdownList 'Loai The'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
-
-		log.info("TC_07_Step_22: Chon 'The tin dung'");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
-
-		log.info("TC_07_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
-
-		log.info("TC_07_Step_24: Xac nhan the bi khoa hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_08_MoKhoaTheTinDungQuaOTPAmex() {
 
+		log.info("TC_08_Step_01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("TC_08_Step_02: An vao tab 'Mo khoa the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
+	
+		log.info("TC_08_Step_03: Mo DropdownList 'Loai The'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
+
+		log.info("TC_08_Step_04: Chon 'The tin dung'");
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CREDIT_CARD_TEXT);
+
+		log.info("TC_08_Step_05: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
+		
 		log.info("TC_08_Step_06: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
 
