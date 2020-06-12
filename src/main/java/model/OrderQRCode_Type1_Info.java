@@ -5,5 +5,6 @@ public class OrderQRCode_Type1_Info {
 	public String namePlace;
 	public String codePlace;
 	public String surplus;
+	public String account;
 	
 }
