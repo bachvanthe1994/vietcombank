@@ -2,6 +2,9 @@ package vnpay.vietcombank.internet_ADSL;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -14,7 +17,6 @@ import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
-import pageObjects.HomePageObject;
 import pageObjects.InternetADSLPageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
@@ -26,8 +28,7 @@ import vietcombank_test_data.TransactionReport_Data;
 public class Internet_ADSL_SmartOTP_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
-	private InternetADSLPageObject ADSL;
-	private HomePageObject homePage;
+	private InternetADSLPageObject adsl;
 	private TransactionReportPageObject transReport;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	String transferTime, password;
@@ -36,6 +37,8 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String account = "";
 	String passSmartOTP  = "111222";
+	List<String> codeViettel = new ArrayList<String>();
+	List<String> codeFpt = new ArrayList<String>();
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -46,10 +49,11 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		password = pass;
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		ADSL = PageFactoryManager.getInternetADSLPageObject(driver);
+		adsl = PageFactoryManager.getInternetADSLPageObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+		codeViettel = Arrays.asList(getDataInCell(17).split(";"));
+		codeFpt = Arrays.asList(getDataInCell(18).split(";"));
 	}
 //Lỗi app không hiển thị phương thức xác thực Smart OTP trong combobox
 	
@@ -57,91 +61,91 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 	@Parameters({ "pass" })
 	public void TC_01_ThanhToanCuocViettelXacThucSmartOTP(String pass) throws InterruptedException {
 		log.info("TC_02_Step_Click cuoc ADSL");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
 
 		log.info("TC_02_Step_Select tai khoan nguon");
-		ADSL.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = ADSL.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
+		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_02_Step_Get so du kha dung");
-		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
+		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextByLabel(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
 
 		log.info("TC_02_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToTextID(driver, "com.VCB:id/content");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
+		adsl.clickToTextID(driver, "com.VCB:id/content");
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("TC_02_Input ma khach hang");
-		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
+		adsl.inputCustomerCode(codeViettel);
 
 		log.info("TC_02_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_02_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT), account);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT), account);
 
 		log.info("TC_02_Kiem tra dich vu");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
 
 		log.info("TC_02_Kiem tra nha cung cap");
 
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.VIETTEL);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 
 		log.info("TC_02_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase());
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_02_Get so tien thanh toan");
-		amount = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
+		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
 
 		log.info("TC_02_Chon phuong thuc xac thuc");
-		ADSL.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
+		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_02_verify so tien phi");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.FEE_AMOUNT));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.FEE_AMOUNT));
 
 		log.info("TC_02_Click Tiep tuc");
-		ADSL.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
 
 		log.info("TC_02_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		adsl.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 
 		log.info("TC_02_Step_Tiep tuc");
-		ADSL.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		ADSL.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/submit");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS);
+		verifyEquals(adsl.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS);
 
 		log.info("TC_02_Verify so tien thanh toan");
-		amountView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"));
+		amountView = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"));
 		verifyEquals(amountView, amount);
 
 		log.info("TC_02_get thoi gian giao dich thanh cong");
-		transferTime = ADSL.getDynamicTransferTimeAndMoney(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS, "4").split(" ")[3];
+		transferTime = adsl.getDynamicTransferTimeAndMoney(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS, "4").split(" ")[3];
 
 		log.info("TC_02_Kiem tra dich vu");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
 
 		log.info("TC_02_Kiem tra nha cung cap");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.VIETTEL);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("TC_02_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
 
 		log.info("TC_02_Step_:Lay ma giao dich");
-		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_CODE);
+		transactionNumber = adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_CODE);
 
 		log.info("TC_02_Step_: Chon thuc hien giao dich");
-		ADSL.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.NEW_TRANSACTION);
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.NEW_TRANSACTION);
 
 		log.info("TC_02_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
+		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
 
 		log.info("TC_02_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, account);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
-		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
+		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
 
 		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
 		verifyEquals(amountStart - amount - fee, amountAfter);
@@ -150,10 +154,10 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 	@Test
 	public void TC_02_Report_ThanhToanCuocViettelXacThucSmartOTP() {
 		log.info("TC_02_Step: Click back man hinh home");
-		ADSL.clickImageBack("com.VCB:id/ivTitleLeft");
+		adsl.clickImageBack("com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step: Click menu header");
-		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -228,101 +232,101 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TTC_02: Chon button back");
-		ADSL.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
+		adsl.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02: Click button home");
-		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 	
 	@Test
 	@Parameters({ "pass" })
 	public void TC_03_ThanhToanCuocFPTXacThucSmartOTP(String pass) throws InterruptedException {
 		log.info("TC_02_Step_Click cuoc ADSL");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
 
 		log.info("TC_02_Step_Select tai khoan nguon");
-		ADSL.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = ADSL.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
+		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_02_Step_Get so du kha dung");
-		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextByLabel(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
+		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextByLabel(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
 
 		log.info("TC_02_Step_Thong tin giao dich chon Viettel");
-		ADSL.clickToTextID(driver, "com.VCB:id/content");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FPT);
+		adsl.clickToTextID(driver, "com.VCB:id/content");
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FPT);
 
 		log.info("TC_02_Input ma khach hang");
-		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
+		adsl.inputCustomerCode(codeViettel);
 
 		log.info("TC_02_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_02_Kiem tra tai khoan nguon");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT), account);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT), account);
 
 		log.info("TC_02_Kiem tra dich vu");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
 
 		log.info("TC_02_Kiem tra nha cung cap");
 
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.FPT);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.FPT);
 
 
 		log.info("TC_02_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase());
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase());
 
 		log.info("TC_02_Get so tien thanh toan");
-		amount = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
+		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
 
 		log.info("TC_02_Chon phuong thuc xac thuc");
-		ADSL.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
+		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
 
 		log.info("TC_02_verify so tien phi");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.FEE_AMOUNT));
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.FEE_AMOUNT));
 
 		log.info("TC_02_Click Tiep tuc");
-		ADSL.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
 
 		log.info("TC_02_Step_Nhap ma xac thuc");
-		ADSL.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		adsl.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 
 		log.info("TC_02_Step_Tiep tuc");
-		ADSL.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		ADSL.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/submit");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_02_Verify message thanh cong");
-		verifyEquals(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS);
+		verifyEquals(adsl.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS);
 
 		log.info("TC_02_Verify so tien thanh toan");
-		amountView = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"));
+		amountView = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"));
 		verifyEquals(amountView, amount);
 
 		log.info("TC_02_get thoi gian giao dich thanh cong");
-		transferTime = ADSL.getDynamicTransferTimeAndMoney(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS, "4").split(" ")[3];
+		transferTime = adsl.getDynamicTransferTimeAndMoney(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS, "4").split(" ")[3];
 
 		log.info("TC_02_Kiem tra dich vu");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.SERVICE), Internet_ADSL_Data.Valid_Account.FEE_ADSL);
 
 		log.info("TC_02_Kiem tra nha cung cap");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.FPT);
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.FPT);
 
 		log.info("TC_02_Kiem tra ma khach hang");
-		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
+		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase().toUpperCase());
 
 		log.info("TC_02_Step_:Lay ma giao dich");
-		transactionNumber = ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_CODE);
+		transactionNumber = adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.TRANSACTION_CODE);
 
 		log.info("TC_02_Step_: Chon thuc hien giao dich");
-		ADSL.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.NEW_TRANSACTION);
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.NEW_TRANSACTION);
 
 		log.info("TC_02_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
+		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
 
 		log.info("TC_02_Step_: Chon tai khoan chuyen");
-		ADSL.clickToDynamicButtonLinkOrLinkText(driver, account);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
-		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(ADSL.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
+		amountAfter = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.AMOUNT));
 
 		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
 		verifyEquals(amountStart - amount - fee, amountAfter);
@@ -331,10 +335,10 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 	@Test
 	public void TC_04_Report_ThanhToanCuocFPTXacThucSmartOTP() {
 		log.info("TC_02_Step: Click back man hinh home");
-		ADSL.clickImageBack("com.VCB:id/ivTitleLeft");
+		adsl.clickImageBack("com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step: Click menu header");
-		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step: Click bao cao giao dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
@@ -409,10 +413,10 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
 		log.info("TTC_02: Chon button back");
-		ADSL.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
+		adsl.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
 		log.info("TC_02: Click button home");
-		ADSL.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 	
 	@AfterClass(alwaysRun = true)
