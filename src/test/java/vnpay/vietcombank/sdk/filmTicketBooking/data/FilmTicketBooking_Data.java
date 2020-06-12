@@ -11,8 +11,6 @@ public class FilmTicketBooking_Data {
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
 	
-	
-	
 	// MESSEGE ERROR LIMIT
 	
 	public static final String MESSEGE_ERROR_LOWER_MIN_LIMIT_A_TRAN = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 40,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
@@ -21,14 +19,39 @@ public class FilmTicketBooking_Data {
 	public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT_GROUP = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 50,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
 	public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT_PACKAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 50,000 VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.";
 	
+	// MESSEGE SUCCESS
+	public static final String MESSEGE_SUCCESS = "THANH TOÁN THÀNH CÔNG";
+	
 	// MESSEGE ERROR LIMIT 1 ngày của gói dịch vụ
-
 	public static final String AMOUNT_MAX_LIMIT_A_TRAN = "200000";
 	public static final String AMOUNT_MIN_LIMIT_A_TRAN = "40000";
 	public static final String AMOUNT_HIGHER_MAX_LIMIT_A_DAY = "240000";
 	public static final String AMOUNT_HIGHER_MAX_LIMIT_A_GROUP = "40000";
 	public static final String AMOUNT_HIGHER_MAX_LIMIT_A_PACKAGE  = "40000";
 
-
+	//Title
+	public static final String FILM_TITLE = "Đặt vé xem phim";
+	public static final String AGREE = "Đồng ý";
+	public static final String BOOKING_TICKET = "Đặt vé";
+	public static final String PAY = "Thanh toán";
+	public static final String ACCOUNT_FROM_LABEL = "Tài khoản nguồn";
+	public static final String FILM = "Phim";
+	public static final String TIME_SLOT = "Suất chiếu";
+	public static final String TIME = "Thời lượng";
+	public static final String ADDRESS = "Địa chỉ";
+	public static final String MOVIE_THEATER = "Rạp";
+	public static final String MONEY = "Số tiền";
+	public static final String NAME_CUSTOMER = "Tên khách hàng";
+	public static final String PHONE_TAKE_TICKET = "Số điện thoại nhận vé";
+	public static final String EMAIL_TAKE_TICKET = "Email nhận vé";
+	public static final String PASSWORD = "Mật khẩu đăng nhập";
+	public static final String FEE = "Số tiền phí";
+	public static final String NEXT = "Tiếp tục";
+	public static final String CODE_TRANSFER = "Mã giao dịch";
+	public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
+	public static final String CODE_TICKET = "Mã vé";
+	public static final String BUY_TICKET_FILM = "Mua vé xem phim";
+	public static final String SMART_OTP = "VCB - Smart OTP";
+	public static final String CITY = "Hồ Chí Minh";
 }
 

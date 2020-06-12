@@ -40,6 +40,9 @@ public class LuckyGift_Data {
 		public static final String NEW_TRANSFER = "Giao dịch mới";
 		public static final String CLOSE = "Đóng";
 		public static final String FIND = "Tìm kiếm";
+		public static final String NUMBER_ACCOUNT = "Số tài khoản";
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String OTP = "SMS OTP";
 	}
 	
 	public static class Limit_Money_Gift {

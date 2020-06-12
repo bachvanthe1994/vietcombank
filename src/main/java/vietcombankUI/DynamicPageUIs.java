@@ -36,6 +36,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_QUICK_MENU = "//android.widget.LinearLayout[@resource-id='com.VCB:id/layoutRoot']//android.widget.ImageView[@resource-id='com.VCB:id/icon']";
 
 	public static final String DYNAMIC_EDITVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.EditText";
+	public static final String ICON_CONTACT = "//android.widget.EditText[@text='%s']//parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_TEXTVIEW_BY_RELATIVELAYOUT_ID = "//android.widget.RelativeLayout[@resource-id=\"%s\"]//android.widget.TextView";
 	public static final String DYNAMIC_TEXTVIEW_BY_LISTVIEW = "//android.widget.ListView[@resource-id='%s']//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TEXTVIEW_FOLLOW_IMAGE = "//android.widget.ImageView[@index='%s']//following-sibling::android.widget.TextView[@index='%s']";

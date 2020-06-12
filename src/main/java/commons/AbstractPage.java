@@ -816,6 +816,7 @@ public class AbstractPage {
 	// Click dau ... dua theo ten
 	public void clickToDynamicIconByText(AppiumDriver<MobileElement> driver, String dynamicKey) {
 		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
@@ -935,6 +936,16 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
+		}
+	}
+	
+	public void clickToDynamicIconContact(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+			
 		}
 	}
 	
@@ -1759,6 +1770,7 @@ public class AbstractPage {
 //Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
 	public boolean isDynamicMessageAndLabelTextUndisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
 			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -2382,6 +2394,7 @@ public class AbstractPage {
 	public String getDynamicTextDetailByIDOrPopup(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);

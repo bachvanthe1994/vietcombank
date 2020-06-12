@@ -317,7 +317,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_16_05_Kiem tra popup thong bao");
-		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_3);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_2);
 
 		log.info("TC_16_06_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -341,7 +341,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_17_05_Kiem tra popup thong bao");
-		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_3);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_2);
 
 		log.info("TC_17_06_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -365,7 +365,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_18_05_Kiem tra popup thong bao");
-		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_3);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_2);
 
 		log.info("TC_18_06_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");
@@ -389,7 +389,7 @@ public class Transfer_Money_Recurrent_Validation_Part_4 extends Base {
 		transferRecurrent.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_19_05_Kiem tra popup thong bao");
-		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_3);
+		verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferMoneyInVCB_Data.Output.INVALID_DESTINATION_ACCOUNT_MESSAGE_2);
 
 		log.info("TC_19_06_Click nut Dong");
 		transferRecurrent.clickToDynamicButton(driver, "Đóng");

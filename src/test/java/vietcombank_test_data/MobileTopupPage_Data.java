@@ -47,18 +47,15 @@ public class MobileTopupPage_Data {
 
 	public static class Text {
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
-		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
-		public static final String TRANSFER_NUMBER = "Số lệnh giao dịch";
-		public static final String ACCOUNT_DEBIT = "Tài khoản/thẻ trích nợ";
-		public static final String TYPE_TRANSFER = "Loại giao dịch";
 		public static final String AMOUNT_FEE = "Số tiền phí";
 		public static final String PASSWORD = "Mật khẩu đăng nhập";
 		public static final String PRICE_CARD = "Mệnh giá thẻ";
 		public static final String CODE_TRANSFER = "Mã giao dịch";
-		public static final String DETAIL_TRANSFER = "Chi tiết giao dịch";
 		public static final String SMS_OTP = "SMS OTP";
+		public static final String SMART_OTP = "VCB - Smart OTP";
 		public static final String COUTINUE = "Tiếp tục";
 		public static final String SUCCESS_TRANSFER = "GIAO DỊCH THÀNH CÔNG";
+		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
 
 	}
 

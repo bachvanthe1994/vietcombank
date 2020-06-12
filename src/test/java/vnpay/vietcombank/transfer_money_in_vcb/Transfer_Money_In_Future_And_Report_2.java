@@ -20,7 +20,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.TransferMoneyStatus_Data;
@@ -55,7 +54,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
+		login.Global_login1(phone, pass, opt);
 		name_receiver = getDataInCell(3);
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -65,8 +64,10 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		name_other_owner = getDataInCell(1);
 	}
 
+	
+	@Parameters("pass")
 	@Test
-	public void TC_01_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
+	public void TC_01_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
@@ -143,14 +144,14 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		log.info("TC_01_Step_22: Chon Phuong thuc nhap");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
-		log.info("TC_01_Step_23: Chon OTP");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_OPTIONS[1]);
+		log.info("TC_01_Step_23: Chon mat khau");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.PASSWORD);
 
 		log.info("TC_01_Step_25: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_01_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, TittleData.CONTINUE_BTN);
+		log.info("TC_01_Step_26: Nhap mat khau");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, pass , TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -312,8 +313,9 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
+	@Parameters("pass")
 	@Test
-	public void TC_04_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
+	public void TC_04_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
@@ -397,14 +399,14 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
 		log.info("TC_04_Step_25: Chon Mật khẩu đăng nhập");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_OPTIONS[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.PASSWORD);
 
 
 		log.info("TC_04_Step_27: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_04_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.NEW_PASSWORD, TittleData.CONTINUE_BTN);
+		log.info("TC_04_Step_28: Nhap mat khau");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, pass , TittleData.CONTINUE_BTN);
 
 		log.info("TC_04_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -466,7 +468,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	}
 
 	@Test
-	public void TC_05_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
+	public void TC_05_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBang_MatKhau() {
 		log.info("TC_05_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 
@@ -564,8 +566,9 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
+	@Parameters("pass")
 	@Test
-	public void TC_07_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
+	public void TC_07_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_07_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
@@ -645,14 +648,14 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
 		log.info("TC_07_Step_23: Chon Mật khẩu đăng nhập");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_OPTIONS[1]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.PASSWORD);
 
 
 		log.info("TC_07_Step_25: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_07_Step_26: Nhap OTP");
-		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, TittleData.CONTINUE_BTN);
+		log.info("TC_07_Step_26: Nhap mat khau");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, pass , TittleData.CONTINUE_BTN);
 
 		log.info("TC_07_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -714,7 +717,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	}
 
 	@Test
-	public void TC_08_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
+	public void TC_08_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBang_MatKhau() {
 		log.info("TC_08_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 
@@ -816,8 +819,9 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
+	@Parameters("pass")
 	@Test
-	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
+	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
@@ -902,14 +906,14 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
 		log.info("TC_10_Step_25: Chon Mật khẩu đăng nhập");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.PAYMENT_OPTIONS[1]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.PASSWORD);
 
 
 		log.info("TC_10_Step_27: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_10_Step_28: Nhap OTP");
-		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, TittleData.CONTINUE_BTN);
+		log.info("TC_10_Step_28: Nhap mat khau");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver,pass , TittleData.CONTINUE_BTN);
 
 		log.info("TC_10_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -971,7 +975,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	}
 
 	@Test
-	public void TC_11_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
+	public void TC_11_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_MatKhau() {
 		log.info("TC_11_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 
@@ -1071,8 +1075,9 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
+	@Parameters("pass")
 	@Test
-	public void TC_13_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
+	public void TC_13_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBang_MatKhau(String pass) {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
 
@@ -1127,16 +1132,16 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		log.info("TC_13_Step_17: Chon Phuong thuc nhap");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
-		log.info("TC_13_Step_18: Chon SMS OTP");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.SMS_OTP);
+		log.info("TC_13_Step_18: Chon mat khau");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.PASSWORD);
 
 
 
 		log.info("TC_13_Step_20: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_13_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, TittleData.CONTINUE_BTN);
+		log.info("TC_13_Step_21: Nhap mat khau");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, pass , TittleData.CONTINUE_BTN);
 
 		log.info("TC_13_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -1179,7 +1184,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	}
 
 	@Test
-	public void TC_14_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraEURVaXacThucBangOTP() {
+	public void TC_14_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraEURVaXacThucBang_MatKhau() {
 		log.info("TC_14_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 
@@ -1279,8 +1284,9 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
+	@Parameters("pass")
 	@Test
-	public void TC_16_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
+	public void TC_16_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBang_MatKhau(String pass) {
 		log.info("TC_16_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
 
@@ -1341,14 +1347,14 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		log.info("TC_16_Step_17: Chon Phuong thuc nhap");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
-		log.info("TC_16_Step_18: Chon SMS OTP");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.SMS_OTP);
+		log.info("TC_16_Step_18: Chon mat khau");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.PASSWORD);
 
 		log.info("TC_16_Step_20: Click Tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_16_Step_21: Nhap OTP");
-		transferInVCB.inputToDynamicPopupPasswordInput(driver, LogIn_Data.Login_Account.NEW_PASSWORD, TittleData.CONTINUE_BTN);
+		log.info("TC_16_Step_21: Nhap mat khau");
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, pass , TittleData.CONTINUE_BTN);
 
 		log.info("TC_16_Step_22: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -1391,7 +1397,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	}
 
 	@Test
-	public void TC_17_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
+	public void TC_17_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_MatKhau() {
 		log.info("TC_17_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 

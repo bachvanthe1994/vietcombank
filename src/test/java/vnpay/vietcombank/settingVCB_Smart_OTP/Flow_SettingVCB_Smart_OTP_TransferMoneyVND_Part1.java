@@ -1,6 +1,7 @@
 package vnpay.vietcombank.settingVCB_Smart_OTP;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.Date;
 
 import org.testng.annotations.AfterClass;
@@ -49,20 +50,17 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 	private LuckyGiftPageObject luckyGift;
 	private TransferIdentiryPageObject trasferPage;
 	private String transferTime, transactionNumber, amountStartString, costTranferString, amountTranferString;
-	private TransactionReportPageObject transReport;
 	private TransferMoneyOutSideVCBPageObject transferMoneyOutSide;
 	
 	String tommorrowDate = getForwardDate(1);
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String expectAvailableBalance, moneyTransfer, account, user, content, code,source_account,beneficiary_account,money,wishes,surplusString, moneyFee;
-	private String[] transferDate;
 	private String[] getName;
-	private Date date;
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
 	private long surplus, availableBalance, actualAvailableBalance;
-	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy, toltalMoney, money_transferred;
+	private double  toltalMoney, money_transferred;
 	private String nameCustomer;
 	TransferInVCBRecurrent info = new TransferInVCBRecurrent(Account_Data.Valid_Account.ACCOUNT2, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, "1", "Ngày", "", "", "500000", "Người chuyển trả", "test", "VCB - Smart OTP");
 	TransferCharity info1 = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
@@ -71,7 +69,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -83,9 +81,9 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 		trasferPage = PageFactoryManager.getTransferIdentiryPageObject(driver);
-		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		luckyGift = PageFactoryManager.getLuckyGiftPageObject(driver);
 		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
+		nameCustomer = getDataInCell(3);
 	}
 
 	@Parameters({ "pass" })
@@ -94,8 +92,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 		log.info("TC_01_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("Before class: Lay ten user");
-		nameCustomer = smartOTP.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvFullname");
+		;
 
 		log.info("TC_01_Step: Click cai dat");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
@@ -299,7 +296,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 
 			log.info("TC_03_Step_14: Kiem tra tai khoan dich hien thi");
 			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản đích/ VND"), Account_Data.Valid_Account.ACCOUNT2 + "/ ");
-			verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2));
+			verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, nameCustomer));
 
 			log.info("TC_03_Step_15: Kiem tra so tien chuyen hien thi");
 			verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, "Số tiền").contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY)));
@@ -340,7 +337,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 			transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, "Mã giao dịch");
 
 			log.info("TC_03_Step_28: Kiem tra ten nguoi thu huong hien thi");
-			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), nameCustomer);
 
 			log.info("TC_03_Step_29: Kiem tra tai khoan dich hien thi");
 			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT2);
@@ -489,7 +486,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 			log.info("TC_04_Step_32: Lay ma giao dich" + transactionNumber);
 
 			log.info("TC_04_Step_33: Kiem tra ten nguoi thu huong hien thi");
-			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), nameCustomer);
 
 			log.info("TC_04_Step_34: Kiem tra tai khoan dich hien thi");
 			verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), Account_Data.Valid_Account.ACCOUNT2);
@@ -615,7 +612,7 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 		transferTime = transferRecurrent.getTransferMoneyRecurrentTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY_IN_VCB_RECURRENT);
 
 		log.info("TC_05_13_1_Kiem tra ten nguoi huong thu");
-		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), TransferMoneyInVCB_Data.InputDataInVCB.RECEIVER_NAME_ACCOUNT_2);
+		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tên người thụ hưởng"), nameCustomer);
 
 		log.info("TC_05_13_2_Kiem tra tai khoan dich");
 		verifyEquals(transferRecurrent.getDynamicTextInTransactionDetail(driver, "Tài khoản thụ hưởng"), info.destinationAccount);
@@ -811,7 +808,6 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 
 		log.info("TC_07_STEP_17: lấy ra time chuyển");
 		String getDate = trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
-		transferDate = getDate.split(" ");
 
 		log.info("TC_07_STEP_18: lấy tên người hưởng");
 		user = trasferPage.getMoneyByAccount(driver, "Tên người thụ hưởng");
@@ -1057,8 +1053,6 @@ public class Flow_SettingVCB_Smart_OTP_TransferMoneyVND_Part1 extends Base {
 		log.info("TC_09_Step_25: chọn đóng");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, "Đóng");
 
-		log.info("TC_09_Step_26: Lấy thời gian thực hiện giao dịch");
-		date = new Date();
 
 		log.info("TC_09_Step_27 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
