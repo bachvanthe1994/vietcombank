@@ -1,6 +1,7 @@
 package vnpay.vietcombank.card_services;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -23,11 +24,11 @@ public class Card_Services2 extends Base {
 	private HomePageObject home;
 	private LockCardPageObject lockCard;
 	String numberCard = "";
-	private String otpNumber;
+	private String otpNumber,phone,pass;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -36,7 +37,9 @@ public class Card_Services2 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1("0974862666", "aaaa1111", opt);
+		phone = getDataInCell(8).trim();
+		pass = getDataInCell(27).trim();
+		login.Global_login1(phone, pass, opt);
 		otpNumber = opt;
 		
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
