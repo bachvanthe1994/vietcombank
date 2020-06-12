@@ -44,7 +44,7 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 
 		password = pass;
 
@@ -81,7 +81,6 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		hotelBooking.scrollIDownToText(HotelBooking_Data.BOOKING);
 		hotelBooking.clickToDynamicTextView(HotelBooking_Data.BOOKING);
 
-
 		log.info("TC_01_06_Nhap ten khach hang");
 		hotelBooking.inputToDynamicInputBoxByID(customer_name, "com.VCB:id/etCustomerName");
 
@@ -99,7 +98,6 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.SOURCE_ACCOUNT);
 
 		sourceAccount = hotelBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-
 
 		log.info("TC_01_11_Kiem tra thong tin hoa don");
 		hotelBooking.scrollDownToButton(driver, HotelBooking_Data.CONTINUE_TEXT);
@@ -121,18 +119,15 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		hotelBooking.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		hotelBooking.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-
-
 		log.info("TC_01_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(hotelBooking.isDynamicButtonDisplayed(HotelBooking_Data.NEW_PERFORM_TRANSFER));
 
 		log.info("TC_01_26_Click Thuc hien giao dich moi");
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.NEW_PERFORM_TRANSFER);
-		
+
 		log.info("TC_01_27_Click back");
 		hotelBooking.clickToDynamicBottomMenuOrCloseIcon("com.VCB:id/ivBack");
-		
-		
+
 	}
 
 	@Parameters({ "otp" })
@@ -158,7 +153,6 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		hotelBooking.scrollIDownToText(HotelBooking_Data.BOOKING);
 		hotelBooking.clickToDynamicTextView(HotelBooking_Data.BOOKING);
 
-
 		log.info("TC_02_06_Nhap ten khach hang");
 		hotelBooking.inputToDynamicInputBoxByID(customer_name, "com.VCB:id/etCustomerName");
 
@@ -176,7 +170,6 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.SOURCE_ACCOUNT);
 
 		sourceAccount = hotelBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-
 
 		log.info("TC_02_11_Kiem tra thong tin hoa don");
 		hotelBooking.scrollDownToButton(driver, HotelBooking_Data.CONTINUE_TEXT);
@@ -198,7 +191,6 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		hotelBooking.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		hotelBooking.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-	
 		log.info("TC_02_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(hotelBooking.isDynamicButtonDisplayed(HotelBooking_Data.NEW_PERFORM_TRANSFER));
 
