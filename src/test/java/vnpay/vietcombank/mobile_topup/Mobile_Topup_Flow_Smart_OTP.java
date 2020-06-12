@@ -52,11 +52,12 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		other_Phone_Number = getDataInCell(8);
 		home = PageFactoryManager.getHomePageObject(driver);
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		otpSmart = getDataInCell(6);
 		
 		log.info("Setup smart OTP");
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
-		newOtp="11112222";
+		newOtp="111222";
 
 	}
 
@@ -103,6 +104,9 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		log.info("TC_01_Step_11: Nhap ki tu vao o nhap mat khau");
 		mobileTopup.inputToDynamicSmartOTP(driver, newOtp, "com.VCB:id/otp");
 
+		log.info("TC_01_Step_12: An tiep button 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
+		
 		log.info("TC_01_Step_12: An tiep button 'Tiep tuc'");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
@@ -155,7 +159,8 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		log.info("TC_02_Step_11: Nhap ki tu vao o nhap mat khau");
 		mobileTopup.inputToDynamicSmartOTP(driver, newOtp, "com.VCB:id/otp");
 
-		log.info("TC_02_Step_12: An tiep button 'Tiep tuc'");
+		log.info("TC_03_Step_12: An tiep button 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		verifyEquals(mobileTopup.getDynamicTextFollowingText(driver, Text.SUCCESS_TRANSFER), UIs.LIST_UNIT_VALUE[5] + " VND");
@@ -163,7 +168,7 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_02_Step_15: Click back ve man hinh chinh");
+		log.info("TC_03_Step_15: Click back ve man hinh chinh");
 		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -206,6 +211,7 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		mobileTopup.inputToDynamicSmartOTP(driver, newOtp, "com.VCB:id/otp");
 
 		log.info("TC_03_Step_12: An tiep button 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		verifyEquals(mobileTopup.getDynamicTextFollowingText(driver, Text.SUCCESS_TRANSFER), UIs.LIST_UNIT_VALUE[2] + " VND");

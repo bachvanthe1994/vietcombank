@@ -44,7 +44,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 
 		login = PageFactoryManager.getLoginPageObject(driver);
 
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 
 		password = pass;
 
@@ -106,8 +106,10 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
 
 		log.info("TC_01_13_Chon phuong thuc xac thuc");
+		
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.FEE_AMOUNT));
+
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.CHOICE_METHOD_VERIFY);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.PASSWORD));
 		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.PASSWORD);
 
 		log.info("TC_01_14_Click tiep tuc");
@@ -265,8 +267,8 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
 
 		log.info("TC_03_13_Chon phuong thuc xac thuc");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.FEE_AMOUNT));
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.CHOICE_METHOD_VERIFY);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.SMS_OTP));
 		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.SMS_OTP);
 
 		log.info("TC_03_14_Click tiep tuc");

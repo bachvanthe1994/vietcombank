@@ -62,6 +62,10 @@ public class TransactionReport_Data {
 		public static final String CODE_TRANSFER = "Mã thanh toán";
 		public static final String TRAIN_TICKET = "Thanh toán vé tàu";
 		public static final String PAYMENT_HOTEL ="Thanh toán đặt phòng khách sạn";
+		
+		
+		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
+
 	}
 
 }

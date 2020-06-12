@@ -23,7 +23,7 @@
 		<parameter name="phone" value="0904797866" />
 		<parameter name="hubURL"
 			value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="pass" value="aaaa1111@" />
+		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
@@ -83,9 +83,9 @@
 
 			<!--Thanh toán cước điện thoại cố định -->
 			<class
-				name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
+				name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
 			<!--Thanh toán cước điện thoại cố định -->
-			<class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" />
+			<!-- <class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
 
 
 		</classes>
