@@ -66,7 +66,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 0; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
