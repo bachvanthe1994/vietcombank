@@ -141,14 +141,14 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		if (status == true) {
 			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		sleep(driver, 3000);
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Thông báo") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Dịch vụ không thực hiện được trong lúc này")) {
-			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, "Đồng ý");
-			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+//		sleep(driver, 3000);
+//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("Thông báo") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Dịch vụ không thực hiện được trong lúc này")) {
+//			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, "Đồng ý");
+//			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
+//		}
 	}
 
 //Click vao icon băng id
