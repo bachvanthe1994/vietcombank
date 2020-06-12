@@ -31,22 +31,23 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
 	private TransactionReportPageObject transReport;
-	private SettingVCBSmartOTPPageObject smartOTP;
+	private SettingVCBSmartOTPPageObject setupSmartOTP;
 	private String transferTime;
 	private String transactionNumber;
 	long fee = 0;
 	double transferFeeCurrentcy = 0;
 	String password, currentcy = "";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String account = "";
+	String account, smartOTP = "";
 
 	TransferCharity info = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
 	TransferCharity info1 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
 	TransferCharity info2 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
+		smartOTP = getDataInCell(6);
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -56,12 +57,15 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
-		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		setupSmartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		
+				
 		login.Global_login(phone, pass, opt);
 
 		password = pass;
+		
+		setupSmartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, smartOTP);
+		
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
@@ -69,9 +73,6 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 
 	@Test
 	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau() throws GeneralSecurityException, IOException {
-		log.info("TC_01_0_Setup smart OTP");
-		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, getDataInCell(6));
-		
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		transferMoneyCharity.scrollDownToText(driver, TransferMoneyCharity_Data.STATUS_TRANSFER_MONEY);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);

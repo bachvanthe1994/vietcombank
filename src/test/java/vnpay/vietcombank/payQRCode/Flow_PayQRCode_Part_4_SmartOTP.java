@@ -1,6 +1,7 @@
 package vnpay.vietcombank.payQRCode;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,25 +17,30 @@ import model.OrderQRCode_Type2_Info;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.QRCodePageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
+import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.PayQRCode_Data;
 import vietcombank_test_data.TransactionReport_Data;
 
-public class Flow_PayQRCode_Part_1 extends Base {
+public class Flow_PayQRCode_Part_4_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private QRCodePageObject payQRCode;
 	private TransactionReportPageObject transReport;
+	private SettingVCBSmartOTPPageObject setupSmartOTP;
 	private String transferTime;
 	private String transactionNumber;
 	long transferFee = 0;
-	String password, otpNumber = "";
+	String password, otpNumber, smartOTP = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String otp) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String otp) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
+		smartOTP = getDataInCell(6);
+		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -49,6 +55,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		payQRCode = PageFactoryManager.getQRCodePageObject(driver);
+		setupSmartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		setupSmartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, smartOTP);
 
 	}
 
@@ -107,7 +115,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_03_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
 		payQRCode.clickToDynamicDropDown(driver, PayQRCode_Data.ACCURACY_METHOD);
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
+		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_SMART_OTP);
 
 		log.info("TC_03_12_01_Kiem tra so tien phi");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
@@ -115,8 +123,10 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_03_13_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
-		payQRCode.inputToDynamicOtp(driver, otpNumber, PayQRCode_Data.CONTINUE_BUTTON);
+		payQRCode.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
+		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
+		
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
 		log.info("TC_03_14: Kiem  tra giao dich thanh cong");
@@ -271,7 +281,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
 		payQRCode.clickToDynamicDropDown(driver, PayQRCode_Data.ACCURACY_METHOD);
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
+		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_SMART_OTP);
 
 		log.info("TC_05_11_Kiem tra so tien phi");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
@@ -279,8 +289,10 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_05_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
-		payQRCode.inputToDynamicOtp(driver, otpNumber, PayQRCode_Data.CONTINUE_BUTTON);
+		payQRCode.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
+		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
+		
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
 		log.info("TC_05_13: Kiem  tra giao dich thanh cong");
@@ -440,7 +452,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_07_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
 		payQRCode.clickToDynamicDropDown(driver, PayQRCode_Data.ACCURACY_METHOD);
-		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
+		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_SMART_OTP);
 
 		log.info("TC_07_11_Kiem tra so tien phi");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
@@ -448,8 +460,10 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_07_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
-		payQRCode.inputToDynamicOtp(driver, otpNumber, PayQRCode_Data.CONTINUE_BUTTON);
+		payQRCode.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 
+		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
+		
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
 		log.info("TC_07_13: Kiem  tra giao dich thanh cong");
