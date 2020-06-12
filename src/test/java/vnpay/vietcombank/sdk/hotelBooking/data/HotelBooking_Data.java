@@ -58,6 +58,7 @@ public class HotelBooking_Data {
 	public static final String SMART_OTP= "VCB - Smart OTP";
 	public static final String SMS_OTP= "SMS OTP";
 	public static final String AVAILIBLE_BALANCES= "Số dư khả dụng";
+	public static final String FEE_AMOUNT= "Số tiền phí";
 
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";

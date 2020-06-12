@@ -21,6 +21,7 @@ import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.MobileTopupPage_Data.Text;
 import vietcombank_test_data.MobileTopupPage_Data.UIs;
+import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 
 public class Mobile_Topup_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -31,7 +32,7 @@ public class Mobile_Topup_Flow extends Base {
 
 	SourceAccountModel sourceAcoount = new SourceAccountModel();
 
-	private String accountMoneyBefore, other_Phone_Number = "";
+	private String other_Phone_Number = "";
 	private String transactionID = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -69,7 +70,6 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
 
 		sourceAcoount = mobileTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		accountMoneyBefore = sourceAcoount.account;
 
 		log.info("TC_01_Step_04: Click vao menh gia 30,000");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[0]);
@@ -78,7 +78,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_06: Xac nhan tai khoan nguon");
-		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), accountMoneyBefore);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), sourceAcoount.account);
 
 		log.info("TC_01_Step_07: Xac nhan so dien thoai duoc nap");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
@@ -126,13 +126,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_02_Step_04: Chon 'Nap tien dien thoai'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_02_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_02_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, accountMoneyBefore);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, sourceAcoount.account);
 
 		log.info("TC_02_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -141,19 +141,19 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
 
 		log.info("TC_02_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
-		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Text.DETAIL_TRANSFER);
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), ReportTitle.DETAIL_TRANSFER);
 
 		log.info("TC_02_Step_10: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TRANSFER_NUMBER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_02_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.ACCOUNT_DEBIT), accountMoneyBefore);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver,  ReportTitle.ACCOUNT_CARD), sourceAcoount.account);
 
 		log.info("TC_02_Step_12: Xac nhan hien thi so dien thoai duoc nap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.PHONE_TOPUP), phone);
 
 		log.info("TC_02_Step_13: Xac nhan hien thi loại giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TYPE_TRANSFER), UIs.MOBILE_TOPUP_TITLE);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_02_Step_14: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -179,7 +179,7 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_03_Step_03: Chon tai khoan nguon");
 
 		sourceAcoount = mobileTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		accountMoneyBefore = sourceAcoount.account;
+		sourceAcoount.account = sourceAcoount.account;
 
 		log.info("TC_03_Step_04: Click vao menh gia 30,000");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[5]);
@@ -188,7 +188,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_03_Step_06: Xac nhan tai khoan nguon");
-		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), accountMoneyBefore);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), sourceAcoount.account);
 
 		log.info("TC_03_Step_07: Xac nhan so dien thoai duoc nap");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
@@ -237,13 +237,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_04_Step_04: Chon 'Nap tien dien thoai'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_04_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, accountMoneyBefore);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, sourceAcoount.account);
 
 		log.info("TC_04_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -252,19 +252,19 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
 
 		log.info("TC_04_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
-		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Text.DETAIL_TRANSFER);
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), ReportTitle.DETAIL_TRANSFER);
 
 		log.info("TC_04_Step_10: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TRANSFER_NUMBER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_04_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.ACCOUNT_DEBIT), accountMoneyBefore);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver,  ReportTitle.ACCOUNT_CARD), sourceAcoount.account);
 
 		log.info("TC_04_Step_12: Xac nhan hien thi so dien thoai duoc nap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.PHONE_TOPUP), phone);
 
 		log.info("TC_04_Step_13: Xac nhan hien thi loại giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TYPE_TRANSFER), UIs.MOBILE_TOPUP_TITLE);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_04_Step_14: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -291,7 +291,7 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_05_Step_03: Chon tai khoan nguon");
 
 		sourceAcoount = mobileTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		accountMoneyBefore = sourceAcoount.account;
+		sourceAcoount.account = sourceAcoount.account;
 
 		log.info("TC_05_Step_04: Click vao menh gia 30,000");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[0]);
@@ -300,7 +300,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_05_Step_06: Xac nhan tai khoan nguon");
-		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), accountMoneyBefore);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), sourceAcoount.account);
 
 		log.info("TC_05_Step_07: Xac nhan so dien thoai duoc nap");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
@@ -350,13 +350,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_06_Step_04: Chon 'Nap tien dien thoai'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_06_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_06_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, accountMoneyBefore);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, sourceAcoount.account);
 
 		log.info("TC_06_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -365,19 +365,19 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
 
 		log.info("TC_06_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
-		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Text.DETAIL_TRANSFER);
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), ReportTitle.DETAIL_TRANSFER);
 
 		log.info("TC_06_Step_10: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TRANSFER_NUMBER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_06_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.ACCOUNT_DEBIT), accountMoneyBefore);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver,  ReportTitle.ACCOUNT_CARD), sourceAcoount.account);
 
 		log.info("TC_06_Step_12: Xac nhan hien thi so dien thoai duoc nap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.PHONE_TOPUP), phone);
 
 		log.info("TC_06_Step_13: Xac nhan hien thi loại giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TYPE_TRANSFER), UIs.MOBILE_TOPUP_TITLE);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_06_Step_14: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -403,7 +403,7 @@ public class Mobile_Topup_Flow extends Base {
 		log.info("TC_07_Step_03: Chon tai khoan nguon");
 
 		sourceAcoount = mobileTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		accountMoneyBefore = sourceAcoount.account;
+		sourceAcoount.account = sourceAcoount.account;
 
 		log.info("TC_07_Step_04: Click vao menh gia 30,000");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, UIs.LIST_UNIT_VALUE[5]);
@@ -412,7 +412,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_07_Step_06: Xac nhan tai khoan nguon");
-		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), accountMoneyBefore);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), sourceAcoount.account);
 
 		log.info("TC_07_Step_07: Xac nhan so dien thoai duoc nap");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
@@ -462,13 +462,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_08_Step_04: Chon 'Nap tien dien thoai'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_08_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_08_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, accountMoneyBefore);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, sourceAcoount.account);
 
 		log.info("TC_08_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -477,19 +477,19 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
 
 		log.info("TC_08_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
-		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Text.DETAIL_TRANSFER);
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), ReportTitle.DETAIL_TRANSFER);
 
 		log.info("TC_08_Step_10: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TRANSFER_NUMBER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_08_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.ACCOUNT_DEBIT), accountMoneyBefore);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver,  ReportTitle.ACCOUNT_CARD), sourceAcoount.account);
 
 		log.info("TC_08_Step_12: Xac nhan hien thi so dien thoai duoc nap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), phone);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.PHONE_TOPUP), phone);
 
 		log.info("TC_08_Step_13: Xac nhan hien thi loại giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TYPE_TRANSFER), UIs.MOBILE_TOPUP_TITLE);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_08_Step_14: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -514,7 +514,7 @@ public class Mobile_Topup_Flow extends Base {
 
 		log.info("TC_09_Step_03: Chon tai khoan nguon");
 		sourceAcoount = mobileTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		accountMoneyBefore = sourceAcoount.account;
+		sourceAcoount.account = sourceAcoount.account;
 
 		log.info("TC_09_Step_04: Nhap so dien thoai");
 		mobileTopup.inputIntoEditTextByID(driver, other_Phone_Number, "com.VCB:id/mobile");
@@ -523,7 +523,7 @@ public class Mobile_Topup_Flow extends Base {
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_09_Step_06: Xac nhan tai khoan nguon");
-		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), accountMoneyBefore);
+		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.SOURCE_ACCOUNT), sourceAcoount.account);
 
 		log.info("TC_09_Step_07: Xac nhan so dien thoai duoc nap");
 		verifyEquals(mobileTopup.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), other_Phone_Number);
@@ -570,13 +570,13 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_10_Step_04: Chon 'Nap tien dien thoai'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_10_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_10_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, accountMoneyBefore);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, sourceAcoount.account);
 
 		log.info("TC_10_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -585,19 +585,19 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
 
 		log.info("TC_10_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
-		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Text.DETAIL_TRANSFER);
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), ReportTitle.DETAIL_TRANSFER);
 
 		log.info("TC_10_Step_10: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TRANSFER_NUMBER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_10_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.ACCOUNT_DEBIT), accountMoneyBefore);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD), sourceAcoount.account);
 
 		log.info("TC_10_Step_12: Xac nhan hien thi so dien thoai duoc nap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), other_Phone_Number);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.PHONE_TOPUP), other_Phone_Number);
 
 		log.info("TC_10_Step_13: Xac nhan hien thi loại giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TYPE_TRANSFER), UIs.MOBILE_TOPUP_TITLE);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_10_Step_14: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
@@ -680,7 +680,7 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_12_Step_04: Chon 'Nap tien dien thoai'");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, UIs.MOBILE_TOPUP_TITLE);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_12_Step_05: An vao Dropdown 'Chon tai khoan/the");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -695,19 +695,19 @@ public class Mobile_Topup_Flow extends Base {
 		transactionReport.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvContent");
 
 		log.info("TC_12_Step_09: Xac nhan hien thi Title 'Chi tiet giao dich'");
-		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Text.DETAIL_TRANSFER);
+		verifyEquals(transactionReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), ReportTitle.DETAIL_TRANSFER);
 
 		log.info("TC_12_Step_10: Xac nhan hien thi dung ma giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TRANSFER_NUMBER), transactionID);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_12_Step_11: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.ACCOUNT_DEBIT), sourceAcoount.account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver,  ReportTitle.ACCOUNT_CARD), sourceAcoount.account);
 
 		log.info("TC_12_Step_12: Xac nhan hien thi so dien thoai duoc nap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.PHONE_TOPUP), other_Phone_Number);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.PHONE_TOPUP), other_Phone_Number);
 
 		log.info("TC_12_Step_13: Xac nhan hien thi loại giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, Text.TYPE_TRANSFER), UIs.MOBILE_TOPUP_TITLE);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.MOBILE_TOPUP_TITLE);
 
 		log.info("TC_12_Step_14: An nut back ve man hinh bao cao giao dich");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
