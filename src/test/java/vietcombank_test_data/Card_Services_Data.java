@@ -1,6 +1,6 @@
 package vietcombank_test_data;
 
-public class Lock_Card_Data {
+public class Card_Services_Data {
 
 	public static final String DEBIT_CARD01 = "970436...011";
 	public static final String DEBIT_CARD02 = "970436...053";
@@ -34,4 +34,51 @@ public class Lock_Card_Data {
 		public static String CREDIT_CARD_01 = "";
 
 	}
+	
+	public static class Card_Services_Text {
+		
+		public static final String SHOPPING_TEXT = "Mua sắm";
+		public static final String CARD_SERVICES_TEXT = "Dịch vụ thẻ khác";
+		
+		public static final String LOCK_CARD_TEXT = "Khóa thẻ";
+		public static final String UNLOCK_CARD_TEXT = "Mở khóa thẻ";
+		
+		public static final String DEBIT_CARD_TEXT = "Thẻ ghi nợ";
+		public static final String CREDIT_CARD_TEXT = "Thẻ tín dụng";
+		
+		public static final String CARD_INFO_TEXT = "Thông tin thẻ" ;
+		public static final String CARD_TYPE_TEXT =  "Loại thẻ";
+		public static final String CARD_NUMBER_TEXT = "Số thẻ";
+		public static final String REQUEST_TEXT = "Yêu cầu";
+		
+		public static final String INTERNET_REGISTER_TEXT = "Đăng ký sử dụng thẻ trên Internet";
+		public static final String INTERNET_UN_REGISTER_TEXT = "Hủy đăng ký sử dụng thẻ trên Internet";
+		
+		public static final String LOCK_CARD_SUCCESS_MESSAGE = "KHÓA THẺ THÀNH CÔNG";
+		public static final String UNLOCK_CARD_SUCCESS_MESSAGE = "MỞ KHÓA THẺ THÀNH CÔNG";
+		public static final String INTERNET_REGISTER_SUCCESS_MESSAGE = "ĐĂNG KÝ SỬ DỤNG THẺ TRÊN INTERNET THÀNH CÔNG";
+		public static final String INTERNET_UN_REGISTER_SUCCESS_MESSAGE = "HỦY ĐĂNG KÝ SỬ DỤNG THẺ TRÊN INTERNET THÀNH CÔNG";
+		
+		public static final String SMS_OTP_AUTHEN_TEXT = "SMS OTP";
+		public static final String SMART_OTP_AUTHEN_TEXT = "VCB - Smart OTP";
+		
+		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
+		public static final String BUTTON_CLOSE_TEXT = "Đóng";
+		public static final String BUTTON_BACK_TO_HOME_TEXT = "Về trang chủ";
+		
+	}
+	
+	public static class Card_Data {
+		
+		public static final String VCB_DEBIT_CARD_DATA = "970436";
+		public static final String VCB_CREBIT_CARD_DATA = "4032";
+		public static final String VISA_DEBIT_CARD_DATA = "4283";
+		public static final String UNION_PAY_DATA = "6212";
+		public static final String AMEX_DEBIT_CARD_DATA = "9734";
+		public static final String AMEX_CREDIT_CARD_DATA = "3791";
+		public static final String MASTER_CARD_DATA = "5462";
+		public static final String JCB_CARD_DATA = "3567";
+		
+	}
+
 }

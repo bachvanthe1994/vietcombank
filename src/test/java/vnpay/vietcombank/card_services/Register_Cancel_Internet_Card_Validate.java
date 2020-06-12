@@ -14,7 +14,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LockCardPageObject;
 import pageObjects.LogInPageObject;
-import vietcombank_test_data.Lock_Card_Data;
+import vietcombank_test_data.Card_Services_Data;
 
 public class Register_Cancel_Internet_Card_Validate extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -52,7 +52,7 @@ public class Register_Cancel_Internet_Card_Validate extends Base {
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
 
 		log.info("TC_01_Step_03: Xac nhan hien thi title 'Huy dang ky su dung the tren Internet' ");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Lock_Card_Data.VALIDATE.REGISTER_CANCEL_INTERNET_CARD_TITLE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Card_Services_Data.VALIDATE.REGISTER_CANCEL_INTERNET_CARD_TITLE);
 		
 		log.info("TC_01_Step_04: Xac nhan hien thi Icon Back ");
 		verifyTrue(lockCard.isDynamicImageHomeDisplay(driver, "com.VCB:id/ivTitleLeft"));
@@ -106,19 +106,19 @@ public class Register_Cancel_Internet_Card_Validate extends Base {
 	public void TC_04_KiemTraComboboxSoThe_KiemTraDanhSachLoaiThe() {
 
 		log.info("TC_04_Step_01: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD04);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.CREDIT_CARD04);
 		
 		log.info("TC_04_Step_02: Xac nhan the hien thi la the vua chon");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent"), Lock_Card_Data.CREDIT_CARD04);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent"), Card_Services_Data.CREDIT_CARD04);
 		
 		log.info("TC_04_Step_03: Click vao combobox");
 		lockCard.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llContent");
 		
 		log.info("TC_04_Step_04: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD03);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.CREDIT_CARD03);
 		
 		log.info("TC_04_Step_05: Xac nhan the hien thi la the vua chon");
-		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent"), Lock_Card_Data.CREDIT_CARD03);
+		verifyEquals(lockCard.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/llContent"), Card_Services_Data.CREDIT_CARD03);
 	}
 
 	@Test
@@ -141,10 +141,10 @@ public class Register_Cancel_Internet_Card_Validate extends Base {
 		verifyTrue(lockCard.isDynamicImageHomeDisplay(driver, "com.VCB:id/ivTitleLeft"));
 		
 		log.info("TC_06_Step_03: Xac nhan hien thi thong bao kiem tra thong tin");
-		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Lock_Card_Data.VALIDATE.REGISTER_CANCEL_INTERNET_VERIFY_TITLE_HEAD_MESSAGE);
+		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Card_Services_Data.VALIDATE.REGISTER_CANCEL_INTERNET_VERIFY_TITLE_HEAD_MESSAGE);
 		
 		log.info("TC_06_Step_04: Xac nhan hien thi so the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD03);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Card_Services_Data.CREDIT_CARD03);
 		
 		log.info("TC_06_Step_05: Xac nhan hien thi thuong hieu the");
 		verifyEquals(lockCard.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), "Thương hiệu thẻ");
@@ -183,7 +183,7 @@ public class Register_Cancel_Internet_Card_Validate extends Base {
 		verifyTrue(lockCard.isDynamicTextDetailByID(driver, "com.VCB:id/tvTime"));
 		
 		log.info("TC_08_Step_06: Xac nhan hien thi so the");
-		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Lock_Card_Data.CREDIT_CARD03);
+		verifyEquals(lockCard.getDynamicTextByLabel(driver, "Số thẻ"), Card_Services_Data.CREDIT_CARD03);
 		
 		log.info("TC_08_Step_07: Xac nhan hien thi ma giao dich");
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, "Mã giao dịch"));
@@ -221,7 +221,7 @@ public class Register_Cancel_Internet_Card_Validate extends Base {
 		lockCard.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llContent");
 		
 		log.info("TC_09_Step_04: Chon So the");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Lock_Card_Data.CREDIT_CARD04);
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Data.CREDIT_CARD04);
 		
 		log.info("TC_09_Step_05: Click vao nut 'Tiep tuc'");
 		lockCard.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");

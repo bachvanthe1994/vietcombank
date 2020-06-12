@@ -20,7 +20,6 @@ import pageObjects.SavingOnlinePageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Auto_Saving_Data;
 import vietcombank_test_data.Auto_Saving_Data.Auto_Saving_Text;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 
@@ -55,8 +54,9 @@ public class Auto_Saving_Flow_MK extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
+	@Parameters ({"otp"})
 	@Test
-	public void TC_01_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP() {
+	public void TC_01_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
 		
 		log.info("TC_01_01_Click Mo tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
@@ -94,7 +94,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_01_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputToDynamicOtp(driver, otp, SavingOnline_Data.CONTINUE_BUTTON);
 
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
@@ -145,6 +145,9 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		autoSaving.scrollUpToText(driver, Auto_Saving_Text.SOURCE_ACCOUNT_TEXT);
 
+		log.info("TC_02_Step_10: Hien thi tai khoan nguon");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SOURCE_ACCOUNT_TEXT), sourceAccount);
+		
 		log.info("TC_02_Step_11: Hien thi tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SAVING_ACCOUNT_TEXT), savingAccount);
 
@@ -353,8 +356,9 @@ public class Auto_Saving_Flow_MK extends Base {
 
 	}
 
+	@Parameters ({"otp"})
 	@Test
-	public void TC_06_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP() {
+	public void TC_06_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
 
 		log.info("TC_06_01_Click Tat toan tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT);
@@ -381,7 +385,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_06_07_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputToDynamicOtp(driver, otp, SavingOnline_Data.CONTINUE_BUTTON);
 
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 

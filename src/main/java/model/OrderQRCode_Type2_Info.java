@@ -5,7 +5,7 @@ public class OrderQRCode_Type2_Info {
 	public String service;
 	public String codeCustomer;
 	public String surplus;
-	
+	public String account;
 //	public OrderQRCodeInfo(String provider, String service, String codeCustomer) {
 //		this.provider = provider;
 //		this.service = service;

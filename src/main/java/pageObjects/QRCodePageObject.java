@@ -10,6 +10,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.OrderQRCode_Type1_Info;
 import model.OrderQRCode_Type2_Info;
+import model.SourceAccountModel;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.QRCodePageUIs;
 
@@ -155,8 +156,9 @@ public class QRCodePageObject extends AbstractPage {
 		}
 	}
 
-	public OrderQRCode_Type1_Info chooseQRCodeType1(int number, String account) {
+	public OrderQRCode_Type1_Info chooseQRCodeType1(int number) {
 		OrderQRCode_Type1_Info qrCode = new OrderQRCode_Type1_Info();
+		SourceAccountModel sourceAccount = new SourceAccountModel();
 		boolean check = false;
 		for (int i = 1; i <= number; i++) {
 			clickToImageByIndex(number - i);
@@ -165,7 +167,8 @@ public class QRCodePageObject extends AbstractPage {
 			qrCode.codePlace = getDynamicTextInTransactionDetail(driver, "Mã điểm bán");
 
 			clickToDynamicDropDown(driver, "Tài khoản nguồn");
-			clickToDynamicButtonLinkOrLinkText(driver, account);
+			sourceAccount = chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+			qrCode.account = sourceAccount.account;
 			qrCode.surplus = getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
 			inputToDynamicInputBox(driver, "100000", "Số tiền");
@@ -200,8 +203,9 @@ public class QRCodePageObject extends AbstractPage {
 
 	}
 
-	public OrderQRCode_Type2_Info chooseQRCodeType2(int number, String account) {
+	public OrderQRCode_Type2_Info chooseQRCodeType2(int number) {
 		OrderQRCode_Type2_Info qrCode = new OrderQRCode_Type2_Info();
+		SourceAccountModel sourceAccount = new SourceAccountModel();
 		boolean check = false;
 		for (int i = 1; i <= number; i++) {
 			clickToImageByIndex(number - i);
@@ -210,7 +214,8 @@ public class QRCodePageObject extends AbstractPage {
 			qrCode.codeCustomer = getDynamicTextInTransactionDetail(driver, "Mã khách hàng");
 
 			clickToDynamicDropDown(driver, "Tài khoản nguồn");
-			clickToDynamicButtonLinkOrLinkText(driver, account);
+			sourceAccount = chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+			qrCode.account = sourceAccount.account;
 			qrCode.surplus = getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
 			clickToDynamicButton(driver, "Thanh toán");
@@ -243,8 +248,9 @@ public class QRCodePageObject extends AbstractPage {
 
 	}
 
-	public OrderQRCode_Type1_Info chooseQRCodeType3(int number, String account) {
+	public OrderQRCode_Type1_Info chooseQRCodeType3(int number) {
 		OrderQRCode_Type1_Info qrCode = new OrderQRCode_Type1_Info();
+		SourceAccountModel sourceAccount = new SourceAccountModel();
 		boolean check = false;
 		for (int i = 1; i <= number; i++) {
 			clickToImageByIndex(number - i);
@@ -252,7 +258,8 @@ public class QRCodePageObject extends AbstractPage {
 			qrCode.namePlace = getDynamicTextInTransactionDetail(driver, "Điểm bán");
 
 			clickToDynamicDropDown(driver, "Tài khoản nguồn");
-			clickToDynamicButtonLinkOrLinkText(driver, account);
+			sourceAccount = chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+			qrCode.account = sourceAccount.account;
 			qrCode.surplus = getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
 			scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, "Ghi chú");

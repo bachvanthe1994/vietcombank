@@ -43,7 +43,6 @@ public class VehicalData {
 	public static final String CODE_TICKET="Mã vé";
 
 
-	public static final String NUMBER_ORDER="Số lệnh giao dịch";
 	public static final String BUTTON_TIEPTUC="Tiếp tục";
 
 	public static final String INFO_CUSTOMER="Thông tin khách hàng";
@@ -51,7 +50,6 @@ public class VehicalData {
 	public static final String AMOUNT_ROOT= "Tài khoản nguồn";
 	public static final String DETAIL_GD= "Chi tiết giao dịch";
 	
-	public static final String ACCOUNT= "Tài khoản/thẻ trích nợ";
 	public static final String THANHTOAN= "Thanh toán";
 	public static final String INPUT_PASSWORD="Nhập mật khẩu";
 	public static final String NAME="Họ tên";
@@ -69,7 +67,7 @@ public class VehicalData {
 
 	public static final String OTP="SMS OTP";
 	public static final String PASS="Mật khẩu đăng nhập";
-
+	public static final String SMART_OTP = "VCB - Smart OTP";
 	public static final String NUMBER_OTP="123456";
 
 

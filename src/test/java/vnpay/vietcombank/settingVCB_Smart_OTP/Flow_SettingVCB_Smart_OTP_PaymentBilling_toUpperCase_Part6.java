@@ -435,123 +435,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
-	
-	//Thanh toán tiền điện
-	//@Test Không có mã
-	@Parameters({ "otp" })
-	public void TC_05_ThanhToanTienDien_SmartOTP(String otp) throws InterruptedException {
-		log.info("TC_05_Step_01: Hoa don tien dien");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver, "Hoá đơn tiền điện");
-
-		log.info("TC_05_Step_02: Chon tai khoan nguon");
-		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-		sourceAccountMoney = electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng");
-
-		log.info("TC_05_Step_03: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToDynamicImageView(driver, "com.VCB:id/icon");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
-
-		log.info("TC_05_Step_04: Nhap ma khach hang va an tiep tuc");
-		customerID = electricBill.inputCustomerIdtoUpperCase(Electric_Bills_Data.DATA.LIST_CUSTOMER_ID);
-
-		log.info("TC_05_Step_05: Hien thi man hinh xac nhan thong tin");
-		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
-
-		log.info("TC_05_Step_06: Hien thi tai khoan nguon");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
-
-		log.info("TC_05_Step_07: Hien thi ten dich vu");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Dịch vụ"), Electric_Bills_Data.VALIDATE.ELECTIC_BILL_TITLE);
-
-		log.info("TC_05_Step_08: Hien thi Nha cung cap");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
-
-		log.info("TC_05_Step_09: Hien thi ma khach hang");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
-
-		log.info("TC_05_Step_10: Hien thi So tien thanh toan");
-		electricBills = electricBill.getDynamicTextByLabel(driver, "Số tiền thanh toán");
-
-		log.info("TC_05_Step_11: Chon phuong thuc xac thuc");
-		electricBill.scrollDownToText(driver, "Chọn phương thức xác thực");
-		electricBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
-
-		log.info("TC_05_Step_12: Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(electricBill.getDynamicTextInTransactionDetail(driver, "Số tiền phí"));
-
-		log.info("TC_05_Step_13: An nut Tiep Tuc");
-		verifyEquals(electricBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
-		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_05_Step_Nhap ma xac thuc");
-		electricBill.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
-
-		log.info("TC_05_Step_Tiep tuc");
-		electricBill.clickToDynamicContinue(driver, "com.VCB:id/submit");
-		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_05_Step_16: Hien thi man hinh giao dich thanh cong");
-		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), "GIAO DỊCH THÀNH CÔNG");
-
-		log.info("TC_05_Step_17: Xac nhan hien thi dung so tien thanh toan");
-		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), electricBills);
-
-		log.info("TC_05_Step_18: Xac nhan hien thi thoi gian giao dich");
-		transactionDate = electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
-		verifyTrue(electricBill.isTextDisplayedInListTextElements(driver, getForWardDay(0), "com.VCB:id/tvTime"));
-
-		log.info("TC_05_Step_19: Hien thi dung ten dich vu");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Dịch vụ"), Electric_Bills_Data.VALIDATE.ELECTIC_BILL_TITLE);
-
-		log.info("TC_05_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
-
-		log.info("TC_05_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Mã khách hàng"), electricBills);
-
-		log.info("TC_05_Step_22: Hien thi ma giao dich");
-		transactionID = electricBill.getDynamicTextByLabel(driver, "Mã giao dịch");
-
-		log.info("TC_05_Step_23: An tiep button 'Thuc hien giao dich moi'");
-		verifyEquals(electricBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Thực hiện giao dịch mới");
-		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-
-		log.info("TC_05_Step_24: Hien thi man hinh Hoa don tien dien");
-		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Electric_Bills_Data.VALIDATE.ELECTIC_BILL_TITLE);
-
-		log.info("TC_05_Step_25: Chon tai khoan nguon");
-		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-
-		log.info("TC_05_Step_26: Xac nhan so du TK nguon da bi tru thanh cong");
-		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(electricBills) - transferFee) + "";
-		verifyEquals(electricBill.getDynamicTextByLabel(driver, "Số dư khả dụng"), addCommasToLong(sourceAccountMoney) + " VND");
-
-		log.info("TC_05_Step_27: Chon Nha cung cap EVN Mien Trung");
-		electricBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver, Electric_Bills_Data.DATA.EVN_MIEN_TRUNG);
-
-		log.info("TC_05_Step_28: Nhap ma khach hang");
-		electricBill.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/llCode");
-
-		log.info("TC_05_Step_29: An nut Tiep Tuc");
-		verifyEquals(electricBill.getDynamicTextButtonById(driver, "com.VCB:id/btn_submit"), "Tiếp tục");
-		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-
-		log.info("TC_05_Step_30: Hien thi thong bao Ma khach hang khong con no truoc");
-		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Electric_Bills_Data.VALIDATE.ELECTRIC_BILL_MESSAGE);
-
-		log.info("TC_05_Step_31: Click nut Dong tat pop-up");
-		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-
-		log.info("TC_05_Step_32: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-
-		log.info("TC_05_Step_33: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	}
 
 	//Thanh toán cước di động trả sau
 	//@Test Check lai không có phương thức smart OTP
@@ -562,7 +445,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		postpaidMobile = PageFactoryManager.getPostpaidMobileBillPageObject(driver);
 
 		log.info("TC_06_Step_02: Hien thi man hinh Cuoc di dong tra sau");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_06_Step_03: Chon tai khoan nguon");
 		postpaidMobile.clickToDynamicDropdownByHeader(driver, "Tài khoản nguồn", "1");
@@ -580,13 +463,13 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
 
 		log.info("TC_06_Step_07: Hien thi thông tin xac nhan");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Postpaid_Mobile_Bill_Data.VALIDATE.VERIFY_INFO_TITLE_HEAD);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), Postpaid_Mobile_Bill_Data.Title.VERIFY_INFO_TITLE_HEAD);
 
 		log.info("TC_06_Step_08: Hien thi tai khoan nguon");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_06_Step_09: Hien thi ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_06_Step_10: Hien thi Nha cung cap");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Nhà cung cấp"), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
@@ -627,7 +510,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		verifyTrue(postpaidMobile.isTextDisplayedInListTextElements(driver, getForWardDay(0), "com.VCB:id/tvTime"));
 
 		log.info("TC_06_Step_21: Hien thi dung ten dich vu");
-		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Dịch vụ"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_06_Step_22: Hien thi dung Nha cung cap");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Nhà cung cấp"), Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
@@ -649,7 +532,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_06_Step_30: Hien thi man hinh Cuoc di dong tra sau");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_TITLE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_TITLE);
 
 		log.info("TC_06_Step_31: Chon tai khoan nguon");
 		postpaidMobile.clickToDynamicDropdownByHeader(driver, "Tài khoản nguồn", "1");
@@ -671,7 +554,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_06_Step_35: Hien thi thong bao So dien thoai khong con no truoc");
-		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Postpaid_Mobile_Bill_Data.VALIDATE.POSTPAID_MOBILE_MESSAGE);
+		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Postpaid_Mobile_Bill_Data.Title.POSTPAID_MOBILE_MESSAGE);
 
 		log.info("TC_06_Step_36: Click nut Dong tat pop-up");
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");

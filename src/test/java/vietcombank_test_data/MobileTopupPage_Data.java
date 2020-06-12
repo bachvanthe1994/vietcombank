@@ -1,5 +1,6 @@
 package vietcombank_test_data;
 
+
 public class MobileTopupPage_Data {
 
 	public static class UIs {
@@ -16,7 +17,6 @@ public class MobileTopupPage_Data {
 		public static final String MOBILE_TOPUP_TRANSACTION_GUIDE = "* Để trống nếu nạp cho chính mình";
 		public static final String MOBILE_TOPUP_BANK_ACCOUNT_01 = "0121000667333";
 		public static final String[] LIST_UNIT_VALUE = { "30,000", "50,000", "100,000", "200,000", "300,000", "500,000" };
-		public static final String OTHER_PHONE_NUMBER = "0974862666";
 		public static final String DEFAULT_UNIT_VALUE = "100,000";
 		public static final String PHONE_NUMBER_INVALID_MESSAGE = "Số điện thoại không hợp lệ, Quý khách vui lòng kiểm tra lại.";
 		public static final String ACCOUNT_MONEY_NOT_ENOUGH = "Giao dịch không thành công do tài khoản nguồn của Quý khách không đủ số dư.";
@@ -44,4 +44,19 @@ public class MobileTopupPage_Data {
 		public static final String MESSEGE_HIGHER_LIMIT_PACKAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 200,000 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 
 	}
+
+	public static class Text {
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String AMOUNT_FEE = "Số tiền phí";
+		public static final String PASSWORD = "Mật khẩu đăng nhập";
+		public static final String PRICE_CARD = "Mệnh giá thẻ";
+		public static final String CODE_TRANSFER = "Mã giao dịch";
+		public static final String SMS_OTP = "SMS OTP";
+		public static final String SMART_OTP = "VCB - Smart OTP";
+		public static final String COUTINUE = "Tiếp tục";
+		public static final String SUCCESS_TRANSFER = "GIAO DỊCH THÀNH CÔNG";
+		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
+
+	}
+
 }

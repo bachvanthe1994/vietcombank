@@ -816,6 +816,7 @@ public class AbstractPage {
 	// Click dau ... dua theo ten
 	public void clickToDynamicIconByText(AppiumDriver<MobileElement> driver, String dynamicKey) {
 		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
@@ -935,6 +936,16 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 
+		}
+	}
+	
+	public void clickToDynamicIconContact(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+		status = waitForElementVisible(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.ICON_CONTACT, dynamicTextValue);
+			
 		}
 	}
 	
@@ -1759,6 +1770,7 @@ public class AbstractPage {
 //Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
 	public boolean isDynamicMessageAndLabelTextUndisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
 		if (status == true) {
 			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
@@ -2382,6 +2394,7 @@ public class AbstractPage {
 	public String getDynamicTextDetailByIDOrPopup(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, dynamicID);
@@ -2449,6 +2462,16 @@ public class AbstractPage {
 		}
 		return text;
 
+	}
+	public String getDynamicTextFollowingText(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean status = false;
+		String text = null;
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_FOLLOW_TEXT, dynamicTextValue);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_FOLLOW_TEXT, dynamicTextValue);
+		}
+		return text;
+		
 	}
 
 	public String getDynamicAmountLabelList(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
@@ -2789,6 +2812,8 @@ public class AbstractPage {
 		new TouchAction(driver).longPress(PointOption.point(xStart, yStart)).moveTo(PointOption.point(xEnd, yEnd)).release().perform();
 	}
 
+	
+
 	public SourceAccountModel chooseSourceAccount(AppiumDriver<MobileElement> driver, double money, String currentcy) {
 
 		boolean status = false;
@@ -2797,8 +2822,8 @@ public class AbstractPage {
 		boolean check = true;
 		int count = 0;
 		while (check && count <= 5) {
-			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
-			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent");
+			String locator = String.format(DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent","com.VCB:id/list_item");
+			waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_LISTVIEW_LAYOUT, "com.VCB:id/RecyclerContent","com.VCB:id/list_item");
 			List<MobileElement> elements = driver.findElements(By.xpath(locator));
 			status = elements.size() > 0;
 
@@ -2916,6 +2941,8 @@ public class AbstractPage {
 	}
 
 
+	
+	
 	public List<SourceAccountModel> getListSourceAccount_Code(AppiumDriver<MobileElement> driver, String currentcY) {
 		boolean status = false;
 		SourceAccountModel sourceAccount = new SourceAccountModel();
@@ -2973,7 +3000,7 @@ public class AbstractPage {
 	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<String> listAccount) {
 		String distanAccount = "";
 		for (String account : listAccount) {
-			if (!account.equals(sourceAccount)) {
+			if (!account.equals(sourceAccount)&&account!="0019961180") {
 				distanAccount = account;
 				break;
 			}

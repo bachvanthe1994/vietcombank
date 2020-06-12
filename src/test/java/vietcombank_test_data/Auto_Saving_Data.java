@@ -3,8 +3,7 @@ package vietcombank_test_data;
 public class Auto_Saving_Data {
 	public class ORIGIN_ACCOUNT {
 		public static final String ACCOUNT_VND = "0121000667333";
-		public static final String ACCOUNT_USD = "0019961177";
-		public static final String ACCOUNT_EUR = "0019961178";
+		
 	}
 
 	public class TEXT {
@@ -13,9 +12,7 @@ public class Auto_Saving_Data {
 		public static final String FORM_OF_PAYMENT = "Lãi nhập gốc";
 		public static final String INPUT_VND = "2000000";
 		public static final String INPUT_USD = "100";
-		public static final String INPUT_EUR = "100";
 		public static final String AUTO_SAVING_CANCEL_MESSAGE = "Quý khách có chắc chắn muốn hủy đăng ký gửi tiết kiệm tự động này không ?";
-		public static final String AUTO_SAVING_CANCEL_SUCCESS_MESSAGE = "Quý khách đã hủy đăng ký tiết kiệm tự động thành công.";
 	}
 
 	public class VALIDATE {
@@ -55,7 +52,7 @@ public class Auto_Saving_Data {
 		public static final String SAVING_ACCOUNT_TEXT = "Tài khoản tiết kiệm";
 		public static final String TERM_TEXT = "Kỳ hạn";
 		public static final String TERM_TIME_TEXT = "Kỳ hạn gửi";
-		public static final String SAVING_SURPLUS_TEXT = "Số dư hiện tại";
+		public static final String SAVING_SURPLUS_TEXT = "Số dư gốc hiện tại";
 		public static final String START_DATE_TEXT = "Ngày bắt đầu";
 		public static final String END_DATE_TEXT = "Ngày kết thúc";
 		
@@ -65,7 +62,7 @@ public class Auto_Saving_Data {
 		public static final String TRANSFER_MONEY_TEXT = "Số tiền chuyển";
 		public static final String CONFIRM_INFO_TEXT = "Xác nhận thông tin";
 		public static final String DUE_DATE_TEXT = "Ngày đến hạn";
-		public static final String CURRENT_MONEY_TEXT = "Số tiền hiện tại";
+		public static final String CURRENT_MONEY_TEXT = "Số dư gốc hiện tại";
 		public static final String SOURCE_ACCOUNT_TEXT = "Tài khoản nguồn";
 		public static final String TRANSFER_FREQUENCY_TEXT = "Chu kỳ chuyển";
 		

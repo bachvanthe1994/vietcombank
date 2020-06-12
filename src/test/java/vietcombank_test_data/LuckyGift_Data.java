@@ -3,20 +3,9 @@ package vietcombank_test_data;
 public class LuckyGift_Data {
 
 	public static class LuckyGift {
-		public static final String[] TYPE_ACCEPT_OPTION = { "Số tài khoản", "Số điện thoại" };
-		public static final String[] BANK_OPTION = { "Người nhận tại VCB", "Người nhận khác VCB" };
 		public static final String WISHES_OPTION = "Gửi lời chúc Ngày phụ nữ hạnh phúc tới người đã đánh cắp trái tim tôi!";
 		public static final String MONEY = "12000";
-		public static final String[] ACCURACY = { "Mật khẩu đăng nhập", "SMS OTP" };
-
-		public static final String MIN_MONEY_A_TRANSACTION = "100";
-		public static final String[] COST = { "Phí giao dịch người chuyển trả", "Phí giao dịch người nhận trả" };
-		public static final String[] COST_SUB = { "Người chuyển trả", "Người nhận trả" };
 		public static final String BANK_DBA = "Ngân hàng DAB";
-		public static final String PASS = "aaaa1111";
-		public static final String OTP = "123456";
-		public static final String TRANSFER_REPORT = "Báo cáo giao dịch";
-		public static final String TITLE_TRANSFER = "Tất cả các loại giao dịch";
 
 	}
 
@@ -40,6 +29,10 @@ public class LuckyGift_Data {
 		public static final String NEW_TRANSFER = "Giao dịch mới";
 		public static final String CLOSE = "Đóng";
 		public static final String FIND = "Tìm kiếm";
+		public static final String NUMBER_ACCOUNT = "Số tài khoản";
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String OTP = "SMS OTP";
+		public static final String SMART_OTP = "VCB - Smart OTP";
 	}
 	
 	public static class Limit_Money_Gift {
