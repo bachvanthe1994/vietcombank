@@ -62,7 +62,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		account_other_owner = getDataInCell(0);
 		name_other_owner = getDataInCell(1);
 		otpSmart = getDataInCell(6);
-		newOTP = "11112222";
+		newOTP = "111222";
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 
 	}

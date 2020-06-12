@@ -55,7 +55,7 @@ public class Auto_Saving_Data {
 		public static final String SAVING_ACCOUNT_TEXT = "Tài khoản tiết kiệm";
 		public static final String TERM_TEXT = "Kỳ hạn";
 		public static final String TERM_TIME_TEXT = "Kỳ hạn gửi";
-		public static final String SAVING_SURPLUS_TEXT = "Số dư hiện tại";
+		public static final String SAVING_SURPLUS_TEXT = "Số dư gốc hiện tại";
 		public static final String START_DATE_TEXT = "Ngày bắt đầu";
 		public static final String END_DATE_TEXT = "Ngày kết thúc";
 		
@@ -65,7 +65,7 @@ public class Auto_Saving_Data {
 		public static final String TRANSFER_MONEY_TEXT = "Số tiền chuyển";
 		public static final String CONFIRM_INFO_TEXT = "Xác nhận thông tin";
 		public static final String DUE_DATE_TEXT = "Ngày đến hạn";
-		public static final String CURRENT_MONEY_TEXT = "Số tiền hiện tại";
+		public static final String CURRENT_MONEY_TEXT = "Số dư gốc hiện tại";
 		public static final String SOURCE_ACCOUNT_TEXT = "Tài khoản nguồn";
 		public static final String TRANSFER_FREQUENCY_TEXT = "Chu kỳ chuyển";
 		

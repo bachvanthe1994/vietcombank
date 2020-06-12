@@ -241,9 +241,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("TC_01_STEP_9: verify fee Ship");
 		verifyEquals(feeShippingD, fee);
 
-		log.info("TC_01_STEP_10: giam gia");
-		String[] getSaleString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.DISCOUNT).split(" ");
-
+	
 		log.info("TC_01_STEP_11: tong tien");
 		String[] totalMoneyBillString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.TOTAL).split(" ");
 		double totalMoneyBill = Double.parseDouble(totalMoneyBillString[0].replace(",", ""));

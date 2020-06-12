@@ -145,6 +145,9 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		autoSaving.scrollUpToText(driver, Auto_Saving_Text.SOURCE_ACCOUNT_TEXT);
 
+		log.info("TC_02_Step_10: Hien thi tai khoan nguon");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SOURCE_ACCOUNT_TEXT), sourceAccount);
+		
 		log.info("TC_02_Step_11: Hien thi tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SAVING_ACCOUNT_TEXT), savingAccount);
 
