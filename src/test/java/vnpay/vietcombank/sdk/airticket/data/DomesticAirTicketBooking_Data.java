@@ -60,16 +60,18 @@ public class DomesticAirTicketBooking_Data {
 		public static final String MONEY_AMOUNT_TEXT = "Số tiền";
 		public static final String FEE_VALUE_TEXT = "Phí giao dịch";
 		public static final String TRANSACTION_ID_TEXT = "Mã giao dịch";
+		public static final String SURPLUS_TEXT = "Tài khoản nguồn";
 		
 		public static final String HAN_PLACE = "Hà Nội";
 		public static final String SGN_PLACE = "TP Hồ Chí Minh";
 		public static final String BKK_PLACE = "Bangkok";
 		public static final String SUGGEST_FLIGHT_CODE_BL = "BL";
-		public static final String SUGGEST_FLIGHT_CODE_VJ = "VJ";
+		public static final String SUGGEST_FLIGHT_CODE_TG = "TG";
 		public static final String SUGGEST_FLIGHT_CODE_VN = "VN";
 		
 		public static final String SMS_OTP_TEXT = "SMS OTP";
 		public static final String PASSWORD_TEXT = "Mật khẩu đăng nhập";
+		public static final String SMART_OTP_TEXT = "VCB - Smart OTP";
 		
 		public static final String BUTTON_AGREE_TEXT = "Đồng ý";
 		public static final String BUTTON_CONFIRM_TEXT = "Xác nhận";

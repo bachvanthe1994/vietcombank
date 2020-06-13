@@ -103,6 +103,15 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 		}
 	}
 
+	public void checkToDynamicTextOrDropDownByEditText(String... dynamicTextAndID) {
+		boolean status = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicTextAndID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicTextAndID);
+		if (status == true) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_DEPARTURE_ARRIVAL_DATA, dynamicTextAndID);
+		}
+	}
+
 //Click vao text hoac dropdown voi 4 tham so la id, indexm id va id
 	public void clickToDynamicTextOrDropDownByLabelAndIndex(String... dynamicIDIndexIdAndId) {
 		boolean status = false;
@@ -149,6 +158,15 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 //			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, "Đồng ý");
 //			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_BUTTON, dynamicTextValue);
 //		}
+	}
+
+	// Click vao icon băng id
+	public void clickToDynamicAcceptButton(String id) {
+		boolean status = false;
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, id);
+		if (status == true) {
+			clickToElement(driver, AirTicketBookingUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, id);
+		}
 	}
 
 //Click vao icon băng id

@@ -6,7 +6,7 @@ public class AirTicketBookingUIs {
 	public static final String DYNAMIC_TEXT_BOX_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.EditText[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_BOX_BY_ID = "//android.widget.EditText[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.EditText[@resource-id=\"%s\"]";
-
+	
 	// text view
 	public static final String DATE_IN_CALENDAR = "//android.view.View[@text='%s']";
 	public static final String DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP = "//android.widget.TextView[@text='%s']";
@@ -30,12 +30,14 @@ public class AirTicketBookingUIs {
 	public static final String DYNAMIC_PAYEMENT_INFO_BY_CUSTOMER_NAME = "//android.widget.TextView[@text='%s']//ancestor::android.widget.LinearLayout[@resource-id='com.VCB:id/linContent']//android.widget.TextView[@text='%s']//following-sibling::android.widget.TextView";
 	public static final String DYNAMIC_DEPARTURE_ARRIVAL_DATA = "//android.widget.LinearLayout[@resource-id='%s']//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_CONFIRM_INFO = "//*[@resource-id='com.VCB:id/recycler_view']//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@text=\"%s\"]/following-sibling::android.widget.TextView";
+	public static final String DYNAMIC_ICON_BY_EDIT_TEXT = "//android.widget.EditText[@resource-id='%s']//following-sibling::android.widget.LinearLayout//android.widget.TextView[@resource-id='%s']";
 //Icon
 	public static final String DYNAMIC_ICON_BY_ID = "//android.widget.ImageView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_ICON_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.ImageView[@resource-id=\"%s\"]";
 
 //Button
 	public static final String DYNAMIC_BUTTON = "//android.widget.Button[@text='%s']";
+	public static final String DYNAMIC_ACCEPT_BUTTON_OR_BUTTON = "//android.widget.Button[@resource-id= '%s']";
 
 //radio button
 	public static final String DYNAMIC_CHECK_RADIO_BUTTON_BY_CHECKBOX = "//android.widget.CheckBox[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.RadioButton[@text=\"%s\"]";
