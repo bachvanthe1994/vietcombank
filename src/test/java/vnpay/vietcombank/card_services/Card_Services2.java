@@ -49,9 +49,6 @@ public class Card_Services2 extends Base {
 	@Test
 	public void TC_01_KhoaTheTinDungVCB() {
 
-		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_01_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -81,12 +78,9 @@ public class Card_Services2 extends Base {
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, Card_Services_Text.LOCK_CARD_SUCCESS_MESSAGE));
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, numberCard));
 
-		log.info("TC_01_Step_10: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_01_Step_10: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_01_Step_11: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_01_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -162,12 +156,9 @@ public class Card_Services2 extends Base {
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_TYPE_TEXT), Card_Services_Text.CREDIT_CARD_TEXT);
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_NUMBER_TEXT), numberCard);
 
-		log.info("TC_02_Step_16: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_02_Step_16: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_02_Step_17: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_02_Step_18: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -219,9 +210,7 @@ public class Card_Services2 extends Base {
 	@Test
 	public void TC_03_KhoaTheTinDungMasterCard() {
 
-		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
+	
 		log.info("TC_03_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -251,12 +240,9 @@ public class Card_Services2 extends Base {
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, Card_Services_Text.LOCK_CARD_SUCCESS_MESSAGE));
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, numberCard));
 
-		log.info("TC_03_Step_10: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_03_Step_10: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_03_Step_11: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_03_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -332,12 +318,9 @@ public class Card_Services2 extends Base {
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_TYPE_TEXT), Card_Services_Text.CREDIT_CARD_TEXT);
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_NUMBER_TEXT), numberCard);
 
-		log.info("TC_04_Step_16: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_04_Step_16: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_04_Step_17: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_04_Step_18: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -389,9 +372,6 @@ public class Card_Services2 extends Base {
 	@Test
 	public void TC_05_KhoaTheTinDungJCB() {
 
-		log.info("TC_05_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_05_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -421,12 +401,9 @@ public class Card_Services2 extends Base {
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, Card_Services_Text.LOCK_CARD_SUCCESS_MESSAGE));
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, numberCard));
 
-		log.info("TC_05_Step_10: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_05_Step_10: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_05_Step_11: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_05_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 
@@ -502,12 +479,9 @@ public class Card_Services2 extends Base {
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_TYPE_TEXT), Card_Services_Text.CREDIT_CARD_TEXT);
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_NUMBER_TEXT), numberCard);
 
-		log.info("TC_06_Step_16: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_06_Step_16: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_06_Step_17: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_06_Step_18: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -559,9 +533,6 @@ public class Card_Services2 extends Base {
 	@Test
 	public void TC_07_KhoaTheTinDungAmex() {
 
-		log.info("TC_07_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_07_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -591,12 +562,9 @@ public class Card_Services2 extends Base {
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, Card_Services_Text.LOCK_CARD_SUCCESS_MESSAGE));
 		verifyTrue(lockCard.isDynamicMessageAndLabelTextDisplayed(driver, numberCard));
 
-		log.info("TC_07_Step_10: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_07_Step_10: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
-		log.info("TC_07_Step_11: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
+	
 		log.info("TC_07_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
@@ -672,12 +640,9 @@ public class Card_Services2 extends Base {
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_TYPE_TEXT), Card_Services_Text.CREDIT_CARD_TEXT);
 		verifyEquals(lockCard.getDynamicTextInTransactionDetail(driver, Card_Services_Text.CARD_NUMBER_TEXT), numberCard);
 
-		log.info("TC_08_Step_16: An button 'Quan ve man hinh dich vu the'");
+		log.info("TC_08_Step_16: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		log.info("TC_08_Step_17: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
 		log.info("TC_08_Step_18: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
 	
