@@ -24,7 +24,6 @@ import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Internet_ADSL_Data;
 import vietcombank_test_data.TransactionReport_Data;
 
-
 public class Internet_ADSL_SmartOTP_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
@@ -36,7 +35,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String account = "";
-	String passSmartOTP  = "111222";
+	String passSmartOTP = "111222";
 	List<String> codeViettel = new ArrayList<String>();
 	List<String> codeFpt = new ArrayList<String>();
 
@@ -56,7 +55,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		codeFpt = Arrays.asList(getDataInCell(18).split(";"));
 	}
 //Lỗi app không hiển thị phương thức xác thực Smart OTP trong combobox
-	
+
 	@Test
 	@Parameters({ "pass" })
 	public void TC_01_ThanhToanCuocViettelXacThucSmartOTP(String pass) throws InterruptedException {
@@ -65,7 +64,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 
 		log.info("TC_02_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_02_Step_Get so du kha dung");
@@ -88,7 +87,6 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("TC_02_Kiem tra nha cung cap");
 
 		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.VIETTEL);
-
 
 		log.info("TC_02_Kiem tra ma khach hang");
 		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase());
@@ -150,7 +148,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
-	
+
 	@Test
 	public void TC_02_Report_ThanhToanCuocViettelXacThucSmartOTP() {
 		log.info("TC_02_Step: Click back man hinh home");
@@ -237,7 +235,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("TC_02: Click button home");
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-	
+
 	@Test
 	@Parameters({ "pass" })
 	public void TC_03_ThanhToanCuocFPTXacThucSmartOTP(String pass) throws InterruptedException {
@@ -246,7 +244,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 
 		log.info("TC_02_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_02_Step_Get so du kha dung");
@@ -269,7 +267,6 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("TC_02_Kiem tra nha cung cap");
 
 		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PROVICE), Internet_ADSL_Data.Valid_Account.FPT);
-
 
 		log.info("TC_02_Kiem tra ma khach hang");
 		verifyEquals(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.CUSTOMER_CODE), InternetADSLPageObject.codeADSL.toUpperCase());
@@ -331,7 +328,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("TC_02_Step_:Check so du kha dung sau khi chuyen tien");
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
-	
+
 	@Test
 	public void TC_04_Report_ThanhToanCuocFPTXacThucSmartOTP() {
 		log.info("TC_02_Step: Click back man hinh home");
@@ -418,10 +415,10 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("TC_02: Click button home");
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		smartOTP.cancelSetupSmartOTP();
 	}
-	
+
 }

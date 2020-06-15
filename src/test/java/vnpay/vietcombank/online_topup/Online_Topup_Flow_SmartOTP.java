@@ -34,7 +34,7 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 	private SettingVCBSmartOTPPageObject smartOTP;
 
 	SourceAccountModel sourceAccont = new SourceAccountModel();
-	
+
 	private String originMoney, transactionID, customerID, feeValue;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -50,13 +50,13 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		phone = getDataInCell(9).trim();
 		pass = getDataInCell(10).trim();
-		login.Global_login(phone,pass, opt);
-		
+		login.Global_login(phone, pass, opt);
+
 		onlineTopup = PageFactoryManager.getOnlineTopupPageObject(driver);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, getDataInCell(6));
-		
+
 		home = PageFactoryManager.getHomePageObject(driver);
 		home.scrollDownToText(driver, Online_Topup_Text.SAVING_TEXT);
 	}
@@ -66,12 +66,12 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien tu'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.ONLINE_TOPUP_TEXT);
-		
+
 		log.info("TC_01_Step_02: Chon tai khoan nguon");
 		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
-		sourceAccont = onlineTopup.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccont = onlineTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		originMoney = onlineTopup.getDynamicTextByLabel(driver, Online_Topup_Text.SURPLUS_TEXT);
-		
+
 		log.info("TC_01_Step_03: Chon 'Nap tien dien tu vao vi'");
 		onlineTopup.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/service_selected");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.E_WALLET_TOPUP_TEXT);
@@ -133,7 +133,7 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 		onlineTopup.inputToDynamicSmartOTP(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 		onlineTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
+
 		log.info("TC_01_Step_16: Hien thi man hinh thong bao nap thanh cong");
 		verifyEquals(onlineTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Online_Topup_Text.TRANSACTION_SUCCESS_MESSAGE);
 		verifyEquals(onlineTopup.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), addCommasToLong(Online_Topup_Data.EPAY.EPAY_MONEY) + " VND");
@@ -146,7 +146,7 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 		log.info("TC_01_Step_18: Xac nhan so tien o tai khoan nguon bi tru dung");
 		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, sourceAccont.account);
-		
+
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, Online_Topup_Text.SURPLUS_TEXT), (onlineTopup.getStringNumberAfterCaculate(originMoney, Online_Topup_Data.EPAY.EPAY_MONEY, feeValue) + " VND"));
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
@@ -156,13 +156,13 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+
 		log.info("TC_02_Step_02: Mo tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_03: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_02_Step_04: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -214,7 +214,7 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+
 		log.info("TC_02_Step_21: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
@@ -224,10 +224,10 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Nap tien dien tu'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Online_Topup_Text.ONLINE_TOPUP_TEXT);
-	
+
 		log.info("TC_03_Step_02: Chon tai khoan nguon");
 		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
-		sourceAccont = onlineTopup.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccont = onlineTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		originMoney = onlineTopup.getDynamicTextByLabel(driver, Online_Topup_Text.SURPLUS_TEXT);
 
 		log.info("TC_03_Step_03: Chon 'Nap tien tai khoan VETC'");
@@ -298,7 +298,7 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 		log.info("TC_03_Step_16: Xac nhan so tien o tai khoan nguon bi tru dung");
 		onlineTopup.clickToTextID(driver, "com.VCB:id/number_account");
 		onlineTopup.clickToDynamicButtonLinkOrLinkText(driver, sourceAccont.account);
-		
+
 		verifyEquals(onlineTopup.getDynamicTextByLabel(driver, Online_Topup_Text.SURPLUS_TEXT), (onlineTopup.getStringNumberAfterCaculate(originMoney, Online_Topup_Data.VETC.VETC_MONEY, feeValue) + " VND"));
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
@@ -308,13 +308,13 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");
 		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+
 		log.info("TC_04_Step_02: Mo tab Menu");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_03: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_04_Step_04: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -360,7 +360,7 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 
 		log.info("TC_04_Step_19: An nut back ve man hinh menu");
 		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+
 		log.info("TC_04_Step_20: Mo tab Home");
 		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
