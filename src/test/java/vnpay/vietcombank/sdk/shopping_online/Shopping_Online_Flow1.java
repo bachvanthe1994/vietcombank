@@ -66,7 +66,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 3; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -205,8 +205,6 @@ public class Shopping_Online_Flow1 extends Base {
 
 		}
 
-		log.info("TC_01_STEP_6: click thanh toan ngay");
-//		shopping.clickToDynamicButton(Shopping_Online_Data.ACCEPT);
 
 		log.info("TC_01_STEP_7: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
@@ -283,6 +281,13 @@ public class Shopping_Online_Flow1 extends Base {
 
 	}
 
+	
+	
+	public void TC_02_BaoCaoGiaoDichChonMuaMotSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
+		
+		
+	}
+	
 	@Parameters({ "otp" })
 	@Test
 	public void TC_02_ChonMuaNhieuSanPhamThanhToanOTPKhongChonKhuyenMai(String otp) {
@@ -292,7 +297,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 3; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -523,7 +528,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {

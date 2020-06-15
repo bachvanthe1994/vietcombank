@@ -1053,6 +1053,14 @@ public class AbstractPage {
 		}
 
 	}
+	public void clickToDynamicImageNon(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_NON, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_NON, dynamicText);
+		}
+		
+	}
 
 // Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
 	public void clickToDynamicImageViewByID(AppiumDriver<MobileElement> driver, String dynamicID) {
