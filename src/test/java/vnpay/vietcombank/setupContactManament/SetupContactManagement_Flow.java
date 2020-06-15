@@ -224,7 +224,7 @@ public class SetupContactManagement_Flow extends Base {
 	public void TC_04_XoaDanhBaNguoiHuong() {
 
 		log.info("TC_04_Step_01: An nut ba cham ben canh thong tin nguoi huong");
-		setupContact.clickToDynamicIconByText(driver, name_card1);
+		setupContact.clickToDynamicIconByText(driver, number_card2);
 
 		log.info("TC_04_Step_02: An vao phan 'Xoa'");
 		setupContact.clickToDynamicIconByLinerLayout(driver, "com.VCB:id/liDelete");
@@ -388,13 +388,13 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.SUPPLIER);
 
 		log.info("TC_08_Step_05: Clich chon loai dich vu");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.MOMO_EWALLET);
+		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.AIRPAY);
 
 		log.info("TC_08_Step_05: Clich chon loai dich vu");
 		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.TYPE_SERVICE);
 
 		log.info("TC_08_Step_05: Clich chon loai dich vu");
-		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.CHARGE_TO_WALLET_MOMO_B);
+		setupContact.clickToDynamicButtonLinkOrLinkText(driver, Contact.CHARGE_TO_AIRPAY);
 
 		log.info("TC_08_Step_05: Nhap thong tin ");
 		setupContact.inputToDynamicInputBox(driver, nameDistance, Contact.HINT_NAME);
@@ -430,17 +430,13 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"), Contact.E_WALLET_CHARGE);
 
-		log.info("TC_09_Step_03: Xac nhan lai thong tin");
-		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.MOMO_EWALLET));
 
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
-		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.CHARGE_TO_WALLET_MOMO_B));
+		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.CHARGE_TO_AIRPAY));
 
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, nameDistance));
 
-		log.info("TC_09_Step_03: Xac nhan lai thong tin");
-		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, number_card2));
 
 		log.info("TC_09_Step_04: An nut 'Cap nhat thong tin'");
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btEdit");

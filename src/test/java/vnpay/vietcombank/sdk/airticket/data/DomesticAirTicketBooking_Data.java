@@ -14,7 +14,6 @@ public class DomesticAirTicketBooking_Data {
 
 	public static class validInput {
 		public static final String ADULT_NAME = "NGUOI LON";
-		public static final String ADULT_GENDER = "Nữ";
 		public static final String ADULT_EMAIL = "abcd@gmail.com";
 		public static final String ADULT_PHONE = "0901234567";
 		public static final String CONTENT = "DAT CHUYEN BAY DI TP HO CHI MINH";
@@ -64,9 +63,9 @@ public class DomesticAirTicketBooking_Data {
 		
 		public static final String HAN_PLACE = "Hà Nội";
 		public static final String SGN_PLACE = "TP Hồ Chí Minh";
-		public static final String BKK_PLACE = "Bangkok";
+		public static final String SIN_PLACE = "Singapore";
+		
 		public static final String SUGGEST_FLIGHT_CODE_BL = "BL";
-		public static final String SUGGEST_FLIGHT_CODE_TG = "TG";
 		public static final String SUGGEST_FLIGHT_CODE_VN = "VN";
 		
 		public static final String SMS_OTP_TEXT = "SMS OTP";

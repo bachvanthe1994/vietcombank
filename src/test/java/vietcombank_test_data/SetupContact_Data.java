@@ -25,7 +25,7 @@ public class SetupContact_Data {
 		public static final String BANK_CARD_CHARGE = "Nạp tiền điện tử vào thẻ";
 		public static final String E_WALLET_CHARGE = "Nạp tiền điện tử vào ví";
 		public static final String VETC_ACCOUNT_CHARGE = "Nạp tiền tài khoản VETC";
-		public static final String MOMO_EWALLET = "Ví điện tử MOMO";
+		public static final String AIRPAY = "AirPay";
 		public static final String VETC_ACCOUNT = "VETC";
 		public static final String INFOR_BENFICI = "Thông tin người thụ hưởng";
 		public static final String COMPLETE = "Hoàn thành";
@@ -34,8 +34,8 @@ public class SetupContact_Data {
 
 		public static final String TYPE_SERVICE = "Loại dịch vụ";
 		public static final String INFOR_CONTACT_BILL = "Thông tin danh bạ hóa đơn";
-		public static final String CHARGE_TO_WALLET_MOMO_B = "Nạp tiền vào ví cá nhân Momo B";
-		public static final String CARD_NUMBER_CUSTOMER = "Số thẻ/Mã khách hàng";
+		public static final String CHARGE_TO_AIRPAY = "Nạp tiền AirPay";
+		public static final String CARD_NUMBER_CUSTOMER = "Số thẻ/ Mã khách hàng";
 		public static final String HINT_NAME = "Tên gợi nhớ";
 		public static final String CHARGE_TO_WALLET = "Nạp tiền điện tử vào ví";
 
