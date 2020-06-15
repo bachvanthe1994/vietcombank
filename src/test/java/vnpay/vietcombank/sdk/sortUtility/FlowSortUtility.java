@@ -17,8 +17,10 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import vietcombankUI.DynamicPageUIs;
-import vietcombankUI.HomePageUIs;
-import vietcombankUI.HomePageUIs.HomePageTexts;
+import vietcombankUI.HomePageUIs.HomePageElements;
+import vietcombank_test_data.HomePage_Data;
+import vietcombank_test_data.HomePage_Data.HomePageMessage;
+import vietcombank_test_data.HomePage_Data.HomePageTexts;
 
 @Test
 public class FlowSortUtility extends Base {
@@ -45,40 +47,43 @@ public class FlowSortUtility extends Base {
 		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
+		if (homePage.getPageSource(driver).contains(HomePageMessage.HOME_MESSAGE_TEXT)) {
 
+			homePage.clickToDynamicTextContains(driver, HomePageMessage.HOME_MESSAGE_TEXT);
+		}
+		
 	}
 
 	@Test
 	public void TC_01_SuaMucNoiBat() {
 
 		log.info("TC_01_Step_1: Scroll tu trai sang phai");
-		homePage.scrollLeftToText(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
-		
-		
+		homePage.scrollLeftToText(HomePageTexts.TEXT_BTN_SETTING);
+
 		log.info("TC_01_Step_2: Click chon button tinh nang cai dat");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.TEXT_BTN_SETTING);
 
 		log.info("TC_01_Step_3: Click chon vao phan huong dan cai dat noi bat");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageMessage.GUID_MESSAGE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageMessage.GUID_MESSAGE);
 
 		log.info("TC_01_Step_4: Kiem tra hien thi man hinh cai dat noi bat ");
-		verifyEquals(HomePageUIs.HomePageTexts.TITTLE_SETTING, homePage.getTextDynamicInSelectBox(driver, HomePageUIs.HomePageTexts.TITTLE_SETTING));
+		verifyEquals(HomePageTexts.TITTLE_SETTING, homePage.getTextDynamicInSelectBox(driver, HomePageTexts.TITTLE_SETTING));
 
 		log.info("TC_01_Step_5: Click chon bo noi bat");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.SELECTED);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.SELECTED);
 
 		homePage.scrollIDownOneTime(driver);
 		log.info("TC_01_Step_6: Click them tinh nang noi bat");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.NO_SELECT);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.NO_SELECT);
 
-		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
+		homePage.scrollUpToText(driver, HomePageMessage.TITILE);
 
-		List<String> listIconNoiBat = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
+		List<String> listIconNoiBat = homePage.getTextInListElements(driver, HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageTexts.SELECTED);
 
 		for (int i = 0; i < listIconNoiBat.size(); i++) {
 			listIconNoiBatDaChon.add(listIconNoiBat.get(i));
 		}
-		
+
 		log.info("TC_01_Step_4: Click chon cap nhat ");
 		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
 
@@ -92,10 +97,10 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_01_Step_11: Get toan bo danh sang cac icon noi bat o man hinh home ");
 		listIconNoiBatHome = homePage.getListIcon();
-	
-		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+
+		listIconNoiBatHome.remove(HomePage_Data.HomePageTexts.TEXT_BTN_SETTING);
 		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
-		
+
 		log.info("TC_01_Step_12: Xac minh cac tinh nang noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
 
@@ -104,28 +109,27 @@ public class FlowSortUtility extends Base {
 	@Test
 	public void TC_02_XoaMucNoiBat() {
 		log.info("TC_02_Step_1: Scroll to icon setting");
-		homePage.scrollLeftToText(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.scrollLeftToText(HomePageTexts.TEXT_BTN_SETTING);
 
 		log.info("TC_02_Step_2:  Click chon icon cai dat");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.TEXT_BTN_SETTING);
 
-		listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
-		
+		listIconNoiBatDaChon = homePage.getTextInListElements(driver, HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageTexts.SELECTED);
+
 		log.info("TC_02_Step_4: Click bo chon noi bat ");
 		for (int i = 0; i < listIconNoiBatDaChon.size(); i++) {
-			homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.SELECTED);
+			homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.SELECTED);
 		}
 
 		log.info("TC_02_Step_5: Verify messege thong bao chon it hon 1 icon");
-		verifyEquals(HomePageUIs.HomePageMessage.AT_LEAST_1_MESSAGE, homePage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"));
+		verifyEquals(HomePageMessage.AT_LEAST_1_MESSAGE, homePage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"));
 
 		log.info("TC_02_Step_6: Click button Close ");
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_02_Step_6: Lay ra toan bo danh sach icon da chon ");
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
-
+		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageTexts.SELECTED));
 
 		log.info("TC_02_Step_7: Click button cap nhat ");
 		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
@@ -138,7 +142,7 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_02_Step_10: Lay ra danh sach icon noi bat o man hinh home ");
 		listIconNoiBatHome = homePage.getListIcon();
-		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove(HomePageTexts.TEXT_BTN_SETTING);
 		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 
 		log.info("TC_02_Step_11: Verify list cac icon noi bat da duoc cap nhat");
@@ -149,19 +153,19 @@ public class FlowSortUtility extends Base {
 	@Test
 	public void TC_03_ThemMucNoiBat() {
 		log.info("TC_03_Step_1: Scroll toi icon cai dat tinh nang noi bat");
-		homePage.scrollLeftToText(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.scrollLeftToText(HomePageTexts.TEXT_BTN_SETTING);
 
 		log.info("TC_03_Step_1: Click icon cai dat noi ba");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.TEXT_BTN_SETTING);
 
 		log.info("TC_03_Step_3: Them tin nang noi bat");
 		for (int i = 0; i <= 3; i++) {
-			homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.NO_SELECT);
+			homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.NO_SELECT);
 			if (i == 1)
 				homePage.scrollIDownOneTime(driver);
 		}
 
-		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
+		homePage.scrollUpToText(driver, HomePageMessage.TITILE);
 
 		log.info("TC_03_Step_4: Click btn cap nhat");
 		homePage.clickToTextID(driver, "com.VCB:id/btnAddContact");
@@ -171,15 +175,14 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_03_Step_6: Lay ra danh sach noi bat da chon ");
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
-
+		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageTexts.SELECTED));
 
 		log.info("TC_03_Step_7: Click them noi bat");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_8: Lay ra danh sach icon noi bat o man hinh home");
 		listIconNoiBatHome = homePage.getListIcon();
-		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove(HomePageTexts.TEXT_BTN_SETTING);
 		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 		log.info("TC_03_Step_09: Verify icon da chon lam noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -189,27 +192,26 @@ public class FlowSortUtility extends Base {
 	@Test
 	public void TC_04_XacMinhMucNoiBatVuotQuaChoPhep() {
 		log.info("TC_04_Step_1: scroll den button icon setting");
-		homePage.scrollLeftToText(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.scrollLeftToText(HomePageTexts.TEXT_BTN_SETTING);
 
 		log.info("TC_04_Step_2: Click button setting");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.TEXT_BTN_SETTING);
 
 		log.info("TC_04_Step_3: Chon them tinh nang noi bat");
 		homePage.scrollIDownOneTime(driver);
 		homePage.scrollIDownOneTime(driver);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageUIs.HomePageTexts.NO_SELECT);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, HomePageTexts.NO_SELECT);
 
 		log.info("TC_04_Step_4: Verify hien thi thong bao chon qua 5 icon");
-		verifyEquals(HomePageUIs.HomePageMessage.MAX_5_ICON_MESSAGE, homePage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"));
+		verifyEquals(HomePageMessage.MAX_5_ICON_MESSAGE, homePage.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"));
 
 		log.info("TC_04_Step_5: Click button Dong popup");
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_04_Step_6: Lay ra danh sach icon da chon noi bat ");
-		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
+		homePage.scrollUpToText(driver, HomePageMessage.TITILE);
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
-
+		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageTexts.SELECTED));
 
 		log.info("TC_04_Step_7: Click button back");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -217,7 +219,7 @@ public class FlowSortUtility extends Base {
 		log.info("TC_04_Step_8: Lay ra danh sach icon noi bat o man hinh home ");
 		homePage.scrollLeftToRight(DynamicPageUIs.DYNAMIC_QUICK_MENU);
 		listIconNoiBatHome = homePage.getListIcon();
-		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
+		listIconNoiBatHome.remove(HomePageTexts.TEXT_BTN_SETTING);
 		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 
 		log.info("TC_04_Step_9: Verify icon noi bat da chon ");
