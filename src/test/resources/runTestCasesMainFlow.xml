@@ -25,7 +25,6 @@
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
-			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" />
 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_SmartOTP_Flow" />
 
 			<!-- Mua sắm trực tuyến -->
