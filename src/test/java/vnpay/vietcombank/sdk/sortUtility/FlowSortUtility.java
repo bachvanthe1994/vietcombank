@@ -48,7 +48,6 @@ public class FlowSortUtility extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		if (homePage.getPageSource(driver).contains(HomePageMessage.HOME_MESSAGE_TEXT)) {
-
 			homePage.clickToDynamicTextContains(driver, HomePageMessage.HOME_MESSAGE_TEXT);
 		}
 		

@@ -98,7 +98,7 @@ public class Saving_Target_Flow extends Base {
 
 		log.info("TC_01_Step_15: Xac nhan hien thi dung tong tien");
 		totalMoney = convertAvailableBalanceCurrentcyOrFeeToLong(InterestRateCalculatePage_Data.DATA.VND_MONEY) + interestMoney;
-		verifyEquals(savingTarget.getDynamicTextByLabel(driver, "TITLE.TOTAL_AMOUNT_RECEIVED"), addCommasToDouble(totalMoney + "").replace(".00", "") + " VND");
+		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.TOTAL_AMOUNT_RECEIVED), addCommasToDouble(totalMoney + "").replace(".00", "") + " VND");
 
 		log.info("TC_01_Step_16: An button Dat muc tieu moi");
 		verifyEquals(savingTarget.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), TITLE.SET_NEW_GOALS);

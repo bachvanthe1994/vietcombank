@@ -22,7 +22,7 @@ public class Location_QRCode_Flow extends Base {
 	String transferTime;
 	String transactionNumber;
 	long amount, fee, amountStart, feeView, amountView, amountAfter = 0;
-	String likeNumber, likeNumberActual, locatorActual, locatorExpect, shopName,typeShop, location , phone;
+	String likeNumber, likeNumberActual, locatorActual, locatorExpect, shopName, typeShop, location, phone;
 	int likeNumberExpect;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -40,10 +40,10 @@ public class Location_QRCode_Flow extends Base {
 		passLogin = pass;
 
 		QRCode = PageFactoryManager.getLocationQRCodePageObject(driver);
-		
+
 	}
-	
-@Test
+
+	@Test
 	public void TC_01_CheckTabXemGanDay() throws InterruptedException {
 		log.info("TC_01: Click menu header");
 		QRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -53,38 +53,37 @@ public class Location_QRCode_Flow extends Base {
 
 		log.info("TC_01_Step: Click cua hang");
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.RESTAURANT);
-		QRCode.clickToDynamicBack(driver, "0","2");
+		QRCode.clickToDynamicBack(driver, "0", "2");
 
-		log.info("TC_01_Step: get thong tin cua hang"); 
+		log.info("TC_01_Step: get thong tin cua hang");
 		shopName = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "0");
 		typeShop = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "1");
 		location = QRCode.getDynamicTextFollowingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "10");
 		int likeNumberExpect = QRCode.getNumberLike();
-		
+
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
 		QRCode.clickToTextImageView(driver, Location_QRCode_Data.DETAIL);
 		QRCode.clickToTextImageView(driver, Location_QRCode_Data.RESTAURANT);
-		
+
 		log.info("TC_01_Step: Click tim kiem thong tin");
 		QRCode.scrollUpToText(driver, Location_QRCode_Data.HIGH_LIGHT);
 		QRCode.clickToDynamicTextContains(driver, Location_QRCode_Data.SEACHING_LOCATION);
-		
+
 		log.info("TC_01_Step: Click tab xem gan day");
 		QRCode.clickToDynamicTextContains(driver, Location_QRCode_Data.VIEW_TEXT);
-		
+
 		log.info("TC_01_Step: verify loai cua hang");
-		verifyEquals(QRCode.getDynamicTextBack(driver, "0","2"), typeShop);
-		
+		verifyEquals(QRCode.getDynamicTextBack(driver, "0", "2"), typeShop);
+
 		log.info("TC_01_Step: verify dia chi");
-		verifyEquals(QRCode.getDynamicTextBack(driver, "0","3"), location);
-		
+		verifyEquals(QRCode.getDynamicTextBack(driver, "0", "3"), location);
+
 		log.info("TC_01_Step: verify so luong like/dislike");
-		verifyEquals(QRCode.getDynamicTextViewBack(driver, "0","10"), likeNumberExpect +"");
-		
+		verifyEquals(QRCode.getDynamicTextViewBack(driver, "0", "10"), likeNumberExpect + "");
+
 	}
 
-
-@Test
+	@Test
 	public void TC_02_CheckTabDaTimKiem() {
 		log.info("TC_02_Step:Nhap dia chi tim kiem");
 		QRCode.inputToDynamicInputBox(driver, Location_QRCode_Data.LOCATOR_SEARCH, Location_QRCode_Data.SEARCH_ADDRESS);
@@ -93,12 +92,12 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToDynamicImageEdit(driver, Location_QRCode_Data.LOCATOR_SEARCH);
 
 		log.info("TC_02_Step: Click chon mot cua hang");
-		QRCode.clickToDynamicBack(driver, "0","2");
-		
+		QRCode.clickToDynamicBack(driver, "0", "2");
+
 		log.info("TC_01_Step: Click quay lai man hinh trang chu");
 		QRCode.clickToTextImageView(driver, Location_QRCode_Data.DETAIL);
 		QRCode.clickToTextEditText(driver, Location_QRCode_Data.LOCATOR_SEARCH);
-		
+
 		log.info("TC_02_Step: Click text tim kiem de den tab xem gan day");
 		QRCode.scrollUpToText(driver, Location_QRCode_Data.HIGH_LIGHT);
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.SEARCH_ADDRESS);
@@ -108,5 +107,32 @@ public class Location_QRCode_Flow extends Base {
 
 		log.info("TC_02_Step: verify text da tim kiem");
 		verifyEquals(QRCode.getDynamicTextScrollText(driver, Location_QRCode_Data.LOVE, "0", "0"), Location_QRCode_Data.LOCATOR_SEARCH);
-	}	
+	}
+
+	public void TC_03_HuyYeuThich() {
+		
+		log.info("TC_03_Step: Chon muc yeu thich");
+		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.LOVE);
+		
+		log.info("TC_03_Step: Chon dia chi tim kiem bat ky");
+		QRCode.clickToDynamicImageNon(driver, "");
+		
+		log.info("TC_03_Step: get thong tin da chon");
+		shopName = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "0");
+		typeShop = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "1");
+		location = QRCode.getDynamicTextFollowingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "10");
+		
+		log.info("TC_03_Step: get So luong like");
+		int likeNumberExpectNow = QRCode.getNumberLike();
+		
+		log.info("TC_03_Step: Click click chon bo like");
+		QRCode.clickToDynamicButtonLinkOrLinkText(driver, String.valueOf(likeNumberExpectNow));
+
+		log.info("TC_03_Step: Click lay ra so luong like sau khi da bo like");
+		int likeNumberExpectDislike = QRCode.getNumberLike();
+		
+		log.info("TC_03_Step: Verify so luong like sau khi da bo like");
+		verifyEquals(likeNumberExpectDislike, likeNumberExpectNow - 1);
+
+	}
 }
