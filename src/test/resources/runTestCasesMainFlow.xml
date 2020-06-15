@@ -25,10 +25,10 @@
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
-			<!-- Đặt vé khách sạn -->
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" />
-			<class name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_2_Smart_OTP" />
 
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_3_Smart_OTP" />
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
 
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
@@ -80,7 +80,7 @@
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 
 			<!-- Thanh toan tien dien -->
-			<!-- <class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" /> -->
+			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
 
 
 			<!-- Thanh toan tien nuoc -->
@@ -129,6 +129,7 @@
 			<class name="vnpay.vietcombank.transfer_limit.Transfer_Limit_Flow" />
 
 			<!-- Thanh toán cước điện thoại cố định -->
+			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_3_Smart_OTP" />
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
 			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
 
