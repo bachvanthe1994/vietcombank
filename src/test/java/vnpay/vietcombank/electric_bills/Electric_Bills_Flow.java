@@ -39,7 +39,7 @@ public class Electric_Bills_Flow extends Base {
 	private List<String> listElectricBills = new ArrayList<String>();
 	private List<String> listElectricBilltoUpperCase = new ArrayList<String>();
 	private List<String> listElectricBilltoLowerCase = new ArrayList<String>();
-	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID,smartOtpPass;
+	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID, smartOtpPass;
 	private long transferFee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -50,15 +50,15 @@ public class Electric_Bills_Flow extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
+
 		smartOtpPass = getDataInCell(6).trim();
 		listElectricBills = Arrays.asList(getDataInCell(28).split(";"));
 		listElectricBilltoUpperCase = listElectricBills.stream().map(String::toUpperCase).collect(Collectors.toList());
 		listElectricBilltoLowerCase = listElectricBills.stream().map(String::toLowerCase).collect(Collectors.toList());
-		
+
 		electricBill = PageFactoryManager.getElectricBillPageObject(driver);
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		
+
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(smartOtpPass, smartOtpPass);
 		home = PageFactoryManager.getHomePageObject(driver);
@@ -70,7 +70,7 @@ public class Electric_Bills_Flow extends Base {
 
 		log.info("TC_01_Step_01: Hoa don tien dien");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Electric_Text.ELECTRIC_BILLS_TEXT);
-	
+
 		log.info("TC_01_Step_02: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
 		sourceAccount = electricBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -150,7 +150,7 @@ public class Electric_Bills_Flow extends Base {
 
 		log.info("TC_01_Step_25: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver,sourceAccount.account);
+		electricBill.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_01_Step_26: Xac nhan so du TK nguon da bi tru thanh cong");
 		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(moneyBill) - transferFee) + "";
@@ -174,21 +174,21 @@ public class Electric_Bills_Flow extends Base {
 		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_32: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_33: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_02_ThanhToanTienDien_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_02_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -235,13 +235,13 @@ public class Electric_Bills_Flow extends Base {
 //		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), addCommasToLong(transferFee+"")+" VND");
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_02_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters("pass")
@@ -250,7 +250,7 @@ public class Electric_Bills_Flow extends Base {
 
 		log.info("TC_03_Step_01: Hoa don tien dien");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Electric_Text.ELECTRIC_BILLS_TEXT);
-		
+
 		log.info("TC_03_Step_02: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
 		sourceAccount = electricBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -354,21 +354,21 @@ public class Electric_Bills_Flow extends Base {
 		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_33: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_04_ThanhToanTienDien_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_04_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -397,7 +397,7 @@ public class Electric_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_04_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD),sourceAccount.account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD), sourceAccount.account);
 
 		log.info("TC_04_Step_13: Hien thi dung ten dich vu");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SERVICE_TEXT), Electric_Bills_Data.VALIDATE.ELECTIC_BILL_TITLE);
@@ -415,21 +415,21 @@ public class Electric_Bills_Flow extends Base {
 //		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), addCommasToLong(transferFee+"")+" VND");
 
 		log.info("TC_04_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_04_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-	
+
 	@Test
 	public void TC_05_ThanhToanTienDien_ToUpperCase_SmartOTP() {
 
 		log.info("TC_05_Step_01: Hoa don tien dien");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Electric_Text.ELECTRIC_BILLS_TEXT);
-	
+
 		log.info("TC_05_Step_02: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
 		sourceAccount = electricBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -478,7 +478,7 @@ public class Electric_Bills_Flow extends Base {
 		log.info("TC_05_Step_15: An tiep button 'Tiep tuc'");
 		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
+
 		log.info("TC_05_Step_16: Hien thi man hinh giao dich thanh cong");
 		verifyEquals(electricBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Electric_Text.TRANSACTION_SUCCESS_MESSAGE);
 
@@ -510,7 +510,7 @@ public class Electric_Bills_Flow extends Base {
 
 		log.info("TC_07_Step_25: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver,sourceAccount.account);
+		electricBill.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_05_Step_26: Xac nhan so du TK nguon da bi tru thanh cong");
 		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(moneyBill) - transferFee) + "";
@@ -534,21 +534,21 @@ public class Electric_Bills_Flow extends Base {
 		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_05_Step_32: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_05_Step_33: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_06_ThanhToanTienDien_ToUpperCase_SmartOTP_BaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_06_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -592,21 +592,21 @@ public class Electric_Bills_Flow extends Base {
 		verifyTrue(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(moneyBill)));
 
 		log.info("TC_06_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_06_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_06_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-	
+
 	@Test
 	public void TC_07_ThanhToanTienDien_ToLowerCase_SmartOTP() {
 
 		log.info("TC_07_Step_01: Hoa don tien dien");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Electric_Text.ELECTRIC_BILLS_TEXT);
-	
+
 		log.info("TC_07_Step_02: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
 		sourceAccount = electricBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -687,7 +687,7 @@ public class Electric_Bills_Flow extends Base {
 
 		log.info("TC_07_Step_25: Chon tai khoan nguon");
 		electricBill.clickToTextID(driver, "com.VCB:id/number_account");
-		electricBill.clickToDynamicButtonLinkOrLinkText(driver,sourceAccount.account);
+		electricBill.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_07_Step_26: Xac nhan so du TK nguon da bi tru thanh cong");
 		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(moneyBill) - transferFee) + "";
@@ -711,21 +711,21 @@ public class Electric_Bills_Flow extends Base {
 		electricBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_07_Step_32: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_07_Step_33: Click nut Back ve man hinh chinh");
-		electricBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_08_ThanhToanTienDien_ToLowerCase_SmartOTP_BaoCaoGiaoDich() {
 
 		log.info("TC_08_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_08_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -769,13 +769,13 @@ public class Electric_Bills_Flow extends Base {
 		verifyTrue(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(moneyBill)));
 
 		log.info("TC_08_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_08_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_08_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

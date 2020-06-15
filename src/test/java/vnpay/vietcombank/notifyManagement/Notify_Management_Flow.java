@@ -65,7 +65,7 @@ public class Notify_Management_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 //		log.info("Before Class 01: Chon tab Menu");
-//		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+//		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 //
 //		log.info("Before Class 02: Mo sub-menu Cai dat");
 //		home.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
@@ -81,16 +81,16 @@ public class Notify_Management_Flow extends Base {
 //			throw new SkipException("");
 //		}
 //		log.info("TC_01_Step_01: Back ve man hinh Home");
-//		notifyManage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+//		notifyManage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 //
 //		home = PageFactoryManager.getHomePageObject(driver);
-//		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+//		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
 	public void TC_01_TinOTTVeXemPhim_DaDangNhap() {
 
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 		status = home.isDynamicTextDetailByID(driver, "com.VCB:id/counter");
 		if (status == true) {
 			counter = home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter");
@@ -192,7 +192,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_01_Step_28: Click vao More Icon");
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), getCounterPlus(counter, 1));
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_01_Step_29: Click tab tat ca");
@@ -217,7 +217,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_02_Step_01: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 		log.info("TC_02_Step_02_Click Dat ve xem phim");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đặt vé xem phim");
@@ -317,7 +317,7 @@ public class Notify_Management_Flow extends Base {
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
 
 		log.info("TC_02_Step_25: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_26: An vao Thoat ung dung");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
@@ -328,7 +328,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_02_Step_28: Click vao Inbox");
 		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		login.clickToDynamicImageViewByID(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_02_Step_29: Click tab tat ca");
@@ -348,7 +348,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(ticketCode));
 
 		log.info("TC_02_Step_31: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		inbox.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		login = PageFactoryManager.getLoginPageObject(driver);
 
 		log.info("TC_02_Step_32: Nhap mat khau va log in");
@@ -432,7 +432,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_03_Step_20: Click vao More Icon");
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_03_Step_21: Click tab tat ca");
@@ -455,7 +455,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_04_Step_01: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 		log.info("TC_04_Step_01_1: Click Dat phong khach san");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Đặt phòng khách sạn");
@@ -529,7 +529,7 @@ public class Notify_Management_Flow extends Base {
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
 
 		log.info("TC_04_Step_21: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_22: An vao Thoat ung dung");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
@@ -540,7 +540,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_04_Step_24: Click vao Inbox");
 		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		login.clickToDynamicImageViewByID(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_04_Step_25: Click tab tat ca");
@@ -558,7 +558,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(roomID));
 
 		log.info("TC_04_Step_27: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		inbox.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		login = PageFactoryManager.getLoginPageObject(driver);
 
 		log.info("TC_04_Step_28: Nhap mat khau va log in");
@@ -679,7 +679,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_05_Step_31: Click vao More Icon");
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_05_Step_32: Click tab tat ca");
@@ -701,7 +701,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_06_Step_01: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 		log.info("TC_06_Step_02: Click vao phan Dat ve may bay");
 		home.clickToDynamicIcon(driver, "Đặt vé máy bay");
@@ -811,7 +811,7 @@ public class Notify_Management_Flow extends Base {
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
 
 		log.info("TC_06_Step_32: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_Step_33: An vao Thoat ung dung");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
@@ -822,7 +822,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_06_Step_34: Click vao Inbox");
 		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "01");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		login.clickToDynamicImageViewByID(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_06_Step_35: Click tab tat ca");
@@ -838,7 +838,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 
 		log.info("TC_06_Step_37: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		inbox.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		login = PageFactoryManager.getLoginPageObject(driver);
 
 		log.info("TC_06_Step_38: Nhap mat khau va log in");
@@ -969,7 +969,7 @@ public class Notify_Management_Flow extends Base {
 		verifyEquals(home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), "02");
 
 		log.info("TC_07_Step_35: Chon tab inbox");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
 
 		log.info("TC_07_Step_36: Click tab tat ca");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
@@ -995,7 +995,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_08_Step_01_1: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 		log.info("TC_08_Step_01_2: Click vao phan Dat ve may bay");
 		home.clickToDynamicIcon(driver, "Đặt vé máy bay");
@@ -1113,7 +1113,7 @@ public class Notify_Management_Flow extends Base {
 		counter = home.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter");
 
 		log.info("TC_08_Step_35: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_Step_36: An vao Thoat ung dung");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
@@ -1125,7 +1125,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_08_Step_38: Click vao Inbox");
 		verifyEquals(login.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/counter"), counter);
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		login.clickToDynamicImageViewByID(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_08_Step_39: Click tab tat ca");
@@ -1141,7 +1141,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains("Số tiền:" + ticketPrice.replace(" VND", "")));
 
 		log.info("TC_08_Step_41: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		inbox.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		login = PageFactoryManager.getLoginPageObject(driver);
 
 		log.info("TC_08_Step_42: Nhap mat khau va log in");
@@ -1243,11 +1243,11 @@ public class Notify_Management_Flow extends Base {
 		shopping.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_09_Step_16: Chon ve man hinh home");
-		shopping.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		shopping.clickToDynamicImageViewByID(driver, "com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_09_Step_17: Click vao Inbox Icon");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_09_Step_18: Click tab tat ca");
@@ -1264,7 +1264,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_09_Step_20: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "otp" })
@@ -1358,11 +1358,11 @@ public class Notify_Management_Flow extends Base {
 		shopping.clickToDynamicButton("Tiếp tục");
 
 		log.info("TC_10_Step_16: Chon ve man hinh home");
-		shopping.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		shopping.clickToDynamicImageViewByID(driver, "com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_10_Step_17: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_10_Step_18: An vao Thoat ung dung");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
@@ -1373,7 +1373,7 @@ public class Notify_Management_Flow extends Base {
 		login.sleep(driver, 5000);
 
 		log.info("TC_10_Step_20: Click vao Inbox");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		login.clickToDynamicImageViewByID(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_10_Step_21: Click tab tat ca");
@@ -1389,7 +1389,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(totalMoneyBill.replace("D", "Đ")));
 
 		log.info("TC_10_Step_23: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		inbox.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		login = PageFactoryManager.getLoginPageObject(driver);
 
 		log.info("TC_10_Step_24: Nhap mat khau va log in");
@@ -1486,11 +1486,11 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_11_Step_24: Chon ve man hinh home");
-		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/ivHome");
+		vehicalTicket.clickToDynamicImageViewByID("com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_11_Step_25: Click vao Inbox Icon");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_3");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_11_Step_26: Click tab tat ca");
@@ -1507,7 +1507,7 @@ public class Notify_Management_Flow extends Base {
 
 		log.info("TC_11_Step_28: Back ve man hinh Home");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -1596,11 +1596,11 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
 		log.info("TC_12_Step_24: Chon ve man hinh home");
-		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/ivHome");
+		vehicalTicket.clickToDynamicImageViewByID("com.VCB:id/ivHome");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_12_Step_25: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_12_Step_26: An vao Thoat ung dung");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Thoát ứng dụng");
@@ -1611,7 +1611,7 @@ public class Notify_Management_Flow extends Base {
 		login.sleep(driver, 5000);
 
 		log.info("TC_12_Step_28: Click vao Inbox");
-		login.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivOTT");
+		login.clickToDynamicImageViewByID(driver, "com.VCB:id/ivOTT");
 		inbox = PageFactoryManager.getInboxPageObject(driver);
 
 		log.info("TC_12_Step_29: Click tab tat ca");
@@ -1627,7 +1627,7 @@ public class Notify_Management_Flow extends Base {
 		verifyTrue(inboxContent.contains(maThanhToan));
 
 		log.info("TC_12_Step_31: Click back ve Login");
-		inbox.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		inbox.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		login = PageFactoryManager.getLoginPageObject(driver);
 
 		log.info("TC_12_Step_32: Nhap mat khau va log in");

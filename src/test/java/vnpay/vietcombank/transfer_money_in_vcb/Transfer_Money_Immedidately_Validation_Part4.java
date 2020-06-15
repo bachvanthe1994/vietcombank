@@ -169,7 +169,7 @@ public class Transfer_Money_Immedidately_Validation_Part4 extends Base {
 	public void TC_07_KiemTraIconHome() {
 
 		log.info("TC_07_Step_01: Click Icon Home");
-		transferInVCB.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivHome");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivHome");
 
 		log.info("TC_07_Step_15: Kiem tra user khong duoc cap quyen");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, "TÀI KHOẢN THANH TOÁN"));

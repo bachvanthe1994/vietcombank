@@ -40,7 +40,7 @@ public class InterestRate_Calculate extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step_02: Mo sub-menu Ho tro");
 		home.clickToDynamicButtonLinkOrLinkText(driver, VALIDATE.SUPPORT);
@@ -90,7 +90,7 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(interestRate.getTextEditViewByLinearLayoutID(driver, "com.VCB:id/layoutSoTienGoc"), VALIDATE.INPUT_DEPOSIT);
 
 		log.info("TC_01_Step_14: Xac nhan hien thi combobox 'Ky han' trong");
-		verifyEquals(interestRate.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutKyHan"),  VALIDATE.CHOICE_PERIOD);
+		verifyEquals(interestRate.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutKyHan"), VALIDATE.CHOICE_PERIOD);
 
 		log.info("TC_01_Step_15: Xac nhan hien thi datepicker 'Ngay gui' trong");
 		verifyEquals(interestRate.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayGui"), VALIDATE.DATE_SEND);
@@ -141,7 +141,7 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), VALIDATE.OPEN_SAVING);
 
 		log.info("TC_01_Step_28: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
-		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE);
 
 	}
@@ -150,7 +150,7 @@ public class InterestRate_Calculate extends Base {
 	public void TC_02_TinhLaiTietKiem_USD() {
 
 		log.info("TC_02_Step_01: Quay ve man hinh Tinh toan lai suat");
-		interestRate.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		interestRate.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_02: Hien thi man hinh Tinh toan lai suat");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), InterestRateCalculatePage_Data.VALIDATE.INTEREST_RATE_CALCULATE_TITLE);
@@ -239,7 +239,7 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), VALIDATE.OPEN_SAVING);
 
 		log.info("TC_02_Step_26: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
-		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE);
 	}
 
@@ -247,7 +247,7 @@ public class InterestRate_Calculate extends Base {
 	public void TC_03_TinhLaiTietKiem_EUR() {
 
 		log.info("TC_03_Step_01: Quay ve man hinh Tinh toan lai suat");
-		interestRate.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		interestRate.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_02: Hien thi man hinh Tinh toan lai suat");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), InterestRateCalculatePage_Data.VALIDATE.INTEREST_RATE_CALCULATE_TITLE);
@@ -285,7 +285,7 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(interestRate.getTextEditViewByLinearLayoutID(driver, "com.VCB:id/layoutSoTienGoc"), VALIDATE.INPUT_DEPOSIT);
 
 		log.info("TC_03_Step_12: Xac nhan hien thi combobox 'Ky han' trong");
-		verifyEquals(interestRate.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutKyHan"),  VALIDATE.CHOICE_PERIOD);
+		verifyEquals(interestRate.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutKyHan"), VALIDATE.CHOICE_PERIOD);
 
 		log.info("TC_03_Step_13: Xac nhan hien thi datepicker 'Ngay gui' trong");
 		verifyEquals(interestRate.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayGui"), VALIDATE.DATE_SEND);
@@ -336,7 +336,7 @@ public class InterestRate_Calculate extends Base {
 		verifyEquals(savingOnline.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), VALIDATE.OPEN_SAVING);
 
 		log.info("TC_03_Step_24: An nut Back va xac nhan quay ve man hinh 'Ket qua tinh toan'");
-		savingOnline.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		savingOnline.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		verifyEquals(interestRate.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), InterestRateCalculatePage_Data.VALIDATE.CALCULATE_RESULT_TITLE);
 	}
 
@@ -344,7 +344,7 @@ public class InterestRate_Calculate extends Base {
 	public void TC_04_TinhLichTraNo() {
 
 		log.info("TC_04_Step_01: Quay ve man hinh Tinh toan lai suat");
-		interestRate.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		interestRate.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_02: Chon tab 'Tinh lich tra no'");
 		interestRate.clickToTextID(driver, "com.VCB:id/tvRight");

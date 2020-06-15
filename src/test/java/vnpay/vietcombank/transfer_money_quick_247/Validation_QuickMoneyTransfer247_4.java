@@ -231,7 +231,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		verifyTrue(transferMoney.isDynamicMessageAndLabelTextDisplayed(driver, "Xác nhận thông tin"));
 
 		log.info("TC_58_Step_Kiem tra button back");
-		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -314,7 +314,7 @@ public class Validation_QuickMoneyTransfer247_4 extends Base {
 		log.info("Close popup");
 		transferMoney.clickToDynamicButton(driver, "Đóng");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();

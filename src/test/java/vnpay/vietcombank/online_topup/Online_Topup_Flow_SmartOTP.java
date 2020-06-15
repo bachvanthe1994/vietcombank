@@ -155,10 +155,10 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
-		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		onlineTopup.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_02: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_03: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -210,13 +210,13 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), Online_Topup_Text.E_WALLET_TOPUP_TEXT);
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Test
@@ -307,10 +307,10 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");
-		onlineTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		onlineTopup.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_02: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_03: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -356,13 +356,13 @@ public class Online_Topup_Flow_SmartOTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), "Nạp tiền tài khoản VETC");
 
 		log.info("TC_04_Step_18: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_19: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_20: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -27,12 +27,9 @@ public class Search_Exchange_Rate_Flow extends Base {
 
 	private String buyExchange, sellExchange, convertUnit, exchangedMoney, resultMoney;
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone",
-			"pass", "otp" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities,
-			String appPackage, String appName, String phone, String pass, String opt)
-			throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -52,7 +49,7 @@ public class Search_Exchange_Rate_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step_02: Mo sub-menu Tra cuu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LOOK_UP);
@@ -63,14 +60,13 @@ public class Search_Exchange_Rate_Flow extends Base {
 
 		log.info("TC_01_Step_04: Hien thi man hinh Tra Cuu ty gia ngoai te");
 		search = PageFactoryManager.getSearchPageObject(driver);
-		verifyEquals(search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"),
-				Search_Data.VALIDATE.EXCHANGE_RATE_TITLE);
+		verifyEquals(search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Search_Data.VALIDATE.EXCHANGE_RATE_TITLE);
 
 		log.info("TC_01_Step_05: Xac nhan tab Ty gia duoc highlight");
 		verifyEquals(search.isDynamicValuesFocus(driver, Home_Text_Elements.EXCHANGE_RATE), true);
 
 		log.info("TC_01_Step_06: Click button Refresh");
-		search.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/icRefresh");
+		search.clickToDynamicImageViewByID(driver, "com.VCB:id/icRefresh");
 
 		log.info("TC_01_Step_07: Chon Ty gia USD");
 		search.scrollDownToText(driver, Constants.USD_CURRENCY);
@@ -115,7 +111,7 @@ public class Search_Exchange_Rate_Flow extends Base {
 		verifyEquals(exchangedMoney, resultMoney);
 
 		log.info("TC_01_Step_15: An nut chuyen doi ngoai te");
-		search.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/converter_button");
+		search.clickToDynamicImageViewByID(driver, "com.VCB:id/converter_button");
 
 		log.info("TC_01_Step_16: Nhap so tien muon quy doi");
 		search.inputIntoEditTextByID(driver, Search_Data.DATA.VND_MONEY, "com.VCB:id/from_text");

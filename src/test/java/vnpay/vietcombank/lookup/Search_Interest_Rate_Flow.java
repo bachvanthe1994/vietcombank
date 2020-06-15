@@ -12,7 +12,6 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SearchPageObject;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
@@ -57,7 +56,7 @@ public class Search_Interest_Rate_Flow extends Base {
 		search.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.INTEREST_RATE);
 
 		log.info("TC_01_Step: Click button refresh de update time moi nhat");
-		search.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivRefresh");
+		search.clickToDynamicImageViewByID(driver, "com.VCB:id/ivRefresh");
 
 		log.info("TC_01_Step: get time moi refresh la thoi gian hien tai");
 		String timeUpdate = search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvUpdateTime").split(" ")[5];
@@ -96,7 +95,7 @@ public class Search_Interest_Rate_Flow extends Base {
 		search.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.TERM_DEPOSITS);
 
 		log.info("TC_02_Step: Click button refresh de update time moi nhat");
-		search.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivRefresh");
+		search.clickToDynamicImageViewByID(driver, "com.VCB:id/ivRefresh");
 
 		log.info("TC_02_Step: get time moi refresh la thoi gian hien tai");
 		String timeUpdate = search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvUpdateTime").split(" ")[5];

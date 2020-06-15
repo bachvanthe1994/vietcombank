@@ -102,7 +102,7 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		waterBill.scrollDownToText(driver, TITTLE.CHOICE_METHOD_VERIFY);
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.SMART_OTP);
-		
+
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
 
 		log.info("TC_01_Step_12: Kiem tra so tien phi");
@@ -176,17 +176,17 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_33: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_02_ThanhToanTienNuoc_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -241,14 +241,14 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters("pass")
@@ -367,17 +367,17 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_33: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_04_ThanhToanTienNuoc_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -432,14 +432,14 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_04_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

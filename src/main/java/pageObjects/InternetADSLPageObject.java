@@ -48,7 +48,7 @@ public class InternetADSLPageObject extends AbstractPage {
 		}
 
 	}
-	
+
 	public void inputCustomerCodeToUpperCase(List<String> codeCustomer) {
 		boolean check = false;
 		for (String code : codeCustomer) {
@@ -79,9 +79,9 @@ public class InternetADSLPageObject extends AbstractPage {
 	}
 
 	// Click image back, trong trường hợp auto click 1 lần không được
-	public void clickImageBack(String dymanicText) {
+	public void clickImageBack(String dymanicID) {
 		boolean status = false;
-		String locator = String.format(DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dymanicText);
+		String locator = String.format(DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dymanicID);
 		status = waitForElementVisible(driver, locator);
 		if (status == true) {
 			clickToElement(driver, locator);

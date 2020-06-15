@@ -34,13 +34,12 @@ import vietcombank_test_data.Postpaid_Mobile_Bill_Data;
 import vietcombank_test_data.SettingVCBSmartOTP_Data;
 import vietcombank_test_data.Water_Bills_Data;
 
-
 public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	private WaterBillPageObject waterBill;
-	long amount, fee, amountStart, feeView, amountView, amountAfter,money1 = 0;
+	long amount, fee, amountStart, feeView, amountView, amountAfter, money1 = 0;
 	private String sourceAccountMoney, customerID, moneyBill, transactionDate, electricBills, mobilePhone, mobileBill, accountMoneyBefore, accountFee, transactionID;
 	private PayBillTelevisionPageObject billTelevision;
 	private ElectricBillPageObject electricBill;
@@ -51,20 +50,18 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 	String transactionNumber;
 	private String nameCustomer;
 	private long surplus, availableBalance, actualAvailableBalance;
-	
-	private VCBCreditCardPaymentObject vcbACreditCardPayment;
-	public String soTaiKhoan,soDuKhaDung,soThe, soTaiKhoanThe, tinhTrangThe, tongSoDaTTTrongKySaoKe, soTienToiThieuPhaiTT, soTienSaoKeConTT, soTienDuNoConPhaiTT, soTienThanhToan, maGiaoDich;
-	
 
-	
+	private VCBCreditCardPaymentObject vcbACreditCardPayment;
+	public String soTaiKhoan, soDuKhaDung, soThe, soTaiKhoanThe, tinhTrangThe, tongSoDaTTTrongKySaoKe, soTienToiThieuPhaiTT, soTienSaoKeConTT, soTienDuNoConPhaiTT, soTienThanhToan, maGiaoDich;
+
 	String tommorrowDate = getForwardDate(1);
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
-	String expectAvailableBalance, moneyTransfer, account, user, content, code,source_account,beneficiary_account,money,wishes,surplusString, moneyFee,getPayments,getFee,getService,supplier,userCode,dealCode,getTimeTransfer;
+	String expectAvailableBalance, moneyTransfer, account, user, content, code, source_account, beneficiary_account, money, wishes, surplusString, moneyFee, getPayments, getFee, getService, supplier, userCode, dealCode, getTimeTransfer;
 
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
-	private double toltalMoney,payments,feeCab;
+	private double toltalMoney, payments, feeCab;
 	private InternetADSLPageObject ADSL;
 
 	private long amountTranfer, costTranfer;
@@ -86,7 +83,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 		vcbACreditCardPayment = PageFactoryManager.getVCBCreditCardPaymentPageObject(driver);
 	}
-	
+
 	public void TC_01_CaiDatPhuongThucXacThucOTP() {
 		log.info("TC_01_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -136,7 +133,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 	}
 
 	// Thanh Toan ADSL
-	//Lỗi app không hiển thị PTXT smart OTP
+	// Lỗi app không hiển thị PTXT smart OTP
 	@Test
 	@Parameters({ "pass" })
 	public void TC_02_ThanhToanCuocViettelXacThucSmartOTP(String pass) throws InterruptedException {
@@ -167,7 +164,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		log.info("TC_02_Kiem tra nha cung cap");
 
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
-
 
 		log.info("TC_02_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
@@ -230,7 +226,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	//Thanh toan tien nước
+	// Thanh toan tien nước
 	@Parameters("otp")
 	@Test
 	public void TC_03_ThanhToanTienNuoc_SmartOTP(String otp) throws InterruptedException {
@@ -341,14 +337,14 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
-	
-	//Thanh toan truyền hình cab
+
+	// Thanh toan truyền hình cab
 	@Test
 	@Parameters({ "pass" })
 	public void TC_04_PhuongThucThanhToan_SmartOTP(String pass) throws InterruptedException {
@@ -422,7 +418,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 		log.info("TC_04_STEP_15: chọn thực hiện giao dịch mới");
 		billTelevision.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-		
+
 		log.info("TC_04_17: kiểm tra số dư");
 		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 		String surplus = billTelevision.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -436,8 +432,8 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 	}
 
-	//Thanh toán cước di động trả sau
-	//@Test Check lai không có phương thức smart OTP
+	// Thanh toán cước di động trả sau
+	// @Test Check lai không có phương thức smart OTP
 	@Parameters({ "otp" })
 	public void TC_06_CuocDiDongTraSau_Viettel_OTP(String otp) throws InterruptedException {
 		log.info("TC_06_Step_01: Click Cuoc di dong tra sau");
@@ -560,15 +556,15 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_06_Step_37: Click nut Back ve man hinh chinh");
-		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		postpaidMobile.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_06_Step_38: Click nut Back ve man hinh chinh");
-		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		postpaidMobile.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
-	
-	//Thanh toán cước điện thoại cố định
-	//@Test - Check lại ko thấy PTXT smart OTP
+
+	// Thanh toán cước điện thoại cố định
+	// @Test - Check lại ko thấy PTXT smart OTP
 	public void TC_07_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanMatKhauDangNhap() throws InterruptedException {
 		log.info("TC_07_01_Click Cuoc dien thoai co dinh");
 		landLinePhoneCharge.scrollDownToText(driver, "Cước truyền hình cáp");
@@ -650,6 +646,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		verifyEquals(actualAvailableBalance, availableBalance);
 
 	}
+
 	@Test
 	public void TC_08_HuyKichHoatVCBSmartOPT() {
 		log.info("TC_08_Step_01: Click menu header");
@@ -671,7 +668,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		log.info("TC_08_Step_06: Verify hien thi popup xac nhan huy cai dat OTP");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {

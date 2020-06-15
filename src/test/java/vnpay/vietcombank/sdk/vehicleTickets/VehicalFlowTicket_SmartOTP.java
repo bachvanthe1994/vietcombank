@@ -296,7 +296,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_04_Click btn menu");
-		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
+		vehicalTicket.clickToDynamicImageViewByID("com.VCB:id/menu_5");
 
 		log.info("-TC_04_Step_05_Click Chon muc bao cao giao dich");
 		vehicalTicket.clickToDynamicText(ReportTitle.TRANSACTION_REPORT);

@@ -56,7 +56,7 @@ public class DynamicPageUIs {
 
 	// LINEAER LAYOUT
 	public static final String DYNAMIC_STARUS = "//android.widget.TextView[@text='%s']/parent::android.widget.FrameLayout/following-sibling::android.widget.LinearLayout//android.widget.LinearLayout[@index='1']";
-	public static final String DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT  = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.LinearLayout";
+	public static final String DYNAMIC_TEXT_FOLLOWING_LINEARLAYOUT = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.LinearLayout";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_LINEAERLAYOUT_BY_INDEX = "//android.widget.LinearLayout[@index=%s]";
 
@@ -84,7 +84,6 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_SUCCESS_ICON = "//android.widget.TextView[@text='%s']//preceding-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_BOTTOM_MENU_CLOSE_ICON = "//android.widget.ImageView[@resource-id='%s']";
 	public static final String DYNAMIC_BACK_ICON = "//android.widget.TextView[@text = '%s']//ancestor::android.widget.FrameLayout//android.widget.ImageView";
-	public static final String DYNAMIC_BOTTOM_MENU = "//android.widget.ImageView[@resource-id='%s']";
 	public static final String DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.ImageView";
 	public static final String DYNAMIC_CONTACT_KEY_MENU = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON_IN_LIST_VIEW = "//android.widget.ListView[@resource-id='com.VCB:id/nlvHisDetailAcc']/android.widget.LinearLayout[@index='%s']//android.widget.ImageView[@resource-id=\"%s\"]";
@@ -124,9 +123,9 @@ public class DynamicPageUIs {
 
 	// WAIT
 	public static final String WAIT_BAR = "//android.widget.ProgressBar[@resource-id='com.VCB:id/progressBar']";
-	
+
 	public static final String DYNAMIC_LISTVIEW_LAYOUT = "//*[@resource-id = '%s' or @resource-id = '%s']/android.widget.LinearLayout";
 	public static final String DYNAMIC_TEXT_NON = "//android.widget.TextView";
 	public static final String DYNAMIC_TEXT_CONTAIN = "//android.widget.TextView[contains(@text, '%s')]";
-	
+
 }

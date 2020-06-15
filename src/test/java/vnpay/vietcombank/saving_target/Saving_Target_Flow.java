@@ -42,7 +42,7 @@ public class Saving_Target_Flow extends Base {
 	public void TC_01_MucTieuTietKiem_Flow() {
 		home = PageFactoryManager.getHomePageObject(driver);
 		log.info("TC_01_Step_01: Chon tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step_02: Mo sub-menu Ho tro");
 		home.clickToDynamicButtonLinkOrLinkText(driver, TITLE.SUPPOSRT);
@@ -85,7 +85,7 @@ public class Saving_Target_Flow extends Base {
 		a = convertMoneyToDouble(InterestRateCalculatePage_Data.DATA.VND_MONEY, "VND");
 		b = convertMoneyToDouble(getSplitStringIndex(rate, "t", 0), "VND") / 12;
 		termMoney = a * b;
-		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.RECURRING_DEPOSITS ), addCommasToDouble(termMoney + "") + " VND");
+		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.RECURRING_DEPOSITS), addCommasToDouble(termMoney + "") + " VND");
 
 		log.info("TC_01_Step_13: Xac nhan hien thi dung so tien gop hang thang");
 		verifyEquals(savingTarget.getDynamicTextByLabel(driver, TITLE.AMOUNT_MONTHLY), addCommasToDouble(convertAvailableBalanceCurrentcyToDouble(SavingTarget_Data.DATA.SAVING_MONEY_VND) / 12 + "") + " VND");
