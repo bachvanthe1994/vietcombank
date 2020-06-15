@@ -83,6 +83,9 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_01_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
+		
+		log.info("TC_01_Step: Click tiep tuc popup");
+		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_01_Step_4: chọn hình thức nhận");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvHinhThucNhan");
@@ -123,13 +126,14 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_01_Step_14: chọn phương thức xác thực");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.OTP);
+		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.SMART_OTP);
 
 		log.info("TC_01_Step_15: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_01_Step_16: điền otp");
-		luckyGift.inputToDynamicSmartOtp(driver, passSmartOTP, "2");
+		luckyGift.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 
 		log.info("TC_01_Step_17: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -301,13 +305,14 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_03_Step_15: chọn phương thức xác thực OTP");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.OTP);
+		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.SMART_OTP);
 
 		log.info("TC_03_Step_16: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_03_Step_17: điền OTP");
-		luckyGift.inputToDynamicSmartOtp(driver, passSmartOTP, "2");
+		luckyGift.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 
 		log.info("TC_03_Step_18: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -487,13 +492,14 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_05_Step_16: chọn phương thức xác thực OTP");
 		luckyGift.clickToTextID(driver, "com.VCB:id/tvptxt");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.OTP);
+		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.SMART_OTP);
 
 		log.info("TC_05_Step_17: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_05_Step_18: điền OTP");
-		luckyGift.inputToDynamicOtp(driver, passSmartOTP, TitleLuckyGift.NEXT);
+		luckyGift.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 
 		log.info("TC_05_Step_19: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -609,8 +615,8 @@ public class LuckyGift_SmartOTP extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }

@@ -2,17 +2,6 @@ package vnpay.vietcombank.sdk.airticket.data;
 
 public class DomesticAirTicketBooking_Data {
 
-	public static class output {
-		// 2 cot, 22 dong
-		public static final String PLACE[][] = { { "HAN", "Hà Nội" }, { "SGN", "TP Hồ Chí Minh" }, { "DAD", "Đà Nẵng" },
-				{ "BMV", "Buôn Ma Thuột" }, { "CAH", "Cà Mau" }, { "VCA", "Cần Thơ" }, { "VCL", "Chu Lai" },
-				{ "VCS", "Côn Đảo" }, { "DLI", "Đà Lạt" }, { "DIN", "Điện Biên" }, { "VDH", "Đồng Hới" },
-				{ "HPH", "Hải Phòng" }, { "HUI", "Huế" }, { "CXR", "Nha Trang" }, { "PQC", "Phú Quốc" },
-				{ "PXU", "Pleiku" }, { "UIH", "Quy Nhơn" }, { "VKG", "Rạch Giá" }, { "THD", "Thanh Hóa" },
-				{ "TBB", "Tuy Hòa" }, { "VDO", "Vân đồn" }, { "VII", "Vinh" } };
-
-	}
-
 	public static class Message {
 		public static final String EMPTY_DEPARTURE_POINT = "Quý khách vui lòng chọn Điểm khởi hành";
 		public static final String EMPTY_ARRIVE_POINT = "Quý khách vui lòng chọn Điểm đến.";
@@ -41,10 +30,56 @@ public class DomesticAirTicketBooking_Data {
 		public static final String HCM_CODE = "SGN";
 		public static final String INTERNATIONAL_PLACE = "Singapore";
 		public static final String INTERNATIONAL_CODE = "SIN";
-		public static final String ACCOUNT2 = "0121000667333";
 
-		public static final String AIR_TICKET_DATA[] = { "", "" };
-
+	}
+	
+	public static class Air_Text {
+		
+		public static final String AIR_TICKET_TEXT = "Đặt vé máy bay";
+		public static final String DOMESTIC_AIR_TICKET_TEXT = "Đặt vé máy bay Nội địa";
+		public static final String INTERNATIONAL_AIR_TICKET_TEXT = "Đặt vé máy bay Quốc tế";
+		public static final String AIR_TICKET_PAY_TEXT = "Thanh toán vé máy bay";
+		public static final String PAY_INFO_TEXT = "Thông tin thanh toán";
+		public static final String ONE_WAY_TEXT = "Một chiều";
+		public static final String TWO_WAYS_TEXT = "Khứ hồi";
+		public static final String DEPARTURE_WAY_TEXT = "CHIỀU ĐI";
+		public static final String ARRIVAL_WAY_TEXT = "CHIỀU VỀ";
+		public static final String DEPARTURE_PLACE_TEXT = "Khởi hành";
+		public static final String ARRIVAL_PLACE_TEXT = "Điểm đến";
+		public static final String DEPARTURE_DATE_TEXT = "Ngày đi";
+		public static final String CONTACT_INFO_TEXT = "THÔNG TIN LIÊN HỆ";
+		public static final String FLIGHT_CONFIRM_TEXT = "Xác nhận chuyến bay";
+		public static final String JOURNEY_TEXT = "HÀNH TRÌNH";
+		public static final String TOTAL_MONEY_TEXT = "Tổng tiền";
+		public static final String TOTAL_PAY_TEXT = "Tổng tiền thanh toán";
+		public static final String FLIGHT_WAY_TEXT = "Chiều bay";
+		public static final String FLIGHT_CODE_TEXT = "Số hiệu chuyến bay";
+		public static final String PAY_ID_TEXT = "Mã thanh toán";
+		public static final String FLIGHT_TIME_TEXT = "Thời gian bay";
+		public static final String FROM_ACCOUNT_TEXT = "Tài khoản nguồn";
+		public static final String MONEY_AMOUNT_TEXT = "Số tiền";
+		public static final String FEE_VALUE_TEXT = "Phí giao dịch";
+		public static final String TRANSACTION_ID_TEXT = "Mã giao dịch";
+		public static final String SURPLUS_TEXT = "Tài khoản nguồn";
+		
+		public static final String HAN_PLACE = "Hà Nội";
+		public static final String SGN_PLACE = "TP Hồ Chí Minh";
+		public static final String BKK_PLACE = "Bangkok";
+		public static final String SUGGEST_FLIGHT_CODE_BL = "BL";
+		public static final String SUGGEST_FLIGHT_CODE_TG = "TG";
+		public static final String SUGGEST_FLIGHT_CODE_VN = "VN";
+		
+		public static final String SMS_OTP_TEXT = "SMS OTP";
+		public static final String PASSWORD_TEXT = "Mật khẩu đăng nhập";
+		public static final String SMART_OTP_TEXT = "VCB - Smart OTP";
+		
+		public static final String BUTTON_AGREE_TEXT = "Đồng ý";
+		public static final String BUTTON_CONFIRM_TEXT = "Xác nhận";
+		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
+		public static final String BUTTON_PAY_TEXT = "Thanh toán";
+		public static final String BUTTON_ORDER_TICKET_TEXT = "Đặt vé";
+		public static final String BUTTON_PAY_LATER_TEXT = "Thanh toán sau";
+		public static final String BUTTON_SEARCH_FLIGHT_TEXT = "Tìm chuyến bay";
 	}
 
 }

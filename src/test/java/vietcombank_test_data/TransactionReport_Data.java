@@ -64,6 +64,7 @@ public class TransactionReport_Data {
 		public static final String PAYMENT_HOTEL ="Thanh toán đặt phòng khách sạn";
 		public static final String PAYMENT_AMOUNT ="Số tiền thanh toán";
 		
+		public static final String AIR_TICKET = "Thanh toán vé máy bay";
 		
 		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
 		
