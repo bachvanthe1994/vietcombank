@@ -25,9 +25,9 @@
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
-			<!-- Thanh toan tien dien -->
-			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
-
+	<!-- Tra cứu -->
+			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
+			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
