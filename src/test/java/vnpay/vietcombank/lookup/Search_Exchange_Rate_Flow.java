@@ -15,6 +15,7 @@ import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SearchPageObject;
+import vietcombank_test_data.HomePage_Data.HomePageMessage;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.Search_Data;
 import vietcombank_test_data.Search_Data.TITTLE;
@@ -40,13 +41,14 @@ public class Search_Exchange_Rate_Flow extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		search = PageFactoryManager.getSearchPageObject(driver);
-
+		home = PageFactoryManager.getHomePageObject(driver);
+		if (home.getPageSource(driver).contains(HomePageMessage.HOME_MESSAGE_TEXT)) {
+			home.clickToDynamicTextContains(driver, HomePageMessage.HOME_MESSAGE_TEXT);
+		}
 	}
 
 	@Test
 	public void TC_01_TraCuuTyGia() {
-
-		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_01_Step_01: Chon tab Menu");
 		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -96,7 +98,6 @@ public class Search_Exchange_Rate_Flow extends Base {
 		log.info("TC_01_Step_13: Xac nhan hien thi dung ty gia mua quy doi");
 		convertUnit = search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/convert_unit_text");
 		convertUnit = getSplitStringIndex(convertUnit, "=", 1);
-		System.out.println(convertUnit);
 		buyExchange = buyExchange.replace(",", "");
 		buyExchange = buyExchange.replace(".00", "");
 		System.out.println(buyExchange);

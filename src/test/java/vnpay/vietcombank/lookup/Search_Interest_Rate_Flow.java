@@ -12,8 +12,10 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SearchPageObject;
+import vietcombank_test_data.HomePage_Data.HomePageMessage;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.Search_Data.TITTLE;
 
@@ -21,6 +23,8 @@ public class Search_Interest_Rate_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private SearchPageObject search;
+	private HomePageObject home;
+
 	List<String> listActualVND;
 	List<String> listActualUSD;
 	List<String> listActualEUR;
@@ -38,6 +42,11 @@ public class Search_Interest_Rate_Flow extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		search = PageFactoryManager.getSearchPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		
+		home = PageFactoryManager.getHomePageObject(driver);
+		if (home.getPageSource(driver).contains(HomePageMessage.HOME_MESSAGE_TEXT)) {
+			home.clickToDynamicTextContains(driver, HomePageMessage.HOME_MESSAGE_TEXT);
+		}
 
 	}
 
