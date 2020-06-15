@@ -52,7 +52,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		/*
 		 * log.info("TC_00_Step_: Click menu header");
-		 * homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		 * homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 		 * 
 		 * log.info("TC_00Step_: Click cai dat"); setupContact =
 		 * PageFactoryManager.getSetupContactPageObject(driver);
@@ -78,11 +78,10 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		 * Account_Data.Valid_Account.BANK[0], SetupContact_Data.UI.NAME_CARD[1],
 		 * SetupContact_Data.UI.ACCOUNT[1]);
 		 * log.info("TC_00_Step_: back lai man hinh danh ba");
-		 * setupContact.clickToDynamicBottomMenuOrIcon(driver,
-		 * "com.VCB:id/ivTitleLeft");
+		 * setupContact.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		 * 
 		 * log.info("TC_00_Step_: back lai man hinh home");
-		 * homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		 * homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 		 */
 	}
 
@@ -95,7 +94,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
 
 		log.info("TC_01_Step_Kiem tra button back");
-		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_verify man hinh home");
 		verifyTrue(transferMoney.isDynamicTextDetailByID(driver, "com.VCB:id/tvDefaultAcc"));
@@ -121,7 +120,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_03_Lay danh sach gia tri loai chuyen tien");
 		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvContent");
-	
+
 		log.info("TC_03_danh sach gia tri bank actual");
 		listExpect = Arrays.asList(TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER);
 
@@ -274,7 +273,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 
 		log.info("TC_24_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, "Số tiền");
-		
+
 		log.info("TC_24_Step_Chon ngan hang thu huong");
 		transferMoney.clickToDynamicComboboxText(driver, "Thông tin người hưởng", "2");
 		transferMoney.clickToDynamicLinerLayoutIndex(driver, "6");
@@ -307,7 +306,7 @@ public class Validation_QuickMoneyTransfer247_1 extends Base {
 	@Test
 	public void TC_18_ClickIconDanhBa() {
 		log.info("TC_18_click danh ba nguoi thu huong");
-		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivContent1");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivContent1");
 
 		log.info("TC_18_Lay danh sach gia tri danh ba nguoi huong");
 		listActual = transferMoney.getListOfSuggestedMoneyOrListText(driver, "com.VCB:id/tvName");

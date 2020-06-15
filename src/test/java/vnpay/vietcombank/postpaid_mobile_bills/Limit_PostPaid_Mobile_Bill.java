@@ -165,10 +165,10 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_37: Click nut Back ve man hinh chinh");
-		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		postpaidMobile.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_38: Click nut Back ve man hinh chinh");
-		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		postpaidMobile.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -176,7 +176,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 	public void TC_02_CuocDiDongTraSau_Viettel_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -231,17 +231,16 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, "Loại giao dịch"), "Thanh toán hóa đơn");
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		service.stop();

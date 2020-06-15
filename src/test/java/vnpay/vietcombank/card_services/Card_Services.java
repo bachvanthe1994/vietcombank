@@ -23,8 +23,7 @@ public class Card_Services extends Base {
 	private LogInPageObject login;
 	private HomePageObject home;
 	private LockCardPageObject lockCard;
-	private String otpNumber,numberCard = "";
-	
+	private String otpNumber, numberCard = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -41,7 +40,7 @@ public class Card_Services extends Base {
 		pass = getDataInCell(27).trim();
 		login.Global_login1(phone, pass, opt);
 		otpNumber = opt;
-		
+
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -56,7 +55,7 @@ public class Card_Services extends Base {
 
 		log.info("TC_01_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-		
+
 		log.info("TC_01_Step_03: Mo DropdownList 'Loai The'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
 
@@ -85,13 +84,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_01_Step_10: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_01_Step_11: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_01_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-		
+
 		log.info("TC_01_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -102,19 +101,19 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_01_Step_16: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
 	public void TC_02_MoKhoaTheGhiNoQuaOTP() {
-		
+
 		log.info("TC_02_Step_01: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_02_Step_02: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-		
+
 		log.info("TC_02_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -154,13 +153,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_02_Step_14: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_02_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_02_Step_16: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_02_Step_17: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -171,14 +170,14 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_02_Step_21: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_02_Step_22: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-		
+
 		log.info("TC_02_Step_23: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -189,20 +188,20 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_26: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
 	public void TC_03_KhoaTheGhiNoVisa() {
-		
+
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, Card_Services_Text.SHOPPING_TEXT);
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_03_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-		
+
 		log.info("TC_03_Step_03: Mo DropdownList 'Loai The'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
 
@@ -231,13 +230,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_03_Step_10: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_03_Step_11: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_03_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-		
+
 		log.info("TC_03_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -248,19 +247,19 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_03_Step_16: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
 	public void TC_04_MoKhoaTheGhiNoQuaOTPTheGiNoVisa() {
-		
+
 		log.info("TC_04_Step_01: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_04_Step_02: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
+
 		log.info("TC_04_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -300,13 +299,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_04_Step_14: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_04_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_04_Step_16: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_04_Step_17: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -317,14 +316,14 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_04_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_04_Step_21: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_04_Step_22: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
+
 		log.info("TC_04_Step_23: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -335,20 +334,20 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_04_Step_26: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
 	public void TC_05_KhoaTheUnionPay() {
-		
+
 		log.info("TC_05_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, Card_Services_Text.SHOPPING_TEXT);
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_05_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_05_Step_03: Mo DropdownList 'Loai The'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
 
@@ -377,13 +376,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_05_Step_10: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_05_Step_11: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_05_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_05_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -394,8 +393,8 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_05_Step_16: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -403,13 +402,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_06_Step_01: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-		
+
 		log.info("TC_06_Step_02: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
+
 		log.info("TC_06_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
-		
+
 		log.info("TC_06_Step_04: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
 
@@ -446,7 +445,7 @@ public class Card_Services extends Base {
 
 		log.info("TC_06_Step_14: An button 'Quay ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_06_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
@@ -463,14 +462,14 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_06_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_06_Step_21: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_06_Step_22: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
+
 		log.info("TC_06_Step_23: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -481,20 +480,21 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_06_Step_26: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
+
 //	Hien tai khong co the dau so 9734
 //	@Test
 	public void TC_07_KhoaTheAmex() {
-		
+
 		log.info("TC_07_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, Card_Services_Text.SHOPPING_TEXT);
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_07_Step_02: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_07_Step_03: Mo DropdownList 'Loai The'");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.DEBIT_CARD_TEXT);
 
@@ -523,13 +523,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_07_Step_10: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_07_Step_11: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_07_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_07_Step_13: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -540,20 +540,19 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_07_Step_16: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
 //	@Test
 	public void TC_08_MoKhoaTheGhiNoQuaOTPTheAmax() {
-		
-		
+
 		log.info("TC_08_Step_01: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_08_Step_02: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
+
 		log.info("TC_08_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -596,13 +595,13 @@ public class Card_Services extends Base {
 
 		log.info("TC_08_Step_15: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_08_Step_16: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_08_Step_17: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
-	
+
 		log.info("TC_08_Step_18: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -613,14 +612,14 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_08_Step_21: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_08_Step_22: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_08_Step_23: An vao tab 'Mo khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.UNLOCK_CARD_TEXT);
-	
+
 		log.info("TC_08_Step_24: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "2");
 
@@ -631,7 +630,7 @@ public class Card_Services extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_08_Step_27: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 

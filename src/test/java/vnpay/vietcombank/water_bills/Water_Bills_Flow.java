@@ -91,7 +91,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.scrollDownToText(driver, TITTLE.CHOICE_METHOD_VERIFY);
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.SMS_OTP);
-		
+
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
 
 		log.info("TC_01_Step_12: Kiem tra so tien phi");
@@ -162,17 +162,17 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_33: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_02_ThanhToanTienNuoc_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -206,7 +206,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_02_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD_SOURCE),sourceAccount.account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD_SOURCE), sourceAccount.account);
 
 		log.info("TC_02_Step_13: Hien thi dung ten dich vu");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SERVICE), Water_Bills_Data.DATA.WATER_BILL_TEXT);
@@ -227,14 +227,14 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters("pass")
@@ -251,7 +251,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToTextID(driver, "com.VCB:id/number_account");
 
 		sourceAccount = waterBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		
+
 		sourceAccountMoney = waterBill.getDynamicTextByLabel(driver, TITTLE.AVAILIBLE_BALANCES);
 
 		log.info("TC_03_Step_03: Chon nha cung cap");
@@ -283,9 +283,8 @@ public class Water_Bills_Flow extends Base {
 		waterBill.scrollDownToText(driver, TITTLE.CHOICE_METHOD_VERIFY);
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.LOGIN_PASSWORD);
-		
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
 
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
 
 		log.info("TC_03_Step_12: Kiem tra so tien phi");
 		verifyEquals(waterBill.getDynamicTextInTransactionDetail(driver, TittleData.FEE_AMOUNT), addCommasToLong(transferFee + "") + " VND");
@@ -355,17 +354,17 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_33: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_04_ThanhToanTienNuoc_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -420,14 +419,14 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_04_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

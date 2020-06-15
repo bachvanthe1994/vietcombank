@@ -41,7 +41,7 @@ public class Card_Services3 extends Base {
 		pass = getDataInCell(27).trim();
 		login.Global_login1(phone, pass, opt);
 		otpNumber = opt;
-		
+
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
 		home = PageFactoryManager.getHomePageObject(driver);
 
@@ -55,7 +55,7 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_01_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-		
+
 		log.info("TC_01_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -94,13 +94,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_01_Step_14: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_01_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_01_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_01_Step_17: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -111,8 +111,8 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_01_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -123,12 +123,13 @@ public class Card_Services3 extends Base {
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("Before TC 03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-		
+
 		log.info("TC_02_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
+		;
 
 		log.info("TC_02_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -146,13 +147,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_02_Step_05: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_02_Step_06: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_02_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_02_Step_08: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -164,14 +165,14 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_11: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_02_Step_12: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_02_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("TC_02_Step_14: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -182,8 +183,8 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_17: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -194,7 +195,7 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_03_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_03_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -233,13 +234,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_03_Step_14: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_03_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_03_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_03_Step_17: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -250,7 +251,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_03_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -262,12 +263,13 @@ public class Card_Services3 extends Base {
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("Before TC 03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
 		log.info("TC_04_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
+		;
 
 		log.info("TC_04_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -285,13 +287,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_04_Step_05: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_04_Step_06: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_04_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_04_Step_08: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -303,14 +305,14 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_04_Step_11: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_04_Step_12: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_04_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("TC_04_Step_14: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -321,8 +323,8 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_04_Step_17: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -333,7 +335,7 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_05_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_05_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -361,7 +363,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_05_Step_11: Nhap 'SMS OTP'");
-		lockCard.inputToDynamicOtp(driver,otpNumber, Card_Services_Text.BUTTON_CONTINUE_TEXT);
+		lockCard.inputToDynamicOtp(driver, otpNumber, Card_Services_Text.BUTTON_CONTINUE_TEXT);
 
 		log.info("TC_05_Step_12: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -372,13 +374,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_05_Step_14: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_05_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_05_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_05_Step_17: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -389,7 +391,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_05_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -401,12 +403,13 @@ public class Card_Services3 extends Base {
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("Before TC 03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-		
+
 		log.info("TC_06_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
+		;
 
 		log.info("TC_06_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -424,13 +427,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_06_Step_05: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_06_Step_06: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_06_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_06_Step_08: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -442,8 +445,8 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_06_Step_11: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_06_Step_12: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
@@ -460,7 +463,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_06_Step_17: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -472,7 +475,7 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_07_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_07_Step_03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -511,13 +514,13 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_07_Step_14: An button 'Quan ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
-		
+
 		log.info("TC_07_Step_15: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_07_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_07_Step_17: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -528,8 +531,8 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_07_Step_20: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
@@ -540,12 +543,13 @@ public class Card_Services3 extends Base {
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("Before TC 03: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-		
+
 		log.info("TC_08_Step_01: An chon the bat ki trong Dropdown");
-		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
+		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
+		;
 
 		log.info("TC_08_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -569,7 +573,7 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_08_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
-	
+
 		log.info("TC_08_Step_08: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -581,14 +585,14 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_08_Step_11: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_08_Step_12: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
 		log.info("TC_08_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
+
 		log.info("TC_08_Step_14: Mo DropdownList 'So The'");
 		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
@@ -599,8 +603,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_08_Step_17: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 

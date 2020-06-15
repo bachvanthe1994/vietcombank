@@ -31,9 +31,9 @@ public class Auto_Saving_Flow_MK extends Base {
 	private TransactionReportPageObject transactionReport;
 	private SavingOnlinePageObject savingOnline;
 
-	private String transactionID, savingAccount, transactionDate, startDate, endDate, sourceAccountMoney, sourceAccount,savingTerm;
+	private String transactionID, savingAccount, transactionDate, startDate, endDate, sourceAccountMoney, sourceAccount, savingTerm;
 	private long savingMoney;
-	
+
 	SourceAccountModel sourceAccountMol = new SourceAccountModel();
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -54,10 +54,10 @@ public class Auto_Saving_Flow_MK extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 	}
 
-	@Parameters ({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
-		
+
 		log.info("TC_01_01_Click Mo tai khoan tiet kiem");
 		home.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
 
@@ -85,7 +85,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		savingTerm = savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.IN_TERM);
 		savingMoney = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.MONEY_SAVING));
-		
+
 		log.info("TC_01_08_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
@@ -104,7 +104,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_01_11_Ve man hinh chinh");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.NEW_TRANSACTION_PERFORM);
 		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
-		
+
 	}
 
 	@Parameters({ "pass" })
@@ -113,7 +113,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_02_Step_01: Keo xuong va click vao phan 'Tiet kiem tu dong'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.AUTO_SAVING_TEXT);
-		
+
 		log.info("TC_02_Step_02: Chon tai khoan nguon VND");
 		autoSaving.clickToTextID(driver, "com.VCB:id/tvContent");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
@@ -126,7 +126,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		log.info("TC_02_Step_04: Xac nhan Ky han va so du TK tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.TERM_TEXT), capitalizeString(savingTerm));
 		startDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayBatDau");
-		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SAVING_SURPLUS_TEXT), addCommasToLong(savingMoney+"") + " VND");
+		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SAVING_SURPLUS_TEXT), addCommasToLong(savingMoney + "") + " VND");
 
 		log.info("TC_02_Step_05: Chon ngay ket thuc");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.END_DATE_TEXT);
@@ -135,7 +135,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		endDate = autoSaving.getTextTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNgayKetThuc");
 
 		log.info("TC_02_Step_06: Nhap so tien chuyen");
-		autoSaving.inputToDynamicInputBox(driver, savingMoney+"", Auto_Saving_Text.TRANSFER_MONEY_TEXT);
+		autoSaving.inputToDynamicInputBox(driver, savingMoney + "", Auto_Saving_Text.TRANSFER_MONEY_TEXT);
 
 		log.info("TC_02_Step_07: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -147,7 +147,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_02_Step_10: Hien thi tai khoan nguon");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SOURCE_ACCOUNT_TEXT), sourceAccount);
-		
+
 		log.info("TC_02_Step_11: Hien thi tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SAVING_ACCOUNT_TEXT), savingAccount);
 
@@ -155,7 +155,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.DUE_DATE_TEXT), startDate);
 
 		log.info("TC_02_Step_14: Hien thi So tien hien tai");
-		verifyTrue(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.CURRENT_MONEY_TEXT).contains(addCommasToLong(savingMoney+"") + " VND"));
+		verifyTrue(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.CURRENT_MONEY_TEXT).contains(addCommasToLong(savingMoney + "") + " VND"));
 
 		log.info("TC_02_Step_15: Hien thi Chu ky chuyen");
 		verifyTrue(autoSaving.isDynamicMessageAndLabelTextDisplayed(driver, Auto_Saving_Text.TRANSFER_FREQUENCY_TEXT));
@@ -168,8 +168,8 @@ public class Auto_Saving_Flow_MK extends Base {
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.END_DATE_TEXT), endDate);
 
 		log.info("TC_02_Step_18: Hien thi so tien chuyen");
-		verifyTrue(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.TRANSFER_MONEY_TEXT).contains(addCommasToLong(savingMoney+"") + " VND"));
-		
+		verifyTrue(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.TRANSFER_MONEY_TEXT).contains(addCommasToLong(savingMoney + "") + " VND"));
+
 		log.info("TC_02_Step_19: Chon phương thuc xac thuc");
 		autoSaving.clickToTextID(driver, "com.VCB:id/tvptxt");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.PASSWORD_AUTHEN_TEXT);
@@ -185,7 +185,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_02_Step_23: Hien thi man hinh thong bao giao dich thanh cong");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Auto_Saving_Text.TRANSACTION_SUCCESS_TEXT);
-		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), addCommasToLong(savingMoney+"") + " VND");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), addCommasToLong(savingMoney + "") + " VND");
 		verifyEquals(autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.SAVING_ACCOUNT_TEXT), savingAccount);
 		transactionDate = autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 		transactionID = autoSaving.getDynamicTextByLabel(driver, Auto_Saving_Text.TRANSACTION_ID_TEXT);
@@ -199,7 +199,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		verifyEquals(autoSaving.getMoneyByAccount(driver, Auto_Saving_Text.SURPLUS_TEXT), sourceAccountMoney);
 
 		log.info("TC_02_Step_26: Click back ve man hinh chinh");
-		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -207,11 +207,11 @@ public class Auto_Saving_Flow_MK extends Base {
 	public void TC_03_TietKiemTuDong_TaiKhoanNguon_VND_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_03_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_03_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-		
+
 		log.info("TC_03_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -246,16 +246,16 @@ public class Auto_Saving_Flow_MK extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.DESTINATION_ACCOUNT_CARD), savingAccount);
 
 		log.info("TC_03_Step_14: Xac nhan hien thi so tien giao dich");
-		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, addCommasToLong(savingMoney+"") + " VND", "com.VCB:id/tvContent"));
+		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, addCommasToLong(savingMoney + "") + " VND", "com.VCB:id/tvContent"));
 
 		log.info("TC_03_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_03_Step_17: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
 
@@ -264,7 +264,7 @@ public class Auto_Saving_Flow_MK extends Base {
 
 		log.info("TC_04_Step_01: Keo xuong va click vao phan 'Huy Tiet kiem tu dong'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Auto_Saving_Text.CANCEL_AUTO_SAVING_TEXT);
-	
+
 		log.info("TC_04_Step_02: Chon tai khoan nguon");
 		autoSaving.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/thongTinTaiKhoanThanhToan");
 		autoSaving.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount);
@@ -277,13 +277,13 @@ public class Auto_Saving_Flow_MK extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
 
 		log.info("TC_04_Step_05: Xac nhan hien thi tai khoan nguon");
-		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTaiKhoanNguon"),sourceAccount);
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTaiKhoanNguon"), sourceAccount);
 
 		log.info("TC_04_Step_06: Xac nhan hien thi tai khoan tiet kiem");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTaiKhoanTietKiem"), savingAccount);
 
 		log.info("TC_04_Step_07: Xac nhan hien thi so tien chuyen");
-		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTienChuyen"), addCommasToLong(savingMoney+"") + " VND");
+		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvSoTienChuyen"), addCommasToLong(savingMoney + "") + " VND");
 
 		log.info("TC_04_Step_08: Xac nhan hien thi chu ky chuyen");
 		verifyEquals(autoSaving.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvThoiGian"), startDate + " - " + endDate);
@@ -299,7 +299,7 @@ public class Auto_Saving_Flow_MK extends Base {
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_04_Step_12: An nut back ve man hinh menu");
-		autoSaving.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		autoSaving.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -307,11 +307,11 @@ public class Auto_Saving_Flow_MK extends Base {
 	public void TC_05_HuyTietKiemTuDong_TaiKhoanNguon_VND_BaoCaoGiaoDich() {
 
 		log.info("TC_05_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_05_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_05_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -346,17 +346,17 @@ public class Auto_Saving_Flow_MK extends Base {
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, savingMoney + " VND", "com.VCB:id/tvContent"));
 
 		log.info("TC_05_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_05_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_05_Step_17: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
 
-	@Parameters ({"otp"})
+	@Parameters({ "otp" })
 	@Test
 	public void TC_06_TatToanTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
 

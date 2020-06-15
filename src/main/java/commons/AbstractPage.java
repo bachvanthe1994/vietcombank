@@ -1184,16 +1184,6 @@ public class AbstractPage {
 		return expectList.containsAll(actualList);
 	}
 
-	public void clickToDynamicBottomMenuOrIcon(AppiumDriver<MobileElement> driver, String dynamicID) {
-		boolean status = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-
-		}
-	}
-
 	public void clickToDynamicImageButtonByID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_IMAGE_BUTTON, dynamicID);
@@ -1687,9 +1677,9 @@ public class AbstractPage {
 	// Xac nhan Icon Enable qua Image ID
 	public boolean isDynamicImageByIdEnable(AppiumDriver<MobileElement> driver, String dynamicValue) {
 		boolean isEnabled = false;
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicValue);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicValue);
 		if (status == true) {
-			isEnabled = isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicValue);
+			isEnabled = isControlEnabled(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicValue);
 		}
 		return isEnabled;
 
@@ -1897,10 +1887,10 @@ public class AbstractPage {
 	// Kiểm tra hiển thị icon home man hinh chuyen tien thanh cong
 	public boolean isDynamicImageHomeDisplay(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean isDisplayed = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
 		return isDisplayed;
 	}
