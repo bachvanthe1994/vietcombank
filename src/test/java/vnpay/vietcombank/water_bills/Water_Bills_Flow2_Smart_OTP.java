@@ -1,6 +1,7 @@
 package vnpay.vietcombank.water_bills;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,34 +16,44 @@ import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.WaterBillPageObject;
 import vietcombank_test_data.HomePage_Data;
+import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.Water_Bills_Data;
 import vietcombank_test_data.Water_Bills_Data.TITTLE;
 
-public class Water_Bills_Flow extends Base {
+public class Water_Bills_Flow2_Smart_OTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject home;
 	private WaterBillPageObject waterBill;
 	private TransactionReportPageObject transactionReport;
+	private SettingVCBSmartOTPPageObject smartOTP;
 
-	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID;
+	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID, otpSmart, newOtp;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private long transferFee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 
+		otpSmart = getDataInCell(6);
+
+		log.info("Setup smart OTP");
+		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
+		newOtp = "111222";
 	}
 
 	@Parameters("otp")
@@ -90,7 +101,7 @@ public class Water_Bills_Flow extends Base {
 		log.info("TC_01_Step_11: Chon phuong thuc xac thuc");
 		waterBill.scrollDownToText(driver, TITTLE.CHOICE_METHOD_VERIFY);
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.SMS_OTP);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.SMART_OTP);
 		
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
 
@@ -101,10 +112,13 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), TITTLE.CONTINUE_BUTTON);
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_01_Step_14: Nhap du ki tu vao o nhap OTP");
-		waterBill.inputToDynamicOtp(driver, otp, TITTLE.CONTINUE_BUTTON);
+		log.info("TC_01_Step_11: Nhap ki tu vao o nhap mat khau");
+		waterBill.inputToDynamicSmartOTP(driver, newOtp, "com.VCB:id/otp");
 
-		log.info("TC_01_Step_15: An tiep button 'Tiep tuc'");
+		log.info("TC_01_Step_12: An tiep button 'Tiep tuc'");
+		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
+
+		log.info("TC_01_Step_12: An tiep button 'Tiep tuc'");
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_16: Hien thi man hinh giao dich thanh cong");
@@ -206,7 +220,7 @@ public class Water_Bills_Flow extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_02_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD_SOURCE),sourceAccount.account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD_SOURCE), sourceAccount.account);
 
 		log.info("TC_02_Step_13: Hien thi dung ten dich vu");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SERVICE), Water_Bills_Data.DATA.WATER_BILL_TEXT);
@@ -251,7 +265,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToTextID(driver, "com.VCB:id/number_account");
 
 		sourceAccount = waterBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		
+
 		sourceAccountMoney = waterBill.getDynamicTextByLabel(driver, TITTLE.AVAILIBLE_BALANCES);
 
 		log.info("TC_03_Step_03: Chon nha cung cap");
@@ -282,10 +296,8 @@ public class Water_Bills_Flow extends Base {
 		log.info("TC_03_Step_11: Chon phuong thuc xac thuc");
 		waterBill.scrollDownToText(driver, TITTLE.CHOICE_METHOD_VERIFY);
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.LOGIN_PASSWORD));
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.LOGIN_PASSWORD);
-		
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
-
 
 		log.info("TC_03_Step_12: Kiem tra so tien phi");
 		verifyEquals(waterBill.getDynamicTextInTransactionDetail(driver, TittleData.FEE_AMOUNT), addCommasToLong(transferFee + "") + " VND");

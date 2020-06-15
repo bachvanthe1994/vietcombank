@@ -2,12 +2,8 @@ package pageObjects.shopping_online;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import javax.swing.text.Element;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import commons.AbstractPage;
 import io.appium.java_client.AppiumDriver;

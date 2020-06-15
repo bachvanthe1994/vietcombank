@@ -1,27 +1,24 @@
 package vnpay.vietcombank.sdk.sortUtility;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
+import commons.Base;
+import commons.PageFactoryManager;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.HomePageUIs;
-import vietcombank_test_data.HomePage_Data;
-
-import java.io.IOException;
-
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-
-import commons.Base;
-import commons.PageFactoryManager;
+import vietcombankUI.HomePageUIs.HomePageTexts;
 
 @Test
 public class FlowSortUtility extends Base {
@@ -78,7 +75,6 @@ public class FlowSortUtility extends Base {
 
 		List<String> listIconNoiBat = homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED);
 
-//		listIconNoiBatDaChon.add("QR Pay");
 		for (int i = 0; i < listIconNoiBat.size(); i++) {
 			listIconNoiBatDaChon.add(listIconNoiBat.get(i));
 		}
@@ -98,7 +94,7 @@ public class FlowSortUtility extends Base {
 		listIconNoiBatHome = homePage.getListIcon();
 	
 		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
-		listIconNoiBatHome.remove("Chuyển tiền");
+		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 		
 		log.info("TC_01_Step_12: Xac minh cac tinh nang noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -128,7 +124,6 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_02_Step_6: Lay ra toan bo danh sach icon da chon ");
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-//		listIconNoiBatDaChon.add("QR Pay");
 		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
 
 
@@ -144,7 +139,7 @@ public class FlowSortUtility extends Base {
 		log.info("TC_02_Step_10: Lay ra danh sach icon noi bat o man hinh home ");
 		listIconNoiBatHome = homePage.getListIcon();
 		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
-		listIconNoiBatHome.remove("Chuyển tiền");
+		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 
 		log.info("TC_02_Step_11: Verify list cac icon noi bat da duoc cap nhat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -176,7 +171,6 @@ public class FlowSortUtility extends Base {
 
 		log.info("TC_03_Step_6: Lay ra danh sach noi bat da chon ");
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-//		listIconNoiBatDaChon.add("QR Pay");
 		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
 
 
@@ -186,7 +180,7 @@ public class FlowSortUtility extends Base {
 		log.info("TC_03_Step_8: Lay ra danh sach icon noi bat o man hinh home");
 		listIconNoiBatHome = homePage.getListIcon();
 		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
-		listIconNoiBatHome.remove("Chuyển tiền");
+		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 		log.info("TC_03_Step_09: Verify icon da chon lam noi bat");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
 
@@ -214,7 +208,6 @@ public class FlowSortUtility extends Base {
 		log.info("TC_04_Step_6: Lay ra danh sach icon da chon noi bat ");
 		homePage.scrollUpToText(driver, HomePageUIs.HomePageMessage.TITILE);
 		List<String> listIconNoiBatDaChon = new ArrayList<>();
-//		listIconNoiBatDaChon.add("QR Pay");
 		listIconNoiBatDaChon.addAll(homePage.getTextInListElements(driver, HomePageUIs.HomePageElements.DYNAMIC_TEXT_SELECTED, HomePageUIs.HomePageTexts.SELECTED));
 
 
@@ -225,7 +218,7 @@ public class FlowSortUtility extends Base {
 		homePage.scrollLeftToRight(DynamicPageUIs.DYNAMIC_QUICK_MENU);
 		listIconNoiBatHome = homePage.getListIcon();
 		listIconNoiBatHome.remove(HomePageUIs.HomePageTexts.TEXT_BTN_SETTING);
-		listIconNoiBatHome.remove("Chuyển tiền");
+		listIconNoiBatHome.remove(HomePageTexts.TRANSFER_MONEY);
 
 		log.info("TC_04_Step_9: Verify icon noi bat da chon ");
 		verifyEquals(listIconNoiBatDaChon, listIconNoiBatHome);
@@ -234,8 +227,8 @@ public class FlowSortUtility extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 
 	}
 
