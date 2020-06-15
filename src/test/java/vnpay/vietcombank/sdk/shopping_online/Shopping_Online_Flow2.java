@@ -63,7 +63,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		shopping.clickToDynamicTextContains(Shopping_Online_Data.VIEW_ALL);
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -304,7 +304,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		shopping.clickToDynamicTextContains(Shopping_Online_Data.VIEW_ALL);
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -553,7 +553,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		shopping.clickToDynamicTextContains(Shopping_Online_Data.VIEW_ALL);
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -794,7 +794,7 @@ public class Shopping_Online_Flow2 extends Base {
 		log.info("Testcase_04: Them vao gio hang");
 		shopping.clickToDynamicTextContains(Shopping_Online_Data.VIEW_ALL);
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 2; i < listProduct.size(); i++) {
 			shopping.clickToDynamicTextContains(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
