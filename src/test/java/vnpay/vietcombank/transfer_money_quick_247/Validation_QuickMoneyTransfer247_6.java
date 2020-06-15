@@ -108,15 +108,15 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 	@Test
 	public void TC_85_KiemTraSoTienGocVoiTaiKhoanNguonLaUSD() {
 		log.info("TC_85_Step_Click quay lai man hinh chuyen tien nhanh 24/7");
-		transferMoney.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_85_Step_Select tai khoan nguon la USD");
 		transferMoney.clickToDynamicDropDown(driver, "Tài khoản nguồn");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[1]);
-		
+
 		log.info("TC_85_Step_Nhap so tien chuyen");
 		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.MONEY_USD, "Thông tin giao dịch", "1");
-		
+
 		log.info("TC_85_Lay so tien ty gia quy doi");
 		String[] a = transferMoney.getDynamicTextByLabel(driver, "Tỷ giá quy đổi tham khảo").split("~");
 		String getChangeVNDString1 = a[1].replaceAll(".00 VND", "");
@@ -125,7 +125,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 
 		log.info("TC_85_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, "Tiếp tục");
-		
+
 		log.info("TC_01_Step_Chon phuong thuc xac thuc");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoney.getDynamicTextInTransactionDetail(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]));
@@ -196,7 +196,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		verifyEquals(transferMoney.getTextDynamicInSelectBox(driver, TransferMoneyQuick_Data.TransferQuick.TRANSFER_MONEY_LABEL), "Chuyển tiền nhanh 24/7");
 	}
 
-	@Parameters({"phone"})
+	@Parameters({ "phone" })
 	@Test
 	public void TC_90_KiemTraManHinhXacThucBangOTP(String phone) {
 		log.info("TC_88_Step_click button tiep tục");
@@ -373,7 +373,7 @@ public class Validation_QuickMoneyTransfer247_6 extends Base {
 		log.info("TC_01_Verify icon thanh cong");
 		verifyTrue(transferMoney.isDynamicImageSuccess(driver, "CHUYỂN KHOẢN THÀNH CÔNG"));
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();

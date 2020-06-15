@@ -83,7 +83,7 @@
 
 			<!--Thanh toán cước điện thoại cố định -->
 			<class
-				name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
+				name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 			<!--Thanh toán cước điện thoại cố định -->
 			<!-- <class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
 

@@ -96,7 +96,7 @@ public class Flow_HotelBooking_Part_1 extends Base {
 		hotelBooking.scrollUpToText(driver, HotelBooking_Data.SOURCE_ACCOUNT);
 		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.SOURCE_ACCOUNT);
 
-		sourceAccount = hotelBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = hotelBooking.chooseSourceAccount(driver, Integer.parseInt("3000000000"), Constants.VND_CURRENCY);
 
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(hotelBooking.getDynamicTextInTransactionDetail(driver, HotelBooking_Data.AVAILIBLE_BALANCES));
 

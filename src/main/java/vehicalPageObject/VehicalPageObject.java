@@ -91,17 +91,17 @@ public class VehicalPageObject extends AbstractPage {
 		}
 
 	}
-	
-	// Click vào button, text có class là textview, tham số truyền vào là text
-		public void clickToDynamicText1(String... dynamicTextValue) {
-			scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
-			boolean status = false;
-			status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, dynamicTextValue);
-			if (status) {
-				clickToElement(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, dynamicTextValue);
-			}
 
+	// Click vào button, text có class là textview, tham số truyền vào là text
+	public void clickToDynamicText1(String... dynamicTextValue) {
+		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT, dynamicTextValue);
+		boolean status = false;
+		status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, dynamicTextValue);
+		if (status) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, dynamicTextValue);
 		}
+
+	}
 
 	// Click vào button, text có class là textview, tham số truyền vào là text
 	public void clickToDynamicTextScollUP(String dynamicTextValue) {
@@ -174,11 +174,11 @@ public class VehicalPageObject extends AbstractPage {
 	}
 
 	// Click dynamic buttonByID
-	public void clickToDynamicBottomMenuOrIcon(String dynamicID) {
+	public void clickToDynamicImageViewByID(String dynamicID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU, dynamicID);
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 
 		}
 	}
@@ -491,7 +491,7 @@ public class VehicalPageObject extends AbstractPage {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_LOCATION, dynamicTextID);
 		}
 	}
-	
+
 	// Click Chọn edit text
 	public void clickDynamicEditText(String dynamicTextID) {
 		boolean status = false;
@@ -535,47 +535,47 @@ public class VehicalPageObject extends AbstractPage {
 	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
 		List<String> listSeat = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
-		String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, '0', i);
-		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "" + numberOfSeats + "", "" + i + "");
-		if (status) {
-			List<MobileElement> elements = driver.findElements(By.xpath(locator));
-			for (MobileElement element : elements) {
-				int count = 0;
-				File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
-				try {
-					BufferedImage bufferedImage = ImageIO.read(imageFile);
-					imageFile.delete();
+			String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, '0', i);
+			boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "" + numberOfSeats + "", "" + i + "");
+			if (status) {
+				List<MobileElement> elements = driver.findElements(By.xpath(locator));
+				for (MobileElement element : elements) {
+					int count = 0;
+					File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+					try {
+						BufferedImage bufferedImage = ImageIO.read(imageFile);
+						imageFile.delete();
 
-					int height = bufferedImage.getHeight();
-					int width = bufferedImage.getWidth();
-					int x = width / 2;
-					int y = height / 4;
-					int RGBA = bufferedImage.getRGB(x, y);
-					int red = (RGBA >> 16) & 255;
-					int green = (RGBA >> 8) & 255;
-					int white = RGBA & 255;
-					String colorOfElement = "(" + red + "," + green + "," + white + ")";
+						int height = bufferedImage.getHeight();
+						int width = bufferedImage.getWidth();
+						int x = width / 2;
+						int y = height / 4;
+						int RGBA = bufferedImage.getRGB(x, y);
+						int red = (RGBA >> 16) & 255;
+						int green = (RGBA >> 8) & 255;
+						int white = RGBA & 255;
+						String colorOfElement = "(" + red + "," + green + "," + white + ")";
 
-					if (colorOfSeat.equals(colorOfElement)) {
-						element.click();
-						count++;
+						if (colorOfSeat.equals(colorOfElement)) {
+							element.click();
+							count++;
+						}
+						if (count == 1)
+							break;
+						if (numberOfSeats <= 0) {
+							break;
+						}
+
+					} catch (Exception e) {
+
 					}
-					if (count == 1)
-						break;
-					if (numberOfSeats <= 0) {
-						break;
-					}
-
-				} catch (Exception e) {
-
 				}
 			}
-		}
 		}
 		return listSeat;
 
 	}
-	
+
 // Click select date
 	public void clickToDynamicSelectDate(String dynamicID) {
 		boolean status = false;
@@ -599,7 +599,7 @@ public class VehicalPageObject extends AbstractPage {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 	}
-	
+
 	public List<String> getListOfSuggestedMoneyOrListText(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		List<String> text = null;
@@ -721,7 +721,7 @@ public class VehicalPageObject extends AbstractPage {
 			sendKeyToElement(driver, CommonPageUIs.DYNAMIC_OTP_INPUT, inputValue, dynamicTextValue);
 		}
 	}
-	
+
 	// Input vào ô edit text
 	public void inputIntoEditTextByID(String inputValue, String dynamicID) {
 		boolean status = false;

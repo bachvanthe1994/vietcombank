@@ -97,7 +97,7 @@ public class Mobile_Topup_Validate_01 extends Base {
 		verifyTrue(mobileTopup.isDynamicButtonByIdEnable(driver, "com.VCB:id/btn_submit"));
 
 		log.info("TC_02_Step_02: An nut 'Back' de quay ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		mobileTopup.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_03: Xac nhan da quay ve man hinh chinh");

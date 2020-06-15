@@ -21,7 +21,6 @@ import vehicalPageObject.VehicalPageObject;
 import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
-import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
 public class VehicalFlowTicket_SmartOTP extends Base {
@@ -43,7 +42,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 	public String maGiaodich = "";
 	public String maVe = "";
 	String account;
-	String passSmartOTP  = "111222";
+	String passSmartOTP = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 
 	LocalDate now = LocalDate.now();
@@ -66,12 +65,13 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
+
 	@Test
 	public void TC_02_MuaVeXeBangOTP() {
-		login.scrollDownToText(driver, "© 2019 Vietcombank");
+		login.scrollDownToText(driver, "© 2020 Vietcombank");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
-		
+
 		log.info("==========TC_02_Step_02: Chon va nhap diem di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
@@ -106,7 +106,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 
 		log.info("-TC_02_Step_10 Click chon tiep tuc ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-		
+
 		vehicalTicket.clickToDynamicButton("Từ chối");
 
 		log.info("TC_02_Step_11___Input email");
@@ -237,11 +237,11 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 
 		log.info("-TC_02_Step_52 Click button Tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-		
+
 		log.info("-------TC_02_Step_53Nhap ma OTP");
 		vehicalTicket.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 		vehicalTicket.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
-		
+
 		log.info("TC_02_Step_54 Click btn Tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
@@ -296,7 +296,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_04_Click btn menu");
-		vehicalTicket.clickToDynamicBottomMenuOrIcon("com.VCB:id/menu_5");
+		vehicalTicket.clickToDynamicImageViewByID("com.VCB:id/menu_5");
 
 		log.info("-TC_04_Step_05_Click Chon muc bao cao giao dich");
 		vehicalTicket.clickToDynamicText(ReportTitle.TRANSACTION_REPORT);

@@ -81,7 +81,7 @@ public class Mobile_Topup_Validate_02 extends Base {
 	void TC_03_KiemTraKiTuNhap() {
 
 		log.info("TC_03_Step_01: An nut 'Back' de quay ve man hinh Nap tien dien thoai");
-		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		mobileTopup.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_02: Nhap ki tu vao o nhap so dien thoai");
 		mobileTopup.inputIntoEditTextByID(driver, "4nh5jh6nb7", "com.VCB:id/mobile");

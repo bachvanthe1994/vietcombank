@@ -13,10 +13,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.TransactionReportPageObject;
 import pageObjects.TelecommunicationFeeVNPTPageObject;
+import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.Electric_Bills_Data;
 import vietcombank_test_data.TelecommunicationFee_VNPT_Data;
 
 public class Telecommunication_Fee_VNPT extends Base {
@@ -86,7 +85,7 @@ public class Telecommunication_Fee_VNPT extends Base {
 		telecomFeeVNPT.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
 
 		log.info("TC_01_Step_12: Kiem tra so tien phi");
-	
+
 		log.info("TC_01_Step_13: An nut Tiep Tuc");
 		verifyEquals(telecomFeeVNPT.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
 		telecomFeeVNPT.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -152,17 +151,17 @@ public class Telecommunication_Fee_VNPT extends Base {
 		telecomFeeVNPT.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_32: Click nut Back ve man hinh chinh");
-		telecomFeeVNPT.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		telecomFeeVNPT.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_33: Click nut Back ve man hinh chinh");
-		telecomFeeVNPT.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		telecomFeeVNPT.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_02_ThanhToanCuocVienThongVNPT_OTP_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -217,14 +216,14 @@ public class Telecommunication_Fee_VNPT extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), "Cước viễn thông VNPT");
 
 		log.info("TC_02_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_02_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters("pass")
@@ -273,9 +272,9 @@ public class Telecommunication_Fee_VNPT extends Base {
 		telecomFeeVNPT.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_03_Step_12: Kiem tra so tien phi");
-		String fee =telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
+		String fee = telecomFeeVNPT.getDynamicTextInTransactionDetail(driver, "Số tiền phí");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
-		
+
 		log.info("TC_03_Step_13: An nut Tiep Tuc");
 		verifyEquals(telecomFeeVNPT.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), "Tiếp tục");
 		telecomFeeVNPT.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
@@ -341,17 +340,17 @@ public class Telecommunication_Fee_VNPT extends Base {
 		telecomFeeVNPT.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		telecomFeeVNPT.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		telecomFeeVNPT.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_33: Click nut Back ve man hinh chinh");
-		telecomFeeVNPT.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		telecomFeeVNPT.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
 	public void TC_04_ThanhToanCuocVienThongVNPT_MK_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		home.clickToDynamicButtonLinkOrLinkText(driver, "Báo cáo giao dịch");
@@ -406,14 +405,14 @@ public class Telecommunication_Fee_VNPT extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, "Loại giao dịch"), "Cước viễn thông VNPT");
 
 		log.info("TC_04_Step_19: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_20: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		home = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04_Step_21: Mo tab Home");
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

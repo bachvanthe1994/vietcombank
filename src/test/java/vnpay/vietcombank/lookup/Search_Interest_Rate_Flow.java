@@ -12,14 +12,14 @@ import commons.Base;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SearchPageObject;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
+import vietcombank_test_data.Search_Data.TITTLE;
 
 public class Search_Interest_Rate_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
-	private HomePageObject home;
 	private SearchPageObject search;
 	List<String> listActualVND;
 	List<String> listActualUSD;
@@ -47,16 +47,16 @@ public class Search_Interest_Rate_Flow extends Base {
 		search.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step: Click tra cuu");
-		search.clickToDynamicButtonLinkOrLinkText(driver, "Tra cứu");
+		search.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LOOK_UP);
 
 		log.info("TC_01_Step: Scroll xuong phan doi mat khau");
 		search.scrollIDownOneTime(driver);
 
 		log.info("TC_01_Step: Click tra cuu lai suat");
-		search.clickToDynamicButtonLinkOrLinkText(driver, "Lãi suất");
+		search.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.INTEREST_RATE);
 
 		log.info("TC_01_Step: Click button refresh de update time moi nhat");
-		search.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivRefresh");
+		search.clickToDynamicImageViewByID(driver, "com.VCB:id/ivRefresh");
 
 		log.info("TC_01_Step: get time moi refresh la thoi gian hien tai");
 		String timeUpdate = search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvUpdateTime").split(" ")[5];
@@ -92,10 +92,10 @@ public class Search_Interest_Rate_Flow extends Base {
 	@Test
 	public void TC_02_LaiSuatTienGuiCoKyHan() {
 		log.info("TC_02_Step: Click tra cuu lai suat");
-		search.clickToDynamicButtonLinkOrLinkText(driver, "Tiền gửi có kỳ hạn");
+		search.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.TERM_DEPOSITS);
 
 		log.info("TC_02_Step: Click button refresh de update time moi nhat");
-		search.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivRefresh");
+		search.clickToDynamicImageViewByID(driver, "com.VCB:id/ivRefresh");
 
 		log.info("TC_02_Step: get time moi refresh la thoi gian hien tai");
 		String timeUpdate = search.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvUpdateTime").split(" ")[5];

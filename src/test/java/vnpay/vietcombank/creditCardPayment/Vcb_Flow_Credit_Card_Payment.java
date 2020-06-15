@@ -167,7 +167,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		vcbACreditCardPayment.clickToDynamicImageViewByID(driver, "com.VCB:id/ivHome");
 
 		log.info("TC_02_Step_02_Click btn menu");
-		vcbACreditCardPayment.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		vcbACreditCardPayment.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_03_Click Chon muc bao cao giao dich");
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, creaditCardPaymentUI.BAO_CAO_GD);

@@ -36,13 +36,12 @@ import vietcombank_test_data.Postpaid_Mobile_Bill_Data;
 import vietcombank_test_data.SettingVCBSmartOTP_Data;
 import vietcombank_test_data.Water_Bills_Data;
 
-
 public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	private WaterBillPageObject waterBill;
-	long amount, fee, amountStart, feeView, amountView, amountAfter,money1 = 0;
+	long amount, fee, amountStart, feeView, amountView, amountAfter, money1 = 0;
 	private String sourceAccountMoney, customerID, moneyBill, transactionDate, electricBills, mobilePhone, mobileBill, accountMoneyBefore, accountFee, transactionID;
 	private PayBillTelevisionPageObject billTelevision;
 	private ElectricBillPageObject electricBill;
@@ -54,18 +53,16 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 	private String nameCustomer;
 	private VCBCreditCardPaymentObject vcbACreditCardPayment;
-	public String soTaiKhoan,soDuKhaDung,soThe, soTaiKhoanThe, tinhTrangThe, tongSoDaTTTrongKySaoKe, soTienToiThieuPhaiTT, soTienSaoKeConTT, soTienDuNoConPhaiTT, soTienThanhToan, maGiaoDich;
-	
+	public String soTaiKhoan, soDuKhaDung, soThe, soTaiKhoanThe, tinhTrangThe, tongSoDaTTTrongKySaoKe, soTienToiThieuPhaiTT, soTienSaoKeConTT, soTienDuNoConPhaiTT, soTienThanhToan, maGiaoDich;
 
-	
 	String tommorrowDate = getForwardDate(1);
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
-	String expectAvailableBalance, moneyTransfer, account, user, content, code,source_account,beneficiary_account,money,wishes,surplusString, moneyFee,getPayments,getFee,getService,supplier,userCode,dealCode,getTimeTransfer;
+	String expectAvailableBalance, moneyTransfer, account, user, content, code, source_account, beneficiary_account, money, wishes, surplusString, moneyFee, getPayments, getFee, getService, supplier, userCode, dealCode, getTimeTransfer;
 
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
-	private double toltalMoney,payments,feeCab;
+	private double toltalMoney, payments, feeCab;
 	private InternetADSLPageObject ADSL;
 
 	private long amountTranfer, costTranfer;
@@ -87,7 +84,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
 		vcbACreditCardPayment = PageFactoryManager.getVCBCreditCardPaymentPageObject(driver);
 	}
-	
+
 	public void TC_01_CaiDatPhuongThucXacThucOTP() {
 		log.info("TC_01_Step: Click menu header");
 		smartOTP.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -137,8 +134,8 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 	}
 
 	// Thanh Toan ADSL
-	//Lỗi app không hiển thị PTXT smart OTP
-	//@Test
+	// Lỗi app không hiển thị PTXT smart OTP
+	// @Test
 	@Parameters({ "pass" })
 	public void TC_02_ThanhToanCuocViettelXacThucSmartOTP(String pass) throws InterruptedException {
 		log.info("TC_02_Step_Click cuoc ADSL");
@@ -156,7 +153,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
 
-
 		log.info("TC_02_Input ma khach hang");
 //		ADSL.inputCustomerCode(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
@@ -170,7 +166,6 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		log.info("TC_02_Kiem tra nha cung cap");
 
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Nhà cung cấp"), Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
-
 
 		log.info("TC_02_Kiem tra ma khach hang");
 		verifyEquals(ADSL.getDynamicTextInTransactionDetail(driver, "Mã khách hàng"), InternetADSLPageObject.codeADSL.toUpperCase());
@@ -233,9 +228,9 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	//Thanh toan tien nước
+	// Thanh toan tien nước
 	@Parameters("otp")
-	//@Test
+	// @Test
 	public void TC_03_ThanhToanTienNuoc_SmartOTP(String otp) throws InterruptedException {
 		log.info("TC_03_Step_01: Hoa don tien dien");
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, "Thanh toán tiền nước");
@@ -344,13 +339,13 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_32: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_33: Click nut Back ve man hinh chinh");
-		waterBill.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		waterBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
-	
-	//Thanh toan truyền hình cab
+
+	// Thanh toan truyền hình cab
 	@Test
 	@Parameters({ "pass" })
 	public void TC_04_PhuongThucThanhToan_SmartOTP(String pass) throws InterruptedException {
@@ -425,7 +420,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_04_STEP_15: chọn thực hiện giao dịch mới");
 		billTelevision.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
-		
+
 		log.info("TC_04_17: kiểm tra số dư");
 		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 		String surplus = billTelevision.getDynamicTextInTransactionDetail(driver, Account_Data.Valid_Account.ACCOUNT2);
@@ -439,9 +434,9 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 	}
 
-	//Thanh toán cước di động trả sau
-	@Test 
-	//Check lai không có phương thức smart OTP
+	// Thanh toán cước di động trả sau
+	@Test
+	// Check lai không có phương thức smart OTP
 	@Parameters({ "otp" })
 	public void TC_06_CuocDiDongTraSau_Viettel_OTP(String otp) throws InterruptedException {
 		log.info("TC_06_Step_01: Click Cuoc di dong tra sau");
@@ -564,14 +559,14 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		postpaidMobile.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_06_Step_37: Click nut Back ve man hinh chinh");
-		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		postpaidMobile.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_06_Step_38: Click nut Back ve man hinh chinh");
-		postpaidMobile.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		postpaidMobile.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
-	
-	//Thanh toán cước điện thoại cố định
-	//@Test - Check lại ko thấy PTXT smart OTP
+
+	// Thanh toán cước điện thoại cố định
+	// @Test - Check lại ko thấy PTXT smart OTP
 	public void TC_07_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanMatKhauDangNhap() throws InterruptedException {
 		log.info("TC_07_01_Click Cuoc dien thoai co dinh");
 		landLinePhoneCharge.scrollDownToText(driver, "Cước truyền hình cáp");
@@ -654,13 +649,13 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 	}
 
-	//Nạp thẻ điện thoại   ---OK
-@Test
-	@Parameters({ "pass","phone" })
+	// Nạp thẻ điện thoại ---OK
+	@Test
+	@Parameters({ "pass", "phone" })
 	public void TC_08_NapTheDienThoai_GiaTriMin_QuaMK(String pass, String phone) throws InterruptedException {
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
 		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, "Nạp tiền điện thoại");
-	
+
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
 		mobileTopup.clickToDynamicAcceptButton(driver, "com.android.packageinstaller:id/permission_allow_button");
 		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
@@ -700,12 +695,12 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		mobileTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 
 		log.info("TC_01_Step_12: Click back ve man hinh chinh");
-		mobileTopup.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		mobileTopup.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
-	
-	//Thanh toán thẻ tín dụng
-	//@Test 
-	//Lỗi app thanh toán bằng PTXT smart OTP, báo kết nối gián đoạn
+
+	// Thanh toán thẻ tín dụng
+	// @Test
+	// Lỗi app thanh toán bằng PTXT smart OTP, báo kết nối gián đoạn
 	public void TC_09_ThanhToanTheTinDung() throws InterruptedException {
 		vcbACreditCardPayment.scrollDownToText(driver, vietcombank_test_data.HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, vietcombank_test_data.HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
@@ -757,7 +752,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 				log.info("TC_01_Step_13: So tien thanh toan ");
 				vcbACreditCardPayment.scrollDownToText(driver, "Số tiền thanh toán");
-				soTienSaoKeConTT = vcbACreditCardPayment.getDynamicTextByLabel(driver,vietcombankUI.creaditCardPaymentUI.SO_TIEN_SK_TT);
+				soTienSaoKeConTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_SK_TT);
 
 				log.info("TC_01_Step_14: So tien du no phai thanh toan ");
 				soTienDuNoConPhaiTT = vcbACreditCardPayment.getDynamicTextByLabel(driver, vietcombankUI.creaditCardPaymentUI.SO_TIEN_DU_NO_TT);
@@ -780,7 +775,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 
 		log.info("TC_01_Step_17: Click btn tiep tuc");
 		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
-		
+
 		log.info("TC_01_06_Chon phuong thuc xac thuc");
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "VCB - Smart OTP");
@@ -841,7 +836,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_Part2 extends Base {
 		log.info("TC_09_Step_06: Verify hien thi popup xac nhan huy cai dat OTP");
 		smartOTP.clickToDynamicButtonLinkOrLinkText(driver, "Có");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {

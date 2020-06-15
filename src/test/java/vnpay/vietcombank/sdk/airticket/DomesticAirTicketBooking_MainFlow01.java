@@ -27,7 +27,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 	private HomePageObject homePage;
 	private TransactionReportPageObject transactionReport;
 	private DynamicAirTicketBookingObjects airTicket;
-	
+
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private String fifthDay = getForWardDay(3);
 	private String ticketPrice, payID, transactionID, fee, sourceDetail, source, destDetail, dest, time, flightCode, departureTime, arrivalTime, duration;
@@ -51,13 +51,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 	}
- 
+
 	@Parameters({ "otp" })
 	@Test
 	public void TC_01_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanOTP(String otp) {
 
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-	
+
 		log.info("Before class: Click dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DOMESTIC_AIR_TICKET_TEXT);
 
@@ -207,18 +207,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_01_Step_26: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_02_XacNhanDatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_TrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_02_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -253,13 +253,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_02_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_02_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "pass" })
@@ -267,7 +267,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 	public void TC_03_DatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_ThanhToanMK(String password) {
 
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-		
+
 		log.info("Before class: Click dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DOMESTIC_AIR_TICKET_TEXT);
 
@@ -417,18 +417,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_03_Step_26: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_04_XacNhanDatVeMayBayNoiDiaMotChieuThanhCong_1Nguoi_TrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_04_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -463,13 +463,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_04_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_04_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "otp" })
@@ -478,7 +478,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_05_Step_01: Click dat ve may bay ");
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-	
+
 		log.info("TC_05_Step_02: Click dat ve may bay quoc te ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.INTERNATIONAL_AIR_TICKET_TEXT);
 
@@ -624,18 +624,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_05_Step_29: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_06_DatVeMayBayQuocTeMotChieuThanhCong_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_06_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_06_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_06_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -670,13 +670,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_06_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_06_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_06_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "pass" })
@@ -685,7 +685,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_07_Step_01: Click dat ve may bay ");
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-	
+
 		log.info("TC_07_Step_02: Click dat ve may bay quoc te ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.INTERNATIONAL_AIR_TICKET_TEXT);
 
@@ -831,14 +831,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_07_Step_29: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_08_DatVeMayBayQuocTeMotChieuThanhCong_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_08_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_08_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
@@ -877,13 +877,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_08_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_08_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_08_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "otp" })
@@ -892,7 +892,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_01: Click vao phan Dat ve may bay");
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-	
+
 		log.info("TC_09_Step_02: Click dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DOMESTIC_AIR_TICKET_TEXT);
 
@@ -1007,11 +1007,11 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 	public void TC_10_DatVeMayBayNoiDiaMotChieu_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_10_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_10_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -1022,7 +1022,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_10_Step_06: Chon tai khoan vua thuc hien giao dich");
-		transactionReport.clickToDynamicButtonLinkOrLinkText(driver,sourceAccount.account);
+		transactionReport.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_10_Step_07: An nut Tim kiem");
 		transactionReport.clickToDynamicAcceptButton(driver, "com.VCB:id/btSearch");
@@ -1046,13 +1046,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_10_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_10_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_10_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "pass" })
@@ -1061,7 +1061,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_11_Step_01: Click vao phan Dat ve may bay");
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-	
+
 		log.info("TC_11_Step_02: Click dat ve may bay noi dia ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DOMESTIC_AIR_TICKET_TEXT);
 
@@ -1169,18 +1169,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_11_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_12_DatVeMayBayNoiDiaMotChieu_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_12_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_12_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_12_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -1215,13 +1215,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_12_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_12_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_12_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "otp" })
@@ -1230,7 +1230,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_01: Click dat ve may bay ");
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-	
+
 		log.info("TC_13_Step_02: Click dat ve may bay quoc te ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.INTERNATIONAL_AIR_TICKET_TEXT);
 
@@ -1335,18 +1335,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_14_DatVeMayBayQuocTeMotChieu_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_14_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_14_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_14_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -1381,13 +1381,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_14_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_14_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-	
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_14_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "pass" })
@@ -1396,7 +1396,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_01: Click dat ve may bay ");
 		homePage.clickToDynamicIcon(driver, Air_Text.AIR_TICKET_TEXT);
-		
+
 		log.info("TC_15_Step_02: Click dat ve may bay quoc te ");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.INTERNATIONAL_AIR_TICKET_TEXT);
 
@@ -1499,18 +1499,18 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_33: Clich nut Home");
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
-		
+
 	}
 
 	@Test
 	public void TC_16_DatVeMayBayQuocTeMotChieu_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_16_Step_01: Mo tab Menu");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_16_Step_02: Mo sub-menu 'Bao cao giao dich");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, ReportTitle.TRANSACTION_REPORT);
-	
+
 		log.info("TC_16_Step_03: An vao Dropdown 'Tat ca cac loai giao dich");
 		transactionReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
@@ -1545,13 +1545,13 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), fee);
 
 		log.info("TC_16_Step_15: An nut back ve man hinh bao cao giao dich");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_16_Step_16: An nut back ve man hinh menu");
-		transactionReport.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
+		transactionReport.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
 		log.info("TC_16_Step_17: Mo tab Home");
-		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)

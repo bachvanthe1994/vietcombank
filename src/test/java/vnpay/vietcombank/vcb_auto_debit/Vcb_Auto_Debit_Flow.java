@@ -44,7 +44,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		login.Global_login1(phone, pass, opt);
 		log.info("TC_00_Step_01: Chon tab Menu");
 		home = PageFactoryManager.getHomePageObject(driver);
-		home.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 		vcbAutoDebit = PageFactoryManager.getVCBAutoDebitPageObject(driver);
 
 		log.info("TC_01_Step_01: Click vao VCB-Auto Debit");
@@ -86,7 +86,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 			vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
 		}
 		log.info("TC_01_Step_35: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_Step_02: Chon Dang ki dich vu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, TEXT.REGISTER_SERVICE);
@@ -202,7 +202,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_01_Step_35: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "otp" })
@@ -326,7 +326,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_02_Step_37: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -407,7 +407,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_03_Step_24: Dong dropdown va back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "otp" })
@@ -448,7 +448,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 			vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
 		}
 		log.info("TC_04_Step_24: Dong dropdown va back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_02: Chon Dang ki dich vu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, TEXT.REGISTER_SERVICE);
@@ -564,7 +564,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_04_Step_35: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "otp" })
@@ -690,7 +690,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_05_Step_37: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -772,7 +772,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_06_Step_24: Dong dropdown va back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "otp" })
@@ -809,7 +809,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 			vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
 		}
 		log.info("TC_07_Step_24: Dong dropdown va back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_07_Step_02: Chon Dang ki dich vu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, TEXT.REGISTER_SERVICE);
@@ -922,7 +922,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_07_Step_35: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Parameters({ "otp" })
@@ -1047,7 +1047,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), Account_Data.Valid_Account.ACCOUNT1);
 
 		log.info("TC_08_Step_37: Click back ve man hinh chinh");
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -1129,7 +1129,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_09_Step_24: Dong dropdown va back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
-		vcbAutoDebit.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
 	@AfterClass(alwaysRun = true)

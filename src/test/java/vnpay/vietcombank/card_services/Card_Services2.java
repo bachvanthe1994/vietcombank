@@ -100,7 +100,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_01_Step_18: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
@@ -179,7 +179,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_24: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_02_Step_25: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
@@ -203,7 +203,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_02_Step_31: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
@@ -262,7 +262,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_03_Step_18: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
@@ -341,7 +341,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_04_Step_24: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_04_Step_25: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
@@ -365,7 +365,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_04_Step_31: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
@@ -423,7 +423,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_05_Step_18: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -502,7 +502,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_06_Step_24: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_06_Step_25: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
@@ -526,7 +526,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_06_Step_31: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
@@ -584,7 +584,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_07_Step_18: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
@@ -663,7 +663,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_08_Step_24: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 		log.info("TC_08_Step_25: Click vao phan 'Dich vu the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
@@ -687,7 +687,7 @@ public class Card_Services2 extends Base {
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.BUTTON_CLOSE_TEXT);
 
 		log.info("TC_08_Step_31: Click ve 'Trang chu'");
-		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
+		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 	}
 
