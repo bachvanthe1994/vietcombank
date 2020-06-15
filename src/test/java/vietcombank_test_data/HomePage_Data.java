@@ -14,6 +14,8 @@ public class HomePage_Data {
 		public static final String CONTACT_CARD_WALLET = "Nạp tiền điện tử";
 		public static final String VIETCOMBANK_2020 = "© 2020 Vietcombank";
 		public static final String TITLE_SHOPPING_ONLINE = "Mua sắm trực tuyến - VNPAY Shopping";
+		public static final String LOOK_UP = "Tra cứu";
+		public static final String EXCHANGE_RATE = "Tỷ giá";
 
 	}
 }
