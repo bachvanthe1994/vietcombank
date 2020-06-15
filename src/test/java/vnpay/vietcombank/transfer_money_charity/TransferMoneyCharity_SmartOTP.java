@@ -38,16 +38,18 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	double transferFeeCurrentcy = 0;
 	String password, currentcy = "";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String account, smartOTP = "";
+	String account, smartOTP, organization = "";
 
-	TransferCharity info = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
-	TransferCharity info1 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
-	TransferCharity info2 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
+	TransferCharity info = new TransferCharity("", "", "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
+	TransferCharity info1 = new TransferCharity("", "", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
+	TransferCharity info2 = new TransferCharity("", "", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "VCB - Smart OTP");
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		smartOTP = getDataInCell(6);
+		organization = getDataInCell(31);
+		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -72,7 +74,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy;
 
 	@Test
-	public void TC_01_ChuyenTienTuThienBangVNDThanhToanMatKhau() throws GeneralSecurityException, IOException {
+	public void TC_01_ChuyenTienTuThienBangVND_SmartOTP() throws GeneralSecurityException, IOException {
 		log.info("TC_01_1_Click Chuyen tien tu thien");
 		transferMoneyCharity.scrollDownToText(driver, TransferMoneyCharity_Data.STATUS_TRANSFER_MONEY);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -86,7 +88,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 
 		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		log.info("TC_01_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info.money, TransferMoneyCharity_Data.MONEY_CHARITY);
@@ -109,7 +111,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_01_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), organization.toUpperCase());
 
 		log.info("TC_01_9_2_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -150,7 +152,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_01_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_01_12_3_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -176,7 +178,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_02_ChuyenTienTuThienBangVNDThanhToanMatKhau_BaoCao() {
+	public void TC_02_ChuyenTienTuThienBangVND_SmartOTP_BaoCao() {
 		log.info("TC_02_1: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
@@ -230,7 +232,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_02_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_02_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -252,7 +254,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_03_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau() {
+	public void TC_03_ChuyenTienTuThienBangNgoaiTe_SmartOTP() {
 		log.info("TC_03_1_Click Chuyen tien tu thien");
 		transferMoneyCharity.scrollDownToText(driver, TransferMoneyCharity_Data.STATUS_TRANSFER_MONEY);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -266,7 +268,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 
 		log.info("TC_03_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		currentcy = getCurrentcyMoney(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_03_4_Nhap so tien ung ho");
@@ -289,7 +291,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_03_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info1.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), organization.toUpperCase());
 
 		log.info("TC_03_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -331,7 +333,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_03_12_1_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info1.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_02_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -355,7 +357,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_04_ChuyenTienTuThienBangNgoaiTeThanhToanMatKhau_BaoCao() {
+	public void TC_04_ChuyenTienTuThienBangNgoaiTe_SmartOTP_BaoCao() {
 		log.info("TC_04_1: Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
@@ -413,7 +415,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_04_20: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info1.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -435,7 +437,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_05_ChuyenTienTuThienBangVNDThanhToanSMSOTP() {
+	public void TC_05_ChuyenTienTuThienBangVND_SmartOTP() {
 		log.info("TC_05_1_Click Chuyen tien tu thien");
 		transferMoneyCharity.scrollDownToText(driver, TransferMoneyCharity_Data.STATUS_TRANSFER_MONEY);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
@@ -449,7 +451,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 
 		log.info("TC_05_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		currentcy = getCurrentcyMoney(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_05_4_Nhap so tien ung ho");
@@ -472,7 +474,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_05_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info2.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), organization.toUpperCase());
 
 		log.info("TC_05_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -537,7 +539,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_06_ChuyenTienTuThienBangVNDThanhToanSMSOTP_BaoCao() {
+	public void TC_06_ChuyenTienTuThienBangVND_SmartOTP_BaoCao() {
 		log.info("TC_06_1 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
@@ -589,7 +591,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info2.money) + " VND"));
 
 		log.info("TC_06_17: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info2.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_06_18: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
