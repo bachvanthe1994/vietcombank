@@ -613,7 +613,7 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 	}
 
 	public void scrollUpToTextView(String text) {
-		scrollUp(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP);
+		scrollUp(driver, AirTicketBookingUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT_POP_UP,text);
 	}
 
 }

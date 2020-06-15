@@ -50,9 +50,9 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 	}
-// 	Done 
-//	@Parameters({ "otp" })
-//	@Test
+ 
+	@Parameters({ "otp" })
+	@Test
 	public void TC_01_DatVeMayBayNoiDiaKhuHoiThanhCong_1Nguoi_ThanhToanOTP(String otp) {
 
 		log.info("TC_01_Step_01: Click Dat ve may bay");
@@ -248,8 +248,8 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
 		
 	}
-//	Done 
-//	@Test
+ 
+	@Test
 	public void TC_02_DatVeMayBayNoiDiaKhuHoiThanhCong_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Mo tab Menu");
@@ -301,8 +301,8 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "pass" })
-//	@Test
+	@Parameters({ "pass" })
+	@Test
 	public void TC_03_DatVeMayBayNoiDiaKhuHoiThanhCong_1Nguoi_ThanhToanMK(String pass) {
 
 		log.info("TC_03_Step_01: Click Dat ve may bay");
@@ -498,7 +498,7 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
 	}
 
-//	@Test
+	@Test
 	public void TC_04_DatVeMayBayNoiDiaKhuHoiThanhCong_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Mo tab Menu");
@@ -1047,9 +1047,9 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		log.info("TC_08_Step_17: Mo tab Home");
 		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
-//	Done
-//	@Parameters({ "otp" })
-//	@Test
+
+	@Parameters({ "otp" })
+	@Test
 	public void TC_09_DatVeMayBayNoiDiaKhuHoi_ThanhToanSau_1Nguoi_ThanhToanOTP(String otp) {
 
 		log.info("TC_09_Step_01: Click Dat ve may bay");
@@ -1251,8 +1251,8 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		airTicket.clickToDynamicIcon("com.VCB:id/ivHome");
 		
 	}
-//	Done
-//	@Test
+
+	@Test
 	public void TC_10_DatVeMayBayNoiDiaKhuHoi_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_10_Step_01: Mo tab Menu");
@@ -1304,8 +1304,8 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		homePage.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters({ "pass" })
-//	@Test
+	@Parameters({ "pass" })
+	@Test
 	public void TC_11_DatVeMayBayNoiDiaKhuHoi_ThanhToanSau_1Nguoi_ThanhToanMK(String password) {
 
 		log.info("TC_11_Step_01: Click Dat ve may bay");
@@ -1507,7 +1507,7 @@ public class DomesticAirTicketBooking_MainFlow02 extends Base {
 		
 	}
 
-//	@Test
+	@Test
 	public void TC_12_DatVeMayBayNoiDiaKhuHoi_ThanhToanSau_1Nguoi_BaoCaoGiaoDich() {
 
 		log.info("TC_12_Step_01: Mo tab Menu");
