@@ -36,7 +36,6 @@ public class Internet_ADSL_Flow extends Base {
 	List<String> codeViettel = new ArrayList<String>();
 	List<String> codeFpt = new ArrayList<String>();
 
-
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
@@ -60,7 +59,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_01_Step_Get so du kha dung");
@@ -241,7 +240,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_03_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_03_Step_Get so du kha dung");
@@ -422,7 +421,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_05_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_05_Step_Get so du kha dung");
@@ -604,7 +603,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_07_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_07_Step_Get so du kha dung");
@@ -785,7 +784,7 @@ public class Internet_ADSL_Flow extends Base {
 
 		log.info("TC_09_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_09_Step_Get so du kha dung");
@@ -962,14 +961,14 @@ public class Internet_ADSL_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
-	public void TC_11_ThanhToanCuocViettelADSLXacThucOTP(String otp)throws GeneralSecurityException, IOException {
+	public void TC_11_ThanhToanCuocViettelADSLXacThucOTP(String otp) throws GeneralSecurityException, IOException {
 		log.info("TC_11_Step_Click cuoc ADSL");
 		adsl.scrollDownToText(driver, Internet_ADSL_Data.Valid_Account.SAVE);
 		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
 
 		log.info("TC_11_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
-		sourceAccount = adsl.chooseSourceAccountADSL(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		account = sourceAccount.account;
 
 		log.info("TC_11_Step_Get so du kha dung");
