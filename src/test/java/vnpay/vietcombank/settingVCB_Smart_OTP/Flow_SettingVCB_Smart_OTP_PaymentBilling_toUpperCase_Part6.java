@@ -155,7 +155,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
 
 		log.info("TC_02_Input ma khach hang");
-		ADSL.inputCustomerCodeToUpperCase(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
+//		ADSL.inputCustomerCodeToUpperCase(Internet_ADSL_Data.Valid_Account.CODEVIETTEL);
 
 		log.info("TC_02_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_02_Kiem tra tai khoan nguon");

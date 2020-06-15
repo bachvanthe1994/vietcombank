@@ -66,7 +66,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 0; i < listProduct.size(); i++) {
+		for (int i = 3; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -206,11 +206,11 @@ public class Shopping_Online_Flow1 extends Base {
 		}
 
 		log.info("TC_01_STEP_6: click thanh toan ngay");
-		shopping.clickToDynamicButton(Shopping_Online_Data.ACCEPT);
+//		shopping.clickToDynamicButton(Shopping_Online_Data.ACCEPT);
 
 		log.info("TC_01_STEP_7: click chon tai khoan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvContent");
-		sourceAccount = shopping.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		sourceAccount = shopping.chooseSourceAccount(driver, Double.parseDouble("3000000000"), Constants.VND_CURRENCY);
 
 		log.info("TC_02_STEP_7: Lay so du tai khoan ");
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.AVAIABLE_BALANCE).replace("VND", "").replace(",", ""));
@@ -292,7 +292,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 4; i < listProduct.size(); i++) {
+		for (int i = 3; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {

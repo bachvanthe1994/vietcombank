@@ -24,7 +24,7 @@ public class Card_Services3 extends Base {
 	private HomePageObject home;
 	private LockCardPageObject lockCard;
 	String numberCard = "";
-	private String otpNumber,phone,pass;
+	private String otpNumber;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -113,23 +113,20 @@ public class Card_Services3 extends Base {
 		log.info("TC_01_Step_20: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_01_Step_21: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
-		log.info("TC_01_Step_22: An vao tab 'Huy dang ky su dung the tren Internet'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-		
-		log.info("TC_01_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-
-		log.info("TC_01_Step_24: Xac nhan the vua dang ky Internet hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_02_HuyDangKySuDungTheTrenInternetVCB() {
 
+		log.info("Before TC 01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
+	
+		log.info("Before TC 03: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
+		
 		log.info("TC_02_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 
@@ -255,22 +252,19 @@ public class Card_Services3 extends Base {
 		log.info("TC_03_Step_20: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_03_Step_21: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
-		log.info("TC_03_Step_22: An vao tab 'Huy dang ky su dung the tren Internet'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
-		log.info("TC_03_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-
-		log.info("TC_03_Step_24: Xac nhan the vua dang ky Internet hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_04_HuyDangKySuDungTheTrenInternet() {
+
+		log.info("Before TC 01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
+	
+		log.info("Before TC 03: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
 
 		log.info("TC_04_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
@@ -396,24 +390,21 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_05_Step_20: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
-		
-		log.info("TC_05_Step_21: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
 
-		log.info("TC_05_Step_22: An vao tab 'Huy dang ky su dung the tren Internet'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
-		log.info("TC_05_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-
-		log.info("TC_05_Step_24: Xac nhan the vua dang ky Internet hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_06_HuyDangKySuDungTheTrenInternetMasterCard() {
 
+		log.info("Before TC 01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
+	
+		log.info("Before TC 03: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
+		
 		log.info("TC_06_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 
@@ -539,23 +530,20 @@ public class Card_Services3 extends Base {
 		log.info("TC_07_Step_20: Click ve 'Trang chu'");
 		lockCard.clickToDynamicBottomMenuOrIcon(driver, "com.VCB:id/ivTitleLeft");
 		
-		log.info("TC_07_Step_21: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
-
-		log.info("TC_07_Step_22: An vao tab 'Huy dang ky su dung the tren Internet'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
-	
-		log.info("TC_07_Step_23: Mo DropdownList 'So The'");
-		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
-
-		log.info("TC_07_Step_24: Xac nhan the vua dang ky Internet hien thi trong danh sach");
-		lockCard.scrollDownToText(driver, numberCard);
-		verifyTrue(lockCard.isTextDisplayedInListTextElements(driver, numberCard, "com.VCB:id/tvContent"));
 	}
 
 	@Test
 	public void TC_08_HuyDangKySuDungTheTrenInternet() {
 
+		log.info("Before TC 01: Click vao phan 'Dich vu the'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+
+		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
+	
+		log.info("Before TC 03: Mo DropdownList 'So The'");
+		lockCard.clickToDynamicDropdownByHeader(driver, Card_Services_Text.CARD_INFO_TEXT, "1");
+		
 		log.info("TC_08_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);;
 

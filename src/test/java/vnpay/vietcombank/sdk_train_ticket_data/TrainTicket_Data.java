@@ -31,7 +31,11 @@ public class TrainTicket_Data {
 		public static final String TYPE_SEAT = "Loại chỗ";
 		public static final String CHOOSE_ALL = "Chọn tất cả";
 		public static final String LIST_TO = "Danh sách chiều đi";
-		
+		public static final String PAY = "THANH TOÁN";
+		public static final String CONFIRM_INFORMATION = "Xác nhận thông tin";
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String TITLE_AMOUNT_MONEY = "Số tiền";
+		public static final String TITLE_OTP = "SMS OTP";
 	}
 	
 	public static class message {

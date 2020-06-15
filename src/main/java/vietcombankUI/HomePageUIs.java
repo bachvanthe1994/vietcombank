@@ -11,6 +11,7 @@ public class HomePageUIs {
 		public static final String TITTLE_SETTING = "Chức năng nổi bật";
 		public static final String SELECTED = "Bỏ nổi bật";
 		public static final String NO_SELECT = "Thêm nổi bật";
+		public static final String TRANSFER_MONEY = "Chuyển tiền";
 	}
 
 	public class HomePageMessage {

@@ -71,7 +71,7 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.CITY);
 
 		log.info("TC_01_06_Click chon cum rap Mega GS");
-		filmTicketBooking.clickToDynamicTextView("BHD Star Cineplex");
+		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.BHD_MOVIE_THEATER );
 
 		log.info("TC_01_07_Click chon rap phim");
 		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");
@@ -98,7 +98,7 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
 
 		log.info("TC_01_12_Click chon cho ngoi");
-		filmTicketBooking.clickToTextViewByText("Chọn chỗ ngồi");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.CHOOSE_SEAT);
 
 		log.info("TC_01_13_Chon cho ngoi nhu da dang ky");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
@@ -145,7 +145,7 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		filmTicketBooking.clickToDynamicDropDown(FilmTicketBooking_Data.ACCOUNT_FROM_LABEL);
 		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
-		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.AVAILABLE_BALANCES));
 
 		log.info("TC_01_19_Kiem tra man hinh Thong tin mua ve");
 		log.info("TC_01_19_01: Kiem tra ten phim");
@@ -178,7 +178,8 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		log.info("TC_01_20: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
-		log.info("TC_01_21: Kiem tra man hinh xac nhan thong tin");
+		log.info("TC_01_21: lay phi");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
 		
 		log.info("TC_01_21_01: Kiem tra tai khoan nguon");
 		filmTicketBooking.scrollUpToText(FilmTicketBooking_Data.ACCOUNT_FROM_LABEL);
@@ -189,7 +190,6 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.SMART_OTP);
 
 		log.info("TC_01_22_01: Kiem tra so tien phi");
@@ -198,7 +198,8 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		log.info("TC_01_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
-		filmTicketBooking.inputToDynamicPopupPasswordInput(passSmartOTP, FilmTicketBooking_Data.NEXT);
+		filmTicketBooking.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		filmTicketBooking.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
@@ -384,7 +385,7 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		filmTicketBooking.clickToDynamicDropDown(FilmTicketBooking_Data.ACCOUNT_FROM_LABEL);
 		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
-		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Số dư khả dụng"));
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.AVAILABLE_BALANCES));
 
 		log.info("TC_03_19_Kiem tra man hinh Thong tin mua ve");
 		log.info("TC_03_19_01: Kiem tra ten phim");
@@ -435,7 +436,8 @@ public class Flow_FilmTicketBooking_SmartOTP extends Base {
 		log.info("TC_03_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
-		filmTicketBooking.inputToDynamicPopupPasswordInput(password, FilmTicketBooking_Data.NEXT);
+		filmTicketBooking.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
+		filmTicketBooking.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 

@@ -55,7 +55,7 @@ public class Limit_Internet_ADSL extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL_ADSL);
 
 		log.info("------------------------------TC_01_Input ma khach hang------------------------------");
-		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
+//		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
 
 		
 		log.info("------------------------------TC_01_Click Tiep tuc------------------------------");
@@ -63,7 +63,7 @@ public class Limit_Internet_ADSL extends Base {
 
 
 		log.info("------------------------------TC_01_Hien thi man hinh thong bao lo han muc------------------------------");
-		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_LOWER_LIMIT_MIN_A_TRAN);
+//		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_LOWER_LIMIT_MIN_A_TRAN);
 		
 		log.info("------------------------------TC_01_Click btn dong------------------------------");
 		ADSL.clickToDynamicAcceptButton(driver,"com.VCB:id/btOK");
@@ -85,13 +85,13 @@ public class Limit_Internet_ADSL extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 		
 		log.info("------------------------------TC_02_Input ma khach hang------------------------------");
-		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[17],"com.VCB:id/code");
+//		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[17],"com.VCB:id/code");
 		log.info("------------------------------TC_01_Step_Tiep tuc------------------------------");
 		
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("------------------------------TC_02_Hien thi man hinh thong bao lo han muc------------------------------");
-		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_A_TRAN);
+	//	ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_A_TRAN);
 		
 		log.info("------------------------------TC_02_Click btn dong------------------------------");
 		ADSL.clickToDynamicAcceptButton(driver,"com.VCB:id/btOK");
@@ -115,7 +115,7 @@ public class Limit_Internet_ADSL extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_03_Input ma khach hang");
-		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[19],"com.VCB:id/code");
+//		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[19],"com.VCB:id/code");
 
 		
 		log.info("------------------------------TC_03_Click Tiep tuc");
@@ -144,12 +144,12 @@ public class Limit_Internet_ADSL extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_03_Input ma khach hang");
-		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
+//		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
 		
 		ADSL.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("------------------------------TC_03_08_Hien thi man hinh thong bao lo han muc------------------------------");
-		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_A_DAY);
+//		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_A_DAY);
 		
 		log.info("------------------------------TC_03_08_ Click btn dong------------------------------");
 		ADSL.clickToDynamicAcceptButton(driver,"com.VCB:id/btOK");
@@ -172,7 +172,7 @@ public class Limit_Internet_ADSL extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_04_Input ma khach hang------------------------------");
-		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
+//		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
 
 		
 		log.info("------------------------------TC_04_Click Tiep tuc------------------------------");
@@ -180,7 +180,7 @@ public class Limit_Internet_ADSL extends Base {
 
 
 		log.info("------------------------------TC_04_Hien thi man hinh thong bao lo han muc------------------------------");
-		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_GROUP);
+//		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_GROUP);
 		
 		log.info("------------------------------TC_04_ Click btn dong------------------------------");
 		ADSL.clickToDynamicAcceptButton(driver,"com.VCB:id/btOK");
@@ -204,7 +204,7 @@ public class Limit_Internet_ADSL extends Base {
 		ADSL.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
 
 		log.info("------------------------------TC_05_Input ma khach hang------------------------------");
-		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
+//		ADSL.inputIntoEditTextByID(driver,Internet_ADSL_Data.Limit_Internet_ADSL_Data.CODE_CUSTOMER[0],"com.VCB:id/code");
 
 		
 		log.info("------------------------------TC_05_Click Tiep tuc------------------------------");
@@ -212,7 +212,7 @@ public class Limit_Internet_ADSL extends Base {
 
 
 		log.info("------------------------------TC_05_Hien thi man hinh thong bao lo han muc------------------------------");
-		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_PACKAGE);
+//		ADSL.isDynamicMessageAndLabelTextDisplayed(driver, Internet_ADSL_Data.Limit_Internet_ADSL_Data.MESSEGER_ERROR_HIHGER_LIMIT_MAX_PACKAGE);
 		
 		log.info("------------------------------TC_05_ Click btn dong------------------------------");
 		ADSL.clickToDynamicAcceptButton(driver,"com.VCB:id/btOK");
