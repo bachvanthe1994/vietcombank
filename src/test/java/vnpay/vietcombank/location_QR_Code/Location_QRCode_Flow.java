@@ -110,17 +110,28 @@ public class Location_QRCode_Flow extends Base {
 	}
 
 	public void TC_03_HuyYeuThich() {
+		
+		log.info("TC_03_Step: Chon muc yeu thich");
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.LOVE);
+		
+		log.info("TC_03_Step: Chon dia chi tim kiem bat ky");
 		QRCode.clickToDynamicImageNon(driver, "");
 		
+		log.info("TC_03_Step: get thong tin da chon");
 		shopName = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "0");
 		typeShop = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "1");
 		location = QRCode.getDynamicTextFollowingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "10");
+		
+		log.info("TC_03_Step: get So luong like");
 		int likeNumberExpectNow = QRCode.getNumberLike();
+		
+		log.info("TC_03_Step: Click click chon bo like");
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, String.valueOf(likeNumberExpectNow));
 
+		log.info("TC_03_Step: Click lay ra so luong like sau khi da bo like");
 		int likeNumberExpectDislike = QRCode.getNumberLike();
-
+		
+		log.info("TC_03_Step: Verify so luong like sau khi da bo like");
 		verifyEquals(likeNumberExpectDislike, likeNumberExpectNow - 1);
 
 	}
