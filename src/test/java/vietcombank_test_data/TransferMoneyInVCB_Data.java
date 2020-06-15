@@ -218,7 +218,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String DETAIL_TRANSACTION = "Chi tiết giao dịch";
 		public static final String CONTENT_TRANSACTION = "Nội dung giao dịch";
 		public static final String TYPE_TRANSACTION = "Loại giao dịch";
-		public static final String STATUS_TRANSACTION = "Trạng thái lệnh chuyển tiền";
+		public static final String STATUS_TRANSACTION = "Trạng thái chuyển tiền";
 		public static final String AMOUNT_CHANGE = "Số tiền quy đổi";
 		public static final String BILL_PAYMENT = "Hóa đơn thanh toán";
 		public static final String DELETE_CONTACT = "Xóa danh bạ thành công";
