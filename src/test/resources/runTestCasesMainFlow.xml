@@ -25,8 +25,6 @@
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 		
-			<!-- Tính toán lãi suất -->
-			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
 
 			<!-- Đặt mục tiêu tiết kiệm -->
 			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
