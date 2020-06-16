@@ -20,6 +20,7 @@ public class TransferMoneyOutVCB_Data {
 		public static final String RECEIVER_PAYER = "Người nhận trả";
 		public static final String MONEY = "Số tiền";
 		public static final String DESTINATION_ACCOUNT_VND = "Tài khoản đích/ VND";
+		public static final String DESTINATION_ACCOUNT_NAME = "Tên người thụ hưởng";
 		public static final String TRANSACTION_FEE_SENT = "Phí giao dịch người chuyển trả";
 		public static final String TRANSACTION_FEE_RECIEVED = "Phí giao dịch người nhận trả";
 		public static final String TRANSACTION_INFOMATION = "Thông tin giao dịch";

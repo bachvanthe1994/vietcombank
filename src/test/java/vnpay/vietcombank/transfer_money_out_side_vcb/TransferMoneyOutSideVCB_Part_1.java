@@ -110,10 +110,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_01_9_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
 
 		log.info("TC_01_9_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info.name.toUpperCase());
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info.name);
 
 		log.info("TC_01_9_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info.destinationBank);
@@ -297,10 +297,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_03_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
 
 		log.info("TC_03_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info1.name.toUpperCase());
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info1.name);
 
 		log.info("TC_03_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info1.destinationBank);
@@ -482,10 +482,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_05_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
 
 		log.info("TC_05_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info2.name.toUpperCase());
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info2.name);
 
 		log.info("TC_05_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info2.destinationBank);
@@ -680,10 +680,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_07_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
 
 		log.info("TC_07_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info3.name.toUpperCase());
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info3.name);
 
 		log.info("TC_07_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info3.destinationBank);
@@ -875,10 +875,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_09_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
 
 		log.info("TC_09_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info4.name.toUpperCase());
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info4.name);
 
 		log.info("TC_09_10_4_Kiem tra ngan hang huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info4.destinationBank);
@@ -1069,10 +1069,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_11_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
 
 		log.info("TC_11_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info5.name.toUpperCase());
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info5.name);
 
 		log.info("TC_11_10_4_Kiem tra ngan hang huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info5.destinationBank);
