@@ -1,6 +1,10 @@
 package vnpay.vietcombank.water_bills;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -33,15 +37,19 @@ public class Water_Bills_Flow extends Base {
 	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private long transferFee;
+	
+	List<String> listCusstomerID = new ArrayList<String>();
+
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		listCusstomerID = Arrays.asList(getDataInCell(35).split(";"));
 
 	}
 
@@ -67,7 +75,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
-		customerID = waterBill.inputCustomerId(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
+		customerID = waterBill.inputCustomerId(listCusstomerID);
 
 		log.info("TC_01_Step_05: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), TITTLE.CONFIRM_INFO);
@@ -259,7 +267,7 @@ public class Water_Bills_Flow extends Base {
 		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
 
 		log.info("TC_03_Step_04: Nhap ma khach hang va an tiep tuc");
-		customerID = waterBill.inputCustomerId(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
+		customerID = waterBill.inputCustomerId(listCusstomerID);
 
 		log.info("TC_03_Step_05: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), TITTLE.CONFIRM_INFO);
