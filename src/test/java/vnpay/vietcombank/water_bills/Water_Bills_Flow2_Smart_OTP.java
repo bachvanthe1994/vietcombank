@@ -57,7 +57,7 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		log.info("Setup smart OTP");
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 		newOtp = "111222";
-		listCusstomerID = Arrays.asList(getDataInCell(35).split(";"));
+		listCusstomerID = Arrays.asList(getDataInCell(30).split(";"));
 		waterDaNang = getDataInCell(37);
 
 

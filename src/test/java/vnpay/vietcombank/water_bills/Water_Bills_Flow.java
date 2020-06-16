@@ -49,7 +49,7 @@ public class Water_Bills_Flow extends Base {
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		listCusstomerID = Arrays.asList(getDataInCell(35).split(";"));
+		listCusstomerID = Arrays.asList(getDataInCell(30).split(";"));
 		waterDaNang = getDataInCell(37);
 	}
 
