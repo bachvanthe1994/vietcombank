@@ -836,8 +836,8 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 	public void clickPopupAfter15h30() {
