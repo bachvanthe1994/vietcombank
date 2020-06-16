@@ -3,13 +3,9 @@ package vietcombank_test_data;
 import java.util.Arrays;
 import java.util.List;
 
-import vietcombank_test_data.Water_Bills_Data.TITTLE;
-
 public class Water_Bills_Data {
 
-	public static class DATA {
-
-		public static final String WATER_DANANG = "Cấp nước Đà Nẵng DAWACO";
+	public static class Data {
 
 		public static final String WATER_BILL_TEXT = "Hóa đơn tiền nước";
 		public static final String BILL_MESSAGE = "Hóa đơn không còn nợ cước. Quý khách vui lòng kiểm tra lại!";
@@ -22,7 +18,7 @@ public class Water_Bills_Data {
 
 	}
 
-	public static class TITTLE {
+	public static class Tittle_Text {
 		public static final String AVAILIBLE_BALANCES = "Số dư khả dụng";
 		public static final String CONFIRM_INFO = "Xác nhận thông tin";
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";

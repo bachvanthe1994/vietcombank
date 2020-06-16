@@ -1,6 +1,28 @@
 package vietcombank_test_data;
 
 public class TransferMoneyQuick_Data {
+	
+	public static class Tittle_Quick {
+
+		public static final String AVAIBLE_BALANCES = "Số dư khả dụng";
+		public static final String TYPE_SELECT_CARD_NUMBER = "Nhập/chọn số thẻ";
+		public static final String TYPE_SELECT_ACCOUNT = "Nhập/ chọn tài khoản thụ hưởng";
+		public static final String NAME_RECIVED = "Tên người hưởng";
+		public static final String NAME_RECIVED_TEXT = "Tên người thụ hưởng";
+		public static final String ACCOUNT_RECIVED_TEXT = "Tài khoản thụ hưởng";
+		public static final String BANK_RECIVED = "Ngân hàng thụ hưởng";
+		public static final String CONTINUE_BUTTON = "Tiếp tục";
+		public static final String CODE_TRANSFER = "Mã giao dịch";
+		public static final String CONTENT = "Nội dung";
+		public static final String CAR_NUMBER = "Số thẻ";
+		public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
+		public static final String CARD_TRIP = "Số thẻ chuyển đi";
+		public static final String TRANSACTION_INFO = "Thông tin giao dịch";
+		public static final String RATE_REFER = "Tỷ giá quy đổi tham khảo";
+
+	}
+	
+	
 
 	public static class TransferQuick {
 		public static final String[] OPTION_TRANSFER = { "Chuyển nhanh qua số tài khoản", "Chuyển nhanh qua số thẻ" };
