@@ -47,6 +47,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
+
 		smartOTP = getDataInCell(6);
 		organization = getDataInCell(31);
 		
@@ -111,7 +112,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_01_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_01_9_2_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -291,7 +292,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_03_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_03_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -474,7 +475,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_05_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_05_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
