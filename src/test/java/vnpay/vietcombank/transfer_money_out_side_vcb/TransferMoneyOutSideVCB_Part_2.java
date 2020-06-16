@@ -18,7 +18,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
-import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferMoneyOutVCB_Data.TitleOutVCB;
@@ -38,13 +37,13 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	String account;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 
-	TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", TitleOutVCB.TRANSACTION_FEE_SENDE, "test", TitleOutVCB.PASSWORD_TITLE);
-	TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.EUR_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", "Phí giao dịch người nhận trả", "test", TitleOutVCB.PASSWORD_TITLE);
+	TransferOutSideVCB_Info info6 = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, TitleOutVCB.MONEY_CURRENCY, TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
+	TransferOutSideVCB_Info info7 = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, TitleOutVCB.MONEY_CURRENCY, TitleOutVCB.TRANSACTION_FEE_RECIEVED, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
 
-	TransferOutSideVCB_Info info8 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.USD_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", TitleOutVCB.TRANSACTION_FEE_SENDE, "test", "SMS OTP");
-	TransferOutSideVCB_Info info9 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.USD_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", "Phí giao dịch người nhận trả", "test", TitleOutVCB.PASSWORD_TITLE);
-	TransferOutSideVCB_Info info10 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.USD_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", "Phí giao dịch người nhận trả", "test", "SMS OTP");
-	TransferOutSideVCB_Info info11 = new TransferOutSideVCB_Info(Account_Data.Valid_Account.USD_ACCOUNT, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "10", TitleOutVCB.TRANSACTION_FEE_SENDE, "test", TitleOutVCB.PASSWORD_TITLE);
+	TransferOutSideVCB_Info info8 = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, TitleOutVCB.MONEY_CURRENCY, TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.TITLE_OTP);
+	TransferOutSideVCB_Info info9 = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, TitleOutVCB.MONEY_CURRENCY, TitleOutVCB.TRANSACTION_FEE_RECIEVED, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
+	TransferOutSideVCB_Info info10 = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, TitleOutVCB.MONEY_CURRENCY, TitleOutVCB.TRANSACTION_FEE_RECIEVED, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.TITLE_OTP);
+	TransferOutSideVCB_Info info11 = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, TitleOutVCB.MONEY_CURRENCY, TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -68,7 +67,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	@Test
 	public void TC_13_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraNgoaiTe_EUR_XacThucBangMatKhau() {
 		log.info("TC_13_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "TitleOutVCB.TITLE_TRANSFER_OUTSIDE");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
 
 		log.info("TC_13_2_Chon tai khoan nguon");
@@ -96,7 +95,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info6.money, TitleOutVCB.MONEY);
 
 		log.info("TC_13_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_13_8_Nhap noi dung chuyen tien");
@@ -134,11 +133,10 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info6.authenticationMethod);
 
 		log.info("TC_13_11_01_Kiem tra so tien phi");
-		String fee= transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
+		String fee = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), currentcy);
 
-		
 		log.info("TC_13_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -266,9 +264,9 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	@Test
 	public void TC_15_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraNgoaiTe_EUR_XacThucBangMatKhau() {
 		log.info("TC_15_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "TitleOutVCB.TITLE_TRANSFER_OUTSIDE");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
-		
+
 		log.info("TC_15_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -294,7 +292,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info7.money, TitleOutVCB.MONEY);
 
 		log.info("TC_15_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.RECEIVER_PAYER);
 
 		log.info("TC_15_8_Nhap noi dung chuyen tien");
@@ -462,9 +460,9 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	@Test
 	public void TC_17_ChuyenTienLienNganHang_USD_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
 		log.info("TC_17_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "TitleOutVCB.TITLE_TRANSFER_OUTSIDE");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
-		
+
 		log.info("TC_17_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -490,7 +488,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info8.money, TitleOutVCB.MONEY);
 
 		log.info("TC_17_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_17_8_Nhap noi dung chuyen tien");
@@ -524,15 +522,15 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.CONTENT), info8.note);
 
 		log.info("TC_17_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, TitleOutVCB.CHOOSE_METHOD);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.PASSWORD_TITLE);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info8.authenticationMethod);
 
 		log.info("TC_17_11_01_Kiem tra so tien phi");
-		String fee= transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
+		String fee = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), currentcy);
-		
+
 		log.info("TC_17_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -657,7 +655,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	@Test
 	public void TC_19_ChuyenTienLienNganHangCoPhiGiaoDichNguoiNhanTraNgoaiTe_USD_XacThucBangMatKhau() {
 		log.info("TC_19_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "TitleOutVCB.TITLE_TRANSFER_OUTSIDE");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
 
 		log.info("TC_19_2_Chon tai khoan nguon");
@@ -685,7 +683,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info9.money, TitleOutVCB.MONEY);
 
 		log.info("TC_19_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.RECEIVER_PAYER);
 
 		log.info("TC_19_8_Nhap noi dung chuyen tien");
@@ -852,9 +850,9 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	@Test
 	public void TC_21_ChuyenTienLienNganHang_USD_CoPhiGiaoDichNguoiNhanTraXacThucBangOTP() {
 		log.info("TC_21_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "TitleOutVCB.TITLE_TRANSFER_OUTSIDE");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
-		
+
 		log.info("TC_21_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -880,7 +878,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info10.money, TitleOutVCB.MONEY);
 
 		log.info("TC_21_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.RECEIVER_PAYER);
 
 		log.info("TC_21_8_Nhap noi dung chuyen tien");
@@ -914,7 +912,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.CONTENT), info10.note);
 
 		log.info("TC_21_11_Chon phuong thuc xac thuc");
-		transferMoneyOutSide.scrollDownToText(driver, "Chọn phương thức xác thực");
+		transferMoneyOutSide.scrollDownToText(driver, TitleOutVCB.CHOOSE_METHOD);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.PASSWORD_TITLE);
 		transferFee = 0;
 		transferFeeCurrentcy = 0;
@@ -1049,9 +1047,9 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	@Test
 	public void TC_23_ChuyenTienLienNganHangCoPhiGiaoDichNguoiChuyenTraNgoaiTe_USD_XacThucBangMatKhau() {
 		log.info("TC_23_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "TitleOutVCB.TITLE_TRANSFER_OUTSIDE");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 		clickPopupAfter15h30();
-		
+
 		log.info("TC_23_2_Chon tai khoan nguon");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -1077,7 +1075,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info11.money, TitleOutVCB.MONEY);
 
 		log.info("TC_23_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_23_8_Nhap noi dung chuyen tien");
@@ -1115,10 +1113,10 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info11.authenticationMethod);
 
 		log.info("TC_23_11_01_Kiem tra so tien phi");
-		String fee= transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
+		String fee = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSACTION_FEE);
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(fee);
 		transferFeeCurrentcy = convertVNeseMoneyToEUROOrUSD(String.valueOf(transferFee), currentcy);
-		
+
 		log.info("TC_23_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -1250,7 +1248,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	}
 
 	public void clickPopupAfter15h30() {
-		if (transferMoneyOutSide.getPageSource(driver).contains("15h30")) {
+		if (transferMoneyOutSide.getPageSource(driver).contains(TitleOutVCB.NEXT)) {
 			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 		}
 	}
