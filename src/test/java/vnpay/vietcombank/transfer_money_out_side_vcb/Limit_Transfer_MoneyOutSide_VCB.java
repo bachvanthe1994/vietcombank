@@ -31,7 +31,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	double transferFeeCurrentcy = 0;
 	String password, currentcy = "";
 
-	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(Account_Data.Valid_Account.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50000", TitleOutVCB.TRANSACTION_FEE_SENDE, "test", "SMS OTP");
+	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info(Account_Data.Valid_Account.ACCOUNT2, "01825909301", "Do Minh Duc", "NHTMCP Tien Phong", "50000", TitleOutVCB.TRANSACTION_FEE_SENT, "test", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -78,7 +78,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, Constants.LOWER_MIN_TRANSFER, TitleOutVCB.MONEY);
 
 		log.info("TC_01_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_01_7_Nhap noi dung chuyen tien");
@@ -155,7 +155,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, Constants.MIN_TRANSFER, TitleOutVCB.TRANSACTION_INFOMATION, "1");
 
 		log.info("TC_03_11_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_03_12_Nhap noi dung chuyen tien");
@@ -196,7 +196,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, Constants.HIGHER_MAX_TRANSFER, TitleOutVCB.MONEY);
 
 		log.info("TC_04_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_04_7_Nhap noi dung chuyen tien");
@@ -238,7 +238,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		transferMoneyOutSide.inputToDynamicInputBox(driver, Constants.HIGHER_MAX_TRANSFER, TitleOutVCB.MONEY);
 
 		log.info("TC_05_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENDE);
+		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
 
 		log.info("TC_05_8_Nhap noi dung chuyen tien");

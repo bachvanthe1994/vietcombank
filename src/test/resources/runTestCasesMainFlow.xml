@@ -23,11 +23,11 @@
 		<parameter name="pass" value="aaaa1111#" />
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
-		<classes>
-		
-
-			<!-- Đặt mục tiêu tiết kiệm -->
-			<class name="vnpay.vietcombank.saving_target.Saving_Target_Flow" />
+		<classes><!-- Tra cứu -->
+			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
+			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
+				<!-- Quản lý danh bạ -->
+			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
@@ -40,9 +40,9 @@
 
 
 			<!-- Chuyển tiền trong vcb -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
 
 
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
@@ -73,6 +73,8 @@
 
 			<!-- Quà tặng may mắn -->
 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift_SmartOTP" />
+
 
 			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />

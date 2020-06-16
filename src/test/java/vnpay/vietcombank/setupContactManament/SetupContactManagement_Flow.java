@@ -52,7 +52,7 @@ public class SetupContactManagement_Flow extends Base {
 		home = PageFactoryManager.getHomePageObject(driver);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		setupContact = PageFactoryManager.getSetupContactPageObject(driver);
-		nameDistance = getDataInCell(3);
+		nameDistance = getDataInCell(22);
 		number_card1 = Contact.CONTACT_CARD_NUMBER_01 + randomNumber();
 		number_card2 = Contact.CONTACT_CARD_NUMBER_02 + randomNumber();
 		name_card1 = Contact.CONTACT_NAME_01 + randomNumber();
@@ -211,7 +211,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_03_Step_07: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), nameDistance);
+		verifyTrue(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey").contains(nameDistance));
 
 		log.info("TC_03_Step_07: Xac nhan tạo thong tin nguoi huong thanh cong");
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), number_card2);
@@ -336,7 +336,7 @@ public class SetupContactManagement_Flow extends Base {
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 		log.info("TC_06_Step_07: Xac nhan tạo thong tin nguoi huong thanh cong");
-		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey"), nameDistance);
+		verifyTrue(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey").contains(nameDistance));
 
 		log.info("TC_06_Step_07: Xac nhan tạo thong tin nguoi huong thanh cong");
 		verifyEquals(setupContact.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvKey1"), number_card2);
@@ -430,13 +430,11 @@ public class SetupContactManagement_Flow extends Base {
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyEquals(setupContact.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent"), Contact.E_WALLET_CHARGE);
 
-
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyTrue(setupContact.isDynamicMessageAndLabelTextDisplayed(driver, Contact.CHARGE_TO_AIRPAY));
 
 		log.info("TC_09_Step_03: Xac nhan lai thong tin");
 		verifyTrue(setupContact.isDynamicTextInInputBoxDisPlayed(driver, nameDistance));
-
 
 		log.info("TC_09_Step_04: An nut 'Cap nhat thong tin'");
 		setupContact.clickToDynamicAcceptButton(driver, "com.VCB:id/btEdit");
