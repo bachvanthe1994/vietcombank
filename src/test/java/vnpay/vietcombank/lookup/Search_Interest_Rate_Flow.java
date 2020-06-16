@@ -42,7 +42,7 @@ public class Search_Interest_Rate_Flow extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		search = PageFactoryManager.getSearchPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		
+
 		home = PageFactoryManager.getHomePageObject(driver);
 		if (home.getPageSource(driver).contains(HomePageMessage.HOME_MESSAGE_TEXT)) {
 			home.clickToDynamicTextContains(driver, HomePageMessage.HOME_MESSAGE_TEXT);
@@ -56,12 +56,11 @@ public class Search_Interest_Rate_Flow extends Base {
 		search.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step: Click tra cuu");
+		search.scrollIDownOneTime(driver);
 		search.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LOOK_UP);
 
-		log.info("TC_01_Step: Scroll xuong phan doi mat khau");
-		search.scrollIDownOneTime(driver);
-
 		log.info("TC_01_Step: Click tra cuu lai suat");
+		home.scrollIDownOneTime(driver);
 		search.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.INTEREST_RATE);
 
 		log.info("TC_01_Step: Click button refresh de update time moi nhat");
