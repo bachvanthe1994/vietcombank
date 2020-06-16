@@ -44,6 +44,7 @@ public class TransferMoneyCharity_Data {
 	public static final String CONTINUE_BUTTON = "Tiếp tục";
 	public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
+	public static final String DESTINATION_NAME = "Tên người thụ hưởng";
 	public static final String ACCURACY_METHOD = "Chọn phương thức xác thực";
 	public static final String RECIEVED_NAME = "Tên người thụ hưởng";
 	public static final String RECIEVED_ACCOUNT = "Tài khoản thụ hưởng";
