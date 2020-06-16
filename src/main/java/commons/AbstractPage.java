@@ -1062,9 +1062,9 @@ public class AbstractPage {
 	}
 	public void clickToDynamicImageNon(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_NON, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_NON, dynamicText);
+			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
 		}
 		
 	}

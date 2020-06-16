@@ -116,8 +116,9 @@ public class Location_QRCode_Flow extends Base {
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.LOVE);
 		
 		log.info("TC_03_Step: Chon dia chi tim kiem bat ky");
-//		QRCode.clickToDynamicImageNon(driver, "");
 		QRCode.clickToDynamicBack(driver, "0", "2");
+		QRCode.clickToDynamicImageNon(driver, "6");
+
 
 		log.info("TC_03_Step: get thong tin da chon");
 		shopName = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "0");
