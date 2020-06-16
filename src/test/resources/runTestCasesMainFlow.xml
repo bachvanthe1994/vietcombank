@@ -24,11 +24,9 @@
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-
-			<!-- Thanh toán cước điện thoại cố định -->
-			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_3_Smart_OTP" />
-			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_1" />
-			<class name="vnpay.vietcombank.landLinePhoneCharge.Flow_LandLinePhoneCharge_Part_2" />
+			<!-- Quà tặng may mắn -->
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift_SmartOTP" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
@@ -74,6 +72,8 @@
 
 			<!-- Quà tặng may mắn -->
 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift_SmartOTP" />
+
 
 			<!-- Quản lý danh bạ -->
 			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
