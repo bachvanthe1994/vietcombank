@@ -24,18 +24,19 @@
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-	
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow03" />
+
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" /> -->
 
 			<!-- Thanh toán QR code -->
-			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1"/>
+			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1" />
 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_2" />
 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_3" />
 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_4_SmartOTP" />
-		
+
 
 
 			<!-- Chuyển tiền trong vcb -->
@@ -83,7 +84,8 @@
 
 
 			<!-- Thanh toan tien nuoc -->
-			<!-- <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
+			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" />
+			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow2_Smart_OTP" />
 
 			<!-- Thong bao -->
 			<class name="vnpay.vietcombank.notifyManagement.Notify_Management_Flow" />
