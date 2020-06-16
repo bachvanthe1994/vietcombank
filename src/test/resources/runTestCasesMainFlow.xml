@@ -23,11 +23,11 @@
 		<parameter name="pass" value="aaaa1111#" />
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
-		<classes><!-- Tra cứu -->
-			<class name="vnpay.vietcombank.lookup.Search_Exchange_Rate_Flow" />
-			<class name="vnpay.vietcombank.lookup.Search_Interest_Rate_Flow" />
-				<!-- Quản lý danh bạ -->
-			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+		<classes>
+		
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /><!-- Tra cứu -->
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow03" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
@@ -40,9 +40,9 @@
 
 
 			<!-- Chuyển tiền trong vcb -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
-<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
 
 
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
@@ -52,8 +52,8 @@
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
 			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent_SmartOTP" />
 
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 
 
 			<!-- chuyển tiền ngoài vcb -->
@@ -145,6 +145,7 @@
 			<!-- Thanh toán vé máy bay -->
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow01" />
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow02" />
+			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow03" />
 
 			<!-- Thanh toán vé tàu -->
 			<class name="vnpay.vietcombank.sdk_train_ticket.Flow_TrainTicket_part2" />
