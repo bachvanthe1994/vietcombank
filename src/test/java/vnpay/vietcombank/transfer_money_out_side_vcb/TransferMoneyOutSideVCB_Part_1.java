@@ -926,9 +926,23 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		log.info("TC_09_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSECTION_NUMBER);
+		
+		if (transferMoneyOutSide.getPageSource(driver).contains(TitleOutVCB.SAVE_RECEIVED_ACCOUNT_TEXT)) {
+			log.info("TC_09_14_01_Click button chia se");
+			transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.SAVE_RECEIVED_ACCOUNT_TEXT);
+			
+			log.info("TC_09_14_02_Click button Hoan thanh");
+			transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btSave");
 
-		log.info("TC_09_14_Click Thuc hien giao dich moi");
-		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+			log.info("TC_09_14_03_Click Dong");
+			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.CLOSE);
+			
+		}
+		else {
+			log.info("TC_09_14_Click Thuc hien giao dich moi");
+			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+		}
+		
 		clickPopupAfter15h30();
 
 		log.info("TC_09_14_Kiem tra so du kha dung luc sau");
@@ -1033,16 +1047,10 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.SURPLUS));
 
 		log.info("TC_11_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, destinationAccount, TitleOutVCB.ACCOUT_TO);
-
-		log.info("TC_11_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.name, TitleOutVCB.BENEFICIARY_NAME);
-
-		log.info("TC_11_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.destinationBank, ReportTitle.SEARCH_BUTTON);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info5.destinationBank);
-
+		log.info("TC_11_3_1_Nhan tai khoan nhan");
+		transferMoneyOutSide.clickToDynamicIconByText(driver, TitleOutVCB	.ACCOUT_TO);
+		transferMoneyOutSide.clickToDynamicTextContains(driver, TitleOutVCB.NAME_RECIEVED);
+		
 		log.info("TC_11_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info5.money, TitleOutVCB.MONEY);
 

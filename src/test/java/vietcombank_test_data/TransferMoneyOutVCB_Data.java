@@ -33,6 +33,8 @@ public class TransferMoneyOutVCB_Data {
 		public static final String MONEY_CURRENCY = "10";
 		public static final String MONEY_VND = "50000";
 		public static final String TRANSACTION_CONTENT = "test";
+		public static final String SAVE_RECEIVED_ACCOUNT_TEXT = "Lưu thụ hưởng";
+		public static final String CLOSE = "Đóng";
 		
 	}
 	public static class MESSEGE_ERROR {
