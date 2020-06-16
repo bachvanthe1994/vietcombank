@@ -25,9 +25,8 @@ import pageObjects.WaterBillPageObject;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
-import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.Water_Bills_Data;
-import vietcombank_test_data.Water_Bills_Data.TITTLE;
+import vietcombank_test_data.Water_Bills_Data.Tittle_Text;
 
 public class Water_Bills_Flow2_Smart_OTP extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -37,7 +36,7 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 	private TransactionReportPageObject transactionReport;
 	private SettingVCBSmartOTPPageObject smartOTP;
 
-	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID, otpSmart, newOtp;
+	private String sourceAccountMoney, customerID, moneyBill, transactionDate, transactionID, otpSmart, newOtp,waterDaNang;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private long transferFee;
 	List<String> listCusstomerID = new ArrayList<String>();
@@ -59,6 +58,8 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 		newOtp = "111222";
 		listCusstomerID = Arrays.asList(getDataInCell(35).split(";"));
+		waterDaNang = getDataInCell(37);
+
 
 	}
 
@@ -77,45 +78,45 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 
 		sourceAccount = waterBill.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
-		sourceAccountMoney = waterBill.getDynamicTextByLabel(driver, TITTLE.AVAILIBLE_BALANCES);
+		sourceAccountMoney = waterBill.getDynamicTextByLabel(driver, Tittle_Text.AVAILIBLE_BALANCES);
 
 		log.info("TC_01_Step_03: Chon nha cung cap");
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, waterDaNang);
 
 		log.info("TC_01_Step_04: Nhap ma khach hang va an tiep tuc");
 		customerID = waterBill.inputCustomerId(listCusstomerID);
 
 		log.info("TC_01_Step_05: Hien thi man hinh xac nhan thong tin");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), TITTLE.CONFIRM_INFO);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Tittle_Text.CONFIRM_INFO);
 
 		log.info("TC_01_Step_06: Hien thi tai khoan nguon");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.SOURCE_ACCOUNT), sourceAccount.account);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.SOURCE_ACCOUNT), sourceAccount.account);
 
 		log.info("TC_01_Step_07: Hien thi ten dich vu");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.SERVICE), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.SERVICE), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_01_Step_08: Hien thi Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.SUPPLIER), Water_Bills_Data.DATA.WATER_DANANG);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.SUPPLIER), waterDaNang);
 
 		log.info("TC_01_Step_09: Hien thi ma khach hang");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.CODE_CUSTOMER), customerID);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.CODE_CUSTOMER), customerID);
 
 		log.info("TC_01_Step_10: Hien thi So tien thanh toan");
-		moneyBill = waterBill.getDynamicTextByLabel(driver, TITTLE.PAYMENT_AMOUNT);
+		moneyBill = waterBill.getDynamicTextByLabel(driver, Tittle_Text.PAYMENT_AMOUNT);
 
 		log.info("TC_01_Step_11: Chon phuong thuc xac thuc");
-		waterBill.scrollDownToText(driver, TITTLE.CHOICE_METHOD_VERIFY);
+		waterBill.scrollDownToText(driver, Tittle_Text.CHOICE_METHOD_VERIFY);
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/llptxt");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, TITTLE.SMART_OTP);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Tittle_Text.SMART_OTP);
 
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, TITTLE.FEE_AMOUNT));
+		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(waterBill.getDynamicTextInTransactionDetail(driver, Tittle_Text.FEE_AMOUNT));
 
 		log.info("TC_01_Step_12: Kiem tra so tien phi");
-		verifyEquals(waterBill.getDynamicTextInTransactionDetail(driver, TittleData.FEE_AMOUNT), addCommasToLong(transferFee + "") + " VND");
+		verifyEquals(waterBill.getDynamicTextInTransactionDetail(driver, Tittle_Text.FEE_AMOUNT), addCommasToLong(transferFee + "") + " VND");
 
 		log.info("TC_01_Step_13: An nut Tiep Tuc");
-		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), TITTLE.CONTINUE_BUTTON);
+		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), Tittle_Text.CONTINUE_BUTTON);
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_11: Nhap ki tu vao o nhap Smart OTP");
@@ -128,7 +129,7 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_16: Hien thi man hinh giao dich thanh cong");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TITTLE.TRANSACTION_SUCCESS);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Tittle_Text.TRANSACTION_SUCCESS);
 
 		log.info("TC_01_Step_17: Xac nhan hien thi dung so tien thanh toan");
 		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvAmount"), moneyBill);
@@ -138,23 +139,23 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		verifyTrue(waterBill.isTextDisplayedInListTextElements(driver, getForWardDay(0), "com.VCB:id/tvTime"));
 
 		log.info("TC_01_Step_19: Hien thi dung ten dich vu");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.SERVICE), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.SERVICE), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_01_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.SUPPLIER), Water_Bills_Data.DATA.WATER_DANANG);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.SUPPLIER), waterDaNang);
 
 		log.info("TC_01_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.CODE_CUSTOMER), customerID);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.CODE_CUSTOMER), customerID);
 
 		log.info("TC_01_Step_22: Hien thi ma giao dich");
-		transactionID = waterBill.getDynamicTextByLabel(driver, TITTLE.CODE_TRANSACTION);
+		transactionID = waterBill.getDynamicTextByLabel(driver, Tittle_Text.CODE_TRANSACTION);
 
 		log.info("TC_01_Step_23: An tiep button 'Thuc hien giao dich moi'");
-		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), TITTLE.PERFORM_NEW_TRANSFER);
+		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btContinue"), Tittle_Text.PERFORM_NEW_TRANSFER);
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Step_24: Hien thi man hinh Hoa don tien dien");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_07_Step_25: Chon tai khoan nguon");
 		waterBill.clickToTextID(driver, "com.VCB:id/number_account");
@@ -162,21 +163,21 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 
 		log.info("TC_01_Step_26: Xac nhan so du TK nguon da bi tru thanh cong");
 		sourceAccountMoney = (convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccountMoney) - convertAvailableBalanceCurrentcyOrFeeToLong(moneyBill) - transferFee) + "";
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, TITTLE.AVAILIBLE_BALANCES), addCommasToLong(sourceAccountMoney) + " VND");
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, Tittle_Text.AVAILIBLE_BALANCES), addCommasToLong(sourceAccountMoney) + " VND");
 
 		log.info("TC_07_Step_27: Chon nha cung cap");
 		waterBill.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DANANG);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, waterDaNang);
 
 		log.info("TC_01_Step_28: Nhap ma khach hang");
 		waterBill.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/llCode");
 
 		log.info("TC_01_Step_29: An nut Tiep Tuc");
-		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btn_submit"), TITTLE.CONTINUE_BUTTON);
+		verifyEquals(waterBill.getDynamicTextButtonById(driver, "com.VCB:id/btn_submit"), Tittle_Text.CONTINUE_BUTTON);
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_30: Hien thi thong bao Ma khach hang khong con no truoc");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Water_Bills_Data.DATA.BILL_MESSAGE);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Water_Bills_Data.Data.BILL_MESSAGE);
 
 		log.info("TC_01_Step_31: Click nut Dong tat pop-up");
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -229,10 +230,10 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD_SOURCE), sourceAccount.account);
 
 		log.info("TC_02_Step_13: Hien thi dung ten dich vu");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SERVICE), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SERVICE), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_02_Step_14: Hien thi dung Nha cung cap");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER), Water_Bills_Data.DATA.WATER_DANANG);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SUPPLIER), waterDaNang);
 
 		log.info("TC_02_Step_15: Hien thi dung Ma khach hang");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.CUSTOMER_CODE_TEXT), customerID);
