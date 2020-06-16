@@ -2,8 +2,6 @@ package vietcombank_test_data;
 
 public class ChangePassword_Data {
 	public class Password {
-		public static final String PHONE = "0335059863";
-		public static final String VALID_PASSWORD = "aaa7dba3";
 		public static final String PASS_NEW = "aaaa1111";
 	}
 

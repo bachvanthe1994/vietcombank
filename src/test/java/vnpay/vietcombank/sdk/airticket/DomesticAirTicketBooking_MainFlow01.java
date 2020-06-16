@@ -490,11 +490,11 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_05_Step_05: Chon diem khoi hanh");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.HAN_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SGN_PLACE);
 
 		log.info("TC_05_Step_06: Chon diem den");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.ARRIVAL_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.BKK_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SIN_PLACE);
 
 		log.info("TC_05_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_DATE_TEXT);
@@ -697,11 +697,11 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_07_Step_05: Chon diem khoi hanh");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.HAN_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SGN_PLACE);
 
 		log.info("TC_07_Step_06: Chon diem den");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.ARRIVAL_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.BKK_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SIN_PLACE);
 
 		log.info("TC_07_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_DATE_TEXT);
@@ -917,6 +917,11 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_09_Step_08: Tim chuyen bay");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_SEARCH_FLIGHT_TEXT);
+		sourceDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail");
+		source = airTicket.getDynamicTextByID("com.VCB:id/tv_source");
+		destDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail");
+		dest = airTicket.getDynamicTextByID("com.VCB:id/tv_Dest");
+		time = airTicket.getDynamicTextByID("com.VCB:id/tv_thu");
 
 		log.info("TC_09_Step_09: Chon chuyen bay va dat ve");
 		airTicket.clickToDynamicFlight(0, Air_Text.SUGGEST_FLIGHT_CODE_BL);
@@ -950,6 +955,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_09_Step_18: Kiem tra man hinh xac nhan chuyen bay hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle1"), Air_Text.FLIGHT_CONFIRM_TEXT);
 
+		log.info("TC_09_Step 18_1: Kiem tra dia diem khoi hanh");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem1"), sourceDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem2"), source);
+
+		log.info("TC_09_Step 18_2: Kiem tra dia diem den");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem3"), destDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem4"), dest);
+
 		log.info("TC_09_Step_19: Kiem tra tong so tien hien thi dung");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_MONEY_TEXT, "com.VCB:id/tvText2"), ticketPrice);
 
@@ -979,9 +992,23 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = airTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
-		log.info("TC_09_Step_28: An tiep tuc");
+		log.info("TC_09_Step_27_01: Xac nhan ma thanh toan ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvContent"), payID);
+
+		log.info("TC_09_Step_27_02: Xac nhan chieu di ");
+		verifyEquals(airTicket.getDynamicConfirmInfoByIndex("4", Air_Text.FLIGHT_WAY_TEXT), sourceDetail + " → " + destDetail);
+
+		log.info("TC_09_Step_27_03: Xac nhan so tien thanh toan");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_PAY_TEXT, "com.VCB:id/tvContent"), ticketPrice);
+
+		log.info("TC_09_Step_28_01: An tiep tuc");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
 
+		log.info("TC_09_Step_28_02: Xac nhan giao dich");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.FROM_ACCOUNT_TEXT, "com.VCB:id/tvTu_tai_khoan"), sourceAccount.account);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvBooking_number"), payID);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.MONEY_AMOUNT_TEXT, "com.VCB:id/tvAmount"), ticketPrice);
+		
 		log.info("TC_09_Step_29: Chon phuong thuc xac thuc SMS OTP");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SMS_OTP_TEXT);
@@ -1086,6 +1113,11 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_11_Step_08: Tim chuyen bay");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_SEARCH_FLIGHT_TEXT);
+		sourceDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail");
+		source = airTicket.getDynamicTextByID("com.VCB:id/tv_source");
+		destDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail");
+		dest = airTicket.getDynamicTextByID("com.VCB:id/tv_Dest");
+		time = airTicket.getDynamicTextByID("com.VCB:id/tv_thu");
 
 		log.info("TC_11_Step_09: Chon chuyen bay va dat ve");
 		airTicket.clickToDynamicFlight(0, Air_Text.SUGGEST_FLIGHT_CODE_BL);
@@ -1119,6 +1151,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_11_Step_18: Kiem tra man hinh xac nhan chuyen bay hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle1"), Air_Text.FLIGHT_CONFIRM_TEXT);
 
+		log.info("TC_11_Step 18_1: Kiem tra dia diem khoi hanh");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem1"), sourceDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem2"), source);
+
+		log.info("TC_1_Step 18_2: Kiem tra dia diem den");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem3"), destDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem4"), dest);
+		
 		log.info("TC_11_Step_19: Kiem tra tong so tien hien thi dung");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_MONEY_TEXT, "com.VCB:id/tvText2"), ticketPrice);
 
@@ -1148,8 +1188,22 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = airTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
-		log.info("TC_11_Step_28: An tiep tuc");
+		log.info("TC_11_Step_27_01: Xac nhan ma thanh toan ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvContent"), payID);
+
+		log.info("TC_11_Step_27_02: Xac nhan chieu di ");
+		verifyEquals(airTicket.getDynamicConfirmInfoByIndex("4", Air_Text.FLIGHT_WAY_TEXT), sourceDetail + " → " + destDetail);
+
+		log.info("TC_11_Step_27_03: Xac nhan so tien thanh toan");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_PAY_TEXT, "com.VCB:id/tvContent"), ticketPrice);
+
+		log.info("TC_11_Step_28_01: An tiep tuc");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
+		
+		log.info("TC_11_Step_28_02: Xac nhan giao dich");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.FROM_ACCOUNT_TEXT, "com.VCB:id/tvTu_tai_khoan"), sourceAccount.account);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvBooking_number"), payID);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.MONEY_AMOUNT_TEXT, "com.VCB:id/tvAmount"), ticketPrice);
 
 		log.info("TC_11_Step_29: Chon phuong thuc xac thuc MK");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
@@ -1242,11 +1296,11 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_05: Chon diem khoi hanh");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.HAN_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SGN_PLACE);
 
 		log.info("TC_13_Step_06: Chon diem den");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.ARRIVAL_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.BKK_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SIN_PLACE);
 
 		log.info("TC_13_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_DATE_TEXT);
@@ -1255,9 +1309,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_13_Step_08: Tim chuyen bay");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_SEARCH_FLIGHT_TEXT);
+		sourceDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail");
+		source = airTicket.getDynamicTextByID("com.VCB:id/tv_source");
+		destDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail");
+		dest = airTicket.getDynamicTextByID("com.VCB:id/tv_Dest");
+		time = airTicket.getDynamicTextByID("com.VCB:id/tv_thu");
 
 		log.info("TC_13_Step_09: Chon chuyen bay va dat ve");
-		airTicket.clickToDynamicFlight(0, Air_Text.SUGGEST_FLIGHT_CODE_TG);
+		airTicket.clickToDynamicFlight(0, Air_Text.SUGGEST_FLIGHT_CODE_BL);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -1285,6 +1344,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_13_Step 17: Kiem tra man hinh xac nhan chuyen bay hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle1"), Air_Text.FLIGHT_CONFIRM_TEXT);
 
+		log.info("TC_13_Step 17_1: Kiem tra dia diem khoi hanh");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem1"), sourceDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem2"), source);
+
+		log.info("TC_13_Step 17_2: Kiem tra dia diem den");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem3"), destDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem4"), dest);
+
 		log.info("TC_13_Step 18: Kiem tra tong so tien hien thi dung");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_MONEY_TEXT, "com.VCB:id/tvText2"), ticketPrice);
 
@@ -1309,14 +1376,28 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_13_Step_26: An tiep tuc");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
 
-		log.info("TC_13_Step_27: Chọn tai khoan nguon");
+		log.info("TC_13_Step_27_01: Chọn tai khoan nguon");
 		airTicket.scrollUpToTextView(Air_Text.SURPLUS_TEXT);
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = airTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
-		log.info("TC_13_Step_28: An tiep tuc");
+		log.info("TC_13_Step_27_02: Xac nhan ma thanh toan ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvContent"),payID);
+
+		log.info("TC_13_Step_27_03: Xac nhan chieu di ");
+		verifyEquals(airTicket.getDynamicConfirmInfoByIndex("4", Air_Text.FLIGHT_WAY_TEXT), sourceDetail + " → " + destDetail);
+
+		log.info("TC_13_Step_27_04: Xac nhan tong tien ve may bay");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_PAY_TEXT, "com.VCB:id/tvContent"), ticketPrice);
+	
+		log.info("TC_13_Step_28_01: An tiep tuc");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
 
+		log.info("TC_13_Step_28_02: Xac nhan giao dich");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.FROM_ACCOUNT_TEXT, "com.VCB:id/tvTu_tai_khoan"), sourceAccount.account);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvBooking_number"), payID);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.MONEY_AMOUNT_TEXT, "com.VCB:id/tvAmount"), ticketPrice);
+		
 		log.info("TC_13_Step_29: Chon phuong thuc xac thuc SMS OTP");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SMS_OTP_TEXT);
@@ -1408,20 +1489,27 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 
 		log.info("TC_15_Step_05: Chon diem khoi hanh");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.HAN_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SGN_PLACE);
 
 		log.info("TC_15_Step_06: Chon diem den");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.ARRIVAL_PLACE_TEXT);
-		airTicket.clickToDynamicTextOrButtonLink(Air_Text.BKK_PLACE);
+		airTicket.clickToDynamicTextOrButtonLink(Air_Text.SIN_PLACE);
 
 		log.info("TC_15_Step_07: Chon ngay di");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.DEPARTURE_DATE_TEXT);
 		airTicket.clickToDynamicDay(airTicket.getCurentMonthAndYearPlusDays(3), fifthDay);
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONFIRM_TEXT);
 
-		log.info("TC_15_Step_08: Tim chuyen bay va dat ve");
+		log.info("TC_15_Step_08: Tim chuyen bay");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_SEARCH_FLIGHT_TEXT);
-		airTicket.clickToDynamicIcon("com.VCB:id/iv_imgflight");
+		sourceDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_sourceDetail");
+		source = airTicket.getDynamicTextByID("com.VCB:id/tv_source");
+		destDetail = airTicket.getDynamicTextByID("com.VCB:id/tv_DestDetail");
+		dest = airTicket.getDynamicTextByID("com.VCB:id/tv_Dest");
+		time = airTicket.getDynamicTextByID("com.VCB:id/tv_thu");
+
+		log.info("TC_15_Step_09: Chon chuyen bay va dat ve");
+		airTicket.clickToDynamicFlight(0, Air_Text.SUGGEST_FLIGHT_CODE_BL);
 		ticketPrice = airTicket.getDynamicTextByID("com.VCB:id/tv_amount_flight_selected");
 		airTicket.clickToDynamicTextByID("com.VCB:id/btn_book");
 
@@ -1449,6 +1537,14 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_15_Step 17: Kiem tra man hinh xac nhan chuyen bay hien thi");
 		verifyEquals(airTicket.getDynamicTextByID("com.VCB:id/tvTitle1"), Air_Text.FLIGHT_CONFIRM_TEXT);
 
+		log.info("TC_15_Step 17_1: Kiem tra dia diem khoi hanh");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem1"), sourceDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem2"), source);
+
+		log.info("TC_15_Step 17_2: Kiem tra dia diem den");
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem3"), destDetail);
+		verifyEquals(airTicket.getDynamicDepartureArrivalData("com.VCB:id/DiaDiem", "com.VCB:id/tvTextttdiadiem4"), dest);
+		
 		log.info("TC_15_Step 18: Kiem tra tong so tien hien thi dung");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_MONEY_TEXT, "com.VCB:id/tvText2"), ticketPrice);
 
@@ -1473,22 +1569,36 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		log.info("TC_15_Step_26: An tiep tuc");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
 
-		log.info("TC_15_Step_27: Chọn tai khoan nguon");
+		log.info("TC_15_Step_27_01: Chọn tai khoan nguon");
 		airTicket.scrollUpToTextView(Air_Text.SURPLUS_TEXT);
 		airTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = airTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
-		log.info("TC_15_Step_28: An tiep tuc");
-		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
+		log.info("TC_15_Step_27_02: Xac nhan ma thanh toan ");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvContent"),payID);
 
-		log.info("TC_15_Step_29: Chon phuong thuc xac thuc Mat khau");
+		log.info("TC_15_Step_27_03: Xac nhan chieu di ");
+		verifyEquals(airTicket.getDynamicConfirmInfoByIndex("4", Air_Text.FLIGHT_WAY_TEXT), sourceDetail + " → " + destDetail);
+
+		log.info("TC_15_Step_27_04: Xac nhan tong tien ve may bay");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_PAY_TEXT, "com.VCB:id/tvContent"), ticketPrice);
+		
+		log.info("TC_15_Step_28_01: An tiep tuc");
+		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
+		
+		log.info("TC_15_Step_28_02: Xac nhan giao dich");
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.FROM_ACCOUNT_TEXT, "com.VCB:id/tvTu_tai_khoan"), sourceAccount.account);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvBooking_number"), payID);
+		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.MONEY_AMOUNT_TEXT, "com.VCB:id/tvAmount"), ticketPrice);
+		
+		log.info("TC_15_Step_29: Chon phuong thuc xac thuc MK");
 		airTicket.clickToDynamicTextByID("com.VCB:id/tvptxt");
 		airTicket.clickToDynamicTextOrButtonLink(Air_Text.PASSWORD_TEXT);
 		fee = airTicket.getAirTicketPriceInfo1Way(Air_Text.FEE_VALUE_TEXT, "com.VCB:id/tvPhiGiaoDich");
 
-		log.info("TC_15_Step_30: Click Tiep Tuc");
+		log.info("TC_15_Step_28: An tiep tuc");
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);
-
+		
 		log.info("TC_15_Step_31: Nhap Mat khau roi click Tiep tuc");
 		airTicket.inputToDynamicPopupPasswordInput(driver, password, Air_Text.BUTTON_CONTINUE_TEXT);
 		airTicket.clickToDynamicButton(Air_Text.BUTTON_CONTINUE_TEXT);

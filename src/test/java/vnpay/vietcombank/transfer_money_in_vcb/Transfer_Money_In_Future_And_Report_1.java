@@ -55,7 +55,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		name_receiver = getDataInCell(3);
 		account_other_owner = getDataInCell(0);
 		name_other_owner = getDataInCell(1);

@@ -2,6 +2,7 @@ package vnpay.vietcombank.transfer_money_charity;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -35,19 +36,21 @@ public class TransferMoneyCharity extends Base {
 	double transferFeeCurrentcy = 0;
 	String password, currentcy = "";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String account = "";
+	String account, organization = "";
 
-	TransferCharity info = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info1 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info2 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-	TransferCharity info3 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
-	TransferCharity info4 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info5 = new TransferCharity("", TransferMoneyCharity_Data.ORGANIZATION, "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	TransferCharity info = new TransferCharity("", "", "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info1 = new TransferCharity("", "", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info2 = new TransferCharity("", "", "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	TransferCharity info3 = new TransferCharity("", "", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
+	TransferCharity info4 = new TransferCharity("", "", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info5 = new TransferCharity("", "", "10", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
+		organization = getDataInCell(31);
+		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -81,7 +84,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		log.info("TC_01_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info.money, TransferMoneyCharity_Data.MONEY_CHARITY);
@@ -104,7 +107,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_01_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_01_9_2_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -143,7 +146,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_01_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_01_12_3_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -223,7 +226,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info.money) + " VND"));
 
 		log.info("TC_02_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_02_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -259,7 +262,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_03_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info1.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		currentcy = getCurrentcyMoney(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_03_4_Nhap so tien ung ho");
@@ -282,7 +285,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_03_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info1.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_03_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -322,7 +325,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_03_12_1_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info1.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_02_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -404,7 +407,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_04_20: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info1.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_04_21: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -440,7 +443,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_05_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info2.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		log.info("TC_05_4_Nhap so tien ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info2.money, TransferMoneyCharity_Data.MONEY_CHARITY);
@@ -462,7 +465,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_05_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info2.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_05_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -577,7 +580,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(info2.money) + " VND"));
 
 		log.info("TC_06_17: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info2.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_06_18: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -614,7 +617,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_07_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info3.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		currentcy = getCurrentcyMoney(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_07_4_Nhap so tien ung ho");
@@ -637,7 +640,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_07_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info3.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_07_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -679,7 +682,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_07_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info3.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_07_12_3_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -759,7 +762,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_08_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info3.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_08_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -796,7 +799,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_09_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info4.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		currentcy = getCurrentcyMoney(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_09_4_Nhap so tien ung ho");
@@ -819,7 +822,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_09_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info4.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_09_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -860,7 +863,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_09_12_1_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info4.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_09_12_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -939,7 +942,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info4.money, currentcy)));
 
 		log.info("TC_10_18: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info4.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_10_19: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");
@@ -976,7 +979,7 @@ public class TransferMoneyCharity extends Base {
 
 		log.info("TC_11_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info5.organization);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		currentcy = getCurrentcyMoney(transferMoneyCharity.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTiGia"));
 		log.info("TC_11_4_Nhap so tien ung ho");
@@ -999,7 +1002,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_11_9_2_Kiem tra to chuc");
-		verifyEquals(transferMoneyCharity.getDynamicTextInLine2DestinationAccount(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT), info5.organization.toUpperCase());
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_11_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
@@ -1041,7 +1044,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.SUCCESS_TRANSFER_MONEY));
 
 		log.info("TC_11_12_2_Kiem tra ten nguoi thu huong");
-		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), info5.organization);
+		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_NAME), organization);
 
 		log.info("TC_11_12_3_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.RECIEVED_ACCOUNT), destinationAccount);
@@ -1123,7 +1126,7 @@ public class TransferMoneyCharity extends Base {
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.CHANGE_MONEY).contains(convertEURO_USDToVNeseMoney(info1.money, currentcy)));
 
 		log.info("TC_12_19: Kiem tra ten quy, to chuc tu thien");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), info5.organization);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY_NAME), organization);
 
 		log.info("TC_12_20: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_FEE), addCommasToLong(fee + "") + " VND");

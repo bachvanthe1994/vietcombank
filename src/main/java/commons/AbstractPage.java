@@ -5,6 +5,13 @@ import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.text.DateFormatSymbols;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
@@ -886,14 +893,14 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-//		sleep(driver, 4000);
-//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-//		}
-//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-//		}
+		sleep(driver, 4000);
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
@@ -1052,6 +1059,14 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_DATE_IN_DATE_TIME_PICKER_AND_TEXT, dynamicText);
 		}
 
+	}
+	public void clickToDynamicImageNon(AppiumDriver<MobileElement> driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
+		}
+		
 	}
 
 // Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
@@ -2922,7 +2937,7 @@ public class AbstractPage {
 	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<String> listAccount) {
 		String distanAccount = "";
 		for (String account : listAccount) {
-			if (!account.equals(sourceAccount) && account != "0019961180") {
+			if (!account.equals(sourceAccount) && !account.contains("0019961180")) {
 				distanAccount = account;
 				break;
 			}
@@ -2930,5 +2945,29 @@ public class AbstractPage {
 		return distanAccount;
 
 	}
+	
+	public void downloadUsingStream(String urlStr, String file) throws IOException{
+        URL url = new URL(urlStr);
+        BufferedInputStream bis = new BufferedInputStream(url.openStream());
+        File file1 = new File(file);
+        FileOutputStream fis = new FileOutputStream(file1);
+        byte[] buffer = new byte[1024];
+        int count=0;
+        while((count = bis.read(buffer,0,1024)) != -1)
+        {
+            fis.write(buffer, 0, count);
+        }
+        fis.close();
+        bis.close();
+    }
+
+	public void downloadUsingNIO(String urlStr, String file) throws IOException {
+        URL url = new URL(urlStr);
+        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        fos.close();
+        rbc.close();
+    }
 
 }
