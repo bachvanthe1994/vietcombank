@@ -43,6 +43,7 @@ public class TransactionReport_Data {
 		public static final String NOT_LINE_VIETTEL = "Cố định không dây Viettel";
 		public static final String DETAIL_TRANSFER = "Chi tiết giao dịch";
 		public static final String CONTENT_TRANSFER = "Nội dung giao dịch";
+		public static final String TRANSACTION_INFO = "Thông tin giao dịch";
 		public static final String TYPE_TRANSFER = "Loại giao dịch";
 		public static final String AMOUNT_TRANSFER = "Số tiền giao dịch";
 		public static final String PHONE_NUMBER = "Số điện thoại";
@@ -69,6 +70,9 @@ public class TransactionReport_Data {
 		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
 		
 		public static final String MOBILE_TOPUP_TITLE = "Nạp tiền điện thoại";
+		public static final String NUMBER_CARD_VND = "Số thẻ chuyển đến/ VND";
+		public static final String TRANSFER_24_7_CARD = "Chuyển tiền nhanh 24/7 qua thẻ";
+		public static final String TRANSFER_24_7_ACCOUNT = "Chuyển tiền nhanh 24/7 qua tài khoản";
 
 
 	}
