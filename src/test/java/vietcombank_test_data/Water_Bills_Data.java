@@ -3,8 +3,6 @@ package vietcombank_test_data;
 import java.util.Arrays;
 import java.util.List;
 
-import vietcombank_test_data.Water_Bills_Data.TITTLE;
-
 public class Water_Bills_Data {
 
 	public static class DATA {
