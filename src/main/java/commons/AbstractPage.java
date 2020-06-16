@@ -886,14 +886,14 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-//		sleep(driver, 4000);
-//		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-//		}
-//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-//		}
+		sleep(driver, 4000);
+		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+		}
+		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
@@ -2930,7 +2930,7 @@ public class AbstractPage {
 	public String getDistanceAccount(AppiumDriver<MobileElement> driver, String sourceAccount, List<String> listAccount) {
 		String distanAccount = "";
 		for (String account : listAccount) {
-			if (!account.equals(sourceAccount) && account != "0019961180") {
+			if (!account.equals(sourceAccount) && !account.contains("0019961180")) {
 				distanAccount = account;
 				break;
 			}
