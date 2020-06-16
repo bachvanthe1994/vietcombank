@@ -26,7 +26,7 @@
 		<classes>
 		
 			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /><!-- Tra cứu -->
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 			<class name="vnpay.vietcombank.sdk.airticket.DomesticAirTicketBooking_MainFlow03" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
