@@ -110,7 +110,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_01_9_2_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
 		String expectMoney = addCommasToLong(info.money) + " VND";
 		log.info("TC_01_9_3_Kiem tra so tien ung ho");
@@ -288,7 +288,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_03_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
 		log.info("TC_03_9_4_Kiem tra so tien ung ho");
 		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.MONEY_CHARITY);
@@ -468,7 +468,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_05_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
 		String expectMoney = addCommasToLong(info2.money) + " VND";
 		log.info("TC_05_9_4_Kiem tra so tien ung ho");
@@ -643,7 +643,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_07_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
 		log.info("TC_07_9_4_Kiem tra so tien ung ho");
 		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.MONEY_CHARITY);
@@ -825,7 +825,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_09_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
 		log.info("TC_09_9_4_Kiem tra so tien ung ho");
 		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.MONEY_CHARITY);
@@ -1005,7 +1005,7 @@ public class TransferMoneyCharity extends Base {
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_NAME), organization);
 
 		log.info("TC_11_9_3_Kiem tra tai khoan dich");
-		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT).split("/")[0].trim();
+		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
 		log.info("TC_11_9_4_Kiem tra so tien ung ho");
 		String actualMoney = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.MONEY_CHARITY);

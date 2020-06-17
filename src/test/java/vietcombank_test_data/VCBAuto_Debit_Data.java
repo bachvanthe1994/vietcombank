@@ -7,7 +7,6 @@ public class VCBAuto_Debit_Data {
 		public static final String ELECTRIC_BILL_TEXT = "Hóa đơn tiền điện";
 		public static final String EVN_HA_NOI = "EVN Hà Nội";
 		public static final String BELONGING_UNIT = "EVN THANH TRI- HA NOI";
-		public static final String CUSTOMER_ID_01 = "PD06000073282";
 		public static final String REGISTER_SUCCESS_TITLE = "ĐĂNG KÝ VCB-AUTO DEBIT THÀNH CÔNG";
 		public static final String REGISTED_MESSAGE = "Mã khách hàng đã đăng ký dịch vụ thanh toán tự động";
 		public static final String CHANGE_SUCCESS_TITLE = "THAY ĐỔI THÔNG TIN THÀNH CÔNG";

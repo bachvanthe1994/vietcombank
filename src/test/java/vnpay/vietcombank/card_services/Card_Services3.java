@@ -129,7 +129,6 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_02_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
-		;
 
 		log.info("TC_02_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -269,7 +268,6 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_04_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
-		;
 
 		log.info("TC_04_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -409,7 +407,6 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_06_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
-		;
 
 		log.info("TC_06_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -549,7 +546,6 @@ public class Card_Services3 extends Base {
 
 		log.info("TC_08_Step_01: An chon the bat ki trong Dropdown");
 		lockCard.clickToDynamicButtonLinkOrLinkText(driver, numberCard);
-		;
 
 		log.info("TC_08_Step_02: An button 'Tiep tục'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_CONTINUE_TEXT);
@@ -609,7 +605,6 @@ public class Card_Services3 extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeApp();
 		service.stop();
 	}
 
