@@ -46,6 +46,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_WISHES = "//android.widget.LinearLayout[@index ='1']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_INDEX = "//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TEXT_INDEX_ID = "//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";
+	public static final String DYNAMIC_TEXT_BY_RECYCLE_VIEW = "//*[@resource-id='%s']/android.widget.LinearLayout/android.widget.TextView[@resource-id='%s' and contains(@text,'%s')]";
 	public static final String DYNAMIC_IMAGE_TEXT = "//android.widget.ImageView//following-sibling::android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_ACCOUNT_OUT_VCB = "//android.widget.TextView[@text ='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//descendant::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
