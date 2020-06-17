@@ -5,7 +5,6 @@ public class VCBAuto_Debit_Data {
 	public class TEXT {
 
 		public static final String ELECTRIC_BILL_TEXT = "Hóa đơn tiền điện";
-		public static final String EVN_HA_NOI = "EVN Hà Nội";
 		public static final String BELONGING_UNIT = "EVN THANH TRI- HA NOI";
 		public static final String REGISTER_SUCCESS_TITLE = "ĐĂNG KÝ VCB-AUTO DEBIT THÀNH CÔNG";
 		public static final String REGISTED_MESSAGE = "Mã khách hàng đã đăng ký dịch vụ thanh toán tự động";
@@ -14,11 +13,8 @@ public class VCBAuto_Debit_Data {
 
 		public static final String WATER_BILL_TEXT = "Hóa đơn tiền nước";
 		public static final String WATER_DA_NANG = "Cấp nước Đà Nẵng";
-		public static final String WATER_CUSTOMER_01 = "001100064";
 
 		public static final String VNPT_BILL_TEXT = "Hóa đơn VNPT Media";
-		public static final String VNPT_KIEN_GIANG = "VNPTMEDIA Kiên Giang";
-		public static final String VNPT_CUSTOMER = "HPG-00-721067";
 		public static final String OWNER_CONTRACT = "Chủ hợp đồng";
 		public static final String CUSTOMER_CODE = "Mã khách hàng";
 		public static final String ACCOUNT_NUMBER = "Số tài khoản";
