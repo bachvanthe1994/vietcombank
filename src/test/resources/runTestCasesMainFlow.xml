@@ -24,7 +24,7 @@
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-<!-- 			<class name="vnpay.vietcombank.card_services.Card_Services" /> -->
+			<class name="vnpay.vietcombank.card_services.Card_Services" />
 			<class name="vnpay.vietcombank.card_services.Card_Services2" />
 			<class name="vnpay.vietcombank.card_services.Card_Services3" />
 
