@@ -361,7 +361,6 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, TitleOutVCB.NEW_TRANSFER));
-		clickPopupAfter15h30();
 
 		log.info("TC_15_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -369,6 +368,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+		clickPopupAfter15h30();
 
 		log.info("TC_15_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -558,7 +558,6 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, TitleOutVCB.NEW_TRANSFER));
-		clickPopupAfter15h30();
 
 		log.info("TC_17_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -566,6 +565,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+		clickPopupAfter15h30();
 
 		log.info("TC_17_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -759,6 +759,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_19_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+		clickPopupAfter15h30();
 
 		log.info("TC_19_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -948,7 +949,6 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, TitleOutVCB.NEW_TRANSFER));
-		clickPopupAfter15h30();
 
 		log.info("TC_21_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -956,6 +956,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+		clickPopupAfter15h30();
 
 		log.info("TC_21_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -1144,7 +1145,6 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_13_5_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(transferMoneyOutSide.isDynamicButtonDisplayed(driver, TitleOutVCB.NEW_TRANSFER));
-		clickPopupAfter15h30();
 
 		log.info("TC_23_13_6_Lay ma giao dich");
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
@@ -1152,6 +1152,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_14_Click Thuc hien giao dich moi");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
+		clickPopupAfter15h30();
 
 		log.info("TC_23_14_Kiem tra so du kha dung luc sau");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
