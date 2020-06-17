@@ -46,6 +46,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_WISHES = "//android.widget.LinearLayout[@index ='1']//android.widget.LinearLayout[@index ='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_INDEX = "//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_TEXT_INDEX_ID = "//android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id='%s']";
+	public static final String DYNAMIC_TEXT_BY_RECYCLE_VIEW = "//*[@resource-id='%s']/android.widget.LinearLayout/android.widget.TextView[@resource-id='%s' and contains(@text,'%s')]";
 	public static final String DYNAMIC_IMAGE_TEXT = "//android.widget.ImageView//following-sibling::android.widget.TextView[@text='%s']";
 	public static final String DYNAMIC_ACCOUNT_OUT_VCB = "//android.widget.TextView[@text ='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout//android.widget.LinearLayout//descendant::android.widget.LinearLayout[@index='%s']//android.widget.TextView[@resource-id=\"%s\"]";
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
@@ -87,6 +88,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_BACK_ICON = "//android.widget.TextView[@text = '%s']//ancestor::android.widget.FrameLayout//android.widget.ImageView";
 	public static final String DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.ImageView";
 	public static final String DYNAMIC_CONTACT_KEY_MENU = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
+	public static final String DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT = "//android.widget.EditText[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_ICON_IN_LIST_VIEW = "//android.widget.ListView[@resource-id='com.VCB:id/nlvHisDetailAcc']/android.widget.LinearLayout[@index='%s']//android.widget.ImageView[@resource-id=\"%s\"]";
 
 	// VIEW
@@ -114,7 +116,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
 
 	// CHECK BOX
-	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id='%s']";
 
 //    Bắt expath với class bị mã hóa chỉ có id
 	public static final String DYNAMIC_ESPECIALLY = "//*[@resource-id=\"%s\"]";

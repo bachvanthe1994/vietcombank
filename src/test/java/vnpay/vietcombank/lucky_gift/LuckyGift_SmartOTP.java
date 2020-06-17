@@ -22,6 +22,7 @@ import pageObjects.LuckyGiftPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.LuckyGift_Data;
 import vietcombank_test_data.LuckyGift_Data.TitleLuckyGift;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
@@ -43,13 +44,12 @@ public class LuckyGift_SmartOTP extends Base {
 	private SettingVCBSmartOTPPageObject smartOTP;
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	String account;
-	String passSmartOTP  = "111222";
+	String passSmartOTP = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-    @BeforeClass
-    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
-	    throws IOException, InterruptedException, GeneralSecurityException {
+	@BeforeClass
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -65,10 +65,11 @@ public class LuckyGift_SmartOTP extends Base {
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
-	
+
 	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangOTP() throws GeneralSecurityException, IOException {
 		log.info("TC_01_Step_1: Chọn quà tặng may mắn");
+		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.TRANS_STATUS);
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
 
 		log.info("TC_01_Step_2: chọn tài khoản nguồn");
@@ -83,7 +84,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_01_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
-		
+
 		log.info("TC_01_Step: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
@@ -120,7 +121,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_01_Step_13: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -299,7 +300,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_03_Step_14: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -486,7 +487,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_05_Step_15: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
