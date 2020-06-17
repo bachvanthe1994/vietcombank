@@ -20,6 +20,8 @@ public class TransferMoneyQuick_Data {
 		public static final String TRANSACTION_INFO = "Thông tin giao dịch";
 		public static final String RATE_REFER = "Tỷ giá quy đổi tham khảo";
 		public static final String UNSATISFACTORY = "không";
+		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
+
 
 	}
 	
