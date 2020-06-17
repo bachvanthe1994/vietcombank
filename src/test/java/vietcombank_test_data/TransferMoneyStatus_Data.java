@@ -1,23 +1,20 @@
 package vietcombank_test_data;
 
 public class TransferMoneyStatus_Data {
-	
-	
-
 
 	public static class Output {
 		public static final String NOTE = "Lưu ý: Tra cứu trạng thái lệnh giao dịch chuyển tiền định kỳ hoặc chuyển tiền ngày tương lai";
 		public static final String WAITING_STATUS = "Chờ xử lý";
 		public static final String CANCEL_STATUS = "Đã hủy";
 	}
-	
+
 	public static class Input {
-		
-		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền ngày tương lai" };
+
+		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền tương lai trong VCB" };
 	}
-	
+
 	public static class Text {
-		
+
 		public static final String START_DATE_TEXT = "Ngày bắt đầu";
 		public static final String END_DATE_TEXT = "Ngày kết thúc";
 		public static final String FREQUENCY_TEXT = "Tần suất";
@@ -66,7 +63,7 @@ public class TransferMoneyStatus_Data {
 		public static final String CONTENT_TRANSACTION = "Nội dung giao dịch";
 		public static final String TYPE_TRANSACTION = "Loại giao dịch";
 		public static final String STATUS_TRANSACTION = "Trạng thái lệnh chuyển tiền";
-		public static final String AMOUNT_CHANGE= "Số tiền quy đổi";
+		public static final String AMOUNT_CHANGE = "Số tiền quy đổi";
 	}
 
 }
