@@ -24,8 +24,6 @@ import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
-import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
-import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data.Tittle_Quick;
 import vietcombank_test_data.TransferMoneyQuick_Data.TransferQuick;
