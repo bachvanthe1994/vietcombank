@@ -927,6 +927,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 		transferTime = transferMoneyOutSide.getTransferTimeSuccess(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY);
 		transactionNumber = transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.TRANSECTION_NUMBER);
 		
+		transferMoneyOutSide.scrollIDownOneTime(driver);
 		if (transferMoneyOutSide.getPageSource(driver).contains(TitleOutVCB.SAVE_RECEIVED_ACCOUNT_TEXT)) {
 			log.info("TC_09_14_01_Click button chia se");
 			transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.SAVE_RECEIVED_ACCOUNT_TEXT);
@@ -1048,7 +1049,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 
 		log.info("TC_11_3_Nhap tai khoan thu huong");
 		log.info("TC_11_3_1_Nhan tai khoan nhan");
-		transferMoneyOutSide.clickToDynamicIconByText(driver, TitleOutVCB	.ACCOUT_TO);
+		transferMoneyOutSide.clickToDynamicIconByEdit(driver, TitleOutVCB.ACCOUT_TO);
 		transferMoneyOutSide.clickToDynamicTextContains(driver, TitleOutVCB.NAME_RECIEVED);
 		
 		log.info("TC_11_6_Nhap so tien");
@@ -1218,6 +1219,7 @@ public class TransferMoneyOutSideVCB_Part_1 extends Base {
 	}
 
 	public void clickPopupAfter15h30() {
+		transferMoneyOutSide.sleep(driver, 5000);
 		if (transferMoneyOutSide.getPageSource(driver).contains(TitleOutVCB.NEXT)) {
 			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 		}
