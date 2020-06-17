@@ -305,7 +305,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_15_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info7.sourceAccount);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_15_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
@@ -404,7 +404,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_16_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info7.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_16_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
@@ -430,7 +430,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_16_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info7.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_16_17: Kiem tra so tai khoan ghi co");
 
@@ -501,7 +501,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_17_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info8.sourceAccount);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_17_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
@@ -601,7 +601,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_18_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info8.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_18_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
@@ -627,7 +627,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_18_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info8.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_18_16: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.AMOUNT_TRANSFER).contains(addCommasToDouble(info8.money) + " USD"));
@@ -696,7 +696,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_19_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_19_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info9.sourceAccount);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_19_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
@@ -820,7 +820,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_20_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info9.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_20_16: Kiem tra so tai khoan ghi co");
 
@@ -891,7 +891,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_21_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info10.sourceAccount);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_21_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
@@ -991,7 +991,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_22_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info10.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_22_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
@@ -1017,7 +1017,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_22_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info10.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_22_16: Kiem tra so tai khoan ghi co");
 
@@ -1088,7 +1088,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_10_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_23_10_1_Kiem tra tai khoan nguon");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), info11.sourceAccount);
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_23_10_2_Kiem tra tai khoan dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), destinationAccount);
@@ -1187,7 +1187,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_24_7: Chon tai Khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, info11.sourceAccount);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		log.info("TC_24_8: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
@@ -1213,7 +1213,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_24_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info11.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_24_16: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.DESTINATION_ACCOUNT_CARD), destinationAccount);
