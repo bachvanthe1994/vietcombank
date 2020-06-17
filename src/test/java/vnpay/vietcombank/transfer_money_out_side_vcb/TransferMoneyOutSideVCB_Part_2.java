@@ -233,7 +233,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_14_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), account);
 
 		log.info("TC_14_16: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.DESTINATION_ACCOUNT_CARD), destinationAccount);
@@ -430,7 +430,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_16_16: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), info7.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info7.sourceAccount);
 
 		log.info("TC_16_17: Kiem tra so tai khoan ghi co");
 
@@ -627,7 +627,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_18_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), info8.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info8.sourceAccount);
 
 		log.info("TC_18_16: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.AMOUNT_TRANSFER).contains(addCommasToDouble(info8.money) + " USD"));
@@ -820,7 +820,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_20_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), info9.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info9.sourceAccount);
 
 		log.info("TC_20_16: Kiem tra so tai khoan ghi co");
 
@@ -1017,7 +1017,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_22_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), info10.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info10.sourceAccount);
 
 		log.info("TC_22_16: Kiem tra so tai khoan ghi co");
 
@@ -1213,7 +1213,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
 		log.info("TC_24_15: Kiem tra so tai khoan trich no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), info11.sourceAccount);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_TRANSFER), info11.sourceAccount);
 
 		log.info("TC_24_16: Kiem tra so tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.DESTINATION_ACCOUNT_CARD), destinationAccount);
