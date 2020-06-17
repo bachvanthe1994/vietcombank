@@ -54,6 +54,7 @@ public class Search_Exchange_Rate_Flow extends Base {
 		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_01_Step_02: Mo sub-menu Tra cuu");
+		home.scrollIDownOneTime(driver);
 		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LOOK_UP);
 
 		log.info("TC_01_Step_03: An vao phan Ty gia");

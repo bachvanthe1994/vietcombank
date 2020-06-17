@@ -2,6 +2,7 @@ package vnpay.vietcombank.payQRCode;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.security.GeneralSecurityException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -30,13 +31,15 @@ public class Flow_PayQRCode_Part_3 extends Base {
 	private String transferTime;
 	private String transactionNumber;
 	long transferFee = 0;
-	String password, device, id, urlServer, phoneNumber, otpNumber = "";
+	String password, device, id, urlServer, phoneNumber, otpNumber, urlString = "";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "platformVersion"})
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String otp, String platformVersion) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String otp, String platformVersion) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
+		urlString = getDataInCell(36);
+		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -58,7 +61,7 @@ public class Flow_PayQRCode_Part_3 extends Base {
 		payQRCode = PageFactoryManager.getQRCodePageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		
-		payQRCode.navigateToURL(driver, PayQRCode_Data.LINK_CREATE_ORDER);
+		payQRCode.navigateToURL(driver, urlString);
 		payQRCode.clickToDynamicSpinner(PayQRCode_Data.NO_SELECT);
 		payQRCode.clickToDynamicCheckedTextView(PayQRCode_Data.VNPAYQR);
 		payQRCode.clickToDynamicSpinner(PayQRCode_Data.VIETNAMESE);
@@ -180,7 +183,7 @@ public class Flow_PayQRCode_Part_3 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").contains(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_02_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
 
 		log.info("TC_02_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");

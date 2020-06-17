@@ -5,6 +5,13 @@ import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.text.DateFormatSymbols;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
@@ -1055,9 +1062,9 @@ public class AbstractPage {
 	}
 	public void clickToDynamicImageNon(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_NON, dynamicText);
+		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
 		if (status == true) {
-			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_NON, dynamicText);
+			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
 		}
 		
 	}
@@ -2938,5 +2945,29 @@ public class AbstractPage {
 		return distanAccount;
 
 	}
+	
+	public void downloadUsingStream(String urlStr, String file) throws IOException{
+        URL url = new URL(urlStr);
+        BufferedInputStream bis = new BufferedInputStream(url.openStream());
+        File file1 = new File(file);
+        FileOutputStream fis = new FileOutputStream(file1);
+        byte[] buffer = new byte[1024];
+        int count=0;
+        while((count = bis.read(buffer,0,1024)) != -1)
+        {
+            fis.write(buffer, 0, count);
+        }
+        fis.close();
+        bis.close();
+    }
+
+	public void downloadUsingNIO(String urlStr, String file) throws IOException {
+        URL url = new URL(urlStr);
+        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        fos.close();
+        rbc.close();
+    }
 
 }

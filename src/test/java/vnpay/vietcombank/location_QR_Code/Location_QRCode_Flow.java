@@ -109,14 +109,17 @@ public class Location_QRCode_Flow extends Base {
 		verifyEquals(QRCode.getDynamicTextScrollText(driver, Location_QRCode_Data.LOVE, "0", "0"), Location_QRCode_Data.LOCATOR_SEARCH);
 	}
 
+	@Test
 	public void TC_03_HuyYeuThich() {
 		
 		log.info("TC_03_Step: Chon muc yeu thich");
 		QRCode.clickToDynamicButtonLinkOrLinkText(driver, Location_QRCode_Data.LOVE);
 		
 		log.info("TC_03_Step: Chon dia chi tim kiem bat ky");
-		QRCode.clickToDynamicImageNon(driver, "");
-		
+		QRCode.clickToDynamicBack(driver, "0", "2");
+		QRCode.clickToDynamicImageNon(driver, "6");
+
+
 		log.info("TC_03_Step: get thong tin da chon");
 		shopName = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "0");
 		typeShop = QRCode.getDynamicTextPrecedingText(driver, Location_QRCode_Data.UNIT_ACCEPT_PAYMENT, "1");
@@ -132,7 +135,7 @@ public class Location_QRCode_Flow extends Base {
 		int likeNumberExpectDislike = QRCode.getNumberLike();
 		
 		log.info("TC_03_Step: Verify so luong like sau khi da bo like");
-		verifyEquals(likeNumberExpectDislike, likeNumberExpectNow - 1);
+		verifyEquals(likeNumberExpectDislike, likeNumberExpectNow);
 
 	}
 }
