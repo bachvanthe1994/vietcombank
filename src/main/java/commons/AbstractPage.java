@@ -829,6 +829,15 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		}
 	}
+	
+	public void clickToDynamicIconByEdit(AppiumDriver<MobileElement> driver, String dynamicKey) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
+		}
+	}
 
 //Click Icon by linerLayout ID
 	public void clickToDynamicLinerLayoutID(AppiumDriver<MobileElement> driver, String dynamicValue) {
