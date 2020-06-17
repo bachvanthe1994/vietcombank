@@ -60,9 +60,13 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		listWaterBills = Arrays.asList(getDataInCell(23).split(";"));
 		listElectricBills = Arrays.asList(getDataInCell(24).split(";"));
 		listVNPTBills = Arrays.asList(getDataInCell(25).split(";"));
+
 		vnptKienGiang = getDataInCell(39);
 		evnHN = getDataInCell(38);
 		daNangDAWACO = getDataInCell(37);
+
+		vnptKienGiang = getDataInCell(33).trim();
+
 
 	}
 
@@ -224,15 +228,18 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), TEXT.CONFIRM_INFO);
 
 		log.info("TC_03_Step_13: Hien thi thong tin xac nhan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), TEXT.CUSTOMER_PLEASE_INFO);
 
 		log.info("TC_03_Step_14: Hien thi tai khoan nguon");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SOURCE_ACCOUNT), changeAccount.account);
 
+
 		log.info("TC_03_Step_15: Hien thi loai dich vu");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.TYPE_SERVICE), VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
 
 		log.info("TC_03_Step_16: Hien thi nha cung cap");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SUPPLIER), evnHN);
 
 		log.info("TC_03_Step_17: Hien thi ma khach hang");
@@ -270,7 +277,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SERVICE), VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
 
 		log.info("TC_03_Step_28: Hien thi nha cung cap");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SUPPLIER), evnHN);
+
 
 		log.info("TC_03_Step_29: Hien thi ma khach hang");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.CUSTOMER_CODE), customerID);
@@ -298,7 +307,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ADDRESS), address);
 
 		log.info("TC_03_Step_36: Xac nhan hien thi dung so tai khoan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), changeAccount.account);
+
 
 		log.info("TC_03_Step_37: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -320,9 +331,10 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_05_Step_05: Nhap Ma Khach Hang");
 		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/thongTinMaKhachHang");
+
 		vcbAutoDebit.clickToDynamicTextContains(driver, customerID);
 		
-		
+
 		log.info("TC_05_Step_06: Xac nhan hien thi dung chu hop dong");
 		vcbAutoDebit.scrollDownToButton(driver, TEXT.CONTINUE);
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.OWNER_CONTRACT), hostContact);
@@ -331,7 +343,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ADDRESS), address);
 
 		log.info("TC_05_Step_08: Xac nhan hien thi dung so tai khoan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), changeAccount.account);
+
 
 		log.info("TC_05_Step_09: Click checkbox");
 		vcbAutoDebit.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
@@ -352,7 +366,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SERVICE), VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT);
 
 		log.info("TC_05_Step_15: Hien thi nha cung cap");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SUPPLIER), evnHN);
+
 
 		log.info("TC_05_Step_16: Hien thi ma khach hang");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.CUSTOMER_CODE), customerID);
@@ -375,6 +391,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_05_Step_22: Chon nha cung cap 'EVN mien Trung'");
 		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
+
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, evnHN);
 
 		log.info("TC_05_Step_24: Dong dropdown va back ve man hinh chinh");
@@ -384,6 +401,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 	@Parameters({ "otp" })
 	@Test
+
 	public void TC_07_DangKyDichVu_HoaDonTienNuoc_XacThucOTP(String otp) {
 
 		log.info("TC_07_Step_02: Chon huy dang ky");
@@ -394,9 +412,11 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, VCBAuto_Debit_Data.TEXT.WATER_BILL_TEXT);
 
 		log.info("TC_07_Step_04: Chon nha cung cap 'Nuoc Da Nang'");
+
 		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
 		vcbAutoDebit.inputIntoEditTextByID(driver, daNangDAWACO, "com.VCB:id/edtSearch");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, daNangDAWACO);
+
 
 		log.info("TC_07_Step_05: Nhap Ma Khach Hang");
 		customerID = vcbAutoDebit.inputCustomerId(listWaterBills);
@@ -504,6 +524,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.inputIntoEditTextByID(driver, daNangDAWACO, "com.VCB:id/edtSearch");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, daNangDAWACO);
 
+
 		log.info("TC_07_Step_31: Nhap Ma Khach Hang");
 		vcbAutoDebit.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/layoutMaHoaDon");
 
@@ -554,7 +575,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_09_Step_09: Chon thay doi tai khoan");
 		vcbAutoDebit.scrollDownToButton(driver, TEXT.CONTINUE);
 		vcbAutoDebit.clickToDynamicDropdownByHeader(driver, TEXT.CHANGE_ACCOUNT, "2");
+
 		changeAccount = vcbAutoDebit.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
 		log.info("TC_09_Step_10: Click checkbox");
 		vcbAutoDebit.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
 
@@ -568,12 +591,15 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), TEXT.CUSTOMER_PLEASE_CHANGE);
 
 		log.info("TC_09_Step_14: Hien thi tai khoan nguon");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SOURCE_ACCOUNT), changeAccount.account);
+
 
 		log.info("TC_09_Step_15: Hien thi loai dich vu");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.TYPE_SERVICE), VCBAuto_Debit_Data.TEXT.WATER_BILL_TEXT);
 
 		log.info("TC_09_Step_16: Hien thi nha cung cap");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SUPPLIER), daNangDAWACO);
 
 		log.info("TC_09_Step_17: Hien thi ma khach hang");
@@ -611,7 +637,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SERVICE), VCBAuto_Debit_Data.TEXT.WATER_BILL_TEXT);
 
 		log.info("TC_09_Step_28: Hien thi nha cung cap");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SUPPLIER), daNangDAWACO);
+
 
 		log.info("TC_09_Step_29: Hien thi ma khach hang");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.CUSTOMER_CODE), customerID);
@@ -640,7 +668,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ADDRESS), address);
 
 		log.info("TC_09_Step_36: Xac nhan hien thi dung so tai khoan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), changeAccount.account);
+
 
 		log.info("TC_09_Step_37: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -673,7 +703,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ADDRESS), address);
 
 		log.info("TC_11_Step_08: Xac nhan hien thi dung so tai khoan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), changeAccount.account);
+
 
 		log.info("TC_11_Step_09: Click checkbox");
 		vcbAutoDebit.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
@@ -694,6 +726,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SERVICE), VCBAuto_Debit_Data.TEXT.WATER_BILL_TEXT);
 
 		log.info("TC_11_Step_15: Hien thi nha cung cap");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SUPPLIER), daNangDAWACO);
 
 		log.info("TC_11_Step_16: Hien thi ma khach hang");
@@ -717,7 +750,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_11_Step_22: Chon nha cung cap 'EVN mien Trung'");
 		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
+
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, daNangDAWACO);
+
 
 		log.info("TC_11_Step_24: Dong dropdown va back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
@@ -729,10 +764,12 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	public void TC_13_DangKyDichVu_HoaDonVNPT_XacThucOTP(String otp) {
 
 
+
 		log.info("TC_13_Step_01: Chon Dang ki dich vu");
 		home.clickToDynamicButtonLinkOrLinkText(driver, TEXT.REGISTER_SERVICE);
 
 		log.info("TC_13_Step_02: Chon tai khoan nguon");
+
 		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvContent");
 		sourceAccount = vcbAutoDebit.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
@@ -745,7 +782,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, vnptKienGiang);
 
 		log.info("TC_13_Step_05: Nhap Ma Khach Hang");
+
 		customerID = vcbAutoDebit.inputCustomerId(listVNPTBills);
+
 
 		log.info("TC_13_Step_08: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), TEXT.CONFIRM_INFO);
@@ -879,7 +918,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleHead"), TEXT.CUSTOMER_PLEASE_CHANGE);
 
 		log.info("TC_15_Step_14: Hien thi tai khoan nguon");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.SOURCE_ACCOUNT), changeAccount.account);
+
 
 		log.info("TC_15_Step_15: Hien thi loai dich vu");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.TYPE_SERVICE), VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT);
@@ -892,6 +933,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 
 		log.info("TC_15_Step_18: Hien thi Chu hop dong");
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.OWNER_CONTRACT), hostContact);
+
 
 		log.info("TC_15_Step_20: Chon phương thuc xac thuc");
 		vcbAutoDebit.clickToTextID(driver, "com.VCB:id/tvptxt");
@@ -947,7 +989,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ADDRESS), address);
 
 		log.info("TC_15_Step_36: Xac nhan hien thi dung so tai khoan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), changeAccount.account);
+
 
 		log.info("TC_15_Step_37: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -977,7 +1021,9 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.OWNER_CONTRACT), hostContact);
 
 		log.info("TC_17_Step_08: Xac nhan hien thi dung so tai khoan");
+
 		verifyEquals(vcbAutoDebit.getDynamicTextByLabel(driver, TEXT.ACCOUNT_NUMBER), changeAccount.account);
+
 
 		log.info("TC_17_Step_09: Click checkbox");
 		vcbAutoDebit.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
@@ -1022,6 +1068,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_17_Step_22: Chon nha cung cap 'VNPT kien giang'");
 		vcbAutoDebit.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/layoutNhaCungCap");
 		vcbAutoDebit.clickToDynamicButtonLinkOrLinkText(driver, vnptKienGiang);
+
 
 		log.info("TC_17_Step_24: Dong dropdown va back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);

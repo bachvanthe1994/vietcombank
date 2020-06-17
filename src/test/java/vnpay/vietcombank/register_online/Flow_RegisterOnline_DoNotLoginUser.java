@@ -34,7 +34,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		sourceAccount01 = getDataInCell(0).trim();
 		accountName01 = getDataInCell(1).trim();
 		sourceAccount02 = getDataInCell(7).trim();
-		accountName02 = getDataInCell(3).trim();
+		accountName02 = getDataInCell(22).trim();
 		
 		registerOnline.clickToTextID(driver, "com.VCB:id/tvSkip");
 	}
@@ -75,7 +75,7 @@ public class Flow_RegisterOnline_DoNotLoginUser extends Base {
 		log.info("TC_01_Step: Click OK");
 		registerOnline.clickToDynamicButton(driver, Register_Text.BUTTON_OK_TEXT);
 
-		log.info("TC_1_Step: Click noi cap");
+		log.info("TC_01_Step: Click noi cap");
 		registerOnline.clickToTextID(driver, "com.VCB:id/edtIssuePlace");
 		registerOnline.inputIntoEditTextByID(driver, Register_Online_data.Register_Onl_Data.LOCATION[0], "com.VCB:id/edtSearch");
 		registerOnline.clickToDynamicButtonLinkOrLinkText(driver, Register_Online_data.Register_Onl_Data.LOCATION[0]);

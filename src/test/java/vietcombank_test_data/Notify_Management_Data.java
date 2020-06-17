@@ -9,5 +9,10 @@ public class Notify_Management_Data {
 		public static final String ACCOUNT_04 = "0541001555240";
 		public static final String ACCOUNT_05 = "0121000667333";
 	}
+	
+	public static class Notify_Text {
+		
+		public static final String LOG_OUT_TEXT = "Thoát ứng dụng";
+	}
 
 }

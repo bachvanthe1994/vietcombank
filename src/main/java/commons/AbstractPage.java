@@ -829,6 +829,15 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		}
 	}
+	
+	public void clickToDynamicIconByEdit(AppiumDriver<MobileElement> driver, String dynamicKey) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
+		}
+	}
 
 //Click Icon by linerLayout ID
 	public void clickToDynamicLinerLayoutID(AppiumDriver<MobileElement> driver, String dynamicValue) {
@@ -2520,6 +2529,19 @@ public class AbstractPage {
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_INDEX_ID, dynamicID);
+		}
+		return text;
+
+	}
+	
+	// Lấy text theo index và ID
+	public String getDynamicTextByContentID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_RECYCLE_VIEW, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_RECYCLE_VIEW, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_RECYCLE_VIEW, dynamicID);
 		}
 		return text;
 
