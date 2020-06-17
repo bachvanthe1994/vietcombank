@@ -653,6 +653,7 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 	}
 
 	public void clickPopupAfter15h30() {
+		transferMoneyOutSide.sleep(driver, 5000);
 		if (transferMoneyOutSide.getPageSource(driver).contains(TitleOutVCB.NEXT)) {
 			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 		}
