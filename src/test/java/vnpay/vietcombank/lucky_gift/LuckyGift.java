@@ -225,17 +225,17 @@ public class LuckyGift extends Base {
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
-		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
-
-		log.info("TC_02_Step_18: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
-
-		log.info("TC_02_Step_19: Click quay lai");
-		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
-
-		log.info("TC_02_Step_20: Click vao More Icon");
-		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+//		log.info("TC_02_Step_17: Kiem tra so tien phi");
+//		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+//
+//		log.info("TC_02_Step_18: Click quay lai");
+//		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
+//
+//		log.info("TC_02_Step_19: Click quay lai");
+//		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
+//
+//		log.info("TC_02_Step_20: Click vao More Icon");
+//		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@Parameters({ "pass" })
@@ -256,6 +256,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_03_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
+		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_03_Step_4: nhập số tài khoản");
 		luckyGift.inputToDynamicInputBox(driver, Account_Data.Valid_Account.DEFAULT_ACCOUNT3, TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
