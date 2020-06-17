@@ -110,11 +110,11 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_01_9_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info.destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info.destinationAccount);
 
 		log.info("TC_01_9_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info.name.toUpperCase());
-
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info.name);
+		
 		log.info("TC_01_9_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info.destinationBank);
 
@@ -300,11 +300,11 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_03_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info1.destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info1.destinationAccount);
 
 		log.info("TC_03_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info1.name.toUpperCase());
-
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info1.name);
+		
 		log.info("TC_03_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info1.destinationBank);
 
@@ -489,11 +489,11 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.ACCOUNT_FROM_LABEL), account);
 
 		log.info("TC_05_10_2_Kiem tra tai khoan dich");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info2.destinationAccount + "/");
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info2.destinationAccount);
 
 		log.info("TC_05_10_3_Kiem tra ten nguoi huong");
-		verifyEquals(transferMoneyOutSide.getDynamicTextInLine2DestinationAccount(driver, TitleOutVCB.DESTINATION_ACCOUNT_VND), info2.name.toUpperCase());
-
+		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info2.name);
+		
 		log.info("TC_05_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info2.destinationBank);
 

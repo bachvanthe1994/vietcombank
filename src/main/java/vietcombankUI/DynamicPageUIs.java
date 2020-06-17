@@ -51,7 +51,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_TEXT_BUTTON = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.TextView";
 
 	public static final String DYNAMIC_TEXT_FOLLOWING_VIEWGROUP = "//android.widget.TextView[@text = '%s']//following-sibling::android.view.ViewGroup[@index ='%s']/android.widget.TextView";
-	public static final String DYNAMIC_LINEAR_LAYOUT_BY_RECYCLER = "(//android.support.v7.widget.RecyclerView)|(//androidx.recyclerview.widget.RecyclerView)/android.widget.LinearLayout";
+	public static final String DYNAMIC_LINEAR_LAYOUT_BY_RECYCLER = "(//android.support.v7.widget.RecyclerView)/android.widget.LinearLayout|(//androidx.recyclerview.widget.RecyclerView)/android.widget.LinearLayout";
 	public static final String DYNAMIC_IMAGE_BUTTON_BY_CONTENT = "//android.widget.ImageButton[@content-desc='%s']";
 
 	// LINEAER LAYOUT
@@ -83,7 +83,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_ICON = "//android.widget.TextView[@text='%s']//parent::android.widget.LinearLayout";
 	public static final String DYNAMIC_SUCCESS_ICON = "//android.widget.TextView[@text='%s']//preceding-sibling::android.widget.ImageView";
 	public static final String DYNAMIC_BOTTOM_MENU_CLOSE_ICON = "//android.widget.ImageView[@resource-id='%s']";
-	public static final String VIEW_IMAGE_NON = "//android.widget.ImageView";
+	public static final String VIEW_IMAGE_INDEX = "//android.widget.ImageView[@index ='%s']";
 	public static final String DYNAMIC_BACK_ICON = "//android.widget.TextView[@text = '%s']//ancestor::android.widget.FrameLayout//android.widget.ImageView";
 	public static final String DYNAMIC_IMAGEVIEW_BY_LINEARLAYOUT_ID = "//android.widget.LinearLayout[@resource-id=\"%s\"]//android.widget.ImageView";
 	public static final String DYNAMIC_CONTACT_KEY_MENU = "//android.widget.TextView[@text='%s']/parent::android.widget.LinearLayout//following-sibling::android.widget.ImageView";
@@ -114,7 +114,7 @@ public class DynamicPageUIs {
 	public static final String DYNAMIC_IMAGE_EDIT = "//android.widget.EditText[@text='%s']/following-sibling::android.view.ViewGroup/android.widget.ImageView";
 
 	// CHECK BOX
-	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_CHECK_BOX = "//android.widget.CheckBox[@resource-id='%s']";
 
 //    Bắt expath với class bị mã hóa chỉ có id
 	public static final String DYNAMIC_ESPECIALLY = "//*[@resource-id=\"%s\"]";

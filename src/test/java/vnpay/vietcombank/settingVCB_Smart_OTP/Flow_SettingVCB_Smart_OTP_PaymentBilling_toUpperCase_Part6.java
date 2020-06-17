@@ -241,10 +241,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 		log.info("TC_03_Step_03: Chon nha cung cap");
 		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.Data.WATER_DAWACO);
 
 		log.info("TC_03_Step_04: Nhap ma khach hang va an tiep tuc");
-		customerID = waterBill.inputCustomerIdToUpperCase(Water_Bills_Data.DATA.LIST_CUSTOMER_ID);
+		customerID = waterBill.inputCustomerIdToUpperCase(Water_Bills_Data.Data.LIST_CUSTOMER_ID);
 
 		log.info("TC_03_Step_05: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");
@@ -253,10 +253,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Tài khoản nguồn"), Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_03_Step_07: Hien thi ten dich vu");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_03_Step_08: Hien thi Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.Data.WATER_DAWACO);
 
 		log.info("TC_03_Step_09: Hien thi ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), customerID);
@@ -293,10 +293,10 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		verifyTrue(waterBill.isTextDisplayedInListTextElements(driver, getForWardDay(0), "com.VCB:id/tvTime"));
 
 		log.info("TC_03_Step_19: Hien thi dung ten dich vu");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Dịch vụ"), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_03_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.DATA.WATER_DAWACO);
+		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Nhà cung cấp"), Water_Bills_Data.Data.WATER_DAWACO);
 
 		log.info("TC_03_Step_21: Hien thi dung ma khach hang");
 		verifyEquals(waterBill.getDynamicTextByLabel(driver, "Mã khách hàng"), moneyBill);
@@ -309,7 +309,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 		waterBill.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_03_Step_24: Hien thi man hinh Hoa don tien dien");
-		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Water_Bills_Data.DATA.WATER_BILL_TEXT);
+		verifyEquals(waterBill.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Water_Bills_Data.Data.WATER_BILL_TEXT);
 
 		log.info("TC_03_Step_25: Chon tai khoan nguon");
 		waterBill.clickToTextID(driver, "com.VCB:id/number_account");
@@ -321,7 +321,7 @@ public class Flow_SettingVCB_Smart_OTP_PaymentBilling_toUpperCase_Part6 extends 
 
 		log.info("TC_03_Step_27: Chon nha cung cap");
 		waterBill.clickToTextID(driver, "com.VCB:id/wrap_tv");
-		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.DATA.WATER_DAWACO);
+		waterBill.clickToDynamicButtonLinkOrLinkText(driver, Water_Bills_Data.Data.WATER_DAWACO);
 
 		log.info("TC_03_Step_28: Nhap ma khach hang");
 		waterBill.inputToDynamicEditviewByLinearlayoutId(driver, customerID, "com.VCB:id/llCode");
