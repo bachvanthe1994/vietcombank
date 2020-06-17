@@ -1,12 +1,12 @@
 package vietcombank_test_data;
 
 public class HomePage_Data {
-	
-	
-	public class Home_Text_Elements{
+
+	public class Home_Text_Elements {
 		public static final String CREDIT_CARD_PAYMENT = "Thanh toán thẻ tín dụng";
 		public static final String MOBILE_TOPUP = "Nạp tiền điện thoại";
 		public static final String PAYMENT_WATER_BILL = "Hóa đơn tiền nước";
+		public static final String TRANS_STATUS = "Trạng thái chuyển tiền";
 		public static final String TRANSFER_REPORT = "Báo cáo giao dịch";
 		public static final String SERVICE_STOP = "Ngừng dịch vụ";
 		public static final String SERVICE_REGISTER = "Đăng ký dịch vụ";
@@ -20,7 +20,7 @@ public class HomePage_Data {
 		public static final String EXCHANGE_RATE = "Tỷ giá";
 
 	}
-	
+
 	public class HomePageTexts {
 		public static final String TEXT_BTN_SETTING = "Cài đặt nổi bật";
 		public static final String TITTLE_SETTING = "Chức năng nổi bật";

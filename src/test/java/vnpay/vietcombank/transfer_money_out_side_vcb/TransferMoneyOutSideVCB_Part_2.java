@@ -312,7 +312,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_15_10_3_Kiem tra ten nguoi huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info7.name);
-		
+
 		log.info("TC_15_10_4_Kiem tra ngan hang huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info7.destinationBank);
 
@@ -508,7 +508,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_17_10_3_Kiem tra ten nguoi huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info8.name);
-		
+
 		log.info("TC_17_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info8.destinationBank);
 
@@ -703,7 +703,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_19_10_3_Kiem tra ten nguoi huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info9.name);
-		
+
 		log.info("TC_19_10_4_Kiem tra ngan hang huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info9.destinationBank);
 
@@ -899,7 +899,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_21_10_3_Kiem tra ten nguoi huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info10.name);
-		
+
 		log.info("TC_21_10_4_Kiem tra ngan hang dich");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info10.destinationBank);
 
@@ -1096,7 +1096,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 
 		log.info("TC_23_10_3_Kiem tra ten nguoi huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_ACCOUNT_NAME), info11.name);
-		
+
 		log.info("TC_23_10_4_Kiem tra ngan hang huong");
 		verifyEquals(transferMoneyOutSide.getDynamicTextInTransactionDetail(driver, TitleOutVCB.DESTINATION_BANK), info11.destinationBank);
 
@@ -1251,8 +1251,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	}
 
 	public void clickPopupAfter15h30() {
-		transferMoneyOutSide.sleep(driver, 5000);
-		if (transferMoneyOutSide.getPageSource(driver).contains(TitleOutVCB.NEXT)) {
+		if (transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Hủy")) {
 			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 		}
 	}
