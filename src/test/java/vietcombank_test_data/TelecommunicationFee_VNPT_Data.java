@@ -29,6 +29,8 @@ public class TelecommunicationFee_VNPT_Data {
 		public static final String Smart_OTP   = "VCB - Smart OTP";
 		public static final String VERIFY_INFO    = "Xác nhận thông tin";
 		public static final String METHOD_VERIFY   = "Chọn phương thức xác thực";
+		public static final String SUPPLIER = "Nhà cung cấp";
+		public static final String CUSTOMER_CODE_TEXT = "Mã khách hàng";
 }
 
 }
