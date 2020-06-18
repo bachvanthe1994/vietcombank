@@ -138,7 +138,7 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 		log.info("TC_01_11_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
-		transferMoneyOutSide.inputToDynamicOtp(driver, passSmartOTP, TitleOutVCB.NEXT);
+		transferMoneyOutSide.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -329,7 +329,7 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 		log.info("TC_03_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
-		transferMoneyOutSide.inputToDynamicOtp(driver, passSmartOTP, TitleOutVCB.NEXT);
+		transferMoneyOutSide.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -522,7 +522,7 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 		log.info("TC_05_12_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
-		transferMoneyOutSide.inputToDynamicOtp(driver, passSmartOTP, TitleOutVCB.NEXT);
+		transferMoneyOutSide.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
