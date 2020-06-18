@@ -28,7 +28,6 @@ public class TransferMoneyCharity_Data {
 	public static final String OTP_INVALID_N_TIMES = "Nhập sai OTP quá " + LogIn_Data.Login_Account.OTP_INVALID_TIMES + " lần. Quý khách vui lòng thực hiện giao dịch khác.";
 	public static final String PASSWORD_INVALID_N_TIMES = "";
 	public static final String OTP_EXPIRE = "Mã xác thực đã hết hiệu lực. Quý khách vui lòng khởi tạo mã xác thực mới.";
-	public static final String ORGANIZATION = "Tấm lòng nhân ái - TK 10 số";
 	public static final String SUCCESS_TRANSFER_MONEY = "CHUYỂN KHOẢN THÀNH CÔNG";
 	public static final String CONFIRM_MAX_TRANSECTION_LIMIT_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 320,000 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.”";
 	public static final String CONFIRM_MAX_TRANSECTION_LIMIT_DAY_GROUP = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 350,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
@@ -44,13 +43,11 @@ public class TransferMoneyCharity_Data {
 	public static final String CONTINUE_BUTTON = "Tiếp tục";
 	public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 	public static final String DESTINATION_ACCOUNT = "Tài khoản đích";
-	public static final String DESTINATION_NAME = "Tên người thụ hưởng";
+	public static final String DESTINATION_NAME = "Tên Quỹ/ Tổ chức từ thiện";
 	public static final String ACCURACY_METHOD = "Chọn phương thức xác thực";
 	public static final String RECIEVED_NAME = "Tên người thụ hưởng";
 	public static final String RECIEVED_ACCOUNT = "Tài khoản thụ hưởng";
 	public static final String TRANSACTION_CODE = "Mã giao dịch";
 	public static final String NEW_TRANSACTION_PERFORM = "Thực hiện giao dịch mới";
-	public static final String ORGANIRATION_CHARITY_NAME = "Tên Quỹ/Tổ chức từ thiện";
-	
-	
+
 }
