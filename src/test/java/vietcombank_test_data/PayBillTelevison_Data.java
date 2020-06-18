@@ -21,5 +21,6 @@ public class PayBillTelevison_Data {
     	public static final String NEXT = "Tiếp tục";
     	public static final String CODE_TRANSFER = "Mã giao dịch";
     	public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
+    	public static final String PASSWORD = "Mật khẩu đăng nhập";
     }
 }
