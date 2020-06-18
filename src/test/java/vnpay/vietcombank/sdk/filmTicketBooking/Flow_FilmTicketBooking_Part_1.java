@@ -17,16 +17,18 @@ import model.FilmInfo;
 import model.FilmTicketInfo;
 import model.SeatType;
 import model.SourceAccountModel;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
-import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.Notify_Management_Data.Notify_Text;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
 public class Flow_FilmTicketBooking_Part_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private FilmTicketBookingPageObject filmTicketBooking;
 	private String transferTime, transactionNumber, ticketCode;
 	private long surplus, availableBalance, actualAvailableBalance, fee;
@@ -44,11 +46,15 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		password = pass;
+		
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		
 	}
 
 	@Test
 	public void TC_01_DatVeXemPhim_Rap_MegaGS_BHDCineplex() {
+		
 		log.info("TC_01_01_Click Dat ve xem phim");
 		filmTicketBooking.clickToDynamicTextOrButtonLink(FilmTicketBooking_Data.FILM_TITLE);
 
@@ -291,233 +297,311 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
+	
+	@Test
+	public void TC_03_KiemTra_HienThiThongBao_DaDangNhap() {
+		
+		log.info("TC_03_Step_01: Click vao Inbox");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
+		
+		log.info("TC_03_Step_02: Click vao tab Tat ca");
+		homePage.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_03_Step_03: Lay du lieu hien thi");
+		String inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",ticketCode);
+		
+		log.info("TC_03_Step_04: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(ticketCode));
+		verifyTrue(inboxContent.contains(info.filmName));
+		
+		log.info("TC_03_Step_05: Click vao tab Khac");
+		homePage.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_03_Step_06: Lay du lieu hien thi");
+		inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",ticketCode);
+		
+		log.info("TC_03_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(ticketCode));
+		verifyTrue(inboxContent.contains(info.filmName));
+		
+		log.info("TC_03_Step_08: Mo tab Home");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+	}
 
 	@Test
-	public void TC_03_DatVeXemPhim_Rap_CineStar() {
-		log.info("TC_03_01_Click Dat ve xem phim");
+	public void TC_04_DatVeXemPhim_Rap_CineStar() {
+		
+		log.info("TC_04_01_Click Dat ve xem phim");
 		filmTicketBooking.clickToDynamicTextOrButtonLink(FilmTicketBooking_Data.FILM_TITLE);
 
-		log.info("TC_03_02_Click nut Dong y");
+		log.info("TC_04_02_Click nut Dong y");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.AGREE);
 
-		log.info("TC_03_03_Click chon Tinh thanh");
+		log.info("TC_04_03_Click chon Tinh thanh");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvLocationName");
 
-		log.info("TC_03_04_Tim kiem thanh pho");
+		log.info("TC_04_04_Tim kiem thanh pho");
 		filmTicketBooking.inputIntoEditTextByID(FilmTicketBooking_Data.CITY, "com.VCB:id/edtSearch");
 
-		log.info("TC_03_05_Click chon thanh pho");
+		log.info("TC_04_05_Click chon thanh pho");
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.CITY);
 
-		log.info("TC_03_06_Click chon cum rap Cinestar");
+		log.info("TC_04_06_Click chon cum rap Cinestar");
 		filmTicketBooking.clickToDynamicTextView("Cinestar");
 
-		log.info("TC_03_07_Click chon rap phim");
+		log.info("TC_04_07_Click chon rap phim");
 		List<String> listCinema = filmTicketBooking.getListOfSuggestedMoneyOrListText("com.VCB:id/tvNameCinema");
 		String cinemaName = listCinema.get(0);
 		filmTicketBooking.clickToDynamicTextView(cinemaName);
 
-		log.info("TC_03_08_Click xem chi tiet phim");
+		log.info("TC_04_08_Click xem chi tiet phim");
 		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		info.filmName = filmInfo.filmName;
 		info.filmDuration = filmTicketBooking.canculateDurationOfFilm(filmInfo.filmDuration);
 
-		log.info("TC_03_09_Nhan nut Dat ve");
+		log.info("TC_04_09_Nhan nut Dat ve");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.BOOKING_TICKET);
 
-		log.info("TC_03_10_Nhan chon gio chieu");
+		log.info("TC_04_10_Nhan chon gio chieu");
 		info.time = filmTicketBooking.getDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
 
-		log.info("TC_03_11_Lay mau cua loai ghe Thuong");
+		log.info("TC_04_11_Lay mau cua loai ghe Thuong");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, "Standard");
 
-		log.info("TC_03_12_Click chon cho ngoi loai ghe Thuong");
+		log.info("TC_04_12_Click chon cho ngoi loai ghe Thuong");
 		filmTicketBooking.chooseSeats(1, colorOfSeat);
 
-		log.info("TC_03_13_Lay ten rap va gia ve");
+		log.info("TC_04_13_Lay ten rap va gia ve");
 		info.cinemaName = filmTicketBooking.getTextViewByID("com.VCB:id/tvTitle");
 		info.price = filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince");
 
-		log.info("TC_03_14_Click Thanh toan");
+		log.info("TC_04_14_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
 
-		log.info("TC_03_15_Kiem tra Thong tin Thanh toan ve xem phim");
-		log.info("TC_03_15_01: Kiem tra ten phim");
+		log.info("TC_04_15_Kiem tra Thong tin Thanh toan ve xem phim");
+		log.info("TC_04_15_01: Kiem tra ten phim");
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail(FilmTicketBooking_Data.FILM), info.filmName);
 
-		log.info("TC_03_15_02: Kiem tra suat chieu");
+		log.info("TC_04_15_02: Kiem tra suat chieu");
 		verifyTrue(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail(FilmTicketBooking_Data.TIME_SLOT).contains(info.time));
 
-		log.info("TC_03_15_03: Kiem tra thời lượng");
+		log.info("TC_04_15_03: Kiem tra thời lượng");
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail(FilmTicketBooking_Data.TIME), info.filmDuration);
 
-		log.info("TC_03_15_04: Kiem tra ten rap");
+		log.info("TC_04_15_04: Kiem tra ten rap");
 		info.cinemaAddress = filmTicketBooking.getTextViewByID("com.VCB:id/tvCinemaAddress");
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail(FilmTicketBooking_Data.MOVIE_THEATER), info.cinemaName);
 
-		log.info("TC_03_15_05: Kiem tra so tien");
+		log.info("TC_04_15_05: Kiem tra so tien");
 		verifyEquals(filmTicketBooking.getDynamicTextInFilmTicketInfoDetail(FilmTicketBooking_Data.MONEY), info.price);
 
-		log.info("TC_03_16_Nhap thong tin nguoi nhan ve");
-		log.info("TC_03_16_01_Nhap ten khach hang");
+		log.info("TC_04_16_Nhap thong tin nguoi nhan ve");
+		log.info("TC_04_16_01_Nhap ten khach hang");
 		filmTicketBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
 
-		log.info("TC_03_16_02_Nhap sdt");
+		log.info("TC_04_16_02_Nhap sdt");
 		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
 
-		log.info("TC_03_16_03_Nhap email");
+		log.info("TC_04_16_03_Nhap email");
 		filmTicketBooking.scrollDownToText(FilmTicketBooking_Data.PAY);
 		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.EMAIL_BOOKING, "com.VCB:id/etEmail");
 
-		log.info("TC_03_17_Click Thanh toan");
+		log.info("TC_04_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
 
-		log.info("TC_03_18_Chon tai khoan nguon");
+		log.info("TC_04_18_Chon tai khoan nguon");
 		filmTicketBooking.clickToDynamicDropDown(FilmTicketBooking_Data.ACCOUNT_FROM_LABEL);
 		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail("Số dư khả dụng"));
 
-		log.info("TC_03_19_Kiem tra man hinh Thong tin mua ve");
-		log.info("TC_03_19_01: Kiem tra ten phim");
+		log.info("TC_04_19_Kiem tra man hinh Thong tin mua ve");
+		log.info("TC_04_19_01: Kiem tra ten phim");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FILM), info.filmName);
 
-		log.info("TC_03_19_02: Kiem tra suat chieu");
+		log.info("TC_04_19_02: Kiem tra suat chieu");
 		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.TIME_SLOT).contains(info.time));
 
-		log.info("TC_03_19_03: Kiem tra thời lượng");
+		log.info("TC_04_19_03: Kiem tra thời lượng");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.TIME), info.filmDuration);
 
-		log.info("TC_03_19_04: Kiem tra ten rap");
+		log.info("TC_04_19_04: Kiem tra ten rap");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.MOVIE_THEATER), info.cinemaName);
 
-		log.info("TC_03_19_05: Kiem tra dia chi rap");
+		log.info("TC_04_19_05: Kiem tra dia chi rap");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.ADDRESS), info.cinemaAddress);
 
-		log.info("TC_03_19_06: Kiem tra so tien");
+		log.info("TC_04_19_06: Kiem tra so tien");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.MONEY), info.price);
 
-		log.info("TC_03_19_07: Kiem tra ten khach hang");
+		log.info("TC_04_19_07: Kiem tra ten khach hang");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.NAME_CUSTOMER), "Duc Do");
 
-		log.info("TC_03_19_08: Kiem tra sdt");
+		log.info("TC_04_19_08: Kiem tra sdt");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.PHONE_TAKE_TICKET), FilmTicketBooking_Data.PHONE_BOOKING);
 
-		log.info("TC_03_19_09: Kiem tra email");
+		log.info("TC_04_19_09: Kiem tra email");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.EMAIL_TAKE_TICKET), FilmTicketBooking_Data.EMAIL_BOOKING);
 
-		log.info("TC_03_20: Click Tiep tuc");
+		log.info("TC_04_20: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
-		log.info("TC_03_21: Kiem tra man hinh xac nhan thong tin");
-		log.info("TC_03_21_01: Kiem tra tai khoan nguon");
+		log.info("TC_04_21: Kiem tra man hinh xac nhan thong tin");
+		log.info("TC_04_21_01: Kiem tra tai khoan nguon");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.ACCOUNT_FROM_LABEL), account);
 
-		log.info("TC_03_21_02: Kiem tra so tien");
+		log.info("TC_04_21_02: Kiem tra so tien");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.MONEY), info.price);
 
-		log.info("TC_03_22_Chon phuong thuc xac thuc");
+		log.info("TC_04_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.PASSWORD));
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
 
-		log.info("TC_03_22_01: Kiem tra so tien phi");
+		log.info("TC_04_22_01: Kiem tra so tien phi");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE), addCommasToLong(fee + "") + " VND");
 
-		log.info("TC_03_23: Click Tiep tuc");
+		log.info("TC_04_23: Click Tiep tuc");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
 		filmTicketBooking.inputToDynamicPopupPasswordInput(password, FilmTicketBooking_Data.NEXT);
 
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
 
-		log.info("TC_03_24: Kiem tra man hinh thanh toan thanh cong");
+		log.info("TC_04_24: Kiem tra man hinh thanh toan thanh cong");
 		verifyTrue(filmTicketBooking.isDynamicMessageAndLabelTextDisplayed(FilmTicketBooking_Data.MESSEGE_SUCCESS));
 		transferTime = filmTicketBooking.getTransferTimeSuccess(FilmTicketBooking_Data.MESSEGE_SUCCESS);
 		transactionNumber = filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.CODE_TRANSFER);
 		ticketCode = filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.CODE_TICKET);
 
-		log.info("TC_03_25_Kiem tra nut Thuc hien giao dich moi");
+		log.info("TC_04_25_Kiem tra nut Thuc hien giao dich moi");
 		verifyTrue(filmTicketBooking.isDynamicButtonDisplayed(FilmTicketBooking_Data.NEW_TRANSFER));
 
-		log.info("TC_03_26_Click Thuc hien giao dich moi");
+		log.info("TC_04_26_Click Thuc hien giao dich moi");
 		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEW_TRANSFER);
 
-		log.info("TC_03_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
+		log.info("TC_04_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
 		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyOrFeeToLong(info.price), fee);
 
 	}
 
 	@Test
-	public void TC_04_DatVeXemPhim_Rap_CineStar_BaoCaoGiaoDich() {
-		log.info("TC_04_1: Click  nut Back");
+	public void TC_05_DatVeXemPhim_Rap_CineStar_BaoCaoGiaoDich() {
+		
+		log.info("TC_05_1: Click  nut Back");
 		filmTicketBooking.clickToDynamicBackIcon(FilmTicketBooking_Data.BUY_TICKET_FILM);
 
-		log.info("TC_04_2: Click vao More Icon");
+		log.info("TC_05_2: Click vao More Icon");
 		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/menu_5");
 
-		log.info("TC_04_3: Click Bao Cao giao Dich");
+		log.info("TC_05_3: Click Bao Cao giao Dich");
 		filmTicketBooking.clickToDynamicTextView(ReportTitle.TRANSACTION_REPORT);
 
-		log.info("TC_04_4: Click Tat Ca Cac Loai Giao Dich");
+		log.info("TC_05_4: Click Tat Ca Cac Loai Giao Dich");
 		filmTicketBooking.clickToDynamicTextView(ReportTitle.ALL_TYPE_TRANSACTION);
 
-		log.info("TC_04_5: Chon Chuyen Tien Trong VCB");
+		log.info("TC_05_5: Chon Chuyen Tien Trong VCB");
 		filmTicketBooking.clickToDynamicTextView(ReportTitle.PAY_FILM_TICKET);
 
-		log.info("TC_04_6: Click Chon Tai Khoan");
+		log.info("TC_05_6: Click Chon Tai Khoan");
 		filmTicketBooking.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvSelectAcc");
 
-		log.info("TC_04_7: Lay so du kha dung luc sau");
+		log.info("TC_05_7: Lay so du kha dung luc sau");
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(account));
 
-		log.info("TC_04_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
+		log.info("TC_05_8: Kiem tra so du kha dung sau khi thanh toan thanh cong");
 		verifyEquals(actualAvailableBalance, availableBalance);
 
-		log.info("TC_04_9: Chon tai Khoan chuyen");
+		log.info("TC_05_9: Chon tai Khoan chuyen");
 		filmTicketBooking.clickToDynamicButtonLinkOrLinkText(driver, account);
 
-		log.info("TC_04_10: Click Tim Kiem");
+		log.info("TC_05_10: Click Tim Kiem");
 		filmTicketBooking.clickToDynamicButton(ReportTitle.SEARCH_BUTTON);
 
-		log.info("TC_04_11: Kiem tra ngay tao giao dich hien thi");
+		log.info("TC_05_11: Kiem tra ngay tao giao dich hien thi");
 		String reportTime1 = filmTicketBooking.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		verifyEquals(convertDateTimeIgnoreHHmmss(reportTime1), convertTransferTimeToReportDateTime(transferTime));
 
-		log.info("TC_04_12: Kiem tra so tien chuyen hien thi");
+		log.info("TC_05_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(filmTicketBooking.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + info.price));
 
-		log.info("TC_04_13: Click vao giao dich");
+		log.info("TC_05_13: Click vao giao dich");
 		filmTicketBooking.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
-		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
+		log.info("TC_05_14: Kiem tra thoi gian tao giao dich hien thi");
 		String reportTime2 = filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.TIME_TRANSFER);
 		verifyEquals(reportTime2, reportTime1);
 
-		log.info("TC_04_15: Kiem tra ma giao dich");
+		log.info("TC_05_15: Kiem tra ma giao dich");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
-		log.info("TC_04_16: Kiem tra so tai khoan trich no");
+		log.info("TC_05_16: Kiem tra so tai khoan trich no");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.ACCOUNT_CARD), account);
 
-		log.info("TC_04_17: Kiem tra ma ve");
+		log.info("TC_05_17: Kiem tra ma ve");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.CODE_TICKET), ticketCode);
 
-		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
+		log.info("TC_05_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.TRANSACTION_MONEY).contains(info.price));
 
-		log.info("TC_04_19: Kiem tra so tien phi");
+		log.info("TC_05_19: Kiem tra so tien phi");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE), addCommasToLong(fee + "") + " VND");
 
-		log.info("TC_04_20: Kiem tra loai giao dich");
+		log.info("TC_05_20: Kiem tra loai giao dich");
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.TRANSACTION_TYPE), ReportTitle.PAY_FILM_TICKET);
 
-		log.info("TC_04_21: Kiem tra noi dung giao dich");
+		log.info("TC_05_21: Kiem tra noi dung giao dich");
 		String note = "MBVCB." + transactionNumber + ". thanh toan ve xem phim";
 		verifyTrue(filmTicketBooking.getDynamicTextInTransactionDetail(ReportTitle.TRANSACTION_CONTENT).contains(note));
 
+	}
+	
+	@Parameters ({"pass"})
+	@Test
+	public void TC_06_KiemTra_HienThiThongBao_ChuaDangNhap(String password) {
+		
+		log.info("TC_06_Step_01: Click vao Menu");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		
+		log.info("TC_06_Step_02: Click vao Thoat Ung Dung");
+		homePage.scrollUpToText(driver, Notify_Text.LOG_OUT_TEXT);
+		homePage.clickToDynamicButtonLinkOrLinkTextNotScroll(driver, Notify_Text.LOG_OUT_TEXT);
+		
+		log.info("TC_06_Step_03: Click vao Dong y");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_06_Step_04: Click vao Inbox");
+		homePage.clickToDynamicImageView(driver, "com.VCB:id/ivOTT");
+		
+		log.info("TC_06_Step_05: Click vao tab Tat ca");
+		homePage.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_06_Step_06: Lay du lieu hien thi");
+		String inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",ticketCode);
+		
+		log.info("TC_06_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(ticketCode));
+		verifyTrue(inboxContent.contains(info.filmName));
+		
+		log.info("TC_06_Step_08: Click vao tab Khac");
+		homePage.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_06_Step_09: Lay du lieu hien thi");
+		inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",ticketCode);
+
+		log.info("TC_06_Step_10: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(ticketCode));
+		verifyTrue(inboxContent.contains(info.filmName));
+		
+		log.info("TC_06_Step_11: Back ve man Log In");
+		homePage.clickToDynamicImageView(driver, "com.VCB:id/back");
+		
+		log.info("TC_06_Step_12: Nhap mat khau va dang nhap");
+		homePage.inputIntoEditTextByID(driver, password, "com.VCB:id/edtInput");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+		
 	}
 
 	@AfterClass(alwaysRun = true)
