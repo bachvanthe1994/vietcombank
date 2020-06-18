@@ -198,7 +198,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		
 		
 		log.info("TC_02_Step_01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -211,7 +211,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
 
 		log.info("TC_02_Step_05: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TittleData.TRANSFER_IN_VCB);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
 
 		log.info("TC_02_Step_06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -480,7 +480,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		log.info("TC_04_Step_01:Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_04_Step_02:Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -494,7 +494,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.ALL_TYPE_TRANSFER);
 
 		log.info("TC_04_Step_05: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TittleData.TRANSFER_IN_VCB);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
 
 		log.info("TC_04_Step_06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -515,7 +515,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyInVCB_Data.InputDataInVCB.NOTE));
 
 		log.info("TC_04_Step_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY) + " VND"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("+ " + addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY) + " VND"));
 
 		log.info("TC_04_Step_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -766,7 +766,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 	public void TC_06_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBangOTP() {
 
 		log.info("TC06_Step 01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC06_Step 02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -780,7 +780,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.ALL_TYPE_TRANSFER);
 
 		log.info("TC06_Step 05:Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TittleData.TRANSFER_IN_VCB);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
 
 		log.info("TC06_Step 06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -867,7 +867,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Text.NUMBER_TRANSFER), transactionNumber);
 
 		log.info("TC06_Step 38:Kiem tra tai khoan trich no hien thi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_SOURCE), sourceAccount.account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Text.ACCOUNT_SOURCE), sourceAccount.account);
 
 		log.info("TC06_Step 39: Kiem tra tai khoan ghi co hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Text.AMOUNT_SURPLUS), distanceAccount.account);
@@ -877,9 +877,6 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 
 		log.info("TC06_Step 41: Kiem tra so tien quy doi hien thi ");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, Text.AMOUNT_CHANGE).contains(transferMoneyInVND));
-
-		log.info("TC06_Step 42: Kiem tra ten nguoi huong hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, Text.NAME_OF_BENEFICI).contains(nameReceived));
 
 		log.info("TC06_Step 43: Kiem tra phi giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Text.FEE_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.COST[0]);
@@ -1053,7 +1050,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 	public void TC_08_KiemTraChiTietGiaoDichChuyenTienNgayCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangOTP() {
 
 		log.info("TC_08_Step 01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_08_Step 02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -1067,7 +1064,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.ALL_TYPE_TRANSFER);
 
 		log.info("TC_08_Step 05:Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TittleData.TRANSFER_IN_VCB);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
 
 		log.info("TC_08_Step 06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1305,7 +1302,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 	@Test
 	public void TC_10_KiemTraChiTietGiaoDichChuyenTienNgayDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangOTP() {
 		log.info("TC_10_Step_01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_10_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -1319,7 +1316,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.ALL_TYPE_TRANSFER);
 
 		log.info("TC_10_Step_05: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TittleData.TRANSFER_IN_VCB);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver,InputDataInVCB.TRANSFER_TYPE);
 
 		log.info("TC_10_Step_06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1501,7 +1498,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 	@Test
 	public void TC_12_KiemTraChiTietGiaoDichChuyenTienNgayDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
 		log.info("TC_12_Step_01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_12_Step_02: Click vao More Icon");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -1515,7 +1512,7 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.ALL_TYPE_TRANSFER);
 
 		log.info("TC_12_Step_05: Chon Chuyen Tien Trong VCB");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, TittleData.TRANSFER_IN_VCB);
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
 
 		log.info("TC_12_Step_06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
@@ -1576,7 +1573,10 @@ public class Transfer_Money_Immedidately_And_Report_1 extends Base {
 		transReport.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSACTION);
 
 		log.info("TC_12_Step_36: Click quay lai");
-		transferInVCB.clickToDynamicBackIcon(driver, Text.REPORT_TRANSFER);
+		transReport.clickToDynamicBackIcon(driver, Text.REPORT_TRANSFER);
+		
+		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+
 
 	}
 	

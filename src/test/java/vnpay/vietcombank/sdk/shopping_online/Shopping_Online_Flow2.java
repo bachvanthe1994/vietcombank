@@ -28,7 +28,7 @@ public class Shopping_Online_Flow2 extends Base {
 	String transactionNumber;
 	List<String> listActual;
 	double soDuThuc = 0;
-	String maGiaodich = "";
+	String codeTransfer = "";
 	int indexHang = 0;
 
 	long amount, amountStart, feeView, amountView, amountAfter = 0;
@@ -289,7 +289,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_01_STEP_20: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
@@ -538,7 +538,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_02_STEP: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
@@ -780,7 +780,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_03_STEP_: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
@@ -1025,7 +1025,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("Testcase_04: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
@@ -1265,7 +1265,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_05_STEP_: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
@@ -1490,7 +1490,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_06_STEP_: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
