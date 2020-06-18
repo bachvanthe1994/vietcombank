@@ -21,6 +21,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.VCBAutoDebitPageObject;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
+import vietcombank_test_data.Notify_Management_Data.Notify_Text;
 import vietcombank_test_data.VCBAuto_Debit_Data;
 import vietcombank_test_data.VCBAuto_Debit_Data.TEXT;
 
@@ -30,7 +31,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 	private HomePageObject home;
 	private VCBAutoDebitPageObject vcbAutoDebit;
 
-	private String hostContact, address, customerID, vnptKienGiang, evnHN, daNangDAWACO;
+	private String hostContact, address, customerID, vnptKienGiang, evnHN, daNangDAWACO,password;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel changeAccount = new SourceAccountModel();
 	List<String> listWaterBills = new ArrayList<String>();
@@ -49,6 +50,7 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, otp);
+		password = pass;
 		log.info("TC_00_Step_01: Chon tab Menu");
 		home = PageFactoryManager.getHomePageObject(driver);
 		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -183,6 +185,41 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_01_Step_35: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
+	
+	@Test
+	public void TC_02_KiemTra_HienThiThongBao_DaDangNhap() {
+		
+		log.info("TC_02_Step_01: Click vao Inbox");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
+		
+		log.info("TC_02_Step_02: Click vao tab Tat ca");
+		home.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_02_Step_03: Lay du lieu hien thi");
+		String inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_02_Step_04: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.REGISTER_OTT+VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(sourceAccount.account));
+		verifyTrue(inboxContent.contains(evnHN));
+		
+		log.info("TC_02_Step_05: Click vao tab Khac");
+		home.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_02_Step_06: Lay du lieu hien thi");
+		inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_02_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.REGISTER_OTT+VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(sourceAccount.account));
+		verifyTrue(inboxContent.contains(evnHN));
+		
+		log.info("TC_02_Step_08: Mo tab Home");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.SERVICE_AUTO_DEBIT);
+	}
 
 	@Parameters({ "otp" })
 	@Test
@@ -314,6 +351,41 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_03_Step_37: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
+	
+	@Test
+	public void TC_04_KiemTra_HienThiThongBao_DaDangNhap() {
+		
+		log.info("TC_04_Step_01: Click vao Inbox");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
+		
+		log.info("TC_04_Step_02: Click vao tab Tat ca");
+		home.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_04_Step_03: Lay du lieu hien thi");
+		String inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_04_Step_04: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.CHANGE_INFO_OTT+VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(changeAccount.account));
+		verifyTrue(inboxContent.contains(evnHN));
+		
+		log.info("TC_04_Step_05: Click vao tab Khac");
+		home.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_04_Step_06: Lay du lieu hien thi");
+		inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_04_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.CHANGE_INFO_OTT+VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(changeAccount.account));
+		verifyTrue(inboxContent.contains(evnHN));
+		
+		log.info("TC_04_Step_08: Mo tab Home");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.SERVICE_AUTO_DEBIT);
+	}
 
 	@Test
 	public void TC_05_HuyDangKy_HoaDonTienDien_XacThucOTP() {
@@ -399,9 +471,42 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
+	@Test
+	public void TC_06_KiemTra_HienThiThongBao_DaDangNhap() {
+		
+		log.info("TC_06_Step_01: Click vao Inbox");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
+		
+		log.info("TC_06_Step_02: Click vao tab Tat ca");
+		home.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_06_Step_03: Lay du lieu hien thi");
+		String inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_06_Step_04: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.UNREGISTER_OTT+VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(evnHN));
+		
+		log.info("TC_06_Step_05: Click vao tab Khac");
+		home.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_06_Step_06: Lay du lieu hien thi");
+		inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_06_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.UNREGISTER_OTT+VCBAuto_Debit_Data.TEXT.ELECTRIC_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(evnHN));
+		
+		log.info("TC_06_Step_08: Mo tab Home");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.SERVICE_AUTO_DEBIT);
+	}
+	
+	
 	@Parameters({ "otp" })
 	@Test
-
 	public void TC_07_DangKyDichVu_HoaDonTienNuoc_XacThucOTP(String otp) {
 
 		log.info("TC_07_Step_02: Chon huy dang ky");
@@ -872,6 +977,54 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_13_Step_35: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
+	
+	@Test
+	public void TC_14_KiemTra_HienThiThongBao_ChuaDangNhap() {
+		
+		log.info("TC_14_Step_02: Click vao Thoat Ung Dung");
+		home.scrollUpToText(driver, Notify_Text.LOG_OUT_TEXT);
+		home.clickToDynamicButtonLinkOrLinkTextNotScroll(driver, Notify_Text.LOG_OUT_TEXT);
+		
+		log.info("TC_14_Step_03: Click vao Dong y");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_14_Step_04: Click vao Inbox");
+		home.clickToDynamicImageView(driver, "com.VCB:id/ivOTT");
+		
+		log.info("TC_14_Step_05: Click vao tab Tat ca");
+		home.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_14_Step_06: Lay du lieu hien thi");
+		String inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_14_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.REGISTER_OTT+VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(sourceAccount.account));
+		verifyTrue(inboxContent.contains(vnptKienGiang));
+		
+		log.info("TC_14_Step_08: Click vao tab Khac");
+		home.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_14_Step_09: Lay du lieu hien thi");
+		inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+
+		log.info("TC_14_Step_10: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.REGISTER_OTT+VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(sourceAccount.account));
+		verifyTrue(inboxContent.contains(vnptKienGiang));
+
+		log.info("TC_14_Step_11: Back ve man Log In");
+		home.clickToDynamicImageView(driver, "com.VCB:id/back");
+		
+		log.info("TC_14_Step_12: Nhap mat khau va dang nhap");
+		home.inputIntoEditTextByID(driver, password, "com.VCB:id/edtInput");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.SERVICE_AUTO_DEBIT);
+		
+	}
 
 	@Parameters({ "otp" })
 	@Test
@@ -996,6 +1149,54 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_15_Step_37: Click back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
+	
+	@Test
+	public void TC_16_KiemTra_HienThiThongBao_ChuaDangNhap() {
+		
+		log.info("TC_16_Step_02: Click vao Thoat Ung Dung");
+		home.scrollUpToText(driver, Notify_Text.LOG_OUT_TEXT);
+		home.clickToDynamicButtonLinkOrLinkTextNotScroll(driver, Notify_Text.LOG_OUT_TEXT);
+		
+		log.info("TC_16_Step_03: Click vao Dong y");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_16_Step_04: Click vao Inbox");
+		home.clickToDynamicImageView(driver, "com.VCB:id/ivOTT");
+		
+		log.info("TC_16_Step_05: Click vao tab Tat ca");
+		home.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_16_Step_06: Lay du lieu hien thi");
+		String inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_16_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.CHANGE_INFO_OTT+VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(changeAccount.account));
+		verifyTrue(inboxContent.contains(vnptKienGiang));
+		
+		log.info("TC_16_Step_08: Click vao tab Khac");
+		home.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_16_Step_09: Lay du lieu hien thi");
+		inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+
+		log.info("TC_16_Step_10: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.CHANGE_INFO_OTT+VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(changeAccount.account));
+		verifyTrue(inboxContent.contains(vnptKienGiang));
+
+		log.info("TC_16_Step_11: Back ve man Log In");
+		home.clickToDynamicImageView(driver, "com.VCB:id/back");
+		
+		log.info("TC_16_Step_12: Nhap mat khau va dang nhap");
+		home.inputIntoEditTextByID(driver, password, "com.VCB:id/edtInput");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.SERVICE_AUTO_DEBIT);
+		
+	}
 
 	@Test
 	public void TC_17_HuyDangKy_VNPT_XacThucOTP() {
@@ -1073,6 +1274,52 @@ public class Vcb_Auto_Debit_Flow extends Base {
 		log.info("TC_17_Step_24: Dong dropdown va back ve man hinh chinh");
 		vcbAutoDebit.clickToDynamicButton(driver, TEXT.CLOSE);
 		vcbAutoDebit.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+	}
+	
+	@Test
+	public void TC_18_KiemTra_HienThiThongBao_ChuaDangNhap() {
+		
+		log.info("TC_18_Step_02: Click vao Thoat Ung Dung");
+		home.scrollUpToText(driver, Notify_Text.LOG_OUT_TEXT);
+		home.clickToDynamicButtonLinkOrLinkTextNotScroll(driver, Notify_Text.LOG_OUT_TEXT);
+		
+		log.info("TC_18_Step_03: Click vao Dong y");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_18_Step_04: Click vao Inbox");
+		home.clickToDynamicImageView(driver, "com.VCB:id/ivOTT");
+		
+		log.info("TC_18_Step_05: Click vao tab Tat ca");
+		home.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_18_Step_06: Lay du lieu hien thi");
+		String inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+		
+		log.info("TC_18_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.UNREGISTER_OTT+VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(vnptKienGiang));
+		
+		log.info("TC_18_Step_08: Click vao tab Khac");
+		home.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_18_Step_09: Lay du lieu hien thi");
+		inboxContent = home.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",customerID);
+
+		log.info("TC_18_Step_10: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(VCBAuto_Debit_Data.TEXT.UNREGISTER_OTT+VCBAuto_Debit_Data.TEXT.VNPT_BILL_TEXT));
+		verifyTrue(inboxContent.contains(customerID+" "+hostContact));
+		verifyTrue(inboxContent.contains(vnptKienGiang));
+
+		log.info("TC_18_Step_11: Back ve man Log In");
+		home.clickToDynamicImageView(driver, "com.VCB:id/back");
+		
+		log.info("TC_18_Step_12: Nhap mat khau va dang nhap");
+		home.inputIntoEditTextByID(driver, password, "com.VCB:id/edtInput");
+		home.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.SERVICE_AUTO_DEBIT);
+		
 	}
 
 	@AfterClass(alwaysRun = true)
