@@ -539,7 +539,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_06_ChuyenTienTuThienBangVND_SmartOTP_BaoCao() {
+	public void TC_06_ChuyenTienTuThienBangUSD_SmartOTP_BaoCao() {
 		log.info("TC_06_1 : Click  nut Back");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
 
