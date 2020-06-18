@@ -30,13 +30,13 @@ public class TransactionReport_Data {
 		public static final String LUCKY_GIFT = "Quà tặng may mắn";
 		public static final String CHANGE_MONEY = "Số tiền quy đổi";
 		public static final String TIME_TRANSACTION = "Thời gian giao dịch";
-		public static final String PAYMENT_BILLING  = "Thanh toán hóa đơn";
-		public static final String SERVICE  = "Dịch vụ";
+		public static final String PAYMENT_BILLING = "Thanh toán hóa đơn";
+		public static final String SERVICE = "Dịch vụ";
 		public static final String SUPPLIER = "Nhà cung cấp";
 
 		public static final String AUTO_SAVING_TEXT = "Tiết kiệm tự động";
 		public static final String CANCEL_AUTO_SAVING_TEXT = "Hủy tiết kiệm tự động";
-		
+
 		public static final String LANDLINE_TELEPHONE = "Cước điện thoại cố định";
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 		public static final String AVAILABLE_BALANCES = "Số dư khả dụng";
@@ -58,24 +58,27 @@ public class TransactionReport_Data {
 		public static final String E_WALLET_TOPUP_TEXT = "Nạp tiền điện tử vào ví";
 		public static final String OUTSIDE_VCB_FROM_ACCOUNT = "Chuyển tiền tới NH khác qua TK";
 		public static final String TRANSFER_OUTSIDE_VCB = "Chuyển tiền ngoài VCB";
+		public static final String TRANSFER_CHARITY = "Chuyển tiền từ thiện";
+		public static final String ORGANIRATION_CHARITY_NAME = "Tên Quỹ/ Tổ chức từ thiện";
 		public static final String FEE = "Phí giao dịch";
 		public static final String PAY_FILM_TICKET = "Thanh toán vé xem phim";
 		public static final String CODE_TICKET = "Mã vé";
 		public static final String CODE_TRANSFER = "Mã thanh toán";
 		public static final String TRAIN_TICKET = "Thanh toán vé tàu";
+
 		public static final String PAYMENT_HOTEL ="Thanh toán đặt phòng khách sạn";
 		public static final String PAYMENT_AMOUNT ="Số tiền thanh toán";
 		public static final String CODE_ORDER ="Mã đơn hàng";
 		
+
 		public static final String AIR_TICKET = "Thanh toán vé máy bay";
-		
+
 		public static final String PHONE_TOPUP = "Số điện thoại được nạp";
-		
+
 		public static final String MOBILE_TOPUP_TITLE = "Nạp tiền điện thoại";
 		public static final String NUMBER_CARD_VND = "Số thẻ chuyển đến/ VND";
 		public static final String TRANSFER_24_7_CARD = "Chuyển tiền nhanh 24/7 qua thẻ";
 		public static final String TRANSFER_24_7_ACCOUNT = "Chuyển tiền nhanh 24/7 qua tài khoản";
-
 
 	}
 
