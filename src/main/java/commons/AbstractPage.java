@@ -2533,6 +2533,19 @@ public class AbstractPage {
 		return text;
 
 	}
+	
+	// Lấy text theo index và ID
+	public String getDynamicTextByContentID(AppiumDriver<MobileElement> driver, String... dynamicID) {
+		boolean status = false;
+		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_RECYCLE_VIEW, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_RECYCLE_VIEW, dynamicID);
+		if (status == true) {
+			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_RECYCLE_VIEW, dynamicID);
+		}
+		return text;
+
+	}
 
 	// Lấy toàn bộ số tiền được suggest ở ô số tiền và lưu vào array list
 

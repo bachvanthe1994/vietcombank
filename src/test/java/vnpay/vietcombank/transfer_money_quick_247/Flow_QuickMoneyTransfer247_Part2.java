@@ -21,7 +21,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
 import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data.Tittle_Quick;
@@ -42,13 +41,13 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	private long costTranfer;
 	private long fee;
 	private String exchangeRate;
-	private String password,cardNumber="";
+	private String password, cardNumber = "";
 	List<String> listCard = new ArrayList<String>();
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "pass", "otp" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "pass", "otp","phone" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String pass, String opt,String phone) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -57,14 +56,15 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1("0904797864", pass, opt);
+		login.Global_login(phone, pass, opt);
 		password = pass;
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		cardTo = getDataInCell(20);
 	}
 
+	@Parameters({ "otp" })
 	@Test
-	public void TC_09_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP() {
+	public void TC_09_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP(String otp) {
 		log.info("TC_09_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 
@@ -76,11 +76,12 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
 		listCard = transferMoney.getListCard();
 		transferMoney.scrollUpToText(driver, listCard.get(0));
+
 		for (String card : listCard) {
 			transferMoney.scrollDownToText(driver, card);
 			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, card);
-			if (transferMoney.isTextDisplayedInPageSource(driver, "Quý khách không còn dư nợ")) {
+			if (transferMoney.getPageSource(driver).contains(Tittle_Quick.UNSATISFACTORY)) {
 				log.info("TC_01_Step_07: Click btn Dong y:");
 				transferMoney.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 				log.info("TC_01_Step_08: Click chon so tai khoan the :");
@@ -88,22 +89,28 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 				continue;
 			} else {
 				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContentCard");
-                sourceAccount.account = transferMoney.getDynamicTextByLabel(driver, "Tài khoản nguồn");
-                sourceAccount.currentcy = transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng");
-                int indexChar=transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng").indexOf(" ");
-                sourceAccount.balance = transferMoney.getDynamicTextByLabel(driver, "Số dư khả dụng").replace(",", "").replace(" VND", "");
-				if (Long.parseLong(sourceAccount.balance)<Long.valueOf(Constants.MONEY_CHECK_VND)&&sourceAccount.currentcy.equals(Constants.VND_CURRENCY)||Long.parseLong(sourceAccount.balance)<Long.valueOf(Constants.MONEY_CHECK_USD)&&sourceAccount.currentcy.equals(Constants.USD_CURRENCY)||Long.parseLong(sourceAccount.balance)<Long.valueOf(Constants.MONEY_CHECK_EUR)&&sourceAccount.currentcy.equals(Constants.EUR_CURRENCY)) {
-					continue;
+				sourceAccount.account = transferMoney.getDynamicTextByLabel(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+				sourceAccount.currentcy = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				if (sourceAccount.currentcy.length() > 3) {
+					sourceAccount.currentcy = sourceAccount.currentcy.split(" ")[1];
+					sourceAccount.balance = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+					if (!sourceAccount.currentcy.equals(Constants.VND_CURRENCY) || convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccount.balance) < Long.valueOf(Constants.MONEY_CHECK_VND)) {
+						transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+						transferMoney.scrollUpToText(driver, listCard.get(0));
+						continue;
+					} else {
+						break;
+					}
 				} else {
-					cardNumber = card;
 					break;
 				}
+
 			}
 
 		}
 
 		log.info("TC_09_Step_Doi kieu du lieu");
-		amountStart = Long.parseLong(sourceAccount.balance);
+		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccount.balance);
 
 		log.info("TC_09_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, cardTo, Tittle_Quick.TYPE_SELECT_CARD_NUMBER);
@@ -144,7 +151,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 
 		log.info("TC_09_Step_Nhap ma xac thuc");
-		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, Tittle_Quick.CONTINUE_BUTTON);
+		transferMoney.inputToDynamicOtp(driver, otp, Tittle_Quick.CONTINUE_BUTTON);
 
 		log.info("TC_09_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
@@ -176,7 +183,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 		log.info("TC_09_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, cardNumber);
 
 		log.info("TC_09_Step_:Check so du kha dung sau khi chuyen tien");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES).replaceAll("\\D+", "");
@@ -286,9 +293,10 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
+	@Parameters({ "otp" })
 	@Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
-	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
+	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP(String otp) {
 		log.info("TC_11_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 
@@ -296,36 +304,37 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_11_Step_Select tai khoan nguon");
+		log.info("TC_09_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
-		
 		listCard = transferMoney.getListCard();
 		transferMoney.scrollUpToText(driver, listCard.get(0));
+
 		for (String card : listCard) {
 			transferMoney.scrollDownToText(driver, card);
 			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, card);
-			if (transferMoney.isTextDisplayedInPageSource(driver, "Quý khách không còn dư nợ")) {
+			if (transferMoney.getPageSource(driver).contains(Tittle_Quick.UNSATISFACTORY)) {
 				log.info("TC_01_Step_07: Click btn Dong y:");
 				transferMoney.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 				log.info("TC_01_Step_08: Click chon so tai khoan the :");
 				transferMoney.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 				continue;
 			} else {
-				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
-                sourceAccount.account = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "Taif khoan nguon");
-                sourceAccount.balance = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "So du kha dung").replace(",", "");
-                sourceAccount.currentcy = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "tien te");
-				if (Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_VND&&sourceAccount.currentcy.equals(Constants.VND_CURRENCY)||Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_USD&&sourceAccount.currentcy.equals(Constants.USD_CURRENCY)||Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_EUR&&sourceAccount.currentcy.equals(Constants.EUR_CURRENCY)) {
+				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContentCard");
+				sourceAccount.account = transferMoney.getDynamicTextByLabel(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+				sourceAccount.currentcy = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				sourceAccount.currentcy = sourceAccount.currentcy.split(" ")[1];
+				sourceAccount.balance = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				if (!sourceAccount.currentcy.equals(Constants.USD_CURRENCY) || convertAvailableBalanceCurrentcyToDouble(sourceAccount.balance) < Double.valueOf(Constants.MONEY_CHECK_USD)) {
+					transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+					transferMoney.scrollUpToText(driver, listCard.get(0));
 					continue;
 				} else {
-					cardNumber = card;
 					break;
 				}
 			}
 
 		}
-		
 
 		log.info("TC_11_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, cardTo, Tittle_Quick.TYPE_SELECT_CARD_NUMBER);
@@ -374,7 +383,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_Nhap ma xac thuc");
-		transferMoney.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, Tittle_Quick.CONTINUE_BUTTON);
+		transferMoney.inputToDynamicOtp(driver, otp, Tittle_Quick.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
@@ -537,37 +546,37 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_13_Step_Select tai khoan nguon");
+		log.info("TC_09_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
-
 		listCard = transferMoney.getListCard();
 		transferMoney.scrollUpToText(driver, listCard.get(0));
+
 		for (String card : listCard) {
 			transferMoney.scrollDownToText(driver, card);
 			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, card);
-			if (transferMoney.isTextDisplayedInPageSource(driver, "Quý khách không còn dư nợ")) {
+			if (transferMoney.getPageSource(driver).contains(Tittle_Quick.UNSATISFACTORY)) {
 				log.info("TC_01_Step_07: Click btn Dong y:");
 				transferMoney.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 				log.info("TC_01_Step_08: Click chon so tai khoan the :");
 				transferMoney.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 				continue;
 			} else {
-				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
-                sourceAccount.account = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "Taif khoan nguon");
-                sourceAccount.balance = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "So du kha dung").replace(",", "");
-                sourceAccount.currentcy = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "tien te");
-				if (Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_VND&&sourceAccount.currentcy.equals(Constants.VND_CURRENCY)||Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_USD&&sourceAccount.currentcy.equals(Constants.USD_CURRENCY)||Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_EUR&&sourceAccount.currentcy.equals(Constants.EUR_CURRENCY)) {
+				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContentCard");
+				sourceAccount.account = transferMoney.getDynamicTextByLabel(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+				sourceAccount.currentcy = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				sourceAccount.currentcy = sourceAccount.currentcy.split(" ")[1];
+				sourceAccount.balance = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				if (!sourceAccount.currentcy.equals(Constants.VND_CURRENCY) || convertAvailableBalanceCurrentcyToDouble(sourceAccount.balance) < Double.valueOf(Constants.MONEY_CHECK_VND)) {
+					transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+					transferMoney.scrollUpToText(driver, listCard.get(0));
 					continue;
 				} else {
-					cardNumber = card;
 					break;
 				}
 			}
 
 		}
-		
 
 		log.info("TC_13_Step_Doi kieu du lieu");
 		amountStart = Long.parseLong(sourceAccount.balance);
@@ -766,36 +775,37 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
 
-		log.info("TC_15_Step_Select tai khoan nguon");
+		log.info("TC_09_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
 		listCard = transferMoney.getListCard();
 		transferMoney.scrollUpToText(driver, listCard.get(0));
+
 		for (String card : listCard) {
 			transferMoney.scrollDownToText(driver, card);
 			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
 			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, card);
-			if (transferMoney.isTextDisplayedInPageSource(driver, "Quý khách không còn dư nợ")) {
+			if (transferMoney.getPageSource(driver).contains(Tittle_Quick.UNSATISFACTORY)) {
 				log.info("TC_01_Step_07: Click btn Dong y:");
 				transferMoney.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 				log.info("TC_01_Step_08: Click chon so tai khoan the :");
 				transferMoney.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 				continue;
 			} else {
-				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
-                sourceAccount.account = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "Taif khoan nguon");
-                sourceAccount.balance = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "So du kha dung").replace(",", "");
-                sourceAccount.currentcy = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "tien te");
-				if (Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_VND&&sourceAccount.currentcy.equals(Constants.VND_CURRENCY)||Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_USD&&sourceAccount.currentcy.equals(Constants.USD_CURRENCY)||Integer.parseInt(sourceAccount.balance)<Constants.MONEY_CHECK_EUR&&sourceAccount.currentcy.equals(Constants.EUR_CURRENCY)) {
+				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContentCard");
+				sourceAccount.account = transferMoney.getDynamicTextByLabel(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+				sourceAccount.currentcy = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				sourceAccount.currentcy = sourceAccount.currentcy.split(" ")[1];
+				sourceAccount.balance = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				if (!sourceAccount.currentcy.equals(Constants.USD_CURRENCY) || convertAvailableBalanceCurrentcyToDouble(sourceAccount.balance) < Double.valueOf(Constants.MONEY_CHECK_USD)) {
+					transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+					transferMoney.scrollUpToText(driver, listCard.get(0));
 					continue;
 				} else {
-					cardNumber = card;
 					break;
 				}
 			}
 
 		}
-
-
 		log.info("TC_15_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, cardTo, Tittle_Quick.TYPE_SELECT_CARD_NUMBER);
 
