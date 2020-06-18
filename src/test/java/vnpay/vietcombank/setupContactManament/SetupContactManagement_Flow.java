@@ -62,7 +62,7 @@ public class SetupContactManagement_Flow extends Base {
 	@Test
 	public void TC_01_LuuDanhBaNguoiHuongTuGiaoDich(String otp) {
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		home.clickToDynamicIcon(driver, InputDataInVCB.TRANSFER_TYPE);
+		home.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_01_Step_02:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);

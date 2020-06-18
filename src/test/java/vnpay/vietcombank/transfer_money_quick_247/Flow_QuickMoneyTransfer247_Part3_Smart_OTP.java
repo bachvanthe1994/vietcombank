@@ -61,6 +61,7 @@ public class Flow_QuickMoneyTransfer247_Part3_Smart_OTP extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		otpSmart = getDataInCell(6);
