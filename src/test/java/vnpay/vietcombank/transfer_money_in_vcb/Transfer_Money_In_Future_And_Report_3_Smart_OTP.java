@@ -22,6 +22,7 @@ import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
 public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
@@ -71,7 +72,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 	public void TC_01_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucSmart_OTP() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
@@ -218,7 +219,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 	public void TC_02_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBang_Smart_OTP() {
 
 		log.info("TC_02_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
@@ -367,7 +368,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 	public void TC_03_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangSmartOTP() {
 
 		log.info("TC_03_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 

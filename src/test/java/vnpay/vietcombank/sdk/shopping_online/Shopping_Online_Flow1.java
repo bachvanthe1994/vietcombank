@@ -19,12 +19,10 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
 import vietcombank_test_data.HomePage_Data;
-import vietcombank_test_data.SavingOnline_Data;
-import vietcombank_test_data.TransactionReport_Data;
-import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
+import vietcombank_test_data.TransactionReport_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
-import vietcombank_test_data.TransferMoneyQuick_Data.Tittle_Quick;
+import vietcombank_test_data.TransferMoneyQuick_Data;
 import vnpay.vietcombank.sdk.shopping_online.data.Shopping_Online_Data;
 
 public class Shopping_Online_Flow1 extends Base {
@@ -36,6 +34,7 @@ public class Shopping_Online_Flow1 extends Base {
 	String transferTime;
 	String transactionNumber;
 	List<String> listActual;
+	String codeBill;
 	double soDuThuc = 0;
 	String codeTransfer = "";
 	int indexHang = 0;
@@ -74,7 +73,7 @@ public class Shopping_Online_Flow1 extends Base {
 
 		List<String> listProduct = shopping.getTextInListElementsProduct("đ");
 
-		for (int i = 2; i < listProduct.size(); i++) {
+		for (int i = 3; i < listProduct.size(); i++) {
 			shopping.clickToDynamicView(listProduct.get(i));
 			indexHang = i;
 			if (shopping.isTextDisplayedInPageSource(Shopping_Online_Data.OUT_OF_BOOK)) {
@@ -222,7 +221,7 @@ public class Shopping_Online_Flow1 extends Base {
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.AVAIABLE_BALANCE).replace("VND", "").replace(",", ""));
 
 		log.info("TC_02_STEP_7: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+		 codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
 
 		log.info("TC_01_STEP_9: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.FEE_SHIPPING).split(" ");
@@ -305,6 +304,11 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("TC_02_3: Click Bao Cao giao Dich");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
+		
+		log.info("TC_02_3: Click Chon loai bao cao");
+		transReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
+
+		
 		log.info("TC_02_4: Click Tat Ca Cac Loai Giao Dich");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.VNSHOP_PAYMENT);
 
@@ -356,14 +360,14 @@ public class Shopping_Online_Flow1 extends Base {
 		
 		
 		log.info("TC_02: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CODE_ORDER), codeTransfer);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CODE_ORDER), codeBill );
 
 
 		log.info("TC_02: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER),ReportTitle.VNSHOP_PAYMENT );
 
 		log.info("TC_02: Check noi dung giao dich");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER).contains(TransferMoneyQuick_Data.TransferQuick.NOTE));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER).contains(ReportTitle.VNSHOP));
 
 		log.info("TC_02: Chick chi tiet giao dich");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.DETAIL_TRANSFER);
@@ -371,8 +375,8 @@ public class Shopping_Online_Flow1 extends Base {
 		log.info("TTC_02: Chon button back");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
-		log.info("TC_02_Click button home");
-		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+//		log.info("TC_02_Click button home");
+//		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 		
 
 	}
@@ -542,7 +546,7 @@ public class Shopping_Online_Flow1 extends Base {
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.AVAIABLE_BALANCE).replace("VND", "").replace(",", ""));
 
 		log.info("TC_02_STEP_: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+		 codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
 
 		log.info("TC_02_STEP_: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.FEE_SHIPPING).split(" ");
@@ -767,7 +771,7 @@ public class Shopping_Online_Flow1 extends Base {
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.AVAIABLE_BALANCE).replace("VND", "").replace(",", ""));
 
 		log.info("TC_03_STEP_: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+		 codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
 
 		log.info("TC_03_STEP_: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.FEE_SHIPPING).split(" ");
@@ -997,7 +1001,7 @@ public class Shopping_Online_Flow1 extends Base {
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.AVAIABLE_BALANCE).replace("VND", "").replace(",", ""));
 
 		log.info("TC_04_STEP_: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+		 codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
 
 		log.info("TC_04_STEP_: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.FEE_SHIPPING).split(" ");
@@ -1222,7 +1226,7 @@ public class Shopping_Online_Flow1 extends Base {
 		double soDuTK = Double.parseDouble(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.AVAIABLE_BALANCE).replace("VND", "").replace(",", ""));
 
 		log.info("TC_05_STEP_: lay thong tin ma don hang");
-		String codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
+		 codeBill = shopping.getDynamicTextDetailByIDOrPopup("com.VCB:id/LblMadonhangDescription");
 
 		log.info("TC_05_STEP_: lay ra phi giao hang");
 		String[] getfeeString = shopping.getDynamicTextInTransactionDetail(Shopping_Online_Data.FEE_SHIPPING).split(" ");
