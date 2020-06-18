@@ -14,7 +14,7 @@ public class TransferMoneyStatus_Data {
 	}
 
 	public static class Text {
-
+		public static final String NOTE_TEXT = "Test";
 		public static final String START_DATE_TEXT = "Ngày bắt đầu";
 		public static final String END_DATE_TEXT = "Ngày kết thúc";
 		public static final String FREQUENCY_TEXT = "Tần suất";
@@ -46,6 +46,7 @@ public class TransferMoneyStatus_Data {
 		public static final String SUCCESS = "Thành công";
 		public static final String FEE_TRANSFER_SOURCE_ACCOUNT_PAY = "Phí giao dịch người chuyển trả";
 		public static final String BENEFICI_PAY = "Người nhận trả";
+		public static final String SOURCE_ACCOUNT_PAY = "Người chuyển trả";
 		public static final String CLOSE = "Đóng";
 		public static final String ACCEPT = "Đồng ý";
 		public static final String SEARCH = "Tìm kiếm";
@@ -64,6 +65,8 @@ public class TransferMoneyStatus_Data {
 		public static final String TYPE_TRANSACTION = "Loại giao dịch";
 		public static final String STATUS_TRANSACTION = "Trạng thái lệnh chuyển tiền";
 		public static final String AMOUNT_CHANGE = "Số tiền quy đổi";
+		public static final String TRANSFER_TYPE = "Chuyển tiền trong VCB";
+
 	}
 
 }
