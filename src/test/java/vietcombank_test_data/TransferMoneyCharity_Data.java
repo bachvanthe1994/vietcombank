@@ -49,5 +49,6 @@ public class TransferMoneyCharity_Data {
 	public static final String RECIEVED_ACCOUNT = "Tài khoản thụ hưởng";
 	public static final String TRANSACTION_CODE = "Mã giao dịch";
 	public static final String NEW_TRANSACTION_PERFORM = "Thực hiện giao dịch mới";
+	public static final String ORGANIZATION = "Tấm lòng nhân ái - TK 10 số";
 
 }
