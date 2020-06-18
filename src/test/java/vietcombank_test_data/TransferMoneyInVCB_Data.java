@@ -28,7 +28,6 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_PAYMENT_BY_OTP_FEE = "0.09";
 
 
-		public static final String TRANSFER_TYPE = "Chuyển tiền trong VCB";
 		public static final String USD_EXCHANGE_RATE = "1 USD ~ 23,087.00 VND";
 		public static final String EUR_EXCHANGE_RATE = "1 EUR ~ 23,997.76 VND";
 		public static final String EUR_CHANGED_MONEY = "47996";
@@ -205,12 +204,11 @@ public class TransferMoneyInVCB_Data {
 		public static final String CLOSE = "Đóng";
 		public static final String ACCEPT = "Đồng ý";
 		public static final String SEARCH = "Tìm kiếm";
-		public static final String TRANSFER_IN_VCB = "Chuyển tiền trong Vietcombank";
+		public static final String TRANSFER_IN_VCBANK = "Chuyển tiền trong Vietcombank";
 		public static final String FEE_TRANSFER = "Phí giao dịch";
 		public static final String NAME_OF_BENEFICI = "Tên người hưởng";
 		public static final String AMOUNT_TRANSFER = "Số tiền giao dịch";
 		public static final String AMOUNT_SURPLUS = "Tài khoản ghi có";
-		public static final String ACCOUNT_SOURCE = "Tài khoản/thẻ trích nợ";
 		public static final String NUMBER_TRANSFER = "Số lệnh giao dịch";
 		public static final String TIME_TRANSFER = "Thời gian giao dịch";
 		public static final String ALL_TYPE_TRANSFER = "Tất cả các loại giao dịch";

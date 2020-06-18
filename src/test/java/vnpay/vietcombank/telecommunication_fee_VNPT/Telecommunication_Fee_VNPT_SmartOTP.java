@@ -82,13 +82,13 @@ public class Telecommunication_Fee_VNPT_SmartOTP extends Base {
 		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.SOURCE_ACCOUNT), account);
 
 		log.info("TC_01_Step_07: Hien thi ten dich vu");
-		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TransactionReport_Data.ReportTitle.SERVICE), TelecommunicationFee_VNPT_Data.data.BILL_MESSAGE);
+		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.SERVICE), TelecommunicationFee_VNPT_Data.data.BILL_MESSAGE);
 
 		log.info("TC_01_Step_08: Hien thi Nha cung cap");
-		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TransactionReport_Data.ReportTitle.SUPPLIER), vnpt_provider);
+		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.SUPPLIER), vnpt_provider);
 
 		log.info("TC_01_Step_09: Hien thi ma khach hang");
-		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TransactionReport_Data.ReportTitle.CUSTOMER_CODE_TEXT), customerID);
+		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.CUSTOMER_CODE_TEXT), customerID);
 
 		log.info("TC_01_Step_10: Hien thi So tien thanh toan");
 		moneyBill = telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.PAYMENT_AMOUNT);
@@ -124,13 +124,13 @@ public class Telecommunication_Fee_VNPT_SmartOTP extends Base {
 		verifyTrue(telecomFeeVNPT.isTextDisplayedInListTextElements(driver, getForWardDay(0), "com.VCB:id/tvTime"));
 
 		log.info("TC_01_Step_19: Hien thi dung ten dich vu");
-		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TransactionReport_Data.ReportTitle.SERVICE), TelecommunicationFee_VNPT_Data.data.VNPT_BILL_TEXT);
+		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.SERVICE), TelecommunicationFee_VNPT_Data.data.VNPT_BILL_TEXT);
 
 		log.info("TC_01_Step_20: Hien thi dung Nha cung cap");
-		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TransactionReport_Data.ReportTitle.SUPPLIER), vnpt_provider);
+		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.SUPPLIER), vnpt_provider);
 
 		log.info("TC_01_Step_21: Hien thi dung ma khach hang");
-		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TransactionReport_Data.ReportTitle.CUSTOMER_CODE_TEXT), customerID);
+		verifyEquals(telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.CUSTOMER_CODE_TEXT), customerID);
 
 		log.info("TC_01_Step_22: Hien thi ma giao dich");
 		transactionID = telecomFeeVNPT.getDynamicTextByLabel(driver, TelecommunicationFee_VNPT_Data.data.TRANSACTION_CODE);

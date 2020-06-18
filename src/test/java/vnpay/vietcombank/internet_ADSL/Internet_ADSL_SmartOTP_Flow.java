@@ -54,7 +54,6 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		codeViettel = Arrays.asList(getDataInCell(17).split(";"));
 		codeFpt = Arrays.asList(getDataInCell(18).split(";"));
 	}
-//Lỗi app không hiển thị phương thức xác thực Smart OTP trong combobox
 
 	@Test
 	@Parameters({ "pass" })
@@ -255,7 +254,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FPT);
 
 		log.info("TC_02_Input ma khach hang");
-		adsl.inputCustomerCode(codeViettel);
+		adsl.inputCustomerCode(codeFpt);
 
 		log.info("TC_02_Kiem tra man hinh xac nhan thong tin");
 		log.info("TC_02_Kiem tra tai khoan nguon");

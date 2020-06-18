@@ -15,6 +15,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
 import model.TransferInVCBRecurrent;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
@@ -26,6 +27,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 
 public class TransferMoneyRecurrent_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -33,7 +35,8 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	private TransferMoneyInVcbPageObject transferRecurrent;
 	private TransferMoneyStatusPageObject transferStatus;
 	private SettingVCBSmartOTPPageObject smartOTP;
-	
+	private HomePageObject home;
+
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	private String transferTime, expectAvailableBalance,receivedAccount,receivedName,smartOtpPass;
 	long transferFee = 0;
@@ -72,7 +75,10 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		
 		log.info("Before Class 02: Click Chuyen tien trong ngan hang");
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 	}
 
 	@Test
@@ -181,7 +187,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		verifyEquals(actualAvailableBalance, expectAvailableBalance+" "+sourceAccount.currentcy);
 
 		log.info("TC_03_1: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 	}
 
@@ -306,8 +312,9 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	@Test
 	public void TC_05_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangSmartOTP() {
 		
-		log.info("TC_05_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_05_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -421,7 +428,7 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		String endDate = getForwardDate(1 + Integer.parseInt(info1.frequencyNumber));
 
 		log.info("TC_07_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_07_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
@@ -537,8 +544,9 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 	@Test
 	public void TC_09_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangSmartOTP() {
 		
-		log.info("TC_09_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_09_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -651,8 +659,9 @@ public class TransferMoneyRecurrent_SmartOTP extends Base {
 		String startDate = getForwardDate(1);
 		String endDate = getForwardDate(1 + Integer.parseInt(info4.frequencyNumber));
 
-		log.info("TC_11_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_11_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
