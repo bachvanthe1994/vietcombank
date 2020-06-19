@@ -24,9 +24,8 @@
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-			<!-- Thanh toán hóa đơn di động trả sau -->
-			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_SmartOTP" />
-			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
+			<!-- Thanh toán phí bảo hiểm -->
+			<class name="vnpay.vietcombank.insurance_fee.Insurance_Fee_Flow" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
@@ -85,7 +84,8 @@
 			<!-- Thanh toan tien dien -->
 			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
 
-
+			<!-- Thanh toán phí bảo hiểm -->
+			<class name="vnpay.vietcombank.insurance_fee.Insurance_Fee_Flow" />
 
 			<!-- Thanh toan tien nuoc -->
 			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" />
