@@ -26,14 +26,14 @@ import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.TransferMoneyStatus_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data.Input;
-import vietcombank_test_data.TransferMoneyStatus_Data.Text;
+import vietcombank_test_data.TransactionReport_Data.Text;
 
 public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
-	private TransferMoneyStatusPageObject transStatus;
+	private TransferMoneyStatusPageObject transferStatus;
 
 	private String transferTime;
 	private String transactionNumber;
@@ -224,95 +224,95 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_02_Step_03: Click Tat Ca Cac Loai Giao Dich");
-		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
 
 		log.info("TC_02_Step_04: Chon Chuyen Tien Trong VCB");
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
 
 		log.info("TC_02_Step_05: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_02_Step_06: Kiem tra todate hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
 
 		log.info("TC_02_Step_07: Kiem tra Note hien thi");
-		verifyTrue(transStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
 
 		log.info("TC_02_Step_08: CLick Tim Kiem");
-		transStatus.clickToDynamicButton(driver, TittleData.SEARCH);
+		transferStatus.clickToDynamicButton(driver, TittleData.SEARCH);
 
 		log.info("TC_02_Step 09: Kiem tra ngay tao giao dich hien thi");
-		String orderTime = transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		String orderTime = transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
 		verifyTrue(orderTime.contains(getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear()));
 
 		log.info("TC_02_Step 10: Kiem tra thoi gian tao dao dich");
 
 		log.info("TC_02_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
 
 		log.info("TC_02_Step 12: Kiem tra trang thai giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_02_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_02_Step 14: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_02_Step 15: Kiem tra ngay giao dich hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
 
 		log.info("TC_02_Step 16: Kiem tra thoi gian tao giao dich hien thi");
 
 		log.info("TC_02_Step 17: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
 
 		log.info("TC_02_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_02_Step 19: Kiem tra ngay hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
 		log.info("TC_02_Step 20: Kiem tra ghi chú");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
 
 		log.info("TC_02_Step 21: Kiem tra trang thai hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_02_Step_22: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 	}
 
 	@Test
 	public void TC_03_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_03_Step_01: Click Huy Lenh");
-		transStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
+		transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 		log.info("TC_03_Step_02: Click Dong Y");
-		transStatus.clickToDynamicButton(driver, Text.ACCEPT);
+		transferStatus.clickToDynamicButton(driver, Text.ACCEPT);
 
 		log.info("TC_03_Step_04: Kiem TraThanh Cong hiển thị");
-		verifyEquals(transStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
+		verifyEquals(transferStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
 
 		log.info("TC_03_Step_05: Click quay lai");
-		transStatus.clickToDynamicButton(driver, Text.CLOSE);
+		transferStatus.clickToDynamicButton(driver, Text.CLOSE);
 
 		log.info("TC_03_Step_06: Kiem tra trang thai Da Huy hien thi");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_03_Step_07: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_03_Step_08: Kiem tra trang thai  Da Huy hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_03_Step_09: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 		log.info("TC_03_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
+		transferStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
 
 	}
 
@@ -479,60 +479,60 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_05_Step_03: Click Tat Ca Cac Loai Giao Dich");
-		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
 
 		log.info("TC_05_Step_04 Chon Chuyen Tien Trong VCB");
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
 
 		log.info("TC_05_Step_05: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_05_Step_06: Kiem tra todate hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
 
 		log.info("TC_05_Step_07: Kiem tra Note hien thi");
-		verifyTrue(transStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
 
 		log.info("TC_05_Step_08: CLick Tim Kiem");
-		transStatus.clickToDynamicButton(driver, TittleData.SEARCH);
+		transferStatus.clickToDynamicButton(driver, TittleData.SEARCH);
 
 		log.info("TC_05_Step 09: Kiem tra ngay tao giao dich hien thi");
-		String orderTime = transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		String orderTime = transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
 		verifyTrue(orderTime.contains(getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear()));
 
 		log.info("TC_05_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
 
 		log.info("TC_05_Step 12: Kiem tra trang thai giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_05_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_05_Step 14: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_05_Step 15: Kiem tra ngay giao dich hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
 
 		log.info("TC_05_Step 17: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
 
 		log.info("TC_05_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_05_Step 19: Kiem tra ngay hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
 		log.info("TC_05_Step 20: Kiem tra ghi chú");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
 
 		log.info("TC_05_Step 21: Kiem tra trang thai hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_05_Step_22: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 	}
 
@@ -540,31 +540,31 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	public void TC_06_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_06_Step_01: Click Huy Lenh");
-		transStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
+		transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 		log.info("TC_06_Step_02: Click Dong Y");
-		transStatus.clickToDynamicButton(driver, Text.ACCEPT);
+		transferStatus.clickToDynamicButton(driver, Text.ACCEPT);
 
 		log.info("TC_06_Step_04: Kiem Tra Success hiển thị");
-		verifyEquals(transStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
+		verifyEquals(transferStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
 
 		log.info("TC_06_Step_05: Click quay lai");
-		transStatus.clickToDynamicButton(driver, Text.CLOSE);
+		transferStatus.clickToDynamicButton(driver, Text.CLOSE);
 
 		log.info("TC_06_Step_06: Kiem tra trang thai Da Huy hien thi");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_06_Step_07: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_06_Step_08: Kiem tra trang thai  Da Huy hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_06_Step_09: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 		log.info("TC_06_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
+		transferStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
 
 	}
 
@@ -726,61 +726,61 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_08_Step_03: Click Tat Ca Cac Loai Giao Dich");
-		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
 
 		log.info("TC_08_Step_04: Chon Chuyen Tien Trong VCB");
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
 
 		log.info("TC_08_Step_05: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_08_Step_06: Kiem tra todate hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
 
 		log.info("TC_08_Step_07: Kiem tra Note hien thi");
-		verifyTrue(transStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
 
 		log.info("TC_08_Step_08: CLick Tim Kiem");
-		transStatus.clickToDynamicButton(driver, TittleData.SEARCH);
+		transferStatus.clickToDynamicButton(driver, TittleData.SEARCH);
 
 		log.info("TC_08_Step 09: Kiem tra ngay tao giao dich hien thi");
-		String orderTime = transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		String orderTime = transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
 		verifyTrue(orderTime.contains(getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear()));
 
 		log.info("TC_08_Step 10: Kiem tra thoi gian tao dao dich");
 
 		log.info("TC_08_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
 
 		log.info("TC_08_Step 12: Kiem tra trang thai giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_08_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " USD");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " USD");
 
 		log.info("TC_08_Step 14: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_08_Step 15: Kiem tra ngay giao dich hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
 
 		log.info("TC_08_Step 16: Kiem tra thoi gian tao giao dich hien thi");
 
 		log.info("TC_08_Step 17: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
 
 		log.info("TC_08_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " USD");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " USD");
 
 		log.info("TC_08_Step 19: Kiem tra ngay hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
 		log.info("TC_08_Step 21: Kiem tra trang thai hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_08_Step_22: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 	}
 
@@ -788,31 +788,31 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	public void TC_09_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_09_Step_01: Click Huy Lenh");
-		transStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
+		transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 		log.info("TC_09_Step_02: Click Dong Y");
-		transStatus.clickToDynamicButton(driver, Text.ACCEPT);
+		transferStatus.clickToDynamicButton(driver, Text.ACCEPT);
 
 		log.info("TC_09_Step_04: Kiem Tra Success hiển thị");
-		verifyEquals(transStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
+		verifyEquals(transferStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
 
 		log.info("TC_09_Step_05: Click quay lai");
-		transStatus.clickToDynamicButton(driver, Text.CLOSE);
+		transferStatus.clickToDynamicButton(driver, Text.CLOSE);
 
 		log.info("TC_09_Step_06: Kiem tra trang thai Da Huy hien thi");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_09_Step_07: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_09_Step_08: Kiem tra trang thai  Da Huy hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_09_Step_09: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 		log.info("TC_09_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
+		transferStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
 
 	}
 
@@ -980,62 +980,62 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_11_Step_03: Click Tat Ca Cac Loai Giao Dich");
-		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
 
 		log.info("TC_11_Step_04: Chon Chuyen Tien Trong VCB");
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
 
 		log.info("TC_11_Step_05: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_11_Step_06: Kiem tra todate hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
 
 		log.info("TC_11_Step_07: Kiem tra Note hien thi");
-		verifyTrue(transStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
 
 		log.info("TC_11_Step_08: CLick Tim Kiem");
-		transStatus.clickToDynamicButton(driver, TittleData.SEARCH);
+		transferStatus.clickToDynamicButton(driver, TittleData.SEARCH);
 
 		log.info("TC_11_Step 09: Kiem tra ngay tao giao dich hien thi");
-		String orderTime = transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		String orderTime = transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
 		verifyTrue(orderTime.contains(getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear()));
 
 		log.info("TC_11_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_receiver);
 
 		log.info("TC_11_Step 12: Kiem tra trang thai giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_11_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
 
 		log.info("TC_11_Step 14: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_11_Step 15: Kiem tra ngay giao dich hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
 
 		log.info("TC_11_Step 16: Kiem tra thoi gian tao giao dich hien thi");
 
 		log.info("TC_11_Step 17: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_receiver);
 
 		log.info("TC_11_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), TransferMoneyInVCB_Data.InputDataInFutureForOTP.AMOUNT_OF_EUR_OR_USD_TRANSFER + " EUR");
 
 		log.info("TC_11_Step 19: Kiem tra ngay hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
 		log.info("TC_11_Step 20: Kiem tra ghi chú");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
 
 		log.info("TC_11_Step 21: Kiem tra trang thai hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_11_Step_22: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 	}
 
@@ -1043,31 +1043,31 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	public void TC_12_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_12_Step_01: Click Huy Lenh");
-		transStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
+		transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 		log.info("TC_12_Step_02: Click Dong Y");
-		transStatus.clickToDynamicButton(driver, TittleData.ACCEPT);
+		transferStatus.clickToDynamicButton(driver, Text.ACCEPT);
 
 		log.info("TC_12_Step_04: Kiem Tra Success hiển thị");
-		verifyEquals(transStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TittleData.SUCCESS);
+		verifyEquals(transferStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TittleData.SUCCESS);
 
 		log.info("TC_12_Step_05: Click quay lai");
-		transStatus.clickToDynamicButton(driver, TittleData.CLOSE);
+		transferStatus.clickToDynamicButton(driver, Text.CLOSE);
 
 		log.info("TC_12_Step_06: Kiem tra trang thai Da Huy hien thi");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_12_Step_07: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_12_Step_08: Kiem tra trang thai  Da Huy hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_12_Step_09: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 		log.info("TC_12_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
+		transferStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
 
 	}
 
@@ -1187,62 +1187,62 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_14_Step_03: Click Tat Ca Cac Loai Giao Dich");
-		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[1]);
 
 		log.info("TC_14_Step_04: Chon Chuyen Tien Trong VCB");
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, Input.OPTION_TRANSFER[2]);
 
 		log.info("TC_14_Step_05: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_14_Step_06: Kiem tra todate hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
 
 		log.info("TC_14_Step_07: Kiem tra Note hien thi");
-		verifyTrue(transStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
 
 		log.info("TC_14_Step_08: CLick Tim Kiem");
-		transStatus.clickToDynamicButton(driver, TittleData.SEARCH);
+		transferStatus.clickToDynamicButton(driver, TittleData.SEARCH);
 
 		log.info("TC_14_Step 09: Kiem tra ngay tao giao dich hien thi");
-		String orderTime = transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		String orderTime = transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
 		verifyTrue(orderTime.contains(getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear()));
 
 		log.info("TC_14_Step 10: Kiem tra thoi gian tao dao dich");
 
 		log.info("TC_14_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_other_owner);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_other_owner);
 
 		log.info("TC_14_Step 12: Kiem tra trang thai giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_14_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_14_Step 14: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_14_Step 15: Kiem tra ngay giao dich hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.CREAT_DATE), orderTime);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
 
 		log.info("TC_14_Step 17: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.NAME_RECEIPTER), name_other_owner);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_other_owner);
 
 		log.info("TC_14_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_14_Step 19: Kiem tra ngay hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), tommorrowDate);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
 		log.info("TC_14_Step 20: Kiem tra ghi chú");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.NOTE), "");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
 
 		log.info("TC_14_Step 21: Kiem tra trang thai hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_14_Step_22: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 	}
 
@@ -1250,31 +1250,31 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	public void TC_15_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_15_Step_01: Click Huy Lenh");
-		transStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
+		transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 		log.info("TC_15_Step_02: Click Dong Y");
-		transStatus.clickToDynamicButton(driver, TittleData.ACCEPT);
+		transferStatus.clickToDynamicButton(driver, Text.ACCEPT);
 
 		log.info("TC_15_Step_04: Kiem Tra Success hiển thị");
-		verifyEquals(transStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TittleData.SUCCESS);
+		verifyEquals(transferStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), Text.SUCCESS);
 
 		log.info("TC_15_Step_05: Click quay lai");
-		transStatus.clickToDynamicButton(driver, TittleData.CLOSE);
+		transferStatus.clickToDynamicButton(driver, Text.CLOSE);
 
 		log.info("TC_15_Step_06: Kiem tra trang thai Da Huy hien thi");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_15_Step_07: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_15_Step_08: Kiem tra trang thai  Da Huy hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_15_Step_09: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 		log.info("TC_15_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
+		transferStatus.clickToDynamicBackIcon(driver, Text.STATUS_TRANSACTION);
 
 	}
 
@@ -1400,60 +1400,60 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		homePage.clickToDynamicIcon(driver, TittleData.STATUS_TRANSACTION);
 
 		log.info("TC_17_Step_03: Click Tat Ca Cac Loai Giao Dich");
-		transStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[1]);
+		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_17_Step_04: Chon Chuyen Tien Trong VCB");
-		transStatus.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		transferStatus.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_17_Step_05: Kiem tra from date hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate"), getBackwardDate(29));
 
 		log.info("TC_17_Step_06: Kiem tra todate hien thi");
-		verifyEquals(transStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
+		verifyEquals(transferStatus.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvToDate"), today);
 
 		log.info("TC_17_Step_07: Kiem tra Note hien thi");
-		verifyTrue(transStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
+		verifyTrue(transferStatus.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyStatus_Data.Output.NOTE));
 
 		log.info("TC_17_Step_08: CLick Tim Kiem");
-		transStatus.clickToDynamicButton(driver, TittleData.SEARCH);
+		transferStatus.clickToDynamicButton(driver, Text.SEARCH);
 
 		log.info("TC_17_Step 09: Kiem tra ngay tao giao dich hien thi");
-		String orderTime = transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		String orderTime = transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvDate");
 		verifyTrue(orderTime.contains(getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear()));
 
 		log.info("TC_17_Step 11: Kiem tra nguoi nhan");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_other_owner);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvContent"), name_other_owner);
 
 		log.info("TC_17_Step 12: Kiem tra trang thai giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_17_Step 13: Kiem tra so tien giao dich");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "1", "com.VCB:id/tvMoney"), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_17_Step 14: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_17_Step 15: Kiem tra ngay giao dich hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.CREAT_DATE), orderTime);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.CREAT_DATE), orderTime);
 
 		log.info("TC_17_Step 17: Kiem tra ten nguoi huong hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.NAME_RECEIPTER), name_other_owner);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NAME_RECEIPTER), name_other_owner);
 
 		log.info("TC_17_Step 18: Kiem tra so tien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_17_Step 19: Kiem tra ngay hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), tommorrowDate);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.EFFECTIVE_DATE), tommorrowDate);
 
 		log.info("TC_17_Step 20: Kiem tra ghi chú");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.NOTE), "");
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.NOTE), "");
 
 		log.info("TC_17_Step 21: Kiem tra trang thai hieu luc");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, Text.STATUS), TransferMoneyStatus_Data.Output.WAITING_STATUS);
 
 		log.info("TC_17_Step_22: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, Text.DETAIL_TRANSFER);
 
 	}
 
@@ -1461,31 +1461,31 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 	public void TC_18_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_18_Step_01: Click Huy Lenh");
-		transStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
+		transferStatus.clickToDynamicIconInOrderStatus(driver, "0", "com.VCB:id/tvHuyLenh");
 
 		log.info("TC_18_Step_02: Click Dong Y");
-		transStatus.clickToDynamicButton(driver, TittleData.ACCEPT);
+		transferStatus.clickToDynamicButton(driver, TittleData.ACCEPT);
 
 		log.info("TC_18_Step_04: Kiem Tra Success hiển thị");
-		verifyEquals(transStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TittleData.SUCCESS);
+		verifyEquals(transferStatus.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TittleData.SUCCESS);
 
 		log.info("TC_18_Step_05: Click quay lai");
-		transStatus.clickToDynamicButton(driver, TittleData.CLOSE);
+		transferStatus.clickToDynamicButton(driver, TittleData.CLOSE);
 
 		log.info("TC_18_Step_06: Kiem tra trang thai Da Huy hien thi");
-		verifyEquals(transStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getTextInDynamicTransactionInTransferOrderStatus(driver, "0", "com.VCB:id/tvStatus"), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_18_Step_07: click vao giao dich");
-		transStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
+		transferStatus.clickToDynamicTransactionInTransactionOrderStatus(driver, "0", "com.VCB:id/tvDate");
 
 		log.info("TC_18_Step_08: Kiem tra trang thai  Da Huy hien thi");
-		verifyEquals(transStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
+		verifyEquals(transferStatus.getDynamicTextInTransactionDetail(driver, TittleData.STATUS), TransferMoneyStatus_Data.Output.CANCEL_STATUS);
 
 		log.info("TC_18_Step_09: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
+		transferStatus.clickToDynamicBackIcon(driver, TittleData.DETAIL_TRANSFER);
 
 		log.info("TC_18_Step_10: Click quay lai");
-		transStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
+		transferStatus.clickToDynamicBackIcon(driver, TittleData.STATUS_TRANSACTION);
 
 	}
 
