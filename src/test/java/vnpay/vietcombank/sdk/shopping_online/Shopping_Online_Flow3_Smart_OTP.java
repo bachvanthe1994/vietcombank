@@ -36,7 +36,7 @@ public class Shopping_Online_Flow3_Smart_OTP extends Base {
 	String transactionNumber;
 	List<String> listActual;
 	double soDuThuc = 0;
-	String maGiaodich, otpSmart, newOTP = "";
+	String codeTransfer, otpSmart, newOTP = "";
 	int indexHang = 0;
 
 	long amount, amountStart, feeView, amountView, amountAfter = 0;
@@ -286,7 +286,7 @@ public class Shopping_Online_Flow3_Smart_OTP extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_01_STEP_20: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);
@@ -520,7 +520,7 @@ public class Shopping_Online_Flow3_Smart_OTP extends Base {
 
 		verifyEquals(shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_ORDER), codeBill);
 
-		maGiaodich = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
+		codeTransfer = shopping.getDynamicTextTableByTextView(Shopping_Online_Data.CODE_TRANSFER);
 
 		log.info("TC_02_STEP_: thuc hien giao dich moi");
 		shopping.clickToDynamicButton(Shopping_Online_Data.NEW_TRANSFER);

@@ -16,6 +16,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
 import model.TransferInVCBRecurrent;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
@@ -26,6 +27,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 
 public class TransferMoneyRecurrent extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -37,6 +39,7 @@ public class TransferMoneyRecurrent extends Base {
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String password = "";
+	private HomePageObject home;
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel receiverAccount = new SourceAccountModel();
@@ -66,11 +69,12 @@ public class TransferMoneyRecurrent extends Base {
 		
 		password = pass;
 		
+		
+		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 		transferStatus = PageFactoryManager.getTransferMoneyStatusPageObject(driver);
 		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		log.info("TC_01_1_Click Chuyen tien trong ngan hang");
-		
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
 	}
 
 	@Test
@@ -182,7 +186,7 @@ public class TransferMoneyRecurrent extends Base {
 		verifyEquals(actualAvailableBalance, expectAvailableBalance+" "+sourceAccount.currentcy);
 
 		log.info("TC_03_1: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 	}
 
@@ -307,8 +311,10 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_05_ChuyenTien_NgoaiTe_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		
-		log.info("TC_05_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 
 		log.info("TC_05_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -421,7 +427,7 @@ public class TransferMoneyRecurrent extends Base {
 		String endDate = getForwardDate(1 + Integer.parseInt(info1.frequencyNumber));
 
 		log.info("TC_07_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_07_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
@@ -537,8 +543,10 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_09_ChuyenTien_VND_DinhKy_1Thang_CoPhiGiaoDichNguoiChuyenTra_XacThucBangMatKhau() {
 		
-		log.info("TC_09_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 
 		log.info("TC_09_02_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -650,7 +658,7 @@ public class TransferMoneyRecurrent extends Base {
 		String endDate = getForwardMonthAndForwardDay(Long.parseLong(info2.frequencyNumber), 1);
 
 		log.info("TC_11_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_11_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
@@ -766,8 +774,9 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_13_ChuyenTien_NgoaiTe_DinhKy_2Thang_CoPhiGiaoDichNguoiNhanTra_XacThucBangMatKhauDangNhap() {
 		
-		log.info("TC_13_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_13_02_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -879,7 +888,7 @@ public class TransferMoneyRecurrent extends Base {
 		String endDate = getForwardMonthAndForwardDay(Long.parseLong(info3.frequencyNumber), 1);
 
 		log.info("TC_15_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_15_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
@@ -995,8 +1004,10 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_17_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiChuyenTra_XacThucBangOTP() {
 		
-		log.info("TC_17_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 
 		log.info("TC_17_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -1109,7 +1120,7 @@ public class TransferMoneyRecurrent extends Base {
 		String endDate = getForwardDate(1 + Integer.parseInt(info4.frequencyNumber));
 
 		log.info("TC_19_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_19_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
@@ -1225,8 +1236,10 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_21_ChuyenTien_NgoaiTe_USD_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP() {
 		
-		log.info("TC_21_01_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 
 		log.info("TC_21_02_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -1339,7 +1352,7 @@ public class TransferMoneyRecurrent extends Base {
 		String endDate = getForwardDate(1 + Integer.parseInt(info5.frequencyNumber));
 
 		log.info("TC_23_01: Click  nut Back");
-		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferRecurrent.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_23_02: Click Trang thai lenh chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
@@ -1455,8 +1468,10 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_25_ChuyenTien_VND_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP_LuuDanhBaThuHuong() {
 		
-		log.info("TC_25_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 
 		log.info("TC_25_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -1546,7 +1561,7 @@ public class TransferMoneyRecurrent extends Base {
 			transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputText_MoneyRecurrent.SAVE_RECEIVED_ACCOUNT_TEXT);
 			
 			log.info("TC_25_14_02_Xac nhan hien thi dung loai dich vu");
-			verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvType"), TittleData.TRANSFER_IN_VCB);
+			verifyEquals(transferRecurrent.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvType"), Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 			
 			log.info("TC_25_14_03_Xac nhan hien thi dung ten chu tai khoan");
 			verifyEquals(transferRecurrent.getTextInEditTextFieldByID(driver, "com.VCB:id/edtCusName"), receivedName);
@@ -1572,8 +1587,10 @@ public class TransferMoneyRecurrent extends Base {
 	@Test
 	public void TC_26_ChuyenTien_VND_DinhKy_2Ngay_CoPhiGiaoDichNguoiNhanTra_XacThucBangOTP_LayDanhBaThuHuong() {
 		
-		log.info("TC_26_1_Click Chuyen tien trong ngan hang");
-		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.TRANSFER_TYPE);
+		home= PageFactoryManager.getHomePageObject(driver);
+		home.clickToDynamicButtonLinkOrLinkText(driver,  Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		transferRecurrent = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
 
 		log.info("TC_26_2_Chon phuong thuc chuyen tien");
 		transferRecurrent.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);

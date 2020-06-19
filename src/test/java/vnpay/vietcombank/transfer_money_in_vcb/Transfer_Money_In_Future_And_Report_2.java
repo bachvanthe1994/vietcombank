@@ -20,6 +20,7 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
 import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 import vietcombank_test_data.TransferMoneyStatus_Data;
@@ -70,7 +71,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	public void TC_01_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
@@ -318,7 +319,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	public void TC_04_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
@@ -571,7 +572,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	public void TC_07_ChuyenTienTuongLaiCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_07_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
@@ -824,7 +825,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
@@ -1079,7 +1080,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	@Test
 	public void TC_13_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBang_MatKhau(String pass) {
 		log.info("TC_13_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_13_Step_02: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -1288,7 +1289,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	@Test
 	public void TC_16_ChuyenTienTuongLaiDenTaiKhoanKhacChuSoHuuCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBang_MatKhau(String pass) {
 		log.info("TC_16_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_16_Step_02: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);

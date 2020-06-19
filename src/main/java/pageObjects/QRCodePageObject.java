@@ -189,8 +189,8 @@ public class QRCodePageObject extends AbstractPage {
 				clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 				clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 				clickToDynamicImageButtonByContentDesc(driver, "Hiển thị gốc");
-				clickToDynamicTextContains(driver, "tải xuống");
-				clickToDynamicButtonLinkOrLinkText(driver, "Type 1");
+				clickToDynamicTextContains(driver, "ải xuống");
+				clickToDynamicTextContains(driver, "Type 1");
 				continue;
 			}
 

@@ -19,6 +19,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
@@ -68,7 +69,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBang_Smart_OTP() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_01_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -192,10 +193,10 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 	@Test
 	public void TC_02_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraUSDVaXacThucBang_Smart_OTP() {
 		log.info("TC_02_Step_01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_01_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -337,10 +338,10 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 	public void TC_03_ChuyenTienNgayCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_Smart_OTP() {
 
 		log.info("TC_02_Step_01 : Click  nut Back");
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCB);
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, InputDataInVCB.TRANSFER_TYPE);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_01_Step_02:Click tai khoan nguon");
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
