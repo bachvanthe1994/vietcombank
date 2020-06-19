@@ -223,6 +223,9 @@ public class TransferMoneyInVCB_Data {
 		public static final String DELETE_CONTACT = "Xóa danh bạ thành công";
 		public static final String CONTACT_BENFICAL = "Danh bạ người hưởng";
 		public static final String SETTING = "Cài đặt";
+		public static final String REFERENCE_RATE = "Tỷ giá quy đổi tham khảo";
+		
+		
 
 	}
 }
