@@ -24,10 +24,9 @@
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
-
-
+			<!-- Thanh toán hóa đơn di động trả sau -->
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_SmartOTP" />
+			<class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_Flow" />
 			<!-- Mua sắm trực tuyến -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
@@ -54,18 +53,19 @@
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent_SmartOTP" /> -->
 
-			<!-- <class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" /> -->
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_SmartOTP" />
+			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 
 
 			<!-- chuyển tiền ngoài vcb -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_SmartOTP" /> -->
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" /> -->
 
 
 
 			<!-- Chuyển tiền 24/7 -->
+			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part3_Smart_OTP" />
 			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" />
 			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" />
 
@@ -84,6 +84,7 @@
 
 			<!-- Thanh toan tien dien -->
 			<class name="vnpay.vietcombank.electric_bills.Electric_Bills_Flow" />
+
 
 
 			<!-- Thanh toan tien nuoc -->

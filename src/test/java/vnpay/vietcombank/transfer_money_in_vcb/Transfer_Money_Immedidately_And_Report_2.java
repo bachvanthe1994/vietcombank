@@ -18,12 +18,12 @@ import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
+import vietcombank_test_data.TransactionReport_Data.Text;
 import pageObjects.TransferMoneyInVcbPageObject;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
-import vietcombank_test_data.TransferMoneyStatus_Data.Text;
 
 public class Transfer_Money_Immedidately_And_Report_2 extends Base {
 	AppiumDriver<MobileElement> driver;

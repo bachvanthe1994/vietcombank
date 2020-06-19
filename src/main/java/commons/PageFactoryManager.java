@@ -9,6 +9,7 @@ import pageObjects.ConfirmMethodObject;
 import pageObjects.ElectricBillPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.InboxPageObject;
+import pageObjects.InsuranceFeePageObject;
 import pageObjects.InterestRateCalculatePageObject;
 import pageObjects.InternetADSLPageObject;
 import pageObjects.InvestigationOnlinePageObject;
@@ -239,6 +240,10 @@ public class PageFactoryManager {
 	
 	public static SettingLoginPageObject getSettingLoginPageObject(AppiumDriver<MobileElement> driver) {
 		return new SettingLoginPageObject(driver);
+	}
+	
+	public static InsuranceFeePageObject getInsurranceFeePageObject(AppiumDriver<MobileElement> driver) {
+		return new InsuranceFeePageObject(driver);
 	}
 	
 	

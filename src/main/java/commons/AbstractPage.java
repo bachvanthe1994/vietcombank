@@ -1087,6 +1087,26 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
 	}
+	
+	public void clickToDynamicRelavitelayout  (AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_RELATIVELAYOUT, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_RELATIVELAYOUT, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_RELATIVELAYOUT, dynamicID);
+		}
+	}
+	
+	public void clickToDynamicTextID   (AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
+		}
+	}
+	
+	
 
 //Click vào close icon có tham số truyền vào là text cạnh nó
 	public void clickToDynamicCloseIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
