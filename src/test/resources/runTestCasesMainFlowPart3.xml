@@ -82,8 +82,12 @@
 				sắm trực tuyến -->
 
 			<!--Thanh toán cước điện thoại cố định -->
+		
 			<class
-				name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
+				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
+			
+				<class
+				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" />
 			<!--Thanh toán cước điện thoại cố định -->
 			<!-- <class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
 
