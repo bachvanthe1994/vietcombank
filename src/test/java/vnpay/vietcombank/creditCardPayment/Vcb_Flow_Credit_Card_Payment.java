@@ -46,7 +46,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		login.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		login.clickToDynamicButtonLinkOrLinkText(driver, HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
-		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
+//		login.clickToDynamicAcceptButton(driver, "com.VCB:id/btCancel");
 		vcbACreditCardPayment = PageFactoryManager.getVCBCreditCardPaymentPageObject(driver);
 
 	}
