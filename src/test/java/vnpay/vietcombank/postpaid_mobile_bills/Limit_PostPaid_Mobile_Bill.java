@@ -1,6 +1,10 @@
 package vnpay.vietcombank.postpaid_mobile_bills;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,14 +28,17 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 	private HomePageObject home;
 	private PostpaidMobileBillPageObject postpaidMobile;
 	private TransactionReportPageObject transactionReport;
+	List<String> listVina = new ArrayList<String>();
 
 	private String mobileBill, transactionID, sourceAccountMoney, transactionDate, mobilePhone;
 	private long transferFee;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
+		listVina = Arrays.asList(getDataInCell(16).split(";"));
+		
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -62,7 +69,7 @@ public class Limit_PostPaid_Mobile_Bill extends Base {
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
 
 		log.info("TC_01_Step_05: Nhap so dien thoai va an tiep tuc");
-		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_VIETTEL_MOBILE);
+		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(listVina);
 
 		log.info("TC_01_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), "Xác nhận thông tin");

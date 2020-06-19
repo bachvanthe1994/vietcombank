@@ -66,6 +66,7 @@ public class Flow_QuickMoneyTransfer247_Part3_Smart_OTP extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		otpSmart = getDataInCell(6);
 		newOTP = "111222";
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 	}
 
@@ -142,10 +143,8 @@ public class Flow_QuickMoneyTransfer247_Part3_Smart_OTP extends Base {
 
 		log.info("TC_01_Step_doi kieu du lieu string -> long");
 		amountTranfer = Long.parseLong(amountTranferString);
-
-		
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.METHOD_VALIDATE);
-		
+
 		log.info("TC_03_Step_21: Chon Smart OTP");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.ACCURACY[2]);
 
@@ -154,13 +153,12 @@ public class Flow_QuickMoneyTransfer247_Part3_Smart_OTP extends Base {
 
 		log.info("TC_01_Step_doi kieu du lieu string -> long");
 		costTranfer = Long.parseLong(costTranferString);
-		
+
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 
 		log.info("TC_03_Step_23: Nhap OTP");
 		transferMoney.inputToDynamicSmartOTP(driver, newOTP, "com.VCB:id/otp");
-		
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
@@ -345,13 +343,12 @@ public class Flow_QuickMoneyTransfer247_Part3_Smart_OTP extends Base {
 
 		log.info("TC_03_Step_23: Nhap OTP");
 		transferMoney.inputToDynamicSmartOTP(driver, newOTP, "com.VCB:id/otp");
-		
+
 		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 
-		
 		log.info("TC_03_Step_Lay gia tri so tien chuyen");
 		amountTranferString = transferMoney.getDynamicTextByLabel(driver, TransferQuick.MOUNT_LABEL).replaceAll("\\D+", "");
 
@@ -374,12 +371,6 @@ public class Flow_QuickMoneyTransfer247_Part3_Smart_OTP extends Base {
 		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 
-		
-		
-		
-		
-		
-		
 		log.info("TC_03_Step_Tiep tuc");
 		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
 

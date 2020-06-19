@@ -36,6 +36,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String account = "";
 	String passSmartOTP = "111222";
+	String otp;
 	List<String> codeViettel = new ArrayList<String>();
 	List<String> codeFpt = new ArrayList<String>();
 
@@ -46,6 +47,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		password = pass;
+		otp = opt;
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		adsl = PageFactoryManager.getInternetADSLPageObject(driver);
@@ -53,6 +55,43 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 		codeViettel = Arrays.asList(getDataInCell(17).split(";"));
 		codeFpt = Arrays.asList(getDataInCell(18).split(";"));
+	}
+
+	@Parameters({ "otp" })
+	@Test(invocationCount = 2)
+	public void TC_00_ThanhToanCuocViettelXacThucOTP(String otp) {
+		log.info("TC_03_Step_Click cuoc ADSL");
+		adsl.scrollDownToText(driver, Internet_ADSL_Data.Valid_Account.SAVE);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
+
+		log.info("TC_03_Step_Select tai khoan nguon");
+		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
+		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
+		log.info("TC_03_Step_Thong tin giao dich chon Viettel");
+
+		adsl.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.VIETTEL);
+
+		log.info("TC_03_Input ma khach hang");
+		adsl.inputCustomerCode(codeViettel);
+
+		log.info("TC_03_Click Tiep tuc");
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
+
+		log.info("TC_03_Step_Nhap ma xac thuc");
+		adsl.inputToDynamicOtp(driver, otp, Internet_ADSL_Data.Valid_Account.CONTINUE);
+
+		log.info("TC_03_Step_Tiep tuc");
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
+
+		log.info("TC_03_Verify message thanh cong");
+		verifyEquals(adsl.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), Internet_ADSL_Data.Valid_Account.TRANSACTION_SUCCESS);
+
+		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.NEW_TRANSACTION);
+
+		adsl.clickImageBack("com.VCB:id/ivTitleLeft");
+
 	}
 
 	@Test
