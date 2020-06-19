@@ -49,7 +49,7 @@ public class TransactionReport_Data {
 		public static final String TYPE_TRANSFER = "Loại giao dịch";
 		public static final String AMOUNT_TRANSFER = "Số tiền giao dịch";
 		public static final String PHONE_NUMBER = "Số điện thoại";
-
+		public static final String UNIT  = "Đơn vị trưc thuộc";
 		public static final String SERVICE_TEXT = "Dịch vụ";
 		public static final String SUPPLIER_NAME_TEXT = "Nhà cung cấp";
 		public static final String DEBT_MONEY_TEXT = "Số tiền trích nợ";
