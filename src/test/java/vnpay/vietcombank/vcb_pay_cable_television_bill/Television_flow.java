@@ -73,7 +73,7 @@ public class Television_flow extends Base {
 		log.info("TC_01_STEP_0: chọn cước truyền hình cap");
 		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, TitleData.TITLE_TELEVISION);
 
-		log.info("TC_01_STEP_0: lấy ra số dư");
+		log.info("TC_01_STEP_1: lấy ra số dư");
 		billTelevision.clickToTextID(driver, "com.VCB:id/number_account");
 		sourceAccount = billTelevision.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
@@ -81,69 +81,54 @@ public class Television_flow extends Base {
 		String[] toltal_money = getToltalMoney.split(" ");
 		toltalMoney = Double.parseDouble(toltal_money[0].replace(",", ""));
 
-		log.info("TC_01_STEP_1: kiem tra hien thị mac dinh");
-		for (int i = 0; i < listViettel.size(); i++) {
-			log.info("TC_01_STEP_2: điền mã khách hàng");
-			billTelevision.inputIntoEditTextByID(driver, listViettel.get(i), "com.VCB:id/code");
+		log.info("TC_01_STEP_2: kiem tra hien thị mac dinh");
+		billTelevision.inputCustomerId(listViettel);
 
-			log.info("TC_01_STEP_3: chọn tiếp tục");
-			billTelevision.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-
-			String locator = String.format(DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/tvTitleBar");
-			if (driver.findElements(By.xpath(locator)).size() > 0) {
-				break;
-			} else {
-				log.info("TC_01_STEP_3: chọn đóng");
-				billTelevision.clickToDynamicButton(driver, "Đóng");
-			}
-
-		}
-
-		log.info("TC_01_STEP_4: chọn phương thức xác thực");
+		log.info("TC_01_STEP_3: chọn phương thức xác thực");
 		billTelevision.clickToTextID(driver, "com.VCB:id/tvptxt");
-		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, TitleData.PASSWORD);
 
-		log.info("TC_01_STEP_5: lấy ra số tiền thanh toán ");
+		log.info("TC_01_STEP_4: lấy ra số tiền thanh toán ");
 		getPayments = billTelevision.getMoneyByAccount(driver, TitleData.NUMBER_MONEY_PAY);
 		String[] paymentsSplit = getPayments.split(" ");
 		payments = Double.parseDouble(paymentsSplit[0].replace(",", ""));
 
-		log.info("TC_01_STEP_7: lấy nhà cung cấp");
+		log.info("TC_01_STEP_5: lấy nhà cung cấp");
 		supplier = billTelevision.getMoneyByAccount(driver, TitleData.SUPPLIER);
 
-		log.info("TC_01_STEP_8: lấy mã khách hàng");
+		log.info("TC_01_STEP_6: lấy mã khách hàng");
 		userCode = billTelevision.getMoneyByAccount(driver, TitleData.CUSTOMER_CODE);
 
-		log.info("TC_01_STEP_9: lấy ra số số phí");
+		log.info("TC_01_STEP_7: lấy ra số số phí");
 		getFee = billTelevision.getMoneyByAccount(driver, TitleData.TRANSACTION_FEE);
 		String[] feeSplit = getFee.split(" ");
 		fee = Double.parseDouble(feeSplit[0].replace(",", ""));
 
-		log.info("TC_01_STEP_11: chọn tiếp tục");
+		log.info("TC_01_STEP_8: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
 		
-		log.info("TC_01_STEP_12: điền mật khẩu");
+		log.info("TC_01_STEP_9: điền mật khẩu");
 		billTelevision.inputToDynamicInputBox(driver, pass, "Nhập mật khẩu");
 		
-		log.info("TC_01_STEP_13: chọn tiếp tục");
+		log.info("TC_01_STEP_10: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
 		
-		log.info("TC_01_STEP_6: lấy ra tên dịch vụ");
+		log.info("TC_01_STEP_11: lấy ra tên dịch vụ");
 		getService = billTelevision.getMoneyByAccount(driver, TitleData.SERVICE);
 
-		log.info("TC_03_STEP_15: lấy mã hóa đơn");
+		log.info("TC_03_STEP_12: lấy mã hóa đơn");
 		dealCode = billTelevision.getMoneyByAccount(driver, TitleData.CODE_TRANSFER);
 
-		log.info("TC_01_STEP_14: lấy thời gian giao dịch");
+		log.info("TC_01_STEP_13: lấy thời gian giao dịch");
 		getTimeTransfer = billTelevision.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 
-		log.info("TC_01_STEP_15: chọn thực hiện giao dịch mới");
+		log.info("TC_01_STEP_14: chọn thực hiện giao dịch mới");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEW_TRANSFER);
 
-		log.info("TC_01_STEP_16: chọn back");
+		log.info("TC_01_STEP_15: chọn back");
 		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_01_STEP_17: chọn back");
+		log.info("TC_01_STEP_16: chọn back");
 		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -166,10 +151,10 @@ public class Television_flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
-		log.info("TC_02_7: Click Tim Kiem");
+		log.info("TC_02_6: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
 
-		log.info("TC_02_8: Kiem tra ngay tao giao dich hien thi");
+		log.info("TC_02_7: Kiem tra ngay tao giao dich hien thi");
 		String getReportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").substring(0, 16);
 
 		String[] timeTransfer = getTimeTransfer.split(" ");
@@ -177,28 +162,28 @@ public class Television_flow extends Base {
 
 		verifyEquals(getReportTime, dateTime);
 
-		log.info("TC_02_10: Kiem tra so tien chuyen hien thi");
+		log.info("TC_02_8: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney"), ("- " + getPayments));
 
-		log.info("TC_02_11: Click vao giao dich");
+		log.info("TC_02_9: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
-		log.info("TC_02_12: Kiem tra mã giao dịch");
+		log.info("TC_02_10: Kiem tra mã giao dịch");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), dealCode);
 
-		log.info("TC_02_12: Kiem tra nhà cung cấp");
+		log.info("TC_02_11: Kiem tra nhà cung cấp");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleData.SUPPLIER), supplier);
 
 		log.info("TC_02_12: Kiem tra mã khách hàng");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleData.CUSTOMER_CODE), userCode);
 
-		log.info("TC_02_12: Kiem tra dịch vụ");
+		log.info("TC_02_13: Kiem tra dịch vụ");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleData.SERVICE), getService);
 
-		log.info("TC_02_13: Kiem tra so tai khoan trich no");
+		log.info("TC_02_14: Kiem tra so tai khoan trich no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
-		log.info("TC_02_14: Kiem tra so tien giao dich hien thi");
+		log.info("TC_02_15: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.AMOUNT_TRANSFER).contains(getPayments));
 
 		log.info("TC_02_16: Click  nut Back");
@@ -238,68 +223,53 @@ public class Television_flow extends Base {
 		toltalMoney = Double.parseDouble(toltal_money[0].replace(",", ""));
 
 		log.info("TC_03_STEP_2: kiem tra hien thị mac dinh");
-		for (int i = 0; i < listViettel.size(); i++) {
-			log.info("TC_03_STEP_3: điền mã khách hàng");
-			billTelevision.inputIntoEditTextByID(driver, listViettel.get(i), "com.VCB:id/code");
+		billTelevision.inputCustomerId(listViettel);
 
-			log.info("TC_03_STEP_4: chọn tiếp tục");
-			billTelevision.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
-
-			String locator = String.format(DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/tvTitleBar");
-			if (driver.findElements(By.xpath(locator)).size() > 0) {
-				break;
-			} else {
-				log.info("TC_03_STEP_5: chọn đóng");
-				billTelevision.clickToDynamicButton(driver, "Đóng");
-			}
-
-		}
-
-		log.info("TC_03_STEP_6: chọn phương thức xác thực");
+		log.info("TC_03_STEP_3: chọn phương thức xác thực");
 		billTelevision.clickToTextID(driver, "com.VCB:id/tvptxt");
 		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, TitleData.OTP);
 
-		log.info("TC_03_STEP_7: lấy ra số tiền thanh toán ");
+		log.info("TC_03_STEP_4: lấy ra số tiền thanh toán ");
 		getPayments = billTelevision.getMoneyByAccount(driver, TitleData.NUMBER_MONEY_PAY);
 		String[] paymentsSplit = getPayments.split(" ");
 		payments = Double.parseDouble(paymentsSplit[0].replace(",", ""));
 
-		log.info("TC_03_STEP_9: lấy nhà cung cấp");
+		log.info("TC_03_STEP_5: lấy nhà cung cấp");
 		supplier = billTelevision.getMoneyByAccount(driver, TitleData.SUPPLIER);
 
-		log.info("TC_03_STEP_10: lấy mã khách hàng");
+		log.info("TC_03_STEP_6: lấy mã khách hàng");
 		userCode = billTelevision.getMoneyByAccount(driver, TitleData.CUSTOMER_CODE);
 
-		log.info("TC_03_STEP_11: lấy ra số số phí");
+		log.info("TC_03_STEP_7: lấy ra số số phí");
 		getFee = billTelevision.getMoneyByAccount(driver, TitleData.TRANSACTION_FEE);
 		String[] feeSplit = getFee.split(" ");
 		fee = Double.parseDouble(feeSplit[0].replace(",", ""));
 
-		log.info("TC_03_STEP_13: chọn tiếp tục");
+		log.info("TC_03_STEP_8: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
 		
-		log.info("TC_03_STEP_14: điền otp");
+		log.info("TC_03_STEP_9: điền otp");
 		billTelevision.inputToDynamicOtp(driver, otp, TitleData.NEXT);
 
-		log.info("TC_03_STEP_15: chọn tiếp tục");
+		log.info("TC_03_STEP_10: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
 		
-		log.info("TC_01_STEP_6: lấy ra tên dịch vụ");
+		log.info("TC_01_STEP_11: lấy ra tên dịch vụ");
 		getService = billTelevision.getMoneyByAccount(driver, TitleData.SERVICE);
 
-		log.info("TC_03_STEP_15: lấy mã hóa đơn");
+		log.info("TC_03_STEP_12: lấy mã hóa đơn");
 		dealCode = billTelevision.getMoneyByAccount(driver, TitleData.CODE_TRANSFER);
 
-		log.info("TC_03_STEP_16: lấy thời gian giao dịch");
+		log.info("TC_03_STEP_13: lấy thời gian giao dịch");
 		getTimeTransfer = billTelevision.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTime");
 
-		log.info("TC_03_STEP_17: chọn thực hiện giao dịch mới");
+		log.info("TC_03_STEP_14: chọn thực hiện giao dịch mới");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEW_TRANSFER);
 
-		log.info("TC_03_STEP_18: chọn back");
+		log.info("TC_03_STEP_15: chọn back");
 		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_03_STEP_19: chọn back");
+		log.info("TC_03_STEP_16: chọn back");
 		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 
@@ -322,10 +292,10 @@ public class Television_flow extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
-		log.info("TC_04_7: Click Tim Kiem");
+		log.info("TC_04_6: Click Tim Kiem");
 		transReport.clickToDynamicButton(driver, ReportTitle.SEARCH_BUTTON);
 
-		log.info("TC_04_8: Kiem tra ngay tao giao dich hien thi");
+		log.info("TC_04_7: Kiem tra ngay tao giao dich hien thi");
 		String getReportTime = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate").substring(0, 16);
 
 		String[] timeTransfer = getTimeTransfer.split(" ");
@@ -333,37 +303,37 @@ public class Television_flow extends Base {
 
 		verifyEquals(getReportTime, dateTime);
 
-		log.info("TC_04_10: Kiem tra so tien chuyen hien thi");
+		log.info("TC_04_8: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvMoney"), ("- " + getPayments));
 
-		log.info("TC_04_11: Click vao giao dich");
+		log.info("TC_04_9: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
-		log.info("TC_04_12: Kiem tra mã giao dịch");
+		log.info("TC_04_10: Kiem tra mã giao dịch");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), dealCode);
 
-		log.info("TC_04_12: Kiem tra nhà cung cấp");
+		log.info("TC_04_11: Kiem tra nhà cung cấp");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.SUPPLIER), supplier);
 
 		log.info("TC_04_12: Kiem tra mã khách hàng");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleData.CUSTOMER_CODE), userCode);
 
-		log.info("TC_04_12: Kiem tra dịch vụ");
+		log.info("TC_04_13: Kiem tra dịch vụ");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.SERVICE), getService);
 
-		log.info("TC_04_13: Kiem tra so tai khoan trich no");
+		log.info("TC_04_14: Kiem tra so tai khoan trich no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
-		log.info("TC_04_14: Kiem tra so tien giao dich hien thi");
+		log.info("TC_04_15: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.AMOUNT_TRANSFER).contains(getPayments));
 
-		log.info("TC_04_15: Kiem tra mã khách hàng");
+		log.info("TC_04_16: Kiem tra mã khách hàng");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.AMOUNT_TRANSFER).contains(getPayments));
 
-		log.info("TC_04_16: Click  nut Back");
+		log.info("TC_04_17: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.DETAIL_TRANSFER);
 
-		log.info("TC_04_17: kiểm tra số dư");
+		log.info("TC_04_18: kiểm tra số dư");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 		String surplus = transReport.getDynamicTextInTransactionDetail(driver, account);
 		String[] surplusSplit = surplus.split(" ");
@@ -371,13 +341,13 @@ public class Television_flow extends Base {
 		double canculateAvailable = toltalMoney - payments - fee;
 		verifyEquals(surplusInt, canculateAvailable);
 
-		log.info("TC_04_18: Click Đóng");
+		log.info("TC_04_19: Click Đóng");
 		transReport.clickToTextID(driver, "com.VCB:id/cancel_button");
 
-		log.info("TC_04_19: Click  nut Back");
+		log.info("TC_04_20: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
-		log.info("TC_04_20: Click  nut Home");
+		log.info("TC_04_21: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 

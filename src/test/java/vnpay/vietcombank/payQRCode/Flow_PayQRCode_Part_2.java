@@ -18,6 +18,7 @@ import pageObjects.QRCodePageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.PayQRCode_Data;
 import vietcombank_test_data.TransactionReport_Data;
+import vietcombank_test_data.Notify_Management_Data.Notify_Text;
 
 public class Flow_PayQRCode_Part_2 extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -27,7 +28,7 @@ public class Flow_PayQRCode_Part_2 extends Base {
 	private TransactionReportPageObject transReport;
 	private String transferTime;
 	private String transactionNumber;
-	long transferFee = 0;
+	long money,transferFee = 0;
 	String password, otpNumber = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -53,9 +54,10 @@ public class Flow_PayQRCode_Part_2 extends Base {
 
 	private long surplus, availableBalance, actualAvailableBalance;
 
-	String account, codeOrder = "";
+	String account, namePlace,codeOrder = "";
 	@Test
 	public void TC_01_ThanhToanHoaDon_VCB_Type1_QRCode() {
+		
 		log.info("TC_01_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
@@ -75,7 +77,7 @@ public class Flow_PayQRCode_Part_2 extends Base {
 		log.info("TC_01_5_Chon anh");
 		OrderQRCode_Type1_Info qrCode = payQRCode.chooseQRCodeType1(numberOfImage);
 		String destinationPlace = qrCode.destinationPlace;
-		String namePlace = qrCode.namePlace;
+		namePlace = qrCode.namePlace;
 		String codePlace = qrCode.codePlace;
 		account = qrCode.account;
 
@@ -148,6 +150,7 @@ public class Flow_PayQRCode_Part_2 extends Base {
 
 	@Test
 	public void TC_02_ThanhToanHoaDon_VCB_Type1_QRCode_BaoCao() {
+		
 		log.info("TC_02_01: Click quay lai");
 		payQRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
@@ -222,86 +225,120 @@ public class Flow_PayQRCode_Part_2 extends Base {
 	}
 	
 	@Test
-	public void TC_03_ThanhToanHoaDon_VCB_Type3_QRCode() {
-		log.info("TC_03_1_Click QR Pay");
+	public void TC_03_KiemTra_HienThiThongBao_DaDangNhap() {
+		
+		log.info("TC_03_Step_01: Click vao Inbox");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
+		
+		log.info("TC_03_Step_02: Click vao tab Tat ca");
+		homePage.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_03_Step_03: Lay du lieu hien thi");
+		String inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",codeOrder);
+		
+		log.info("TC_03_Step_04: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(codeOrder));
+		verifyTrue(inboxContent.contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
+		verifyTrue(inboxContent.contains(namePlace));
+		
+		log.info("TC_03_Step_05: Click vao tab Khac");
+		homePage.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_03_Step_06: Lay du lieu hien thi");
+		inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",codeOrder);
+		
+		log.info("TC_03_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(codeOrder));
+		verifyTrue(inboxContent.contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
+		verifyTrue(inboxContent.contains(namePlace));
+		
+		log.info("TC_03_Step_08: Mo tab Home");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+	}
+	
+	@Test
+	public void TC_04_ThanhToanHoaDon_VCB_Type3_QRCode() {
+		
+		log.info("TC_04_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
 		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
 
-		log.info("TC_03_2_Click mo Thu vien anh");
+		log.info("TC_04_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, "Thư viện ảnh");
 
-		log.info("TC_03_3_Click chon Tat ca anh");
+		log.info("TC_04_3_Click chon Tat ca anh");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, PayQRCode_Data.TEXT_BUTTON_MENU);
 		payQRCode.clickToDynamicTextContains(driver, PayQRCode_Data.TEXT_CATEGORY_MENU);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_TYPE_3);
 
-		log.info("TC_03_4_Lay so luong anh");
+		log.info("TC_04_4_Lay so luong anh");
 		int numberOfImage = payQRCode.getNumberOfImageInLibrary();
 
-		log.info("TC_03_5_Chon anh");
+		log.info("TC_04_5_Chon anh");
 		OrderQRCode_Type1_Info qrCode = payQRCode.chooseQRCodeType3(numberOfImage);
 		String destinationPlace = qrCode.destinationPlace;
-		String namePlace = qrCode.namePlace;
+		namePlace = qrCode.namePlace;
 		account = qrCode.account;
 
-		log.info("TC_03_7_Lay so du");
+		log.info("TC_04_7_Lay so du");
 		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(qrCode.surplus);
 		
-		log.info("TC_03_8_Nhap thong tin lien he");
+		log.info("TC_04_8_Nhap thong tin lien he");
 		payQRCode.inputContactInfomation();
 
-		log.info("TC_03_09_Kiem tra man hinh xac nhan thong tin");
+		log.info("TC_04_09_Kiem tra man hinh xac nhan thong tin");
 		payQRCode.scrollUpToText(driver, PayQRCode_Data.SOURCE_ACCOUNT);
 
-		log.info("TC_03_09_1_Kiem tra tai khoan nguon");
+		log.info("TC_04_09_1_Kiem tra tai khoan nguon");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.SOURCE_ACCOUNT), account);
 
-		log.info("TC_03_09_2_Kiem tra thanh toan cho");
+		log.info("TC_04_09_2_Kiem tra thanh toan cho");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.DESTINATION_PLACE), destinationPlace);
 		
-		log.info("TC_03_09_3_Kiem tra ten diem ban");
+		log.info("TC_04_09_3_Kiem tra ten diem ban");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.NAME_PLACE), namePlace);
+		codeOrder = payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.ORDER_CODE);
 
-		long money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
+		money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
 
-		log.info("TC_03_12_Chon phuong thuc xac thuc");
+		log.info("TC_04_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
 		payQRCode.clickToDynamicDropDown(driver, PayQRCode_Data.ACCURACY_METHOD);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
 
-		log.info("TC_03_11_Kiem tra so tien phi");
+		log.info("TC_04_11_Kiem tra so tien phi");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
 
-		log.info("TC_03_12_Click Tiep tuc");
+		log.info("TC_04_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
 		payQRCode.inputToDynamicOtp(driver, otpNumber, PayQRCode_Data.CONTINUE_BUTTON);
 
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
-		log.info("TC_03_13: Kiem  tra giao dich thanh cong");
+		log.info("TC_04_13: Kiem  tra giao dich thanh cong");
 		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, PayQRCode_Data.SUCCESS_TRANSACTION));
 
-		log.info("TC_03_14: Kiem  tra so tien giao dich");
+		log.info("TC_04_14: Kiem  tra so tien giao dich");
 		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, addCommasToLong(money + "") + " VND"));
 
-		log.info("TC_03_15: Lay thoi gian tao giao dich");
+		log.info("TC_04_15: Lay thoi gian tao giao dich");
 		transferTime = payQRCode.getTransferTimeSuccess(driver, PayQRCode_Data.SUCCESS_TRANSACTION);
 
-		log.info("TC_03_16: Lay ma giao dich");
+		log.info("TC_04_16: Lay ma giao dich");
 		transactionNumber = payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.TRANSFER_CODE);
 
-		log.info("TC_03_17_Kiem tra nha cung cap");
+		log.info("TC_04_17_Kiem tra nha cung cap");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.DESTINATION_PLACE), destinationPlace);
 
-		log.info("TC_03_18_Kiem tra ten dich vu");
+		log.info("TC_04_18_Kiem tra ten dich vu");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.PLACE_NAME), namePlace);
 
-		log.info("TC_03_19: Click thuc hien giao dich moi");
+		log.info("TC_04_19: Click thuc hien giao dich moi");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.PERFORM_OTHER_TRANSACTION);
 
-		log.info("TC_03_20_Chon tai khoan nguon, kiem tra tai khoan chuyen bi tru tien");
+		log.info("TC_04_20_Chon tai khoan nguon, kiem tra tai khoan chuyen bi tru tien");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.STATUS_TRANSFER_MONEY);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.TRANSFER_MONEY_CHARITY);
 		payQRCode.scrollUpToText(driver, PayQRCode_Data.SOURCE_ACCOUNT);
@@ -315,77 +352,126 @@ public class Flow_PayQRCode_Part_2 extends Base {
 	}
 
 	@Test
-	public void TC_04_ThanhToanHoaDon_VCB_Type3_QRCode_BaoCao() {
-		log.info("TC_04_01: Click quay lai");
+	public void TC_05_ThanhToanHoaDon_VCB_Type3_QRCode_BaoCao() {
+		
+		log.info("TC_05_01: Click quay lai");
 		payQRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-		log.info("TC_04_02: Click vao Menu Icon");
+		log.info("TC_05_02: Click vao Menu Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("TC_04_03: Click Bao Cao Dao Dich");
+		log.info("TC_05_03: Click Bao Cao Dao Dich");
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
-		log.info("TC_04_04: Click Tat Ca Cac Loai Giao Dich");
+		log.info("TC_05_04: Click Tat Ca Cac Loai Giao Dich");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, TransactionReport_Data.ReportTitle.ALL_TYPE_TRANSACTION);
 
-		log.info("TC_04_05: Chon Thanh toan QR Code");
+		log.info("TC_05_05: Chon Thanh toan QR Code");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.PAY_QR_CODE);
 
-		log.info("TC_04_06: Click Chon Tai Khoan");
+		log.info("TC_05_06: Click Chon Tai Khoan");
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
-		log.info("TC_04_07: Chon tai khoan nguon");
+		log.info("TC_05_07: Chon tai khoan nguon");
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
 
-		log.info("TC_04_08: CLick Tim Kiem");
+		log.info("TC_05_08: CLick Tim Kiem");
 		transReport.clickToDynamicButton(driver, PayQRCode_Data.SEARCH_BUTTON);
 
-		log.info("TC_04_09: Lay ngay tao giao dich hien thi");
+		log.info("TC_05_09: Lay ngay tao giao dich hien thi");
 		String transferTimeInReport = transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 		
-		log.info("TC_04_10: Kiem tra ngay tao giao dich hien thi");
+		log.info("TC_05_10: Kiem tra ngay tao giao dich hien thi");
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
-		log.info("TC_04_11: Kiem tra noi dung hien thi");
+		log.info("TC_05_11: Kiem tra noi dung hien thi");
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
-		log.info("TC_04_12: Kiem tra so tien chuyen hien thi");
+		log.info("TC_05_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
 
-		log.info("TC_04_13: Click vao giao dich");
+		log.info("TC_05_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
 
-		log.info("TC_04_14: Kiem tra thoi gian tao giao dich hien thi");
+		log.info("TC_05_14: Kiem tra thoi gian tao giao dich hien thi");
 		String reportTime1 = transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TIME_TRANSACTION);
 		verifyEquals(reportTime1, transferTimeInReport);
 
-		log.info("TC_04_15: Kiem tra thoi gian tao giao dich hien thi");
+		log.info("TC_05_15: Kiem tra thoi gian tao giao dich hien thi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_NUMBER), transactionNumber);
 
-		log.info("TC_04_16: Kiem tra so tai khoan trich no");
+		log.info("TC_05_16: Kiem tra so tai khoan trich no");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.ACCOUNT_CARD), account);
 
-		log.info("TC_04_17: Kiem tra so tai khoan ghi co");
+		log.info("TC_05_17: Kiem tra so tai khoan ghi co");
 
-		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
+		log.info("TC_05_18: Kiem tra so tien giao dich hien thi");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
 
-		log.info("TC_04_22: Kiem tra loai giao dich");
+		log.info("TC_05_22: Kiem tra loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), PayQRCode_Data.PAY_QR_CODE);
 
 		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder; 
-		log.info("TC_04_23: Kiem Tra noi dung giao dich");
+		log.info("TC_05_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(note));
 
-		log.info("TC_04_24: Click  nut Back");
+		log.info("TC_05_24: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
-		log.info("TC_04_25: Click  nut Back");
+		log.info("TC_05_25: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
 
-		log.info("TC_04_26: Click  nut Home");
+		log.info("TC_05_26: Click  nut Home");
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
+	}
+	
+	@Parameters ({"pass"})
+	@Test
+	public void TC_06_KiemTra_HienThiThongBao_ChuaDangNhap(String password) {
+		
+		log.info("TC_06_Step_01: Click vao Menu");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		
+		log.info("TC_06_Step_02: Click vao Thoat Ung Dung");
+		homePage.scrollUpToText(driver, Notify_Text.LOG_OUT_TEXT);
+		homePage.clickToDynamicButtonLinkOrLinkTextNotScroll(driver, Notify_Text.LOG_OUT_TEXT);
+		
+		log.info("TC_06_Step_03: Click vao Dong y");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_06_Step_04: Click vao Inbox");
+		homePage.clickToDynamicImageView(driver, "com.VCB:id/ivOTT");
+		
+		log.info("TC_06_Step_05: Click vao tab Tat ca");
+		homePage.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_06_Step_06: Lay du lieu hien thi");
+		String inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",codeOrder);
+		
+		log.info("TC_06_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(codeOrder));
+		verifyTrue(inboxContent.contains(addCommasToLong(money+"")+" VND"));
+		verifyTrue(inboxContent.contains(namePlace));
+		
+		log.info("TC_06_Step_08: Click vao tab Khac");
+		homePage.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_06_Step_09: Lay du lieu hien thi");
+		inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",codeOrder);
+
+		log.info("TC_06_Step_10: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(codeOrder));
+		verifyTrue(inboxContent.contains(addCommasToLong(money+"")+" VND"));
+		verifyTrue(inboxContent.contains(namePlace));
+		
+		log.info("TC_06_Step_11: Back ve man Log In");
+		homePage.clickToDynamicImageView(driver, "com.VCB:id/back");
+		
+		log.info("TC_06_Step_12: Nhap mat khau va dang nhap");
+		homePage.inputIntoEditTextByID(driver, password, "com.VCB:id/edtInput");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
 		
 	}
 

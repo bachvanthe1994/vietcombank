@@ -35,6 +35,10 @@ public class VCBAuto_Debit_Data {
 		public static final String CUSTOMER_PLEASE_INFO = "Quý khách vui lòng kiểm tra thông tin giao dịch đã khởi tạo";
 		public static final String CUSTOMER_PLEASE_CHANGE = "Quý khách vui lòng kiểm tra thông tin giao dịch đã thay đổi.";
 
+		public static final String REGISTER_OTT = "Quý khách đã đăng ký ủy quyền trích nợ tự động VCB-Auto Debit thành công cho dịch vụ ";
+		public static final String CHANGE_INFO_OTT = "Quý khách đã thay đổi thông tin đăng ký ủy quyền trích nợ tự động VCB-Auto Debit thành công cho dịch vụ ";
+		public static final String UNREGISTER_OTT = "Quý khách đã hủy đăng ký ủy quyền trích nợ tự động VCB-Auto Debit thành công cho dịch vụ ";
+		
 	}
 
 	public class VALIDATE {

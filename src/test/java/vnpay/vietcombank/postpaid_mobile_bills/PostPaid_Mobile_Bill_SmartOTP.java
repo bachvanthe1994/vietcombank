@@ -2,6 +2,9 @@ package vnpay.vietcombank.postpaid_mobile_bills;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -33,7 +36,9 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 	private String account;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String passSmartOTP = "111222";
-
+	List<String> listViettel = new ArrayList<String>();
+	List<String> listMobi = new ArrayList<String>();
+	List<String> listVina = new ArrayList<String>();
 	private String mobileBill, transactionID, sourceAccountMoney, transactionDate, mobilePhone;
 	private long transferFee;
 
@@ -51,6 +56,10 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 		transactionReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+		
+		listViettel = Arrays.asList(getDataInCell(14).split(";"));
+		listMobi = Arrays.asList(getDataInCell(15).split(";"));
+		listVina = Arrays.asList(getDataInCell(16).split(";"));
 	}
 
 	@Test
@@ -73,7 +82,7 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.VIETTEL_SUPPLIER);
 
 		log.info("TC_01_Step_05: Nhap so dien thoai va an tiep tuc");
-		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_VIETTEL_MOBILE);
+		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(listViettel);
 
 		log.info("TC_01_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Title.CONFIRM_INFOMATION);
@@ -277,7 +286,7 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.VINAPHONE_SUPPLIER);
 
 		log.info("TC_03_Step_05: Nhap so dien thoai va an tiep tuc");
-		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_VINAPHONE_MOBILE);
+		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(listVina);
 
 		log.info("TC_03_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Title.CONFIRM_INFOMATION);
@@ -482,7 +491,7 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 		postpaidMobile.clickToDynamicButtonLinkOrLinkText(driver, Postpaid_Mobile_Bill_Data.DATA.MOBIFONE_SUPPLIER);
 
 		log.info("TC_03_Step_05: Nhap so dien thoai va an tiep tuc");
-		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(Postpaid_Mobile_Bill_Data.DATA.LIST_MOBIFONE_MOBILE);
+		mobilePhone = postpaidMobile.inputPhoneNumberPostPaidMobile(listMobi);
 
 		log.info("TC_05_Step_06: Hien thi man hinh xac nhan thong tin");
 		verifyEquals(postpaidMobile.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitleBar"), Title.CONFIRM_INFOMATION);
