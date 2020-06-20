@@ -70,8 +70,63 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 	}
 
 	@Parameters({ "otp" })
+	@Test(invocationCount = 2)
+	public void TC_00_SMS(String otp) {
+		
+		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+
+		log.info("TC_01_Step_02:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
+		log.info("TC_01_Step_04:Click tai khoan nguon");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		log.info("TC_01_Step_05: Chon tai khoan dich");
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
+
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
+		transferInVCB.clickToTextID(driver, "com.VCB:id/cancel_button");
+		log.info("TC_01_Step_08: Nhap tai khoan nhan");
+		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
+
+		log.info("TC_01_Step_09: Nhap so tien chuyen");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, TittleData.AMOUNT);
+
+		log.info("TC_01_Step_10: Nhap noi dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
+
+		log.info("TC_01_Step_11: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		
+		log.info("TC_01_Step_20: Chon Phuong thuc nhap");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
+
+		log.info("TC_01_Step_21: Chon SMS OTP");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.SMS_OTP);
+
+		log.info("TC_01_Step_22: Click Tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_01_Step_23: Nhap OTP");
+		transferInVCB.inputToDynamicOtp(driver, otp, TittleData.CONTINUE_BTN);
+
+		log.info("TC_01_Step_24: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+
+		log.info("TC_01_Step_31: Click thuc hien giao dich moi");
+		transferInVCB.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
+
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
+
+		
+	}
+	@Parameters({ "otp" })
 	@Test
-	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangSmartOTP(String otp) {
+	public void TC_01_ChuyenTienNgayCoPhiGiaoDichNguoiChuyenTraVNDVaXacThucBangSmartOTP() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
