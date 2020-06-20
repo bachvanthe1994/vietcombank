@@ -606,7 +606,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
 
 		log.info("TC_07_Step_13: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(name_other_owner));
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND),account_other_owner);
 
 		log.info("TC_07_Step_14: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), (addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TRANSFER_AMOUNT)) + " VND");
@@ -1049,6 +1049,7 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 
 		log.info("TC_13_Step_36: Click thuc hien giao dich moi");
 		transferInVCB.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
+		transferStatus.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
@@ -1107,16 +1108,6 @@ public class Transfer_Money_In_Future_And_Report_1 extends Base {
 		log.info("TC_14_Step_27: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_14_Step_27: Click luu danh ba");
-		transferInVCB.clickToTextID(driver, "com.VCB:id/tvSaveContact");
-
-		log.info("TC_14_Step_27: Get thong tin tai khoan da luu");
-		distanceAccount.account = transferInVCB.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvContent");
-
-		if (transferInVCB.getPageSource(driver).contains(InputText_MoneyRecurrent.SAVE_RECEIVED_ACCOUNT_TEXT)) {
-			log.info("TC_14_Step_27: Click btn hoan thanh");
-			transferInVCB.clickToDynamicButton(driver, "com.VCB:id/btSave");
-		}
 		log.info("TC_14_Step_36: Click thuc hien giao dich moi");
 		transferInVCB.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
 

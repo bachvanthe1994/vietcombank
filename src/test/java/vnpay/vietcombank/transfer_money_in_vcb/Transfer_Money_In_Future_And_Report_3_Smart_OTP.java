@@ -20,7 +20,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.TransferMoneyStatusPageObject;
-import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyStatus_Data;
@@ -713,6 +712,8 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		log.info("TC_07_Step_44: Kiem tra so du tai khoan nhan sau khi nhan tien");
 		long afterBalanceAmountOfAccount2 = convertMoneyToLong(afterBalanceOfAccount2, Constants.VND_CURRENCY);
 		verifyEquals(beforeBalanceAmountOfAccount2, afterBalanceAmountOfAccount2);
+	
+		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 	}
 
 	@Test
@@ -745,7 +746,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_08_Step_08: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_08_Step_09: Lay so du tai khoan chuyen");
@@ -775,7 +776,8 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 
 		log.info("TC_08_Step_17: Kiem tra tai khoan dich hien thi");
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account));
-
+		name_receiver = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI);
+		
 		log.info("TC_08_Step_18: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), String.format("%.02f", convertMoneyToDouble(TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER, Constants.USD_CURRENCY)) + " USD");
 
@@ -824,7 +826,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI), name_receiver);
 
 		log.info("TC_08_Step_34: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_BENEFICI), sourceAccount.account);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.ACCOUNT_BENEFICI), distanceAccount.account);
 
 		log.info("TC_08_Step_35: Kiem tra noi dung hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CONTENT), TransferMoneyInVCB_Data.InputDataInVCB.NOTE);
@@ -836,7 +838,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_08_Step_38: Chon tai ngoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.USD_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_08_Step_39: Lay so du tai khoan chuyen");
@@ -850,7 +852,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_08_Step_42: Chon tai khoan nguoi nhan");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_08_Step_43: Lay so du kha dung tai khoan nhan");
@@ -860,6 +862,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		long afterBalanceAmountOfAccount2 = convertMoneyToLong(afterBalanceOfAccount2, Constants.VND_CURRENCY);
 		verifyEquals(beforeBalanceAmountOfAccount2, afterBalanceAmountOfAccount2);
 
+		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 	}
 
 	@Test
@@ -892,7 +895,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_09_Step_08: Chon tai khoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_09_Step_09: Lay so du tai khoan chuyen");
@@ -924,10 +927,11 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
 
 		log.info("TC_09_Step_18: Kiem tra tai khoan nguon hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), Account_Data.Valid_Account.EUR_ACCOUNT);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
 
 		log.info("TC_09_Step_19: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(sourceAccount.account));
+		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account));
+		name_receiver = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI);
 
 		log.info("TC_09_Step_20: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), addCommasToDouble(TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR");
@@ -952,9 +956,8 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_09_Step_28: Nhap OTP");
-
-		transferInVCB.inputToDynamicSmartOTP(driver, newOTP, TittleData.CONTINUE_BTN);
-
+		transferInVCB.inputToDynamicSmartOTP(driver, newOTP, "com.VCB:id/otp");
+		
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 		log.info("TC_09_Step_29: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -989,7 +992,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_09_Step_40: Chon tai ngoan chuyen");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.EUR_ACCOUNT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_09_Step_41: Lay so du tai khoan chuyen");
@@ -1003,7 +1006,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_09_Step_44: Chon tai khoan nguoi nhan");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
 		transferInVCB.sleep(driver, 500);
 
 		log.info("TC_09_Step_45: Lay so du kha dung tai khoan nhan");
@@ -1013,6 +1016,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		long afterBalanceAmountOfAccount2 = convertMoneyToLong(afterBalanceOfAccount2, Constants.VND_CURRENCY);
 		verifyEquals(beforeBalanceAmountOfAccount2, afterBalanceAmountOfAccount2);
 
+		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 	}
 
 	@AfterClass(alwaysRun = true)
