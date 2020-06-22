@@ -14,6 +14,7 @@ public class Constants {
 	public static final String USD_CURRENCY = "USD";
 	public static final String EUR_CURRENCY = "EUR";
 	public static final double AMOUNT_VND = 100000000;
+	public static final String THREE_BILLION_VND = "3000000000";
 	
 	public static final String LOWER_MIN_TRANSFER = "9999";
 	public static final String HIGHER_MAX_TRANSFER = "100000001";

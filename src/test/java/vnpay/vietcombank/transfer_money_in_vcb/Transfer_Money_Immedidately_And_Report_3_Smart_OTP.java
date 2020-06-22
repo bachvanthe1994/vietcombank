@@ -173,7 +173,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
 
 		log.info("TC_01_Step_14: Kiem tra tai khoan dich hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND), distanceAccount.account );
+		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account) );
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, nameReceived));
 
 		log.info("TC_01_Step_15: Kiem tra so tien chuyen hien thi");
@@ -445,10 +445,10 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.COST[0]);
 
 		log.info("TC_03_Step 13:  Nhap noi dung");
-		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE,TittleData.TRANSFER_INFO, "3");
 
 		log.info("TC_03_Step 14: Click tiep tuc");
-		exchangeRate = convertAvailableBalanceCurrentcyToDouble(transferInVCB.getDynamicTextInTransactionDetail(driver, "Tỷ giá quy đổi tham khảo").split("~")[1]);
+		exchangeRate = convertAvailableBalanceCurrentcyToDouble(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.REFERENCE_RATE).split("~")[1]);
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_03_Step 15: Kiem tra hinh thuc chuyen tien hien thi");
@@ -458,7 +458,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
 
 		log.info("TC_03_Step 17: Kiem tra tai khoan dich hien thi");
-		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account));
+		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account) );
 
 		log.info("TC_03_Step 18: Kiem tra so tien chuyen hien thi");
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT).contains(addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " USD"));
@@ -479,6 +479,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		log.info("TC_03_Step 23: Kiem tra so tien phi hien thi");
 		String transferFee = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FEE_AMOUNT);
 		fee = convertAvailableBalanceCurrentcyOrFeeToLong(transferFee);
+		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE, "4").split(" ")[3];
 
 		log.info("TC_03_Step 24: Lay tien phi chuyen USD");
 		double usdTransferFee = convertVNeseMoneyToEUROOrUSD(fee + "", exchangeRate + "");
@@ -495,7 +496,8 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
 
-		
+		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE, "4").split(" ")[3];
+
 		log.info("TC_03_Step 29: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE, "3"), addCommasToDouble(TransferMoneyInVCB_Data.InputDataInVCB.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " USD");
 
