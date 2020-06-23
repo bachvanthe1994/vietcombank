@@ -3,6 +3,7 @@ package vnpay.vietcombank.payQRCode;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
+import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -32,7 +33,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	private SettingVCBSmartOTPPageObject setupSmartOTP;
 	private String transferTime;
 	private String transactionNumber;
-	long transferFee = 0;
+	long transferFee, money = 0;
 	String password, otpNumber, smartOTP = "";
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
@@ -292,13 +293,13 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
 		log.info("TC_03_13: Kiem  tra giao dich thanh cong");
-		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, PayQRCode_Data.SUCCESS_PAYMENT));
+		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, PayQRCode_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_03_14: Kiem  tra so tien giao dich");
 		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_03_15: Lay thoi gian tao giao dich");
-		transferTime = payQRCode.getTransferTimeSuccess(driver, PayQRCode_Data.SUCCESS_PAYMENT);
+		transferTime = payQRCode.getTransferTimeSuccess(driver, PayQRCode_Data.SUCCESS_TRANSACTION);
 
 		log.info("TC_03_16: Lay ma giao dich");
 		transactionNumber = payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.TRANSFER_CODE);
@@ -328,6 +329,11 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 	@Test
 	public void TC_04_ThanhToanHoaDon_Type2_QRCode_BaoCao() {
+		if (QRCodePageObject.checkTestScriptFailed) {
+			QRCodePageObject.checkTestScriptFailed = false;
+			throw new SkipException("Khong ton tai bao cao cua giao dich nay");
+		}
+		
 		log.info("TC_04_01: Click quay lai");
 		payQRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
@@ -443,7 +449,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_05_09_3_Kiem tra ten diem ban");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.NAME_PLACE), namePlace);
 
-		long money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
+		money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
 
 		log.info("TC_05_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
@@ -532,7 +538,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_06_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(money + "") + " VND");
 
 		log.info("TC_06_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -550,7 +556,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_06_17: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_06_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_06_22: Kiem tra loai giao dich"); //Trường loại giao dịch đang thiếu, comment để chạy testcase
 //		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), PayQRCode_Data.PAY_QR_CODE);
@@ -802,13 +808,13 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
 		log.info("TC_09_13: Kiem  tra giao dich thanh cong");
-		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, PayQRCode_Data.SUCCESS_PAYMENT));
+		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, PayQRCode_Data.SUCCESS_TRANSACTION));
 
 		log.info("TC_09_14: Kiem  tra so tien giao dich");
 		verifyTrue(payQRCode.isDynamicMessageAndLabelTextDisplayed(driver, addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_09_15: Lay thoi gian tao giao dich");
-		transferTime = payQRCode.getTransferTimeSuccess(driver, PayQRCode_Data.SUCCESS_PAYMENT);
+		transferTime = payQRCode.getTransferTimeSuccess(driver, PayQRCode_Data.SUCCESS_TRANSACTION);
 
 		log.info("TC_09_16: Lay ma giao dich");
 		transactionNumber = payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.TRANSFER_CODE);
@@ -838,6 +844,11 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 	@Test
 	public void TC_10_ThanhToanHoaDon_Type2_QRCode_BaoCao_SmartOTP() {
+		if (QRCodePageObject.checkTestScriptFailed) {
+			QRCodePageObject.checkTestScriptFailed = false;
+			throw new SkipException("Khong ton tai bao cao cua giao dich nay");
+		}
+		
 		log.info("TC_10_01: Click quay lai");
 		payQRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
@@ -953,7 +964,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_11_09_3_Kiem tra ten diem ban");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.NAME_PLACE), namePlace);
 
-		long money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
+		money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
 
 		log.info("TC_11_12_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
@@ -1044,7 +1055,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_12_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
 
 		log.info("TC_12_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1062,7 +1073,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_12_17: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_12_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_12_22: Kiem tra loai giao dich"); //Trường loại giao dịch đang thiếu, comment để chạy testcase
 //		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), PayQRCode_Data.PAY_QR_CODE);
