@@ -304,12 +304,6 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_03_16: Lay ma giao dich");
 		transactionNumber = payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.TRANSFER_CODE);
 
-		log.info("TC_03_17_Kiem tra nha cung cap");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.PROVIDER), provider);
-
-		log.info("TC_03_18_Kiem tra ten dich vu");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.SERVICE), service);
-
 		log.info("TC_03_19: Click thuc hien giao dich moi");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.PERFORM_OTHER_TRANSACTION);
 
@@ -818,12 +812,6 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_09_16: Lay ma giao dich");
 		transactionNumber = payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.TRANSFER_CODE);
-
-		log.info("TC_09_17_Kiem tra nha cung cap");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.PROVIDER), provider);
-
-		log.info("TC_09_18_Kiem tra ten dich vu");
-		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.SERVICE), service);
 
 		log.info("TC_09_19: Click thuc hien giao dich moi");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.PERFORM_OTHER_TRANSACTION);
