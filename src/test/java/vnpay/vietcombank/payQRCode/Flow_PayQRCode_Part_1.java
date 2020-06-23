@@ -1066,7 +1066,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_12_22: Kiem tra loai giao dich"); //Trường loại giao dịch đang thiếu, comment để chạy testcase
 //		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), PayQRCode_Data.PAY_QR_CODE);
 
-		String note = "MBVCB" + transactionNumber + ".QR Pay.Thanh toan cho " + codeOrder;
+		String note = "MBVCB." + transactionNumber + ".QR Pay.Thanh toan cho ";
 		log.info("TC_12_23: Kiem Tra noi dung giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_CONTENT).contains(note));
 
