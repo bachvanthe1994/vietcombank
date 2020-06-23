@@ -14,6 +14,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import vehicalPageObject.VehicalPageObject;
 import vehicalTicketBookingUI.CommonPageUIs;
@@ -24,6 +25,7 @@ import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 public class VehicalFlowTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private VehicalPageObject vehicalTicket;
 	public String amountFee = "- ";
 	public String nameTyped = "";
@@ -56,6 +58,7 @@ public class VehicalFlowTicket extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		login.scrollDownToText(driver, "© 2020 Vietcombank");
@@ -535,6 +538,37 @@ public class VehicalFlowTicket extends Base {
 		int indexTien = tienSo.indexOf("(");
 		String subTienSo = tienSo.substring(0, indexTien - 1);
 		verifyEquals(tongTien, subTienSo);
+	}
+	
+	@Test
+	public void TC_05_KiemTra_HienThiThongBao_DaDangNhap() {
+		
+		log.info("TC_05_Step_01: Click vao Inbox");
+		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_3");
+		
+		log.info("TC_05_Step_02: Click vao tab Tat ca");
+		homePage.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_05_Step_03: Lay du lieu hien thi");
+		String inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",maThanhToan);
+		
+		log.info("TC_05_Step_04: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(maThanhToan));
+		verifyTrue(inboxContent.contains(nameTyped));
+		
+		log.info("TC_05_Step_05: Click vao tab Khac");
+		homePage.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_05_Step_06: Lay du lieu hien thi");
+		inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",maThanhToan);
+		
+		log.info("TC_05_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(maThanhToan));
+		verifyTrue(inboxContent.contains(nameTyped));
+		
+		log.info("TC_05_Step_08: Mo tab Home");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
 	@AfterClass(alwaysRun = true)
