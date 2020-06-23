@@ -36,6 +36,7 @@ public class TrainTicket_Data {
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 		public static final String TITLE_AMOUNT_MONEY = "Số tiền";
 		public static final String TITLE_OTP = "SMS OTP";
+		public static final String BILLING_CODE  = "Mã thanh toán";
 	}
 	
 	public static class message {

@@ -187,6 +187,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String CONTENT = "Nội dung";
 		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
 		public static final String SMS_OTP = "SMS OTP";
+		public static final String SMART_OTP = "VCB - Smart OTP";
 		public static final String PASSWORD = "Mật khẩu đăng nhập";
 		public static final String FEE_AMOUNT = "Số tiền phí";
 		public static final String CODE_TRANSFER = "Mã giao dịch";
@@ -222,6 +223,9 @@ public class TransferMoneyInVCB_Data {
 		public static final String DELETE_CONTACT = "Xóa danh bạ thành công";
 		public static final String CONTACT_BENFICAL = "Danh bạ người hưởng";
 		public static final String SETTING = "Cài đặt";
+		public static final String REFERENCE_RATE = "Tỷ giá quy đổi tham khảo";
+		
+		
 
 	}
 }
