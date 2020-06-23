@@ -275,7 +275,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_03_09_4_Kiem tra ma khach hang");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.CUSTOMER_CODE), codeCustomer);
 
-		long money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
+		money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
 
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
@@ -363,7 +363,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_04_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(money + "") + " VND");
 
 		log.info("TC_04_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -381,7 +381,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_04_17: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_04_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_04_22: Kiem tra loai giao dich"); //Trường loại giao dịch đang thiếu, comment để chạy testcase
 //		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), PayQRCode_Data.PAY_QR_CODE);
@@ -782,7 +782,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_09_09_4_Kiem tra ma khach hang");
 		verifyEquals(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.CUSTOMER_CODE), codeCustomer);
 
-		long money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
+		money = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.AMOUNT_PAYMENT));
 
 		log.info("TC_09_10_Chon phuong thuc xac thuc");
 		payQRCode.scrollDownToText(driver, PayQRCode_Data.ACCURACY_METHOD);
@@ -872,7 +872,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_10_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
 
 		log.info("TC_10_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -890,7 +890,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		log.info("TC_10_17: Kiem tra so tai khoan ghi co");
 
 		log.info("TC_10_18: Kiem tra so tien giao dich hien thi");
-		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND"));
+		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_MONEY).contains(addCommasToLong(money + "") + " VND"));
 
 		log.info("TC_10_22: Kiem tra loai giao dich"); //Trường loại giao dịch đang thiếu, comment để chạy testcase
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TransactionReport_Data.ReportTitle.TRANSACTION_TYPE), PayQRCode_Data.PAY_QR_CODE);
