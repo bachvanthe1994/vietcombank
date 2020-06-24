@@ -22,11 +22,8 @@ public class TransferMoneyQuick_Data {
 		public static final String UNSATISFACTORY = "không";
 		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
 
-
 	}
 	
-	
-
 	public static class TransferQuick {
 		public static final String[] OPTION_TRANSFER = { "Chuyển tiền nhanh 24/7 qua tài khoản", "Chuyển tiền nhanh 24/7 qua thẻ" };
 		public static final String ACCOUNT_TO_INVALID = "01298372945";

@@ -39,6 +39,13 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -67,11 +74,13 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 	SoftAssert softAssertion;
 	protected final Logger log;
 	protected AppiumDriver<MobileElement> driver;
+	protected WebDriver driver1;
 
 	private String workingDir = System.getProperty("user.dir");
 	public AppiumDriverLocalService service;
@@ -252,6 +261,57 @@ public class Base {
 		AppiumDriver<MobileElement> driver = new AppiumDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		return driver;
+
+	}
+	
+	protected WebDriver openMultiBrowser(String browserName, String driverVersion, String url) {
+		if (browserName.equals("firefox")) {
+			WebDriverManager.firefoxdriver().version(driverVersion).setup();
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, workingDir + "\\FirefoxLog.txt");
+			driver1 = new FirefoxDriver();
+		} else if (browserName.equals("firefoxheadless")) {
+			WebDriverManager.firefoxdriver().version(driverVersion).setup();
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, workingDir + "\\FirefoxHeadlessLog.txt");
+
+			FirefoxOptions options = new FirefoxOptions();
+			options.setHeadless(true);
+			driver1 = new FirefoxDriver(options);
+		} else if (browserName.equals("chrome")) {
+			WebDriverManager.chromedriver().version(driverVersion).setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("disable-infobars");
+			driver1 = new ChromeDriver(options);
+		} else if (browserName.equalsIgnoreCase("chromeheadless")) {
+			WebDriverManager.chromedriver().version(driverVersion).setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--log-level=3");
+			options.addArguments("--silent");
+			options.addArguments("headless");
+			options.addArguments("window-size=1366x768");
+			driver1 = new ChromeDriver(options);
+		} else if (browserName.equalsIgnoreCase("ie")) {
+			WebDriverManager.iedriver().arch32().version(driverVersion).setup();
+			driver1 = new InternetExplorerDriver();
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			WebDriverManager.edgedriver().version(driverVersion).setup();
+			driver1 = new InternetExplorerDriver();
+		}
+		driver1.get(url);
+
+		driver1.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver1.manage().window().maximize();
+		if (driver1.toString().toLowerCase().contains("internet explorer")) {
+			try {
+				Thread.sleep(7000);
+
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return driver1;
 
 	}
 

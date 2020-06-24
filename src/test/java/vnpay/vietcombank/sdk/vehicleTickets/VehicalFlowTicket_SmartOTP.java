@@ -15,17 +15,20 @@ import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import vehicalPageObject.VehicalPageObject;
 import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
+import vietcombank_test_data.Notify_Management_Data.Notify_Text;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
 public class VehicalFlowTicket_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private VehicalPageObject vehicalTicket;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	public String amountFee = "- ";
@@ -331,6 +334,53 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		int indexTien = tienSo.indexOf("(");
 		String subTienSo = tienSo.substring(0, indexTien - 1);
 		verifyEquals(tongTien, subTienSo);
+	}
+	
+	@Parameters ({"pass"})
+	@Test
+	public void TC_05_KiemTra_HienThiThongBao_ChuaDangNhap(String password) {
+		
+		log.info("TC_05_Step_01: Click vao Menu");
+		vehicalTicket.clickToDynamicButtonBackByID("com.VCB:id/ivTitleLeft");
+		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
+		
+		log.info("TC_05_Step_02: Click vao Thoat Ung Dung");
+		homePage.scrollUpToText(driver, Notify_Text.LOG_OUT_TEXT);
+		homePage.clickToDynamicButtonLinkOrLinkTextNotScroll(driver, Notify_Text.LOG_OUT_TEXT);
+		
+		log.info("TC_05_Step_03: Click vao Dong y");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		
+		log.info("TC_05_Step_04: Click vao Inbox");
+		homePage.clickToDynamicImageView(driver, "com.VCB:id/ivOTT");
+		
+		log.info("TC_05_Step_05: Click vao tab Tat ca");
+		homePage.clickToTextID(driver, "com.VCB:id/radioAll");
+		
+		log.info("TC_05_Step_06: Lay du lieu hien thi");
+		String inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",maThanhToan);
+		
+		log.info("TC_05_Step_07: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(maThanhToan));
+		verifyTrue(inboxContent.contains(nameTyped));
+		
+		log.info("TC_05_Step_08: Click vao tab Khac");
+		homePage.clickToTextID(driver, "com.VCB:id/radioOther");
+		
+		log.info("TC_05_Step_09: Lay du lieu hien thi");
+		inboxContent = homePage.getDynamicTextByContentID(driver, "com.VCB:id/recycleview","com.VCB:id/content",maThanhToan);
+
+		log.info("TC_05_Step_10: So sanh thong tin thanh toan");
+		verifyTrue(inboxContent.contains(maThanhToan));
+		verifyTrue(inboxContent.contains(nameTyped));
+		
+		log.info("TC_05_Step_11: Back ve man Log In");
+		homePage.clickToDynamicImageView(driver, "com.VCB:id/back");
+		
+		log.info("TC_05_Step_12: Nhap mat khau va dang nhap");
+		homePage.inputIntoEditTextByID(driver, password, "com.VCB:id/edtInput");
+		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btnNext");
+		
 	}
 
 	@AfterClass(alwaysRun = true)

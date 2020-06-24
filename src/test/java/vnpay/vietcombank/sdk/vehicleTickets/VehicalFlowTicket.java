@@ -15,6 +15,7 @@ import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
+import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import vehicalPageObject.VehicalPageObject;
@@ -27,6 +28,7 @@ import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData.DATA_ORDER_TICKET;
 public class VehicalFlowTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
+	private HomePageObject homePage;
 	private VehicalPageObject vehicalTicket;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	public String amountFee = "- ";
@@ -61,6 +63,7 @@ public class VehicalFlowTicket extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
+		homePage = PageFactoryManager.getHomePageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
 //		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
@@ -804,7 +807,6 @@ public class VehicalFlowTicket extends Base {
 		String subTienSo = tienSo.substring(0, indexTien - 1);
 		verifyEquals(tongTien, subTienSo);
 	}
-
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {

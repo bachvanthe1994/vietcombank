@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_limit;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.testng.annotations.BeforeClass;
@@ -8,25 +9,29 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import model.SourceAccountModel;
 import pageObjects.LogInPageObject;
+import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransferLimitPageObject;
-import vietcombank_test_data.Account_Data;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
+
 
 public class Transfer_Limit_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private TransferLimitPageObject transferLimit;
-	String passLogin = "";
+	String passLogin, bankOut,accountRecived, otpSmart,newOTP = "";
 	List<String> listActual;
-
+	SourceAccountModel sourceAccount = new SourceAccountModel();
+	private SettingVCBSmartOTPPageObject smartOTP;
+	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -35,9 +40,14 @@ public class Transfer_Limit_Flow extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		transferLimit = PageFactoryManager.getTransferLimitPageObject(driver);
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-
+		passLogin =pass;
+		bankOut = getDataInCell(21);
+		accountRecived = getDataInCell(4);
+		otpSmart = getDataInCell(6);
+		newOTP = "111222";
 	}
 
 	@Test
@@ -78,7 +88,7 @@ public class Transfer_Limit_Flow extends Base {
 		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_01_Step_Nhap ma xac thuc");
-		transferLimit.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+		transferLimit.inputToDynamicOtp(driver, passLogin, "Tiếp tục");
 
 		log.info("TC_01_Step_Tiep tuc");
 		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
@@ -113,14 +123,14 @@ public class Transfer_Limit_Flow extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		transferLimit.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
+		sourceAccount = transferLimit.chooseSourceAccount(driver,convertAvailableBalanceCurrentcyToDouble(amountLimit) , Constants.VND_CURRENCY);
 
 		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferLimit.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
+		transferLimit.inputToDynamicInputBox(driver, accountRecived, "Nhập/ chọn tài khoản thụ hưởng VND");
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, bankOut);
 
 		long amountConvert = convertAvailableBalanceCurrentcyOrFeeToLong(amountLimit);
 		log.info("TC_01_Step_Nhap so tien chuyen");
@@ -147,47 +157,26 @@ public class Transfer_Limit_Flow extends Base {
 	}
 
 	@Test
-	public void TC_02_CaiHanMucThanhCongPhuongThucXacThucSmartOTP() {
-		log.info("TC_02_Step: Click menu header");
+	public void TC_02_CaiHanMucThanhCongPhuongThucXacThucSmartOTP() throws GeneralSecurityException, IOException {
+		log.info("TC_01_Step: Cai dat smart OTP ");
+		smartOTP.setupSmartOTP(newOTP, otpSmart);
+		
+		//Để hiển thị smart OTP, ta phải thực hiện 2 giao dịch SMS thành công
+		log.info("TC_01_Step: Click menu header");
+		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		transferLimit.TransferQuick247_SMSOTP();
+		transferLimit.TransferQuick247_SMSOTP();
+		
+		log.info("TC_02: Click back man hinh home");
+		transferLimit.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");
+		
+		log.info("TC_01_Step: Click menu header");
 		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
-		log.info("TC_02_Step: Click cai dat");
+		log.info("TC_01_Step: Click cai dat");
 		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 
-		log.info("TC_02_Step: Click cai dat Smart OTP");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
-
-		log.info("TC_02_Step: Click cai dat cho tai khoan");
-		transferLimit.clickToDynamicTextFollowText(driver, "Chưa kích hoạt");
-
-		log.info("TC_02_Step: Click toi dong y");
-		transferLimit.clickToTextID(driver, "com.VCB:id/rule");
-
-		log.info("TC_02_Step_click button dong y");
-		transferLimit.clickToDynamicButton(driver, "Đồng ý");
-
-		log.info("TC_02_Step_Nhap mat khau");
-		transferLimit.inputToDynamicInputBox(driver, "111222", "Nhập mật khẩu");
-
-		log.info("TC_02_Step_Nhap lai mat khau");
-		transferLimit.inputToDynamicInputBox(driver, "111222", "Nhập lại mật khẩu");
-
-		log.info("TC_02_Step_click button tiep tuc");
-		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_02_Step_Nhap ma xac thuc");
-		transferLimit.inputToDynamicSmartOtp(driver, "666888", "com.VCB:id/otp");
-
-		log.info("TC_02_Step_click button tiep tuc");
-		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
-
-		log.info("TC_02_Step: Click button quay lai");
-		transferLimit.clickToDynamicBackIcon(driver, "Cài đặt VCB-Smart OTP");
-
-		log.info("TC_02_Step: Scroll xuong phan doi mat khau");
-		transferLimit.scrollDownToText(driver, "Hỗ trợ");
-
-		log.info("TC_02_Step: Click cai dat han muc chuyen tien");
+		log.info("TC_01_Step: Click cai dat han muc chuyen tien");
 		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt hạn mức chuyển tiền");
 
 		log.info("TC_02_Step: Lay han muc hien tai");
@@ -217,7 +206,7 @@ public class Transfer_Limit_Flow extends Base {
 		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
 
 		log.info("TC_02_Step_Nhap ma xac thuc");
-		transferLimit.inputToDynamicSmartOtp(driver, LogIn_Data.Login_Account.Smart_OTP, "com.VCB:id/otp");
+		transferLimit.inputToDynamicSmartOtp(driver, newOTP, "com.VCB:id/otp");
 
 		log.info("TC_02_Step_Tiep tuc");
 		transferLimit.clickToDynamicButton(driver, "Tiếp tục");
@@ -255,14 +244,14 @@ public class Transfer_Limit_Flow extends Base {
 
 		log.info("TC_01_Step_Select tai khoan nguon");
 		transferLimit.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_ACCOUNT_FROM[0]);
-
+		sourceAccount = transferLimit.chooseSourceAccount(driver,convertAvailableBalanceCurrentcyToDouble(amountLimit) , Constants.VND_CURRENCY);
+		
 		log.info("TC_01_Step_Nhap so tai khoan chuyen");
-		transferLimit.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT_TO, "Nhập/ chọn tài khoản thụ hưởng");
+		transferLimit.inputToDynamicInputBox(driver, accountRecived, "Nhập/ chọn tài khoản thụ hưởng VND");
 
 		log.info("TC_01_Step_Select ngan hang");
 		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, "Ngân hàng thụ hưởng");
-		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.BANK[0]);
+		transferLimit.clickToDynamicButtonLinkOrLinkText(driver, bankOut);
 
 		long amountConvert = convertAvailableBalanceCurrentcyOrFeeToLong(amountLimit);
 		log.info("TC_01_Step_Nhap so tien chuyen");

@@ -43,6 +43,7 @@ public class TrainTicket_Data {
 		public static final String TRANSACTION_FEE = "Số tiền phí";
 		public static final String NO = "Không";
 		public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
+		public static final String BILLING_CODE  = "Mã thanh toán";
 	}
 	
 	public static class message {
