@@ -67,7 +67,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 	}
 
 	@Test
-	public void TC_02_MuaVeXeBangOTP() {
+	public void TC_02_MuaVeXeBangSmartOTP() {
 		login.scrollDownToText(driver, "© 2020 Vietcombank");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
@@ -107,7 +107,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		log.info("-TC_02_Step_10 Click chon tiep tuc ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
 
-		vehicalTicket.clickToDynamicButton("Từ chối");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_CANCER);
 
 		log.info("TC_02_Step_11___Input email");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
