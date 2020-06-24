@@ -189,10 +189,10 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 		log.info("TC_01_22_Chon phuong thuc xac thuc");
 		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
 
 		log.info("TC_01_22_01: Kiem tra so tien phi");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_01_23: Click Tiep tuc");
@@ -456,11 +456,11 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.MONEY), info.price);
 
 		log.info("TC_04_22_Chon phuong thuc xac thuc");
-		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
-		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.PASSWORD));
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
 		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
 
 		log.info("TC_04_22_01: Kiem tra so tien phi");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE));
 		verifyEquals(filmTicketBooking.getDynamicTextInTransactionDetail(FilmTicketBooking_Data.FEE), addCommasToLong(fee + "") + " VND");
 
 		log.info("TC_04_23: Click Tiep tuc");

@@ -63,7 +63,7 @@ public class Auto_Saving_Flow_Smart_OTP extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+	@Test(invocationCount = 2)
 	public void TC_01_MoTaiKhoanTietKiem_VND_3Thang_LaiNhapGoc_PTXT_OTP(String otp) {
 
 		log.info("TC_01_01_Click Mo tai khoan tiet kiem");

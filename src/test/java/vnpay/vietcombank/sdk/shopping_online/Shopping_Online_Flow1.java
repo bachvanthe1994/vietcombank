@@ -1259,6 +1259,7 @@ public class Shopping_Online_Flow1 extends Base {
 	
 	@Test
 	public void TC_08_BaoCaoGiaoDichChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai() {
+		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_08_2: Click vao More Icon");
@@ -1578,7 +1579,6 @@ public class Shopping_Online_Flow1 extends Base {
 
 	}
 
-	
 	@Test
 	public void TC_10_BaoCaoGiaoDichChonMuaMotSanPhamCoKhuyenMaiThanhToanOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -1658,6 +1658,8 @@ public class Shopping_Online_Flow1 extends Base {
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
+	
+	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		closeApp();

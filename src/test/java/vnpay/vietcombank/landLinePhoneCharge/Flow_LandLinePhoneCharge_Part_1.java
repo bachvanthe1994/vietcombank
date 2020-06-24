@@ -204,7 +204,7 @@ public class Flow_LandLinePhoneCharge_Part_1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_02_21: Kiem Tra noi dung giao dich");
-		String note = "VCBMB" + transactionNumber + ".Billing";
+		String note = "MBVCB" + transactionNumber + ".Billing";
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER).contains(note));
 
 		log.info("TC_02_22: Click  nut Back");

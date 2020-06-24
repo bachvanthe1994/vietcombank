@@ -3,6 +3,7 @@ package pageObjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.testng.SkipException;
 
 import commons.AbstractPage;
 import commons.Constants;
@@ -197,12 +198,13 @@ public class QRCodePageObject extends AbstractPage {
 		}
 		overRideTimeOut(driver, Constants.LONG_TIME);
 		if (!check) {
-			throw new RuntimeException("Khong Ma QR code de thanh toan");
+			throw new SkipException("Khong Ma QR code de thanh toan");
 		}
 		return qrCode;
 
 	}
 
+	public static Boolean checkTestScriptFailed = false;
 	public OrderQRCode_Type2_Info chooseQRCodeType2(int number) {
 		OrderQRCode_Type2_Info qrCode = new OrderQRCode_Type2_Info();
 		SourceAccountModel sourceAccount = new SourceAccountModel();
@@ -242,7 +244,11 @@ public class QRCodePageObject extends AbstractPage {
 		}
 		overRideTimeOut(driver, Constants.LONG_TIME);
 		if (!check) {
-			throw new RuntimeException("Khong Ma QR code de thanh toan");
+			clickToImageByIndex(0);
+			clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+			clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+			checkTestScriptFailed = true; 
+			throw new SkipException("Khong Ma QR code de thanh toan");
 		}
 		return qrCode;
 
@@ -288,7 +294,7 @@ public class QRCodePageObject extends AbstractPage {
 		}
 		overRideTimeOut(driver, Constants.LONG_TIME);
 		if (!check) {
-			throw new RuntimeException("Khong Ma QR code de thanh toan");
+			throw new SkipException("Khong Ma QR code de thanh toan");
 		}
 		return qrCode;
 
