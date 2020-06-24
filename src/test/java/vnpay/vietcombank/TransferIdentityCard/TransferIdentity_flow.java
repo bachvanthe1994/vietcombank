@@ -60,7 +60,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-    @Test
+   @Test
     public void TC_01_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiChuyenTraPhi(String pass) throws GeneralSecurityException, IOException {
 	log.info("TC_01_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, textCheckElement.TRANSFER_MONEY);
@@ -515,7 +515,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "otp" })
-    @Test
+   @Test
     public void TC_07_ChuyenTienEURChoNguoNhanTaiQuayBangCMTXacThucBangOTPNguoiNhanTraPhi(String otp) throws GeneralSecurityException, IOException {
 	log.info("TC_07_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, textCheckElement.TRANSFER_MONEY);
@@ -910,9 +910,11 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, account);
 	String surplus = transReport.getMoneyByAccount(driver, textCheckElement.SURPLUS);
 	String[] surplusSplit = surplus.split(" ");
-	long surplusInt = Long.parseLong(surplusSplit[0].replace(",", ""));
-	long canculateAvailable = canculateAvailableBalances((long) toltalMoney, (long) fee, (long) money_transferred);
+	double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
+	double canculateAvailable = canculateAvailableBalancesCurrentcy(toltalMoney, fee, money_transferred);
 	verifyEquals(surplusInt, canculateAvailable);
+	
+	
 
 	log.info("TC_11_STEP_22: chọn back");
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -1035,6 +1037,7 @@ public class TransferIdentity_flow extends Base {
 	fee = Integer.parseInt(feeSplit[0].replace(",", ""));
 
 	log.info("TC_13_STEP_12: chon phương thức xác thực");
+	trasferPage.scrollDownToText(driver, textCheckElement.NEXT);
 	trasferPage.clickToTextID("com.VCB:id/tvptxt");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.OTP_SMS);
 

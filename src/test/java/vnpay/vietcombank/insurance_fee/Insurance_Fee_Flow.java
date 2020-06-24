@@ -258,7 +258,8 @@ public class Insurance_Fee_Flow extends Base {
 	}
 	
 	@Parameters({ "otp" })
-	@Test
+	//@Test
+	//Không có data
 	public void TC_03_ThanhToanPhiBaoHiem_DinhKy_PTXTSMSOTP(String otp) throws InterruptedException {
 		log.info("TC_01_Step_Click phi bao hiem");
 		insurrance.scrollDownToText(driver, Insurance_Fee_Data.Valid_Account.INSURRANCE_FEE);
