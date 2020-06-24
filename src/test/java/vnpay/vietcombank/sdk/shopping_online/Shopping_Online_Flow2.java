@@ -57,10 +57,10 @@ public class Shopping_Online_Flow2 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollDownToText(driver, "© 2019 Vietcombank");
+		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.VIETCOMBANK_2020);
 		homePage.scrollIDownOneTime(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Mua sắm trực tuyến - VNPAY Shopping");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TITLE_SHOPPING_ONLINE);
 		homePage.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		shopping = PageFactoryManager.getShoppingOnlinePageObject(driver);
 		shopping.sleep(driver, 5000);
@@ -69,7 +69,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 	@Parameters({ "pass" })
 	@Test
-	public void TC_01_ChonMuaMotSanPhamThanhToanMatKhauKhongChonKhuyenMai(String pass) {
+	public void TC_01_ChonMuaMotSanPhamThanhToanMatKhauCoChonMaKhuyenMai(String pass) {
 		log.info("TC_01_STEP_2: Them vao gio hang");
 		shopping.clickToDynamicTextContains(Shopping_Online_Data.VIEW_ALL);
 
@@ -92,7 +92,10 @@ public class Shopping_Online_Flow2 extends Base {
 
 		log.info("TC_01_STEP_4: click Vao gio hang");
 		shopping.clickToDynamicDateInDateTimePicker("1");
-
+		
+		shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+		shopping.TabtoElementByPoint(832, 857);
+		
 		log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
 		double tottalMoneyCart = Double.parseDouble(tottalMoneyCartString.replace(".", ""));
@@ -175,6 +178,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_01_STEP_4: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_01_STEP_3: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -208,6 +214,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_01_STEP_4: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_01_STEP_5: click dat hang");
 			shopping.clickToDynamicButton(Shopping_Online_Data.BOOKING);
@@ -295,7 +304,7 @@ public class Shopping_Online_Flow2 extends Base {
 	}
 
 	@Test
-	public void TC_02_BaoCaoGiaoDichChonMuaMotSanPhamThanhToanMatKhauKhongChonKhuyenMai() {
+	public void TC_02_BaoCaoGiaoDichChonMuaMotSanPhamThanhToanMatKhauCoChonMaKhuyenMai() {
 
 		log.info("TC_02_2: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -375,7 +384,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 	@Parameters({ "pass" })
 	@Test
-	public void TC_03_ChonMuaNhieuSanPhamThanhToanMatKhauKhongChonKhuyenMai(String pass) {
+	public void TC_03_ChonMuaNhieuSanPhamThanhToanMatKhauCoChonMaKhuyenMai(String pass) {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.VIETCOMBANK_2020);
@@ -409,6 +418,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 		log.info("TC_03_STEP_: click Vao gio hang");
 		shopping.clickToDynamicDateInDateTimePicker("3");
+		
+		shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+		shopping.TabtoElementByPoint(832, 857);
 
 		log.info("TC_03_STEP_: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -494,6 +506,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_03_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("3");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_03_STEP_: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -529,6 +544,8 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_03_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("3");
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_03_STEP_: click dat hang");
 			shopping.clickToDynamicButton(Shopping_Online_Data.BOOKING);
@@ -617,7 +634,7 @@ public class Shopping_Online_Flow2 extends Base {
 	}
 
 	@Test
-	public void TC_04_BaoCaoGiaoDichChonMuaNhieuSanPhamThanhToanMatKhauKhongChonKhuyenMai() {
+	public void TC_04_BaoCaoGiaoDichChonMuaNhieuSanPhamThanhToanMatKhauCoChonMaKhuyenMai() {
 
 		log.info("TC_04_2: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -697,7 +714,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 	@Parameters({ "pass" })
 	@Test
-	public void TC_05_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
+	public void TC_05_ChonMuaMotSanPhamThanhToanMKCoChonMaKhuyenMai(String pass) {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.VIETCOMBANK_2020);
@@ -729,6 +746,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 		log.info("TC_05_STEP_: click Vao gio hang");
 		shopping.clickToDynamicDateInDateTimePicker("1");
+		
+		shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+		shopping.TabtoElementByPoint(832, 857);
 
 		log.info("TC_05_STEP_: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -812,6 +832,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_05_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_05_STEP_: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -845,6 +868,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_05_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_05_STEP_: click dat hang");
 			shopping.clickToDynamicButton(Shopping_Online_Data.BOOKING);
@@ -931,7 +957,7 @@ public class Shopping_Online_Flow2 extends Base {
 	}
 
 	@Test
-	public void TC_06_BaoCaoGiaoDichChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai() {
+	public void TC_06_BaoCaoGiaoDichChonMuaMotSanPhamThanhToanMKCoChonMaKhuyenMai() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_06_2: Click vao More Icon");
@@ -1012,7 +1038,7 @@ public class Shopping_Online_Flow2 extends Base {
 
 	@Parameters({ "pass" })
 	@Test
-	public void TC_07_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
+	public void TC_07_ChonMuaNhieuSanPhamThanhToanMKCoChonMaKhuyenMai(String pass) {
 		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.VIETCOMBANK_2020);
@@ -1046,6 +1072,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 		log.info("TC_07_STEP_: click Vao gio hang");
 		shopping.clickToDynamicDateInDateTimePicker("3");
+		
+		shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+		shopping.TabtoElementByPoint(832, 857);
 
 		log.info("TC_07_STEP_: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -1131,6 +1160,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_07_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("3");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_07_STEP_: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -1166,6 +1198,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_07_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("3");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_07_STEP_: click dat hang");
 			shopping.clickToDynamicButton(Shopping_Online_Data.BOOKING);
@@ -1257,7 +1292,7 @@ public class Shopping_Online_Flow2 extends Base {
 	}
 	
 	@Test
-	public void TC_08_BaoCaoGiaoDichChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai() {
+	public void TC_08_BaoCaoGiaoDichChonMuaNhieuSanPhamThanhToanMKCoChonMaKhuyenMai() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_08_2: Click vao More Icon");
@@ -1371,6 +1406,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 		log.info("TC_09_STEP_: click Vao gio hang");
 		shopping.clickToDynamicDateInDateTimePicker("1");
+		
+		shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+		shopping.TabtoElementByPoint(832, 857);
 
 		log.info("TC_09_STEP_: lay tong tien can thanh toan");
 		String tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -1454,6 +1492,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_09_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_09_STEP_: lay tong tien can thanh toan");
 			tottalMoneyCartString = shopping.getDynamicTextPricesByText(Shopping_Online_Data.PRODUCT).replace("₫", "");
@@ -1487,6 +1528,9 @@ public class Shopping_Online_Flow2 extends Base {
 
 			log.info("TC_09_STEP_: click Vao gio hang");
 			shopping.clickToDynamicDateInDateTimePicker("1");
+			
+			shopping.clickToDynamicCategories(Shopping_Online_Data.CHOICE_VOUCHER);
+			shopping.TabtoElementByPoint(832, 857);
 
 			log.info("TC_09_STEP_5: click dat hang");
 			shopping.clickToDynamicButton(Shopping_Online_Data.BOOKING);

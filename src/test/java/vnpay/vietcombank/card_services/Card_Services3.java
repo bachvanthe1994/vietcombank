@@ -51,7 +51,7 @@ public class Card_Services3 extends Base {
 	public void TC_01_DangKySuDungTheTrenInternetVCB() {
 
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_01_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -96,7 +96,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_01_Step_15: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_01_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -119,7 +119,7 @@ public class Card_Services3 extends Base {
 	public void TC_02_HuyDangKySuDungTheTrenInternetVCB() {
 
 		log.info("Before TC 01: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -148,7 +148,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_02_Step_06: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_02_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -167,7 +167,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_12: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_02_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -190,7 +190,7 @@ public class Card_Services3 extends Base {
 	public void TC_03_DangKySuDungTheTrenInternetJCB() {
 
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_03_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -235,7 +235,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_03_Step_15: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_03_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -258,7 +258,7 @@ public class Card_Services3 extends Base {
 	public void TC_04_HuyDangKySuDungTheTrenInternet() {
 
 		log.info("Before TC 01: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -287,7 +287,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_04_Step_06: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_04_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -306,7 +306,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_04_Step_12: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_04_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -329,7 +329,7 @@ public class Card_Services3 extends Base {
 	public void TC_05_DangKySuDungTheTrenInternetMasterCard() {
 
 		log.info("TC_05_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_05_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -374,7 +374,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_05_Step_15: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_05_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -397,7 +397,7 @@ public class Card_Services3 extends Base {
 	public void TC_06_HuyDangKySuDungTheTrenInternetMasterCard() {
 
 		log.info("Before TC 01: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -426,7 +426,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_06_Step_06: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_06_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -445,7 +445,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_06_Step_12: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_06_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -468,7 +468,7 @@ public class Card_Services3 extends Base {
 	public void TC_07_DangKySuDungTheTrenInternetAmex() {
 
 		log.info("TC_07_Step_01: Keo xuong va click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_07_Step_02: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -513,7 +513,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_07_Step_15: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_07_Step_16: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -536,7 +536,7 @@ public class Card_Services3 extends Base {
 	public void TC_08_HuyDangKySuDungTheTrenInternet() {
 
 		log.info("Before TC 01: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("Before TC 02: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
@@ -565,7 +565,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 
 		log.info("TC_08_Step_06: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_08_Step_07: An vao tab 'Dang ky su dung the tren internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_REGISTER_TEXT);
@@ -584,7 +584,7 @@ public class Card_Services3 extends Base {
 		lockCard.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_08_Step_12: Click vao phan 'Dich vu the'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICES_TEXT);
+		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_08_Step_13: An vao tab 'Huy dang ky su dung the tren Internet'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.INTERNET_UN_REGISTER_TEXT);
