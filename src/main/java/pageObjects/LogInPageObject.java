@@ -49,7 +49,7 @@ public class LogInPageObject extends AbstractPage {
 	
 	public void Global_login1(String phone, String pass, String otp) {
 
-//		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
+		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		
 		clickToTextID(driver, "com.VCB:id/tvSkip");
 
@@ -69,7 +69,7 @@ public class LogInPageObject extends AbstractPage {
 
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
-//		clickToTextID(driver, "com.VCB:id/tvHome");
+		clickToTextID(driver, "com.VCB:id/tvHome");
 		
 		
 		clickToDynamicButton(driver, "Bắt đầu sử dụng");

@@ -85,6 +85,7 @@ public class TransactionReport_Data {
 		public static final String NUMBER_CARD_VND = "Số thẻ chuyển đến/ VND";
 		public static final String TRANSFER_24_7_CARD = "Chuyển tiền nhanh 24/7 qua thẻ";
 		public static final String TRANSFER_24_7_ACCOUNT = "Chuyển tiền nhanh 24/7 qua tài khoản";
+		public static final String CARD_NUMBER = "Số thẻ";
 
 	}
 	public static class Text {

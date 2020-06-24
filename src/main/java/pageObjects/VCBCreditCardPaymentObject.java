@@ -7,10 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 
 import commons.AbstractPage;
+import commons.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import model.SourceAccountModel;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.creaditCardPaymentUI;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
@@ -71,28 +73,27 @@ public class VCBCreditCardPaymentObject extends AbstractPage {
 	
 	public List<String> getListAccount() {
 		List<String> listCity = new ArrayList<String>();
-		List<String> tempList1 = new ArrayList<String>();
-		List<String> tempList2 = new ArrayList<String>();
+		List<String> temList = new ArrayList<String>();
 		boolean check = true;
 
-		boolean status = waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvContent");
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/tvContent");
 		if (status) {
-			tempList1 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvContent");
-			tempList2 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvContent");
-			while (check) {
-				for (String text : tempList1) {
-					if (!listCity.contains(text)) {
+			int count = 0;
+			while (check && count <= 6 ) {
+				temList = getTextInListElements(driver, DynamicPageUIs.DYNAMIC_TEXT_BY_ID, "com.VCB:id/tvContent");
+				for (String text : temList) {
+					if (listCity.contains(text)) {
+						continue;
+						
+					} else {
 						listCity.add(text);
+						
 					}
 
 				}
-				swipeElementToElement(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, tempList1.get(tempList1.size() - 1), "Chọn số thẻ");
-				tempList1 = getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, "com.VCB:id/tvContent");
-				if (tempList1.equals(tempList2)) {
-					break;
-				} else {
-					tempList2 = tempList1;
-				}
+				swipeElementToElement(DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, temList.get(temList.size() - 1), "Chọn số thẻ");
+				count ++;
+				
 			}
 		}
 
@@ -104,6 +105,11 @@ public class VCBCreditCardPaymentObject extends AbstractPage {
 		public boolean isTextDisplayedInPageSource( String dynamicText) {
 			sleep(driver, 5000);
 			return driver.getPageSource().contains(dynamicText);
+		}
+		
+		public boolean isTextDisplayed (String... dynamicText) {
+			return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+			
 		}
 	
 }
