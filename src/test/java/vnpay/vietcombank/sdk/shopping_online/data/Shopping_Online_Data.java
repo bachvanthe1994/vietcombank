@@ -48,6 +48,7 @@ public class Shopping_Online_Data {
 	public static final String PASSWORD_LOGIN = "Mật khẩu đăng nhập";
 	public static final String ACCEPT = "Đồng ý";
 	public static final String CHOICE_VOUCHER = "Chọn mã giảm giá";
+	public static final String APPLY = "Áp dụng";
 	public static final String SAUSAGE = "XUC XICH";
 	public static final String ADDRESS_DETAIL = "Địa chỉ cụ thể (Số nhà, tên đường...)";
 

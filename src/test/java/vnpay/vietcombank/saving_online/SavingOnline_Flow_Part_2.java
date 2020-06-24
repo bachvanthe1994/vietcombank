@@ -53,11 +53,11 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		login.Global_login(phone, pass, opt);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
-
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
-
+	
+	
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");

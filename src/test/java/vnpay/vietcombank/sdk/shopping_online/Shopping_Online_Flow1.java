@@ -696,9 +696,9 @@ public class Shopping_Online_Flow1 extends Base {
 
 	}
 
-	@Parameters({ "otp" })
+	@Parameters({ "pass" })
 	@Test
-	public void TC_05_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String otp) {
+	public void TC_05_ChonMuaMotSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.VIETCOMBANK_2020);
@@ -900,13 +900,13 @@ public class Shopping_Online_Flow1 extends Base {
 
 		log.info("TC_05_STEP_: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
-		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.SMS_OTP);
+		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.PASSWORD_LOGIN);
 
 		log.info("TC_05_STEP_: Chon tiep tuc");
 		shopping.clickToDynamicButton(Shopping_Online_Data.CONTINUE);
 
 		log.info("TC_05_STEP_: dien otp");
-		shopping.inputToDynamicOtp(otp, Shopping_Online_Data.CONTINUE);
+		shopping.inputToDynamicPopupPasswordInput(pass, Shopping_Online_Data.CONTINUE);
 
 		log.info("TC_05_STEP_: Chon tiep tuc");
 		shopping.clickToDynamicButton(Shopping_Online_Data.CONTINUE);
@@ -1012,9 +1012,9 @@ public class Shopping_Online_Flow1 extends Base {
 
 	}
 
-	@Parameters({ "otp" })
+	@Parameters({ "pass" })
 	@Test
-	public void TC_07_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String otp) {
+	public void TC_07_ChonMuaNhieuSanPhamThanhToanMKKhongChonKhuyenMai(String pass) {
 		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.VIETCOMBANK_2020);
@@ -1222,13 +1222,13 @@ public class Shopping_Online_Flow1 extends Base {
 
 		log.info("TC_07_STEP_: Chon phuong thuc thanh toan");
 		shopping.clickToDynamicDropdownAndDateTimePicker("com.VCB:id/tvptxt");
-		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.SMS_OTP);
+		shopping.clickToDynamicButtonLinkOrLinkText(Shopping_Online_Data.PASSWORD_LOGIN);
 
 		log.info("TC_07_STEP_: Chon tiep tuc");
 		shopping.clickToDynamicButton(Shopping_Online_Data.CONTINUE);
 
 		log.info("TC_07__STEP_: dien otp");
-		shopping.inputToDynamicOtp(otp, Shopping_Online_Data.CONTINUE);
+		shopping.inputToDynamicPopupPasswordInput(pass, Shopping_Online_Data.CONTINUE);
 
 		log.info("TC_07_STEP_: Chon tiep tuc");
 		shopping.clickToDynamicButton(Shopping_Online_Data.CONTINUE);
