@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -21,10 +20,7 @@ import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.PayBillTelevisionPageObject;
-import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
-import vietcombankUI.DynamicPageUIs;
-import vietcombank_test_data.Account_Data.Valid_Account;
 import vietcombank_test_data.PayBillTelevison_Data.TitleData;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 
@@ -106,13 +102,13 @@ public class Television_flow extends Base {
 
 		log.info("TC_01_STEP_8: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
-		
+
 		log.info("TC_01_STEP_9: điền mật khẩu");
 		billTelevision.inputToDynamicInputBox(driver, pass, "Nhập mật khẩu");
-		
+
 		log.info("TC_01_STEP_10: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
-		
+
 		log.info("TC_01_STEP_11: lấy ra tên dịch vụ");
 		getService = billTelevision.getMoneyByAccount(driver, TitleData.SERVICE);
 
@@ -247,13 +243,13 @@ public class Television_flow extends Base {
 
 		log.info("TC_03_STEP_8: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
-		
+
 		log.info("TC_03_STEP_9: điền otp");
 		billTelevision.inputToDynamicOtp(driver, otp, TitleData.NEXT);
 
 		log.info("TC_03_STEP_10: chọn tiếp tục");
 		billTelevision.clickToDynamicButton(driver, TitleData.NEXT);
-		
+
 		log.info("TC_01_STEP_11: lấy ra tên dịch vụ");
 		getService = billTelevision.getMoneyByAccount(driver, TitleData.SERVICE);
 

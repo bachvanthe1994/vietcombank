@@ -46,7 +46,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		password = pass;
 		otpNumber = otp;
-		
+
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		payQRCode = PageFactoryManager.getQRCodePageObject(driver);
 
@@ -55,7 +55,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	private long surplus, availableBalance, actualAvailableBalance;
 	String account, codeOrder = "";
 
-	@Test
+//	@Test
 	public void TC_03_ThanhToanHoaDon_Type1_QRCode() {
 		log.info("TC_03_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
@@ -148,7 +148,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_ThanhToanHoaDon_Type1_QRCode_BaoCao() {
 		log.info("TC_04_01: Click quay lai");
 		payQRCode.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
@@ -185,7 +185,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").contains(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_04_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " + addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
 
 		log.info("TC_04_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -275,7 +275,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_05_11_Kiem tra so tien phi");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
-		
+
 		log.info("TC_05_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
@@ -355,7 +355,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_06_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " + addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
 
 		log.info("TC_06_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -444,7 +444,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 
 		log.info("TC_07_11_Kiem tra so tien phi");
 		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
-		
+
 		log.info("TC_07_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
 
@@ -524,7 +524,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
 
 		log.info("TC_08_12: Kiem tra so tien chuyen hien thi");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " +  addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvContent"), "- " + addCommasToLong(PayQRCode_Data.MONEY_VND) + " VND");
 
 		log.info("TC_08_13: Click vao giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
