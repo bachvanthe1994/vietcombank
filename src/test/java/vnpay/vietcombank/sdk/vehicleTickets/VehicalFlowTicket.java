@@ -15,12 +15,12 @@ import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
-import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import vehicalPageObject.VehicalPageObject;
 import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
+import vietcombank_test_data.TransactionReport_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData.DATA_ORDER_TICKET;
@@ -28,7 +28,6 @@ import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData.DATA_ORDER_TICKET;
 public class VehicalFlowTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
-	private HomePageObject homePage;
 	private VehicalPageObject vehicalTicket;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	public String amountFee = "- ";
@@ -63,11 +62,10 @@ public class VehicalFlowTicket extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		homePage = PageFactoryManager.getHomePageObject(driver);
 		vehicalTicket = PageFactoryManager.getVehicalPageObject(driver);
 		login.Global_login(phone, pass, opt);
-//		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-//		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton(DATA_ORDER_TICKET.AGREE);
 
@@ -125,6 +123,9 @@ public class VehicalFlowTicket extends Base {
 
 		log.info("TC_01_Step_13 Click chon tiep tuc ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		
+		log.info("TC_01_Step_14 Click chon tu choi ");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_CANCER);
 
 		log.info("TC_01_Step_15 Input email");
 		vehicalTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
@@ -292,8 +293,8 @@ public class VehicalFlowTicket extends Base {
 
 		log.info("========TC_02_Step_03: Chon va nhap diem den");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION);
 
 		log.info("=====TC_02_Step_04: Chon ngay muon di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -319,6 +320,8 @@ public class VehicalFlowTicket extends Base {
 
 		log.info("-TC_02_Step_10 Click chon tiep tuc ");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_CANCER);
 		
 		log.info("TC_02_Step_11___Input email");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
@@ -467,13 +470,12 @@ public class VehicalFlowTicket extends Base {
 		tongTien = tongTien.replace("đ", "VND");
 		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvAmount"));
 
+		log.info("TC_01_Step_63_Click Thuc hien giao dich moi");
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BTN_CONTINUE);
 	}
 
 	@Test
 	public void TC_03_KiemTraLichSuGiaoDich() {
-
-		log.info("TC_03_Step_01_Click Thuc hien giao dich moi");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BTN_CONTINUE);
 
 		log.info("-TC_03_Step_02_Hien thi man hinh dat ve ");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET));
@@ -540,8 +542,18 @@ public class VehicalFlowTicket extends Base {
 		int indexTien = tienSo.indexOf("(");
 		String subTienSo = tienSo.substring(0, indexTien - 1);
 		verifyEquals(tongTien, subTienSo);
+		
+		log.info("TC_04_20: Click  nut Back");
+		vehicalTicket.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
+
+		log.info("TC_04_21: Click  nut Back");
+		vehicalTicket.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_REPORT);
+
+		log.info("TC_04_22: Click  nut Home");
+		vehicalTicket.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 	
+	@Test
 	public void TC_05_MuaVeXeBangSmartOTP() {
 		login.scrollDownToText(driver, "© 2020 Vietcombank");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
