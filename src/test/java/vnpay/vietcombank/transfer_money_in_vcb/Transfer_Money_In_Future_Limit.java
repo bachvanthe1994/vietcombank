@@ -45,7 +45,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 		setupBE.Login_Web_Backend(driver1,username, passWeb);
-		setupBE.setupServiceLimitBackend(driver1,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
+		setupBE.setup_Assign_Services_Limit(driver1,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
