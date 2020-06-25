@@ -70,7 +70,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		trainTicket.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_01_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING, "com.VCB:id/tvTextPickUp");
+		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING.toUpperCase(), "com.VCB:id/tvTextPickUp");
 
 		log.info("TC_01_Nhap text ga khoi hanh");
 		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
@@ -117,7 +117,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
 
 		log.info("TC_01_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.NEXT);
+		trainTicket.clickToDynamicButton(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_verify chuyen sang man chon cho chieu di");
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.LIST_TO);
@@ -132,7 +132,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivBgItem");
 
 		log.info("TC_01_Click TIEP TUC");
-		trainTicket.clickToDynamicButton(textDefault.NEXT);
+		trainTicket.clickToDynamicButton(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_Click chon toa");
 		trainTicket.clickDynamicSelectLocation("0", "com.VCB:id/tvWagon");
@@ -149,7 +149,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyEquals(listActual, listExpect);
 
 		log.info("TC_01_Click tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.NEXT);
+		trainTicket.clickToDynamicButton(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_Verify man hinh");
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.BOOKING);
@@ -164,7 +164,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"), amountTotal);
 
 		log.info("TC_01_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
+		trainTicket.clickToDynamicButtonContains(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_Verify man hinh thong tin hanh khach");
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.INFOMATION_PASSENGER);
@@ -185,7 +185,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivNoXuatHoaDon");
 
 		log.info("TC_01_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
+		trainTicket.clickToDynamicButtonContains(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_click button dong y dong popup");
 		trainTicket.clickToDynamicButtonContains("Đ");
@@ -224,7 +224,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		tongTienThanhToan = trainTicket.getDynamicTextOld(driver, textDefault.TOTAL_MONEY_PAY);
 
 		log.info("TC_01_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
+		trainTicket.clickToDynamicButtonContains(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_Verify hien thi man hinh xac nhan thong tin");
 		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed(textDefault.CONFIRM_INFORMATION));
@@ -239,7 +239,7 @@ public class Flow_TrainTicket_part2 extends Base {
 		trainTicket.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
 
 		log.info("TC_01_Step_07: An nut 'Tiep tuc'");
-		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
+		trainTicket.clickToDynamicButtonContains(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_Step_08: Nhap du ki tu vao o nhap OTP");
 		trainTicket.inputToDynamicPopupPasswordInput(driver, password, textDefault.NEXT);

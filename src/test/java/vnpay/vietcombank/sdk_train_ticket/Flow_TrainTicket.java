@@ -68,10 +68,10 @@ public class Flow_TrainTicket extends Base {
 		trainTicket.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_01_Check title dat ve tau");
-		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed(textDefault.TRAIN_BOOKING));
+		verifyTrue(trainTicket.isDynamicMessageAndLabelTextDisplayed(textDefault.TRAIN_BOOKING.toUpperCase()));
 
 		log.info("TC_01_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING, "com.VCB:id/tvTextPickUp");
+		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING.toUpperCase(), "com.VCB:id/tvTextPickUp");
 
 		log.info("TC_01_Nhap text ga khoi hanh");
 		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
@@ -121,7 +121,7 @@ public class Flow_TrainTicket extends Base {
 		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
 
 		log.info("TC_01_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.NEXT);
+		trainTicket.clickToDynamicButton(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_01_Verify hien thi man hinh danh sach chieu di khi tim kiem ve tau co ket qua");
 		verifyTrue(trainTicket.isDynamicDateTimeDisplay("com.VCB:id/tvTitle1"));
@@ -313,7 +313,7 @@ public class Flow_TrainTicket extends Base {
 		String codeTrainEnd = trainTicket.getDynamicTextViewIndex("0", "com.VCB:id/tv_ten_tau");
 
 		log.info("TC_05_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.NEXT);
+		trainTicket.clickToDynamicButton(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_05_verify chuyen sang man chon cho chieu di");
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.CHOISE_FROM);
@@ -371,7 +371,7 @@ public class Flow_TrainTicket extends Base {
 		verifyEquals(listActual, listExpect);
 
 		log.info("TC_05_Click tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.NEXT);
+		trainTicket.clickToDynamicButton(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_05_Verify man hinh");
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.BOOKING);
@@ -389,7 +389,7 @@ public class Flow_TrainTicket extends Base {
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"), amountTotal);
 
 		log.info("TC_05_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
+		trainTicket.clickToDynamicButtonContains(textDefault.NEXT.toUpperCase());
 
 		log.info("TC_05_Verify man hinh thong tin hanh khach");
 		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.INFOMATION_PASSENGER);
