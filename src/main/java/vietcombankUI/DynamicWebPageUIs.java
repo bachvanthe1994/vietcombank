@@ -3,6 +3,9 @@ package vietcombankUI;
 public class DynamicWebPageUIs {
 	public static final String DYNAMIC_INPUT_BY_ID = "//input[@id='%s']";
 	public static final String DYNAMIC_BUTTON_BY_ID= "//button[@id='%s']";
+	public static final String DYNAMIC_LINK_TEXT_BY_ID= "//li[@id='%s']//a";
+	public static final String DYNAMIC_LINK_TEXT_BY_TEXT= "//li//a[text()='%s']";
+	public static final String DYNAMIC_LINK_CONFIX_LIMIT= "//td[contains(text(),'TÀI CHÍNH CƯ TRÚ')]//following-sibling::td//a[@title='Edit Package']";
 
 	public static final String DYNAMIC_BUTTON_A_BY_ID = "//a[@id='%s']";
 	
@@ -16,10 +19,12 @@ public class DynamicWebPageUIs {
 	
 
 	public static final String DYNAMIC_LINK_LI_BY_ID= "//li[@id='%s']";
+
 	public static final String DYNAMIC_LINK_A_BY_ID= "//a[@id='%s']";
 	public static final String DYNAMIC_SELECT_BY_CLASS= "//select[@class='%s']";
 	public static final String DYNAMIC_LIMIT_SERVICES= "//select[@class='%s']";
 	public static final String DYNAMIC_ICON_PENCIL= "//td[contains(text(),'%s')]//following-sibling::td//a[@class='%s']";
 	public static final String DYNAMIC_SELECT_MODEL  = "//select[@ng-model='%s']";
 	public static final String DYNAMIC_OPTION_VALUE   = "//option[@value='%s']";
+
 }

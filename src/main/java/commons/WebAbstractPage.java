@@ -1002,6 +1002,22 @@ public class WebAbstractPage {
 	}
 	
 
+	public void clickToDynamicLinkTextByID(WebDriver driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_LINK_TEXT_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_TEXT_BY_ID, dynamicID);
+		}
+	}
+
+	public void clickToDynamicLinkTextByText(WebDriver driver, String dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_LINK_TEXT_BY_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_TEXT_BY_TEXT, dynamicText);
+		}
+	}
+	
 	public void clickToDynamicButtonATagByID(WebDriver driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_ID, dynamicID);
