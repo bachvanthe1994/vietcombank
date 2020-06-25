@@ -44,6 +44,8 @@ public class VehicalData {
 
 
 	public static final String BUTTON_TIEPTUC="Tiếp tục";
+	public static final String BUTTON_CANCER="Từ chối";
+	public static final String AGREE = "Đồng ý";
 
 	public static final String INFO_CUSTOMER="Thông tin khách hàng";
 	public static final String INFO_TICKET="Thông tin vé";

@@ -25,6 +25,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.trainTicket.TrainTicketPageUIs;
 
@@ -486,6 +487,15 @@ public class TrainTicketPageObject extends AbstractPage {
 			clickToElement(driver, TrainTicketPageUIs.DYNAMIC_TEXT_EDIT, dynamicID);
 		}
 	}
+	
+	// Chọn text bang id
+		public void clickToDynamicTextByID(String id) {
+			scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+			boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+			if (status == true) {
+				clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+			}
+		}
 
 	// So sánh giá trị trong list combobox, không cần sắp xếp theo thứ tự
 	public boolean checkListContain(List<String> actualList, List<String> expectList) {
