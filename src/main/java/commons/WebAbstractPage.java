@@ -957,6 +957,13 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_BY_ID, dynamicID);
 		}
 	}
+	public void clickToDynamicLinkLiByID(WebDriver driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+		}
+	}
 
 	
 }
