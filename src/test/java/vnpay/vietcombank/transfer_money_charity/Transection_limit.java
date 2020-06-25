@@ -8,9 +8,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import model.SourceAccountModel;
 import model.TransferCharity;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
@@ -23,9 +25,10 @@ public class Transection_limit extends Base {
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyCharityPageObject transferMoneyCharity;
+	SourceAccountModel sourceAccount = new SourceAccountModel();
 
 	TransferCharity info = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "1000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
-	TransferCharity info1 = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "300000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
+	TransferCharity info1 = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "500000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	TransferCharity info2 = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "100000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 	TransferCharity info3 = new TransferCharity(Account_Data.Valid_Account.ACCOUNT2, TransferMoneyCharity_Data.ORGANIZATION, "400000000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "SMS OTP");
 
@@ -44,17 +47,17 @@ public class Transection_limit extends Base {
 
 	}
 
-//	@Test
-	public void TC_01_SoTienGiaoDichNhoHonHanMucToiThieu() {
+	@Test
+	public void TC_01_SoTienGiaoDichNhoHonHanMucToiThieu() throws InterruptedException {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 		log.info("TC_01_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
+		transferMoneyCharity.scrollDownToText(driver, "Trạng thái chuyển tiền");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
 		log.info("TC_01_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		sourceAccount = transferMoneyCharity.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -78,35 +81,15 @@ public class Transection_limit extends Base {
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_NOT_ENOUGH_PER_A_TRANSACTION_MESSAGE));
 
+		transferMoneyCharity.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
 	}
-	
-//	@Test
-	public void TC_02_SoTienGiaoDichVuotQuaHanMucToiDa() {
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
-		log.info("TC_02_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
-		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-
-		log.info("TC_02_3_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
+	@Test
+	public void TC_02_SoTienGiaoDichVuotQuaHanMucToiDa() throws InterruptedException {
 
 		log.info("TC_02_4_Nhap so tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info1.money, "Số tiền ủng hộ");
-
-		log.info("TC_02_5_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, "Tên người ủng hộ");
-
-		log.info("TC_02_6_Nhap dia chi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
-
-		log.info("TC_02_7_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh ủng hộ");
+		transferMoneyCharity.inputIntoEditTextByID(driver, info1.money, "com.VCB:id/edtContent1");
 
 		log.info("TC_02_8_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
@@ -114,55 +97,76 @@ public class Transection_limit extends Base {
 		log.info("TC_02_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.MONEY_INPUT_OVER_MESSAGE));
 
+		transferMoneyCharity.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
 	}
-	
-//	@Test
-	public void TC_03_SoTienGiaoDichVuotQuaHanMucToiDa1Ngay() {
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
-		log.info("TC_03_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
 
-		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
-
-		log.info("TC_03_3_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
+	@Parameters({"pass"})
+	@Test
+	public void TC_03_SoTienGiaoDichVuotQuaHanMucToiDa1Ngay(String pass) {
 
 		log.info("TC_03_4_Nhap so tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info1.money, "Số tiền ủng hộ");
+		transferMoneyCharity.inputIntoEditTextByID(driver, "250000", "com.VCB:id/edtContent1");
 
-		log.info("TC_03_5_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, "Tên người ủng hộ");
-
-		log.info("TC_03_6_Nhap dia chi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
-
-		log.info("TC_03_7_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh ủng hộ");
-
-		log.info("TC_03_8_Click Tiep tuc");
+//		log.info("TC_03_8_Click Tiep tuc");
+//		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		transferMoneyCharity.clickToTextID(driver, "com.VCB:id/tvptxt");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Mật khẩu đăng nhập");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		transferMoneyCharity.inputToDynamicPopupPasswordInput(driver, pass, "Tiếp tục");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		verifyEquals(transferMoneyCharity.getAccountNumber(driver, "com.VCB:id/tvTitle"), "CHUYỂN KHOẢN THÀNH CÔNG");
+//		
+//		log.info("TC_03_4_Nhap so tien ung ho");
+//		transferMoneyCharity.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+//
+//		log.info("TC_01_2_Chon tai khoan nguon");
+//		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+//
+//		log.info("TC_01_3_Chon Quy/ To chuc tu thien");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
+//		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.organization);
+//
+//		log.info("TC_01_4_Nhap so tien ung ho");
+//		transferMoneyCharity.inputIntoEditTextByID(driver, "300000", "com.VCB:id/edtContent1");
+//
+//		log.info("TC_01_5_Nhap ten nguoi ung ho");
+//		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, "Tên người ủng hộ");
+//
+//		log.info("TC_01_6_Nhap dia chi ung ho");
+//		transferMoneyCharity.inputToDynamicInputBox(driver, info.address, "Địa chỉ người ủng hộ");
+//
+//		log.info("TC_01_7_Hoan canh nguoi ung ho");
+//		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, "Hoàn cảnh ủng hộ");
+//
+//		log.info("TC_01_8_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, "Tiếp tục");
+
 
 		log.info("TC_03_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
 		verifyTrue(transferMoneyCharity.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyCharity_Data.CONFIRM_MAX_TRANSECTION_LIMIT_DAY));
 
 	}
-	
+
 //	@Test
 	public void TC_04_SoTienGiaoDichVuotQuaHanMucToiDa1NgayCuaNhomDichVu() {
-		homePage = PageFactoryManager.getHomePageObject(driver);
-		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
-		log.info("TC_04_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền từ thiện");
-
+		
 		log.info("TC_04_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_04_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
@@ -188,7 +192,7 @@ public class Transection_limit extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_05_SoTienGiaoDichVuotQuaHanMucToiDa1NgayCuaGoiDichVu() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
@@ -198,7 +202,7 @@ public class Transection_limit extends Base {
 
 		log.info("TC_05_2_Chon tai khoan nguon");
 		transferMoneyCharity.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, info.sourceAccount);
+		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_05_3_Chon Quy/ To chuc tu thien");
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, "Quỹ/ Tổ chức từ thiện");
