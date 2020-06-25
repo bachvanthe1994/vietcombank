@@ -17,5 +17,13 @@ public class WebLogInPageObject extends WebAbstractPage {
 		inputIntoInputByID(driver, passWeb, "login-password");
 		clickToDynamicButtonByID(driver, "btn-login");
 	}
+	
+	public void Click_service_package() {
+		clickToDynamicLinkTextByID(driver, "191");
+		clickToDynamicLinkTextByText(driver, "3");
+	}
 
+	public void Config_limit() {
+		
+	}
 }
