@@ -18,8 +18,11 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 	
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo(null, null, null, null);
-
-	public void setupServiceLimitBackend(WebDriver driver,String selectValue,ServiceLimitInfo inputInfo) {
+	
+//	setup limit cho lần giao dịch
+//	selectValue: service name
+//	inputInfo: giá trị config truyền vào
+	public void setup_Assign_Services_Limit(WebDriver driver,String selectValue,ServiceLimitInfo inputInfo) {
 		
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
@@ -38,6 +41,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		
 	}
 	
+//	selectValue: service name
+//	inputInfo: giá trị config truyền vào
 	public void resetServiceLimitBackend(WebDriver driver,String selectValue,ServiceLimitInfo inputInfo) {
 		
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
@@ -53,6 +58,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		
 	}
 	
+//	username: user đăng nhập backend
+//	passWeb: pass đăng nhập backend
 	public void Login_Web_Backend(WebDriver driver,String username, String passWeb) {
 		inputIntoInputByID(driver, username, "login-username");
 		inputIntoInputByID(driver, passWeb, "login-password");

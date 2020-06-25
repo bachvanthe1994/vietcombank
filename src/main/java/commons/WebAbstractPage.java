@@ -977,6 +977,7 @@ public class WebAbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_TEXT_BY_TEXT, dynamicText);
 		}
+	}
 	
 	public void clickToDynamicButtonATagByID(WebDriver driver, String dynamicID) {
 		boolean status = false;
