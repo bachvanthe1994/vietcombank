@@ -19,7 +19,6 @@ import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
-import pageObjects.WebLogInPageObject;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
@@ -32,7 +31,6 @@ public class Transfer_Money_Present extends Base {
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
-	private WebLogInPageObject loginWeb;
 	
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel receiverAccount = new SourceAccountModel();
@@ -46,10 +44,6 @@ public class Transfer_Money_Present extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt,String username,String passWeb) throws IOException, InterruptedException {
 		startServer();
 		
-		log.info("Before class: Mo backend ");
-		driver1 = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		loginWeb = WebPageFactoryManager.getWebLogInPageObject(driver1);
-		loginWeb.Login_backend(username, passWeb);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {

@@ -6,8 +6,13 @@ import commons.WebAbstractPage;
 import model.ServiceLimitInfo;
 
 public class WebBackendSetupPageObject extends WebAbstractPage {
+
 	private WebDriver driver;
 	
+
+	WebAbstractPage test = new WebAbstractPage();
+	int longTime = 40;
+
 	public WebBackendSetupPageObject(WebDriver mappingDriver) {
 		driver = mappingDriver;
 	}
@@ -48,4 +53,22 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		
 	}
 	
+	public void Login_Web_Backend(WebDriver driver,String username, String passWeb) {
+		inputIntoInputByID(driver, username, "login-username");
+		inputIntoInputByID(driver, passWeb, "login-password");
+		clickToDynamicButtonByID(driver, "btn-login");
+	}
+
+	public void Setup_Assign_Services_Limit() {
+
+	}
+
+	public void Setup_Assign_Services_Type_Limit() {
+
+	}
+
+	public void Setup_Package_Total_Limit() {
+
+	}
+
 }

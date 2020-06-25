@@ -997,6 +997,14 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS, dynamicText);
 		}
 	}
+	public void clickToDynamicLinkLiByID(WebDriver driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+
+		}
+	}
 
 //  SELECT METHODS
 	public void selectItemInDropdown(WebDriver driver, String dynamicClassID,String selectValue) {

@@ -19,7 +19,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.WebBackendSetupPageObject;
-import pageObjects.WebLogInPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
@@ -31,7 +30,6 @@ public class Transfer_Periodic_Money extends Base {
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
-	private WebLogInPageObject loginWeb;
 	private WebBackendSetupPageObject setupBE;
 
 	String[] exchangeRateUSD;
@@ -47,9 +45,9 @@ public class Transfer_Periodic_Money extends Base {
 		
 		log.info("Before class: Mo backend ");
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		loginWeb = WebPageFactoryManager.getWebLogInPageObject(driverWeb);
+		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
-		loginWeb.Login_backend(username, passWeb);
+		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
 		setupBE.setupServiceLimitBackend(driverWeb,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
 		
 		log.info("Before class: Mo app ");

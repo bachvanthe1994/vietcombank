@@ -3,6 +3,7 @@ package vietcombankUI;
 public class DynamicWebPageUIs {
 	public static final String DYNAMIC_INPUT_BY_ID = "//input[@id='%s']";
 	public static final String DYNAMIC_BUTTON_BY_ID= "//button[@id='%s']";
+
 	public static final String DYNAMIC_BUTTON_A_BY_ID = "//a[@id='%s']";
 	
 	public static final String DYNAMIC_MENU_BY_LINK = "//a[@href='%s']";
@@ -13,8 +14,8 @@ public class DynamicWebPageUIs {
 	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT = "//td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
 	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS = "//td[contains(text(),'%s')]//following-sibling::td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
 	
-	
-	
-	
+
+	public static final String DYNAMIC_LINK_LI_BY_ID= "//li[@id='%s']";
+
 	
 }
