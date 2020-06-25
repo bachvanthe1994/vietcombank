@@ -19,6 +19,9 @@ public class SettingVCBSmartOTPPageObject extends AbstractPage {
 		clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
 
 		clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
+		
+		String active  = getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/state_vnpay");
+		if (active.equals("Chưa kích hoạt")) {
 
 		clickToDynamicTextFollowText(driver, "Chưa kích hoạt");
 
@@ -43,6 +46,13 @@ public class SettingVCBSmartOTPPageObject extends AbstractPage {
 		clickToDynamicImageViewID(driver, "com.VCB:id/ivTitleLeft");
 
 		clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+		
+		} else if (active.equals("Đã kích hoạt")) {
+			clickToDynamicImageViewID(driver, "com.VCB:id/ivTitleLeft");
+
+			clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
+			
+		}
 	}
 
 	public void cancelSetupSmartOTP() {

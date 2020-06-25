@@ -31,7 +31,7 @@ public class TransferIdentity_Data {
 	public static final String TRANSACTION_FEE = "Số tiền phí";
 	public static final String MONEY = "Số tiền";
 	public static final String PASSWORD = "aaaa1111";
-	public static final String PASSPORT = "Hộ chiếu";
+	public static final String PASSPORT = "Hộ Chiếu";
 	public static final String NEXT = "Tiếp tục";
 	public static final String OTP_SMS = "SMS OTP";
 	public static final String RECEIVER_PAYER = "Người nhận trả";
