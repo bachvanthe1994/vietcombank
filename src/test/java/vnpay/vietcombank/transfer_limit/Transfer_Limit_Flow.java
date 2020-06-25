@@ -12,14 +12,12 @@ import org.testng.annotations.Test;
 import commons.Base;
 import commons.Constants;
 import commons.PageFactoryManager;
-import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.SourceAccountModel;
 import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransferLimitPageObject;
-import pageObjects.WebLogInPageObject;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 
@@ -27,7 +25,6 @@ public class Transfer_Limit_Flow extends Base {
 	AppiumDriver<MobileElement> driver;
 	WebDriver driver1;
 	private LogInPageObject login;
-	private WebLogInPageObject loginWeb;
 	private TransferLimitPageObject transferLimit;
 	String passLogin, bankOut,accountRecived, otpSmart,newOTP = "";
 	List<String> listActual;
@@ -38,11 +35,6 @@ public class Transfer_Limit_Flow extends Base {
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
-		log.info("Before class: Mo backend ");
-		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
-		loginWeb = WebPageFactoryManager.getWebLogInPageObject(driver1);
-		loginWeb.Login_backend(username, passWeb);
-		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
