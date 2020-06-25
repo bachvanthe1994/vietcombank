@@ -21,6 +21,11 @@ public class Constants {
 	public static final String MIN_TRANSFER = "10000";
 	public static final String MAX_TRANSFER = "100000000";
 	public static final String MAX_TRANSFER_OF_DAY = "100000001";
+	
+	public static final String BE_BROWSER_CHROME = "chrome";
+	public static final String BE_BROWSER_VERSION = "83.0.4103.14";
+	public static final String BE_URL = "http://10.22.7.91:2021/Package/Index?f=2&c=191";
+	
 
 	// RUN_CONTINUE_AFTER_STEP_FAIL = true --> testcase still runs next steps after
 	// current step is failed

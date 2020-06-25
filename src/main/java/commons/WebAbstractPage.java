@@ -940,6 +940,9 @@ public class WebAbstractPage {
 		element.clear();
 	}
 	
+	
+	
+//  INPUT METHODS	
 	public void inputIntoInputByID(WebDriver driver, String inputValue, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, dynamicID);
@@ -950,6 +953,8 @@ public class WebAbstractPage {
 
 	}
 	
+	
+//  CLICK METHODS
 	public void clickToDynamicButtonByID(WebDriver driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_BY_ID, dynamicID);
@@ -957,11 +962,47 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_BY_ID, dynamicID);
 		}
 	}
+	
+	public void clickToDynamicButtonATagByID(WebDriver driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_ID, dynamicID);
+		}
+	}
+	
+	public void clickToDynamicMenuByLink(WebDriver driver, String dynamicLink) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_LINK, dynamicLink);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_LINK, dynamicLink);
+		}
+	}
+	
+	public void clickToDynamicIconByText(WebDriver driver, String... dynamicText) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicText);
+		}
+	}
+	
+	public void clickToDynamicIconByTwoTexts(WebDriver driver, String... dynamicText) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS, dynamicText);
+		}
+	}
 	public void clickToDynamicLinkLiByID(WebDriver driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
 		if (status == true) {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+
 		}
 	}
 	
@@ -984,5 +1025,26 @@ public class WebAbstractPage {
 	
 
 
+//  SELECT METHODS
+	public void selectItemInDropdown(WebDriver driver, String dynamicClassID,String selectValue) {
+		sleep(driver, 2000);
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_CLASS, dynamicClassID);
+		if(status == true) {
+			selectItemInHtmlDropdown(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_CLASS, selectValue, dynamicClassID);
+		}
+	}
 	
+	
+//	GET METHODS
+	public String getDataInInputByID(WebDriver driver,String dynamicClassID) {
+		sleep(driver, 2000);
+		String data = "";
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, dynamicClassID);
+		if(status == true) {
+			data = getAttributeValue(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, "value", dynamicClassID);
+		}
+		return data ;
+	}
 }
