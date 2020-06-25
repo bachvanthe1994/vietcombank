@@ -20,4 +20,11 @@ public class DynamicWebPageUIs {
 
 	public static final String DYNAMIC_LINK_LI_BY_ID= "//li[@id='%s']";
 
+	public static final String DYNAMIC_LINK_A_BY_ID= "//a[@id='%s']";
+	public static final String DYNAMIC_SELECT_BY_CLASS= "//select[@class='%s']";
+	public static final String DYNAMIC_LIMIT_SERVICES= "//select[@class='%s']";
+	public static final String DYNAMIC_ICON_PENCIL= "//td[contains(text(),'%s')]//following-sibling::td//a[@class='%s']";
+	public static final String DYNAMIC_SELECT_MODEL  = "//select[@ng-model='%s']";
+	public static final String DYNAMIC_OPTION_VALUE   = "//option[@value='%s']";
+
 }

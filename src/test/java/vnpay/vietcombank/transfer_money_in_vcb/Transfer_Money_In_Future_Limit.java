@@ -19,10 +19,15 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.WebBackendSetupPageObject;
+<<<<<<< HEAD
+=======
+import pageObjects.WebLogInPageObject;
+>>>>>>> ceda90f6b8b43d6f6fae0bdb23f0d30783147aef
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 
 public class Transfer_Money_In_Future_Limit extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -30,17 +35,23 @@ public class Transfer_Money_In_Future_Limit extends Base {
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
+<<<<<<< HEAD
 	private WebBackendSetupPageObject loginWeb;
+=======
+	private WebBackendSetupPageObject setupBE;
+>>>>>>> ceda90f6b8b43d6f6fae0bdb23f0d30783147aef
 
 	String[] exchangeRateUSD;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(1);
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "10000000");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo backend ");
+<<<<<<< HEAD
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
@@ -48,6 +59,12 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		log.info("Before class: setup limit ngay");
 		ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "10000000", "15000000");
 		loginWeb.setup_Assign_Services_Limit(driverWeb, "Chuyển khoản tương lai", inputInfo );
+=======
+		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
+		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
+		setupBE.Login_Web_Backend(driver1,username, passWeb);
+		setupBE.setup_Assign_Services_Limit(driver1,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
+>>>>>>> ceda90f6b8b43d6f6fae0bdb23f0d30783147aef
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
