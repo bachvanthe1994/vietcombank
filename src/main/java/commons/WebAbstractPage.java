@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
@@ -817,7 +822,7 @@ public class WebAbstractPage {
 		return true;
 
 	}
-	
+
 	public void clickToElement(WebDriver driver, String locator, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -939,7 +944,7 @@ public class WebAbstractPage {
 
 		element.clear();
 	}
-	
+
 	public void inputIntoInputByID(WebDriver driver, String inputValue, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, dynamicID);
@@ -949,7 +954,7 @@ public class WebAbstractPage {
 		}
 
 	}
-	
+
 	public void clickToDynamicButtonByID(WebDriver driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_BY_ID, dynamicID);
@@ -957,13 +962,48 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_BY_ID, dynamicID);
 		}
 	}
-	public void clickToDynamicLinkLiByID(WebDriver driver, String dynamicID) {
+
+	public void clickToDynamicLinkLiByID(WebDriver driver1, String dynamicID) {
 		boolean status = false;
-		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
 		if (status == true) {
-			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
+		}
+	}
+	public void clickToDynamicLinkAByID(WebDriver driver1, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_LINK_A_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_LINK_A_BY_ID, dynamicID);
 		}
 	}
 
-	
+	public void clickToDynamicSelectByClass(WebDriver driver1, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_SELECT_BY_CLASS, dynamicID);
+		if (status == true) {
+			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_SELECT_BY_CLASS, dynamicID);
+		}
+	}
+
+	public void clickToDynamicIconPackage(WebDriver driver1, String dynamicValue, String dynamicValue2) {
+		boolean status = false;
+		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_ICON_PACKAGE, dynamicValue, dynamicValue2);
+		if (status == true) {
+			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_ICON_PACKAGE, dynamicValue, dynamicValue2);
+		}
+	}
+	public void clickToDynamicIconPencil(WebDriver driver1, String dynamicValue, String dynamicValue2) {
+		boolean status = false;
+		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_ICON_PENCIL, dynamicValue, dynamicValue2);
+		if (status == true) {
+			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_ICON_PENCIL, dynamicValue, dynamicValue2);
+		}
+	}
+
+	public void clickToDynamicSelectDropdownList(WebDriver driver1, String dynamicClassName, String value) {
+		Select oSelect = new Select(driver1.findElement(By.className(dynamicClassName)));
+		oSelect.selectByVisibleText(value);
+	}
+
 }
