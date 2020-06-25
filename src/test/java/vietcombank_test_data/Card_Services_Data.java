@@ -38,9 +38,9 @@ public class Card_Services_Data {
 	public static class Card_Services_Text {
 		
 		public static final String SHOPPING_TEXT = "Mua sắm";
-		public static final String CARD_SERVICES_TEXT = "Dịch vụ thẻ khác";
 		
 		public static final String LOCK_CARD_TEXT = "Khóa thẻ";
+		public static final String CARD_SERVICE = "Dịch vụ thẻ";
 		public static final String UNLOCK_CARD_TEXT = "Mở khóa thẻ";
 		
 		public static final String DEBIT_CARD_TEXT = "Thẻ ghi nợ";
@@ -64,14 +64,14 @@ public class Card_Services_Data {
 		
 		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
 		public static final String BUTTON_CLOSE_TEXT = "Đóng";
-		public static final String BUTTON_BACK_TO_HOME_TEXT = "Về trang chủ";
+		public static final String BUTTON_BACK_TO_HOME_TEXT = "Quay về màn hình dịch vụ thẻ";
 		
 	}
 	
 	public static class Card_Data {
 		
 		public static final String VCB_DEBIT_CARD_DATA = "970436";
-		public static final String VCB_CREBIT_CARD_DATA = "4032";
+		public static final String VCB_CREBIT_CARD_DATA = "005";
 		public static final String VISA_DEBIT_CARD_DATA = "4283";
 		public static final String UNION_PAY_DATA = "6212";
 		public static final String AMEX_DEBIT_CARD_DATA = "9734";

@@ -23,7 +23,7 @@
 		<parameter name="phone" value="0904797866" />
 		<parameter name="hubURL"
 			value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="pass" value="aaaa1111" />
+		<parameter name="pass" value="aaaa1111@" />
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
@@ -87,11 +87,11 @@
 <!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
 			
 				<class
-				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" />
-				<class
-				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" />
-				<class
-				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" />
+				name="vnpay.vietcombank.transfer_money_charity.Transection_limit" />
+<!-- 				<class -->
+<!-- 				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
+<!-- 				<class -->
+<!-- 				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" /> -->
 			<!--Thanh toán cước điện thoại cố định -->
 			<!-- <class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
 

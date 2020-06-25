@@ -7,6 +7,7 @@ public class TrainTicket_Data {
 		public static final String TITLE_END ="Ga đến" ;
 		public static final String TRAIN_NAME [] = {"Tàu SE35","Tàu TN1", "Tàu SE1" , "Tàu NA1" };
 		public static final String TRAIN_BOOKING = "Đặt vé tàu";
+		public static final String TRAIN_BOOKING_CAPITALIZE = "ĐẶT VÉ TÀU";
 		public static final String PASSENGER = "Hành khách";
 		public static final String CHOISE_FROM = "Chọn chỗ cho chiều đi";
 		public static final String BLANK = "Chỗ trống";
@@ -36,6 +37,12 @@ public class TrainTicket_Data {
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 		public static final String TITLE_AMOUNT_MONEY = "Số tiền";
 		public static final String TITLE_OTP = "SMS OTP";
+		public static final String AGREE = "Đồng ý";
+		public static final String CONTINUE = "TIẾP TỤC";
+		public static final String CHILDREN = "Trẻ em";
+		public static final String TRANSACTION_FEE = "Số tiền phí";
+		public static final String NO = "Không";
+		public static final String NEW_TRANSFER = "Thực hiện giao dịch mới";
 		public static final String BILLING_CODE  = "Mã thanh toán";
 	}
 	

@@ -44,7 +44,7 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -58,18 +58,68 @@ public class SavingOnline_Flow_Part_3_SmartOTP extends Base {
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, getDataInCell(6));
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+
 
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
+	
+	@Parameters({"otp"})
+	@Test(invocationCount = 2)
+	public void TC_00_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP(String otp) {
+		log.info("TC_01_2_Chon so tai khoan");
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
+		sourceAccount = savingOnline.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		account = sourceAccount.account;
 
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.AVAILABLE_BALANCE));
+
+		log.info("TC_01_3_Chon ky han gui");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
+		savingOnline.clickToDynamicTextContains(driver, info.term);
+
+		log.info("TC_01_4_Nhap so tien gui");
+		savingOnline.inputToDynamicInputBoxByHeader(driver, info.money, SavingOnline_Data.TRANSACTION_INFO, "2");
+
+		log.info("TC_01_5_Chon hinh thuc chuyen tien");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.formOfPayment);
+
+		log.info("TC_01_6_Chon dong y tuan thu cam ket");
+		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
+
+		log.info("TC_01_7_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_01_8_Kiem tra man hinh xac nhan thong tin");
+
+		
+		log.info("TC_01_09_Chon phuong thuc xac thuc");
+		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.SMS_OTP);
+
+		log.info("TC_01_10_Kiem tra so tien phi");
+		transferFee = 0;
+
+		log.info("TC_01_11_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		savingOnline.inputToDynamicOtp(driver, otp, SavingOnline_Data.CONTINUE_BUTTON);
+
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		
+		log.info("TC_01_13_Click Thuc hien giao dich moi");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.NEW_TRANSACTION_PERFORM);
+
+	}
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiNhapGoc_PTXT_SmartOTP() throws GeneralSecurityException, IOException {
-		log.info("TC_01_0_Setup smart OTP");
-		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, getDataInCell(6));
 		
-		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+	
 
 		log.info("TC_01_2_Chon so tai khoan");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
