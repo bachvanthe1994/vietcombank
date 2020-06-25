@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -29,10 +28,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.offset.PointOption;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
@@ -988,9 +983,9 @@ public class WebAbstractPage {
 
 	public void clickToDynamicIconPackage(WebDriver driver1, String dynamicValue, String dynamicValue2) {
 		boolean status = false;
-		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_ICON_PACKAGE, dynamicValue, dynamicValue2);
+		status = waitForElementVisible(driver1, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicValue, dynamicValue2);
 		if (status == true) {
-			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_ICON_PACKAGE, dynamicValue, dynamicValue2);
+			clickToElement(driver1, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicValue, dynamicValue2);
 		}
 	}
 	public void clickToDynamicIconPencil(WebDriver driver1, String dynamicValue, String dynamicValue2) {
@@ -1004,6 +999,85 @@ public class WebAbstractPage {
 	public void clickToDynamicSelectDropdownList(WebDriver driver1, String dynamicClassName, String value) {
 		Select oSelect = new Select(driver1.findElement(By.className(dynamicClassName)));
 		oSelect.selectByVisibleText(value);
+	}
+	
+
+	public void clickToDynamicButtonATagByID(WebDriver driver, String dynamicID) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_ID, dynamicID);
+		}
+	}
+	
+	public void clickToDynamicMenuByLink(WebDriver driver, String dynamicLink) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_LINK, dynamicLink);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_LINK, dynamicLink);
+		}
+	}
+	
+	public void clickToDynamicIconByText(WebDriver driver, String... dynamicText) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicText);
+		}
+	}
+	
+	public void clickToDynamicIconByTwoTexts(WebDriver driver, String... dynamicText) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS, dynamicText);
+		}
+	}
+
+	
+	public void clickToDynamicSelectModel(WebDriver driver, String dynamictext) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_SELECT_MODEL, dynamictext);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_SELECT_MODEL, dynamictext);
+		}
+	}
+	
+	public void clickToDynamicOption(WebDriver driver, String dynamicvalue ) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_OPTION_VALUE, dynamicvalue);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_OPTION_VALUE, dynamicvalue);
+		}
+	}
+	
+	
+
+
+//  SELECT METHODS
+	public void selectItemInDropdown(WebDriver driver, String dynamicClassID,String selectValue) {
+		sleep(driver, 2000);
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_CLASS, dynamicClassID);
+		if(status == true) {
+			selectItemInHtmlDropdown(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_CLASS, selectValue, dynamicClassID);
+		}
+	}
+	
+	
+//	GET METHODS
+	public String getDataInInputByID(WebDriver driver,String dynamicClassID) {
+		sleep(driver, 2000);
+		String data = "";
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, dynamicClassID);
+		if(status == true) {
+			data = getAttributeValue(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, "value", dynamicClassID);
+		}
+		return data ;
 	}
 
 }

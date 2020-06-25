@@ -163,6 +163,7 @@ public class TransferMoneyInVCB_Data {
 
 	public static class InputText_MoneyRecurrent {
 
+		public static final String BE_TRANSFER_RECURRENT_TEXT = "Chuyển khoản định kỳ";
 		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
 		public static final String BILLS_PAYMENT_TEXT = "Nạp tiền/ Thanh toán hoá đơn";
 		public static final String TRANSFER_FREQUENCY_TEXT = "Tần suất chuyển";
