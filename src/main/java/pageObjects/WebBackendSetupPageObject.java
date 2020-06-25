@@ -13,8 +13,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	WebBackendSetupPageObject webBESetup = new WebBackendSetupPageObject(driver);
 	int longTime = 40;
 
-	public WebBackendSetupPageObject(WebDriver mappingDriver) {
-		driver = mappingDriver;
+	public WebBackendSetupPageObject(WebDriver driverWeb) {
 	}
 
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo(null, null, null, null);

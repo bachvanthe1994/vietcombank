@@ -17,9 +17,10 @@ public class HomePage_Data {
 		public static final String VIETCOMBANK_2020 = "© 2020 Vietcombank";
 		public static final String TITLE_SHOPPING_ONLINE = "Mua sắm trực tuyến - VNPAY Shopping";
 		public static final String HOME_TRANSFER_IN_VCB = "Chuyển tiền trong VCB";
-
+		public static final String TRANSFER_NOW = "Chuyển tiền ngày giá trị hiện tại";
 		public static final String LOOK_UP = "Tra cứu";
 		public static final String EXCHANGE_RATE = "Tỷ giá";
+		public static final String TRANSFER_FUTURE = "Chuyển tiền ngày tương lai";
 
 	}
 

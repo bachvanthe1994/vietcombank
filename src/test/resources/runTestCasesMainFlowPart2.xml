@@ -21,6 +21,8 @@
 		<parameter name="phone" value="0335059863" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
+		<parameter name="username" value="hoangkm" />
+		<parameter name="passWeb" value="abc123456@" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
@@ -35,10 +37,10 @@
 <!--             <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" /> -->
 
             <!-- Quà tặng may mắn -->
-            <class name="vnpay.vietcombank.sdk.vehicleTickets.VehicalFlowTicket" />
+<!--             <class name="vnpay.vietcombank.login.Template" /> -->
             
             <!-- Quà tặng may mắn -->
-<!--             <class name="vnpay.vietcombank.sdk.filmTicketBooking.Flow_FilmTicketBooking_Part_1" /> -->
+            <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Limit" />
 
 		</classes>
 

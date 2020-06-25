@@ -9,6 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
 import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
@@ -19,19 +20,18 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.WebBackendSetupPageObject;
-import pageObjects.WebLogInPageObject;
 import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
-import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 
 public class Transfer_Money_In_Future_Limit extends Base {
 	AppiumDriver<MobileElement> driver;
-	WebDriver driver1;
+	WebDriver driverWeb;
 	private LogInPageObject login;
 	private HomePageObject homePage;
 	private TransferMoneyInVcbPageObject transferInVCB;
-	private WebBackendSetupPageObject setupBE;
+	private WebBackendSetupPageObject loginWeb;
 
 	String[] exchangeRateUSD;
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
@@ -45,10 +45,13 @@ public class Transfer_Money_In_Future_Limit extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException {
 		startServer();
 		log.info("Before class: Mo backend ");
-		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
-		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
-		setupBE.Login_Web_Backend(driver1,username, passWeb);
-		setupBE.setup_Assign_Services_Limit(driver1,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
+		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
+		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
+		
+		log.info("Before class: setup limit ngay");
+		ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "10000000", "15000000");
+		loginWeb.setup_Assign_Services_Limit(driverWeb, "Chuyển khoản tương lai", inputInfo );
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -73,10 +76,10 @@ public class Transfer_Money_In_Future_Limit extends Base {
 	public void TC_01_ChuyenTienTuongLaiThapHonHanMucToiThieu() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_01_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_NOW);
 
 		log.info("TC_01_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
@@ -117,10 +120,10 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_02_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_NOW);
 
 		log.info("TC_02_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
@@ -160,11 +163,11 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_02: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 		int round = Integer.parseInt(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TOTAL_LIMIT_AMOUNT) / Integer.parseInt(TransferMoneyInVCB_Data.InputDataInFutureForOTP.MAX_TRANFER_AMOUNT);
 		for (int i = 0; i < round; i++) {
 			log.info("TC_03_Step_03: Chon chuyen tien ngay gia tri hien tai");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_NOW);
 
 			log.info("TC_03_Step_04: Chon chuyen tien ngay gia tri hien tai");
 			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
@@ -217,7 +220,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		}
 
 		log.info("TC_03_Step_20: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_NOW);
 
 		log.info("TC_03_Step_21: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
@@ -255,10 +258,10 @@ public class Transfer_Money_In_Future_Limit extends Base {
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() {
 
 		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_04_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_NOW);
 
 		log.info("TC_04_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
@@ -296,10 +299,10 @@ public class Transfer_Money_In_Future_Limit extends Base {
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() {
 
 		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_05_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_NOW);
 
 		log.info("TC_05_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày tương lai");
