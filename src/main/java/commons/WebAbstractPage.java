@@ -964,6 +964,25 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_LINK_LI_BY_ID, dynamicID);
 		}
 	}
+	
+	public void clickToDynamicSelectModel(WebDriver driver, String dynamictext) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_SELECT_MODEL, dynamictext);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_SELECT_MODEL, dynamictext);
+		}
+	}
+	
+	public void clickToDynamicOption(WebDriver driver, String dynamicvalue ) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_OPTION_VALUE, dynamicvalue);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_OPTION_VALUE, dynamicvalue);
+		}
+	}
+	
+	
+
 
 	
 }

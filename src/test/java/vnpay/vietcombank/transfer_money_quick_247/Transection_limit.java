@@ -2,6 +2,7 @@ package vnpay.vietcombank.transfer_money_quick_247;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -14,23 +15,33 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyObject;
+import pageObjects.WebBackendSetupPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class Transection_limit extends Base {
 	AppiumDriver<MobileElement> driver;
+	WebDriver driver1;
 	private LogInPageObject login;
 	private TransferMoneyObject transferMoney;
+	private WebBackendSetupPageObject webBackend;
+	//private WebAbstractPage abstractPage;
+
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
-		WebAbstractPage test = new WebAbstractPage();
+		webBackend = PageFactoryManager.getWebBackendSetupPageObject(driver1);
+		WebAbstractPage abstractPage =new WebAbstractPage();
 		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
-		test.inputIntoInputByID(driver1, "hieppt", "login-username");
-		test.inputIntoInputByID(driver1, "123456a@", "login-password");
-		test.clickToDynamicButtonByID(driver1, "btn-login");
+		abstractPage.inputIntoInputByID(driver1, "hieppt", "login-username");
+		abstractPage.inputIntoInputByID(driver1, "123456a@", "login-password");
+		abstractPage.clickToDynamicButtonByID(driver1, "btn-login");
 		
+		abstractPage.clickToDynamicLinkLiByID(driver1, "191");
+		abstractPage.clickToDynamicSelectModel(driver1, "PerPageItems");
+		
+		abstractPage.clickToDynamicOption(driver1, "100");
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -43,7 +54,7 @@ public class Transection_limit extends Base {
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
-//	@Test
+	@Test
 	public void TC_01_SoTienNhoHonHanMucToiThieuTrenMotLanGiaoDich_TaiKhoan() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền nhanh 24/7");
