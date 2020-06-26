@@ -13,6 +13,8 @@ import commons.PageFactoryManager;
 import commons.WebAbstractPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import model.ServiceLimitInfo;
+import model.ServiceTypeLimitInfo;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyObject;
 import pageObjects.WebBackendSetupPageObject;
@@ -33,25 +35,27 @@ public class Transection_limit extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
 		webBackend = PageFactoryManager.getWebBackendSetupPageObject(driver1);
 		WebAbstractPage abstractPage =new WebAbstractPage();
+		ServiceLimitInfo inputInfo =  new ServiceLimitInfo("1000", "10000", "10000000", "20000000");
+		ServiceTypeLimitInfo inputInfoType = new ServiceTypeLimitInfo("PIN", "Việt Nam Đồng", "40000000");
 		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
 		abstractPage.inputIntoInputByID(driver1, "hieppt", "login-username");
 		abstractPage.inputIntoInputByID(driver1, "123456a@", "login-password");
 		abstractPage.clickToDynamicButtonByID(driver1, "btn-login");
+		//webBackend.Setup_Assign_Services_Limit(driver1, "Chuyển khoản nhanh qua số tài khoản", inputInfo);
+		webBackend.Setup_Assign_Services_Type_Limit(driver1,"Chuyển khoản",inputInfoType );
 		
-		abstractPage.clickToDynamicLinkLiByID(driver1, "191");
-		abstractPage.clickToDynamicSelectModel(driver1, "PerPageItems");
 		
-		abstractPage.clickToDynamicOption(driver1, "100");
-		startServer();
-		log.info("Before class: Mo app ");
-		if (deviceType.contains("android")) {
-			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("ios")) {
-			driver = openIOSApp(deviceName, udid, url);
-		}
-		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
-		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
+//		abstractPage.clickToDynamicOption(driver1, "100");
+//		startServer();
+//		log.info("Before class: Mo app ");
+//		if (deviceType.contains("android")) {
+//			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+//		} else if (deviceType.contains("ios")) {
+//			driver = openIOSApp(deviceName, udid, url);
+//		}
+//		login = PageFactoryManager.getLoginPageObject(driver);
+//		login.Global_login(phone, pass, opt);
+//		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 	}
 
 	@Test

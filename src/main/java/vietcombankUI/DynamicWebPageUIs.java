@@ -7,18 +7,25 @@ public class DynamicWebPageUIs {
 	public static final String DYNAMIC_BUTTON_A_BY_ID = "//a[@id='%s']";
 	
 	public static final String DYNAMIC_MENU_BY_LINK = "//a[@href='%s']";
+	public static final String DYNAMIC_MENU_BY_NG_CLICK = "//a[@ng-click ='%s']";
 	
 	public static final String DYNAMIC_DROPDOWN_BY_CLASS = "//select[contains(@class,'%s')]";
 	public static final String DYNAMIC_OPTION_DROPDOWN_BY_TEXT = "//option[contains(text(),'%s')]";
 	
 	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT = "//td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
 	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS = "//td[contains(text(),'%s')]//following-sibling::td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
-	
+		
 
 	public static final String DYNAMIC_LINK_LI_BY_ID= "//li[@id='%s']";
 
 	public static final String DYNAMIC_SELECT_MODEL  = "//select[@ng-model='%s']";
+	public static final String DYNAMIC_SELECT_ID   = "//select[@id ='%s']";
 	public static final String DYNAMIC_OPTION_VALUE   = "//option[@value='%s']";
+	public static final String DYNAMIC_OPTION_TEXT    = "//option[text()='%s']";
+	
+	public static final String DYNAMIC_TR_INDEX    = "//tr[@class='%s']/td[@class='%s'][%s]";
+	public static final String DYNAMIC_TD_FOLLOWING_INDEX    = "//tr[@class='%s']//td[contains(text(),'%s')]//following-sibling::td[%s]";
 
 	
 }
+
