@@ -21,9 +21,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.WebBackendSetupPageObject;
-import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
@@ -72,7 +70,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 	// Set up BE han muc nho nhat 10.000vnd
 	// Muc cao nhat 100.000.000vnd
 	// Han Muc cao nhan trong ngay là 400.000.000vnd
-	@Test
+//	@Test
 	public void TC_01_ChuyenTienTuongLaiThapHonHanMucToiThieu() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -105,25 +103,89 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_02_ChuyenTienTuongLaiCaoHonHanMucToiDa() {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_03_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay() {
 
 	}
 
 	// Truoc khi chay case nay can set Up Nhom dich vu vs han muc la 99.999.999 VND
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() {
+		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+
+		log.info("TC_04_Step_02:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
+		log.info("TC_04_Step_04:Click tai khoan nguon");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		log.info("TC_04_Step_05: Chon tai khoan dich");
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
+
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
+
+		log.info("TC_04_Step_08: Nhap tai khoan nhan");
+		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
+
+		log.info("TC_04_Step_09: Nhap so tien chuyen");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, TittleData.AMOUNT);
+
+		log.info("TC_04_Step_10: Nhap noi dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
+
+		log.info("TC_04_Step_11: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
 
 	}
 
 	// Truoc khi chay case nay can set Up Goi dich vu vs han muc la 99.999.999 VND
+	@Test
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() {
+		
+		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+
+		log.info("TC_05_Step_02:Click tai khoan nguon");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
+		log.info("TC_05_Step_04:Click tai khoan nguon");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		log.info("TC_05_Step_05: Chon tai khoan dich");
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.AMOUNT_VND, Constants.VND_CURRENCY);
+
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		distanceAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listAccount);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, distanceAccount.account);
+
+		log.info("TC_05_Step_08: Nhap tai khoan nhan");
+		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
+
+		log.info("TC_05_Step_09: Nhap so tien chuyen");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY, TittleData.AMOUNT);
+
+		log.info("TC_05_Step_10: Nhap noi dung");
+		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
+
+		log.info("TC_05_Step_11: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+		
+		loginWeb.Reset_Package_Total_Limit(driverWeb, "PKG1", "All");
+
+
 
 	}
+	
+	
+	
 
 	@AfterClass(alwaysRun = true)
 
