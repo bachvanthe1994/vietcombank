@@ -13,6 +13,7 @@ import commons.Base;
 import commons.Constants;
 import commons.PageFactoryManager;
 import commons.WebAbstractPage;
+import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.ServiceLimitInfo;
@@ -40,7 +41,7 @@ public class Transaction_Limit_Account extends Base {
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
-		webBackend = PageFactoryManager.getWebBackendSetupPageObject(driver1);
+		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driver1);
 		WebAbstractPage abstractPage =new WebAbstractPage();
 		ServiceLimitInfo inputInfo =  new ServiceLimitInfo("1000", "10000", "10000000", "20000000");
 		ServiceTypeLimitInfo inputInfoType = new ServiceTypeLimitInfo("PIN", "Việt Nam Đồng", "40000000");

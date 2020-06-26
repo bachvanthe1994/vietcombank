@@ -17,9 +17,6 @@ import vietcombankUI.DynamicWebPageUIs;
 
 
 public class WebBackendSetupPageObject extends WebAbstractPage {
-	
-	private WebDriver driver;
-
 
 
 	List<String> listExpect = new ArrayList<String>();
@@ -28,7 +25,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
 	public static ServiceTypeLimitInfo getInfoType = new ServiceTypeLimitInfo(null, null, null);
 	public static String oldValue = "";
-
 
 
 	public void Login_Web_Backend(WebDriver driver, String username, String passWeb) {
