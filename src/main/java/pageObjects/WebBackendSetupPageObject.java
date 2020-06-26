@@ -7,14 +7,12 @@ import org.openqa.selenium.WebDriver;
 
 import com.google.common.collect.Lists;
 
+import commons.Constants;
 import commons.WebAbstractPage;
 import model.ServiceLimitInfo;
 import model.ServiceLimitInfo02;
 
 public class WebBackendSetupPageObject extends WebAbstractPage {
-
-
-	private WebDriver driver;
 
 	public WebBackendSetupPageObject(WebDriver driverWeb) {
 	}
@@ -103,35 +101,43 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
-		List<String> listMethodExpert = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
+		for (String valueMethods : listActualMethod) {
+			clickToDynamicIconPencil(driver, valueMethods, "blue");
+			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "edit-limit-day");
+			clickToDynamicLinkAByID(driver, "update-servicetype");
+			acceptAlert(driver);
+		}
+		List<String> listMethodExpert = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listMethodExpert.remove("Smart OTP");
 		listMethodExpert.remove("Vân tay");
 		listMethodExpert.removeAll(listActualMethod);
+
+		for (String methods : listMethodExpert) {
+			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
+			selectItemInDropdown(driver, "form-control", methods);
+			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "limit-day");
+			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
+			acceptAlert(driver);
+		}
+
 	}
-
-	// Setting han muc goi giao dich
-
-
-	public void Setup_Package_Total_Limit(WebDriver driver, String packageCode, String methodAccuracy, ServiceLimitInfo inputInf) {
-		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
-		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
-		clickToDynamicIconPencil(driver, methodAccuracy, "blue");
-		oldValue = getDataInInputByID(driver, "edit-limit-day");
-		inputIntoInputByID(driver, inputInf.minTran, "edit-limit-day");
-		clickToDynamicLinkAByID(driver, "update-servicetype");
-		acceptAlert(driver);
-	}
-
+	
+	
 	// Reset goi han muc goi giao dic
-	public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String methodAccuracy) {
-		clickToDynamicIconPencil(driver, methodAccuracy, "blue");
-		inputIntoInputByID(driver, oldValue, "edit-limit-day");
-		clickToDynamicLinkAByID(driver, "update-servicetype");
-		acceptAlert(driver);
+		public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
+			List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
+			for (String valueMethods : listActualMethod) {
+				clickToDynamicIconPencil(driver, valueMethods, "blue");
+				inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "edit-limit-day");
+				clickToDynamicLinkAByID(driver, "update-servicetype");
+				acceptAlert(driver);
+			}
+		}
 
-	}
+
+
+	
 
 	public void inputDynamicDataByListIcon(WebDriver driver, String dynamicText) {
 		for (ServiceLimitInfo02 inputInfo : getInfoList) {
@@ -147,7 +153,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	public List<ServiceLimitInfo02> getAndInputDataByListIcon(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
 
-		List<String> methodList = getDynamicDataByListIcon(driver, dynamicText,"1");
+		List<String> methodList = getDynamicDataByListIcon(driver, dynamicText, "1");
 		for (String text : methodList) {
 			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
 			getInfo.method = text.trim();
@@ -164,18 +170,18 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
-		
+
 		return getInfoList;
 	}
-	
-	public void addMethodOtpLimit(WebDriver driver,String dynamicText) {
-		
+
+	public void addMethodOtpLimit(WebDriver driver, String dynamicText) {
+
 		clickToDynamicMenuByLink(driver, "MethodOtpLimit/Index?f=2&c=239");
-		selectItemInDropdownByID(driver, "service",dynamicText);
+		selectItemInDropdownByID(driver, "service", dynamicText);
 		clickToDynamicButtonATagByClass(driver, "btn btn-primary");
-		getDynamicDataByListIcon(driver, dynamicText,"2");
+		getDynamicDataByListIcon(driver, dynamicText, "2");
 		clickToDynamicButtonATagByID(driver, "btn-create-billprovider");
-		
+
 	}
 
 }

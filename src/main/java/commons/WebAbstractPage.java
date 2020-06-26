@@ -28,8 +28,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import model.ServiceLimitInfo;
-import model.ServiceLimitInfo02;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
