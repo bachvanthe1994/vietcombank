@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -15,14 +16,18 @@ import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.ServiceLimitInfo;
+import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.WebBackendSetupPageObject;
-import vietcombank_test_data.Account_Data;
+import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
+import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
+import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
 public class Transfer_Periodic_Money extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -36,7 +41,10 @@ public class Transfer_Periodic_Money extends Base {
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(2);
 	int timesLimitOfDay = 10;
+	private String lowerMin,higherMax ;
 
+	SourceAccountModel sourceAccount = new SourceAccountModel();
+	SourceAccountModel receiverAccount = new SourceAccountModel();
 	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "10000000");
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp","username","passWeb" })
 	@BeforeClass
@@ -47,6 +55,7 @@ public class Transfer_Periodic_Money extends Base {
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
+
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
 		setupBE.setup_Assign_Services_Limit(driverWeb,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
 		
@@ -61,8 +70,10 @@ public class Transfer_Periodic_Money extends Base {
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
-		homePage.scrollDownToText(driver, "Trạng thái lệnh chuyển tiền");
+		homePage.scrollDownToText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		lowerMin = (Integer.parseInt(inputInfo.minTran)-1)+"";
+		higherMax = (Integer.parseInt(inputInfo.maxTran)+1)+"";
 
 	}
 
@@ -70,35 +81,35 @@ public class Transfer_Periodic_Money extends Base {
 	public void TC_01_ChuyenTienDinhKyThapHonHanMucToiThieu() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_01_02_Chon phuong thuc chuyen tien");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_01_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
-
-		log.info("TC_01_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+		receiverAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.LOWER_TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, lowerMin, TittleData.AMOUNT);
 
 		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_02_Step_15: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_lOWER_MIN_LIMIT);
-
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_lOWER_MIN_LIMIT+addCommasToLong(inputInfo.minTran)+TransferMoneyInVCB_Data.Output.LIMIT_TRANSACTION_MESSAGE);
+		
 		log.info("TC_02_Step_16: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
@@ -111,121 +122,121 @@ public class Transfer_Periodic_Money extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_02_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_02_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, higherMax, TittleData.AMOUNT);
 
 		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_02_Step_15: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_DAY);
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT+addCommasToLong(inputInfo.maxTran)+TransferMoneyInVCB_Data.Output.LIMIT_TRANSACTION_MESSAGE);
 
 		log.info("TC_02_Step_16: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}
 
-	@Test
+//	@Test
 	public void TC_03_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay() {
 
 		log.info("TC_03_Step_01 : Click  nut Back");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_03_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
-		int round = Integer.parseInt(TransferMoneyInVCB_Data.InputDataInFutureForOTP.TOTAL_LIMIT_AMOUNT) / Integer.parseInt(TransferMoneyInVCB_Data.InputDataInFutureForOTP.MAX_TRANFER_AMOUNT);
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+		int round = Integer.parseInt(inputInfo.totalLimit) / Integer.parseInt(inputInfo.maxTran);
 		for (int i = 0; i < round; i++) {
 			log.info("TC_02_Step_02: Chon chuyen tien ngay gia tri hien tai");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 			log.info("TC_02_Step_04:Click tai khoan nguon");
-			transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+			transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 			log.info("TC_02_Step_05: Chon tai khoan dich");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 			log.info("TC_02_Step_10: Nhap tai khoan nhan");
-			transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+			transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 			log.info("TC_00_05_Chon tan suat");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 			transferInVCB.inputFrequencyNumber("1");
 
 			log.info("TC_00_05_Chon tan suat");
-			transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, "Số tiền");
+			transferInVCB.inputToDynamicInputBox(driver, inputInfo.maxTran, TittleData.AMOUNT);
 
 			log.info("TC_03_Step_14: Click tiep tuc");
-			transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+			transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 			log.info("TC_03_Step_14: verify xac thuc thong tin");
 			transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.INFO_VALIDATION);
 
 			log.info("TC_01_Step_22: Chon Phuong thuc nhap");
-			transferInVCB.clickToDynamicDropDown(driver, "Chọn phương thức xác thực");
+			transferInVCB.clickToDynamicDropDown(driver, TittleData.METHOD_VALIDATE);
 
 			log.info("TC_01_Step_23: Chon SMS OTP");
-			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "SMS OTP");
+			transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, TittleData.SMS_OTP);
 
 			log.info("TC_01_Step_25: Click Tiep tuc");
-			transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+			transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 			log.info("TC_01_Step_26: Nhap OTP");
-			transferInVCB.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, "Tiếp tục");
+			transferInVCB.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, TittleData.CONTINUE_BTN);
 
 			log.info("TC_01_Step_27: Click tiep tuc");
-			transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+			transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 			log.info("TC_01_Step_28: Kiem  tra giao dich thanh cong");
 			verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.TRANSFER_SUCESS_MESSAGE));
 
 			log.info("TC_01_Step_39: Click thuc hien giao dich moi");
-			transferInVCB.clickToDynamicButton(driver, "Thực hiện giao dịch mới");
+			transferInVCB.clickToDynamicButton(driver, TittleData.NEW_TRANSFER);
 
 		}
 		log.info("TC_02_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, TittleData.AMOUNT);
 
 		log.info("TC_03_Step_14: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_02_Step_15: Verify hien thi man hinh thong bao loi");
 		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_DAY);
@@ -239,33 +250,36 @@ public class Transfer_Periodic_Money extends Base {
 	public void TC_04_ChuyenTienDinhKyVuotQuaNhomDichVu() {
 
 		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_04_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
 
 		log.info("TC_04_Step_03: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
-
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+		receiverAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, TittleData.AMOUNT);
 
 		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_04_Step_11: Verify hien thi man hinh thong bao loi");
 		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES);
@@ -278,33 +292,33 @@ public class Transfer_Periodic_Money extends Base {
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() {
 
 		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, "Chuyển tiền trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_05_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền ngày giá trị hiện tại");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
 
 		log.info("TC_05_Step_03: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Chuyển tiền định kỳ");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, "Tài khoản nguồn");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, "Nhập/ chọn tài khoản thụ hưởng");
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, "Ngày");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
 		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, "Số tiền");
+		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, TittleData.AMOUNT);
 
 		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, "Tiếp tục");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_05_Step_11: Verify hien thi man hinh thong bao loi");
 		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES);
@@ -313,10 +327,10 @@ public class Transfer_Periodic_Money extends Base {
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}
 
+	@Parameters({"username","passWeb"})
 	@AfterClass(alwaysRun = true)
-
-	public void afterClass() {
-		closeApp();
+	public void afterClass(String username,String passWeb) {
+		setupBE.resetServiceLimitBackend(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
 		service.stop();
 	}
 

@@ -25,6 +25,8 @@
 			value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="pass" value="aaaa1111@" />
 		<parameter name="otp" value="123456" />
+		<parameter name="username" value="trangvt" />
+		<parameter name="passWeb" value="123456a@" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
@@ -87,7 +89,9 @@
 <!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
 			
 				<class
-				name="vnpay.vietcombank.transfer_money_charity.Transection_limit" />
+				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit" />
+				<!-- <class
+				name="vnpay.vietcombank.login.Template" /> -->
 <!-- 				<class -->
 <!-- 				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
 <!-- 				<class -->
