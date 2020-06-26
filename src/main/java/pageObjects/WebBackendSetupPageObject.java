@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -60,6 +61,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, "PKG1", "Assign Service Type Limit");
 		clickToDynamicSelectModel(driver, "PerPageItems");
+		clickToDynamicOptionText(driver, "100");
 
 		// Lay list phuong thuc xac thuc
 		List<String> listActualMethod = new ArrayList<String>();
@@ -85,16 +87,16 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		listExpect.removeAll(listActualMethod);
 
 		// Tạo mới nhóm dịch vụ với PTXT chưa có trong list
-		for (int i = 0; i <= listExpect.size(); i++) {
+		for (int i = 0; i < listExpect.size(); i++) {
 			clickToDynamicNgClick(driver, "addServiceType()");
 			clickToDynamicSelectID(driver, "service-type");
 			clickToDynamicOptionText(driver, servicesName);
 			clickToDynamicSelectID(driver, "method-otp");
-			clickToDynamicOptionText(driver, listExpect.get(i));
+			clickToDynamicOptionText(driver, listExpect.get(0));
 			inputIntoInputByID(driver, inputInfoType.totalLimit, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
-			listExpect.remove(listExpect.get(i));
+			listExpect.remove(listExpect.get(0));
 			break;
 		}
 	}
