@@ -6,8 +6,8 @@ import pageObjects.WebBackendSetupPageObject;
 
 public class WebPageFactoryManager {
 	
-	public static WebBackendSetupPageObject getWebBackendSetupPageObject(WebDriver driver) {
-		return new WebBackendSetupPageObject(driver);
+	public static WebBackendSetupPageObject getWebBackendSetupPageObject(WebDriver driver1) {
+		return new WebBackendSetupPageObject(driver1);
 	}
 
 }

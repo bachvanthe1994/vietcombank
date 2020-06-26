@@ -8,24 +8,33 @@ import model.ServiceLimitInfo;
 public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	private WebDriver driver;
-	
 
 	WebAbstractPage test = new WebAbstractPage();
+	WebBackendSetupPageObject webBESetup = new WebBackendSetupPageObject(driver);
 	int longTime = 40;
 
-	public WebBackendSetupPageObject(WebDriver mappingDriver) {
-		driver = mappingDriver;
+	public WebBackendSetupPageObject(WebDriver driverWeb) {
 	}
 	
 	public ServiceLimitInfo getInfo = new ServiceLimitInfo(null, null, null, null);
 
-	public void setupServiceLimitBackend(WebDriver driver,String selectValue,ServiceLimitInfo inputInfo) {
-		
+
+	public void Login_Web_Backend(WebDriver driver, String username, String passWeb) {
+		inputIntoInputByID(driver, username, "login-username");
+		inputIntoInputByID(driver, passWeb, "login-password");
+		clickToDynamicButtonByID(driver, "btn-login");
+	}
+
+//	setup limit cho lần giao dịch
+//	selectValue: service name
+//	inputInfo: giá trị config truyền vào
+	public void setup_Assign_Services_Limit(WebDriver driver, String selectValue, ServiceLimitInfo inputInfo) {
+
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1","Assign Service Limit");
+		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByTwoTexts(driver, selectValue,"All","Edit Service Limit");
+		clickToDynamicIconByText(driver, selectValue, "Edit Service Limit");
 		getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
 		getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
 		getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
@@ -51,22 +60,53 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		acceptAlert(driver);
 		
 	}
+
+//	selectValue: service name
+//	inputInfo: giá trị config truyền vào
+	public void resetServiceLimitBackend(WebDriver driver, String selectValue, ServiceLimitInfo inputInfo) {
+
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconByTwoTexts(driver, selectValue, "All", "Edit Service Limit");
+		inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
+		inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
+		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
+		clickToDynamicButtonATagByID(driver, "edit-limit");
+
+
+	}
+
+	//Setting han muc goi giao dich 
+	public void Setup_Package_Total_Limit(WebDriver driver, String packageCode, ServiceLimitInfo inputInf) {
+
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+//		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+//		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
+		clickToDynamicIconPencil(driver, "ALL", "blue");
+		inputIntoInputByID(driver, inputInf.minTran, "edit-limit-day");
+		clickToDynamicLinkAByID(driver, "update-servicetype");
+		driver.switchTo().alert().accept();
+
+	}
+
 	
-	public void Login_Web_Backend(WebDriver driver,String username, String passWeb) {
-		inputIntoInputByID(driver, username, "login-username");
-		inputIntoInputByID(driver, passWeb, "login-password");
-		clickToDynamicButtonByID(driver, "btn-login");
-	}
+	//Reset goi han muc goi giao dic
+	public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, ServiceLimitInfo inputInf) {
 
-	public void Setup_Assign_Services_Limit() {
-
-	}
-
-	public void Setup_Assign_Services_Type_Limit() {
-
-	}
-
-	public void Setup_Package_Total_Limit() {
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+//		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+//		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
+		clickToDynamicIconPencil(driver, "ALL", "blue");
+		inputIntoInputByID(driver, inputInf.maxTran, "edit-limit-day");
+		clickToDynamicLinkAByID(driver, "update-servicetype");
+		driver.switchTo().alert().accept();
 
 	}
 

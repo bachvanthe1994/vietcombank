@@ -55,8 +55,9 @@ public class Transfer_Periodic_Money extends Base {
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
-		setupBE.Login_Web_Backend(driverWeb	,username, passWeb);
-		setupBE.setupServiceLimitBackend(driverWeb,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
+
+		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
+		setupBE.setup_Assign_Services_Limit(driverWeb,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
