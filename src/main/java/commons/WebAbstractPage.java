@@ -1074,6 +1074,26 @@ public class WebAbstractPage {
 		}
 	}
 
+	public void clickToDynamicIconByThreeTexts(WebDriver driver, String... dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_THREE_TEXTS, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_THREE_TEXTS, dynamicText);
+		}
+	}
+	
+	public void clickToDynamicNgClick (WebDriver driver, String dynamicText) {
+		sleep(driver, 2000);
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_NG_CLICK, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_NG_CLICK, dynamicText);
+		}
+	}
+	
+	
+	
+
 	
 	public void clickToDynamicSelectModel(WebDriver driver, String dynamictext) {
 		boolean status = false;
@@ -1090,6 +1110,29 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_OPTION_VALUE, dynamicvalue);
 		}
 	}
+	
+	
+
+	
+	public void clickToDynamicOptionText (WebDriver driver, String dynamicvalue ) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_OPTION_TEXT, dynamicvalue);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_OPTION_TEXT, dynamicvalue);
+		}
+	}
+	
+	
+	
+	public void clickToDynamicSelectID (WebDriver driver, String dynamicID ) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_SELECT_ID, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_SELECT_ID, dynamicID);
+		}
+	}
+	
+
 
 
 //  SELECT METHODS
@@ -1121,6 +1164,33 @@ public class WebAbstractPage {
 		return data ;
 	}
 	
+	public String getDataSelectText (WebDriver driver,String dynamicClassID) {
+		sleep(driver, 2000);
+		String data = "";
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_SELECT_ID, dynamicClassID);
+		if(status == true) {
+			data = getAttributeValue(driver, DynamicWebPageUIs.DYNAMIC_SELECT_ID, "value", dynamicClassID);
+		}
+		return data ;
+	}
+	
+	public String getDataTdFollowing (WebDriver driver,String ... dynamicValue) {
+		String data = "";
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_TD_FOLLOWING_INDEX, dynamicValue);
+		if(status == true) {
+			data = getAttributeValue(driver, DynamicWebPageUIs.DYNAMIC_TD_FOLLOWING_INDEX, "value", dynamicValue);
+		}
+		return data ;
+	}
+	
+	
+	public boolean  checkListContain(List<String> actualList, List<String> expectList) {
+		return expectList.containsAll(actualList);
+	}
+	
+
 
 
 	public List<String> getListMetodOtp(WebDriver driver, String dynamictext) {

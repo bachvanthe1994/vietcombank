@@ -56,7 +56,9 @@ public class Transfer_Periodic_Money extends Base {
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
+
 		setupBE.setupAssignServicesLimit(driverWeb,InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,inputInfo);
+
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {

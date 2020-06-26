@@ -358,6 +358,7 @@ public class Base {
 		return randomNumber;
 
 	}
+	
 
 	protected boolean checkPassed(boolean condition) {
 		softAssertion = new SoftAssert();
