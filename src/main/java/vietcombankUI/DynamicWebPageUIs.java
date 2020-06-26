@@ -26,5 +26,6 @@ public class DynamicWebPageUIs {
 	public static final String DYNAMIC_ICON_PENCIL= "//td[contains(text(),'%s')]//following-sibling::td//a[@class='%s']";
 	public static final String DYNAMIC_SELECT_MODEL  = "//select[@ng-model='%s']";
 	public static final String DYNAMIC_OPTION_VALUE   = "//option[@value='%s']";
+	public static final String DYNAMIC_OPTION_MENU_PARENT   = "//li[@id='%s']/parent::ul/preceding-sibling::a";
 
 }
