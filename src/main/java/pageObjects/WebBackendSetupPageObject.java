@@ -1,6 +1,5 @@
 package pageObjects;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,26 +15,20 @@ import vietcombankUI.DynamicWebPageUIs;
 
 
 public class WebBackendSetupPageObject extends WebAbstractPage {
-
-
+	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
+	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
+	public static String oldValue = "";
+	public static ServiceTypeLimitInfo getInfoType = new ServiceTypeLimitInfo(null, null, null);
 	private WebDriver driver;
-
 	List<String> listExpect;
 	List<String> listActual;
 
 
-	public WebBackendSetupPageObject(WebDriver driverWeb) {
+	public void Login_Web_Backend(WebDriver driver, String username, String passWeb) {
+		inputIntoInputByID(driver, username, "login-username");
+		inputIntoInputByID(driver, passWeb, "login-password");
+		clickToDynamicButtonByID(driver, "btn-login");
 	}
-
-	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
-	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
-
-	public static String oldValue = "";
-
-
-
-	public static ServiceTypeLimitInfo getInfoType = new ServiceTypeLimitInfo(null, null, null);
-
 	
 
 //	setup limit cho lần giao dịch
@@ -58,25 +51,17 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 		clickToDynamicButtonATagByID(driver, "edit-limit");
 
-
 	}
 
-	public void reset_Setup_Assign_Services_Limit(WebDriver driver, String selectValue, ServiceLimitInfo inputInfo) {
-
-		acceptAlert(driver);
-
-	}
 
 //	setup limit min max cho lần giao dịch
 //	selectValue: service name
 //	inputInfo: giá trị config truyền vào
 	public void setupAssignServicesLimit(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
-
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-
 		getInfoList = getAndInputDataByListIcon(driver, dynamicText, info);
 	}
 
@@ -86,7 +71,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	public void resetServiceLimitBackend(WebDriver driver, String selectValue) {
-
 		clickToDynamicIconByTwoTexts(driver, selectValue, "All", "Edit Service Limit");
 		inputIntoInputByID(driver, getInfo.timesDay, "edit-times-day");
 		inputIntoInputByID(driver, getInfo.minTran, "edit-min-tran");
@@ -114,11 +98,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	}
 
-	public void Login_Web_Backend(WebDriver driver, String username, String passWeb) {
-		inputIntoInputByID(driver, username, "login-username");
-		inputIntoInputByID(driver, passWeb, "login-password");
-		clickToDynamicButtonByID(driver, "btn-login");
-	}
 
 	public void Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName, ServiceTypeLimitInfo inputInfoType) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
@@ -144,13 +123,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			acceptAlert(driver);
 			break;
 		}
-		listExpect = new ArrayList<String>();
-		listExpect.add("Soft OTP");
-		listExpect.add("All");
-		listExpect.add("SMS OTP");
-		listExpect.add("PIN");
+		
+		List<String> listExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listExpect.removeAll(listActualMethod);
-
+	
 		// Tạo mới nhóm dịch vụ với PTXT chưa có trong list
 		for (int i = 0; i < listExpect.size(); i++) {
 			clickToDynamicNgClick(driver, "addServiceType()");
