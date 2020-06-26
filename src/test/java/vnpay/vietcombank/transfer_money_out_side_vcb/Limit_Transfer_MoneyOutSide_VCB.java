@@ -42,7 +42,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, "", TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.TITLE_OTP);
+	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, "", TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp","username","passWeb" })
 	@BeforeClass
@@ -50,12 +50,13 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		startServer();
 		
 		log.info("Before class: Mo backend ");
-		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME_HEADELESS, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
-		setupBE.setupAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,inputInfo);
+		setupBE.addMethodOtpLimit(driverWeb, TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT);
+//		setupBE.setupAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,inputInfo);
 		
 		destinationAccount = getDataInCell(34);
 		log.info("Before class: Mo app ");
@@ -178,7 +179,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		log.info("TC_03_11_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
-		transferMoneyOutSide.inputToDynamicOtp(driver, otpNo, TitleOutVCB.NEXT);
+		transferMoneyOutSide.inputToDynamicPopupPasswordInput(driver, password, TitleOutVCB.NEXT);
 
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -190,35 +191,35 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEW_TRANSFER);
 		clickPopupAfter15h30();
 		
-		log.info("TC_03_2_Chon tai khoan nguon");
+		log.info("TC_03_14_Chon tai khoan nguon");
 		transferMoneyOutSide.clickToTextID(driver, "com.VCB:id/tvContent");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		
-		log.info("TC_03_3_Nhap tai khoan thu huong");
+		log.info("TC_03_15_Nhap tai khoan thu huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, destinationAccount, TitleOutVCB.ACCOUT_TO);
 
-		log.info("TC_03_4_Nhap ten nguoi huong");
+		log.info("TC_03_16_Nhap ten nguoi huong");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
 
-		log.info("TC_03_5_Chon ngan hang huong");
+		log.info("TC_03_17_Chon ngan hang huong");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
 		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, ReportTitle.SEARCH_BUTTON);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
-		log.info("TC_03_6_Nhap so tien");
+		log.info("TC_03_18_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, inputInfo.maxTran, TitleOutVCB.MONEY);
 
-		log.info("TC_03_7_Nhap noi dung chuyen tien");
+		log.info("TC_03_19_Nhap noi dung chuyen tien");
 		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
 
-		log.info("TC_03_8_Click Tiep tuc");
+		log.info("TC_03_20_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
-		log.info("TC_02_Step_3: Verify hien thi man hinh thong bao loi");
+		log.info("TC_03_21_Verify hien thi man hinh thong bao loi");
 		verifyEquals(transferMoneyOutSide.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), MESSEGE_ERROR.HIGHER_MAX_A_TRANSACTION+addCommasToLong(inputInfo.maxTran)+MESSEGE_ERROR.DETAIL_A_DAY_MESSAGE);
 
-		log.info("TC_03_8_Click Dong");
+		log.info("TC_03_22_Click Dong");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		homePage.clickToDynamicBackIcon(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 	}

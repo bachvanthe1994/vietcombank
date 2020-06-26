@@ -10,7 +10,7 @@ public class DynamicWebPageUIs {
 	public static final String DYNAMIC_BUTTON_A_BY_ID = "//a[@id='%s']";
 	public static final String DYNAMIC_BUTTON_A_BY_CLASS = "//a[@class='%s']";
 	
-	public static final String DYNAMIC_MENU_BY_LINK = "//a[@href='%s']";
+	public static final String DYNAMIC_MENU_BY_LINK = "//a[contains(@href,'%s')]";
 	
 	public static final String DYNAMIC_DROPDOWN_BY_CLASS = "//select[contains(@class,'%s')]";
 	public static final String DYNAMIC_DROPDOWN_BY_ID = "//select[@id='%s']";
