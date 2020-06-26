@@ -41,7 +41,6 @@ public class Transection_limit extends Base {
 		abstractPage.inputIntoInputByID(driver1, "hieppt", "login-username");
 		abstractPage.inputIntoInputByID(driver1, "123456a@", "login-password");
 		abstractPage.clickToDynamicButtonByID(driver1, "btn-login");
-		//webBackend.Setup_Assign_Services_Limit(driver1, "Chuyển khoản nhanh qua số tài khoản", inputInfo);
 		webBackend.Setup_Assign_Services_Type_Limit(driver1,"Chuyển khoản",inputInfoType );
 		
 		
