@@ -4,6 +4,9 @@ package vietcombank_test_data;
 public class TransferMoneyOutVCB_Data {
 
 	public static class TitleOutVCB {
+		
+		public static final String BE_TRANSFER_OUTSIDE_TEXT = "Chuyển khoản tới ngân hàng khác qua số tài khoản";
+		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
 		public static final String TITLE_TRANSFER_OUTSIDE = "Chuyển tiền ngoài VCB";
 		public static final String ACCOUNT_FROM_LABEL = "Tài khoản nguồn";
 		public static final String ACCOUT_TO = "Nhập/ chọn tài khoản nhận VND";
@@ -39,6 +42,13 @@ public class TransferMoneyOutVCB_Data {
 		
 	}
 	public static class MESSEGE_ERROR {
+		
+		public static final String LOWER_MIN_A_TRANSACTION = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
+		public static final String HIGHER_MAX_A_TRANSACTION = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		public static final String DETAIL_A_DAY_MESSAGE = " VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String DETAIL_A_TRANSACTION_MESSAGE = " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		
+		
 		public static final String LOWER_MIN_AMOUNT_A_TRAN = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String HIGHER_MAX_AMOUNT_A_TRAN = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String HIGHER_MAX_AMOUNT_A_TRAN_A_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,001 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
