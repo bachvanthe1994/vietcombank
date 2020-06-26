@@ -13,8 +13,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	private WebDriver driver;
 
 	WebAbstractPage test = new WebAbstractPage();
-	WebBackendSetupPageObject webBESetup = new WebBackendSetupPageObject(driver);
-	int longTime = 40;
 
 	public WebBackendSetupPageObject(WebDriver driverWeb) {
 	}
@@ -84,10 +82,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		webBESetup.clickToDynamicIconPackage(driver, "PKG1", "Assign Package Total Limit");
-		webBESetup.clickToDynamicIconPencil(driver, "ALL", "blue");
-		webBESetup.inputIntoInputByID(driver, inputInf.maxTran, "edit-limit-day");
-		webBESetup.clickToDynamicLinkAByID(driver, "update-servicetype");
+		clickToDynamicIconPackage(driver, "PKG1", "Assign Package Total Limit");
+		clickToDynamicIconPencil(driver, "ALL", "blue");
+		inputIntoInputByID(driver, inputInf.maxTran, "edit-limit-day");
+		clickToDynamicLinkAByID(driver, "update-servicetype");
 		driver.switchTo().alert().accept();
 
 	}
