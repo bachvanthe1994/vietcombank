@@ -28,6 +28,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import model.ServiceLimitInfo;
+import model.ServiceLimitInfo02;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
@@ -1121,6 +1123,7 @@ public class WebAbstractPage {
 		return data ;
 	}
 	
+
 
 	public List<String> getListMetodOtp(WebDriver driver, String dynamictext) {
 		boolean status = false;

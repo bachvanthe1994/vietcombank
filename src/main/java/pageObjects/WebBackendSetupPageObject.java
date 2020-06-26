@@ -112,6 +112,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Setting han muc goi giao dich
 
+
 	public void Setup_Package_Total_Limit(WebDriver driver, String packageCode, String methodAccuracy, ServiceLimitInfo inputInf) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
