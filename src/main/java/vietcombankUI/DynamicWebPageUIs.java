@@ -22,6 +22,7 @@ public class DynamicWebPageUIs {
 	
 	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT = "//td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
 	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS = "//td[contains(text(),'%s')]//following-sibling::td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
+	public static final String DYNAMIC_ICON_TITLE_BY_FOLLOW_THREE_TEXTS = "//td[contains(text(),'%s')]//following-sibling::td[contains(text(),'%s')]//following-sibling::td[contains(text(),'%s')]//following-sibling::td//a[@title='%s']";
 
 	public static final String DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX = "//td[contains(text(),'%s')]/following-sibling::td[%s]";
 

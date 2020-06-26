@@ -1074,6 +1074,13 @@ public class WebAbstractPage {
 		}
 	}
 
+	public void clickToDynamicIconByThreeTexts(WebDriver driver, String... dynamicText) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_THREE_TEXTS, dynamicText);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_THREE_TEXTS, dynamicText);
+		}
+	}
 	
 	public void clickToDynamicNgClick (WebDriver driver, String dynamicText) {
 		sleep(driver, 2000);
