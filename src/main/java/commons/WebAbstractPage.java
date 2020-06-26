@@ -28,6 +28,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
@@ -939,6 +942,18 @@ public class WebAbstractPage {
 
 		element.clear();
 	}
+	
+	
+	public List<String> getTextInListElements(WebDriver driver, String locator, String... dynamicValue) {
+		locator = String.format(locator, (Object[]) dynamicValue);
+		List<WebElement> listElements = driver.findElements(By.xpath(locator));
+		List<String> listTextView = new ArrayList<String>();
+		for (WebElement element : listElements) {
+			listTextView.add(element.getText());
+		}
+		return listTextView;
+	}
+
 
 	public void inputIntoInputByID(WebDriver driver, String inputValue, String dynamicID) {
 		boolean status = false;
@@ -1095,5 +1110,14 @@ public class WebAbstractPage {
 		}
 		return data ;
 	}
-
+	
+	public List<String> getListMetodOtp(WebDriver driver, String dynamictext) {
+		boolean status = false;
+		List<String> listText = null;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_GET_LIST_METHOD, dynamictext);
+		if (status == true) {
+			listText = getTextInListElements(driver, DynamicWebPageUIs.DYNAMIC_GET_LIST_METHOD, dynamictext);
+		}
+		return listText;
+	}
 }

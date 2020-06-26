@@ -1,6 +1,11 @@
 package pageObjects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
+
+import com.google.common.collect.Lists;
 
 import commons.WebAbstractPage;
 import model.ServiceLimitInfo;
@@ -71,14 +76,24 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	}
 
+	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
+		List<String> listMethodExpert = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
+		List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
+		listMethodExpert.remove("Smart OTP");
+		listMethodExpert.remove("Vân tay");
+		listMethodExpert.removeAll(listActualMethod);
+	}
+
 	// Setting han muc goi giao dich
 	public void Setup_Package_Total_Limit(WebDriver driver, String packageCode, String methodAccuracy, ServiceLimitInfo inputInf) {
-
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
 		clickToDynamicIconPencil(driver, methodAccuracy, "blue");
-		oldValue = getDataInInputByID(driver, "edit-limit-day").replace(",", "");
+		oldValue = getDataInInputByID(driver, "edit-limit-day");
 		inputIntoInputByID(driver, inputInf.minTran, "edit-limit-day");
 		clickToDynamicLinkAByID(driver, "update-servicetype");
 		acceptAlert(driver);
@@ -86,9 +101,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Reset goi han muc goi giao dic
 	public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String methodAccuracy) {
-		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
-		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
 		clickToDynamicIconPencil(driver, methodAccuracy, "blue");
 		inputIntoInputByID(driver, oldValue, "edit-limit-day");
 		clickToDynamicLinkAByID(driver, "update-servicetype");

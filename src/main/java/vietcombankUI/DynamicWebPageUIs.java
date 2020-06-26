@@ -19,6 +19,7 @@ public class DynamicWebPageUIs {
 	
 
 	public static final String DYNAMIC_LINK_LI_BY_ID= "//li[@id='%s']";
+	public static final String DYNAMIC_GET_LIST_METHOD= "//th[contains(text(),'%s')]//parent::tr//following-sibling::tr//td[@class='ng-binding'][2]";
 
 	public static final String DYNAMIC_LINK_A_BY_ID= "//a[@id='%s']";
 	public static final String DYNAMIC_SELECT_BY_CLASS= "//select[@class='%s']";
