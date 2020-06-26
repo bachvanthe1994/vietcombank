@@ -20,8 +20,14 @@ public class HomePage_Data {
 		public static final String TRANSFER_NOW = "Chuyển tiền ngày giá trị hiện tại";
 		public static final String LOOK_UP = "Tra cứu";
 		public static final String EXCHANGE_RATE = "Tỷ giá";
-		public static final String TRANSFER_FUTURE = "Chuyển tiền ngày tương lai";
-
+		public static final String TRANSFER_FUTURE = "Chuyển tiền tương lai trong VCB";
+		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
+		public static final String INPUT_ACCOUNT_BENEFICI = "Nhập/ chọn tài khoản nhận VND";
+		public static final String AMOUNT = "Số tiền";
+		public static final String TRANSACTION_INFO = "Thông tin giao dịch";
+		public static final String CONTINUE_BTN = "Tiếp tục";
+		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
+		public static final String SMS_OTP = "SMS OTP";
 	}
 
 	public class HomePageTexts {
