@@ -28,7 +28,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByTwoTexts(driver, selectValue, "All", "Edit Service Limit");
+		clickToDynamicIconByText(driver, selectValue, "Edit Service Limit");
 		getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
 		getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
 		getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
@@ -38,6 +38,19 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
 		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 		clickToDynamicButtonATagByID(driver, "edit-limit");
+		acceptAlert(driver);
+
+	}
+
+	public void resetServiceLimitBackend(WebDriver driver, String selectValue) {
+
+		clickToDynamicIconByTwoTexts(driver, selectValue, "All", "Edit Service Limit");
+		inputIntoInputByID(driver, getInfo.timesDay, "edit-times-day");
+		inputIntoInputByID(driver, getInfo.minTran, "edit-min-tran");
+		inputIntoInputByID(driver, getInfo.maxTran, "edit-max-tran");
+		inputIntoInputByID(driver, getInfo.totalLimit, "edit-total-limit");
+		clickToDynamicButtonATagByID(driver, "edit-limit");
+		acceptAlert(driver);
 
 	}
 
@@ -79,7 +92,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicIconPencil(driver, methodAccuracy, "blue");
 		inputIntoInputByID(driver, oldValue, "edit-limit-day");
 		clickToDynamicLinkAByID(driver, "update-servicetype");
-		driver.switchTo().alert().accept();
+		acceptAlert(driver);
 
 	}
 
