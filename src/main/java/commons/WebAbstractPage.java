@@ -28,9 +28,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
@@ -796,6 +793,7 @@ public class WebAbstractPage {
 //	}
 
 	public boolean waitForElementVisible(WebDriver driver, String locator, String... dynamicValue) {
+		sleep(driver, 1000);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
@@ -955,6 +953,7 @@ public class WebAbstractPage {
 	}
 
 
+//	INPUT METHODS
 	public void inputIntoInputByID(WebDriver driver, String inputValue, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, dynamicID);
@@ -965,6 +964,8 @@ public class WebAbstractPage {
 
 	}
 
+	
+//	CLICK METHODS	
 	public void clickToDynamicButtonByID(WebDriver driver, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_BY_ID, dynamicID);
@@ -1041,8 +1042,15 @@ public class WebAbstractPage {
 		}
 	}
 	
+	public void clickToDynamicButtonATagByClass(WebDriver driver, String dynamicClass) {
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_CLASS, dynamicClass);
+		if (status == true) {
+			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_BUTTON_A_BY_CLASS, dynamicClass);
+		}
+	}
+	
 	public void clickToDynamicMenuByLink(WebDriver driver, String dynamicLink) {
-		sleep(driver, 2000);
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_MENU_BY_LINK, dynamicLink);
 		if (status == true) {
@@ -1051,7 +1059,6 @@ public class WebAbstractPage {
 	}
 	
 	public void clickToDynamicIconByText(WebDriver driver, String... dynamicText) {
-		sleep(driver, 2000);
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TEXT, dynamicText);
 		if (status == true) {
@@ -1060,7 +1067,6 @@ public class WebAbstractPage {
 	}
 	
 	public void clickToDynamicIconByTwoTexts(WebDriver driver, String... dynamicText) {
-		sleep(driver, 2000);
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_ICON_TITLE_BY_FOLLOW_TWO_TEXTS, dynamicText);
 		if (status == true) {
@@ -1084,13 +1090,10 @@ public class WebAbstractPage {
 			clickToElement(driver, DynamicWebPageUIs.DYNAMIC_OPTION_VALUE, dynamicvalue);
 		}
 	}
-	
-	
 
 
 //  SELECT METHODS
 	public void selectItemInDropdown(WebDriver driver, String dynamicClassID,String selectValue) {
-		sleep(driver, 2000);
 		boolean status =  false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_CLASS, dynamicClassID);
 		if(status == true) {
@@ -1098,10 +1101,17 @@ public class WebAbstractPage {
 		}
 	}
 	
+	public void selectItemInDropdownByID(WebDriver driver, String dynamicID,String selectValue) {
+		boolean status =  false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_ID, dynamicID);
+		if(status == true) {
+			selectItemInHtmlDropdown(driver, DynamicWebPageUIs.DYNAMIC_DROPDOWN_BY_ID, selectValue, dynamicID);
+		}
+	}
+	
 	
 //	GET METHODS
 	public String getDataInInputByID(WebDriver driver,String dynamicClassID) {
-		sleep(driver, 2000);
 		String data = "";
 		boolean status =  false;
 		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_INPUT_BY_ID, dynamicClassID);
@@ -1111,6 +1121,7 @@ public class WebAbstractPage {
 		return data ;
 	}
 	
+
 	public List<String> getListMetodOtp(WebDriver driver, String dynamictext) {
 		boolean status = false;
 		List<String> listText = null;
@@ -1120,4 +1131,22 @@ public class WebAbstractPage {
 		}
 		return listText;
 	}
+
+	public List<String> getDynamicDataByListIcon(WebDriver driver, String dynamicText, String index) {
+		boolean status = false;
+		String locator = "";
+		List<String> getMethodList = new ArrayList<String>();
+		waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText,index);
+		locator = String.format(DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText,index);
+		List<WebElement> elements = driver.findElements(By.xpath(locator));
+		status = elements.size() > 0;
+		if(status == true) {
+			 for(WebElement element : elements) {
+				getMethodList.add(element.getText());
+			 }
+		}
+		return getMethodList;
+	}
+
+
 }
