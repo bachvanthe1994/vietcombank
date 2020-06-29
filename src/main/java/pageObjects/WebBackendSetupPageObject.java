@@ -23,7 +23,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	List<String> listExpectFull = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
 	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
-	public static ServiceTypeLimitInfo getInfoType = new ServiceTypeLimitInfo(null, null, null);
+	public static List<ServiceTypeLimitInfo> getInfoType = new ArrayList<ServiceTypeLimitInfo>();
 	public static String oldValue = "";
 	public List<Assign_Package_Total_Limit> listAssign = new ArrayList<Assign_Package_Total_Limit>();
 
@@ -61,48 +61,56 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		inputDynamicDataByListIcon(driver, serviceName);
 	}
 
-	public void Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName, ServiceTypeLimitInfo inputInfoType) {
+	public void Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName, String valueLimit) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, "PKG1", "Assign Service Type Limit");
 		clickToDynamicSelectModel(driver, "PerPageItems");
 		clickToDynamicOptionText(driver, "100");
-
 		// Lay list phuong thuc xac thuc
 		List<String> listActualMethod = new ArrayList<String>();
 		listActualMethod = getTextInListElements(driver, DynamicWebPageUIs.DYNAMIC_TD_FOLLOWING_INDEX, "ng-scope", servicesName + "\n", "1");
 		listActualMethod.remove("Vân tay");
 		listActualMethod.remove("Smart OTP");
-
+		
 		// Setup hạn mức cho nhóm dịch vụ cho những nhóm đã có sẵn
 		for (String list : listActualMethod) {
+			ServiceTypeLimitInfo serviceType   = new ServiceTypeLimitInfo("", "","");
+			serviceType.methodOTP = list;
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", list, "Edit Service Type Limit");
-			getInfoType.methodOTP = getDataSelectText(driver, "edit-method-otp");
-			getInfoType.currentcy = getDataSelectText(driver, "edit-ccy");
-			getInfoType.totalLimit = getDataInInputByID(driver, "edit-limit-day");
-			inputIntoInputByID(driver, inputInfoType.totalLimit, "edit-limit-day");
+			serviceType.currentcy = getDataSelectText(driver, "edit-ccy");
+			serviceType.totalLimit = getDataInInputByID(driver, "edit-limit-day");
+			getInfoType.add(serviceType);
+			inputIntoInputByID(driver, valueLimit, "edit-limit-day");
 			clickToDynamicButtonATagByID(driver, "update-servicetype");
 			acceptAlert(driver);
-
 		}
-
 		List<String> listExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listExpect.removeAll(listActualMethod);
-
+	
 		// Tạo mới nhóm dịch vụ với PTXT chưa có trong list
 		for (String service : listExpect) {
-
 			clickToDynamicNgClick(driver, "addServiceType()");
 			clickToDynamicSelectID(driver, "service-type");
 			clickToDynamicOptionText(driver, servicesName);
 			clickToDynamicSelectID(driver, "method-otp");
 			clickToDynamicOptionText(driver, service);
-			inputIntoInputByID(driver, inputInfoType.totalLimit, "limit-day");
+			inputIntoInputByID(driver, valueLimit, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
-
+		
 		}
 	}
+	
+	public void Reset_Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName) {
+		for (ServiceTypeLimitInfo serviceType : getInfoType) {
+			clickToDynamicIconByTwoTexts(driver, servicesName + "\n",serviceType.methodOTP , "Edit Service Type Limit");
+			inputIntoInputByID(driver, serviceType.totalLimit, "edit-limit-day");
+			clickToDynamicLinkAByID(driver, "update-servicetype");
+			acceptAlert(driver);
+		}
+	}
+
 
 	//
 	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
