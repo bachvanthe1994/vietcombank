@@ -38,7 +38,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 //	selectValue: service name
 //	inputInfo: giá trị config truyền vào
 	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
-		addMethodOtpLimit(driver, serviceName);
+//		addMethodOtpLimit(driver, serviceName);
 		addMethodServicesLimit(driver, serviceName, inputInfo);
 		openAssignServiceLimit(driver);
 		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);

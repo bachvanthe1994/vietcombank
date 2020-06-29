@@ -35,7 +35,7 @@ public class TransferCharityLimit extends Base {
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private String organization,lowerMin,higherMax,userNameBE,passwordBE ;
 
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "2500001");
 	TransferCharity info = new TransferCharity("", "", "1000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp","username","passWeb" })
@@ -50,8 +50,12 @@ public class TransferCharityLimit extends Base {
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
 		userNameBE = username;
 		passwordBE = passWeb;
-		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
-		
+//		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
+		setupBE.setupAssignServicesLimit(driverWeb,"Tặng quà may mắn nội bộ",inputInfo);
+		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
+//		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
+		setupBE.resetAssignServicesLimit(driverWeb,"Tặng quà may mắn nội bộ");
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -199,9 +203,7 @@ public class TransferCharityLimit extends Base {
 		transferMoneyCharity.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
 		
-		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
-		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
+		
 	}
 
 //	@Test
