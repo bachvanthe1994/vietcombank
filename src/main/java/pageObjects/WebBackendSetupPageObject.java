@@ -17,8 +17,6 @@ import vietcombankUI.DynamicWebPageUIs;
 
 
 public class WebBackendSetupPageObject extends WebAbstractPage {
-
-
 	List<String> listExpect = new ArrayList<String>();
 	List<String> listActual;
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
@@ -32,7 +30,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicButtonByID(driver, "btn-login");
 	}
 	
-
 //	setup limit min max cho lần giao dịch
 //	selectValue: service name
 //	inputInfo: giá trị config truyền vào
@@ -65,32 +62,32 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		listActualMethod.remove("Smart OTP");
 
 		// Setup hạn mức cho nhóm dịch vụ cho những nhóm đã có sẵn
-		for (int i = 0; i <= listActualMethod.size(); i++) {
-			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", listActualMethod.get(i), "Edit Service Type Limit");
+		for (String list : listActualMethod) {
+			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", list, "Edit Service Type Limit");
 			getInfoType.methodOTP = getDataSelectText(driver, "edit-method-otp");
 			getInfoType.currentcy = getDataSelectText(driver, "edit-ccy");
 			getInfoType.totalLimit = getDataInInputByID(driver, "edit-limit-day");
 			inputIntoInputByID(driver, inputInfoType.totalLimit, "edit-limit-day");
 			clickToDynamicButtonATagByID(driver, "update-servicetype");
 			acceptAlert(driver);
-			break;
+		
 		}
 
 		List<String> listExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listExpect.removeAll(listActualMethod);
 	
 		// Tạo mới nhóm dịch vụ với PTXT chưa có trong list
-		for (int i = 0; i < listExpect.size(); i++) {
+		for (String service : listExpect) {
+			
 			clickToDynamicNgClick(driver, "addServiceType()");
 			clickToDynamicSelectID(driver, "service-type");
 			clickToDynamicOptionText(driver, servicesName);
 			clickToDynamicSelectID(driver, "method-otp");
-			clickToDynamicOptionText(driver, listExpect.get(0));
+			clickToDynamicOptionText(driver, service);
 			inputIntoInputByID(driver, inputInfoType.totalLimit, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
-			listExpect.remove(listExpect.get(0));
-			break;
+		
 		}
 	}
 
@@ -132,10 +129,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 
 
-
-	
-
-
 	public void inputDynamicDataByListIcon(WebDriver driver, String dynamicText) {
 		for (ServiceLimitInfo02 inputInfo : getInfoList) {
 			clickToDynamicIconByTwoTexts(driver, dynamicText, inputInfo.method, "Edit Service Limit");
@@ -170,6 +163,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 		return getInfoList;
 	}
+
 
 	public void addMethodOtpLimit(WebDriver driver, String dynamicText) {
 
