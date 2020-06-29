@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 
 import commons.Constants;
 import commons.WebAbstractPage;
+import model.Assign_Package_Total_Limit;
 import model.ServiceLimitInfo;
 import model.ServiceLimitInfo02;
 import model.ServiceTypeLimitInfo;
@@ -19,10 +20,14 @@ import vietcombankUI.DynamicWebPageUIs;
 public class WebBackendSetupPageObject extends WebAbstractPage {
 	List<String> listExpect = new ArrayList<String>();
 	List<String> listActual;
+	
+	List<String> listExpectFull = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
 	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
 	public static ServiceTypeLimitInfo getInfoType = new ServiceTypeLimitInfo(null, null, null);
 	public static String oldValue = "";
+	public List<Assign_Package_Total_Limit> listAssign = new ArrayList<Assign_Package_Total_Limit>();
+
 
 	public void Login_Web_Backend(WebDriver driver, String username, String passWeb) {
 		inputIntoInputByID(driver, username, "login-username");
@@ -91,12 +96,18 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 
+	//
 	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
-		List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
+		List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);		
+
 		for (String valueMethods : listActualMethod) {
+			Assign_Package_Total_Limit assign = new Assign_Package_Total_Limit("", "");
+			assign.total_limit= getDynamicDataByListIcon(driver, valueMethods,"2").get(0);
+			assign.method_Otp = valueMethods;
+			listAssign.add(assign);
 			clickToDynamicIconPencil(driver, valueMethods, "blue");
 			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
@@ -119,10 +130,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Reset goi han muc goi giao dic
 		public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
-			List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
-			for (String valueMethods : listActualMethod) {
-				clickToDynamicIconPencil(driver, valueMethods, "blue");
-				inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "edit-limit-day");
+			for (Assign_Package_Total_Limit assign : listAssign) {
+				clickToDynamicIconPencil(driver, assign.method_Otp, "blue");
+				inputIntoInputByID(driver, assign.total_limit, "edit-limit-day");
 				clickToDynamicLinkAByID(driver, "update-servicetype");
 				acceptAlert(driver);
 			}
