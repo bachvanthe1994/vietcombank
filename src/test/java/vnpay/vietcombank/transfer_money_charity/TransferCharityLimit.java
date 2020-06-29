@@ -33,7 +33,7 @@ public class TransferCharityLimit extends Base {
 	private WebBackendSetupPageObject setupBE;
 	
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	private String organization,lowerMin,higherMax ;
+	private String organization,lowerMin,higherMax,userNameBE,passwordBE ;
 
 	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
 	TransferCharity info = new TransferCharity("", "", "1000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
@@ -48,7 +48,8 @@ public class TransferCharityLimit extends Base {
 		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
-		setupBE.addMethodOtpLimit(driverWeb, TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
+		userNameBE = username;
+		passwordBE = passWeb;
 		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
 		
 		log.info("Before class: Mo app ");
@@ -197,6 +198,10 @@ public class TransferCharityLimit extends Base {
 
 		transferMoneyCharity.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		transferMoneyCharity.clickToDynamicBackIcon(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
+		
+		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
+		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
 	}
 
 //	@Test
