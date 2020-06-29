@@ -50,8 +50,10 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
-
+		
 		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo);
+
+
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -155,7 +157,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_Step_09: Nhap so tien chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt(inputInfo.totalLimit)+1+"", TittleData.AMOUNT);
+		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt("100000")+1+"", TittleData.AMOUNT);
 		log.info("TC_01_Step_10: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
 
@@ -174,7 +176,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-	// Truoc khi chay case nay can set Up Nhom dich vu vs han muc la 99.999.999 VND
+@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 
 		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", inputInfoType);
@@ -201,7 +203,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		log.info("TC_04_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,500,000 VND/1 ngày");
+		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 900,000 VND");
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
@@ -215,7 +217,6 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	@Test
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() throws InterruptedException {
-		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
