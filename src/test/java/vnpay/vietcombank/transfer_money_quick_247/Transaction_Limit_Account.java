@@ -17,7 +17,6 @@ import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.ServiceLimitInfo;
-import model.ServiceTypeLimitInfo;
 import model.SourceAccountModel;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyObject;
@@ -47,14 +46,12 @@ public class Transaction_Limit_Account extends Base {
 		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driver1);
 		WebAbstractPage abstractPage =new WebAbstractPage();
 		
-		
-		ServiceTypeLimitInfo inputInfoType = new ServiceTypeLimitInfo("PIN", "Việt Nam Đồng", "40000000");
 		driver1 = openMultiBrowser("chrome", "83.0.4103.14", "http://10.22.7.91:2021/HistorySMS/Index?f=5&c=107");
 		abstractPage.inputIntoInputByID(driver1, "hieppt", "login-username");
 		abstractPage.inputIntoInputByID(driver1, "123456a@", "login-password");
 		abstractPage.clickToDynamicButtonByID(driver1, "btn-login");
 		webBackend.setupAssignServicesLimit(driver1, "Chuyển khoản nhanh qua số tài khoản", inputInfo);
-		webBackend.Setup_Assign_Services_Type_Limit(driver1,"Chuyển khoản",inputInfoType );
+		webBackend.Setup_Assign_Services_Type_Limit(driver1,"Chuyển khoản","50000000" );
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
