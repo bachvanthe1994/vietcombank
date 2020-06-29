@@ -26,7 +26,7 @@ public class Constants {
 	public static final String BE_BROWSER_CHROME_HEADELESS = "chromeheadless";
 	public static final String BE_BROWSER_VERSION = "83.0.4103.14";
 	public static final String BE_URL = "http://10.22.7.91:2021/Package/Index?f=2&c=191";
-	public static final String AMOUNT_DEFAULT_MIN_PACKAGE = "100000000";
+	public static final String AMOUNT_DEFAULT_MIN_PACKAGE = "100000";
 	public static final String AMOUNT_DEFAULT_MAX_PACKAGE = "1000000000000";
 
 
