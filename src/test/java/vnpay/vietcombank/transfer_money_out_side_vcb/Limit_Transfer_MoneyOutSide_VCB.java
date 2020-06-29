@@ -56,7 +56,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
 		setupBE.addMethodOtpLimit(driverWeb, TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT);
-//		setupBE.setupAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,inputInfo);
+		setupBE.setupAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,inputInfo);
 		
 		destinationAccount = getDataInCell(34);
 		log.info("Before class: Mo app ");
@@ -86,7 +86,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		clickPopupAfter15h30();
 
 		log.info("TC_01_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToTextID(driver, "com.VCB:id/tvContent");
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
@@ -148,7 +148,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		clickPopupAfter15h30();
 
 		log.info("TC_03_2_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToTextID(driver, "com.VCB:id/tvContent");
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		log.info("TC_03_3_Nhap tai khoan thu huong");
@@ -192,7 +192,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		clickPopupAfter15h30();
 		
 		log.info("TC_03_14_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToTextID(driver, "com.VCB:id/tvContent");
+		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
 		
