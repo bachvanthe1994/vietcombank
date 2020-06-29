@@ -30,9 +30,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	public WebBackendSetupPageObject(WebDriver driverWeb) {
 	}
-
-
-
+	
 	public void Login_Web_Backend(WebDriver driver, String username, String passWeb) {
 		inputIntoInputByID(driver, username, "login-username");
 		inputIntoInputByID(driver, passWeb, "login-password");
@@ -44,6 +42,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 //	selectValue: service name
 //	inputInfo: giá trị config truyền vào
 	public void setupAssignServicesLimit(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
+		addMethodOtpLimit(driver, dynamicText);
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
@@ -182,7 +181,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		if(actual.size() > 0) {
 			for(String a : actual) {
 				clickToDynamicIconByThreeTexts(driver, dynamicText,"Việt Nam Đồng",a,"Edit");
-				clickToDynamicIconByTwoTexts(driver, dynamicText,a,"Edit");
 				inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "limit");
 				clickToDynamicButtonATagByID(driver, "create");
 				acceptAlert(driver);
