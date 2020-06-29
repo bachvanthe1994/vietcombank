@@ -183,7 +183,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		if(actual.size() > 0) {
 			for(String a : actual) {
 				clickToDynamicIconByThreeTexts(driver, dynamicText,"Việt Nam Đồng",a,"Edit");
-				clickToDynamicIconByTwoTexts(driver, dynamicText,a,"Edit");
 				inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "limit");
 				clickToDynamicButtonATagByID(driver, "create");
 				acceptAlert(driver);
@@ -194,9 +193,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 		List<String> listMethodExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listMethodExpect.removeAll(actual);
-		if(listExpect.size() > 0) {
+		if(listMethodExpect.size() > 0) {
 			clickToDynamicButtonATagByID(driver, "btn-create-billprovider");
-			for(String a :listExpect) {
+			for(String a :listMethodExpect) {
 				inputIntoInputByID(driver, randomNumber()+"", "code");
 				selectItemInDropdownByID(driver, "service", dynamicText);
 				selectItemInDropdownByID(driver, "ccy", Constants.VND_CURRENCY);
