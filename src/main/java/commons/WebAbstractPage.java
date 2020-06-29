@@ -1196,15 +1196,18 @@ public class WebAbstractPage {
 
 	public List<String> getDynamicDataByListIcon(WebDriver driver, String dynamicText, String index) {
 		boolean status = false;
+		boolean isDisplayed = false;
 		String locator = "";
 		List<String> getMethodList = new ArrayList<String>();
-		waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
-		locator = String.format(DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
-		List<WebElement> elements = driver.findElements(By.xpath(locator));
-		status = elements.size() > 0;
-		if (status == true) {
-			for (WebElement element : elements) {
-				getMethodList.add(element.getText());
+		isDisplayed = isControlDisplayed(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+		if (isDisplayed == true) {
+			locator = String.format(DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+			List<WebElement> elements = driver.findElements(By.xpath(locator));
+			status = elements.size() > 0;
+			if (status == true) {
+				for (WebElement element : elements) {
+					getMethodList.add(element.getText());
+				}
 			}
 		}
 		return getMethodList;
