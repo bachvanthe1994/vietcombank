@@ -214,7 +214,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	// Truoc khi chay case nay can set Up Nhom dich vu vs han muc la 99.999.999 VND
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
-		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", inputInfoType);
+		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", "40000000");
 
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
@@ -246,7 +246,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 		
-		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", inputInfoType);
+		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", "40000000");
 
 
 	}
