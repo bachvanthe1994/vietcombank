@@ -249,9 +249,7 @@ public class PageFactoryManager {
 		return new InsuranceFeePageObject(driver);
 	}
 	
-	public static WebBackendSetupPageObject getWebBackendSetupPageObject(WebDriver driver1) {
-		return new WebBackendSetupPageObject(driver1);
-	}
+	
 	
 	
 
