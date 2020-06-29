@@ -28,7 +28,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
-public class Transfer_Periodic_Money extends Base {
+public class Transfer_Periodic_MoneyMin_Max extends Base {
 	AppiumDriver<MobileElement> driver;
 	private WebDriver driverWeb;
 	private LogInPageObject login;
@@ -241,88 +241,6 @@ public class Transfer_Periodic_Money extends Base {
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-	}
-
-	// Truoc khi chay case nay can set Up Nhom dich vu vs han muc la 99.999.999 VND
-	public void TC_04_ChuyenTienDinhKyVuotQuaNhomDichVu() {
-
-		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
-
-		log.info("TC_04_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
-
-		log.info("TC_04_Step_03: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
-
-		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-
-		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
-		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		
-		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		receiverAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
-		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
-
-		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.inputFrequencyNumber("1");
-
-		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, TittleData.AMOUNT);
-
-		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-
-		log.info("TC_04_Step_11: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES);
-
-		log.info("TC_04_Step_12: Click btn Dong");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-
-	}
-
-	
-	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() {
-
-		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
-
-		log.info("TC_05_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
-
-		log.info("TC_05_Step_03: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
-
-		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-
-		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
-		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
-
-		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.inputFrequencyNumber("1");
-
-		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, TransferMoneyInVCB_Data.InputDataInFutureForOTP.HIGHER_TRANSFER_AMOUNT, TittleData.AMOUNT);
-
-		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-
-		log.info("TC_05_Step_11: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES);
-
-		log.info("TC_05_Step_12: Click btn Dong");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 	}
 
 	@AfterClass(alwaysRun = true)

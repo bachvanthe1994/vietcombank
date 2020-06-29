@@ -8,6 +8,13 @@ public class TransferMoneyCharity_Data {
 	public static final String MONEY_INPUT_EMPTY_MESSAGE = "Quý khách vui lòng nhập số tiền ủng hộ";
 	public static final String NAME_INPUT_EMPTY_MESSAGE = "Quý khách vui lòng nhập tên người ủng hộ";
 	public static final String STATUS_INPUT_EMPTY_MESSAGE = "Quý khách vui lòng nhập hoàn cảnh ủng hộ";
+	
+	public static final String LOWER_THAN_MIN_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
+	public static final String HIGHER_THAN_MAX_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+	public static final String DETAIL_A_TRANSACTION_MESSAGE = " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	public static final String DETAIL_A_DAY_MESSAGE = " VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	
+	
 	public static final String MONEY_INPUT_OVER_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 300,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 	public static final String MONEY_INPUT_NOT_ENOUGH_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 100,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 	public static final String MONEY_INPUT_OVER_PER_A_TRANSACTION_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
@@ -50,5 +57,6 @@ public class TransferMoneyCharity_Data {
 	public static final String TRANSACTION_CODE = "Mã giao dịch";
 	public static final String NEW_TRANSACTION_PERFORM = "Thực hiện giao dịch mới";
 	public static final String ORGANIZATION = "Tấm lòng nhân ái - TK 10 số";
+	public static final String BE_TRANSFER_CHARITY_TEXT = "Chuyển tiền từ thiện (chuyển khoản nội bộ)";
 
 }
