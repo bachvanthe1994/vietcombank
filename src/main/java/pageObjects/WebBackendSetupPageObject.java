@@ -217,8 +217,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		List<String> listMethodExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listMethodExpect.removeAll(actualMethodList);
 		if(listMethodExpect.size() > 0) {
-			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
 			for(String methodOtp:listMethodExpect) {
+				clickToDynamicButtonATagByClass(driver, "btn btn-primary");
 				selectItemInDropdownByID(driver, "service", serviceName);
 				selectItemInDropdownByID(driver, "method-otp", methodOtp);
 				selectItemInDropdownByID(driver, "ccy", "Việt Nam Đồng");
