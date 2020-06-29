@@ -48,8 +48,11 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
-		loginWeb.Setup_Package_Total_Limit(driverWeb, "PKG1", "All", inputInfo);
-		loginWeb.Reset_Package_Total_Limit(driverWeb, "PKG1", "All");
+		
+		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		loginWeb.Reset_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+//		loginWeb.Setup_Package_Total_Limit(driverWeb, "PKG1", "All", inputInfo);
+//		loginWeb.Reset_Package_Total_Limit(driverWeb, "PKG1", "All");
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
