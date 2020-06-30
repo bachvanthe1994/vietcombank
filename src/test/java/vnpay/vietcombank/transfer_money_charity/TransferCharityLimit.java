@@ -33,7 +33,7 @@ public class TransferCharityLimit extends Base {
 	private WebBackendSetupPageObject setupBE;
 	
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	private String organization,lowerMin,higherMax,higherTotal,userNameBE,passwordBE,otpNo ;
+	private String organization,lowerMin,higherMax,higherTotal,otpNo ;
 
 	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "2500001");
 	TransferCharity info = new TransferCharity("", "", "1000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
@@ -48,8 +48,6 @@ public class TransferCharityLimit extends Base {
 		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
-		userNameBE = username;
-		passwordBE = passWeb;
 		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -127,13 +125,9 @@ public class TransferCharityLimit extends Base {
 	@Test
 	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu() {
 		
-		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
 		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
-		
-		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		setupBE.Setup_Assign_Services_Type_Limit(driver, TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT, inputInfo.totalLimit);
 		
 	}
 
@@ -203,16 +197,14 @@ public class TransferCharityLimit extends Base {
 		log.info("TC_05_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
 		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE)+TransferMoneyCharity_Data.DETAIL_A_DAY_GROUP_MESSAGE);
 
-		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
 		setupBE.Reset_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driver, TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
 	}
 	
 	@Parameters({"pass"})
 	@Test
 	public void TC_06_SoTienGiaoDichVuotQuaHanMucToiDa1Ngay(String pass) throws InterruptedException {
 
-		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
 		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
 		
 		log.info("TC_06_01_Click Chuyen tien tu thien");
@@ -331,8 +323,6 @@ public class TransferCharityLimit extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
-		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
 		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
 		service.stop();
 	}

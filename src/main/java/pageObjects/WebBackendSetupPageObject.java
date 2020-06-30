@@ -23,6 +23,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	List<String> listExpectFull = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
 	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
+	public List<ServiceLimitInfo02> getInfoList_All = new ArrayList<ServiceLimitInfo02>();
 	public static List<ServiceTypeLimitInfo> getInfoType = new ArrayList<ServiceTypeLimitInfo>();
 	public static String oldValue = "";
 	public List<Assign_Package_Total_Limit> listAssign = new ArrayList<Assign_Package_Total_Limit>();
@@ -50,7 +51,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
-//		addMethodOtpLimit(driver, serviceName);
+		addMethodOtpLimit(driver, serviceName);
 		addMethodServicesLimit(driver, serviceName, inputInfo);
 		openAssignServiceLimit(driver);
 		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);
@@ -72,10 +73,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		listActualMethod = getTextInListElements(driver, DynamicWebPageUIs.DYNAMIC_TD_FOLLOWING_INDEX, "ng-scope", servicesName + "\n", "1");
 		listActualMethod.remove("Vân tay");
 		listActualMethod.remove("Smart OTP");
-		
+
 		// Setup hạn mức cho nhóm dịch vụ cho những nhóm đã có sẵn
 		for (String list : listActualMethod) {
-			ServiceTypeLimitInfo serviceType   = new ServiceTypeLimitInfo("", "","");
+			ServiceTypeLimitInfo serviceType = new ServiceTypeLimitInfo("", "", "");
 			serviceType.methodOTP = list;
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", list, "Edit Service Type Limit");
 			serviceType.currentcy = getDataSelectText(driver, "edit-ccy");
@@ -87,7 +88,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 		List<String> listExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listExpect.removeAll(listActualMethod);
-	
+
 		// Tạo mới nhóm dịch vụ với PTXT chưa có trong list
 		for (String service : listExpect) {
 			clickToDynamicNgClick(driver, "addServiceType()");
@@ -98,19 +99,18 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			inputIntoInputByID(driver, valueLimit, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
-		
+
 		}
 	}
-	
+
 	public void Reset_Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName) {
 		for (ServiceTypeLimitInfo serviceType : getInfoType) {
-			clickToDynamicIconByTwoTexts(driver, servicesName + "\n",serviceType.methodOTP , "Edit Service Type Limit");
+			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", serviceType.methodOTP, "Edit Service Type Limit");
 			inputIntoInputByID(driver, serviceType.totalLimit, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
 	}
-
 
 	//
 	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
@@ -309,5 +309,50 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		int randomNumber = random.nextInt(999);
 		return randomNumber;
 
+	}
+
+	public void setupAssignServicesLimit_All(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
+		addMethodOtpLimit(driver, serviceName);
+		addMethodServicesLimit(driver, serviceName, inputInfo);
+		openAssignServiceLimit(driver);
+		getInfoList_All = getAndInputDataByListIcon_All(driver, serviceName, inputInfo);
+	}
+	
+	public void resetAssignServicesLimit_All(WebDriver driver, String serviceName) {
+		openAssignServiceLimit(driver);
+		inputDynamicDataByListIcon_All(driver, serviceName);
+	}
+
+	// Lay data cu va thay doi thanh data moi phan Assign Service Limit
+	public List<ServiceLimitInfo02> getAndInputDataByListIcon_All(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
+
+		List<String> methodList = getDynamicDataByListIcon(driver, serviceName, "1");
+		for (String text : methodList) {
+			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
+			getInfo.method = text.trim();
+			clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
+			getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
+			getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
+			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
+			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
+			getInfoList_All.add(getInfo);
+			inputDataToServiceLimit(driver, inputInfo);
+
+		}
+
+		return getInfoList_All;
+	}
+
+	// Nhap lai data cu vao phan Assign Service Limit
+	public void inputDynamicDataByListIcon_All(WebDriver driver, String serviceName) {
+		for (ServiceLimitInfo02 inputInfo : getInfoList_All) {
+			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
+			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
+			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
+			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
+			clickToDynamicButtonATagByID(driver, "edit-limit");
+			acceptAlert(driver);
+		}
 	}
 }
