@@ -22,7 +22,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.TransferMoneyInVcbPageObject;
 import pageObjects.WebBackendSetupPageObject;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
-import vietcombank_test_data.TransferMoneyCharity_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputDataInVCB;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
@@ -41,7 +40,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(2);
 	int timesLimitOfDay = 10;
-	private String lowerMin, higherMax, otpNo;
+	private String lowerMin, higherMax, higherGroup,higherPackage, otpNo;
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel receiverAccount = new SourceAccountModel();
@@ -58,9 +57,10 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
-
-		setupBE.setupAssignServicesLimit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo);
-
+		
+		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo.totalLimit);
+		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -76,25 +76,32 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		lowerMin = (Integer.parseInt(inputInfo.minTran) - 1) + "";
 		higherMax = (Integer.parseInt(inputInfo.maxTran) + 1) + "";
+		higherGroup = (Integer.parseInt(inputInfo.totalLimit) + 1) + "";
+		higherPackage = (Integer.parseInt(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + 1) + "";
 
 	}
 
 	@Test
-	public void TC_01_ChuyenTienDinhKyThapHonHanMucToiThieu() {
+	public void TC_01_ChuyenTienDinhKyVuotQuaNhomDichVu() {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
-		log.info("TC_01_02_Chon phuong thuc chuyen tien");
+		log.info("TC_01_Step_02: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+
+		log.info("TC_01_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_01_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+
+		log.info("TC_01_Step_05: Chon tai khoan dich");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-
-		log.info("TC_02_Step_10: Nhap tai khoan nhan");
+		
+		log.info("TC_01_Step_10: Nhap tai khoan nhan");
 		receiverAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
 		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
@@ -103,29 +110,30 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
-		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, lowerMin, TittleData.AMOUNT);
+		log.info("TC_01_05_Chon tan suat");
+		transferInVCB.inputToDynamicInputBox(driver, higherGroup, TittleData.AMOUNT);
 
 		log.info("TC_01_Step_10: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_02_Step_15: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_lOWER_MIN_LIMIT + addCommasToLong(inputInfo.minTran) + TransferMoneyInVCB_Data.Output.LIMIT_TRANSACTION_MESSAGE);
+		log.info("TC_01_Step_11: Verify hien thi man hinh thong bao loi");
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(inputInfo.totalLimit) + TransferMoneyInVCB_Data.Output.DETAIL_A_GROUP_MESSAGE);
 
-		log.info("TC_02_Step_16: Click btn Dong");
+		log.info("TC_01_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 	}
 
 	@Test
-	public void TC_02_ChuyenTienDinhKyCaoHonHanMucToiDa() {
+	public void TC_02_ChuyenTienTuongLaiVuotQuaGoiDichVu() {
 
 		log.info("TC_02_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_02_Step_02: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+
+		log.info("TC_02_Step_03: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
 		log.info("TC_02_Step_04:Click tai khoan nguon");
@@ -137,32 +145,110 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		log.info("TC_02_Step_10: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
-		log.info("TC_00_05_Chon tan suat");
+		log.info("TC_02_05_Chon tan suat");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
 		transferInVCB.inputFrequencyNumber("1");
 
-		log.info("TC_00_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, higherMax, TittleData.AMOUNT);
+		log.info("TC_02_05_Chon tan suat");
+		transferInVCB.inputToDynamicInputBox(driver, higherPackage, TittleData.AMOUNT);
 
-		log.info("TC_01_Step_10: Click tiep tuc");
+		log.info("TC_02_Step_10: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		log.info("TC_02_Step_15: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(inputInfo.maxTran) + TransferMoneyInVCB_Data.Output.LIMIT_TRANSACTION_MESSAGE);
+		log.info("TC_02_Step_11: Verify hien thi man hinh thong bao loi");
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + TransferMoneyInVCB_Data.Output.DETAIL_A_PACKAGE_MESSAGE);
 
-		log.info("TC_02_Step_16: Click btn Dong");
+		log.info("TC_02_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
+	
 
 	@Test
 	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu() {
 		
-		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
 		
-		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
+		setupBE.Reset_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo);
 		
+	}
+	
+	@Test
+	public void TC_04_ChuyenTienDinhKyThapHonHanMucToiThieu() {
+
+		log.info("TC_04_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+
+		log.info("TC_04_02_Chon phuong thuc chuyen tien");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+
+		log.info("TC_04_Step_04:Click tai khoan nguon");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
+		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
+		log.info("TC_04_Step_10: Nhap tai khoan nhan");
+		receiverAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
+
+		log.info("TC_04_05_Chon tan suat");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.inputFrequencyNumber("1");
+
+		log.info("TC_04_05_Chon tan suat");
+		transferInVCB.inputToDynamicInputBox(driver, lowerMin, TittleData.AMOUNT);
+
+		log.info("TC_04_Step_10: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_04_Step_15: Verify hien thi man hinh thong bao loi");
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_lOWER_MIN_LIMIT + addCommasToLong(inputInfo.minTran) + TransferMoneyInVCB_Data.Output.LIMIT_TRANSACTION_MESSAGE);
+
+		log.info("TC_04_Step_16: Click btn Dong");
+		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+
+	}
+	
+	@Test
+	public void TC_05_ChuyenTienDinhKyCaoHonHanMucToiDa() {
+
+		log.info("TC_05_Step_01: Click Chuyen tien trong VCB");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
+
+		log.info("TC_05_Step_02: Chon chuyen tien ngay gia tri hien tai");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
+
+		log.info("TC_05_Step_04:Click tai khoan nguon");
+		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
+
+		log.info("TC_05_Step_05: Chon tai khoan dich");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+
+		log.info("TC_05_Step_10: Nhap tai khoan nhan");
+		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
+
+		log.info("TC_05_05_Chon tan suat");
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
+		transferInVCB.inputFrequencyNumber("1");
+
+		log.info("TC_05_05_Chon tan suat");
+		transferInVCB.inputToDynamicInputBox(driver, higherMax, TittleData.AMOUNT);
+
+		log.info("TC_05_Step_10: Click tiep tuc");
+		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
+
+		log.info("TC_05_Step_15: Verify hien thi man hinh thong bao loi");
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(inputInfo.maxTran) + TransferMoneyInVCB_Data.Output.LIMIT_TRANSACTION_MESSAGE);
+
+		log.info("TC_05_Step_16: Click btn Dong");
+		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 	
 	@Parameters({"pass"})
@@ -290,7 +376,8 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		setupBE.resetAssignServicesLimit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
+		driverWeb.quit();
 		service.stop();
 	}
 
