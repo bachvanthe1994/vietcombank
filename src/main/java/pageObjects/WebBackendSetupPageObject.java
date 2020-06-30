@@ -42,7 +42,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		addMethodServicesLimit(driver, serviceName, inputInfo);
 		openAssignServiceLimit(driver);
 		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);
-		driver.quit();
+		//driver.quit();
 	}
 
 	public void resetAssignServicesLimit(WebDriver driver, String serviceName) {
@@ -51,10 +51,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		driver.quit();
 	}
 
-	public void Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName, String valueLimit) {
+	public void Setup_Assign_Services_Type_Limit(WebDriver driver,String codePackage, String servicesName, String valueLimit) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1", "Assign Service Type Limit");
+		clickToDynamicIconByText(driver, codePackage, "Assign Service Type Limit");
 		clickToDynamicSelectModel(driver, "PerPageItems");
 		clickToDynamicOptionText(driver, "100");
 		// Lay list phuong thuc xac thuc
@@ -92,7 +92,13 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 	
-	public void Reset_Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName) {
+	public void Reset_Setup_Assign_Services_Type_Limit(WebDriver driver, String codePackage, String servicesName) {
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconByText(driver, codePackage, "Assign Service Type Limit");
+		clickToDynamicSelectModel(driver, "PerPageItems");
+		clickToDynamicOptionText(driver, "100");
+		
 		for (ServiceTypeLimitInfo serviceType : getInfoType) {
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n",serviceType.methodOTP , "Edit Service Type Limit");
 			inputIntoInputByID(driver, serviceType.totalLimit, "edit-limit-day");
@@ -246,7 +252,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void openAssignServiceLimit(WebDriver driver) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+		clickToDynamicIconByText(driver, "TESTBUG", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 	}
 	

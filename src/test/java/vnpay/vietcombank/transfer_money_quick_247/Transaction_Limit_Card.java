@@ -25,7 +25,7 @@ import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data.Tittle_Quick;
 import vietcombank_test_data.TransferMoneyQuick_Data.TransferQuick;
 
-public class Transaction_Limit_Account extends Base {
+public class Transaction_Limit_Card extends Base {
 	AppiumDriver<MobileElement> driver;
 	WebDriver driverWeb;
 	private LogInPageObject login;
@@ -34,23 +34,24 @@ public class Transaction_Limit_Account extends Base {
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private String bankOut, accountRecived;
 
-	ServiceLimitInfo inputInfo =  new ServiceLimitInfo("1000", "10000000", "20000000", "200000000");
+	ServiceLimitInfo inputInfo =  new ServiceLimitInfo("1000", "10000", "10000000", "20000000");
 	String inputAmountMin  = inputInfo.minTran ;
 	String inputAmountMax   = inputInfo.maxTran ;
 	String inputTotalLimit   = inputInfo.totalLimit  ;
-	String amountType = "9000000";
+	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException, GeneralSecurityException {
 		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		log.info("Before class: Mo backend ");
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
 
 		//webBackend.addMethodOtpLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản");
 		//webBackend.setupAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo);
-		//webBackend.Setup_Assign_Services_Type_Limit(driver, "TESTBUG","Chuyển khoản", amountType );
-
+		//webBackend.Setup_Assign_Services_Type_Limit(driver, "Chuyển khoản", "40000000");
+		
 		//App
 		startServer();
 		log.info("Before class: Mo app ");
@@ -66,7 +67,7 @@ public class Transaction_Limit_Account extends Base {
 		accountRecived = getDataInCell(4);
 	}
 
-	//@Test
+	@Test
 	public void TC_01_SoTienNhoHonHanMucToiThieuTrenMotLanGiaoDich_TaiKhoan() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -106,7 +107,7 @@ public class Transaction_Limit_Account extends Base {
 		transferMoney.clickToDynamicBackIcon(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 	}
 	
-	//@Test
+	@Test
 	public void TC_02_SoTienLonHonHanMucToiDaTrenMotLanGiaoDich_TaiKhoan() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -147,7 +148,7 @@ public class Transaction_Limit_Account extends Base {
 
 	}
 	
-	//@Test
+	@Test
 	public void TC_03_SoTienLonHonHanMucToiDaTrenMotNgayGiaoDich_TaiKhoan() {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -188,6 +189,7 @@ public class Transaction_Limit_Account extends Base {
 	
 	@Test
 	public void TC_04_SoTienLonHonHanMucToiDaTrenMotNgayNhomGiaoDich_TaiKhoan() {
+		webBackend.Setup_Assign_Services_Type_Limit(driver, "Chuyển khoản", "500000000");
 		
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -208,7 +210,7 @@ public class Transaction_Limit_Account extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, bankOut);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
-		transferMoney.inputToDynamicInputBox(driver,(Integer.parseInt(amountType )+1) +"", TransferQuick.MOUNT_LABEL);
+		transferMoney.inputToDynamicInputBox(driver,(Integer.parseInt(inputTotalLimit )+1) +"", TransferQuick.MOUNT_LABEL);
 
 		log.info("TC_01_Step_Chon phi giao dich la nguoi chuyen tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
