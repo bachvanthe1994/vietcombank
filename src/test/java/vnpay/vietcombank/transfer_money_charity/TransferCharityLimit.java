@@ -48,7 +48,7 @@ public class TransferCharityLimit extends Base {
 		
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driver);
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
-		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
+		setupBE.setupAssignServicesLimit_All(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo,Constants.BE_CODE_PACKAGE);
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -125,9 +125,9 @@ public class TransferCharityLimit extends Base {
 	@Test
 	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu() {
 		
-		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,Constants.BE_CODE_PACKAGE);
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
-		setupBE.Setup_Assign_Services_Type_Limit(driver, TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT, inputInfo.totalLimit);
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT, inputInfo.totalLimit);
 		
 	}
 
@@ -198,14 +198,14 @@ public class TransferCharityLimit extends Base {
 		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE)+TransferMoneyCharity_Data.DETAIL_A_DAY_GROUP_MESSAGE);
 
 		setupBE.Reset_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
-		setupBE.Reset_Setup_Assign_Services_Type_Limit(driver, TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
 	}
 	
 	@Parameters({"pass"})
 	@Test
 	public void TC_06_SoTienGiaoDichVuotQuaHanMucToiDa1Ngay(String pass) throws InterruptedException {
 
-		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
+		setupBE.setupAssignServicesLimit_All(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo,Constants.BE_CODE_PACKAGE);
 		
 		log.info("TC_06_01_Click Chuyen tien tu thien");
 		transferMoneyCharity.scrollDownToText(driver, TransferMoneyCharity_Data.STATUS_TRANSFER_MONEY);
@@ -323,7 +323,7 @@ public class TransferCharityLimit extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		setupBE.resetAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,Constants.BE_CODE_PACKAGE);
 		service.stop();
 	}
 

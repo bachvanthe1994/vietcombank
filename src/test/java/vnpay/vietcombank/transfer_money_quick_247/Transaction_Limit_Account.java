@@ -150,7 +150,7 @@ public class Transaction_Limit_Account extends Base {
 	//@Test
 	public void TC_03_SoTienLonHonHanMucToiDaTrenMotNgayGiaoDich_TaiKhoan() {
 		//Setup han muc trong 1 ngay
-		webBackend.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo);
+		webBackend.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo,Constants.BE_CODE_PACKAGE);
 		
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -186,7 +186,7 @@ public class Transaction_Limit_Account extends Base {
 		log.info("TC_01_Step_verify message gioi han");
 		verifyEquals(transferMoney.getDynamicTextView(driver,"com.VCB:id/tvContent"),"Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức "+addCommasToLong(inputTotalLimit)+" VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 		
-		webBackend.resetAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản");
+		webBackend.resetAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản",Constants.BE_CODE_PACKAGE);
 	}
 	
 	@Test

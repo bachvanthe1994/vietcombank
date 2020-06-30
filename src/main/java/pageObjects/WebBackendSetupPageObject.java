@@ -50,11 +50,12 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		getInfoList = getAndInputDataByListIcon_Total_LimitDay(driver, dynamicText, info);
 	}
 
-	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
-//		addMethodOtpLimit(driver, serviceName);
-		addMethodServicesLimit(driver, serviceName, inputInfo, codePackage);
-		openAssignServiceLimit(driver, codePackage);
-		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);
+
+	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		addMethodOtpLimit(driverWeb, serviceName);
+		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+		openAssignServiceLimit(driverWeb, codePackage);
+		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 		//driver.quit();
 	}
 
@@ -193,6 +194,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			inputIntoInputByID(driver, inputInfo.maxTran, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 

@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import commons.Base;
 import commons.Constants;
 import commons.PageFactoryManager;
-import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.ServiceLimitInfo;
@@ -49,7 +48,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 //		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 //		
 //		log.info("Before class: setup limit ngay");
-//		loginWeb.setup_Assign_Services_Limit(driverWeb, "Chuyển khoản tương lai", inputInfo );
+//		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản tương lai", inputInfo );
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -82,11 +81,12 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.TRANSFER_FUTURE);
 
 		log.info("TC_01_Step_04:Click tai khoan nguon");
+		transferInVCB.clickToDynamicDropDown(driver, Home_Text_Elements.SOURCE_ACCOUNT);
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
-		log.info("TC_01_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
+//		log.info("TC_01_Step_05: Chon tai khoan dich");
+//		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.ACCOUNT2);
 
 		log.info("TC_01_Step_06: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, Account_Data.Valid_Account.ACCOUNT1, Home_Text_Elements.INPUT_ACCOUNT_BENEFICI);

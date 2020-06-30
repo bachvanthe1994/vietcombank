@@ -1,6 +1,7 @@
 package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -40,7 +41,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(2);
 	int timesLimitOfDay = 10;
-	private String lowerMin, higherMax, higherGroup,higherPackage, otpNo;
+	private String lowerMin, higherMax, higherGroup,higherPackage, otpNo,passNo;
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel receiverAccount = new SourceAccountModel();
@@ -58,8 +59,8 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
-		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo.totalLimit);
+		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.totalLimit);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -69,6 +70,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		passNo = pass;
 		otpNo = opt;
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -97,7 +99,6 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC_01_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
 		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 		
@@ -117,10 +118,13 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_11: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(inputInfo.totalLimit) + TransferMoneyInVCB_Data.Output.DETAIL_A_GROUP_MESSAGE);
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT + addCommasToLong(inputInfo.totalLimit) + TransferMoneyInVCB_Data.Output.DETAIL_A_GROUP_MESSAGE);
 
 		log.info("TC_01_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT);
 
 	}
 
@@ -161,16 +165,24 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 
 		log.info("TC_02_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 	
-
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@Test
-	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu() {
+	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws MalformedURLException {
 		
+		closeApp();
+		setupBE.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
+		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo,Constants.BE_CODE_PACKAGE);
 		
-		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
-		setupBE.Reset_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
-		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo);
+		log.info("Before class: Mo app ");
+		if (deviceType.contains("android")) {
+			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
+		} else if (deviceType.contains("ios")) {
+			driver = openIOSApp(deviceName, udid, url);
+		}
+		login.Global_login(phone, pass, opt);
 		
 	}
 	
@@ -251,9 +263,8 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 	}
 	
-	@Parameters({"pass"})
 	@Test
-	public void TC_06_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay(String pass) {
+	public void TC_06_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay() {
 
 		log.info("TC_06_Step_01: Chon chuyen tien ngay gia tri hien tai");
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
@@ -333,7 +344,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_06_Step_25: Nhap MK");
-		transferInVCB.inputToDynamicPopupPasswordInput(driver, pass, TittleData.CONTINUE_BTN);
+		transferInVCB.inputToDynamicPopupPasswordInput(driver, passNo, TittleData.CONTINUE_BTN);
 
 		log.info("TC_06_Step_14: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
@@ -376,7 +387,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		setupBE.resetAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,Constants.BE_CODE_PACKAGE);
 		driverWeb.quit();
 		service.stop();
 	}
