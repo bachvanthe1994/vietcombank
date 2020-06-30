@@ -91,9 +91,13 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String MESSEGE_ERROR_lOWER_MIN_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
 		public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		public static final String MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		
+		
 		public static final String LIMIT_TRANSACTION_MESSAGE = " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String LIMIT_DAY_MESSAGE = " VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-		public static final String DETAIL_A_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		
+		public static final String DETAIL_A_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ chuyển tiền. Chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String DETAIL_A_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		
 		public static final String MESSEGE_ERROR_HIGHER_LIMIT_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 400,000,000 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
@@ -168,6 +172,7 @@ public class TransferMoneyInVCB_Data {
 
 	public static class InputText_MoneyRecurrent {
 
+		public static final String BE_TRANSFER_TEXT = "Chuyển khoản";
 		public static final String BE_TRANSFER_RECURRENT_TEXT = "Chuyển khoản định kỳ";
 		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
 		public static final String BILLS_PAYMENT_TEXT = "Nạp tiền/ Thanh toán hoá đơn";

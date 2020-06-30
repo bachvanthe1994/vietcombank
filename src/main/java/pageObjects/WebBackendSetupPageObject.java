@@ -49,7 +49,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void setupAssignServicesLimit_Total_Day(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+		clickToDynamicIconByText(driver, "TESTBUG", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		getInfoList = getAndInputDataByListIcon_Total_LimitDay(driver, dynamicText, info);
 	}
@@ -69,7 +69,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void Setup_Assign_Services_Type_Limit(WebDriver driver, String servicesName, String valueLimit) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1", "Assign Service Type Limit");
+		clickToDynamicIconByText(driver, "TESTBUG", "Assign Service Type Limit");
 		clickToDynamicSelectModel(driver, "PerPageItems");
 		clickToDynamicOptionText(driver, "100");
 		// Lay list phuong thuc xac thuc
@@ -126,7 +126,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 		for (String valueMethods : listActualMethod) {
 			Assign_Package_Total_Limit assign = new Assign_Package_Total_Limit("", "");
-			assign.total_limit = getDynamicDataByListIcon(driver, valueMethods, "2").get(0);
+			assign.total_limit = getDynamicDataByIcon(driver, valueMethods, "2");
 			assign.method_Otp = valueMethods;
 			listAssign.add(assign);
 			clickToDynamicIconPencil(driver, valueMethods, "blue");
@@ -291,7 +291,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void openAssignServiceLimit(WebDriver driver) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+		clickToDynamicIconByText(driver, "TESTBUG", "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 	}
 

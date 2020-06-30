@@ -793,7 +793,7 @@ public class WebAbstractPage {
 //	}
 
 	public boolean waitForElementVisible(WebDriver driver, String locator, String... dynamicValue) {
-		sleep(driver, 1000);
+		sleep(driver, 2000);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {
@@ -1211,6 +1211,16 @@ public class WebAbstractPage {
 			}
 		}
 		return getMethodList;
+	}
+	
+	public String getDynamicDataByIcon(WebDriver driver, String dynamicText, String index) {
+		boolean status = false;
+		String text = "";
+		status = isControlDisplayed(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+		if(status == true) {
+			text = getTextElement(driver,DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+		}
+		return text ;
 	}
 
 }
