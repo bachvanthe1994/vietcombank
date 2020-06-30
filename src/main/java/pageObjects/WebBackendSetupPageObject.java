@@ -194,7 +194,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			inputIntoInputByID(driver, inputInfo.maxTran, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 
