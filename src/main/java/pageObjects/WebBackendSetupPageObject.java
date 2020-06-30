@@ -121,22 +121,22 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	//Set limit value of Package 
-	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue,String amountLimit) {
+	public void Setup_Add_Method_Package_Total_Limit(WebDriver driverWeb, String packageCode, String tittleTableValue,String amountLimit) {
 		
-		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
-		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
-		List<String> listActualMethods = getListMetodOtp(driver, tittleTableValue);
+		clickToDynamicMenuByLink(driverWeb, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driverWeb, "ng-pristine", "100");
+		clickToDynamicIconPackage(driverWeb, packageCode, "Assign Package Total Limit");
+		List<String> listActualMethods = getListMetodOtp(driverWeb, tittleTableValue);
 
 		for (String valueMethods : listActualMethods) {
 			Assign_Package_Total_Limit assign = new Assign_Package_Total_Limit("", "");
-			assign.total_limit = getDynamicDataByMethod(driver, valueMethods, "2");
+			assign.total_limit = getDynamicDataByMethod(driverWeb, valueMethods, "2");
 			assign.method_Otp = valueMethods;
 			listAssign.add(assign);
-			clickToDynamicIconPencil(driver, valueMethods, "blue");
-			inputIntoInputByID(driver, amountLimit, "edit-limit-day");
-			clickToDynamicLinkAByID(driver, "update-servicetype");
-			acceptAlert(driver);
+			clickToDynamicIconPencil(driverWeb, valueMethods, "blue");
+			inputIntoInputByID(driverWeb, amountLimit, "edit-limit-day");
+			clickToDynamicLinkAByID(driverWeb, "update-servicetype");
+			acceptAlert(driverWeb);
 		}
 		List<String> listMethodExpert = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listMethodExpert.remove("Smart OTP");
@@ -144,11 +144,11 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		listMethodExpert.removeAll(listActualMethods);
 
 		for (String methods : listMethodExpert) {
-			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
-			selectItemInDropdown(driver, "form-control", methods);
-			inputIntoInputByID(driver, amountLimit, "limit-day");
-			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
-			acceptAlert(driver);
+			clickToDynamicButtonATagByClass(driverWeb, "btn btn-primary");
+			selectItemInDropdown(driverWeb, "form-control", methods);
+			inputIntoInputByID(driverWeb, amountLimit, "limit-day");
+			clickToDynamicButtonATagByID(driverWeb, "create-servicetypelimit");
+			acceptAlert(driverWeb);
 		}
 
 	}
