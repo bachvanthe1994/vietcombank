@@ -147,7 +147,8 @@ public class Transaction_Limit_Account extends Base {
 	//@Test
 	public void TC_03_SoTienLonHonHanMucToiDaTrenMotNgayGiaoDich_TaiKhoan() throws InterruptedException {
 		//Setup han muc trong 1 ngay
-		webBackend.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo,"TESTBUG");
+		webBackend.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo,Constants.BE_CODE_PACKAGE);
+
 		
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -185,7 +186,9 @@ public class Transaction_Limit_Account extends Base {
 		
 		transferMoney.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		transferMoney.clickToDynamicBackIcon(driver, TransferQuick.TRANSFER_MONEY_LABEL);
-		webBackend.resetAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản","TESTBUG");
+	
+		webBackend.resetAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản",Constants.BE_CODE_PACKAGE);
+
 	}
 	
 	@Test
@@ -235,7 +238,8 @@ public class Transaction_Limit_Account extends Base {
 	@Test
 	public void TC_05_SoTienLomHonHanMucToiDaTrenMotNgayGoiGiaoDich_TaiKhoan() throws InterruptedException {
 		log.info("TC_01_Setup package ");
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp",amountType);
+		
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 

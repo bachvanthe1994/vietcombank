@@ -63,8 +63,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE_2 = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_FUTURE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_FUTURE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_FOR_EMPTY_OTP = "Quý khách vui lòng nhập mã OTP";
 		public static final String ERROR_MESSAGE_FOR_EMPTY_PASSWORD = "Quý khách vui lòng nhập mật khẩu đăng nhập ứng dụng";
@@ -91,9 +91,13 @@ public class TransferMoneyInVCB_Data {
 
 		public static final String MESSEGE_ERROR_lOWER_MIN_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
 		public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		public static final String MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		
+		
 		public static final String LIMIT_TRANSACTION_MESSAGE = " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String LIMIT_DAY_MESSAGE = " VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-		public static final String DETAIL_A_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		
+		public static final String DETAIL_A_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ chuyển tiền. Chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String DETAIL_A_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		
 		public static final String MESSEGE_ERROR_HIGHER_LIMIT_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 400,000,000 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
@@ -168,6 +172,7 @@ public class TransferMoneyInVCB_Data {
 
 	public static class InputText_MoneyRecurrent {
 
+		public static final String BE_TRANSFER_TEXT = "Chuyển khoản";
 		public static final String BE_TRANSFER_RECURRENT_TEXT = "Chuyển khoản định kỳ";
 		public static final String TRANSFER_MONEY_STATUS_TEXT = "Trạng thái chuyển tiền";
 		public static final String BILLS_PAYMENT_TEXT = "Nạp tiền/ Thanh toán hoá đơn";
@@ -230,6 +235,11 @@ public class TransferMoneyInVCB_Data {
 		public static final String CONTACT_BENFICAL = "Danh bạ người hưởng";
 		public static final String SETTING = "Cài đặt";
 		public static final String REFERENCE_RATE = "Tỷ giá quy đổi tham khảo";
+		public static final String TRANSFER_IN_BANK_SAME_OWNER = "Chuyển khoản nội bộ cùng chủ tài khoản";
+		public static final String TRANSFER_IN_BANK_OTHER_OWNER = "Chuyển khoản nội bộ khác chủ tài khoản";
+		public static final String TRANSFER_SAME_OWNER = "Chuyển khoản cùng chủ";
+		public static final String PACKAGE_NAME = "TESTBUG";
+		public static final String TITTLE_METHOD = "Method Otp";
 		
 		
 

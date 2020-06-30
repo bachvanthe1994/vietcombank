@@ -34,6 +34,9 @@ public class LuckyGift_Data {
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 		public static final String OTP = "SMS OTP";
 		public static final String SMART_OTP = "VCB - Smart OTP";
+		public static final String TUTORIAL = "Hướng dẫn";
+		public static final String CONTINUE = "Tiếp tục";
+		public static final String CONFIRM_INFORMATION = "Xác nhận thông tin";
 	}
 
 	public static class Limit_Money_Gift {
@@ -44,11 +47,11 @@ public class LuckyGift_Data {
 	}
 
 	public static class Messege_Limit {
-		public static final String MESSEGE_ERROR_LOWER_MIN_TRAN = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 1,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSEGE_ERROR_LOWER_MIN_TRAN = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String MESSEGE_ERROR_HIGHER_MAX_TRAN = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String MESSEGE_ERROR_HIGHER_MAX_GROUP = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String MESSEGE_ERROR_HIGHER_MAX_PACKAGE = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-		public static final String MESSEGE_ERROR_HIGHER_MAX_DAY = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,001 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSEGE_ERROR_HIGHER_MAX_DAY = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 30,000,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 
 	}
 
