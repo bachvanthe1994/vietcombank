@@ -41,10 +41,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 //	selectValue: service name
 //	inputInfo: giá trị config truyền vào
 
-	public void resetAssignServicesLimit_Total_Day(WebDriver driver, String dynamicText) {
-		inputDynamicDataByListIcon_Total_Limit_Day(driver, dynamicText);
-	}
-
 	public void setupAssignServicesLimit_Total_Day(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
@@ -172,14 +168,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 
-	public void inputDynamicDataByListIcon_Total_Limit_Day(WebDriver driver, String dynamicText) {
-		for (ServiceLimitInfo02 inputInfo : getInfoList_totalDay) {
-			clickToDynamicIconByTwoTexts(driver, dynamicText, inputInfo.method, "Edit Service Limit");
-			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
-			clickToDynamicButtonATagByID(driver, "edit-limit");
-			acceptAlert(driver);
-		}
-	}
 
 	// Lay data cu va thay doi thanh data moi phan Assign Service Limit
 	public List<ServiceLimitInfo02> getAndInputDataByListIcon(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
