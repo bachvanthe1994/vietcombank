@@ -155,6 +155,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Reset goi han muc goi giao dich
 	public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
+		
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
 		for (Assign_Package_Total_Limit assign : listAssign) {
 			clickToDynamicIconPencil(driver, assign.method_Otp, "blue");
 			inputIntoInputByID(driver, assign.total_limit, "edit-limit-day");
@@ -311,8 +315,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	public void setupAssignServicesLimit_All(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
-		addMethodOtpLimit(driver, serviceName);
-		addMethodServicesLimit(driver, serviceName, inputInfo,codePackage);
 		openAssignServiceLimit(driver,codePackage);
 		getInfoList_All = getAndInputDataByListIcon_All(driver, serviceName, inputInfo);
 	}
@@ -353,5 +355,13 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
+	}
+	
+	public void clearCacheBE(WebDriver driver) {
+		
+		clickToDynamicMenuByLink(driver, "/Configuration/Index");
+		clickToDynamicButtonATagByClass(driver, "btn btn-info");
+		acceptAlert(driver);
+		waitForAlerVisibleAndClickAccept(driver);
 	}
 }

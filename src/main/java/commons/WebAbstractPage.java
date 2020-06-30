@@ -99,6 +99,16 @@ public class WebAbstractPage {
 			sleep(driver, 5000);
 		}
 	}
+	
+	public void waitForAlerVisibleAndClickAccept(WebDriver driver) {
+		
+	     WebDriverWait wait = new WebDriverWait(driver, 10);
+         wait.until(ExpectedConditions.alertIsPresent());
+
+         Alert alert = driver.switchTo().alert();
+         alert.accept();
+
+	}
 
 //WebElement
 
@@ -793,7 +803,7 @@ public class WebAbstractPage {
 //	}
 
 	public boolean waitForElementVisible(WebDriver driver, String locator, String... dynamicValue) {
-		sleep(driver, 2000);
+		sleep(driver, 1000);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {

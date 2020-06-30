@@ -98,7 +98,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String LIMIT_DAY_MESSAGE = " VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		
 		public static final String DETAIL_A_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ chuyển tiền. Chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-		public static final String DETAIL_A_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String DETAIL_A_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ chuyển tiền. Chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		
 		public static final String MESSEGE_ERROR_HIGHER_LIMIT_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 400,000,000 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 99,999,999 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
