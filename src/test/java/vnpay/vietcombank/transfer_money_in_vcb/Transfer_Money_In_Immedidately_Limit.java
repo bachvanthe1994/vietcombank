@@ -25,6 +25,7 @@ import pageObjects.WebBackendSetupPageObject;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.TransferMoneyInVCB_Data;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
+import vietcombank_test_data.TransferMoneyStatus_Data.Output;
 
 public class Transfer_Money_In_Immedidately_Limit extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -50,8 +51,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 
-
-		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo,"TESTBUG");
+		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo, "TESTBUG");
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -100,7 +100,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		log.info("TC_01_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), vietcombank_test_data.TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY);
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
@@ -131,7 +131,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		log.info("TC_01_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), vietcombank_test_data.TransferMoneyInVCB_Data.Output.ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY);
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
@@ -145,7 +145,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 	@Test
 	public void TC_03_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay(String otp) throws InterruptedException {
 
-		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo,"TESTBUG");
+		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo, "TESTBUG");
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
@@ -172,18 +172,19 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
-		loginWeb.resetAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản","TESTBUG");
+		loginWeb.resetAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", "TESTBUG");
 
 	}
 
 	@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 
-		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb,"TESTBUG", "Chuyển khoản cùng chủ", "900000");
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+
+		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Chuyển khoản cùng chủ", "900000");
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
@@ -209,16 +210,14 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
-
-		loginWeb.Reset_Setup_Assign_Services_Type_Limit(driverWeb,"TESTBUG", "Chuyển khoản cùng chủ");
+		loginWeb.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Chuyển khoản cùng chủ");
 
 	}
 
-	// Truoc khi chay case nay can set Up Goi dich vu vs han muc la 99.999.999 VND
 	@Test
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() throws InterruptedException {
 		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
-		
+
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
@@ -237,7 +236,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		log.info("TC_05_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		verifyTrue(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức"));
+		verifyTrue(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Chuyển tiền không thành công"));
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
@@ -248,8 +247,8 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 	@AfterClass(alwaysRun = true)
 
 	public void afterClass() {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }

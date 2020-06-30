@@ -51,7 +51,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
-		addMethodOtpLimit(driver, serviceName);
+//		addMethodOtpLimit(driver, serviceName);
 		addMethodServicesLimit(driver, serviceName, inputInfo, codePackage);
 		openAssignServiceLimit(driver, codePackage);
 		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);
@@ -119,7 +119,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 
-	//
+	//Set limit value of Package 
 	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
 		
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
@@ -133,7 +133,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			assign.method_Otp = valueMethods;
 			listAssign.add(assign);
 			clickToDynamicIconPencil(driver, valueMethods, "blue");
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "edit-limit-day");
+			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
@@ -145,7 +145,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		for (String methods : listMethodExpert) {
 			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
 			selectItemInDropdown(driver, "form-control", methods);
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "limit-day");
+			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
 		}
