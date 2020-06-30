@@ -1,7 +1,6 @@
 package vnpay.vietcombank.transfer_money_in_vcb;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -29,7 +28,7 @@ import vietcombank_test_data.TransferMoneyInVCB_Data.InputData_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.InputText_MoneyRecurrent;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
-public class Transfer_Periodic_MoneyMin_Max extends Base {
+public class Transfer_Money_Recurrent_Limit_02 extends Base {
 	AppiumDriver<MobileElement> driver;
 	private WebDriver driverWeb;
 	private LogInPageObject login;
@@ -41,11 +40,12 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 	String today = getCurrentDay() + "/" + getCurrenMonth() + "/" + getCurrentYear();
 	String tommorrowDate = getForwardDate(2);
 	int timesLimitOfDay = 10;
-	private String lowerMin, higherMax, higherGroup,higherPackage, otpNo,passNo;
+	private String lowerMin, higherMax, otpNo,passNo;
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel receiverAccount = new SourceAccountModel();
 	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
+	ServiceLimitInfo info = new ServiceLimitInfo("100000", "10000", "1000000000", "1500000000");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
@@ -59,8 +59,10 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
-		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.totalLimit);
+		setupBE.addMethodOtpLimit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
+		setupBE.addMethodServicesLimit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, info,Constants.BE_CODE_PACKAGE);
+		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo,Constants.BE_CODE_PACKAGE);
+		setupBE.clearCacheBE(driverWeb);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -78,114 +80,9 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		lowerMin = (Integer.parseInt(inputInfo.minTran) - 1) + "";
 		higherMax = (Integer.parseInt(inputInfo.maxTran) + 1) + "";
-		higherGroup = (Integer.parseInt(inputInfo.totalLimit) + 1) + "";
-		higherPackage = (Integer.parseInt(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + 1) + "";
-
-	}
-
-	@Test
-	public void TC_01_ChuyenTienDinhKyVuotQuaNhomDichVu() {
-
-		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
-
-		log.info("TC_01_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
-
-		log.info("TC_01_Step_03: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
-
-		log.info("TC_01_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-
-		log.info("TC_01_Step_05: Chon tai khoan dich");
-		List<String> listDistanceAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
-		sourceAccount = transferInVCB.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		
-		log.info("TC_01_Step_10: Nhap tai khoan nhan");
-		receiverAccount.account = transferInVCB.getDistanceAccount(driver, sourceAccount.account, listDistanceAccount);
-		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
-
-		log.info("TC_01_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.inputFrequencyNumber("1");
-
-		log.info("TC_01_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, higherGroup, TittleData.AMOUNT);
-
-		log.info("TC_01_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-
-		log.info("TC_01_Step_11: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT + addCommasToLong(inputInfo.totalLimit) + TransferMoneyInVCB_Data.Output.DETAIL_A_GROUP_MESSAGE);
-
-		log.info("TC_01_Step_12: Click btn Dong");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		
-		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT);
-
-	}
-
-	@Test
-	public void TC_02_ChuyenTienTuongLaiVuotQuaGoiDichVu() {
-
-		log.info("TC_02_Step_01: Click Chuyen tien trong VCB");
-		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
-
-		log.info("TC_02_Step_02: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
-
-		log.info("TC_02_Step_03: Chon chuyen tien ngay gia tri hien tai");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
-
-		log.info("TC_02_Step_04:Click tai khoan nguon");
-		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
-
-		log.info("TC_02_Step_05: Chon tai khoan dich");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
-		log.info("TC_02_Step_10: Nhap tai khoan nhan");
-		transferInVCB.inputToDynamicInputBox(driver, receiverAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
-
-		log.info("TC_02_05_Chon tan suat");
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputData_MoneyRecurrent.DAY_TEXT);
-		transferInVCB.inputFrequencyNumber("1");
-
-		log.info("TC_02_05_Chon tan suat");
-		transferInVCB.inputToDynamicInputBox(driver, higherPackage, TittleData.AMOUNT);
-
-		log.info("TC_02_Step_10: Click tiep tuc");
-		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-
-		log.info("TC_02_Step_11: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + TransferMoneyInVCB_Data.Output.DETAIL_A_PACKAGE_MESSAGE);
-
-		log.info("TC_02_Step_12: Click btn Dong");
-		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-	}
-	
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
-	@Test
-	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws MalformedURLException {
-		
-		closeApp();
-		setupBE.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
-		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo,Constants.BE_CODE_PACKAGE);
-		
-		log.info("Before class: Mo app ");
-		if (deviceType.contains("android")) {
-			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
-		} else if (deviceType.contains("ios")) {
-			driver = openIOSApp(deviceName, udid, url);
-		}
-		login.Global_login(phone, pass, opt);
 		
 	}
-	
+
 	@Test
 	public void TC_04_ChuyenTienDinhKyThapHonHanMucToiThieu() {
 
@@ -267,6 +164,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 	public void TC_06_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay() {
 
 		log.info("TC_06_Step_01: Chon chuyen tien ngay gia tri hien tai");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[0]);
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, InputDataInVCB.OPTION_TRANSFER[1]);
 
