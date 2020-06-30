@@ -210,7 +210,7 @@ public class Transfer_Money_In_Immedidately_Limit_2 extends Base {
 
 	@Test
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() throws InterruptedException {
-		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, TittleData.PACKAGE_NAME, TittleData.TITTLE_METHOD);
+		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, TittleData.PACKAGE_NAME, TittleData.TITTLE_METHOD,Constants.AMOUNT_DEFAULT_MIN_PACKAGE);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 

@@ -121,7 +121,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	//Set limit value of Package 
-	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
+	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue,String amountLimit) {
 		
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
@@ -134,7 +134,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			assign.method_Otp = valueMethods;
 			listAssign.add(assign);
 			clickToDynamicIconPencil(driver, valueMethods, "blue");
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "edit-limit-day");
+			inputIntoInputByID(driver, amountLimit, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
@@ -146,7 +146,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		for (String methods : listMethodExpert) {
 			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
 			selectItemInDropdown(driver, "form-control", methods);
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "limit-day");
+			inputIntoInputByID(driver, amountLimit, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
 		}

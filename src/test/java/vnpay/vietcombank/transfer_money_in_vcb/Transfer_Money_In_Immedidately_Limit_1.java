@@ -150,26 +150,23 @@ public class Transfer_Money_In_Immedidately_Limit_1 extends Base {
 
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
 
-		log.info("TC_01_Step_08: Nhap tai khoan nhan");
+		log.info("TC_03_Step_08: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
-		log.info("TC_01_Step_09: Nhap so tien chuyen");
+		log.info("TC_03_Step_09: Nhap so tien chuyen");
 
-		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + 1 + "", TittleData.AMOUNT);
+		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt(inputInfo.maxTran) + 1 + "", TittleData.AMOUNT);
 
-		log.info("TC_01_Step_10: Nhap noi dung");
+		log.info("TC_03_Step_10: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
 
-		log.info("TC_01_Step_11: Click tiep tuc");
+		log.info("TC_03_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		verifyTrue(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức"));
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
-
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
-
-		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		loginWeb.resetAssignServicesLimit(driverWeb, TittleData.TRANSFER_IN_BANK_SAME_OWNER, TittleData.PACKAGE_NAME);
 
@@ -178,10 +175,7 @@ public class Transfer_Money_In_Immedidately_Limit_1 extends Base {
 	@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
-
-		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, TittleData.PACKAGE_NAME, TittleData.TRANSFER_SAME_OWNER, Constants.AMOUNT_DEFAULT_MIN_PACKAGE);
 
@@ -193,7 +187,7 @@ public class Transfer_Money_In_Immedidately_Limit_1 extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_04_Step_09: Nhap so tien chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + 1 + "", TittleData.AMOUNT);
+		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt(inputInfo.totalLimit) + 1 + "", TittleData.AMOUNT);
 
 		log.info("TC_04_Step_10: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
@@ -215,7 +209,7 @@ public class Transfer_Money_In_Immedidately_Limit_1 extends Base {
 
 	@Test
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() throws InterruptedException {
-		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, TittleData.PACKAGE_NAME, TittleData.TITTLE_METHOD);
+		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, TittleData.PACKAGE_NAME, TittleData.TITTLE_METHOD, Constants.AMOUNT_DEFAULT_MIN_PACKAGE);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
