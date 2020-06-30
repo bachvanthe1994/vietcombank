@@ -50,7 +50,6 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 
-//		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
 
 //		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo);
 
@@ -146,7 +145,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 //	@Test
 	public void TC_03_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay(String otp) throws InterruptedException {
 
-		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo);
+		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo,"TESTBUG");
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
@@ -177,14 +176,11 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-	@Test
+//	@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 
-		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", "900000");
-
-//		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+//		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", "900000");
 //		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
-		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -213,16 +209,17 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
-		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
-		loginWeb.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ");
+//		loginWeb.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ");
 
 	}
 
 	// Truoc khi chay case nay can set Up Goi dich vu vs han muc la 99.999.999 VND
 	@Test
 	public void TC_05_ChuyenTienTuongLaiVuotQuaGoiDichVu() throws InterruptedException {
-		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
+		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+		
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 

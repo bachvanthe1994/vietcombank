@@ -42,10 +42,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 //	selectValue: service name
 //	inputInfo: giá trị config truyền vào
 
-	public void setupAssignServicesLimit_Total_Day(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
+	public void setupAssignServicesLimit_Total_Day(WebDriver driver, String dynamicText, ServiceLimitInfo info, String codePackage) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "PKG1", "Assign Service Limit");
+		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		getInfoList = getAndInputDataByListIcon_Total_LimitDay(driver, dynamicText, info);
 	}
@@ -118,27 +118,27 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
-		List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
+		List<String> listActualMethods = getListMetodOtp(driver, tittleTableValue);
 
-		for (String valueMethods : listActualMethod) {
+		for (String valueMethods : listActualMethods) {
 			Assign_Package_Total_Limit assign = new Assign_Package_Total_Limit("", "");
-			assign.total_limit = getDynamicDataByListIcon(driver, valueMethods, "2").get(0);
+			assign.total_limit = getDynamicDataByMethod(driver, valueMethods, "2");
 			assign.method_Otp = valueMethods;
 			listAssign.add(assign);
 			clickToDynamicIconPencil(driver, valueMethods, "blue");
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "edit-limit-day");
+			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
 		List<String> listMethodExpert = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 		listMethodExpert.remove("Smart OTP");
 		listMethodExpert.remove("Vân tay");
-		listMethodExpert.removeAll(listActualMethod);
+		listMethodExpert.removeAll(listActualMethods);
 
 		for (String methods : listMethodExpert) {
 			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
 			selectItemInDropdown(driver, "form-control", methods);
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "limit-day");
+			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
 		}
