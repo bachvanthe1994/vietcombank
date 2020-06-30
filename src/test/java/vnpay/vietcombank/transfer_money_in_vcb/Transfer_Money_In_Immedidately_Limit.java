@@ -51,9 +51,10 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 
-		loginWeb.addMethodOtpLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản");
 		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo);
 		
+
+
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -192,7 +193,8 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		transferInVCB.inputToDynamicInputBox(driver, distanceAccount.account, TittleData.INPUT_ACCOUNT_BENEFICI);
 
 		log.info("TC_01_Step_09: Nhap so tien chuyen");
-		transferInVCB.inputToDynamicInputBox(driver, inputInfo.maxTran, TittleData.AMOUNT);
+
+		transferInVCB.inputToDynamicInputBox(driver, Integer.parseInt("100000")+1+"", TittleData.AMOUNT);
 
 		log.info("TC_01_Step_10: Nhap noi dung");
 		transferInVCB.inputToDynamicInputBoxByHeader(driver, TransferMoneyInVCB_Data.InputDataInVCB.NOTE, TittleData.TRANSFER_INFO, "3");
@@ -212,7 +214,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-	// Truoc khi chay case nay can set Up Nhom dich vu vs han muc la 99.999.999 VND
+@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", "40000000");
 
@@ -237,8 +239,9 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 		log.info("TC_04_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
-		
-		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,500,000 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+
+
+		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 900,000 VND");
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 

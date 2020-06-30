@@ -24,7 +24,11 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
 	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
 	public List<ServiceLimitInfo02> getInfoList_All = new ArrayList<ServiceLimitInfo02>();
+
+	public List<ServiceLimitInfo02> getInfoList_totalDay = new ArrayList<ServiceLimitInfo02>();
+
 	public static List<ServiceTypeLimitInfo> getInfoType = new ArrayList<ServiceTypeLimitInfo>();
+
 	public static String oldValue = "";
 	public List<Assign_Package_Total_Limit> listAssign = new ArrayList<Assign_Package_Total_Limit>();
 
@@ -114,6 +118,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	//
 	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
+		
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
@@ -146,10 +151,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Reset goi han muc goi giao dich
 	public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
-		List<String> listActualMethod = getListMetodOtp(driver, tittleTableValue);
-		for (String valueMethods : listActualMethod) {
-			clickToDynamicIconPencil(driver, valueMethods, "blue");
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MAX_PACKAGE, "edit-limit-day");
+		for (Assign_Package_Total_Limit assign : listAssign) {
+			clickToDynamicIconPencil(driver, assign.method_Otp, "blue");
+			inputIntoInputByID(driver, assign.total_limit, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
@@ -162,13 +166,14 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
 	}
 
 	public void inputDynamicDataByListIcon_Total_Limit_Day(WebDriver driver, String dynamicText) {
-		for (ServiceLimitInfo02 inputInfo : getInfoList) {
+		for (ServiceLimitInfo02 inputInfo : getInfoList_totalDay) {
 			clickToDynamicIconByTwoTexts(driver, dynamicText, inputInfo.method, "Edit Service Limit");
 			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
@@ -196,8 +201,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 
-			inputDataToServiceLimit(driver, inputInfo);
-
 		}
 
 		return getInfoList;
@@ -206,11 +209,11 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public List<ServiceLimitInfo02> getAndInputDataByListIcon_Total_LimitDay(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
 		List<String> methodList = getDynamicDataByListIcon(driver, dynamicText, "1");
 		for (String text : methodList) {
-			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
-			getInfo.method = text.trim();
-			clickToDynamicIconByTwoTexts(driver, dynamicText, getInfo.method, "Edit Service Limit");
-			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
-			getInfoList.add(getInfo);
+			ServiceLimitInfo02 getInfo1 = new ServiceLimitInfo02("", "", "", "", "");
+			getInfo1.method = text.trim();
+			clickToDynamicIconByTwoTexts(driver, dynamicText, getInfo1.method, "Edit Service Limit");
+			getInfo1.totalLimit = getDataInInputByID(driver, "edit-total-limit");
+			getInfoList_totalDay.add(getInfo1);
 			inputIntoInputByID(driver, info.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
