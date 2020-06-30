@@ -50,16 +50,16 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		getInfoList = getAndInputDataByListIcon_Total_LimitDay(driver, dynamicText, info);
 	}
 
-	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
+	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
 		addMethodOtpLimit(driver, serviceName);
-		addMethodServicesLimit(driver, serviceName, inputInfo);
-		openAssignServiceLimit(driver);
+		addMethodServicesLimit(driver, serviceName, inputInfo, codePackage);
+		openAssignServiceLimit(driver, codePackage);
 		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);
 		//driver.quit();
 	}
 
-	public void resetAssignServicesLimit(WebDriver driver, String serviceName) {
-		openAssignServiceLimit(driver);
+	public void resetAssignServicesLimit(WebDriver driver, String serviceName, String codePackage) {
+		openAssignServiceLimit(driver,codePackage);
 		inputDynamicDataByListIcon(driver, serviceName);
 	}
 
@@ -256,9 +256,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	// Them Method OTP vao phan Service Limit
-	public void addMethodServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
+	public void addMethodServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
 
-		openAssignServiceLimit(driver);
+		openAssignServiceLimit(driver, codePackage);
 		List<String> actualMethodList = getDynamicDataByListIcon(driver, serviceName, "1");
 		actualMethodList.remove("Vân tay");
 		actualMethodList.remove("Smart OTP");
@@ -283,10 +283,10 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	// Mo phan Assign Service Limit
-	public void openAssignServiceLimit(WebDriver driver) {
+	public void openAssignServiceLimit(WebDriver driver, String codePackage) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
-		clickToDynamicIconByText(driver, "TESTBUG", "Assign Service Limit");
+		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 	}
 
@@ -309,15 +309,15 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	}
 
-	public void setupAssignServicesLimit_All(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
+	public void setupAssignServicesLimit_All(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
 		addMethodOtpLimit(driver, serviceName);
-		addMethodServicesLimit(driver, serviceName, inputInfo);
-		openAssignServiceLimit(driver);
+		addMethodServicesLimit(driver, serviceName, inputInfo,codePackage);
+		openAssignServiceLimit(driver,codePackage);
 		getInfoList_All = getAndInputDataByListIcon_All(driver, serviceName, inputInfo);
 	}
 	
-	public void resetAssignServicesLimit_All(WebDriver driver, String serviceName) {
-		openAssignServiceLimit(driver);
+	public void resetAssignServicesLimit_All(WebDriver driver, String serviceName, String codePackage) {
+		openAssignServiceLimit(driver,codePackage);
 		inputDynamicDataByListIcon_All(driver, serviceName);
 	}
 

@@ -51,7 +51,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 
 
-//		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo);
+		loginWeb.setupAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo,"TESTBUG");
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -69,7 +69,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_01_ChuyenTienTuongLaiThapHonHanMucToiThieu() throws InterruptedException {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
@@ -110,7 +110,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_02_ChuyenTienTuongLaiCaoHonHanMucToiDa() throws InterruptedException {
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -141,8 +141,8 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_03_ChuyenTienTuongLaiVuotQuaHanMucTrongNgay(String otp) throws InterruptedException {
 
 		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản", inputInfo,"TESTBUG");
@@ -172,15 +172,15 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
-		loginWeb.resetAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản");
+		loginWeb.resetAssignServicesLimit(driverWeb, "Chuyển khoản nội bộ cùng chủ tài khoản","TESTBUG");
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 
-//		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ", "900000");
-//		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
+		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb,"TESTBUG", "Chuyển khoản cùng chủ", "900000");
+		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -210,7 +210,7 @@ public class Transfer_Money_In_Immedidately_Limit extends Base {
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 
-//		loginWeb.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "Chuyển khoản cùng chủ");
+		loginWeb.Reset_Setup_Assign_Services_Type_Limit(driverWeb,"TESTBUG", "Chuyển khoản cùng chủ");
 
 	}
 
