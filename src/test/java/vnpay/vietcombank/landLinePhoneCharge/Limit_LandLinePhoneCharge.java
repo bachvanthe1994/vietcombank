@@ -2,34 +2,52 @@ package vnpay.vietcombank.landLinePhoneCharge;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.Base;
+import commons.Constants;
 import commons.PageFactoryManager;
+import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import model.ServiceLimitInfo;
 import pageObjects.HomePageObject;
 import pageObjects.LandLinePhoneChargePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransactionReportPageObject;
+import pageObjects.WebBackendSetupPageObject;
 import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.LandLinePhoneCharge_Data;
 import vietcombank_test_data.LogIn_Data;
+import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
 public class Limit_LandLinePhoneCharge extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
+	private WebBackendSetupPageObject loginWeb;
 	private LandLinePhoneChargePageObject landLinePhoneCharge;
+	WebDriver driverWeb;
 
 	String password = "";
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1000000");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException {
+		log.info("Before class: Mo backend ");
+		startServer();
+		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
+		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
+
+		loginWeb.setupAssignServicesLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, TittleData.PACKAGE_NAME);
+
+		
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {

@@ -58,9 +58,9 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
-		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
+		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp",inputInfo.totalLimit);
 		System.out.println("Setup Package : Done");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.totalLimit);
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.maxTran);
 		System.out.println("Setup Group : Done");
 		setupBE.clearCacheBE(driverWeb);
 		
@@ -76,8 +76,8 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-		higherGroup = (Integer.parseInt(inputInfo.totalLimit) + 1) + "";
-		higherPackage = (Integer.parseInt(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + 1) + "";
+		higherGroup = (Integer.parseInt(inputInfo.maxTran) + 1) + "";
+		higherPackage = (Integer.parseInt(inputInfo.totalLimit) + 1) + "";
 
 	}
 
@@ -116,7 +116,7 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_11: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT + addCommasToLong(inputInfo.totalLimit) + TransferMoneyInVCB_Data.Output.DETAIL_A_GROUP_MESSAGE);
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT + addCommasToLong(inputInfo.maxTran) + TransferMoneyInVCB_Data.Output.DETAIL_A_GROUP_MESSAGE);
 
 		log.info("TC_01_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -160,7 +160,7 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_02_Step_11: Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + TransferMoneyInVCB_Data.Output.DETAIL_A_PACKAGE_MESSAGE);
+		verifyEquals(transferInVCB.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT + addCommasToLong(inputInfo.totalLimit) + TransferMoneyInVCB_Data.Output.DETAIL_A_PACKAGE_MESSAGE);
 
 		log.info("TC_02_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");

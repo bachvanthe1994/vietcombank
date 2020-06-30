@@ -50,8 +50,8 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
 		
-		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.totalLimit);
+		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp",inputInfo.totalLimit);
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.maxTran);
 		setupBE.clearCacheBE(driverWeb);
 		
 		organization = getDataInCell(31);
@@ -63,7 +63,7 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		higherTotal = (Integer.parseInt(inputInfo.totalLimit)+1)+"";
+		higherTotal = (Integer.parseInt(inputInfo.maxTran)+1)+"";
 		
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
@@ -100,7 +100,7 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, TransferMoneyCharity_Data.CONTINUE_BUTTON);
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(inputInfo.totalLimit)+TransferMoneyCharity_Data.DETAIL_A_DAY_GROUP_MESSAGE);
+		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(inputInfo.maxTran)+TransferMoneyCharity_Data.DETAIL_A_DAY_GROUP_MESSAGE);
 		transferMoneyCharity.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
@@ -124,7 +124,7 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		log.info("TC_02_4_Nhap so tien ung ho");
-		String higherMoney = (Integer.parseInt(Constants.AMOUNT_DEFAULT_MIN_PACKAGE)+1)+"";
+		String higherMoney = (Integer.parseInt(inputInfo.totalLimit)+1)+"";
 		transferMoneyCharity.inputToDynamicInputBox(driver, higherMoney, TransferMoneyCharity_Data.MONEY_CHARITY);
 
 		log.info("TC_02_5_Nhap ten nguoi ung ho");
@@ -140,7 +140,7 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		transferMoneyCharity.clickToDynamicButton(driver, TransferMoneyCharity_Data.CONTINUE_BUTTON);
 
 		log.info("TC_02_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE)+TransferMoneyCharity_Data.DETAIL_A_DAY_PACKAGE_MESSAGE);
+		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(inputInfo.totalLimit)+TransferMoneyCharity_Data.DETAIL_A_DAY_PACKAGE_MESSAGE);
 		transferMoneyCharity.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		

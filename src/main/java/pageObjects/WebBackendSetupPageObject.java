@@ -50,11 +50,12 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		getInfoList = getAndInputDataByListIcon_Total_LimitDay(driver, dynamicText, info);
 	}
 
-	public void setupAssignServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
-		addMethodOtpLimit(driver, serviceName);
-		addMethodServicesLimit(driver, serviceName, inputInfo, codePackage);
-		openAssignServiceLimit(driver, codePackage);
-		getInfoList = getAndInputDataByListIcon(driver, serviceName, inputInfo);
+
+	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		addMethodOtpLimit(driverWeb, serviceName);
+		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+		openAssignServiceLimit(driverWeb, codePackage);
+		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 		//driver.quit();
 	}
 
@@ -119,8 +120,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 
-	//
-	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
+	//Set limit value of Package 
+	public void Setup_Add_Method_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue,String amountLimit) {
 		
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
@@ -133,7 +134,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			assign.method_Otp = valueMethods;
 			listAssign.add(assign);
 			clickToDynamicIconPencil(driver, valueMethods, "blue");
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "edit-limit-day");
+			inputIntoInputByID(driver, amountLimit, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
@@ -145,7 +146,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		for (String methods : listMethodExpert) {
 			clickToDynamicButtonATagByClass(driver, "btn btn-primary");
 			selectItemInDropdown(driver, "form-control", methods);
-			inputIntoInputByID(driver, Constants.AMOUNT_DEFAULT_MIN_PACKAGE, "limit-day");
+			inputIntoInputByID(driver, amountLimit, "limit-day");
 			clickToDynamicButtonATagByID(driver, "create-servicetypelimit");
 			acceptAlert(driver);
 		}

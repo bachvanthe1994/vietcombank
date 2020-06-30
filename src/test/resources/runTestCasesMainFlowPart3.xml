@@ -89,7 +89,9 @@
 <!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
 			
 				<class
-				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit" />
+				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" />
+				<class
+				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" />
 				<!-- <class
 				name="vnpay.vietcombank.login.Template" /> -->
 <!-- 				<class -->
