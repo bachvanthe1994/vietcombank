@@ -57,7 +57,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 		setupBE.Login_Web_Backend(driverWeb,username, passWeb);
 		userNameBE = username;
 		passwordBE = passWeb;
-		setupBE.setupAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,inputInfo);
+		setupBE.setupAssignServicesLimit_All(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,inputInfo,Constants.BE_CODE_PACKAGE);
 		
 		destinationAccount = getDataInCell(34);
 		log.info("Before class: Mo app ");
@@ -145,7 +145,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	@Test
 	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu() {
 		
-		setupBE.resetAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,Constants.BE_CODE_PACKAGE);
 		
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
 		
@@ -242,7 +242,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	public void TC_06_ChuyenTienToiTaiKhoanKhacCaoHonMucToiDaTrongNgay() {
 
 		setupBE.Login_Web_Backend(driverWeb,userNameBE, passwordBE);
-		setupBE.setupAssignServicesLimit(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo);
+		setupBE.setupAssignServicesLimit_All(driverWeb,TransferMoneyCharity_Data.BE_TRANSFER_CHARITY_TEXT,inputInfo,Constants.BE_CODE_PACKAGE);
 		
 		log.info("TC_06_01_Click Chuyen tien toi ngan hang khac");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
@@ -366,7 +366,7 @@ public class Limit_Transfer_MoneyOutSide_VCB extends Base {
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		setupBE.resetAssignServicesLimit(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb,TitleOutVCB.BE_TRANSFER_OUTSIDE_TEXT,Constants.BE_CODE_PACKAGE);
 		service.stop();
 	}
 

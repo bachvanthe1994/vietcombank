@@ -60,7 +60,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.totalLimit);
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.totalLimit);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -124,7 +124,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		transferInVCB.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
-		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_TEXT);
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT);
 
 	}
 
@@ -173,8 +173,8 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 	public void TC_03_ResetHanMucMinMax_Va_SuaHanMucNhom_GoiDichVu(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws MalformedURLException {
 		
 		closeApp();
-		setupBE.Reset_Package_Total_Limit(driverWeb, "PKG1", "Method Otp");
-		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo);
+		setupBE.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
+		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo,Constants.BE_CODE_PACKAGE);
 		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -387,7 +387,7 @@ public class Transfer_Periodic_MoneyMin_Max extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		setupBE.resetAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
+		setupBE.resetAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT,Constants.BE_CODE_PACKAGE);
 		driverWeb.quit();
 		service.stop();
 	}

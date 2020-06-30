@@ -1223,4 +1223,14 @@ public class WebAbstractPage {
 		return text ;
 	}
 
+	public String getDynamicDataByMethod(WebDriver driver, String dynamicText, String index) {
+		String data = "";
+		boolean status = false;
+		status = waitForElementVisible(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+		if (status == true) {
+			data = getTextElement(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+		}
+		return data;
+	}
+
 }
