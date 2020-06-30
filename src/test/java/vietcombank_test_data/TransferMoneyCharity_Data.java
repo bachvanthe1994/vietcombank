@@ -13,6 +13,8 @@ public class TransferMoneyCharity_Data {
 	public static final String HIGHER_THAN_MAX_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
 	public static final String DETAIL_A_TRANSACTION_MESSAGE = " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 	public static final String DETAIL_A_DAY_MESSAGE = " VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	public static final String DETAIL_A_DAY_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	public static final String DETAIL_A_DAY_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 	
 	
 	public static final String MONEY_INPUT_OVER_MESSAGE = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 300,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
@@ -58,5 +60,7 @@ public class TransferMoneyCharity_Data {
 	public static final String NEW_TRANSACTION_PERFORM = "Thực hiện giao dịch mới";
 	public static final String ORGANIZATION = "Tấm lòng nhân ái - TK 10 số";
 	public static final String BE_TRANSFER_CHARITY_TEXT = "Chuyển tiền từ thiện (chuyển khoản nội bộ)";
+	public static final String PASSWORD_TEXT = "Mật khẩu đăng nhập";
+	public static final String SMS_OTP_TEXT = "SMS OTP";
 
 }

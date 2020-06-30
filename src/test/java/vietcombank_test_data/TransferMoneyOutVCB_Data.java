@@ -47,6 +47,8 @@ public class TransferMoneyOutVCB_Data {
 		public static final String HIGHER_MAX_A_TRANSACTION = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
 		public static final String DETAIL_A_DAY_MESSAGE = " VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String DETAIL_A_TRANSACTION_MESSAGE = " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String DETAIL_A_DAY_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String DETAIL_A_DAY_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		
 		
 		public static final String LOWER_MIN_AMOUNT_A_TRAN = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
