@@ -31,9 +31,11 @@ public class Transaction_Limit_Account extends Base {
 	private TransferMoneyObject transferMoney;
 	private WebBackendSetupPageObject webBackend;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	private String bankOut, accountRecived;
+	
+	private String  bankOut,otp, accountRecived;
 
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1000000");
+
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "100000", "1000000", "1001000");
 	String inputAmountMin  = inputInfo.minTran ;
 	String inputAmountMax   = inputInfo.maxTran ;
 	String inputTotalLimit   = inputInfo.totalLimit  ;
@@ -45,9 +47,9 @@ public class Transaction_Limit_Account extends Base {
 		log.info("Before class: Mo backend ");
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG","Chuyển khoản", amountType );
-		//webBackend.addMethodOtpLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản");
-		//webBackend.setupAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo,"TESTBUG");
+	
+		webBackend.addMethodOtpLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản");
+		webBackend.setupAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo, "TESTBUG");
 		//App
 		startServer();
 		log.info("Before class: Mo app ");
@@ -58,12 +60,13 @@ public class Transaction_Limit_Account extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		otp = opt;
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		bankOut = getDataInCell(21);
 		accountRecived = getDataInCell(4);
 	}
 
-	//@Test
+	@Test
 	public void TC_01_SoTienNhoHonHanMucToiThieuTrenMotLanGiaoDich_TaiKhoan() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -103,7 +106,7 @@ public class Transaction_Limit_Account extends Base {
 		transferMoney.clickToDynamicBackIcon(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 	}
 	
-	//@Test
+	@Test
 	public void TC_02_SoTienLonHonHanMucToiDaTrenMotLanGiaoDich_TaiKhoan() throws InterruptedException {
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -144,12 +147,9 @@ public class Transaction_Limit_Account extends Base {
 
 	}
 	
-	//@Test
+	@Test
 	public void TC_03_SoTienLonHonHanMucToiDaTrenMotNgayGiaoDich_TaiKhoan() throws InterruptedException {
 		//Setup han muc trong 1 ngay
-		webBackend.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo,Constants.BE_CODE_PACKAGE);
-
-		
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 
@@ -169,7 +169,62 @@ public class Transaction_Limit_Account extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, bankOut);
 
 		log.info("TC_01_Step_Nhap so tien chuyen");
-		transferMoney.inputToDynamicInputBox(driver,(Integer.parseInt(inputTotalLimit )+1) +"", TransferQuick.MOUNT_LABEL);
+		transferMoney.inputToDynamicInputBox(driver, inputAmountMin, TransferQuick.MOUNT_LABEL);
+
+		log.info("TC_01_Step_Chon phi giao dich la nguoi chuyen tra");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+
+		log.info("TC_01_Step_Nhap noi dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, Tittle_Quick.TRANSACTION_INFO, "3");
+
+		log.info("TC_01_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_01_Step_Chon phuong thuc xac thuc");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
+
+		log.info("TC_01_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_01_Step_Nhap ma xac thuc");
+		transferMoney.inputToDynamicOtp(driver, otp, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_01_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_01_Verify message thanh cong");
+		verifyEquals(transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY1);
+		
+		log.info("TC_01_Step_: Thuc hien giao dich moi");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.NEW_TRANSFER);
+
+		log.info("TC_01_Step_:Tai khoan nguon");
+		transferMoney.clickToDynamicDropDown(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+
+		log.info("TC_01_Step_: Tai khoan chuyen");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+
+		webBackend.setupAssignServicesLimit_Total_Day(driverWeb, "Chuyển khoản nhanh qua số tài khoản", inputInfo,Constants.BE_CODE_PACKAGE);
+
+		log.info("TC_01_Step_Select Chuyen tien nhanh qua tai khoan");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+
+		log.info("TC_01_Step_Select tai khoan nguon");
+		transferMoney.clickToDynamicDropDown(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+
+		log.info("TC_01_Step_Nhap so tai khoan chuyen");
+		transferMoney.inputToDynamicInputBox(driver, accountRecived, Tittle_Quick.TYPE_SELECT_ACCOUNT);
+
+		log.info("TC_01_Step_Select ngan hang");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Tittle_Quick.BANK_RECIVED);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, bankOut);
+
+		log.info("TC_01_Step_Nhap so tien chuyen");
+		transferMoney.inputToDynamicInputBox(driver,inputAmountMax, TransferQuick.MOUNT_LABEL);
 
 		log.info("TC_01_Step_Chon phi giao dich la nguoi chuyen tra");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
@@ -188,12 +243,11 @@ public class Transaction_Limit_Account extends Base {
 		transferMoney.clickToDynamicBackIcon(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 	
 		webBackend.resetAssignServicesLimit(driverWeb, "Chuyển khoản nhanh qua số tài khoản",Constants.BE_CODE_PACKAGE);
-
 	}
 	
 	@Test
 	public void TC_04_SoTienLonHonHanMucToiDaTrenMotNgayNhomGiaoDich_TaiKhoan() throws InterruptedException {
-		
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG","Chuyển khoản", amountType );
 		log.info("TC_01_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 
@@ -232,7 +286,7 @@ public class Transaction_Limit_Account extends Base {
 		transferMoney.clickToDynamicBackIcon(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 		
 		log.info("TC_01_Step_reset cai dat nhom dich vu ");
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG","Chuyển khoản", amountType );
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG","Chuyển khoản");
 	}
 	
 	@Test
