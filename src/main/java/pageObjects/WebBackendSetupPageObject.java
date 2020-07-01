@@ -52,8 +52,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 
 	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
-		addMethodOtpLimit(driverWeb, serviceName);
-		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+		//addMethodOtpLimit(driverWeb, serviceName);
+		//addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 		//driver.quit();
@@ -363,5 +363,15 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicButtonATagByClass(driver, "btn btn-info");
 		acceptAlert(driver);
 		waitForAlerVisibleAndClickAccept(driver);
+	}
+	
+	public void addMethod(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		addMethodOtpLimit(driverWeb, serviceName);
+		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+	}
+	
+	public void getInfoServiceLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		openAssignServiceLimit(driverWeb, codePackage);
+		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 	}
 }
