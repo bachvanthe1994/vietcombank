@@ -50,7 +50,7 @@ public class Limit_Internet_ADSL extends Base {
 		log.info("Before class: Mo backend ");
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
-		webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, "TESTBUG");
+		//webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, "TESTBUG");
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -63,7 +63,7 @@ public class Limit_Internet_ADSL extends Base {
 
 	//Lỗi app vẫn cho phép chuyển tiềnthành công
 	@Test
-	public void TC_01_ThanhToanCuocViettelNhoHonHanMucToiThieu() {
+	public void TC_01_ThanhToanCuocViettelNhoHonHanMucToiThieu() throws InterruptedException {
 		log.info("TC_01_Step_Click cuoc ADSL");
 		adsl.scrollDownToText(driver, Internet_ADSL_Data.Valid_Account.SAVE);
 		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
@@ -99,10 +99,17 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("TC_01_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
-
+		
+		log.info("TC_01_Quay ve man hinh khoi tao");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		
 		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20000) + "", (amount + 1000000) + "", "10000000");
 		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMin, "TESTBUG");
 		webBackend.clearCacheBE(driverWeb);
+		
+		log.info("TC_01_Click tiep tuc");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
+		
 		log.info("TC_01_Chon phuong thuc xac thuc");
 		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
 		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.PASSWORD);
@@ -125,7 +132,7 @@ public class Limit_Internet_ADSL extends Base {
 	}
 
 	@Test
-	public void TC_02_ThanhToanCuocViettelCaoHonHanMucToiDa() {
+	public void TC_02_ThanhToanCuocViettelCaoHonHanMucToiDa() throws InterruptedException {
 		log.info("TC_01_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
 		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -158,9 +165,15 @@ public class Limit_Internet_ADSL extends Base {
 		log.info("TC_01_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
 
+		log.info("TC_01_Quay ve man hinh khoi tao");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		
 		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 20000) + "", (amount - 10000) + "", "10000000");
 		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMax, "TESTBUG");
 		webBackend.clearCacheBE(driverWeb);
+		
+		log.info("TC_01_Click tiep tuc");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Chon phuong thuc xac thuc");
 		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
@@ -185,7 +198,7 @@ public class Limit_Internet_ADSL extends Base {
 	}
 
 	@Test
-	public void TC_03_ThanhToanCuocViettelCaoHonHanMucToiDaNhom() {
+	public void TC_03_ThanhToanCuocViettelCaoHonHanMucToiDaNhom() throws InterruptedException {
 		log.info("TC_01_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
 		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -218,8 +231,14 @@ public class Limit_Internet_ADSL extends Base {
 		log.info("TC_01_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
 
+		log.info("TC_01_Quay ve man hinh khoi tao");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		
 		webBackend.Setup_Assign_Services_Type_Limit(driver, "TESTBUG", "Thanh toán hoá đơn", (amount - 10000) + "");
 		webBackend.clearCacheBE(driverWeb);
+		
+		log.info("TC_01_Click tiep tuc");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Chon phuong thuc xac thuc");
 		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
@@ -244,7 +263,7 @@ public class Limit_Internet_ADSL extends Base {
 	}
 
 	@Test
-	public void TC_04_ThanhToanCuocViettelCaoHonHanMucToiDaGoi() {
+	public void TC_04_ThanhToanCuocViettelCaoHonHanMucToiDaGoi() throws InterruptedException {
 		log.info("TC_01_Step_Select tai khoan nguon");
 		adsl.clickToDynamicDropDown(driver, Internet_ADSL_Data.Valid_Account.SOURCE_ACCOUNT);
 		sourceAccount = adsl.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -277,7 +296,13 @@ public class Limit_Internet_ADSL extends Base {
 		log.info("TC_01_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
 
+		log.info("TC_01_Quay ve man hinh khoi tao");
+		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		
 		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 10000) + "");
+		
+		log.info("TC_01_Click tiep tuc");
+		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_Chon phuong thuc xac thuc");
 		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
