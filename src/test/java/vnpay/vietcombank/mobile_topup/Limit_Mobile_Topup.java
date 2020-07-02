@@ -206,6 +206,7 @@ public class Limit_Mobile_Topup extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
+		setupBE.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
 		setupBE.Reset_Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Nạp tiền điện thoại", "31000", "499000", "1000000000");
 		service.stop();
 		

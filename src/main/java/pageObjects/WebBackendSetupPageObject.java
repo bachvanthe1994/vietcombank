@@ -28,6 +28,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public List<ServiceLimitInfo02> getInfoList_totalDay = new ArrayList<ServiceLimitInfo02>();
 
 	public static List<ServiceTypeLimitInfo> getInfoType = new ArrayList<ServiceTypeLimitInfo>();
+	public static List<ServiceLimitInfo02> serviceLimitInfoList = new ArrayList<ServiceLimitInfo02>();
 
 	public static String oldValue = "";
 	public List<Assign_Package_Total_Limit> listAssign = new ArrayList<Assign_Package_Total_Limit>();
@@ -135,12 +136,15 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 		// Setup hạn mức cho nhóm dịch vụ cho những nhóm đã có sẵn
 		for (String list : listActualMethod) {
-			ServiceTypeLimitInfo serviceType = new ServiceTypeLimitInfo("", "", "");
-			serviceType.methodOTP = list;
+			ServiceLimitInfo02 service = new ServiceLimitInfo02("", "", "", "", "");
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", list, "Edit Service Limit");
-			serviceType.currentcy = getDataSelectText(driver, "edit-ccy");
-			serviceType.totalLimit = getDataInInputByID(driver, "edit-limit-day");
-			getInfoType.add(serviceType);
+			service.method = list;
+			service.timesDay = getDataSelectText(driver, "edit-times-day");
+			service.minTran = getDataSelectText(driver, "edit-min-tran");
+			service.maxTran = getDataSelectText(driver, "edit-max-tran");
+			service.totalLimit = getDataInInputByID(driver, "edit-total-limit");
+			
+			serviceLimitInfoList.add(service);
 			inputIntoInputByID(driver, "1000", "edit-times-day");
 			inputIntoInputByID(driver, minLimitTrans, "edit-min-tran");
 			inputIntoInputByID(driver, maxLimitTrans, "edit-max-tran");
@@ -175,12 +179,12 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
 		clickToDynamicSelectModel(driver, "PerPageItems");
 		clickToDynamicOptionText(driver, "100");
-		for (ServiceTypeLimitInfo serviceType : getInfoType) {
-			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", serviceType.methodOTP, "Edit Service Limit");
+		for (ServiceLimitInfo02 service : serviceLimitInfoList) {
+			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", service.method, "Edit Service Limit");
 			inputIntoInputByID(driver, "1000", "edit-times-day");
-			inputIntoInputByID(driver, minLimitTrans, "edit-min-tran");
-			inputIntoInputByID(driver, maxLimitTrans, "edit-max-tran");
-			inputIntoInputByID(driver, totalLimit, "edit-total-limit");
+			inputIntoInputByID(driver, service.minTran, "edit-min-tran");
+			inputIntoInputByID(driver, service.maxTran, "edit-max-tran");
+			inputIntoInputByID(driver, service.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
