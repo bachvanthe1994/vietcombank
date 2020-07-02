@@ -63,4 +63,13 @@ public class HotelBooking_Data {
 	public static final String PHONE_BOOKING = "0399764702";
 	public static final String EMAIL_BOOKING = "vnpay.automation.team@gmail.com";
 
+	public static final String MESSAGE_MIN_LIMIT_PER_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức "; 
+	public static final String MESSAGE_MIN_LIMIT_PER_TRANS_2 = "/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_TRANS_2 = "/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_2 = "/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_2 = "/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	
 }
