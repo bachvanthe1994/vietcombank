@@ -139,9 +139,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			ServiceLimitInfo02 service = new ServiceLimitInfo02("", "", "", "", "");
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", list, "Edit Service Limit");
 			service.method = list;
-			service.timesDay = getDataSelectText(driver, "edit-times-day");
-			service.minTran = getDataSelectText(driver, "edit-min-tran");
-			service.maxTran = getDataSelectText(driver, "edit-max-tran");
+			service.timesDay = getDataInInputByID(driver, "edit-times-day");
+			service.minTran = getDataInInputByID(driver, "edit-min-tran");
+			service.maxTran = getDataInInputByID(driver, "edit-max-tran");
 			service.totalLimit = getDataInInputByID(driver, "edit-total-limit");
 			
 			serviceLimitInfoList.add(service);
@@ -173,7 +173,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	
-	public void Reset_Setup_Assign_Services_Limit(WebDriver driver, String codePackage, String servicesName, String minLimitTrans, String maxLimitTrans, String totalLimit) {
+	public void Reset_Setup_Assign_Services_Limit(WebDriver driver, String codePackage, String servicesName) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
