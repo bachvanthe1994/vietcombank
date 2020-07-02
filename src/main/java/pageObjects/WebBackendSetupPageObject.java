@@ -52,8 +52,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 
 	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
-		addMethodOtpLimit(driverWeb, serviceName);
-		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+		//addMethodOtpLimit(driverWeb, serviceName);
+		//addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 		//driver.quit();
@@ -255,15 +255,16 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
 			getInfo.method = text.trim();
 			clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
-			getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
+//			getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
 			getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
 			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
 			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
 			getInfoList.add(getInfo);
 
-			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
+//			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 
@@ -429,5 +430,15 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicButtonATagByClass(driver, "btn btn-info");
 		acceptAlert(driver);
 		waitForAlerVisibleAndClickAccept(driver);
+	}
+	
+	public void addMethod(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		addMethodOtpLimit(driverWeb, serviceName);
+		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+	}
+	
+	public void getInfoServiceLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		openAssignServiceLimit(driverWeb, codePackage);
+		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 	}
 }
