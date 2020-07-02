@@ -189,13 +189,13 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
 			getInfo.method = text.trim();
 			clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
-			getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
+//			getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
 			getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
 			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
 			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
 			getInfoList.add(getInfo);
 
-			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
+//			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
 			clickToDynamicButtonATagByID(driver, "edit-limit");

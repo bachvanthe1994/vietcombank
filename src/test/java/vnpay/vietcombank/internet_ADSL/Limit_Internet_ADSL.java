@@ -300,7 +300,8 @@ public class Limit_Internet_ADSL extends Base {
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 10000) + "");
-		
+		webBackend.clearCacheBE(driverWeb);
+
 		log.info("TC_01_Click tiep tuc");
 		adsl.clickToDynamicContinue(driver, "com.VCB:id/btContinue");
 
