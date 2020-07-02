@@ -15,6 +15,8 @@ public class SavingOnline_Data {
 	public static final String THREE_MONTH_INTEREST = "4.5%/Năm";
 	public static final String MONEY = "100000";
 	public static final String OPEN_SAVING_ACCOUNT = "Mở tiết kiệm";
+	public static final String OPEN_SAVING = "Mở tài khoản tiết kiệm online";
+	public static final String SAVING_ONLINE= "Tiết kiệm online";
 	public static final String ACCOUNT_NUMBER = "Số tài khoản";
 	public static final String AVAILABLE_BALANCE = "Số dư khả dụng";
 	public static final String TRANSACTION_INFO = "Thông tin giao dịch";
@@ -26,6 +28,7 @@ public class SavingOnline_Data {
 	public static final String INTEREST_PAYMENT_METHOD = "Hình thức trả lãi";
 	public static final String ACCURACY_METHOD = "Chọn phương thức xác thực";
 	public static final String SMS_OTP = "SMS OTP";
+	public static final String PASSWORD = "Mật khẩu đăng nhập";
 	public static final String VCB_SMART_OTP = "VCB - Smart OTP";
 	public static final String SAVING_NUMBER = "Số tài khoản tiết kiệm";
 	public static final String TRANSACTION_CODE = "Mã giao dịch";
@@ -41,6 +44,9 @@ public class SavingOnline_Data {
 	public static final String PAY_INTEREST_METHOD_01 = "Lãi nhập gốc";
 	public static final String PAY_INTEREST_METHOD_02 = "Lãi trả vào tài khoản tiền gửi khi đến hạn trả lãi";
 	public static final String SEARCH_BUTTON = "Tìm kiếm";
+	public static final String METHOD_OTP = "Method Otp";
+	public static final String PACKAGE_NAME = "TESTBUG";
+
 	
 }
 	

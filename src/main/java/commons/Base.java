@@ -196,7 +196,7 @@ public class Base {
 			cap.setCapability("appActivity", appActivities);
 //			cap.setCapability("appWaitPackage", "com.google.android.packageinstaller");
 //			cap.setCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.GrantPermissionsActivity");
-			cap.setCapability("appWaitDuration", 60000);
+			cap.setCapability("appWaitDuration", 100000);
 
 		}
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
@@ -358,6 +358,7 @@ public class Base {
 		return randomNumber;
 
 	}
+	
 
 	protected boolean checkPassed(boolean condition) {
 		softAssertion = new SoftAssert();

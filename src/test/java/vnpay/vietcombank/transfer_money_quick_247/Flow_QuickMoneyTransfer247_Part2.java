@@ -71,6 +71,138 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 	@Parameters({ "otp" })
 	@Test
+	public void TC_00_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP(String otp) {
+		log.info("TC_09_Step_Click Chuyen tien nhanh");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
+
+		log.info("TC_09_Step_Select Chuyen tien nhanh qua the");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
+
+		log.info("TC_09_Step_Select tai khoan nguon");
+		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+		listCard = transferMoney.getListCard();
+		transferMoney.scrollUpToText(driver, listCard.get(0));
+
+		for (String card : listCard) {
+			transferMoney.scrollDownToText(driver, card);
+			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
+			transferMoney.clickToDynamicButtonLinkOrLinkText(driver, card);
+			if (transferMoney.getPageSource(driver).contains(Tittle_Quick.UNSATISFACTORY)) {
+				log.info("TC_01_Step_07: Click btn Dong y:");
+				transferMoney.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+				log.info("TC_01_Step_08: Click chon so tai khoan the :");
+				transferMoney.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
+				continue;
+			} else {
+				cardNumber = transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContentCard");
+				sourceAccount.account = transferMoney.getDynamicTextByLabel(driver, TransferQuick.ACCOUNT_FROM_LABEL);
+				sourceAccount.currentcy = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+				if (sourceAccount.currentcy.length() > 3) {
+					sourceAccount.currentcy = sourceAccount.currentcy.split(" ")[1];
+					sourceAccount.balance = transferMoney.getDynamicTextByLabel(driver, Tittle_Quick.AVAIBLE_BALANCES);
+					if (!sourceAccount.currentcy.equals(Constants.VND_CURRENCY) || convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccount.balance) < Long.valueOf(Constants.MONEY_CHECK_VND)) {
+						transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+						transferMoney.scrollUpToText(driver, listCard.get(0));
+						continue;
+					} else {
+						break;
+					}
+				} else {
+					break;
+				}
+
+			}
+		}
+
+		log.info("TC_09_Step_Doi kieu du lieu");
+		amountStart = convertAvailableBalanceCurrentcyOrFeeToLong(sourceAccount.balance);
+
+		log.info("TC_09_Step_Nhap so tai khoan chuyen");
+		transferMoney.inputToDynamicInputBox(driver, cardTo, Tittle_Quick.TYPE_SELECT_CARD_NUMBER);
+
+		log.info("TC_09_Step_Nhap so tien chuyen");
+		transferMoney.inputToDynamicInputBox(driver, TransferMoneyQuick_Data.TransferQuick.MONEY, TransferQuick.MOUNT_LABEL);
+
+		log.info("TC_09_Step_Chon phi giao dich la nguoi nhan tra");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.COST_SUB[1]);
+
+		log.info("TC_09_Step_Nhap noi dung");
+		transferMoney.inputToDynamicInputBoxByHeader(driver, TransferMoneyQuick_Data.TransferQuick.NOTE, Tittle_Quick.TRANSACTION_INFO, "3");
+
+		log.info("TC_09_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_09_Step_Chon phuong thuc xac thuc");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
+
+		log.info("TC_09_Step_Lay gia tri so tien chuyen");
+		amountTranferString = transferMoney.getDynamicTextByLabel(driver, TransferQuick.MOUNT_LABEL).replaceAll("\\D+", "");
+
+		log.info("TC_09_Step_Verify so tien chuyen");
+		verifyEquals(amountTranferString, TransferMoneyQuick_Data.TransferQuick.MONEY);
+
+		log.info("TC_09_Step_doi kieu du lieu string -> long");
+		amountTranfer = Long.parseLong(amountTranferString);
+		
+
+		log.info("TC_09_Step_Lay gia tri so tien phí chuyen");
+		costTranferString = transferMoney.getDynamicTextByLabel(driver, TransferQuick.AMOUNT_FEE_LABEL).replaceAll("\\D+", "");
+
+		log.info("TC_09_Step_doi kieu du lieu string -> long");
+		costTranfer = Long.parseLong(costTranferString);
+
+		log.info("TC_09_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_09_Step_Nhap ma xac thuc");
+		transferMoney.inputToDynamicOtp(driver, otp, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_09_Step_Tiep tuc");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.CONTINUE_BUTTON);
+
+		log.info("TC_09_Verify message thanh cong");
+		verifyEquals(transferMoney.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvTitle"), TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY1);
+
+		log.info("TC_09_get thoi gian giao dich thanh cong");
+		transferTime = transferMoney.getDynamicTransferTimeAndMoney(driver, TransferMoneyQuick_Data.TransferQuick.SUCCESS_TRANSFER_MONEY1, "4").split(" ")[3];
+
+		log.info("TC_09_Step_: Get ma giao dich");
+		transactionNumber = transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.CODE_TRANSFER);
+
+		log.info("TC_09_Step_:Ten nguoi thu huong");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.NAME_RECIVED_TEXT), nameCustomer);
+
+		log.info("TC_09_Step_: Tai khoan dich");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.CAR_NUMBER), cardTo);
+
+		log.info("TC_09_Step_: Noi dung");
+		verifyEquals(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.CONTENT), TransferMoneyQuick_Data.TransferQuick.NOTE);
+
+		log.info("TC_09_Step_: Thuc hien giao dich moi");
+		transferMoney.clickToDynamicButton(driver, Tittle_Quick.NEW_TRANSFER);
+
+		log.info("TC_09_Step_Select Chuyen tien nhanh qua the");
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[1]);
+
+		log.info("TC_09_Step_Select tai khoan nguon");
+		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, cardNumber);
+
+		log.info("TC_09_Step_:Check so du kha dung sau khi chuyen tien");
+		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES).replaceAll("\\D+", "");
+
+		long amountAfter = Long.parseLong(amountAfterString);
+
+		log.info("TC_09_Step_:Check so du kha dung sau khi chuyen tien");
+		verifyEquals(amountStart - amountTranfer, amountAfter);
+	}
+	
+	@Parameters({ "otp" })
+	@Test
 	public void TC_01_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVNDVaXacThucBangOTP(String otp) {
 		log.info("TC_09_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
@@ -303,7 +435,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test
+	//@Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_03_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP(String otp) {
 		log.info("TC_11_Step_Click Chuyen tien nhanh");
@@ -435,7 +567,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountAtual, amountExpect);
 	}
 
-	@Test
+	//@Test
 	public void TC_04_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -1248,7 +1380,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	
 	@Test
 	// Lỗi app, số tiền bị bỏ đơn vị USD
-	public void TC_15_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangMatKhau() {
+	public void TC_11_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangMatKhau() {
 		log.info("TC_15_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 

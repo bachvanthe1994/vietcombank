@@ -299,6 +299,19 @@ public class AbstractPage {
 		}
 
 	}
+	
+	public void scrollUpOneTime(AppiumDriver<MobileElement> driver) {
+		Dimension size = driver.manage().window().getSize();
+		int x = size.getWidth() / 2;
+		int startY = (int) (size.getHeight() * 0.10);
+		int endY = (int) (size.getHeight() * 0.90);
+		TouchAction touch = new TouchAction(driver);
+		try {
+			touch.longPress(PointOption.point(x, startY)).moveTo(PointOption.point(x, endY)).release().perform();
+		} catch (Exception e) {
+		}
+
+	}
 
 	public void scrollDown_LongDistance(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
 		Dimension size = driver.manage().window().getSize();

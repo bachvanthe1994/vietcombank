@@ -892,7 +892,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	/* SCROLL UP */
 	public void scrollUpToText(String dynamicText) {
-		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT);
+		scrollUp(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT,dynamicText);
 
 	}
 

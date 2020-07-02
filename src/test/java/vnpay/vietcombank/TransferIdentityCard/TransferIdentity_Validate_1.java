@@ -81,7 +81,7 @@ public class TransferIdentity_Validate_1 extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_18_STEP_9: kiem tra thong bao khi nhap so tien nho hơn han muc nho nhat cua 1 lan giao dich");
-	verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.textDataInputForm.CONFIRM_MIN_TRANSFER);
+	verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.textDataInputForm.CONFIRM_MIN_TRANSFER_TOP);
 
 	log.info("TC_18_STEP_10: chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Đóng");
@@ -127,7 +127,7 @@ public class TransferIdentity_Validate_1 extends Base {
 	trasferPage.clickToDynamicButton(driver, "Tiếp tục");
 
 	log.info("TC_19_STEP_10: kiem tra thong bao khi nhap so tien nho hơn han muc nho nhat cua 1 lan giao dich");
-	verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.textDataInputForm.CONFIRM_MAX_TRANSFER);
+	verifyEquals(trasferPage.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), TransferIdentity_Data.textDataInputForm.CONFIRM_MIN_TRANSFER_TOP);
 
 	log.info("TC_19_STEP_11: chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, "Đóng");

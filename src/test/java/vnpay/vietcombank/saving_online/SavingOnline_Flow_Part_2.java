@@ -18,7 +18,6 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.SavingOnlinePageObject;
 import pageObjects.TransactionReportPageObject;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.TransactionReport_Data;
 
@@ -34,7 +33,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 	private String savingAccount;
 	private String transactionNumber;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String account, balance, currentcy = "";
+	String account, password,balance, currentcy = "";
 	
 	SavingOnlineInfo info = new SavingOnlineInfo("", SavingOnline_Data.ONE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_02);
 	SavingOnlineInfo info1 = new SavingOnlineInfo("", SavingOnline_Data.THREE_MONTH, SavingOnline_Data.MONEY, SavingOnline_Data.PAY_INTEREST_METHOD_02);
@@ -51,13 +50,14 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		password = pass;
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		savingOnline = PageFactoryManager.getSavingOnlinePageObject(driver);
-
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
-
+	
+	
 	@Test
 	public void TC_01_MoTaiKhoanTietKiem_VND_1Thang_LaiTraVaoTaiKhoanTienGuiKhiDenHanTraLai_PTXT_OTP() {
 		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
@@ -107,7 +107,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_01_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.SMS_OTP);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
 
 		log.info("TC_01_10_Kiem tra so tien phi");
 		transferFee = 0;
@@ -115,9 +115,9 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_01_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputIntoEditTextByID(driver, password, "com.VCB:id/pin");
 
-		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_01_12_Kiem tra man hinh Giao dich thanh cong");
 		log.info("TC_01_12_1_Kiem tra Giao dich thanh cong");
@@ -263,7 +263,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_03_07_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.SMS_OTP);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
 
 		log.info("TC_03_08_Kiem tra so tien phi");
 		transferFee = 0;
@@ -271,9 +271,9 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_03_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputIntoEditTextByID(driver, password, "com.VCB:id/pin");
 
-		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.TRANSACTION_CODE);
 
@@ -410,7 +410,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_05_09_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.SMS_OTP);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
 
 		log.info("TC_05_10_Kiem tra so tien phi");
 		transferFee = 0;
@@ -418,9 +418,9 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_05_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputIntoEditTextByID(driver, password, "com.VCB:id/pin");
 
-		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		log.info("TC_05_12_Kiem tra man hinh Giao dich thanh cong");
 		log.info("TC_05_12_1_Kiem tra Giao dich thanh cong");
@@ -566,7 +566,7 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_07_07_Chon phuong thuc xac thuc");
 		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.SMS_OTP);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
 
 		log.info("TC_07_08_Kiem tra so tien phi");
 		transferFee = 0;
@@ -574,9 +574,9 @@ public class SavingOnline_Flow_Part_2 extends Base {
 		log.info("TC_07_09_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
-		savingOnline.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputIntoEditTextByID(driver, password, "com.VCB:id/pin");
 
-		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 		transactionNumber = savingOnline.getDynamicTextInTransactionDetail(driver, SavingOnline_Data.TRANSACTION_CODE);
 

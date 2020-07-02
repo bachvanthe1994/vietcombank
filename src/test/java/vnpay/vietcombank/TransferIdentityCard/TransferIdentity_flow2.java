@@ -74,7 +74,7 @@ public class TransferIdentity_flow2 extends Base {
 
 		log.info("TC_15_Step_5: chon giay to tuy than");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.IDENTITY);
-		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, "Hộ chiếu");
+		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.PASSPORT);
 
 		log.info("TC_15_Step_6: so CMT");
 		trasferPage.inputToDynamicInputBox(driver, TransferIdentity_Data.textDataInputForm.IDENTITY_NUMBER, textCheckElement.NUMBER);

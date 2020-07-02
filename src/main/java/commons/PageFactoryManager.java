@@ -1,5 +1,7 @@
 package commons;
 
+import org.openqa.selenium.WebDriver;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import pageObjects.AutoSavingPageObject;
@@ -44,6 +46,7 @@ import pageObjects.TransferMoneyStatusPageObject;
 import pageObjects.VCBAutoDebitPageObject;
 import pageObjects.VCBCreditCardPaymentObject;
 import pageObjects.WaterBillPageObject;
+import pageObjects.WebBackendSetupPageObject;
 import pageObjects.sdk.airTicketBooking.DynamicAirTicketBookingObjects;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import pageObjects.sdk.hotelBooking.HotelBookingPageObject;
@@ -245,6 +248,8 @@ public class PageFactoryManager {
 	public static InsuranceFeePageObject getInsurranceFeePageObject(AppiumDriver<MobileElement> driver) {
 		return new InsuranceFeePageObject(driver);
 	}
+	
+	
 	
 	
 
