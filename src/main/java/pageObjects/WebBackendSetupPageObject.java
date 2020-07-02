@@ -119,6 +119,72 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			acceptAlert(driver);
 		}
 	}
+	
+
+	public void Setup_Assign_Services_Limit(WebDriver driver,String codePackage, String servicesName, String minLimitTrans, String maxLimitTrans, String totalLimit) {
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
+		clickToDynamicSelectModel(driver, "PerPageItems");
+		clickToDynamicOptionText(driver, "100");
+		// Lay list phuong thuc xac thuc
+		List<String> listActualMethod = new ArrayList<String>();
+		listActualMethod = getTextInListElements(driver, DynamicWebPageUIs.DYNAMIC_TD_FOLLOWING_INDEX, "ng-scope", servicesName + "\n", "1");
+		listActualMethod.remove("Vân tay");
+		listActualMethod.remove("Smart OTP");
+
+		// Setup hạn mức cho nhóm dịch vụ cho những nhóm đã có sẵn
+		for (String list : listActualMethod) {
+			ServiceTypeLimitInfo serviceType = new ServiceTypeLimitInfo("", "", "");
+			serviceType.methodOTP = list;
+			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", list, "Edit Service Limit");
+			serviceType.currentcy = getDataSelectText(driver, "edit-ccy");
+			serviceType.totalLimit = getDataInInputByID(driver, "edit-limit-day");
+			getInfoType.add(serviceType);
+			inputIntoInputByID(driver, "1000", "edit-times-day");
+			inputIntoInputByID(driver, minLimitTrans, "edit-min-tran");
+			inputIntoInputByID(driver, maxLimitTrans, "edit-max-tran");
+			inputIntoInputByID(driver, totalLimit, "edit-total-limit");
+			clickToDynamicButtonATagByID(driver, "edit-limit");
+			acceptAlert(driver);
+		}
+		List<String> listExpect = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
+		listExpect.removeAll(listActualMethod);
+
+		// Tạo mới nhóm dịch vụ với PTXT chưa có trong list
+		for (String service : listExpect) {
+			clickToDynamicNgClick(driver, "addServiceLimit()");
+			clickToDynamicSelectID(driver, "service");
+			clickToDynamicOptionText(driver, servicesName);
+			clickToDynamicSelectID(driver, "method-otp");
+			clickToDynamicOptionText(driver, service);
+			inputIntoInputByID(driver, "1000", "times-day");
+			inputIntoInputByID(driver, minLimitTrans, "min-tran");
+			inputIntoInputByID(driver, maxLimitTrans, "max-tran");
+			inputIntoInputByID(driver, totalLimit, "total-limit");
+			clickToDynamicButtonATagByID(driver, "create-limit");
+			acceptAlert(driver);
+
+		}
+	}
+
+	
+	public void Reset_Setup_Assign_Services_Limit(WebDriver driver, String codePackage, String servicesName, String minLimitTrans, String maxLimitTrans, String totalLimit) {
+		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
+		selectItemInDropdown(driver, "ng-pristine", "100");
+		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
+		clickToDynamicSelectModel(driver, "PerPageItems");
+		clickToDynamicOptionText(driver, "100");
+		for (ServiceTypeLimitInfo serviceType : getInfoType) {
+			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", serviceType.methodOTP, "Edit Service Limit");
+			inputIntoInputByID(driver, "1000", "edit-times-day");
+			inputIntoInputByID(driver, minLimitTrans, "edit-min-tran");
+			inputIntoInputByID(driver, maxLimitTrans, "edit-max-tran");
+			inputIntoInputByID(driver, totalLimit, "edit-total-limit");
+			clickToDynamicButtonATagByID(driver, "edit-limit");
+			acceptAlert(driver);
+		}
+	}
 
 	//Set limit value of Package 
 	public void Setup_Add_Method_Package_Total_Limit(WebDriver driverWeb, String packageCode, String tittleTableValue,String amountLimit) {
