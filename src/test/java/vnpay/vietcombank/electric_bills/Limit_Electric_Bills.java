@@ -56,9 +56,9 @@ public class Limit_Electric_Bills extends Base {
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		log.info("Before class: setup limit ngay");
-		webBackend.setupAssignServicesLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, backendTitle.PACKAGE_CODE);
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, "Thanh toán hóa đơn", Data_Limit.TOTAL_SERVICE);
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, "Method Otp", Data_Limit.PACKAGE_LIMIT_TRANSFER);
+		webBackend.setupAssignServicesLimit(driverWeb, Constants.POSTPAID_MOBILE, inputInfo, backendTitle.PACKAGE_CODE);
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, Constants.PAY_BILL, Data_Limit.TOTAL_SERVICE);
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, Constants.METHOD_OTP, Data_Limit.PACKAGE_LIMIT_TRANSFER);
 
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -96,7 +96,7 @@ public class Limit_Electric_Bills extends Base {
 		
 		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20) + "", (amount + 100) + "", "10000000");
 
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMin, "TESTBUG");
+		webBackend.getInfoServiceLimit(driverWeb, Constants.POSTPAID_MOBILE, inputInfoMin, backendTitle.PACKAGE_CODE);
 
 		log.info("TC_01_Click tiep tuc");
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -106,7 +106,7 @@ public class Limit_Electric_Bills extends Base {
 
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, Constants.POSTPAID_MOBILE, backendTitle.PACKAGE_CODE);
 	}
 	
 	@Test
@@ -128,7 +128,7 @@ public class Limit_Electric_Bills extends Base {
 		electricBill.inputIntoEditTextByID(driver, customerID, "com.VCB:id/code");
 		
 		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 20) + "", (amount - 10) + "", "10000000");
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMax, "TESTBUG");
+		webBackend.getInfoServiceLimit(driverWeb, Constants.POSTPAID_MOBILE, inputInfoMax, backendTitle.PACKAGE_CODE);
 		
 		log.info("TC_02_Click tiep tuc");
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -138,7 +138,7 @@ public class Limit_Electric_Bills extends Base {
 
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.setupAssignServicesLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, backendTitle.PACKAGE_CODE);
+		webBackend.setupAssignServicesLimit(driverWeb, Constants.POSTPAID_MOBILE, inputInfo, backendTitle.PACKAGE_CODE);
 	}
 
 	@Test
@@ -160,7 +160,7 @@ public class Limit_Electric_Bills extends Base {
 		electricBill.inputIntoEditTextByID(driver, customerID, "com.VCB:id/code");
 		
 		log.info("TC_03_Quay ve man hinh khoi tao");
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn" , (amount - 1000) + "");
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, Constants.PAY_BILL , (amount - 1000) + "");
 		
 		log.info("TC_03_Click tiep tuc");
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -170,7 +170,7 @@ public class Limit_Electric_Bills extends Base {
 
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, Constants.POSTPAID_MOBILE, backendTitle.PACKAGE_CODE);
 	}
 	
 	@Test
@@ -192,7 +192,7 @@ public class Limit_Electric_Bills extends Base {
 		electricBill.inputIntoEditTextByID(driver, customerID, "com.VCB:id/code");
 		
 		log.info("TC_04_Quay ve man hinh khoi tao");
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 1000) + "");
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, Constants.METHOD_OTP, (amount - 1000) + "");
 		
 		log.info("TC_04_Click tiep tuc");
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -202,7 +202,7 @@ public class Limit_Electric_Bills extends Base {
 
 		electricBill.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		electricBill.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, Constants.POSTPAID_MOBILE, backendTitle.PACKAGE_CODE);
 	}
 
 	@AfterClass(alwaysRun = true)
