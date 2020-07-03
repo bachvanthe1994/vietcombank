@@ -63,8 +63,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_01_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_01_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -115,8 +115,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_01_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_01_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -176,8 +176,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_02_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_02_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -228,8 +228,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_02_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_02_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -288,8 +288,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_03_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_03_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -337,8 +337,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_03_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_03_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -397,8 +397,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_04_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_04_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
@@ -446,8 +446,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_04_Step_02: Chon va nhap diem den");
 		vehicleTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
+		vehicleTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_5, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
+		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_5);
 
 		log.info("TC_04_Step_03: Chon ngay muon di");
 		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);

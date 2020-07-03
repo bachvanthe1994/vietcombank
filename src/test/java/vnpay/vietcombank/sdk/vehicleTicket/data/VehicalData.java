@@ -8,6 +8,7 @@ public class VehicalData {
 	public static final String PLACE_2 = "Bắc Giang";
 	public static final String PLACE_3 = "Bắc Ninh";
 	public static final String PLACE_4 = "Hà Nam";
+	public static final String PLACE_5 = "Hải Phòng";
 	public static final String DESTINATION = "Điểm đi";
 	public static final String ARRIVAL = "Điểm đến";
 	public static final String ORDER_TICKET = "Đặt vé xe";
