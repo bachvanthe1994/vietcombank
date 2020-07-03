@@ -46,6 +46,14 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class Output {
+		
+		public static final String CONFIRM_MIN_TRANSFER_TOP = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
+		public static final String TRANSFER_LAST = " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String MAX_TRANSFER_TOP = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		public static final String DAY_MAX_TRANSFER_LAST = " VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String GROUP_MAX_TRANSFER_LAST = " VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String PACKAGE_MAX_TRANSFER_LAST = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		
 		public static final String SUCESSFULL_CREATED_ORDER = "LẬP LỆNH THÀNH CÔNG";
 		public static final String TRANSFER_SUCESS_MESSAGE = "CHUYỂN KHOẢN THÀNH CÔNG";
 		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER = "Tài khoản đích không hợp lệ. Quý khách vui lòng kiểm tra lại.";

@@ -36,7 +36,6 @@ public class Limit_Train_Ticket extends Base {
 	String phoneNumber = "";
 	String account;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String passSmartOTP = "111222";
 	private WebBackendSetupPageObject webBackend;
 	WebDriver driverWeb;
 	long amount;
@@ -52,7 +51,7 @@ public class Limit_Train_Ticket extends Base {
 		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
 
-//		webBackend.addMethod(driverWeb, "Thanh toán vé tàu", inputInfo, "TESTBUG");
+		webBackend.addMethod(driverWeb, "Thanh toán vé tàu", inputInfo, Constants.BE_CODE_PACKAGE);
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -153,7 +152,7 @@ public class Limit_Train_Ticket extends Base {
 
 		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20) + "", (amount + 100) + "", "10000000");
 
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMin, "TESTBUG");
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMin, Constants.BE_CODE_PACKAGE);
 
 		log.info("TC_01_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
@@ -204,7 +203,7 @@ public class Limit_Train_Ticket extends Base {
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé tàu", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé tàu", Constants.BE_CODE_PACKAGE);
 
 		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
 		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
@@ -289,7 +288,7 @@ public class Limit_Train_Ticket extends Base {
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"));
 		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 20) + "", (amount - 10) + "", "10000000");
 
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMax, "TESTBUG");
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMax, Constants.BE_CODE_PACKAGE);
 
 		log.info("TC_02_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
@@ -340,7 +339,7 @@ public class Limit_Train_Ticket extends Base {
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé tàu", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé tàu", Constants.BE_CODE_PACKAGE);
 
 		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
 		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
@@ -424,7 +423,7 @@ public class Limit_Train_Ticket extends Base {
 		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
 
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"));
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn", (amount - 10000) + "");
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", (amount - 10000) + "");
 
 		log.info("TC_03_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
@@ -475,7 +474,7 @@ public class Limit_Train_Ticket extends Base {
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
-		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn");
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn");
 
 		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
 		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
@@ -557,7 +556,7 @@ public class Limit_Train_Ticket extends Base {
 		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
 
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"));
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 1000) + "");
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp", (amount - 1000) + "");
 
 		log.info("TC_04_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
@@ -608,7 +607,7 @@ public class Limit_Train_Ticket extends Base {
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
-		webBackend.Reset_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+		webBackend.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
 
 	}
 

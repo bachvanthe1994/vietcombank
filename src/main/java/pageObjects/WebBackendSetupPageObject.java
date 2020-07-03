@@ -54,10 +54,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
 		//addMethodOtpLimit(driverWeb, serviceName);
-		//addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
+		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
-		//driver.quit();
 	}
 
 	public void resetAssignServicesLimit(WebDriver driver, String serviceName, String codePackage) {
@@ -241,7 +240,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDynamicDataByListIcon(WebDriver driver, String serviceName) {
 		for (ServiceLimitInfo02 inputInfo : getInfoList) {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
-			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
 			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
