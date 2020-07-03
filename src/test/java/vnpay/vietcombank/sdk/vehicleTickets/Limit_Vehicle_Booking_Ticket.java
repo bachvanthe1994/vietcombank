@@ -139,10 +139,9 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 
 		log.info("TC_01_Step_13 Input email");
 		vehicleTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
-
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 		
 		log.info("TC_01_Step_14 Click btutton Thanh toan");
+		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("TC_01_Step_15 Verify hien thi man hinh thong tin ve xe");
@@ -254,7 +253,7 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 		vehicleTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
 		log.info("TC_02_Step_14 Click btutton Thanh toan");
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("TC_02_Step_15 Verify hien thi man hinh thong tin ve xe");
@@ -363,7 +362,7 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 		vehicleTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
 		log.info("TC_03_Step_14 Click btutton Thanh toan");
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("TC_03_Step_15 Verify hien thi man hinh thong tin ve xe");
@@ -472,7 +471,7 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 		vehicleTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
 		log.info("TC_04_Step_14 Click btutton Thanh toan");
-		vehicleTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 		vehicleTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("TC_04_Step_15 Verify hien thi man hinh thong tin ve xe");
