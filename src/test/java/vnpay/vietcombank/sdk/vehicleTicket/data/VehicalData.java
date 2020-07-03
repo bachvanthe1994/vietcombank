@@ -88,5 +88,13 @@ public class VehicalData {
 	public static final String NOTI_SUCCESS = "THANH TOÁN THÀNH CÔNG";
 	public static final String NOTI_MAX_TRANSECTION = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 500,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 	public static final String NOTI_MIN_TRANSECTION = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức 700,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MIN_LIMIT_PER_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức "; 
+	public static final String MESSAGE_MIN_LIMIT_PER_TRANS_2 = "/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_TRANS_2 = "/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_2 = "/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_2 = "/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
     }
 }

@@ -151,20 +151,23 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 		log.info("TC_01_Step_15 Input email");
 		vehicalTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
-		log.info("TC_01_Step_38 Click btutton Thanh toan");
+		log.info("TC_01_Step_16 Click btutton Thanh toan");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
-		log.info("TC_01_Step_39 Verify hien thi man hinh thong tin ve xe");
+		log.info("TC_01_Step_17 Verify hien thi man hinh thong tin ve xe");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
-		log.info("TC_01_Step_40 Lay thong tin tai khoan nguon");
+		log.info("TC_01_Step_18 Lay thong tin tai khoan nguon");
 		vehicalTicket.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = vehicalTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
-		log.info("TC_01_Step_50 Click button tiep tuc");
+		log.info("TC_01_Step_19 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		
+		log.info("TC_01_20_Kiem tra thong bao");
+		verifyEquals(vehicalTicket.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VehicalData.NOTIFICATION.MESSAGE_MIN_LIMIT_PER_TRANS_1 + addCommasToLong((money + 1) + "") + " VND" +  VehicalData.NOTIFICATION.MESSAGE_MIN_LIMIT_PER_TRANS_2);
 		
 	}
 	
@@ -269,20 +272,23 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 		log.info("TC_02_Step_15 Input email");
 		vehicalTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
-		log.info("TC_02_Step_38 Click btutton Thanh toan");
+		log.info("TC_02_Step_16 Click btutton Thanh toan");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
-		log.info("TC_02_Step_39 Verify hien thi man hinh thong tin ve xe");
+		log.info("TC_02_Step_17 Verify hien thi man hinh thong tin ve xe");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
-		log.info("TC_02_Step_40 Lay thong tin tai khoan nguon");
+		log.info("TC_02_Step_18 Lay thong tin tai khoan nguon");
 		vehicalTicket.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = vehicalTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
-		log.info("TC_02_Step_50 Click button tiep tuc");
+		log.info("TC_02_Step_19 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		
+		log.info("TC_02_20_Kiem tra thong bao");
+		verifyEquals(vehicalTicket.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VehicalData.NOTIFICATION.MESSAGE_MAX_LIMIT_PER_TRANS_1 + addCommasToLong((money - 1) + "") + " VND" +  VehicalData.NOTIFICATION.MESSAGE_MAX_LIMIT_PER_TRANS_2);
 		
 	}
 	
@@ -384,20 +390,23 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 		log.info("TC_03_Step_15 Input email");
 		vehicalTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
-		log.info("TC_03_Step_38 Click btutton Thanh toan");
+		log.info("TC_03_Step_16 Click btutton Thanh toan");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
-		log.info("TC_03_Step_39 Verify hien thi man hinh thong tin ve xe");
+		log.info("TC_03_Step_17 Verify hien thi man hinh thong tin ve xe");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
-		log.info("TC_03_Step_40 Lay thong tin tai khoan nguon");
+		log.info("TC_03_Step_18 Lay thong tin tai khoan nguon");
 		vehicalTicket.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = vehicalTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
-		log.info("TC_03_Step_50 Click button tiep tuc");
+		log.info("TC_03_Step_19 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		
+		log.info("TC_03_20_Kiem tra thong bao");
+		verifyEquals(vehicalTicket.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VehicalData.NOTIFICATION.MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_1 + addCommasToLong((money - 1) + "") + " VND" +  VehicalData.NOTIFICATION.MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_2);
 		
 	}
 	
@@ -499,20 +508,23 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 		log.info("TC_04_Step_15 Input email");
 		vehicalTicket.inputIntoEditTextByID(VehicalData.DATA_ORDER_TICKET.EMAIL_ADDRESS + randomNumber() + "@gmail.com", "com.VCB:id/email");
 
-		log.info("TC_04_Step_38 Click btutton Thanh toan");
+		log.info("TC_04_Step_16 Click btutton Thanh toan");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
-		log.info("TC_04_Step_39 Verify hien thi man hinh thong tin ve xe");
+		log.info("TC_04_Step_17 Verify hien thi man hinh thong tin ve xe");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
 
-		log.info("TC_04_Step_40 Lay thong tin tai khoan nguon");
+		log.info("TC_04_Step_18 Lay thong tin tai khoan nguon");
 		vehicalTicket.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		sourceAccount = vehicalTicket.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
 		account = sourceAccount.account;
 
-		log.info("TC_04_Step_50 Click button tiep tuc");
+		log.info("TC_04_Step_19 Click button tiep tuc");
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		
+		log.info("TC_04_20_Kiem tra thong bao");
+		verifyEquals(vehicalTicket.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent"), VehicalData.NOTIFICATION.MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_1 + addCommasToLong((money - 1) + "") + " VND" +  VehicalData.NOTIFICATION.MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_2);
 		
 	}
 
