@@ -1410,7 +1410,7 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_11_Step_01: Chon va nhap diem di");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
@@ -1442,7 +1442,7 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
 		log.info("TC_11_Step_09: Click chon tiep tuc ");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_10: Click chọn Cho phep");
 		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
@@ -1451,17 +1451,17 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("TC_11_Step_14: Click button tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_14: Click btutton Thanh toan");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("TC_11_Step_15: Chon thong tin tai khoan nguon");
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		vehicalTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
 
 		log.info("TC_11_Step_16: Click button tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_17: Lay ma thanh toan-----");
 		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
@@ -1476,14 +1476,14 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PASS);
 
 		log.info("TC_11_Step_21: Click button Tiep tuc");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_22: Nhap mat khau cua tai khoan");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
 
 		log.info("TC_11_Step_23: Click btn Tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_11_Step_24: Chon ve man hinh home");
 		vehicalTicket.clickToDynamicImageViewByID("com.VCB:id/ivHome");
@@ -1520,7 +1520,7 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToDynamicButton("Đồng ý");
 
 		log.info("TC_12_Step_01: Chon va nhap diem di");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
@@ -1552,7 +1552,7 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
 		log.info("TC_12_Step_09: Click chon tiep tuc ");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_12_Step_10: Click chọn Cho phep");
 		vehicalTicket.clickToDynamicAcceptButton("com.android.packageinstaller:id/permission_allow_button");
@@ -1561,17 +1561,17 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EMAIL, VehicalData.DATA_ORDER_TICKET.INPUT_INFO);
 
 		log.info("TC_12_Step_14: Click button tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_12_Step_14: Click btutton Thanh toan");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("TC_12_Step_15: Chon thong tin tai khoan nguon");
 		vehicalTicket.clickToDynamicTextByID("com.VCB:id/number_account");
 		vehicalTicket.clickToDynamicTextOrButtonLink(Notify_Management_Data.ACCOUNT.ACCOUNT_05);
 
 		log.info("TC_12_Step_16: Click button tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_12_Step_17: Lay ma thanh toan-----");
 		maThanhToan = vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.CODE_TT);
@@ -1586,14 +1586,14 @@ public class Notify_Management_Flow extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PASS);
 
 		log.info("TC_12_Step_21: Click button Tiep tuc");
-		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.waitForElementVisible(CommonPageUIs.DYNAMIC_BUTTON, VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_12_Step_22: Nhap mat khau cua tai khoan");
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PASSWORD_LOGIN, VehicalData.DATA_ORDER_TICKET.INPUT_PASSWORD);
 
 		log.info("TC_12_Step_23: Click btn Tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_12_Step_24: Chon ve man hinh home");
 		vehicalTicket.clickToDynamicImageViewByID("com.VCB:id/ivHome");

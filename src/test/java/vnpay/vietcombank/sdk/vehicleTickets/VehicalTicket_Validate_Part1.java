@@ -56,10 +56,10 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.HISTORY_TICKET));
 
 		log.info("TC_02_Step_4: kiểm tra hiển thị chọn điểm đi");
-		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.FROMT));
+		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE));
 
 		log.info("TC_02_Step_5: kiểm tra hiển thị chọn điểm đến");
-		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.TO);
+		vehicalTicket.isDynamicMessageAndLabelTextDisplayed(driver, VehicalData.DATA_ORDER_TICKET.CHOOSE_TO_PLACE);
 
 		log.info("TC_02_Step_6: kiểm tra hiển thị icon thay đổi điểm đi điểm đến");
 		vehicalTicket.isDynamicIconChangePlaceAndBackAndFinndDisplayed("com.VCB:id/ivround");
@@ -115,7 +115,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 	public void TC_05_KiemTraTextBoxDiemDi() {
 		log.info("TC_05_Step_1: kiểm tra textbox");
 		String choise_from = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTextPickUp");
-		verifyEquals(choise_from, VehicalData.DATA_ORDER_TICKET.FROMT);
+		verifyEquals(choise_from, VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 	}
 
 	@Test
@@ -134,7 +134,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 	@Test
 	public void TC_07_KiemTraSoKiTuDuocNhapVaoDiemDi() {
 		log.info("TC_07_Step_1: điền 201 ki tự vào chọn điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.LENGTH_201, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 
 		log.info("TC_07_Step_2: kiểm tra max lenght 200");
@@ -148,7 +148,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 	@Test
 	public void TC_08_KiemTraLoaiKiTuDuocNhap() {
 		log.info("TC_08_Step_1: nhập kí tự hợp lệ");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.DATA_INPUT_VN, "com.VCB:id/linPickUp");
 
 		log.info("TC_08_Step_2: kiểm tra hiển thị các kí tự vừa nhập");
@@ -159,7 +159,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		vehicalTicket.clickToDynamicButtonIconBack("com.VCB:id/ivClose");
 
 		log.info("TC_08_Step_4: nhập kí tự không hợp lệ");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.DATA_INPUT_SPECCIAL, "com.VCB:id/linPickUp");
 
 		log.info("TC_08_Step_5: kiểm tra hiển thị các kí tự vừa nhập");
@@ -173,7 +173,7 @@ public class VehicalTicket_Validate_Part1 extends Base {
 	@Test
 	public void TC_09_NhapDiemDiHopLe() {
 		log.info("TC_09_Step_1: nhập và chọn điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
@@ -234,13 +234,13 @@ public class VehicalTicket_Validate_Part1 extends Base {
 		String choise_from = vehicalTicket.getDynamicDayStart("com.VCB:id/tvTextArrival");
 
 		log.info("TC_14_Step_2: kiểm tra hiển thị");
-		verifyEquals(choise_from, VehicalData.DATA_ORDER_TICKET.TO);
+		verifyEquals(choise_from, VehicalData.DATA_ORDER_TICKET.CHOOSE_TO_PLACE);
 	}
 
 	@Test
 	public void TC_15_KiemTraSoKiTuDuocPhepNhapVaoDiemDen() {
 		log.info("TC_15_Step_2: điền 201 ki tự vào chọn điểm đến");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TO);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_TO_PLACE);
 		vehicalTicket.inputToDynamicInputBox(driver, VehicalData.DATA_ORDER_TICKET.LENGTH_201, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 
 		log.info("TC_15_Step_2: kiểm tra max lenght 200");
