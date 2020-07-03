@@ -2,8 +2,8 @@ package vnpay.vietcombank.sdk.vehicleTicket.data;
 
 public class VehicalData {
     public static class DATA_ORDER_TICKET {
-	public static final String FROMT = "Chọn điểm đi";
-	public static final String TO = "Chọn điểm đến";
+	public static final String CHOOSE_FROM_PLACE = "Chọn điểm đi";
+	public static final String CHOOSE_TO_PLACE = "Chọn điểm đến";
 	public static final String PLACE_1 = "Hà Nội";
 	public static final String PLACE_2 = "Bắc Giang";
 	public static final String PLACE_3 = "Bắc Ninh";
@@ -43,7 +43,7 @@ public class VehicalData {
 	public static final String CODE_TICKET="Mã vé";
 
 
-	public static final String BUTTON_TIEPTUC="Tiếp tục";
+	public static final String CONTINUE_BUTTON="Tiếp tục";
 	public static final String BUTTON_CANCER="Từ chối";
 	public static final String AGREE = "Đồng ý";
 
@@ -52,7 +52,7 @@ public class VehicalData {
 	public static final String AMOUNT_ROOT= "Tài khoản nguồn";
 	public static final String DETAIL_GD= "Chi tiết giao dịch";
 	
-	public static final String THANHTOAN= "Thanh toán";
+	public static final String PAYMENT_BUTTON= "Thanh toán";
 	public static final String INPUT_PASSWORD="Nhập mật khẩu";
 	public static final String NAME="Họ tên";
 	public static final String PHONE_NUMBER="Số điện thoại";

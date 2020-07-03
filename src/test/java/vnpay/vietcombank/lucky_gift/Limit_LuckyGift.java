@@ -26,6 +26,7 @@ import vietcombank_test_data.LuckyGift_Data;
 import vietcombank_test_data.LuckyGift_Data.Limit_Money_Gift;
 import vietcombank_test_data.LuckyGift_Data.TitleLuckyGift;
 import vietcombank_test_data.LuckyGift_Data.backendTitle;
+import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
 public class Limit_LuckyGift extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -51,7 +52,7 @@ public class Limit_LuckyGift extends Base {
 		log.info("Before class: setup limit ngay");
 		loginWeb.setupAssignServicesLimit(driverWeb, backendTitle.SERVICE, inputInfo, backendTitle.PACKAGE_CODE);
 		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, backendTitle.TRANSFER, Limit_Money_Gift.SERVICE_LIMIT_TRANSFER);
-		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, "Method Otp", Limit_Money_Gift.PACKAGE_LIMIT_TRANSFER);
+		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, TittleData.TITTLE_METHOD, Limit_Money_Gift.PACKAGE_LIMIT_TRANSFER);
 		
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -170,7 +171,6 @@ public class Limit_LuckyGift extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		loginWeb.resetAssignServicesLimit(driver, backendTitle.SERVICE, backendTitle.PACKAGE_CODE);
 		closeApp();
 		service.stop();
 	}

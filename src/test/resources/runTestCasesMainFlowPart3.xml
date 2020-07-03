@@ -84,20 +84,31 @@
 				sắm trực tuyến -->
 
 			<!--Thanh toán cước điện thoại cố định -->
-		
+
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" 
+				/> -->
+
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.saving_online.Transection_limit_account_saving_money" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" 
+				/> -->
 <!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_3_Smart_OTP" /> -->
-			
-				<class
-				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" />
-				<class
-				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" />
-				<!-- <class
-				name="vnpay.vietcombank.login.Template" /> -->
-<!-- 				<class -->
-<!-- 				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
-<!-- 				<class -->
-<!-- 				name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" /> -->
+<!-- 				name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
+<!-- 			<class -->
+<!-- 				name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_1" /> -->
+<!-- 			<class -->
+<!-- 				name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_2" /> -->
+			<class
+				name="vnpay.vietcombank.sdk_train_ticket.Limit_Train_Ticket" />
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" 
+				/> -->
 			<!--Thanh toán cước điện thoại cố định -->
 			<!-- <class name="vnpay.vietcombank.online_topup.Online_Topup_Flow" /> -->
 

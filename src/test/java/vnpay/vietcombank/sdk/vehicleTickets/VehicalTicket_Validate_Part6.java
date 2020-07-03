@@ -49,7 +49,7 @@ public class VehicalTicket_Validate_Part6 extends Base {
 	@Test
 	public void TC_79_KiemTraNhanChonNgayQuaKhu() {
 		log.info("TC_79_Step_1: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 

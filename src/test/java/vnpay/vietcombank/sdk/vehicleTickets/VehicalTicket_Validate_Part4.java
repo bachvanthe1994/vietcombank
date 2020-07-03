@@ -48,7 +48,7 @@ public class VehicalTicket_Validate_Part4 extends Base {
 	@Test
 	public void TC_46_KiemTraNHanIconLoc() {
 		log.info("TC_46_Step_1: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
