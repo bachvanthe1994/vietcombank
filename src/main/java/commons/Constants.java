@@ -29,6 +29,10 @@ public class Constants {
 	public static final String AMOUNT_DEFAULT_MIN_PACKAGE = "100000";
 	public static final String AMOUNT_DEFAULT_MAX_PACKAGE = "1000000000000";
 	public static final String BE_CODE_PACKAGE = "TESTBUG";
+	
+	public static final String POSTPAID_MOBILE = "Thanh toán hóa đơn trả sau";
+	public static final String PAY_BILL = "Thanh toán hóa đơn";
+	public static final String METHOD_OTP = "Method Otp";
 
 
 	// RUN_CONTINUE_AFTER_STEP_FAIL = true --> testcase still runs next steps after
