@@ -55,7 +55,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		
 		log.info("Before class: setup limit ngay");
 		loginWeb.setupAssignServicesLimit(driverWeb, InputText_MoneyRecurrent.TRANSFER_FUTURE, inputInfo, backendTitle.PACKAGE_CODE);
-		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, "Chuyển khoản", InputDataInFutureForOTP.TOTAL_SERVICE);
+		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, InputDataInFutureForOTP.TOTAL_SERVICE);
 		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, "Method Otp", InputDataInFutureForOTP.PACKAGE_LIMIT_TRANSFER);
 		
 		log.info("Before class: Mo app ");

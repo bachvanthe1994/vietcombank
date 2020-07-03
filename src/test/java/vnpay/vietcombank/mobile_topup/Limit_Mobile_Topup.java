@@ -33,10 +33,9 @@ public class Limit_Mobile_Topup extends Base {
 
 	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
 
-//	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException {
 		startServer();
 
 		log.info("Before class: Mo backend ");
@@ -44,13 +43,16 @@ public class Limit_Mobile_Topup extends Base {
 
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 
-		setupBE.Login_Web_Backend(driverWeb, "anhvt", "123456a@");
+		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 
 		log.info("Setup Add method package total limit");
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp", inputInfo.totalLimit);
+		
+		log.info("Setup assign services limit");
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Nạp tiền", "1000000000");
 
 		log.info("Setup assign services limit");
-		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Nạp tiền điện thoại", "31000", "499000", "1000000000");
+		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Topup", "31000", "499000", "1000000000");
 
 		setupBE.clearCacheBE(driverWeb);
 
@@ -207,7 +209,8 @@ public class Limit_Mobile_Topup extends Base {
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		setupBE.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
-		setupBE.Reset_Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Nạp tiền điện thoại", "31000", "499000", "1000000000");
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Nạp tiền");
+		setupBE.Reset_Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Topup");
 		service.stop();
 		
 	}
