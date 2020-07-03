@@ -40,6 +40,11 @@ public class Electric_Bills_Data {
 		public static final String TRANSACTION_SUCCESS_MESSAGE = "GIAO DỊCH THÀNH CÔNG";
 	}
 	
+	public static class Data_Limit {
+		public static final String TOTAL_SERVICE = "1000000000";
+		public static final String PACKAGE_LIMIT_TRANSFER = "800000000";
+	}
+	
 }
 
 

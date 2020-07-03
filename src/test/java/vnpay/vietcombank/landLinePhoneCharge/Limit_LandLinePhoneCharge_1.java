@@ -106,9 +106,8 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 
 	}
 
-	@Parameters({ "pass" })
 	@Test
-	public void TC_02_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucToiDa(String pass) throws InterruptedException {
+	public void TC_02_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucToiDa() throws InterruptedException {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LANDLINE_TELEPHONE);
 
 		log.info("TC_01_02_Chon tai khoan nguon");
@@ -135,9 +134,8 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 
 	}
 
-	@Parameters({ "pass" })
 	@Test
-	public void TC_03_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucNhom(String pass) throws InterruptedException {
+	public void TC_03_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucNhom() throws InterruptedException {
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LANDLINE_TELEPHONE);
 
 		log.info("TC_01_02_Chon tai khoan nguon");
