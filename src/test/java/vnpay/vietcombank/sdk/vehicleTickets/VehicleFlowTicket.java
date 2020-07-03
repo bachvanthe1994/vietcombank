@@ -25,7 +25,7 @@ import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData.DATA_ORDER_TICKET;
 
-public class VehicalFlowTicket extends Base {
+public class VehicleFlowTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private VehicalPageObject vehicalTicket;
