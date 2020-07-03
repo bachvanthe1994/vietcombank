@@ -94,8 +94,6 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 
 		log.info("Setup assign services limit");
 		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán vé xe", money + 1 + "", "100000000", "1000000000");
-
-		setupBE.clearCacheBE(driverWeb);
 		
 		log.info("TC_01_00_Mo lai App");
 		
@@ -215,8 +213,6 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 
 		log.info("Setup assign services limit");
 		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán vé xe", "10000",  money - 1 + "", "1000000000");
-
-		setupBE.clearCacheBE(driverWeb);
 		
 		log.info("TC_02_00_Mo lai App");
 		
@@ -333,8 +329,6 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 		
 		log.info("Setup assign services limit");
 		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", money - 1 + "");
-
-		setupBE.clearCacheBE(driverWeb);
 		
 		log.info("TC_03_00_Mo lai App");
 		
@@ -451,8 +445,6 @@ public class Limit_Vehical_Booking_Ticket extends Base {
 		
 		log.info("Setup assign services limit");
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", money - 1 + "");
-
-		setupBE.clearCacheBE(driverWeb);
 		
 		log.info("TC_04_00_Mo lai App");
 		
