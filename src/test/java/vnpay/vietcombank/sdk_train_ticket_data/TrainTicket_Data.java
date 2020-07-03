@@ -74,7 +74,7 @@ public class TrainTicket_Data {
 		public static final String TELEPHONE_NO ="090409098";
 		public static final String CARD_NO_SHORT ="0123";
 		public static final String TELEPHONE_NO_SHORT ="0904";
-		public static final String emailName ="HiepPT";
+		public static final String emailName ="abcd";
 		public static final String email ="HiepPT@gmail.com";
 
 

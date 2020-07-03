@@ -50,7 +50,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
 
-//		webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, "TESTBUG");
+		webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, "C32");
 
 		startServer();
 		log.info("Before class: Mo app ");
@@ -92,7 +92,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 
 		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20) + "", (amount + 100) + "", "10000000");
 
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMin, "TESTBUG");
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMin, "C32");
 
 		log.info("TC_01_Click tiep tuc");
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -102,7 +102,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "C32");
 
 	}
 
@@ -121,9 +121,6 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		log.info("TC_01_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputIntoEditTextByID(driver, phonenumber, "com.VCB:id/code");
 
-		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 20) + "", (amount - 10) + "", "10000000");
-
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMax, "TESTBUG");
 		
 		log.info("TC_01_Click tiep tuc");
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -133,7 +130,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "C32");
 
 	}
 
@@ -153,7 +150,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		landLinePhoneCharge.inputIntoEditTextByID(driver, phonenumber, "com.VCB:id/code");
 
 		log.info("TC_01_Quay ve man hinh khoi tao");
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn" , (amount - 1000) + "");
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "C32", "Thanh toán hóa đơn" , (amount - 1000) + "");
 
 		log.info("TC_01_Click tiep tuc");
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
@@ -164,7 +161,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn");
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "C32", "Thanh toán hóa đơn");
 
 	}
 
@@ -186,7 +183,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		landLinePhoneCharge.inputIntoEditTextByID(driver, phonenumber, "com.VCB:id/code");
 
 		log.info("TC_01_Quay ve man hinh khoi tao");
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 1000) + "");
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "C32", "Method Otp", (amount - 1000) + "");
 	
 		
 		log.info("TC_01_Click tiep tuc");
@@ -197,7 +194,7 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.Reset_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+		webBackend.Reset_Package_Total_Limit(driverWeb, "C32", "Method Otp");
 
 	}
 
