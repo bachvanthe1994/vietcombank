@@ -534,41 +534,36 @@ public class VehicalPageObject extends AbstractPage {
 
 	public List<String> chooseSeats(int numberOfSeats, String colorOfSeat) {
 		List<String> listSeat = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, '0', i);
-			boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "" + numberOfSeats + "", "" + i + "");
-			if (status) {
-				List<MobileElement> elements = driver.findElements(By.xpath(locator));
-				for (MobileElement element : elements) {
-					int count = 0;
-					File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
-					try {
-						BufferedImage bufferedImage = ImageIO.read(imageFile);
-						imageFile.delete();
+		String locator = String.format(CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/lnSeat");
+		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE, "com.VCB:id/lnSeat");
+		if (status) {
+			List<MobileElement> elements = driver.findElements(By.xpath(locator));
+			for (MobileElement element : elements) {
+				File imageFile = ((TakesScreenshot) element).getScreenshotAs(OutputType.FILE);
+				try {
+					BufferedImage bufferedImage = ImageIO.read(imageFile);
+					imageFile.delete();
 
-						int height = bufferedImage.getHeight();
-						int width = bufferedImage.getWidth();
-						int x = width / 2;
-						int y = height / 4;
-						int RGBA = bufferedImage.getRGB(x, y);
-						int red = (RGBA >> 16) & 255;
-						int green = (RGBA >> 8) & 255;
-						int white = RGBA & 255;
-						String colorOfElement = "(" + red + "," + green + "," + white + ")";
+					int height = bufferedImage.getHeight();
+					int width = bufferedImage.getWidth();
+					int x = width / 2;
+					int y = height / 4;
+					int RGBA = bufferedImage.getRGB(x, y);
+					int red = (RGBA >> 16) & 255;
+					int green = (RGBA >> 8) & 255;
+					int white = RGBA & 255;
+					String colorOfElement = "(" + red + "," + green + "," + white + ")";
 
-						if (colorOfSeat.equals(colorOfElement)) {
-							element.click();
-							count++;
-						}
-						if (count == 1)
-							break;
-						if (numberOfSeats <= 0) {
-							break;
-						}
-
-					} catch (Exception e) {
-
+					if (colorOfSeat.equals(colorOfElement)) {
+						element.click();
+						numberOfSeats--;
 					}
+					if (numberOfSeats <= 0){
+						break;
+					}
+
+				} catch (Exception e) {
+
 				}
 			}
 		}

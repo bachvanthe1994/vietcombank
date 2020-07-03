@@ -48,7 +48,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	@Test
 	public void TC_17_KiemTraLoaiKiTuDuocPhepNhapVaoTextBoxDiemDen() {
 		log.info("TC_17_Step_1: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 		log.info("TC_17_Step_2: nhập kí tự hợp lệ");
@@ -62,7 +62,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 		vehicalTicket.clickToDynamicButtonIconBack("com.VCB:id/ivClose");
 
 		log.info("TC_17_Step_5: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 		log.info("TC_17_Step_6: nhập kí tự không hợp lệ");
@@ -79,7 +79,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	@Test
 	public void TC_18_KiemTraNhapDiemDenHopLe() {
 		log.info("TC_18_Step_1: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 		log.info("TC_18_Step_2: nhập kí tự hợp lệ");
@@ -109,7 +109,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	@Test
 	public void TC_20_KiemTraGiaTriNhapVaoDiemDen() {
 		log.info("TC_20_Step_1: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBoxID(VehicalData.DATA_ORDER_TICKET.PLACE_1, "com.VCB:id/linPickUp");
 
 		log.info("TC_20_Step_2: Chọn và nhập điểm đến");
@@ -150,7 +150,7 @@ public class VehicalTicket_Validate_Part2 extends Base {
 	@Test
 	public void TC_23_KiemTraChonDiemDenTruocKhiChonDiemDi() {
 		log.info("TC_23_Step_1: Chọn và nhập điểm đi");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TO);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_TO_PLACE);
 
 		log.info("TC_23_Step_2: kiểm tra thông báo");
 		String noti = vehicalTicket.getDynamicDayStart("android:id/message");
