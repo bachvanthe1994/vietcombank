@@ -435,7 +435,7 @@ public class Flow_TrainTicket extends Base {
 
 		log.info("TC_03_Nhap so CMT");
 		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO,textDefault.CONTACT_INFO, "com.VCB:id/tvCMND");
-
+		
 		log.info("TC_03_Nhap email");
 		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.email,textDefault.CONTACT_INFO, "com.VCB:id/tvEmail");
 

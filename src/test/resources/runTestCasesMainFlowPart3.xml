@@ -95,8 +95,14 @@
 			<!-- <class -->
 			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" 
 				/> -->
+<!-- 			<class -->
+<!-- 				name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
+<!-- 			<class -->
+<!-- 				name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_1" /> -->
+<!-- 			<class -->
+<!-- 				name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_2" /> -->
 			<class
-				name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" />
+				name="vnpay.vietcombank.sdk_train_ticket.Limit_Train_Ticket" />
 			<!-- <class -->
 			<!-- name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" 
 				/> -->

@@ -1,12 +1,10 @@
 package vnpay.vietcombank.sdk.filmTicketBooking;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
-import javax.sound.midi.Soundbank;
-
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -15,39 +13,50 @@ import org.testng.annotations.Test;
 import commons.Base;
 import commons.Constants;
 import commons.PageFactoryManager;
+import commons.WebPageFactoryManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import model.FilmInfo;
-import model.FilmTicketInfo;
 import model.SeatType;
+import model.ServiceLimitInfo;
 import pageObjects.LogInPageObject;
+import pageObjects.WebBackendSetupPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
-import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
 public class Limit_FilmTicketBooking extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private FilmTicketBookingPageObject filmTicketBooking;
+	private WebBackendSetupPageObject webBackend;
 
-	String price = "";
+	WebDriver driverWeb;
+	long amount = 0;
+	String name;
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "5000000", "5500000");
 
-
-	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
+	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
-	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException {
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException, GeneralSecurityException {
+		log.info("Before class: Mo backend ");
 		startServer();
+		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
+		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
+		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
+
+		webBackend.addMethod(driverWeb, "Thanh toán vé xem phim", inputInfo, "TESTBUG");
+
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-
-
+		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
+		name = getDataInCell(1);
 	}
 
 	@Test
-	public void TC_01_ThanhToanVeXeNhoHonHanMucToiThieu() {
+	public void TC_01_ThanhToanVeXeNhoHonHanMucToiThieu() throws InterruptedException {
 
 		log.info("TC_01_01_Click Dat ve xem phim");
 		filmTicketBooking.clickToDynamicTextOrButtonLink(FilmTicketBooking_Data.FILM_TITLE);
@@ -75,7 +84,6 @@ public class Limit_FilmTicketBooking extends Base {
 		log.info("TC_01_08_Click xem chi tiet phim");
 		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
-		
 
 		log.info("TC_01_09_Nhan nut Dat ve");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.BOOKING_TICKET);
@@ -95,19 +103,23 @@ public class Limit_FilmTicketBooking extends Base {
 		log.info("TC_01_13_Chon cho ngoi nhu da dang ky");
 		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
 		filmTicketBooking.chooseSeats(1, colorOfSeat);
+		
+		amount = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince"));
+		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20) + "", (amount + 100) + "", "10000000");
 
-		price = filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince");
-
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé xem phim", inputInfoMin, "TESTBUG");
+	
 		log.info("TC_01_14_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
 
 		log.info("TC_01_15_Kiem tra Thong tin Thanh toan ve xem phim");
 		log.info("TC_01_15_01: Kiem tra ten phim");
 		filmTicketBooking.scrollUpToText(FilmTicketBooking_Data.FILM);
-		
+
 		log.info("TC_01_16_Nhap thong tin nguoi nhan ve");
 		log.info("TC_01_16_01_Nhap ten khach hang");
-		filmTicketBooking.inputToDynamicInputBoxByID("Duc Do", "com.VCB:id/etCustomerName");
+		filmTicketBooking.inputToDynamicInputBoxByID(name, "com.VCB:id/etCustomerName");
 
 		log.info("TC_01_16_02_Nhap sdt");
 		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
@@ -118,62 +130,226 @@ public class Limit_FilmTicketBooking extends Base {
 
 		log.info("TC_01_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
-
 		
-		
-		log.info("TC_01_20: Click Tiep tuc");
-		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
+		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 
-		log.info("TC_01_21: Kiem tra man hinh xac nhan thong tin");
-		
-		log.info("TC_01_21_01: Kiem tra tai khoan nguon");
-		filmTicketBooking.scrollUpToText(FilmTicketBooking_Data.ACCOUNT_FROM_LABEL);
+		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
 
-		
-		log.info("TC_01_22_Chon phuong thuc xac thuc");
-		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvptxt");
-		filmTicketBooking.clickToDynamicTextView(FilmTicketBooking_Data.PASSWORD);
+		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
 
-		log.info("TC_01_23: Click Tiep tuc");
-		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé xem phim", "TESTBUG");
 
-
-		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEXT);
-
-		log.info("TC_01_24: Kiem tra man hinh thanh toan thanh cong");
-		verifyTrue(filmTicketBooking.isDynamicMessageAndLabelTextDisplayed(FilmTicketBooking_Data.MESSEGE_SUCCESS));
-
-		log.info("TC_01_25_Kiem tra nut Thuc hien giao dich moi");
-		verifyTrue(filmTicketBooking.isDynamicButtonDisplayed(FilmTicketBooking_Data.NEW_TRANSFER));
-
-		log.info("TC_01_26_Click Thuc hien giao dich moi");
-		filmTicketBooking.clickToDynamicButton(FilmTicketBooking_Data.NEW_TRANSFER);
-
-		log.info("TC_01_27_Tinh so du kha dung cua tai khoan sau khi thanh toan thanh cong");
 	}
 
 	@Test
-	public void TC_02_ThanhToanVeXeLonHonHanMucToiDa() {
+	public void TC_02_ThanhToanVeXeLonHonHanMucToiDa() throws InterruptedException {
+
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
+		filmTicketBooking.clickToDynamicButton("Quay lại");
+
+	
+		log.info("TC_01_08_Click xem chi tiet phim");
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
+
+		log.info("TC_01_09_Nhan nut Dat ve");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.BOOKING_TICKET);
+
+		log.info("TC_01_10_Nhan chon gio chieu");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
+
+		log.info("TC_01_11_Chon 1 ghe");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
+
+		List<SeatType> listSeatType = filmTicketBooking.getListSeatType();
+		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
+
+		log.info("TC_02_12_Click chon cho ngoi");
+		filmTicketBooking.clickToTextViewByText("Chọn chỗ ngồi");
+
+		log.info("TC_02_13_Chon cho ngoi nhu da dang ky");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
+		filmTicketBooking.chooseSeats(1, colorOfSeat);
+		
+		amount = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince"));
 		
 		
+		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 20) + "", (amount - 10) + "", "10000000");
+
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé xem phim", inputInfoMax, "TESTBUG");
+		
+
+	
+		log.info("TC_02_14_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+
+		log.info("TC_02_15_Kiem tra Thong tin Thanh toan ve xem phim");
+		log.info("TC_02_15_01: Kiem tra ten phim");
+		filmTicketBooking.scrollUpToText(FilmTicketBooking_Data.FILM);
+
+		log.info("TC_02_16_Nhap thong tin nguoi nhan ve");
+		log.info("TC_02_16_01_Nhap ten khach hang");
+		filmTicketBooking.inputToDynamicInputBoxByID(name, "com.VCB:id/etCustomerName");
+
+		log.info("TC_02_16_02_Nhap sdt");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
+
+		log.info("TC_02_16_03_Nhap email");
+		filmTicketBooking.scrollDownToText(FilmTicketBooking_Data.PAY);
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.EMAIL_BOOKING, "com.VCB:id/etEmail");
+
+		log.info("TC_02_17_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
+		
+
+		log.info("TC_02_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount + 100) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
+
+		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
+
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé xem phim", "TESTBUG");
+
 	}
 
+	@Test
+	public void TC_03_ThanhToanVeXeNhoHonHanMucDaNhom() throws InterruptedException {
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
+		filmTicketBooking.clickToDynamicButton("Quay lại");
 
+		log.info("TC_03_08_Click xem chi tiet phim");
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 
-	// Set han muc nhom la 50 000 VND
-	public void TC_03_ThanhToanVeXeNhoHonHanMucDaNhom() {
+		log.info("TC_03_09_Nhan nut Dat ve");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.BOOKING_TICKET);
+
+		log.info("TC_03_10_Nhan chon gio chieu");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
+
+		log.info("TC_03_11_Chon 1 ghe");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
+
+		List<SeatType> listSeatType = filmTicketBooking.getListSeatType();
+		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
+
+		log.info("TC_03_12_Click chon cho ngoi");
+		filmTicketBooking.clickToTextViewByText("Chọn chỗ ngồi");
+
+		log.info("TC_03_13_Chon cho ngoi nhu da dang ky");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
+		filmTicketBooking.chooseSeats(1, colorOfSeat);
+		
+		amount = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince"));
+
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn", (amount - 10000) + "");
+	
+		log.info("TC_03_14_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+
+		log.info("TC_03_15_Kiem tra Thong tin Thanh toan ve xem phim");
+		log.info("TC_03_15_01: Kiem tra ten phim");
+		filmTicketBooking.scrollUpToText(FilmTicketBooking_Data.FILM);
+
+		log.info("TC_03_16_Nhap thong tin nguoi nhan ve");
+		log.info("TC_03_16_02_Nhap ten khach hang");
+		filmTicketBooking.inputToDynamicInputBoxByID(name, "com.VCB:id/etCustomerName");
+
+		log.info("TC_03_16_02_Nhap sdt");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
+
+		log.info("TC_01_16_03_Nhap email");
+		filmTicketBooking.scrollDownToText(FilmTicketBooking_Data.PAY);
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.EMAIL_BOOKING, "com.VCB:id/etEmail");
+
+		log.info("TC_03_17_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
+
+		log.info("TC_03_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+
+		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
+
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn");
 
 	}
 
-	// Set han muc goi la 50 000 VND
-	public void TC_05_ThanhToanVeXeNhoHonHanMucToiDaGoi() {
+	@Test
+	public void TC_04_ThanhToanVeXeNhoHonHanMucToiDaGoi() throws InterruptedException {
+		filmTicketBooking.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
+		filmTicketBooking.clickToDynamicButton("Quay lại");
+
+
+		log.info("TC_04_08_Click xem chi tiet phim");
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
+
+		log.info("TC_04_09_Nhan nut Dat ve");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.BOOKING_TICKET);
+
+		log.info("TC_04_10_Nhan chon gio chieu");
+		filmTicketBooking.clickToDynamicTextViewByViewGroupID("com.VCB:id/tagShowtimes2D", "0");
+
+		log.info("TC_04_11_Chon 1 ghe");
+		filmTicketBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlus");
+
+		List<SeatType> listSeatType = filmTicketBooking.getListSeatType();
+		String type = filmTicketBooking.getTypeOfSeat(listSeatType);
+
+		log.info("TC_04_12_Click chon cho ngoi");
+		filmTicketBooking.clickToTextViewByText("Chọn chỗ ngồi");
+
+		log.info("TC_04_13_Chon cho ngoi nhu da dang ky");
+		String colorOfSeat = filmTicketBooking.getColorOfElement(FilmTicketBookingPageUIs.VIEW_BY_TEXT, type);
+		filmTicketBooking.chooseSeats(1, colorOfSeat);
+		
+		amount = convertAvailableBalanceCurrentcyOrFeeToLong(filmTicketBooking.getTextViewByID("com.VCB:id/tvPrince"));
+
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 1000) + "");
+	
+		log.info("TC_04_14_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+
+		log.info("TC_04_15_Kiem tra Thong tin Thanh toan ve xem phim");
+		log.info("TC_04_15_01: Kiem tra ten phim");
+		filmTicketBooking.scrollUpToText(FilmTicketBooking_Data.FILM);
+
+		log.info("TC_04_16_Nhap thong tin nguoi nhan ve");
+		log.info("TC_04_16_01_Nhap ten khach hang");
+		filmTicketBooking.inputToDynamicInputBoxByID(name, "com.VCB:id/etCustomerName");
+
+		log.info("TC_04_16_02_Nhap sdt");
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.PHONE_BOOKING, "com.VCB:id/etPhoneNumber");
+
+		log.info("TC_04_16_03_Nhap email");
+		filmTicketBooking.scrollDownToText(FilmTicketBooking_Data.PAY);
+		filmTicketBooking.inputToDynamicInputBoxByID(FilmTicketBooking_Data.EMAIL_BOOKING, "com.VCB:id/etEmail");
+
+		log.info("TC_04_17_Click Thanh toan");
+		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
+		
+		log.info("TC_04_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+
+		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
+
+		webBackend.Reset_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
 
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();
-		service.stop();
+//		service.stop();
 	}
 
 }

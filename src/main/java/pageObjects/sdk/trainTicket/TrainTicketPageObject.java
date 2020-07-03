@@ -1029,6 +1029,26 @@ public class TrainTicketPageObject extends AbstractPage {
 		return text;
 
 	}
+	
+	public void clickToDynamicContinue(String dynamicID) throws InterruptedException {
+		Thread.sleep(5000);
+		boolean status = false;
+		scrollDown_LongDistance(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		}
+
+	}
+	
+	public void clickToDynamicImageViewByID( String dynamicID) {
+		boolean status = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+	}
 
 	// Lấy giá trị tìm kiếm trong danh sách
 	public String getDynamicInputPoint(AppiumDriver<MobileElement> driver, String dynamicIndexValue) {

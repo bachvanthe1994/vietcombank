@@ -170,6 +170,8 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 	}
 
+	
+	
 	public void inputToDynamicInputBoxByID(String inputValue, String dynamicID) {
 		boolean status = false;
 		status = waitForElementVisible(driver, FilmTicketBookingPageUIs.INPUTBOX_BY_ID, dynamicID);
@@ -178,6 +180,18 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
+	
+	public void clickToDynamicContinue( String dynamicID) throws InterruptedException {
+		Thread.sleep(5000);
+		boolean status = false;
+		scrollDown_LongDistance(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		status = waitForElementVisible_LongTime(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		if (status == true) {
+			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicID);
+		}
+
+	}
+	
 
 	public void inputToDynamicPopupPasswordInput(String inputValue, String dynamicTextValue) {
 		boolean status = false;
@@ -909,7 +923,7 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public String getColorOfElement(String locator, String... dynamicValue) {
 		String colorOfElement = "";
 		locator = String.format(locator, (Object[]) dynamicValue);
-		boolean status = waitForElementVisible(driver, locator);
+		boolean status = waitForElementVisible_LongTime(driver, locator);
 		if (status) {
 			MobileElement element = driver.findElement(By.xpath(locator));
 

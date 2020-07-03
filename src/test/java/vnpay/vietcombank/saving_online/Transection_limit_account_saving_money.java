@@ -55,7 +55,7 @@ public class Transection_limit_account_saving_money extends Base {
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 
-//		loginWeb.setupAssignServicesLimit(driverWeb, SavingOnline_Data.OPEN_SAVING, inputInfo, SavingOnline_Data.PACKAGE_NAME);
+		loginWeb.setupAssignServicesLimit(driverWeb, SavingOnline_Data.OPEN_SAVING, inputInfo, SavingOnline_Data.PACKAGE_NAME);
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -70,162 +70,162 @@ public class Transection_limit_account_saving_money extends Base {
 
 	}
 
-//	@Test
-//	public void TC_01_SoTienGiaoDichNhoHonHanMucToiThieuMotLanGiaoDich() throws InterruptedException {
-//		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
-//		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
-//
-//		log.info("TC_01_2_Chon so tai khoan");
-//		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-//		sourceAccount = savingOnline.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-//		account = sourceAccount.account;
-//
-//		log.info("TC_01_3_Chon ky han gui");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
-//		savingOnline.clickToDynamicTextContains(driver, info.term);
-//
-//		log.info("TC_01_4_Nhap so tien gui");
-//		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(info.money) - 1 + "", SavingOnline_Data.TRANSACTION_INFO, "2");
-//
-//		log.info("TC_01_5_Chon hinh thuc chuyen tien");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.formOfPayment);
-//
-//		log.info("TC_01_6_Chon dong y tuan thu cam ket");
-//		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
-//
-//		log.info("TC_01_7_Click nut Tiep tuc");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC_01_8_ Kiem tra man hinh xac nhan thong tin");
-//
-//		verifyTrue(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Mở tài khoản tiết kiệm không thành công."));
-//
-//		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
-//
-//		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
-//
-//		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
-//
-//	}
-//
-//	@Test
-//	public void TC_02_SoTienGiaoDichVuotQuaHanMucToiDaMotLanGiaoDich() throws InterruptedException {
-//
-//		log.info("TC_01_2_Chon so tai khoan");
-//		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
-//
-//		log.info("TC_01_3_Chon ky han gui");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
-//		savingOnline.clickToDynamicTextContains(driver, info.term);
-//
-//		log.info("TC_01_4_Nhap so tien gui");
-//		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(inputInfo.maxTran) + 1 + "", SavingOnline_Data.TRANSACTION_INFO, "2");
-//
-//		log.info("TC_01_5_Chon hinh thuc chuyen tien");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.formOfPayment);
-//
-//		log.info("TC_01_6_Chon dong y tuan thu cam ket");
-//		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
-//
-//		log.info("TC_01_7_Click nut Tiep tuc");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC_01_8_ Kiem tra man hinh xac nhan thong tin");
-//
-//		verifyTrue(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Mở tài khoản tiết kiệm không thành công."));
-//
-//		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
-//
-//		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
-//
-//	}
-//
-//	@Parameters({ "pass" })
-//	@Test
-//	public void TC_03_SoTienGiaoDichVuotQuaHanMucToiDaMotNgay(String pass) throws InterruptedException {
-//		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
-//		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, SavingOnline_Data.OPEN_SAVING, inputInfo, SavingOnline_Data.PACKAGE_NAME);
-//
-//		log.info("TC_03_2_Chon so tai khoan");
-//		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
-//
-//		log.info("TC_03_3_Chon ky han gui");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
-//		savingOnline.clickToDynamicTextContains(driver, info1.term);
-//
-//		log.info("TC_03_4_Nhap so tien gui");
-//		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(inputInfo.minTran) + "", SavingOnline_Data.TRANSACTION_INFO, "2");
-//
-//		log.info("TC_03_5_Chon hinh thuc chuyen tien");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.formOfPayment);
-//
-//		log.info("TC_03_6_Chon dong y tuan thu cam ket");
-//		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
-//
-//		log.info("TC_03_7_Click nut Tiep tuc");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC__03_09_Chon phuong thuc xac thuc");
-//		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
-//
-//		log.info("TC_03_11_Click nut Tiep tuc");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		savingOnline.inputToDynamicPopupPasswordInput(driver, pass, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC_03_13_Click Thuc hien giao dich moi");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.NEW_TRANSACTION_PERFORM);
-//
-//		log.info("TC_03_2_Chon so tai khoan");
-//		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
-//
-//		log.info("TC_03_3_Chon ky han gui");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
-//		savingOnline.clickToDynamicTextContains(driver, info1.term);
-//
-//		log.info("TC_03_4_Nhap so tien gui");
-//		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(inputInfo.maxTran) + "", SavingOnline_Data.TRANSACTION_INFO, "2");
-//
-//		log.info("TC_03_5_Chon hinh thuc chuyen tien");
-//		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.formOfPayment);
-//
-//		log.info("TC_03_6_Chon dong y tuan thu cam ket");
-//		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
-//
-//		log.info("TC_03_7_Click nut Tiep tuc");
-//		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		verifyTrue(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Mở tài khoản tiết kiệm không thành công."));
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
-//
-//		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-//		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
-//		loginWeb.resetAssignServicesLimit(driverWeb, SavingOnline_Data.OPEN_SAVING, SavingOnline_Data.PACKAGE_NAME);
-//
-//	}
+	@Test
+	public void TC_01_SoTienGiaoDichNhoHonHanMucToiThieuMotLanGiaoDich() throws InterruptedException {
+		log.info("TC_01_1_Click Mo tai khoan tiet kiem");
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+
+		log.info("TC_01_2_Chon so tai khoan");
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
+		sourceAccount = savingOnline.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+		account = sourceAccount.account;
+
+		log.info("TC_01_3_Chon ky han gui");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
+		savingOnline.clickToDynamicTextContains(driver, info.term);
+
+		log.info("TC_01_4_Nhap so tien gui");
+		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(info.money) - 1 + "", SavingOnline_Data.TRANSACTION_INFO, "2");
+
+		log.info("TC_01_5_Chon hinh thuc chuyen tien");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info.formOfPayment);
+
+		log.info("TC_01_6_Chon dong y tuan thu cam ket");
+		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
+
+		log.info("TC_01_7_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_01_8_ Kiem tra man hinh xac nhan thong tin");
+
+		verifyTrue(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Mở tài khoản tiết kiệm không thành công."));
+
+		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
+		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
+
+	}
+
+	@Test
+	public void TC_02_SoTienGiaoDichVuotQuaHanMucToiDaMotLanGiaoDich() throws InterruptedException {
+
+		log.info("TC_01_2_Chon so tai khoan");
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		log.info("TC_01_3_Chon ky han gui");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
+		savingOnline.clickToDynamicTextContains(driver, info.term);
+
+		log.info("TC_01_4_Nhap so tien gui");
+		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(inputInfo.maxTran) + 1 + "", SavingOnline_Data.TRANSACTION_INFO, "2");
+
+		log.info("TC_01_5_Chon hinh thuc chuyen tien");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.formOfPayment);
+
+		log.info("TC_01_6_Chon dong y tuan thu cam ket");
+		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
+
+		log.info("TC_01_7_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_01_8_ Kiem tra man hinh xac nhan thong tin");
+
+		verifyTrue(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Mở tài khoản tiết kiệm không thành công."));
+
+		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
+		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+
+	}
+
+	@Parameters({ "pass" })
+	@Test
+	public void TC_03_SoTienGiaoDichVuotQuaHanMucToiDaMotNgay(String pass) throws InterruptedException {
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
+		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, SavingOnline_Data.OPEN_SAVING, inputInfo, SavingOnline_Data.PACKAGE_NAME);
+
+		log.info("TC_03_2_Chon so tai khoan");
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		log.info("TC_03_3_Chon ky han gui");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
+		savingOnline.clickToDynamicTextContains(driver, info1.term);
+
+		log.info("TC_03_4_Nhap so tien gui");
+		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(inputInfo.minTran) + "", SavingOnline_Data.TRANSACTION_INFO, "2");
+
+		log.info("TC_03_5_Chon hinh thuc chuyen tien");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.formOfPayment);
+
+		log.info("TC_03_6_Chon dong y tuan thu cam ket");
+		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
+
+		log.info("TC_03_7_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC__03_09_Chon phuong thuc xac thuc");
+		savingOnline.scrollDownToText(driver, SavingOnline_Data.ACCURACY_METHOD);
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
+
+		log.info("TC_03_11_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		savingOnline.inputToDynamicPopupPasswordInput(driver, pass, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_03_13_Click Thuc hien giao dich moi");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.NEW_TRANSACTION_PERFORM);
+
+		log.info("TC_03_2_Chon so tai khoan");
+		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+
+		log.info("TC_03_3_Chon ky han gui");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
+		savingOnline.clickToDynamicTextContains(driver, info1.term);
+
+		log.info("TC_03_4_Nhap so tien gui");
+		savingOnline.inputToDynamicInputBoxByHeader(driver, Integer.parseInt(inputInfo.maxTran) + "", SavingOnline_Data.TRANSACTION_INFO, "2");
+
+		log.info("TC_03_5_Chon hinh thuc chuyen tien");
+		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "3");
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, info1.formOfPayment);
+
+		log.info("TC_03_6_Chon dong y tuan thu cam ket");
+		savingOnline.clickDynamicCheckBox(driver, "com.VCB:id/checkBox");
+
+		log.info("TC_03_7_Click nut Tiep tuc");
+		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		verifyTrue(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent").contains("Mở tài khoản tiết kiệm không thành công."));
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		savingOnline.clickToDynamicBackIcon(driver, SavingOnline_Data.OPEN_SAVING_ACCOUNT);
+
+		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
+		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
+		loginWeb.resetAssignServicesLimit(driverWeb, SavingOnline_Data.OPEN_SAVING, SavingOnline_Data.PACKAGE_NAME);
+
+	}
 
 	@Test
 	public void TC_04_SoTienGiaoDichVuotQuaHanMucToiDaNhomGiaoDich() throws InterruptedException {
@@ -233,17 +233,10 @@ public class Transection_limit_account_saving_money extends Base {
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
 		log.info("TC_01_2_Chon so tai khoan");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
-		
-		
-		
-		sourceAccount = savingOnline.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
-		account = sourceAccount.account;
-//		
-//		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+				
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
 
 		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, SavingOnline_Data.PACKAGE_NAME, SavingOnline_Data.SAVING_ONLINE, inputInfo.totalLimit);
-
-
 
 		log.info("TC_01_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");

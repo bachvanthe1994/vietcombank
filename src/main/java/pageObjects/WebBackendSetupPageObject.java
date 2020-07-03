@@ -189,16 +189,13 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
 			getInfo.method = text.trim();
 			clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
-//			getInfo.timesDay = getDataInInputByID(driver, "edit-times-day");
 			getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
 			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
 			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
 			getInfoList.add(getInfo);
 
-//			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 
@@ -276,6 +273,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 				selectItemInDropdownByID(driver, "service", serviceName);
 				selectItemInDropdownByID(driver, "method-otp", methodOtp);
 				selectItemInDropdownByID(driver, "ccy", "Việt Nam Đồng");
+				
 				inputIntoInputByID(driver, inputInfo.timesDay, "times-day");
 				inputIntoInputByID(driver, inputInfo.minTran, "min-tran");
 				inputIntoInputByID(driver, inputInfo.maxTran, "max-tran");
@@ -298,11 +296,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Nhap data vao truong Edit Assign Service Limit
 	public void inputDataToServiceLimit(WebDriver driver, ServiceLimitInfo inputInfo) {
-
-		inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 		inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 		clickToDynamicButtonATagByID(driver, "edit-limit");
 		acceptAlert(driver);
 	}
@@ -349,10 +344,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDynamicDataByListIcon_All(WebDriver driver, String serviceName) {
 		for (ServiceLimitInfo02 inputInfo : getInfoList_All) {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
-			inputIntoInputByID(driver, inputInfo.timesDay, "edit-times-day");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
