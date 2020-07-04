@@ -28,6 +28,11 @@ public class HomePage_Data {
 		public static final String CONTINUE_BTN = "Tiếp tục";
 		public static final String METHOD_VALIDATE = "Chọn phương thức xác thực";
 		public static final String SMS_OTP = "SMS OTP";
+		public static final String OPEN_SAVING_ACCOUNT = "Mở tiết kiệm";
+		public static final String LANDLINE_TELEPHONE = "Cước điện thoại cố định";
+		public static final String PRICE_CABLE = "Cước truyền hình cáp";
+
+
 	}
 
 	public class HomePageTexts {

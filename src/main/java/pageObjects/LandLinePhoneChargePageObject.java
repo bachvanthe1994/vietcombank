@@ -19,7 +19,7 @@ public class LandLinePhoneChargePageObject extends AbstractPage {
 
 	public static String phoneNumber = "";
 
-	public void inputPhoneNumberLandLinePhoneCharge(List<String> listPhone) {
+	public String inputPhoneNumberLandLinePhoneCharge(List<String> listPhone) {
 		boolean check = false;
 		for (String phone : listPhone) {
 			inputIntoEditTextByID(driver, phone, "com.VCB:id/code");
@@ -43,6 +43,7 @@ public class LandLinePhoneChargePageObject extends AbstractPage {
 		if (!check) {
 			throw new RuntimeException("Khong co hoa don nao de thanh toan");
 		}
+		return phoneNumber;
 	}
 
 	// Click vào dropdown list tham số truyển vào là label của ô dropdown list đó

@@ -1,8 +1,4 @@
 package vietcombank_test_data;
-
-import java.util.Arrays;
-import java.util.List;
-
 public class Internet_ADSL_Data {
 
 	public static class Valid_Account {

@@ -25,7 +25,7 @@ import vietcombank_test_data.Notify_Management_Data.Notify_Text;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
-public class VehicalFlowTicket_SmartOTP extends Base {
+public class VehicleFlowTicket_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
@@ -76,7 +76,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		vehicalTicket.clickToDynamicButton("Đồng ý");
 
 		log.info("==========TC_02_Step_02: Chon va nhap diem di");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.FROMT);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
@@ -108,7 +108,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		vehicalTicket.clickToElement(CommonPageUIs.DYNAMIC_POINT_ARRVAL, "com.VCB:id/tvAddress");
 
 		log.info("-TC_02_Step_10 Click chon tiep tuc ");
-		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_CANCER);
 
@@ -145,7 +145,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		tongTien = vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount");
 
 		log.info("-TC_02_Step_22 Click button tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("-TC_02_Step_23Verify hien thi man hinh thong tin khach hang");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_CUSTOMER));
@@ -178,7 +178,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		verifyEquals(tongTien, vehicalTicket.getDynamicTextView("com.VCB:id/tvTotalAmount"));
 
 		log.info("-TC_02_Step_34 Click btutton Thanh toan");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.THANHTOAN);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.PAYMENT_BUTTON);
 
 		log.info("-TC_02_Step_35 Verify hien thi man hinh thong tin ve xe");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.INFO_TICKET));
@@ -219,7 +219,7 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		verifyEquals(tongTien, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, VehicalData.DATA_ORDER_TICKET.AMOUNT_TT));
 
 		log.info("TC_02_Step_46 Click button tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("-TC_02_Step_47 Xac nhan hien thi man hinh xac nhan thong tin");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.DATA_ORDER_TICKET.TITILE_CONFIRM));
@@ -239,14 +239,14 @@ public class VehicalFlowTicket_SmartOTP extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.SMART_OTP);
 
 		log.info("-TC_02_Step_52 Click button Tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("-------TC_02_Step_53Nhap ma OTP");
 		vehicalTicket.inputToDynamicSmartOTP(driver, passSmartOTP, "com.VCB:id/otp");
 		vehicalTicket.clickToDynamicAcceptButton(driver, "com.VCB:id/submit");
 
 		log.info("TC_02_Step_54 Click btn Tiep tuc");
-		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.BUTTON_TIEPTUC);
+		vehicalTicket.clickToDynamicButton(VehicalData.DATA_ORDER_TICKET.CONTINUE_BUTTON);
 
 		log.info("TC_02_Step_55 Verify hien thi man hinh giao dich thanh cong");
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(VehicalData.NOTIFICATION.NOTI_SUCCESS));

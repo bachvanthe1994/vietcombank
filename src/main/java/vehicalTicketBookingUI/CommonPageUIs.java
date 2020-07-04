@@ -27,5 +27,5 @@ public class CommonPageUIs {
     public static final String DYNAMIC_AMOUNT = "//android.widget.TextView[@resource-id='%s']";
 	public static final String DYNAMIC_OTP_INPUT = "//android.widget.Button[@text='%s']//preceding-sibling::android.widget.FrameLayout//android.widget.TextView";
 	public static final String IMAGE_BY_TEXT = "//android.widget.TextView[@text='Ghế trống']/preceding-sibling::android.widget.ImageView";
-	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE = "//android.widget.LinearLayout[@index = '%s']//android.widget.ImageView[@index = '%s']";
+	public static final String DYNAMIC_TEXTVIEW_BY_LINEARLAYOUT_ID_NAF_TRUE = "//android.widget.LinearLayout[@resource-id = '%s']//android.widget.ImageView[@clickable = 'true']";
 }

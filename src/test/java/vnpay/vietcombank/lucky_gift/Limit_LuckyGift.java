@@ -23,7 +23,10 @@ import pageObjects.LogInPageObject;
 import pageObjects.LuckyGiftPageObject;
 import pageObjects.WebBackendSetupPageObject;
 import vietcombank_test_data.LuckyGift_Data;
+import vietcombank_test_data.LuckyGift_Data.Limit_Money_Gift;
 import vietcombank_test_data.LuckyGift_Data.TitleLuckyGift;
+import vietcombank_test_data.LuckyGift_Data.backendTitle;
+import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
 public class Limit_LuckyGift extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -47,8 +50,9 @@ public class Limit_LuckyGift extends Base {
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		log.info("Before class: setup limit ngay");
-		loginWeb.setupAssignServicesLimit(driverWeb, "Tặng quà may mắn nội bộ", inputInfo, "TESTBUG");
-//		loginWeb.resetAssignServicesLimit(driver, "Tặng quà may mắn nội bộ");
+		loginWeb.setupAssignServicesLimit(driverWeb, backendTitle.SERVICE, inputInfo, backendTitle.PACKAGE_CODE);
+		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, backendTitle.TRANSFER, Limit_Money_Gift.SERVICE_LIMIT_TRANSFER);
+		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, TittleData.TITTLE_METHOD, Limit_Money_Gift.PACKAGE_LIMIT_TRANSFER);
 		
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -117,7 +121,6 @@ public class Limit_LuckyGift extends Base {
 	
 	@Test
 	public void TC_03_ChuyenTienQuaCaoHonHanMucToiDaTrongNgay() {
-
 		log.info("TC_02_Step_01: Nhap so tien chuyen");
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.MAX_MONEY_A_TRANSACTION, "com.VCB:id/amount");
 
@@ -135,99 +138,41 @@ public class Limit_LuckyGift extends Base {
 	// Set BE goi han nhom dich vu la 100 trieu
 	@Test
 	public void TC_04_ChuyenTienQuaCaoHonHanMucToiDaNhomDichVu() throws GeneralSecurityException, IOException {
-		loginWeb.Setup_Assign_Services_Type_Limit(driver, "TESTBUG", "Chuyển khoản cùng chủ", "900000");
-		log.info("-TC_03_Step_1: Chọn quà tặng may mắn");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
-
-		log.info("-TC_03_Step_2: chọn tài khoản nguồn");
-		luckyGift.clickToDynamicDropDown(driver, TitleLuckyGift.SOURCE_ACCOUNT);
-		sourceAccount = luckyGift.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
-		account = sourceAccount.account;
-
-		log.info("-TC_03_Step_3: Thêm người nhận");
-		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
-
-		log.info("TC_03_Step_4: Click tiep tuc popup");
-		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.TUTORIAL);
+		log.info("TC_04_Step_1: Nhap so tien chuyen");
+		luckyGift.inputIntoEditTextByID(driver, Limit_Money_Gift.SERVICE_LIMIT, "com.VCB:id/amount");
+		
+		log.info("TC_04_Step_2: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
 
-		log.info("-TC_03_Step_5: chọn hình thức nhận");
-		luckyGift.clickToTextID(driver, "com.VCB:id/tvHinhThucNhan");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.TITLE_PHONE_NUMBER);
-
-		log.info("TC_03_Step_5: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
-
-		log.info("TC_03_Step_6: Nhap so tien chuyen");
-		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.HIGHER_MAX_MONEY_A_TRANSACTION, "com.VCB:id/amount");
-
-		log.info("-TC_03_Step_7: Chon loi chuc");
-		luckyGift.clickToDynamicWishes(driver, TitleLuckyGift.TITLE_WISHES);
-		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
-
-		log.info("TC_03_Step_8: Click tiep tuc popup");
-		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
-
-		log.info("TC_03_Step_09: Verify hien thi man hinh thong bao loi");
+		log.info("TC_04_Step_3: Verify hien thi man hinh thong bao loi");
 		luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.Messege_Limit.MESSEGE_ERROR_HIGHER_MAX_GROUP);
 
-		log.info("TC_02_Step_10: Click btn Dong");
+		log.info("TC_04_Step_4: Click btn Dong");
 		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 	}
 
 	// Set BE goi han goi dich vu la 100 trieu
-	/*public void TC_04_ChuyenTienQuaCaoHonHanMucToiDaGoiDichVu() throws GeneralSecurityException, IOException {
+	@Test
+	public void TC_05_ChuyenTienQuaCaoHonHanMucToiDaGoiDichVu() throws GeneralSecurityException, IOException {
+		log.info("-TC_05_Step_1: Nhap so tien chuyen");
+		luckyGift.inputIntoEditTextByID(driver, Limit_Money_Gift.PACKAGE_LIMIT, "com.VCB:id/amount");
 
-		log.info("TC_04_Step_1: Chọn quà tặng may mắn");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
+		log.info("TC_05_Step_2: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
 
-		log.info("TC_04_Step_2: chọn tài khoản nguồn");
-		luckyGift.clickToDynamicDropDown(driver, TitleLuckyGift.SOURCE_ACCOUNT);
-		sourceAccount = luckyGift.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
-		account = sourceAccount.account;
-
-		log.info("-TC_04_Step_3: Thêm người nhận");
-		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
-
-		log.info("TC_04_Step_4: Click tiep tuc popup");
-		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.TUTORIAL);
-		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
-
-		log.info("TC_04_Step_5: chọn hình thức nhận");
-		luckyGift.clickToTextID(driver, "com.VCB:id/tvHinhThucNhan");
-		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.TITLE_PHONE_NUMBER);
-
-		log.info("TC_04_Step_5: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
-
-		log.info("-TC_04_Step_6: Nhap so tien chuyen");
-		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.Limit_Money_Gift.HIGHER_MAX_MONEY_A_TRANSACTION, "com.VCB:id/amount");
-
-		log.info("TC_04_Step_7: Chon loi chuc");
-		luckyGift.clickToDynamicWishes(driver, TitleLuckyGift.TITLE_WISHES");
-		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToTextID(driver, "com.VCB:id/content_counter");
-		luckyGift.hideKeyBoard(driver);
-		
-		log.info("TC_04_Step_8: Click tiep tuc popup");
-		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
-
-		log.info("TC_04_Step_9: Verify hien thi man hinh thong bao loi");
+		log.info("TC_05_Step_3: Verify hien thi man hinh thong bao loi");
 		luckyGift.isDynamicMessageAndLabelTextDisplayed(driver, LuckyGift_Data.Messege_Limit.MESSEGE_ERROR_HIGHER_MAX_PACKAGE);
 
-		log.info("TC_04_Step_10: Click btn Dong");
+		log.info("TC_05_Step_4: Click btn Dong");
 		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
-	}*/
+	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		loginWeb.resetAssignServicesLimit(driver, "Tặng quà may mắn nội bộ", "TESTBUG");
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 }

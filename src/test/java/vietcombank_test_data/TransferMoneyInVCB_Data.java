@@ -46,6 +46,14 @@ public class TransferMoneyInVCB_Data {
 	}
 
 	public static class Output {
+		
+		public static final String CONFIRM_MIN_TRANSFER_TOP = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
+		public static final String TRANSFER_LAST = " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String MAX_TRANSFER_TOP = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		public static final String DAY_MAX_TRANSFER_LAST = " VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String GROUP_MAX_TRANSFER_LAST = " VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String PACKAGE_MAX_TRANSFER_LAST = " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		
 		public static final String SUCESSFULL_CREATED_ORDER = "LẬP LỆNH THÀNH CÔNG";
 		public static final String TRANSFER_SUCESS_MESSAGE = "CHUYỂN KHOẢN THÀNH CÔNG";
 		public static final String ERRROR_MESSAGE_FOR_ACCOUNT_LESS_THAN_13_CHARACTER = "Tài khoản đích không hợp lệ. Quý khách vui lòng kiểm tra lại.";
@@ -62,8 +70,11 @@ public class TransferMoneyInVCB_Data {
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE = "Tài khoản đích không hợp lệ. Quý khách vui lòng kiểm tra lại.";
 		public static final String INVALID_DESTINATION_ACCOUNT_MESSAGE_2 = "Tài khoản hưởng không hợp lệ, Quý khách vui lòng kiểm tra lại.";
 		public static final String NOT_ENOUGH_MONEY = "Giao dịch không thành công do tài khoản của Quý khách không đủ số dư. Vui lòng kiểm tra lại.";
-		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
+		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 1,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_DAY_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,001 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.”";
+		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_GROUP_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,001 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.”";
+		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_PACKAGE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,001 VND/1 ngày, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.”";
 		public static final String ERROR_MESSAGE_WITH_MIN_LIMIT_FUTURE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_WITH_MAX_LIMIT_FUTURE_TRANSFER_MONEY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 		public static final String ERROR_MESSAGE_FOR_EMPTY_OTP = "Quý khách vui lòng nhập mã OTP";
@@ -89,8 +100,8 @@ public class TransferMoneyInVCB_Data {
 		public static final String ORDER_TIME = "Giao dịch sẽ được tự động khởi tạo vào ";
 		public static final String INFO_VALIDATION = "Xác nhận thông tin";
 
-		public static final String MESSEGE_ERROR_lOWER_MIN_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức ";
-		public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức ";
+		public static final String MESSEGE_ERROR_lOWER_MIN_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
+		public static final String MESSEGE_ERROR_HIGHER_MAX_LIMIT = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,500,000,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String MESSEGE_ERROR_HIGHER_MAX_GROUP_LIMIT = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức ";
 		
 		
@@ -100,12 +111,12 @@ public class TransferMoneyInVCB_Data {
 		public static final String DETAIL_A_GROUP_MESSAGE = " VND/1 ngày của nhóm dịch vụ chuyển tiền. Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String DETAIL_A_PACKAGE_MESSAGE = " VND/1 ngày của gói dịch vụ chuyển tiền. Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		
-		public static final String MESSEGE_ERROR_HIGHER_LIMIT_DAY = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 400,000,000 VND/1 ngày, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
-		public static final String MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 99,999,999 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSEGE_ERROR_HIGHER_LIMIT_DAY = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 1,500,000 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 1,000,000,000 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 
 		public static final String MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES_NOW = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 99,999,999 VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 
-		public static final String MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 99,999,999 VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+		public static final String MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 800,000,000 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 		public static final String MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES_NOW = "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức 99,999,999 VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.";
 
 		public static final String MESSEGE_ERROR_lOWER_MIN_LIMIT_NOW = "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức 10,000 VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp";
@@ -120,11 +131,15 @@ public class TransferMoneyInVCB_Data {
 		public static final String EUR_SMS_OTP_FEE = "0.09";
 
 		public static final String LOWER_TRANSFER_AMOUNT = "9999";
-		public static final String HIGHER_TRANSFER_AMOUNT = "100000001";
-		public static final String MAX_TRANFER_AMOUNT = "100000000";
+		public static final String HIGHER_TRANSFER_AMOUNT = "1500000001";
+		public static final String MAX_TRANFER_AMOUNT = "1000000";
+		public static final String MAX_SERVICE = "1500000000";
 		public static final String MIN_TRANFER_AMOUNT = "10000";
-		public static final String TOTAL_LIMIT_AMOUNT = "400000000";
+		public static final String TOTAL_LIMIT_AMOUNT = "1500000";
 		public static final String TOTAL_GROUP_SERVICE = "99999999";
+		public static final String TOTAL_SERVICE = "1000000000";
+		public static final String PACKAGE_LIMIT_TRANSFER = "800000000";
+		public static final String PACKAGE_LIMIT= "800000001";
 
 	}
 
@@ -183,6 +198,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String FEE_PER_TIMES_TEXT = "Số tiền phí/lần";
 		public static final String SAVE_RECEIVED_ACCOUNT_TEXT = "Lưu thụ hưởng";
 		public static final String SAVE_CONTACT_SUCCESS_MESSAGE = "Lưu thành công";
+		public static final String TRANSFER_FUTURE = "Chuyển khoản tương lai";
 	}
 
 	public static class TittleData {
