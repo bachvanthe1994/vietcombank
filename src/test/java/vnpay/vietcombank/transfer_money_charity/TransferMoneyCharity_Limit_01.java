@@ -34,9 +34,9 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 	private WebBackendSetupPageObject setupBE;
 	
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	private String higherTotal,organization ;
+	private String higherGroup,higherPackage,organization ;
 
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "20000", "30000");
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "100000000", "150000000");
 	TransferCharity info = new TransferCharity("", "", "1000", "Do Minh Duc", "So 18 ngo 3 Thai Ha", "Ho ngheo", "Mật khẩu đăng nhập");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp","username","passWeb" })
@@ -63,8 +63,8 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		higherTotal = (Integer.parseInt(inputInfo.maxTran)+1)+"";
-		
+		higherGroup = (Integer.parseInt(inputInfo.maxTran)+1)+"";
+		higherPackage = (Integer.parseInt(inputInfo.totalLimit)+1)+"";
 		transferMoneyCharity = PageFactoryManager.getTransferMoneyCharityPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -85,7 +85,7 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
 
 		log.info("TC_01_4_Nhap so tien ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, higherTotal, TransferMoneyCharity_Data.MONEY_CHARITY);
+		transferMoneyCharity.inputToDynamicInputBox(driver, higherGroup, TransferMoneyCharity_Data.MONEY_CHARITY);
 
 		log.info("TC_01_5_Nhap ten nguoi ung ho");
 		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, TransferMoneyCharity_Data.NAME_CHARITY);
@@ -102,7 +102,6 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
 		verifyEquals(transferMoneyCharity.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), TransferMoneyCharity_Data.HIGHER_THAN_MAX_MESSAGE+addCommasToLong(inputInfo.maxTran)+TransferMoneyCharity_Data.DETAIL_A_DAY_GROUP_MESSAGE);
 		transferMoneyCharity.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		transferMoneyCharity.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 		
 		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT);
 		setupBE.clearCacheBE(driverWeb);
@@ -111,30 +110,8 @@ public class TransferMoneyCharity_Limit_01 extends Base {
 	@Test
 	public void TC_02_SoTienGiaoDichVuotQuaHanMucToiDa1NgayCuaGoiDichVu() {
 	
-		log.info("TC_02_1_Click Chuyen tien tu thien");
-		transferMoneyCharity.scrollDownToText(driver, TransferMoneyCharity_Data.STATUS_TRANSFER_MONEY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.TRANSFER_CHARITY);
-
-		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyCharity.clickToDynamicDropDown(driver, TransferMoneyCharity_Data.SOURCE_ACCOUNT);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
-		log.info("TC_02_3_Chon Quy/ To chuc tu thien");
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyCharity_Data.ORGANIRATION_CHARITY);
-		transferMoneyCharity.clickToDynamicButtonLinkOrLinkText(driver, organization);
-
 		log.info("TC_02_4_Nhap so tien ung ho");
-		String higherMoney = (Integer.parseInt(inputInfo.totalLimit)+1)+"";
-		transferMoneyCharity.inputToDynamicInputBox(driver, higherMoney, TransferMoneyCharity_Data.MONEY_CHARITY);
-
-		log.info("TC_02_5_Nhap ten nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.name, TransferMoneyCharity_Data.NAME_CHARITY);
-
-		log.info("TC_02_6_Nhap dia chi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.address,TransferMoneyCharity_Data.ADDRESS_CHARITY);
-
-		log.info("TC_02_7_Hoan canh nguoi ung ho");
-		transferMoneyCharity.inputToDynamicInputBox(driver, info.status, TransferMoneyCharity_Data.STATUS_CHARITY);
+		transferMoneyCharity.inputIntoEditTextByID(driver, higherPackage, "com.VCB:id/edtContent1");
 
 		log.info("TC_02_8_Click Tiep tuc");
 		transferMoneyCharity.clickToDynamicButton(driver, TransferMoneyCharity_Data.CONTINUE_BUTTON);

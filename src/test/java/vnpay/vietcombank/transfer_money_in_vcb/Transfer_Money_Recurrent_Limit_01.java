@@ -44,7 +44,7 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	SourceAccountModel receiverAccount = new SourceAccountModel();
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "10000000", "15000000");
 	
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
@@ -59,9 +59,7 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp",inputInfo.totalLimit);
-		System.out.println("Setup Package : Done");
 		setupBE.Setup_Assign_Services_Type_Limit(driverWeb,Constants.BE_CODE_PACKAGE, InputText_MoneyRecurrent.BE_TRANSFER_TEXT, inputInfo.maxTran);
-		System.out.println("Setup Group : Done");
 		setupBE.clearCacheBE(driverWeb);
 		
 		log.info("Before class: Mo app ");
@@ -72,7 +70,7 @@ public class Transfer_Money_Recurrent_Limit_01 extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
+		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, InputText_MoneyRecurrent.TRANSFER_MONEY_STATUS_TEXT);
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
