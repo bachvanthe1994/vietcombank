@@ -38,8 +38,8 @@ public class TransferOutSideVCB_Limit_02 extends Base {
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
 	String lowerMin,higherMax,higherTotal,destinationAccount,password,otpNo;
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
-	ServiceLimitInfo infoBE = new ServiceLimitInfo("100000", "10000", "1000000000", "1500000000");
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "100000000", "100000100");
+	ServiceLimitInfo infoBE = new ServiceLimitInfo("100000", "10000", "10000000000", "15000000000");
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, "", TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
@@ -108,13 +108,6 @@ public class TransferOutSideVCB_Limit_02 extends Base {
 		log.info("TC_01_6_Nhap so tien");
 		transferMoneyOutSide.inputToDynamicInputBox(driver, lowerMin, TitleOutVCB.MONEY);
 
-		log.info("TC_01_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
-
-		log.info("TC_01_7_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
-
 		log.info("TC_01_8_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
@@ -140,36 +133,13 @@ public class TransferOutSideVCB_Limit_02 extends Base {
 
 		log.info("TC_02_8_Click Dong");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
-		homePage.clickToDynamicBackIcon(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
 	}
 
 	@Test
 	public void TC_03_ChuyenTienToiTaiKhoanKhacCaoHonMucToiDaTrongNgay() {
 
-		log.info("TC_03_01_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-		clickPopupAfter15h30();
-
-		log.info("TC_03_02_Chon tai khoan nguon");
-		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		sourceAccount = transferMoneyOutSide.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		log.info("TC_03_03_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, destinationAccount, TitleOutVCB.ACCOUT_TO);
-
-		log.info("TC_03_04_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
-
-		log.info("TC_03_05_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, ReportTitle.SEARCH_BUTTON);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
-
 		log.info("TC_03_06_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, inputInfo.maxTran, TitleOutVCB.MONEY);
-
-		log.info("TC_03_07_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, inputInfo.minTran, TitleOutVCB.TRANSACTION_INFOMATION, "1");
 
 		log.info("TC_03_08_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
@@ -208,7 +178,7 @@ public class TransferOutSideVCB_Limit_02 extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
 		log.info("TC_03_17_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, inputInfo.maxTran, TitleOutVCB.MONEY);
+		transferMoneyOutSide.inputToDynamicInputBox(driver, inputInfo.minTran, TitleOutVCB.MONEY);
 
 		log.info("TC_03_18_Nhap noi dung chuyen tien");
 		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
@@ -259,7 +229,7 @@ public class TransferOutSideVCB_Limit_02 extends Base {
 		transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 
 		log.info("TC_03_31_Verify hien thi man hinh thong bao loi");
-		verifyEquals(transferMoneyOutSide.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), MESSEGE_ERROR.HIGHER_MAX_A_TRANSACTION+addCommasToLong(inputInfo.maxTran)+MESSEGE_ERROR.DETAIL_A_DAY_MESSAGE);
+		verifyEquals(transferMoneyOutSide.getTextDynamicFollowImage(driver, "com.VCB:id/ivTitle"), MESSEGE_ERROR.HIGHER_MAX_A_TRANSACTION+addCommasToLong(inputInfo.totalLimit)+MESSEGE_ERROR.DETAIL_A_DAY_MESSAGE);
 
 		log.info("TC_03_32_Click Dong");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");

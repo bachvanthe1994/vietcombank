@@ -1773,10 +1773,7 @@ public class AbstractPage {
 	public boolean isDynamicButtonDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		if (status == true) {
-			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+		isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		return isDisplayed;
 
 	}

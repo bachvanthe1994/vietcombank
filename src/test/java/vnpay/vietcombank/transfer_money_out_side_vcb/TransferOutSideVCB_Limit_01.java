@@ -36,8 +36,8 @@ public class TransferOutSideVCB_Limit_01 extends Base {
 
 	long transferFee = 0;
 	double transferFeeCurrentcy = 0;
-	String higherTotal,destinationAccount;
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "1000000", "1500000");
+	String higherGroup,higherPackage,destinationAccount;
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "100000000", "150000000");
 
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	TransferOutSideVCB_Info info = new TransferOutSideVCB_Info("", "", TitleOutVCB.NAME_RECIEVED, TitleOutVCB.BANK_RECIEVED, "", TitleOutVCB.TRANSACTION_FEE_SENT, TitleOutVCB.TRANSACTION_CONTENT, TitleOutVCB.PASSWORD_TITLE);
@@ -47,6 +47,7 @@ public class TransferOutSideVCB_Limit_01 extends Base {
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt,String username,String passWeb) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		
+		destinationAccount = getDataInCell(34);
 		log.info("Before class: Mo backend ");
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 
@@ -60,7 +61,7 @@ public class TransferOutSideVCB_Limit_01 extends Base {
 		System.out.println("Setup Group : Done");
 		setupBE.clearCacheBE(driverWeb);
 	
-		destinationAccount = getDataInCell(34);
+		
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
 			driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -72,11 +73,13 @@ public class TransferOutSideVCB_Limit_01 extends Base {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transferMoneyOutSide = PageFactoryManager.getTransferMoneyOutSideVCBPageObject(driver);
 	
-		higherTotal = (Integer.parseInt(inputInfo.maxTran)+1)+"";
+		higherGroup = (Integer.parseInt(inputInfo.maxTran)+1)+"";
+		higherPackage = (Integer.parseInt(inputInfo.totalLimit)+1)+"";
 		
 		transferMoneyOutSide.scrollDownToText(driver, TitleOutVCB.TRANSFER_MONEY_STATUS_TEXT);
 	}
 
+	@Test 
 	public void TC_01_ChuyenTienToiTaiKhoanKhac_LonHonNhomDichVu() {
 
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
@@ -100,7 +103,7 @@ public class TransferOutSideVCB_Limit_01 extends Base {
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
 
 		log.info("TC_01_6_Nhap so tien");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, higherTotal, TitleOutVCB.MONEY);
+		transferMoneyOutSide.inputToDynamicInputBox(driver, higherGroup, TitleOutVCB.MONEY);
 
 		log.info("TC_01_7_Chọn phí giao dịch");
 		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
@@ -126,37 +129,9 @@ public class TransferOutSideVCB_Limit_01 extends Base {
 	@Test
 	public void TC_02_ChuyenTienToiTaiKhoanKhac_LonHonGoiDichVu() {
 
-		log.info("TC_02_1_Click Chuyen tien toi ngan hang khac");
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TITLE_TRANSFER_OUTSIDE);
-		clickPopupAfter15h30();
-
-		log.info("TC_02_2_Chon tai khoan nguon");
-		transferMoneyOutSide.scrollUpToText(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicDropDown(driver, TitleOutVCB.ACCOUNT_FROM_LABEL);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
-
-		log.info("TC_02_3_Nhap tai khoan thu huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, destinationAccount, TitleOutVCB.ACCOUT_TO);
-
-		log.info("TC_02_4_Nhap ten nguoi huong");
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.name, TitleOutVCB.BENEFICIARY_NAME);
-
-		log.info("TC_02_5_Chon ngan hang huong");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.DESTINATION_BANK);
-		transferMoneyOutSide.inputToDynamicInputBox(driver, info.destinationBank, TitleOutVCB.SEARCH_BUTTON);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, info.destinationBank);
-
-		log.info("TC_02_6_Nhap so tien");
-		String higherMoney = (Integer.parseInt(inputInfo.totalLimit)+1)+"";
-		transferMoneyOutSide.inputToDynamicInputBox(driver, higherMoney, TitleOutVCB.MONEY);
-
-		log.info("TC_02_7_Chọn phí giao dịch");
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSACTION_FEE_SENT);
-		transferMoneyOutSide.clickToDynamicButtonLinkOrLinkText(driver, TitleOutVCB.TRANSFER_PERSON);
-
-		log.info("TC_02_8_Nhap noi dung chuyen tien");
-		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, info.note, TitleOutVCB.TRANSACTION_INFOMATION, "3");
-
+		log.info("TC_02_06_Nhap so tien");
+		transferMoneyOutSide.inputToDynamicInputBoxByHeader(driver, higherPackage, TitleOutVCB.TRANSACTION_INFOMATION, "1");
+		
 		log.info("TC_02_9_Click Tiep tuc");
 		transferMoneyOutSide.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 

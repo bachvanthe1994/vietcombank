@@ -36,7 +36,6 @@ public class Limit_Train_Ticket extends Base {
 	String phoneNumber = "";
 	String account;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
-	String passSmartOTP = "111222";
 	private WebBackendSetupPageObject webBackend;
 	WebDriver driverWeb;
 	long amount;
@@ -52,7 +51,7 @@ public class Limit_Train_Ticket extends Base {
 		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
 
-//		webBackend.addMethod(driverWeb, "Thanh toán vé tàu", inputInfo, "TESTBUG");
+		webBackend.addMethod(driverWeb, "Thanh toán vé tàu", inputInfo, Constants.BE_CODE_PACKAGE);
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -153,7 +152,7 @@ public class Limit_Train_Ticket extends Base {
 
 		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20) + "", (amount + 100) + "", "10000000");
 
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMin, "TESTBUG");
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMin, Constants.BE_CODE_PACKAGE);
 
 		log.info("TC_01_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
@@ -169,7 +168,7 @@ public class Limit_Train_Ticket extends Base {
 
 		log.info("TC_01_Nhap so CMT");
 		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvCMND");
-		
+
 		log.info("TC_01_Nhap so CMT");
 		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.TELEPHONE_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvSDT");
 
@@ -200,415 +199,59 @@ public class Limit_Train_Ticket extends Base {
 		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
+		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
-
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé tàu", "TESTBUG");
-
-		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
-		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
-		trainTicket.clickToDynamicContinue("com.VCB:id/btnNotification");
 
 	}
 
 	@Test
 	public void TC_02_DatVeTau_Thanh_Toan_Nho_Hon_Han_Muc_Max_Transfer() throws InterruptedException {
-		log.info("TC_02_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING_CAPITALIZE, "com.VCB:id/tvTextPickUp");
 
-		log.info("TC_02_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
-
-		log.info("TC_02_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
-
-		log.info("TC_02_Nhap text ga den");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
-
-		log.info("TC_02_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
-		log.info("TC_02_Chon Mot chieu");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.ONE_WAY);
-
-		log.info("TC_02_Vao man hinh chon ngay");
-		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
-
-		String startDay = getForWardDay(5);
-
-		log.info("TC_02_Chon ngay di la ngay tuong lai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(5), startDay);
-
-		log.info("TC_02_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONFIRM);
-
-		log.info("TC_02_Click button hanh khach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.PASSENGER);
-
-		log.info("TC_02_Click so luon nguoi tang len 1 don vi");
-		trainTicket.clickDynamicButtonNumber(textDefault.ADULTS, "com.VCB:id/ivIncrase");
-
-		log.info("TC_02_Click button xong");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
-
-		log.info("TC_02_Click link loai cho");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.TYPE_SEAT);
-
-		log.info("TC_02_Click radio chon tat ca");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.CHOOSE_ALL);
-
-		log.info("TC_02_Click button xong");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
-
-		log.info("TC_02_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		log.info("TC_02_Click chon gio khoi hanh");
-		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivBgItem");
-
-		log.info("TC_02_Click TIEP TUC");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		log.info("TC_02_Click chon toa");
-		trainTicket.clickDynamicSelectLocation("0", "com.VCB:id/tvWagon");
-
-		log.info("TC_02_get lay mau o cho trong");
-		String colorOfSeat = trainTicket.getColorOfElement(TrainTicketPageUIs.IMAGE_BY_TEXT, textDefault.BLANK);
-
-		log.info("TC_02_Click chon cho trong");
-		trainTicket.scrollIDownOneTime(driver);
-		listActual = trainTicket.chooseSeats(1, colorOfSeat);
-
-		log.info("TC_01Verify so ghe da chon");
-		listExpect = Arrays.asList(trainTicket.getTextInDynamicPopup("com.VCB:id/tvSeat"));
-
-		log.info("TC_02_Click tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		amount = convertAvailableBalanceCurrentcyOrFeeToLong(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"));
 		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 20) + "", (amount - 10) + "", "10000000");
 
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé tàu", inputInfoMax, "TESTBUG");
+		webBackend.getInfoServiceLimit1(driverWeb, "Thanh toán vé tàu", inputInfoMax, Constants.BE_CODE_PACKAGE);
 
-		log.info("TC_02_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
-
-		log.info("TC_02_Verify man hinh thong tin hanh khach");
-		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.INFOMATION_PASSENGER);
-
-		log.info("TC_02_Nhap ho ten khách hang");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CUSTOMER_NAME + randomNumber(), "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvHoTen");
-
-		log.info("TC_02_Nhap so CMT");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
-
-		log.info("TC_02_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvCMND");
-		
-		log.info("TC_02_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.TELEPHONE_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvSDT");
-
-		log.info("TC_02_Nhap email");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.emailName + randomNumber() + "@gmail.com", textDefault.CONTACT_INFO, "com.VCB:id/tvEmail");
-
-		log.info("TC_02_Click radio khong xuat hoa don");
-		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivNoXuatHoaDon");
-
-		log.info("TC_02_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
-
-		log.info("TC_02_click button dong y dong popup");
-		trainTicket.clickToDynamicButtonContains("Đ");
-
-		log.info("TC_02_Get tong tien chieu di");
-		trainTicket.getTextTotal("0", "com.VCB:id/tvTotalAmount");
-
-		log.info("TC_02_click button Thanh toan");
-		trainTicket.clickToDynamicButtonContains(textDefault.PAY);
-
-		log.info("TC_02_click button Khong");
-		trainTicket.clickToDynamicButton(textDefault.NO);
-
-		trainTicket.scrollDownToText(driver, textDefault.TOTAL_MONEY_PAY);
-
-		log.info("TC_02_click button tiep tuc");
+		log.info("TC_01_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
 
-		log.info("TC_02_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
+		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 10) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 
-		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
-
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán vé tàu", "TESTBUG");
-
-		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
-		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
-		trainTicket.clickToDynamicContinue("com.VCB:id/btnNotification");
+		ServiceLimitInfo inputInfoMax1 = new ServiceLimitInfo("1000", (amount*100) + "", (amount*10000) + "", "10000000");
+		webBackend.getInfoServiceLimit1(driverWeb, "Thanh toán vé tàu", inputInfoMax1, Constants.BE_CODE_PACKAGE);
 
 	}
 
 	@Parameters({ "otp" })
 	@Test
 	public void TC_03_DatVeTau_Thanh_Toan_Lon_Hon_Han_Muc_Max_Nhom() throws InterruptedException {
-		log.info("TC_03_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING_CAPITALIZE, "com.VCB:id/tvTextPickUp");
 
-		log.info("TC_03_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", (amount - 10000) + "");
 
-		log.info("TC_03_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
-
-		log.info("TC_03_Nhap text ga den");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
-
-		log.info("TC_03_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
-		log.info("TC_03_Chon Mot chieu");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.ONE_WAY);
-
-		log.info("TC_03_Vao man hinh chon ngay");
-		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
-
-		String startDay = getForWardDay(5);
-
-		log.info("TC_03_Chon ngay di la ngay tuong lai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(5), startDay);
-
-		log.info("TC_03_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONFIRM);
-
-		log.info("TC_03_Click button hanh khach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.PASSENGER);
-
-		log.info("TC_03_Click so luon nguoi tang len 1 don vi");
-		trainTicket.clickDynamicButtonNumber(textDefault.ADULTS, "com.VCB:id/ivIncrase");
-
-		log.info("TC_03_Click button xong");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
-
-		log.info("TC_03_Click link loai cho");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.TYPE_SEAT);
-
-		log.info("TC_03_Click radio chon tat ca");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.CHOOSE_ALL);
-
-		log.info("TC_03_Click button xong");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
-
-		log.info("TC_03_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		log.info("TC_03_Click chon gio khoi hanh");
-		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivBgItem");
-
-		log.info("TC_03_Click TIEP TUC");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		log.info("TC_03_Click chon toa");
-		trainTicket.clickDynamicSelectLocation("0", "com.VCB:id/tvWagon");
-
-		log.info("TC_03_get lay mau o cho trong");
-		String colorOfSeat = trainTicket.getColorOfElement(TrainTicketPageUIs.IMAGE_BY_TEXT, textDefault.BLANK);
-
-		log.info("TC_03_Click chon cho trong");
-		trainTicket.scrollIDownOneTime(driver);
-		listActual = trainTicket.chooseSeats(1, colorOfSeat);
-
-		log.info("TC_01Verify so ghe da chon");
-		listExpect = Arrays.asList(trainTicket.getTextInDynamicPopup("com.VCB:id/tvSeat"));
-
-		log.info("TC_03_Click tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		amount = convertAvailableBalanceCurrentcyOrFeeToLong(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"));
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn", (amount - 10000) + "");
-
-		log.info("TC_03_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
-
-		log.info("TC_03_Verify man hinh thong tin hanh khach");
-		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.INFOMATION_PASSENGER);
-
-		log.info("TC_03_Nhap ho ten khách hang");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CUSTOMER_NAME + randomNumber(), "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvHoTen");
-
-		log.info("TC_03_Nhap so CMT");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
-
-		log.info("TC_03_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvCMND");
-
-		log.info("TC_03_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.TELEPHONE_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvSDT");
-		
-		log.info("TC_03_Nhap email");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.emailName + randomNumber() + "@gmail.com", textDefault.CONTACT_INFO, "com.VCB:id/tvEmail");
-
-		log.info("TC_03_Click radio khong xuat hoa don");
-		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivNoXuatHoaDon");
-
-		log.info("TC_03_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
-
-		log.info("TC_03_click button dong y dong popup");
-		trainTicket.clickToDynamicButtonContains("Đ");
-
-		log.info("TC_03_Get tong tien chieu di");
-		trainTicket.getTextTotal("0", "com.VCB:id/tvTotalAmount");
-
-		log.info("TC_03_click button Thanh toan");
-		trainTicket.clickToDynamicButtonContains(textDefault.PAY);
-
-		log.info("TC_03_click button Khong");
-		trainTicket.clickToDynamicButton(textDefault.NO);
-
-		trainTicket.scrollDownToText(driver, textDefault.TOTAL_MONEY_PAY);
-
-		log.info("TC_03_click button tiep tuc");
+		log.info("TC_01_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
 
-		log.info("TC_03_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
+		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 10000) + "") + " VND/1 lần ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
-		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hóa đơn");
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn");
 
-		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
-		trainTicket.clickToDynamicImageViewByID("com.VCB:id/ivTitleLeft");
-		trainTicket.clickToDynamicContinue("com.VCB:id/btnNotification");
 	}
 
 	@Test
 	public void TC_04_DatVeTau_Thanh_Toan_Lon_Hon_Han_Muc_Max_Goi() throws InterruptedException {
-		log.info("TC_04_Click ga khoi hanh");
-		trainTicket.clickDynamicPointStartAndEnd(textDefault.TRAIN_BOOKING_CAPITALIZE, "com.VCB:id/tvTextPickUp");
 
-		log.info("TC_04_Nhap text ga khoi hanh");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH, "com.VCB:id/edtTextPickUp");
-
-		log.info("TC_04_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH);
-
-		log.info("TC_04_Nhap text ga den");
-		trainTicket.inputToDynamicTextPoint(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END, "com.VCB:id/edtTextArrival");
-
-		log.info("TC_04_Chon gia tri trong danh sach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(TrainTicket_Data.inputText.POINT_EDIT_SEARCH_END);
-
-		log.info("TC_04_Chon Mot chieu");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.ONE_WAY);
-
-		log.info("TC_04_Vao man hinh chon ngay");
-		trainTicket.clickToDynamicSelectDate("com.VCB:id/tv_ngay_di");
-
-		String startDay = getForWardDay(5);
-
-		log.info("TC_04_Chon ngay di la ngay tuong lai");
-		trainTicket.clickDynamicDateStartAndEnd(trainTicket.getMonthAndYearPlusDay(5), startDay);
-
-		log.info("TC_04_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONFIRM);
-
-		log.info("TC_04_Click button hanh khach");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.PASSENGER);
-
-		log.info("TC_04_Click so luon nguoi tang len 1 don vi");
-		trainTicket.clickDynamicButtonNumber(textDefault.ADULTS, "com.VCB:id/ivIncrase");
-
-		log.info("TC_04_Click button xong");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
-
-		log.info("TC_04_Click link loai cho");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.TYPE_SEAT);
-
-		log.info("TC_04_Click radio chon tat ca");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.CHOOSE_ALL);
-
-		log.info("TC_04_Click button xong");
-		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.DONE);
-
-		log.info("TC_04_Click button tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		log.info("TC_04_Click chon gio khoi hanh");
-		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivBgItem");
-
-		log.info("TC_04_Click TIEP TUC");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		log.info("TC_04_Click chon toa");
-		trainTicket.clickDynamicSelectLocation("0", "com.VCB:id/tvWagon");
-
-		log.info("TC_04_get lay mau o cho trong");
-		String colorOfSeat = trainTicket.getColorOfElement(TrainTicketPageUIs.IMAGE_BY_TEXT, textDefault.BLANK);
-
-		log.info("TC_04_Click chon cho trong");
-		trainTicket.scrollIDownOneTime(driver);
-		listActual = trainTicket.chooseSeats(1, colorOfSeat);
-
-		log.info("TC_01Verify so ghe da chon");
-		listExpect = Arrays.asList(trainTicket.getTextInDynamicPopup("com.VCB:id/tvSeat"));
-
-		log.info("TC_04_Click tiep tuc");
-		trainTicket.clickToDynamicButton(textDefault.CONTINUE);
-
-		amount = convertAvailableBalanceCurrentcyOrFeeToLong(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTotalAmount"));
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 1000) + "");
-
-		log.info("TC_04_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
-
-		log.info("TC_04_Verify man hinh thong tin hanh khach");
-		verifyEquals(trainTicket.getTextInDynamicPopup("com.VCB:id/tvTitle1"), textDefault.INFOMATION_PASSENGER);
-
-		log.info("TC_04_Nhap ho ten khách hang");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CUSTOMER_NAME + randomNumber(), "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvHoTen");
-
-		log.info("TC_04_Nhap so CMT");
-		trainTicket.inputToDynamicTextHeader(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), "com.VCB:id/ivRight", "com.VCB:id/lnHeader", "com.VCB:id/tvCMND");
-
-		log.info("TC_04_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.CARD_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvCMND");
-
-		log.info("TC_03_Nhap so CMT");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.TELEPHONE_NO_SHORT + randomNumber(), textDefault.CONTACT_INFO, "com.VCB:id/tvSDT");
-
-		log.info("TC_04_Nhap email");
-		trainTicket.inputToDynamicText(TrainTicket_Data.inputText.emailName + randomNumber() + "@gmail.com", textDefault.CONTACT_INFO, "com.VCB:id/tvEmail");
-
-		log.info("TC_04_Click radio khong xuat hoa don");
-		trainTicket.clickDynamicImageResourceID("com.VCB:id/ivNoXuatHoaDon");
-
-		log.info("TC_04_click button tiep tuc");
-		trainTicket.clickToDynamicButtonContains(textDefault.CONTINUE);
-
-		log.info("TC_04_click button dong y dong popup");
-		trainTicket.clickToDynamicButtonContains("Đ");
-
-		log.info("TC_04_Get tong tien chieu di");
-		trainTicket.getTextTotal("0", "com.VCB:id/tvTotalAmount");
-
-		log.info("TC_04_click button Thanh toan");
-		trainTicket.clickToDynamicButtonContains(textDefault.PAY);
-
-		log.info("TC_04_click button Khong");
-		trainTicket.clickToDynamicButton(textDefault.NO);
-
-		trainTicket.scrollDownToText(driver, textDefault.TOTAL_MONEY_PAY);
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp", (amount - 1000) + "");
 
 		log.info("TC_04_click button tiep tuc");
 		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
 
-		log.info("TC_04_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
+		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount -1000) + "") + " VND/1 lần ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 
 		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
-		webBackend.Reset_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+		webBackend.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
 
 	}
 
