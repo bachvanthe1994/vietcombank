@@ -2,8 +2,8 @@ package vietcombank_test_data;
 
 public class Online_Topup_Data {
 	public class VETC {
-		
 		public static final String VETC_SERVICE = "Nạp tiền tài khoản VETC";
+		public static final String LICENSE_PLATES_CODE_CUSTOMER = "Biển số xe/ Mã khách hàng";
 		public static final String VETC_NAME = "VETC";
 		public static final String VETC_DATA_01 = "E0100065030";
 		public static final String VETC_MONEY = "50000";

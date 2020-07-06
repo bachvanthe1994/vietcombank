@@ -23,6 +23,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	List<String> listExpectFull = Lists.newArrayList("All", "Soft OTP", "PIN", "SMS OTP");
 	public static ServiceLimitInfo getInfo = new ServiceLimitInfo("", "", "", "");
 	public List<ServiceLimitInfo02> getInfoList = new ArrayList<ServiceLimitInfo02>();
+	public List<ServiceLimitInfo02> getInfoList1 = new ArrayList<ServiceLimitInfo02>();
 	public List<ServiceLimitInfo02> getInfoList_All = new ArrayList<ServiceLimitInfo02>();
 
 	public List<ServiceLimitInfo02> getInfoList_totalDay = new ArrayList<ServiceLimitInfo02>();
@@ -271,6 +272,27 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 		return getInfoList;
 	}
+	public List<ServiceLimitInfo02> getAndInputDataByListIcon1(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
+		
+		List<String> methodList = getDynamicDataByListIcon(driver, serviceName, "1");
+		for (String text : methodList) {
+			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
+			getInfo.method = text.trim();
+			clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
+			getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
+			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
+			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
+			getInfoList1.add(getInfo);
+			
+			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
+			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			clickToDynamicButtonATagByID(driver, "edit-limit");
+			acceptAlert(driver);
+			
+		}
+		
+		return getInfoList1;
+	}
 
 	public List<ServiceLimitInfo02> getAndInputDataByListIcon_Total_LimitDay(WebDriver driver, String dynamicText, ServiceLimitInfo info) {
 		List<String> methodList = getDynamicDataByListIcon(driver, dynamicText, "1");
@@ -435,5 +457,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void getInfoServiceLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
+	}
+	public void getInfoServiceLimit1(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+		openAssignServiceLimit(driverWeb, codePackage);
+		getInfoList1 = getAndInputDataByListIcon1(driverWeb, serviceName, inputInfo);
 	}
 }

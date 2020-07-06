@@ -27,7 +27,7 @@ import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
-public class Transection_limit_account_saving_money extends Base {
+public class Limit_Open_Account_Saving_Money extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;

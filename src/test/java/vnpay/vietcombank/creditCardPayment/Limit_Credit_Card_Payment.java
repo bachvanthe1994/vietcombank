@@ -73,7 +73,7 @@ public class Limit_Credit_Card_Payment extends Base {
 	}
 
 	@Test
-	public void TC_01_ThanhToanTheTinDung_VND_SMS_OTP() {
+	public void TC_01_Auto_Saving_Nho_Hon_Han_Muc_Toi_THieu_Min_Tran() {
 		log.info("TC_01_Step_01: Lay thong tin tai so tai khoan");
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.SOURCE_ACCOUNT);
 		sourceAccount = vcbACreditCardPayment.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);

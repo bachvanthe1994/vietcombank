@@ -20,13 +20,10 @@ import model.ServiceLimitInfo;
 import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.TransactionReportPageObject;
 import pageObjects.WebBackendSetupPageObject;
 import pageObjects.shopping_online.ShoppingOnlinePageObject;
 import vietcombank_test_data.HomePage_Data;
 import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
-import vietcombank_test_data.TransactionReport_Data;
-import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.shopping_online.data.Shopping_Online_Data;
 
 public class Limit_Shopping_Online extends Base {
