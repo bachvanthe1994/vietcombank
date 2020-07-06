@@ -381,7 +381,7 @@ public class Limit_HotelBooking extends Base {
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		log.info("Setup assign services limit");
-		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", money - 1 + "");
+		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp", money - 1 + "");
 		
 		log.info("TC_04_00_Mo lai App");
 		
