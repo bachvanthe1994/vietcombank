@@ -19,7 +19,7 @@
 		<parameter name="deviceUDID" value="22232b98150c7ece" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0335059860" />
-		<parameter name="pass" value="aaaa1111" />
+		<parameter name="pass" value="aaaa1111#" />
 		<parameter name="otp" value="123456" />
 		<parameter name="username" value="anhvt" />
 		<parameter name="passWeb" value="123456a@" />
@@ -44,7 +44,15 @@
 
 			<!-- Chuyển tiền quà tặng -->
 			<class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" />
-			
+
+			<!-- Hạn mức chuyển tiền CMT -->
+			<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
+
+			<!-- Hạn mức chuyển tiền ngoài ngân hàng -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferOutSideVCB_Limit_01" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferOutSideVCB_Limit_02" /> -->
+
+
 
 			<!-- ADSL -->
 			<!-- <class name="vnpay.vietcombank.internet_ADSL.Limit_Internet_ADSL" /> -->
