@@ -3,7 +3,6 @@ package vnpay.vietcombank.creditCardPayment;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -29,7 +28,7 @@ public class Limit_Credit_Card_Payment extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private VCBCreditCardPaymentObject vcbACreditCardPayment;
-	public String account = ""; 
+	public String account = "";
 	long surplus, availableBalance, actualAvailableBalance = 0;
 	double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy = 0;
 	public String cardNumber = "";
@@ -39,12 +38,12 @@ public class Limit_Credit_Card_Payment extends Base {
 	public String minimumAmount = "";
 	public String amountOutStandingStatement = "";
 	public String loansAmountRemain = "";
-	public String amountPaid = "";
+	public long amountPaid;
 	WebDriver driverWeb;
 	private WebBackendSetupPageObject webBackend;
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	String password, phoneNumber = "";
-	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "5000000", "5500000");
+	ServiceLimitInfo inputInfo = new ServiceLimitInfo("1000", "10000", "50000000", "5500000000");
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 	@BeforeClass
@@ -59,7 +58,7 @@ public class Limit_Credit_Card_Payment extends Base {
 //		webBackend.addMethod(driverWeb, "Thanh toán thẻ tín dụng", inputInfo, Constants.BE_CODE_PACKAGE);
 		phoneNumber = getDataInCell(8);
 		password = getDataInCell(27);
-		
+
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -68,12 +67,11 @@ public class Limit_Credit_Card_Payment extends Base {
 		login.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		login.clickToDynamicButtonLinkOrLinkText(driver, HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		vcbACreditCardPayment = PageFactoryManager.getVCBCreditCardPaymentPageObject(driver);
-		
 
 	}
 
 	@Test
-	public void TC_01_Auto_Saving_Nho_Hon_Han_Muc_Toi_THieu_Min_Tran() {
+	public void TC_01_Credit_Card_Payment_Nho_Hon_Han_Muc_Toi_THieu_Min_Tran() throws InterruptedException {
 		log.info("TC_01_Step_01: Lay thong tin tai so tai khoan");
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.SOURCE_ACCOUNT);
 		sourceAccount = vcbACreditCardPayment.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
@@ -89,93 +87,110 @@ public class Limit_Credit_Card_Payment extends Base {
 		vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, Creadit_Card_Payment_Data.Tittle.SELECT_CARD);
 
 		log.info("TC_01_Step_05: get list tai khoan tin dung");
-		List<String> listAccount = vcbACreditCardPayment.getListAccount();
+//		List<String> listAccount = vcbACreditCardPayment.getListAccount();
+//		vcbACreditCardPayment.scrollUpToText(driver, listAccount.get(0));
+//		for (String account : listAccount) {
+//		vcbACreditCardPayment.scrollDownToText(driver, account);
+		vcbACreditCardPayment.scrollDownToText(driver, "546285xxxxxxx040");
+		log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
+//			vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, account);
+		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, "546285xxxxxxx040");
+//			if (vcbACreditCardPayment.isTextDisplayed(Creadit_Card_Payment_Data.Tittle.NO_HAVE_LOANS)) {
+//				log.info("TC_01_Step_07: Click btn Dong y:");
+//				vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+//
+//				log.info("TC_01_Step_08: Click chon so tai khoan the :");
+//				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
+//
+//				continue;
+//				
+//			} else {
+//				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
+//				log.info("TC_01_Step_08: Lay thong tin so The");
+//				cardNumber = vcbACreditCardPayment.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
+//
+//				log.info("TC_01_Step_09: Lay thong tin so tai khoan the");
+//				accountCardNumber = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TK_THE);
 
-		vcbACreditCardPayment.scrollUpToText(driver, listAccount.get(0));
+		log.info("TC_01_Step_15: So tien thanh toan ");
+		amountPaid = convertAvailableBalanceCurrentcyOrFeeToLong(vcbACreditCardPayment.getAccountNumber(driver, "com.VCB:id/valueTienGetThanhToan"));
 
-		for (String account : listAccount) {
-			vcbACreditCardPayment.scrollDownToText(driver, account);
-			log.info("TC_01_Step_06: Chon tai khoan the tin dung:");
-			vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, account);
-			if (vcbACreditCardPayment.isTextDisplayed(Creadit_Card_Payment_Data.Tittle.NO_HAVE_LOANS)) {
-				log.info("TC_01_Step_07: Click btn Dong y:");
-				vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+//				if (amountPaid.equals("0 VND")) {
+//					vcbACreditCardPayment.scrollUpToText(driver, Creadit_Card_Payment_Data.Tittle.TT_GIAO_DICH);
+//
+//					log.info("TC_01_Step_16: Chon so the ");
+//					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
+//					continue;
+//					
+//				} else {
+//					break;
+//					
+//				}
+//			}
 
-				log.info("TC_01_Step_08: Click chon so tai khoan the :");
-				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
+//		}
 
-				continue;
-				
-			} else {
-				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
-				log.info("TC_01_Step_08: Lay thong tin so The");
-				cardNumber = vcbACreditCardPayment.getDynamicTextDetailByIDOrPopup(driver, "com.VCB:id/tvContent1");
+		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", addCommasToLong((amountPaid + 20) + ""), addCommasToLong((amountPaid + 100) + ""), "10000000000");
 
-				log.info("TC_01_Step_09: Lay thong tin so tai khoan the");
-				accountCardNumber = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TK_THE);
-
-				log.info("TC_01_Step_10: Lay thong tin tinh trang the");
-				cardStatus = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TINH_TRANG_THE);
-
-				log.info("TC_01_Step_11: Lay thong tin so tien thanh toan trong ky sao ke: ");
-				payedAmountInPeriod = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TONG_SO_TT_SAO_KE);
-
-				log.info("TC_01_Step_12: So tien toi thieu phai thanh toan ");
-				minimumAmount = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_TOI_THIEU_TT);
-
-				log.info("TC_01_Step_13: So tien thanh toan ");
-				vcbACreditCardPayment.scrollDownToText(driver, "Số tiền thanh toán");
-				amountOutStandingStatement = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_SK_TT);
-
-				log.info("TC_01_Step_14: So tien du no phai thanh toan ");
-				loansAmountRemain = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_DU_NO_TT);
-
-				log.info("TC_01_Step_15: So tien thanh toan ");
-				amountPaid = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_TT);
-
-				if (amountPaid.equals("0 VND")) {
-					vcbACreditCardPayment.scrollUpToText(driver, Creadit_Card_Payment_Data.Tittle.TT_GIAO_DICH);
-
-					log.info("TC_01_Step_16: Chon so the ");
-					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
-					continue;
-					
-				} else {
-					break;
-					
-				}
-			}
-
-		}
-
-
-		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amountOutStandingStatement + 20) + "", (amountOutStandingStatement + 100) + "", "10000000");
-
-		webBackend.getInfoServiceLimit(driverWeb, "	Thanh toán thẻ tín dụng", inputInfoMin, Constants.BE_CODE_PACKAGE);
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán thẻ tín dụng", inputInfoMin, Constants.BE_CODE_PACKAGE);
 
 		log.info("TC_01_Step_17: Click btn tiep tuc");
 		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		
-		log.info("TC_01_10_Chon phuong thuc xac thuc");
-		vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
-		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
-		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, Creadit_Card_Payment_Data.Tittle.SMS_OTP);
+		verifyEquals(vcbACreditCardPayment.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amountPaid) + 20 + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 
-		log.info("TC_01_Step_22: Click btn Tiep tuc ");
+		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
+	}
+
+	@Test
+	public void TC_02_Credit_Card_Payment_Lon_Hon_Han_Muc_Toi_Da_Max_Tran() throws InterruptedException {
+
+		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", addCommasToLong((amountPaid - 200) + ""), addCommasToLong((amountPaid - 100) + "") + "", "10000000000");
+
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán thẻ tín dụng", inputInfoMax, Constants.BE_CODE_PACKAGE);
+
+		log.info("TC_01_Step_17: Click btn tiep tuc");
 		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		log.info("TC_01_Step_23: Xac minh man hinh  Xac thuc giao dich ");
-		verifyTrue(vcbACreditCardPayment.isDynamicMessageAndLabelTextDisplayed(driver, Creadit_Card_Payment_Data.Tittle.XAC_THUC_GD));
+		verifyEquals(vcbACreditCardPayment.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amountPaid) - 100 + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 
-		log.info("TC_01_Step_24: Nhap OTP ");
-		vcbACreditCardPayment.inputToDynamicOtp(driver, Creadit_Card_Payment_Data.Tittle.OTP_NUMBER, "Tiếp tục");
+		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán thẻ tín dụng", inputInfo, Constants.BE_CODE_PACKAGE);
+		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
-		log.info("----------TC_01_Step_25 Click tiep tuc");
+
+	}
+
+	@Test
+	public void TC_03_Credit_Card_Payment_Lon_Hon_Han_Muc_Toi_Da_Max_Nhom_Giao_Dich() throws InterruptedException {
+
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán thẻ tín dụng", addCommasToLong((inputInfo.minTran) + ""));
+
+		log.info("TC_01_Step_17: Click btn tiep tuc");
 		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-	
-		
+		verifyEquals(vcbACreditCardPayment.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.minTran) + "") + " VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+
+		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán thẻ tín dụng");
+
+	}
+
+	@Test
+	public void TC_04_Credit_Card_Payment_Lon_Hon_Han_Muc_Toi_Da_Max_Goi_Giao_Dich() throws InterruptedException {
+
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, Constants.METHOD_OTP, inputInfo.minTran);
+
+		log.info("TC_01_Step_17: Click btn tiep tuc");
+		vcbACreditCardPayment.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		verifyEquals(vcbACreditCardPayment.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Chuyển tiền không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.minTran) + "") + " VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+
+		vcbACreditCardPayment.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+
+		webBackend.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, Constants.METHOD_OTP);
+
 	}
 
 	@AfterClass(alwaysRun = true)

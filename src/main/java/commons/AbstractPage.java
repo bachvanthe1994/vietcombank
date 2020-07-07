@@ -2842,9 +2842,10 @@ public class AbstractPage {
 	}
 
 	// lấy số tài khoản ngoài màn hinh chính
-	public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID) {
+	public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID ) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
