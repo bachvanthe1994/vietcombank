@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Vietcombank" parallel="false">
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
@@ -8,7 +7,7 @@
 		<listener class-name="reportConfig.ReportNGListener" />
 		<!-- <listener class-name="reportConfig.RetryListener" /> -->
 	</listeners>
-	<parameter name="appActivities" value="com.VCB.activities.SplashActivity" />
+	<parameter name="appActivities" value="com.VCB.activities.home.SplashActivity" />
 	<parameter name="appPackage" value="com.VCB" />
 	<parameter name="appName" value="vcbtnewdesign.apk" />
 
@@ -16,70 +15,39 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
-		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
+		<parameter name="deviceName" value="SamsungA20s" />
+		<parameter name="deviceUDID" value="22232b98150c7ece" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0904797863" />
+		<parameter name="phone" value="0335059860" />
 		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
+		<parameter name="username" value="anhvt" />
+		<parameter name="passWeb" value="123456a@" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
-			<!-- Chuyển tiền trong vcb -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Immedidately_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_And_Report_2" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.TransferMoneyRecurrent" />
-			<class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity" />
 
-			<!-- chuyển tiền ngoài vcb -->
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_1" />
-			<class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferMoneyOutSideVCB_Part_2" />
+			<!-- Hạn mức chuyển tiền ngay -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
 
+			<!-- Hạn mức chuyển tiền tương lai -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Limit" /> -->
+
+			<!-- Hạn mức chuyển tiền định kỳ -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Limit_01" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Limit_02" /> -->
 
 			<!-- Chuyển tiền 24/7 -->
-			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" />
-			<class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" />
+			<!-- <class name="vnpay.vietcombank.transfer_money_quick_247.Transaction_Limit_Account" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_quick_247.Transaction_Limit_Card" /> -->
 
-			<!-- Chuyển tiên qua cmt -->
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-			<class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" />
+			<!-- Chuyển tiền quà tặng -->
+			<class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" />
+			
 
-			<!-- Quà tặng may mắn -->
-			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
-
-			<!-- Quản lý danh bạ -->
-			<class name="vnpay.vietcombank.setupContactManament.SetupContactManagement_Flow" />
-
-
-			<!-- Nạp tiền điện thoại -->
-			<class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" />
-
-			<!-- Dịch vụ thẻ -->
-			<class name="vnpay.vietcombank.card_services.Card_Services" />
-
-			<!-- Tiết kiệm trực tuyến -->
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_1" />
-			<class name="vnpay.vietcombank.saving_online.SavingOnline_Flow_Part_2" />
-
-
-			<!-- Đăng ký trực tuyến -->
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_DoNotLoginUser" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part1" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part2" />
-			<class name="vnpay.vietcombank.register_online.Flow_RegisterOnline_LoginUser_Part3" />
-
-
-
-
-
-
-
-
-
-
-
+			<!-- ADSL -->
+			<!-- <class name="vnpay.vietcombank.internet_ADSL.Limit_Internet_ADSL" /> -->
 
 		</classes>
 
@@ -92,5 +60,3 @@
 
 
 </suite> 
-
-
