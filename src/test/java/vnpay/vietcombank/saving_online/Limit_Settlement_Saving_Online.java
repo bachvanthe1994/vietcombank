@@ -20,7 +20,7 @@ import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
-public class Transection_limit_settlement_bank extends Base {
+public class Limit_Settlement_Saving_Online extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;

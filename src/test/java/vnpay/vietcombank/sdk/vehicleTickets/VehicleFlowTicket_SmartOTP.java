@@ -25,7 +25,7 @@ import vietcombank_test_data.Notify_Management_Data.Notify_Text;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.vehicleTicket.data.VehicalData;
 
-public class VehicalFlowTicket_SmartOTP extends Base {
+public class VehicleFlowTicket_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
