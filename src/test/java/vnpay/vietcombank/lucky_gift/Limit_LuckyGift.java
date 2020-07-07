@@ -173,6 +173,7 @@ public class Limit_LuckyGift extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
+		driverWeb.quit();
 		closeApp();
 		service.stop();
 	}
