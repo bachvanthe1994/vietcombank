@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Vietcombank" parallel="false">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<!-- <listener class-name="reportConfig.ExtentReportListener" /> -->
+		<listener class-name="reportConfig.ReportNGListener" />
+		<!-- <listener class-name="reportConfig.RetryListener" /> -->
+	</listeners>
+	<parameter name="appActivities" value="com.VCB.activities.home.SplashActivity" />
+	<parameter name="appPackage" value="com.VCB" />
+	<parameter name="appName" value="vcbtnewdesign.apk" />
+
+
+
+	<test name="Run test case on Android 9">
+		<parameter name="deviceType" value="androidReal" />
+		<parameter name="deviceName" value="SamsungA20s" />
+		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
+		<parameter name="phone" value="0335059860" />
+		<parameter name="pass" value="aaaa1111#" />
+		<parameter name="otp" value="123456" />
+		<parameter name="username" value="anhvt" />
+		<parameter name="passWeb" value="123456a@" />
+		<parameter name="platformVersion" value="10.0" />
+		<classes>
+
+
+			<!-- Hạn mức chuyển tiền ngay -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
+
+			<!-- Hạn mức chuyển tiền tương lai -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Limit" /> -->
+
+			<!-- Hạn mức chuyển tiền định kỳ -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Limit_01" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_Recurrent_Limit_02" /> -->
+
+			<!-- Chuyển tiền 24/7 -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_quick_247.Transaction_Limit_Account" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_quick_247.Transaction_Limit_Card" /> -->
+
+			<!-- Chuyển tiền quà tặng -->
+			<class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" />
+
+			<!-- Hạn mức chuyển tiền CMT -->
+			<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
+
+			<!-- Hạn mức chuyển tiền ngoài ngân hàng -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferOutSideVCB_Limit_01" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferOutSideVCB_Limit_02" /> -->
+
+
+
+			<!-- ADSL -->
+			<!-- <class name="vnpay.vietcombank.internet_ADSL.Limit_Internet_ADSL" /> -->
+
+		</classes>
+
+
+
+	</test>
+
+
+
+
+
+</suite> 

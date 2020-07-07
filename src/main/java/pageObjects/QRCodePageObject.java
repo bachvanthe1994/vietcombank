@@ -205,11 +205,13 @@ public class QRCodePageObject extends AbstractPage {
 	}
 
 	public static Boolean checkTestScriptFailed = false;
+	public static int numberImage = 0;
 	public OrderQRCode_Type2_Info chooseQRCodeType2(int number) {
 		OrderQRCode_Type2_Info qrCode = new OrderQRCode_Type2_Info();
 		SourceAccountModel sourceAccount = new SourceAccountModel();
 		boolean check = false;
 		for (int i = 1; i <= number; i++) {
+			numberImage = i;
 			clickToImageByIndex(number - i);
 			qrCode.provider = getDynamicTextInTransactionDetail(driver, "Nhà cung cấp");
 			qrCode.service = getDynamicTextInTransactionDetail(driver, "Dịch vụ");

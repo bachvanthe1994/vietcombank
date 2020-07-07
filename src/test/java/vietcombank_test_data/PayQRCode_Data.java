@@ -68,6 +68,20 @@ public class PayQRCode_Data {
 	public static final String STATUS_TRANSFER_MONEY  = "Trạng thái chuyển tiền";
 	public static final String TRANSFER_MONEY_CHARITY  = "Chuyển tiền từ thiện";
 	public static final String SEARCH_BUTTON  = "Tìm kiếm";
+	public static final String MONEY_PAYMENT  = "100000";
+	public static final String NOTE_CONTENT  = "Test";
+	public static final String QR_PAY_TEXT  = "QR PAY";
+	public static final String PAY_QR_PAY_OFFLINE = "Thanh toán QR điểm offline";
+	public static final String PAY_QR_PAY_PRODUCT = "Thanh toán QR sản phẩm";
+	
+	public static final String MESSAGE_MIN_LIMIT_PER_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức "; 
+	public static final String MESSAGE_MIN_LIMIT_PER_TRANS_2 = "/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_TRANS_2 = "/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_GROUP_TRANS_2 = "/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
+	public static final String MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_1 = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức "; 
+	public static final String MESSAGE_MAX_LIMIT_PER_PACKAGE_TRANS_2 = "/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 	
 }
 
