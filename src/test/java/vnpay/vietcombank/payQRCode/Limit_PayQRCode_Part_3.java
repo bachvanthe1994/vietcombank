@@ -310,8 +310,8 @@ public class Limit_PayQRCode_Part_3 extends Base {
 		setupBE = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 
-		log.info("Setup assign services type limit");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, PayQRCode_Data.QR_PAY_TEXT, money - 1 + "");
+		log.info("Setup method package total limit");
+		setupBE.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp", money - 1 + "");
 
 		log.info("TC_04_00_Mo lai App");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
