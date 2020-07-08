@@ -1864,6 +1864,11 @@ public class AbstractPage {
 		return isUnDisplayed;
 
 	}
+	
+	public boolean isTextDisplayed (AppiumDriver<MobileElement> driver,String... dynamicText) {
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+		
+	}
 
 	public boolean isDynamicBackIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;

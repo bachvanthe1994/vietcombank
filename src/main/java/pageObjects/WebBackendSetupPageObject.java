@@ -388,6 +388,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDataToServiceLimit(WebDriver driver, ServiceLimitInfo inputInfo) {
 		inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 		clickToDynamicButtonATagByID(driver, "edit-limit");
 		acceptAlert(driver);
 	}
