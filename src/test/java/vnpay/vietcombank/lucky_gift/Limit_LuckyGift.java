@@ -48,12 +48,12 @@ public class Limit_LuckyGift extends Base {
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
-		
+
 		log.info("Before class: setup limit ngay");
 		loginWeb.setupAssignServicesLimit(driverWeb, backendTitle.SERVICE, inputInfo, backendTitle.PACKAGE_CODE);
 		loginWeb.Setup_Assign_Services_Type_Limit(driverWeb, backendTitle.PACKAGE_CODE, backendTitle.TRANSFER, Limit_Money_Gift.SERVICE_LIMIT_TRANSFER);
 		loginWeb.Setup_Add_Method_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, TittleData.TITTLE_METHOD, Limit_Money_Gift.PACKAGE_LIMIT_TRANSFER);
-		
+
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
@@ -90,6 +90,8 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicWishes(driver, TitleLuckyGift.TITLE_WISHES);
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivReceiver");
+		luckyGift.hideKeyBoard(driver);
+		luckyGift.scrollIDownOneTime(driver);
 
 		log.info("TC_01_Step_9: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
@@ -118,7 +120,7 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 	}
-	
+
 	@Test
 	public void TC_03_ChuyenTienQuaCaoHonHanMucToiDaTrongNgay() {
 		log.info("TC_02_Step_01: Nhap so tien chuyen");
@@ -134,13 +136,13 @@ public class Limit_LuckyGift extends Base {
 		luckyGift.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 
 	}
-	
+
 	// Set BE goi han nhom dich vu la 100 trieu
 	@Test
 	public void TC_04_ChuyenTienQuaCaoHonHanMucToiDaNhomDichVu() throws GeneralSecurityException, IOException {
 		log.info("TC_04_Step_1: Nhap so tien chuyen");
 		luckyGift.inputIntoEditTextByID(driver, Limit_Money_Gift.SERVICE_LIMIT, "com.VCB:id/amount");
-		
+
 		log.info("TC_04_Step_2: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.CONTINUE);
 
@@ -171,6 +173,7 @@ public class Limit_LuckyGift extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
+		driverWeb.quit();
 		closeApp();
 		service.stop();
 	}

@@ -35,7 +35,9 @@ public class SavingOnline_Data {
 	public static final String NEW_TRANSACTION_PERFORM = "Thực hiện giao dịch mới";
 	public static final String CHOOSE_DESTINATION_ACCOUNT = "Chọn tài khoản đích";
 	public static final String EXPIRE_SAVING_ACCOUNT = "Tất toán tiết kiệm";
+	public static final String EXPIRE_SAVING_ACCOUNT_ONLINE = "Tất toán tài khoản tiết kiệm online";
 	public static final String SAVING_NUMBER_ACCOUNT = "Tài khoản tiết kiệm";
+	public static final String CHOICE_ACCOUNT_DISTANCE = "Chọn tài khoản đích";
 	public static final String SAVING_DATE = "Ngày gửi tiền";
 	public static final String EXPIRE_DATE = "Ngày đến hạn";
 	public static final String ORIGINAL_MONEY = "Số tiền gửi gốc";

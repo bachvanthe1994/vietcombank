@@ -110,7 +110,7 @@
 <!-- 			<class -->
 <!-- 				name="vnpay.vietcombank.online_topup.Limit_Online_Topup" /> -->
 			<class
-				name="vnpay.vietcombank.creditCardPayment.Limit_Credit_Card_Payment" />
+				name="vnpay.vietcombank.saving_online.Limit_Settlement_Saving_Online" />
 <!-- 			<class -->
 <!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
 			<!-- <class -->

@@ -4,8 +4,9 @@ public class AirTicketBookingUIs {
 
 	// text box
 	public static final String DYNAMIC_TEXT_BOX_BY_LABEL = "//android.widget.TextView[@text='%s']//following-sibling::android.widget.LinearLayout//android.widget.EditText[@resource-id=\"%s\"]";
-	public static final String DYNAMIC_TEXT_BOX_BY_ID = "//android.widget.EditText[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_TEXT_BOX_BY_ID = "//android.widget.EditText[@resource-id='%s']";
 	public static final String DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER = "//*[@resource-id=\"%s\"]/android.widget.LinearLayout[@index='%s']//android.widget.EditText[@resource-id=\"%s\"]";
+	public static final String DYNAMIC_TEXT_ADULTS1 = "//android.widget.EditText[@text= '%s']";
 	
 	// text view
 	public static final String DATE_IN_CALENDAR = "//android.view.View[@text='%s']";

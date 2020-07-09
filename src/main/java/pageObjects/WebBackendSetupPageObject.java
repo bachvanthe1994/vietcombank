@@ -388,6 +388,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDataToServiceLimit(WebDriver driver, ServiceLimitInfo inputInfo) {
 		inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 		clickToDynamicButtonATagByID(driver, "edit-limit");
 		acceptAlert(driver);
 	}
@@ -439,6 +440,14 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
+	}
+	public void inputDynamicDataByListIcon_Reset(WebDriver driver, String serviceName,ServiceLimitInfo02 inputInfo ) {
+			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
+			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
+			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			clickToDynamicButtonATagByID(driver, "edit-limit");
+			acceptAlert(driver);
+		
 	}
 	
 	public void clearCacheBE(WebDriver driver) {

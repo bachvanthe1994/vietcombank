@@ -21,10 +21,8 @@ import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.TransferIdentiryPageObject;
 import pageObjects.WebBackendSetupPageObject;
-import vietcombank_test_data.HomePage_Data.Home_Text_Elements;
 import vietcombank_test_data.TransferIdentity_Data.textCheckElement;
 import vietcombank_test_data.TransferIdentity_Data.textDataInputForm;
-import vietcombank_test_data.TransferMoneyInVCB_Data.TittleData;
 
 public class TransferIdentityCard_Limit extends Base {
 	AppiumDriver<MobileElement> driver;
@@ -192,7 +190,6 @@ public class TransferIdentityCard_Limit extends Base {
 		log.info("TC_03_STEP_11: chon tiep tuc");
 		trasferPage.clickToDynamicButton(driver, textCheckElement.NEXT);
 
-		
 		log.info("TC_03_STEP_11: chon Phuong thuc xac thuc");
 		trasferPage.clickToTextID(driver, "com.VCB:id/tvptxt");
 		trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.PASSWORD_TITLE);
@@ -344,6 +341,7 @@ public class TransferIdentityCard_Limit extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
+		driverWeb.quit();
 		closeApp();
 		service.stop();
 	}
