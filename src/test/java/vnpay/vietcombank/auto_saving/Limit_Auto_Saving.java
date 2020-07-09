@@ -20,9 +20,7 @@ import model.SourceAccountModel;
 import pageObjects.AutoSavingPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
-import pageObjects.SavingOnlinePageObject;
 import pageObjects.WebBackendSetupPageObject;
-import vietcombank_test_data.SavingOnline_Data;
 import vietcombank_test_data.Auto_Saving_Data.Auto_Saving_Text;
 
 public class Limit_Auto_Saving extends Base {

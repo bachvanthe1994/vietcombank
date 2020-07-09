@@ -803,7 +803,7 @@ public class WebAbstractPage {
 //	}
 
 	public boolean waitForElementVisible(WebDriver driver, String locator, String... dynamicValue) {
-		sleep(driver, 1000);
+		sleep(driver, 500);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		WebDriverWait wait = new WebDriverWait(driver, longTime);
 		try {

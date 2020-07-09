@@ -1864,6 +1864,11 @@ public class AbstractPage {
 		return isUnDisplayed;
 
 	}
+	
+	public boolean isTextDisplayed (AppiumDriver<MobileElement> driver,String... dynamicText) {
+		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
+		
+	}
 
 	public boolean isDynamicBackIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
@@ -2842,9 +2847,10 @@ public class AbstractPage {
 	}
 
 	// lấy số tài khoản ngoài màn hinh chính
-	public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID) {
+	public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID ) {
 		boolean status = false;
 		String text = null;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
 		if (status == true) {
 			text = getTextElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
