@@ -21,7 +21,6 @@ import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyObject;
-import vietcombank_test_data.Account_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data.Tittle_Quick;
@@ -435,7 +434,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 	@Parameters({ "otp" })
-	//@Test
+	@Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
 	public void TC_03_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP(String otp) {
 		log.info("TC_11_Step_Click Chuyen tien nhanh");
@@ -567,7 +566,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyEquals(amountAtual, amountExpect);
 	}
 
-	//@Test
+@Test
 	public void TC_04_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
@@ -616,7 +615,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(TransferMoneyQuick_Data.TransferQuick.NOTE));
 
 		log.info("TC_12: Check so tien chuyen");
-		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + ".00 USD"));
+		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), ("- " + addCommasToLong(TransferMoneyQuick_Data.TransferQuick.MONEY_USD) + " USD"));
 
 		log.info("TC_12: Click chi tiet giao dich");
 		transReport.clickToDynamicTransactionInReport(driver, "0", "com.VCB:id/tvDate");
@@ -1490,7 +1489,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 
 		log.info("TC_15_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, Tittle_Quick.CARD_TRIP);
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, Account_Data.Valid_Account.LIST_CARD_FROM[0]);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, cardNumber );
 
 		log.info("TC_15: Lay so du kha dung the");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES);
