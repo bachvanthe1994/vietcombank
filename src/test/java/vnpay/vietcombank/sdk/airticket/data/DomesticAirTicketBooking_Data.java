@@ -14,6 +14,7 @@ public class DomesticAirTicketBooking_Data {
 
 	public static class validInput {
 		public static final String ADULT_NAME = "NGUOI LON";
+		public static final String ADULT_NAME_1 = "Nguyen van an";
 		public static final String ADULT_EMAIL = "abcd@gmail.com";
 		public static final String ADULT_PHONE = "0901234567";
 		public static final String CONTENT = "DAT CHUYEN BAY DI TP HO CHI MINH";
@@ -64,6 +65,7 @@ public class DomesticAirTicketBooking_Data {
 		public static final String HAN_PLACE = "Hà Nội";
 		public static final String SGN_PLACE = "TP Hồ Chí Minh";
 		public static final String SIN_PLACE = "Singapore";
+		public static final String SYD_PLACE = "Sydney";
 		
 		public static final String SUGGEST_FLIGHT_CODE_BL = "BL";
 		public static final String SUGGEST_FLIGHT_CODE_VN = "VN";
@@ -79,6 +81,14 @@ public class DomesticAirTicketBooking_Data {
 		public static final String BUTTON_ORDER_TICKET_TEXT = "Đặt vé";
 		public static final String BUTTON_PAY_LATER_TEXT = "Thanh toán sau";
 		public static final String BUTTON_SEARCH_FLIGHT_TEXT = "Tìm chuyến bay";
+		
+		public static final String PAY_DOMESTIC_AIR_TICKET = "Thanh toán vé máy bay nội địa";
+		public static final String PAY_INTERNATIONNAL_TICKET = "Thanh toán vé máy bay quốc tế";
 	}
-
+	
+	public static class Limit_Data {
+		
+	}
+		
+	
 }
