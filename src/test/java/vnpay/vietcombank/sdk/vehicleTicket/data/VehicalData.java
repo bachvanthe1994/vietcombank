@@ -71,8 +71,9 @@ public class VehicalData {
 	public static final String OTP="SMS OTP";
 	public static final String PASS="Mật khẩu đăng nhập";
 	public static final String SMART_OTP = "VCB - Smart OTP";
-	public static final String NUMBER_OTP="123456";
-
+	public static final String NUMBER_OTP = "123456";
+	public static final String PAY_ORDER = "Thanh toán hóa đơn";
+	public static final String PAY_VEHICLE_TICKET = "Thanh toán vé xe";
 
 	
 	

@@ -89,10 +89,10 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		log.info("Setup assign services limit");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", "1000000000");
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_ORDER, "1000000000");
 
 		log.info("Setup assign services limit");
-		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán vé xe", money + 1 + "", "100000000", "1000000000");
+		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_VEHICLE_TICKET, money + 1 + "", "100000000", "1000000000");
 		
 		log.info("TC_01_00_Mo lai App");
 		
@@ -201,10 +201,10 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		log.info("Setup assign services limit");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", "1000000000");
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_ORDER, "1000000000");
 
 		log.info("Setup assign services limit");
-		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán vé xe", "10000",  money - 1 + "", "1000000000");
+		setupBE.Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_VEHICLE_TICKET, "10000",  money - 1 + "", "1000000000");
 		
 		log.info("TC_02_00_Mo lai App");
 		
@@ -313,7 +313,7 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 		setupBE.Login_Web_Backend(driverWeb, username, passWeb);
 		
 		log.info("Setup assign services limit");
-		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn", money - 1 + "");
+		setupBE.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_ORDER, money - 1 + "");
 		
 		log.info("TC_03_00_Mo lai App");
 		
@@ -495,8 +495,8 @@ public class Limit_Vehicle_Booking_Ticket extends Base {
 	public void afterClass() {
 		closeApp();
 		setupBE.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
-		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn");
-		setupBE.Reset_Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán vé xe");
+		setupBE.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_ORDER);
+		setupBE.Reset_Setup_Assign_Services_Limit(driverWeb, Constants.BE_CODE_PACKAGE, VehicalData.DATA_ORDER_TICKET.PAY_VEHICLE_TICKET);
 		driverWeb.quit();
 		service.stop();
 
