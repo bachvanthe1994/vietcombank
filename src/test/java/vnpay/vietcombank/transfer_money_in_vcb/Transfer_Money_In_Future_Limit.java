@@ -109,7 +109,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButton(driver, Home_Text_Elements.CONTINUE_BTN);
 
 		log.info("TC_01_Step_11: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_lOWER_MIN_LIMIT);
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_lOWER_MIN_LIMIT));
 
 		log.info("TC_01_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -126,7 +126,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButton(driver, Home_Text_Elements.CONTINUE_BTN);
 
 		log.info("TC_02_Step_11: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT);
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_MAX_LIMIT));
 
 		log.info("TC_02_Step_12: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -226,7 +226,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButton(driver, Home_Text_Elements.CONTINUE_BTN);
 
 		log.info("TC_04_Step_03: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES);
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_GROUP_SERVICES));
 
 		log.info("TC_04_Step_04: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
@@ -243,7 +243,7 @@ public class Transfer_Money_In_Future_Limit extends Base {
 		transferInVCB.clickToDynamicButton(driver, Home_Text_Elements.CONTINUE_BTN);
 
 		log.info("TC_05_Step_02: Verify hien thi man hinh thong bao loi");
-		transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES);
+		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.Output.MESSEGE_ERROR_HIGHER_LIMIT_PACKAGE_SERVICES));
 
 		log.info("TC_05_Step_03: Click btn Dong");
 		transferInVCB.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
