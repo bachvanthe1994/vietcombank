@@ -837,7 +837,7 @@ public class TransferMoneyCharity_SmartOTP extends Base {
 		log.info("TC_09_9_3_Kiem tra tai khoan dich");
 		String destinationAccount = transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.DESTINATION_ACCOUNT);
 
-		String expectMoney = addCommasToLong(info4.money) + " VND";
+		String expectMoney = addCommasToDouble(info4.money) + " USD";
 		log.info("TC_09_9_4_Kiem tra so tien ung ho");
 		verifyEquals(transferMoneyCharity.getDynamicTextInTransactionDetail(driver, TransferMoneyCharity_Data.MONEY_CHARITY), expectMoney);
 

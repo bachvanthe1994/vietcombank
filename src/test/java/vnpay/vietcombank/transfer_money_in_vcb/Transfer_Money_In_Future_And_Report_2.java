@@ -132,7 +132,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_01_Step_19: Kiem tra Ngay hieu luc hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_01_Step_20: Kiem tra phuong thuc tra phi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -163,7 +163,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_01_Step_30: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
-		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_01_Step_31: Lay ma giao dich");
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CODE_TRANSFER);
@@ -384,7 +384,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), addCommasToLong(TransferMoneyInVCB_Data.InputDataInFutureForPassword.TRANSFER_AMOUNT) + " VND");
 
 		log.info("TC_04_Step_21: Kiem tra Ngay hieu luc hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_04_Step_22: Kiem tra phuong thuc tra phi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -415,7 +415,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_04_Step_32: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
-		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_04_Step_33: Lay ma giao dich");
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CODE_TRANSFER);
@@ -628,7 +628,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), String.format("%.02f", convertMoneyToDouble(TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER, Constants.USD_CURRENCY)) + " USD");
 
 		log.info("TC_07_Step_19: Kiem tra Ngay hieu luc hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_07_Step_20: Kiem tra phuong thuc tra phi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[0]));
@@ -660,7 +660,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_07_Step_30: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
-		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_07_Step_31: Lay ma giao dich");
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CODE_TRANSFER);
@@ -883,7 +883,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT), addCommasToDouble(TransferMoneyInVCB_Data.InputDataInFutureForPassword.AMOUNT_OF_EUR_OR_USD_TRANSFER) + " EUR");
 
 		log.info("TC_10_Step_21: Kiem tra Ngay hieu luc hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.EFFECTIVE_DATE), (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_10_Step_22: Kiem tra phuong thuc tra phi");
 		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, TransferMoneyInVCB_Data.InputDataInVCB.COST[1]));
@@ -915,7 +915,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_10_Step_32: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
-		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_10_Step_33: Lay ma giao dich");
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CODE_TRANSFER);
@@ -1136,7 +1136,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_13_Step_24: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
-		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_13_Step_25: Lay ma giao dich");
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CODE_TRANSFER);
@@ -1347,7 +1347,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 		log.info("TC_16_Step_24: Lay thoi gian tao giao dich");
 		transferTime = transferInVCB.getDynamicTransferTimeAndMoney(driver, TransferMoneyInVCB_Data.Output.SUCESSFULL_CREATED_ORDER, "4");
-		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + capitalizeString(transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
+		verifyEquals(transferTime, TransferMoneyInVCB_Data.Output.ORDER_TIME + (transferInVCB.getDayInWeek(tommorrowDate)) + " " + tommorrowDate);
 
 		log.info("TC_16_Step_25: Lay ma giao dich");
 		transactionNumber = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.CODE_TRANSFER);

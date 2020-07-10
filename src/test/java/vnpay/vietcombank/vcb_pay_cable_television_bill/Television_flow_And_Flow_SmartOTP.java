@@ -342,8 +342,6 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 		log.info("TC_04_17: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.DETAIL_TRANSFER);
 
-		
-
 		log.info("TC_04_20: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_REPORT);
 
