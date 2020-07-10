@@ -63,6 +63,16 @@ public class DynamicAirTicketBookingObjects extends AbstractPage {
 			sendKeyToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_BOX_AIR_TICKET_INFO_OF_CUSTOMER, inputValue, dynamicTextAndID);
 		}
 	}
+	
+	public void inputIntoAdults1(String inputValue, String dynamicTextAndID) {
+		boolean status = false;
+		scrollIDown(driver, AirTicketBookingUIs.DYNAMIC_TEXT_ADULTS1, dynamicTextAndID);
+		status = waitForElementVisible(driver, AirTicketBookingUIs.DYNAMIC_TEXT_ADULTS1, dynamicTextAndID);
+		if (status == true) {
+			clearText(driver, AirTicketBookingUIs.DYNAMIC_TEXT_ADULTS1, dynamicTextAndID);
+			sendKeyToElement(driver, AirTicketBookingUIs.DYNAMIC_TEXT_ADULTS1, inputValue, dynamicTextAndID);
+		}
+	}
 
 //Chon  date o calendar k co scroll
 	public void clickToDynamicDateInCalendar(String text) {

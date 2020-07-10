@@ -115,7 +115,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicOptionText(driver, "100");
 		for (ServiceTypeLimitInfo serviceType : getInfoType) {
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", serviceType.methodOTP, "Edit Service Type Limit");
-			inputIntoInputByID(driver, serviceType.totalLimit, "edit-limit-day");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
@@ -182,9 +182,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		for (ServiceLimitInfo02 service : serviceLimitInfoList) {
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", service.method, "Edit Service Limit");
 			inputIntoInputByID(driver, "1000", "edit-times-day");
-			inputIntoInputByID(driver, service.minTran, "edit-min-tran");
-			inputIntoInputByID(driver, service.maxTran, "edit-max-tran");
-			inputIntoInputByID(driver, service.totalLimit, "edit-total-limit");
+			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
+			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND)+1)+"", "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
@@ -231,7 +231,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
 		for (Assign_Package_Total_Limit assign : listAssign) {
 			clickToDynamicIconPencil(driver, assign.method_Otp, "blue");
-			inputIntoInputByID(driver, assign.total_limit, "edit-limit-day");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-limit-day");
 			clickToDynamicLinkAByID(driver, "update-servicetype");
 			acceptAlert(driver);
 		}
@@ -388,6 +388,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDataToServiceLimit(WebDriver driver, ServiceLimitInfo inputInfo) {
 		inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+		inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 		clickToDynamicButtonATagByID(driver, "edit-limit");
 		acceptAlert(driver);
 	}
@@ -434,8 +435,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDynamicDataByListIcon_All(WebDriver driver, String serviceName) {
 		for (ServiceLimitInfo02 inputInfo : getInfoList_All) {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
-			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
-			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
+			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND)+1)+"", "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
