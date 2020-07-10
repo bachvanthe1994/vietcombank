@@ -63,7 +63,7 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 		listVina = Arrays.asList(getDataInCell(16).split(";"));
 	}
 
-	@Test
+	/*@Test
 	public void TC_01_CuocDiDongTraSau_Viettel_OTP() {
 		log.info("TC_01_Step_01: Click Cuoc di dong tra sau");
 		home.scrollDownToText(driver, Title.POSTAGE_VNPT);
@@ -463,7 +463,7 @@ public class PostPaid_Mobile_Bill_SmartOTP extends Base {
 
 		log.info("TC_04_Step_21: Mo tab Home");
 		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}
+	}*/
 
 	@Test
 	public void TC_05_CuocDiDongTraSau_Viettel_SmartOTP() {

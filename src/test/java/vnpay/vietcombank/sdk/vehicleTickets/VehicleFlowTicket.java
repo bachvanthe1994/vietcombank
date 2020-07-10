@@ -284,19 +284,19 @@ public class VehicleFlowTicket extends Base {
 	}
 
 	@Parameters({ "otp" })
-	@Test(invocationCount=2)
+	@Test
 	public void TC_02_MuaVeXeBangOTP(String otp) {
-		log.info("==========TC_02_Step_02: Chon va nhap diem di");
+		log.info("TC_02_Step_02: Chon va nhap diem di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
-		log.info("========TC_02_Step_03: Chon va nhap diem den");
+		log.info("=TC_02_Step_03: Chon va nhap diem den");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.EDIT_DESTINATION);
 
-		log.info("=====TC_02_Step_04: Chon ngay muon di");
+		log.info("TC_02_Step_04: Chon ngay muon di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
 
 		log.info("TC_02_Step_05: Tim kiem chuyen di");
@@ -559,17 +559,17 @@ public class VehicleFlowTicket extends Base {
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.ORDER_TICKET);
 		vehicalTicket.clickToDynamicButton("Đồng ý");
 
-		log.info("==========TC_05_Step_02: Chon va nhap diem di");
+		log.info("TC_05_Step_02: Chon va nhap diem di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.CHOOSE_FROM_PLACE);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_1, VehicalData.DATA_ORDER_TICKET.DESTINATION);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_1);
 
-		log.info("==TC_05_Step_03: Chon va nhap diem den");
+		log.info("TC_05_Step_03: Chon va nhap diem den");
 		vehicalTicket.clickToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.inputToDynamicInputBox(VehicalData.DATA_ORDER_TICKET.PLACE_3, VehicalData.DATA_ORDER_TICKET.ARRIVAL);
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.PLACE_3);
 
-		log.info("==TC_05_Step_04: Chon ngay muon di");
+		log.info("TC_05_Step_04: Chon ngay muon di");
 		vehicalTicket.clickToDynamicText(VehicalData.DATA_ORDER_TICKET.TOMORROW);
 
 		log.info("TC_05_Step_05: Tim kiem chuyen di");
@@ -804,7 +804,7 @@ public class VehicleFlowTicket extends Base {
 		verifyTrue(vehicalTicket.isDynamicMessageAndLabelTextDisplayed(ReportTitle.DETAIL_TRANSFER));
 
 		log.info("-TC_07_Step_19: Verify tai khoan trich no");
-		verifyEquals(account, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.ACCOUNT_CARD_SOURCE));
+		verifyEquals(account, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.ACCOUNT_CARD));
 
 		log.info("-TC_07_Step_19: Verify ma thanh toan ");
 		verifyEquals(maThanhToan, vehicalTicket.getTextDynamicFollowTextTable(CommonPageUIs.DYNAMIC_VALUE, ReportTitle.CODE_TRANSFER));

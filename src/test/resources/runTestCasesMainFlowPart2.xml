@@ -40,7 +40,8 @@
 <!--             <class name="vnpay.vietcombank.login.Template" /> -->
             
             <!-- Quà tặng may mắn -->
-            <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Limit" />
+            <class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_SmartOTP" />
+            <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
 
 		</classes>
 

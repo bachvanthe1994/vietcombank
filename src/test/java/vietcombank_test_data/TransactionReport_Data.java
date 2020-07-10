@@ -10,7 +10,6 @@ public class TransactionReport_Data {
 		public static final String TRANSACTION_REPORT = "Báo cáo giao dịch";
 		public static final String TRANSACTION_NUMBER = "Số lệnh giao dịch";
 		public static final String ACCOUNT_CARD = "Tài khoản trích nợ";
-		public static final String ACCOUNT_CARD_SOURCE = "Tài khoản/thẻ trích nợ";
 		public static final String TRANSACTION_DETAIL = "Chi tiết giao dịch";
 		public static final String TRANSACTION_MONEY = "Số tiền giao dịch";
 		public static final String ALL_TYPE_TRANSACTION = "Tất cả các loại giao dịch";

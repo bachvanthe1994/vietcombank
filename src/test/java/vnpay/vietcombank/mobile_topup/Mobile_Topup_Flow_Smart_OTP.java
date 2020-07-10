@@ -62,6 +62,47 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 		log.info("Setup smart OTP");
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 		newOtp = "111222";
+		log.info("TC_00_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
+		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.MOBILE_TOPUP);
+		mobileTopup.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
+
+
+	}
+	
+	
+	@Parameters({ "otp" })
+	@Test(invocationCount=2)
+	public void TC_00_NapTheDienThoai_QuaSoDienThoaiKhac_QuaOTP(String otp) {
+
+		log.info("TC_00_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
+
+		log.info("TC_00_Step_03: Chon tai khoan nguon");
+
+		sourceAcoount = mobileTopup.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
+		log.info("TC_00_Step_04: Nhap so dien thoai");
+		mobileTopup.inputIntoEditTextByID(driver, other_Phone_Number, "com.VCB:id/mobile");
+
+		log.info("TC_00_Step_05: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btn_submit");
+
+		
+		log.info("TC_00_Step_09: Chon phuong thuc xac thuc SMS OTP");
+		mobileTopup.clickToTextID(driver, "com.VCB:id/tvptxt");
+
+		mobileTopup.clickToDynamicButtonLinkOrLinkText(driver, Text.SMS_OTP);
+
+		log.info("TC_00_Step_10: An nut 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		log.info("TC_00_Step_11: Nhap ki tu vao o nhap OTP");
+		mobileTopup.inputToDynamicOtp(driver, otp, Text.COUTINUE);
+
+		log.info("TC_00_Step_12: An tiep button 'Tiep tuc'");
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
+
+		mobileTopup.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
 	}
 
@@ -70,11 +111,7 @@ public class Mobile_Topup_Flow_Smart_OTP extends Base {
 	public void TC_01_NapTheDienThoai_GiaTriMin_QuaMK(String phone) {
 
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien thoai'");
-		home.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.MOBILE_TOPUP);
-		mobileTopup = PageFactoryManager.getMobileTopupPageObject(driver);
-
 		log.info("TC_01_Step_02: Click vào DrodownList 'Tai khoan nguon' ");
-		mobileTopup.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		mobileTopup.clickToTextID(driver, "com.VCB:id/number_account");
 
 		log.info("TC_01_Step_03: Chon tai khoan nguon");
