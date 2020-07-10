@@ -26,7 +26,7 @@ import vietcombank_test_data.PayBillTelevison_Data.TitleData;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferIdentity_Data.textCheckElement;
 
-public class Television_flow extends Base {
+public class Television_flow_And_Flow_SmartOTP extends Base {
 	AppiumDriver<MobileElement> driver;
 	private LogInPageObject login;
 	private HomePageObject homePage;
