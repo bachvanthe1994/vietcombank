@@ -227,7 +227,7 @@ public class Water_Bills_Flow2_Smart_OTP extends Base {
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_NUMBER), transactionID);
 
 		log.info("TC_02_Step_12: Xac nhan hien thi so tai khoan giao dich");
-		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD_SOURCE), sourceAccount.account);
+		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.ACCOUNT_CARD), sourceAccount.account);
 
 		log.info("TC_02_Step_13: Hien thi dung ten dich vu");
 		verifyEquals(transactionReport.getDynamicTextByLabel(driver, ReportTitle.SERVICE), Water_Bills_Data.Data.WATER_BILL_TEXT);
