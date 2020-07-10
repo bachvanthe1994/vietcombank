@@ -809,7 +809,7 @@ public class Flow_TrainTicket_part2 extends Base {
 
 		verifyEquals(transferTimeInReport, transferTimeInReport1);
 		log.info("TC_06:: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD_SOURCE), account);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), account);
 
 		log.info("TC_06:So tien giao dich");
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.AMOUNT_TRANSFER).contains(tongTienThanhToan));

@@ -94,12 +94,12 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
 	trasferPage.clickToDynamicTextIndex(driver, "0", textDataInputForm.ISSUED);
 
+	log.info("TC_01_Step_10: noi dung");
+	trasferPage.inputToDynamicInputBoxContent(driver, textDataInputForm.CONTENT_TRANSFER, "3");
+	
 	log.info("TC_01_STEP_9: nhap so tien bat dau la khong");
 	trasferPage.inputToDynamicInputBox(driver, textDataInputForm.MONEY_TRANSFER_VND, textCheckElement.MONEY);
 	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
-
-	log.info("TC_01_Step_10: noi dung");
-	trasferPage.inputToDynamicInputBoxContent(driver, textDataInputForm.CONTENT_TRANSFER, "3");
 
 	log.info("TC_01_STEP_11: chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, textCheckElement.NEXT);

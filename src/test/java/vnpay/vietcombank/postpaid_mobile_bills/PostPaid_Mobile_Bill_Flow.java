@@ -20,7 +20,6 @@ import model.SourceAccountModel;
 import pageObjects.HomePageObject;
 import pageObjects.LogInPageObject;
 import pageObjects.PostpaidMobileBillPageObject;
-import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import vietcombank_test_data.Postpaid_Mobile_Bill_Data;
 import vietcombank_test_data.Postpaid_Mobile_Bill_Data.Title;
@@ -33,7 +32,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 	private PostpaidMobileBillPageObject postpaidMobile;
 	private TransactionReportPageObject transactionReport;
 	private String account;
-	private SettingVCBSmartOTPPageObject smartOTP;
 	String passSmartOTP = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	List<String> listViettel = new ArrayList<String>();
@@ -59,7 +57,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		listVina = Arrays.asList(getDataInCell(16).split(";"));
 	}
 	
-	/*@Parameters({ "otp" })
+	@Parameters({ "otp" })
 	@Test
 	public void TC_01_CuocDiDongTraSau_Viettel_OTP(String otp) {
 		log.info("TC_01_Step_01: Click Cuoc di dong tra sau");
@@ -869,7 +867,7 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_10_Step_21: Mo tab Home");
 		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
-	}*/
+	}
 
 	@Parameters({ "pass" })
 	@Test
