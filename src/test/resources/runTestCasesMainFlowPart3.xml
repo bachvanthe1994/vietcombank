@@ -121,13 +121,18 @@
 			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
 			<!-- <class -->
 			<!-- name="vnpay.vietcombank.sdk.vehicleTickets.VehicleFlowTicket" /> -->
-<!-- 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" /> -->
-<!-- 			<class name="vnpay.vietcombank.lucky_gift.LuckyGift_SmartOTP" /> -->
-<!-- 			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
-<!-- 			<class name="vnpay.vietcombank.water_bills.Water_Bills_Flow2_Smart_OTP" /> -->
-			<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" />
-			<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow_SmartOTP" />
-			<class name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
+
+			<!-- <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
+			<!-- <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow2_Smart_OTP" 
+				/> -->
+			<!-- <class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" 
+				/> -->
+			<!-- <class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow_SmartOTP" 
+				/> -->
+			<class
+				name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift_SmartOTP" />
 			<!-- <class -->
 			<!-- name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_2_Smart_OTP" 
 				/> -->
