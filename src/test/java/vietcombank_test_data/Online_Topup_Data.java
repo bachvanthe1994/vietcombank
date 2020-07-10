@@ -74,9 +74,9 @@ public class Online_Topup_Data {
 	
 	public class EPAY {
 
-		public static final String EPAY_NAME = "Ví điện tử EPAY";
-		public static final String EPAY_TYPE_B = "Nạp tiền EPAY B";
-		public static final String EPAY_TYPE_D = "Nạp tiền EPAY D";
+		public static final String EPAY_NAME = "Ví AirPay";
+		public static final String EPAY_TYPE_B = "Nạp tiền AirPay";
+		public static final String EPAY_TYPE_D = "Nạp tiền đại lý AirPay";
 		public static final String EPAY_MONEY = "50000";
 		public static final String EPAY_DATA_01 = "0963220894";
 	}

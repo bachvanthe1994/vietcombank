@@ -53,11 +53,11 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		filmTicketBooking = PageFactoryManager.getFilmTicketBookingPageObject(driver);
-//		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-//		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
 
-//	@Test
+	@Test
 	public void TC_01_DatVeXemPhim_Rap_MegaGS_BHDCineplex() {
 		
 		log.info("TC_01_01_Click Dat ve xem phim");
@@ -225,7 +225,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_02_DatVeXemPhim_Rap_MegaGS_CineStar_BaoCaoGiaoDich() {
 		log.info("TC_02_1: Click  nut Back");
 		filmTicketBooking.clickToDynamicBackIcon(FilmTicketBooking_Data.BUY_TICKET_FILM);
@@ -304,7 +304,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 
 	}
 	
-//	@Test
+	@Test
 	public void TC_03_KiemTra_HienThiThongBao_DaDangNhap() {
 		
 		log.info("TC_03_Step_01: Click vao Inbox");
