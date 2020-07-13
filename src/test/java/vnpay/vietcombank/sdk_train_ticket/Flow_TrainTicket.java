@@ -32,6 +32,7 @@ public class Flow_TrainTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private TransactionReportPageObject transReport;
 	private LogInPageObject login;
+	private SettingVCBSmartOTPPageObject smartOTP;
 	private TrainTicketPageObject trainTicket;
 
 	List<String> listExpect;
@@ -59,8 +60,8 @@ public class Flow_TrainTicket extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
-//		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-//		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
+		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 		phoneNumber = phone;
 		trainTicket = PageFactoryManager.getTrainTicketPageObject(driver);
 
@@ -560,7 +561,7 @@ public class Flow_TrainTicket extends Base {
 	}
 
 	@Parameters({ "otp" })
-//	@Test
+	@Test
 	public void TC_05_DatVe_KhuHoi_SoLuongNguoiNhoNhat_XacThucBang_SMSOTP(String otp) {
 		log.info("TC_05_Step_Click dat ve tau");
 		trainTicket.clickToDynamicButtonLinkOrLinkText(textDefault.TRAIN_BOOKING);
@@ -788,7 +789,7 @@ public class Flow_TrainTicket extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_06_BaoCaoGiaoDich_DatVe_KhuHoi_SoLuongNguoiNhoNhat_XacThucBang_SMSOTP() {
 		log.info("TC_06: Click menu header");
 		trainTicket.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");

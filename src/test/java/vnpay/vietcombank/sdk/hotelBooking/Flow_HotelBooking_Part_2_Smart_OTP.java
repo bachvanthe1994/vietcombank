@@ -58,16 +58,82 @@ public class Flow_HotelBooking_Part_2_Smart_OTP extends Base {
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
 		customer_name = getDataInCell(1);
 		customer_phone = getDataInCell(8);
+		hotelBooking = PageFactoryManager.getHotelBookingPageObject(driver);
+
+		log.info("TC_04_01_Click Dat phong khach san");
+		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.BOOKING_HOTEL);
+
+		log.info("TC_04_02_Click nut Dong y");
+		hotelBooking.clickToDynamicButton(HotelBooking_Data.ACCEPT);
+
+	}
+	
+	@Parameters({ "otp" })
+	@Test(invocationCount = 2)
+	public void TC_00_DatPhongKhachSan_ThanhToanOTP(String otp) {
+
+		log.info("TC_04_03_Tim kiem dia diem");
+		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");
+		hotelBooking.inputToDynamicInputBox(HotelBooking_Data.HOTEL_NAME_BOOKING_INPUT, HotelBooking_Data.NAME_HOTEL_OR_PLACE);
+
+		log.info("TC_04_04_Chon dia diem");
+		hotelBooking.clickToDynamicTextView(HotelBooking_Data.HOTEL_NAME_BOOKING);
+
+		log.info("TC_04_05_Click dat phong");
+		hotelBooking.waitForTextViewDisplay(HotelBooking_Data.HOTEL_NAME_BOOKING);
+		hotelBooking.scrollIDownToText(HotelBooking_Data.BOOKING);
+		hotelBooking.clickToDynamicTextView(HotelBooking_Data.BOOKING);
+
+
+		log.info("TC_04_06_Nhap ten khach hang");
+		hotelBooking.inputToDynamicInputBoxByID(customer_name, "com.VCB:id/etCustomerName");
+
+		log.info("TC_04_07_Nhap so dien thoai khach hang");
+		hotelBooking.inputToDynamicInputBoxByID(customer_phone, "com.VCB:id/etCustomerPhone");
+
+		log.info("TC_04_08_Nhap email khach hang");
+		hotelBooking.inputToDynamicInputBoxByID(HotelBooking_Data.EMAIL_BOOKING, "com.VCB:id/etCustomerEmail");
+
+		log.info("TC_04_09_Click Thanh toan");
+		hotelBooking.clickToDynamicTextView(HotelBooking_Data.PAYMENT);
+
+		log.info("TC_04_10_Chon tai khoan nguon");
+		hotelBooking.scrollUpToText(driver, HotelBooking_Data.SOURCE_ACCOUNT);
+		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.SOURCE_ACCOUNT);
+
+		sourceAccount = hotelBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
+
+		log.info("TC_04_11_Kiem tra thong tin hoa don");
+		hotelBooking.scrollDownToButton(driver, HotelBooking_Data.CONTINUE_TEXT);
+
+		log.info("TC_04_12_Click Tiep tuc");
+		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
+
+		log.info("TC_04_13_Chon phuong thuc xac thuc");
+		hotelBooking.clickToDynamicDropDown(HotelBooking_Data.CHOICE_METHOD_VERIFY);
+		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.SMS_OTP);
+
+		
+
+		log.info("TC_04_14_Click tiep tuc");
+		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
+
+		log.info("TC_04_15_Nhap ma OTP chinh xac");
+		hotelBooking.inputToDynamicOtp(otp, HotelBooking_Data.CONTINUE_TEXT);
+
+		log.info("TC_04_16_Click tiep tuc");
+		hotelBooking.clickToDynamicButton(HotelBooking_Data.CONTINUE_TEXT);
+
+		log.info("TC_04_26_Click Thuc hien giao dich moi");
+		hotelBooking.clickToDynamicButton(HotelBooking_Data.NEW_PERFORM_TRANSFER);
 
 	}
 
+
 	@Test
 	public void TC_01_DatPhongKhachSan_SmartOTP() {
-		log.info("TC_01_01_Click Dat phong khach san");
-		hotelBooking.clickToDynamicTextOrButtonLink(HotelBooking_Data.BOOKING_HOTEL);
 
-		log.info("TC_01_02_Click nut Dong y");
-		hotelBooking.clickToDynamicButton(HotelBooking_Data.ACCEPT);
 
 		log.info("TC_01_03_Tim kiem dia diem");
 		hotelBooking.clickToDynamicTextViewByID("com.VCB:id/tvPlaceName");

@@ -89,23 +89,17 @@ public class TransferIdentity_flow extends Base {
 	log.info("TC_01_Step_7: ngay cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.DATE);
 	trasferPage.clickToDynamicButton(driver, textCheckElement.OK);
+	
+	log.info("TC_01_STEP_9: nhap so tien");
+	trasferPage.inputToDynamicInputBox(driver, textDataInputForm.MONEY_TRANSFER_VND, textCheckElement.MONEY);
 
 	log.info("TC_01_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
 	trasferPage.clickToDynamicTextIndex(driver, "0", textDataInputForm.ISSUED);
-
-	log.info("TC_01_STEP_9: nhap so tien bat dau la khong");
-	trasferPage.inputToDynamicInputBox(driver, textDataInputForm.MONEY_TRANSFER_VND, textCheckElement.MONEY);
-	trasferPage.clickToTextID(driver, "com.VCB:id/tvTitle");
-
-	log.info("TC_01_Step_10: noi dung");
-	trasferPage.inputToDynamicInputBoxContent(driver, textDataInputForm.CONTENT_TRANSFER, "3");
+	trasferPage.scrollUpToText(driver, "Thông tin người hưởng");
 
 	log.info("TC_01_STEP_11: chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, textCheckElement.NEXT);
-
-	log.info("TC_01_STEP_12: lấy nội dung giao dịch");
-	content = trasferPage.getMoneyByAccount(driver, textCheckElement.CONNTENT);
 
 	log.info("TC_01_STEP_21: lấy ra phí giao dịch");
 	String getFee = transReport.getMoneyByAccount(driver, textCheckElement.TRANSACTION_FEE);

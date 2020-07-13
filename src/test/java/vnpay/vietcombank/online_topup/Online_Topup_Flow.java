@@ -56,8 +56,8 @@ public class Online_Topup_Flow extends Base {
 		home.scrollDownToText(driver, Online_Topup_Text.SAVING_TEXT);
 	}
 
-//	@Parameters({ "otp" })
-//	@Test
+	@Parameters({ "otp" })
+	@Test
 	public void TC_01_NapTienDienTuVaoViEPAY_ThanhToanOTP(String otp) {
 
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Nap tien dien tu'");
@@ -146,7 +146,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
-//	@Test
+	@Test
 	public void TC_02_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_02_Step_01: Click back ve man hinh chinh");
@@ -214,8 +214,8 @@ public class Online_Topup_Flow extends Base {
 		home.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-//	@Parameters ({"pass"})
-//	@Test
+	@Parameters ({"pass"})
+	@Test
 	public void TC_03_NapTienDienTuVaoViEPAY_ThanhToanMK(String pass) {
 
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Nap tien dien tu'");
@@ -305,7 +305,7 @@ public class Online_Topup_Flow extends Base {
 		onlineTopup.clickToTextID(driver, "com.VCB:id/cancel_button");
 	}
 
-//	@Test
+	@Test
 	public void TC_04_KiemTraGiaoDichNapTienDienTuTrongBaoCaoGiaoDich() {
 
 		log.info("TC_04_Step_01: Click back ve man hinh chinh");

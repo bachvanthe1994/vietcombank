@@ -23,7 +23,7 @@
 		<parameter name="phone" value="0904797866" />
 		<parameter name="hubURL"
 			value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="pass" value="aaaa1111@" />
+		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<parameter name="username" value="trangvt" />
 		<parameter name="passWeb" value="123456a@" />
@@ -95,24 +95,49 @@
 			<!-- <class -->
 			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" 
 				/> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_1" /> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_2" /> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" /> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" /> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.online_topup.Limit_Online_Topup" /> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_1" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_2" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" 
+				/> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.online_topup.Limit_Online_Topup" /> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_1" 
+				/> -->
+			<!-- <class name="vnpay.vietcombank.mobile_topup.Mobile_Topup_Flow" /> -->
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.sdk.vehicleTickets.VehicleFlowTicket" /> -->
+
+			<!-- <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow" /> -->
+			<!-- <class name="vnpay.vietcombank.water_bills.Water_Bills_Flow2_Smart_OTP" 
+				/> -->
+			<!-- <class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" 
+				/> -->
+			<!-- <class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow_SmartOTP" 
+				/> -->
 			<class
-				name="vnpay.vietcombank.saving_online.Limit_Settlement_Saving_Online" />
-<!-- 			<class -->
-<!-- 				name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
+				name="vnpay.vietcombank.interest_rate_calculate.InterestRate_Calculate" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift" />
+			<class name="vnpay.vietcombank.lucky_gift.LuckyGift_SmartOTP" />
+			<!-- <class -->
+			<!-- name="vnpay.vietcombank.sdk.hotelBooking.Flow_HotelBooking_Part_2_Smart_OTP" 
+				/> -->
+			<!-- name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" 
+				/> -->
 			<!-- <class -->
 			<!-- name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" 
 				/> -->
