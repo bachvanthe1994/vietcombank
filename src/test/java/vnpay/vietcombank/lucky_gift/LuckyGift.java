@@ -1593,6 +1593,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_17_Step_29 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
+
 	}
 
 	@Test
