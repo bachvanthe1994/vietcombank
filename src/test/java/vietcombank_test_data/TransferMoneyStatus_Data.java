@@ -10,7 +10,7 @@ public class TransferMoneyStatus_Data {
 
 	public static class Input {
 
-		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền tương lai trong VCB" };
+		public static final String[] OPTION_TRANSFER = { "Chuyển tiền ngày giá trị hiện tại", "Chuyển tiền định kỳ", "Chuyển tiền tương lai" };
 	}
 
 	public static class Text {

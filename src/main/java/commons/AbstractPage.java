@@ -54,9 +54,9 @@ import vietcombankUI.TransferMoneyInVCBPageUIs;
 
 public class AbstractPage {
 	int longTime = 40;
-	int shortTime = 5;
+	int shortTime = 10;
 	long longTime1 = 40;
-	long shortTime1 = 5;
+	long shortTime1 = 10;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
 		sleep(driver, 4000);
@@ -299,7 +299,7 @@ public class AbstractPage {
 		}
 
 	}
-	
+
 	public void scrollUpOneTime(AppiumDriver<MobileElement> driver) {
 		Dimension size = driver.manage().window().getSize();
 		int x = size.getWidth() / 2;
@@ -647,7 +647,7 @@ public class AbstractPage {
 	}
 
 	public boolean isControlUnDisplayed(AppiumDriver<MobileElement> driver, String locator, String... dynamicValue) {
-		overRideTimeOut(driver, longTime);
+		overRideTimeOut(driver, shortTime1);
 		locator = String.format(locator, (Object[]) dynamicValue);
 		List<MobileElement> elements = driver.findElements(By.xpath(locator));
 		if (elements.size() > 0 && elements.get(0).isDisplayed()) {
@@ -842,7 +842,7 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU, dynamicKey);
 		}
 	}
-	
+
 	public void clickToDynamicIconByEdit(AppiumDriver<MobileElement> driver, String dynamicKey) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_CONTACT_KEY_MENU_BY_EDIT_TEXT, dynamicKey);
@@ -1082,13 +1082,14 @@ public class AbstractPage {
 		}
 
 	}
+
 	public void clickToDynamicImageNon(AppiumDriver<MobileElement> driver, String dynamicText) {
 		boolean status = false;
 		status = waitForElementVisible(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.VIEW_IMAGE_INDEX, dynamicText);
 		}
-		
+
 	}
 
 // Click vào menu tại bottom hoặc icon đóng k chứa text, tham số truyền vào là resource id
@@ -1100,8 +1101,8 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
 	}
-	
-	public void clickToDynamicRelavitelayout  (AppiumDriver<MobileElement> driver, String dynamicID) {
+
+	public void clickToDynamicRelavitelayout(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_RELATIVELAYOUT, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_RELATIVELAYOUT, dynamicID);
@@ -1109,8 +1110,8 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_RELATIVELAYOUT, dynamicID);
 		}
 	}
-	
-	public void clickToDynamicTextID   (AppiumDriver<MobileElement> driver, String dynamicID) {
+
+	public void clickToDynamicTextID(AppiumDriver<MobileElement> driver, String dynamicID) {
 		boolean status = false;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
 		status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
@@ -1118,8 +1119,6 @@ public class AbstractPage {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, dynamicID);
 		}
 	}
-	
-	
 
 //Click vào close icon có tham số truyền vào là text cạnh nó
 	public void clickToDynamicCloseIcon(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -1778,6 +1777,15 @@ public class AbstractPage {
 
 	}
 
+// check button có hiển thị hay không, tham số truyền vào là text của button
+	public boolean isDynamicButtonUnDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+		return isDisplayed;
+
+	}
+
 	// Check Date Picker By ID co hien thi
 	public boolean isDynamicDatePickerByIdDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
@@ -1864,10 +1872,10 @@ public class AbstractPage {
 		return isUnDisplayed;
 
 	}
-	
-	public boolean isTextDisplayed (AppiumDriver<MobileElement> driver,String... dynamicText) {
+
+	public boolean isTextDisplayed(AppiumDriver<MobileElement> driver, String... dynamicText) {
 		return isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicText);
-		
+
 	}
 
 	public boolean isDynamicBackIconDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
@@ -2568,7 +2576,7 @@ public class AbstractPage {
 		return text;
 
 	}
-	
+
 	// Lấy text theo index và ID
 	public String getDynamicTextByContentID(AppiumDriver<MobileElement> driver, String... dynamicID) {
 		boolean status = false;
@@ -2847,7 +2855,7 @@ public class AbstractPage {
 	}
 
 	// lấy số tài khoản ngoài màn hinh chính
-	public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID ) {
+	public String getAccountNumber(AppiumDriver<MobileElement> driver, String resourceID) {
 		boolean status = false;
 		String text = null;
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_TEXT_IN_POPUP, resourceID);
@@ -3003,29 +3011,28 @@ public class AbstractPage {
 		return distanAccount;
 
 	}
-	
-	public void downloadUsingStream(String urlStr, String file) throws IOException{
-        URL url = new URL(urlStr);
-        BufferedInputStream bis = new BufferedInputStream(url.openStream());
-        File file1 = new File(file);
-        FileOutputStream fis = new FileOutputStream(file1);
-        byte[] buffer = new byte[1024];
-        int count=0;
-        while((count = bis.read(buffer,0,1024)) != -1)
-        {
-            fis.write(buffer, 0, count);
-        }
-        fis.close();
-        bis.close();
-    }
+
+	public void downloadUsingStream(String urlStr, String file) throws IOException {
+		URL url = new URL(urlStr);
+		BufferedInputStream bis = new BufferedInputStream(url.openStream());
+		File file1 = new File(file);
+		FileOutputStream fis = new FileOutputStream(file1);
+		byte[] buffer = new byte[1024];
+		int count = 0;
+		while ((count = bis.read(buffer, 0, 1024)) != -1) {
+			fis.write(buffer, 0, count);
+		}
+		fis.close();
+		bis.close();
+	}
 
 	public void downloadUsingNIO(String urlStr, String file) throws IOException {
-        URL url = new URL(urlStr);
-        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        fos.close();
-        rbc.close();
-    }
+		URL url = new URL(urlStr);
+		ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+		FileOutputStream fos = new FileOutputStream(file);
+		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		fos.close();
+		rbc.close();
+	}
 
 }
