@@ -17,6 +17,7 @@ public class SettingVCBSmartOTPPageObject extends AbstractPage {
 		clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt");
+		scrollIDownOneTime(driver);
 
 		clickToDynamicButtonLinkOrLinkText(driver, "Cài đặt VCB-Smart OTP");
 		
