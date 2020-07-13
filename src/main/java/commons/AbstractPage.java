@@ -1830,6 +1830,16 @@ public class AbstractPage {
 		return isDisplayed;
 	}
 
+//Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
+	public boolean isDynamicTextUndisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		if (status == true) {
+			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+		}
+		return isDisplayed;
+	}
+
 //Kiểm  tra text trong ô input có hiển thị hay không, tham số truyền vào là text
 	public boolean isDynamicTextInInputBoxDisPlayed(AppiumDriver<MobileElement> driver, String... dynamicTextValue) {
 		scrollIDown(driver, DynamicPageUIs.DYNAMIC_INPUT_BOX, dynamicTextValue);

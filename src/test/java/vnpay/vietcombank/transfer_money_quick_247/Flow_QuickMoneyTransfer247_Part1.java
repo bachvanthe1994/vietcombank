@@ -40,11 +40,11 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 	private String costTranferString, bankOut, accountRecived;
 	private long costTranfer;
 
-	private String exchangeRate,Fee;
+	private String exchangeRate, Fee;
 	private String password = "";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
 	private SettingVCBSmartOTPPageObject smartOTP;
-	String otpSmart, newOTP,nameCustomer;
+	String otpSmart, newOTP, nameCustomer;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -57,13 +57,13 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 			driver = openIOSApp(deviceName, udid, url);
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login(phone, pass, opt);
+		login.Global_login(getDataInCell(45), getDataInCell(46), opt);
 		password = pass;
 		transferMoney = PageFactoryManager.getTransferMoneyObject(driver);
 		bankOut = getDataInCell(21);
 		accountRecived = getDataInCell(4);
 		otpSmart = getDataInCell(6);
-		nameCustomer  = getDataInCell(40);
+		nameCustomer = getDataInCell(40);
 		newOTP = "111222";
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(newOTP, otpSmart);
@@ -249,7 +249,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_02: Check so nguoi huong");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Tittle_Quick.NAME_RECIVED), nameCustomer);
-		
+
 		log.info("TC_10: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
@@ -257,8 +257,9 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Tittle_Quick.BANK_RECIVED), bankOut);
 
 		log.info("TC_02: Check phi giao dich");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.FEE), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
-
+		if (costTranfer > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.FEE), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
+		}
 		log.info("TC_02: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
@@ -286,10 +287,10 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_03_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, TransferQuick.ACCOUNT_FROM_LABEL);
-		sourceAccount = transferMoney.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD , Constants.USD_CURRENCY);
+		sourceAccount = transferMoney.chooseSourceAccount(driver, Constants.MONEY_CHECK_USD, Constants.USD_CURRENCY);
 		accountUSD = sourceAccount.account;
 		transferMoney.scrollUpToText(driver, TransferQuick.ACCOUNT_FROM_LABEL);
-		double	amountStart1 = convertAvailableBalanceCurrentcyToDouble(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES));
+		double amountStart1 = convertAvailableBalanceCurrentcyToDouble(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES));
 
 		log.info("TC_03_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, accountRecived, Tittle_Quick.TYPE_SELECT_ACCOUNT);
@@ -323,7 +324,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[1]);
 
 		log.info("TC_03_Step 23: Kiem tra so tien phi hien thi");
-		 Fee = transferMoney.getDynamicTextInTransactionDetail(driver, TransferQuick.AMOUNT_FEE_LABEL).replaceAll("\\D+", "");
+		Fee = transferMoney.getDynamicTextInTransactionDetail(driver, TransferQuick.AMOUNT_FEE_LABEL).replaceAll("\\D+", "");
 
 		log.info("TC_03_Step 23: So tien phi chuyen doi ra USD");
 		double usdTransferFee = convertMoneyToDouble(Fee, Constants.VND_CURRENCY) / convertMoneyToDouble(exchangeRate, Constants.VND_CURRENCY);
@@ -362,7 +363,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.clickToDynamicDropDown(driver, TransferQuick.ACCOUNT_FROM_LABEL);
 
 		log.info("TC_03_Step_: Chon tai khoan chuyen den");
-		transferMoney.clickToDynamicButtonLinkOrLinkText(driver,accountUSD);
+		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, accountUSD);
 
 		log.info("TC_03_Step: Lay so du kha dung tai khoan");
 		String amountAfterString = transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES);
@@ -401,7 +402,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectAcc");
 
 		log.info("TC_04_Step: Chon so tai khoan chuyen");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, accountUSD );
+		transReport.clickToDynamicButtonLinkOrLinkText(driver, accountUSD);
 
 		log.info("TC_04_Step: verify thoi tim kiem tu ngay");
 		String dateStartActual = transReport.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvFromDate");
@@ -468,7 +469,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_10: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
-		
+
 		log.info("TC_04_Step: Check phi giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.FEE), TransferMoneyQuick_Data.TransferQuick.COST_SUB[0]);
 
@@ -672,7 +673,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_02: Check so nguoi huong");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Tittle_Quick.NAME_RECIVED), nameCustomer);
-		
+
 		log.info("TC_10: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
@@ -875,7 +876,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_06_Step_: Check ngan hang huong");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, Tittle_Quick.BANK_RECIVED), bankOut);
-		
+
 		log.info("TC_10: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
@@ -909,12 +910,12 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_07_Step_Select tai khoan nguon");
 		transferMoney.clickToDynamicDropDown(driver, TransferQuick.ACCOUNT_FROM_LABEL);
-		
-		sourceAccount = transferMoney.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR  , Constants.EUR_CURRENCY);
-		accountEUR  = sourceAccount.account;
+
+		sourceAccount = transferMoney.chooseSourceAccount(driver, Constants.MONEY_CHECK_EUR, Constants.EUR_CURRENCY);
+		accountEUR = sourceAccount.account;
 		transferMoney.scrollUpToText(driver, TransferQuick.ACCOUNT_FROM_LABEL);
-		double	amountStart1 = convertAvailableBalanceCurrentcyToDouble(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES));
-	
+		double amountStart1 = convertAvailableBalanceCurrentcyToDouble(transferMoney.getDynamicTextInTransactionDetail(driver, Tittle_Quick.AVAIBLE_BALANCES));
+
 		log.info("TC_07_Step_Nhap so tai khoan chuyen");
 		transferMoney.inputToDynamicInputBox(driver, accountRecived, Tittle_Quick.TYPE_SELECT_ACCOUNT);
 
@@ -947,7 +948,7 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferMoneyQuick_Data.TransferQuick.ACCURACY[0]);
 
 		log.info("TC_07_Step: Kiem tra so tien phi hien thi");
-		 Fee = transferMoney.getDynamicTextInTransactionDetail(driver, TransferQuick.AMOUNT_FEE_LABEL).replaceAll("\\D+", "");
+		Fee = transferMoney.getDynamicTextInTransactionDetail(driver, TransferQuick.AMOUNT_FEE_LABEL).replaceAll("\\D+", "");
 
 		log.info("TC_07_Step 23: So tien phi chuyen doi ra EUR");
 		double EURTransferFee = convertMoneyToDouble(Fee, Constants.VND_CURRENCY) / convertMoneyToDouble(exchangeRate, Constants.VND_CURRENCY);
@@ -1063,12 +1064,12 @@ public class Flow_QuickMoneyTransfer247_Part1 extends Base {
 
 		log.info("TC_08: Check so lenh giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_NUMBER), transactionNumber);
-		
+
 		log.info("TC_10: Check loai giao dich");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), TransferMoneyQuick_Data.TransferQuick.OPTION_TRANSFER[0]);
 
 		log.info("TC_08: Check tao khoan ghi no");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD),accountEUR);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CARD), accountEUR);
 
 		log.info("TC_08: Check tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CREDITED), accountRecived);
