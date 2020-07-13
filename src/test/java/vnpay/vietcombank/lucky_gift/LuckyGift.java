@@ -45,11 +45,11 @@ public class LuckyGift extends Base {
 	String account;
 	String passSmartOTP = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
+	long sumFeeInt;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
-    @BeforeClass
-    public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt)
-	    throws IOException, InterruptedException, GeneralSecurityException {
+	@BeforeClass
+	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt) throws IOException, InterruptedException, GeneralSecurityException {
 		startServer();
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -65,7 +65,7 @@ public class LuckyGift extends Base {
 //		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 //		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
-	
+
 	@Parameters({ "pass" })
 	@Test
 	public void TC_01_NGuoiNhanTrongVCBBangSDTXacThucBangMatKhau(String pass) throws GeneralSecurityException, IOException {
@@ -86,7 +86,6 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_01_Step_4: Click tiep tuc popup");
-//		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.CONFIRM);
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_01_Step_5: chọn hình thức nhận");
@@ -102,8 +101,9 @@ public class LuckyGift extends Base {
 		log.info("TC_01_Step_8: Chon loi chuc");
 		luckyGift.clickToDynamicWishes(driver, TitleLuckyGift.TITLE_WISHES);
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
-		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivReceiver");
-		
+		luckyGift.hideKeyBoard(driver);
+		luckyGift.scrollIDownOneTime(driver);
+
 		log.info("TC_01_Step_9: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
@@ -119,7 +119,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_01_Step_14: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -226,8 +226,10 @@ public class LuckyGift extends Base {
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
-		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			log.info("TC_02_Step_17: Kiem tra so tien phi");
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_02_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -270,6 +272,7 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicWishes(driver, TitleLuckyGift.TITLE_WISHES);
 		luckyGift.inputIntoEditTextByID(driver, LuckyGift_Data.LuckyGift.WISHES_OPTION, "com.VCB:id/content");
 		luckyGift.hideKeyBoard(driver);
+		luckyGift.scrollIDownOneTime(driver);
 
 		log.info("TC_03_Step_7: Click tiep tuc popup");
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
@@ -286,7 +289,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_03_Step_12: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -392,7 +395,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_16: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_04_Step_17: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -462,7 +467,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_05_Step_15: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -625,7 +630,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_07_Step_13: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -739,7 +744,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_08_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -802,7 +809,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_09_Step_14: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -915,7 +922,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_18: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_10_Step_19: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -987,7 +996,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_11_Step_15: lấy ra phí chuyển");
 		moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND") ;
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -1100,7 +1109,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_12_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_DETAIL);
@@ -1164,7 +1175,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_13_Step_13: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -1279,7 +1290,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_14_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_14_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -1340,7 +1353,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_15_Step_14: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -1454,7 +1467,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_18: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_16_Step_19: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -1524,7 +1539,7 @@ public class LuckyGift extends Base {
 
 		log.info("TC_17_Step_15: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -1638,7 +1653,9 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_18_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_DETAIL);
@@ -1653,8 +1670,8 @@ public class LuckyGift extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 }
