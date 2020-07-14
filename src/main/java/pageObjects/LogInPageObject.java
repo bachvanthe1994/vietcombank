@@ -20,7 +20,7 @@ public class LogInPageObject extends AbstractPage {
 		clickToDynamicButtonLinkOrLinkText(driver, "Bắt đầu");
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
-
+		sleep(driver, 2000);
 		if (!isDynamicButtonUnDisplayed(driver, "Đồng ý") == true) {
 
 			clickToDynamicButton(driver, "Đồng ý");

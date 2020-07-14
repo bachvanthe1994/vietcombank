@@ -56,7 +56,7 @@ public class AbstractPage {
 	int longTime = 40;
 	int shortTime = 10;
 	long longTime1 = 40;
-	long shortTime1 = 10;
+	long shortTime1 = 5;
 
 	public String getPageSource(AppiumDriver<MobileElement> driver) {
 		sleep(driver, 4000);
@@ -887,14 +887,13 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
-		sleep(driver, 4000);
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
-		}
+//		if (!isDynamicImageUnDisplay(driver, "com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
+//		}
 
 	}
 
@@ -915,14 +914,14 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		sleep(driver, 4000);
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
-			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
-		}
-		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
-			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
-		}
+
+//		if (!isDynamicImageUnDisplay(driver, "com.VCB:id/progressLoadingVntalk")) {
+//			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
+//		}
+//		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, "Đóng");
+//			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
+//		}
 	}
 
 	// Click vao 1 button sử dụng tham số là text
@@ -1780,7 +1779,6 @@ public class AbstractPage {
 // check button có hiển thị hay không, tham số truyền vào là text của button
 	public boolean isDynamicButtonUnDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		return isDisplayed;
 
@@ -1833,10 +1831,8 @@ public class AbstractPage {
 //Kiểm tra text không hiển thị trên màn hình, tham số truyền vào là text
 	public boolean isDynamicTextUndisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
-		boolean status = waitForElementInvisible(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		if (status == true) {
-			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
-		}
+		isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON_LINK_LABEL_TEXT, dynamicTextValue);
+
 		return isDisplayed;
 	}
 
@@ -1968,6 +1964,15 @@ public class AbstractPage {
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		if (status == true) {
 			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+		return isDisplayed;
+	}
+
+	public boolean isDynamicImageUnDisplay(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
 		return isDisplayed;
 	}

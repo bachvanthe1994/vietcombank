@@ -227,7 +227,7 @@
 								</property>
 
 								<suiteXmlFiles>
-									<suiteXMLfile>src/test/resources/runTestCasesValidation.xml</suiteXMLfile>
+									<suiteXMLfile>src/test/resources/LimitTransaction.xml</suiteXMLfile>
 								</suiteXmlFiles>
 
 							</configuration>

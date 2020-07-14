@@ -411,6 +411,7 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_04: Click button home");
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
+	
 
 	@Parameters({ "pass" })
 	@Test
@@ -774,8 +775,6 @@ public class Internet_ADSL_Flow extends Base {
 		log.info("TC_08: Click button home");
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
-
-	
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {

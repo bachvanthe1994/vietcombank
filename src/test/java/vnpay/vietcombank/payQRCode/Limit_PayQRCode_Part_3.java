@@ -63,6 +63,7 @@ public class Limit_PayQRCode_Part_3 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
 
 		log.info("TC_01_3_Click chon Tat ca anh");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, PayQRCode_Data.TEXT_BUTTON_MENU);
 		payQRCode.clickToDynamicTextContains(driver, PayQRCode_Data.TEXT_CATEGORY_MENU);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.TYPE_3);
@@ -141,6 +142,7 @@ public class Limit_PayQRCode_Part_3 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
 
 		log.info("TC_02_3_Click chon Tat ca anh");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, PayQRCode_Data.TEXT_BUTTON_MENU);
 		payQRCode.clickToDynamicTextContains(driver, PayQRCode_Data.TEXT_CATEGORY_MENU);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.TYPE_3);
@@ -257,6 +259,7 @@ public class Limit_PayQRCode_Part_3 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
 
 		log.info("TC_03_3_Click chon Tat ca anh");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, PayQRCode_Data.TEXT_BUTTON_MENU);
 		payQRCode.clickToDynamicTextContains(driver, PayQRCode_Data.TEXT_CATEGORY_MENU);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.TYPE_3);
@@ -293,6 +296,7 @@ public class Limit_PayQRCode_Part_3 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
 
 		log.info("TC_04_3_Click chon Tat ca anh");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, PayQRCode_Data.TEXT_BUTTON_MENU);
 		payQRCode.clickToDynamicTextContains(driver, PayQRCode_Data.TEXT_CATEGORY_MENU);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.TYPE_3);
