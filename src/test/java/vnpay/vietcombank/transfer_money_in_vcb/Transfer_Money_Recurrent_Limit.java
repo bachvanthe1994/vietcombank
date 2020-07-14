@@ -60,7 +60,7 @@ public class Transfer_Money_Recurrent_Limit extends Base {
 		setupBE.addMethodOtpLimit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT);
 		setupBE.addMethodServicesLimit(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, info, Constants.BE_CODE_PACKAGE);
 		setupBE.setupAssignServicesLimit_All(driverWeb, InputText_MoneyRecurrent.BE_TRANSFER_RECURRENT_TEXT, inputInfo, Constants.BE_CODE_PACKAGE);
-		setupBE.clearCacheBE(driverWeb);
+//		setupBE.clearCacheBE(driverWeb);
 		driverWeb.quit();
 
 		log.info("Before class: Mo app ");
