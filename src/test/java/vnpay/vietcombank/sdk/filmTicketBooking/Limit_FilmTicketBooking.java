@@ -19,10 +19,12 @@ import io.appium.java_client.MobileElement;
 import model.FilmInfo;
 import model.SeatType;
 import model.ServiceLimitInfo;
+import model.SourceAccountModel;
 import pageObjects.LogInPageObject;
 import pageObjects.WebBackendSetupPageObject;
 import pageObjects.sdk.filmTicketBooking.FilmTicketBookingPageObject;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
+import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vnpay.vietcombank.sdk.filmTicketBooking.data.FilmTicketBooking_Data;
 
 public class Limit_FilmTicketBooking extends Base {
@@ -30,7 +32,9 @@ public class Limit_FilmTicketBooking extends Base {
 	private LogInPageObject login;
 	private FilmTicketBookingPageObject filmTicketBooking;
 	private WebBackendSetupPageObject webBackend;
-
+	SourceAccountModel sourceAccount = new SourceAccountModel();
+	String account = "";
+	
 	WebDriver driverWeb;
 	long amount = 0;
 	String name;
@@ -131,6 +135,12 @@ public class Limit_FilmTicketBooking extends Base {
 		log.info("TC_01_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
 		
+		log.info("TC_01_18 Lay thong tin tai khoan nguon");
+		filmTicketBooking.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
+		filmTicketBooking.clickToDynamicTextByID("com.VCB:id/number_account");
+		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
+		account = sourceAccount.account;
+		
 		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
@@ -179,11 +189,8 @@ public class Limit_FilmTicketBooking extends Base {
 
 		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán vé xem phim", inputInfoMax, "TESTBUG");
 		
-
-	
 		log.info("TC_02_14_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
-		
 
 		log.info("TC_02_15_Kiem tra Thong tin Thanh toan ve xem phim");
 		log.info("TC_02_15_01: Kiem tra ten phim");
@@ -202,6 +209,12 @@ public class Limit_FilmTicketBooking extends Base {
 
 		log.info("TC_02_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+		log.info("TC_02_18 Lay thong tin tai khoan nguon");
+		filmTicketBooking.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
+		filmTicketBooking.clickToDynamicTextByID("com.VCB:id/number_account");
+		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
+		account = sourceAccount.account;
 		
 		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 		
@@ -269,6 +282,12 @@ public class Limit_FilmTicketBooking extends Base {
 		log.info("TC_03_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
 		
+		log.info("TC_03_18 Lay thong tin tai khoan nguon");
+		filmTicketBooking.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
+		filmTicketBooking.clickToDynamicTextByID("com.VCB:id/number_account");
+		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
+		account = sourceAccount.account;
+		
 		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 
 		log.info("TC_03_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
@@ -334,6 +353,12 @@ public class Limit_FilmTicketBooking extends Base {
 
 		log.info("TC_04_17_Click Thanh toan");
 		filmTicketBooking.clickToTextViewByText(FilmTicketBooking_Data.PAY);
+		
+		log.info("TC_04_18 Lay thong tin tai khoan nguon");
+		filmTicketBooking.scrollUpToText(ReportTitle.SOURCE_ACCOUNT);
+		filmTicketBooking.clickToDynamicTextByID("com.VCB:id/number_account");
+		sourceAccount = filmTicketBooking.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, "VND");
+		account = sourceAccount.account;
 		
 		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 		
