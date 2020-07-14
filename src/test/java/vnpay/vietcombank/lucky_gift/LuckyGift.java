@@ -62,8 +62,6 @@ public class LuckyGift extends Base {
 		luckyGift = PageFactoryManager.getLuckyGiftPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-//		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-//		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
 	
 	@Parameters({ "pass" })
@@ -86,7 +84,6 @@ public class LuckyGift extends Base {
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
 
 		log.info("TC_01_Step_4: Click tiep tuc popup");
-//		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.CONFIRM);
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_01_Step_5: chọn hình thức nhận");
@@ -172,7 +169,7 @@ public class LuckyGift extends Base {
 	}
 
 //	@Test
-	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() {
+	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() throws GeneralSecurityException, IOException {
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
@@ -224,7 +221,7 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.BENEFICIARY_NAME), beneficiary_account);
 
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getDataInCell(44));
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
@@ -240,7 +237,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Parameters({ "pass" })
-//	@Test
+	@Test
 	public void TC_03_NGuoiNhanTrongVCBBangSTKXacThucBangMatKhau(String pass) {
 		log.info("TC_03_Step_1: Chọn quà tặng may mắn");
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, LuckyGift_Data.TitleLuckyGift.TITLE);
@@ -257,7 +254,6 @@ public class LuckyGift extends Base {
 
 		log.info("TC_03_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
-//		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.CONFIRM);
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_03_Step_4: nhập số tài khoản");
@@ -338,7 +334,7 @@ public class LuckyGift extends Base {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_BaoCaoTienQuaTangMayManTrongVCBBangSTKVaXacThucBangMK() {
 		log.info("TC_04_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -510,7 +506,7 @@ public class LuckyGift extends Base {
 		date = new Date();
 	}
 
-	@Test
+	/*@Test
 	public void TC_06_BaoCaoGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangMK() throws GeneralSecurityException, IOException {
 		log.info("TC_06_Step_01 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
@@ -1649,7 +1645,7 @@ public class LuckyGift extends Base {
 		log.info("TC_18_Step_21: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
-	}
+	}*/
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {

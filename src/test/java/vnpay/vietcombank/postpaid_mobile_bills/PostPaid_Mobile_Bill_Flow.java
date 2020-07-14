@@ -241,9 +241,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_02_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
 
-//		log.info("TC_02_Step_17: Xac nhan hien thi so tien phi");
-//		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), transferFee);
-
 		log.info("TC_02_Step_18: Hien thi dung Loai giao dich");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
@@ -444,9 +441,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 		log.info("TC_04_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
 
-//		log.info("TC_04_Step_17: Xac nhan hien thi so tien phi");
-//		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), transferFee);
-
 		log.info("TC_04_Step_18: Hien thi dung Loai giao dich");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
 
@@ -646,9 +640,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_08_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
-//
-//		log.info("TC_08_Step_17: Xac nhan hien thi so tien phi");
-//		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), transferFee);
 
 		log.info("TC_08_Step_18: Hien thi dung Loai giao dich");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);
@@ -851,9 +842,6 @@ public class PostPaid_Mobile_Bill_Flow extends Base {
 
 		log.info("TC_10_Step_16: Xac nhan hien thi so tien giao dich");
 		verifyTrue(transactionReport.isTextDisplayedInListTextElements(driver, mobileBill, "com.VCB:id/tvContent"));
-
-//		log.info("TC_10_Step_17: Xac nhan hien thi so tien phi");
-//		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_FEE), transferFee);
 
 		log.info("TC_10_Step_18: Hien thi dung Loai giao dich");
 		verifyEquals(postpaidMobile.getDynamicTextByLabel(driver, ReportTitle.TRANSACTION_TYPE), ReportTitle.PAYMENT_BILLING);

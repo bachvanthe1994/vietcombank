@@ -75,6 +75,10 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 
 		log.info("TC_03_Input ma khach hang");
 		adsl.inputCustomerCode(codeViettel);
+		
+		log.info("TC_03_Chon phuong thuc xac thuc");
+		adsl.clickToDynamicTextFollowingLinearlayout(driver, Internet_ADSL_Data.Valid_Account.SELECT_OPTION);
+		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.SMS);
 
 		log.info("TC_03_Click Tiep tuc");
 		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
