@@ -887,8 +887,7 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_ACCEPT_BUTTON_OR_BUTTON, dynamicIDValue);
 		}
-		sleep(driver, 4000);
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+		if (!isDynamicImageUnDisplay(driver, "com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
 		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
@@ -915,8 +914,8 @@ public class AbstractPage {
 		if (status == true) {
 			clickToElement(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		}
-		sleep(driver, 4000);
-		if (driver.getPageSource().contains("com.VCB:id/progressLoadingVntalk")) {
+
+		if (!isDynamicImageUnDisplay(driver, "com.VCB:id/progressLoadingVntalk")) {
 			waitForElementInvisible(driver, "//android.widget.ImageView[@resource-id='com.VCB:id/progressLoadingVntalk']");
 		}
 		if (driver.getPageSource().contains("Xin lỗi") | driver.getPageSource().contains("NOT FOUND") | driver.getPageSource().contains("Nội dung thông báo lỗi") | driver.getPageSource().contains("Lỗi trong kết nối tới server") | driver.getPageSource().contains("Không tìm thấy")) {
@@ -1780,7 +1779,6 @@ public class AbstractPage {
 // check button có hiển thị hay không, tham số truyền vào là text của button
 	public boolean isDynamicButtonUnDisplayed(AppiumDriver<MobileElement> driver, String dynamicTextValue) {
 		boolean isDisplayed = false;
-		scrollIDown(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BUTTON, dynamicTextValue);
 		return isDisplayed;
 
@@ -1968,6 +1966,15 @@ public class AbstractPage {
 		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		if (status == true) {
 			isDisplayed = isControlDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		}
+		return isDisplayed;
+	}
+
+	public boolean isDynamicImageUnDisplay(AppiumDriver<MobileElement> driver, String dynamicID) {
+		boolean isDisplayed = false;
+		boolean status = waitForElementVisible(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
+		if (status == true) {
+			isDisplayed = isControlUnDisplayed(driver, DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dynamicID);
 		}
 		return isDisplayed;
 	}
