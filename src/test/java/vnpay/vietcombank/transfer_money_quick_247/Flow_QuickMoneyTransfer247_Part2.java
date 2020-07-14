@@ -304,7 +304,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	@Parameters({ "otp" })
 	@Test
 //Lỗi app, số tiền bị thiếu đơn vị USD
-	public void TC_03_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP(String otp) {
+	public void TC_05_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP(String otp) {
 		log.info("TC_03_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 
@@ -435,7 +435,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 	@Test
-	public void TC_04_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
+	public void TC_06_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraUSDVaXacThucBangOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_04: Click back man hinh home");
@@ -545,7 +545,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 	@Test
-	public void TC_05_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVND_SmartOTP() {
+	public void TC_03_ChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVND_SmartOTP() {
 		log.info("TC_05_Step_Click Chuyen tien nhanh");
 		transferMoney.clickToDynamicButtonLinkOrLinkText(driver, TransferQuick.TRANSFER_MONEY_LABEL);
 
@@ -676,7 +676,7 @@ public class Flow_QuickMoneyTransfer247_Part2 extends Base {
 	}
 
 	@Test
-	public void TC_06_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVND_SmartOTP() {
+	public void TC_04_ReportChuyenTienQuaSoTheCoPhiGiaoDichNguoiNhanTraVND_SmartOTP() {
 		homePage = PageFactoryManager.getHomePageObject(driver);
 
 		log.info("TC_06: Click back man hinh home");
