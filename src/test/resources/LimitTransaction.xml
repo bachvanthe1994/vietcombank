@@ -28,8 +28,8 @@
 
 
 			<!-- Hạn mức chuyển tiền ngay -->
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" />
-			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" />
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
 
 			<!-- Hạn mức chuyển tiền tương lai -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Limit" /> -->
@@ -43,7 +43,7 @@
 			<!-- <class name="vnpay.vietcombank.transfer_money_quick_247.Transaction_Limit_Card" /> -->
 
 			<!-- Chuyển tiền quà tặng -->
-			<!-- <class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" /> -->
+			<class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" />
 
 			<!-- Hạn mức chuyển tiền CMT -->
 			<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
@@ -80,7 +80,7 @@
 			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Limit_FilmTicketBooking" /> -->
 
 	        <!-- Hạn mức SDK vé tàu -->
-	        <class name="vnpay.vietcombank.sdk_train_ticket.Limit_FilmTicketBooking" />
+	        <class name="vnpay.vietcombank.sdk_train_ticket.Limit_Train_Ticket" />
 
 		</classes>
 

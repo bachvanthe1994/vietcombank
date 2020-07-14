@@ -17,10 +17,10 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="HUAWEI nova 3i" />
-		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="deviceUDID" value="RF8M91GM7DE" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
-		<parameter name="pass" value="aaaa1111#" />
+		<parameter name="phone" value="0981790798" />
+		<parameter name="pass" value="aaaa1111" />
 		<parameter name="otp" value="123456" />
 		<parameter name="platformVersion" value="10.0" />
 		<!-- <groups> -->
@@ -31,8 +31,8 @@
 		<classes>
 
 			<!-- Mua sắm trực tuyến -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" /> -->
-			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
+			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow1" />
+<!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow2" /> -->
 			<!-- <class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" /> -->
 
 			<!-- Thanh toán QR code -->
