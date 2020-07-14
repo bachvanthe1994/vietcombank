@@ -220,7 +220,7 @@ public class Limit_FilmTicketBooking extends Base {
 		
 
 		log.info("TC_02_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount + 100) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 10) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900 545413 để được trợ giúp.");
 
 		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
 
@@ -291,7 +291,7 @@ public class Limit_FilmTicketBooking extends Base {
 		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 
 		log.info("TC_03_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount - 10000) + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
 
 		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
 
@@ -363,7 +363,7 @@ public class Limit_FilmTicketBooking extends Base {
 		filmTicketBooking.clickToDynamicContinue( "com.VCB:id/btn_submit");
 		
 		log.info("TC_04_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20) + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(filmTicketBooking.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount - 1000) + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
 
 		filmTicketBooking.clickToDynamicContinue("com.VCB:id/btOK");
 
