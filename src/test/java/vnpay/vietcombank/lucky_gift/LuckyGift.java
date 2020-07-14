@@ -62,8 +62,6 @@ public class LuckyGift extends Base {
 		luckyGift = PageFactoryManager.getLuckyGiftPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
-//		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-//		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
 
 	@Parameters({ "pass" })
@@ -172,7 +170,7 @@ public class LuckyGift extends Base {
 	}
 
 	@Test
-	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() {
+	public void TC_02_BaoCaoTienQuaTangMayManTrongVCBBangSDTVaXacThucBangMK() throws GeneralSecurityException, IOException {
 		log.info("TC_02_Step_02: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
@@ -224,7 +222,7 @@ public class LuckyGift extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.BENEFICIARY_NAME), beneficiary_account);
 
 		log.info("TC_02_Step_16: Kiem tra tai khoan ghi co");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
+		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getDataInCell(44));
 
 		if (sumFeeInt > 0) {
 			log.info("TC_02_Step_17: Kiem tra so tien phi");
@@ -259,7 +257,6 @@ public class LuckyGift extends Base {
 
 		log.info("TC_03_Step_3: Thêm người nhận");
 		luckyGift.clickToDynamicImageViewByID(driver, "com.VCB:id/ivAdd");
-//		luckyGift.waitUntilPopUpDisplay(TitleLuckyGift.CONFIRM);
 		luckyGift.clickToDynamicButton(driver, TitleLuckyGift.NEXT);
 
 		log.info("TC_03_Step_4: nhập số tài khoản");
@@ -515,7 +512,7 @@ public class LuckyGift extends Base {
 		date = new Date();
 	}
 
-	@Test
+	/*@Test
 	public void TC_06_BaoCaoGiaoDichChuyenTienQuaTangMayManNgoaiVCBVaXacThucBangMK() throws GeneralSecurityException, IOException {
 		log.info("TC_06_Step_01 : Click home");
 		luckyGift.clickToDynamicImageViewByID("com.VCB:id/left");
@@ -1667,7 +1664,7 @@ public class LuckyGift extends Base {
 		log.info("TC_18_Step_21: Click vao More Icon");
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
-	}
+	}*/
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {

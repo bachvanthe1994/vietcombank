@@ -15,7 +15,7 @@
 
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
-		<parameter name="deviceName" value="SamsungA20s" />
+		<parameter name="deviceName" value="galaxynote10+" />
 		<parameter name="deviceUDID" value="R9AMC1PYPCJ" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
 		<parameter name="phone" value="0335059863" />
@@ -25,33 +25,12 @@
 		<parameter name="passWeb" value="abc123456@" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
-
-		
-
-			<!-- Chuyển tiền 24/7 -->
-<!--             <class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part1" /> -->
-<!--             <class name="vnpay.vietcombank.transfer_money_quick_247.Flow_QuickMoneyTransfer247_Part2" /> -->
-
-            <!-- Chuyển tiên qua cmt -->
-<!--             <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" /> -->
-<!--             <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow2" /> -->
-
-            <!-- Quà tặng may mắn -->
-<!--             <class name="vnpay.vietcombank.login.Template" /> -->
-            
-            <!-- Quà tặng may mắn -->
-            <class name="vnpay.vietcombank.postpaid_mobile_bills.PostPaid_Mobile_Bill_SmartOTP" />
-            <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentity_flow" />
-
+			<!-- dat ve máy tàu -->
+<!-- 			<class name="vnpay.vietcombank.internet_ADSL.Internet_ADSL_Flow" /> -->
+			<class name="vnpay.vietcombank.vcb_pay_cable_television_bill.Television_flow" />
 		</classes>
 
-
-
 	</test>
-
-
-
-
 
 </suite> 
 

@@ -241,9 +241,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	public void inputDynamicDataByListIcon(WebDriver driver, String serviceName) {
 		for (ServiceLimitInfo02 inputInfo : getInfoList) {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
-			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
-			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
+			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
@@ -436,8 +436,9 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		for (ServiceLimitInfo02 inputInfo : getInfoList_All) {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
 			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
-			inputIntoInputByID(driver,"1000000000", "edit-max-tran");
-			inputIntoInputByID(driver, "1000000000", "edit-total-limit");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
+			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-total-limit");
+
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
