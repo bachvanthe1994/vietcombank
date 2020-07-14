@@ -31,6 +31,7 @@ import model.FilmInfo;
 import model.FilmInfo.TypeShow;
 import model.SeatType;
 import model.SeatType.TypeButton;
+import vehicalTicketBookingUI.CommonPageUIs;
 import vietcombankUI.DynamicPageUIs;
 import vietcombankUI.sdk.filmTicketBooking.FilmTicketBookingPageUIs;
 
@@ -110,6 +111,14 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 
 	}
 
+	public void clickToDynamicTextByID(String id) {
+		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		boolean status = waitForElementVisible(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		if (status == true) {
+			clickToElement(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
+		}
+	}
+	
 	public void clickToDynamicTextView(String dynamicTextValue) {
 		boolean status = false;
 		scrollIDown(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);

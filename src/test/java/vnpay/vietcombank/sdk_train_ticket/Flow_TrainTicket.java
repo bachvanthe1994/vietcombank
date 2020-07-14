@@ -32,6 +32,7 @@ public class Flow_TrainTicket extends Base {
 	AppiumDriver<MobileElement> driver;
 	private TransactionReportPageObject transReport;
 	private LogInPageObject login;
+	private SettingVCBSmartOTPPageObject smartOTP;
 	private TrainTicketPageObject trainTicket;
 	private SettingVCBSmartOTPPageObject smartOTP;
 

@@ -20,9 +20,9 @@ import pageObjects.LogInPageObject;
 import pageObjects.SettingVCBSmartOTPPageObject;
 import pageObjects.TransactionReportPageObject;
 import pageObjects.TransferMoneyOutSideVCBPageObject;
+import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransactionReport_Data.ReportTitle;
 import vietcombank_test_data.TransferMoneyOutVCB_Data.TitleOutVCB;
-import vietcombank_test_data.LogIn_Data;
 import vietcombank_test_data.TransferMoneyQuick_Data;
 
 public class TransferMoneyOutSideVCB_SmartOTP extends Base {
@@ -71,7 +71,7 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 
 	private long surplus, availableBalance, actualAvailableBalance;
 	private double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy;
-	
+
 	@Test
 	public void TC_01_ChuyenTienLienNganHang_VND_CoPhiGiaoDichNguoiChuyenTraXacThucBangOTP() {
 		log.info("TC_01_1_Click Chuyen tien toi ngan hang khac");
@@ -1018,7 +1018,7 @@ public class TransferMoneyOutSideVCB_SmartOTP extends Base {
 	}
 
 	public void clickPopupAfter15h30() {
-		if (transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Hủy")) {
+		if (!transferMoneyOutSide.isDynamicButtonUnDisplayed(driver, "Hủy")) {
 			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 		}
 

@@ -19,7 +19,7 @@ public class Insurance_Fee_Data {
 		public static final String NEW_TRANSACTION   = "Thực hiện giao dịch mới";
 		public static final String PASSWORD   = "Mật khẩu đăng nhập";
 		public static final String SMS   = "SMS OTP";
-		public static final String INSURRANCE_FEE    = "Phí bảo hiểm";
+		public static final String INSURRANCE_FEE    = "Thanh toán bảo hiểm";
 		public static final String INSURRANCE_FWD  = "Công ty bảo hiểm nhân thọ FWD";
 		public static final String PAYMENT_INSURRANCE_RECURRENT   = "Thanh toán phí bảo kiểm định kỳ";
 		public static final String PAYMENT_INSURRANCE_FIRST   = "Thanh toán phí bảo kiểm lần đầu";

@@ -43,7 +43,7 @@
 			<!-- <class name="vnpay.vietcombank.transfer_money_quick_247.Transaction_Limit_Card" /> -->
 
 			<!-- Chuyển tiền quà tặng -->
-			<class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" />
+			<!-- <class name="vnpay.vietcombank.lucky_gift.Limit_LuckyGift" /> -->
 
 			<!-- Hạn mức chuyển tiền CMT -->
 			<!-- <class name="vnpay.vietcombank.TransferIdentityCard.TransferIdentityCard_Limit" /> -->
@@ -52,10 +52,35 @@
 			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferOutSideVCB_Limit_01" /> -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_out_side_vcb.TransferOutSideVCB_Limit_02" /> -->
 
+			<!-- Hạn mức chuyển tiền từ thiện -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_Limit_01" /> -->
+			<!-- <class name="vnpay.vietcombank.transfer_money_charity.TransferMoneyCharity_Limit_02" /> -->
 
+			<!-- Hạn mức thanh toán cước điện thoại cố định -->
+			<!-- <class name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_1" /> -->
+			<!-- <class name="vnpay.vietcombank.landLinePhoneCharge.Limit_LandLinePhoneCharge_2" /> -->
 
-			<!-- ADSL -->
+			<!-- Hạn mức thanh toán cước ADSL -->
 			<!-- <class name="vnpay.vietcombank.internet_ADSL.Limit_Internet_ADSL" /> -->
+
+			<!-- Hạn mức mở tài khoản tiết kiệm -->
+			<!-- <class name="vnpay.vietcombank.saving_online.Limit_Open_Account_Saving_Money" /> -->
+			<!-- <class name="vnpay.vietcombank.saving_online.Limit_Settlement_Saving_Online" /> -->
+
+			<!-- Hạn mức hóa đơn tiền điện -->
+			<!-- <class name="vnpay.vietcombank.electric_bills.Limit_Electric_Bills" /> -->
+
+			<!-- Hạn mức tiết kiệm tự động -->
+			<!-- <class name="vnpay.vietcombank.auto_saving.Limit_Auto_Saving" /> -->
+
+			<!-- Hạn mức hóa đơn tiền nước -->
+			<!-- <class name="vnpay.vietcombank.water_bills.Limit_Water_Bills" /> -->
+
+			<!-- Hạn mức vé xem phim -->
+			<!-- <class name="vnpay.vietcombank.sdk.filmTicketBooking.Limit_FilmTicketBooking" /> -->
+
+	        <!-- Hạn mức SDK vé tàu -->
+	        <class name="vnpay.vietcombank.sdk_train_ticket.Limit_FilmTicketBooking" />
 
 		</classes>
 

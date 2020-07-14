@@ -31,7 +31,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 	private VCBCreditCardPaymentObject vcbACreditCardPayment;
 	private TransactionReportPageObject transReport;
 	private SettingVCBSmartOTPPageObject setupSmartOTP;
-	public String account = ""; 
+	public String account = "";
 	long surplus, availableBalance, actualAvailableBalance = 0;
 	double surplusCurrentcy, availableBalanceCurrentcy, actualAvailableBalanceCurrentcy = 0;
 	public String cardNumber = "";
@@ -53,18 +53,18 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		smartOTP = getDataInCell(6);
 		phoneNumber = getDataInCell(8);
 		password = getDataInCell(27);
-		
+
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
 		login = PageFactoryManager.getLoginPageObject(driver);
-		login.Global_login1(phoneNumber, password, opt);
+		login.Global_login(phoneNumber, password, opt);
 
 		login.scrollDownToText(driver, HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		login.clickToDynamicButtonLinkOrLinkText(driver, HomePage_Data.Home_Text_Elements.CREDIT_CARD_PAYMENT);
 		vcbACreditCardPayment = PageFactoryManager.getVCBCreditCardPaymentPageObject(driver);
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		setupSmartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-		
+
 		setupSmartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, smartOTP);
 
 	}
@@ -102,7 +102,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 
 				continue;
-				
+
 			} else {
 				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
 				log.info("TC_01_Step_08: Lay thong tin so The");
@@ -136,10 +136,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 					log.info("TC_01_Step_16: Chon so the ");
 					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 					continue;
-					
+
 				} else {
 					break;
-					
+
 				}
 			}
 
@@ -153,10 +153,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_01_Step_19: Xac minh tai khoan nguon: ");
 		verifyEquals(account, vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TK_NGUON));
-		
+
 		log.info("TC_01_Step_21: Verify so tien thanh toan ");
 		verifyTrue(vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_TT).contains(loansAmountRemain));
-		
+
 		log.info("TC_01_10_Chon phuong thuc xac thuc");
 		vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
@@ -182,7 +182,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_01_Step_05: Lay thong tin ma giao dich ");
 		transactionCode = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.MA_GIAO_DICH);
-		
+
 		log.info("TC_01_13_Click Thuc hien giao dich moi");
 		vcbACreditCardPayment.clickToDynamicButton(driver, Creadit_Card_Payment_Data.Tittle.NEW_TRANSACTION_PERFORM);
 
@@ -193,7 +193,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(vcbACreditCardPayment.getDynamicTextInTransactionDetail(driver, Creadit_Card_Payment_Data.Tittle.TEXT_SDKD));
 		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyOrFeeToLong(amountPaid), 0);
 		verifyEquals(actualAvailableBalance, availableBalance);
-		
+
 	}
 
 	@Test
@@ -245,7 +245,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_02_Step_15: Verify ma thanh toan ");
 		verifyEquals(transReport.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TK_THE), accountCardNumber);
-		
+
 		log.info("TC_02_16: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
@@ -256,7 +256,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
-	
+
 	@Test
 	public void TC_03_ThanhToanTheTinDung_USD_SMS_OTP() {
 		log.info("TC_03_Step_01: Lay thong tin tai so tai khoan");
@@ -290,7 +290,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 
 				continue;
-				
+
 			} else {
 				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
 				log.info("TC_03_Step_08: Lay thong tin so The");
@@ -324,10 +324,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 					log.info("TC_03_Step_16: Chon so the ");
 					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 					continue;
-					
+
 				} else {
 					break;
-					
+
 				}
 			}
 
@@ -341,10 +341,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_03_Step_19: Xac minh tai khoan nguon: ");
 		verifyEquals(account, vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TK_NGUON));
-		
+
 		log.info("TC_03_Step_21: Verify so tien thanh toan ");
 		verifyTrue(vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_TT).contains(loansAmountRemain));
-		
+
 		log.info("TC_03_10_Chon phuong thuc xac thuc");
 		vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
@@ -370,7 +370,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_03_Step_05: Lay thong tin ma giao dich ");
 		transactionCode = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.MA_GIAO_DICH);
-		
+
 		log.info("TC_03_13_Click Thuc hien giao dich moi");
 		vcbACreditCardPayment.clickToDynamicButton(driver, Creadit_Card_Payment_Data.Tittle.NEW_TRANSACTION_PERFORM);
 
@@ -378,7 +378,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.SOURCE_ACCOUNT);
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, account);
 		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(vcbACreditCardPayment.getDynamicTextInTransactionDetail(driver, Creadit_Card_Payment_Data.Tittle.TEXT_SDKD));
-		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy,  convertAvailableBalanceCurrentcyToDouble(amountPaid.split("~")[0]), 0);
+		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, convertAvailableBalanceCurrentcyToDouble(amountPaid.split("~")[0]), 0);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 
 	}
@@ -432,7 +432,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_04_Step_15: Verify ma thanh toan ");
 		verifyEquals(transReport.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TK_THE), accountCardNumber);
-		
+
 		log.info("TC_04_16: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
@@ -443,7 +443,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
-	
+
 	@Test
 	public void TC_05_ThanhToanTheTinDung_VND_Smart_OTP() {
 		log.info("TC_05_Step_01: Lay thong tin tai so tai khoan");
@@ -477,7 +477,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 
 				continue;
-				
+
 			} else {
 				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
 				log.info("TC_05_Step_08: Lay thong tin so The");
@@ -511,10 +511,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 					log.info("TC_05_Step_16: Chon so the ");
 					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 					continue;
-					
+
 				} else {
 					break;
-					
+
 				}
 			}
 
@@ -528,10 +528,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_05_Step_19: Xac minh tai khoan nguon: ");
 		verifyEquals(account, vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TK_NGUON));
-		
+
 		log.info("TC_05_Step_21: Verify so tien thanh toan ");
 		verifyTrue(vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_TT).contains(loansAmountRemain));
-		
+
 		log.info("TC_05_10_Chon phuong thuc xac thuc");
 		vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
@@ -559,7 +559,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_05_Step_05: Lay thong tin ma giao dich ");
 		transactionCode = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.MA_GIAO_DICH);
-		
+
 		log.info("TC_05_13_Click Thuc hien giao dich moi");
 		vcbACreditCardPayment.clickToDynamicButton(driver, Creadit_Card_Payment_Data.Tittle.NEW_TRANSACTION_PERFORM);
 
@@ -570,7 +570,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(vcbACreditCardPayment.getDynamicTextInTransactionDetail(driver, Creadit_Card_Payment_Data.Tittle.TEXT_SDKD));
 		availableBalance = canculateAvailableBalances(surplus, convertAvailableBalanceCurrentcyOrFeeToLong(amountPaid), 0);
 		verifyEquals(actualAvailableBalance, availableBalance);
-		
+
 	}
 
 	@Test
@@ -622,7 +622,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_06_Step_15: Verify ma thanh toan ");
 		verifyEquals(transReport.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TK_THE), accountCardNumber);
-		
+
 		log.info("TC_06_16: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 
@@ -633,7 +633,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		transReport.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 
 	}
-	
+
 	@Test
 	public void TC_07_ThanhToanTheTinDung_USD_Smart_OTP() {
 		log.info("TC_07_Step_01: Lay thong tin tai so tai khoan");
@@ -667,7 +667,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 				vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 
 				continue;
-				
+
 			} else {
 				vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.TEXT_STK);
 				log.info("TC_07_Step_08: Lay thong tin so The");
@@ -701,10 +701,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 					log.info("TC_07_Step_16: Chon so the ");
 					vcbACreditCardPayment.clickToDynamicLinerLayoutID(driver, "com.VCB:id/llContent1");
 					continue;
-					
+
 				} else {
 					break;
-					
+
 				}
 			}
 
@@ -718,10 +718,10 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_07_Step_19: Xac minh tai khoan nguon: ");
 		verifyEquals(account, vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.TK_NGUON));
-		
+
 		log.info("TC_07_Step_21: Verify so tien thanh toan ");
 		verifyTrue(vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TIEN_TT).contains(loansAmountRemain));
-		
+
 		log.info("TC_07_10_Chon phuong thuc xac thuc");
 		vcbACreditCardPayment.scrollDownToText(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.ACCURACY_METHOD);
@@ -748,7 +748,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_07_Step_05: Lay thong tin ma giao dich ");
 		transactionCode = vcbACreditCardPayment.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.MA_GIAO_DICH);
-		
+
 		log.info("TC_07_13_Click Thuc hien giao dich moi");
 		vcbACreditCardPayment.clickToDynamicButton(driver, Creadit_Card_Payment_Data.Tittle.NEW_TRANSACTION_PERFORM);
 
@@ -756,7 +756,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 		vcbACreditCardPayment.clickToDynamicDropDown(driver, Creadit_Card_Payment_Data.Tittle.SOURCE_ACCOUNT);
 		vcbACreditCardPayment.clickToDynamicButtonLinkOrLinkText(driver, account);
 		actualAvailableBalanceCurrentcy = convertAvailableBalanceCurrentcyToDouble(vcbACreditCardPayment.getDynamicTextInTransactionDetail(driver, Creadit_Card_Payment_Data.Tittle.TEXT_SDKD));
-		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy,  convertAvailableBalanceCurrentcyToDouble(amountPaid.split("~")[0]), 0);
+		availableBalanceCurrentcy = canculateAvailableBalancesCurrentcy(surplusCurrentcy, convertAvailableBalanceCurrentcyToDouble(amountPaid.split("~")[0]), 0);
 		verifyEquals(actualAvailableBalanceCurrentcy, availableBalanceCurrentcy);
 
 	}
@@ -810,7 +810,7 @@ public class Vcb_Flow_Credit_Card_Payment extends Base {
 
 		log.info("TC_08_Step_15: Verify ma thanh toan ");
 		verifyEquals(transReport.getDynamicTextByLabel(driver, Creadit_Card_Payment_Data.Tittle.SO_TK_THE), accountCardNumber);
-		
+
 		log.info("TC_08_16: Click  nut Back");
 		transReport.clickToDynamicBackIcon(driver, TransactionReport_Data.ReportTitle.TRANSACTION_DETAIL);
 

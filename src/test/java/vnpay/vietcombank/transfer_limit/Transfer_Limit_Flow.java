@@ -167,7 +167,6 @@ public class Transfer_Limit_Flow extends Base {
 		log.info("TC_01_Step: Click menu header");
 		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 		transferLimit.TransferQuick247_SMSOTP();
-		transferLimit.TransferQuick247_SMSOTP();
 		
 		log.info("TC_02: Click back man hinh home");
 		transferLimit.clickToDynamicBackIcon(driver, "Chuyển tiền nhanh 24/7");

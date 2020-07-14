@@ -216,6 +216,8 @@ public class Limit_Train_Ticket extends Base {
 		trainTicket.clickToDynamicButtonContains(textDefault.NEXT);
 
 		verifyEquals(trainTicket.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 10) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+		
+		trainTicket.clickToDynamicContinue("com.VCB:id/btOK");
 
 		ServiceLimitInfo inputInfoMax1 = new ServiceLimitInfo("1000", (amount*100) + "", (amount*10000) + "", "10000000");
 		webBackend.getInfoServiceLimit1(driverWeb, "Thanh toán vé tàu", inputInfoMax1, Constants.BE_CODE_PACKAGE);

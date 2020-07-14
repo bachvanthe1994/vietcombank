@@ -15,49 +15,13 @@ public class LogInPageObject extends AbstractPage {
 
 	public void Global_login(String phone, String pass, String otp) {
 
-//		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
-//		clickToTextID(driver, "com.VCB:id/tvSkip");
-//
-//
-//		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
-
-//		clickToDynamicButton(driver, "Tiếp tục");
-
 		clickToDynamicButtonLinkOrLinkText(driver, "Tiếp tục");
 		clickToDynamicButtonLinkOrLinkText(driver, "Tiếp tục");
 		clickToDynamicButtonLinkOrLinkText(driver, "Bắt đầu");
 		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
-
-		sleep(driver, 5000);
-		if (getPageSource(driver).contains("đã được kích hoạt")) {
-
-			clickToDynamicButton(driver, "Đồng ý");
-		}
-
-		inputToDynamicInputBox(driver, pass, "Mật khẩu đăng nhập");
-
-		clickToDynamicButton(driver, "Tiếp tục");
-
-		inputToDynamicOtp(driver, otp, "Tiếp tục");
-		clickToDynamicButton(driver, "Tiếp tục");
-		clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
-		clickToDynamicButton(driver, "Bắt đầu sử dụng");
-		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
-
-	}
-
-	public void Global_login1(String phone, String pass, String otp) {
-
-		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
-
-		clickToTextID(driver, "com.VCB:id/tvSkip");
-
-		inputToDynamicLogInTextBox(driver, phone, "Tiếp tục");
-
-		clickToDynamicButton(driver, "Tiếp tục");
-		sleep(driver, 5000);
-		if (getPageSource(driver).contains("đã được kích hoạt")) {
+		sleep(driver, 2000);
+		if (!isDynamicButtonUnDisplayed(driver, "Đồng ý") == true) {
 
 			clickToDynamicButton(driver, "Đồng ý");
 		}
@@ -68,8 +32,9 @@ public class LogInPageObject extends AbstractPage {
 
 		inputToDynamicOtp(driver, otp, "Tiếp tục");
 		clickToDynamicButton(driver, "Tiếp tục");
-		clickToTextID(driver, "com.VCB:id/tvHome");
-
+		if (!isDynamicTextUndisplayed(driver, "Trang chủ") == true) {
+			clickToDynamicButtonLinkOrLinkText(driver, "Trang chủ");
+		}
 		clickToDynamicButton(driver, "Bắt đầu sử dụng");
 		clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_always_button");
 
