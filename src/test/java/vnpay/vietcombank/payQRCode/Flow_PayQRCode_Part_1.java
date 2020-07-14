@@ -76,6 +76,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
 
 		log.info("TC_01_3_Click chon Tat ca anh");
+		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
 		payQRCode.clickToDynamicImageButtonByContentDesc(driver, PayQRCode_Data.TEXT_BUTTON_MENU);
 		payQRCode.clickToDynamicTextContains(driver, PayQRCode_Data.TEXT_CATEGORY_MENU);
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.TYPE_1);
@@ -120,7 +121,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
 
 		log.info("TC_01_12_01_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 
 		log.info("TC_01_13_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
@@ -284,7 +285,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
 
 		log.info("TC_03_11_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 		
 		log.info("TC_03_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
@@ -452,7 +453,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
 
 		log.info("TC_05_11_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 		
 		log.info("TC_05_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
@@ -626,7 +627,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_SMART_OTP);
 
 		log.info("TC_07_12_01_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 
 		log.info("TC_07_13_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
@@ -792,7 +793,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_SMART_OTP);
 
 		log.info("TC_09_11_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 		
 		log.info("TC_09_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);
@@ -962,7 +963,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.VCB_SMART_OTP);
 
 		log.info("TC_11_11_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 		
 		log.info("TC_11_12_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);

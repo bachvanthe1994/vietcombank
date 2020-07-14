@@ -183,8 +183,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicIconByTwoTexts(driver, servicesName + "\n", service.method, "Edit Service Limit");
 			inputIntoInputByID(driver, "1000", "edit-times-day");
 			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
-			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
-			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND)+1)+"", "edit-total-limit");
+			inputIntoInputByID(driver, "1000000000", "edit-max-tran");
+			inputIntoInputByID(driver, "1000000000", "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
