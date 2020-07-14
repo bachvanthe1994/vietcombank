@@ -16,20 +16,20 @@
 	<test name="Run test case on Android 9">
 		<parameter name="deviceType" value="androidReal" />
 		<parameter name="deviceName" value="SamsungA20s" />
-		<parameter name="deviceUDID" value="22232b98150c7ece" />
+		<parameter name="deviceUDID" value="RF8M91GM7DE" />
 		<parameter name="hubURL" value="http://127.0.0.1:4723/wd/hub" />
-		<parameter name="phone" value="0335059860" />
-		<parameter name="pass" value="aaaa1111#" />
+		<parameter name="phone" value="0981790798" />
+		<parameter name="pass" value="aaa1111" />
 		<parameter name="otp" value="123456" />
-		<parameter name="username" value="anhvt" />
+		<parameter name="username" value="hieppt" />
 		<parameter name="passWeb" value="123456a@" />
 		<parameter name="platformVersion" value="10.0" />
 		<classes>
 
 
 			<!-- Hạn mức chuyển tiền ngay -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" /> -->
-			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" /> -->
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_1" />
+			<class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Immedidately_Limit_2" />
 
 			<!-- Hạn mức chuyển tiền tương lai -->
 			<!-- <class name="vnpay.vietcombank.transfer_money_in_vcb.Transfer_Money_In_Future_Limit" /> -->

@@ -45,12 +45,12 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 	@BeforeClass
 	public void beforeClass(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException, GeneralSecurityException {
 		log.info("Before class: Mo backend ");
-		startServer();
+	
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		webBackend = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
-
-		webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, "C32");
+	
+	//	webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, Constants.BE_CODE_PACKAGE);
 
 		startServer();
 		log.info("Before class: Mo app ");
@@ -90,24 +90,24 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		log.info("TC_01_Quay ve man hinh khoi tao");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 20) + "", (amount + 100) + "", "10000000");
-
-		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMin, "C32");
+		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 1) + "", (amount + 2) + "", (amount + 3) + "");
+		webBackend.setupAssignServicesLimit_All(driverWeb,"Thanh toán hóa đơn trả sau",inputInfoMin,Constants.BE_CODE_PACKAGE);
 
 		log.info("TC_01_Click tiep tuc");
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 20)+"") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((amount + 1)+"") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "C32");
-
 	}
 
 	@Test
 	public void TC_02_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucToiDa() throws InterruptedException {
+		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount - 2) + "", (amount - 1) + "", (amount + 3) + "");
+		webBackend.setupAssignServicesLimit_All(driverWeb,"Thanh toán hóa đơn trả sau",inputInfoMin,Constants.BE_CODE_PACKAGE);
+		
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LANDLINE_TELEPHONE);
 
 		log.info("TC_01_02_Chon tai khoan nguon");
@@ -126,16 +126,17 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 10)+"") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 1)+"") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "C32");
+	
 
 	}
 
 	@Test
 	public void TC_03_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucNhom() throws InterruptedException {
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", Constants.BE_CODE_PACKAGE);
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LANDLINE_TELEPHONE);
 
 		log.info("TC_01_02_Chon tai khoan nguon");
@@ -150,25 +151,26 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		landLinePhoneCharge.inputIntoEditTextByID(driver, phonenumber, "com.VCB:id/code");
 
 		log.info("TC_01_Quay ve man hinh khoi tao");
-		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, "C32", "Thanh toán hóa đơn" , (amount - 1000) + "");
+		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn" , (amount - 1) + "");
+	
 
 		log.info("TC_01_Click tiep tuc");
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 1000)+"") + " VND/1 ngày của nhóm giao dịch, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 1)+"") + " VND/1 ngày của nhóm dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
-		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "C32", "Thanh toán hóa đơn");
+	
 
 	}
 
 	@Parameters({ "pass" })
 	@Test
 	public void TC_04_ThanhToanCuocDienThoaiCoDinhCaoHonHanMucGoi(String pass) throws InterruptedException {
-
+		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Thanh toán hóa đơn");
 		homePage.clickToDynamicButtonLinkOrLinkText(driver, Home_Text_Elements.LANDLINE_TELEPHONE);
 
 		log.info("TC_01_02_Chon tai khoan nguon");
@@ -183,18 +185,18 @@ public class Limit_LandLinePhoneCharge_1 extends Base {
 		landLinePhoneCharge.inputIntoEditTextByID(driver, phonenumber, "com.VCB:id/code");
 
 		log.info("TC_01_Quay ve man hinh khoi tao");
-		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "C32", "Method Otp", (amount - 1000) + "");
+		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp", (amount - 1) + "");
 	
 		
 		log.info("TC_01_Click tiep tuc");
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btn_submit");
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 1000)+"") + " VND/1 ngày của gói giao dịch, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp");
+		verifyEquals(landLinePhoneCharge.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 1)+"") + " VND/1 ngày của gói dịch vụ, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 
 		landLinePhoneCharge.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 		landLinePhoneCharge.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.Reset_Package_Total_Limit(driverWeb, "C32", "Method Otp");
+		webBackend.Reset_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Method Otp");
 
 	}
 
