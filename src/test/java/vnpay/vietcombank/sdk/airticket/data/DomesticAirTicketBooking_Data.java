@@ -81,6 +81,7 @@ public class DomesticAirTicketBooking_Data {
 		public static final String BUTTON_ORDER_TICKET_TEXT = "Đặt vé";
 		public static final String BUTTON_PAY_LATER_TEXT = "Thanh toán sau";
 		public static final String BUTTON_SEARCH_FLIGHT_TEXT = "Tìm chuyến bay";
+		public static final String BUTTON_FINISH_TEXT = "Hoàn tất";
 		
 		public static final String PAY_DOMESTIC_AIR_TICKET = "Thanh toán vé máy bay nội địa";
 		public static final String PAY_INTERNATIONNAL_TICKET = "Thanh toán vé máy bay quốc tế";
