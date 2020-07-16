@@ -110,6 +110,18 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		}
 
 	}
+	
+	public void clickToTextViewByTextAndIndex(String dynamicTextValue, int index) {
+		boolean status = false;
+		String locator = String.format(FilmTicketBookingPageUIs.TEXTVIEW_BY_TEXT, dynamicTextValue);
+		status = waitForElementVisible(driver, locator);
+		List<MobileElement> elements = driver.findElements(By.xpath(locator));
+		if (status) {
+			elements.get(index).click();
+			
+		}
+
+	}
 
 	public void clickToDynamicTextByID(String id) {
 		scrollIDown(driver, CommonPageUIs.DYNAMIC_TEXT_BY_ID, id);
@@ -270,6 +282,12 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 	public String getTextViewByID(String dynamicID) {
 		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
 		return getTextElement(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+
+	}
+	
+	public String getTextViewByIDAndIndex(String dynamicID, int index) {
+		waitForElementVisible(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID);
+		return getTextInListElements(driver, FilmTicketBookingPageUIs.TEXTVIEW_BY_ID, dynamicID).get(index);
 
 	}
 
@@ -632,6 +650,16 @@ public class FilmTicketBookingPageObject extends AbstractPage {
 		String category = getTextViewByID("com.VCB:id/tvCategory");
 		String duration = getTextViewByID("com.VCB:id/tvDuration");
 		String rate = getTextViewByID("com.VCB:id/tvIMDb");
+		FilmInfo info = new FilmInfo(name, category, duration, rate);
+		return info;
+
+	}
+	
+	public FilmInfo getInfoOfTheFilmByIndex(int index) {
+		String name = getTextViewByIDAndIndex("com.VCB:id/tvFilmName", index);
+		String category = getTextViewByIDAndIndex("com.VCB:id/tvCategory", index);
+		String duration = getTextViewByIDAndIndex("com.VCB:id/tvDuration", index);
+		String rate = getTextViewByIDAndIndex("com.VCB:id/tvIMDb", index);
 		FilmInfo info = new FilmInfo(name, category, duration, rate);
 		return info;
 

@@ -26,6 +26,7 @@ public class PayQRCode_Data {
 	public static final String TEXT_BUTTON_MENU = "Hiển thị gốc";
 	public static final String TEXT_CATEGORY_MENU = "ải xuống";
 	public static final String QR_PAY = "QR Pay";
+	public static final String QR_PAY_UPPERCASE = "QR PAY";
 	public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 	public static final String QR_CODE_SCAN = "Quét mã QR";
 	public static final String DESTINATION_PLACE = "Thanh toán cho";
