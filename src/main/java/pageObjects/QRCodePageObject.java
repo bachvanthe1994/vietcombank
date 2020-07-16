@@ -166,13 +166,13 @@ public class QRCodePageObject extends AbstractPage {
 			qrCode.destinationPlace = getDynamicTextInTransactionDetail(driver, "Thanh toán cho");
 			qrCode.namePlace = getDynamicTextInTransactionDetail(driver, "Điểm bán");
 			qrCode.codePlace = getDynamicTextInTransactionDetail(driver, "Mã điểm bán");
-
+			qrCode.money = getDynamicTextInTransactionDetail(driver, "Số tiền");
+			
 			clickToDynamicDropDown(driver, "Tài khoản nguồn");
 			sourceAccount = chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
 			qrCode.account = sourceAccount.account;
 			qrCode.surplus = getDynamicTextInTransactionDetail(driver, "Số dư khả dụng");
 
-			inputToDynamicInputBox(driver, "100000", "Số tiền");
 			inputToDynamicInputBox(driver, "Test", "Ghi chú");
 			clickToDynamicButton(driver, "Thanh toán");
 

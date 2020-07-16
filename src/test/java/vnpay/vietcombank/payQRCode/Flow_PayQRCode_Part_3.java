@@ -122,7 +122,7 @@ public class Flow_PayQRCode_Part_3 extends Base {
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.SMS_OTP);
 
 		log.info("TC_01_12_01_Kiem tra so tien phi");
-		transferFee = convertAvailableBalanceCurrentcyOrFeeToLong(payQRCode.getDynamicTextInTransactionDetail(driver, PayQRCode_Data.FEE_TRANSACTION));
+		transferFee = 0;
 
 		log.info("TC_01_13_Click Tiep tuc");
 		payQRCode.clickToDynamicButton(driver, PayQRCode_Data.CONTINUE_BUTTON);

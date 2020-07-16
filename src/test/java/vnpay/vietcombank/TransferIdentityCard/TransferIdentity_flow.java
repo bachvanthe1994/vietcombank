@@ -100,6 +100,9 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_01_STEP_11: chon tiep tuc");
 	trasferPage.clickToDynamicButton(driver, textCheckElement.NEXT);
+	
+	log.info("TC_03_STEP_20: lấy nội dung giao dịch");
+	content = trasferPage.getMoneyByAccount(driver, textCheckElement.CONNTENT);
 
 	log.info("TC_01_STEP_21: lấy ra phí giao dịch");
 	String getFee = transReport.getMoneyByAccount(driver, textCheckElement.TRANSACTION_FEE);

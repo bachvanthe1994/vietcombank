@@ -46,6 +46,7 @@ public class LuckyGift_SmartOTP extends Base {
 	String account;
 	String passSmartOTP = "111222";
 	SourceAccountModel sourceAccount = new SourceAccountModel();
+	long sumFeeInt;
 
 	@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp" })
 	@BeforeClass
@@ -64,6 +65,7 @@ public class LuckyGift_SmartOTP extends Base {
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
 		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+
 	}
 
 	@Test
@@ -93,7 +95,7 @@ public class LuckyGift_SmartOTP extends Base {
 		luckyGift.clickToDynamicButtonLinkOrLinkText(driver, TitleLuckyGift.TITLE_PHONE_NUMBER);
 
 		log.info("TC_01_Step_5: nhập số điện thoại");
-		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_CHOISE_ACCOUNT);
+		luckyGift.inputToDynamicInputBox(driver, getDataInCell(5), TitleLuckyGift.TITLE_PHONE_NUMBER);
 
 		log.info("TC_01_Step_6: Nhap so tien chuyen");
 		luckyGift.inputToDynamicInputBox(driver, LuckyGift_Data.LuckyGift.MONEY, TitleLuckyGift.TITLE_AMOUNT_MONEY);
@@ -121,7 +123,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_01_Step_13: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -236,7 +238,9 @@ public class LuckyGift_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_02_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -300,7 +304,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_03_Step_14: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -414,7 +418,9 @@ public class LuckyGift_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_18: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_04_Step_19: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, TitleLuckyGift.TRANSACTION_DETAIL);
@@ -487,7 +493,7 @@ public class LuckyGift_SmartOTP extends Base {
 
 		log.info("TC_05_Step_15: lấy ra phí chuyển");
 		String moneyFee = luckyGift.getTextInDynamicDropdownOrDateTimePicker(driver, "com.VCB:id/tvSumfee");
-		long sumFeeInt = convertMoneyToLong(moneyFee, "VND");
+		sumFeeInt = convertMoneyToLong(moneyFee, "VND");
 		long surplusTotal = surplus - Long.parseLong(LuckyGift_Data.LuckyGift.MONEY) - sumFeeInt;
 		surplusString = String.valueOf(surplusTotal);
 
@@ -601,7 +607,9 @@ public class LuckyGift_SmartOTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.ACCOUNT_CREDITED), getName[0]);
 
 		log.info("TC_02_Step_17: Kiem tra so tien phi");
-		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TRANSACTION_FEE), moneyFee);
+		if (sumFeeInt > 0) {
+			verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, TitleLuckyGift.TRANSACTION_FEE), moneyFee);
+		}
 
 		log.info("TC_06_Step_18: Click quay lai");
 		transReport.clickToDynamicBackIcon(driver, ReportTitle.TRANSACTION_DETAIL);
@@ -616,8 +624,8 @@ public class LuckyGift_SmartOTP extends Base {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-//		closeApp();
-//		service.stop();
+		closeApp();
+		service.stop();
 	}
 
 }

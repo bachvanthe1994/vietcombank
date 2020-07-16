@@ -1251,7 +1251,7 @@ public class TransferMoneyOutSideVCB_Part_2 extends Base {
 	}
 
 	public void clickPopupAfter15h30() {
-		if (transferMoneyOutSide.isDynamicButtonDisplayed(driver, "Hủy")) {
+		if (!transferMoneyOutSide.isDynamicButtonUnDisplayed(driver, "Hủy")) {
 			transferMoneyOutSide.clickToDynamicButton(driver, TitleOutVCB.NEXT);
 		}
 	}

@@ -13,7 +13,7 @@ public class LuckyGift_Data {
 		public static final String TOTAL = "TỔNG TIỀN";
 		public static final String TITLE = "Quà tặng";
 		public static final String TITLE_GIFT = "QUÀ TẶNG";
-		public static final String TITLE_CHOISE_ACCOUNT = "Số điện thoại/tài khoản nhận";
+		public static final String TITLE_CHOISE_ACCOUNT = "Số tài khoản";
 		public static final String TITLE_AMOUNT_MONEY = "Số tiền";
 		public static final String TITLE_PHONE_NUMBER = "Số điện thoại";
 		public static final String TITLE_WISHES = "Nhập/chọn lời chúc";
@@ -58,9 +58,9 @@ public class LuckyGift_Data {
 		public static final String MESSEGE_ERROR_HIGHER_MAX_DAY = "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức 100,000,000 VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.";
 
 	}
-	
+
 	public static class backendTitle {
-		public static final String 	PACKAGE_CODE = "TESTBUG";
+		public static final String PACKAGE_CODE = "TESTBUG";
 		public static final String SERVICE = "Tặng quà may mắn nội bộ";
 		public static final String TRANSFER = "Chuyển khoản";
 	}

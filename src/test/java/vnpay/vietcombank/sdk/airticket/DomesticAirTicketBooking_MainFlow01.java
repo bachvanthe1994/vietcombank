@@ -786,7 +786,7 @@ public class DomesticAirTicketBooking_MainFlow01 extends Base {
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.PAY_ID_TEXT, "com.VCB:id/tvContent"), payID);
 
 		log.info("TC_07_Step_27_02: Xac nhan chieu di ");
-		verifyEquals(airTicket.getDynamicConfirmInfoByIndex("4", Air_Text.FLIGHT_WAY_TEXT), sourceDetail + " → " + destDetail);
+		verifyEquals(airTicket.getDynamicConfirmInfoByIndex("4", Air_Text.FLIGHT_WAY_TEXT), source + " → " + dest);
 
 		log.info("TC_07_Step_27_03: Xac nhan so tien thanh toan");
 		verifyEquals(airTicket.getAirTicketPriceInfo1Way(Air_Text.TOTAL_PAY_TEXT, "com.VCB:id/tvContent"), ticketPrice);
