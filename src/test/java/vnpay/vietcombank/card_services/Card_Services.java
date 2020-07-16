@@ -38,7 +38,7 @@ public class Card_Services extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		phone = getDataInCell(8).trim();
 		pass = getDataInCell(27).trim();
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		otpNumber = opt;
 
 		lockCard = PageFactoryManager.LockCardPageObject(driver);
@@ -52,7 +52,7 @@ public class Card_Services extends Base {
 		log.info("TC_01_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, Card_Services_Text.SHOPPING_TEXT);
 		
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
+//		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 
 		log.info("TC_01_Step_02: An vao tab 'Khoa the'");
@@ -87,7 +87,7 @@ public class Card_Services extends Base {
 		log.info("TC_01_Step_10: An button 'Qua ve man hinh dich vu the'");
 		lockCard.clickToDynamicButton(driver, Card_Services_Text.BUTTON_BACK_TO_HOME_TEXT);
 		
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
+//		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 		log.info("TC_01_Step_12: An vao tab 'Khoa the'");
 		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.LOCK_CARD_TEXT);
@@ -199,7 +199,7 @@ public class Card_Services extends Base {
 		log.info("TC_03_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, Card_Services_Text.SHOPPING_TEXT);
 		
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
+//		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 
 		log.info("TC_03_Step_02: An vao tab 'Khoa the'");
@@ -482,7 +482,7 @@ public class Card_Services extends Base {
 
 		log.info("TC_07_Step_01: Keo xuong va click vao phan 'Dich vu the'");
 		home.scrollDownToText(driver, Card_Services_Text.SHOPPING_TEXT);
-		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
+//		home.clickToDynamicButtonLinkOrLinkText(driver, Card_Services_Text.CARD_SERVICE);
 
 
 		log.info("TC_07_Step_02: An vao tab 'Khoa the'");

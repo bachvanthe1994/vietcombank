@@ -41,6 +41,7 @@ public class HomePage_Data {
 		public static final String SELECTED = "Bỏ nổi bật";
 		public static final String NO_SELECT = "Thêm nổi bật";
 		public static final String TRANSFER_MONEY = "Chuyển tiền";
+		public static final String QR_PAY = "QR Pay";
 	}
 
 	public class HomePageMessage {
@@ -50,7 +51,7 @@ public class HomePage_Data {
 		public static final String GUID_MESSAGE = "Nhấn giữ và di chuyển để thay đổi thứ tự hiển thị của chức năng nổi bật";
 		public static final String AT_LEAST_1_MESSAGE = "Quý khách vui lòng chọn ít nhất 1 chức năng hiển thị.";
 		public static final String MAX_5_ICON_MESSAGE = "Chức năng nổi bật chỉ lưu được tối đa 05 chức năng. Vui lòng kiểm tra lại.";
-		public static final String HOME_MESSAGE_TEXT = "NHẤN và GIỮ để DI CHUYỂN";
+		public static final String HOME_MESSAGE_TEXT = "Nhấn giữ để di chuyển nhanh đến các nhóm chức năng";
 
 	}
 }

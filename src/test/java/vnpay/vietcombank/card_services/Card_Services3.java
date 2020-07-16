@@ -39,7 +39,7 @@ public class Card_Services3 extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		phone = getDataInCell(8).trim();
 		pass = getDataInCell(27).trim();
-		login.Global_login1(phone, pass, opt);
+		login.Global_login(phone, pass, opt);
 		otpNumber = opt;
 
 		lockCard = PageFactoryManager.LockCardPageObject(driver);

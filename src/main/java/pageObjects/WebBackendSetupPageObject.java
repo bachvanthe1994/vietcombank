@@ -52,20 +52,19 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		getInfoList = getAndInputDataByListIcon_Total_LimitDay(driver, dynamicText, info);
 	}
 
-
-	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
-		//addMethodOtpLimit(driverWeb, serviceName);
+	public void setupAssignServicesLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
+		// addMethodOtpLimit(driverWeb, serviceName);
 		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 	}
 
 	public void resetAssignServicesLimit(WebDriver driver, String serviceName, String codePackage) {
-		openAssignServiceLimit(driver,codePackage);
+		openAssignServiceLimit(driver, codePackage);
 		inputDynamicDataByListIcon(driver, serviceName);
 	}
 
-	public void Setup_Assign_Services_Type_Limit(WebDriver driver,String codePackage, String servicesName, String valueLimit) {
+	public void Setup_Assign_Services_Type_Limit(WebDriver driver, String codePackage, String servicesName, String valueLimit) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, codePackage, "Assign Service Type Limit");
@@ -106,7 +105,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 
-	
 	public void Reset_Setup_Assign_Services_Type_Limit(WebDriver driver, String codePackage, String servicesName) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
@@ -120,9 +118,8 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			acceptAlert(driver);
 		}
 	}
-	
 
-	public void Setup_Assign_Services_Limit(WebDriver driver,String codePackage, String servicesName, String minLimitTrans, String maxLimitTrans, String totalLimit) {
+	public void Setup_Assign_Services_Limit(WebDriver driver, String codePackage, String servicesName, String minLimitTrans, String maxLimitTrans, String totalLimit) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconByText(driver, codePackage, "Assign Service Limit");
@@ -143,7 +140,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			service.minTran = getDataInInputByID(driver, "edit-min-tran");
 			service.maxTran = getDataInInputByID(driver, "edit-max-tran");
 			service.totalLimit = getDataInInputByID(driver, "edit-total-limit");
-			
+
 			serviceLimitInfoList.add(service);
 			inputIntoInputByID(driver, "1000", "edit-times-day");
 			inputIntoInputByID(driver, minLimitTrans, "edit-min-tran");
@@ -172,7 +169,6 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 		}
 	}
 
-	
 	public void Reset_Setup_Assign_Services_Limit(WebDriver driver, String codePackage, String servicesName) {
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
@@ -184,15 +180,15 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			inputIntoInputByID(driver, "1000", "edit-times-day");
 			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
 			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
-			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND)+1)+"", "edit-total-limit");
+			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND) + 1) + "", "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
 	}
 
-	//Set limit value of Package 
-	public void Setup_Add_Method_Package_Total_Limit(WebDriver driverWeb, String packageCode, String tittleTableValue,String amountLimit) {
-		
+	// Set limit value of Package
+	public void Setup_Add_Method_Package_Total_Limit(WebDriver driverWeb, String packageCode, String tittleTableValue, String amountLimit) {
+
 		clickToDynamicMenuByLink(driverWeb, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driverWeb, "ng-pristine", "100");
 		clickToDynamicIconPackage(driverWeb, packageCode, "Assign Package Total Limit");
@@ -225,7 +221,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 
 	// Reset goi han muc goi giao dich
 	public void Reset_Package_Total_Limit(WebDriver driver, String packageCode, String tittleTableValue) {
-		
+
 		clickToDynamicMenuByLink(driver, "/Package/Index?f=2&c=191");
 		selectItemInDropdown(driver, "ng-pristine", "100");
 		clickToDynamicIconPackage(driver, packageCode, "Assign Package Total Limit");
@@ -243,37 +239,36 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
+//			inputIntoInputByID(driver, inputInfo.totalLimit, "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
 	}
-
 
 	// Lay data cu va thay doi thanh data moi phan Assign Service Limit
 	public List<ServiceLimitInfo02> getAndInputDataByListIcon(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
 
 		List<String> methodList = getDynamicDataByListIcon(driver, serviceName, "1");
-		for (String text : methodList) {
-			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
-			getInfo.method = text.trim();
-			clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
-			getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
-			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
-			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
-			getInfoList.add(getInfo);
+			for (String text : methodList) {
+				ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
+				getInfo.method = text.trim();
+				clickToDynamicIconByTwoTexts(driver, serviceName, getInfo.method, "Edit Service Limit");
+				getInfo.minTran = getDataInInputByID(driver, "edit-min-tran");
+				getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
+				getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
+				getInfoList.add(getInfo);
 
-			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
-			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			clickToDynamicButtonATagByID(driver, "edit-limit");
-			acceptAlert(driver);
+				inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
+				inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+				clickToDynamicButtonATagByID(driver, "edit-limit");
+				acceptAlert(driver);
 
-		}
-
+			}
 		return getInfoList;
 	}
+
 	public List<ServiceLimitInfo02> getAndInputDataByListIcon1(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo) {
-		
+
 		List<String> methodList = getDynamicDataByListIcon(driver, serviceName, "1");
 		for (String text : methodList) {
 			ServiceLimitInfo02 getInfo = new ServiceLimitInfo02("", "", "", "", "");
@@ -283,14 +278,14 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			getInfo.maxTran = getDataInInputByID(driver, "edit-max-tran");
 			getInfo.totalLimit = getDataInInputByID(driver, "edit-total-limit");
 			getInfoList1.add(getInfo);
-			
+
 			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
 			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
-			
+
 		}
-		
+
 		return getInfoList1;
 	}
 
@@ -349,7 +344,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	// Them Method OTP vao phan Service Limit
-	public void addMethodServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+	public void addMethodServicesLimit(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
 
 		openAssignServiceLimit(driver, codePackage);
 		List<String> actualMethodList = getDynamicDataByListIcon(driver, serviceName, "1");
@@ -363,7 +358,7 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 				selectItemInDropdownByID(driver, "service", serviceName);
 				selectItemInDropdownByID(driver, "method-otp", methodOtp);
 				selectItemInDropdownByID(driver, "ccy", "Việt Nam Đồng");
-				
+
 				inputIntoInputByID(driver, inputInfo.timesDay, "times-day");
 				inputIntoInputByID(driver, inputInfo.minTran, "min-tran");
 				inputIntoInputByID(driver, inputInfo.maxTran, "max-tran");
@@ -402,12 +397,12 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 	}
 
 	public void setupAssignServicesLimit_All(WebDriver driver, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
-		openAssignServiceLimit(driver,codePackage);
+		openAssignServiceLimit(driver, codePackage);
 		getInfoList_All = getAndInputDataByListIcon_All(driver, serviceName, inputInfo);
 	}
-	
+
 	public void resetAssignServicesLimit_All(WebDriver driver, String serviceName, String codePackage) {
-		openAssignServiceLimit(driver,codePackage);
+		openAssignServiceLimit(driver, codePackage);
 		inputDynamicDataByListIcon_All(driver, serviceName);
 	}
 
@@ -437,38 +432,40 @@ public class WebBackendSetupPageObject extends WebAbstractPage {
 			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
 			inputIntoInputByID(driver, Constants.MIN_TRANSFER, "edit-min-tran");
 			inputIntoInputByID(driver, Constants.THREE_BILLION_VND, "edit-max-tran");
-			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND)+1)+"", "edit-total-limit");
+			inputIntoInputByID(driver, (Integer.parseInt(Constants.THREE_BILLION_VND) + 1) + "", "edit-total-limit");
 			clickToDynamicButtonATagByID(driver, "edit-limit");
 			acceptAlert(driver);
 		}
 	}
-	public void inputDynamicDataByListIcon_Reset(WebDriver driver, String serviceName,ServiceLimitInfo02 inputInfo ) {
-			clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
-			inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
-			inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
-			clickToDynamicButtonATagByID(driver, "edit-limit");
-			acceptAlert(driver);
-		
+
+	public void inputDynamicDataByListIcon_Reset(WebDriver driver, String serviceName, ServiceLimitInfo02 inputInfo) {
+		clickToDynamicIconByTwoTexts(driver, serviceName, inputInfo.method, "Edit Service Limit");
+		inputIntoInputByID(driver, inputInfo.minTran, "edit-min-tran");
+		inputIntoInputByID(driver, inputInfo.maxTran, "edit-max-tran");
+		clickToDynamicButtonATagByID(driver, "edit-limit");
+		acceptAlert(driver);
+
 	}
-	
+
 	public void clearCacheBE(WebDriver driver) {
-		
+
 		clickToDynamicMenuByLink(driver, "/Configuration/Index");
 		clickToDynamicButtonATagByClass(driver, "btn btn-info");
 		acceptAlert(driver);
 		waitForAlerVisibleAndClickAccept(driver);
 	}
-	
-	public void addMethod(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+
+	public void addMethod(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
 		addMethodOtpLimit(driverWeb, serviceName);
 		addMethodServicesLimit(driverWeb, serviceName, inputInfo, codePackage);
 	}
-	
-	public void getInfoServiceLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+
+	public void getInfoServiceLimit(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList = getAndInputDataByListIcon(driverWeb, serviceName, inputInfo);
 	}
-	public void getInfoServiceLimit1(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo,String codePackage) {
+
+	public void getInfoServiceLimit1(WebDriver driverWeb, String serviceName, ServiceLimitInfo inputInfo, String codePackage) {
 		openAssignServiceLimit(driverWeb, codePackage);
 		getInfoList1 = getAndInputDataByListIcon1(driverWeb, serviceName, inputInfo);
 	}

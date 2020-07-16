@@ -200,7 +200,7 @@ public class Limit_AirTicketBooking extends Base {
 		log.info("TC_04_Step_21: Click vao Dong y");
 		airTicket.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		airTicket.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, Constants.PAY_BILL, backendTitle.PACKAGE_CODE);
+		webBackend.Reset_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, Constants.METHOD_OTP);
 	}
 	
 	@Test
@@ -339,7 +339,7 @@ public class Limit_AirTicketBooking extends Base {
 		log.info("TC_04_Step_21: Click vao Dong y");
 		airTicket.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		airTicket.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		webBackend.resetAssignServicesLimit_All(driverWeb, Constants.PAY_BILL, backendTitle.PACKAGE_CODE);
+		webBackend.Reset_Package_Total_Limit(driverWeb, backendTitle.PACKAGE_CODE, Constants.METHOD_OTP);
 	}
 	
 	@AfterClass(alwaysRun = true)
