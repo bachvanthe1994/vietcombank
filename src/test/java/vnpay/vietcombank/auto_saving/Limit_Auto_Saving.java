@@ -55,6 +55,8 @@ public class Limit_Auto_Saving extends Base {
 		}
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
+		home = PageFactoryManager.getHomePageObject(driver);
+		autoSaving = PageFactoryManager.getAutoSavingPageObject(driver);
 
 	}
 
@@ -84,7 +86,7 @@ public class Limit_Auto_Saving extends Base {
 		log.info("TC_02_Step_07: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((inputInfo.minTran) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong((inputInfo.minTran) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 		autoSaving.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
 	}
@@ -96,7 +98,7 @@ public class Limit_Auto_Saving extends Base {
 		log.info("TC_02_Step_07: An Tiep tuc");
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.maxTran) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "TGiao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.maxTran) + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 		autoSaving.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
 		webBackend.resetAssignServicesLimit_All(driverWeb, "Đăng ký tiết kiệm tự động", Constants.BE_CODE_PACKAGE);
@@ -112,7 +114,7 @@ public class Limit_Auto_Saving extends Base {
 		webBackend.Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Tiết kiệm tự động", inputInfo.totalLimit);
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.totalLimit) + "") + " VND/1 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.totalLimit) + "") + " VND/1 VND/1 ngày của nhóm dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 		autoSaving.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
 		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, "Tiết kiệm tự động");
@@ -128,7 +130,7 @@ public class Limit_Auto_Saving extends Base {
 		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, Constants.BE_CODE_PACKAGE, Constants.METHOD_OTP, inputInfo.totalLimit);
 		autoSaving.clickToDynamicAcceptButton(driver, "com.VCB:id/btContinue");
 
-		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.totalLimit) + "") + " VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
+		verifyEquals(autoSaving.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Giao dịch không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((inputInfo.totalLimit) + "") + " VND/1 ngày của gói dịch vụ, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline của Vietcombank để được trợ giúp.");
 		autoSaving.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
 		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, Constants.BE_CODE_PACKAGE, Constants.METHOD_OTP);

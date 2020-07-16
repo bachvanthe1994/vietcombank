@@ -141,15 +141,17 @@ public class Limit_Open_Account_Saving_Money extends Base {
 
 	}
 
-	@Parameters({ "pass" })
+	@Parameters({ "otp" })
 	@Test
-	public void TC_03_SoTienGiaoDichVuotQuaHanMucToiDaMotNgay(String pass) throws InterruptedException {
+	public void TC_03_SoTienGiaoDichVuotQuaHanMucToiDaMotNgay(String otp) throws InterruptedException {
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.OPEN_SAVING_ACCOUNT);
 		loginWeb.setupAssignServicesLimit_Total_Day(driverWeb, SavingOnline_Data.OPEN_SAVING, inputInfo, SavingOnline_Data.PACKAGE_NAME);
 
 		log.info("TC_03_2_Chon so tai khoan");
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCOUNT_NUMBER);
 		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, account);
+		
+
 
 		log.info("TC_03_3_Chon ky han gui");
 		savingOnline.clickToDynamicDropDownListTextViewByHeader(driver, SavingOnline_Data.TRANSACTION_INFO, "1");
@@ -175,13 +177,13 @@ public class Limit_Open_Account_Saving_Money extends Base {
 		savingOnline.clickToDynamicDropDown(driver, SavingOnline_Data.ACCURACY_METHOD);
 
 		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.PASSWORD);
+		savingOnline.clickToDynamicButtonLinkOrLinkText(driver, SavingOnline_Data.SMS_OTP);
 
 		log.info("TC_03_11_Click nut Tiep tuc");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
 		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
-		savingOnline.inputToDynamicPopupPasswordInput(driver, pass, SavingOnline_Data.CONTINUE_BUTTON);
+		savingOnline.inputToDynamicOtp(driver, otp, SavingOnline_Data.CONTINUE_BUTTON);
 
 		log.info("TC_03_8_ Kiem tra man hinh xac nhan thong tin");
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);

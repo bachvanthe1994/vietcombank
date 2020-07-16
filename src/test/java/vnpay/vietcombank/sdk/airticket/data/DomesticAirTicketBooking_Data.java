@@ -56,7 +56,7 @@ public class DomesticAirTicketBooking_Data {
 		public static final String FLIGHT_CODE_TEXT = "Số hiệu chuyến bay";
 		public static final String PAY_ID_TEXT = "Mã thanh toán";
 		public static final String FLIGHT_TIME_TEXT = "Thời gian bay";
-		public static final String FROM_ACCOUNT_TEXT = "Tài khoản nguồn";
+		public static final String FROM_ACCOUNT_TEXT = "Từ tài khoản";
 		public static final String MONEY_AMOUNT_TEXT = "Số tiền";
 		public static final String FEE_VALUE_TEXT = "Phí giao dịch";
 		public static final String TRANSACTION_ID_TEXT = "Mã giao dịch";

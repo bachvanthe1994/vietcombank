@@ -16,7 +16,7 @@ public class SavingOnline_Data {
 	public static final String MONEY = "100000";
 	public static final String OPEN_SAVING_ACCOUNT = "Mở tiết kiệm";
 	public static final String OPEN_SAVING = "Mở tài khoản tiết kiệm online";
-	public static final String SAVING_ONLINE= "Tiết kiệm online";
+	public static final String SAVING_ONLINE= "Tiết kiệm online";	
 	public static final String ACCOUNT_NUMBER = "Số tài khoản";
 	public static final String AVAILABLE_BALANCE = "Số dư khả dụng";
 	public static final String TRANSACTION_INFO = "Thông tin giao dịch";

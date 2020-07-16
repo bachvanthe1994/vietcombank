@@ -145,13 +145,16 @@ public class Limit_Settlement_Saving_Online extends Base {
 	@Test
 	public void TC_02_SoTienGiaoDichLonHonHanMucToiThieuCuaNhomGiaoDich() throws InterruptedException {
 		loginWeb.setupAssignServicesLimit(driverWeb, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT_ONLINE, inputInfoMax, Constants.BE_CODE_PACKAGE);
+
 		savingOnline.clickToDynamicButton(driver, SavingOnline_Data.CONTINUE_BUTTON);
 
 		verifyEquals(savingOnline.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Tất toán không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong(Integer.parseInt(info.money) - 1 + "") + " VND/1 lần, chi tiết xem tại https://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+		loginWeb.resetAssignServicesLimit_All(driverWeb, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT_ONLINE, Constants.BE_CODE_PACKAGE);
 		savingOnline.clickToDynamicContinue(driver, "com.VCB:id/btOK");
+		
 
-		loginWeb.setupAssignServicesLimit(driverWeb, SavingOnline_Data.EXPIRE_SAVING_ACCOUNT_ONLINE, inputInfo, Constants.BE_CODE_PACKAGE);
 
+		
 	}
 
 	@Test
