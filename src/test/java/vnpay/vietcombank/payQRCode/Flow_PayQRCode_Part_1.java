@@ -68,8 +68,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	public void TC_01_ThanhToanHoaDon_Type1_QRCode() {
 		log.info("TC_01_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
-		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
+		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
 
 		log.info("TC_01_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicAcceptButtonContainOR(driver, "com.android.packageinstaller:id/permission_allow_button", "com.android.permissioncontroller:id/permission_allow_button");
@@ -193,7 +193,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_02_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").contains(PayQRCode_Data.QR_PAY));
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").contains(PayQRCode_Data.QR_PAY_UPPERCASE));
 
 		log.info("TC_02_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
@@ -238,8 +238,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	public void TC_03_ThanhToanHoaDon_Type2_QRCode() {
 		log.info("TC_03_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
-		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
+		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
 
 		log.info("TC_03_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
@@ -362,7 +362,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_04_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY_UPPERCASE));
 
 		log.info("TC_04_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
@@ -407,8 +407,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	public void TC_05_ThanhToanHoaDon_Type3_QRCode() {
 		log.info("TC_05_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
-		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
+		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
 
 		log.info("TC_05_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
@@ -531,7 +531,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_06_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY_UPPERCASE));
 
 		log.info("TC_06_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
@@ -576,8 +576,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	public void TC_07_ThanhToanHoaDon_Type1_QRCode_SmartOTP() {
 		log.info("TC_07_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
-		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
+		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
 
 		log.info("TC_07_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
@@ -701,7 +701,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_08_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").contains(PayQRCode_Data.QR_PAY));
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").contains(PayQRCode_Data.QR_PAY_UPPERCASE));
 
 		log.info("TC_08_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
@@ -746,8 +746,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	public void TC_09_ThanhToanHoaDon_Type2_QRCode_SmartOTP() {
 		log.info("TC_09_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
-		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
+		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
 
 		log.info("TC_09_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
@@ -872,7 +872,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_10_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY_UPPERCASE));
 
 		log.info("TC_10_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
@@ -917,8 +917,8 @@ public class Flow_PayQRCode_Part_1 extends Base {
 	public void TC_11_ThanhToanHoaDon_Type3_QRCode_SmartOTP() {
 		log.info("TC_11_1_Click QR Pay");
 		homePage.sleep(driver, 3000);
-		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY);
-		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY);
+		payQRCode.scrollUpToText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.QR_PAY_UPPERCASE);
 
 		log.info("TC_11_2_Click mo Thu vien anh");
 		payQRCode.clickToDynamicButtonLinkOrLinkText(driver, PayQRCode_Data.IMAGE_LIBRARY);
@@ -1043,7 +1043,7 @@ public class Flow_PayQRCode_Part_1 extends Base {
 		verifyEquals(convertDateTimeIgnoreHHmmss(transferTimeInReport), convertTransferTimeToReportDateTime(transferTime));
 
 		log.info("TC_12_11: Kiem tra noi dung hien thi");
-		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY));
+		verifyTrue(transReport.getTextInDynamicTransactionInReport(driver, "0", "com.VCB:id/tvContent").equals(PayQRCode_Data.QR_PAY_UPPERCASE));
 
 		log.info("TC_12_12: Kiem tra so tien chuyen hien thi");
 		verifyEquals(transReport.getTextInDynamicTransactionInReport(driver, "1", "com.VCB:id/tvMoney"), "- " +  addCommasToLong(money + "") + " VND");
