@@ -40,7 +40,7 @@ public class Card_Services_Data {
 		public static final String SHOPPING_TEXT = "Mua sắm";
 		
 		public static final String LOCK_CARD_TEXT = "Khóa thẻ";
-		public static final String CARD_SERVICE = "Dịch vụ thẻ";
+		public static final String CARD_SERVICE = "Dịch vụ thẻ khác";
 		public static final String UNLOCK_CARD_TEXT = "Mở khóa thẻ";
 		
 		public static final String DEBIT_CARD_TEXT = "Thẻ ghi nợ";
@@ -64,7 +64,7 @@ public class Card_Services_Data {
 		
 		public static final String BUTTON_CONTINUE_TEXT = "Tiếp tục";
 		public static final String BUTTON_CLOSE_TEXT = "Đóng";
-		public static final String BUTTON_BACK_TO_HOME_TEXT = "Quay về màn hình dịch vụ thẻ";
+		public static final String BUTTON_BACK_TO_HOME_TEXT = "Về trang chủ";
 		
 	}
 	

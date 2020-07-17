@@ -52,7 +52,7 @@ public class Transfer_Limit_Flow extends Base {
 		newOTP = "111222";
 	}
 
-	@Test
+	@Test(invocationCount=2)
 	public void TC_01_CaiHanMucThanhCongPhuongThucXacThucOTP() {
 		log.info("TC_01_Step: Click menu header");
 		transferLimit.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");

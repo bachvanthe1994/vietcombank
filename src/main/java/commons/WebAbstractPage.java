@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import vietcombankUI.DynamicWebPageUIs;
 
 public class WebAbstractPage {
@@ -99,14 +105,14 @@ public class WebAbstractPage {
 			sleep(driver, 5000);
 		}
 	}
-	
-	public void waitForAlerVisibleAndClickAccept(WebDriver driver) {
-		
-	     WebDriverWait wait = new WebDriverWait(driver, 10);
-         wait.until(ExpectedConditions.alertIsPresent());
 
-         Alert alert = driver.switchTo().alert();
-         alert.accept();
+	public void waitForAlerVisibleAndClickAccept(WebDriver driver) {
+
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.alertIsPresent());
+
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
 
 	}
 
@@ -669,6 +675,9 @@ public class WebAbstractPage {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
+	
+	
+	
 
 	public Object scrollToElement(WebDriver driver, String locator) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -1222,15 +1231,15 @@ public class WebAbstractPage {
 		}
 		return getMethodList;
 	}
-	
+
 	public String getDynamicDataByIcon(WebDriver driver, String dynamicText, String index) {
 		boolean status = false;
 		String text = "";
 		status = isControlDisplayed(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
-		if(status == true) {
-			text = getTextElement(driver,DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
+		if (status == true) {
+			text = getTextElement(driver, DynamicWebPageUIs.DYNAMIC_TEXT_BY_FOLLOW_TEXT_INDEX, dynamicText, index);
 		}
-		return text ;
+		return text;
 	}
 
 	public String getDynamicDataByMethod(WebDriver driver, String dynamicText, String index) {

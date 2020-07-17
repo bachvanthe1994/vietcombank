@@ -84,7 +84,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTextView(cinemaName);
 
 		log.info("TC_01_08_Click xem chi tiet phim");
-		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFilmByIndex(1);
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		info.filmName = filmInfo.filmName;
 		info.filmDuration = filmTicketBooking.canculateDurationOfFilm(filmInfo.filmDuration);
@@ -361,7 +361,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTextView(cinemaName);
 
 		log.info("TC_04_08_Click xem chi tiet phim");
-		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFilmByIndex(1);
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		info.filmName = filmInfo.filmName;
 		info.filmDuration = filmTicketBooking.canculateDurationOfFilm(filmInfo.filmDuration);
@@ -636,7 +636,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTextView(cinemaName);
 
 		log.info("TC_07_08_Click xem chi tiet phim");
-		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFilmByIndex(1);
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		info.filmName = filmInfo.filmName;
 		info.filmDuration = filmTicketBooking.canculateDurationOfFilm(filmInfo.filmDuration);
@@ -882,7 +882,7 @@ public class Flow_FilmTicketBooking_Part_1 extends Base {
 		filmTicketBooking.clickToDynamicTextView(cinemaName);
 
 		log.info("TC_09_08_Click xem chi tiet phim");
-		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFirstFilm();
+		FilmInfo filmInfo = filmTicketBooking.getInfoOfTheFilmByIndex(1);
 		filmTicketBooking.clickToDynamicTextView(filmInfo.filmName);
 		info.filmName = filmInfo.filmName;
 		info.filmDuration = filmTicketBooking.canculateDurationOfFilm(filmInfo.filmDuration);

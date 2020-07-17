@@ -252,7 +252,7 @@ public class TransferMoneyInVCB_Data {
 		public static final String SETTING = "Cài đặt";
 		public static final String REFERENCE_RATE = "Tỷ giá quy đổi tham khảo";
 		public static final String TRANSFER_IN_BANK_SAME_OWNER = "Chuyển khoản nội bộ cùng chủ tài khoản";
-		public static final String TRANSFER_IN_BANK_OTHER_OWNER = "Chuyển khoản nội bộ khác chủ tài khoản";
+		public static final String TRANSFER_IN_BANK_OTHER_OWNER = "Chuyển khoản";
 		public static final String TRANSFER_SAME_OWNER = "Chuyển khoản cùng chủ";
 		public static final String PACKAGE_NAME = "TESTBUG";
 		public static final String TITTLE_METHOD = "Method Otp";

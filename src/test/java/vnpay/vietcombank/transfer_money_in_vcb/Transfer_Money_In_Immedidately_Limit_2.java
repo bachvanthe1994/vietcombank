@@ -49,7 +49,7 @@ public class Transfer_Money_In_Immedidately_Limit_2 extends Base {
 		loginWeb = WebPageFactoryManager.getWebBackendSetupPageObject(driverWeb);
 		loginWeb.Login_Web_Backend(driverWeb, username, passWeb);
 
-		loginWeb.setupAssignServicesLimit(driverWeb, TittleData.TRANSFER_IN_BANK_OTHER_OWNER, inputInfo, Constants.BE_CODE_PACKAGE);
+//		loginWeb.setupAssignServicesLimit(driverWeb, TittleData.TRANSFER_IN_BANK_OTHER_OWNER, inputInfo, Constants.BE_CODE_PACKAGE);
 
 		log.info("Before class: Mo app ");
 		if (deviceType.contains("android")) {
@@ -246,7 +246,6 @@ public class Transfer_Money_In_Immedidately_Limit_2 extends Base {
 	@Test
 	public void TC_04_ChuyenTienTuongLaiVuotQuaNhomDichVu() throws InterruptedException {
 
-		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
@@ -256,6 +255,7 @@ public class Transfer_Money_In_Immedidately_Limit_2 extends Base {
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		transferInVCB.clickToDynamicButtonLinkOrLinkText(driver, sourceAccount.account);
+
 
 		log.info("TC_04_Step_08: Nhap tai khoan nhan");
 		transferInVCB.inputToDynamicInputBox(driver, other_account, TittleData.INPUT_ACCOUNT_BENEFICI);
@@ -269,7 +269,7 @@ public class Transfer_Money_In_Immedidately_Limit_2 extends Base {
 		log.info("TC_04_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), Output.MAX_TRANSFER_TOP + addCommasToLong(inputInfo.totalLimit) + Output.GROUP_MAX_TRANSFER_LAST);
+		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), Output.MAX_TRANSFER_TOP + addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + Output.GROUP_MAX_TRANSFER_LAST);
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 
@@ -303,7 +303,7 @@ public class Transfer_Money_In_Immedidately_Limit_2 extends Base {
 		log.info("TC_05_Step_11: Click tiep tuc");
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
-		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), Output.MAX_TRANSFER_TOP + addCommasToLong(inputInfo.totalLimit) + Output.PACKAGE_MAX_TRANSFER_LAST);
+		verifyEquals(transferInVCB.getDynamicTextView(driver, "com.VCB:id/tvContent"), Output.MAX_TRANSFER_TOP + addCommasToLong(Constants.AMOUNT_DEFAULT_MIN_PACKAGE) + Output.PACKAGE_MAX_TRANSFER_LAST);
 
 		transferInVCB.clickToDynamicContinue(driver, "com.VCB:id/btOK");
 

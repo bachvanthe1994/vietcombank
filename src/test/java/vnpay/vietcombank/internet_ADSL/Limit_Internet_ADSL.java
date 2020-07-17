@@ -51,10 +51,12 @@ public class Limit_Internet_ADSL extends Base {
 		log.info("Before class: Mo backend ");
 		driverWeb = openMultiBrowser(Constants.BE_BROWSER_CHROME, Constants.BE_BROWSER_VERSION, Constants.BE_URL);
 		webBackend.Login_Web_Backend(driverWeb, username, passWeb);
+
 		//webBackend.addMethod(driverWeb, "Thanh toán hóa đơn trả sau", inputInfo, "TESTBUG");
 		webBackend.resetAssignServicesLimit(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
 		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hoá đơn" );
 		webBackend.Reset_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
+
 		startServer();
 		log.info("Before class: Mo app ");
 		driver = openAndroidApp(deviceType, deviceName, udid, url, appActivities, appPackage, appName);
@@ -89,38 +91,45 @@ public class Limit_Internet_ADSL extends Base {
 
 		log.info("TC_01_Get so tien thanh toan");
 		amount = convertAvailableBalanceCurrentcyOrFeeToLong(adsl.getDynamicTextInTransactionDetail(driver, Internet_ADSL_Data.Valid_Account.PAYMENT_AMOUNT));
-		
+
 		log.info("TC_01_Quay ve man hinh khoi tao");
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
-		
+
 		ServiceLimitInfo inputInfoMin = new ServiceLimitInfo("1000", (amount + 1) + "", (amount + 2) + "", inputTotalLimit);
 		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMin, "TESTBUG");
-	
+
+
 
 		log.info("TC_01_Click Tiep tuc");
 		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi thieu ");
-		verifyEquals(adsl.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch nhỏ hơn hạn mức "+addCommasToLong(amount + 1 +"")+ " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+
+		verifyEquals(adsl.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch nhỏ hơn hạn mức " + addCommasToLong(amount + 1 + "") + " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
 
 		adsl.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
+		webBackend.resetAssignServicesLimit_All(driverWeb, "Thanh toán hóa đơn trả sau", "TESTBUG");
+
 	}
 
 	@Test
 	public void TC_02_ThanhToanCuocViettelCaoHonHanMucToiDa() throws InterruptedException {
 		ServiceLimitInfo inputInfoMax = new ServiceLimitInfo("1000", (amount - 2) + "", (amount - 1) + "", inputTotalLimit);
 		webBackend.getInfoServiceLimit(driverWeb, "Thanh toán hóa đơn trả sau", inputInfoMax, "TESTBUG");
-		
+
 		log.info("TC_01_Click tiep tuc");
 		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi da  ");
+
 		verifyEquals(adsl.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức "  +addCommasToLong(amount - 1 +"")+ " VND/1 lần, Chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+
 		adsl.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		closeApp();
 	}
 
 	@Test
+
 		@Parameters({ "deviceType", "deviceName", "deviceUDID", "hubURL", "appActivities", "appPackage", "appName", "phone", "pass", "otp", "username", "passWeb" })
 		public void TC_03_ThanhToanCuocViettelCaoHonHanMucToiDaNhom(String deviceType, String deviceName, String udid, String url, String appActivities, String appPackage, String appName, String phone, String pass, String opt, String username, String passWeb) throws IOException, InterruptedException, GeneralSecurityException {
 	
@@ -136,11 +145,14 @@ public class Limit_Internet_ADSL extends Base {
 		login = PageFactoryManager.getLoginPageObject(driver);
 		login.Global_login(phone, pass, opt);
 		
+
 		log.info("TC_01_Click tiep tuc");
 		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi da  ");
-		verifyEquals(adsl.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức "  +addCommasToLong(amount - 1 +"")+ " VND/1 ngày của nhóm dịch vụ, chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+
+		verifyEquals(adsl.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức " + addCommasToLong((amount - 1+"")) + " VND/1 ngày của nhóm dịch vụ, chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+
 
 
 		
@@ -148,20 +160,24 @@ public class Limit_Internet_ADSL extends Base {
 
 	@Test
 	public void TC_04_ThanhToanCuocViettelCaoHonHanMucToiDaGoi() throws InterruptedException {
+
 		webBackend.Reset_Setup_Assign_Services_Type_Limit(driverWeb, "TESTBUG", "Thanh toán hoá đơn");
 		adsl.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		webBackend.Setup_Add_Method_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp", (amount - 1)+"" );
 		
+
 		log.info("TC_01_Click tiep tuc");
 		adsl.clickToDynamicButton(driver, Internet_ADSL_Data.Valid_Account.CONTINUE);
 
 		log.info("TC_01_Step_verify message khi so tien chuyen nho hon han muc toi da  ");
+
 		verifyEquals(adsl.getDynamicTextView(driver, "com.VCB:id/tvContent"), "Thanh toán hóa đơn không thành công. Số tiền giao dịch lớn hơn hạn mức "  +addCommasToLong(amount - 1 +"")+ " VND/1 ngày của gói dịch vụ, chi tiết xem tại http://www.vietcombank.com.vn hoặc liên hệ Hotline 24/7: 1900545413 để được trợ giúp.");
+
 
 		adsl.clickToDynamicAcceptButton(driver, "com.VCB:id/btOK");
 		webBackend.Reset_Package_Total_Limit(driverWeb, "TESTBUG", "Method Otp");
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 //		closeApp();

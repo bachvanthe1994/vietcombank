@@ -58,6 +58,8 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		login.Global_login(phone, pass, opt);
 
 		log.info("Before class_Step_10: Scroll den trang thai lenh chuyen tien");
+		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
+		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.scrollDownToText(driver, TittleData.STATUS_TRANSACTION);
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
@@ -75,9 +77,6 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
-
-		log.info("TC_01_Step_02:Click tai khoan nguon");
-		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 
 		log.info("TC_01_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
@@ -129,9 +128,6 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		log.info("TC_01_Step_01: Click Chuyen tien trong VCB");
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
-		log.info("TC_01_Step_02:Click tai khoan nguon");
-		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
-
 		log.info("TC_01_Step_04:Click tai khoan nguon");
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 		List<String> listAccount = transferInVCB.getListSourceAccount(driver, Constants.VND_CURRENCY);
@@ -172,7 +168,7 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 
 		log.info("TC_01_Step_14: Kiem tra tai khoan dich hien thi");
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT_VND).contains(distanceAccount.account));
-		verifyTrue(transferInVCB.isDynamicMessageAndLabelTextDisplayed(driver, nameReceived));
+		nameReceived = transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.NAME_BENEFICI);
 
 		log.info("TC_01_Step_15: Kiem tra so tien chuyen hien thi");
 		verifyTrue(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.AMOUNT).contains(addCommasToLong(TransferMoneyInVCB_Data.InputDataInVCB.VND_MONEY)));
@@ -260,11 +256,9 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_02_Step_02: Click vao More Icon");
-		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_02_Step_03: Click Bao Cao Dao Dich");
-		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.REPORT_TRANSFER);
 
 		transReport.clickToTextID(driver, "com.VCB:id/tvSelectTransType");
@@ -406,7 +400,6 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		homePage.clickToDynamicIcon(driver, Home_Text_Elements.HOME_TRANSFER_IN_VCB);
 
 		log.info("TC_03_Step 02: Click chon tai khoan nguon");
-		transferInVCB = PageFactoryManager.getTransferMoneyInVcbPageObject(driver);
 		transferInVCB.clickToDynamicDropDown(driver, TittleData.SOURCE_ACCOUNT);
 
 		log.info("TC__03_Step_04:Click tai khoan nguon");
@@ -551,11 +544,9 @@ public class Transfer_Money_Immedidately_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, TittleData.TRANSFER_IN_VCBANK);
 
 		log.info("TC_04_Step 02: Click vao More Icon");
-		homePage = PageFactoryManager.getHomePageObject(driver);
 		homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
 
 		log.info("TC_04_Step 03: Click Bao Cao Dao Dich");
-		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		transReport.clickToDynamicButtonLinkOrLinkText(driver, Text.REPORT_TRANSFER);
 
 		log.info("TC_04_Step 04: Click Tat Ca Cac Loai Giao Dich");
