@@ -36,10 +36,10 @@
 <!-- 			<class name="vnpay.vietcombank.sdk.shopping_online.Shopping_Online_Flow3_Smart_OTP" /> -->
 
 			<!-- Thanh toán QR code -->
-			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1" />
-			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_2" />
-			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_3" />
-			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_4_SmartOTP" />
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_1" /> -->
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_2" /> -->
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_3" /> -->
+<!-- 			<class name="vnpay.vietcombank.payQRCode.Flow_PayQRCode_Part_4_SmartOTP" /> -->
 
 
 
