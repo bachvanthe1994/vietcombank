@@ -66,7 +66,7 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 		transReport = PageFactoryManager.getTransactionReportPageObject(driver);
 		listViettel = Arrays.asList(getDataInCell(29).split(";"));
 		smartOTP = PageFactoryManager.getSettingVCBSmartOTPPageObject(driver);
-		smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
+	smartOTP.setupSmartOTP(passSmartOTP, getDataInCell(6));
 	}
 
 	@Parameters({ "pass" })
@@ -128,7 +128,7 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 		billTelevision.clickToDynamicButton(driver, TitleData.NEW_TRANSFER);
 		
 		log.info("TC_02_15: kiểm tra số dư");
-		billTelevision.clickToDynamicButtonLinkOrLinkText(driver, account);
+		billTelevision.clickToDynamicDropDown(driver, TitleData.SOURCE_ACCOUNT);
 		String surplus = transReport.getDynamicTextInTransactionDetail(driver, account);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -140,9 +140,10 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 
 		log.info("TC_01_STEP_17: chọn back");
 		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
 
 		log.info("TC_01_STEP_18: chọn back");
-		billTelevision.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
+		//billTelevision.clickImageBack("com.VCB:id/ivTitleLeft");
 	}
 
 	@Test
@@ -265,7 +266,7 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 		billTelevision.clickToDynamicButton(driver, TitleData.NEW_TRANSFER);
 		
 		log.info("TC_03_15: kiểm tra số dư");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
+		billTelevision.clickToDynamicDropDown(driver, TitleData.SOURCE_ACCOUNT);
 		String surplus = transReport.getDynamicTextInTransactionDetail(driver, account);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -410,7 +411,7 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 		billTelevision.clickToDynamicButton(driver, TitleData.NEW_TRANSFER);
 		
 		log.info("TC_05_16: kiểm tra số dư");
-		transReport.clickToDynamicButtonLinkOrLinkText(driver, account);
+		billTelevision.clickToDynamicDropDown(driver, TitleData.SOURCE_ACCOUNT);
 		String surplus = transReport.getDynamicTextInTransactionDetail(driver, account);
 		String[] surplusSplit = surplus.split(" ");
 		double surplusInt = Double.parseDouble(surplusSplit[0].replace(",", ""));
@@ -496,8 +497,8 @@ public class Television_flow_And_Flow_SmartOTP extends Base {
 
 	@AfterMethod(alwaysRun = true)
 	public void afterClass() throws IOException {
-		closeApp();
-		service.stop();
+//		closeApp();
+//		service.stop();
 	}
 
 }

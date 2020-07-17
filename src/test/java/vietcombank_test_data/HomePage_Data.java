@@ -20,7 +20,7 @@ public class HomePage_Data {
 		public static final String TRANSFER_NOW = "Chuyển tiền ngày giá trị hiện tại";
 		public static final String LOOK_UP = "Tra cứu";
 		public static final String EXCHANGE_RATE = "Tỷ giá";
-		public static final String TRANSFER_FUTURE = "Chuyển tiền tương lai trong VCB";
+		public static final String TRANSFER_FUTURE = "Chuyển tiền tương lai";
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 		public static final String INPUT_ACCOUNT_BENEFICI = "Nhập/ chọn tài khoản nhận VND";
 		public static final String AMOUNT = "Số tiền";

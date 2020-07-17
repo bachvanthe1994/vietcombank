@@ -60,7 +60,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "pass" })
-   @Test
+ @Test
     public void TC_01_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiChuyenTraPhi(String pass) throws GeneralSecurityException, IOException {
 	log.info("TC_01_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, textCheckElement.TRANSFER_MONEY);
@@ -95,7 +95,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_01_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
-	trasferPage.clickToDynamicTextIndex(driver, "0", textDataInputForm.ISSUED);
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textDataInputForm.ISSUED);
 	trasferPage.scrollUpToText(driver, "Thông tin người hưởng");
 
 	log.info("TC_01_STEP_11: chon tiep tuc");
@@ -146,7 +146,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-    @Test
+  @Test
     public void TC_02_BaoCaoChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangMK() throws GeneralSecurityException, IOException {
 	log.info("TC_02_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -235,7 +235,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_03_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
-	trasferPage.clickToDynamicTextIndex(driver, "0", textDataInputForm.ISSUED);
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textDataInputForm.ISSUED);
 
 	log.info("TC_03_STEP_9: nhap so tien bat dau la khong");
 	trasferPage.inputToDynamicInputBox(driver, textCheckElement.AMOUNT_USD, textCheckElement.MONEY);
@@ -297,7 +297,7 @@ public class TransferIdentity_flow extends Base {
 	trasferPage.clickToDynamicImageViewByID(driver, "com.VCB:id/ivTitleLeft");
     }
 
-    @Test
+ @Test
     public void TC_04_BaoCaoChuyenTienUSDChoNguoNhanTaiQuayBangCMTXacThucBangMKNguoiNhanTraPhi() throws GeneralSecurityException, IOException {
 	log.info("TC_04_1: Click vao More Icon");
 	homePage.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_5");
@@ -359,7 +359,7 @@ public class TransferIdentity_flow extends Base {
     }
 
     @Parameters({ "otp" })
-    @Test
+   @Test
     public void TC_05_ChuyenTienVNDChoNguoNhanTaiQuayBangCMTXacThucBangOTPNguoiChuyenTraPhi(String otp) throws GeneralSecurityException, IOException {
 	log.info("TC_05_STEP_1: chon Chuyển tiền nhận bằng tiền mặt");
 	homePage.clickToDynamicIcon(driver, textCheckElement.TRANSFER_MONEY);
@@ -544,7 +544,7 @@ public class TransferIdentity_flow extends Base {
 
 	log.info("TC_07_Step_8: noi cap");
 	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textCheckElement.ISSUED);
-	trasferPage.clickToDynamicTextIndex(driver, "0", textDataInputForm.ISSUED);
+	trasferPage.clickToDynamicButtonLinkOrLinkText(driver, textDataInputForm.ISSUED);
 
 	log.info("TC_07_STEP_9: nhap so tien bat dau la khong");
 	trasferPage.inputToDynamicInputBox(driver, textCheckElement.AMOUNT_USD, textCheckElement.MONEY);

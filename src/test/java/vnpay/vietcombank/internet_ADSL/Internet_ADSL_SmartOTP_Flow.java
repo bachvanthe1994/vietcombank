@@ -278,9 +278,8 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		adsl.clickToDynamicImageViewByID(driver, "com.VCB:id/menu_1");
 	}
 
-	//@Test
-	@Parameters({ "pass" })
-	public void TC_03_ThanhToanCuocFPTXacThucSmartOTP(String pass) throws InterruptedException {
+	@Test
+	public void TC_03_ThanhToanCuocFPTXacThucSmartOTP() throws InterruptedException {
 		log.info("TC_02_Step_Click cuoc ADSL");
 		adsl.clickToDynamicButtonLinkOrLinkText(driver, Internet_ADSL_Data.Valid_Account.FEE_ADSL_INTERNET);
 
@@ -371,7 +370,7 @@ public class Internet_ADSL_SmartOTP_Flow extends Base {
 		verifyEquals(amountStart - amount - fee, amountAfter);
 	}
 
-	//@Test
+	@Test
 	public void TC_04_Report_ThanhToanCuocFPTXacThucSmartOTP() {
 		log.info("TC_02_Step: Click back man hinh home");
 		adsl.clickImageBack("com.VCB:id/ivTitleLeft");

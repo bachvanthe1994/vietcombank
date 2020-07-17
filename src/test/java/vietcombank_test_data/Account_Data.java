@@ -3,7 +3,7 @@ package vietcombank_test_data;
 public class Account_Data {
 	public static class Valid_Account {
 		public static final String ACCOUNT1 = "0019961175";
-		public static final String ACCOUNT2 = "0011003456789";
+		public static final String ACCOUNT2 = "0019991100";
 		public static final String DEFAULT_ACCOUNT3 = "0451001458259";
 		public static final String LIST_CARD_FROM[] = { "428310...760", "970436...083" };
 		public static final String LIST_DEBIT_ACCOUNT[] = { "0011379351651", "0011379351651" };

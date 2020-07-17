@@ -61,12 +61,99 @@ public class Flow_LandLinePhoneCharge_Part_3_Smart_OTP extends Base {
 
 		log.info("Setup smart OTP");
 		smartOTP.setupSmartOTP(LogIn_Data.Login_Account.Smart_OTP, otpSmart);
-		haveLine = Arrays.asList(getDataInCell(11).split(";"));
-		notLine = Arrays.asList(getDataInCell(12).split(";"));
+		notLine  = Arrays.asList(getDataInCell(11).split(";"));
+		haveLine = Arrays.asList(getDataInCell(12).split(";"));
 
 	}
 
 	private long surplus, availableBalance, actualAvailableBalance;
+	
+	@Test(invocationCount = 2)
+	public void TC_00_ThanhToanCuocDienThoaiCoDinh_CoDinhCoDay_ThanhToanSMSOTP() {
+		homePage = PageFactoryManager.getHomePageObject(driver);
+		landLinePhoneCharge = PageFactoryManager.getLandLinePhoneChargePageObject(driver);
+
+		log.info("TC_03_01_Click Cuoc dien thoai co dinh");
+		landLinePhoneCharge.scrollDownToText(driver, Text_Data.PRICE_CABLE);
+		homePage.clickToDynamicButtonLinkOrLinkText(driver, Text_Data.LANDLINE_TELEPHONE);
+
+		log.info("TC_03_02_Chon tai khoan nguon");
+		landLinePhoneCharge.clickToDynamicDropDown(driver, Text_Data.SOURCE_ACCOUNT);
+		sourceAccount = landLinePhoneCharge.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
+		surplus = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.AVAILABLE_BALANCES));
+
+		log.info("TC_03_03_Chon loai cuoc thanh toan");
+
+		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
+		landLinePhoneCharge.clickToDynamicTextContains(driver, Text_Data.NOT_LINE);
+
+		log.info("TC_03_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
+		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(notLine);
+
+		money = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.AMOUNT_PAY));
+		log.info("TC_03_05_Kiem tra man hinh xac nhan thong tin");
+		log.info("TC_03_05_1_Kiem tra tai khoan nguon");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.SOURCE_ACCOUNT), sourceAccount.account);
+
+		log.info("TC_03_05_2_Kiem tra dich vu");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, ReportTitle.SERVICE), Text_Data.LANDLINE_TELEPHONE);
+
+		log.info("TC_03_05_3_Kiem tra nha cung cap");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, ReportTitle.SUPPLIER), Text_Data.NOT_LINE_VIETTEL);
+
+		log.info("TC_03_05_4_Kiem tra so dien thoai");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.PHONE_NUMBER), LandLinePhoneChargePageObject.phoneNumber);
+
+		log.info("TC_03_06_Chon phuong thuc xac thuc");
+		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Text_Data.PASSWORD_LOGIN);
+		landLinePhoneCharge.clickToDynamicButtonLinkOrLinkText(driver, Text_Data.SMS_OTP);
+
+		log.info("TC_03_07_01_Kiem tra so tien phi");
+		fee = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.AMOUNT_FEE));
+
+		log.info("TC_03_08_Click Tiep tuc");
+		landLinePhoneCharge.clickToDynamicButton(driver, Text_Data.CONTINUE);
+
+		log.info("TC_03_09_Nhap OTP");
+		landLinePhoneCharge.inputToDynamicOtp(driver, LogIn_Data.Login_Account.OTP, Text_Data.CONTINUE);
+		landLinePhoneCharge.clickToDynamicButton(driver, Text_Data.CONTINUE);
+
+		log.info("TC_03_10_Kiem tra man hinh Chuyen khoan thanh cong");
+		log.info("TC_03_10_1_Kiem tra Chuyen khoan thanh cong");
+		verifyTrue(landLinePhoneCharge.isDynamicMessageAndLabelTextDisplayed(driver, LandLinePhoneCharge_Data.SUCCESS_TRANSFER_MONEY));
+
+		log.info("TC_03_10_2_Kiem tra dich vu");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, ReportTitle.SERVICE), Text_Data.LANDLINE_TELEPHONE);
+
+		log.info("TC_03_10_3_Kiem tra nha cung cap");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, ReportTitle.SUPPLIER), Text_Data.NOT_LINE_VIETTEL);
+
+		log.info("TC_03_10_3_So dien thoai");
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.PHONE_NUMBER), LandLinePhoneChargePageObject.phoneNumber);
+
+		log.info("TC_03_10_4_Kiem tra nut Thuc hien giao dich moi");
+		verifyTrue(landLinePhoneCharge.isDynamicButtonDisplayed(driver, Text_Data.NEW_TRANSFER));
+
+		log.info("TC_03_10_5_Lay ma giao dich");
+		transferTime = landLinePhoneCharge.getTransferTimeSuccess(driver, LandLinePhoneCharge_Data.SUCCESS_TRANSFER_MONEY);
+		transactionNumber = landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.CODE_TRANSFER);
+
+		log.info("TC_03_11_Click Thuc hien giao dich moi");
+		landLinePhoneCharge.clickToDynamicButton(driver, Text_Data.NEW_TRANSFER);
+
+		log.info("TC_03_11_Kiem tra so du kha dung luc sau");
+		landLinePhoneCharge.clickToDynamicDropDown(driver, Text_Data.SOURCE_ACCOUNT);
+		sourceAccount = landLinePhoneCharge.chooseSourceAccount(driver, Constants.MONEY_CHECK_VND, Constants.VND_CURRENCY);
+
+		actualAvailableBalance = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.AVAILABLE_BALANCES));
+		availableBalance = canculateAvailableBalances(surplus, money, fee);
+		verifyEquals(actualAvailableBalance, availableBalance);
+		
+		log.info("TC_02_1: Click  nut Back");
+		landLinePhoneCharge.clickToBackIconOnLandLinePhoneChargeScreen(Text_Data.LANDLINE_TELEPHONE);
+	}
+
 
 	@Parameters({ "pass" })
 	@Test
@@ -84,10 +171,10 @@ public class Flow_LandLinePhoneCharge_Part_3_Smart_OTP extends Base {
 
 		log.info("TC_01_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		landLinePhoneCharge.clickToDynamicTextContains(driver, Text_Data.HAVE_LINE);
+		landLinePhoneCharge.clickToDynamicTextContains(driver, Text_Data.NOT_LINE);
 
 		log.info("TC_01_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
-		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(haveLine);
+		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(notLine);
 
 		money = convertAvailableBalanceCurrentcyOrFeeToLong(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.AMOUNT_PAY));
 		log.info("TC_01_05_Kiem tra man hinh xac nhan thong tin");
@@ -213,7 +300,7 @@ public class Flow_LandLinePhoneCharge_Part_3_Smart_OTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_02_21: Kiem Tra noi dung giao dich");
-		String note = "VCBMB" + transactionNumber + ".Billing";
+		String note = "VCBMB" + transactionNumber ;
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER).contains(note));
 
 		log.info("TC_02_22: Click  nut Back");
@@ -244,7 +331,7 @@ public class Flow_LandLinePhoneCharge_Part_3_Smart_OTP extends Base {
 
 		log.info("TC_03_03_Chon loai cuoc thanh toan");
 		landLinePhoneCharge.clickToTextViewByLinearLayoutID(driver, "com.VCB:id/wrap_tv");
-		landLinePhoneCharge.clickToDynamicTextContains(driver, Text_Data.NOT_LINE);
+		landLinePhoneCharge.clickToDynamicTextContains(driver, Text_Data.HAVE_LINE);
 
 		log.info("TC_03_04_Nhap so dien thoai tra cuoc va bam Tiep tuc");
 		landLinePhoneCharge.inputPhoneNumberLandLinePhoneCharge(haveLine);
@@ -288,7 +375,7 @@ public class Flow_LandLinePhoneCharge_Part_3_Smart_OTP extends Base {
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.SERVICE), Text_Data.LANDLINE_TELEPHONE);
 
 		log.info("TC_03_10_3_Kiem tra nha cung cap");
-		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.SUPPLIER), Text_Data.NOT_LINE_VIETTEL);
+		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.SUPPLIER), Text_Data.LINE_VIETTEL);
 
 		log.info("TC_03_10_3_So dien thoai");
 		verifyEquals(landLinePhoneCharge.getDynamicTextInTransactionDetail(driver, Text_Data.PHONE_NUMBER), LandLinePhoneChargePageObject.phoneNumber);
@@ -373,7 +460,7 @@ public class Flow_LandLinePhoneCharge_Part_3_Smart_OTP extends Base {
 		verifyEquals(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.TYPE_TRANSFER), ReportTitle.PAYMENT_BILLING);
 
 		log.info("TC_04_21: Kiem Tra noi dung giao dich");
-		String note = "MBVCB" + transactionNumber + ".Billing";
+		String note = "MBVCB" + transactionNumber;
 		verifyTrue(transReport.getDynamicTextInTransactionDetail(driver, ReportTitle.CONTENT_TRANSFER).contains(note));
 
 		log.info("TC_04_22: Click  nut Back");

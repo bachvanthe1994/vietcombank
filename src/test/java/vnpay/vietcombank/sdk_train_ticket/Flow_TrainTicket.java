@@ -34,7 +34,6 @@ public class Flow_TrainTicket extends Base {
 	private LogInPageObject login;
 	private SettingVCBSmartOTPPageObject smartOTP;
 	private TrainTicketPageObject trainTicket;
-	private SettingVCBSmartOTPPageObject smartOTP;
 
 	List<String> listExpect;
 	List<String> listActual;
