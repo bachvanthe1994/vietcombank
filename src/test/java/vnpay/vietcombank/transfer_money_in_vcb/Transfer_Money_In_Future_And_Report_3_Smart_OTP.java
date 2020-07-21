@@ -127,7 +127,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_15: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_01_Step_16: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -379,7 +379,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_04_Step_17: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_04_Step_18: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -621,7 +621,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_07_Step_15: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_07_Step_16: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -770,7 +770,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_08_Step_15: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_08_Step_16: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -867,7 +867,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicBackIcon(driver, TransferMoneyInVCB_Data.InputDataInVCB.TRANSFER_TYPE_VIETCOM_BANL);
 	}
 
-	@Test
+	//@Test
 	public void TC_09_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBangSmartOTP() {
 
 		log.info("TC_09_Step_01: Click Chuyen tien trong VCB");
@@ -926,7 +926,7 @@ public class Transfer_Money_In_Future_And_Report_3_Smart_OTP extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_09_Step_17: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_09_Step_18: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);

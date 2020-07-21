@@ -119,7 +119,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_01_Step_15: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_01_Step_16: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -371,7 +371,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_04_Step_17: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_04_Step_18: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -615,7 +615,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_07_Step_15: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_07_Step_16: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -811,7 +811,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 	}
 
 	@Parameters("pass")
-	@Test
+	//@Test
 	public void TC_10_ChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_MatKhau(String pass) {
 
 		log.info("TC_10_Step_01: Click Chuyen tien trong VCB");
@@ -870,7 +870,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_10_Step_17: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_10_Step_18: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -963,7 +963,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_11_KiemTraChiTietGiaoDichChuyenTienTuongLaiCoPhiGiaoDichNguoiNhanTraEURVaXacThucBang_MatKhau() {
 		
 		log.info("TC_11_Step_01 : Click  nut Back");
@@ -1031,7 +1031,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_12_HuyLenhGiaoDichTuongLaiXacThucOTP() {
 
 		log.info("TC_12_Step_01: Click Huy Lenh");
@@ -1099,7 +1099,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_13_Step_11: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_13_Step_12: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);
@@ -1310,7 +1310,7 @@ public class Transfer_Money_In_Future_And_Report_2 extends Base {
 		transferInVCB.clickToDynamicButton(driver, TittleData.CONTINUE_BTN);
 
 		log.info("TC_16_Step_11: Kiem tra hinh thuc chuyen tien hien thi");
-		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.OPTION_TRANSFER[2]);
+		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.FORM_TRANSFER), TransferMoneyInVCB_Data.InputDataInVCB.FUTURE_TRANSFER);
 
 		log.info("TC_16_Step_12: Kiem tra tai khoan nguon hien thi");
 		verifyEquals(transferInVCB.getDynamicTextInTransactionDetail(driver, TittleData.SOURCE_ACCOUNT), sourceAccount.account);

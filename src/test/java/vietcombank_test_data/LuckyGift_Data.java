@@ -33,6 +33,7 @@ public class LuckyGift_Data {
 		public static final String NUMBER_ACCOUNT = "Số tài khoản";
 		public static final String SOURCE_ACCOUNT = "Tài khoản nguồn";
 		public static final String OTP = "SMS OTP";
+		public static final String PASSWORD  = "Mật khẩu đăng nhập";
 		public static final String SMART_OTP = "VCB - Smart OTP";
 		public static final String TUTORIAL = "Hướng dẫn";
 		public static final String CONTINUE = "Tiếp tục";

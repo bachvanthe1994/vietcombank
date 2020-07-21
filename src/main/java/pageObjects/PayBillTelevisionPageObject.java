@@ -50,4 +50,17 @@ public class PayBillTelevisionPageObject extends AbstractPage {
 		}
 		return customerID;
 	}
+	
+	public void clickImageBack(String dymanicID) {
+		boolean status = false;
+		String locator = String.format(DynamicPageUIs.DYNAMIC_BOTTOM_MENU_CLOSE_ICON, dymanicID);
+		status = waitForElementVisible(driver, locator);
+		if (status == true) {
+			clickToElement(driver, locator);
+			List<MobileElement> element = driver.findElements(By.xpath(locator));
+			if (element.size() > 0) {
+				clickToElement(driver, locator);
+			}
+		}
+	}
 }
